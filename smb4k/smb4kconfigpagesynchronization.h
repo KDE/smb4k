@@ -1,7 +1,7 @@
 /*
     The configuration page for the synchronization options
 
-    SPDX-FileCopyrightText: 2005-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -9,7 +9,13 @@
 #define SMB4KCONFIGPAGESYNCHRONIZATION_H
 
 // Qt includes
+#include <QCheckBox>
+#include <QSpinBox>
 #include <QTabWidget>
+
+// KDE includes
+#include <KLineEdit>
+#include <KUrlRequester>
 
 /**
  * This class belongs to the configuration dialog and takes
@@ -87,6 +93,34 @@ protected Q_SLOTS:
      * @param checked       Is TRUE is m_ff_filter is checked and FALSE otherwise.
      */
     void slotFFFilterRuleToggled(bool checked);
+
+private:
+    KUrlRequester *m_synchronizationPrefix;
+    QCheckBox *m_makeBackups;
+    QWidget *m_backupSettingsWidget;
+    QCheckBox *m_useBackupSuffix;
+    KLineEdit *m_backupSuffix;
+    QCheckBox *m_useBackupDirectory;
+    KUrlRequester *m_backupDirectory;
+    QCheckBox *m_useMinimalTransferSize;
+    QSpinBox *m_minimalTransferSize;
+    QCheckBox *m_useMaximalTransferSize;
+    QSpinBox *m_maximalTransferSize;
+    QCheckBox *m_usePartialDirectory;
+    KUrlRequester *m_partialDirectory;
+    QCheckBox *m_useExcludePattern;
+    KLineEdit *m_excludePattern;
+    QCheckBox *m_useExcludeFrom;
+    KUrlRequester *m_excludeFrom;
+    QCheckBox *m_useIncludePattern;
+    KLineEdit *m_includePattern;
+    QCheckBox *m_useIncludeFrom;
+    KUrlRequester *m_includeFrom;
+    QCheckBox *m_useBlockSize;
+    QSpinBox *m_blockSize;
+    QWidget *m_compressionSettingsWidget;
+    QCheckBox *m_useFFilterRule;
+    QCheckBox *m_useFFFilterRule;
 };
 
 #endif

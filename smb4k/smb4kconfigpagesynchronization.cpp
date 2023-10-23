@@ -1,7 +1,7 @@
 /*
     The configuration page for the synchronization options
 
-    SPDX-FileCopyrightText: 2005-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -10,18 +10,13 @@
 #include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QCheckBox>
-#include <QFormLayout>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QSpinBox>
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KLineEdit>
 #include <KLocalizedString>
-#include <KUrlRequester>
 
 Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     : QTabWidget(parent)
@@ -34,24 +29,24 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     // Synchronization Directory
     QGroupBox *synchronizationDirectoryBox = new QGroupBox(i18n("Synchronization Directory"), basicTab);
-    QVBoxLayout *synchronizationDirectoryBoxLayout = new QVBoxLayout(synchronizationDirectoryBox);
+    QGridLayout *synchronizationDirectoryBoxLayout = new QGridLayout(synchronizationDirectoryBox);
 
-    QWidget *rsyncPrefixWidget = new QWidget(synchronizationDirectoryBox);
-    QHBoxLayout *rsyncPrefixWidgetLayout = new QHBoxLayout(rsyncPrefixWidget);
-    rsyncPrefixWidgetLayout->setContentsMargins(0, 0, 0, 0);
+    QLabel *synchronizationPrefixLabel = new QLabel(synchronizationDirectoryBox);
+    synchronizationPrefixLabel->setText(Smb4KSettings::self()->rsyncPrefixItem()->label());
 
-    QLabel *rsyncPrefixLabel = new QLabel(rsyncPrefixWidget);
-    rsyncPrefixLabel->setText(Smb4KSettings::self()->rsyncPrefixItem()->label());
-    rsyncPrefixWidgetLayout->addWidget(rsyncPrefixLabel);
+    synchronizationDirectoryBoxLayout->addWidget(synchronizationPrefixLabel, 0, 0);
 
-    KUrlRequester *rsyncPrefix = new KUrlRequester(rsyncPrefixWidget);
-    rsyncPrefix->setMode(KFile::Directory | KFile::LocalOnly);
-    rsyncPrefix->setObjectName(QStringLiteral("kcfg_RsyncPrefix"));
-    rsyncPrefixWidgetLayout->addWidget(rsyncPrefix);
+    m_synchronizationPrefix = new KUrlRequester(synchronizationDirectoryBox);
+    m_synchronizationPrefix->setMode(KFile::Directory | KFile::LocalOnly);
+    m_synchronizationPrefix->setObjectName(QStringLiteral("kcfg_RsyncPrefix"));
 
-    rsyncPrefixLabel->setBuddy(rsyncPrefix);
+    connect(m_synchronizationPrefix, &KUrlRequester::textEdited, this, [&]() {
+        qDebug() << "Text edited ...";
+    });
 
-    synchronizationDirectoryBoxLayout->addWidget(rsyncPrefixWidget);
+    synchronizationDirectoryBoxLayout->addWidget(m_synchronizationPrefix, 0, 1);
+
+    synchronizationPrefixLabel->setBuddy(m_synchronizationPrefix);
 
     basicTabLayout->addWidget(synchronizationDirectoryBox);
 
@@ -90,40 +85,35 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     QGroupBox *backupsBox = new QGroupBox(i18n("Backups"), basicTab);
     QVBoxLayout *backupsBoxLayout = new QVBoxLayout(backupsBox);
 
-    QCheckBox *makeBackups = new QCheckBox(Smb4KSettings::self()->makeBackupsItem()->label(), backupsBox);
-    makeBackups->setObjectName(QStringLiteral("kcfg_MakeBackups"));
+    m_makeBackups = new QCheckBox(Smb4KSettings::self()->makeBackupsItem()->label(), backupsBox);
+    m_makeBackups->setObjectName(QStringLiteral("kcfg_MakeBackups"));
 
-    backupsBoxLayout->addWidget(makeBackups);
+    backupsBoxLayout->addWidget(m_makeBackups);
 
-    QWidget *backupSuffixWidget = new QWidget(backupsBox);
-    QHBoxLayout *backupSuffixLayout = new QHBoxLayout(backupSuffixWidget);
-    backupSuffixLayout->setContentsMargins(0, 0, 0, 0);
+    m_backupSettingsWidget = new QWidget(backupsBox);
+    m_backupSettingsWidget->setEnabled(false);
+    QGridLayout *backupSettingsWidgetLayout = new QGridLayout(m_backupSettingsWidget);
+    backupSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-    QCheckBox *backupSuffixButton = new QCheckBox(Smb4KSettings::self()->useBackupSuffixItem()->label(), backupSuffixWidget);
-    backupSuffixButton->setObjectName(QStringLiteral("kcfg_UseBackupSuffix"));
-    KLineEdit *backupSuffix = new KLineEdit(backupSuffixWidget);
-    backupSuffix->setObjectName(QStringLiteral("kcfg_BackupSuffix"));
-    backupSuffix->setClearButtonEnabled(true);
+    m_useBackupSuffix = new QCheckBox(Smb4KSettings::self()->useBackupSuffixItem()->label(), m_backupSettingsWidget);
+    m_useBackupSuffix->setObjectName(QStringLiteral("kcfg_UseBackupSuffix"));
+    m_backupSuffix = new KLineEdit(m_backupSettingsWidget);
+    m_backupSuffix->setObjectName(QStringLiteral("kcfg_BackupSuffix"));
+    m_backupSuffix->setClearButtonEnabled(true);
 
-    backupSuffixLayout->addWidget(backupSuffixButton);
-    backupSuffixLayout->addWidget(backupSuffix);
+    backupSettingsWidgetLayout->addWidget(m_useBackupSuffix, 0, 0);
+    backupSettingsWidgetLayout->addWidget(m_backupSuffix, 0, 1);
 
-    backupsBoxLayout->addWidget(backupSuffixWidget);
+    m_useBackupDirectory = new QCheckBox(Smb4KSettings::self()->useBackupDirectoryItem()->label(), m_backupSettingsWidget);
+    m_useBackupDirectory->setObjectName(QStringLiteral("kcfg_UseBackupDirectory"));
+    m_backupDirectory = new KUrlRequester(m_backupSettingsWidget);
+    m_backupDirectory->setObjectName(QStringLiteral("kcfg_BackupDirectory"));
+    m_backupDirectory->setMode(KFile::Directory | KFile::LocalOnly);
 
-    QWidget *backupDirWidget = new QWidget(backupsBox);
-    QHBoxLayout *backupDirLayout = new QHBoxLayout(backupDirWidget);
-    backupDirLayout->setContentsMargins(0, 0, 0, 0);
+    backupSettingsWidgetLayout->addWidget(m_useBackupDirectory, 1, 0);
+    backupSettingsWidgetLayout->addWidget(m_backupDirectory, 1, 1);
 
-    QCheckBox *backupDirButton = new QCheckBox(Smb4KSettings::self()->useBackupDirectoryItem()->label(), backupDirWidget);
-    backupDirButton->setObjectName(QStringLiteral("kcfg_UseBackupDirectory"));
-    KUrlRequester *backupDir = new KUrlRequester(backupDirWidget);
-    backupDir->setObjectName(QStringLiteral("kcfg_BackupDirectory"));
-    backupDir->setMode(KFile::Directory | KFile::LocalOnly);
-
-    backupDirLayout->addWidget(backupDirButton);
-    backupDirLayout->addWidget(backupDir);
-
-    backupsBoxLayout->addWidget(backupDirWidget);
+    backupsBoxLayout->addWidget(m_backupSettingsWidget);
 
     basicTabLayout->addWidget(backupsBox);
     basicTabLayout->addStretch(100);
@@ -299,33 +289,40 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     // Compression
     QGroupBox *compressionBox = new QGroupBox(i18n("Compression"), transferTab);
-    QGridLayout *compressionBoxLayout = new QGridLayout(compressionBox);
+    QVBoxLayout *compressionBoxLayout = new QVBoxLayout(compressionBox);
 
     QCheckBox *compressData = new QCheckBox(Smb4KSettings::self()->compressDataItem()->label(), compressionBox);
     compressData->setObjectName(QStringLiteral("kcfg_CompressData"));
 
-    compressionBoxLayout->addWidget(compressData, 0, 0, 1, 2);
+    compressionBoxLayout->addWidget(compressData);
 
-    QCheckBox *compressionLevelButton = new QCheckBox(Smb4KSettings::self()->useCompressionLevelItem()->label(), compressionBox);
+    m_compressionSettingsWidget = new QWidget(compressionBox);
+    m_compressionSettingsWidget->setEnabled(false);
+    QGridLayout *compressionSettingsWidgetLayout = new QGridLayout(m_compressionSettingsWidget);
+    compressionSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
+
+    QCheckBox *compressionLevelButton = new QCheckBox(Smb4KSettings::self()->useCompressionLevelItem()->label(), m_compressionSettingsWidget);
     compressionLevelButton->setObjectName(QStringLiteral("kcfg_UseCompressionLevel"));
 
-    compressionBoxLayout->addWidget(compressionLevelButton, 1, 0);
+    compressionSettingsWidgetLayout->addWidget(compressionLevelButton, 0, 0);
 
-    QSpinBox *compressionLevel = new QSpinBox(compressionBox);
+    QSpinBox *compressionLevel = new QSpinBox(m_compressionSettingsWidget);
     compressionLevel->setObjectName(QStringLiteral("kcfg_CompressionLevel"));
 
-    compressionBoxLayout->addWidget(compressionLevel, 1, 1);
+    compressionSettingsWidgetLayout->addWidget(compressionLevel, 0, 1);
 
-    QCheckBox *skipCompressionButton = new QCheckBox(Smb4KSettings::self()->useSkipCompressionItem()->label(), compressionBox);
+    QCheckBox *skipCompressionButton = new QCheckBox(Smb4KSettings::self()->useSkipCompressionItem()->label(), m_compressionSettingsWidget);
     skipCompressionButton->setObjectName(QStringLiteral("kcfg_UseSkipCompression"));
 
-    compressionBoxLayout->addWidget(skipCompressionButton, 2, 0);
+    compressionSettingsWidgetLayout->addWidget(skipCompressionButton, 1, 0);
 
-    KLineEdit *skipCompression = new KLineEdit(compressionBox);
+    KLineEdit *skipCompression = new KLineEdit(m_compressionSettingsWidget);
     skipCompression->setObjectName(QStringLiteral("kcfg_SkipCompression"));
     skipCompression->setClearButtonEnabled(true);
 
-    compressionBoxLayout->addWidget(skipCompression, 2, 1);
+    compressionSettingsWidgetLayout->addWidget(skipCompression, 1, 1);
+
+    compressionBoxLayout->addWidget(m_compressionSettingsWidget);
 
     transferTabLayout->addWidget(compressionBox);
 
@@ -333,43 +330,45 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     QGroupBox *filesBox = new QGroupBox(i18n("Files"), transferTab);
     QGridLayout *filesBoxLayout = new QGridLayout(filesBox);
 
-    QCheckBox *minTransferSizeButton = new QCheckBox(Smb4KSettings::self()->useMinimalTransferSizeItem()->label(), filesBox);
-    minTransferSizeButton->setObjectName(QStringLiteral("kcfg_UseMinimalTransferSize"));
+    m_useMinimalTransferSize = new QCheckBox(Smb4KSettings::self()->useMinimalTransferSizeItem()->label(), filesBox);
+    m_useMinimalTransferSize->setObjectName(QStringLiteral("kcfg_UseMinimalTransferSize"));
 
-    filesBoxLayout->addWidget(minTransferSizeButton, 0, 0);
+    filesBoxLayout->addWidget(m_useMinimalTransferSize, 0, 0);
 
-    QSpinBox *minTransferSize = new QSpinBox(filesBox);
-    minTransferSize->setObjectName(QStringLiteral("kcfg_MinimalTransferSize"));
-    minTransferSize->setSuffix(i18n(" kB"));
+    m_minimalTransferSize = new QSpinBox(filesBox);
+    m_minimalTransferSize->setObjectName(QStringLiteral("kcfg_MinimalTransferSize"));
+    m_minimalTransferSize->setSuffix(i18n(" kB"));
 
-    filesBoxLayout->addWidget(minTransferSize, 0, 1);
+    filesBoxLayout->addWidget(m_minimalTransferSize, 0, 1);
 
-    QCheckBox *maxTransferSizeButton = new QCheckBox(Smb4KSettings::self()->useMaximalTransferSizeItem()->label(), filesBox);
-    maxTransferSizeButton->setObjectName(QStringLiteral("kcfg_UseMaximalTransferSize"));
+    m_useMaximalTransferSize = new QCheckBox(Smb4KSettings::self()->useMaximalTransferSizeItem()->label(), filesBox);
+    m_useMaximalTransferSize->setObjectName(QStringLiteral("kcfg_UseMaximalTransferSize"));
 
-    filesBoxLayout->addWidget(maxTransferSizeButton, 1, 0);
+    filesBoxLayout->addWidget(m_useMaximalTransferSize, 1, 0);
 
-    QSpinBox *maxTransferSize = new QSpinBox(filesBox);
-    maxTransferSize->setObjectName(QStringLiteral("kcfg_MaximalTransferSize"));
-    maxTransferSize->setSuffix(i18n(" kB"));
+    m_maximalTransferSize = new QSpinBox(filesBox);
+    m_maximalTransferSize->setObjectName(QStringLiteral("kcfg_MaximalTransferSize"));
+    m_maximalTransferSize->setSuffix(i18n(" kB"));
 
-    filesBoxLayout->addWidget(maxTransferSize, 1, 1);
+    filesBoxLayout->addWidget(m_maximalTransferSize, 1, 1);
 
     QCheckBox *keepPartial = new QCheckBox(Smb4KSettings::self()->keepPartialItem()->label(), filesBox);
     keepPartial->setObjectName(QStringLiteral("kcfg_KeepPartial"));
 
     filesBoxLayout->addWidget(keepPartial, 2, 0, 1, 2);
 
-    QCheckBox *partialDirButton = new QCheckBox(Smb4KSettings::self()->usePartialDirectoryItem()->label(), filesBox);
-    partialDirButton->setObjectName(QStringLiteral("kcfg_UsePartialDirectory"));
+    m_usePartialDirectory = new QCheckBox(Smb4KSettings::self()->usePartialDirectoryItem()->label(), filesBox);
+    m_usePartialDirectory->setObjectName(QStringLiteral("kcfg_UsePartialDirectory"));
+    m_usePartialDirectory->setEnabled(false);
 
-    filesBoxLayout->addWidget(partialDirButton, 3, 0);
+    filesBoxLayout->addWidget(m_usePartialDirectory, 3, 0);
 
-    KUrlRequester *partialDir = new KUrlRequester(filesBox);
-    partialDir->setObjectName(QStringLiteral("kcfg_PartialDirectory"));
-    partialDir->setMode(KFile::Directory | KFile::LocalOnly);
+    m_partialDirectory = new KUrlRequester(filesBox);
+    m_partialDirectory->setObjectName(QStringLiteral("kcfg_PartialDirectory"));
+    m_partialDirectory->setMode(KFile::Directory | KFile::LocalOnly);
+    m_partialDirectory->setEnabled(false);
 
-    filesBoxLayout->addWidget(partialDir, 3, 1);
+    filesBoxLayout->addWidget(m_partialDirectory, 3, 1);
 
     transferTabLayout->addWidget(filesBox);
 
@@ -479,49 +478,49 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     generalFilteringBoxLayout->addWidget(cvsExclude, 0, 0, 1, 2);
 
-    QCheckBox *excludePatternButton = new QCheckBox(Smb4KSettings::self()->useExcludePatternItem()->label(), generalFilteringBox);
-    excludePatternButton->setObjectName(QStringLiteral("kcfg_UseExcludePattern"));
+    m_useExcludePattern = new QCheckBox(Smb4KSettings::self()->useExcludePatternItem()->label(), generalFilteringBox);
+    m_useExcludePattern->setObjectName(QStringLiteral("kcfg_UseExcludePattern"));
 
-    generalFilteringBoxLayout->addWidget(excludePatternButton, 1, 0);
+    generalFilteringBoxLayout->addWidget(m_useExcludePattern, 1, 0);
 
-    KLineEdit *excludePattern = new KLineEdit(generalFilteringBox);
-    excludePattern->setObjectName(QStringLiteral("kcfg_ExcludePattern"));
-    excludePattern->setClearButtonEnabled(true);
+    m_excludePattern = new KLineEdit(generalFilteringBox);
+    m_excludePattern->setObjectName(QStringLiteral("kcfg_ExcludePattern"));
+    m_excludePattern->setClearButtonEnabled(true);
 
-    generalFilteringBoxLayout->addWidget(excludePattern, 1, 1);
+    generalFilteringBoxLayout->addWidget(m_excludePattern, 1, 1);
 
-    QCheckBox *excludeFromButton = new QCheckBox(Smb4KSettings::self()->useExcludeFromItem()->label(), generalFilteringBox);
-    excludeFromButton->setObjectName(QStringLiteral("kcfg_UseExcludeFrom"));
+    m_useExcludeFrom = new QCheckBox(Smb4KSettings::self()->useExcludeFromItem()->label(), generalFilteringBox);
+    m_useExcludeFrom->setObjectName(QStringLiteral("kcfg_UseExcludeFrom"));
 
-    generalFilteringBoxLayout->addWidget(excludeFromButton, 2, 0);
+    generalFilteringBoxLayout->addWidget(m_useExcludeFrom, 2, 0);
 
-    KUrlRequester *excludeFrom = new KUrlRequester(generalFilteringBox);
-    excludeFrom->setObjectName(QStringLiteral("kcfg_ExcludeFrom"));
-    excludeFrom->setMode(KFile::File | KFile::LocalOnly);
+    m_excludeFrom = new KUrlRequester(generalFilteringBox);
+    m_excludeFrom->setObjectName(QStringLiteral("kcfg_ExcludeFrom"));
+    m_excludeFrom->setMode(KFile::File | KFile::LocalOnly);
 
-    generalFilteringBoxLayout->addWidget(excludeFrom, 2, 1);
+    generalFilteringBoxLayout->addWidget(m_excludeFrom, 2, 1);
 
-    QCheckBox *includePatternButton = new QCheckBox(Smb4KSettings::self()->useIncludePatternItem()->label(), generalFilteringBox);
-    includePatternButton->setObjectName(QStringLiteral("kcfg_UseIncludePattern"));
+    m_useIncludePattern = new QCheckBox(Smb4KSettings::self()->useIncludePatternItem()->label(), generalFilteringBox);
+    m_useIncludePattern->setObjectName(QStringLiteral("kcfg_UseIncludePattern"));
 
-    generalFilteringBoxLayout->addWidget(includePatternButton, 3, 0);
+    generalFilteringBoxLayout->addWidget(m_useIncludePattern, 3, 0);
 
-    KLineEdit *includePattern = new KLineEdit(generalFilteringBox);
-    includePattern->setObjectName(QStringLiteral("kcfg_IncludePattern"));
-    includePattern->setClearButtonEnabled(true);
+    m_includePattern = new KLineEdit(generalFilteringBox);
+    m_includePattern->setObjectName(QStringLiteral("kcfg_IncludePattern"));
+    m_includePattern->setClearButtonEnabled(true);
 
-    generalFilteringBoxLayout->addWidget(includePattern, 3, 1);
+    generalFilteringBoxLayout->addWidget(m_includePattern, 3, 1);
 
-    QCheckBox *includeFromButton = new QCheckBox(Smb4KSettings::self()->useIncludeFromItem()->label(), generalFilteringBox);
-    includeFromButton->setObjectName(QStringLiteral("kcfg_UseIncludeFrom"));
+    m_useIncludeFrom = new QCheckBox(Smb4KSettings::self()->useIncludeFromItem()->label(), generalFilteringBox);
+    m_useIncludeFrom->setObjectName(QStringLiteral("kcfg_UseIncludeFrom"));
 
-    generalFilteringBoxLayout->addWidget(includeFromButton, 4, 0);
+    generalFilteringBoxLayout->addWidget(m_useIncludeFrom, 4, 0);
 
-    KUrlRequester *includeFrom = new KUrlRequester(generalFilteringBox);
-    includeFrom->setObjectName(QStringLiteral("kcfg_IncludeFrom"));
-    includeFrom->setMode(KFile::File | KFile::LocalOnly);
+    m_includeFrom = new KUrlRequester(generalFilteringBox);
+    m_includeFrom->setObjectName(QStringLiteral("kcfg_IncludeFrom"));
+    m_includeFrom->setMode(KFile::File | KFile::LocalOnly);
 
-    generalFilteringBoxLayout->addWidget(includeFrom, 4, 1);
+    generalFilteringBoxLayout->addWidget(m_includeFrom, 4, 1);
 
     filterTabLayout->addWidget(generalFilteringBox);
 
@@ -529,15 +528,15 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     QGroupBox *filterRulesBox = new QGroupBox(i18n("Filter Rules"), filterTab);
     QGridLayout *filterRulesBoxLayout = new QGridLayout(filterRulesBox);
 
-    QCheckBox *useFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFilterRuleItem()->label(), filterRulesBox);
-    useFFilterRule->setObjectName(QStringLiteral("kcfg_UseFFilterRule"));
+    m_useFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFilterRuleItem()->label(), filterRulesBox);
+    m_useFFilterRule->setObjectName(QStringLiteral("kcfg_UseFFilterRule"));
 
-    filterRulesBoxLayout->addWidget(useFFilterRule, 0, 0, 1, 2);
+    filterRulesBoxLayout->addWidget(m_useFFilterRule, 0, 0, 1, 2);
 
-    QCheckBox *useFFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFFilterRuleItem()->label(), filterRulesBox);
-    useFFFilterRule->setObjectName(QStringLiteral("kcfg_UseFFFilterRule"));
+    m_useFFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFFilterRuleItem()->label(), filterRulesBox);
+    m_useFFFilterRule->setObjectName(QStringLiteral("kcfg_UseFFFilterRule"));
 
-    filterRulesBoxLayout->addWidget(useFFFilterRule, 1, 0, 1, 2);
+    filterRulesBoxLayout->addWidget(m_useFFFilterRule, 1, 0, 1, 2);
 
     QCheckBox *useCustomFilterRules = new QCheckBox(Smb4KSettings::self()->useCustomFilteringRulesItem()->label(), filterRulesBox);
     useCustomFilterRules->setObjectName(QStringLiteral("kcfg_UseCustomFilteringRules"));
@@ -565,15 +564,15 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     QGroupBox *checksumsBox = new QGroupBox(i18n("Checksums"), miscellaneousTab);
     QGridLayout *checksumsBoxLayout = new QGridLayout(checksumsBox);
 
-    QCheckBox *blockSizeButton = new QCheckBox(Smb4KSettings::self()->useBlockSizeItem()->label(), checksumsBox);
-    blockSizeButton->setObjectName(QStringLiteral("kcfg_UseBlockSize"));
+    m_useBlockSize = new QCheckBox(Smb4KSettings::self()->useBlockSizeItem()->label(), checksumsBox);
+    m_useBlockSize->setObjectName(QStringLiteral("kcfg_UseBlockSize"));
 
-    checksumsBoxLayout->addWidget(blockSizeButton, 0, 0);
+    checksumsBoxLayout->addWidget(m_useBlockSize, 0, 0);
 
-    QSpinBox *blockSize = new QSpinBox(checksumsBox);
-    blockSize->setObjectName(QStringLiteral("kcfg_BlockSize"));
+    m_blockSize = new QSpinBox(checksumsBox);
+    m_blockSize->setObjectName(QStringLiteral("kcfg_BlockSize"));
 
-    checksumsBoxLayout->addWidget(blockSize, 0, 1);
+    checksumsBoxLayout->addWidget(m_blockSize, 0, 1);
 
     QCheckBox *checksumSeedButton = new QCheckBox(Smb4KSettings::self()->useChecksumSeedItem()->label(), checksumsBox);
     checksumSeedButton->setObjectName(QStringLiteral("kcfg_UseChecksumSeed"));
@@ -614,15 +613,11 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     //
     // Connections
     //
-    connect(useFFilterRule, SIGNAL(toggled(bool)), this, SLOT(slotFFilterRuleToggled(bool)));
-    connect(useFFFilterRule, SIGNAL(toggled(bool)), this, SLOT(slotFFFilterRuleToggled(bool)));
-    connect(makeBackups, SIGNAL(toggled(bool)), this, SLOT(slotBackupToggled(bool)));
-    connect(compressData, SIGNAL(toggled(bool)), this, SLOT(slotCompressToggled(bool)));
-    connect(keepPartial, SIGNAL(toggled(bool)), this, SLOT(slotKeepPartialToggled(bool)));
-
-    slotBackupToggled(Smb4KSettings::makeBackups());
-    slotCompressToggled(Smb4KSettings::compressData());
-    slotKeepPartialToggled(Smb4KSettings::keepPartial());
+    connect(m_useFFilterRule, &QCheckBox::toggled, this, &Smb4KConfigPageSynchronization::slotFFilterRuleToggled);
+    connect(m_useFFFilterRule, &QCheckBox::toggled, this, &Smb4KConfigPageSynchronization::slotFFFilterRuleToggled);
+    connect(m_makeBackups, &QCheckBox::toggled, this, &Smb4KConfigPageSynchronization::slotBackupToggled);
+    connect(compressData, &QCheckBox::toggled, this, &Smb4KConfigPageSynchronization::slotCompressToggled);
+    connect(keepPartial, &QCheckBox::toggled, this, &Smb4KConfigPageSynchronization::slotKeepPartialToggled);
 }
 
 Smb4KConfigPageSynchronization::~Smb4KConfigPageSynchronization()
@@ -633,135 +628,88 @@ bool Smb4KConfigPageSynchronization::checkSettings()
 {
     for (int i = 0; i < count(); i++) {
         // Synchronization prefix
-        KUrlRequester *synchronizationPrefix = widget(i)->findChild<KUrlRequester *>(QStringLiteral("kcfg_RsyncPrefix"));
-
-        if (synchronizationPrefix) {
-            if (!synchronizationPrefix->url().isValid()) {
-                setCurrentIndex(i);
-                synchronizationPrefix->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_synchronizationPrefix) && !m_synchronizationPrefix->url().isValid()) {
+            setCurrentIndex(i);
+            m_synchronizationPrefix->setFocus();
+            return false;
         }
 
         // Backups
-        QCheckBox *makeBackups = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_MakeBackups"));
-        QCheckBox *useBackupSuffix = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseBackupSuffix"));
-        KLineEdit *backupSuffix = widget(i)->findChild<KLineEdit *>(QStringLiteral("kcfg_BackupSuffix"));
-        QCheckBox *useBackupDir = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseBackupDirectory"));
-        KUrlRequester *backupDir = widget(i)->findChild<KUrlRequester *>(QStringLiteral("kcfg_BackupDirectory"));
-
-        if (makeBackups && makeBackups->isChecked()) {
-            if (useBackupSuffix && backupSuffix) {
-                if (useBackupSuffix->isChecked() && backupSuffix->text().trimmed().isEmpty()) {
-                    setCurrentIndex(i);
-                    backupSuffix->setFocus();
-                    return false;
-                }
+        if (widget(i)->isAncestorOf(m_makeBackups) && m_makeBackups->isChecked()) {
+            if (m_useBackupSuffix->isChecked() && m_backupSuffix->text().trimmed().isEmpty()) {
+                setCurrentIndex(i);
+                m_backupSuffix->setFocus();
+                return false;
             }
 
-            if (useBackupDir && backupDir) {
-                if (useBackupDir->isChecked() && !backupDir->url().isValid()) {
-                    setCurrentIndex(i);
-                    backupDir->setFocus();
-                    return false;
-                }
+            if (m_useBackupDirectory->isChecked() && !m_backupDirectory->url().isValid()) {
+                setCurrentIndex(i);
+                m_backupDirectory->setFocus();
+                return false;
             }
         }
 
         // Minimal transfer size
-        QCheckBox *useMinTransferSize = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseMinimalTransferSize"));
-        QSpinBox *minTransferSize = widget(i)->findChild<QSpinBox *>(QStringLiteral("kcfg_MinimalTransferSize"));
-
-        if (useMinTransferSize && minTransferSize) {
-            if (useMinTransferSize->isChecked() && minTransferSize->value() == 0) {
-                setCurrentIndex(i);
-                minTransferSize->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_useMinimalTransferSize) && widget(i)->isAncestorOf(m_minimalTransferSize) && m_useMinimalTransferSize->isChecked()
+            && m_minimalTransferSize->value() == 0) {
+            setCurrentIndex(i);
+            m_minimalTransferSize->setFocus();
+            return false;
         }
 
         // Maximal transfer size
-        QCheckBox *useMaxTransferSize = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseMaximalTransferSize"));
-        QSpinBox *maxTransferSize = widget(i)->findChild<QSpinBox *>(QStringLiteral("kcfg_MaximalTransferSize"));
-
-        if (useMaxTransferSize && maxTransferSize) {
-            if (useMaxTransferSize->isChecked() && maxTransferSize->value() == 0) {
-                setCurrentIndex(i);
-                maxTransferSize->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_useMaximalTransferSize) && widget(i)->isAncestorOf(m_maximalTransferSize) && m_useMaximalTransferSize->isChecked()
+            && m_maximalTransferSize->value() == 0) {
+            setCurrentIndex(i);
+            m_maximalTransferSize->setFocus();
+            return false;
         }
 
         // Partial directory
-        QCheckBox *usePartialDirectory = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UsePartialDirectory"));
-        KUrlRequester *partialDirectory = widget(i)->findChild<KUrlRequester *>(QStringLiteral("kcfg_PartialDirectory"));
-
-        if (usePartialDirectory && partialDirectory) {
-            if (usePartialDirectory->isChecked() && !partialDirectory->url().isValid()) {
-                setCurrentIndex(i);
-                partialDirectory->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_usePartialDirectory) && widget(i)->isAncestorOf(m_partialDirectory) && m_usePartialDirectory->isChecked()
+            && !m_partialDirectory->url().isValid()) {
+            setCurrentIndex(i);
+            m_partialDirectory->setFocus();
+            return false;
         }
 
         // Exclude exclude
-        QCheckBox *useExcludePattern = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseExcludePattern"));
-        KLineEdit *excludePattern = widget(i)->findChild<KLineEdit *>(QStringLiteral("kcfg_ExcludePattern"));
-
-        if (useExcludePattern && excludePattern) {
-            if (useExcludePattern->isChecked() && excludePattern->text().trimmed().isEmpty()) {
-                setCurrentIndex(i);
-                excludePattern->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_useExcludePattern) && widget(i)->isAncestorOf(m_excludePattern) && m_useExcludePattern->isChecked()
+            && m_excludePattern->text().trimmed().isEmpty()) {
+            setCurrentIndex(i);
+            m_excludePattern->setFocus();
+            return false;
         }
 
         // Read exclude pattern from file
-        QCheckBox *useExcludeFrom = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseExcludeFrom"));
-        KUrlRequester *excludeFrom = widget(i)->findChild<KUrlRequester *>(QStringLiteral("kcfg_ExcludeFrom"));
-
-        if (useExcludeFrom && excludeFrom) {
-            if (useExcludeFrom->isChecked() && !excludeFrom->url().isValid()) {
-                setCurrentIndex(i);
-                excludeFrom->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_useExcludeFrom) && widget(i)->isAncestorOf(m_excludeFrom) && m_useExcludeFrom->isChecked()
+            && !m_excludeFrom->url().isValid()) {
+            setCurrentIndex(i);
+            m_excludeFrom->setFocus();
+            return false;
         }
 
         // Exclude exclude
-        QCheckBox *useIncludePattern = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseIncludePattern"));
-        KLineEdit *includePattern = widget(i)->findChild<KLineEdit *>(QStringLiteral("kcfg_IncludePattern"));
-
-        if (useIncludePattern && includePattern) {
-            if (useIncludePattern->isChecked() && includePattern->text().trimmed().isEmpty()) {
-                setCurrentIndex(i);
-                includePattern->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_useIncludePattern) && widget(i)->isAncestorOf(m_includePattern) && m_useIncludePattern->isChecked()
+            && m_includePattern->text().trimmed().isEmpty()) {
+            setCurrentIndex(i);
+            m_includePattern->setFocus();
+            return false;
         }
 
         // Read exclude pattern from file
-        QCheckBox *useIncludeFrom = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseIncludeFrom"));
-        KUrlRequester *includeFrom = widget(i)->findChild<KUrlRequester *>(QStringLiteral("kcfg_IncludeFrom"));
-
-        if (useIncludeFrom && includeFrom) {
-            if (useIncludeFrom->isChecked() && !includeFrom->url().isValid()) {
-                setCurrentIndex(i);
-                includeFrom->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_useIncludeFrom) && widget(i)->isAncestorOf(m_includeFrom) && m_useIncludeFrom->isChecked()
+            && !m_includeFrom->url().isValid()) {
+            setCurrentIndex(i);
+            m_includeFrom->setFocus();
+            return false;
         }
 
         // Block size
-        QCheckBox *useFixedBlocksize = widget(i)->findChild<QCheckBox *>(QStringLiteral("kcfg_UseBlockSize"));
-        QSpinBox *fixedBlocksize = widget(i)->findChild<QSpinBox *>(QStringLiteral("kcfg_BlockSize"));
-
-        if (useFixedBlocksize && fixedBlocksize) {
-            if (useFixedBlocksize->isChecked() && fixedBlocksize->value() == 0) {
-                setCurrentIndex(i);
-                fixedBlocksize->setFocus();
-                return false;
-            }
+        if (widget(i)->isAncestorOf(m_useBlockSize) && widget(i)->isAncestorOf(m_blockSize) && m_useBlockSize->isChecked() && m_blockSize->value() == 0) {
+            setCurrentIndex(i);
+            m_blockSize->setFocus();
+            return false;
         }
 
         // NOTE: There is no need to check the following settings, because they may be empty or 0:
@@ -782,40 +730,30 @@ bool Smb4KConfigPageSynchronization::checkSettings()
 
 void Smb4KConfigPageSynchronization::slotBackupToggled(bool checked)
 {
-    findChild<QCheckBox *>(QStringLiteral("kcfg_UseBackupDirectory"))->setEnabled(checked);
-    findChild<KUrlRequester *>(QStringLiteral("kcfg_BackupDirectory"))->setEnabled(checked);
-    findChild<QCheckBox *>(QStringLiteral("kcfg_UseBackupSuffix"))->setEnabled(checked);
-    findChild<KLineEdit *>(QStringLiteral("kcfg_BackupSuffix"))->setEnabled(checked);
+    m_backupSettingsWidget->setEnabled(checked);
 }
 
 void Smb4KConfigPageSynchronization::slotCompressToggled(bool checked)
 {
-    findChild<QCheckBox *>(QStringLiteral("kcfg_UseCompressionLevel"))->setEnabled(checked);
-    findChild<QSpinBox *>(QStringLiteral("kcfg_CompressionLevel"))->setEnabled(checked);
-    findChild<QCheckBox *>(QStringLiteral("kcfg_UseSkipCompression"))->setEnabled(checked);
-    findChild<KLineEdit *>(QStringLiteral("kcfg_SkipCompression"))->setEnabled(checked);
+    m_compressionSettingsWidget->setEnabled(checked);
 }
 
 void Smb4KConfigPageSynchronization::slotKeepPartialToggled(bool checked)
 {
-    findChild<QCheckBox *>(QStringLiteral("kcfg_UsePartialDirectory"))->setEnabled(checked);
-    findChild<KUrlRequester *>(QStringLiteral("kcfg_PartialDirectory"))->setEnabled(checked);
+    m_usePartialDirectory->setEnabled(checked);
+    m_partialDirectory->setEnabled(checked);
 }
 
 void Smb4KConfigPageSynchronization::slotFFilterRuleToggled(bool on)
 {
-    QCheckBox *ff_filter = findChild<QCheckBox *>(QStringLiteral("kcfg_UseFFFilterRule"));
-
-    if (on && ff_filter->isChecked()) {
-        ff_filter->setChecked(false);
+    if (on && m_useFFFilterRule->isChecked()) {
+        m_useFFFilterRule->setChecked(false);
     }
 }
 
 void Smb4KConfigPageSynchronization::slotFFFilterRuleToggled(bool on)
 {
-    QCheckBox *f_filter = findChild<QCheckBox *>(QStringLiteral("kcfg_UseFFilterRule"));
-
-    if (on && f_filter->isChecked()) {
-        f_filter->setChecked(false);
+    if (on && m_useFFilterRule->isChecked()) {
+        m_useFFilterRule->setChecked(false);
     }
 }
