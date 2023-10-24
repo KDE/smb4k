@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 00:43+0000\n"
+"POT-Creation-Date: 2023-10-24 00:43+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -342,7 +342,7 @@ msgstr "Direktoriji"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
 #: smb4k/smb4kconfigpagenetwork.cpp:111
-#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#: smb4k/smb4kconfigpagesynchronization.cpp:54
 #, kde-format
 msgid "Behavior"
 msgstr "Ponašanje"
@@ -354,7 +354,7 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:132
-#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#: smb4k/smb4kconfigpagesynchronization.cpp:121
 #, fuzzy, kde-format
 #| msgid "Settings"
 msgid "Basic Settings"
@@ -493,120 +493,120 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Napredna podešavanja"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#: smb4k/smb4kconfigpagesynchronization.cpp:31
 #, fuzzy, kde-format
 #| msgid "Synchronization"
 msgid "Synchronization Directory"
 msgstr "Usklađivanje"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#: smb4k/smb4kconfigpagesynchronization.cpp:85
 #, fuzzy, kde-format
 #| msgid "Backup"
 msgid "Backups"
 msgstr "Rezervna kopija"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#: smb4k/smb4kconfigpagesynchronization.cpp:130
 #, kde-format
 msgid "General"
 msgstr "Opšte"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#: smb4k/smb4kconfigpagesynchronization.cpp:166
 #, fuzzy, kde-format
 #| msgid "Links"
 msgid "Links"
 msgstr "Veze"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#: smb4k/smb4kconfigpagesynchronization.cpp:213
 #, fuzzy, kde-format
 #| msgid "File Deletion"
 msgid "File Handling"
 msgstr "Brisanje datoteke"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#: smb4k/smb4kconfigpagesynchronization.cpp:221
 #, kde-format
 msgid "File Attributes"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#: smb4k/smb4kconfigpagesynchronization.cpp:266
 #, fuzzy, kde-format
 #| msgid "Owner"
 msgid "Ownership"
 msgstr "Vlasnik"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#: smb4k/smb4kconfigpagesynchronization.cpp:282
 #, kde-format
 msgid "File Attributes && Ownership"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:301
+#: smb4k/smb4kconfigpagesynchronization.cpp:291
 #, kde-format
 msgid "Compression"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:333
+#: smb4k/smb4kconfigpagesynchronization.cpp:330
 #, fuzzy, kde-format
 #| msgid "&File"
 msgid "Files"
 msgstr "&Datoteka"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:343
-#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#: smb4k/smb4kconfigpagesynchronization.cpp:340
+#: smb4k/smb4kconfigpagesynchronization.cpp:351
 #, kde-format
 msgid " kB"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:596
-#: smb4k/smb4kconfigpagesynchronization.cpp:612
+#: smb4k/smb4kconfigpagesynchronization.cpp:376
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, fuzzy, kde-format
 #| msgid "Miscellaneous Settings"
 msgid "Miscellaneous"
 msgstr "Razne postavke"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#: smb4k/smb4kconfigpagesynchronization.cpp:386
 #, kde-format
 msgid " kB/s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:394
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
 #, kde-format
 msgid "File Transfer"
 msgstr "Prijenos podataka"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:403
+#: smb4k/smb4kconfigpagesynchronization.cpp:402
 #, fuzzy, kde-format
 #| msgid "Directories"
 msgid "Files && Directories"
 msgstr "Direktoriji"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:449
+#: smb4k/smb4kconfigpagesynchronization.cpp:448
 #, fuzzy, kde-format
 #| msgid "Restrictions"
 msgid "Restrictions"
 msgstr "Ograničenja"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:465
+#: smb4k/smb4kconfigpagesynchronization.cpp:464
 #, kde-format
 msgid "File Deletion"
 msgstr "Brisanje datoteke"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:474
+#: smb4k/smb4kconfigpagesynchronization.cpp:473
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "General Filtering Settings"
 msgstr "Opšte postavke"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:529
+#: smb4k/smb4kconfigpagesynchronization.cpp:528
 #, kde-format
 msgid "Filter Rules"
 msgstr "Pravila filtriranja"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:556
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Filtriranje"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:565
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
