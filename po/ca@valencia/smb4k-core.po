@@ -952,9 +952,10 @@ msgid ""
 "absolute symlinks are also ignored. If you use this option in conjunction "
 "with --relative you might get unexpected results."
 msgstr ""
-"Ignora els enllaços simbòlics que apunten a fora de l'arbre de còpia (--safe-"
-"links). També s'ignoraran tots els enllaços simbòlics absoluts. Si utilitzeu "
-"esta opció juntament amb --relative podríeu obtindre resultats inesperats."
+"Ignora els enllaços simbòlics que apunten cap a fora de l'arbre de còpia (--"
+"safe-links). També s'ignoraran tots els enllaços simbòlics absoluts. Si "
+"utilitzeu esta opció juntament amb --relative podríeu obtindre resultats "
+"inesperats."
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
 #: smb4k.kcfg:357
@@ -1465,7 +1466,7 @@ msgid ""
 msgstr ""
 "Conserva els fitxers transferits parcialment (--partial). El comportament "
 "predeterminat és que qualsevol fitxer transferit parcialment se suprimisca "
-"si la transferència s'interromp."
+"si s'interromp la transferència."
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
 #: smb4k.kcfg:505
@@ -3455,7 +3456,7 @@ msgstr ""
 "de la memòria cau, a vegades pot proporcionar un rendiment millor a canvi de "
 "la coherència de la memòria cau. Esta opció pot provocar corrupció de les "
 "dades, si diversos clients accedixen al mateix conjunt de fitxers en el "
-"servidor al mateix temps. Per açò, es recomana el mode estricte de la "
+"servidor al mateix temps. Per a açò, es recomana el mode estricte de la "
 "memòria cau."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)

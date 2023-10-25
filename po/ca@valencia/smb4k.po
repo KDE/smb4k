@@ -183,8 +183,8 @@ msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
 "corresponding configuration page to fix it.</qt>"
 msgstr ""
-"<qt>S'ha trobat una opció incorrecta. Ara anireu a la pàgina corresponent de "
-"configuració per a esmenar-la.</qt>"
+"<qt>S'ha trobat una opció incorrecta. Ara aneu fins a la pàgina corresponent "
+"de configuració per a esmenar-la.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
 #: smb4k/smb4kconfigpageprofiles.cpp:34
