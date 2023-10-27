@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 00:43+0000\n"
+"POT-Creation-Date: 2023-10-24 00:43+0000\n"
 "PO-Revision-Date: 2023-10-05 23:16+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -330,7 +330,7 @@ msgstr "Cartelle"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
 #: smb4k/smb4kconfigpagenetwork.cpp:111
-#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#: smb4k/smb4kconfigpagesynchronization.cpp:54
 #, kde-format
 msgid "Behavior"
 msgstr "Comportamento"
@@ -342,7 +342,7 @@ msgstr " min"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:132
-#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#: smb4k/smb4kconfigpagesynchronization.cpp:121
 #, kde-format
 msgid "Basic Settings"
 msgstr "Impostazioni di base"
@@ -468,110 +468,110 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Impostazioni avanzate"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#: smb4k/smb4kconfigpagesynchronization.cpp:31
 #, kde-format
 msgid "Synchronization Directory"
 msgstr "Cartella di sincronizzazione"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#: smb4k/smb4kconfigpagesynchronization.cpp:85
 #, kde-format
 msgid "Backups"
 msgstr "Copie di sicurezza"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#: smb4k/smb4kconfigpagesynchronization.cpp:130
 #, kde-format
 msgid "General"
 msgstr "Generale"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#: smb4k/smb4kconfigpagesynchronization.cpp:166
 #, kde-format
 msgid "Links"
 msgstr "Collegamenti"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#: smb4k/smb4kconfigpagesynchronization.cpp:213
 #, kde-format
 msgid "File Handling"
 msgstr "Gestione dei file"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#: smb4k/smb4kconfigpagesynchronization.cpp:221
 #, kde-format
 msgid "File Attributes"
 msgstr "Attributi del file"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#: smb4k/smb4kconfigpagesynchronization.cpp:266
 #, kde-format
 msgid "Ownership"
 msgstr "Proprietà"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#: smb4k/smb4kconfigpagesynchronization.cpp:282
 #, kde-format
 msgid "File Attributes && Ownership"
 msgstr "Attributi del file &e proprietà"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:301
+#: smb4k/smb4kconfigpagesynchronization.cpp:291
 #, kde-format
 msgid "Compression"
 msgstr "Compressione"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:333
+#: smb4k/smb4kconfigpagesynchronization.cpp:330
 #, kde-format
 msgid "Files"
 msgstr "File"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:343
-#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#: smb4k/smb4kconfigpagesynchronization.cpp:340
+#: smb4k/smb4kconfigpagesynchronization.cpp:351
 #, kde-format
 msgid " kB"
 msgstr " kB"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:596
-#: smb4k/smb4kconfigpagesynchronization.cpp:612
+#: smb4k/smb4kconfigpagesynchronization.cpp:376
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Varie"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#: smb4k/smb4kconfigpagesynchronization.cpp:386
 #, kde-format
 msgid " kB/s"
 msgstr " kB/s"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:394
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
 #, kde-format
 msgid "File Transfer"
 msgstr "Trasferimento file"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:403
+#: smb4k/smb4kconfigpagesynchronization.cpp:402
 #, kde-format
 msgid "Files && Directories"
 msgstr "File e cartelle"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:449
+#: smb4k/smb4kconfigpagesynchronization.cpp:448
 #, kde-format
 msgid "Restrictions"
 msgstr "Restrizioni"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:465
+#: smb4k/smb4kconfigpagesynchronization.cpp:464
 #, kde-format
 msgid "File Deletion"
 msgstr "Eliminazione del file"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:474
+#: smb4k/smb4kconfigpagesynchronization.cpp:473
 #, kde-format
 msgid "General Filtering Settings"
 msgstr "Impostazioni generali di filtraggio"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:529
+#: smb4k/smb4kconfigpagesynchronization.cpp:528
 #, kde-format
 msgid "Filter Rules"
 msgstr "Regole di filtraggio"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:556
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Filtraggio"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:565
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, kde-format
 msgid "Checksums"
 msgstr "Codici di controllo"

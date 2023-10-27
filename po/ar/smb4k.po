@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 00:43+0000\n"
+"POT-Creation-Date: 2023-10-24 00:43+0000\n"
 "PO-Revision-Date: 2022-08-10 23:29+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
@@ -323,7 +323,7 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
 #: smb4k/smb4kconfigpagenetwork.cpp:111
-#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#: smb4k/smb4kconfigpagesynchronization.cpp:54
 #, kde-format
 msgid "Behavior"
 msgstr "السّلوك"
@@ -335,7 +335,7 @@ msgstr " د"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:132
-#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#: smb4k/smb4kconfigpagesynchronization.cpp:121
 #, kde-format
 msgid "Basic Settings"
 msgstr "أساسي"
@@ -452,111 +452,111 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "إعدادات متقدّمة"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#: smb4k/smb4kconfigpagesynchronization.cpp:31
 #, kde-format
 msgid "Synchronization Directory"
 msgstr "ملف المزامنة"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#: smb4k/smb4kconfigpagesynchronization.cpp:85
 #, kde-format
 msgid "Backups"
 msgstr "النسخ الاحتياطية"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#: smb4k/smb4kconfigpagesynchronization.cpp:130
 #, kde-format
 msgid "General"
 msgstr "عامّ"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#: smb4k/smb4kconfigpagesynchronization.cpp:166
 #, kde-format
 msgid "Links"
 msgstr "روابط"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#: smb4k/smb4kconfigpagesynchronization.cpp:213
 #, kde-format
 msgid "File Handling"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#: smb4k/smb4kconfigpagesynchronization.cpp:221
 #, kde-format
 msgid "File Attributes"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#: smb4k/smb4kconfigpagesynchronization.cpp:266
 #, fuzzy, kde-format
 #| msgid "Owner:"
 msgid "Ownership"
 msgstr "المالك:"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#: smb4k/smb4kconfigpagesynchronization.cpp:282
 #, kde-format
 msgid "File Attributes && Ownership"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:301
+#: smb4k/smb4kconfigpagesynchronization.cpp:291
 #, kde-format
 msgid "Compression"
 msgstr "الضغط"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:333
+#: smb4k/smb4kconfigpagesynchronization.cpp:330
 #, kde-format
 msgid "Files"
 msgstr "الملفات"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:343
-#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#: smb4k/smb4kconfigpagesynchronization.cpp:340
+#: smb4k/smb4kconfigpagesynchronization.cpp:351
 #, kde-format
 msgid " kB"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:596
-#: smb4k/smb4kconfigpagesynchronization.cpp:612
+#: smb4k/smb4kconfigpagesynchronization.cpp:376
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, kde-format
 msgid "Miscellaneous"
 msgstr "متنوّع"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#: smb4k/smb4kconfigpagesynchronization.cpp:386
 #, kde-format
 msgid " kB/s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:394
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
 #, kde-format
 msgid "File Transfer"
 msgstr "نقل الملفات"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:403
+#: smb4k/smb4kconfigpagesynchronization.cpp:402
 #, kde-format
 msgid "Files && Directories"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:449
+#: smb4k/smb4kconfigpagesynchronization.cpp:448
 #, kde-format
 msgid "Restrictions"
 msgstr "التقييدات"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:465
+#: smb4k/smb4kconfigpagesynchronization.cpp:464
 #, kde-format
 msgid "File Deletion"
 msgstr "حذف الملف"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:474
+#: smb4k/smb4kconfigpagesynchronization.cpp:473
 #, kde-format
 msgid "General Filtering Settings"
 msgstr "إعدادات الترشيح العامة"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:529
+#: smb4k/smb4kconfigpagesynchronization.cpp:528
 #, kde-format
 msgid "Filter Rules"
 msgstr "قواعد المرشّحات"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:556
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "التّرشيح"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:565
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, kde-format
 msgid "Checksums"
 msgstr "تدقيقات المجموع"
