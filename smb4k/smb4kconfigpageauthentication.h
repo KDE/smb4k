@@ -12,11 +12,11 @@
 #include "core/smb4kauthinfo.h"
 
 // Qt includes
+#include <QCheckBox>
 #include <QList>
 #include <QListWidget>
 #include <QPushButton>
 #include <QWidget>
-#include <QCheckBox>
 
 // Forward declarations
 class QListWidgetItem;

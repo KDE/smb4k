@@ -793,11 +793,11 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
             }
 
             if (!deniedArgs.isEmpty()) {
-                QString msg = i18np(
-                    "The following entry is going to be removed from the additional options:<br>%2.<br>Please read the handbook for details.",
-                    "The following %1 entries are going to be removed from the additional options:<br>%2.<br>Please read the handbook for details.",
-                    deniedArgs.size(),
-                    deniedArgs.join(QStringLiteral(", ")));
+                QString msg =
+                    i18np("The following entry is going to be removed from the additional options:<br>%2.<br>Please read the handbook for details.",
+                          "The following %1 entries are going to be removed from the additional options:<br>%2.<br>Please read the handbook for details.",
+                          deniedArgs.size(),
+                          deniedArgs.join(QStringLiteral(", ")));
                 KMessageBox::information(this, msg);
             }
 

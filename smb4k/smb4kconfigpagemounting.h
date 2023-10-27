@@ -9,12 +9,12 @@
 #define SMB4KCONFIGPAGEMOUNTING_H
 
 // Qt includes
-#include <QTabWidget>
 #include <QCheckBox>
+#include <QTabWidget>
 
 // KDE includes
-#include <KUrlRequester>
 #include <KLineEdit>
+#include <KUrlRequester>
 
 /**
  * This configuration page contains the mount options

@@ -10,6 +10,7 @@
 #include "core/smb4ksettings.h"
 
 // Qt includes
+#include <QApplication>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -39,10 +40,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     m_synchronizationPrefix = new KUrlRequester(synchronizationDirectoryBox);
     m_synchronizationPrefix->setMode(KFile::Directory | KFile::LocalOnly);
     m_synchronizationPrefix->setObjectName(QStringLiteral("kcfg_RsyncPrefix"));
-
-    connect(m_synchronizationPrefix, &KUrlRequester::textEdited, this, [&]() {
-        qDebug() << "Text edited ...";
-    });
 
     synchronizationDirectoryBoxLayout->addWidget(m_synchronizationPrefix, 0, 1);
 

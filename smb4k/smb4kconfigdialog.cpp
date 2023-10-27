@@ -198,6 +198,7 @@ void Smb4KConfigDialog::updateSettings()
         m_bookmarksPage->loadBookmarks();
     }
 
+    // FIXME: If the "Ok" button is pressed, this does not work as expected.
     (void)checkSettings();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
