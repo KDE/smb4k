@@ -11,6 +11,7 @@
 // application specific includes
 #include "core/smb4kglobal.h"
 
+
 // Qt includes
 #include <QActionGroup>
 #include <QDockWidget>
@@ -25,6 +26,9 @@
 class Smb4KSystemTray;
 class Smb4KPrintInfo;
 class Smb4KSynchronizationInfo;
+class Smb4KNetworkBrowserDockWidget;
+class Smb4KSharesViewDockWidget;
+class Smb4KBookmarkMenu;
 
 /**
  * This is the main window of Smb4K. It provides the network browser, the
@@ -266,6 +270,21 @@ private:
      * Dock widgets action group;
      */
     QActionGroup *m_dockWidgets;
+
+    /**
+     * The network browser dock widget
+     */
+    Smb4KNetworkBrowserDockWidget *m_networkBrowserDockWidget;
+
+    /**
+     * The shares view dock widget
+     */
+    Smb4KSharesViewDockWidget *m_sharesViewDockWidget;
+
+    /**
+     * The bookmark menu
+     */
+    Smb4KBookmarkMenu *m_bookmarkMenu;
 };
 
 #endif
