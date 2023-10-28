@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-24 00:43+0000\n"
+"POT-Creation-Date: 2023-10-28 00:43+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -336,7 +336,7 @@ msgstr "Ornern"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
 #: smb4k/smb4kconfigpagenetwork.cpp:111
-#: smb4k/smb4kconfigpagesynchronization.cpp:54
+#: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Bedregen"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:132
-#: smb4k/smb4kconfigpagesynchronization.cpp:121
+#: smb4k/smb4kconfigpagesynchronization.cpp:118
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgid "Basic Settings"
@@ -471,119 +471,119 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Verwiedert Optschonen"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:31
+#: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, fuzzy, kde-format
 #| msgid "Synchronization"
 msgid "Synchronization Directory"
 msgstr "Synkroniseren"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:85
+#: smb4k/smb4kconfigpagesynchronization.cpp:82
 #, fuzzy, kde-format
 #| msgid "Backup"
 msgid "Backups"
 msgstr "Sekerheitkopie"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:130
+#: smb4k/smb4kconfigpagesynchronization.cpp:127
 #, kde-format
 msgid "General"
 msgstr "Allmeen"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:166
+#: smb4k/smb4kconfigpagesynchronization.cpp:163
 #, fuzzy, kde-format
 #| msgid "Links"
 msgid "Links"
 msgstr "Links"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:213
+#: smb4k/smb4kconfigpagesynchronization.cpp:210
 #, fuzzy, kde-format
 #| msgid "File Deletion"
 msgid "File Handling"
 msgstr "Dateien wegdoon"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:221
+#: smb4k/smb4kconfigpagesynchronization.cpp:218
 #, kde-format
 msgid "File Attributes"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:266
+#: smb4k/smb4kconfigpagesynchronization.cpp:263
 #, fuzzy, kde-format
 #| msgid "Owner:"
 msgid "Ownership"
 msgstr "Eegner:"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:282
+#: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
 msgid "File Attributes && Ownership"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:291
+#: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, kde-format
 msgid "Compression"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
+#: smb4k/smb4kconfigpagesynchronization.cpp:327
 #, fuzzy, kde-format
 #| msgid "File"
 msgid "Files"
 msgstr "Datei"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:340
-#: smb4k/smb4kconfigpagesynchronization.cpp:351
+#: smb4k/smb4kconfigpagesynchronization.cpp:337
+#: smb4k/smb4kconfigpagesynchronization.cpp:348
 #, kde-format
 msgid " kB"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:376
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:373
+#: smb4k/smb4kconfigpagesynchronization.cpp:592
+#: smb4k/smb4kconfigpagesynchronization.cpp:608
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
 msgstr "Allgemeen Instellen"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:386
+#: smb4k/smb4kconfigpagesynchronization.cpp:383
 #, kde-format
 msgid " kB/s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:393
+#: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, kde-format
 msgid "File Transfer"
 msgstr "Dateiöverdregen"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:402
+#: smb4k/smb4kconfigpagesynchronization.cpp:399
 #, fuzzy, kde-format
 #| msgid "Hidden Files && Directories"
 msgid "Files && Directories"
 msgstr "Versteken Dateien un Ornern"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:448
+#: smb4k/smb4kconfigpagesynchronization.cpp:445
 #, fuzzy, kde-format
 #| msgid "Destination:"
 msgid "Restrictions"
 msgstr "Teel:"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:464
+#: smb4k/smb4kconfigpagesynchronization.cpp:461
 #, kde-format
 msgid "File Deletion"
 msgstr "Dateien wegdoon"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:473
+#: smb4k/smb4kconfigpagesynchronization.cpp:470
 #, kde-format
 msgid "General Filtering Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:528
+#: smb4k/smb4kconfigpagesynchronization.cpp:525
 #, kde-format
 msgid "Filter Rules"
 msgstr "Filterregeln"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:552
 #, kde-format
 msgid "Filtering"
 msgstr "Filtern"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:561
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
@@ -714,12 +714,12 @@ msgstr "Allgemeen Instellen"
 msgid "Dock Widgets"
 msgstr "Stüerelementen andocken"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:238 smb4k/smb4ksharesmenu.cpp:43
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Inhangt Freegaven"
 
-#: smb4k/smb4kmainwindow.cpp:415
+#: smb4k/smb4kmainwindow.cpp:373
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Closing the main window will keep Smb4K running in the system tray. "
@@ -732,106 +732,106 @@ msgstr ""
 "wieder. Bruuk \"Verlaten\" in't Menü \"Datei\", wenn Du dat Programm "
 "verlaten wullt.</p>"
 
-#: smb4k/smb4kmainwindow.cpp:417
+#: smb4k/smb4kmainwindow.cpp:375
 #, kde-format
 msgid "Docking"
 msgstr "Andocken"
 
-#: smb4k/smb4kmainwindow.cpp:481
+#: smb4k/smb4kmainwindow.cpp:431
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:484
+#: smb4k/smb4kmainwindow.cpp:434
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] ""
 msgstr[1] ""
 
-#: smb4k/smb4kmainwindow.cpp:637
+#: smb4k/smb4kmainwindow.cpp:572
 #, fuzzy, kde-format
 #| msgid "The wallet is in use."
 msgid "The wallet is used."
 msgstr "De Knipp is in Bruuk."
 
-#: smb4k/smb4kmainwindow.cpp:640
+#: smb4k/smb4kmainwindow.cpp:575
 #, fuzzy, kde-format
 #| msgid "Password dialog mode is used and logins are remembered."
 msgid "The password dialog is used."
 msgstr "De Passwoortdialoog warrt bruukt, un de Anmelldaten warrt wohrt."
 
-#: smb4k/smb4kmainwindow.cpp:650
+#: smb4k/smb4kmainwindow.cpp:585
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:655
+#: smb4k/smb4kmainwindow.cpp:590
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:660
+#: smb4k/smb4kmainwindow.cpp:595
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:668 smb4k/smb4kmainwindow.cpp:676
+#: smb4k/smb4kmainwindow.cpp:603 smb4k/smb4kmainwindow.cpp:611
 #, fuzzy, kde-format
 #| msgid "Preview hidden files and directories"
 msgid "Looking for files and directories in %1..."
 msgstr "Vöransicht för versteken Dateien un Ornern"
 
-#: smb4k/smb4kmainwindow.cpp:693
+#: smb4k/smb4kmainwindow.cpp:628
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:633
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Datei warrt na Drucker %1 sendt...."
 
-#: smb4k/smb4kmainwindow.cpp:702
+#: smb4k/smb4kmainwindow.cpp:637
 #, fuzzy, kde-format
 #| msgid "Searching for \"%1\"..."
 msgid "Searching..."
 msgstr "\"%1\" warrt söcht..."
 
-#: smb4k/smb4kmainwindow.cpp:720 smb4k/smb4kmainwindow.cpp:757
-#: smb4k/smb4kmainwindow.cpp:869
+#: smb4k/smb4kmainwindow.cpp:655 smb4k/smb4kmainwindow.cpp:692
+#: smb4k/smb4kmainwindow.cpp:779
 #, kde-format
 msgid "Done."
 msgstr "Fardig."
 
-#: smb4k/smb4kmainwindow.cpp:730
+#: smb4k/smb4kmainwindow.cpp:665
 #, fuzzy, kde-format
 #| msgid "Mounting"
 msgid "Mounting..."
 msgstr "Inhangen"
 
-#: smb4k/smb4kmainwindow.cpp:734
+#: smb4k/smb4kmainwindow.cpp:669
 #, fuzzy, kde-format
 #| msgid "Unmounting share %1..."
 msgid "Unmounting..."
 msgstr "Freegaav %1 warrt afhangt..."
 
-#: smb4k/smb4kmainwindow.cpp:738
+#: smb4k/smb4kmainwindow.cpp:673
 #, kde-format
 msgid "Waking up host..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:768
+#: smb4k/smb4kmainwindow.cpp:703
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "\"%1\" wöör mit Spood inhangt."
 
-#: smb4k/smb4kmainwindow.cpp:801
+#: smb4k/smb4kmainwindow.cpp:728
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "\"%1\" wöör mit Spood afhangt."
 
-#: smb4k/smb4kmainwindow.cpp:857
+#: smb4k/smb4kmainwindow.cpp:767
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 warrt synkroniseert"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-13 00:42+0000\n"
+"POT-Creation-Date: 2023-10-24 00:43+0000\n"
 "PO-Revision-Date: 2021-12-15 11:16+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail."
 "com>\n"
@@ -319,108 +319,104 @@ msgstr ""
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
 #, kde-format
 msgid "Directories"
 msgstr "Katalogar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
-#: smb4k/smb4kconfigpagenetwork.cpp:112
-#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
+#: smb4k/smb4kconfigpagenetwork.cpp:111
+#: smb4k/smb4kconfigpagesynchronization.cpp:54
 #, kde-format
 msgid "Behavior"
 msgstr "Åtferd"
 
-#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
 #, kde-format
 msgid " min"
 msgstr " minutt"
 
-#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
-#: smb4k/smb4kconfigpagenetwork.cpp:133
-#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kconfigpagenetwork.cpp:132
+#: smb4k/smb4kconfigpagesynchronization.cpp:121
 #, kde-format
 msgid "Basic Settings"
 msgstr "Grunnleggjande innstillingar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
 #, kde-format
 msgid "Common Options"
 msgstr "Vanlege innstillingar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:228
+#: smb4k/smb4kconfigpagemounting.cpp:218
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Støtte for Unix-utvidingar for CIFS"
 
-#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
 #, kde-format
 msgid "Choose a different user"
 msgstr "Vel ein annan brukar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:630
 #, kde-format
 msgid "Choose a different group"
 msgstr "Vel ei anna gruppe"
 
-#: smb4k/smb4kconfigpagemounting.cpp:336
+#: smb4k/smb4kconfigpagemounting.cpp:333
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:344
+#: smb4k/smb4kconfigpagemounting.cpp:341
 #, kde-format
 msgid "Advanced Options"
 msgstr "Avanserte val"
 
-#: smb4k/smb4kconfigpagemounting.cpp:457
+#: smb4k/smb4kconfigpagemounting.cpp:454
 #, kde-format
 msgid "Edit the additional CIFS options."
 msgstr "Rediger ekstra CIFS-val."
 
-#: smb4k/smb4kconfigpagemounting.cpp:470
+#: smb4k/smb4kconfigpagemounting.cpp:467
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:681
+#: smb4k/smb4kconfigpagemounting.cpp:676
 #, kde-format
 msgid "Character Sets"
 msgstr "Teiknkodingar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:729
+#: smb4k/smb4kconfigpagemounting.cpp:730
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:833
+#: smb4k/smb4kconfigpagemounting.cpp:768
 #, kde-format
 msgid "Additional CIFS Options"
 msgstr "Fleire CIFS-val"
 
-#: smb4k/smb4kconfigpagemounting.cpp:834
+#: smb4k/smb4kconfigpagemounting.cpp:769
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
 msgstr "<qt>Skriv inn vala, skilde med komma::</qt>"
 
-#: smb4k/smb4kconfigpagemounting.cpp:862
+#: smb4k/smb4kconfigpagemounting.cpp:797
 #, kde-format
 msgid ""
-"<qt>The following entry is going to be removed from the additional options: "
-"%2. Please read the handbook for details.</qt>"
+"The following entry is going to be removed from the additional options:"
+"<br>%2.<br>Please read the handbook for details."
 msgid_plural ""
-"<qt>The following %1 entries are going to be removed from the additional "
-"options: %2. Please read the handbook for details.</qt>"
+"The following %1 entries are going to be removed from the additional options:"
+"<br>%2.<br>Please read the handbook for details."
 msgstr[0] ""
-"<qt>Denne oppføringa vert fjerna frå tilleggsvala: %2. Sjå handboka for meir "
-"informasjon.</qt>"
 msgstr[1] ""
-"<qt>Desse %1 oppføringane vert fjerna frå tilleggsvala: %2. Sjå handboka for "
-"meir informasjon.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
@@ -429,136 +425,136 @@ msgstr[1] ""
 msgid "Browse Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:144
+#: smb4k/smb4kconfigpagenetwork.cpp:143
 #, kde-format
 msgid "Samba"
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:196
+#: smb4k/smb4kconfigpagenetwork.cpp:195
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Vekk via lokalnett"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:216
+#: smb4k/smb4kconfigpagenetwork.cpp:215
 #, kde-format
 msgid " s"
 msgstr " sekund"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:225
+#: smb4k/smb4kconfigpagenetwork.cpp:224
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:235
+#: smb4k/smb4kconfigpagenetwork.cpp:234
 #, kde-format
 msgid "Advanced Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#: smb4k/smb4kconfigpagesynchronization.cpp:31
 #, kde-format
 msgid "Synchronization Directory"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#: smb4k/smb4kconfigpagesynchronization.cpp:85
 #, kde-format
 msgid "Backups"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#: smb4k/smb4kconfigpagesynchronization.cpp:130
 #, kde-format
 msgid "General"
 msgstr "Generelt"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#: smb4k/smb4kconfigpagesynchronization.cpp:166
 #, kde-format
 msgid "Links"
 msgstr "Lenkjer"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#: smb4k/smb4kconfigpagesynchronization.cpp:213
 #, kde-format
 msgid "File Handling"
 msgstr "Filhandsaming"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#: smb4k/smb4kconfigpagesynchronization.cpp:221
 #, kde-format
 msgid "File Attributes"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#: smb4k/smb4kconfigpagesynchronization.cpp:266
 #, kde-format
 msgid "Ownership"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#: smb4k/smb4kconfigpagesynchronization.cpp:282
 #, kde-format
 msgid "File Attributes && Ownership"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:301
+#: smb4k/smb4kconfigpagesynchronization.cpp:291
 #, kde-format
 msgid "Compression"
 msgstr "Komprimering"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:333
+#: smb4k/smb4kconfigpagesynchronization.cpp:330
 #, kde-format
 msgid "Files"
 msgstr "Filer"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:343
-#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#: smb4k/smb4kconfigpagesynchronization.cpp:340
+#: smb4k/smb4kconfigpagesynchronization.cpp:351
 #, kde-format
 msgid " kB"
 msgstr " kB"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:596
-#: smb4k/smb4kconfigpagesynchronization.cpp:612
+#: smb4k/smb4kconfigpagesynchronization.cpp:376
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Ymse"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#: smb4k/smb4kconfigpagesynchronization.cpp:386
 #, kde-format
 msgid " kB/s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:394
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
 #, kde-format
 msgid "File Transfer"
 msgstr "Filoverføring"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:403
+#: smb4k/smb4kconfigpagesynchronization.cpp:402
 #, kde-format
 msgid "Files && Directories"
 msgstr "Filer og mapper"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:449
+#: smb4k/smb4kconfigpagesynchronization.cpp:448
 #, kde-format
 msgid "Restrictions"
 msgstr "Avgrensingar"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:465
+#: smb4k/smb4kconfigpagesynchronization.cpp:464
 #, kde-format
 msgid "File Deletion"
 msgstr "Filsletting"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:474
+#: smb4k/smb4kconfigpagesynchronization.cpp:473
 #, kde-format
 msgid "General Filtering Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:529
+#: smb4k/smb4kconfigpagesynchronization.cpp:528
 #, kde-format
 msgid "Filter Rules"
 msgstr "Filterreglar"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:556
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Filtrering"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:565
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, kde-format
 msgid "Checksums"
 msgstr "Sjekksummar"
