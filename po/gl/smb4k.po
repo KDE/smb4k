@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-24 00:43+0000\n"
+"POT-Creation-Date: 2023-10-28 00:43+0000\n"
 "PO-Revision-Date: 2023-10-18 21:06+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -330,7 +330,7 @@ msgstr "Cartafoles"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
 #: smb4k/smb4kconfigpagenetwork.cpp:111
-#: smb4k/smb4kconfigpagesynchronization.cpp:54
+#: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Comportamento"
@@ -342,7 +342,7 @@ msgstr " min"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:132
-#: smb4k/smb4kconfigpagesynchronization.cpp:121
+#: smb4k/smb4kconfigpagesynchronization.cpp:118
 #, kde-format
 msgid "Basic Settings"
 msgstr "Configuración básica"
@@ -463,110 +463,110 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Configuración avanzada"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:31
+#: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
 msgid "Synchronization Directory"
 msgstr "Cartafol de sincronización"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:85
+#: smb4k/smb4kconfigpagesynchronization.cpp:82
 #, kde-format
 msgid "Backups"
 msgstr "Salvagardas"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:130
+#: smb4k/smb4kconfigpagesynchronization.cpp:127
 #, kde-format
 msgid "General"
 msgstr "Xeral"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:166
+#: smb4k/smb4kconfigpagesynchronization.cpp:163
 #, kde-format
 msgid "Links"
 msgstr "Ligazóns"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:213
+#: smb4k/smb4kconfigpagesynchronization.cpp:210
 #, kde-format
 msgid "File Handling"
 msgstr "Xestión de ficheiros"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:221
+#: smb4k/smb4kconfigpagesynchronization.cpp:218
 #, kde-format
 msgid "File Attributes"
 msgstr "Atributos de ficheiro"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:266
+#: smb4k/smb4kconfigpagesynchronization.cpp:263
 #, kde-format
 msgid "Ownership"
 msgstr "Pertenza"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:282
+#: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
 msgid "File Attributes && Ownership"
 msgstr "Atributos de ficheiro e pertenza"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:291
+#: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, kde-format
 msgid "Compression"
 msgstr "Compresión"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
+#: smb4k/smb4kconfigpagesynchronization.cpp:327
 #, kde-format
 msgid "Files"
 msgstr "Ficheiros"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:340
-#: smb4k/smb4kconfigpagesynchronization.cpp:351
+#: smb4k/smb4kconfigpagesynchronization.cpp:337
+#: smb4k/smb4kconfigpagesynchronization.cpp:348
 #, kde-format
 msgid " kB"
 msgstr " kB"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:376
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:373
+#: smb4k/smb4kconfigpagesynchronization.cpp:592
+#: smb4k/smb4kconfigpagesynchronization.cpp:608
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Diverso"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:386
+#: smb4k/smb4kconfigpagesynchronization.cpp:383
 #, kde-format
 msgid " kB/s"
 msgstr " kB/s"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:393
+#: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, kde-format
 msgid "File Transfer"
 msgstr "Transferencia de ficheiros"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:402
+#: smb4k/smb4kconfigpagesynchronization.cpp:399
 #, kde-format
 msgid "Files && Directories"
 msgstr "Ficheiros e cartafoles"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:448
+#: smb4k/smb4kconfigpagesynchronization.cpp:445
 #, kde-format
 msgid "Restrictions"
 msgstr "Restricións"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:464
+#: smb4k/smb4kconfigpagesynchronization.cpp:461
 #, kde-format
 msgid "File Deletion"
 msgstr "Eliminación de ficheiros"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:473
+#: smb4k/smb4kconfigpagesynchronization.cpp:470
 #, kde-format
 msgid "General Filtering Settings"
 msgstr "Configuración xeral de filtro"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:528
+#: smb4k/smb4kconfigpagesynchronization.cpp:525
 #, kde-format
 msgid "Filter Rules"
 msgstr "Regras de filtrado"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:552
 #, kde-format
 msgid "Filtering"
 msgstr "Filtrado"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:561
 #, kde-format
 msgid "Checksums"
 msgstr "Sumas de comprobación"
@@ -685,12 +685,12 @@ msgstr "Páxina 3: Espertar na rede"
 msgid "Dock Widgets"
 msgstr "Trebellos acoplábeis"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:238 smb4k/smb4ksharesmenu.cpp:43
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Comparticións montadas"
 
-#: smb4k/smb4kmainwindow.cpp:415
+#: smb4k/smb4kmainwindow.cpp:373
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -700,100 +700,100 @@ msgstr ""
 "notificación.<br> Use o menú <i>Ficheiro → Saír</i> para saír da aplicación."
 "</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:417
+#: smb4k/smb4kmainwindow.cpp:375
 #, kde-format
 msgid "Docking"
 msgstr "Ancoraxe"
 
-#: smb4k/smb4kmainwindow.cpp:481
+#: smb4k/smb4kmainwindow.cpp:431
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Non hai comparticións montadas actualmente."
 
-#: smb4k/smb4kmainwindow.cpp:484
+#: smb4k/smb4kmainwindow.cpp:434
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Hai %1 compartición montada actualmente."
 msgstr[1] "Hai %1 comparticións montadas actualmente."
 
-#: smb4k/smb4kmainwindow.cpp:637
+#: smb4k/smb4kmainwindow.cpp:572
 #, kde-format
 msgid "The wallet is used."
 msgstr "A carteira úsase."
 
-#: smb4k/smb4kmainwindow.cpp:640
+#: smb4k/smb4kmainwindow.cpp:575
 #, kde-format
 msgid "The password dialog is used."
 msgstr "O diálogo de contrasinal úsase."
 
-#: smb4k/smb4kmainwindow.cpp:650
+#: smb4k/smb4kmainwindow.cpp:585
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Buscando grupos de traballo e dominios…"
 
-#: smb4k/smb4kmainwindow.cpp:655
+#: smb4k/smb4kmainwindow.cpp:590
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Buscando as máquinas do dominio %1…"
 
-#: smb4k/smb4kmainwindow.cpp:660
+#: smb4k/smb4kmainwindow.cpp:595
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Buscando as comparticións fornecidas pola máquina %1…"
 
-#: smb4k/smb4kmainwindow.cpp:668 smb4k/smb4kmainwindow.cpp:676
+#: smb4k/smb4kmainwindow.cpp:603 smb4k/smb4kmainwindow.cpp:611
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Buscando ficheiros e cartafoles en %1…"
 
-#: smb4k/smb4kmainwindow.cpp:693
+#: smb4k/smb4kmainwindow.cpp:628
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Espertando os servidores remotos…"
 
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:633
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Enviando o ficheiro á impresora %1…"
 
-#: smb4k/smb4kmainwindow.cpp:702
+#: smb4k/smb4kmainwindow.cpp:637
 #, kde-format
 msgid "Searching..."
 msgstr "Buscando…"
 
-#: smb4k/smb4kmainwindow.cpp:720 smb4k/smb4kmainwindow.cpp:757
-#: smb4k/smb4kmainwindow.cpp:869
+#: smb4k/smb4kmainwindow.cpp:655 smb4k/smb4kmainwindow.cpp:692
+#: smb4k/smb4kmainwindow.cpp:779
 #, kde-format
 msgid "Done."
 msgstr "Feito."
 
-#: smb4k/smb4kmainwindow.cpp:730
+#: smb4k/smb4kmainwindow.cpp:665
 #, kde-format
 msgid "Mounting..."
 msgstr "Montando…"
 
-#: smb4k/smb4kmainwindow.cpp:734
+#: smb4k/smb4kmainwindow.cpp:669
 #, kde-format
 msgid "Unmounting..."
 msgstr "Desmontando…"
 
-#: smb4k/smb4kmainwindow.cpp:738
+#: smb4k/smb4kmainwindow.cpp:673
 #, kde-format
 msgid "Waking up host..."
 msgstr "Espertando o servidor…"
 
-#: smb4k/smb4kmainwindow.cpp:768
+#: smb4k/smb4kmainwindow.cpp:703
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 montouse correctamente."
 
-#: smb4k/smb4kmainwindow.cpp:801
+#: smb4k/smb4kmainwindow.cpp:728
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 desmontouse correctamente."
 
-#: smb4k/smb4kmainwindow.cpp:857
+#: smb4k/smb4kmainwindow.cpp:767
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Sincronizando %1"
