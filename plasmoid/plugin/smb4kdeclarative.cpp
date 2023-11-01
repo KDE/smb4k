@@ -11,7 +11,6 @@
 #include "core/smb4kbookmark.h"
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kclient.h"
-#include "core/smb4kglobal.h"
 #include "core/smb4khost.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kprofilemanager.h"
@@ -28,6 +27,7 @@
 #include "smb4kmountdialog.h"
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
+#include "smb4k/smb4kpassworddialog.h"
 
 //
 // Qt includes
@@ -50,35 +50,37 @@ public:
     QList<Smb4KBookmarkObject *> bookmarkObjects;
     QList<Smb4KBookmarkObject *> bookmarkCategoryObjects;
     QList<Smb4KProfileObject *> profileObjects;
+    QList<NetworkItemPtr> requestQueue;
+    QPointer<Smb4KPasswordDialog> passwordDialog;
+    int timerId;
 };
 
 Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
     : QObject(parent)
     , d(new Smb4KDeclarativePrivate)
 {
-    //
-    // Initialize the core
-    //
     Smb4KGlobal::initCore(true, false);
 
-    //
-    // Connections
-    //
-    connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroupsListChanged()));
-    connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotHostsListChanged()));
-    connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotSharesListChanged()));
-    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SIGNAL(busy()));
-    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SIGNAL(idle()));
+    d->passwordDialog = new Smb4KPasswordDialog();
+    d->timerId = 0;
 
-    connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()));
-    connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
-    connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SIGNAL(idle()));
+    connect(Smb4KClient::self(), &Smb4KClient::workgroups, this, &Smb4KDeclarative::slotWorkgroupsListChanged);
+    connect(Smb4KClient::self(), &Smb4KClient::hosts, this, &Smb4KDeclarative::slotHostsListChanged);
+    connect(Smb4KClient::self(), &Smb4KClient::shares, this, &Smb4KDeclarative::slotSharesListChanged);
+    connect(Smb4KClient::self(), &Smb4KClient::aboutToStart, this, &Smb4KDeclarative::busy);
+    connect(Smb4KClient::self(), &Smb4KClient::finished, this, &Smb4KDeclarative::idle);
+    connect(Smb4KClient::self(), &Smb4KClient::requestCredentials, this, &Smb4KDeclarative::slotCredentialsRequested);
 
-    connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), this, SLOT(slotBookmarksListChanged()));
+    connect(Smb4KMounter::self(), &Smb4KMounter::mountedSharesListChanged, this, &Smb4KDeclarative::slotMountedSharesListChanged);
+    connect(Smb4KMounter::self(), &Smb4KMounter::aboutToStart, this, &Smb4KDeclarative::busy);
+    connect(Smb4KMounter::self(), &Smb4KMounter::finished, this, &Smb4KDeclarative::idle);
+    connect(Smb4KMounter::self(), &Smb4KMounter::requestCredentials, this, &Smb4KDeclarative::slotCredentialsRequested);
 
-    connect(Smb4KProfileManager::self(), SIGNAL(profilesListChanged(QStringList)), this, SLOT(slotProfilesListChanged(QStringList)));
-    connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
-    connect(Smb4KProfileManager::self(), SIGNAL(profileUsageChanged(bool)), this, SLOT(slotProfileUsageChanged(bool)));
+    connect(Smb4KBookmarkHandler::self(), &Smb4KBookmarkHandler::updated, this, &Smb4KDeclarative::slotBookmarksListChanged);
+
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profilesListChanged, this, &Smb4KDeclarative::slotProfilesListChanged);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KDeclarative::slotActiveProfileChanged);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileUsageChanged, this, &Smb4KDeclarative::slotProfileUsageChanged);
 
     //
     // Do the initial loading of items
@@ -341,6 +343,8 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject *object)
 
             if (bookmarkDialog->setShares(shares)) {
                 bookmarkDialog->open();
+            } else {
+                delete bookmarkDialog;
             }
         }
     }
@@ -478,6 +482,8 @@ void Smb4KDeclarative::preview(Smb4KNetworkObject *object)
 
             if (previewDialog->setShare(share)) {
                 previewDialog->open();
+            } else {
+                delete previewDialog;
             }
         }
     }
@@ -506,6 +512,24 @@ void Smb4KDeclarative::openConfigurationDialog()
             dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
             dlg->show();
         }
+    }
+}
+
+void Smb4KDeclarative::timerEvent(QTimerEvent *event)
+{
+    Q_UNUSED(event);
+
+    if (!d->requestQueue.isEmpty()) {
+        if (!d->passwordDialog->isVisible()) {
+            NetworkItemPtr networkItem = d->requestQueue.takeFirst();
+
+            if (networkItem && d->passwordDialog->setNetworkItem(networkItem)) {
+                d->passwordDialog->show();
+            }
+        }
+    } else {
+        killTimer(d->timerId);
+        d->timerId = 0;
     }
 }
 
@@ -616,4 +640,13 @@ void Smb4KDeclarative::slotActiveProfileChanged(const QString &activeProfile)
 void Smb4KDeclarative::slotProfileUsageChanged(bool /*use*/)
 {
     Q_EMIT profileUsageChanged();
+}
+
+void Smb4KDeclarative::slotCredentialsRequested(const NetworkItemPtr& networkItem)
+{
+    d->requestQueue.append(networkItem);
+
+    if (d->timerId == 0) {
+        d->timerId = startTimer(500);
+    }
 }

@@ -8,6 +8,9 @@
 #ifndef SMB4KDECLARATIVE_H
 #define SMB4KDECLARATIVE_H
 
+// application specific includes
+#include "core/smb4kglobal.h"
+
 // Qt includes
 #include <QObject>
 #include <QQmlListProperty>
@@ -291,6 +294,12 @@ public:
      */
     Q_INVOKABLE void openConfigurationDialog();
 
+protected:
+    /**
+     * Reimplemented from QObject
+     */
+    void timerEvent(QTimerEvent * event) override;
+
 Q_SIGNALS:
     /**
      * This signal is emitted when the list of workgroups changed.
@@ -399,6 +408,13 @@ protected Q_SLOTS:
      * signal.
      */
     void slotProfileUsageChanged(bool use);
+
+    /**
+     * This slot is called when credentials are requested.
+     *
+     * @param networkItem         The network item
+     */
+    void slotCredentialsRequested(const NetworkItemPtr &networkItem);
 
 private:
     const QScopedPointer<Smb4KDeclarativePrivate> d;
