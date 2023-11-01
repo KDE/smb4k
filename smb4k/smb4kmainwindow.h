@@ -11,7 +11,6 @@
 // application specific includes
 #include "core/smb4kglobal.h"
 
-
 // Qt includes
 #include <QActionGroup>
 #include <QDockWidget>
@@ -67,7 +66,7 @@ protected:
     /**
      * Reimplemented from QObject
      */
-    void timerEvent(QTimerEvent * event) override;
+    void timerEvent(QTimerEvent *event) override;
 
 protected Q_SLOTS:
     /**

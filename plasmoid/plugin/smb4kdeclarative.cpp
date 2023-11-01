@@ -18,6 +18,7 @@
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kworkgroup.h"
 #include "smb4k/smb4kcustomsettingseditor.h"
+#include "smb4k/smb4kpassworddialog.h"
 #include "smb4k/smb4kpreviewdialog.h"
 #include "smb4k/smb4kprintdialog.h"
 #include "smb4k/smb4ksynchronizationdialog.h"
@@ -27,7 +28,6 @@
 #include "smb4kmountdialog.h"
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
-#include "smb4k/smb4kpassworddialog.h"
 
 //
 // Qt includes
@@ -642,7 +642,7 @@ void Smb4KDeclarative::slotProfileUsageChanged(bool /*use*/)
     Q_EMIT profileUsageChanged();
 }
 
-void Smb4KDeclarative::slotCredentialsRequested(const NetworkItemPtr& networkItem)
+void Smb4KDeclarative::slotCredentialsRequested(const NetworkItemPtr &networkItem)
 {
     d->requestQueue.append(networkItem);
 

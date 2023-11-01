@@ -19,10 +19,10 @@
 #include "core/smb4kworkgroup.h"
 #include "smb4kbookmarkmenu.h"
 #include "smb4knetworkbrowserdockwidget.h"
+#include "smb4kpassworddialog.h"
 #include "smb4kprofilesmenu.h"
 #include "smb4ksharesviewdockwidget.h"
 #include "smb4ksystemtray.h"
-#include "smb4kpassworddialog.h"
 
 // Qt includes
 #include <QActionGroup>
@@ -488,7 +488,7 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget *dock)
     }
 }
 
-void Smb4KMainWindow::timerEvent(QTimerEvent* event)
+void Smb4KMainWindow::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
 
@@ -846,7 +846,7 @@ void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
     }
 }
 
-void Smb4KMainWindow::slotCredentialsRequested(const NetworkItemPtr& networkItem)
+void Smb4KMainWindow::slotCredentialsRequested(const NetworkItemPtr &networkItem)
 {
     m_requestQueue.append(networkItem);
 

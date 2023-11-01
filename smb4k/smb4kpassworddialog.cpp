@@ -6,9 +6,9 @@
  */
 
 // application specific includes
+#include "smb4kpassworddialog.h"
 #include "core/smb4khomesshareshandler.h"
 #include "core/smb4kwalletmanager.h"
-#include "smb4kpassworddialog.h"
 
 // KDE includes
 #include <KLocalizedString>
@@ -100,4 +100,3 @@ void Smb4KPasswordDialog::accept()
 
     KPasswordDialog::accept();
 }
-

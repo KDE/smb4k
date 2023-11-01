@@ -298,7 +298,7 @@ protected:
     /**
      * Reimplemented from QObject
      */
-    void timerEvent(QTimerEvent * event) override;
+    void timerEvent(QTimerEvent *event) override;
 
 Q_SIGNALS:
     /**

@@ -17,14 +17,13 @@
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
 #include "smb4kmountdialog.h"
+#include "smb4knetworkbrowser.h"
 #include "smb4knetworkbrowseritem.h"
+#include "smb4knetworksearchtoolbar.h"
 #include "smb4kpassworddialog.h"
 #include "smb4kpreviewdialog.h"
 #include "smb4kprintdialog.h"
 #include "smb4ktooltip.h"
-#include "smb4knetworkbrowser.h"
-#include "smb4knetworksearchtoolbar.h"
-#include "smb4kpassworddialog.h"
 
 // Qt includes
 #include <QApplication>

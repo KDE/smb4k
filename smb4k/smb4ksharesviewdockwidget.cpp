@@ -14,11 +14,11 @@
 #include "core/smb4ksynchronizer.h"
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
+#include "smb4kpassworddialog.h"
+#include "smb4ksharesview.h"
 #include "smb4ksharesviewitem.h"
 #include "smb4ksynchronizationdialog.h"
 #include "smb4ktooltip.h"
-#include "smb4kpassworddialog.h"
-#include "smb4ksharesview.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -579,4 +579,3 @@ void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool checked)
         }
     }
 }
-
