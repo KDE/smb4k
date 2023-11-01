@@ -246,8 +246,15 @@ private:
 class Smb4KClientPrivate
 {
 public:
+    struct QueueContainer {
+        Smb4KGlobal::Process process;
+        NetworkItemPtr networkItem;
+        KFileItem printFileItem;
+        int printCopies;
+    };
     QList<WorkgroupPtr> tempWorkgroupList;
     QList<HostPtr> tempHostList;
+    QList<QueueContainer> queue;
 };
 
 class Smb4KClientStatic

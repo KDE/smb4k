@@ -18,9 +18,13 @@
 #include "smb4kcustomsettingseditor.h"
 #include "smb4kmountdialog.h"
 #include "smb4knetworkbrowseritem.h"
+#include "smb4kpassworddialog.h"
 #include "smb4kpreviewdialog.h"
 #include "smb4kprintdialog.h"
 #include "smb4ktooltip.h"
+#include "smb4knetworkbrowser.h"
+#include "smb4knetworksearchtoolbar.h"
+#include "smb4kpassworddialog.h"
 
 // Qt includes
 #include <QApplication>
@@ -41,9 +45,6 @@ using namespace Smb4KGlobal;
 Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString &title, QWidget *parent)
     : QDockWidget(title, parent)
 {
-    //
-    // The network browser widget
-    //
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainWidgetLayout = new QVBoxLayout(mainWidget);
     mainWidgetLayout->setContentsMargins(0, 0, 0, 0);
@@ -57,55 +58,34 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString &titl
 
     setWidget(mainWidget);
 
-    //
-    // The action collection
-    //
     m_actionCollection = new KActionCollection(this);
-
-    //
-    // The context menu
-    //
     m_contextMenu = new KActionMenu(this);
-
-    //
-    // Search underway?
-    //
     m_searchRunning = false;
 
-    //
-    // Set up the actions
-    //
     setupActions();
-
-    //
-    // Load the settings
-    //
     loadSettings();
 
-    //
-    // Connections
-    //
-    connect(m_networkBrowser, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
-    connect(m_networkBrowser, SIGNAL(itemActivated(QTreeWidgetItem *, int)), this, SLOT(slotItemActivated(QTreeWidgetItem *, int)));
-    connect(m_networkBrowser, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
+    connect(m_networkBrowser, &Smb4KNetworkBrowser::customContextMenuRequested, this, &Smb4KNetworkBrowserDockWidget::slotContextMenuRequested);
+    connect(m_networkBrowser, &Smb4KNetworkBrowser::itemActivated, this, &Smb4KNetworkBrowserDockWidget::slotItemActivated);
+    connect(m_networkBrowser, &Smb4KNetworkBrowser::itemSelectionChanged, this, &Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged);
 
-    connect(m_searchToolBar, SIGNAL(closeSearchBar()), this, SLOT(slotHideSearchToolBar()));
-    connect(m_searchToolBar, SIGNAL(search(QString)), this, SLOT(slotPerformSearch(QString)));
-    connect(m_searchToolBar, SIGNAL(abort()), this, SLOT(slotStopSearch()));
-    connect(m_searchToolBar, SIGNAL(jumpToResult(QString)), this, SLOT(slotJumpToResult(QString)));
-    connect(m_searchToolBar, SIGNAL(clearSearchResults()), this, SLOT(slotClearSearchResults()));
+    connect(m_searchToolBar, &Smb4KNetworkSearchToolBar::closeSearchBar, this, &Smb4KNetworkBrowserDockWidget::slotHideSearchToolBar);
+    connect(m_searchToolBar, &Smb4KNetworkSearchToolBar::search, this, &Smb4KNetworkBrowserDockWidget::slotPerformSearch);
+    connect(m_searchToolBar, &Smb4KNetworkSearchToolBar::abort, this, &Smb4KNetworkBrowserDockWidget::slotStopSearch);
+    connect(m_searchToolBar, &Smb4KNetworkSearchToolBar::jumpToResult, this, &Smb4KNetworkBrowserDockWidget::slotJumpToResult);
+    connect(m_searchToolBar, &Smb4KNetworkSearchToolBar::clearSearchResults, this, &Smb4KNetworkBrowserDockWidget::slotClearSearchResults);
 
-    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr, int)));
-    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SLOT(slotClientFinished(NetworkItemPtr, int)));
-    connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroups()));
-    connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
-    connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotShares(HostPtr)));
-    connect(Smb4KClient::self(), SIGNAL(searchResults(QList<SharePtr>)), this, SLOT(slotSearchResults(QList<SharePtr>)));
+    connect(Smb4KClient::self(), &Smb4KClient::aboutToStart, this, &Smb4KNetworkBrowserDockWidget::slotClientAboutToStart);
+    connect(Smb4KClient::self(), &Smb4KClient::finished, this, &Smb4KNetworkBrowserDockWidget::slotClientFinished);
+    connect(Smb4KClient::self(), &Smb4KClient::workgroups, this, &Smb4KNetworkBrowserDockWidget::slotWorkgroups);
+    connect(Smb4KClient::self(), &Smb4KClient::hosts, this, &Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers);
+    connect(Smb4KClient::self(), &Smb4KClient::shares, this, &Smb4KNetworkBrowserDockWidget::slotShares);
+    connect(Smb4KClient::self(), &Smb4KClient::searchResults, this, &Smb4KNetworkBrowserDockWidget::slotSearchResults);
 
-    connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SLOT(slotMounterAboutToStart(int)));
-    connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SLOT(slotMounterFinished(int)));
+    connect(Smb4KMounter::self(), &Smb4KMounter::mounted, this, &Smb4KNetworkBrowserDockWidget::slotShareMounted);
+    connect(Smb4KMounter::self(), &Smb4KMounter::unmounted, this, &Smb4KNetworkBrowserDockWidget::slotShareUnmounted);
+    connect(Smb4KMounter::self(), &Smb4KMounter::aboutToStart, this, &Smb4KNetworkBrowserDockWidget::slotMounterAboutToStart);
+    connect(Smb4KMounter::self(), &Smb4KMounter::finished, this, &Smb4KNetworkBrowserDockWidget::slotMounterFinished);
 }
 
 Smb4KNetworkBrowserDockWidget::~Smb4KNetworkBrowserDockWidget()
@@ -125,7 +105,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     rescanAbortAction->setAutoToggle(false);
     rescanAbortAction->setEnabled(true);
 
-    connect(rescanAbortAction, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)));
+    connect(rescanAbortAction, &KDualAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered);
 
     m_actionCollection->addAction(QStringLiteral("rescan_abort_action"), rescanAbortAction);
     m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
@@ -135,7 +115,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     //
     QAction *searchAction = new QAction(KDE::icon(QStringLiteral("search")), i18n("&Search"), this);
 
-    connect(searchAction, SIGNAL(triggered(bool)), this, SLOT(slotShowSearchToolBar()));
+    connect(searchAction, &QAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotShowSearchToolBar);
 
     m_actionCollection->addAction(QStringLiteral("search_action"), searchAction);
     m_actionCollection->setDefaultShortcut(searchAction, QKeySequence::Find);
@@ -154,7 +134,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     QAction *bookmarkAction = new QAction(KDE::icon(QStringLiteral("bookmark-new")), i18n("Add &Bookmark"), this);
     bookmarkAction->setEnabled(false);
 
-    connect(bookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)));
+    connect(bookmarkAction, &QAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotAddBookmark);
 
     m_actionCollection->addAction(QStringLiteral("bookmark_action"), bookmarkAction);
     m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(i18n("Ctrl+B")));
@@ -165,7 +145,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     QAction *customAction = new QAction(KDE::icon(QStringLiteral("settings-configure")), i18n("Add &Custom Settings"), this);
     customAction->setEnabled(false);
 
-    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomSettings(bool)));
+    connect(customAction, &QAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotAddCustomSettings);
 
     m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
     m_actionCollection->setDefaultShortcut(customAction, QKeySequence(i18n("Ctrl+C")));
@@ -177,7 +157,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
         new QAction(KDE::icon(QStringLiteral("view-form"), QStringList(QStringLiteral("emblem-mounted"))), i18n("&Open Mount Dialog"), this);
     manualAction->setEnabled(true);
 
-    connect(manualAction, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)));
+    connect(manualAction, &QAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotMountManually);
 
     m_actionCollection->addAction(QStringLiteral("mount_manually_action"), manualAction);
     m_actionCollection->setDefaultShortcut(manualAction, QKeySequence(i18n("Ctrl+O")));
@@ -196,7 +176,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     QAction *authAction = new QAction(KDE::icon(QStringLiteral("dialog-password")), i18n("Au&thentication"), this);
     authAction->setEnabled(false);
 
-    connect(authAction, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)));
+    connect(authAction, &QAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotAuthentication);
 
     m_actionCollection->addAction(QStringLiteral("authentication_action"), authAction);
     m_actionCollection->setDefaultShortcut(authAction, QKeySequence(i18n("Ctrl+T")));
@@ -207,7 +187,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     QAction *previewAction = new QAction(KDE::icon(QStringLiteral("view-list-icons")), i18n("Pre&view"), this);
     previewAction->setEnabled(false);
 
-    connect(previewAction, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)));
+    connect(previewAction, &QAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotPreview);
 
     m_actionCollection->addAction(QStringLiteral("preview_action"), previewAction);
     m_actionCollection->setDefaultShortcut(previewAction, QKeySequence(i18n("Ctrl+V")));
@@ -218,7 +198,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     QAction *printAction = new QAction(KDE::icon(QStringLiteral("printer")), i18n("&Print File"), this);
     printAction->setEnabled(false);
 
-    connect(printAction, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)));
+    connect(printAction, &QAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotPrint);
 
     m_actionCollection->addAction(QStringLiteral("print_action"), printAction);
     m_actionCollection->setDefaultShortcut(printAction, QKeySequence(i18n("Ctrl+P")));
@@ -235,8 +215,8 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     mountAction->setAutoToggle(false);
     mountAction->setEnabled(false);
 
-    connect(mountAction, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)));
-    connect(mountAction, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
+    connect(mountAction, &KDualAction::triggered, this, &Smb4KNetworkBrowserDockWidget::slotMountActionTriggered);
+    connect(mountAction, &KDualAction::activeChanged, this, &Smb4KNetworkBrowserDockWidget::slotMountActionChanged);
 
     m_actionCollection->addAction(QStringLiteral("mount_action"), mountAction);
     m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(i18n("Ctrl+M")));
@@ -831,6 +811,8 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool checked)
 
         if (bookmarkDialog->setShares(shares)) {
             bookmarkDialog->open();
+        } else {
+            delete bookmarkDialog;
         }
     }
 }
@@ -853,18 +835,12 @@ void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         if (item) {
-            switch (item->type()) {
-            case Host: {
-                Smb4KWalletManager::self()->showPasswordDialog(item->hostItem());
-                break;
-            }
-            case Share: {
-                Smb4KWalletManager::self()->showPasswordDialog(item->shareItem());
-                break;
-            }
-            default: {
-                break;
-            }
+            QPointer<Smb4KPasswordDialog> passwordDialog = new Smb4KPasswordDialog();
+
+            if (passwordDialog->setNetworkItem(item->networkItem())) {
+                passwordDialog->open();
+            } else {
+                delete passwordDialog;
             }
         }
     }
@@ -902,6 +878,8 @@ void Smb4KNetworkBrowserDockWidget::slotPreview(bool checked)
 
             if (previewDialog->setShare(item->shareItem())) {
                 previewDialog->open();
+            } else {
+                delete previewDialog;
             }
         }
     }

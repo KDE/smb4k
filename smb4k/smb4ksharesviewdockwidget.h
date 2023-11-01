@@ -10,10 +10,11 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
-#include "smb4ksharesview.h"
 
 // Qt includes
 #include <QDockWidget>
+#include <QListWidgetItem>
+#include <QPointer>
 
 // KDE includes
 #include <KActionCollection>
@@ -21,6 +22,8 @@
 
 // forward declarations
 class Smb4KSharesViewItem;
+class Smb4KSharesView;
+class Smb4KPasswordDialog;
 
 using namespace Smb4KGlobal;
 
@@ -167,24 +170,9 @@ protected Q_SLOTS:
     void slotFileManagerActionTriggered(bool checked);
 
 private:
-    /**
-     * Set up the actions
-     */
     void setupActions();
-
-    /**
-     * The shares shares view
-     */
     Smb4KSharesView *m_sharesView;
-
-    /**
-     * Action collection
-     */
     KActionCollection *m_actionCollection;
-
-    /**
-     * Context menu
-     */
     KActionMenu *m_contextMenu;
 };
 

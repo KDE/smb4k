@@ -10,17 +10,22 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
-#include "smb4knetworkbrowser.h"
-#include "smb4knetworksearchtoolbar.h"
 
 // Qt includes
 #include <QDockWidget>
+#include <QPointer>
+#include <QTreeWidgetItem>
 
 // KDE includes
 #include <KActionCollection>
 #include <KActionMenu>
 
 using namespace Smb4KGlobal;
+
+// Forward declarations
+class Smb4KNetworkBrowser;
+class Smb4KNetworkSearchToolBar;
+class Smb4KPasswordDialog;
 
 class Smb4KNetworkBrowserDockWidget : public QDockWidget
 {
@@ -244,35 +249,11 @@ protected Q_SLOTS:
     void slotClearSearchResults();
 
 private:
-    /**
-     * Set up the actions
-     */
     void setupActions();
-
-    /**
-     * The network browser
-     */
     Smb4KNetworkBrowser *m_networkBrowser;
-
-    /**
-     * Action collection
-     */
     KActionCollection *m_actionCollection;
-
-    /**
-     * Context menu
-     */
     KActionMenu *m_contextMenu;
-
-    /**
-     * Network search bar
-     */
     Smb4KNetworkSearchToolBar *m_searchToolBar;
-
-    /**
-     * Boolean to prevent the expansion of the items while global
-     * network search is underway
-     */
     bool m_searchRunning;
 };
 

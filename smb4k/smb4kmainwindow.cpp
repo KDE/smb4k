@@ -22,6 +22,7 @@
 #include "smb4kprofilesmenu.h"
 #include "smb4ksharesviewdockwidget.h"
 #include "smb4ksystemtray.h"
+#include "smb4kpassworddialog.h"
 
 // Qt includes
 #include <QActionGroup>
@@ -55,14 +56,11 @@ Smb4KMainWindow::Smb4KMainWindow()
     : KXmlGuiWindow()
     , m_systemTrayWidget(nullptr)
 {
-    //
-    // The widget (embedded into the dock widgets) that has the focus
-    //
     m_focusWidget = nullptr;
 
-    //
-    // Set up main window
-    //
+    m_passwordDialog = new Smb4KPasswordDialog();
+    m_timerId = 0;
+
     setStandardToolBarMenuEnabled(true);
     createStandardStatusBarAction();
     setDockNestingEnabled(true);
@@ -73,9 +71,6 @@ Smb4KMainWindow::Smb4KMainWindow()
     setupStatusBar();
     setupSystemTrayWidget();
 
-    //
-    // Set the tab orientation
-    //
     switch (Smb4KSettings::mainWindowTabOrientation()) {
     case Smb4KSettings::EnumMainWindowTabOrientation::Top: {
         setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::North);
@@ -109,6 +104,9 @@ Smb4KMainWindow::Smb4KMainWindow()
     connect(qApp, &QCoreApplication::aboutToQuit, this, [this]() {
         saveSettings();
     });
+
+    connect(Smb4KClient::self(), &Smb4KClient::requestCredentials, this, &Smb4KMainWindow::slotCredentialsRequested);
+    connect(Smb4KMounter::self(), &Smb4KMounter::requestCredentials, this, &Smb4KMainWindow::slotCredentialsRequested);
 }
 
 Smb4KMainWindow::~Smb4KMainWindow()
@@ -490,6 +488,24 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget *dock)
     }
 }
 
+void Smb4KMainWindow::timerEvent(QTimerEvent* event)
+{
+    Q_UNUSED(event);
+
+    if (!m_requestQueue.isEmpty()) {
+        if (!m_passwordDialog->isVisible()) {
+            NetworkItemPtr networkItem = m_requestQueue.takeFirst();
+
+            if (networkItem && m_passwordDialog->setNetworkItem(networkItem)) {
+                m_passwordDialog->show();
+            }
+        }
+    } else {
+        killTimer(m_timerId);
+        m_timerId = 0;
+    }
+}
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
@@ -827,5 +843,14 @@ void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
         m_sharesViewDockWidget->widget()->setFocus();
     } else {
         m_sharesViewDockWidget->widget()->clearFocus();
+    }
+}
+
+void Smb4KMainWindow::slotCredentialsRequested(const NetworkItemPtr& networkItem)
+{
+    m_requestQueue.append(networkItem);
+
+    if (m_timerId == 0) {
+        m_timerId = startTimer(500);
     }
 }

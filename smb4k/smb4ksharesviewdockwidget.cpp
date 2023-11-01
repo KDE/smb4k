@@ -17,6 +17,8 @@
 #include "smb4ksharesviewitem.h"
 #include "smb4ksynchronizationdialog.h"
 #include "smb4ktooltip.h"
+#include "smb4kpassworddialog.h"
+#include "smb4ksharesview.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -29,6 +31,7 @@
 #include <QApplication>
 #include <QDropEvent>
 #include <QMenu>
+#include <QPointer>
 
 // KDE includes
 #include <KIO/DropJob>
@@ -41,43 +44,23 @@
 Smb4KSharesViewDockWidget::Smb4KSharesViewDockWidget(const QString &title, QWidget *parent)
     : QDockWidget(title, parent)
 {
-    //
-    // Set the shares view
-    //
     m_sharesView = new Smb4KSharesView(this);
     setWidget(m_sharesView);
 
-    //
-    // The action collection
-    //
     m_actionCollection = new KActionCollection(this);
-
-    //
-    // The context menu
-    //
     m_contextMenu = new KActionMenu(this);
 
-    //
-    // Set up the actions
-    //
     setupActions();
-
-    //
-    // Load the settings
-    //
     loadSettings();
 
-    //
-    // Connections
-    //
-    connect(m_sharesView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
-    connect(m_sharesView, SIGNAL(itemActivated(QListWidgetItem *)), this, SLOT(slotItemActivated(QListWidgetItem *)));
-    connect(m_sharesView, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
-    connect(m_sharesView, SIGNAL(acceptedDropEvent(Smb4KSharesViewItem *, QDropEvent *)), this, SLOT(slotDropEvent(Smb4KSharesViewItem *, QDropEvent *)));
+    connect(m_sharesView, &Smb4KSharesView::customContextMenuRequested, this, &Smb4KSharesViewDockWidget::slotContextMenuRequested);
+    connect(m_sharesView, &Smb4KSharesView::itemActivated, this, &Smb4KSharesViewDockWidget::slotItemActivated);
+    connect(m_sharesView, &Smb4KSharesView::itemSelectionChanged, this, &Smb4KSharesViewDockWidget::slotItemSelectionChanged);
+    connect(m_sharesView, &Smb4KSharesView::acceptedDropEvent, this, &Smb4KSharesViewDockWidget::slotDropEvent);
 
-    connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(updated(SharePtr)), this, SLOT(slotShareUpdated(SharePtr)));
+    connect(Smb4KMounter::self(), &Smb4KMounter::mounted, this, &Smb4KSharesViewDockWidget::slotShareMounted);
+    connect(Smb4KMounter::self(), &Smb4KMounter::unmounted, this, &Smb4KSharesViewDockWidget::slotShareUnmounted);
+    connect(Smb4KMounter::self(), &Smb4KMounter::updated, this, &Smb4KSharesViewDockWidget::slotShareUpdated);
 }
 
 Smb4KSharesViewDockWidget::~Smb4KSharesViewDockWidget()
@@ -155,7 +138,7 @@ void Smb4KSharesViewDockWidget::setupActions()
 
     QActionGroup *viewModesGroup = new QActionGroup(this);
     viewModesGroup->setExclusive(true);
-    connect(viewModesGroup, SIGNAL(triggered(QAction *)), this, SLOT(slotViewModeChanged(QAction *)));
+    connect(viewModesGroup, &QActionGroup::triggered, this, &Smb4KSharesViewDockWidget::slotViewModeChanged);
 
     QAction *iconViewAction = new QAction(KDE::icon(QStringLiteral("view-list-icons")), i18n("Icon View"), this);
     iconViewAction->setObjectName(QStringLiteral("icon_view_action"));
@@ -198,7 +181,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     QAction *unmountAction = new QAction(KDE::icon(QStringLiteral("media-eject")), i18n("&Unmount"), this);
     unmountAction->setEnabled(false);
-    connect(unmountAction, SIGNAL(triggered(bool)), this, SLOT(slotUnmountActionTriggered(bool)));
+    connect(unmountAction, &QAction::triggered, this, &Smb4KSharesViewDockWidget::slotUnmountActionTriggered);
 
     m_actionCollection->addAction(QStringLiteral("unmount_action"), unmountAction);
     m_actionCollection->setDefaultShortcut(unmountAction, QKeySequence(i18n("Ctrl+U")));
@@ -208,7 +191,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     QAction *unmountAllAction = new QAction(KDE::icon(QStringLiteral("system-run")), i18n("U&nmount All"), this);
     unmountAllAction->setEnabled(false);
-    connect(unmountAllAction, SIGNAL(triggered(bool)), this, SLOT(slotUnmountAllActionTriggered(bool)));
+    connect(unmountAllAction, &QAction::triggered, this, &Smb4KSharesViewDockWidget::slotUnmountAllActionTriggered);
 
     m_actionCollection->addAction(QStringLiteral("unmount_all_action"), unmountAllAction);
     m_actionCollection->setDefaultShortcut(unmountAllAction, QKeySequence(i18n("Ctrl+N")));
@@ -226,7 +209,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     QAction *bookmarkAction = new QAction(KDE::icon(QStringLiteral("bookmark-new")), i18n("Add &Bookmark"), this);
     bookmarkAction->setEnabled(false);
-    connect(bookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotBookmarkActionTriggered(bool)));
+    connect(bookmarkAction, &QAction::triggered, this, &Smb4KSharesViewDockWidget::slotBookmarkActionTriggered);
 
     m_actionCollection->addAction(QStringLiteral("bookmark_action"), bookmarkAction);
     m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(i18n("Ctrl+B")));
@@ -236,7 +219,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     QAction *customAction = new QAction(KDE::icon(QStringLiteral("settings-configure")), i18n("Add &Custom Settings"), this);
     customAction->setEnabled(false);
-    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomSettingsTriggered(bool)));
+    connect(customAction, &QAction::triggered, this, &Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered);
 
     m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
     m_actionCollection->setDefaultShortcut(customAction, QKeySequence(i18n("Ctrl+C")));
@@ -246,7 +229,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     QAction *synchronizeAction = new QAction(KDE::icon(QStringLiteral("folder-sync")), i18n("S&ynchronize"), this);
     synchronizeAction->setEnabled(false);
-    connect(synchronizeAction, SIGNAL(triggered(bool)), this, SLOT(slotSynchronizeActionTriggered(bool)));
+    connect(synchronizeAction, &QAction::triggered, this, &Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered);
 
     m_actionCollection->addAction(QStringLiteral("synchronize_action"), synchronizeAction);
     m_actionCollection->setDefaultShortcut(synchronizeAction, QKeySequence(i18n("Ctrl+Y")));
@@ -264,14 +247,14 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     QAction *konsoleAction = new QAction(KDE::icon(QStringLiteral("utilities-terminal")), i18n("Open with Konso&le"), this);
     konsoleAction->setEnabled(false);
-    connect(konsoleAction, SIGNAL(triggered(bool)), this, SLOT(slotKonsoleActionTriggered(bool)));
+    connect(konsoleAction, &QAction::triggered, this, &Smb4KSharesViewDockWidget::slotKonsoleActionTriggered);
 
     m_actionCollection->addAction(QStringLiteral("konsole_action"), konsoleAction);
     m_actionCollection->setDefaultShortcut(konsoleAction, QKeySequence(i18n("Ctrl+L")));
 
     QAction *filemanagerAction = new QAction(KDE::icon(QStringLiteral("system-file-manager")), i18n("Open with F&ile Manager"), this);
     filemanagerAction->setEnabled(false);
-    connect(filemanagerAction, SIGNAL(triggered(bool)), this, SLOT(slotFileManagerActionTriggered(bool)));
+    connect(filemanagerAction, &QAction::triggered, this, &Smb4KSharesViewDockWidget::slotFileManagerActionTriggered);
 
     m_actionCollection->addAction(QStringLiteral("filemanager_action"), filemanagerAction);
     m_actionCollection->setDefaultShortcut(filemanagerAction, QKeySequence(i18n("Ctrl+I")));
@@ -524,6 +507,8 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool checked)
 
     if (bookmarkDialog->setShares(shares)) {
         bookmarkDialog->open();
+    } else {
+        delete bookmarkDialog;
     }
 }
 
@@ -594,3 +579,4 @@ void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool checked)
         }
     }
 }
+

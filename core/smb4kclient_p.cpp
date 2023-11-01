@@ -1328,8 +1328,8 @@ Smb4KDnsDiscoveryJob::Smb4KDnsDiscoveryJob(QObject *parent)
     //
     // Connections
     //
-    connect(m_serviceBrowser, SIGNAL(serviceAdded(KDNSSD::RemoteService::Ptr)), this, SLOT(slotServiceAdded(KDNSSD::RemoteService::Ptr)));
-    connect(m_serviceBrowser, SIGNAL(finished()), this, SLOT(slotFinished()));
+    connect(m_serviceBrowser, &KDNSSD::ServiceBrowser::serviceAdded, this, &Smb4KDnsDiscoveryJob::slotServiceAdded);
+    connect(m_serviceBrowser, &KDNSSD::ServiceBrowser::finished, this, &Smb4KDnsDiscoveryJob::slotFinished);
 }
 
 Smb4KDnsDiscoveryJob::~Smb4KDnsDiscoveryJob()
@@ -1484,31 +1484,15 @@ void Smb4KDnsDiscoveryJob::slotFinished()
 Smb4KWsDiscoveryJob::Smb4KWsDiscoveryJob(QObject *parent)
     : Smb4KClientBaseJob(parent)
 {
-    //
-    // The WS Discovery client
-    //
     m_discoveryClient = new WSDiscoveryClient(this);
 
-    //
-    // The timer used to stop the scan
-    //
     m_timer = new QTimer(this);
     m_timer->setSingleShot(true);
     m_timer->setInterval(2000);
 
-    //
-    // Connections
-    //
-    connect(m_discoveryClient,
-            SIGNAL(probeMatchReceived(const WSDiscoveryTargetService &)),
-            this,
-            SLOT(slotProbeMatchReceived(const WSDiscoveryTargetService &)));
-    connect(m_discoveryClient,
-            SIGNAL(resolveMatchReceived(const WSDiscoveryTargetService &)),
-            this,
-            SLOT(slotResolveMatchReceived(const WSDiscoveryTargetService &)));
-
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(slotDiscoveryFinished()));
+    connect(m_discoveryClient, &WSDiscoveryClient::probeMatchReceived, this, &Smb4KWsDiscoveryJob::slotProbeMatchReceived);
+    connect(m_discoveryClient, &WSDiscoveryClient::resolveMatchReceived, this, &Smb4KWsDiscoveryJob::slotResolveMatchReceived);
+    connect(m_timer, &QTimer::timeout, this, &Smb4KWsDiscoveryJob::slotDiscoveryFinished);
 }
 
 Smb4KWsDiscoveryJob::~Smb4KWsDiscoveryJob()

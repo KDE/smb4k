@@ -29,6 +29,7 @@ class Smb4KSynchronizationInfo;
 class Smb4KNetworkBrowserDockWidget;
 class Smb4KSharesViewDockWidget;
 class Smb4KBookmarkMenu;
+class Smb4KPasswordDialog;
 
 /**
  * This is the main window of Smb4K. It provides the network browser, the
@@ -54,7 +55,7 @@ public:
 
 protected:
     /**
-     * Reimplemented from KMainWindow.
+     * Reimplemented from KMainWindow
      */
     bool queryClose() override;
 
@@ -62,6 +63,11 @@ protected:
      * Reimplemented from KMainWindow
      */
     bool eventFilter(QObject *obj, QEvent *e) override;
+
+    /**
+     * Reimplemented from QObject
+     */
+    void timerEvent(QTimerEvent * event) override;
 
 protected Q_SLOTS:
     /**
@@ -192,99 +198,36 @@ protected Q_SLOTS:
      */
     void slotSharesViewVisibilityChanged(bool visible);
 
+    /**
+     * This slot is called when credentials are requested.
+     *
+     * @param networkItem         The network item
+     */
+    void slotCredentialsRequested(const NetworkItemPtr &networkItem);
+
 private:
-    /**
-     * Set up the main window actions
-     */
     void setupActions();
-
-    /**
-     * Set up the status bar
-     */
     void setupStatusBar();
-
-    /**
-     * Set up the main window's view
-     */
     void setupView();
-
-    /**
-     * Set up menu bar
-     */
     void setupMenuBar();
-
-    /**
-     * Set up the system tray widget
-     */
     void setupSystemTrayWidget();
-
-    /**
-     * Loads the settings
-     */
     void loadSettings();
-
-    /**
-     * Saves the settings
-     */
     void saveSettings();
-
-    /**
-     * Set up the mount indicator
-     */
     void setupMountIndicator();
-
-    /**
-     * Setup the dynamic action list
-     */
     void setupDynamicActionList(QDockWidget *dock);
 
-    /**
-     * This is the progress bar in the status bar.
-     */
     QProgressBar *m_progressBar;
-
-    /**
-     * This is the pixmap label that represents the state of
-     * the password handler in the status bar.
-     */
     QLabel *m_passwordIcon;
-
-    /**
-     * This icon gives feedback on actions that took place like
-     * mounting a share, etc.
-     */
     QLabel *m_feedbackIcon;
-
-    /**
-     * The system tray widget
-     */
     Smb4KSystemTray *m_systemTrayWidget;
-
-    /**
-     * This is the widget (embedded into a dock widget) that has
-     * the focus.
-     */
     QWidget *m_focusWidget;
-
-    /**
-     * Dock widgets action group;
-     */
     QActionGroup *m_dockWidgets;
-
-    /**
-     * The network browser dock widget
-     */
     Smb4KNetworkBrowserDockWidget *m_networkBrowserDockWidget;
-
-    /**
-     * The shares view dock widget
-     */
     Smb4KSharesViewDockWidget *m_sharesViewDockWidget;
-
-    /**
-     * The bookmark menu
-     */
     Smb4KBookmarkMenu *m_bookmarkMenu;
+    Smb4KPasswordDialog *m_passwordDialog;
+    QList<NetworkItemPtr> m_requestQueue;
+    int m_timerId;
 };
 
 #endif

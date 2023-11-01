@@ -104,18 +104,6 @@ public:
     QList<Smb4KAuthInfo *> loginCredentialsList();
 
     /**
-     * Show the password dialog. This function takes an Smb4KBasicNetworkItem
-     * object @p item, shows an authentication dialog and saves the data if
-     * it is new or updated.
-     *
-     * @param networkItem     The network item for that the authentication
-     *                        information should be entered
-     *
-     * @returns TRUE if successful and FALSE otherwise
-     */
-    bool showPasswordDialog(const NetworkItemPtr &networkItem);
-
-    /**
      * This function returns TRUE if the wallet system can be/is used and
      * FALSE otherwise.
      *
@@ -137,6 +125,14 @@ Q_SIGNALS:
      * and is ready to process authentication information.
      */
     void initialized();
+
+    /**
+     * This signal is emitted when the credentials for @param url were updated.
+     * If the list of credentials was cleared, an empty URL is emitted.
+     *
+     * @param QUrl          The URL for which the credentials were updated/added
+     */
+    void credentialsUpdated(const QUrl &url);
 
 private:
     /**

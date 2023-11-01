@@ -14,13 +14,27 @@
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
 #include "smb4kshare.h"
-#include "smb4kwalletmanager_p.h"
 
 // Qt includes
 #include <QApplication>
 #include <QPointer>
 
+// KDE includes
+#include <KWallet>
+
 using namespace Smb4KGlobal;
+
+class Smb4KWalletManagerPrivate
+{
+public:
+    KWallet::Wallet *wallet;
+};
+
+class Smb4KWalletManagerStatic
+{
+public:
+    Smb4KWalletManager instance;
+};
 
 Q_GLOBAL_STATIC(Smb4KWalletManagerStatic, p);
 
@@ -171,100 +185,6 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::loginCredentialsList()
     }
 
     return entries;
-}
-
-bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
-{
-    //
-    // Define the return value here
-    //
-    bool success = false;
-
-    //
-    // Check that the network item is not null
-    //
-    if (networkItem) {
-        //
-        // Get the known logins (for homes shares) and read the authentication
-        // information.
-        //
-        QMap<QString, QString> knownLogins;
-
-        switch (networkItem->type()) {
-        case Share: {
-            //
-            // Cast the network item
-            //
-            SharePtr share = networkItem.staticCast<Smb4KShare>();
-
-            //
-            // If the share is a 'homes' share, read the known logins
-            // for that share.
-            //
-            if (share->isHomesShare()) {
-                //
-                // Get the known logins
-                //
-                QStringList userList = Smb4KHomesSharesHandler::self()->homesUsers(share);
-
-                //
-                // Read the authentication information for all known logins
-                //
-                for (const QString &user : qAsConst(userList)) {
-                    //
-                    // Create a temp share
-                    //
-                    SharePtr tempShare = SharePtr(new Smb4KShare(*share.data()));
-
-                    //
-                    // Set the login
-                    //
-                    tempShare->setUserName(user);
-
-                    //
-                    // Read the authentication information
-                    //
-                    readLoginCredentials(tempShare);
-
-                    //
-                    // Save the authentication data in the map
-                    //
-                    knownLogins.insert(tempShare->userName(), tempShare->password());
-
-                    //
-                    // Clear the temp share
-                    //
-                    tempShare.clear();
-                }
-            } else {
-                readLoginCredentials(networkItem);
-            }
-
-            break;
-        }
-        default: {
-            readLoginCredentials(networkItem);
-            break;
-        }
-        }
-
-        //
-        // Set up the password dialog and show it
-        //
-        QPointer<Smb4KPasswordDialog> dlg = new Smb4KPasswordDialog(networkItem, knownLogins, QApplication::activeWindow());
-
-        //
-        // On closure, write the login credentials to the wallet
-        //
-        if (dlg->exec() == Smb4KPasswordDialog::Accepted) {
-            writeLoginCredentials(networkItem);
-            success = true;
-        }
-
-        delete dlg;
-    }
-
-    return success;
 }
 
 bool Smb4KWalletManager::useWalletSystem() const
@@ -439,6 +359,8 @@ void Smb4KWalletManager::write(Smb4KAuthInfo *authInfo)
                 d->wallet->sync();
             }
         }
+
+        Q_EMIT credentialsUpdated(authInfo->url());
     }
 }
 
@@ -458,5 +380,7 @@ void Smb4KWalletManager::clear()
         }
 
         d->wallet->sync();
+
+        Q_EMIT credentialsUpdated(QUrl());
     }
 }

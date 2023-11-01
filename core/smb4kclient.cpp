@@ -32,10 +32,8 @@ Smb4KClient::Smb4KClient(QObject *parent)
     : KCompositeJob(parent)
     , d(new Smb4KClientPrivate)
 {
-    //
-    // Connections
-    //
-    connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KClient::slotAboutToQuit);
+    connect(Smb4KWalletManager::self(), &Smb4KWalletManager::credentialsUpdated, this, &Smb4KClient::slotCredentialsUpdated);
 }
 
 Smb4KClient::~Smb4KClient()
@@ -52,7 +50,7 @@ void Smb4KClient::start()
     //
     // Connect to the online state monitoring
     //
-    connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)), Qt::UniqueConnection);
+    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::onlineStateChanged, this, &Smb4KClient::slotOnlineStateChanged, Qt::UniqueConnection);
 
     //
     // Start the scanning
@@ -452,40 +450,44 @@ void Smb4KClient::processErrors(Smb4KClientBaseJob *job)
     case Smb4KClientJob::AccessDeniedError: {
         switch (job->networkItem()->type()) {
         case Host: {
-            if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem())) {
-                lookupShares(job->networkItem().staticCast<Smb4KHost>());
-            }
+            Smb4KClientPrivate::QueueContainer container;
+            container.process = job->process();
+            container.networkItem = job->networkItem();
+            d->queue.append(container);
+            Q_EMIT requestCredentials(job->networkItem());
 
             break;
         }
         case Share: {
-            if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem())) {
-                if (job->process() == Smb4KGlobal::PrintFile) {
-                    Smb4KClientJob *clientJob = qobject_cast<Smb4KClientJob *>(job);
-                    printFile(job->networkItem().staticCast<Smb4KShare>(), clientJob->printFileItem(), clientJob->printCopies());
-                } else {
-                    lookupFiles(job->networkItem().staticCast<Smb4KShare>());
-                }
+            Smb4KClientPrivate::QueueContainer container;
+            container.process = job->process();
+            container.networkItem = job->networkItem();
+
+            if (job->process() == Smb4KGlobal::PrintFile) {
+                Smb4KClientJob *clientJob = qobject_cast<Smb4KClientJob *>(job);
+                container.printFileItem = clientJob->printFileItem();
+                container.printCopies = clientJob->printCopies();
             }
+
+            d->queue.append(container);
+            Q_EMIT requestCredentials(job->networkItem());
 
             break;
         }
         case FileOrDirectory: {
-            FilePtr file = job->networkItem().staticCast<Smb4KFile>();
+            Smb4KClientPrivate::QueueContainer container;
+            container.process = job->process();
+            container.networkItem = job->networkItem();
+            d->queue.append(container);
 
+            FilePtr file = job->networkItem().staticCast<Smb4KFile>();
             SharePtr share = SharePtr(new Smb4KShare());
             share->setWorkgroupName(file->workgroupName());
             share->setHostName(file->hostName());
             share->setShareName(file->shareName());
             share->setUserName(file->userName());
             share->setPassword(file->password());
-
-            if (Smb4KWalletManager::self()->showPasswordDialog(share)) {
-                file->setUserName(share->userName());
-                file->setPassword(share->password());
-
-                lookupFiles(file);
-            }
+            Q_EMIT requestCredentials(share);
 
             break;
         }
@@ -755,14 +757,7 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
 
 void Smb4KClient::processFiles(Smb4KClientBaseJob *job)
 {
-    //
-    // Copy the list of discovered files and directories
-    //
     QList<FilePtr> discoveredFiles = job->files();
-
-    //
-    // Process the list of discovered directories
-    //
     QList<FilePtr> list;
 
     for (const FilePtr &file : qAsConst(discoveredFiles)) {
@@ -778,9 +773,6 @@ void Smb4KClient::processFiles(Smb4KClientBaseJob *job)
 
 void Smb4KClient::slotStartJobs()
 {
-    //
-    // Lookup domains as the first step
-    //
     lookupDomains();
 }
 
@@ -878,4 +870,60 @@ void Smb4KClient::slotAboutToQuit()
 void Smb4KClient::slotAbort()
 {
     abort();
+}
+
+void Smb4KClient::slotCredentialsUpdated(const QUrl &url)
+{
+    if (!url.isEmpty() && !d->queue.isEmpty()) {
+        QMutableListIterator<Smb4KClientPrivate::QueueContainer> it(d->queue);
+
+        while (it.hasNext()) {
+            Smb4KClientPrivate::QueueContainer container = it.next();
+
+            QUrl networkItemUrl = container.networkItem->url();
+            QUrl parentNetworkItemUrl = container.networkItem->url().resolved(QUrl(QStringLiteral(".."))).adjusted(QUrl::StripTrailingSlash);
+
+            if (QString::compare(networkItemUrl.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                 url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                 Qt::CaseInsensitive)
+                    == 0
+                || QString::compare(parentNetworkItemUrl.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                    url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                    Qt::CaseInsensitive)
+                    == 0) {
+                switch (container.networkItem->type()) {
+                case Host: {
+                    HostPtr host = container.networkItem.staticCast<Smb4KHost>();
+                    host->setUserName(url.userName());
+                    host->setPassword(url.password());
+                    lookupShares(host);
+                    break;
+                }
+                case Share: {
+                    SharePtr share = container.networkItem.staticCast<Smb4KShare>();
+                    share->setUserName(url.userName());
+                    share->setPassword(url.password());
+                    if (container.process == Smb4KGlobal::PrintFile) {
+                        printFile(share, container.printFileItem, container.printCopies);
+                    } else {
+                        lookupFiles(share);
+                    }
+                    break;
+                }
+                case FileOrDirectory: {
+                    FilePtr file = container.networkItem.staticCast<Smb4KFile>();
+                    file->setUserName(url.userName());
+                    file->setPassword(url.password());
+                    lookupFiles(file);
+                    break;
+                }
+                default: {
+                    break;
+                }
+                }
+
+                it.remove();
+            }
+        }
+    }
 }

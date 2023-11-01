@@ -161,6 +161,14 @@ Q_SIGNALS:
      */
     void searchResults(const QList<SharePtr> &list);
 
+    /**
+     * Emitted when credentials are requested from elsewhere
+     *
+     * @param networkItem   The network item for which the credentials
+     *                      are requested
+     */
+    void requestCredentials(const NetworkItemPtr &networkItem);
+
 protected Q_SLOTS:
     /**
      * Start the composite job
@@ -186,6 +194,11 @@ protected Q_SLOTS:
      * Called when a process should be aborted
      */
     void slotAbort();
+
+    /**
+     * Called when the credentials were updated
+     */
+    void slotCredentialsUpdated(const QUrl &url);
 
 private:
     /**

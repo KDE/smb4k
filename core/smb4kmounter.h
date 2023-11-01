@@ -169,6 +169,14 @@ Q_SIGNALS:
      */
     void mountedSharesListChanged();
 
+    /**
+     * Emitted when credentials are requested from elsewhere
+     *
+     * @param share             The share for which the credentials
+     *                          are requested
+     */
+    void requestCredentials(const SharePtr &share);
+
 protected:
     /**
      * Reimplemented from QObject to process the queue.
@@ -226,6 +234,11 @@ protected Q_SLOTS:
      * to trigger the importing of shares when certain settings changed.
      */
     void slotConfigChanged();
+
+    /**
+     * Called when the credentials were updated
+     */
+    void slotCredentialsUpdated(const QUrl &url);
 
 private:
     /**

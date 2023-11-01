@@ -98,13 +98,13 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     //
     // Connections
     //
-    connect(Smb4KProfileManager::self(), SIGNAL(migratedProfile(QString, QString)), this, SLOT(slotProfileMigrated(QString, QString)));
-    connect(Smb4KProfileManager::self(), SIGNAL(aboutToChangeProfile()), this, SLOT(slotAboutToChangeProfile()));
-    connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::migratedProfile, this, &Smb4KMounter::slotProfileMigrated);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::aboutToChangeProfile, this, &Smb4KMounter::slotAboutToChangeProfile);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KMounter::slotActiveProfileChanged);
+    connect(Smb4KWalletManager::self(), &Smb4KWalletManager::credentialsUpdated, this, &Smb4KMounter::slotCredentialsUpdated);
+    connect(Smb4KMountSettings::self(), &Smb4KMountSettings::configChanged, this, &Smb4KMounter::slotConfigChanged);
 
-    connect(Smb4KMountSettings::self(), SIGNAL(configChanged()), this, SLOT(slotConfigChanged()));
-
-    connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KMounter::slotAboutToQuit);
 }
 
 Smb4KMounter::~Smb4KMounter()
@@ -682,9 +682,8 @@ void Smb4KMounter::mountShare(const SharePtr &share)
 #if defined(Q_OS_LINUX)
                     if (errorMsg.contains(QStringLiteral("mount error 13"))
                         || errorMsg.contains(QStringLiteral("mount error(13)")) /* authentication error */) {
-                        if (Smb4KWalletManager::self()->showPasswordDialog(share)) {
-                            d->retries << share;
-                        }
+                        d->retries << share;
+                        Q_EMIT requestCredentials(share);
                     } else if (errorMsg.contains(QStringLiteral("Unable to find suitable address."))) {
                         // Swallow this
                     } else {
@@ -692,9 +691,8 @@ void Smb4KMounter::mountShare(const SharePtr &share)
                     }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
                     if (errorMsg.contains(QStringLiteral("Authentication error")) || errorMsg.contains(QStringLiteral("Permission denied"))) {
-                        if (Smb4KWalletManager::self()->showPasswordDialog(share)) {
-                            d->retries << share;
-                        }
+                        d->retries << share;
+                        Q_EMIT requestCredentials(share);
                     } else {
                         Smb4KNotification::mountingFailed(share, errorMsg);
                     }
@@ -928,9 +926,9 @@ void Smb4KMounter::start()
     //
     // Connect to the relevant signals provided by Smb4KHardwareInterface.
     //
-    connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)), Qt::UniqueConnection);
-    connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()), this, SLOT(slotTriggerImport()), Qt::UniqueConnection);
-    connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()), this, SLOT(slotTriggerImport()), Qt::UniqueConnection);
+    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::onlineStateChanged, this, &Smb4KMounter::slotOnlineStateChanged, Qt::UniqueConnection);
+    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareAdded, this, &Smb4KMounter::slotTriggerImport, Qt::UniqueConnection);
+    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareRemoved, this, &Smb4KMounter::slotTriggerImport, Qt::UniqueConnection);
 
     //
     // Start with importing shares
@@ -980,15 +978,6 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
             }
 
             d->remountTimeout += TIMEOUT;
-        }
-
-        //
-        // Retry to mount those shares that initially failed
-        //
-        while (!d->retries.isEmpty()) {
-            SharePtr share = d->retries.takeFirst();
-            mountShare(share);
-            share.clear();
         }
 
         //
@@ -1954,5 +1943,34 @@ void Smb4KMounter::slotConfigChanged()
     if (d->detectAllShares != Smb4KMountSettings::detectAllShares()) {
         import(true);
         d->detectAllShares = Smb4KMountSettings::detectAllShares();
+    }
+}
+
+void Smb4KMounter::slotCredentialsUpdated(const QUrl &url)
+{
+    if (!url.isEmpty() && !d->retries.isEmpty()) {
+        QMutableListIterator<SharePtr> it(d->retries);
+
+        while (it.hasNext()) {
+            SharePtr share = it.next();
+
+            QUrl parentUrl = share->url().resolved(QUrl(QStringLiteral(".."))).adjusted(QUrl::StripTrailingSlash);
+
+            if (QString::compare(share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                 url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                 Qt::CaseInsensitive)
+                    == 0
+                || QString::compare(parentUrl.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                    url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                    Qt::CaseInsensitive)
+                    == 0) {
+                share->setUserName(url.userName());
+                share->setPassword(url.password());
+
+                mountShare(share);
+
+                it.remove();
+            }
+        }
     }
 }

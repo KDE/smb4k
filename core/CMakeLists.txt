@@ -37,7 +37,6 @@ set(smb4kcore_LIB_SRCS
   smb4ksynchronizer.cpp
   smb4ksynchronizer_p.cpp
   smb4kwalletmanager.cpp
-  smb4kwalletmanager_p.cpp
   smb4kworkgroup.cpp)
 
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")

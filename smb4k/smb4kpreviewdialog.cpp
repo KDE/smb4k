@@ -163,6 +163,10 @@ void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
 
 void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &files)
 {
+    if (!files.first()->url().toString().startsWith(m_share->url().toString())) {
+        return;
+    }
+
     if (m_listWidget->count() != 0) {
         m_listWidget->clear();
     }
