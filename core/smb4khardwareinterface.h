@@ -65,10 +65,11 @@ public:
 
 protected:
     /**
-     * Reimplemented from QObject to check for mounts and unmounts on operating
-     * systems that are not fully supported by Solid, yet.
+     * Reimplemented from QObject to check the online state and to check
+     * for mounts and unmounts on operating systems that are not fully
+     * supported by Solid, yet.
      */
-    void timerEvent(QTimerEvent *e) override;
+    void timerEvent(QTimerEvent *event) override;
 
 Q_SIGNALS:
     /**

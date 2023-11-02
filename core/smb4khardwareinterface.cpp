@@ -178,19 +178,16 @@ void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
     }
 }
 
-void Smb4KHardwareInterface::timerEvent(QTimerEvent * /*e*/)
+void Smb4KHardwareInterface::timerEvent(QTimerEvent *event)
 {
-    //
-    // Check for network connectivity
-    //
+    Q_UNUSED(event);
+
     checkOnlineState();
 
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    //
-    // Using FreeBSD 11 with KF 5.27, Solid is not able to detect mounted shares.
+    // NOTE: Using FreeBSD 11 with KF 5.27, Solid is not able to detect mounted shares.
     // Thus, we check here whether shares have been mounted or unmounted.
     // This is a hack and should be removed as soon as possible.
-    //
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
     QStringList mountPointList, alreadyMounted;
 
@@ -224,7 +221,6 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent * /*e*/)
     d->mountPoints.clear();
     d->mountPoints.append(alreadyMounted);
     d->mountPoints.append(mountPointList);
-
 #endif
 }
 
