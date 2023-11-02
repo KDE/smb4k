@@ -31,7 +31,6 @@
 #include <QLabel>
 #include <QMenu>
 #include <QMenuBar>
-#include <QPointer>
 #include <QSize>
 #include <QStatusBar>
 #include <QString>
@@ -58,7 +57,7 @@ Smb4KMainWindow::Smb4KMainWindow()
 {
     m_focusWidget = nullptr;
 
-    m_passwordDialog = new Smb4KPasswordDialog();
+    m_passwordDialog = new Smb4KPasswordDialog(this);
     m_timerId = 0;
 
     setStandardToolBarMenuEnabled(true);

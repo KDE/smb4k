@@ -15,6 +15,7 @@
 #include <QActionGroup>
 #include <QDockWidget>
 #include <QLabel>
+#include <QPointer>
 #include <QProgressBar>
 #include <QUrl>
 
@@ -224,7 +225,7 @@ private:
     Smb4KNetworkBrowserDockWidget *m_networkBrowserDockWidget;
     Smb4KSharesViewDockWidget *m_sharesViewDockWidget;
     Smb4KBookmarkMenu *m_bookmarkMenu;
-    Smb4KPasswordDialog *m_passwordDialog;
+    QPointer<Smb4KPasswordDialog> m_passwordDialog;
     QList<NetworkItemPtr> m_requestQueue;
     int m_timerId;
 };

@@ -503,7 +503,7 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool checked)
         shares << item->shareItem();
     }
 
-    QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
+    QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog(this);
 
     if (bookmarkDialog->setShares(shares)) {
         bookmarkDialog->open();
@@ -521,7 +521,7 @@ void Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered(bool checked)
     for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
-        QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
+        QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor(this);
         if (customSettingsEditor->setNetworkItem(item->shareItem())) {
             customSettingsEditor->open();
         } else {
@@ -540,7 +540,7 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool checked)
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()))) {
-            QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog();
+            QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog(this);
             if (synchronizationDialog->setShare(item->shareItem())) {
                 synchronizationDialog->open();
             } else {
