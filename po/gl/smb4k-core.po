@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2020-01-12 12:19+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -2055,7 +2055,7 @@ msgstr "Usuario:"
 msgid "Clear List"
 msgstr "Limpar a lista"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2067,7 +2067,7 @@ msgstr ""
 "<qt><p>A compartición <b>%1</b> está montada en <br><b>%2</b> e ten como "
 "propietario a <b>%3</b>.</p><p>Está seguro de que quere desmontala?</p></qt>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartición externa"
@@ -3463,20 +3463,17 @@ msgstr "Orixe"
 msgid "Destination"
 msgstr "Destino"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Escriba o seu nome de usuaria e contrasinal para o servidor <b>%1</b>.</"
-"qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Escriba o seu nome de usuaria e contrasinal para o servidor <b>%1</b>."
+#~ "</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Escriba o seu nome de usuaria e contrasinal para a compartición <b>%1</"
-"b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Escriba o seu nome de usuaria e contrasinal para a compartición <b>"
+#~ "%1</b>.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Sincronización"

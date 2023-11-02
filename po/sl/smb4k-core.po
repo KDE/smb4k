@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 07:18+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2018,7 +2018,7 @@ msgstr "Uporabnik:"
 msgid "Clear List"
 msgstr "Očisti seznam"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2027,7 +2027,7 @@ msgstr ""
 "<qt><p>Mrežni disk <b>%1</b> je priklopljen na<br><b>%2</b> in v lasti "
 "uporabnika <b>%3</b>.</p><p>Ali ga zares želite odklopiti?</p></qt>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Tuji mrežni disk"
@@ -3411,16 +3411,13 @@ msgstr "Vir"
 msgid "Destination"
 msgstr "Cilj"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr "<qt>Vnesite uporabniško ime in geslo za gostitelja <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr "<qt>Vnesite uporabniško ime in geslo za gostitelja <b>%1</b>.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr "<qt>Vnesite uporabniško ime in geslo za skupni disk <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr "<qt>Vnesite uporabniško ime in geslo za skupni disk <b>%1</b>.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Usklajevanje"

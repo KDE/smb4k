@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -2018,7 +2018,7 @@ msgstr "Užívateľ:"
 msgid "Clear List"
 msgstr "Vyčistiť zoznam"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2030,7 +2030,7 @@ msgstr ""
 "<qt><p>Zdieľanie <b>%1</b> je pripojené k <br><b>%2</b> a vlastné "
 "používateľom <b>%3</b>.</p><p>Naozaj ho chcete odpojiť?</p></qt>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Cudzie zdieľanie"
@@ -3409,18 +3409,15 @@ msgstr "Zdroj"
 msgid "Destination"
 msgstr "Cieľ"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Prosím zadajte meno používateľa a heslo pre hostiteľa <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Prosím zadajte meno používateľa a heslo pre hostiteľa <b>%1</b>.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Prosím zadajte meno používateľa a heslo pre zdieľanie <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Prosím zadajte meno používateľa a heslo pre zdieľanie <b>%1</b>.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Synchronizácia"

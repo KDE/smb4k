@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-10-21 13:55\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1904,7 +1904,7 @@ msgstr "用户名："
 msgid "Clear List"
 msgstr "清除列表"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1913,7 +1913,7 @@ msgstr ""
 "<p>共享 <b>%1</b> 已挂载到 <br><b>%2</b>，所有者用户为 <b>%3</b>。</p><p>您确"
 "定要卸载它吗？</p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "外部共享"
@@ -3231,13 +3231,10 @@ msgstr "来源"
 msgid "Destination"
 msgstr "目标"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"

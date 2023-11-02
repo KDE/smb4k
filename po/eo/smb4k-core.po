@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 21:19+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -2028,7 +2028,7 @@ msgstr "Uzanto:"
 msgid "Clear List"
 msgstr "Forigi la liston"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2037,7 +2037,7 @@ msgstr ""
 "<p>La parto <b>%1</b> estas muntita al <br><b>%2</b> kaj posedata de uzanto "
 "<b>%3</b>.</p><p> Ĉu vi vere volas malmunti ĝin?</p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Eksterlanda kunhavaĵo"
@@ -3422,18 +3422,17 @@ msgstr "Fonto"
 msgid "Destination"
 msgstr "Celo"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Bonvolu enigi uzantnomon kaj pasvorton por la gastiganto <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la gastiganto <b>%1</b>.</"
+#~ "qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Bonvolu enigi uzantnomon kaj pasvorton por la kundivido <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la kundivido <b>%1</b>.</"
+#~ "qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Sinkronigo"

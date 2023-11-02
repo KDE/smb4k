@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2011-07-19 21:17+0300\n"
 "Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -1746,14 +1746,14 @@ msgstr "Потребител:"
 msgid "Clear List"
 msgstr "Изчистване на списъка"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, fuzzy, kde-format
 msgid "Foreign Share"
 msgstr "Монтиране на ресурс"
@@ -3012,16 +3012,15 @@ msgstr "Източник:"
 msgid "Destination"
 msgstr "Назначение:"
 
-#: smb4kwalletmanager_p.cpp:35
-#, fuzzy, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr "Моля въведете удостоверяващи данни за ресурс %1"
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr "Моля въведете удостоверяващи данни за ресурс %1"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, fuzzy, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr "Моля въведете удостоверяващи данни за ресурс %1"
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr "Моля въведете удостоверяващи данни за ресурс %1"
 
 #~ msgid "Synchronization"
 #~ msgstr "Синхронизиране"

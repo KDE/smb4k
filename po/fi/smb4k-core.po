@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-03-11 22:57+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2050,7 +2050,7 @@ msgstr "Käyttäjä:"
 msgid "Clear List"
 msgstr "Tyhjennä luettelo"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2059,7 +2059,7 @@ msgstr ""
 "<p>Jako <b>%1</b> on liitetty kansioon<br><b>%2</b>, ja sen omistaa <b>%3</"
 "b>.</p><p>Haluatko varmasti irrottaa sen?</p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Vieras jako"
@@ -3465,16 +3465,13 @@ msgstr "Lähde"
 msgid "Destination"
 msgstr "Kohde"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr "<qt>Anna käyttäjätunnus ja salasana palvelimelle <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr "<qt>Anna käyttäjätunnus ja salasana palvelimelle <b>%1</b>.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Synkronointi"
