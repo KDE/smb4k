@@ -66,7 +66,6 @@ target_link_libraries(smb4kcore
   KF${QT_MAJOR_VERSION}::AuthCore
   KF${QT_MAJOR_VERSION}::IconThemes
   KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::Completion
   KF${QT_MAJOR_VERSION}::CoreAddons
   KF${QT_MAJOR_VERSION}::Solid
   KF${QT_MAJOR_VERSION}::KIOCore
