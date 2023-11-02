@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-28 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-06-17 12:10+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -160,9 +160,9 @@ msgstr "Bookmarks"
 msgid "&Edit Bookmarks"
 msgstr "&Edit Bookmarks"
 
-#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:154
-#: smb4k/smb4ksharesviewdockwidget.cpp:227
+#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:143
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
+#: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Add &Bookmark"
@@ -579,7 +579,7 @@ msgstr "Checksums"
 msgid "Main Window"
 msgstr "Main Window"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:217
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:215
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Network Neighbourhood"
@@ -693,17 +693,17 @@ msgstr "Mounting"
 msgid "Page 3: Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
-#: smb4k/smb4kmainwindow.cpp:135
+#: smb4k/smb4kmainwindow.cpp:133
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Dock Widgets"
 
-#: smb4k/smb4kmainwindow.cpp:238 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:236 smb4k/smb4ksharesmenu.cpp:43
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Mounted Shares"
 
-#: smb4k/smb4kmainwindow.cpp:373
+#: smb4k/smb4kmainwindow.cpp:371
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -712,100 +712,100 @@ msgstr ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:375
+#: smb4k/smb4kmainwindow.cpp:373
 #, kde-format
 msgid "Docking"
 msgstr "Docking"
 
-#: smb4k/smb4kmainwindow.cpp:431
+#: smb4k/smb4kmainwindow.cpp:429
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "There are currently no shares mounted."
 
-#: smb4k/smb4kmainwindow.cpp:434
+#: smb4k/smb4kmainwindow.cpp:432
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "There is currently %1 share mounted."
 msgstr[1] "There are currently %1 shares mounted."
 
-#: smb4k/smb4kmainwindow.cpp:572
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "The wallet is used."
 msgstr "The wallet is used."
 
-#: smb4k/smb4kmainwindow.cpp:575
+#: smb4k/smb4kmainwindow.cpp:591
 #, kde-format
 msgid "The password dialog is used."
 msgstr "The password dialogue is used."
 
-#: smb4k/smb4kmainwindow.cpp:585
+#: smb4k/smb4kmainwindow.cpp:601
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Looking for workgroups and domains..."
 
-#: smb4k/smb4kmainwindow.cpp:590
+#: smb4k/smb4kmainwindow.cpp:606
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Looking for hosts in domain %1..."
 
-#: smb4k/smb4kmainwindow.cpp:595
+#: smb4k/smb4kmainwindow.cpp:611
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Looking for shares provided by host %1..."
 
-#: smb4k/smb4kmainwindow.cpp:603 smb4k/smb4kmainwindow.cpp:611
+#: smb4k/smb4kmainwindow.cpp:619 smb4k/smb4kmainwindow.cpp:627
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Looking for files and directories in %1..."
 
-#: smb4k/smb4kmainwindow.cpp:628
+#: smb4k/smb4kmainwindow.cpp:644
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Waking up remote hosts..."
 
-#: smb4k/smb4kmainwindow.cpp:633
+#: smb4k/smb4kmainwindow.cpp:649
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Sending file to printer %1..."
 
-#: smb4k/smb4kmainwindow.cpp:637
+#: smb4k/smb4kmainwindow.cpp:653
 #, kde-format
 msgid "Searching..."
 msgstr "Searching..."
 
-#: smb4k/smb4kmainwindow.cpp:655 smb4k/smb4kmainwindow.cpp:692
-#: smb4k/smb4kmainwindow.cpp:779
+#: smb4k/smb4kmainwindow.cpp:671 smb4k/smb4kmainwindow.cpp:708
+#: smb4k/smb4kmainwindow.cpp:795
 #, kde-format
 msgid "Done."
 msgstr "Done."
 
-#: smb4k/smb4kmainwindow.cpp:665
+#: smb4k/smb4kmainwindow.cpp:681
 #, kde-format
 msgid "Mounting..."
 msgstr "Mounting..."
 
-#: smb4k/smb4kmainwindow.cpp:669
+#: smb4k/smb4kmainwindow.cpp:685
 #, kde-format
 msgid "Unmounting..."
 msgstr "Unmounting..."
 
-#: smb4k/smb4kmainwindow.cpp:673
+#: smb4k/smb4kmainwindow.cpp:689
 #, kde-format
 msgid "Waking up host..."
 msgstr "Waking up host..."
 
-#: smb4k/smb4kmainwindow.cpp:703
+#: smb4k/smb4kmainwindow.cpp:719
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 has been mounted successfully."
 
-#: smb4k/smb4kmainwindow.cpp:728
+#: smb4k/smb4kmainwindow.cpp:744
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 has been unmounted successfully."
 
-#: smb4k/smb4kmainwindow.cpp:767
+#: smb4k/smb4kmainwindow.cpp:783
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Synchronising %1"
@@ -857,111 +857,111 @@ msgstr "IP Address"
 msgid "Comment"
 msgstr "Comment"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:122
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:405
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:468
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Scan Netwo&rk"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:124
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
 #, kde-format
 msgid "&Abort"
 msgstr "&Abort"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:136
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
 #, kde-format
 msgid "&Search"
 msgstr "&Search"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:160
-#: smb4k/smb4ksharesviewdockwidget.cpp:232
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
+#: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:196
-#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Add &Custom Settings"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:171
-#: smb4k/smb4ksharesviewdockwidget.cpp:242
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:177 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Open Mount Dialogue"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:183
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:196
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&thentication"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:207
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
 #, kde-format
 msgid "Pre&view"
 msgstr "Pre&view"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:218
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
 #, kde-format
 msgid "&Print File"
 msgstr "&Print File"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:224
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:230
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "&Mount"
 msgstr "&Mount"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:231
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "&Unmount"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:419
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:430
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Scan Compute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:455
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Scan Wo&rkgroup"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -995,6 +995,18 @@ msgstr "Item Down"
 #, kde-format
 msgid "Item Up"
 msgstr "Item Up"
+
+#: smb4k/smb4kpassworddialog.cpp:39
+#, fuzzy, kde-format
+#| msgid "<qt>Please enter a username and a password for the share %1.</qt>"
+msgid "Please enter a username and a password for the host <b>%1</b>."
+msgstr "<qt>Please enter a username and a password for the share %1.</qt>"
+
+#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#, fuzzy, kde-format
+#| msgid "<qt>Please enter a username and a password for the share %1.</qt>"
+msgid "Please enter a username and a password for the share <b>%1</b>."
+msgstr "<qt>Please enter a username and a password for the share %1.</qt>"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, fuzzy, kde-format
@@ -1057,7 +1069,7 @@ msgstr "Printer"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Sending file to printer %1..."
 
-#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "U&nmount All"
@@ -1087,57 +1099,57 @@ msgstr "Open with Konsole"
 msgid "Open with File Manager"
 msgstr "Open with File Manager"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:154
+#: smb4k/smb4ksharesviewdockwidget.cpp:137
 #, kde-format
 msgid "View Modes"
 msgstr "View Modes"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:160
+#: smb4k/smb4ksharesviewdockwidget.cpp:143
 #, kde-format
 msgid "Icon View"
 msgstr "Icon View"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:166
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
 #, kde-format
 msgid "List View"
 msgstr "List View"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:197
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:247
+#: smb4k/smb4ksharesviewdockwidget.cpp:230
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynchronise"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#: smb4k/smb4ksharesviewdockwidget.cpp:235
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:265
+#: smb4k/smb4ksharesviewdockwidget.cpp:248
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Open with Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:270
+#: smb4k/smb4ksharesviewdockwidget.cpp:253
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:272
+#: smb4k/smb4ksharesviewdockwidget.cpp:255
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Open with F&ile Manager"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:277
+#: smb4k/smb4ksharesviewdockwidget.cpp:260
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:392
+#: smb4k/smb4ksharesviewdockwidget.cpp:375
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -3952,12 +3964,6 @@ msgstr "Size:"
 #~ msgstr ""
 #~ "This is the destination directory. It will be updated with the data from "
 #~ "the source directory."
-
-#, fuzzy
-#~| msgid "<qt>Please enter a username and a password for the share %1.</qt>"
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgstr "<qt>Please enter a username and a password for the share %1.</qt>"
 
 #, fuzzy
 #~| msgid "U&nmount All"

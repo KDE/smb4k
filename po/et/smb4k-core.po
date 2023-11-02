@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2020-10-25 22:18+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2069,7 +2069,7 @@ msgstr "Kasutaja:"
 msgid "Clear List"
 msgstr "Puhasta nimekiri"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2082,7 +2082,7 @@ msgstr ""
 "selle omanik on kasutaja <b>%3</b>.</p><p>Kas tõesti ressurss lahutada?</p></"
 "qt>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Võõrressurss"
@@ -3462,18 +3462,16 @@ msgstr "Lähtekoht"
 msgid "Destination"
 msgstr "Sihtkoht"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool.</"
-"qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool."
+#~ "</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Sünkroonimine"

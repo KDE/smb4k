@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-01-28 14:35+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2094,7 +2094,7 @@ msgstr "Пользователь:"
 msgid "Clear List"
 msgstr "Очистить список"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2107,7 +2107,7 @@ msgstr ""
 "является пользователь <b>%3</b>.</p>Отключить этот общий сетевой ресурс?<p></"
 "p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Общий сетевой ресурс подключён другим пользователем"
@@ -3518,17 +3518,14 @@ msgstr "Откуда"
 msgid "Destination"
 msgstr "Куда"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr "<qt>Введите имя пользователя и пароль для хоста <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr "<qt>Введите имя пользователя и пароль для хоста <b>%1</b>.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Введите имя пользователя и пароль для общего ресурса <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Введите имя пользователя и пароль для общего ресурса <b>%1</b>.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Синхронизация"

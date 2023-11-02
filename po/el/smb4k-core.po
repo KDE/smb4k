@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2021-07-09 10:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2094,7 +2094,7 @@ msgstr "Χρήστης:"
 msgid "Clear List"
 msgstr "Καθαρισμός λίστας"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2107,7 +2107,7 @@ msgstr ""
 "κάτοχο τον χρήστη <b>%3</b>.</p><p>Θέλετ πράγματι να τον αποπροσαρτήσετε;</"
 "p></qt>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Ξένος κοινός πόρος"
@@ -3521,20 +3521,17 @@ msgstr "Πηγή"
 msgid "Destination"
 msgstr "Προορισμός"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Δώστε ένα όνομα χρήστη και έναν κωδικό πρόσβασης για τον υπολογιστή <b>"
-"%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Δώστε ένα όνομα χρήστη και έναν κωδικό πρόσβασης για τον υπολογιστή "
+#~ "<b>%1</b>.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Δώστε ένα όνομα χρήστη και έναν κωδικό πρόσβασης για τον κοινό πόρο <b>"
-"%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Δώστε ένα όνομα χρήστη και έναν κωδικό πρόσβασης για τον κοινό πόρο "
+#~ "<b>%1</b>.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Συγχρονισμός"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-09-09 00:33+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2058,7 +2058,7 @@ msgstr "Erabiltzailea:"
 msgid "Clear List"
 msgstr "Garbitu zerrenda"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2067,7 +2067,7 @@ msgstr ""
 "<p><b>%1</b> partekatzea <br><b>%2</b>(e)an muntatuta dago eta jabea <b>%3</"
 "b> erabiltzailea du.</p><p>Benetan desmuntatu nahi duzu?</p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partekatze arrotza"
@@ -3467,19 +3467,17 @@ msgstr "Sorburua"
 msgid "Destination"
 msgstr "Jomuga"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> ostalarirako.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> ostalarirako.</"
+#~ "qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> partekatzerako.</"
-"qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> partekatzerako."
+#~ "</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Sinkronizatzea"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-03-16 21:38+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2091,7 +2091,7 @@ msgstr "Benutzer:"
 msgid "Clear List"
 msgstr "Liste löschen"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2100,7 +2100,7 @@ msgstr ""
 "<p>Die Freigabe <b>%1</b> ist unter <br><b>%2</b> eingehängt und gehört dem "
 "Benutzer <b>%3</b>.</p><p>Möchten Sie die Freigabe wirklich aushängen?</p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Fremde Freigabe"
@@ -3525,20 +3525,17 @@ msgstr "Quellordner"
 msgid "Destination"
 msgstr "Zielordner"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für den Rechner <b>"
-"%1</b> ein.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für den Rechner "
+#~ "<b>%1</b> ein.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für die Freigabe <b>"
-"%1</b> ein.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für die Freigabe "
+#~ "<b>%1</b> ein.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Abgleich"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 21:55+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2074,7 +2074,7 @@ msgstr "Utente:"
 msgid "Clear List"
 msgstr "Svuota l'elenco"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2083,7 +2083,7 @@ msgstr ""
 "<p>La condivisione <b>%1</b> è montata in <br><b>%2</b> e di proprietà "
 "dell'utente <b>%3</b>.</p><p>Sei sicuro di volerla smontare?</p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Condivisione esterna"
@@ -3490,18 +3490,16 @@ msgstr "Sorgente"
 msgid "Destination"
 msgstr "Destinazione"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr "<qt>Inserisci il nome utente e la password per l'host <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Inserisci il nome utente e la password per l'host <b>%1</b>.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Inserisci il nome utente e la password per la condivisione <b>%1</b>.</"
-"qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Inserisci il nome utente e la password per la condivisione <b>%1</b>."
+#~ "</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Sincronizzazione"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-28 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-10-18 09:45+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -161,9 +161,9 @@ msgstr "Adreces d'interès"
 msgid "&Edit Bookmarks"
 msgstr "&Edita les adreces d'interès"
 
-#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:154
-#: smb4k/smb4ksharesviewdockwidget.cpp:227
+#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:143
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
+#: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "A&fegeix una adreça d'interès"
@@ -578,7 +578,7 @@ msgstr "Sumes de verificació"
 msgid "Main Window"
 msgstr "Finestra principal"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:217
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:215
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Veïnatge de xarxa"
@@ -683,17 +683,17 @@ msgstr "Pàgina 2: Exploració"
 msgid "Page 3: Wake-On-LAN"
 msgstr "Pàgina 3: Activació per LAN (Wake-On-LAN)"
 
-#: smb4k/smb4kmainwindow.cpp:135
+#: smb4k/smb4kmainwindow.cpp:133
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Acobla els ginys"
 
-#: smb4k/smb4kmainwindow.cpp:238 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:236 smb4k/smb4ksharesmenu.cpp:43
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Comparticions muntades"
 
-#: smb4k/smb4kmainwindow.cpp:373
+#: smb4k/smb4kmainwindow.cpp:371
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -703,100 +703,100 @@ msgstr ""
 "safata del sistema.<br>Useu <i>Surt</i> des del menú <i>Fitxer</i> per a "
 "sortir de l'aplicació.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:375
+#: smb4k/smb4kmainwindow.cpp:373
 #, kde-format
 msgid "Docking"
 msgstr "Acoblament"
 
-#: smb4k/smb4kmainwindow.cpp:431
+#: smb4k/smb4kmainwindow.cpp:429
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Actualment no hi ha cap compartició muntada."
 
-#: smb4k/smb4kmainwindow.cpp:434
+#: smb4k/smb4kmainwindow.cpp:432
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Actualment hi ha %1 compartició muntada."
 msgstr[1] "Actualment hi ha %1 comparticions muntades."
 
-#: smb4k/smb4kmainwindow.cpp:572
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "The wallet is used."
 msgstr "La cartera es troba en ús."
 
-#: smb4k/smb4kmainwindow.cpp:575
+#: smb4k/smb4kmainwindow.cpp:591
 #, kde-format
 msgid "The password dialog is used."
 msgstr "S'usa el diàleg de contrasenya."
 
-#: smb4k/smb4kmainwindow.cpp:585
+#: smb4k/smb4kmainwindow.cpp:601
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Cercant grups de treball i dominis..."
 
-#: smb4k/smb4kmainwindow.cpp:590
+#: smb4k/smb4kmainwindow.cpp:606
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Cercant servidors en el domini %1..."
 
-#: smb4k/smb4kmainwindow.cpp:595
+#: smb4k/smb4kmainwindow.cpp:611
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Cercant comparticions proporcionades pel servidor %1..."
 
-#: smb4k/smb4kmainwindow.cpp:603 smb4k/smb4kmainwindow.cpp:611
+#: smb4k/smb4kmainwindow.cpp:619 smb4k/smb4kmainwindow.cpp:627
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Cercant fitxers i directoris a %1..."
 
-#: smb4k/smb4kmainwindow.cpp:628
+#: smb4k/smb4kmainwindow.cpp:644
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Activant els servidors remots..."
 
-#: smb4k/smb4kmainwindow.cpp:633
+#: smb4k/smb4kmainwindow.cpp:649
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "S'està enviant un fitxer a la impressora %1..."
 
-#: smb4k/smb4kmainwindow.cpp:637
+#: smb4k/smb4kmainwindow.cpp:653
 #, kde-format
 msgid "Searching..."
 msgstr "S'està cercant..."
 
-#: smb4k/smb4kmainwindow.cpp:655 smb4k/smb4kmainwindow.cpp:692
-#: smb4k/smb4kmainwindow.cpp:779
+#: smb4k/smb4kmainwindow.cpp:671 smb4k/smb4kmainwindow.cpp:708
+#: smb4k/smb4kmainwindow.cpp:795
 #, kde-format
 msgid "Done."
 msgstr "Fet."
 
-#: smb4k/smb4kmainwindow.cpp:665
+#: smb4k/smb4kmainwindow.cpp:681
 #, kde-format
 msgid "Mounting..."
 msgstr "S'està muntant..."
 
-#: smb4k/smb4kmainwindow.cpp:669
+#: smb4k/smb4kmainwindow.cpp:685
 #, kde-format
 msgid "Unmounting..."
 msgstr "S'està desmuntant..."
 
-#: smb4k/smb4kmainwindow.cpp:673
+#: smb4k/smb4kmainwindow.cpp:689
 #, kde-format
 msgid "Waking up host..."
 msgstr "Activant el servidor..."
 
-#: smb4k/smb4kmainwindow.cpp:703
+#: smb4k/smb4kmainwindow.cpp:719
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 s'ha muntat correctament."
 
-#: smb4k/smb4kmainwindow.cpp:728
+#: smb4k/smb4kmainwindow.cpp:744
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 s'ha desmuntat correctament."
 
-#: smb4k/smb4kmainwindow.cpp:767
+#: smb4k/smb4kmainwindow.cpp:783
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "S'està sincronitzant «%1»"
@@ -847,111 +847,111 @@ msgstr "Adreça IP"
 msgid "Comment"
 msgstr "Comentari"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:122
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:405
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:468
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Escaneja la xa&rxa"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:124
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
 #, kde-format
 msgid "&Abort"
 msgstr "&Interromp"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:136
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
 #, kde-format
 msgid "&Search"
 msgstr "&Cerca"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:160
-#: smb4k/smb4ksharesviewdockwidget.cpp:232
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
+#: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:196
-#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Afegeix una &configuració personalitzada"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:171
-#: smb4k/smb4ksharesviewdockwidget.cpp:242
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:177 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Obre el diàleg de muntatge"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:183
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:196
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&tenticació"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:207
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
 #, kde-format
 msgid "Pre&view"
 msgstr "&Vista prèvia"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:218
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
 #, kde-format
 msgid "&Print File"
 msgstr "Im&primeix el fitxer"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:224
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:230
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "&Mount"
 msgstr "&Munta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:231
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "Desm&unta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:419
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:430
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Escaneja els o&rdinadors"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:455
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Escaneja els g&rups de treball"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -985,6 +985,18 @@ msgstr "Element avall"
 #, kde-format
 msgid "Item Up"
 msgstr "Element amunt"
+
+#: smb4k/smb4kpassworddialog.cpp:39
+#, fuzzy, kde-format
+#| msgid "Set the username and password for wallet entry %1."
+msgid "Please enter a username and a password for the host <b>%1</b>."
+msgstr "Defineix el nom d'usuari i contrasenya de l'entrada %1 de la cartera."
+
+#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#, fuzzy, kde-format
+#| msgid "Set the username and password for wallet entry %1."
+msgid "Please enter a username and a password for the share <b>%1</b>."
+msgstr "Defineix el nom d'usuari i contrasenya de l'entrada %1 de la cartera."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
@@ -1041,7 +1053,7 @@ msgstr "Imprimeix"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Imprimeix un fitxer en la impressora <b>%1</b>."
 
-#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "Desmu&nta-ho tot"
@@ -1071,57 +1083,57 @@ msgstr "Obre amb el Konsole"
 msgid "Open with File Manager"
 msgstr "Obre amb el gestor de fitxers"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:154
+#: smb4k/smb4ksharesviewdockwidget.cpp:137
 #, kde-format
 msgid "View Modes"
 msgstr "Modes de vista"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:160
+#: smb4k/smb4ksharesviewdockwidget.cpp:143
 #, kde-format
 msgid "Icon View"
 msgstr "Vista d'icones"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:166
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
 #, kde-format
 msgid "List View"
 msgstr "Vista de llista"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:197
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:247
+#: smb4k/smb4ksharesviewdockwidget.cpp:230
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&incronitza"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#: smb4k/smb4ksharesviewdockwidget.cpp:235
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:265
+#: smb4k/smb4ksharesviewdockwidget.cpp:248
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Obre amb el Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:270
+#: smb4k/smb4ksharesviewdockwidget.cpp:253
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:272
+#: smb4k/smb4ksharesviewdockwidget.cpp:255
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Obre amb el gestor de f&itxers"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:277
+#: smb4k/smb4ksharesviewdockwidget.cpp:260
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:392
+#: smb4k/smb4ksharesviewdockwidget.cpp:375
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

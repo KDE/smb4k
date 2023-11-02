@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-11-02 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 17:33+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2090,7 +2090,7 @@ msgstr "Користувач:"
 msgid "Clear List"
 msgstr "Спорожнити список"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:776
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2099,7 +2099,7 @@ msgstr ""
 "<p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
 "користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p>"
 
-#: smb4kmounter.cpp:783
+#: smb4kmounter.cpp:781
 #, kde-format
 msgid "Foreign Share"
 msgstr "Сторонній ресурс"
@@ -3530,20 +3530,17 @@ msgstr "Джерело"
 msgid "Destination"
 msgstr "Призначення"
 
-#: smb4kwalletmanager_p.cpp:35
-#, kde-format
-msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до вузла <b>"
-"%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до вузла <b>"
+#~ "%1</b>.</qt>"
 
-#: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
-#, kde-format
-msgid ""
-"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-msgstr ""
-"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до спільного "
-"ресурсу <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до "
+#~ "спільного ресурсу <b>%1</b>.</qt>"
 
 #~ msgid "Synchronization"
 #~ msgstr "Синхронізація"
