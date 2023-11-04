@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-03 00:43+0000\n"
-"PO-Revision-Date: 2023-10-19 12:05+0200\n"
+"PO-Revision-Date: 2023-11-03 10:10+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -1005,20 +1005,18 @@ msgid "Item Up"
 msgstr "Déplacer l'élément vers le haut"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
-"Définir un nom d'utilisateur et un mot de passe pour l'entrée <b>%1</b> du "
-"portefeuille."
+"Veuillez saisir un nom d'utilisateur et un mot de passe pour l'hôte <b>%1</"
+"b>."
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
-"Définir un nom d'utilisateur et un mot de passe pour l'entrée <b>%1</b> du "
-"portefeuille."
+"Veuillez saisir un nom d'utilisateur et un mot de passe pour le partage <b>"
+"%1</b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format

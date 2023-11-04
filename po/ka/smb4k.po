@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-03 00:43+0000\n"
-"PO-Revision-Date: 2023-10-19 06:02+0200\n"
+"PO-Revision-Date: 2023-11-04 06:41+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -411,8 +411,8 @@ msgstr "<qt>შეიყვანეთ სასურველი პარა
 #: smb4k/smb4kconfigpagemounting.cpp:797
 #, kde-format
 msgid ""
-"The following entry is going to be removed from the additional options:<br>"
-"%2.<br>Please read the handbook for details."
+"The following entry is going to be removed from the additional options:"
+"<br>%2.<br>Please read the handbook for details."
 msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
@@ -420,8 +420,8 @@ msgstr[0] ""
 "დამატებითი პარამეტრებიდან წაიშლება შემდეგი ჩანაწერი: <br>%2.<br> "
 "დეტალებისთვის გადაიკითხეთ სახელმძღვანელო."
 msgstr[1] ""
-"დამატებითი პარამეტრებიდან წაიშლება შემდეგი %1 ჩანაწერი: <br>%2 "
-"<br>sდეტალებისთვის გადაიკითხეთ სახელმძღვანელო.</qt>"
+"დამატებითი პარამეტრებიდან წაიშლება %1 ჩანაწერი: <br>%2.<br> დეტალებისთვის "
+"გადაიკითხეთ სახელმძღვანელო."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
@@ -979,16 +979,14 @@ msgid "Item Up"
 msgstr "ჩანაწერი მაღლა"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr "დააყენეთ მომხმარებელი და პაროლი საფულის ჩანაწერისთვის %1."
+msgstr "შეიყვანეთ მომხმარებლის სახელი და პაროლი ჰოსტისთვის <b>%1</b>."
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr "დააყენეთ მომხმარებელი და პაროლი საფულის ჩანაწერისთვის %1."
+msgstr "შეიყვანეთ მომხმარებლის სახელი და პაროლი გაზიარებულისთვის <b>%1</b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
