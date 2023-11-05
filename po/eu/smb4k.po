@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-03 00:43+0000\n"
-"PO-Revision-Date: 2023-10-18 23:02+0200\n"
+"PO-Revision-Date: 2023-11-04 19:35+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -982,16 +982,18 @@ msgid "Item Up"
 msgstr "Elementua zama-igo"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Set the username and password for wallet entry %1."
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr "Ezarri zorroko %1 sarreraren erabiltzaile-izena eta pasahitza."
+msgstr ""
+"Mesedez, sartu <b>%1</b> ostalarirako erabiltzaile-izen eta pasahitz bat."
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Set the username and password for wallet entry %1."
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr "Ezarri zorroko %1 sarreraren erabiltzaile-izena eta pasahitza."
+msgstr ""
+"Mesedez, sartu <b>%1</b> partekaturako erabiltzaile-izen eta pasahitz bat."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
@@ -1348,3 +1350,4 @@ msgstr "Neurria:"
 
 #~ msgid "Protocols"
 #~ msgstr "Protokoloak"
+
