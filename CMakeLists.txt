@@ -114,7 +114,7 @@ endif()
 
 # Install the plasmoid if desired
 if (SMB4K_INSTALL_PLASMOID)
-  find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} COMPONENTS Plasma)
+  find_package(KF${QT_MAJOR_VERSION} COMPONENTS Plasma)
   set_package_properties(KF${QT_MAJOR_VERSION}Plasma PROPERTIES TYPE RUNTIME)
 endif()
 
