@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:33+0000\n"
-"PO-Revision-Date: 2023-10-28 12:34+0200\n"
+"PO-Revision-Date: 2023-11-04 11:45+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -999,20 +999,17 @@ msgid "Item Up"
 msgstr "Elemento arriba"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
-"Establecer el nombre de usuario y contraseña para la entrada de la cartera "
-"%1."
+"Introduzca un nombre de usuario y una contraseña para el servidor <b>%1</b>."
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
-"Establecer el nombre de usuario y contraseña para la entrada de la cartera "
-"%1."
+"Introduzca un nombre de usuario y una contraseña para el recurso compartido "
+"<b>%1</b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format

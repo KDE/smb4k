@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:33+0000\n"
-"PO-Revision-Date: 2023-03-11 22:57+0200\n"
+"PO-Revision-Date: 2023-10-23 15:15+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -64,17 +64,13 @@ msgstr "Näytä mukautettu kirjanmerkkinimiö, jos käytettävissä"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"Älä näytä kirjanmerkityn jaon nimeä vaan mukautettu nimiö, joka asetetaan "
-"kirjanmerkkimuokkaimessa.Älä näytä kirjanmerkityn jaon nimeä vaan mukautettu "
-"nimiö, joka asetetaan kirjanmerkkimuokkaimessa."
+"Älä näytä kirjanmerkitystä jaosta nimeä vaan kirjanmerkkimuokkaimessa "
+"asetettu nimiö."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40
