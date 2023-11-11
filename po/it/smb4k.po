@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:33+0000\n"
-"PO-Revision-Date: 2023-10-26 17:45+0200\n"
+"PO-Revision-Date: 2023-11-08 16:32+0100\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -984,22 +984,14 @@ msgid "Item Up"
 msgstr "Elemento su"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr ""
-"<qt>Inserisci il nome utente e la password per la condivisione <b>%1</b>.</"
-"qt>"
+msgstr "Inserisci un nome utente e una password per l'host <b>%1</b>."
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr ""
-"<qt>Inserisci il nome utente e la password per la condivisione <b>%1</b>.</"
-"qt>"
+msgstr "Inserisci un nome utente e una password per la condivisione <b>%1</b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
