@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-02 00:43+0000\n"
+"POT-Creation-Date: 2023-11-05 12:33+0000\n"
 "PO-Revision-Date: 2011-07-19 21:17+0300\n"
 "Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -2750,45 +2750,45 @@ msgstr ""
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "Директория %1 не може да бъде създадена."
 
-#: smb4knotification.cpp:47
+#: smb4knotification.cpp:56 smb4knotification.cpp:59
 #, fuzzy, kde-format
 #| msgid "Open"
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Отваряне"
 
-#: smb4knotification.cpp:70
+#: smb4knotification.cpp:76
 #, fuzzy, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "Директория %1 не може да бъде създадена."
 
-#: smb4knotification.cpp:83
+#: smb4knotification.cpp:89
 #, fuzzy, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "Директория %1 не може да бъде създадена."
 msgstr[1] "Директория %1 не може да бъде създадена."
 
-#: smb4knotification.cpp:95
+#: smb4knotification.cpp:101
 #, fuzzy, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "Директория %1 не може да бъде създадена."
 msgstr[1] "Директория %1 не може да бъде създадена."
 
-#: smb4knotification.cpp:111
+#: smb4knotification.cpp:117
 #, fuzzy, kde-format
 msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:120
+#: smb4knotification.cpp:126
 #, kde-format
 msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
 "either no wallet available or it could not be opened.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:130
+#: smb4knotification.cpp:136
 #, fuzzy, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -2796,42 +2796,42 @@ msgid ""
 msgstr ""
 "Вида '%1' не се поддържа. Моля преобразувайте файла в PostScript или PDF."
 
-#: smb4knotification.cpp:143
+#: smb4knotification.cpp:149
 #, fuzzy, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "Принтерите не могат да се отметнат."
 
-#: smb4knotification.cpp:156
+#: smb4knotification.cpp:162
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
 "being used and will automatically be renamed.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:176
+#: smb4knotification.cpp:182
 #, fuzzy, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:178
+#: smb4knotification.cpp:184
 #, fuzzy, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:196
+#: smb4knotification.cpp:202
 #, fuzzy, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
 "p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:198
+#: smb4knotification.cpp:204
 #, fuzzy, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:215
+#: smb4knotification.cpp:221
 #, fuzzy, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -2840,113 +2840,113 @@ msgstr ""
 "Нямате разрешение за демонтиране на този ресурс тъй като е собственост на "
 "друг потребител."
 
-#: smb4knotification.cpp:230
+#: smb4knotification.cpp:236
 #, fuzzy, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:232
+#: smb4knotification.cpp:238
 #, fuzzy, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:244
+#: smb4knotification.cpp:250
 #, fuzzy, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "Команда %1 не може да бъде намерена."
 
-#: smb4knotification.cpp:255
+#: smb4knotification.cpp:261
 #, fuzzy, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "Принтерите не могат да се отметнат."
 
-#: smb4knotification.cpp:264
+#: smb4knotification.cpp:270
 #, fuzzy, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "Команда %1 не може да бъде намерена."
 
-#: smb4knotification.cpp:274
+#: smb4knotification.cpp:280
 #, fuzzy, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:276
+#: smb4knotification.cpp:282
 #, fuzzy, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:290 smb4knotification.cpp:293
+#: smb4knotification.cpp:296 smb4knotification.cpp:299
 #, fuzzy, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:295
+#: smb4knotification.cpp:301
 #, fuzzy, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "Файл за отпечатване"
 
-#: smb4knotification.cpp:308
+#: smb4knotification.cpp:314
 #, fuzzy, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "Команда %1 не може да бъде намерена."
 
-#: smb4knotification.cpp:319
+#: smb4knotification.cpp:325
 #, fuzzy, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "Правата бяха отказани."
 
-#: smb4knotification.cpp:323
+#: smb4knotification.cpp:329
 #, fuzzy, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "Правата бяха отказани."
 
-#: smb4knotification.cpp:327
+#: smb4knotification.cpp:333
 #, fuzzy, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "Правата бяха отказани."
 
-#: smb4knotification.cpp:331
+#: smb4knotification.cpp:337
 #, fuzzy, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "Правата бяха отказани."
 
-#: smb4knotification.cpp:335
+#: smb4knotification.cpp:341
 #, fuzzy, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "Правата бяха отказани."
 
-#: smb4knotification.cpp:340
+#: smb4knotification.cpp:346
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:398
+#: smb4knotification.cpp:404
 #, fuzzy, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 "</p>"
 msgstr "Правата бяха отказани."
 
-#: smb4knotification.cpp:400
+#: smb4knotification.cpp:406
 #, fuzzy, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "Проверка на близката мрежа за налични работни групи и домейни."
 
-#: smb4knotification.cpp:412
+#: smb4knotification.cpp:418
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:420
+#: smb4knotification.cpp:426
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
 
-#: smb4knotification.cpp:428
+#: smb4knotification.cpp:434
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""

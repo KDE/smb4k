@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-03 00:43+0000\n"
-"PO-Revision-Date: 2023-08-28 18:00+0300\n"
+"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"PO-Revision-Date: 2023-10-23 15:13+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -117,10 +117,9 @@ msgid "Main Toolbar"
 msgstr "Päätyökalurivi"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Tee tästä jaosta kirjanmerkki"
+msgstr "Tee jaoista kirjanmerkit"
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
 #, kde-format
@@ -128,6 +127,8 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"Kaikista luettelon jaoista tehdään kirjanmerkki. Kaksoisnapsauta "
+"kirjanmerkkikohtaa lisätäksesi nimiön tai luokan."
 
 #: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:116
@@ -589,10 +590,9 @@ msgid "Shares View"
 msgstr "Jakonäkymä"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Mukautetut valinnat"
+msgstr "Oma asetusmuokkain"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
 #, kde-format
@@ -995,15 +995,14 @@ msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr "Aseta lompakkotietueen %1 käyttäjätunnus ja salasana."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Preview Dialog"
 msgstr "Esikatseluikkuna"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Lataa uudelleen"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
 #, kde-format
@@ -1011,52 +1010,44 @@ msgid "Abort"
 msgstr "Keskeytä"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
-#, fuzzy, kde-format
-#| msgid "Up"
+#, kde-format
 msgid "Up"
-msgstr "Ylös"
+msgstr "Ylemmäs"
 
 #: smb4k/smb4kpreviewdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#, kde-format
 msgid "Preview of %1"
-msgstr "&Esikatselu"
+msgstr "%1 – esikatselu"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Esikatseluikkuna"
+msgstr "Tulostusikkuna"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Tulosta tiedosto"
+msgstr "Tulosta tiedosto."
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "File:"
+#, kde-format
 msgid "File:"
 msgstr "Tiedosto:"
 
 #: smb4k/smb4kprintdialog.cpp:68
-#, fuzzy, kde-format
-#| msgid "Copies:"
+#, kde-format
 msgid "Copies:"
 msgstr "Kopioita:"
 
 #: smb4k/smb4kprintdialog.cpp:86
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "Tulostin"
+msgstr "Tulosta"
 
 #: smb4k/smb4kprintdialog.cpp:122
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Lähetetään tiedosto tulostimelle %1…"
+msgstr "Tulosta tiedosto tulostimella <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
@@ -1149,12 +1140,14 @@ msgstr ""
 "tiedostoja tänne.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Source:"
 msgid "Source:"
 msgstr "Lähde:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Destination:"
 msgid "Destination:"
 msgstr "Kohde:"
 
