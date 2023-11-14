@@ -53,6 +53,7 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(QWidget *parent)
     descriptionWidgetLayout->addWidget(descriptionText);
 
     layout->addWidget(descriptionWidget);
+    layout->addSpacing(layout->spacing());
 
     m_listWidget = new QListWidget(this);
     m_listWidget->setSelectionMode(QListWidget::SingleSelection);

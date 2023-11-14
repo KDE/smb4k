@@ -56,6 +56,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     descriptionWidgetLayout->addWidget(descriptionText);
 
     layout->addWidget(descriptionWidget);
+    layout->addSpacing(layout->spacing());
 
     QWidget *inputWidget = new QWidget(this);
 

@@ -51,6 +51,7 @@ Smb4KPrintDialog::Smb4KPrintDialog(QWidget *parent)
     descriptionWidgetLayout->addWidget(m_descriptionText);
 
     layout->addWidget(descriptionWidget);
+    layout->addSpacing(layout->spacing());
 
     QWidget *inputWidget = new QWidget(this);
 
