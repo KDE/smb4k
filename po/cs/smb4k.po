@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-14 00:42+0000\n"
 "PO-Revision-Date: 2023-11-07 15:46+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -299,7 +299,7 @@ msgstr "Přidat kategorii"
 msgid "Clear List"
 msgstr "Smazat seznam"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:463
+#: smb4k/smb4kconfigpagebookmarks.cpp:467
 #, kde-format
 msgid "New Category"
 msgstr "Nová kategorie"

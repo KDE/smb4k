@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-14 00:42+0000\n"
 "PO-Revision-Date: 2017-09-04 09:51+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -310,7 +310,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Išvalyti sąrašą"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:463
+#: smb4k/smb4kconfigpagebookmarks.cpp:467
 #, kde-format
 msgid "New Category"
 msgstr ""
