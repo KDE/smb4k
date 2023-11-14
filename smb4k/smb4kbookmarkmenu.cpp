@@ -1,7 +1,7 @@
 /*
     smb4kbookmarkmenu  -  Bookmark menu
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -23,9 +23,6 @@
 // KDE includes
 #include <KIconLoader>
 #include <KLocalizedString>
-#include <KMessageBox>
-#include <KPluginFactory>
-#include <KPluginMetaData>
 
 using namespace Smb4KGlobal;
 
@@ -96,6 +93,7 @@ void Smb4KBookmarkMenu::loadBookmarks()
     categories.sort();
 
     KActionMenu *categoryMenu = nullptr;
+    QMap<QString, QAction *> topLevelActions;
 
     for (const QString &category : qAsConst(categories)) {
         if (!category.isEmpty()) {
@@ -104,6 +102,8 @@ void Smb4KBookmarkMenu::loadBookmarks()
 
             addAction(categoryMenu);
             m_categories->addAction(categoryMenu);
+
+            topLevelActions[QStringLiteral("00_")+category] = categoryMenu;
 
             QAction *categoryMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount Bookmarks"), categoryMenu->menu());
             categoryMount->setData(category);
@@ -149,15 +149,28 @@ void Smb4KBookmarkMenu::loadBookmarks()
                 }
             }
 
-            actionMap[displayName] = bookmarkAction;
+            if (!category.isEmpty()) {
+                actionMap[displayName] = bookmarkAction;
+            } else {
+                topLevelActions[QStringLiteral("01_")+displayName] = bookmarkAction;
+            }
         }
 
         QMapIterator<QString, QAction *> it(actionMap);
 
         while (it.hasNext()) {
             it.next();
-            categoryMenu->addAction(it.value());
+            if (!category.isEmpty()) {
+                categoryMenu->addAction(it.value());
+            }
         }
+    }
+
+    QMapIterator<QString, QAction *> it(topLevelActions);
+
+    while (it.hasNext()) {
+        QAction *action = it.next().value();
+        addAction(action);
     }
 
     adjustMountActions();
@@ -166,9 +179,6 @@ void Smb4KBookmarkMenu::loadBookmarks()
     m_separator->setVisible(!Smb4KBookmarkHandler::self()->bookmarkList().isEmpty());
 
     menu()->update();
-
-    // menu()->adjustSize();
-    // QCoreApplication::processEvents();
 }
 
 void Smb4KBookmarkMenu::setBookmarkActionEnabled(bool enable)
@@ -241,7 +251,7 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool checked)
     Q_UNUSED(checked);
 
     if (m_bookmarkEditor.isNull()) {
-        m_bookmarkEditor = new Smb4KBookmarkEditor();
+        m_bookmarkEditor = new Smb4KBookmarkEditor(menu());
         m_bookmarkEditor->open();
     } else {
         m_bookmarkEditor->raise();
