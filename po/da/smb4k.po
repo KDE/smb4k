@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-14 00:42+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -314,7 +314,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Ryd listen"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:463
+#: smb4k/smb4kconfigpagebookmarks.cpp:467
 #, kde-format
 msgid "New Category"
 msgstr ""

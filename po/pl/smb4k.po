@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-14 00:42+0000\n"
 "PO-Revision-Date: 2023-11-04 12:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -307,7 +307,7 @@ msgstr "Dodaj kategorię"
 msgid "Clear List"
 msgstr "Wyczyść listę"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:463
+#: smb4k/smb4kconfigpagebookmarks.cpp:467
 #, kde-format
 msgid "New Category"
 msgstr "Nowa kategoria"
