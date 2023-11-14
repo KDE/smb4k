@@ -151,6 +151,7 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     loadBookmarks();
 
     connect(this, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigPageBookmarks::slotEnableButtons);
+    connect(this, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigPageBookmarks::sortItems);
     connect(Smb4KBookmarkHandler::self(), &Smb4KBookmarkHandler::updated, this, &Smb4KConfigPageBookmarks::loadBookmarks);
     connect(KIconLoader::global(), &KIconLoader::iconChanged, this, &Smb4KConfigPageBookmarks::slotIconSizeChanged);
 }
@@ -201,16 +202,6 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
                 bookmarkItem->setData(0, TypeRole, BookmarkType);
                 bookmarkItem->setData(0, DataRole, variant);
             }
-        }
-    }
-
-    sortItems();
-
-    for (int i = 0; i < m_treeWidget->topLevelItemCount(); ++i) {
-        QTreeWidgetItem *item = m_treeWidget->topLevelItem(i);
-
-        if (item->childCount() > 0) {
-            item->setExpanded(true);
         }
     }
 
@@ -339,8 +330,6 @@ void Smb4KConfigPageBookmarks::endEditingCategoryItem(QTreeWidgetItem *item)
 
         m_categoryEdit->addItem(item->text(0));
         m_categoryEdit->completionObject()->addItem(item->text(0));
-
-        sortItems();
 
         Q_EMIT bookmarksModified();
     }
@@ -655,7 +644,7 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
                 m_categoryEdit->completionObject()->addItem(m_categoryEdit->currentText());
             }
 
-            sortItems();
+            Q_EMIT bookmarksModified();
         }
     }
 }
