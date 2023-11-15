@@ -1,7 +1,7 @@
 /*
     This is the bookmark container for Smb4K (next generation).
 
-    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -228,5 +228,7 @@ public:
 private:
     const QScopedPointer<Smb4KBookmarkPrivate> d;
 };
+
+Q_DECLARE_METATYPE(Smb4KBookmark)
 
 #endif
