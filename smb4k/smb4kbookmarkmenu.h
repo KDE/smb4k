@@ -1,7 +1,7 @@
 /*
     smb4kbookmarkmenu  -  Bookmark menu
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -17,8 +17,7 @@
 #include <QPointer>
 
 // KDE includes
-#include <KWidgetsAddons/KActionMenu>
-#include <KXmlGui/KActionCollection>
+#include <KActionMenu>
 
 // forward declarations
 class Smb4KBookmark;
@@ -44,9 +43,7 @@ public:
     ~Smb4KBookmarkMenu();
 
     /**
-     * Force the menu to be set up again. This should be called if
-     * the settings changed and the handling of bookmarks might be
-     * affected.
+     * Refresh the menu
      */
     void refreshMenu();
 
@@ -54,6 +51,12 @@ public:
      * Enable/disable the 'Add Bookmark' action
      */
     void setBookmarkActionEnabled(bool enable);
+
+public Q_SLOTS:
+    /**
+     * Load the bookmarks into the menu
+     */
+    void loadBookmarks();
 
 Q_SIGNALS:
     /**
@@ -83,31 +86,16 @@ protected Q_SLOTS:
     void slotBookmarkActionTriggered(QAction *action);
 
     /**
-     * Called when the list bookmarks has been updated
-     */
-    void slotBookmarksUpdated();
-
-    /**
      * Called when a bookmark was unmounted
      */
     void slotEnableBookmark(const SharePtr &share);
 
 private:
     /**
-     * Add a bookmark to the menu
-     */
-    void addBookmarkToMenu(const BookmarkPtr &bookmark);
-
-    /**
      * Enables or disables the mount actions according to the status
      * of the bookmarks in their respective category.
      */
     void adjustMountActions();
-
-    /**
-     * Type
-     */
-    int m_type;
 
     /**
      * The actions
