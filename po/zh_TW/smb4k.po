@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 00:42+0000\n"
+"POT-Creation-Date: 2023-11-15 00:43+0000\n"
 "PO-Revision-Date: 2019-04-09 23:19+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -131,14 +131,14 @@ msgid ""
 "click the respective bookmark entry."
 msgstr ""
 
-#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr ""
 
-#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
 msgstr ""
@@ -148,24 +148,24 @@ msgstr ""
 msgid "Bookmark Editor"
 msgstr "書籤"
 
-#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
 #, fuzzy, kde-format
 msgid "Bookmarks"
 msgstr "書籤"
 
-#: smb4k/smb4kbookmarkmenu.cpp:41
+#: smb4k/smb4kbookmarkmenu.cpp:38
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "編輯書籤(&E)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, fuzzy, kde-format
 msgid "Add &Bookmark"
 msgstr "編輯書籤(&E)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:55 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
 #, fuzzy, kde-format
 msgid "Mount Bookmarks"
 msgstr "編輯書籤(&E)"
@@ -282,13 +282,13 @@ msgstr ""
 msgid "Username:"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, fuzzy, kde-format
 msgid "Workgroup:"
 msgstr "工作群組："
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Clear List"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:467
+#: smb4k/smb4kconfigpagebookmarks.cpp:456
 #, kde-format
 msgid "New Category"
 msgstr ""
@@ -810,19 +810,19 @@ msgid ""
 "share."
 msgstr ""
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
 #, fuzzy, kde-format
 #| msgid "Restrictions"
 msgid "Location:"
 msgstr "限制"
 
-#: smb4k/smb4kmountdialog.cpp:106
+#: smb4k/smb4kmountdialog.cpp:107
 #, fuzzy, kde-format
 msgid "Bookmark this share"
 msgstr "書籤"
 
-#: smb4k/smb4kmountdialog.cpp:145
+#: smb4k/smb4kmountdialog.cpp:146
 #, fuzzy, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
@@ -1031,22 +1031,22 @@ msgstr "掛載(&M)"
 msgid "Print a file."
 msgstr "列印檔案"
 
-#: smb4k/smb4kprintdialog.cpp:60
+#: smb4k/smb4kprintdialog.cpp:61
 #, fuzzy, kde-format
 msgid "File:"
 msgstr "檔案："
 
-#: smb4k/smb4kprintdialog.cpp:68
+#: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
 msgid "Copies:"
 msgstr ""
 
-#: smb4k/smb4kprintdialog.cpp:86
+#: smb4k/smb4kprintdialog.cpp:87
 #, fuzzy, kde-format
 msgid "Print"
 msgstr "列印檔案"
 
-#: smb4k/smb4kprintdialog.cpp:122
+#: smb4k/smb4kprintdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid "Sending file to printer..."
 msgid "Print a file to printer <b>%1</b>."

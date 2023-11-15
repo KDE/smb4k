@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 00:42+0000\n"
+"POT-Creation-Date: 2023-11-15 00:43+0000\n"
 "PO-Revision-Date: 2023-11-11 14:17+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -131,14 +131,14 @@ msgstr ""
 "Vanse marcar todas as comparticións listadas. Para engadir unha etiqueta ou "
 "categoría, prema duplo a súa entrada nos marcadores."
 
-#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
 msgstr "Categoría:"
@@ -148,24 +148,24 @@ msgstr "Categoría:"
 msgid "Bookmark Editor"
 msgstr "Editor de marcadores"
 
-#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: smb4k/smb4kbookmarkmenu.cpp:41
+#: smb4k/smb4kbookmarkmenu.cpp:38
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Editar os marcadores"
 
-#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Engadir un &marcador"
 
-#: smb4k/smb4kbookmarkmenu.cpp:55 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Montar os marcadores"
@@ -283,13 +283,13 @@ msgstr ""
 msgid "Username:"
 msgstr "Nome de usuaria:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Grupo de traballo:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -306,7 +306,7 @@ msgstr "Engadir unha categoría"
 msgid "Clear List"
 msgstr "Limpar a lista"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:467
+#: smb4k/smb4kconfigpagebookmarks.cpp:456
 #, kde-format
 msgid "New Category"
 msgstr "Nova categoría"
@@ -812,18 +812,18 @@ msgstr ""
 "Insira o lugar e opcionalmente o enderezo IP e grupo de traballo para montar "
 "unha compartición."
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
 #, kde-format
 msgid "Location:"
 msgstr "Lugar:"
 
-#: smb4k/smb4kmountdialog.cpp:106
+#: smb4k/smb4kmountdialog.cpp:107
 #, kde-format
 msgid "Bookmark this share"
 msgstr "Marcar esta compartición"
 
-#: smb4k/smb4kmountdialog.cpp:145
+#: smb4k/smb4kmountdialog.cpp:146
 #, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
@@ -1029,22 +1029,22 @@ msgstr "Diálogo de impresión"
 msgid "Print a file."
 msgstr "Imprimir un ficheiro."
 
-#: smb4k/smb4kprintdialog.cpp:60
+#: smb4k/smb4kprintdialog.cpp:61
 #, kde-format
 msgid "File:"
 msgstr "Ficheiro:"
 
-#: smb4k/smb4kprintdialog.cpp:68
+#: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
 msgid "Copies:"
 msgstr "Copias:"
 
-#: smb4k/smb4kprintdialog.cpp:86
+#: smb4k/smb4kprintdialog.cpp:87
 #, kde-format
 msgid "Print"
 msgstr "Imprimir"
 
-#: smb4k/smb4kprintdialog.cpp:122
+#: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Imprimir un ficheiro na impresora <b>%1</b>."

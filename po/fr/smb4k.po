@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 00:42+0000\n"
+"POT-Creation-Date: 2023-11-15 00:43+0000\n"
 "PO-Revision-Date: 2023-11-03 10:10+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -149,14 +149,14 @@ msgstr ""
 "étiquette ou une catégorie, veuillez cliquer sur l'entrée correspondante "
 "d'un signet."
 
-#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Étiquette :"
 
-#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
 msgstr "Catégorie :"
@@ -166,24 +166,24 @@ msgstr "Catégorie :"
 msgid "Bookmark Editor"
 msgstr "Éditeur de signets"
 
-#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Bookmarks"
 msgstr "Signets"
 
-#: smb4k/smb4kbookmarkmenu.cpp:41
+#: smb4k/smb4kbookmarkmenu.cpp:38
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Modifier des signets"
 
-#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Ajouter un signet"
 
-#: smb4k/smb4kbookmarkmenu.cpp:55 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Monter tous les signets"
@@ -304,13 +304,13 @@ msgstr ""
 msgid "Username:"
 msgstr "Nom d'utilisateur :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Groupe de travail :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -327,7 +327,7 @@ msgstr "Ajouter une catégorie"
 msgid "Clear List"
 msgstr "Effacer la liste"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:467
+#: smb4k/smb4kconfigpagebookmarks.cpp:456
 #, kde-format
 msgid "New Category"
 msgstr "Nouvelle catégorie"
@@ -833,18 +833,18 @@ msgstr ""
 "Saisissez l'emplacement et, de façon facultative, l'adresse IP et le groupe "
 "de travail pour monter un partage."
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
 #, kde-format
 msgid "Location:"
 msgstr "Emplacement :"
 
-#: smb4k/smb4kmountdialog.cpp:106
+#: smb4k/smb4kmountdialog.cpp:107
 #, kde-format
 msgid "Bookmark this share"
 msgstr "Ajouter ce partage aux signets"
 
-#: smb4k/smb4kmountdialog.cpp:145
+#: smb4k/smb4kmountdialog.cpp:146
 #, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
@@ -1053,22 +1053,22 @@ msgstr "Boîte de dialogue d'impression"
 msgid "Print a file."
 msgstr "Imprimer un fichier."
 
-#: smb4k/smb4kprintdialog.cpp:60
+#: smb4k/smb4kprintdialog.cpp:61
 #, kde-format
 msgid "File:"
 msgstr "Fichier :"
 
-#: smb4k/smb4kprintdialog.cpp:68
+#: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
 msgid "Copies:"
 msgstr "Copies :"
 
-#: smb4k/smb4kprintdialog.cpp:86
+#: smb4k/smb4kprintdialog.cpp:87
 #, kde-format
 msgid "Print"
 msgstr "Imprimer"
 
-#: smb4k/smb4kprintdialog.cpp:122
+#: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Imprimer un fichier sur l'imprimante <b>%1</b>."

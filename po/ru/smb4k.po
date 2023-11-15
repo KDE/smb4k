@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 00:42+0000\n"
+"POT-Creation-Date: 2023-11-15 00:43+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -139,14 +139,14 @@ msgid ""
 "click the respective bookmark entry."
 msgstr ""
 
-#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr ""
 
-#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
 msgstr ""
@@ -156,17 +156,17 @@ msgstr ""
 msgid "Bookmark Editor"
 msgstr "Редактор закладок"
 
-#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: smb4k/smb4kbookmarkmenu.cpp:41
+#: smb4k/smb4kbookmarkmenu.cpp:38
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Изменить закладки..."
 
-#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -174,7 +174,7 @@ msgid "Add &Bookmark"
 msgstr "Добавить &закладку"
 
 # BUGME: add accelerator? split? --aspotashev
-#: smb4k/smb4kbookmarkmenu.cpp:55 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
 #, fuzzy, kde-format
 #| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
@@ -292,13 +292,13 @@ msgstr "Укажите имя пользователя и пароль для у
 msgid "Username:"
 msgstr "Имя пользователя:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Рабочая группа"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -315,7 +315,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Очистить список"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:467
+#: smb4k/smb4kconfigpagebookmarks.cpp:456
 #, kde-format
 msgid "New Category"
 msgstr ""
@@ -838,18 +838,18 @@ msgid ""
 "share."
 msgstr ""
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
 #, kde-format
 msgid "Location:"
 msgstr "Расположение:"
 
-#: smb4k/smb4kmountdialog.cpp:106
+#: smb4k/smb4kmountdialog.cpp:107
 #, fuzzy, kde-format
 msgid "Bookmark this share"
 msgstr "Редактор закладок"
 
-#: smb4k/smb4kmountdialog.cpp:145
+#: smb4k/smb4kmountdialog.cpp:146
 #, fuzzy, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
@@ -1057,23 +1057,23 @@ msgstr "Предпросмотр"
 msgid "Print a file."
 msgstr "Диалог печати"
 
-#: smb4k/smb4kprintdialog.cpp:60
+#: smb4k/smb4kprintdialog.cpp:61
 #, fuzzy, kde-format
 msgid "File:"
 msgstr "%1 Файл)"
 
-#: smb4k/smb4kprintdialog.cpp:68
+#: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
 msgid "Copies:"
 msgstr "Копии:"
 
-#: smb4k/smb4kprintdialog.cpp:86
+#: smb4k/smb4kprintdialog.cpp:87
 #, fuzzy, kde-format
 #| msgid "Printer"
 msgid "Print"
 msgstr "Принтер"
 
-#: smb4k/smb4kprintdialog.cpp:122
+#: smb4k/smb4kprintdialog.cpp:123
 #, fuzzy, kde-format
 #| msgid "Sending file to printer %1..."
 msgid "Print a file to printer <b>%1</b>."

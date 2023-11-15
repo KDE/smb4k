@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-14 00:42+0000\n"
+"POT-Creation-Date: 2023-11-15 00:43+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -127,14 +127,14 @@ msgstr ""
 "목록에 있는 모든 공유를 책갈피에 추가합니다. 레이블이나 분류를 추가하려면 해"
 "당 책갈피 항목을 두 번 클릭하십시오."
 
-#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "이름표:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
 msgstr "분류:"
@@ -144,24 +144,24 @@ msgstr "분류:"
 msgid "Bookmark Editor"
 msgstr "책갈피 편집기"
 
-#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Bookmarks"
 msgstr "책갈피"
 
-#: smb4k/smb4kbookmarkmenu.cpp:41
+#: smb4k/smb4kbookmarkmenu.cpp:38
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "책갈피 편집(&E)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "책갈피 추가(&B)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:55 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "책갈피 마운트"
@@ -278,13 +278,13 @@ msgstr "기본 로그인 사용자 이름과 암호를 설정하십시오."
 msgid "Username:"
 msgstr "사용자 이름:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "작업 그룹:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -301,7 +301,7 @@ msgstr "분류 추가"
 msgid "Clear List"
 msgstr "목록 비우기"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:467
+#: smb4k/smb4kconfigpagebookmarks.cpp:456
 #, kde-format
 msgid "New Category"
 msgstr "새 분류"
@@ -802,18 +802,18 @@ msgstr ""
 "공유를 마운트하려면 공유의 위치와 IP 주소, 작업 그룹(선택 사항)을 입력하십시"
 "오."
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
 #, kde-format
 msgid "Location:"
 msgstr "위치:"
 
-#: smb4k/smb4kmountdialog.cpp:106
+#: smb4k/smb4kmountdialog.cpp:107
 #, kde-format
 msgid "Bookmark this share"
 msgstr "이 공유를 책갈피에 추가"
 
-#: smb4k/smb4kmountdialog.cpp:145
+#: smb4k/smb4kmountdialog.cpp:146
 #, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
@@ -1020,22 +1020,22 @@ msgstr "인쇄 대화 상자"
 msgid "Print a file."
 msgstr "파일을 인쇄합니다."
 
-#: smb4k/smb4kprintdialog.cpp:60
+#: smb4k/smb4kprintdialog.cpp:61
 #, kde-format
 msgid "File:"
 msgstr "파일:"
 
-#: smb4k/smb4kprintdialog.cpp:68
+#: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
 msgid "Copies:"
 msgstr "복사 부수:"
 
-#: smb4k/smb4kprintdialog.cpp:86
+#: smb4k/smb4kprintdialog.cpp:87
 #, kde-format
 msgid "Print"
 msgstr "인쇄"
 
-#: smb4k/smb4kprintdialog.cpp:122
+#: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
 msgid "Print a file to printer <b>%1</b>."
 msgstr "파일을 <b>%1</b> 프린터로 인쇄합니다."
