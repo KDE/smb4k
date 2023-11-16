@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 02:26+0000\n"
+"POT-Creation-Date: 2023-11-16 02:38+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -113,24 +113,24 @@ msgstr "संयोजना (&S)"
 msgid "Main Toolbar"
 msgstr "मुख्य साधनपट्टी"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkmenu.cpp:30
 #, fuzzy, kde-format
 msgid "Bookmarks"
 msgstr "ओळखचिन्ह"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, fuzzy, kde-format
 msgid "&Edit Bookmarks"
 msgstr "ओळखचिन्हे संपादित करा"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, fuzzy, kde-format
 msgid "Add &Bookmark"
 msgstr "ओळखचिन्ह जोडा"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, fuzzy, kde-format
 #| msgid "Edit Bookmarks"
 msgid "Mount Bookmarks"

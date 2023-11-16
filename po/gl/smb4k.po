@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 02:26+0000\n"
+"POT-Creation-Date: 2023-11-16 02:38+0000\n"
 "PO-Revision-Date: 2023-10-13 07:07+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -117,24 +117,24 @@ msgstr "&Configuración"
 msgid "Main Toolbar"
 msgstr "Barra de ferramentas principal"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkmenu.cpp:30
 #, kde-format
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Editar os marcadores"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Engadir un &marcador"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Montar os marcadores"

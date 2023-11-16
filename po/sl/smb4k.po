@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 02:26+0000\n"
+"POT-Creation-Date: 2023-11-16 02:38+0000\n"
 "PO-Revision-Date: 2023-03-11 09:31+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -114,24 +114,24 @@ msgstr "Nastavitve"
 msgid "Main Toolbar"
 msgstr "Glavna orodna letvica"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkmenu.cpp:30
 #, kde-format
 msgid "Bookmarks"
 msgstr "Zaznamki"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "Uredi zaznamke"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Dodaj zaznamek"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Priklopi zaznamke"

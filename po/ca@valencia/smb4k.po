@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 02:26+0000\n"
+"POT-Creation-Date: 2023-11-16 02:38+0000\n"
 "PO-Revision-Date: 2023-10-12 09:19+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -119,24 +119,24 @@ msgstr "Con&figuració"
 msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkmenu.cpp:30
 #, kde-format
 msgid "Bookmarks"
 msgstr "Adreces d'interés"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Edita les adreces d'interés"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Afi&g una adreça d'interés"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Munta les adreces d'interés"
@@ -388,7 +388,7 @@ msgstr " s"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Establix els servidors que s'haurien d'activar via l'editor de configuració "
+"Definix els amfitrions que s'haurien d'activar via l'editor de configuració "
 "personalitzada."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -574,12 +574,12 @@ msgstr "Buscant grups de treball i dominis..."
 #: smb4k/smb4kmainwindow.cpp:648
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "Buscant servidors en el domini %1..."
+msgstr "Buscant amfitrions en el domini %1..."
 
 #: smb4k/smb4kmainwindow.cpp:653
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr "Buscant comparticions proporcionades pel servidor %1..."
+msgstr "Buscant comparticions proporcionades per l'amfitrió %1..."
 
 #: smb4k/smb4kmainwindow.cpp:661 smb4k/smb4kmainwindow.cpp:669
 #, kde-format
@@ -589,7 +589,7 @@ msgstr "Buscant fitxers i directoris a %1..."
 #: smb4k/smb4kmainwindow.cpp:686
 #, kde-format
 msgid "Waking up remote hosts..."
-msgstr "Activant els servidors remots..."
+msgstr "Activant els amfitrions remots..."
 
 #: smb4k/smb4kmainwindow.cpp:691
 #, kde-format
@@ -620,7 +620,7 @@ msgstr "S'està desmuntant..."
 #: smb4k/smb4kmainwindow.cpp:731
 #, kde-format
 msgid "Waking up host..."
-msgstr "Activant el servidor..."
+msgstr "Activant l'amfitrió..."
 
 #: smb4k/smb4kmainwindow.cpp:761
 #, kde-format

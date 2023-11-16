@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 02:26+0000\n"
+"POT-Creation-Date: 2023-11-16 02:38+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -116,24 +116,24 @@ msgstr "&Seadistused"
 msgid "Main Toolbar"
 msgstr "Peamine tööriistariba"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkmenu.cpp:30
 #, kde-format
 msgid "Bookmarks"
 msgstr "Järjehoidjad"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Muuda järjehoidjaid"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Lisa järjehoidja"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, fuzzy, kde-format
 #| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"

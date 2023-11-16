@@ -163,7 +163,7 @@ msgstr ""
 #: smb4k.kcfg:67
 #, kde-format
 msgid "Automatically expand domains and hosts"
-msgstr "Expandix automàticament els dominis i servidors"
+msgstr "Expandix automàticament els dominis i amfitrions"
 
 #. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:68
@@ -173,9 +173,9 @@ msgid ""
 "items (domain members or shares) is added or updated. Please note that a "
 "domain or host item will always be expanded when you execute it."
 msgstr ""
-"Expandix automàticament els elements de domini i el servidor quan s'afig o "
+"Expandix automàticament els elements de domini i l'amfitrió quan s'afig o "
 "s'actualitza una llista d'elements de xarxa associats (membres de domini o "
-"comparticions). Cal tindre en compte que un element de domini o servidor "
+"comparticions). Cal tindre en compte que un element de domini o amfitrió "
 "sempre s'expandirà quan l'executeu."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
@@ -279,7 +279,7 @@ msgid ""
 "workgroups and domains."
 msgstr ""
 "El «Web Services Dynamic Discovery» (WS-Discovery) s'utilitza per a explorar "
-"la xarxa local i descobrir grups de treball, dominis i servidors. Açò és "
+"la xarxa local i descobrir grups de treball, dominis i amfitrions. Açò és "
 "útil si el veïnatge de la xarxa està dominat per servidors amb versions "
 "modernes de Windows. Si utilitzeu esta opció, no caldria forçar la "
 "biblioteca del client Samba perquè utilitze la versió 1.0 del protocol SMB "
@@ -337,9 +337,9 @@ msgstr ""
 "opció com a últim recurs perquè la versió 1.0 del protocol SMB és insegura i "
 "s'ha inhabilitat a les versions més noves de Samba i Windows. Tanmateix, si "
 "teniu problemes per a descobrir els grups de treball i dominis en el vostre "
-"entorn de xarxa, podreu considerar activar esta opció. Si utilitzeu «DNS "
+"entorn de xarxa, podreu considerar seleccionar esta opció. Si utilitzeu «DNS "
 "Service Discovery» (DNS-SD) o els «Web Services Dynamic Discovery» (WS-"
-"Discovery), podreu desactivar esta opció."
+"Discovery), podreu desseleccionar esta opció."
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:131
@@ -462,11 +462,11 @@ msgid ""
 "the time consumption on large network neighborhoods considerably."
 msgstr ""
 "En cas que este ordinador estiga a un veïnatge de xarxa gran, el "
-"descobriment de tots els grups de treball, servidors i comparticions pot "
+"descobriment de tots els grups de treball, amfitrions i comparticions pot "
 "tardar una estona llarga, ja que amb la configuració predeterminada es "
-"consulten tots els exploradors mestres locals. En activar esta opció, es "
-"limita el nombre d'exploradors mestres locals a tres. Açò pot reduir "
-"considerablement el consum de temps als veïnatges de xarxa grans."
+"consulten tots els exploradors mestres locals. Quan se selecciona esta "
+"opció, es limita el nombre d'exploradors mestres locals a tres. Açò pot "
+"reduir considerablement el consum de temps als veïnatges de xarxa grans."
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:184
@@ -614,7 +614,7 @@ msgstr ""
 "permet iniciar o despertar un ordinador amb un missatge de xarxa. Smb4K "
 "utilitza un paquet màgic enviat mitjançant un sòcol UDP per a despertar els "
 "servidors remots. Si voleu disposar dels avantatges de la característica "
-"«Wake-On-LAN» cal activar esta opció."
+"«Wake-On-LAN» cal seleccionar esta opció."
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:239
@@ -649,9 +649,9 @@ msgid ""
 "stored permanently but only temporarily."
 msgstr ""
 "Utilitza una cartera per a emmagatzemar l'inici de sessió. El nom d'usuari i "
-"la contrasenya s'emmagatzemaran encriptats en el disc dur. Si es desactiva "
-"esta opció, l'inici de sessió no es guardarà permanentment, només "
-"temporalment."
+"la contrasenya s'emmagatzemaran encriptats en el disc dur. Si es "
+"desselecciona esta opció, l'inici de sessió no es guardarà permanentment, "
+"només temporalment."
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
 #: smb4k.kcfg:256
@@ -1067,7 +1067,7 @@ msgid ""
 msgstr ""
 "Conserva els permisos (-p, --perms). Els permisos del fitxer de destinació "
 "seran els mateixos que els del fitxer d'origen. Per a conéixer què passa si "
-"es desactiva esta opció, llegiu la pàgina del manual de «rsync»."
+"es desselecciona esta opció, llegiu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:382
@@ -1212,8 +1212,8 @@ msgid ""
 "rsync's manual page."
 msgstr ""
 "Conserva les hores (-t, --times). Les hores de modificació es transferixen "
-"junt amb els fitxers. Per a conéixer què passa si es desactiva esta opció, "
-"llegiu la pàgina del manual de «rsync»."
+"junt amb els fitxers. Per a conéixer què passa si es desselecciona esta "
+"opció, llegiu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
 #: smb4k.kcfg:422
@@ -1682,9 +1682,8 @@ msgid ""
 "filter='dir-merge /.rsync-filter' rule and deselecting this one."
 msgstr ""
 "Esta regla exclou els fitxers «.rsync-filter» de la transferència. Estos "
-"fitxers normalment contenen regles de filtratge que es poden activar "
-"seleccionant la regla --filter='dir-merge /.rsync-filter' i desseleccionant "
-"esta."
+"fitxers normalment contenen regles de filtratge que es poden activar triant "
+"la regla --filter='dir-merge /.rsync-filter' i desseleccionant esta."
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
 #: smb4k.kcfg:580
@@ -2215,7 +2214,7 @@ msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Definix la configuració personalitzada per al servidor <b>%1</b> i totes "
+"<p>Definix la configuració personalitzada per a l'amfitrió <b>%1</b> i totes "
 "les comparticions que proporciona.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
@@ -2430,9 +2429,9 @@ msgid ""
 "If you tick this checkbox, the share will be bookmarked and you can access "
 "it e.g. through the \"Bookmarks\" menu entry in the main window."
 msgstr ""
-"Si marqueu esta casella de selecció, la compartició s'afegirà a les adreces "
-"d'interés i podreu accedir-hi, per exemple, a través de l'entrada de menú "
-"«Adreces d'interés» de la finestra principal."
+"Si seleccioneu esta casella de selecció, la compartició s'afegirà a les "
+"adreces d'interés i podreu accedir-hi, per exemple, a través de l'entrada de "
+"menú «Adreces d'interés» de la finestra principal."
 
 #: smb4kmounter_p.cpp:192
 #, kde-format
@@ -2985,7 +2984,7 @@ msgid ""
 "gives up."
 msgstr ""
 "Establix el nombre d'intents que es faran per a tornar a muntar les "
-"comparticions abans que Smb4K desisteixi."
+"comparticions abans que Smb4K desistisca."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:325
@@ -3016,7 +3015,7 @@ msgid ""
 "think before you enable this option."
 msgstr ""
 "Permet el desmuntatge de les comparticions que van ser muntades per altres "
-"usuaris. Penseu-ho bé abans d'activar esta opció."
+"usuaris. Penseu-ho bé abans de seleccionar esta opció."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:337
@@ -3456,7 +3455,7 @@ msgstr ""
 "de la memòria cau, a vegades pot proporcionar un rendiment millor a canvi de "
 "la coherència de la memòria cau. Esta opció pot provocar corrupció de les "
 "dades, si diversos clients accedixen al mateix conjunt de fitxers en el "
-"servidor al mateix temps. Per a açò, es recomana el mode estricte de la "
+"servidor al mateix temps. Per açò, es recomana el mode estricte de la "
 "memòria cau."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
@@ -3925,7 +3924,7 @@ msgstr ""
 #, kde-format
 msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgstr ""
-"<qt>Introduïu un nom d'usuari i una contrasenya per al servidor <b>%1</b>.</"
+"<qt>Introduïu un nom d'usuari i una contrasenya per a l'amfitrió <b>%1</b>.</"
 "qt>"
 
 #: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
