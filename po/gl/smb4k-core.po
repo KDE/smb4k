@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Xosé <xosecalvo@gmail.com>, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+# SPDX-FileCopyrightText: 2023 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:33+0000\n"
-"PO-Revision-Date: 2020-01-12 12:19+0100\n"
+"PO-Revision-Date: 2023-11-16 21:19+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -65,16 +65,13 @@ msgstr "Amosar a etiqueta co marcador personalizado se estiver dispoñíbel"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"Non amosar o nome da compartición que está representada polo marcador, senón "
-"unha etiqueta personalizada definida no editor de marcadores."
+"Non amosar o nome da compartición marcada, senón unha etiqueta personalizada "
+"definida no editor de marcadores."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40
@@ -189,10 +186,9 @@ msgstr "A axudiña mostra información diversa sobre a compartición actual."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:75
-#, fuzzy, kde-format
-#| msgid "File mode:"
+#, kde-format
 msgid "View mode:"
-msgstr "Modo de ficheiro:"
+msgstr "Modo da vista:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:76
@@ -218,51 +214,50 @@ msgstr "Vista de lista"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:88
-#, fuzzy, kde-format
-#| msgid "Settings for the list view:"
+#, kde-format
 msgid "Icon size for the icon view:"
-msgstr "Configuración da vista de lista:"
+msgstr "Tamaño das iconas na vista de iconas:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:89
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Modo de vista da vista de comparticións:"
+msgstr ""
+"Definir o tamaño das iconas do modo de vista de iconas da vista das "
+"comparticións."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:95
-#, fuzzy, kde-format
-#| msgid "Settings for the list view:"
+#, kde-format
 msgid "Icon size for the list view:"
-msgstr "Configuración da vista de lista:"
+msgstr "Tamaño das iconas na vista de lista:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:96
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Modo de vista da vista de comparticións:"
+msgstr ""
+"Definir o tamaño das iconas do modo de vista de lista da vista das "
+"comparticións."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:102
-#, fuzzy, kde-format
-#| msgid "Icon View"
+#, kde-format
 msgid "Icon size:"
-msgstr "Vista de iconas"
+msgstr "Tamaño das iconas:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:103
-#, fuzzy, kde-format
-#| msgid "The advanced network neighborhood browser for KDE."
+#, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "O navegador avanzado da veciñanza de rede para o KDE."
+msgstr "Definir o tamaño das iconas do navegador da veciñanza de rede."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:114
 #, kde-format
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
 msgstr ""
+"Usar o descubrimento dinámico de servizos web (WS-Discovery) para navegar"
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:115
@@ -275,12 +270,18 @@ msgid ""
 "client library to use the SMB protocol version 1.0 for searching for "
 "workgroups and domains."
 msgstr ""
+"O descubrimento dinámico de servizos web (WS-Discovery) úsase para navegar a "
+"rede local e descubrir grupos de traballo, dominios e servidores. É útil se "
+"a veciñanza de rede está dominada por servidores con versións modernas de "
+"Windows. Se usa esta opción, non debería ser necesario forzar a biblioteca "
+"cliente de Samba a usar a versión 1.0 do protocolo SMB para buscar grupos de "
+"traballo e dominios."
 
 #. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
 #: smb4k.kcfg:119
 #, kde-format
 msgid "Use DNS Service Discovery (DNS-SD) for browsing"
-msgstr ""
+msgstr "Usar o descubrimento de servizos de DNS (DNS-SD) para navegar"
 
 #. i18n: ectx: whatsthis, entry (UseDnsServiceDiscovery), group (Network)
 #: smb4k.kcfg:120
@@ -294,13 +295,21 @@ msgid ""
 "Samba's client library to use the SMB protocol version 1.0 for searching for "
 "workgroups and domains."
 msgstr ""
+"O descubrimento de servizos de DNS (DNS-SD) úsase para navegar a rede local "
+"e descubrir servidores que fornecen recursos compartidos de SMB. Os dominios "
+"descubertos corresponden aos dominios do DNS local (p. ex. chámanse LOCAL) e "
+"moi probabelmente non os definidos na veciñanza de rede. Porén, isto non "
+"afecta á navegación. Se usa esta opción, non necesita forzar á biblioteca "
+"cliente de Samba a usar a versión 1.0 do protocolo SMB para buscar grupos de "
+"traballo e dominios."
 
 #. i18n: ectx: label, entry (ForceSmb1Protocol), group (Network)
 #: smb4k.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Looking for workgroups and domains..."
+#, kde-format
 msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
-msgstr "A procurar grupos de traballo e dominios..."
+msgstr ""
+"Forzar a versión 1.0 do protocolo de SMB para a busca de grupos de traballo "
+"e de dominios."
 
 #. i18n: ectx: whatsthis, entry (ForceSmb1Protocol), group (Network)
 #: smb4k.kcfg:125
@@ -315,13 +324,20 @@ msgid ""
 "Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and "
 "those are working for you, you do not need it."
 msgstr ""
+"Smb4K forzará á biblioteca cliente de Samba a usar a versión 1.0 do "
+"protocolo SMB para navegar grupos de traballo e dominios. Só debería usar "
+"esta opción como último recurso, porque a versión 1.0 do protocolo SMB non é "
+"segura e desactivouse en versións máis modernas de Samba e de Windows. "
+"Porén, se ten problemas para descubrir grupos de traballo e dominios na "
+"veciñanza de rede, quizais lle interese probar a activala. Se está a usar o "
+"descubrimento de servizos de DNS (DNS-SD) ou o descubrimento dinámico de "
+"servizos web (WS-Discovery), e funciónanlle, non necesita esta opción."
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:129
-#, fuzzy, kde-format
-#| msgid "SMB protocol version:"
+#, kde-format
 msgid "Set minimal and maximal SMB protocol version"
-msgstr "Versión do protocolo SMB:"
+msgstr "Definir as versións mínima e máxima do protocolo SMB"
 
 #. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:130
@@ -337,13 +353,21 @@ msgid ""
 "servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic "
 "Discovery (WS-Discovery) for domain and workgroup lookups instead."
 msgstr ""
+"Smb4K definirá as versións mínimas e máximas do protocolo SMB que a "
+"biblioteca cliente de Samba usa para navegar a veciñanza de rede. Isto "
+"sobredefinirá a configuración do ficheiro smb.conf. Normalmente non necesita "
+"usar esta opción, porque o cliente e o servidor deberían negociar a versión "
+"axeitada do protocolo ao conectar. Teña en conta que esta opción podería non "
+"ser axeitada para facer que funcione o descubrimento de grupos de traballo e "
+"dominios sen afectar á conectividade cos servidores. Para buscar grupos de "
+"traballo e dominios mellor use o descubrimento de servizos de DNS (DNS-SD) "
+"ou o descubrimento dinámico de servizos web (WS-Discovery)."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:134
-#, fuzzy, kde-format
-#| msgid "SMB protocol version:"
+#, kde-format
 msgid "Minimal SMB protocol version:"
-msgstr "Versión do protocolo SMB:"
+msgstr "Versión mínima do protocolo SMB:"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:135
@@ -352,36 +376,35 @@ msgid ""
 "This setting controls the minimum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
+"Esta opción controla a versión mínima do protocolo que a biblioteca cliente "
+"de Samba intentará usar."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:138 smb4k.kcfg:154
-#, fuzzy, kde-format
-#| msgid "1.0 (Classic CIFS/SMBv1 protocol)"
+#, kde-format
 msgid "NT1 (Classic CIFS/SMBv1 protocol)"
-msgstr "1.0 (protocolo de CIFS clásico e SMBv1)"
+msgstr "NT1 (protocolo clásico de CIFS e SMBv1)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:141 smb4k.kcfg:157
-#, fuzzy, kde-format
-#| msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
+#, kde-format
 msgid "SMB2 (Windows Vista and above)"
-msgstr "2.0 (Windows Vista SP1 e Windows Server 2008)"
+msgstr "SMB2 (Windows Vista e superior)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:144 smb4k.kcfg:160
 #, kde-format
 msgid "SMB3 (Windows 8 and above)"
-msgstr ""
+msgstr "SMB3 (Windows 8 e superior)"
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:150
-#, fuzzy, kde-format
-#| msgid "SMB protocol version:"
+#, kde-format
 msgid "Maximal SMB protocol version:"
-msgstr "Versión do protocolo SMB:"
+msgstr "Versión máxima do protocolo SMB:"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:151
@@ -390,30 +413,27 @@ msgid ""
 "This setting controls the maximum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
+"Esta opción controla a versión máxima do protocolo que a biblioteca cliente "
+"de Samba intentará usar."
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:166
-#, fuzzy, kde-format
-#| msgid "SMB port:"
+#, kde-format
 msgid "Set the SMB port to:"
-msgstr "Porto SMB:"
+msgstr "Definir o porto de SMB como:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:167 smb4k.kcfg:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"Este é o porto empregado para ligar con servidor remotos cos programas "
-"cliente net, smbclient e smbtree. O valor por omisión é 139 (NetBIOS). En "
-"FreeBSD esta opción úsase tamén para montar."
+"Este é o porto que se usa para conectar con servidores remotos. O valor "
+"predeterminado é 139 (NetBIOS). En FreeBSD esta opción úsase tamén para "
+"montar."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:177
@@ -485,10 +505,9 @@ msgstr "Usar a ccache de Winbind para autenticarse."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:197
-#, fuzzy, kde-format
-#| msgid "Encryption level:"
+#, kde-format
 msgid "Set the encryption level to:"
-msgstr "Nivel de cifrado:"
+msgstr "Definir o nivel de cifrado como:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -573,13 +592,7 @@ msgstr "Activar as funcionalidades de espertar na rede."
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:233
-#, fuzzy, kde-format
-#| msgid ""
-#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
-#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
-#| "magic package send via a UDP socket to wake up remote servers. If you "
-#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
-#| "this option."
+#, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -588,8 +601,8 @@ msgid ""
 msgstr ""
 "A funcionalidade de espertar na rede (Wake-On-LAN ou WOL en inglés) é un "
 "estándar de redes ethernet que permite usar unha mensaxe de rede para "
-"acender un computador. Smb4K envía un paquete “máxico” a través dun sócket "
-"UDP para espertar servidores remotos. Se quere usar a funcionalidade de "
+"acender un computador. Smb4K envía un paquete “máxico” a través dunha toma "
+"de UDP para espertar servidores remotos. Se quere usar a funcionalidade de "
 "espertar na rede, ten que activar esta opción."
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
@@ -600,11 +613,7 @@ msgstr "Tempo de espera:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:238
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the waiting time in seconds between the sending of the magic Wake-"
-#| "On-LAN packages and the scanning of the network neighborhood or the "
-#| "mounting of a share."
+#, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -1044,7 +1053,7 @@ msgstr ""
 #: smb4k.kcfg:380
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Preservar as listas de control de acceso (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:381
@@ -1055,66 +1064,60 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Preservar as listas de control de acceso. Esta opción fai que rsync "
+"actualice as ACL do destino para que coincidan coas ACL da orixe. A opción "
+"tamén implica «--perms». Os sistemas de orixe e de destino deben ter "
+"entradas de ACL compatíbeis para que esta opción funcione correctamente."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:385
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Conservar as horas"
+msgstr "Preservar os atributos estendidos"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:386
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Conservar o grupo (-g, --group). O grupo do ficheiro de destino terá o mesmo "
-"valor que o do ficheiro de orixe."
+"Preservar os atributos estendidos. Esta opción fai que rsync actualice os "
+"atributos estendidos do destino para que coincidan cos da orixe."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:390
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Conservar as horas"
+msgstr "Preservar as horas de acceso"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:391
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Conservar o grupo (-g, --group). O grupo do ficheiro de destino terá o mesmo "
-"valor que o do ficheiro de orixe."
+"Preservar as horas de acceso. Isto indica a rsync que defina as horas de "
+"acceso (uso) dos ficheiros de destino co mesmo valor que os ficheiros da "
+"orixe."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:395
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Conservar as horas"
+msgstr "Preservar as horas de creación"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:396
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Conservar o grupo (-g, --group). O grupo do ficheiro de destino terá o mesmo "
-"valor que o do ficheiro de orixe."
+"Preservar as horas de creación. Isto indica a rsync que defina as horas de "
+"creación (como de novos son) dos ficheiros de destino co mesmo valor que os "
+"ficheiros da orixe."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:400
@@ -1616,10 +1619,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:563
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Regras de filtrado personalizadas:"
+msgstr "Regras de filtrado personalizadas"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:568
@@ -2019,16 +2021,19 @@ msgstr "Non foi posíbel imprimir o ficheiro %1 en %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"O servizo Zeroconf non se está a executarse. Non se atopan servidores "
+"mediante DNS-SD."
 
 #: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr ""
+"A compatibilidade con Zeroconf non está dispoñíbel nesta versión de KDE."
 
 #: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Produciuse un erro descoñecido con Zeroconf."
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -2056,16 +2061,13 @@ msgid "Clear List"
 msgstr "Limpar a lista"
 
 #: smb4kmounter.cpp:776
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>A compartición <b>%1</b> está montada en <br><b>%2</b> e ten como "
-"propietario a <b>%3</b>.</p><p>Está seguro de que quere desmontala?</p></qt>"
+"<p>A compartición <b>%1</b> está montada en <br><b>%2</b> e ten como "
+"propietario a <b>%3</b>.</p><p>Está seguro de que quere desmontala?</p>"
 
 #: smb4kmounter.cpp:781
 #, kde-format
@@ -2934,7 +2936,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "Non enviar solicitudes de bloqueo de intervalos de bytes"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -2945,6 +2947,10 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"Non enviar solicitudes de bloqueo de intervalos de bytes ao servidor. Isto é "
+"necesario para certas aplicacións que rompen cos bloqueos de intervalos de "
+"bytes obrigatorios estilo CIFS (e a meirande parte dos servidores de CIFS "
+"aínda non permiten solicitar bloques de intervalos de bytes recomendados)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3007,10 +3013,9 @@ msgstr "3.0 (Windows 8 e Windows Server 2012)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:216
-#, fuzzy, kde-format
-#| msgid "3.0 (Windows 8/Windows Server 2012)"
+#, kde-format
 msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-msgstr "3.0 (Windows 8 e Windows Server 2012)"
+msgstr "3.0.2 (Windows 8.1 e Windows Server 2012R2)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:219
@@ -3022,13 +3027,13 @@ msgstr "3.1.1 (Windows Server 2016)"
 #: smb4kmountsettings_linux.kcfg:222
 #, kde-format
 msgid "3 (Version 3.0 and above)"
-msgstr ""
+msgstr "3 (versión 3.0 e superior)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:225
 #, kde-format
 msgid "default (Negotiate the highest version)"
-msgstr ""
+msgstr "predeterminado (negociar a versión máis alta)"
 
 #. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:231
@@ -3185,8 +3190,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>A compartición <b>%1</b> montouse en <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:56 smb4knotification.cpp:59
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Abrir"
@@ -3388,19 +3392,17 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>O URL indicado é incorrecto.</p>"
 
 #: smb4knotification.cpp:426
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
-msgstr "A comunicación de rede fallou coa seguinte mensaxe de erro: <s>%1</s>"
+msgstr ""
+"<p>A comunicación de rede fallou coa seguinte mensaxe de erro: <s>%1</s></p>"
 
 #: smb4knotification.cpp:434
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Produciuse un erro co servizo de Zeroconf: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
