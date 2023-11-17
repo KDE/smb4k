@@ -1,3 +1,12 @@
+Smb4K 3.2.5 (2023-11-17):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Backport the bookmark menu from master to fix broken handling of bookmarks.
+- Make Smb4KBookmark known as metatype. This is needed for the backport of 
+  the bookmark menu from master.
+
 Smb4K 3.2.4 (2023-10-11):
 
 See the summary of changes below. For a full list of changes, please
