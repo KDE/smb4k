@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-15 00:43+0000\n"
-"PO-Revision-Date: 2023-10-21 13:55\n"
+"PO-Revision-Date: 2023-11-19 03:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -962,16 +962,14 @@ msgid "Item Up"
 msgstr "项目上移"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr "设置密码库条目 %1 的用户名和密码。"
+msgstr ""
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr "设置密码库条目 %1 的用户名和密码。"
+msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
