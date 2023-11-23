@@ -114,8 +114,13 @@ endif()
 
 # Install the plasmoid if desired
 if (SMB4K_INSTALL_PLASMOID)
-  find_package(KF${QT_MAJOR_VERSION} COMPONENTS Plasma)
-  set_package_properties(KF${QT_MAJOR_VERSION}Plasma PROPERTIES TYPE RUNTIME)
+  if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Plasma)
+    set_package_properties(Plasma PROPERTIES TYPE RUNTIME)
+  else()
+    find_package(KF5 COMPONENTS Plasma)
+    set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
+  endif()
 endif()
 
 # Find libsmbclient.h
