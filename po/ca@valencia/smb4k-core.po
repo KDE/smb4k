@@ -3386,8 +3386,7 @@ msgstr "<p>El procés ha fallat (codi d'error: <tt>%1</tt>).</p>"
 #: smb4knotification.cpp:333
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
-msgstr ""
-"<p>El procés ha excedit el temps límit (codi d'error: <tt>%1</tt>).</p>"
+msgstr "<p>El procés ha excedit el temps (codi d'error: <tt>%1</tt>).</p>"
 
 #: smb4knotification.cpp:337
 #, kde-format
