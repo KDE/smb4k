@@ -49,9 +49,6 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
     : QObject(parent)
     , d(new Smb4KBookmarkHandlerPrivate)
 {
-    //
-    // First we need the directory.
-    //
     QString path = dataLocation();
 
     QDir dir;
@@ -60,10 +57,10 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
         dir.mkpath(path);
     }
 
-    //
-    // Read the list of bookmarks
-    //
     readBookmarkList();
+
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileRemoved, this, &Smb4KBookmarkHandler::slotProfileRemoved);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileMigrated, this, &Smb4KBookmarkHandler::slotProfileMigrated);
 }
 
 Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
@@ -494,12 +491,15 @@ void Smb4KBookmarkHandler::update() const
     }
 }
 
-void Smb4KBookmarkHandler::migrateProfile(const QString &from, const QString &to)
+void Smb4KBookmarkHandler::slotProfileRemoved(const QString &name)
 {
-    // Replace the old profile name with the new one.
-    for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
-        if (QString::compare(bookmark->profile(), from, Qt::CaseSensitive) == 0) {
-            bookmark->setProfile(to);
+    QMutableListIterator<BookmarkPtr> it(d->bookmarks);
+
+    while (it.hasNext()) {
+        const BookmarkPtr &bookmark = it.next();
+
+        if (name == bookmark->profile()) {
+            it.remove();
         }
     }
 
@@ -507,15 +507,12 @@ void Smb4KBookmarkHandler::migrateProfile(const QString &from, const QString &to
     writeBookmarkList();
 }
 
-void Smb4KBookmarkHandler::removeProfile(const QString &name)
+void Smb4KBookmarkHandler::slotProfileMigrated(const QString &oldName, const QString &newName)
 {
-    QMutableListIterator<BookmarkPtr> it(d->bookmarks);
-
-    while (it.hasNext()) {
-        const BookmarkPtr &bookmark = it.next();
-
-        if (QString::compare(bookmark->profile(), name, Qt::CaseSensitive) == 0) {
-            it.remove();
+    for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
+        if (oldName == bookmark->profile()) {
+            bookmark->setProfile(newName);
+            continue;
         }
     }
 

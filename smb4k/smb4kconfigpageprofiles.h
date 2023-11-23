@@ -9,12 +9,16 @@
 #define SMB4KCONFIGPAGEPROFILES_H
 
 // Qt includes
+#include <QCheckBox>
 #include <QList>
 #include <QPair>
 #include <QWidget>
 
 // KDE includes
 #include <KEditListWidget>
+
+// forward declarations
+struct ProfileContainer;
 
 class Smb4KConfigPageProfiles : public QWidget
 {
@@ -42,15 +46,15 @@ public:
     bool profilesChanged() const;
 
 protected Q_SLOTS:
-    void slotEnableWidget(int state);
+    void slotProfileUsageChanged(bool checked);
     void slotProfileAdded(const QString &text);
     void slotProfileRemoved(const QString &text);
     void slotProfileChanged();
 
 private:
-    KEditListWidget *m_profiles;
-    QList<QPair<QString, QString>> m_renamed;
-    QStringList m_removed;
+    QCheckBox *m_useProfiles;
+    KEditListWidget *m_profilesWidget;
+    QList<ProfileContainer> m_profiles;
     bool m_profilesChanged;
 };
 

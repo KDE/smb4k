@@ -1,7 +1,7 @@
 /*
     The core class that mounts the shares.
 
-    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -63,7 +63,6 @@ public:
     QList<SharePtr> importedShares;
     QList<SharePtr> retries;
     QList<SharePtr> remounts;
-    QString activeProfile;
     bool detectAllShares;
     bool firstImportDone;
     bool longActionRunning;
@@ -92,13 +91,11 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     d->newlyUnmounted = 0;
     d->firstImportDone = false;
     d->longActionRunning = false;
-    d->activeProfile = Smb4KProfileManager::self()->activeProfile();
     d->detectAllShares = Smb4KMountSettings::detectAllShares();
 
     //
     // Connections
     //
-    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::migratedProfile, this, &Smb4KMounter::slotProfileMigrated);
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::aboutToChangeProfile, this, &Smb4KMounter::slotAboutToChangeProfile);
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KMounter::slotActiveProfileChanged);
     connect(Smb4KWalletManager::self(), &Smb4KWalletManager::credentialsUpdated, this, &Smb4KMounter::slotCredentialsUpdated);
@@ -1878,9 +1875,6 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
 
 void Smb4KMounter::slotAboutToChangeProfile()
 {
-    //
-    // Save those shares that are to be remounted
-    //
     if (Smb4KMountSettings::remountShares()) {
         saveSharesForRemount();
     }
@@ -1888,41 +1882,33 @@ void Smb4KMounter::slotAboutToChangeProfile()
 
 void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
 {
-    if (d->activeProfile != newProfile) {
-        // Stop the timer.
-        killTimer(d->timerId);
+    Q_UNUSED(newProfile);
 
-        abort();
+    // Stop the timer.
+    killTimer(d->timerId);
 
-        // Clear all remounts.
-        while (!d->remounts.isEmpty()) {
-            d->remounts.takeFirst().clear();
-        }
+    abort();
 
-        // Clear all retries.
-        while (!d->retries.isEmpty()) {
-            d->retries.takeFirst().clear();
-        }
-
-        // Unmount all shares
-        unmountAllShares(true);
-
-        // Reset some variables.
-        // Don't touch d->firstImportDone here, because that remains true
-        d->remountTimeout = 0;
-        d->remountAttempts = 0;
-        d->activeProfile = newProfile;
-
-        // Restart the timer
-        d->timerId = startTimer(TIMEOUT);
+    // Clear all remounts.
+    while (!d->remounts.isEmpty()) {
+        d->remounts.takeFirst().clear();
     }
-}
 
-void Smb4KMounter::slotProfileMigrated(const QString &from, const QString &to)
-{
-    if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0) {
-        d->activeProfile = to;
+    // Clear all retries.
+    while (!d->retries.isEmpty()) {
+        d->retries.takeFirst().clear();
     }
+
+    // Unmount all shares
+    unmountAllShares(true);
+
+    // Reset some variables.
+    // Don't touch d->firstImportDone here, because that remains true
+    d->remountTimeout = 0;
+    d->remountAttempts = 0;
+
+    // Restart the timer
+    d->timerId = startTimer(TIMEOUT);
 }
 
 void Smb4KMounter::slotTriggerImport()

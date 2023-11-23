@@ -64,8 +64,9 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager(QObject *parent)
 
     readCustomOptions();
 
-    // Connections
-    connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileRemoved, this, &Smb4KCustomOptionsManager::slotProfileRemoved);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileMigrated, this, &Smb4KCustomOptionsManager::slotProfileMigrated);
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KCustomOptionsManager::slotAboutToQuit);
 }
 
 Smb4KCustomOptionsManager::~Smb4KCustomOptionsManager()
@@ -576,14 +577,8 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
 
 QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOnce) const
 {
-    //
-    // Options list
-    //
     QList<OptionsPtr> optionsList;
 
-    //
-    // Get this list of options
-    //
     for (const OptionsPtr &options : qAsConst(d->options)) {
         if (Smb4KSettings::useProfiles() && options->profile() != Smb4KProfileManager::self()->activeProfile()) {
             continue;
@@ -594,9 +589,6 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOn
         }
     }
 
-    //
-    // Return the list of relevant options
-    //
     return optionsList;
 }
 
@@ -713,29 +705,23 @@ void Smb4KCustomOptionsManager::saveCustomOptions(const QList<OptionsPtr> &optio
     writeCustomOptions();
 }
 
-void Smb4KCustomOptionsManager::migrateProfile(const QString &from, const QString &to)
-{
-    for (const OptionsPtr &options : qAsConst(d->options)) {
-        if (options->profile() == from) {
-            options->setProfile(to);
-        }
-    }
+/////////////////////////////////////////////////////////////////////////////
+// SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
 
+void Smb4KCustomOptionsManager::slotAboutToQuit()
+{
     writeCustomOptions();
-    Q_EMIT updated();
 }
 
-void Smb4KCustomOptionsManager::removeProfile(const QString &name)
+void Smb4KCustomOptionsManager::slotProfileRemoved(const QString &name)
 {
-    //
-    // Remove all entries belonging to the profile
-    //
     QMutableListIterator<OptionsPtr> it(d->options);
 
     while (it.hasNext()) {
         OptionsPtr options = it.next();
 
-        if (QString::compare(options->profile(), name, Qt::CaseSensitive) == 0) {
+        if (name == options->profile()) {
             it.remove();
         }
     }
@@ -744,11 +730,14 @@ void Smb4KCustomOptionsManager::removeProfile(const QString &name)
     Q_EMIT updated();
 }
 
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KCustomOptionsManager::slotAboutToQuit()
+void Smb4KCustomOptionsManager::slotProfileMigrated(const QString &oldName, const QString &newName)
 {
+    for (const OptionsPtr &options : qAsConst(d->options)) {
+        if (oldName == options->profile()) {
+            options->setProfile(newName);
+        }
+    }
+
     writeCustomOptions();
+    Q_EMIT updated();
 }

@@ -30,8 +30,7 @@
 Smb4KHomesUsers::Smb4KHomesUsers(const SharePtr &s, const QStringList &u)
 {
     m_workgroupName = s->workgroupName();
-    m_hostName = s->hostName();
-    m_shareName = s->shareName();
+    m_url = s->url();
     m_hostIp.setAddress(s->hostIpAddress());
     m_userList = u;
 }
@@ -39,8 +38,7 @@ Smb4KHomesUsers::Smb4KHomesUsers(const SharePtr &s, const QStringList &u)
 Smb4KHomesUsers::Smb4KHomesUsers(const Smb4KHomesUsers &u)
 {
     m_workgroupName = u.workgroupName();
-    m_hostName = u.hostName();
-    m_shareName = u.shareName();
+    m_url = u.url();
     m_hostIp.setAddress(u.hostIP());
     m_userList = u.userList();
     m_profile = u.profile();
@@ -64,24 +62,14 @@ void Smb4KHomesUsers::setWorkgroupName(const QString &name)
     m_workgroupName = name;
 }
 
-QString Smb4KHomesUsers::hostName() const
+QUrl Smb4KHomesUsers::url() const
 {
-    return m_hostName;
+    return m_url;
 }
 
-void Smb4KHomesUsers::setHostName(const QString &name)
+void Smb4KHomesUsers::setUrl(const QUrl &url)
 {
-    m_hostName = name;
-}
-
-QString Smb4KHomesUsers::shareName() const
-{
-    return m_shareName;
-}
-
-void Smb4KHomesUsers::setShareName(const QString &name)
-{
-    m_shareName = name;
+    m_url = url;
 }
 
 QString Smb4KHomesUsers::hostIP() const

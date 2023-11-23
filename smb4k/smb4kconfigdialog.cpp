@@ -198,7 +198,6 @@ void Smb4KConfigDialog::updateSettings()
         m_bookmarksPage->loadBookmarks();
     }
 
-    // FIXME: If the "Ok" button is pressed, this does not work as expected.
     (void)checkSettings();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
@@ -209,6 +208,7 @@ void Smb4KConfigDialog::updateSettings()
 
 void Smb4KConfigDialog::slotEnableApplyButton()
 {
+    // FIXME: Can this be moved to updateButtons()?
     bool enable = false;
 
     enable = m_authenticationPage->loginCredentialsChanged();

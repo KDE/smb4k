@@ -36,7 +36,6 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     Q_OBJECT
 
     friend class Smb4KBookmarkHandlerPrivate;
-    friend class Smb4KProfileManager;
 
 public:
     /**
@@ -178,6 +177,22 @@ Q_SIGNALS:
      */
     void updated();
 
+protected Q_SLOTS:
+    /**
+     * Called when a profile was removed
+     *
+     * @param name          The name of the profile
+     */
+    void slotProfileRemoved(const QString &name);
+
+    /**
+     * Called when a profile was migrated
+     *
+     * @param oldName       The old profile name
+     * @param newName       The new profile name
+     */
+    void slotProfileMigrated(const QString &oldName, const QString &newName);
+
 private:
     /**
      * This function reads the list of bookmarks from the bookmarks file.
@@ -193,25 +208,6 @@ private:
      * This function writes the bookmarks to the disk.
      */
     void writeBookmarkList();
-
-    /**
-     * Migrates one profile to another.
-     *
-     * This function is meant to be used by the profile manager.
-     *
-     * @param from        The name of the old profile.
-     * @param to          The name of the new profile.
-     */
-    void migrateProfile(const QString &from, const QString &to);
-
-    /**
-     * Removes a profile from the list of profiles.
-     *
-     * This function is meant to be used by the profile manager.
-     *
-     * @param name        The name of the profile.
-     */
-    void removeProfile(const QString &name);
 
     /**
      * Pointer to Smb4KBookmarkHandlerPrivate class

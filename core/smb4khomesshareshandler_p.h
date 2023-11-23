@@ -17,6 +17,7 @@
 #include <QHostAddress>
 #include <QPushButton>
 #include <QStringList>
+#include <QUrl>
 
 // KDE includes
 #include <KComboBox>
@@ -55,24 +56,14 @@ public:
     void setWorkgroupName(const QString &name);
 
     /**
-     * Host name
+     * URL
      */
-    QString hostName() const;
+    QUrl url() const;
 
     /**
-     * Set host name
+     * Set URL
      */
-    void setHostName(const QString &name);
-
-    /**
-     * Share name
-     */
-    QString shareName() const;
-
-    /**
-     * Set share name
-     */
-    void setShareName(const QString &name);
+    void setUrl(const QUrl &url);
 
     /**
      * IP address
@@ -106,8 +97,7 @@ public:
 
 private:
     QString m_workgroupName;
-    QString m_hostName;
-    QString m_shareName;
+    QUrl m_url;
     QHostAddress m_hostIp;
     QStringList m_userList;
     QString m_profile;

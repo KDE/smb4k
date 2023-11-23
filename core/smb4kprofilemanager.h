@@ -8,6 +8,9 @@
 #ifndef SMB4KPROFILEMANAGER_H
 #define SMB4KPROFILEMANAGER_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QObject>
 #include <QPair>
@@ -91,19 +94,10 @@ public:
     /**
      * Migrate all entries of one profile to another.
      *
-     * @param from        The name of the old profile.
-     * @param to          The name of the new profile.
+     * @param oldName     The name of the old profile
+     * @param newName     The name of the new profile
      */
-    void migrateProfile(const QString &from, const QString &to);
-
-    /**
-     * Migrate all entries of a list of profiles to other profiles.
-     *
-     * @param list        The list of profile pairs. The first entry
-     *                    is the "from" profile, the second one the
-     *                    "to" profile.
-     */
-    void migrateProfiles(const QList<QPair<QString, QString>> &list);
+    void migrateProfile(const QString &oldName, const QString &newName);
 
     /**
      * Remove a profile with all of its entries.
@@ -112,29 +106,24 @@ public:
      */
     void removeProfile(const QString &name);
 
-    /**
-     * Remove a list of profiles with all of their entries.
-     *
-     * @param list        The list of profile names.
-     */
-    void removeProfiles(const QStringList &list);
-
 Q_SIGNALS:
     /**
      * This signal is emitted when all entries of one profile was migrated
-     * to another one.
+     * to another one. There are two special marker for profiles. If the
+     * old name is '*', this means 'all profiles' and if the either the old
+     * or the new name is an empty thing, this means 'default profile'.
      *
-     * @param from        The old profile
-     * @param to          The new profile
+     * @param oldName     The name of the old profile
+     * @param newName     The name of the new profile
      */
-    void migratedProfile(const QString &from, const QString &to);
+    void profileMigrated(const QString &oldName, const QString &newName);
 
     /**
-     * This signal is emitted when a profile was removed.
+     * This signal is emitted when a profile is to be removed.
      *
      * @param profile     The removed profile
      */
-    void removedProfile(const QString &profile);
+    void profileRemoved(const QString &profile);
 
     /**
      * This signal is emitted when the active profile is about

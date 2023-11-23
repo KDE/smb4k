@@ -14,60 +14,68 @@
 #include <QCheckBox>
 #include <QGroupBox>
 #include <QLabel>
+#include <QPointer>
 #include <QVBoxLayout>
 
 // KDE includes
 #include <KLineEdit>
 #include <KLocalizedString>
 
+struct ProfileContainer {
+    QString initialName;
+    QString currentName;
+    bool removed;
+    bool renamed;
+    bool added;
+};
+
 Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     : QWidget(parent)
 {
     m_profilesChanged = false;
 
-    //
-    // Layout
-    //
+    // FIXME: Think of settings that tell Smb4K if and how to migrate profiles.
+
+    QStringList profiles = Smb4KSettings::profilesList();
+
+    for (const QString &profile : qAsConst(profiles)) {
+        ProfileContainer p;
+        p.initialName = profile;
+        p.currentName = profile;
+        p.removed = false;
+        p.renamed = false;
+        p.added = false;
+
+        m_profiles << p;
+    }
+
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    //
-    // Profile Settings
-    //
     QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
     QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
 
-    QCheckBox *useProfiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settingsBox);
-    useProfiles->setObjectName(QStringLiteral("kcfg_UseProfiles"));
+    m_useProfiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settingsBox);
+    m_useProfiles->setObjectName(QStringLiteral("kcfg_UseProfiles"));
 
-    settingsBoxLayout->addWidget(useProfiles);
-
-    QCheckBox *useAssistant = new QCheckBox(Smb4KSettings::self()->useMigrationAssistantItem()->label(), settingsBox);
-    useAssistant->setObjectName(QStringLiteral("kcfg_UseMigrationAssistant"));
-
-    settingsBoxLayout->addWidget(useAssistant);
+    settingsBoxLayout->addWidget(m_useProfiles);
 
     layout->addWidget(settingsBox);
 
-    //
-    // List of profiles
-    //
     QGroupBox *profilesBox = new QGroupBox(i18n("Profiles"), this);
     QVBoxLayout *profilesBoxLayout = new QVBoxLayout(profilesBox);
 
-    m_profiles = new KEditListWidget(profilesBox);
-    m_profiles->setObjectName(QStringLiteral("kcfg_ProfilesList"));
-    m_profiles->setEnabled(Smb4KSettings::self()->useProfiles());
+    m_profilesWidget = new KEditListWidget(profilesBox);
+    m_profilesWidget->setObjectName(QStringLiteral("kcfg_ProfilesList"));
+    m_profilesWidget->setEnabled(Smb4KSettings::self()->useProfiles());
 
-    profilesBoxLayout->addWidget(m_profiles);
+    profilesBoxLayout->addWidget(m_profilesWidget);
 
     layout->addWidget(profilesBox);
 
-    //
-    // Connections
-    //
-    connect(useProfiles, SIGNAL(stateChanged(int)), this, SLOT(slotEnableWidget(int)));
-    connect(m_profiles, SIGNAL(removed(QString)), this, SLOT(slotProfileRemoved(QString)));
-    connect(m_profiles->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotProfileChanged()));
+    connect(m_useProfiles, &QCheckBox::toggled, this, &Smb4KConfigPageProfiles::slotProfileUsageChanged);
+    connect(m_profilesWidget, &KEditListWidget::added, this, &Smb4KConfigPageProfiles::slotProfileAdded);
+    connect(m_profilesWidget, &KEditListWidget::removed, this, &Smb4KConfigPageProfiles::slotProfileRemoved);
+    connect(m_profilesWidget->lineEdit(), &QLineEdit::editingFinished, this, &Smb4KConfigPageProfiles::slotProfileChanged);
 }
 
 Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
@@ -76,17 +84,39 @@ Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
 
 void Smb4KConfigPageProfiles::applyChanges()
 {
-    if (m_profilesChanged) {
-        // Remove the profiles
-        if (!m_removed.isEmpty()) {
-            Smb4KProfileManager::self()->removeProfiles(m_removed);
-            m_removed.clear();
-        }
+    qDebug() << "Apply changes ...";
 
-        // Rename the profiles
-        if (!m_renamed.isEmpty()) {
-            Smb4KProfileManager::self()->migrateProfiles(m_renamed);
-            m_renamed.clear();
+    if (m_profilesChanged) {
+        QMutableListIterator<ProfileContainer> it(m_profiles);
+
+        while (it.hasNext()) {
+            ProfileContainer p = it.next();
+
+            if (!p.removed && !p.renamed && !p.added) {
+                continue;
+            }
+
+            if (p.removed) {
+                Smb4KProfileManager::self()->removeProfile(p.initialName);
+                it.remove();
+            }
+
+            if (p.renamed && !p.added) {
+                qDebug() << "Renamed profile:" << p.initialName << "to" << p.currentName;
+
+                // When we just rename a profile, do not use the migration dialog
+                Smb4KProfileManager::self()->migrateProfile(p.initialName, p.currentName);
+                it.value().initialName = p.currentName;
+                it.value().renamed = false;
+            }
+
+            if (p.added) {
+                // We do not need to do anything here, because the new profile
+                // will be saved by KConfig XT.
+                it.value().initialName = p.currentName;
+                it.value().added = false;
+                it.value().renamed = false;
+            }
         }
 
         m_profilesChanged = false;
@@ -98,85 +128,63 @@ bool Smb4KConfigPageProfiles::profilesChanged() const
     return m_profilesChanged;
 }
 
-void Smb4KConfigPageProfiles::slotEnableWidget(int state)
+void Smb4KConfigPageProfiles::slotProfileUsageChanged(bool checked)
 {
-    switch (state) {
-    case Qt::Unchecked: {
-        m_profiles->setEnabled(false);
-        break;
-    }
-    case Qt::Checked: {
-        m_profiles->setEnabled(true);
-        break;
-    }
-    default: {
-        break;
-    }
-    }
+    m_profilesChanged = (checked != Smb4KSettings::useProfiles());
+    m_profilesWidget->setEnabled(checked);
 }
 
 void Smb4KConfigPageProfiles::slotProfileAdded(const QString &text)
 {
     Q_UNUSED(text);
+
+    ProfileContainer p;
+    p.initialName = text;
+    p.currentName = text;
+    p.removed = false;
+    p.renamed = false;
+    p.added = true;
+
+    m_profiles << p;
+
     m_profilesChanged = true;
 }
 
 void Smb4KConfigPageProfiles::slotProfileRemoved(const QString &text)
 {
-    // If the removed profile was renamed before, remove it from
-    // the list.
-    QMutableListIterator<QPair<QString, QString>> it(m_renamed);
-
-    while (it.hasNext()) {
-        QPair<QString, QString> entry = it.next();
-
-        if (entry.first == text || entry.second == text) {
-            it.remove();
+    for (int i = 0; i < m_profiles.size(); i++) {
+        if (m_profiles.at(i).initialName == text || m_profiles.at(i).currentName == text) {
+            m_profiles[i].removed = true;
+            break;
         }
     }
 
-    m_removed << text;
     m_profilesChanged = true;
 }
 
 void Smb4KConfigPageProfiles::slotProfileChanged()
 {
-    QStringList savedProfiles = Smb4KProfileManager::self()->profilesList();
-    QStringList currentProfiles = m_profiles->items();
+    QStringList listedProfiles = m_profilesWidget->items();
+    int renamedIndex = -1;
 
-    if (savedProfiles.size() == currentProfiles.size()) {
-        QMutableStringListIterator it(savedProfiles);
+    for (int i = 0; i < m_profiles.size(); i++) {
+        if (!m_profiles.at(i).removed) {
+            int index = listedProfiles.indexOf(m_profiles.at(i).currentName);
 
-        while (it.hasNext()) {
-            QString entry = it.next();
-            int index = currentProfiles.indexOf(entry);
-
-            if (index != -1) {
-                currentProfiles.removeAt(index);
-                it.remove();
+            if (index == -1) {
+                renamedIndex = i;
+                break;
+            } else {
+                listedProfiles.removeAt(index);
             }
         }
+    }
 
-        if (!savedProfiles.isEmpty() && !currentProfiles.isEmpty()) {
-            // Take care that multiple renamings will have the correct
-            // result.
-            bool write = true;
+    if (renamedIndex != -1) {
+        QString newName = listedProfiles.first();
+        m_profiles[renamedIndex].currentName = newName;
+        m_profiles[renamedIndex].renamed = true;
 
-            for (int i = 0; i < m_renamed.size(); ++i) {
-                if (savedProfiles.first() == m_renamed.at(i).first) {
-                    QPair<QString, QString> pair = static_cast<QPair<QString, QString>>(m_renamed.at(i));
-                    pair.second = currentProfiles.first();
-                    write = false;
-                    break;
-                }
-            }
-
-            // Write the renamed profile to the list, if necessary.
-            if (write) {
-                QPair<QString, QString> renamed(savedProfiles.first(), currentProfiles.first());
-                m_renamed << renamed;
-                m_profilesChanged = true;
-            }
-        }
+        m_profilesChanged = true;
     }
 }

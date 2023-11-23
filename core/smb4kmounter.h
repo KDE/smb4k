@@ -1,7 +1,7 @@
 /*
     The core class that mounts the shares.
 
-    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -214,14 +214,6 @@ protected Q_SLOTS:
      * This slot is called when the active profile changed.
      */
     void slotActiveProfileChanged(const QString &newProfile);
-
-    /**
-     * This slot is called when a profile was migrated.
-     *
-     * @param from            The old profile
-     * @param to              The new profile
-     */
-    void slotProfileMigrated(const QString &from, const QString &to);
 
     /**
      * This slot is called whenever a network share is mounted or

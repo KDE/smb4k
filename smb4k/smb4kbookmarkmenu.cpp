@@ -103,7 +103,7 @@ void Smb4KBookmarkMenu::loadBookmarks()
             addAction(categoryMenu);
             m_categories->addAction(categoryMenu);
 
-            topLevelActions[QStringLiteral("00_")+category] = categoryMenu;
+            topLevelActions[QStringLiteral("00_") + category] = categoryMenu;
 
             QAction *categoryMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount Bookmarks"), categoryMenu->menu());
             categoryMount->setData(category);
@@ -152,7 +152,7 @@ void Smb4KBookmarkMenu::loadBookmarks()
             if (!category.isEmpty()) {
                 actionMap[displayName] = bookmarkAction;
             } else {
-                topLevelActions[QStringLiteral("01_")+displayName] = bookmarkAction;
+                topLevelActions[QStringLiteral("01_") + displayName] = bookmarkAction;
             }
         }
 
