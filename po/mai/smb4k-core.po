@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-24 00:42+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -1671,29 +1671,14 @@ msgstr ""
 msgid "This is the currently active profile."
 msgstr ""
 
-#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:697
-#, kde-format
-msgid "Use profile migration assistant"
-msgstr ""
-
-#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid ""
-"Use the profile migration assistant when profiles are removed or the use of "
-"profiles is enabled or disabled. The profile migration assistant allows you "
-"to migrate all settings that were saved for a certain profile to a different "
-"one."
-msgstr ""
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomoptionsmanager.cpp:274
+#: smb4khomesshareshandler.cpp:168
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr ""
@@ -1724,39 +1709,34 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4khomesshareshandler.cpp:126
-#, kde-format
-msgid "%1 is not a version 1.0 file."
-msgstr ""
-
-#: smb4khomesshareshandler_p.cpp:124
+#: smb4khomesshareshandler_p.cpp:112
 #, kde-format
 msgid "Specify User"
 msgstr ""
 
-#: smb4khomesshareshandler_p.cpp:172
+#: smb4khomesshareshandler_p.cpp:160
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
 
-#: smb4khomesshareshandler_p.cpp:186
+#: smb4khomesshareshandler_p.cpp:174
 #, kde-format
 msgid "User:"
 msgstr "प्रयोक्ता:"
 
-#: smb4khomesshareshandler_p.cpp:196
+#: smb4khomesshareshandler_p.cpp:184
 #, kde-format
 msgid "Clear List"
 msgstr "सूची साफ करू"
 
-#: smb4kmounter.cpp:776
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:781
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr ""
@@ -2957,37 +2937,6 @@ msgstr ""
 #: smb4knotification.cpp:434
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:34
-#, kde-format
-msgid "Profile Migration Assistant"
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:82
-#, kde-format
-msgid "Migrate all relevant settings of one profile to another."
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:99
-#, kde-format
-msgid "Old Profile:"
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
-#: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
-#, kde-format
-msgid "<Default Profile>"
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:108
-#, kde-format
-msgid "<All Profiles>"
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:116
-#, kde-format
-msgid "New Profile:"
 msgstr ""
 
 #: smb4kshare.cpp:192

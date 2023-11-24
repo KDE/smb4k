@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-24 00:42+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1943,32 +1943,14 @@ msgstr "Aktiv profil"
 msgid "This is the currently active profile."
 msgstr "Dette er den aktuelt aktive profil."
 
-#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:697
-#, kde-format
-msgid "Use profile migration assistant"
-msgstr "Brug profilmigrerings-assistent"
-
-#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid ""
-"Use the profile migration assistant when profiles are removed or the use of "
-"profiles is enabled or disabled. The profile migration assistant allows you "
-"to migrate all settings that were saved for a certain profile to a different "
-"one."
-msgstr ""
-"Brug profilmigrerings-assistenten når profiler fjernes eller brug af "
-"profiler aktiveres eller deaktiveres. Profilmigrerings-assistenten lader dig "
-"migrere alle indstillinger som blev gemt for en bestemt profil til en anden."
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 på %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomoptionsmanager.cpp:274
+#: smb4khomesshareshandler.cpp:168
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1s format er ikke understøttet."
@@ -2000,32 +1982,27 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Der skete en godkendelses fejl."
 
-#: smb4khomesshareshandler.cpp:126
-#, kde-format
-msgid "%1 is not a version 1.0 file."
-msgstr "%1 er ikke en version 1.0-fil."
-
-#: smb4khomesshareshandler_p.cpp:124
+#: smb4khomesshareshandler_p.cpp:112
 #, kde-format
 msgid "Specify User"
 msgstr "Angiv bruger"
 
-#: smb4khomesshareshandler_p.cpp:172
+#: smb4khomesshareshandler_p.cpp:160
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "Angiv et brugernavn til ressourcen <br><b>%1</b>."
 
-#: smb4khomesshareshandler_p.cpp:186
+#: smb4khomesshareshandler_p.cpp:174
 #, kde-format
 msgid "User:"
 msgstr "Bruger:"
 
-#: smb4khomesshareshandler_p.cpp:196
+#: smb4khomesshareshandler_p.cpp:184
 #, kde-format
 msgid "Clear List"
 msgstr "Ryd listen"
 
-#: smb4kmounter.cpp:776
+#: smb4kmounter.cpp:773
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2037,7 +2014,7 @@ msgstr ""
 "<qt><p>Ressourcen <b>%1</b> er monteret i <br><b>%2</b> og ejes af brugeren "
 "<b>%3</b>.</p><p>Vil du virkelig afmontere den?</p></qt>"
 
-#: smb4kmounter.cpp:781
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Fremmed ressource"
@@ -3383,37 +3360,6 @@ msgstr ""
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
-#: smb4kprofilemanager_p.cpp:34
-#, kde-format
-msgid "Profile Migration Assistant"
-msgstr "Profilmigrerings-assistent"
-
-#: smb4kprofilemanager_p.cpp:82
-#, kde-format
-msgid "Migrate all relevant settings of one profile to another."
-msgstr "Migrér alle relevante indstillinger for en profil til en anden."
-
-#: smb4kprofilemanager_p.cpp:99
-#, kde-format
-msgid "Old Profile:"
-msgstr "Gammel profil:"
-
-#: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
-#: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
-#, kde-format
-msgid "<Default Profile>"
-msgstr "<Standardprofil>"
-
-#: smb4kprofilemanager_p.cpp:108
-#, kde-format
-msgid "<All Profiles>"
-msgstr "<Alle profiler>"
-
-#: smb4kprofilemanager_p.cpp:116
-#, kde-format
-msgid "New Profile:"
-msgstr "Ny profil:"
-
 #: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
@@ -3443,6 +3389,41 @@ msgstr "Kilde"
 #, kde-format
 msgid "Destination"
 msgstr "Destination"
+
+#~ msgid "Use profile migration assistant"
+#~ msgstr "Brug profilmigrerings-assistent"
+
+#~ msgid ""
+#~ "Use the profile migration assistant when profiles are removed or the use "
+#~ "of profiles is enabled or disabled. The profile migration assistant "
+#~ "allows you to migrate all settings that were saved for a certain profile "
+#~ "to a different one."
+#~ msgstr ""
+#~ "Brug profilmigrerings-assistenten når profiler fjernes eller brug af "
+#~ "profiler aktiveres eller deaktiveres. Profilmigrerings-assistenten lader "
+#~ "dig migrere alle indstillinger som blev gemt for en bestemt profil til en "
+#~ "anden."
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 er ikke en version 1.0-fil."
+
+#~ msgid "Profile Migration Assistant"
+#~ msgstr "Profilmigrerings-assistent"
+
+#~ msgid "Migrate all relevant settings of one profile to another."
+#~ msgstr "Migrér alle relevante indstillinger for en profil til en anden."
+
+#~ msgid "Old Profile:"
+#~ msgstr "Gammel profil:"
+
+#~ msgid "<Default Profile>"
+#~ msgstr "<Standardprofil>"
+
+#~ msgid "<All Profiles>"
+#~ msgstr "<Alle profiler>"
+
+#~ msgid "New Profile:"
+#~ msgstr "Ny profil:"
 
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"

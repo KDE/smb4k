@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-24 00:42+0000\n"
 "PO-Revision-Date: 2023-10-08 23:56+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1880,32 +1880,14 @@ msgstr "활성 프로필"
 msgid "This is the currently active profile."
 msgstr "현재 활성화된 프로필입니다."
 
-#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:697
-#, kde-format
-msgid "Use profile migration assistant"
-msgstr "프로필 이전 도우미 사용"
-
-#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid ""
-"Use the profile migration assistant when profiles are removed or the use of "
-"profiles is enabled or disabled. The profile migration assistant allows you "
-"to migrate all settings that were saved for a certain profile to a different "
-"one."
-msgstr ""
-"프로필이 삭제되었거나 프로필이 활성화/비활성화되었을 때 프로필 이전 도우미를 "
-"사용합니다. 프로필 이전 도우미를 사용하여 특정 프로필에 저장된 설정을 다른 프"
-"로필로 이전할 수 있습니다."
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%2의 %1"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomoptionsmanager.cpp:274
+#: smb4khomesshareshandler.cpp:168
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1의 형식은 지원하지 않습니다."
@@ -1937,32 +1919,27 @@ msgstr "이 KDE 버전에서는 Zeroconf 지원을 사용할 수 없습니다."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "알 수 없는 Zeroconf 오류가 발생했습니다."
 
-#: smb4khomesshareshandler.cpp:126
-#, kde-format
-msgid "%1 is not a version 1.0 file."
-msgstr "%1이(가) 버전 1.0 파일이 아닙니다."
-
-#: smb4khomesshareshandler_p.cpp:124
+#: smb4khomesshareshandler_p.cpp:112
 #, kde-format
 msgid "Specify User"
 msgstr "사용자 지정"
 
-#: smb4khomesshareshandler_p.cpp:172
+#: smb4khomesshareshandler_p.cpp:160
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "<b>%1</b> 공유에 사용할<br>사용자 이름을 지정하십시오."
 
-#: smb4khomesshareshandler_p.cpp:186
+#: smb4khomesshareshandler_p.cpp:174
 #, kde-format
 msgid "User:"
 msgstr "사용자:"
 
-#: smb4khomesshareshandler_p.cpp:196
+#: smb4khomesshareshandler_p.cpp:184
 #, kde-format
 msgid "Clear List"
 msgstr "목록 비우기"
 
-#: smb4kmounter.cpp:776
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1971,7 +1948,7 @@ msgstr ""
 "<p><b>%1</b> 공유가<br><b>%2</b>에 마운트되어 있으며 <b>%3</b> 사용자가 소유"
 "하고 있습니다.</p><p>마운트를 해제하시겠습니까?</p>"
 
-#: smb4kmounter.cpp:781
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "외부 공유"
@@ -3256,37 +3233,6 @@ msgstr ""
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>Zeroconf 서비스에서 오류가 발생함: <s>%1</s></p>"
 
-#: smb4kprofilemanager_p.cpp:34
-#, kde-format
-msgid "Profile Migration Assistant"
-msgstr "프로필 이전 도우미"
-
-#: smb4kprofilemanager_p.cpp:82
-#, kde-format
-msgid "Migrate all relevant settings of one profile to another."
-msgstr "한 프로필의 모든 설정을 다른 프로필로 이전합니다."
-
-#: smb4kprofilemanager_p.cpp:99
-#, kde-format
-msgid "Old Profile:"
-msgstr "이전 프로필:"
-
-#: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
-#: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
-#, kde-format
-msgid "<Default Profile>"
-msgstr "<기본 프로필>"
-
-#: smb4kprofilemanager_p.cpp:108
-#, kde-format
-msgid "<All Profiles>"
-msgstr "<모든 프로필>"
-
-#: smb4kprofilemanager_p.cpp:116
-#, kde-format
-msgid "New Profile:"
-msgstr "새 프로필:"
-
 #: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
@@ -3316,6 +3262,40 @@ msgstr "원본"
 #, kde-format
 msgid "Destination"
 msgstr "대상"
+
+#~ msgid "Use profile migration assistant"
+#~ msgstr "프로필 이전 도우미 사용"
+
+#~ msgid ""
+#~ "Use the profile migration assistant when profiles are removed or the use "
+#~ "of profiles is enabled or disabled. The profile migration assistant "
+#~ "allows you to migrate all settings that were saved for a certain profile "
+#~ "to a different one."
+#~ msgstr ""
+#~ "프로필이 삭제되었거나 프로필이 활성화/비활성화되었을 때 프로필 이전 도우미"
+#~ "를 사용합니다. 프로필 이전 도우미를 사용하여 특정 프로필에 저장된 설정을 "
+#~ "다른 프로필로 이전할 수 있습니다."
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1이(가) 버전 1.0 파일이 아닙니다."
+
+#~ msgid "Profile Migration Assistant"
+#~ msgstr "프로필 이전 도우미"
+
+#~ msgid "Migrate all relevant settings of one profile to another."
+#~ msgstr "한 프로필의 모든 설정을 다른 프로필로 이전합니다."
+
+#~ msgid "Old Profile:"
+#~ msgstr "이전 프로필:"
+
+#~ msgid "<Default Profile>"
+#~ msgstr "<기본 프로필>"
+
+#~ msgid "<All Profiles>"
+#~ msgstr "<모든 프로필>"
+
+#~ msgid "New Profile:"
+#~ msgstr "새 프로필:"
 
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
