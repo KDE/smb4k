@@ -24,7 +24,7 @@ Dependencies:
     'frameworks/kwindowsystem': '@stable'
     'frameworks/kxmlgui': '@stable'
     'frameworks/kdnssd': '@stable'
-    'plasma/plasma-framework': '@stable'
+    'plasma/libplasma': '@stable'
     'third-party/kdsoap': '@latest'
     'libraries/kdsoap-ws-discovery-client': '@stable'
 
@@ -51,6 +51,6 @@ Dependencies:
     'frameworks/kxmlgui': '@latest-kf6'
     'frameworks/kdnssd': '@latest-kf6'
     'frameworks/kstatusnotifieritem': '@latest-kf6'
-    'plasma/plasma-framework': '@latest-kf6'
+    'plasma/libplasma': '@latest-kf6'
     'third-party/kdsoap': '@latest'
     'libraries/kdsoap-ws-discovery-client': '@stable'
