@@ -54,12 +54,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery);
 
-    // Force SMBv1 protocol for browsing
-    QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
-    forceSmb1Protocol->setObjectName(QStringLiteral("kcfg_ForceSmb1Protocol"));
-
-    browseSettingsBoxLayout->addWidget(forceSmb1Protocol);
-
     // Set client protocol versions
     QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), browseSettingsBox);
     useClientProtocolVersions->setObjectName(QStringLiteral("kcfg_UseClientProtocolVersions"));

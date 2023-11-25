@@ -553,68 +553,64 @@ void Smb4KClientJob::initClientLibrary()
     //
     // Set the protocol version if desired
     //
-    if (Smb4KSettings::forceSmb1Protocol() && (*pNetworkItem)->type() == Network) {
-        smbc_setOptionProtocols(m_context, "NT1", "NT1");
+    int minimal = -1;
+    int maximal = -1;
+    QString minimalClientProtocolVersionString, maximalClientProtocolVersionString;
+
+    if (options) {
+        if (options->useClientProtocolVersions()) {
+            minimal = options->minimalClientProtocolVersion();
+            maximal = options->maximalClientProtocolVersion();
+        }
     } else {
-        int minimal = -1;
-        int maximal = -1;
-        QString minimalClientProtocolVersionString, maximalClientProtocolVersionString;
+        if (Smb4KSettings::useClientProtocolVersions()) {
+            minimal = Smb4KSettings::minimalClientProtocolVersion();
+            maximal = Smb4KSettings::maximalClientProtocolVersion();
+        }
+    }
 
-        if (options) {
-            if (options->useClientProtocolVersions()) {
-                minimal = options->minimalClientProtocolVersion();
-                maximal = options->maximalClientProtocolVersion();
-            }
-        } else {
-            if (Smb4KSettings::useClientProtocolVersions()) {
-                minimal = Smb4KSettings::minimalClientProtocolVersion();
-                maximal = Smb4KSettings::maximalClientProtocolVersion();
-            }
+    if (minimal != -1 && maximal != -1) {
+        switch (minimal) {
+        case Smb4KSettings::EnumMinimalClientProtocolVersion::NT1: {
+            minimalClientProtocolVersionString = QStringLiteral("NT1");
+            break;
+        }
+        case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB2: {
+            minimalClientProtocolVersionString = QStringLiteral("SMB2");
+            break;
+        }
+        case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB3: {
+            minimalClientProtocolVersionString = QStringLiteral("SMB3");
+            break;
+        }
+        default: {
+            break;
+        }
         }
 
-        if (minimal != -1 && maximal != -1) {
-            switch (minimal) {
-            case Smb4KSettings::EnumMinimalClientProtocolVersion::NT1: {
-                minimalClientProtocolVersionString = QStringLiteral("NT1");
-                break;
-            }
-            case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB2: {
-                minimalClientProtocolVersionString = QStringLiteral("SMB2");
-                break;
-            }
-            case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB3: {
-                minimalClientProtocolVersionString = QStringLiteral("SMB3");
-                break;
-            }
-            default: {
-                break;
-            }
-            }
-
-            switch (Smb4KSettings::maximalClientProtocolVersion()) {
-            case Smb4KSettings::EnumMaximalClientProtocolVersion::NT1: {
-                maximalClientProtocolVersionString = QStringLiteral("NT1");
-                break;
-            }
-            case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB2: {
-                maximalClientProtocolVersionString = QStringLiteral("SMB2");
-                break;
-            }
-            case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB3: {
-                maximalClientProtocolVersionString = QStringLiteral("SMB3");
-                break;
-            }
-            default: {
-                break;
-            }
-            }
+        switch (Smb4KSettings::maximalClientProtocolVersion()) {
+        case Smb4KSettings::EnumMaximalClientProtocolVersion::NT1: {
+            maximalClientProtocolVersionString = QStringLiteral("NT1");
+            break;
         }
-
-        if (!minimalClientProtocolVersionString.isEmpty() && !maximalClientProtocolVersionString.isEmpty()) {
-            smbc_setOptionProtocols(m_context, minimalClientProtocolVersionString.toLatin1().data(), maximalClientProtocolVersionString.toLatin1().data());
-        } else {
-            smbc_setOptionProtocols(m_context, nullptr, nullptr);
+        case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB2: {
+            maximalClientProtocolVersionString = QStringLiteral("SMB2");
+            break;
         }
+        case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB3: {
+            maximalClientProtocolVersionString = QStringLiteral("SMB3");
+            break;
+        }
+        default: {
+            break;
+        }
+        }
+    }
+
+    if (!minimalClientProtocolVersionString.isEmpty() && !maximalClientProtocolVersionString.isEmpty()) {
+        smbc_setOptionProtocols(m_context, minimalClientProtocolVersionString.toLatin1().data(), maximalClientProtocolVersionString.toLatin1().data());
+    } else {
+        smbc_setOptionProtocols(m_context, nullptr, nullptr);
     }
 
     //
