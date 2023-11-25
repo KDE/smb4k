@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-24 00:42+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1960,29 +1960,14 @@ msgstr "Aktiev Profil"
 msgid "This is the currently active profile."
 msgstr "Dat is opstunns dat aktive Profil."
 
-#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:697
-#, kde-format
-msgid "Use profile migration assistant"
-msgstr ""
-
-#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid ""
-"Use the profile migration assistant when profiles are removed or the use of "
-"profiles is enabled or disabled. The profile migration assistant allows you "
-"to migrate all settings that were saved for a certain profile to a different "
-"one."
-msgstr ""
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomoptionsmanager.cpp:274
+#: smb4khomesshareshandler.cpp:168
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Dat Forrmaat vun „%1“ warrt nich ünnerstütt."
@@ -2015,33 +2000,28 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4khomesshareshandler.cpp:126
-#, kde-format
-msgid "%1 is not a version 1.0 file."
-msgstr "„%1“ is keen Verschoon-1.0-Datei."
-
-#: smb4khomesshareshandler_p.cpp:124
+#: smb4khomesshareshandler_p.cpp:112
 #, kde-format
 msgid "Specify User"
 msgstr "Bruker angeven"
 
-#: smb4khomesshareshandler_p.cpp:172
+#: smb4khomesshareshandler_p.cpp:160
 #, fuzzy, kde-format
 #| msgid "Please specify a username."
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "Bitte en Brukernaam angeven."
 
-#: smb4khomesshareshandler_p.cpp:186
+#: smb4khomesshareshandler_p.cpp:174
 #, kde-format
 msgid "User:"
 msgstr "Bruker:"
 
-#: smb4khomesshareshandler_p.cpp:196
+#: smb4khomesshareshandler_p.cpp:184
 #, kde-format
 msgid "Clear List"
 msgstr "List leddig maken"
 
-#: smb4kmounter.cpp:776
+#: smb4kmounter.cpp:773
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2053,7 +2033,7 @@ msgstr ""
 "<qt><p>De Freegaav <b>%1</b> is inhangt op<br><b>%2</b> un höört den Bruker "
 "<b>%3</b> to.</p><p>Wullt Du ehr redig afhangen?</p></qt>"
 
-#: smb4kmounter.cpp:781
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Frömd Freegaav"
@@ -3405,40 +3385,6 @@ msgstr ""
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
-#: smb4kprofilemanager_p.cpp:34
-#, kde-format
-msgid "Profile Migration Assistant"
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:82
-#, kde-format
-msgid "Migrate all relevant settings of one profile to another."
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:99
-#, kde-format
-msgid "Old Profile:"
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
-#: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
-#, fuzzy, kde-format
-#| msgid "Default Login"
-msgid "<Default Profile>"
-msgstr "Standardanmellen"
-
-#: smb4kprofilemanager_p.cpp:108
-#, fuzzy, kde-format
-#| msgid "Update files"
-msgid "<All Profiles>"
-msgstr "Dateien opfrischen"
-
-#: smb4kprofilemanager_p.cpp:116
-#, fuzzy, kde-format
-#| msgid "Update files"
-msgid "New Profile:"
-msgstr "Dateien opfrischen"
-
 #: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
@@ -3469,6 +3415,24 @@ msgstr "Born"
 #, kde-format
 msgid "Destination"
 msgstr "Teel"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "„%1“ is keen Verschoon-1.0-Datei."
+
+#, fuzzy
+#~| msgid "Default Login"
+#~ msgid "<Default Profile>"
+#~ msgstr "Standardanmellen"
+
+#, fuzzy
+#~| msgid "Update files"
+#~ msgid "<All Profiles>"
+#~ msgstr "Dateien opfrischen"
+
+#, fuzzy
+#~| msgid "Update files"
+#~ msgid "New Profile:"
+#~ msgstr "Dateien opfrischen"
 
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"

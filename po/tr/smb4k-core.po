@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-24 00:42+0000\n"
 "PO-Revision-Date: 2023-09-06 12:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1942,33 +1942,14 @@ msgstr "Etkin profil"
 msgid "This is the currently active profile."
 msgstr "Bu geçerli etkin profildir."
 
-#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:697
-#, kde-format
-msgid "Use profile migration assistant"
-msgstr "Profil taşıma asistanı kullan"
-
-#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid ""
-"Use the profile migration assistant when profiles are removed or the use of "
-"profiles is enabled or disabled. The profile migration assistant allows you "
-"to migrate all settings that were saved for a certain profile to a different "
-"one."
-msgstr ""
-"Profiller kaldırıldığında, kullanımı etkinleştirildiğinde ya da "
-"kapatıldığında profil taşıma asistanını kullanın. Profil taşıma asistanı "
-"belli bir profil için kaydedilen bütün ayarların bir diğerine taşınmasına "
-"olanak sağlar."
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%2 üzerinde %1"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomoptionsmanager.cpp:274
+#: smb4khomesshareshandler.cpp:168
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 biçimi desteklenmiyor."
@@ -2001,32 +1982,27 @@ msgstr "Zeroconf desteği, KDE'nin bu sürümünde kullanılabilir değil."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf ile bilinmeyen bir hata oluştu."
 
-#: smb4khomesshareshandler.cpp:126
-#, kde-format
-msgid "%1 is not a version 1.0 file."
-msgstr "%1 1.0 sürümünden bir dosya değil."
-
-#: smb4khomesshareshandler_p.cpp:124
+#: smb4khomesshareshandler_p.cpp:112
 #, kde-format
 msgid "Specify User"
 msgstr "Kullanıcıyı Belirtin"
 
-#: smb4khomesshareshandler_p.cpp:172
+#: smb4khomesshareshandler_p.cpp:160
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı belirtin."
 
-#: smb4khomesshareshandler_p.cpp:186
+#: smb4khomesshareshandler_p.cpp:174
 #, kde-format
 msgid "User:"
 msgstr "Kullanıcı:"
 
-#: smb4khomesshareshandler_p.cpp:196
+#: smb4khomesshareshandler_p.cpp:184
 #, kde-format
 msgid "Clear List"
 msgstr "Listeyi Temizle"
 
-#: smb4kmounter.cpp:776
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2036,7 +2012,7 @@ msgstr ""
 "bağlanıyor.</p><p>Paylaşımın bağlantısını gerçekten kesmek istiyor musunuz?</"
 "p>"
 
-#: smb4kmounter.cpp:781
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Yabancı Paylaşım"
@@ -3371,37 +3347,6 @@ msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 "<p>Zeroconf hizmetiyle ilgili bilinmeyen bir hata oluştu: <s>%1</s></p>"
 
-#: smb4kprofilemanager_p.cpp:34
-#, kde-format
-msgid "Profile Migration Assistant"
-msgstr "Profil Taşıma Asistanı"
-
-#: smb4kprofilemanager_p.cpp:82
-#, kde-format
-msgid "Migrate all relevant settings of one profile to another."
-msgstr "Bir profilin ilgili bütün ayarlarını bir başkasına taşı."
-
-#: smb4kprofilemanager_p.cpp:99
-#, kde-format
-msgid "Old Profile:"
-msgstr "Eski Profil:"
-
-#: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
-#: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
-#, kde-format
-msgid "<Default Profile>"
-msgstr "<Öntanımlı Profil>"
-
-#: smb4kprofilemanager_p.cpp:108
-#, kde-format
-msgid "<All Profiles>"
-msgstr "<Tüm Profiller>"
-
-#: smb4kprofilemanager_p.cpp:116
-#, kde-format
-msgid "New Profile:"
-msgstr "Yeni Profil:"
-
 #: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
@@ -3431,6 +3376,41 @@ msgstr "Kaynak"
 #, kde-format
 msgid "Destination"
 msgstr "Hedef"
+
+#~ msgid "Use profile migration assistant"
+#~ msgstr "Profil taşıma asistanı kullan"
+
+#~ msgid ""
+#~ "Use the profile migration assistant when profiles are removed or the use "
+#~ "of profiles is enabled or disabled. The profile migration assistant "
+#~ "allows you to migrate all settings that were saved for a certain profile "
+#~ "to a different one."
+#~ msgstr ""
+#~ "Profiller kaldırıldığında, kullanımı etkinleştirildiğinde ya da "
+#~ "kapatıldığında profil taşıma asistanını kullanın. Profil taşıma asistanı "
+#~ "belli bir profil için kaydedilen bütün ayarların bir diğerine taşınmasına "
+#~ "olanak sağlar."
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 1.0 sürümünden bir dosya değil."
+
+#~ msgid "Profile Migration Assistant"
+#~ msgstr "Profil Taşıma Asistanı"
+
+#~ msgid "Migrate all relevant settings of one profile to another."
+#~ msgstr "Bir profilin ilgili bütün ayarlarını bir başkasına taşı."
+
+#~ msgid "Old Profile:"
+#~ msgstr "Eski Profil:"
+
+#~ msgid "<Default Profile>"
+#~ msgstr "<Öntanımlı Profil>"
+
+#~ msgid "<All Profiles>"
+#~ msgstr "<Tüm Profiller>"
+
+#~ msgid "New Profile:"
+#~ msgstr "Yeni Profil:"
 
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"

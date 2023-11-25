@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-24 00:42+0000\n"
 "PO-Revision-Date: 2023-10-11 20:48+0200\n"
 "Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1999,33 +1999,14 @@ msgstr "Perfil actiu"
 msgid "This is the currently active profile."
 msgstr "Aquest és el perfil actualment actiu."
 
-#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:697
-#, kde-format
-msgid "Use profile migration assistant"
-msgstr "Usa l'assistent de migració de perfils"
-
-#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid ""
-"Use the profile migration assistant when profiles are removed or the use of "
-"profiles is enabled or disabled. The profile migration assistant allows you "
-"to migrate all settings that were saved for a certain profile to a different "
-"one."
-msgstr ""
-"Usa l'assistent de migració de perfils quan s'elimina, activa o desactiva "
-"l'ús dels perfils. L'assistent per a la migració de perfils permet migrar "
-"tota la configuració que s'han desat per a un perfil concret a un de "
-"diferent."
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 a %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomoptionsmanager.cpp:274
+#: smb4khomesshareshandler.cpp:168
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "El format de %1 no està admès."
@@ -2059,33 +2040,28 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb el Zeroconf."
 
-#: smb4khomesshareshandler.cpp:126
-#, kde-format
-msgid "%1 is not a version 1.0 file."
-msgstr "%1 no és un fitxer amb versió 1.0."
-
-#: smb4khomesshareshandler_p.cpp:124
+#: smb4khomesshareshandler_p.cpp:112
 #, kde-format
 msgid "Specify User"
 msgstr "Indiqueu l'usuari"
 
-#: smb4khomesshareshandler_p.cpp:172
+#: smb4khomesshareshandler_p.cpp:160
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
 "Si us plau, especifiqueu un nom d'usuari per a la compartició<br><b>%1</b>."
 
-#: smb4khomesshareshandler_p.cpp:186
+#: smb4khomesshareshandler_p.cpp:174
 #, kde-format
 msgid "User:"
 msgstr "Usuari:"
 
-#: smb4khomesshareshandler_p.cpp:196
+#: smb4khomesshareshandler_p.cpp:184
 #, kde-format
 msgid "Clear List"
 msgstr "Neteja la llista"
 
-#: smb4kmounter.cpp:776
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2094,7 +2070,7 @@ msgstr ""
 "<p>La compartició <b>%1</b> està muntada a <br><b>%2</b> i és propietat de "
 "l'usuari <b>%3</b>.</p<p>Esteu segur que la voleu desmuntar?</p>"
 
-#: smb4kmounter.cpp:781
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartició d'aliens"
@@ -3436,39 +3412,6 @@ msgstr ""
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>S'ha produït un error desconegut amb el Zeroconf: <s>%1</s></p>"
 
-#: smb4kprofilemanager_p.cpp:34
-#, kde-format
-msgid "Profile Migration Assistant"
-msgstr "Assistent de migració de perfils"
-
-#: smb4kprofilemanager_p.cpp:82
-#, kde-format
-msgid "Migrate all relevant settings of one profile to another."
-msgstr ""
-"Migra totes les opcions de configuració més importants d'un perfil a un "
-"altre."
-
-#: smb4kprofilemanager_p.cpp:99
-#, kde-format
-msgid "Old Profile:"
-msgstr "Perfil antic:"
-
-#: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
-#: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
-#, kde-format
-msgid "<Default Profile>"
-msgstr "<Perfil per defecte>"
-
-#: smb4kprofilemanager_p.cpp:108
-#, kde-format
-msgid "<All Profiles>"
-msgstr "<Tots els perfils>"
-
-#: smb4kprofilemanager_p.cpp:116
-#, kde-format
-msgid "New Profile:"
-msgstr "Perfil nou:"
-
 #: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
@@ -3498,6 +3441,43 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
+
+#~ msgid "Use profile migration assistant"
+#~ msgstr "Usa l'assistent de migració de perfils"
+
+#~ msgid ""
+#~ "Use the profile migration assistant when profiles are removed or the use "
+#~ "of profiles is enabled or disabled. The profile migration assistant "
+#~ "allows you to migrate all settings that were saved for a certain profile "
+#~ "to a different one."
+#~ msgstr ""
+#~ "Usa l'assistent de migració de perfils quan s'elimina, activa o desactiva "
+#~ "l'ús dels perfils. L'assistent per a la migració de perfils permet migrar "
+#~ "tota la configuració que s'han desat per a un perfil concret a un de "
+#~ "diferent."
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 no és un fitxer amb versió 1.0."
+
+#~ msgid "Profile Migration Assistant"
+#~ msgstr "Assistent de migració de perfils"
+
+#~ msgid "Migrate all relevant settings of one profile to another."
+#~ msgstr ""
+#~ "Migra totes les opcions de configuració més importants d'un perfil a un "
+#~ "altre."
+
+#~ msgid "Old Profile:"
+#~ msgstr "Perfil antic:"
+
+#~ msgid "<Default Profile>"
+#~ msgstr "<Perfil per defecte>"
+
+#~ msgid "<All Profiles>"
+#~ msgstr "<Tots els perfils>"
+
+#~ msgid "New Profile:"
+#~ msgstr "Perfil nou:"
 
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"

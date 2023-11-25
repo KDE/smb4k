@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2023-11-24 00:42+0000\n"
 "PO-Revision-Date: 2022-11-10 12:52+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -1654,29 +1654,14 @@ msgstr "Activ profil"
 msgid "This is the currently active profile."
 msgstr "Activ session:"
 
-#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:697
-#, fuzzy, kde-format
-msgid "Use profile migration assistant"
-msgstr "Assistente de migration"
-
-#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid ""
-"Use the profile migration assistant when profiles are removed or the use of "
-"profiles is enabled or disabled. The profile migration assistant allows you "
-"to migrate all settings that were saved for a certain profile to a different "
-"one."
-msgstr ""
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, fuzzy, kde-format
 msgid "%1 on %2"
 msgstr "%1 a %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomoptionsmanager.cpp:274
+#: smb4khomesshareshandler.cpp:168
 #, fuzzy, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Formate de %1"
@@ -1707,39 +1692,34 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4khomesshareshandler.cpp:126
-#, fuzzy, kde-format
-msgid "%1 is not a version 1.0 file."
-msgstr "Nov version: %1"
-
-#: smb4khomesshareshandler_p.cpp:124
+#: smb4khomesshareshandler_p.cpp:112
 #, fuzzy, kde-format
 msgid "Specify User"
 msgstr "Usator"
 
-#: smb4khomesshareshandler_p.cpp:172
+#: smb4khomesshareshandler_p.cpp:160
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
 
-#: smb4khomesshareshandler_p.cpp:186
+#: smb4khomesshareshandler_p.cpp:174
 #, kde-format
 msgid "User:"
 msgstr "Usator:"
 
-#: smb4khomesshareshandler_p.cpp:196
+#: smb4khomesshareshandler_p.cpp:184
 #, fuzzy, kde-format
 msgid "Clear List"
 msgstr "Vacuar li liste"
 
-#: smb4kmounter.cpp:776
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:781
+#: smb4kmounter.cpp:778
 #, fuzzy, kde-format
 msgid "Foreign Share"
 msgstr "Foren"
@@ -2934,37 +2914,6 @@ msgstr ""
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
-#: smb4kprofilemanager_p.cpp:34
-#, fuzzy, kde-format
-msgid "Profile Migration Assistant"
-msgstr "Assistente de migration"
-
-#: smb4kprofilemanager_p.cpp:82
-#, kde-format
-msgid "Migrate all relevant settings of one profile to another."
-msgstr ""
-
-#: smb4kprofilemanager_p.cpp:99
-#, fuzzy, kde-format
-msgid "Old Profile:"
-msgstr "Null profil"
-
-#: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
-#: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
-#, kde-format
-msgid "<Default Profile>"
-msgstr "<Profil predefinit>"
-
-#: smb4kprofilemanager_p.cpp:108
-#, kde-format
-msgid "<All Profiles>"
-msgstr "<Omni profiles>"
-
-#: smb4kprofilemanager_p.cpp:116
-#, kde-format
-msgid "New Profile:"
-msgstr "Nov profil:"
-
 #: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
@@ -2994,6 +2943,31 @@ msgstr "Orígine"
 #, kde-format
 msgid "Destination"
 msgstr "Destination"
+
+#, fuzzy
+#~ msgid "Use profile migration assistant"
+#~ msgstr "Assistente de migration"
+
+#, fuzzy
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "Nov version: %1"
+
+#, fuzzy
+#~ msgid "Profile Migration Assistant"
+#~ msgstr "Assistente de migration"
+
+#, fuzzy
+#~ msgid "Old Profile:"
+#~ msgstr "Null profil"
+
+#~ msgid "<Default Profile>"
+#~ msgstr "<Profil predefinit>"
+
+#~ msgid "<All Profiles>"
+#~ msgstr "<Omni profiles>"
+
+#~ msgid "New Profile:"
+#~ msgstr "Nov profil:"
 
 #~ msgid "Synchronization"
 #~ msgstr "Sincronisation"
