@@ -167,7 +167,6 @@ add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055000)
 add_subdirectory(core)
 add_subdirectory(helpers)
 add_subdirectory(smb4k)
-add_subdirectory(data)
 add_subdirectory(doc)
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
