@@ -71,11 +71,6 @@ protected:
 
 protected Q_SLOTS:
     /**
-     * Quits the application.
-     */
-    void slotQuit();
-
-    /**
      * Opens the configuration dialog.
      */
     void slotConfigDialog();

@@ -117,8 +117,8 @@ void Smb4KMainWindow::setupActions()
     //
     // Quit action
     //
-    QAction *quit_action = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
-    actionCollection()->addAction(QStringLiteral("quit_action"), quit_action);
+    QAction *quitAction = KStandardAction::quit(this, &QCoreApplication::quit, actionCollection());
+    actionCollection()->addAction(QStringLiteral("quit_action"), quitAction);
 
     //
     // Configure action
@@ -508,19 +508,6 @@ void Smb4KMainWindow::timerEvent(QTimerEvent *event)
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
-
-void Smb4KMainWindow::slotQuit()
-{
-    //
-    // Save the settings. Work around queryClose() not being called. :(
-    //
-    saveSettings();
-
-    //
-    // Quit the application
-    //
-    qApp->quit();
-}
 
 void Smb4KMainWindow::slotConfigDialog()
 {
