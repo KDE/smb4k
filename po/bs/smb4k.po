@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-24 00:42+0000\n"
+"POT-Creation-Date: 2023-11-26 00:42+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -341,7 +341,7 @@ msgid "Directories"
 msgstr "Direktoriji"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
-#: smb4k/smb4kconfigpagenetwork.cpp:111
+#: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
@@ -353,7 +353,7 @@ msgid " min"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
-#: smb4k/smb4kconfigpagenetwork.cpp:132
+#: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #, fuzzy, kde-format
 #| msgid "Settings"
@@ -459,24 +459,24 @@ msgstr[2] ""
 msgid "Browse Settings"
 msgstr "Podešavanje"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:143
+#: smb4k/smb4kconfigpagenetwork.cpp:137
 #, fuzzy, kde-format
 #| msgid "Samba"
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:195
+#: smb4k/smb4kconfigpagenetwork.cpp:189
 #, fuzzy, kde-format
 #| msgid "Wake-On-LAN"
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:215
+#: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:224
+#: smb4k/smb4kconfigpagenetwork.cpp:218
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Define the hosts that should be woken up via the custom options "
@@ -487,7 +487,7 @@ msgstr ""
 "<qt> Definiraj domaćine koji trebaju biti  probuđeni preko uobičajenih "
 "opcija dijalog . </qt>"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:234
+#: smb4k/smb4kconfigpagenetwork.cpp:228
 #, fuzzy, kde-format
 #| msgid "Advanced Settings"
 msgid "Advanced Settings"

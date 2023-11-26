@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-24 00:42+0000\n"
+"POT-Creation-Date: 2023-11-26 00:42+0000\n"
 "PO-Revision-Date: 2014-06-15 16:44+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -305,36 +305,15 @@ msgid ""
 "workgroups and domains."
 msgstr ""
 
-#. i18n: ectx: label, entry (ForceSmb1Protocol), group (Network)
-#: smb4k.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Looking for workgroups and domains..."
-msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
-msgstr "Munkacsoportok és tartományok keresése…"
-
-#. i18n: ectx: whatsthis, entry (ForceSmb1Protocol), group (Network)
-#: smb4k.kcfg:125
-#, kde-format
-msgid ""
-"Smb4K will force Samba's client library to use the SMB protocol version 1.0 "
-"for browsing workgroups and domains. You should use this option only as last "
-"resort, because the SMB protocol version 1.0 is unsafe and has been disabled "
-"in newer Samba and Windows versions. However, if you have trouble "
-"discovering workgroups and domains in your network neighborhood, you might "
-"want to consider to switch this setting on. If you are using DNS Service "
-"Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and "
-"those are working for you, you do not need it."
-msgstr ""
-
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:129
+#: smb4k.kcfg:124
 #, fuzzy, kde-format
 #| msgid "Protocol hint:"
 msgid "Set minimal and maximal SMB protocol version"
 msgstr "Protokolljavaslat:"
 
 #. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:130
+#: smb4k.kcfg:125
 #, kde-format
 msgid ""
 "Smb4K will set the minimal and maximal SMB protocol version that is used by "
@@ -349,14 +328,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:134
+#: smb4k.kcfg:129
 #, fuzzy, kde-format
 #| msgid "Protocol hint:"
 msgid "Minimal SMB protocol version:"
 msgstr "Protokolljavaslat:"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:135
+#: smb4k.kcfg:130
 #, kde-format
 msgid ""
 "This setting controls the minimum protocol version that Samba's client "
@@ -365,34 +344,34 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:138 smb4k.kcfg:154
+#: smb4k.kcfg:133 smb4k.kcfg:149
 #, kde-format
 msgid "NT1 (Classic CIFS/SMBv1 protocol)"
 msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:141 smb4k.kcfg:157
+#: smb4k.kcfg:136 smb4k.kcfg:152
 #, kde-format
 msgid "SMB2 (Windows Vista and above)"
 msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:144 smb4k.kcfg:160
+#: smb4k.kcfg:139 smb4k.kcfg:155
 #, kde-format
 msgid "SMB3 (Windows 8 and above)"
 msgstr ""
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:150
+#: smb4k.kcfg:145
 #, fuzzy, kde-format
 #| msgid "Protocol hint:"
 msgid "Maximal SMB protocol version:"
 msgstr "Protokolljavaslat:"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:151
+#: smb4k.kcfg:146
 #, kde-format
 msgid ""
 "This setting controls the maximum protocol version that Samba's client "
@@ -400,7 +379,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
-#: smb4k.kcfg:166
+#: smb4k.kcfg:161
 #, fuzzy, kde-format
 #| msgid "Set the UID to:"
 msgid "Set the SMB port to:"
@@ -408,7 +387,7 @@ msgstr "Set the UID to:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
-#: smb4k.kcfg:167 smb4k.kcfg:171
+#: smb4k.kcfg:162 smb4k.kcfg:166
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the port that is used for connecting to remote servers with the "
@@ -424,14 +403,14 @@ msgstr ""
 "beállítás nincs használva csatolásnál."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:177
+#: smb4k.kcfg:172
 #, fuzzy, kde-format
 #| msgid "This computer is already in the list."
 msgid "This computer is on a large network neighborhood"
 msgstr "Ez a gép már szerepel a listában."
 
 #. i18n: ectx: whatsthis, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:178
+#: smb4k.kcfg:173
 #, kde-format
 msgid ""
 "In case your computer is on a large network neighborhood, discovering all "
@@ -442,14 +421,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:182
+#: smb4k.kcfg:177
 #, fuzzy, kde-format
 #| msgid "Kerberos 5 authentication"
 msgid "Master browsers require authentication"
 msgstr "Kerberos 5 hitelesítés"
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:183
+#: smb4k.kcfg:178
 #, fuzzy, kde-format
 #| msgid ""
 #| "The master browsers in your network neighborhood require a login to "
@@ -466,14 +445,14 @@ msgstr ""
 "broadcast területeket."
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:187
+#: smb4k.kcfg:182
 #, fuzzy, kde-format
 #| msgid "Kerberos 5 authentication"
 msgid "Use Kerberos for authentication"
 msgstr "Kerberos 5 hitelesítés"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:188
+#: smb4k.kcfg:183
 #, fuzzy, kde-format
 #| msgid ""
 #| "Try to authenticate with Kerberos. This is only useful in an Active "
@@ -487,59 +466,59 @@ msgstr ""
 "környezetben hasznos, a beállítás érinti smbclient és smbtree parancsokat."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:192
+#: smb4k.kcfg:187
 #, kde-format
 msgid "Use Winbind ccache for authentication"
 msgstr "Winbind ccache használata a hitelesítéshez"
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:193
+#: smb4k.kcfg:188
 #, fuzzy, kde-format
 #| msgid "Use Winbind ccache for authentication"
 msgid "Use the Winbind ccache for authentication."
 msgstr "Winbind ccache használata a hitelesítéshez"
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
-#: smb4k.kcfg:197
+#: smb4k.kcfg:192
 #, kde-format
 msgid "Set the encryption level to:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:198 smb4k.kcfg:202
+#: smb4k.kcfg:193 smb4k.kcfg:197
 #, kde-format
 msgid "Set the level of encryption that is used for making connections."
 msgstr ""
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:205
+#: smb4k.kcfg:200
 #, kde-format
 msgid "None"
 msgstr "Nincs"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:208
+#: smb4k.kcfg:203
 #, fuzzy, kde-format
 #| msgid "Required"
 msgid "Request"
 msgstr "Kötelező"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:211
+#: smb4k.kcfg:206
 #, fuzzy, kde-format
 #| msgid "Required"
 msgid "Require"
 msgstr "Kötelező"
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:217
+#: smb4k.kcfg:212
 #, kde-format
 msgid "Preview hidden files and directories"
 msgstr "Rejtett fájlok és mappák előnézete"
 
 #. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:218
+#: smb4k.kcfg:213
 #, kde-format
 msgid ""
 "Preview hidden files and directories. The hidden files and directories are "
@@ -554,26 +533,26 @@ msgstr ""
 "szempontjából nem fontosak, nincs szükség a beállítás bekapcsolására."
 
 #. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:222
+#: smb4k.kcfg:217
 #, kde-format
 msgid "Detect printer shares"
 msgstr "Megosztott nyomtatók felderítése"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:223
+#: smb4k.kcfg:218
 #, fuzzy, kde-format
 #| msgid "Printer shares will be detected."
 msgid "Printer shares are detected."
 msgstr "A megosztott nyomtatók fel lesznek derítve."
 
 #. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:227
+#: smb4k.kcfg:222
 #, kde-format
 msgid "Detect hidden shares"
 msgstr "Rejtett megosztások felderítése"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:228
+#: smb4k.kcfg:223
 #, fuzzy, kde-format
 #| msgid ""
 #| "Hidden shares will be displayed in the network browser. Hidden shares are "
@@ -586,13 +565,13 @@ msgstr ""
 "megosztás neve után, például Zene$ vagy IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:232
+#: smb4k.kcfg:227
 #, kde-format
 msgid "Enable Wake-On-LAN features"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:233
+#: smb4k.kcfg:228
 #, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
@@ -602,13 +581,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:237
+#: smb4k.kcfg:232
 #, kde-format
 msgid "Waiting time:"
 msgstr "Várakozási idő:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:238
+#: smb4k.kcfg:233
 #, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
@@ -617,13 +596,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:249
+#: smb4k.kcfg:244
 #, kde-format
 msgid "Save logins in a wallet"
 msgstr "Bejelentkezések mentése jelszótárolóba"
 
 #. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:250
+#: smb4k.kcfg:245
 #, kde-format
 msgid ""
 "Use a wallet to store the login. The username and password are stored "
@@ -635,13 +614,13 @@ msgstr ""
 "átmenetileg tárolódnak a beállítás kikapcsolása esetén."
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:254
+#: smb4k.kcfg:249
 #, kde-format
 msgid "Use a default login"
 msgstr "Alapértelmezett bejelentkezési adatok használata"
 
 #. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:255
+#: smb4k.kcfg:250
 #, kde-format
 msgid ""
 "Enable the usage of a default login. The provided data is used by default to "
@@ -653,13 +632,13 @@ msgstr ""
 "Directory vagy NT tartomány használata esetén hasznos például."
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:267
+#: smb4k.kcfg:262
 #, kde-format
 msgid "Synchronization prefix:"
 msgstr "Szinkronizációs előtag:"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:268
+#: smb4k.kcfg:263
 #, kde-format
 msgid ""
 "Under this prefix the destination directory for the synchronization will be "
@@ -669,37 +648,37 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:272
+#: smb4k.kcfg:267
 #, kde-format
 msgid "Archive mode"
 msgstr "Archiváló mód"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:273
+#: smb4k.kcfg:268
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr "Archiváló mód használata (-a, --archive). Ez a -rlptgoD rövid formája."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:277
+#: smb4k.kcfg:272
 #, kde-format
 msgid "Recurse into subdirectories"
 msgstr "Alkönyvtárakban is keres"
 
 #. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:278
+#: smb4k.kcfg:273
 #, kde-format
 msgid "Recurse into directories (-r, --recursive)."
 msgstr "Alkönyvtárakban is keres (-r, --recursive)"
 
 #. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:282
+#: smb4k.kcfg:277
 #, kde-format
 msgid "Update files"
 msgstr "Fájlok frissítése"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:283
+#: smb4k.kcfg:278
 #, kde-format
 msgid ""
 "Update files in the destination directory that are older than in the source "
@@ -708,13 +687,13 @@ msgstr ""
 "A célmappában lévő, a forrásfájlnál régebbi fájlok frissítése (-u, --update)."
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:287
+#: smb4k.kcfg:282
 #, kde-format
 msgid "Update files in place"
 msgstr "Fájlok frissítése helyben"
 
 #. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:288
+#: smb4k.kcfg:283
 #, kde-format
 msgid ""
 "Update destination files in-place (--inplace). By default, rsync first "
@@ -725,13 +704,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:292
+#: smb4k.kcfg:287
 #, kde-format
 msgid "Use relative path names"
 msgstr "Relatív elérési utak használata"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:293
+#: smb4k.kcfg:288
 #, kde-format
 msgid ""
 "Use relative paths (-R, --relative). This means that the full path names "
@@ -740,13 +719,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:297
+#: smb4k.kcfg:292
 #, kde-format
 msgid "Do not send implied directories"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:298
+#: smb4k.kcfg:293
 #, kde-format
 msgid ""
 "Do not send implied directories with --relative (--no-implied-dirs). This "
@@ -758,13 +737,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:302
+#: smb4k.kcfg:297
 #, kde-format
 msgid "Transfer directories without recursing"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:303
+#: smb4k.kcfg:298
 #, kde-format
 msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
@@ -772,13 +751,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:308
+#: smb4k.kcfg:303
 #, kde-format
 msgid "Compress data during transfer"
 msgstr "Adatok tömörítése az átvitel során"
 
 #. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:309
+#: smb4k.kcfg:304
 #, kde-format
 msgid ""
 "Compress data during transfer (-z, --compress). This significantly reduces "
@@ -787,13 +766,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:313
+#: smb4k.kcfg:308
 #, kde-format
 msgid "Set compression level:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:314
+#: smb4k.kcfg:309
 #, kde-format
 msgid ""
 "Explicitly set the compression level to use (--compress-level=NUM). If NUM "
@@ -801,19 +780,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
-#: smb4k.kcfg:318
+#: smb4k.kcfg:313
 #, kde-format
 msgid "The value for the UseCompressionLevel config entry"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:325
+#: smb4k.kcfg:320
 #, kde-format
 msgid "Skip compression for following file suffixes:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:326
+#: smb4k.kcfg:321
 #, kde-format
 msgid ""
 "Overwrite the list of file suffixes that will not be compressed (--skip-"
@@ -824,31 +803,31 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
-#: smb4k.kcfg:330
+#: smb4k.kcfg:325
 #, kde-format
 msgid "The value(s) for the UseSkipCompression config entry"
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:335
+#: smb4k.kcfg:330
 #, kde-format
 msgid "Preserve symlinks"
 msgstr "Szimbolikus linkek megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:336
+#: smb4k.kcfg:331
 #, kde-format
 msgid "Copy symlinks as symlinks (-l, --links)."
 msgstr "Szimbolikus linkek másolása szimbolikus linkként (-l ,--links)."
 
 #. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:340
+#: smb4k.kcfg:335
 #, kde-format
 msgid "Transform symlinks"
 msgstr "Szimbolikus linkek átalakítása"
 
 #. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:341
+#: smb4k.kcfg:336
 #, kde-format
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
@@ -856,14 +835,14 @@ msgstr ""
 "Szimbolikus linkek átalakítása a hivatkozott elemre (-L, --copy-links)."
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:345
+#: smb4k.kcfg:340
 #, fuzzy, kde-format
 #| msgid "Only transform unsafe symlinks"
 msgid "Transform unsafe symlinks"
 msgstr "Csak a nem biztonságos szimbolikus linkek átalakítása"
 
 #. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:346
+#: smb4k.kcfg:341
 #, kde-format
 msgid ""
 "Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
@@ -874,13 +853,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:350
+#: smb4k.kcfg:345
 #, kde-format
 msgid "Ignore unsafe symlinks"
 msgstr "Nem biztonságos szimbolikus linkek kihagyása"
 
 #. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:351
+#: smb4k.kcfg:346
 #, kde-format
 msgid ""
 "Ignore symlinks that point outside the copied tree (--safe-links). All "
@@ -889,14 +868,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:355
+#: smb4k.kcfg:350
 #, fuzzy, kde-format
 #| msgid "Ignore unsafe symlinks"
 msgid "Munge symlinks"
 msgstr "Nem biztonságos szimbolikus linkek kihagyása"
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:356
+#: smb4k.kcfg:351
 #, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
@@ -908,13 +887,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:360
+#: smb4k.kcfg:355
 #, kde-format
 msgid "Preserve hard links"
 msgstr "Hard linkek megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:361
+#: smb4k.kcfg:356
 #, kde-format
 msgid ""
 "Preserve hard links (-H, --hard-links). This options causes rsync to "
@@ -923,14 +902,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:365
+#: smb4k.kcfg:360
 #, fuzzy, kde-format
 #| msgid "Keep directory symlinks"
 msgid "Copy directory symlinks"
 msgstr "Könyvtárak szimbolikus linkjeinek megőrzése"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:366
+#: smb4k.kcfg:361
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the sending side as though they were real "
@@ -943,13 +922,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:370
+#: smb4k.kcfg:365
 #, kde-format
 msgid "Keep directory symlinks"
 msgstr "Könyvtárak szimbolikus linkjeinek megőrzése"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:371
+#: smb4k.kcfg:366
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the receiving side as though they were real "
@@ -959,13 +938,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:375
+#: smb4k.kcfg:370
 #, kde-format
 msgid "Preserve permissions"
 msgstr "Jogosultságok megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:376
+#: smb4k.kcfg:371
 #, kde-format
 msgid ""
 "Preserve permissions (-p, --perms). The permissions of the destination file "
@@ -977,13 +956,13 @@ msgstr ""
 "lásd az rsync kézikönyvoldalát."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:380
+#: smb4k.kcfg:375
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:381
+#: smb4k.kcfg:376
 #, kde-format
 msgid ""
 "Preserve access control lists. This option causes rsync to update the "
@@ -993,14 +972,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:385
+#: smb4k.kcfg:380
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve extended attributes"
 msgstr "Idők megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:386
+#: smb4k.kcfg:381
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1013,14 +992,14 @@ msgstr ""
 "lesz beállítva mint a forrásfájl."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:390
+#: smb4k.kcfg:385
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve access times"
 msgstr "Idők megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:391
+#: smb4k.kcfg:386
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1033,14 +1012,14 @@ msgstr ""
 "lesz beállítva mint a forrásfájl."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:395
+#: smb4k.kcfg:390
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve create times"
 msgstr "Idők megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:396
+#: smb4k.kcfg:391
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1053,13 +1032,13 @@ msgstr ""
 "lesz beállítva mint a forrásfájl."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:400
+#: smb4k.kcfg:395
 #, kde-format
 msgid "Preserve group"
 msgstr "Csoport megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:401
+#: smb4k.kcfg:396
 #, kde-format
 msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
@@ -1069,13 +1048,13 @@ msgstr ""
 "lesz beállítva mint a forrásfájl."
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:405
+#: smb4k.kcfg:400
 #, kde-format
 msgid "Preserve owner"
 msgstr "Tulajdonos megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:406
+#: smb4k.kcfg:401
 #, kde-format
 msgid ""
 "Preserve the owner (-o, --owner). The owner of the destination file will be "
@@ -1085,13 +1064,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:410
+#: smb4k.kcfg:405
 #, kde-format
 msgid "Preserve device and special files"
 msgstr "Eszközfájlok és speciális fájlok megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:411
+#: smb4k.kcfg:406
 #, kde-format
 msgid ""
 "Preserve device and special files (-D, --devices --specials). This option "
@@ -1101,13 +1080,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:415
+#: smb4k.kcfg:410
 #, kde-format
 msgid "Preserve times"
 msgstr "Idők megőrzése"
 
 #. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:416
+#: smb4k.kcfg:411
 #, kde-format
 msgid ""
 "Preserve times (-t, --times). The modification times are transferred along "
@@ -1119,13 +1098,13 @@ msgstr ""
 "rsync kézikönyvoldalát."
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:420
+#: smb4k.kcfg:415
 #, kde-format
 msgid "Omit directories when preserving times"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:421
+#: smb4k.kcfg:416
 #, kde-format
 msgid ""
 "Omit directories when preserving times (-O, --omit-dir-times). This means "
@@ -1134,13 +1113,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:425
+#: smb4k.kcfg:420
 #, kde-format
 msgid "Remove synchronized source files"
 msgstr "Szinkronizált forrásfájlok törlése"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:426
+#: smb4k.kcfg:421
 #, kde-format
 msgid ""
 "Remove all synchronized source files (--remove-source-files). This tells "
@@ -1150,13 +1129,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:430
+#: smb4k.kcfg:425
 #, kde-format
 msgid "Delete extraneous files"
 msgstr "Idegen fájlok törlése"
 
 #. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:431
+#: smb4k.kcfg:426
 #, kde-format
 msgid ""
 "Delete extraneous files from destination (--delete). This tells rsync to "
@@ -1165,13 +1144,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:435
+#: smb4k.kcfg:430
 #, kde-format
 msgid "Delete files before transfer"
 msgstr "Fájlok törlése átvitel előtt"
 
 #. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:436
+#: smb4k.kcfg:431
 #, kde-format
 msgid ""
 "Delete files on the receiving side before the transfer starts (--delete-"
@@ -1180,13 +1159,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:440
+#: smb4k.kcfg:435
 #, kde-format
 msgid "Delete files after transfer"
 msgstr "Fájlok törlése átvitel után"
 
 #. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:441
+#: smb4k.kcfg:436
 #, kde-format
 msgid ""
 "Delete files on the receiving side after the transfer has completed (--"
@@ -1196,13 +1175,13 @@ msgstr ""
 "after, --del)."
 
 #. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:445
+#: smb4k.kcfg:440
 #, kde-format
 msgid "Delete files during transfer"
 msgstr "Fájlok törlése átvitel közben"
 
 #. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:446
+#: smb4k.kcfg:441
 #, kde-format
 msgid ""
 "Delete files on the receiving side during the transfer (--delete-during). "
@@ -1211,14 +1190,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:450
+#: smb4k.kcfg:445
 #, fuzzy, kde-format
 #| msgid "Also delete excluded files"
 msgid "Delete excluded files"
 msgstr "Kihagyott fájlok törlése"
 
 #. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:451
+#: smb4k.kcfg:446
 #, kde-format
 msgid ""
 "Also delete excluded files from destination directory (--delete-excluded). "
@@ -1228,13 +1207,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:455
+#: smb4k.kcfg:450
 #, kde-format
 msgid "Delete even if I/O errors occur"
 msgstr "Törlés I/O-hiba esetén is"
 
 #. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:456
+#: smb4k.kcfg:451
 #, kde-format
 msgid ""
 "Delete even if I/O errors occur (--ignore-errors). This option has to be "
@@ -1242,13 +1221,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:460
+#: smb4k.kcfg:455
 #, kde-format
 msgid "Force deletion of non-void directories"
 msgstr "Nem üres mappák törlésének kényszerítése"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:461
+#: smb4k.kcfg:456
 #, kde-format
 msgid ""
 "Force deletion of directories even if they are not empty (--force). This "
@@ -1257,13 +1236,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:465
+#: smb4k.kcfg:460
 #, kde-format
 msgid "Do not delete more than this many files:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:466
+#: smb4k.kcfg:461
 #, kde-format
 msgid ""
 "Only delete as many files as defined here (--max-delete=NUM). This tells "
@@ -1272,19 +1251,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
-#: smb4k.kcfg:470
+#: smb4k.kcfg:465
 #, kde-format
 msgid "Value for DeleteMaximum config entry"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:476
+#: smb4k.kcfg:471
 #, kde-format
 msgid "Do not transfer any file smaller than:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:477
+#: smb4k.kcfg:472
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is smaller than the "
@@ -1292,19 +1271,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:481
+#: smb4k.kcfg:476
 #, kde-format
 msgid "Value for MinimalTransferSize config entry"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:487
+#: smb4k.kcfg:482
 #, kde-format
 msgid "Do not transfer any file larger than:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:488
+#: smb4k.kcfg:483
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is larger than the "
@@ -1312,19 +1291,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:492
+#: smb4k.kcfg:487
 #, kde-format
 msgid "Value for MaximalTransferSize config entry"
 msgstr ""
 
 #. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:498
+#: smb4k.kcfg:493
 #, kde-format
 msgid "Keep partially transferred files"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:499
+#: smb4k.kcfg:494
 #, kde-format
 msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
@@ -1332,13 +1311,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:503
+#: smb4k.kcfg:498
 #, kde-format
 msgid "Put partially transferred files into:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:504
+#: smb4k.kcfg:499
 #, kde-format
 msgid ""
 "Put a partially transferred file into this directory (--partial-dir=DIR). "
@@ -1348,19 +1327,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
-#: smb4k.kcfg:508
+#: smb4k.kcfg:503
 #, kde-format
 msgid "The data for the UsePartialDirectory option"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:513
+#: smb4k.kcfg:508
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
 msgstr "Fájlok automatikus mellőzése hasonló módon, mint ahogy a CVS teszi"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:514
+#: smb4k.kcfg:509
 #, kde-format
 msgid ""
 "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
@@ -1370,13 +1349,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:518
+#: smb4k.kcfg:513
 #, kde-format
 msgid "Exclude files matching this pattern:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:519
+#: smb4k.kcfg:514
 #, kde-format
 msgid ""
 "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
@@ -1385,19 +1364,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
-#: smb4k.kcfg:523
+#: smb4k.kcfg:518
 #, kde-format
 msgid "Pattern that is used for file exclusion"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:528
+#: smb4k.kcfg:523
 #, kde-format
 msgid "Read exclude patterns from:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:529
+#: smb4k.kcfg:524
 #, kde-format
 msgid ""
 "Read exclude patterns from a file (--exclude-from=FILE). This option is "
@@ -1407,19 +1386,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:533
+#: smb4k.kcfg:528
 #, kde-format
 msgid "The file from which the exclude patterns are read"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:538
+#: smb4k.kcfg:533
 #, kde-format
 msgid "Include files matching this pattern:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:539
+#: smb4k.kcfg:534
 #, kde-format
 msgid ""
 "Do not exclude files matching a certain pattern (--include=PATTERN). This is "
@@ -1428,19 +1407,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
-#: smb4k.kcfg:543
+#: smb4k.kcfg:538
 #, kde-format
 msgid "Pattern that is used for file inclusion"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:548
+#: smb4k.kcfg:543
 #, kde-format
 msgid "Read include patterns from:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:549
+#: smb4k.kcfg:544
 #, kde-format
 msgid ""
 "Read include patterns from a file (--include-from=FILE). This option is "
@@ -1450,19 +1429,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
-#: smb4k.kcfg:553
+#: smb4k.kcfg:548
 #, kde-format
 msgid "The file from which the include patterns are read"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:558
+#: smb4k.kcfg:553
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "Egyéni szűrési szabályok:"
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:559
+#: smb4k.kcfg:554
 #, kde-format
 msgid ""
 "Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
@@ -1472,20 +1451,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:563
+#: smb4k.kcfg:558
 #, fuzzy, kde-format
 #| msgid "Custom filter rules:"
 msgid "Custom filter rules"
 msgstr "Egyéni szűrési szabályok:"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:568
+#: smb4k.kcfg:563
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "A --filter='dir-merge /.rsync-filter' szűrési szabály használata"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:569
+#: smb4k.kcfg:564
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1495,13 +1474,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:573
+#: smb4k.kcfg:568
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "A --filter='exclude .rsync-filter' szűrőszabály használata"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:574
+#: smb4k.kcfg:569
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1510,13 +1489,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:578
+#: smb4k.kcfg:573
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:579
+#: smb4k.kcfg:574
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1525,13 +1504,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:583
+#: smb4k.kcfg:578
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:584
+#: smb4k.kcfg:579
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1539,13 +1518,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:588
+#: smb4k.kcfg:583
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:589
+#: smb4k.kcfg:584
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1554,13 +1533,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:593
+#: smb4k.kcfg:588
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "Csak azokat a fájlokat frissítse, amelyek már léteznek"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:594
+#: smb4k.kcfg:589
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1571,13 +1550,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:598
+#: smb4k.kcfg:593
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "Létező fájlok figyelmen kívül hagyása"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:599
+#: smb4k.kcfg:594
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1585,13 +1564,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:603
+#: smb4k.kcfg:598
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "Frissítések késleltetése az átvitel befejezésééig"
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:604
+#: smb4k.kcfg:599
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1601,13 +1580,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:608
+#: smb4k.kcfg:603
 #, kde-format
 msgid "Make backups"
 msgstr "Biztonsági mentések készítése"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:609
+#: smb4k.kcfg:604
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1617,49 +1596,49 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:613
+#: smb4k.kcfg:608
 #, kde-format
 msgid "Backup suffix:"
 msgstr "A biztonsági mentések utótagja:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:614
+#: smb4k.kcfg:609
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr ""
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:618
+#: smb4k.kcfg:613
 #, kde-format
 msgid "Backup suffix"
 msgstr "A biztonsági mentések utótagja"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:623
+#: smb4k.kcfg:618
 #, kde-format
 msgid "Backup directory:"
 msgstr "A biztonsági mentés mappája:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:624
+#: smb4k.kcfg:619
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr "A biztonsági mentések tárolása ebben a mappábamban (--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:628
+#: smb4k.kcfg:623
 #, kde-format
 msgid "Backup directory"
 msgstr "A biztonsági mentés mappája"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:633
+#: smb4k.kcfg:628
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:634
+#: smb4k.kcfg:629
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1667,19 +1646,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:638
+#: smb4k.kcfg:633
 #, kde-format
 msgid "The block size"
 msgstr "Blokkméret"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:644
+#: smb4k.kcfg:639
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "Blokk/fájl ellenőrzőösszeg forrásának beállítása:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:645
+#: smb4k.kcfg:640
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1689,19 +1668,19 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:649
+#: smb4k.kcfg:644
 #, kde-format
 msgid "The value for the UseChecksumSeed config option"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:655
+#: smb4k.kcfg:650
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "Fájlok kihagyása ellenőrzőösszeg alapján"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:656
+#: smb4k.kcfg:651
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1712,33 +1691,33 @@ msgstr ""
 "hagyja ki (-c, --checksum). További információkért lásd az rsync kézikönyvét."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:660
+#: smb4k.kcfg:655
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:661
+#: smb4k.kcfg:656
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
 msgstr ""
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:665
+#: smb4k.kcfg:660
 #, kde-format
 msgid "The value for the UseBandwidthLimit config option"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:677
+#: smb4k.kcfg:672
 #, fuzzy, kde-format
 #| msgid "Update files"
 msgid "Use profiles"
 msgstr "Fájlok frissítése"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:678
+#: smb4k.kcfg:673
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1747,25 +1726,25 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:682
+#: smb4k.kcfg:677
 #, fuzzy, kde-format
 msgid "Profiles"
 msgstr "A fájl ki&nyomtatása..."
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:683
+#: smb4k.kcfg:678
 #, fuzzy, kde-format
 #| msgid "The logon failed. "
 msgid "The list of profiles."
 msgstr "A bejelntkezés sikertelen."
 
-#: smb4k.kcfg:690
+#: smb4k.kcfg:685
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr ""
 
-#: smb4k.kcfg:691
+#: smb4k.kcfg:686
 #, fuzzy, kde-format
 #| msgid "Workgroup"
 msgctxt "default profile name for use at work"
@@ -1773,14 +1752,14 @@ msgid "Work"
 msgstr "Munkacsoport"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:692
+#: smb4k.kcfg:687
 #, fuzzy, kde-format
 #| msgid "Archive mode"
 msgid "Active profile"
 msgstr "Archiváló mód"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:693
+#: smb4k.kcfg:688
 #, fuzzy, kde-format
 #| msgid "There is currently %1 share mounted."
 #| msgid_plural "There are currently %1 shares mounted."
@@ -1799,28 +1778,28 @@ msgstr ""
 msgid "The format of %1 is not supported."
 msgstr "%1 formátuma nem támogatott."
 
-#: smb4kclient_p.cpp:1240
+#: smb4kclient_p.cpp:1236
 #, fuzzy, kde-format
 msgid "The file %1 could not be read"
 msgstr "A %1 fájl beolvasása nem sikerült."
 
-#: smb4kclient_p.cpp:1257
+#: smb4kclient_p.cpp:1253
 #, fuzzy, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "A %1 fájl beolvasása nem sikerült."
 
-#: smb4kclient_p.cpp:1347
+#: smb4kclient_p.cpp:1343
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
 
-#: smb4kclient_p.cpp:1351
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr ""
 
-#: smb4kclient_p.cpp:1355
+#: smb4kclient_p.cpp:1351
 #, fuzzy, kde-format
 #| msgid "An authentication error occurred. "
 msgid "An unknown error with Zeroconf occurred."
@@ -3209,6 +3188,11 @@ msgstr "Forrás"
 #, kde-format
 msgid "Destination"
 msgstr "Cél"
+
+#, fuzzy
+#~| msgid "Looking for workgroups and domains..."
+#~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
+#~ msgstr "Munkacsoportok és tartományok keresése…"
 
 #~ msgid "%1 is not a version 1.0 file."
 #~ msgstr "%1 nem 1.0-s verziójú fájl."

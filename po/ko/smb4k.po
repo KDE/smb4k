@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-24 00:42+0000\n"
+"POT-Creation-Date: 2023-11-26 00:42+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -323,7 +323,7 @@ msgid "Directories"
 msgstr "디렉터리"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
-#: smb4k/smb4kconfigpagenetwork.cpp:111
+#: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
@@ -335,7 +335,7 @@ msgid " min"
 msgstr "분"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
-#: smb4k/smb4kconfigpagenetwork.cpp:132
+#: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #, kde-format
 msgid "Basic Settings"
@@ -430,28 +430,28 @@ msgstr[0] ""
 msgid "Browse Settings"
 msgstr "탐색 설정"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:143
+#: smb4k/smb4kconfigpagenetwork.cpp:137
 #, kde-format
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:195
+#: smb4k/smb4kconfigpagenetwork.cpp:189
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:215
+#: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
 msgstr "초"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:224
+#: smb4k/smb4kconfigpagenetwork.cpp:218
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr "사용자 정의 설정 편집기에서 깨울 호스트를 정의하십시오."
 
-#: smb4k/smb4kconfigpagenetwork.cpp:234
+#: smb4k/smb4kconfigpagenetwork.cpp:228
 #, kde-format
 msgid "Advanced Settings"
 msgstr "고급 설정"
