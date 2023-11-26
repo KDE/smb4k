@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-24 00:42+0000\n"
-"PO-Revision-Date: 2023-11-19 03:41\n"
+"POT-Creation-Date: 2023-11-26 00:42+0000\n"
+"PO-Revision-Date: 2023-11-25 02:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -26,8 +26,7 @@ msgstr "KDE 中国, Guo Yunhe, magsom, Shi Lei, Tyson Tan"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"kde-china@kde.org, i@guoyunhe.me, magsom@kde.org, slkde@kde.org, "
-"tysontan@tysontan.com"
+"kde-china@kde.org, i@guoyunhe.me, magsom@kde.org, slkde@kde.org, tds00@qq.com"
 
 #: helpers/smb4kmounthelper.cpp:135
 #, kde-format
@@ -322,7 +321,7 @@ msgid "Directories"
 msgstr "目录"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
-#: smb4k/smb4kconfigpagenetwork.cpp:111
+#: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
@@ -334,7 +333,7 @@ msgid " min"
 msgstr " 分钟"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
-#: smb4k/smb4kconfigpagenetwork.cpp:132
+#: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #, kde-format
 msgid "Basic Settings"
@@ -412,7 +411,7 @@ msgid ""
 msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
-msgstr[0] ""
+msgstr[0] "以下 %1 个条目将从附加选项中删除：<br>%2。<br>详情请见使用手册。"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
@@ -421,28 +420,28 @@ msgstr[0] ""
 msgid "Browse Settings"
 msgstr "浏览设置"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:143
+#: smb4k/smb4kconfigpagenetwork.cpp:137
 #, kde-format
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:195
+#: smb4k/smb4kconfigpagenetwork.cpp:189
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "局域网唤醒"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:215
+#: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
 msgstr " 秒"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:224
+#: smb4k/smb4kconfigpagenetwork.cpp:218
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr "指定要通过自定义设置编辑器唤醒的主机。"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:234
+#: smb4k/smb4kconfigpagenetwork.cpp:228
 #, kde-format
 msgid "Advanced Settings"
 msgstr "高级设置"
@@ -964,12 +963,12 @@ msgstr "项目上移"
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr ""
+msgstr "请输入主机 <b>%1</b> 的用户名和密码。"
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr ""
+msgstr "请输入共享 <b>%1</b> 的用户名和密码。"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-24 00:42+0000\n"
+"POT-Creation-Date: 2023-11-26 00:42+0000\n"
 "PO-Revision-Date: 2023-11-08 15:42-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -334,7 +334,7 @@ msgid "Directories"
 msgstr "Pastas"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
-#: smb4k/smb4kconfigpagenetwork.cpp:111
+#: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
@@ -346,7 +346,7 @@ msgid " min"
 msgstr " min"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
-#: smb4k/smb4kconfigpagenetwork.cpp:132
+#: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #, kde-format
 msgid "Basic Settings"
@@ -440,22 +440,22 @@ msgstr[1] ""
 msgid "Browse Settings"
 msgstr "Configurações de navegação"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:143
+#: smb4k/smb4kconfigpagenetwork.cpp:137
 #, kde-format
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:195
+#: smb4k/smb4kconfigpagenetwork.cpp:189
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Ativação por LAN (Wake-On-LAN)"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:215
+#: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
 msgstr " s"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:224
+#: smb4k/smb4kconfigpagenetwork.cpp:218
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
@@ -463,7 +463,7 @@ msgstr ""
 "Define as máquinas que devem ser ativadas através do editor de configurações "
 "personalizada."
 
-#: smb4k/smb4kconfigpagenetwork.cpp:234
+#: smb4k/smb4kconfigpagenetwork.cpp:228
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Configurações avançadas"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-24 00:42+0000\n"
+"POT-Creation-Date: 2023-11-26 00:42+0000\n"
 "PO-Revision-Date: 2023-11-02 12:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -329,7 +329,7 @@ msgid "Directories"
 msgstr "Dizinler"
 
 #: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
-#: smb4k/smb4kconfigpagenetwork.cpp:111
+#: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
@@ -341,7 +341,7 @@ msgid " min"
 msgstr " dk"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
-#: smb4k/smb4kconfigpagenetwork.cpp:132
+#: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #, kde-format
 msgid "Basic Settings"
@@ -433,29 +433,29 @@ msgstr[1] ""
 msgid "Browse Settings"
 msgstr "Ayarlara Göz At"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:143
+#: smb4k/smb4kconfigpagenetwork.cpp:137
 #, kde-format
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:195
+#: smb4k/smb4kconfigpagenetwork.cpp:189
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Ağdan Uyan"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:215
+#: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
 msgstr " sn"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:224
+#: smb4k/smb4kconfigpagenetwork.cpp:218
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "Özel ayarlar düzenleyicisi ile uyandırılması gereken istemcileri tanımlayın."
 
-#: smb4k/smb4kconfigpagenetwork.cpp:234
+#: smb4k/smb4kconfigpagenetwork.cpp:228
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Gelişmiş Ayarlar"
