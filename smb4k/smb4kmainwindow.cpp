@@ -100,7 +100,7 @@ Smb4KMainWindow::Smb4KMainWindow()
     //
     // Save the setting no matter how the application is closed
     //
-    connect(qApp, &QCoreApplication::aboutToQuit, this, [this]() {
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, [&]() {
         saveSettings();
     });
 
@@ -373,10 +373,9 @@ bool Smb4KMainWindow::queryClose()
                                  QStringLiteral("DockToSystemTrayInfo"));
         setVisible(false);
         return false;
-    } else {
-        saveSettings();
-        return true;
     }
+
+    return true;
 }
 
 bool Smb4KMainWindow::eventFilter(QObject *obj, QEvent *e)
