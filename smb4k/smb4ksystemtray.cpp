@@ -19,6 +19,7 @@
 // Qt includes
 #include <QDebug>
 #include <QMenu>
+#include <QPointer>
 
 // KDE specific includes
 #include <KAboutData>
@@ -134,12 +135,8 @@ void Smb4KSystemTray::loadSettings()
 
 void Smb4KSystemTray::slotMountDialog()
 {
-    if (m_mountDialog.isNull()) {
-        m_mountDialog = new Smb4KMountDialog();
-        m_mountDialog->open();
-    } else {
-        m_mountDialog->raise();
-    }
+    QPointer<Smb4KMountDialog> mountDialog = new Smb4KMountDialog();
+    mountDialog->show();
 }
 
 void Smb4KSystemTray::slotConfigDialog()
@@ -179,9 +176,6 @@ void Smb4KSystemTray::slotSettingsChanged(const QString &)
 
 void Smb4KSystemTray::slotSetStatus()
 {
-    //
-    // Set the status of the system tray icon
-    //
     if (!mountedSharesList().isEmpty() || !workgroupsList().isEmpty()) {
         setStatus(KStatusNotifierItem::Active);
     } else {
