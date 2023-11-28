@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-27 00:42+0000\n"
+"POT-Creation-Date: 2023-11-28 00:41+0000\n"
 "PO-Revision-Date: 2023-11-04 06:41+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -700,95 +700,95 @@ msgstr ""
 msgid "Docking"
 msgstr "მიმაგრება"
 
-#: smb4k/smb4kmainwindow.cpp:428
+#: smb4k/smb4kmainwindow.cpp:427
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "ამჟამად გაზიარებულები მიმაგრებული არაა."
 
-#: smb4k/smb4kmainwindow.cpp:431
+#: smb4k/smb4kmainwindow.cpp:430
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "ამჟამად მიმაგრებულია %1 გაზიარებული."
 msgstr[1] "ამჟამად მიმაგრებულია %1 გაზიარებული."
 
-#: smb4k/smb4kmainwindow.cpp:574
+#: smb4k/smb4kmainwindow.cpp:573
 #, kde-format
 msgid "The wallet is used."
 msgstr "საფულე გამოყენებულია."
 
-#: smb4k/smb4kmainwindow.cpp:577
+#: smb4k/smb4kmainwindow.cpp:576
 #, kde-format
 msgid "The password dialog is used."
 msgstr "პაროლის ფანჯარა გამოყენებულია."
 
-#: smb4k/smb4kmainwindow.cpp:587
+#: smb4k/smb4kmainwindow.cpp:586
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "სამუშაო ჯგუფებისა და დომენების ძებნა..."
 
-#: smb4k/smb4kmainwindow.cpp:592
+#: smb4k/smb4kmainwindow.cpp:591
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "ჰოსტების ძებნა დომენში %1..."
 
-#: smb4k/smb4kmainwindow.cpp:597
+#: smb4k/smb4kmainwindow.cpp:596
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "გაზიარებულების ძებნა ჰოსტზე %1..."
 
-#: smb4k/smb4kmainwindow.cpp:605 smb4k/smb4kmainwindow.cpp:613
+#: smb4k/smb4kmainwindow.cpp:604 smb4k/smb4kmainwindow.cpp:612
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "ფაილებისა და საქაღალდეების ძებნა %1-ში..."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:629
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "ჰოსტების გაღვიძება..."
 
-#: smb4k/smb4kmainwindow.cpp:635
+#: smb4k/smb4kmainwindow.cpp:634
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "იგზავნება პრინტერზე %1..."
 
-#: smb4k/smb4kmainwindow.cpp:639
+#: smb4k/smb4kmainwindow.cpp:638
 #, kde-format
 msgid "Searching..."
 msgstr "ძებნა..."
 
-#: smb4k/smb4kmainwindow.cpp:657 smb4k/smb4kmainwindow.cpp:694
-#: smb4k/smb4kmainwindow.cpp:781
+#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:693
+#: smb4k/smb4kmainwindow.cpp:780
 #, kde-format
 msgid "Done."
 msgstr "მზადაა."
 
-#: smb4k/smb4kmainwindow.cpp:667
+#: smb4k/smb4kmainwindow.cpp:666
 #, kde-format
 msgid "Mounting..."
 msgstr "მიმაგრება..."
 
-#: smb4k/smb4kmainwindow.cpp:671
+#: smb4k/smb4kmainwindow.cpp:670
 #, kde-format
 msgid "Unmounting..."
 msgstr "მოხსნა..."
 
-#: smb4k/smb4kmainwindow.cpp:675
+#: smb4k/smb4kmainwindow.cpp:674
 #, kde-format
 msgid "Waking up host..."
 msgstr "ჰოსტის გაღვიძება..."
 
-#: smb4k/smb4kmainwindow.cpp:705
+#: smb4k/smb4kmainwindow.cpp:704
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1-ის მიმაგრება წარმატებულია."
 
-#: smb4k/smb4kmainwindow.cpp:730
+#: smb4k/smb4kmainwindow.cpp:729
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1-ის მოხსნა წარმატებულია."
 
-#: smb4k/smb4kmainwindow.cpp:769
+#: smb4k/smb4kmainwindow.cpp:768
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1-ის სინქრონიზაცია"
