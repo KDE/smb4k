@@ -3372,28 +3372,3 @@ msgstr "元:"
 #| msgid "Destination:"
 msgid "Destination"
 msgstr "行き先:"
-
-#~ msgid "%1 is not a version 1.0 file."
-#~ msgstr "%1 は、バージョン 1.0 のファイルではありません"
-
-#, fuzzy
-#~| msgid "Update files"
-#~ msgid "<All Profiles>"
-#~ msgstr "ファイルを更新"
-
-#, fuzzy
-#~| msgid "Update files"
-#~ msgid "New Profile:"
-#~ msgstr "ファイルを更新"
-
-#, fuzzy
-#~| msgid "<qt>Please enter a username and a password for the host %1.</qt>"
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-#~ msgstr "<qt>ホスト %1 のユーザ名とパスワードを入力してください。</qt>"
-
-#, fuzzy
-#~| msgid "<qt>Please enter a username and a password for the share %1.</qt>"
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgstr "<qt>共有 %1 のユーザ名とパスワードを入力してください。</qt>"

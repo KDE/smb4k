@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-27 00:42+0000\n"
+"POT-Creation-Date: 2023-11-28 00:41+0000\n"
 "PO-Revision-Date: 2023-11-02 11:04+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -710,95 +710,95 @@ msgstr ""
 msgid "Docking"
 msgstr "Naar systeemvak"
 
-#: smb4k/smb4kmainwindow.cpp:428
+#: smb4k/smb4kmainwindow.cpp:427
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Er zijn nu geen gedeelde mappen aangekoppeld."
 
-#: smb4k/smb4kmainwindow.cpp:431
+#: smb4k/smb4kmainwindow.cpp:430
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Er is nu %1 gedeelde map aangekoppeld."
 msgstr[1] "Er zijn nu %1 gedeelde mappen aangekoppeld."
 
-#: smb4k/smb4kmainwindow.cpp:574
+#: smb4k/smb4kmainwindow.cpp:573
 #, kde-format
 msgid "The wallet is used."
 msgstr "De portefeuille is in gebruik."
 
-#: smb4k/smb4kmainwindow.cpp:577
+#: smb4k/smb4kmainwindow.cpp:576
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Het wachtwoordvenster wordt gebruikt."
 
-#: smb4k/smb4kmainwindow.cpp:587
+#: smb4k/smb4kmainwindow.cpp:586
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Zoeken naar werkgroepen en domeinen..."
 
-#: smb4k/smb4kmainwindow.cpp:592
+#: smb4k/smb4kmainwindow.cpp:591
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Zoeken naar hosts in domein %1..."
 
-#: smb4k/smb4kmainwindow.cpp:597
+#: smb4k/smb4kmainwindow.cpp:596
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Zoeken naar door host %1 geleverde gedeelde mappen..."
 
-#: smb4k/smb4kmainwindow.cpp:605 smb4k/smb4kmainwindow.cpp:613
+#: smb4k/smb4kmainwindow.cpp:604 smb4k/smb4kmainwindow.cpp:612
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Zoeken naar bestanden en mappen in %1..."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:629
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Bezig met hosts op afstand wakker te maken..."
 
-#: smb4k/smb4kmainwindow.cpp:635
+#: smb4k/smb4kmainwindow.cpp:634
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Bezig bestand naar printer %1 te zenden..."
 
-#: smb4k/smb4kmainwindow.cpp:639
+#: smb4k/smb4kmainwindow.cpp:638
 #, kde-format
 msgid "Searching..."
 msgstr "Bezig met zoeken..."
 
-#: smb4k/smb4kmainwindow.cpp:657 smb4k/smb4kmainwindow.cpp:694
-#: smb4k/smb4kmainwindow.cpp:781
+#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:693
+#: smb4k/smb4kmainwindow.cpp:780
 #, kde-format
 msgid "Done."
 msgstr "Gereed."
 
-#: smb4k/smb4kmainwindow.cpp:667
+#: smb4k/smb4kmainwindow.cpp:666
 #, kde-format
 msgid "Mounting..."
 msgstr "Aankoppelen..."
 
-#: smb4k/smb4kmainwindow.cpp:671
+#: smb4k/smb4kmainwindow.cpp:670
 #, kde-format
 msgid "Unmounting..."
 msgstr "Afkoppelen..."
 
-#: smb4k/smb4kmainwindow.cpp:675
+#: smb4k/smb4kmainwindow.cpp:674
 #, kde-format
 msgid "Waking up host..."
 msgstr "Host wakker maken..."
 
-#: smb4k/smb4kmainwindow.cpp:705
+#: smb4k/smb4kmainwindow.cpp:704
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 is met succes aangekoppeld."
 
-#: smb4k/smb4kmainwindow.cpp:730
+#: smb4k/smb4kmainwindow.cpp:729
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 is met succes afgekoppeld."
 
-#: smb4k/smb4kmainwindow.cpp:769
+#: smb4k/smb4kmainwindow.cpp:768
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Bezig %1 te synchroniseren"
