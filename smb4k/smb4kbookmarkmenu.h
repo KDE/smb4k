@@ -132,11 +132,6 @@ private:
      * The separator between the actions and the bookmarks
      */
     QAction *m_separator;
-
-    /**
-     * The bookmark editor
-     */
-    QPointer<Smb4KBookmarkEditor> m_bookmarkEditor;
 };
 
 #endif

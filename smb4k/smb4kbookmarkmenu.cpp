@@ -29,8 +29,6 @@ using namespace Smb4KGlobal;
 Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     : KActionMenu(KDE::icon(QStringLiteral("folder-favorites")), i18n("Bookmarks"), parent)
 {
-    m_bookmarkEditor = nullptr;
-
     m_categories = new QActionGroup(menu());
     m_bookmarks = new QActionGroup(menu());
     m_mountActions = new QActionGroup(menu());
@@ -250,12 +248,8 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool checked)
 {
     Q_UNUSED(checked);
 
-    if (m_bookmarkEditor.isNull()) {
-        m_bookmarkEditor = new Smb4KBookmarkEditor(menu());
-        m_bookmarkEditor->open();
-    } else {
-        m_bookmarkEditor->raise();
-    }
+    QPointer<Smb4KBookmarkEditor> bookmarkEditor = new Smb4KBookmarkEditor(menu());
+    bookmarkEditor->open();
 }
 
 void Smb4KBookmarkMenu::slotAddActionTriggered(bool /*checked*/)

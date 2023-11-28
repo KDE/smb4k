@@ -360,23 +360,23 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
         if (type == QStringLiteral("unmount")) {
             Smb4KMounter::self()->unmountShare(share, false);
         } else if (type == QStringLiteral("bookmark")) {
-            QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
+            QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog(menu());
             if (bookmarkDialog->setShares(QList<SharePtr>({share}))) {
                 bookmarkDialog->open();
             } else {
                 delete bookmarkDialog;
             }
         } else if (type == QStringLiteral("options")) {
-            QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
+            QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor(menu());
             if (customSettingsEditor->setNetworkItem(share)) {
-                customSettingsEditor->open();
+                customSettingsEditor->show();
             } else {
                 delete customSettingsEditor;
             }
         } else if (type == QStringLiteral("sync")) {
-            QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog();
+            QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog(menu());
             if (synchronizationDialog->setShare(share)) {
-                synchronizationDialog->open();
+                synchronizationDialog->show();
             } else {
                 delete synchronizationDialog;
             }

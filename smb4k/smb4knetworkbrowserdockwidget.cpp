@@ -821,7 +821,7 @@ void Smb4KNetworkBrowserDockWidget::slotMountManually(bool checked)
     Q_UNUSED(checked);
 
     QPointer<Smb4KMountDialog> mountDialog = new Smb4KMountDialog(this);
-    mountDialog->open();
+    mountDialog->show();
 }
 
 void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)
@@ -837,7 +837,7 @@ void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)
             QPointer<Smb4KPasswordDialog> passwordDialog = new Smb4KPasswordDialog(this);
 
             if (passwordDialog->setNetworkItem(item->networkItem())) {
-                passwordDialog->open();
+                passwordDialog->show();
             } else {
                 delete passwordDialog;
             }
@@ -856,7 +856,7 @@ void Smb4KNetworkBrowserDockWidget::slotAddCustomSettings(bool checked)
 
         QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor(this);
         if (customSettingsEditor->setNetworkItem(item->networkItem())) {
-            customSettingsEditor->open();
+            customSettingsEditor->show();
         } else {
             delete customSettingsEditor;
         }
@@ -876,7 +876,7 @@ void Smb4KNetworkBrowserDockWidget::slotPreview(bool checked)
             QPointer<Smb4KPreviewDialog> previewDialog = new Smb4KPreviewDialog(this);
 
             if (previewDialog->setShare(item->shareItem())) {
-                previewDialog->open();
+                previewDialog->show();
             } else {
                 delete previewDialog;
             }
@@ -897,7 +897,7 @@ void Smb4KNetworkBrowserDockWidget::slotPrint(bool checked)
             QPointer<Smb4KPrintDialog> printDialog = new Smb4KPrintDialog(this);
 
             if (printDialog->setPrinterShare(item->shareItem())) {
-                printDialog->open();
+                printDialog->show();
             } else {
                 delete printDialog;
             }

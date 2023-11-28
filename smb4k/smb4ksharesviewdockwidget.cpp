@@ -523,7 +523,7 @@ void Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered(bool checked)
 
         QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor(this);
         if (customSettingsEditor->setNetworkItem(item->shareItem())) {
-            customSettingsEditor->open();
+            customSettingsEditor->show();
         } else {
             delete customSettingsEditor;
         }
@@ -542,7 +542,7 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool checked)
         if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()))) {
             QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog(this);
             if (synchronizationDialog->setShare(item->shareItem())) {
-                synchronizationDialog->open();
+                synchronizationDialog->show();
             } else {
                 delete synchronizationDialog;
             }
