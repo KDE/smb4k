@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:41+0000\n"
+"POT-Creation-Date: 2023-11-29 00:42+0000\n"
 "PO-Revision-Date: 2023-11-04 19:35+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -45,7 +45,7 @@ msgstr "%1 muntaia-puntua ez da baliozkoa."
 msgid "The unmount process could not be started."
 msgstr "Desmuntatzeko prozesua ezin izan da abiarazi."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -155,19 +155,19 @@ msgstr "Laster-marken editorea"
 msgid "Bookmarks"
 msgstr "Laster-markak"
 
-#: smb4k/smb4kbookmarkmenu.cpp:38
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Editatu Laster-markak"
 
-#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Gehitu &laster-marka"
 
-#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Muntatu laster-markak"
@@ -877,7 +877,7 @@ msgstr "Gehitu &neurrira ipinitako ezarpenak"
 msgid "Ctrl+C"
 msgstr "Ktrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Ireki muntatzeko elkarrizketa-koadroa"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:41+0000\n"
+"POT-Creation-Date: 2023-11-29 00:42+0000\n"
 "PO-Revision-Date: 2023-10-23 15:13+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -45,7 +45,7 @@ msgstr "Liitoskohta %1 on virheellinen."
 msgid "The unmount process could not be started."
 msgstr "Irrottamisprosessia ei voitu käynnistää"
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -152,19 +152,19 @@ msgstr "Kirjanmerkkimuokkain"
 msgid "Bookmarks"
 msgstr "Kirjanmerkit"
 
-#: smb4k/smb4kbookmarkmenu.cpp:38
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Muokkaa kirjanmerkkejä"
 
-#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Lisää &kirjanmerkki"
 
-#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Liitä kirjanmerkit"
@@ -878,7 +878,7 @@ msgstr "Lisää &mukautetut valinnat"
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Avaa liittämisikkuna"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:41+0000\n"
+"POT-Creation-Date: 2023-11-29 00:42+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -48,7 +48,7 @@ msgstr "Sýna tengipunkt í stað nafns á sameign"
 msgid "The unmount process could not be started."
 msgstr "Ekki tókst að útbúa möppuna %1."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -157,19 +157,19 @@ msgstr "Bókamerki"
 msgid "Bookmarks"
 msgstr "Bókamerki"
 
-#: smb4k/smb4kbookmarkmenu.cpp:38
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Sýsla með bókamerki"
 
-#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Bæta við bókamerki"
 
-#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, fuzzy, kde-format
 msgid "Mount Bookmarks"
 msgstr "&Sýsla með bókamerki"
@@ -908,7 +908,7 @@ msgstr "Sérsniðnir &valkostir"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Opna tengingarglugga"

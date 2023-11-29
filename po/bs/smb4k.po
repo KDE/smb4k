@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:41+0000\n"
+"POT-Creation-Date: 2023-11-29 00:42+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -46,7 +46,7 @@ msgstr "Montirna tačka je nevažeća."
 msgid "The unmount process could not be started."
 msgstr "Ne montirajući proces nije mogao početi."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -159,19 +159,19 @@ msgstr "Obilježivači"
 msgid "Bookmarks"
 msgstr "Obilježivači"
 
-#: smb4k/smb4kbookmarkmenu.cpp:38
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Izmijeni zabilješke"
 
-#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Dodaj &zabilješku"
 
-#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, fuzzy, kde-format
 #| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
@@ -945,7 +945,7 @@ msgstr "&Uobilajene opcije"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Otvori montirajući dijalog"

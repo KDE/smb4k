@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:41+0000\n"
+"POT-Creation-Date: 2023-11-29 00:42+0000\n"
 "PO-Revision-Date: 2023-11-05 17:46+0100\n"
 "Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -46,7 +46,7 @@ msgstr "El punt de muntatge %1 no és vàlid."
 msgid "The unmount process could not be started."
 msgstr "No s'ha pogut iniciar el procés de desmuntatge."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -156,19 +156,19 @@ msgstr "Editor d'adreces d'interès"
 msgid "Bookmarks"
 msgstr "Adreces d'interès"
 
-#: smb4k/smb4kbookmarkmenu.cpp:38
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Edita les adreces d'interès"
 
-#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "A&fegeix una adreça d'interès"
 
-#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Munta les adreces d'interès"
@@ -882,7 +882,7 @@ msgstr "Afegeix una &configuració personalitzada"
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Obre el diàleg de muntatge"
