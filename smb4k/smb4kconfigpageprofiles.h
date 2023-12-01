@@ -53,6 +53,8 @@ protected Q_SLOTS:
 
 private:
     QCheckBox *m_useProfiles;
+    QCheckBox *m_transferToFirstProfile;
+    QCheckBox *m_makeAllDataAvailable;
     KEditListWidget *m_profilesWidget;
     QList<ProfileContainer> m_profiles;
     bool m_profilesChanged;

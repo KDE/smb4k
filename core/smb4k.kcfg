@@ -688,5 +688,15 @@
             <whatsthis>This is the currently active profile.</whatsthis>
             <default code="true">QString()</default>
         </entry>
+        <entry name="TransferToFirstProfile" type="Bool">
+            <label>Transfer all relevant data to the first profile when enabling profiles</label>
+            <whatsthis>Transfer all custom settings and bookmarks to the first profile in the list when enabling profiles.</whatsthis>
+            <default>false</default>
+        </entry>
+        <entry name="MakeAllDataAvailable" type="Bool">
+            <label>Make all relevant data available when disabling profiles</label>
+            <whatsthis>Make all custom settings and bookmarks available when disabling profiles. This means that all data previously saved in different profiles is now available in the standard profile. However, they can no longer be used in their original profiles afterwards.</whatsthis>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>

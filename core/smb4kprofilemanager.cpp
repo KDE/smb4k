@@ -96,64 +96,59 @@ bool Smb4KProfileManager::useProfiles() const
 
 void Smb4KProfileManager::migrateProfile(const QString &oldName, const QString &newName)
 {
-    if (d->useProfiles) {
-        if (oldName == QStringLiteral("*")) {
-            // All profiles to new profile name
-            for (int i = 0; i < d->profiles.size(); i++) {
-                QString tempOldName = d->profiles.at(i);
+    if (oldName == QStringLiteral("*")) {
+        // All profiles to new profile name
+        for (int i = 0; i < d->profiles.size(); i++) {
+            QString tempOldName = d->profiles.at(i);
+            d->profiles[i] = newName;
+            Q_EMIT profileMigrated(tempOldName, newName);
+        }
+        setActiveProfile(newName);
+    } else {
+        // Old profile name to new profile name
+        for (int i = 0; i < d->profiles.size(); i++) {
+            if (d->profiles.at(i) == oldName) {
                 d->profiles[i] = newName;
-                Q_EMIT profileMigrated(tempOldName, newName);
-            }
-            setActiveProfile(newName);
-        } else {
-            // Old profile name to new profile name
-            for (int i = 0; i < d->profiles.size(); i++) {
-                if (d->profiles.at(i) == oldName) {
-                    d->profiles[i] = newName;
-                }
-            }
-
-            Q_EMIT profileMigrated(oldName, newName);
-
-            if (d->activeProfile == oldName) {
-                setActiveProfile(newName);
             }
         }
 
-        Smb4KSettings::setProfilesList(d->profiles);
-        Q_EMIT profilesListChanged(d->profiles);
+        Q_EMIT profileMigrated(oldName, newName);
+
+        if (d->activeProfile == oldName) {
+            setActiveProfile(newName);
+        }
     }
+
+    Smb4KSettings::setProfilesList(d->profiles);
+    Q_EMIT profilesListChanged(d->profiles);
 }
 
 void Smb4KProfileManager::removeProfile(const QString &name)
 {
-    if (d->useProfiles) {
-        int index = d->profiles.indexOf(name);
+    int index = d->profiles.indexOf(name);
 
-        if (index != -1) {
-            d->profiles.removeAt(index);
-        }
-
-        Q_EMIT profileRemoved(name);
-
-        if (name == d->activeProfile) {
-            setActiveProfile(!d->profiles.isEmpty() ? d->profiles.first() : QString());
-        }
-
-        // NOTE: Since this function is called BEFORE the new profiles list
-        // is stored by the configuration dialog, we need to set the new list
-        // here, because we are emitting the signal and we cannot be sure
-        // that the user always uses Smb4KProfileManager::profilesList()
-        // instead of Smb4KSettings::profilesList().
-        Smb4KSettings::setProfilesList(d->profiles);
-
-        Q_EMIT profilesListChanged(d->profiles);
+    if (index != -1) {
+        d->profiles.removeAt(index);
     }
+
+    Q_EMIT profileRemoved(name);
+
+    if (name == d->activeProfile) {
+        setActiveProfile(!d->profiles.isEmpty() ? d->profiles.first() : QString());
+    }
+
+    // NOTE: Since this function is called BEFORE the new profiles list
+    // is stored by the configuration dialog, we need to set the new list
+    // here, because we are emitting the signal and we cannot be sure
+    // that the user always uses Smb4KProfileManager::profilesList()
+    // instead of Smb4KSettings::profilesList().
+    Smb4KSettings::setProfilesList(d->profiles);
+
+    Q_EMIT profilesListChanged(d->profiles);
 }
 
 void Smb4KProfileManager::slotConfigChanged()
 {
-    qDebug() << "Config changed...";
     // FIXME: Do we need to emit the signals here?
     if (d->useProfiles != Smb4KSettings::useProfiles()) {
         d->useProfiles = Smb4KSettings::useProfiles();

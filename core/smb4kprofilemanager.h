@@ -92,7 +92,9 @@ public:
     bool useProfiles() const;
 
     /**
-     * Migrate all entries of one profile to another.
+     * Migrate all entries of one profile to another. This function does
+     * not honor the useProfiles() function, so you can migrate profiles
+     * even if their usage is not enabled.
      *
      * @param oldName     The name of the old profile
      * @param newName     The name of the new profile
@@ -100,9 +102,11 @@ public:
     void migrateProfile(const QString &oldName, const QString &newName);
 
     /**
-     * Remove a profile with all of its entries.
+     * Remove a profile with all of its entries. This function does
+     * not honor the useProfiles() function, so you can remove profiles
+     * even if their usage is not enabled.
      *
-     * @param name        The name of the profile.
+     * @param name        The name of the profile
      */
     void removeProfile(const QString &name);
 

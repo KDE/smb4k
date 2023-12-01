@@ -34,8 +34,6 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
 {
     m_profilesChanged = false;
 
-    // FIXME: Think of settings that tell Smb4K if and how to migrate profiles.
-
     QStringList profiles = Smb4KSettings::profilesList();
 
     for (const QString &profile : qAsConst(profiles)) {
@@ -58,6 +56,16 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     m_useProfiles->setObjectName(QStringLiteral("kcfg_UseProfiles"));
 
     settingsBoxLayout->addWidget(m_useProfiles);
+
+    m_transferToFirstProfile = new QCheckBox(Smb4KSettings::self()->transferToFirstProfileItem()->label(), settingsBox);
+    m_transferToFirstProfile->setObjectName(QStringLiteral("kcfg_TransferToFirstProfile"));
+
+    settingsBoxLayout->addWidget(m_transferToFirstProfile);
+
+    m_makeAllDataAvailable = new QCheckBox(Smb4KSettings::self()->makeAllDataAvailableItem()->label(), settingsBox);
+    m_makeAllDataAvailable->setObjectName(QStringLiteral("kcfg_MakeAllDataAvailable"));
+
+    settingsBoxLayout->addWidget(m_makeAllDataAvailable);
 
     layout->addWidget(settingsBox);
 
@@ -84,8 +92,6 @@ Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
 
 void Smb4KConfigPageProfiles::applyChanges()
 {
-    qDebug() << "Apply changes ...";
-
     if (m_profilesChanged) {
         QMutableListIterator<ProfileContainer> it(m_profiles);
 
@@ -102,8 +108,6 @@ void Smb4KConfigPageProfiles::applyChanges()
             }
 
             if (p.renamed && !p.added) {
-                qDebug() << "Renamed profile:" << p.initialName << "to" << p.currentName;
-
                 // When we just rename a profile, do not use the migration dialog
                 Smb4KProfileManager::self()->migrateProfile(p.initialName, p.currentName);
                 it.value().initialName = p.currentName;
@@ -117,6 +121,17 @@ void Smb4KConfigPageProfiles::applyChanges()
                 it.value().added = false;
                 it.value().renamed = false;
             }
+        }
+
+        // Migrate all data from the default profile to the first profile in the list
+        if (m_useProfiles->isChecked() && m_transferToFirstProfile->isChecked() && m_useProfiles->isChecked() != Smb4KSettings::useProfiles()) {
+            QString firstProfile = m_profilesWidget->items().first();
+            Smb4KProfileManager::self()->migrateProfile(QStringLiteral(""), firstProfile);
+        }
+
+        // Migrate all data from all profiles to the default profile
+        if (!m_useProfiles->isChecked() && m_makeAllDataAvailable->isChecked() && m_useProfiles->isChecked() != Smb4KSettings::useProfiles()) {
+            Smb4KProfileManager::self()->migrateProfile(QStringLiteral("*"), QStringLiteral(""));
         }
 
         m_profilesChanged = false;
