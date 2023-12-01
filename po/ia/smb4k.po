@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:41+0000\n"
-"PO-Revision-Date: 2023-11-13 15:49+0100\n"
+"POT-Creation-Date: 2023-11-29 00:42+0000\n"
+"PO-Revision-Date: 2023-11-30 10:28+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -43,7 +43,7 @@ msgstr "Le puncto de montage %1 es invalide"
 msgid "The unmount process could not be started."
 msgstr "Le processo de dismontar non poteva esser iinitiate."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "SMB4K"
@@ -148,19 +148,19 @@ msgstr "Marcatores de libro"
 msgid "Bookmarks"
 msgstr "Marcatores de libro"
 
-#: smb4k/smb4kbookmarkmenu.cpp:38
+#: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Modifica marcatores de libro"
 
-#: smb4k/smb4kbookmarkmenu.cpp:44 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Adde marcator de li&bro"
 
-#: smb4k/smb4kbookmarkmenu.cpp:52 smb4k/smb4kbookmarkmenu.cpp:108
+#: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Monta marcatores de libro"
@@ -854,7 +854,7 @@ msgstr "Adde &Preferentias Personalisate"
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Aperi Dial&ogo do Montar"
@@ -959,18 +959,18 @@ msgid "Item Up"
 msgstr "Elemento in alto"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
-"<qt>Pro favor tu inserta un nominee de usator e un contrasigno per le "
-"hospite <b>%1</b>.</qt>"
+"Pro favor tu inserta un nominee de usator e un contrasigno per le hospite <b>"
+"%1</b>."
 
 #: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
 #, fuzzy, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
-"<qt>Pro favor inserta un nomine de usator e un contrasigno per le compartite "
-"<b>%1</b>.</qt>"
+"Pro favor inserta un nomine de usator e un contrasigno per le compartite <b>"
+"%1</b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
