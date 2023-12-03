@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-02 00:42+0000\n"
-"PO-Revision-Date: 2023-09-06 12:28+0300\n"
+"PO-Revision-Date: 2023-12-02 14:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1916,7 +1916,7 @@ msgstr "Bu geçerli etkin profildir."
 #: smb4k.kcfg:692
 #, kde-format
 msgid "Transfer all relevant data to the first profile when enabling profiles"
-msgstr ""
+msgstr "Profilleri etkinleştirirken tüm ilgili veriyi ilk profile aktar"
 
 #. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
 #: smb4k.kcfg:693
@@ -1925,12 +1925,14 @@ msgid ""
 "Transfer all custom settings and bookmarks to the first profile in the list "
 "when enabling profiles."
 msgstr ""
+"Profilleri etkinleştirirken tüm özel ayarları ve yer imlerini listedeki ilk "
+"profile aktar"
 
 #. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:697
 #, kde-format
 msgid "Make all relevant data available when disabling profiles"
-msgstr ""
+msgstr "Profilleri devre dışı bırakırken tüm ilgili veriyi kullanılabilir yap"
 
 #. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:698
@@ -1941,6 +1943,10 @@ msgid ""
 "available in the standard profile. However, they can no longer be used in "
 "their original profiles afterwards."
 msgstr ""
+"Profilleri devre dışı bırakırken tüm özel ayarları ve yer imlerini "
+"kullanılabilir yapın. Bu, daha önce farklı profillerde kaydedilen tüm "
+"verinin artık standart profilde kullanılabilir olduğu anlamına gelir. Ancak "
+"daha sonra özgün profillerinde artık kullanılamazlar."
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162

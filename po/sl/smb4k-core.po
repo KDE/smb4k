@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-02 00:42+0000\n"
-"PO-Revision-Date: 2023-09-06 07:18+0200\n"
+"PO-Revision-Date: 2023-12-02 08:39+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.3.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -1908,7 +1908,7 @@ msgstr "To je trenutno dejavni profil."
 #: smb4k.kcfg:692
 #, kde-format
 msgid "Transfer all relevant data to the first profile when enabling profiles"
-msgstr ""
+msgstr "Pri omogočanju profilov prenesi vse relevantne podatke v prvi profil"
 
 #. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
 #: smb4k.kcfg:693
@@ -1917,12 +1917,14 @@ msgid ""
 "Transfer all custom settings and bookmarks to the first profile in the list "
 "when enabling profiles."
 msgstr ""
+"Pri omogočanju profila, prenesi vse nastavitve po meri in zaznamke v prvi "
+"profil na seznamu."
 
 #. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:697
 #, kde-format
 msgid "Make all relevant data available when disabling profiles"
-msgstr ""
+msgstr "Pri onemogočanju profilov naj bodo na voljo vsi relevantni podatki"
 
 #. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:698
@@ -1933,6 +1935,10 @@ msgid ""
 "available in the standard profile. However, they can no longer be used in "
 "their original profiles afterwards."
 msgstr ""
+"Pri onemogočanju profilov, zagotovi razpoložljivost vseh nastavitev po meri "
+"in zaznamkov. To pomeni, da so vsi podatki, ki so bili predhodno shranjeni v "
+"različnih profilih, zdaj na voljo v standardnem profilu. Vendar pa jih "
+"pozneje ni več mogoče uporabljati v prvotnih profilih."
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162

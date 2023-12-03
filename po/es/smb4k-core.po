@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-02 00:42+0000\n"
-"PO-Revision-Date: 2023-09-09 17:43+0200\n"
+"PO-Revision-Date: 2023-12-02 11:34+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1966,6 +1966,8 @@ msgstr "Este es el perfil actualmente activo."
 #, kde-format
 msgid "Transfer all relevant data to the first profile when enabling profiles"
 msgstr ""
+"Transferir todos los datos relevantes al primer perfil cuando se activan "
+"perfiles"
 
 #. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
 #: smb4k.kcfg:693
@@ -1974,12 +1976,16 @@ msgid ""
 "Transfer all custom settings and bookmarks to the first profile in the list "
 "when enabling profiles."
 msgstr ""
+"Transferir todas las preferencias por defecto y marcadores al primer perfil "
+"de la lista cuando se activan perfiles."
 
 #. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:697
 #, kde-format
 msgid "Make all relevant data available when disabling profiles"
 msgstr ""
+"Hacer disponible todos los datos relevantes disponibles al desactivar "
+"perfiles"
 
 #. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:698
@@ -1990,6 +1996,10 @@ msgid ""
 "available in the standard profile. However, they can no longer be used in "
 "their original profiles afterwards."
 msgstr ""
+"Hacer disponibles todas las preferencias por defecto y marcadores al "
+"desactivar perfiles. Esto implica que todos los datos previamente guardados "
+"en perfiles diferentes estarán ahora en el perfil estándar. Sin embargo, ya "
+"no podrán usarse en sus perfiles originales de nuevo."
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
@@ -3445,116 +3455,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
-
-#~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
-#~ msgstr ""
-#~ "Forzar el protocolo SMB versión 1.0 para búsquedas de grupos de trabajo y "
-#~ "de dominios"
-
-#~ msgid ""
-#~ "Smb4K will force Samba's client library to use the SMB protocol version "
-#~ "1.0 for browsing workgroups and domains. You should use this option only "
-#~ "as last resort, because the SMB protocol version 1.0 is unsafe and has "
-#~ "been disabled in newer Samba and Windows versions. However, if you have "
-#~ "trouble discovering workgroups and domains in your network neighborhood, "
-#~ "you might want to consider to switch this setting on. If you are using "
-#~ "DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-"
-#~ "Discovery), and those are working for you, you do not need it."
-#~ msgstr ""
-#~ "Smb4K forzará a la librería cliente de Samba a usar la versión 1.0 del "
-#~ "protocolo SMB para navegar por grupos de trabajo y dominios. Solo debe "
-#~ "usar esta opción como último recurso, porque la versión 1.0 del protocolo "
-#~ "SMB no es segura y ha sido deshabilitada en las nuevas versiones de Samba "
-#~ "y Windows. Sin embargo, si tiene problemas descubriendo grupos de trabajo "
-#~ "y dominios en su vecindad de red, debería considerar activar esta opción. "
-#~ "Si está usando DNS Service Discovery DNS (DNS-SD) o Web Services Dynamic "
-#~ "Discovery (WS-Discovery) no necesita esta opción."
-
-#~ msgid "Use profile migration assistant"
-#~ msgstr "Usar el asistente de migración de perfil"
-
-#~ msgid ""
-#~ "Use the profile migration assistant when profiles are removed or the use "
-#~ "of profiles is enabled or disabled. The profile migration assistant "
-#~ "allows you to migrate all settings that were saved for a certain profile "
-#~ "to a different one."
-#~ msgstr ""
-#~ "Usa el asistente de migración de perfil cuando los perfiles son "
-#~ "eliminados o se activa o desactiva el uso de perfiles. El asistente de "
-#~ "migración de perfil le permite migrar todos los ajustes que se guardaron "
-#~ "para un cierto perfil a otro diferente."
-
-#~ msgid "%1 is not a version 1.0 file."
-#~ msgstr "%1 no es archivo de la versión 1.0."
-
-#~ msgid "Profile Migration Assistant"
-#~ msgstr "Asistente de migración de perfil"
-
-#~ msgid "Migrate all relevant settings of one profile to another."
-#~ msgstr "Migra todas las preferencias importantes de un perfil a otro."
-
-#~ msgid "Old Profile:"
-#~ msgstr "Perfil antiguo:"
-
-#~ msgid "<Default Profile>"
-#~ msgstr "<Perfil predeterminado>"
-
-#~ msgid "<All Profiles>"
-#~ msgstr "<Todos los perfiles>"
-
-#~ msgid "New Profile:"
-#~ msgstr "Perfil nuevo:"
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-#~ msgstr ""
-#~ "<qt>Por favor, introduzca el usuario y contraseña para el servidor <b>%1</"
-#~ "b>.</qt>"
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgstr ""
-#~ "<qt>Por favor, introduzca el usuario y contraseña para el recurso "
-#~ "compartido <b>%1</b>.</qt>"
-
-#~ msgid "Synchronization"
-#~ msgstr "Sincronización"
-
-#~ msgid "Swap Paths"
-#~ msgstr "Intercambiar rutas"
-
-#~ msgid "Swap source and destination"
-#~ msgstr "Intercambiar origen y destino"
-
-#~ msgid "Synchronize"
-#~ msgstr "Sincronizar"
-
-#~ msgid "Synchronize the destination with the source"
-#~ msgstr "Sincronizar el destino con la fuente"
-
-#~ msgid ""
-#~ "Please provide the source and destination directory for the "
-#~ "synchronization."
-#~ msgstr ""
-#~ "Por favor, proporcione los directorios de origen y de destino para la "
-#~ "sincronización."
-
-#~ msgid "Source:"
-#~ msgstr "Origen:"
-
-#~ msgid ""
-#~ "This is the source directory. The data that it contains is to be written "
-#~ "to the destination directory."
-#~ msgstr ""
-#~ "Este es el directorio de origen. Los datos que contiene se van a escribir "
-#~ "en el directorio de destino."
-
-#~ msgid "Destination:"
-#~ msgstr "Destino:"
-
-#~ msgid ""
-#~ "This is the destination directory. It will be updated with the data from "
-#~ "the source directory."
-#~ msgstr ""
-#~ "Esta es el directorio de destino. Se actualizará con los datos del "
-#~ "directorio de origen."

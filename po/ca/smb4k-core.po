@@ -3,15 +3,15 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # SPDX-FileCopyrightText: 2014, 2016, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-02 00:42+0000\n"
-"PO-Revision-Date: 2023-10-11 20:48+0200\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"PO-Revision-Date: 2023-12-02 12:50+0100\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -1974,6 +1974,8 @@ msgstr "Aquest és el perfil actualment actiu."
 #, kde-format
 msgid "Transfer all relevant data to the first profile when enabling profiles"
 msgstr ""
+"Transfereix totes les dades rellevants al primer perfil quan s'habilitin els "
+"perfils"
 
 #. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
 #: smb4k.kcfg:693
@@ -1982,12 +1984,14 @@ msgid ""
 "Transfer all custom settings and bookmarks to the first profile in the list "
 "when enabling profiles."
 msgstr ""
+"Transfereix tots els paràmetres i adreces d'interès personalitzats al primer "
+"perfil de la llista quan s'habilitin els perfils."
 
 #. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:697
 #, kde-format
 msgid "Make all relevant data available when disabling profiles"
-msgstr ""
+msgstr "Fa disponibles totes les dades rellevants en desactivar els perfils"
 
 #. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:698
@@ -1998,6 +2002,11 @@ msgid ""
 "available in the standard profile. However, they can no longer be used in "
 "their original profiles afterwards."
 msgstr ""
+"Fa que tots els paràmetres i adreces d'interès personalitzats estiguin "
+"disponibles en desactivar els perfils. Això significa que totes les dades "
+"desades prèviament en diferents perfils ja estan disponibles en el perfil "
+"estàndard. No obstant això, després ja no poden utilitzar-se en els seus "
+"perfils originals."
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
