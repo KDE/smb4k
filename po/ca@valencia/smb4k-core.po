@@ -3,15 +3,15 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # SPDX-FileCopyrightText: 2014, 2016, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 00:42+0000\n"
-"PO-Revision-Date: 2023-10-11 20:48+0200\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"POT-Creation-Date: 2023-12-02 00:42+0000\n"
+"PO-Revision-Date: 2023-12-02 12:50+0100\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -1970,6 +1970,45 @@ msgstr "Perfil actiu"
 msgid "This is the currently active profile."
 msgstr "Este és el perfil actualment actiu."
 
+#. i18n: ectx: label, entry (TransferToFirstProfile), group (Profiles)
+#: smb4k.kcfg:692
+#, kde-format
+msgid "Transfer all relevant data to the first profile when enabling profiles"
+msgstr ""
+"Transferix totes les dades rellevants al primer perfil quan s'habiliten els "
+"perfils"
+
+#. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
+#: smb4k.kcfg:693
+#, kde-format
+msgid ""
+"Transfer all custom settings and bookmarks to the first profile in the list "
+"when enabling profiles."
+msgstr ""
+"Transferix tots els paràmetres i adreces d'interés personalitzats al primer "
+"perfil de la llista quan s'habiliten els perfils."
+
+#. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
+#: smb4k.kcfg:697
+#, kde-format
+msgid "Make all relevant data available when disabling profiles"
+msgstr "Fa disponibles totes les dades rellevants en desactivar els perfils"
+
+#. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
+#: smb4k.kcfg:698
+#, kde-format
+msgid ""
+"Make all custom settings and bookmarks available when disabling profiles. "
+"This means that all data previously saved in different profiles is now "
+"available in the standard profile. However, they can no longer be used in "
+"their original profiles afterwards."
+msgstr ""
+"Fa que tots els paràmetres i adreces d'interés personalitzats estiguen "
+"disponibles en desactivar els perfils. Açò significa que totes les dades "
+"guardades prèviament en perfils diferents ja estaran disponibles en el "
+"perfil estàndard. No obstant açò, després ja no es podran utilitzar en els "
+"seus perfils originals."
+
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
@@ -3413,64 +3452,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
-#~ msgstr ""
-#~ "Força el protocol SMB versió 1.0 per a les busques de grups de treball i "
-#~ "de dominis"
-
-#~ msgid ""
-#~ "Smb4K will force Samba's client library to use the SMB protocol version "
-#~ "1.0 for browsing workgroups and domains. You should use this option only "
-#~ "as last resort, because the SMB protocol version 1.0 is unsafe and has "
-#~ "been disabled in newer Samba and Windows versions. However, if you have "
-#~ "trouble discovering workgroups and domains in your network neighborhood, "
-#~ "you might want to consider to switch this setting on. If you are using "
-#~ "DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-"
-#~ "Discovery), and those are working for you, you do not need it."
-#~ msgstr ""
-#~ "Smb4K forçarà que la biblioteca del client Samba utilitze la versió 1.0 "
-#~ "del protocol SMB per a explorar grups de treball i dominis. Cal utilitzar "
-#~ "esta opció com a últim recurs perquè la versió 1.0 del protocol SMB és "
-#~ "insegura i s'ha inhabilitat a les versions més noves de Samba i Windows. "
-#~ "Tanmateix, si teniu problemes per a descobrir els grups de treball i "
-#~ "dominis en el vostre entorn de xarxa, podreu considerar seleccionar esta "
-#~ "opció. Si utilitzeu «DNS Service Discovery» (DNS-SD) o els «Web Services "
-#~ "Dynamic Discovery» (WS-Discovery), podreu desseleccionar esta opció."
-
-#~ msgid "Use profile migration assistant"
-#~ msgstr "Utilitza l'assistent de migració de perfils"
-
-#~ msgid ""
-#~ "Use the profile migration assistant when profiles are removed or the use "
-#~ "of profiles is enabled or disabled. The profile migration assistant "
-#~ "allows you to migrate all settings that were saved for a certain profile "
-#~ "to a different one."
-#~ msgstr ""
-#~ "Utilitza l'assistent de migració de perfils quan s'elimina, activa o "
-#~ "desactiva l'ús dels perfils. L'assistent per a la migració de perfils "
-#~ "permet migrar tota la configuració que s'han guardat per a un perfil "
-#~ "concret a un de diferent."
-
-#~ msgid "%1 is not a version 1.0 file."
-#~ msgstr "%1 no és un fitxer amb versió 1.0."
-
-#~ msgid "Profile Migration Assistant"
-#~ msgstr "Assistent de migració de perfils"
-
-#~ msgid "Migrate all relevant settings of one profile to another."
-#~ msgstr ""
-#~ "Migra totes les opcions de configuració més importants d'un perfil a un "
-#~ "altre."
-
-#~ msgid "Old Profile:"
-#~ msgstr "Perfil antic:"
-
-#~ msgid "<Default Profile>"
-#~ msgstr "<Perfil predeterminat>"
-
-#~ msgid "<All Profiles>"
-#~ msgstr "<Tots els perfils>"
-
-#~ msgid "New Profile:"
-#~ msgstr "Perfil nou:"
