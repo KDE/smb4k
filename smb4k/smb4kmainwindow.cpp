@@ -31,7 +31,6 @@
 #include <QLabel>
 #include <QMenu>
 #include <QMenuBar>
-#include <QSize>
 #include <QStatusBar>
 #include <QString>
 #include <QTabBar>
@@ -143,8 +142,8 @@ void Smb4KMainWindow::setupActions()
     addBookmarkAction->setEnabled(false);
     actionCollection()->addAction(QStringLiteral("bookmarks_menu"), m_bookmarkMenu);
     actionCollection()->addAction(QStringLiteral("bookmark_action"), addBookmarkAction);
-    connect(addBookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmarks()));
-    connect(m_bookmarkMenu, SIGNAL(addBookmark()), this, SLOT(slotAddBookmarks()));
+    connect(addBookmarkAction, &QAction::triggered, this, &Smb4KMainWindow::slotAddBookmarks);
+    connect(m_bookmarkMenu, &Smb4KBookmarkMenu::addBookmark, this, &Smb4KMainWindow::slotAddBookmarks);
 
     //
     // Profiles menu
@@ -185,18 +184,18 @@ void Smb4KMainWindow::setupStatusBar()
     //
     // Connections
     //
-    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr, int)));
-    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SLOT(slotClientFinished(NetworkItemPtr, int)));
+    connect(Smb4KClient::self(), &Smb4KClient::aboutToStart, this, &Smb4KMainWindow::slotClientAboutToStart);
+    connect(Smb4KClient::self(), &Smb4KClient::finished, this, &Smb4KMainWindow::slotClientFinished);
 
-    connect(Smb4KWalletManager::self(), SIGNAL(initialized()), this, SLOT(slotWalletManagerInitialized()));
+    connect(Smb4KWalletManager::self(), &Smb4KWalletManager::initialized, this, &Smb4KMainWindow::slotWalletManagerInitialized);
 
-    connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotVisualMountFeedback(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotVisualUnmountFeedback(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SLOT(slotMounterAboutToStart(int)));
-    connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SLOT(slotMounterFinished(int)));
+    connect(Smb4KMounter::self(), &Smb4KMounter::mounted, this, &Smb4KMainWindow::slotVisualMountFeedback);
+    connect(Smb4KMounter::self(), &Smb4KMounter::unmounted, this, &Smb4KMainWindow::slotVisualUnmountFeedback);
+    connect(Smb4KMounter::self(), &Smb4KMounter::aboutToStart, this, &Smb4KMainWindow::slotMounterAboutToStart);
+    connect(Smb4KMounter::self(), &Smb4KMounter::finished, this, &Smb4KMainWindow::slotMounterFinished);
 
-    connect(Smb4KSynchronizer::self(), SIGNAL(aboutToStart(QString)), this, SLOT(slotSynchronizerAboutToStart(QString)));
-    connect(Smb4KSynchronizer::self(), SIGNAL(finished(QString)), this, SLOT(slotSynchronizerFinished(QString)));
+    connect(Smb4KSynchronizer::self(), &Smb4KSynchronizer::aboutToStart, this, &Smb4KMainWindow::slotSynchronizerAboutToStart);
+    connect(Smb4KSynchronizer::self(), &Smb4KSynchronizer::finished, this, &Smb4KMainWindow::slotSynchronizerFinished);
 }
 
 void Smb4KMainWindow::setupView()
@@ -217,7 +216,7 @@ void Smb4KMainWindow::setupView()
     m_networkBrowserDockWidget->widget()->installEventFilter(this);
 
     // Connections
-    connect(m_networkBrowserDockWidget, SIGNAL(visibilityChanged(bool)), SLOT(slotNetworkBrowserVisibilityChanged(bool)));
+    connect(m_networkBrowserDockWidget, &Smb4KNetworkBrowserDockWidget::visibilityChanged, this, &Smb4KMainWindow::slotNetworkBrowserVisibilityChanged);
 
     // Add dock widget
     addDockWidget(Qt::LeftDockWidgetArea, m_networkBrowserDockWidget);
@@ -238,7 +237,7 @@ void Smb4KMainWindow::setupView()
     m_sharesViewDockWidget->widget()->installEventFilter(this);
 
     // Connections
-    connect(m_sharesViewDockWidget, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSharesViewVisibilityChanged(bool)));
+    connect(m_sharesViewDockWidget, &Smb4KSharesViewDockWidget::visibilityChanged, this, &Smb4KMainWindow::slotSharesViewVisibilityChanged);
 
     // Add dock widget
     addDockWidget(Qt::LeftDockWidgetArea, m_sharesViewDockWidget);
@@ -303,7 +302,7 @@ void Smb4KMainWindow::setupSystemTrayWidget()
         m_systemTrayWidget = new Smb4KSystemTray(this);
     }
 
-    connect(m_systemTrayWidget, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)));
+    connect(m_systemTrayWidget, &Smb4KSystemTray::settingsChanged, this, &Smb4KMainWindow::slotSettingsChanged);
 }
 
 void Smb4KMainWindow::loadSettings()
@@ -351,14 +350,7 @@ void Smb4KMainWindow::saveSettings()
     m_networkBrowserDockWidget->saveSettings();
     m_sharesViewDockWidget->saveSettings();
 
-    //
-    // Save if the main window should be started docked.
-    //
     Smb4KSettings::setStartMainWindowDocked(!isVisible());
-
-    //
-    // Save the settings
-    //
     Smb4KSettings::self()->save();
 }
 
@@ -463,7 +455,7 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget *dock)
         for (QAction *action : qAsConst(actionsList)) {
             if (action->objectName() == QStringLiteral("bookmark_action")) {
                 m_bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
-                connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
+                connect(action, &QAction::changed, this, &Smb4KMainWindow::slotEnableBookmarkAction);
                 continue;
             } else if (action->objectName() == QStringLiteral("filemanager_action")) {
                 continue;
@@ -521,8 +513,8 @@ void Smb4KMainWindow::slotConfigDialog()
         QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(this);
 
         if (dlg) {
-            connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
-            connect(dlg, SIGNAL(settingsChanged(QString)), m_systemTrayWidget, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
+            connect(dlg, &KConfigDialog::settingsChanged, this, &Smb4KMainWindow::slotSettingsChanged, Qt::UniqueConnection);
+            connect(dlg, &KConfigDialog::settingsChanged, m_systemTrayWidget, &Smb4KSystemTray::slotSettingsChanged, Qt::UniqueConnection);
             dlg->show();
         }
     } else {
@@ -684,8 +676,10 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
     }
 }
 
-void Smb4KMainWindow::slotMounterFinished(int /*process*/)
+void Smb4KMainWindow::slotMounterFinished(int process)
 {
+    Q_UNUSED(process);
+
     QTimer::singleShot(250, this, [this]() {
         if (!coreIsRunning()) {
             m_progressBar->setVisible(false);
