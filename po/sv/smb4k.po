@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-02 00:42+0000\n"
+"POT-Creation-Date: 2023-12-05 00:41+0000\n"
 "PO-Revision-Date: 2023-11-06 21:39+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -159,7 +159,7 @@ msgstr "Bokmärken"
 msgid "&Edit Bookmarks"
 msgstr "&Ordna bokmärken"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:141
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -574,7 +574,7 @@ msgstr "Checksummor"
 msgid "Main Window"
 msgstr "Huvudfönster"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:213
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Nätverksgrannskap"
@@ -678,17 +678,17 @@ msgstr "Sida 2: Bläddring"
 msgid "Page 3: Wake-On-LAN"
 msgstr "Sida 3: Väckning av lokalt nätverk"
 
-#: smb4k/smb4kmainwindow.cpp:132
+#: smb4k/smb4kmainwindow.cpp:131
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Grafiska dockningskomponenter"
 
-#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:43
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Monterade resurser"
 
-#: smb4k/smb4kmainwindow.cpp:370
+#: smb4k/smb4kmainwindow.cpp:362
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -698,100 +698,100 @@ msgstr ""
 "har stängts.<br>Använd <i>Avsluta</i> från menyn <i>Arkiv</i> för att "
 "avsluta programmet.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:372
+#: smb4k/smb4kmainwindow.cpp:364
 #, kde-format
 msgid "Docking"
 msgstr "Dockning"
 
-#: smb4k/smb4kmainwindow.cpp:427
+#: smb4k/smb4kmainwindow.cpp:419
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "För närvarande är inga delade resurser monterade."
 
-#: smb4k/smb4kmainwindow.cpp:430
+#: smb4k/smb4kmainwindow.cpp:422
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "För närvarande är %1 delad resurs monterad."
 msgstr[1] "För närvarande är %1 delade resurser monterade."
 
-#: smb4k/smb4kmainwindow.cpp:573
+#: smb4k/smb4kmainwindow.cpp:565
 #, kde-format
 msgid "The wallet is used."
 msgstr "Plånboken används."
 
-#: smb4k/smb4kmainwindow.cpp:576
+#: smb4k/smb4kmainwindow.cpp:568
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Lösenordsdialogrutan används."
 
-#: smb4k/smb4kmainwindow.cpp:586
+#: smb4k/smb4kmainwindow.cpp:578
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Söker arbetsgrupper och domäner..."
 
-#: smb4k/smb4kmainwindow.cpp:591
+#: smb4k/smb4kmainwindow.cpp:583
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Söker värddatorer i domänen %1..."
 
-#: smb4k/smb4kmainwindow.cpp:596
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Söker efter delade resurser som tillhandahålls av värddatorn %1..."
 
-#: smb4k/smb4kmainwindow.cpp:604 smb4k/smb4kmainwindow.cpp:612
+#: smb4k/smb4kmainwindow.cpp:596 smb4k/smb4kmainwindow.cpp:604
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Söker efter filer och kataloger i %1..."
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:621
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Väcker fjärrdatorer..."
 
-#: smb4k/smb4kmainwindow.cpp:634
+#: smb4k/smb4kmainwindow.cpp:626
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Skickar fil till skrivaren %1..."
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:630
 #, kde-format
 msgid "Searching..."
 msgstr "Söker..."
 
-#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:693
-#: smb4k/smb4kmainwindow.cpp:780
+#: smb4k/smb4kmainwindow.cpp:648 smb4k/smb4kmainwindow.cpp:687
+#: smb4k/smb4kmainwindow.cpp:774
 #, kde-format
 msgid "Done."
 msgstr "Klar."
 
-#: smb4k/smb4kmainwindow.cpp:666
+#: smb4k/smb4kmainwindow.cpp:658
 #, kde-format
 msgid "Mounting..."
 msgstr "Monterar ..."
 
-#: smb4k/smb4kmainwindow.cpp:670
+#: smb4k/smb4kmainwindow.cpp:662
 #, kde-format
 msgid "Unmounting..."
 msgstr "Avmonterar ..."
 
-#: smb4k/smb4kmainwindow.cpp:674
+#: smb4k/smb4kmainwindow.cpp:666
 #, kde-format
 msgid "Waking up host..."
 msgstr "Väcker värddator ..."
 
-#: smb4k/smb4kmainwindow.cpp:704
+#: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 har monterats med lyckat resultat."
 
-#: smb4k/smb4kmainwindow.cpp:729
+#: smb4k/smb4kmainwindow.cpp:723
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 har avmonterats med lyckat resultat."
 
-#: smb4k/smb4kmainwindow.cpp:768
+#: smb4k/smb4kmainwindow.cpp:762
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Synkroniserar %1"

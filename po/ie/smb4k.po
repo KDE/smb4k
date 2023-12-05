@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-02 00:42+0000\n"
+"POT-Creation-Date: 2023-12-05 00:41+0000\n"
 "PO-Revision-Date: 2022-11-10 12:50+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -156,7 +156,7 @@ msgstr "Marca-págines"
 msgid "&Edit Bookmarks"
 msgstr "&Modificar marca-págines"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:141
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -565,7 +565,7 @@ msgstr "Summas de control"
 msgid "Main Window"
 msgstr "Li fenestre principal"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:213
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Vicinitá del rete"
@@ -676,117 +676,117 @@ msgstr "Montage"
 msgid "Page 3: Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
-#: smb4k/smb4kmainwindow.cpp:132
+#: smb4k/smb4kmainwindow.cpp:131
 #, fuzzy, kde-format
 msgid "Dock Widgets"
 msgstr "_Dock"
 
-#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:43
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Montet partites"
 
-#: smb4k/smb4kmainwindow.cpp:370
+#: smb4k/smb4kmainwindow.cpp:362
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:372
+#: smb4k/smb4kmainwindow.cpp:364
 #, fuzzy, kde-format
 msgid "Docking"
 msgstr "Station de dock"
 
-#: smb4k/smb4kmainwindow.cpp:427
+#: smb4k/smb4kmainwindow.cpp:419
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Null partites es montet actualmen."
 
-#: smb4k/smb4kmainwindow.cpp:430
+#: smb4k/smb4kmainwindow.cpp:422
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "%1 partite es montet actualmen."
 msgstr[1] "%1 partites es montet actualmen."
 
-#: smb4k/smb4kmainwindow.cpp:573
+#: smb4k/smb4kmainwindow.cpp:565
 #, kde-format
 msgid "The wallet is used."
 msgstr "Li porta-papere es usat."
 
-#: smb4k/smb4kmainwindow.cpp:576
+#: smb4k/smb4kmainwindow.cpp:568
 #, fuzzy, kde-format
 msgid "The password dialog is used."
 msgstr "Ocupat"
 
-#: smb4k/smb4kmainwindow.cpp:586
+#: smb4k/smb4kmainwindow.cpp:578
 #, fuzzy, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Null labor-gruppes trovat"
 
-#: smb4k/smb4kmainwindow.cpp:591
+#: smb4k/smb4kmainwindow.cpp:583
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:596
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:604 smb4k/smb4kmainwindow.cpp:612
+#: smb4k/smb4kmainwindow.cpp:596 smb4k/smb4kmainwindow.cpp:604
 #, fuzzy, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "files e directorias"
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:621
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:634
+#: smb4k/smb4kmainwindow.cpp:626
 #, fuzzy, kde-format
 msgid "Sending file to printer %1..."
 msgstr "%1 invia vos li file %2"
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:630
 #, fuzzy, kde-format
 msgid "Searching..."
 msgstr "Sercha..."
 
-#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:693
-#: smb4k/smb4kmainwindow.cpp:780
+#: smb4k/smb4kmainwindow.cpp:648 smb4k/smb4kmainwindow.cpp:687
+#: smb4k/smb4kmainwindow.cpp:774
 #, kde-format
 msgid "Done."
 msgstr "Finit."
 
-#: smb4k/smb4kmainwindow.cpp:666
+#: smb4k/smb4kmainwindow.cpp:658
 #, kde-format
 msgid "Mounting..."
 msgstr "Montage..."
 
-#: smb4k/smb4kmainwindow.cpp:670
+#: smb4k/smb4kmainwindow.cpp:662
 #, kde-format
 msgid "Unmounting..."
 msgstr "Demontentage..."
 
-#: smb4k/smb4kmainwindow.cpp:674
+#: smb4k/smb4kmainwindow.cpp:666
 #, fuzzy, kde-format
 msgid "Waking up host..."
 msgstr "Host: "
 
-#: smb4k/smb4kmainwindow.cpp:704
+#: smb4k/smb4kmainwindow.cpp:698
 #, fuzzy, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%s esset installat successosi"
 
-#: smb4k/smb4kmainwindow.cpp:729
+#: smb4k/smb4kmainwindow.cpp:723
 #, fuzzy, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%s esset installat successosi"
 
-#: smb4k/smb4kmainwindow.cpp:768
+#: smb4k/smb4kmainwindow.cpp:762
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Sincronisation de %1"
