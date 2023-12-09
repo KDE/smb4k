@@ -10,8 +10,8 @@
 #include "smb4kauthinfo.h"
 #include "smb4kbookmark.h"
 #include "smb4kbookmarkhandler.h"
-#include "smb4kcustomoptions.h"
-#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomsettings.h"
+#include "smb4kcustomsettingsmanager.h"
 #include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4knotification.h"
@@ -142,16 +142,16 @@ void Smb4KMounter::triggerRemounts(bool fillList)
         //
         // Get the list of shares that are to be remounted
         //
-        QList<OptionsPtr> options = Smb4KCustomOptionsManager::self()->sharesToRemount();
+        QList<CustomSettingsPtr> options = Smb4KCustomSettingsManager::self()->sharesToRemount();
 
         //
         // Process the list and honor the settings the user chose
         //
-        for (const OptionsPtr &option : qAsConst(options)) {
+        for (const CustomSettingsPtr &option : qAsConst(options)) {
             //
             // Skip one time remount shares, if needed
             //
-            if (option->remount() == Smb4KCustomOptions::RemountOnce && !Smb4KMountSettings::remountShares()) {
+            if (option->remount() == Smb4KCustomSettings::RemountOnce && !Smb4KMountSettings::remountShares()) {
                 continue;
             }
 
@@ -424,7 +424,7 @@ void Smb4KMounter::import(bool checkInaccessible)
                                                     importedShare->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                                     Qt::CaseInsensitive)
                                     == 0) {
-                                Smb4KCustomOptionsManager::self()->removeRemount(remount);
+                                Smb4KCustomSettingsManager::self()->removeRemount(remount);
                                 s.remove();
                                 break;
                             } else {
@@ -524,7 +524,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         // Wake-On-LAN: Wake up the host before mounting
         //
         if (Smb4KSettings::enableWakeOnLAN()) {
-            OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share->url().resolved(QUrl(QStringLiteral(".."))));
+            CustomSettingsPtr options = Smb4KCustomSettingsManager::self()->findCustomSettings(share->url().resolved(QUrl(QStringLiteral(".."))));
 
             if (options && options->wolSendBeforeMount()) {
                 Q_EMIT aboutToStart(WakeUp);
@@ -942,9 +942,9 @@ void Smb4KMounter::saveSharesForRemount()
     //
     for (const SharePtr &share : mountedSharesList()) {
         if (!share->isForeign()) {
-            Smb4KCustomOptionsManager::self()->addRemount(share, false);
+            Smb4KCustomSettingsManager::self()->addRemount(share, false);
         } else {
-            Smb4KCustomOptionsManager::self()->removeRemount(share, false);
+            Smb4KCustomSettingsManager::self()->removeRemount(share, false);
         }
     }
 
@@ -953,7 +953,7 @@ void Smb4KMounter::saveSharesForRemount()
     //
     while (!d->remounts.isEmpty()) {
         SharePtr share = d->remounts.takeFirst();
-        Smb4KCustomOptionsManager::self()->addRemount(share, false);
+        Smb4KCustomSettingsManager::self()->addRemount(share, false);
         share.clear();
     }
 }
@@ -1014,7 +1014,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     //
     // Global and custom options
     //
-    OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share);
+    CustomSettingsPtr options = Smb4KCustomSettingsManager::self()->findCustomSettings(share);
 
     //
     // Pass the remote file system port to the URL
@@ -1482,7 +1482,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     //
     // Global and custom options
     //
-    OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share);
+    CustomSettingsPtr options = Smb4KCustomSettingsManager::self()->findCustomSettings(share);
 
     //
     // List of arguments

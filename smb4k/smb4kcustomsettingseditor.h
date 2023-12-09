@@ -51,7 +51,7 @@ protected Q_SLOTS:
     void slotCustomSettingsUpdated();
 
 private:
-    OptionsPtr m_customSettings;
+    CustomSettingsPtr m_customSettings;
     QLabel *m_descriptionText;
     Smb4KCustomSettingsEditorWidget *m_editorWidget;
     QPushButton *m_resetButton;

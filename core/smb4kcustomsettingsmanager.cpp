@@ -6,8 +6,8 @@
 */
 
 // application specific includes
-#include "smb4kcustomoptionsmanager.h"
-#include "smb4kcustomoptions.h"
+#include "smb4kcustomsettingsmanager.h"
+#include "smb4kcustomsettings.h"
 #include "smb4kglobal.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4khost.h"
@@ -35,23 +35,23 @@
 
 using namespace Smb4KGlobal;
 
-class Smb4KCustomOptionsManagerPrivate
+class Smb4KCustomSettingsManagerPrivate
 {
 public:
-    QList<OptionsPtr> options;
+    QList<CustomSettingsPtr> options;
 };
 
-class Smb4KCustomOptionsManagerStatic
+class Smb4KCustomSettingsManagerStatic
 {
 public:
-    Smb4KCustomOptionsManager instance;
+    Smb4KCustomSettingsManager instance;
 };
 
-Q_GLOBAL_STATIC(Smb4KCustomOptionsManagerStatic, p);
+Q_GLOBAL_STATIC(Smb4KCustomSettingsManagerStatic, p);
 
-Smb4KCustomOptionsManager::Smb4KCustomOptionsManager(QObject *parent)
+Smb4KCustomSettingsManager::Smb4KCustomSettingsManager(QObject *parent)
     : QObject(parent)
-    , d(new Smb4KCustomOptionsManagerPrivate)
+    , d(new Smb4KCustomSettingsManagerPrivate)
 {
     // First we need the directory.
     QString path = dataLocation();
@@ -62,119 +62,119 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager(QObject *parent)
         dir.mkpath(path);
     }
 
-    readCustomOptions();
+    readCustomSettings();
 
-    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileRemoved, this, &Smb4KCustomOptionsManager::slotProfileRemoved);
-    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileMigrated, this, &Smb4KCustomOptionsManager::slotProfileMigrated);
-    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KCustomOptionsManager::slotAboutToQuit);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileRemoved, this, &Smb4KCustomSettingsManager::slotProfileRemoved);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileMigrated, this, &Smb4KCustomSettingsManager::slotProfileMigrated);
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KCustomSettingsManager::slotAboutToQuit);
 }
 
-Smb4KCustomOptionsManager::~Smb4KCustomOptionsManager()
+Smb4KCustomSettingsManager::~Smb4KCustomSettingsManager()
 {
 }
 
-Smb4KCustomOptionsManager *Smb4KCustomOptionsManager::self()
+Smb4KCustomSettingsManager *Smb4KCustomSettingsManager::self()
 {
     return &p->instance;
 }
 
-void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
+void Smb4KCustomSettingsManager::addRemount(const SharePtr &share, bool always)
 {
     if (share) {
         //
         // Find the right custom options, if they exist
         //
-        OptionsPtr options = findOptions(share, true);
+        CustomSettingsPtr options = findCustomSettings(share, true);
 
         if (options) {
             // If the options are already in the list, check if the share is
             // always to be remounted. If so, ignore the 'always' argument
             // and leave that option untouched.
-            if (options->remount() != Smb4KCustomOptions::RemountAlways) {
-                options->setRemount(always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce);
+            if (options->remount() != Smb4KCustomSettings::RemountAlways) {
+                options->setRemount(always ? Smb4KCustomSettings::RemountAlways : Smb4KCustomSettings::RemountOnce);
             }
         } else {
-            options = OptionsPtr(new Smb4KCustomOptions(share.data()));
+            options = CustomSettingsPtr(new Smb4KCustomSettings(share.data()));
             options->setProfile(Smb4KProfileManager::self()->activeProfile());
-            options->setRemount(always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce);
+            options->setRemount(always ? Smb4KCustomSettings::RemountAlways : Smb4KCustomSettings::RemountOnce);
             d->options << options;
         }
 
-        writeCustomOptions();
+        writeCustomSettings();
         Q_EMIT updated();
     }
 }
 
-void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
+void Smb4KCustomSettingsManager::removeRemount(const SharePtr &share, bool force)
 {
     if (share) {
         //
         // Get the remount
         //
-        OptionsPtr options = findOptions(share, true);
+        CustomSettingsPtr options = findCustomSettings(share, true);
 
         //
         // Remove the remount flag and, if there are no more options defined,
         // the options object itself. Save the modified list to the file afterwards.
         //
         if (options) {
-            if (options->remount() == Smb4KCustomOptions::RemountOnce) {
-                options->setRemount(Smb4KCustomOptions::UndefinedRemount);
-            } else if (options->remount() == Smb4KCustomOptions::RemountAlways && force) {
-                options->setRemount(Smb4KCustomOptions::UndefinedRemount);
+            if (options->remount() == Smb4KCustomSettings::RemountOnce) {
+                options->setRemount(Smb4KCustomSettings::UndefinedRemount);
+            } else if (options->remount() == Smb4KCustomSettings::RemountAlways && force) {
+                options->setRemount(Smb4KCustomSettings::UndefinedRemount);
             }
 
             if (!options->hasOptions()) {
-                removeCustomOptions(options, false);
+                removeCustomSettings(options, false);
             }
         }
 
-        writeCustomOptions();
+        writeCustomSettings();
         Q_EMIT updated();
     }
 }
 
-void Smb4KCustomOptionsManager::clearRemounts(bool force)
+void Smb4KCustomSettingsManager::clearRemounts(bool force)
 {
     //
     // Remove the remount flag and, if there are nomore options defined,
     // also the options object. Write everything to the file afterwards.
     //
-    for (const OptionsPtr &options : qAsConst(d->options)) {
+    for (const CustomSettingsPtr &options : qAsConst(d->options)) {
         if (options->type() == Share) {
-            if (options->remount() == Smb4KCustomOptions::RemountOnce) {
-                options->setRemount(Smb4KCustomOptions::UndefinedRemount);
-            } else if (options->remount() == Smb4KCustomOptions::RemountAlways && force) {
-                options->setRemount(Smb4KCustomOptions::UndefinedRemount);
+            if (options->remount() == Smb4KCustomSettings::RemountOnce) {
+                options->setRemount(Smb4KCustomSettings::UndefinedRemount);
+            } else if (options->remount() == Smb4KCustomSettings::RemountAlways && force) {
+                options->setRemount(Smb4KCustomSettings::UndefinedRemount);
             }
         }
 
         if (!options->hasOptions()) {
-            removeCustomOptions(options, false);
+            removeCustomSettings(options, false);
         }
     }
 
-    writeCustomOptions();
+    writeCustomSettings();
     Q_EMIT updated();
 }
 
-QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
+QList<CustomSettingsPtr> Smb4KCustomSettingsManager::sharesToRemount()
 {
     //
     // List of relevant custom options
     //
-    QList<OptionsPtr> optionsList = customOptions(false);
+    QList<CustomSettingsPtr> optionsList = customSettings(false);
 
     //
     // List of remounts
     //
-    QList<OptionsPtr> remounts;
+    QList<CustomSettingsPtr> remounts;
 
     //
     // Get the list of remounts
     //
-    for (const OptionsPtr &options : qAsConst(optionsList)) {
-        if (options->remount() != Smb4KCustomOptions::UndefinedRemount) {
+    for (const CustomSettingsPtr &options : qAsConst(optionsList)) {
+        if (options->remount() != Smb4KCustomSettings::UndefinedRemount) {
             remounts << options;
         }
     }
@@ -185,24 +185,24 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
     return remounts;
 }
 
-OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkItem, bool exactMatch)
+CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const NetworkItemPtr &networkItem, bool exactMatch)
 {
-    OptionsPtr options;
+    CustomSettingsPtr options;
 
     if (exactMatch) {
-        options = findOptions(networkItem->url());
+        options = findCustomSettings(networkItem->url());
     } else {
         if (networkItem->type() == Host) {
-            options = findOptions(networkItem->url());
+            options = findCustomSettings(networkItem->url());
         } else if (networkItem->type() == Share) {
-            options = findOptions(networkItem->url());
+            options = findCustomSettings(networkItem->url());
 
             // Get the host's custom options, if needed
             if (!options) {
-                OptionsPtr shareOptions = OptionsPtr(new Smb4KCustomOptions(networkItem.data()));
+                CustomSettingsPtr shareOptions = CustomSettingsPtr(new Smb4KCustomSettings(networkItem.data()));
 
                 QUrl hostUrl = networkItem->url().adjusted(QUrl::RemovePath);
-                OptionsPtr hostOptions = findOptions(hostUrl);
+                CustomSettingsPtr hostOptions = findCustomSettings(hostUrl);
 
                 if (hostOptions) {
                     shareOptions->update(hostOptions.data());
@@ -215,12 +215,12 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
     return options;
 }
 
-OptionsPtr Smb4KCustomOptionsManager::findOptions(const QUrl &url)
+CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const QUrl &url)
 {
     //
     // The options that are to be returned
     //
-    OptionsPtr options;
+    CustomSettingsPtr options;
 
     //
     // Search the options for the given URL
@@ -229,12 +229,12 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const QUrl &url)
         //
         // Get the relevant options
         //
-        QList<OptionsPtr> optionsList = customOptions(false);
+        QList<CustomSettingsPtr> optionsList = customSettings(false);
 
         //
         // Get the options
         //
-        for (const OptionsPtr &o : qAsConst(optionsList)) {
+        for (const CustomSettingsPtr &o : qAsConst(optionsList)) {
             if (o->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)
                 == url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
                 options = o;
@@ -249,7 +249,7 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const QUrl &url)
     return options;
 }
 
-void Smb4KCustomOptionsManager::readCustomOptions()
+void Smb4KCustomSettingsManager::readCustomSettings()
 {
     //
     // Clear the list of options
@@ -275,7 +275,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                     break;
                 } else {
                     if (xmlReader.name() == QStringLiteral("options")) {
-                        OptionsPtr options = OptionsPtr(new Smb4KCustomOptions());
+                        CustomSettingsPtr options = CustomSettingsPtr(new Smb4KCustomSettings());
                         options->setProfile(xmlReader.attributes().value(QStringLiteral("profile")).toString());
 
                         //
@@ -524,7 +524,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
     }
 }
 
-void Smb4KCustomOptionsManager::writeCustomOptions()
+void Smb4KCustomSettingsManager::writeCustomSettings()
 {
     QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("custom_options.xml"));
 
@@ -540,7 +540,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
         xmlWriter.writeStartElement(QStringLiteral("custom_options"));
         xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("3.0"));
 
-        for (const OptionsPtr &options : qAsConst(d->options)) {
+        for (const CustomSettingsPtr &options : qAsConst(d->options)) {
             if (options->hasOptions()) {
                 xmlWriter.writeStartElement(QStringLiteral("options"));
                 xmlWriter.writeAttribute(QStringLiteral("type"), options->type() == Host ? QStringLiteral("host") : QStringLiteral("share"));
@@ -552,7 +552,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
 
                 xmlWriter.writeStartElement(QStringLiteral("custom"));
 
-                QMap<QString, QString> map = options->customOptions();
+                QMap<QString, QString> map = options->customSettings();
                 QMapIterator<QString, QString> i(map);
 
                 while (i.hasNext()) {
@@ -575,11 +575,11 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
     }
 }
 
-QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOnce) const
+QList<CustomSettingsPtr> Smb4KCustomSettingsManager::customSettings(bool withoutRemountOnce) const
 {
-    QList<OptionsPtr> optionsList;
+    QList<CustomSettingsPtr> optionsList;
 
-    for (const OptionsPtr &options : qAsConst(d->options)) {
+    for (const CustomSettingsPtr &options : qAsConst(d->options)) {
         if (Smb4KSettings::useProfiles() && options->profile() != Smb4KProfileManager::self()->activeProfile()) {
             continue;
         }
@@ -592,10 +592,10 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOn
     return optionsList;
 }
 
-void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool write)
+void Smb4KCustomSettingsManager::addCustomSettings(const CustomSettingsPtr &options, bool write)
 {
     if (options) {
-        OptionsPtr knownOptions = findOptions(options->url());
+        CustomSettingsPtr knownOptions = findCustomSettings(options->url());
 
         if (knownOptions) {
             knownOptions->update(options.data());
@@ -613,9 +613,9 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
         // the settings
         //
         if (options->type() == Host) {
-            QList<OptionsPtr> allOptions = customOptions(true);
+            QList<CustomSettingsPtr> allOptions = customSettings(true);
 
-            for (const OptionsPtr &o : qAsConst(allOptions)) {
+            for (const CustomSettingsPtr &o : qAsConst(allOptions)) {
                 // FIXME: Can we remove the check of the workgroup?
                 if (o->type() == Share && o->hostName() == options->hostName() && o->workgroupName() == options->workgroupName()) {
                     o->setIpAddress(options->ipAddress());
@@ -649,14 +649,14 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
         }
 
         if (write) {
-            writeCustomOptions();
+            writeCustomSettings();
         }
 
         Q_EMIT updated();
     }
 }
 
-void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, bool write)
+void Smb4KCustomSettingsManager::removeCustomSettings(const CustomSettingsPtr &options, bool write)
 {
     if (options) {
         for (int i = 0; i < d->options.size(); ++i) {
@@ -668,19 +668,19 @@ void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, b
         }
 
         if (write) {
-            writeCustomOptions();
+            writeCustomSettings();
         }
 
         Q_EMIT updated();
     }
 }
 
-QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
+QList<CustomSettingsPtr> Smb4KCustomSettingsManager::wakeOnLanEntries() const
 {
-    QList<OptionsPtr> optionsList;
-    QList<OptionsPtr> allOptions = customOptions();
+    QList<CustomSettingsPtr> optionsList;
+    QList<CustomSettingsPtr> allOptions = customSettings();
 
-    for (const OptionsPtr &options : qAsConst(allOptions)) {
+    for (const CustomSettingsPtr &options : qAsConst(allOptions)) {
         if (!options->macAddress().isEmpty() && (options->wolSendBeforeNetworkScan() || options->wolSendBeforeMount())) {
             optionsList << options;
         }
@@ -689,55 +689,55 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
     return optionsList;
 }
 
-void Smb4KCustomOptionsManager::saveCustomOptions(const QList<OptionsPtr> &optionsList)
+void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPtr> &optionsList)
 {
-    QMutableListIterator<OptionsPtr> it(d->options);
+    QMutableListIterator<CustomSettingsPtr> it(d->options);
 
     while (it.hasNext()) {
-        OptionsPtr options = it.next();
-        removeCustomOptions(options);
+        CustomSettingsPtr options = it.next();
+        removeCustomSettings(options);
     }
 
-    for (const OptionsPtr &options : optionsList) {
-        addCustomOptions(options, false);
+    for (const CustomSettingsPtr &options : optionsList) {
+        addCustomSettings(options, false);
     }
 
-    writeCustomOptions();
+    writeCustomSettings();
 }
 
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KCustomOptionsManager::slotAboutToQuit()
+void Smb4KCustomSettingsManager::slotAboutToQuit()
 {
-    writeCustomOptions();
+    writeCustomSettings();
 }
 
-void Smb4KCustomOptionsManager::slotProfileRemoved(const QString &name)
+void Smb4KCustomSettingsManager::slotProfileRemoved(const QString &name)
 {
-    QMutableListIterator<OptionsPtr> it(d->options);
+    QMutableListIterator<CustomSettingsPtr> it(d->options);
 
     while (it.hasNext()) {
-        OptionsPtr options = it.next();
+        CustomSettingsPtr options = it.next();
 
         if (name == options->profile()) {
             it.remove();
         }
     }
 
-    writeCustomOptions();
+    writeCustomSettings();
     Q_EMIT updated();
 }
 
-void Smb4KCustomOptionsManager::slotProfileMigrated(const QString &oldName, const QString &newName)
+void Smb4KCustomSettingsManager::slotProfileMigrated(const QString &oldName, const QString &newName)
 {
-    for (const OptionsPtr &options : qAsConst(d->options)) {
+    for (const CustomSettingsPtr &options : qAsConst(d->options)) {
         if (oldName == options->profile()) {
             options->setProfile(newName);
         }
     }
 
-    writeCustomOptions();
+    writeCustomSettings();
     Q_EMIT updated();
 }

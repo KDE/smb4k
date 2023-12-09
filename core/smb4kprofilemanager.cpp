@@ -7,9 +7,6 @@
 
 // application specific includes
 #include "smb4kprofilemanager.h"
-#include "smb4kbookmarkhandler.h"
-#include "smb4kcustomoptionsmanager.h"
-#include "smb4khomesshareshandler.h"
 #include "smb4ksettings.h"
 
 // Qt includes

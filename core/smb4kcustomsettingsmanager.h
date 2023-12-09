@@ -1,5 +1,5 @@
 /*
-    Manage custom options
+    Manage custom settings
 
     SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -16,40 +16,40 @@
 #include <QScopedPointer>
 
 // forward declarations
-class Smb4KCustomOptionsManagerPrivate;
+class Smb4KCustomSettingsManagerPrivate;
 class Smb4KProfileManager;
 
 /**
- * This classes manages the custom options that were defined
+ * This classes manages the custom settings that were defined
  * for a certain share or host.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  * @since 1.0.0
  */
 
-class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
+class Q_DECL_EXPORT Smb4KCustomSettingsManager : public QObject
 {
     Q_OBJECT
 
-    friend class Smb4KCustomOptionsManagerPrivate;
+    friend class Smb4KCustomSettingsManagerPrivate;
 
 public:
     /**
      * Constructor
      */
-    explicit Smb4KCustomOptionsManager(QObject *parent = nullptr);
+    explicit Smb4KCustomSettingsManager(QObject *parent = nullptr);
 
     /**
      * Destructor
      */
-    ~Smb4KCustomOptionsManager();
+    ~Smb4KCustomSettingsManager();
 
     /**
      * Returns a static pointer to this class
      *
      * @returns a static pointer to this class
      */
-    static Smb4KCustomOptionsManager *self();
+    static Smb4KCustomSettingsManager *self();
 
     /**
      * Add the share to the list of shares that are to be remounted
@@ -66,8 +66,8 @@ public:
      * Remove the share @p share from the list of shares that are to be
      * remounted. If @p force is set to TRUE, the share is removed even
      * if it should always be removed (option is set to
-     * Smb4KCustomOptions::AlwaysRemount). Apart from that, the share is only
-     * removed when the option is set to Smb4KCustomOptions::DoRemount.
+     * Smb4KCustomSettings::AlwaysRemount). Apart from that, the share is only
+     * removed when the option is set to Smb4KCustomSettings::DoRemount.
      *
      * @param share     The share object
      *
@@ -77,7 +77,7 @@ public:
     void removeRemount(const SharePtr &share, bool force = false);
 
     /**
-     * Removes all remounts from the list of custom options. If @p force
+     * Removes all remounts from the list of custom settings. If @p force
      * is set to TRUE, even those are removed that should always be remounted.
      *
      * @param force     If set to TRUE, even those shares are removed that should
@@ -90,88 +90,88 @@ public:
      *
      * @returns the list of shares that are to be remounted
      */
-    QList<OptionsPtr> sharesToRemount();
+    QList<CustomSettingsPtr> sharesToRemount();
 
     /**
-     * Find custom options for the network item @p networkItem.
+     * Find custom settings for the network item @p networkItem.
      *
-     * If the network item represents a share and custom options for it are not
+     * If the network item represents a share and custom settings for it are not
      * defined, but for the host that provides the share, options filled with the
      * host's options are returned. If neither is in the list, NULL is returned.
      *
      * If you set @p exactMatch to TRUE, NULL will be returned if the URL is not found.
      * Except in some special cases, you should not set @p exactMatch to true,
      * because options that are defined for all shares provided by a certain host and
-     * stored in a host-type custom options object are ignored then.
+     * stored in a host-type custom settings object are ignored then.
      *
      * @param networkItem         The network item
      * @param exactMatch          If TRUE, only exact matches are returned
      *
-     * @returns the custom options for the network item
+     * @returns the custom settings for the network item
      */
-    OptionsPtr findOptions(const NetworkItemPtr &networkItem, bool exactMatch = false);
+    CustomSettingsPtr findCustomSettings(const NetworkItemPtr &networkItem, bool exactMatch = false);
 
     /**
-     * Find custom options for the provided @p url.
+     * Find custom settings for the provided @p url.
      *
-     * This function searches the list of custom options and compares the host entry
+     * This function searches the list of custom settings and compares the host entry
      * and, if applicable, the path (i.e. the share name). If an exact match was found,
-     * the corresponding custom options are returned.
+     * the corresponding custom settings are returned.
      *
      * @param url                 The network item's URL
      *
-     * @returns the custom options
+     * @returns the custom settings
      */
-    OptionsPtr findOptions(const QUrl &url);
+    CustomSettingsPtr findCustomSettings(const QUrl &url);
 
     /**
-     * Get the list of custom options. If @p withoutRemountOnce is defined, only those
-     * entries are returned that have custom options apart from the remount settings
+     * Get the list of custom settings. If @p withoutRemountOnce is defined, only those
+     * entries are returned that have custom settings apart from the remount settings
      * defined.
      *
-     * @param withoutRemountOnce  Returns the list of custom options without those that
+     * @param withoutRemountOnce  Returns the list of custom settings without those that
      *                            have only the one time remount option set.
      *
-     * @returns the list of custom options objects.
+     * @returns the list of custom settings objects.
      */
-    QList<OptionsPtr> customOptions(bool withoutRemountOnce = false) const;
+    QList<CustomSettingsPtr> customSettings(bool withoutRemountOnce = false) const;
 
     /**
-     * This function adds custom options for a single network item to the list
+     * This function adds custom settings for a single network item to the list
      * of options. If there already are options defined for that network item,
      * they are updated.
      *
      * Please note that this function will store a copy of @p options and not
      * the original object.
      *
-     * @param options             The custom options
+     * @param options             The custom settings
      *
      * @param write               Write the options to the file
      */
-    void addCustomOptions(const OptionsPtr &options, bool write = false);
+    void addCustomSettings(const CustomSettingsPtr &options, bool write = false);
 
     /**
-     * This function removes custom options for a single network item from the
+     * This function removes custom settings for a single network item from the
      * list of options.
      *
-     * @param options             The custom options
+     * @param options             The custom settings
      *
      * @param write               Write the options to the file
      */
-    void removeCustomOptions(const OptionsPtr &options, bool write = false);
+    void removeCustomSettings(const CustomSettingsPtr &options, bool write = false);
 
     /**
      * This function returns a list of custom option objects that have
      * Wake-On-LAN features defined.
      *
-     * @returns a list of custom options objects with WOL features defined.
+     * @returns a list of custom settings objects with WOL features defined.
      */
-    QList<OptionsPtr> wakeOnLanEntries() const;
+    QList<CustomSettingsPtr> wakeOnLanEntries() const;
 
     /**
-     * Save custom options to the file.
+     * Save custom settings to the file.
      */
-    void saveCustomOptions(const QList<OptionsPtr> &optionsList);
+    void saveCustomSettings(const QList<CustomSettingsPtr> &optionsList);
 
 Q_SIGNALS:
     /**
@@ -202,19 +202,19 @@ protected Q_SLOTS:
 
 private:
     /**
-     * Read custom options
+     * Read custom settings
      */
-    void readCustomOptions();
+    void readCustomSettings();
 
     /**
-     * This function writes the custom options to the disk.
+     * This function writes the custom settings to the disk.
      */
-    void writeCustomOptions();
+    void writeCustomSettings();
 
     /**
-     * Pointer to Smb4KCustomOptionsManagerPrivate class
+     * Pointer to Smb4KCustomSettingsManagerPrivate class
      */
-    const QScopedPointer<Smb4KCustomOptionsManagerPrivate> d;
+    const QScopedPointer<Smb4KCustomSettingsManagerPrivate> d;
 };
 
 #endif

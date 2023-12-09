@@ -1,18 +1,14 @@
 /*
     smb4ksharesmenu  -  Shares menu
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
 #include "smb4ksharesmenu.h"
-#include "core/smb4kbookmarkhandler.h"
-#include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kmounter.h"
-#include "core/smb4kshare.h"
-#include "core/smb4ksynchronizer.h"
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
 #include "smb4kpreviewdialog.h"

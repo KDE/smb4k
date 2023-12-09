@@ -20,8 +20,8 @@ set(smb4kcore_LIB_SRCS
   smb4kbookmarkhandler.cpp
   smb4kclient.cpp
   smb4kclient_p.cpp
-  smb4kcustomoptions.cpp
-  smb4kcustomoptionsmanager.cpp
+  smb4kcustomsettings.cpp
+  smb4kcustomsettingsmanager.cpp
   smb4kfile.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp

@@ -1,7 +1,7 @@
 /*
     smb4kqmlplugin - The QML plugin for use with Plasma/QtQuick
 
-    SPDX-FileCopyrightText: 2012-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2012-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

@@ -418,11 +418,11 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 }
 #endif
 
-void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomOptions &settings)
+void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSettings &settings)
 {
     if (settings.type() != Host) {
         m_alwaysRemountShare->setEnabled(true);
-        m_alwaysRemountShare->setChecked(settings.remount() == Smb4KCustomOptions::RemountAlways);
+        m_alwaysRemountShare->setChecked(settings.remount() == Smb4KCustomSettings::RemountAlways);
     }
 
 #ifdef Q_OS_LINUX
@@ -485,10 +485,10 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomOptions
     m_haveCustomSettings = true;
 }
 
-Smb4KCustomOptions Smb4KCustomSettingsEditorWidget::getCustomSettings() const
+Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
 {
     if (m_customSettings.type() != Host) {
-        m_customSettings.setRemount(m_alwaysRemountShare->isChecked() ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::UndefinedRemount);
+        m_customSettings.setRemount(m_alwaysRemountShare->isChecked() ? Smb4KCustomSettings::RemountAlways : Smb4KCustomSettings::UndefinedRemount);
     }
 
 #ifdef Q_OS_LINUX
@@ -543,7 +543,7 @@ Smb4KCustomOptions Smb4KCustomSettingsEditorWidget::getCustomSettings() const
 
 void Smb4KCustomSettingsEditorWidget::clear()
 {
-    m_customSettings = Smb4KCustomOptions();
+    m_customSettings = Smb4KCustomSettings();
     m_haveCustomSettings = false;
     setCurrentIndex(0);
 
@@ -603,7 +603,7 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
-    if (m_alwaysRemountShare->isChecked() != (m_customSettings.remount() == Smb4KCustomOptions::RemountAlways)) {
+    if (m_alwaysRemountShare->isChecked() != (m_customSettings.remount() == Smb4KCustomSettings::RemountAlways)) {
         Q_EMIT edited(true);
         return;
     }

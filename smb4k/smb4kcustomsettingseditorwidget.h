@@ -46,12 +46,12 @@ public:
     /**
      * Set the custom settings object that needs to be edited
      */
-    void setCustomSettings(const Smb4KCustomOptions &settings);
+    void setCustomSettings(const Smb4KCustomSettings &settings);
 
     /**
      * Get the custom settings object that has been edited
      */
-    Smb4KCustomOptions getCustomSettings() const;
+    Smb4KCustomSettings getCustomSettings() const;
 
     /**
      * Clears the input widgets
@@ -98,7 +98,7 @@ private:
     void setupView();
     void checkValues();
     bool m_haveCustomSettings;
-    Smb4KCustomOptions m_customSettings;
+    Smb4KCustomSettings m_customSettings;
     QCheckBox *m_alwaysRemountShare;
 #ifdef Q_OS_LINUX
     QCheckBox *m_useWriteAccess;

@@ -7,8 +7,8 @@
 
 // application specific includes
 #include "smb4kconfigpagecustomsettings.h"
-#include "core/smb4kcustomoptions.h"
-#include "core/smb4kcustomoptionsmanager.h"
+#include "core/smb4kcustomsettings.h"
+#include "core/smb4kcustomsettingsmanager.h"
 #include "core/smb4kglobal.h"
 
 // Qt includes
@@ -87,7 +87,7 @@ Smb4KConfigPageCustomSettings::Smb4KConfigPageCustomSettings(QWidget *parent)
 
     m_clearButton = buttonBox->addButton(i18n("Clear List"), QDialogButtonBox::ActionRole);
     m_clearButton->setIcon(KDE::icon(QStringLiteral("edit-clear")));
-    m_clearButton->setEnabled(!Smb4KCustomOptionsManager::self()->customOptions(true).isEmpty());
+    m_clearButton->setEnabled(!Smb4KCustomSettingsManager::self()->customSettings(true).isEmpty());
 
     connect(m_resetButton, &QPushButton::clicked, this, &Smb4KConfigPageCustomSettings::slotResetButtonClicked);
     connect(m_editButton, &QPushButton::clicked, this, &Smb4KConfigPageCustomSettings::slotEditButtonClicked);
@@ -99,7 +99,7 @@ Smb4KConfigPageCustomSettings::Smb4KConfigPageCustomSettings(QWidget *parent)
     loadCustomSettings();
 
     connect(this, &Smb4KConfigPageCustomSettings::customSettingsModified, this, &Smb4KConfigPageCustomSettings::slotEnableButtons);
-    connect(Smb4KCustomOptionsManager::self(), &Smb4KCustomOptionsManager::updated, this, &Smb4KConfigPageCustomSettings::loadCustomSettings);
+    connect(Smb4KCustomSettingsManager::self(), &Smb4KCustomSettingsManager::updated, this, &Smb4KConfigPageCustomSettings::loadCustomSettings);
 }
 
 Smb4KConfigPageCustomSettings::~Smb4KConfigPageCustomSettings()
@@ -121,9 +121,9 @@ void Smb4KConfigPageCustomSettings::loadCustomSettings()
         m_listWidget->clear();
     }
 
-    QList<OptionsPtr> customOptions = Smb4KCustomOptionsManager::self()->customOptions(true);
+    QList<CustomSettingsPtr> customSettings = Smb4KCustomSettingsManager::self()->customSettings(true);
 
-    for (const OptionsPtr &option : qAsConst(customOptions)) {
+    for (const CustomSettingsPtr &option : qAsConst(customSettings)) {
         QVariant variant = QVariant::fromValue(*option.data());
 
         QListWidgetItem *item = new QListWidgetItem(option->displayString(), m_listWidget);
@@ -146,10 +146,10 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
 {
     if (m_customSettingsChanged) {
         if (m_itemToEdit) {
-            Smb4KCustomOptions customSettings = m_editorWidget->getCustomSettings();
+            Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
 
             if (customSettings.hasOptions()) {
-                Smb4KCustomOptions currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomOptions>();
+                Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
                 currentCustomSettings.update(&customSettings);
 
                 QVariant variant = QVariant::fromValue(currentCustomSettings);
@@ -169,10 +169,10 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
             }
         }
 
-        QList<OptionsPtr> customSettingsList;
+        QList<CustomSettingsPtr> customSettingsList;
 
         for (int i = 0; i < m_listWidget->count(); ++i) {
-            OptionsPtr optionsPtr = OptionsPtr(new Smb4KCustomOptions(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomOptions>()));
+            CustomSettingsPtr optionsPtr = CustomSettingsPtr(new Smb4KCustomSettings(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomSettings>()));
 
             if (optionsPtr) {
                 customSettingsList << optionsPtr;
@@ -180,7 +180,7 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
         }
 
         m_savingCustomSettings = true;
-        Smb4KCustomOptionsManager::self()->saveCustomOptions(customSettingsList);
+        Smb4KCustomSettingsManager::self()->saveCustomSettings(customSettingsList);
         m_savingCustomSettings = false;
 
         m_customSettingsChanged = false;
@@ -188,7 +188,7 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
     }
 }
 
-void Smb4KConfigPageCustomSettings::setRemovalMessage(const Smb4KCustomOptions &settings)
+void Smb4KConfigPageCustomSettings::setRemovalMessage(const Smb4KCustomSettings &settings)
 {
     m_messageWidget->setText(i18n("The item <b>%1</b> was removed, because all custom settings were reset.", settings.displayString()));
 }
@@ -223,10 +223,10 @@ void Smb4KConfigPageCustomSettings::slotItemSelectionChanged()
     if (m_editorWidget->isVisible()) {
         m_editorWidget->setVisible(false);
 
-        Smb4KCustomOptions customSettings = m_editorWidget->getCustomSettings();
+        Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
 
         if (customSettings.hasOptions()) {
-            Smb4KCustomOptions currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomOptions>();
+            Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
             currentCustomSettings.update(&customSettings);
 
             QVariant variant = QVariant::fromValue(currentCustomSettings);
@@ -250,7 +250,7 @@ void Smb4KConfigPageCustomSettings::slotItemSelectionChanged()
 
 void Smb4KConfigPageCustomSettings::slotEditCustomItem(QListWidgetItem *item)
 {
-    m_editorWidget->setCustomSettings(item->data(Qt::UserRole).value<Smb4KCustomOptions>());
+    m_editorWidget->setCustomSettings(item->data(Qt::UserRole).value<Smb4KCustomSettings>());
     m_editorWidget->setVisible(true);
     m_itemToEdit = item;
 }

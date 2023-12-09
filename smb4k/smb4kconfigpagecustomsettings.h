@@ -132,7 +132,7 @@ protected Q_SLOTS:
     void slotCustomSettingsEdited(bool changed);
 
 private:
-    void setRemovalMessage(const Smb4KCustomOptions &settings);
+    void setRemovalMessage(const Smb4KCustomSettings &settings);
     QListWidget *m_listWidget;
     QListWidgetItem *m_itemToEdit;
     Smb4KCustomSettingsEditorWidget *m_editorWidget;

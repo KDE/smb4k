@@ -9,8 +9,8 @@
 #include "smb4kclient.h"
 #include "smb4kbasicnetworkitem.h"
 #include "smb4kclient_p.h"
-#include "smb4kcustomoptions.h"
-#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomsettings.h"
+#include "smb4kcustomsettingsmanager.h"
 #include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4knotification.h"
@@ -80,7 +80,7 @@ void Smb4KClient::lookupDomains()
     // Send Wakeup-On-LAN packets
     //
     if (Smb4KSettings::enableWakeOnLAN()) {
-        QList<OptionsPtr> wakeOnLanEntries = Smb4KCustomOptionsManager::self()->wakeOnLanEntries();
+        QList<CustomSettingsPtr> wakeOnLanEntries = Smb4KCustomSettingsManager::self()->wakeOnLanEntries();
 
         if (!wakeOnLanEntries.isEmpty()) {
             NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());

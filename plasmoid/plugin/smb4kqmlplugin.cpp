@@ -1,15 +1,12 @@
 /*
     smb4kqmlplugin - The QML plugin for use with Plasma/QtQuick
 
-    SPDX-FileCopyrightText: 2012-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2012-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
 #include "smb4kqmlplugin.h"
-#include "core/smb4kbookmarkhandler.h"
-#include "core/smb4kcustomoptionsmanager.h"
-#include "core/smb4kglobal.h"
 #include "smb4kbookmarkobject.h"
 #include "smb4kdeclarative.h"
 #include "smb4knetworkobject.h"

@@ -1,5 +1,5 @@
 /*
-    This class carries custom options
+    This class carries custom settings
 
     SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -20,42 +20,42 @@
 #include <KUser>
 
 // forward declarations
-class Smb4KCustomOptionsPrivate;
+class Smb4KCustomSettingsPrivate;
 
 using namespace Smb4KGlobal;
 
 /**
- * This class stores the custom options defined for a certain host
+ * This class stores the custom settings defined for a certain host
  * or share.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  * @since 1.0.0
  */
 
-class Q_DECL_EXPORT Smb4KCustomOptions
+class Q_DECL_EXPORT Smb4KCustomSettings
 {
-    friend class Smb4KCustomOptionsPrivate;
+    friend class Smb4KCustomSettingsPrivate;
 
 public:
     /**
      * Constructor fora network item
      */
-    explicit Smb4KCustomOptions(Smb4KBasicNetworkItem *networkItem);
+    explicit Smb4KCustomSettings(Smb4KBasicNetworkItem *networkItem);
 
     /**
      * Copy constructor
      */
-    Smb4KCustomOptions(const Smb4KCustomOptions &options);
+    Smb4KCustomSettings(const Smb4KCustomSettings &options);
 
     /**
      * Empty constructor
      */
-    Smb4KCustomOptions();
+    Smb4KCustomSettings();
 
     /**
      * Destructor
      */
-    ~Smb4KCustomOptions();
+    ~Smb4KCustomSettings();
 
     /**
      * Set the network item. If you already set a network item before,
@@ -418,7 +418,7 @@ public:
 #endif
 
     /**
-     * Set the profile this custom options object belongs to. The profile is
+     * Set the profile this custom settings object belongs to. The profile is
      * meant to distinguish between several network environments, like home
      * and work.
      *
@@ -427,7 +427,7 @@ public:
     void setProfile(const QString &profile) const;
 
     /**
-     * Returns the name of the profile this custom options object belongs to.
+     * Returns the name of the profile this custom settings object belongs to.
      *
      * @returns the profile name
      */
@@ -575,7 +575,7 @@ public:
     bool wolSendBeforeMount() const;
 
     /**
-     * This function returns all custom options in a sorted map. The URL,
+     * This function returns all custom settings in a sorted map. The URL,
      * workgroup and IP address must be retrieved separately if needed.
      *
      * Note that all entries that are set and valid are returned here. This
@@ -585,33 +585,33 @@ public:
      *
      * @returns all valid entries.
      */
-    QMap<QString, QString> customOptions() const;
+    QMap<QString, QString> customSettings() const;
 
     /**
      * Check if there are options defined. If @p withoutRemountOnce is set,
-     * this function will ignore the setting Smb4KCustomOptions::RemountOnce.
+     * this function will ignore the setting Smb4KCustomSettings::RemountOnce.
      *
      * @returns TRUE if there are options defined and FALSE otherwise
      */
     bool hasOptions(bool withoutRemountOnce = false) const;
 
     /**
-     * Update this custom options object. You cannot change the workgroup,
+     * Update this custom settings object. You cannot change the workgroup,
      * URL and type with this function.
      *
      * @param options             The options that are used to update this object
      */
-    void update(Smb4KCustomOptions *options);
+    void update(Smb4KCustomSettings *options);
 
     /**
      * Copy assignment operator
      */
-    Smb4KCustomOptions &operator=(const Smb4KCustomOptions &other);
+    Smb4KCustomSettings &operator=(const Smb4KCustomSettings &other);
 
 private:
-    QScopedPointer<Smb4KCustomOptionsPrivate> d;
+    QScopedPointer<Smb4KCustomSettingsPrivate> d;
 };
 
-Q_DECLARE_METATYPE(Smb4KCustomOptions)
+Q_DECLARE_METATYPE(Smb4KCustomSettings)
 
 #endif

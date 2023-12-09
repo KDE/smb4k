@@ -7,8 +7,8 @@
 
 // application specific includes
 #include "smb4kclient_p.h"
-#include "smb4kcustomoptions.h"
-#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomsettings.h"
+#include "smb4kcustomsettingsmanager.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
 #include "smb4kwalletmanager.h"
@@ -399,7 +399,7 @@ void Smb4KClientJob::initClientLibrary()
     //
     // Get the custom options
     //
-    OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(*pNetworkItem);
+    CustomSettingsPtr options = Smb4KCustomSettingsManager::self()->findCustomSettings(*pNetworkItem);
 
     //
     // Set debug level

@@ -7,7 +7,7 @@
 
 // application specific includes
 #include "smb4kcustomsettingseditor.h"
-#include "core/smb4kcustomoptionsmanager.h"
+#include "core/smb4kcustomsettingsmanager.h"
 #include "core/smb4khomesshareshandler.h"
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4ksettings.h"
@@ -77,13 +77,13 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     layout->addWidget(m_editorWidget);
     layout->addWidget(buttonBox);
 
-    connect(Smb4KCustomOptionsManager::self(), &Smb4KCustomOptionsManager::updated, this, &Smb4KCustomSettingsEditor::slotCustomSettingsUpdated);
+    connect(Smb4KCustomSettingsManager::self(), &Smb4KCustomSettingsManager::updated, this, &Smb4KCustomSettingsEditor::slotCustomSettingsUpdated);
 
     setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
 
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "CustomOptionsDialog");
+    KConfigGroup group(Smb4KSettings::self()->config(), "CustomSettingsDialog");
     QSize dialogSize;
 
     // FIXME: Insert completion objects?
@@ -114,10 +114,10 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
             HostPtr host = networkItem.staticCast<Smb4KHost>();
             m_descriptionText->setText(i18n("Define custom settings for host <b>%1</b> and all the shares it provides.", host->hostName()));
 
-            m_customSettings = Smb4KCustomOptionsManager::self()->findOptions(host);
+            m_customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(host);
 
             if (!m_customSettings) {
-                m_customSettings = OptionsPtr(new Smb4KCustomOptions(host.data()));
+                m_customSettings = CustomSettingsPtr(new Smb4KCustomSettings(host.data()));
                 m_customSettings->setProfile(Smb4KProfileManager::self()->activeProfile());
             }
 
@@ -137,10 +137,10 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
                     }
                 }
 
-                m_customSettings = Smb4KCustomOptionsManager::self()->findOptions(share);
+                m_customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(share);
 
                 if (!m_customSettings) {
-                    m_customSettings = OptionsPtr(new Smb4KCustomOptions(share.data()));
+                    m_customSettings = CustomSettingsPtr(new Smb4KCustomSettings(share.data()));
                     m_customSettings->setProfile(Smb4KProfileManager::self()->activeProfile());
 
                     // Get rid of the 'homes' share
@@ -166,8 +166,8 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
 
 void Smb4KCustomSettingsEditor::slotRestoreDefaults()
 {
-    Smb4KCustomOptions defaultCustomSettings;
-    Smb4KCustomOptions customSettings = *m_customSettings.data();
+    Smb4KCustomSettings defaultCustomSettings;
+    Smb4KCustomSettings customSettings = *m_customSettings.data();
     customSettings.update(&defaultCustomSettings);
     m_editorWidget->setCustomSettings(customSettings);
     m_resetButton->setEnabled(false);
@@ -176,14 +176,14 @@ void Smb4KCustomSettingsEditor::slotRestoreDefaults()
 
 void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
 {
-    OptionsPtr tempCustomSettings = OptionsPtr(new Smb4KCustomOptions(m_editorWidget->getCustomSettings()));
+    CustomSettingsPtr tempCustomSettings = CustomSettingsPtr(new Smb4KCustomSettings(m_editorWidget->getCustomSettings()));
     m_customSettings.swap(tempCustomSettings);
 
     m_savingCustomSettings = true;
-    Smb4KCustomOptionsManager::self()->addCustomOptions(m_customSettings, true);
+    Smb4KCustomSettingsManager::self()->addCustomSettings(m_customSettings, true);
     m_savingCustomSettings = false;
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "CustomOptionsDialog");
+    KConfigGroup group(Smb4KSettings::self()->config(), "CustomSettingsDialog");
     KWindowConfig::saveWindowSize(windowHandle(), group);
 
     // FIXME: Save completion objects?
@@ -202,7 +202,7 @@ void Smb4KCustomSettingsEditor::slotCustomSettingsEdited(bool changed)
 void Smb4KCustomSettingsEditor::slotCustomSettingsUpdated()
 {
     if (!m_savingCustomSettings) {
-        OptionsPtr customSettings = Smb4KCustomOptionsManager::self()->findOptions(m_customSettings->url());
+        CustomSettingsPtr customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(m_customSettings->url());
 
         // Only reload existing custom settings, because only those could have
         // been changed externally.

@@ -11,7 +11,7 @@
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
 #include "smb4kbookmark.h"
-#include "smb4kcustomoptions.h"
+#include "smb4kcustomsettings.h"
 #include "smb4kfile.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
@@ -32,7 +32,7 @@ typedef QSharedPointer<Smb4KHost> HostPtr;
 typedef QSharedPointer<Smb4KShare> SharePtr;
 typedef QSharedPointer<Smb4KFile> FilePtr;
 typedef QSharedPointer<Smb4KBookmark> BookmarkPtr;
-typedef QSharedPointer<Smb4KCustomOptions> OptionsPtr;
+typedef QSharedPointer<Smb4KCustomSettings> CustomSettingsPtr;
 
 // Other definitions
 #ifndef SMB4K_DEPRECATED
