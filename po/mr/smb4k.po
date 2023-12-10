@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 00:41+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -689,7 +689,7 @@ msgstr "सामान्य संयोजना"
 msgid "Dock Widgets"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr ""
@@ -869,7 +869,7 @@ msgstr "शोध (&S)"
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 #| msgid "Common Options"
@@ -1059,32 +1059,32 @@ msgstr "प्रिंटर"
 msgid "Print a file to printer <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:164
+#: smb4k/smb4ksharesmenu.cpp:160
 #, kde-format
 msgid "Unmount"
 msgstr "अनमाऊंट करा"
 
-#: smb4k/smb4ksharesmenu.cpp:183
+#: smb4k/smb4ksharesmenu.cpp:179
 #, kde-format
 msgid "Add Bookmark"
 msgstr "ओळखचिन्ह जोडा"
 
-#: smb4k/smb4ksharesmenu.cpp:209 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "सिंक्रोनाईझ"
 
-#: smb4k/smb4ksharesmenu.cpp:228
+#: smb4k/smb4ksharesmenu.cpp:224
 #, kde-format
 msgid "Open with Konsole"
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:242
+#: smb4k/smb4ksharesmenu.cpp:238
 #, kde-format
 msgid "Open with File Manager"
 msgstr "फाईल व्यवस्थापकात उघडा"

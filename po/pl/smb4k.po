@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 00:41+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2023-11-04 12:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -686,7 +686,7 @@ msgstr "Strona 3: Obudź-po-LANie"
 msgid "Dock Widgets"
 msgstr "Doki"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Podpięte zasoby"
@@ -868,7 +868,7 @@ msgstr "&Znajdź"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
@@ -1049,32 +1049,32 @@ msgstr "Wydrukuj"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Wydrukuj plik na drukarce <b>%1</b>."
 
-#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "Odep&nij wszystko"
 
-#: smb4k/smb4ksharesmenu.cpp:164
+#: smb4k/smb4ksharesmenu.cpp:160
 #, kde-format
 msgid "Unmount"
 msgstr "Odepnij"
 
-#: smb4k/smb4ksharesmenu.cpp:183
+#: smb4k/smb4ksharesmenu.cpp:179
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Dodaj zakładkę"
 
-#: smb4k/smb4ksharesmenu.cpp:209 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Synchronizuj"
 
-#: smb4k/smb4ksharesmenu.cpp:228
+#: smb4k/smb4ksharesmenu.cpp:224
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Otwórz w konsoli"
 
-#: smb4k/smb4ksharesmenu.cpp:242
+#: smb4k/smb4ksharesmenu.cpp:238
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Otwórz w przeglądarce plików"

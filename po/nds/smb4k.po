@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 00:41+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -714,7 +714,7 @@ msgstr "Allgemeen Instellen"
 msgid "Dock Widgets"
 msgstr "Stüerelementen andocken"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Inhangt Freegaven"
@@ -907,7 +907,7 @@ msgstr "&Söken"
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -1102,32 +1102,32 @@ msgstr "Drucker"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Datei warrt na Drucker %1 sendt...."
 
-#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "All afha&ngen"
 
-#: smb4k/smb4ksharesmenu.cpp:164
+#: smb4k/smb4ksharesmenu.cpp:160
 #, kde-format
 msgid "Unmount"
 msgstr "Afhangen"
 
-#: smb4k/smb4ksharesmenu.cpp:183
+#: smb4k/smb4ksharesmenu.cpp:179
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Leesteken tofögen"
 
-#: smb4k/smb4ksharesmenu.cpp:209 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Synkroniseren"
 
-#: smb4k/smb4ksharesmenu.cpp:228
+#: smb4k/smb4ksharesmenu.cpp:224
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Mit Konsool opmaken"
 
-#: smb4k/smb4ksharesmenu.cpp:242
+#: smb4k/smb4ksharesmenu.cpp:238
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Mit Dateipleger opmaken"

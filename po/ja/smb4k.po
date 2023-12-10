@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 00:41+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -697,7 +697,7 @@ msgstr ""
 msgid "Dock Widgets"
 msgstr "ドック・ウィジェット"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "マウントされた共有"
@@ -890,7 +890,7 @@ msgstr "検索(&S)"
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -1079,35 +1079,35 @@ msgstr "ファイルを印刷(&P)"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "ファイルをプリンタ %1 へ転送中..."
 
-#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "すべてアンマウント(&N)"
 
-#: smb4k/smb4ksharesmenu.cpp:164
+#: smb4k/smb4ksharesmenu.cpp:160
 #, fuzzy, kde-format
 #| msgid "&Unmount"
 msgid "Unmount"
 msgstr "アンマウント(&U)"
 
-#: smb4k/smb4ksharesmenu.cpp:183
+#: smb4k/smb4ksharesmenu.cpp:179
 #, fuzzy, kde-format
 #| msgid "Add Bookmarks"
 msgid "Add Bookmark"
 msgstr "ブックマークを追加(&B)"
 
-#: smb4k/smb4ksharesmenu.cpp:209 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "同期"
 
-#: smb4k/smb4ksharesmenu.cpp:228
+#: smb4k/smb4ksharesmenu.cpp:224
 #, fuzzy, kde-format
 #| msgid "Open with Konso&le"
 msgid "Open with Konsole"
 msgstr "Konsole で開く(&L)"
 
-#: smb4k/smb4ksharesmenu.cpp:242
+#: smb4k/smb4ksharesmenu.cpp:238
 #, fuzzy, kde-format
 #| msgid "Open with F&ile Manager"
 msgid "Open with File Manager"

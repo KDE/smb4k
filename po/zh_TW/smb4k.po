@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-05 00:41+0000\n"
+"POT-Creation-Date: 2023-12-10 00:42+0000\n"
 "PO-Revision-Date: 2019-04-09 23:19+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -681,7 +681,7 @@ msgstr ""
 msgid "Dock Widgets"
 msgstr "停駐視窗元件(&D)"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:43
+#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
 #, fuzzy, kde-format
 msgid "Mounted Shares"
 msgstr "掛載的共享(&S)"
@@ -866,7 +866,7 @@ msgstr "搜尋(&S)"
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 msgid "Add &Custom Settings"
@@ -1052,33 +1052,33 @@ msgstr "列印檔案"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "發送檔案到印表機…"
 
-#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, fuzzy, kde-format
 msgid "U&nmount All"
 msgstr "全部卸載(&N)"
 
-#: smb4k/smb4ksharesmenu.cpp:164
+#: smb4k/smb4ksharesmenu.cpp:160
 #, fuzzy, kde-format
 #| msgid "&Unmount"
 msgid "Unmount"
 msgstr "卸載(&U)"
 
-#: smb4k/smb4ksharesmenu.cpp:183
+#: smb4k/smb4ksharesmenu.cpp:179
 #, fuzzy, kde-format
 msgid "Add Bookmark"
 msgstr "編輯書籤(&E)"
 
-#: smb4k/smb4ksharesmenu.cpp:209 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
 #, fuzzy, kde-format
 msgid "Synchronize"
 msgstr "同步(&Y)"
 
-#: smb4k/smb4ksharesmenu.cpp:228
+#: smb4k/smb4ksharesmenu.cpp:224
 #, fuzzy, kde-format
 msgid "Open with Konsole"
 msgstr "&Konqueror"
 
-#: smb4k/smb4ksharesmenu.cpp:242
+#: smb4k/smb4ksharesmenu.cpp:238
 #, fuzzy, kde-format
 msgid "Open with File Manager"
 msgstr "&Konqueror"
