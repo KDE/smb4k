@@ -1,19 +1,19 @@
 # translation of smb4k-core.po to Slovak
-# Roman Paholik <wizzardsk@gmail.com>, 2014, 2015, 2016, 2017, 2019, 2022.
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2019, 2022, 2023 Roman Paholik <wizzardsk@gmail.com>
 # Matej Mrenica <matejm98mthw@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2022-04-06 20:27+0200\n"
+"PO-Revision-Date: 2023-12-11 18:53+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
@@ -234,10 +234,9 @@ msgstr "Režim pohľadu pre zdieľania:"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "Icon View"
+#, kde-format
 msgid "Icon size:"
-msgstr "Zobrazenie s ikonami"
+msgstr "Veľkosť ikon:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
@@ -2017,7 +2016,7 @@ msgstr "Vyčistiť"
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
-msgstr "Užívateľ:"
+msgstr "Užívateľské meno:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -3495,8 +3494,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Zdieľanie <b>%1</b> bolo pripojené k <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Otvoriť"
