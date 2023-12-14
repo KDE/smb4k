@@ -524,9 +524,9 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         // Wake-On-LAN: Wake up the host before mounting
         //
         if (Smb4KSettings::enableWakeOnLAN()) {
-            CustomSettingsPtr options = Smb4KCustomSettingsManager::self()->findCustomSettings(share->url().resolved(QUrl(QStringLiteral(".."))));
+            CustomSettingsPtr customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(share->url().resolved(QUrl(QStringLiteral(".."))));
 
-            if (options && options->wolSendBeforeMount()) {
+            if (customSettings && customSettings->wakeOnLanSendBeforeMount()) {
                 Q_EMIT aboutToStart(WakeUp);
 
                 QUdpSocket *socket = new QUdpSocket(this);
@@ -548,7 +548,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
                 }
 
                 // 16 times the MAC address
-                QStringList parts = options->macAddress().split(QStringLiteral(":"), Qt::SkipEmptyParts);
+                QStringList parts = customSettings->macAddress().split(QStringLiteral(":"), Qt::SkipEmptyParts);
 
                 for (int j = 0; j < 16; ++j) {
                     for (int k = 0; k < parts.size(); ++k) {

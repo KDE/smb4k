@@ -148,7 +148,7 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
         if (m_itemToEdit) {
             Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
 
-            if (customSettings.hasOptions()) {
+            if (customSettings.hasCustomSettings()) {
                 Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
                 currentCustomSettings.update(&customSettings);
 
@@ -225,7 +225,7 @@ void Smb4KConfigPageCustomSettings::slotItemSelectionChanged()
 
         Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
 
-        if (customSettings.hasOptions()) {
+        if (customSettings.hasCustomSettings()) {
             Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
             currentCustomSettings.update(&customSettings);
 

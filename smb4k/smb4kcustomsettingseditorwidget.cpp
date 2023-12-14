@@ -477,8 +477,8 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
         m_sendPacketBeforeMount->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
         m_macAddress->setText(settings.macAddress());
-        m_sendPacketBeforeScan->setChecked(settings.wolSendBeforeNetworkScan());
-        m_sendPacketBeforeMount->setChecked(settings.wolSendBeforeMount());
+        m_sendPacketBeforeScan->setChecked(settings.wakeOnLanSendBeforeNetworkScan());
+        m_sendPacketBeforeMount->setChecked(settings.wakeOnLanSendBeforeMount());
     }
 
     m_customSettings = settings;
@@ -535,8 +535,8 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
     } else {
         m_customSettings.setMACAddress(QString());
     }
-    m_customSettings.setWOLSendBeforeNetworkScan(m_sendPacketBeforeScan->isChecked());
-    m_customSettings.setWOLSendBeforeMount(m_sendPacketBeforeMount->isChecked());
+    m_customSettings.setWakeOnLanSendBeforeNetworkScan(m_sendPacketBeforeScan->isChecked());
+    m_customSettings.setWakeOnLanSendBeforeMount(m_sendPacketBeforeMount->isChecked());
 
     return m_customSettings;
 }
@@ -732,12 +732,12 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
-    if (m_sendPacketBeforeScan->isChecked() != m_customSettings.wolSendBeforeNetworkScan()) {
+    if (m_sendPacketBeforeScan->isChecked() != m_customSettings.wakeOnLanSendBeforeNetworkScan()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_sendPacketBeforeMount->isChecked() != m_customSettings.wolSendBeforeMount()) {
+    if (m_sendPacketBeforeMount->isChecked() != m_customSettings.wakeOnLanSendBeforeMount()) {
         Q_EMIT edited(true);
         return;
     }

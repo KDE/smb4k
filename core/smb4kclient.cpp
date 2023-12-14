@@ -89,7 +89,7 @@ void Smb4KClient::lookupDomains()
             QUdpSocket *socket = new QUdpSocket(this);
 
             for (int i = 0; i < wakeOnLanEntries.size(); ++i) {
-                if (wakeOnLanEntries.at(i)->wolSendBeforeNetworkScan()) {
+                if (wakeOnLanEntries.at(i)->wakeOnLanSendBeforeNetworkScan()) {
                     QHostAddress addr;
 
                     if (wakeOnLanEntries.at(i)->hasIpAddress()) {

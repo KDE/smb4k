@@ -96,12 +96,12 @@ public:
      * Find custom settings for the network item @p networkItem.
      *
      * If the network item represents a share and custom settings for it are not
-     * defined, but for the host that provides the share, options filled with the
-     * host's options are returned. If neither is in the list, NULL is returned.
+     * defined, but for the host that provides the share, the custom settings of
+     * the host are returned. If neither is in the list, NULL is returned.
      *
      * If you set @p exactMatch to TRUE, NULL will be returned if the URL is not found.
      * Except in some special cases, you should not set @p exactMatch to true,
-     * because options that are defined for all shares provided by a certain host and
+     * because settings that are defined for all shares provided by a certain host and
      * stored in a host-type custom settings object are ignored then.
      *
      * @param networkItem         The network item
@@ -138,30 +138,26 @@ public:
 
     /**
      * This function adds custom settings for a single network item to the list
-     * of options. If there already are options defined for that network item,
-     * they are updated.
+     * of custom settings. If there already are custom settings defined for the
+     * network item, they are updated.
      *
-     * Please note that this function will store a copy of @p options and not
+     * Please note that this function will store a copy of @p settings and not
      * the original object.
      *
-     * @param options             The custom settings
-     *
-     * @param write               Write the options to the file
+     * @param settings            The custom settings
      */
-    void addCustomSettings(const CustomSettingsPtr &options, bool write = false);
+    void addCustomSettings(const CustomSettingsPtr &settings);
 
     /**
      * This function removes custom settings for a single network item from the
      * list of options.
      *
-     * @param options             The custom settings
-     *
-     * @param write               Write the options to the file
+     * @param settings            The custom settings
      */
-    void removeCustomSettings(const CustomSettingsPtr &options, bool write = false);
+    void removeCustomSettings(const CustomSettingsPtr &settings);
 
     /**
-     * This function returns a list of custom option objects that have
+     * This function returns a list of custom settings objects that have
      * Wake-On-LAN features defined.
      *
      * @returns a list of custom settings objects with WOL features defined.
@@ -170,8 +166,10 @@ public:
 
     /**
      * Save custom settings to the file.
+     *
+     * @param settingsList        The list of custom settings
      */
-    void saveCustomSettings(const QList<CustomSettingsPtr> &optionsList);
+    void saveCustomSettings(const QList<CustomSettingsPtr> &settingsList);
 
 Q_SIGNALS:
     /**
@@ -180,11 +178,6 @@ Q_SIGNALS:
     void updated();
 
 protected Q_SLOTS:
-    /**
-     * Called when the application exits
-     */
-    void slotAboutToQuit();
-
     /**
      * Called when a profile was removed
      *
@@ -202,14 +195,24 @@ protected Q_SLOTS:
 
 private:
     /**
-     * Read custom settings
+     * Add custom settings
      */
-    void readCustomSettings();
+    void add(const CustomSettingsPtr &settings);
 
     /**
-     * This function writes the custom settings to the disk.
+     * Remove custom settings
      */
-    void writeCustomSettings();
+    void remove(const CustomSettingsPtr &settings);
+
+    /**
+     * Read custom settings
+     */
+    void read();
+
+    /**
+     * Write custom settings
+     */
+    void write();
 
     /**
      * Pointer to Smb4KCustomSettingsManagerPrivate class

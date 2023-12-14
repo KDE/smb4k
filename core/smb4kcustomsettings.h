@@ -544,7 +544,7 @@ public:
      * @param send              Boolean that determines if a magic WOL packet
      *                          is to be sent.
      */
-    void setWOLSendBeforeNetworkScan(bool send) const;
+    void setWakeOnLanSendBeforeNetworkScan(bool send) const;
 
     /**
      * Send a magic WOL packet to the host that this network item represents
@@ -553,7 +553,7 @@ public:
      * @returns TRUE if a magic WOL packet should be send on first network
      * scan.
      */
-    bool wolSendBeforeNetworkScan() const;
+    bool wakeOnLanSendBeforeNetworkScan() const;
 
     /**
      * Set whether a magic WOL packet should be send to the host that this
@@ -563,7 +563,7 @@ public:
      * @param send              Boolean that determines if a magic WOL packet
      *                          is to be sent.
      */
-    void setWOLSendBeforeMount(bool send) const;
+    void setWakeOnLanSendBeforeMount(bool send) const;
 
     /**
      * Send a magic WOL packet to the host that this network item represents
@@ -572,7 +572,7 @@ public:
      * @returns TRUE if a magic WOL packet should be send on first network
      * scan.
      */
-    bool wolSendBeforeMount() const;
+    bool wakeOnLanSendBeforeMount() const;
 
     /**
      * This function returns all custom settings in a sorted map. The URL,
@@ -588,20 +588,20 @@ public:
     QMap<QString, QString> customSettings() const;
 
     /**
-     * Check if there are options defined. If @p withoutRemountOnce is set,
+     * Check if there are custom settings defined. If @p withoutRemountOnce is set,
      * this function will ignore the setting Smb4KCustomSettings::RemountOnce.
      *
      * @returns TRUE if there are options defined and FALSE otherwise
      */
-    bool hasOptions(bool withoutRemountOnce = false) const;
+    bool hasCustomSettings(bool withoutRemountOnce = false) const;
 
     /**
      * Update this custom settings object. You cannot change the workgroup,
      * URL and type with this function.
      *
-     * @param options             The options that are used to update this object
+     * @param customSettings    The options that are used to update this object
      */
-    void update(Smb4KCustomSettings *options);
+    void update(Smb4KCustomSettings *customSettings);
 
     /**
      * Copy assignment operator

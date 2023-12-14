@@ -590,22 +590,22 @@ QString Smb4KCustomSettings::macAddress() const
     return d->macAddress;
 }
 
-void Smb4KCustomSettings::setWOLSendBeforeNetworkScan(bool send) const
+void Smb4KCustomSettings::setWakeOnLanSendBeforeNetworkScan(bool send) const
 {
     d->wakeOnLanBeforeFirstScan = send;
 }
 
-bool Smb4KCustomSettings::wolSendBeforeNetworkScan() const
+bool Smb4KCustomSettings::wakeOnLanSendBeforeNetworkScan() const
 {
     return d->wakeOnLanBeforeFirstScan;
 }
 
-void Smb4KCustomSettings::setWOLSendBeforeMount(bool send) const
+void Smb4KCustomSettings::setWakeOnLanSendBeforeMount(bool send) const
 {
     d->wakeOnLanBeforeMount = send;
 }
 
-bool Smb4KCustomSettings::wolSendBeforeMount() const
+bool Smb4KCustomSettings::wakeOnLanSendBeforeMount() const
 {
     return d->wakeOnLanBeforeMount;
 }
@@ -706,13 +706,11 @@ QMap<QString, QString> Smb4KCustomSettings::customSettings() const
     return entries;
 }
 
-bool Smb4KCustomSettings::hasOptions(bool withoutRemountOnce) const
+bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
 {
-    //
     // NOTE: This function does not honor the workgroup, the url,
     // the ip address, the type and the profile, because these things
     // are not custom settings.
-    //
 
     // Perform remounts
     if ((!withoutRemountOnce && d->remount != Smb4KCustomSettings::UndefinedRemount) || d->remount == Smb4KCustomSettings::RemountAlways) {
@@ -850,39 +848,41 @@ bool Smb4KCustomSettings::hasOptions(bool withoutRemountOnce) const
     return false;
 }
 
-void Smb4KCustomSettings::update(Smb4KCustomSettings *options)
+void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
 {
-    d->ip.setAddress(options->ipAddress());
-    d->remount = options->remount();
-    d->useUser = options->useUser();
-    d->user = options->user();
-    d->useGroup = options->useGroup();
-    d->group = options->group();
-    d->useFileMode = options->useFileMode();
-    d->fileMode = options->fileMode();
-    d->useDirectoryMode = options->useDirectoryMode();
-    d->directoryMode = options->directoryMode();
+    // NOTE: Do not update the workgroup, URL and the type
+
+    d->ip.setAddress(customSettings->ipAddress());
+    d->remount = customSettings->remount();
+    d->useUser = customSettings->useUser();
+    d->user = customSettings->user();
+    d->useGroup = customSettings->useGroup();
+    d->group = customSettings->group();
+    d->useFileMode = customSettings->useFileMode();
+    d->fileMode = customSettings->fileMode();
+    d->useDirectoryMode = customSettings->useDirectoryMode();
+    d->directoryMode = customSettings->directoryMode();
 #if defined(Q_OS_LINUX)
-    d->cifsUnixExtensionsSupport = options->cifsUnixExtensionsSupport();
-    d->useFileSystemPort = options->useFileSystemPort();
-    d->fileSystemPort = options->fileSystemPort();
-    d->useMountProtocolVersion = options->useMountProtocolVersion();
-    d->mountProtocolVersion = options->mountProtocolVersion();
-    d->useSecurityMode = options->useSecurityMode();
-    d->securityMode = options->securityMode();
-    d->useWriteAccess = options->useWriteAccess();
-    d->writeAccess = options->writeAccess();
+    d->cifsUnixExtensionsSupport = customSettings->cifsUnixExtensionsSupport();
+    d->useFileSystemPort = customSettings->useFileSystemPort();
+    d->fileSystemPort = customSettings->fileSystemPort();
+    d->useMountProtocolVersion = customSettings->useMountProtocolVersion();
+    d->mountProtocolVersion = customSettings->mountProtocolVersion();
+    d->useSecurityMode = customSettings->useSecurityMode();
+    d->securityMode = customSettings->securityMode();
+    d->useWriteAccess = customSettings->useWriteAccess();
+    d->writeAccess = customSettings->writeAccess();
 #endif
-    d->useClientProtocolVersions = options->useClientProtocolVersions();
-    d->minimalClientProtocolVersion = options->minimalClientProtocolVersion();
-    d->maximalClientProtocolVersion = options->maximalClientProtocolVersion();
-    d->profile = options->profile();
-    d->useSmbPort = options->useSmbPort();
-    d->smbPort = options->smbPort();
-    d->useKerberos = options->useKerberos();
-    d->macAddress = options->macAddress();
-    d->wakeOnLanBeforeFirstScan = options->wolSendBeforeNetworkScan();
-    d->wakeOnLanBeforeMount = options->wolSendBeforeMount();
+    d->profile = customSettings->profile();
+    d->useClientProtocolVersions = customSettings->useClientProtocolVersions();
+    d->minimalClientProtocolVersion = customSettings->minimalClientProtocolVersion();
+    d->maximalClientProtocolVersion = customSettings->maximalClientProtocolVersion();
+    d->useSmbPort = customSettings->useSmbPort();
+    d->smbPort = customSettings->smbPort();
+    d->useKerberos = customSettings->useKerberos();
+    d->macAddress = customSettings->macAddress();
+    d->wakeOnLanBeforeFirstScan = customSettings->wakeOnLanSendBeforeNetworkScan();
+    d->wakeOnLanBeforeMount = customSettings->wakeOnLanSendBeforeMount();
 }
 
 Smb4KCustomSettings &Smb4KCustomSettings::operator=(const Smb4KCustomSettings &other)

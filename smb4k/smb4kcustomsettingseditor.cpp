@@ -180,7 +180,7 @@ void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
     m_customSettings.swap(tempCustomSettings);
 
     m_savingCustomSettings = true;
-    Smb4KCustomSettingsManager::self()->addCustomSettings(m_customSettings, true);
+    Smb4KCustomSettingsManager::self()->addCustomSettings(m_customSettings);
     m_savingCustomSettings = false;
 
     KConfigGroup group(Smb4KSettings::self()->config(), "CustomSettingsDialog");
