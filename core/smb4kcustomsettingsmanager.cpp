@@ -160,7 +160,7 @@ CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const NetworkIt
 {
     CustomSettingsPtr settings = findCustomSettings(networkItem->url());
 
-    if (!settings && !exactMatch && settings->type() == Share) {
+    if (!settings && !exactMatch && networkItem->type() == Share) {
         CustomSettingsPtr hostSettings = findCustomSettings(networkItem->url().adjusted(QUrl::RemovePath|QUrl::StripTrailingSlash));
 
         if (hostSettings) {
