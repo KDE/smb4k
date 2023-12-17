@@ -40,7 +40,7 @@ Smb4KCustomSettingsEditorWidget::~Smb4KCustomSettingsEditorWidget()
 #if defined(Q_OS_LINUX)
 void Smb4KCustomSettingsEditorWidget::setupView()
 {
-    QGroupBox *tab1 = new QGroupBox(i18n("Common Mount Settings"), this);
+    QGroupBox *tab1 = new QGroupBox(this);
     QGridLayout *tab1Layout = new QGridLayout(tab1);
 
     m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
@@ -75,9 +75,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab1Layout->addWidget(m_fileSystemPort, 2, 1);
     tab1Layout->setRowStretch(3, 100);
 
-    addTab(tab1, i18n("Page 1: Mounting"));
+    addTab(tab1, i18n("Mounting: Common Settings"));
 
-    QGroupBox *tab2 = new QGroupBox(i18n("CIFS Unix Extensions Support"), this);
+    QGroupBox *tab2 = new QGroupBox(this);
     QGridLayout *tab2Layout = new QGridLayout(tab2);
 
     m_cifsUnixExtensionSupport = new QCheckBox(i18n("This server supports the CIFS Unix extensions"), tab2);
@@ -135,9 +135,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab2Layout->addWidget(m_directoryMode, 4, 1);
     tab2Layout->setRowStretch(5, 100);
 
-    addTab(tab2, i18n("Page 2: Mounting"));
+    addTab(tab2, i18n("Mounting: CIFS Unix Extensions"));
 
-    QGroupBox *tab3 = new QGroupBox(i18n("Advanced Mount Settings"), this);
+    QGroupBox *tab3 = new QGroupBox(this);
     QGridLayout *tab3Layout = new QGridLayout(tab3);
 
     m_useSmbMountProtocolVersion = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), tab3);
@@ -170,9 +170,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab3Layout->addWidget(m_securityMode, 1, 1);
     tab3Layout->setRowStretch(2, 100);
 
-    addTab(tab3, i18n("Page 3: Mounting"));
+    addTab(tab3, i18n("Mounting: Advanced Settings"));
 
-    QGroupBox *tab4 = new QGroupBox(i18n("Browse Settings"), this);
+    QGroupBox *tab4 = new QGroupBox(this);
     QGridLayout *tab4Layout = new QGridLayout(tab4);
 
     m_useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), tab4);
@@ -229,9 +229,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab4Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
     tab4Layout->setRowStretch(5, 100);
 
-    addTab(tab4, i18n("Page 4: Browsing"));
+    addTab(tab4, i18n("Browsing"));
 
-    QGroupBox *tab5 = new QGroupBox(i18n("Wake-On-LAN Settings"), this);
+    QGroupBox *tab5 = new QGroupBox(this);
     QGridLayout *tab5Layout = new QGridLayout(tab5);
 
     m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab5);
@@ -258,12 +258,12 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab5Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
     tab5Layout->setRowStretch(3, 100);
 
-    addTab(tab5, i18n("Page 5: Wake-On-LAN"));
+    addTab(tab5, i18n("Wake-On-LAN"));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 void Smb4KCustomSettingsEditorWidget::setupView()
 {
-    QGroupBox *tab1 = new QGroupBox(i18n("Mount Settings"), this);
+    QGroupBox *tab1 = new QGroupBox(this);
     QGridLayout *tab1Layout = new QGridLayout(tab1);
 
     m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
@@ -322,9 +322,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab1Layout->addWidget(m_directoryMode, 4, 1);
     tab1Layout->setRowStretch(5, 100);
 
-    addTab(tab1, i18n("Page 1: Mounting"));
+    addTab(tab1, i18n("Mounting"));
 
-    QGroupBox *tab2 = new QGroupBox(i18n("Browse Settings"), this);
+    QGroupBox *tab2 = new QGroupBox(this);
     QGridLayout *tab2Layout = new QGridLayout(tab2);
 
     m_useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), tab2);
@@ -381,9 +381,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab2Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
     tab2Layout->setRowStretch(5, 100);
 
-    addTab(tab2, i18n("Page 2: Browsing"));
+    addTab(tab2, i18n("Browsing"));
 
-    QGroupBox *tab3 = new QGroupBox(i18n("Wake-On-LAN Settings"), this);
+    QGroupBox *tab3 = new QGroupBox(this);
     QGridLayout *tab3Layout = new QGridLayout(tab3);
 
     m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab3);
@@ -410,7 +410,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab3Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
     tab3Layout->setRowStretch(3, 100);
 
-    addTab(tab3, i18n("Page 3: Wake-On-LAN"));
+    addTab(tab3, i18n("Wake-On-LAN"));
 }
 #else
 void Smb4KCustomSettingsEditorWidget::setupView()
