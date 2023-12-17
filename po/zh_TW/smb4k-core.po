@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-15 00:41+0000\n"
 "PO-Revision-Date: 2019-05-14 22:35+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -1744,7 +1744,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:274
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
 #: smb4khomesshareshandler.cpp:168
 #, fuzzy, kde-format
 #| msgid "The net command '%1' is not supported by Smb4K."

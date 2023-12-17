@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-15 00:41+0000\n"
 "PO-Revision-Date: 2023-02-27 14:44+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1671,7 +1671,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 na %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:274
+#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
 #: smb4khomesshareshandler.cpp:168
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -2951,15 +2951,3 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cíl"
-
-#~ msgid "Old Profile:"
-#~ msgstr "Starý profil:"
-
-#~ msgid "<Default Profile>"
-#~ msgstr "<Výchozí profil>"
-
-#~ msgid "<All Profiles>"
-#~ msgstr "<Všechny profily>"
-
-#~ msgid "New Profile:"
-#~ msgstr "Nový profil:"
