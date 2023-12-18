@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -177,6 +177,7 @@ msgid "Network"
 msgstr "네트워크"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "마운트"
@@ -347,7 +348,6 @@ msgid "Common Options"
 msgstr "공통 옵션"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS 유닉스 확장 지원"
@@ -363,7 +363,6 @@ msgid "Choose a different group"
 msgstr "다른 그룹 선택"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "공통 마운트 설정"
@@ -379,7 +378,6 @@ msgid "Edit the additional CIFS options."
 msgstr "추가 CIFS 옵션을 편집합니다."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "고급 마운트 설정"
@@ -390,7 +388,6 @@ msgid "Character Sets"
 msgstr "문자 인코딩"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "마운트 설정"
@@ -424,8 +421,6 @@ msgstr[0] ""
 "조하십시오.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "탐색 설정"
@@ -436,6 +431,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -608,10 +605,10 @@ msgid "Always remount this share"
 msgstr "항상 이 공유 다시 마운트"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, kde-format
-msgid "Page 1: Mounting"
-msgstr "1단계: 마운트"
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
+msgid "Mounting: Common Settings"
+msgstr "마운트 설정"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -619,25 +616,23 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "이 서버에서 CIFS 유닉스 확장을 지원합니다"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Page 2: Mounting"
-msgstr "2단계: 마운트"
+#, fuzzy, kde-format
+#| msgid "CIFS Unix Extensions Support"
+msgid "Mounting: CIFS Unix Extensions"
+msgstr "CIFS 유닉스 확장 지원"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Page 3: Mounting"
-msgstr "3단계: 마운트"
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Mounting: Advanced Settings"
+msgstr "고급 설정"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#, kde-format
-msgid "Page 4: Browsing"
-msgstr "4단계: 탐색"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN 설정"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Browse Settings"
+msgid "Browsing"
+msgstr "탐색 설정"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -656,21 +651,6 @@ msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, kde-format
-msgid "Page 5: Wake-On-LAN"
-msgstr "5단계: Wake-On-LAN"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Page 2: Browsing"
-msgstr "2단계: 탐색"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, kde-format
-msgid "Page 3: Wake-On-LAN"
-msgstr "3단계: Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:131
 #, kde-format
@@ -1236,6 +1216,30 @@ msgstr "%2 중 %1 남음(%3% 사용함)"
 #, kde-format
 msgid "Size:"
 msgstr "크기:"
+
+#~ msgid "Page 1: Mounting"
+#~ msgstr "1단계: 마운트"
+
+#~ msgid "Page 2: Mounting"
+#~ msgstr "2단계: 마운트"
+
+#~ msgid "Page 3: Mounting"
+#~ msgstr "3단계: 마운트"
+
+#~ msgid "Page 4: Browsing"
+#~ msgstr "4단계: 탐색"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Wake-On-LAN 설정"
+
+#~ msgid "Page 5: Wake-On-LAN"
+#~ msgstr "5단계: Wake-On-LAN"
+
+#~ msgid "Page 2: Browsing"
+#~ msgstr "2단계: 탐색"
+
+#~ msgid "Page 3: Wake-On-LAN"
+#~ msgstr "3단계: Wake-On-LAN"
 
 #~ msgid "Custom Options"
 #~ msgstr "사용자 정의 옵션"

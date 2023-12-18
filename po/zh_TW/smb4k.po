@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
 "PO-Revision-Date: 2019-04-09 23:19+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -181,6 +181,7 @@ msgid "Network"
 msgstr "網路"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, fuzzy, kde-format
 msgid "Mounting"
 msgstr "掛載(&M)"
@@ -350,7 +351,6 @@ msgid "Common Options"
 msgstr "Samba 選項"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr ""
@@ -366,7 +366,6 @@ msgid "Choose a different group"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, fuzzy, kde-format
 msgid "Common Mount Settings"
 msgstr "Samba 選項"
@@ -382,7 +381,6 @@ msgid "Edit the additional CIFS options."
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, fuzzy, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Rsync 選項"
@@ -393,7 +391,6 @@ msgid "Character Sets"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, fuzzy, kde-format
 msgid "Mount Settings"
 msgstr "Samba 選項"
@@ -419,8 +416,6 @@ msgid_plural ""
 msgstr[0] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, fuzzy, kde-format
 msgid "Browse Settings"
 msgstr "一般選項"
@@ -432,6 +427,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr ""
@@ -611,10 +608,9 @@ msgid "Always remount this share"
 msgstr "掛載的共享(&S)"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, fuzzy, kde-format
-msgid "Page 1: Mounting"
-msgstr "掛載(&M)"
+msgid "Mounting: Common Settings"
+msgstr "Samba 選項"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -622,25 +618,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-msgid "Page 2: Mounting"
-msgstr "掛載(&M)"
+#, kde-format
+msgid "Mounting: CIFS Unix Extensions"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
 #, fuzzy, kde-format
-msgid "Page 3: Mounting"
-msgstr "掛載(&M)"
+msgid "Mounting: Advanced Settings"
+msgstr "Rsync 選項"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#, kde-format
-msgid "Page 4: Browsing"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr ""
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+msgid "Browsing"
+msgstr "一般選項"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -659,21 +650,6 @@ msgstr ""
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:401
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, kde-format
-msgid "Page 5: Wake-On-LAN"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-msgid "Page 2: Browsing"
-msgstr "掛載(&M)"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, kde-format
-msgid "Page 3: Wake-On-LAN"
 msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:131
@@ -1259,6 +1235,22 @@ msgstr "%3 %4 之中的 %1 %2 (%5\\% 已使用)"
 #| msgid "Size:"
 msgid "Size:"
 msgstr "大小："
+
+#, fuzzy
+#~ msgid "Page 1: Mounting"
+#~ msgstr "掛載(&M)"
+
+#, fuzzy
+#~ msgid "Page 2: Mounting"
+#~ msgstr "掛載(&M)"
+
+#, fuzzy
+#~ msgid "Page 3: Mounting"
+#~ msgstr "掛載(&M)"
+
+#, fuzzy
+#~ msgid "Page 2: Browsing"
+#~ msgstr "掛載(&M)"
 
 #, fuzzy
 #~ msgid "Custom Options"

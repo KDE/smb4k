@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
 "PO-Revision-Date: 2023-12-03 13:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -183,6 +183,7 @@ msgid "Network"
 msgstr "Ağ"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Bağlama"
@@ -353,7 +354,6 @@ msgid "Common Options"
 msgstr "Genel Seçenekler"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS Unix Eklenti Desteği"
@@ -369,7 +369,6 @@ msgid "Choose a different group"
 msgstr "Farklı bir grup seçin"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Ortak Bağlama Ayarları"
@@ -385,7 +384,6 @@ msgid "Edit the additional CIFS options."
 msgstr "Ek CIFS seçeneklerini düzenle."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Gelişmiş Bağlama Ayarları"
@@ -396,7 +394,6 @@ msgid "Character Sets"
 msgstr "Karakter Kümeleri"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Bağlama Ayarları"
@@ -427,8 +424,6 @@ msgstr[1] ""
 "için lütfen el kitabını okuyun."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Ayarlara Göz At"
@@ -439,6 +434,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Ağdan Uyan"
@@ -612,10 +609,10 @@ msgid "Always remount this share"
 msgstr "Bu paylaşımı her zaman yeniden bağla"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, kde-format
-msgid "Page 1: Mounting"
-msgstr "Sayfa 1: Bağlama"
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
+msgid "Mounting: Common Settings"
+msgstr "Bağlama Ayarları"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -623,25 +620,23 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Bu sunucu, CIFS Unix uzantılarını destekler"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Page 2: Mounting"
-msgstr "Sayfa 2: Bağlama"
+#, fuzzy, kde-format
+#| msgid "CIFS Unix Extensions Support"
+msgid "Mounting: CIFS Unix Extensions"
+msgstr "CIFS Unix Eklenti Desteği"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Page 3: Mounting"
-msgstr "Sayfa 3: Bağlama"
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Mounting: Advanced Settings"
+msgstr "Gelişmiş Ayarlar"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#, kde-format
-msgid "Page 4: Browsing"
-msgstr "Sayfa 4: Tarama"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Ağdan Uyan Ayarları"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Browse Settings"
+msgid "Browsing"
+msgstr "Ayarlara Göz At"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -660,21 +655,6 @@ msgstr "Ağ komşularını taramadan önce sihirli paket gönder"
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Bir paylaşımı bağlamadan önce sihirli paket gönder"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, kde-format
-msgid "Page 5: Wake-On-LAN"
-msgstr "Sayfa 5: Ağdan Uyan"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Page 2: Browsing"
-msgstr "Sayfa 2: Tarama"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, kde-format
-msgid "Page 3: Wake-On-LAN"
-msgstr "Sayfa 3: Ağdan Uyan"
 
 #: smb4k/smb4kmainwindow.cpp:131
 #, kde-format
@@ -1241,6 +1221,30 @@ msgstr "%1/%2 boş (%3 kullanılıyor)"
 #, kde-format
 msgid "Size:"
 msgstr "Boyut:"
+
+#~ msgid "Page 1: Mounting"
+#~ msgstr "Sayfa 1: Bağlama"
+
+#~ msgid "Page 2: Mounting"
+#~ msgstr "Sayfa 2: Bağlama"
+
+#~ msgid "Page 3: Mounting"
+#~ msgstr "Sayfa 3: Bağlama"
+
+#~ msgid "Page 4: Browsing"
+#~ msgstr "Sayfa 4: Tarama"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Ağdan Uyan Ayarları"
+
+#~ msgid "Page 5: Wake-On-LAN"
+#~ msgstr "Sayfa 5: Ağdan Uyan"
+
+#~ msgid "Page 2: Browsing"
+#~ msgstr "Sayfa 2: Tarama"
+
+#~ msgid "Page 3: Wake-On-LAN"
+#~ msgstr "Sayfa 3: Ağdan Uyan"
 
 #~ msgid "Page 1"
 #~ msgstr "Sayfa 1"

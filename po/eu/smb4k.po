@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
 "PO-Revision-Date: 2023-11-04 19:35+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -183,6 +183,7 @@ msgid "Network"
 msgstr "Sarea"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Muntatzea"
@@ -354,7 +355,6 @@ msgid "Common Options"
 msgstr "Ezarpen arruntak"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Unix-eko CIFS hedapenen euskarria"
@@ -370,7 +370,6 @@ msgid "Choose a different group"
 msgstr "Aukeratu beste talde bat"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Muntatzeko ezarpen arruntak"
@@ -386,7 +385,6 @@ msgid "Edit the additional CIFS options."
 msgstr "Editatu gainerako CIFS aukerak."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Muntatzeko ezarpen aurreratuak"
@@ -397,7 +395,6 @@ msgid "Character Sets"
 msgstr "Karaktere-multzoa"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Muntatze-ezarpenak"
@@ -428,8 +425,6 @@ msgstr[1] ""
 "Mesedez, irakurri eskuliburua zehaztasun bila."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Arakatze ezarpenak"
@@ -440,6 +435,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Esnatu sare bidez (Wake-On-LAN)"
@@ -615,10 +612,10 @@ msgid "Always remount this share"
 msgstr "Birmuntatu beti partekatze hau"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, kde-format
-msgid "Page 1: Mounting"
-msgstr "1. orrialdea: Muntatzea"
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
+msgid "Mounting: Common Settings"
+msgstr "Muntatze-ezarpenak"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -626,25 +623,23 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Zerbitzari honek Unix-eko CIFS hedapenak onartzen ditu"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Page 2: Mounting"
-msgstr "2. orrialdea: Muntatzea"
+#, fuzzy, kde-format
+#| msgid "CIFS Unix Extensions Support"
+msgid "Mounting: CIFS Unix Extensions"
+msgstr "Unix-eko CIFS hedapenen euskarria"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Page 3: Mounting"
-msgstr "3. orrialdea: Muntatzea"
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Mounting: Advanced Settings"
+msgstr "Ezarpen aurreratuak"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#, kde-format
-msgid "Page 4: Browsing"
-msgstr "4. orrialdea: Arakatzea"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Sare bidez esnatzeko (Wake-On-LAN) ezarpenak"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Browse Settings"
+msgid "Browsing"
+msgstr "Arakatze ezarpenak"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -663,21 +658,6 @@ msgstr "Bidali pakete magikoa sareko auzoa miatu aurretik"
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, kde-format
-msgid "Page 5: Wake-On-LAN"
-msgstr "5. orrialdea: Esnatu sare bidez (Wake-On-LAN)"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Page 2: Browsing"
-msgstr "2. orrialdea: Arakatzea"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, kde-format
-msgid "Page 3: Wake-On-LAN"
-msgstr "3. orrialdea: Sare bidez esnatzea (Wake-On-LAN)"
 
 #: smb4k/smb4kmainwindow.cpp:131
 #, kde-format
@@ -1246,6 +1226,30 @@ msgstr "%1/%2 hutsik (%3 erabilita)"
 #, kde-format
 msgid "Size:"
 msgstr "Neurria:"
+
+#~ msgid "Page 1: Mounting"
+#~ msgstr "1. orrialdea: Muntatzea"
+
+#~ msgid "Page 2: Mounting"
+#~ msgstr "2. orrialdea: Muntatzea"
+
+#~ msgid "Page 3: Mounting"
+#~ msgstr "3. orrialdea: Muntatzea"
+
+#~ msgid "Page 4: Browsing"
+#~ msgstr "4. orrialdea: Arakatzea"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Sare bidez esnatzeko (Wake-On-LAN) ezarpenak"
+
+#~ msgid "Page 5: Wake-On-LAN"
+#~ msgstr "5. orrialdea: Esnatu sare bidez (Wake-On-LAN)"
+
+#~ msgid "Page 2: Browsing"
+#~ msgstr "2. orrialdea: Arakatzea"
+
+#~ msgid "Page 3: Wake-On-LAN"
+#~ msgstr "3. orrialdea: Sare bidez esnatzea (Wake-On-LAN)"
 
 #~ msgid "Custom Options"
 #~ msgstr "Norberak finkatutako aukerak"

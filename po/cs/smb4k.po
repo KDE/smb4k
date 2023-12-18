@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
 "PO-Revision-Date: 2023-11-07 15:46+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -177,6 +177,7 @@ msgid "Network"
 msgstr "Síť"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Připojování"
@@ -344,7 +345,6 @@ msgid "Common Options"
 msgstr "Obvyklé možnosti"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr ""
@@ -360,7 +360,6 @@ msgid "Choose a different group"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Obecná nastavení připojení"
@@ -376,7 +375,6 @@ msgid "Edit the additional CIFS options."
 msgstr "Upravit další možnosti CIFS."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Pokročilá nastavení připojení"
@@ -387,7 +385,6 @@ msgid "Character Sets"
 msgstr "Znakové sady"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Nastavení připojení"
@@ -415,8 +412,6 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Procházet nastavení"
@@ -427,6 +422,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -598,10 +595,10 @@ msgid "Always remount this share"
 msgstr "Vždy znovu připojit toto sdílení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, kde-format
-msgid "Page 1: Mounting"
-msgstr "Strana 1: Připojování"
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
+msgid "Mounting: Common Settings"
+msgstr "Nastavení připojení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -610,24 +607,21 @@ msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
 #, kde-format
-msgid "Page 2: Mounting"
-msgstr "Strana 2: Připojování"
+msgid "Mounting: CIFS Unix Extensions"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Page 3: Mounting"
-msgstr "Strana 3: Připojování"
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Mounting: Advanced Settings"
+msgstr "Pokročilá nastavení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#, kde-format
-msgid "Page 4: Browsing"
-msgstr "Strana 4: Prohlížení"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Nastavení Wake-On-LAN"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Browse Settings"
+msgid "Browsing"
+msgstr "Procházet nastavení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -646,21 +640,6 @@ msgstr "Odeslat magický paket před skenováním síťového okolí"
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, kde-format
-msgid "Page 5: Wake-On-LAN"
-msgstr "Strana 5: Wake-On-LAN"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Page 2: Browsing"
-msgstr "Strana 2: Prohlížení"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, kde-format
-msgid "Page 3: Wake-On-LAN"
-msgstr "Strana 3: Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:131
 #, kde-format
@@ -1222,3 +1201,27 @@ msgstr "%1 volné z %2 (%3 použito)"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
+
+#~ msgid "Page 1: Mounting"
+#~ msgstr "Strana 1: Připojování"
+
+#~ msgid "Page 2: Mounting"
+#~ msgstr "Strana 2: Připojování"
+
+#~ msgid "Page 3: Mounting"
+#~ msgstr "Strana 3: Připojování"
+
+#~ msgid "Page 4: Browsing"
+#~ msgstr "Strana 4: Prohlížení"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Nastavení Wake-On-LAN"
+
+#~ msgid "Page 5: Wake-On-LAN"
+#~ msgstr "Strana 5: Wake-On-LAN"
+
+#~ msgid "Page 2: Browsing"
+#~ msgstr "Strana 2: Prohlížení"
+
+#~ msgid "Page 3: Wake-On-LAN"
+#~ msgstr "Strana 3: Wake-On-LAN"
