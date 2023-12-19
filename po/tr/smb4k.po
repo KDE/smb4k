@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:41+0000\n"
-"PO-Revision-Date: 2023-12-03 13:10+0300\n"
+"PO-Revision-Date: 2023-12-18 22:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.01.80\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -609,10 +609,9 @@ msgid "Always remount this share"
 msgstr "Bu paylaşımı her zaman yeniden bağla"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Bağlama Ayarları"
+msgstr "Bağlama: Temel Ayarlar"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -620,23 +619,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Bu sunucu, CIFS Unix uzantılarını destekler"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "CIFS Unix Eklenti Desteği"
+msgstr "Bağlama: CIFS Unix Eklentileri"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Gelişmiş Ayarlar"
+msgstr "Bağlama: Gelişmiş Ayarlar"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Ayarlara Göz At"
+msgstr "Göz Atma"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389

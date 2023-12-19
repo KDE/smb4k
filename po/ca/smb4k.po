@@ -3,15 +3,15 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # SPDX-FileCopyrightText: 2014, 2016, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:41+0000\n"
-"PO-Revision-Date: 2023-11-05 17:46+0100\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"PO-Revision-Date: 2023-12-18 10:49+0100\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -616,10 +616,9 @@ msgid "Always remount this share"
 msgstr "Torna a muntar sempre aquesta compartició"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Configuració de muntatge"
+msgstr "Muntatge: Configuració normal"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -627,23 +626,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Aquest servidor admet les ampliacions Unix del CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "Admet les ampliacions Unix del CIFS"
+msgstr "Muntatge: Ampliacions Unix del CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Configuració avançada"
+msgstr "Muntatge: Configuració avançada"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Configuració de l'exploració"
+msgstr "Exploració"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389

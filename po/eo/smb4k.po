@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:41+0000\n"
-"PO-Revision-Date: 2023-11-02 20:18+0100\n"
+"PO-Revision-Date: 2023-12-18 23:23+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -606,10 +606,9 @@ msgid "Always remount this share"
 msgstr "Ĉiam remunti ĉi tiun kundividaĵon"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Muntaj Agordoj"
+msgstr "Muntado: Komunaj Agordoj"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -617,23 +616,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Tiu servilo subtenas la CIFS Uniks-etendojn"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "Subteno de CIFS Uniksaj Etendaĵoj"
+msgstr "Muntado: Uniksaj Etendaĵoj de CIFS "
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Plia agordo"
+msgstr "Muntado: Altnivelaj Agordoj"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Foliumi Agordojn"
+msgstr "Foliumado"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -1218,27 +1214,3 @@ msgstr "%1 libera de %2 (%3 uzata)"
 #, kde-format
 msgid "Size:"
 msgstr "Grandeco:"
-
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Paĝo 1: Muntado"
-
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Paĝo 2: Muntado"
-
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Paĝo 3: Muntado"
-
-#~ msgid "Page 4: Browsing"
-#~ msgstr "Paĝo 4: Foliumado"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Agordoj pri Wake-On-LAN"
-
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Paĝo 5: Wake-On-LAN"
-
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Paĝo 2: Foliumado"
-
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Paĝo 3: Wake-On-LAN"

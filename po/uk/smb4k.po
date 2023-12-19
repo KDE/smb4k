@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:41+0000\n"
-"PO-Revision-Date: 2023-11-02 09:31+0200\n"
+"PO-Revision-Date: 2023-12-18 12:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -621,10 +621,9 @@ msgid "Always remount this share"
 msgstr "Завжди повторно монтувати цей спільний ресурс"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Параметри монтування"
+msgstr "Монтування: загальні параметри"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -632,23 +631,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "Підтримка розширень UNIX CIFS"
+msgstr "Монтування: розширення UNIX CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Додаткові параметри"
+msgstr "Монтування: додаткові параметри"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Параметри навігації"
+msgstr "Навігація"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
