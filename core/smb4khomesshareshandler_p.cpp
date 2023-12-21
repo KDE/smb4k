@@ -121,7 +121,7 @@ Smb4KHomesUserDialog::Smb4KHomesUserDialog(const SharePtr &share, QWidget *paren
     //
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "HomesUserDialog");
+    KConfigGroup group(Smb4KSettings::self()->config(), QStringLiteral("HomesUserDialog"));
     QSize dialogSize;
 
     if (group.exists()) {
@@ -244,7 +244,7 @@ void Smb4KHomesUserDialog::slotClearClicked()
 
 void Smb4KHomesUserDialog::slotOkClicked()
 {
-    KConfigGroup group(Smb4KSettings::self()->config(), "HomesUserDialog");
+    KConfigGroup group(Smb4KSettings::self()->config(), QStringLiteral("HomesUserDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), group);
     group.writeEntry("HomesUsersCompletion", m_user_combo->completionObject()->items());
     accept();

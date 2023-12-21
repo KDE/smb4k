@@ -245,7 +245,7 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
     m_networkBrowser->setColumnHidden(Smb4KNetworkBrowser::Type, !Smb4KSettings::showType());
     m_networkBrowser->setColumnHidden(Smb4KNetworkBrowser::Comment, !Smb4KSettings::showComment());
 
-    KConfigGroup configGroup(Smb4KSettings::self()->config(), "NetworkBrowserPart");
+    KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("NetworkBrowserPart"));
 
     if (configGroup.exists()) {
         QMap<int, int> map;
@@ -265,7 +265,7 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
         }
     }
 
-    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
 
     if (completionGroup.exists()) {
         m_searchToolBar->setCompletionItems(completionGroup.readEntry("SearchItemCompletion", QStringList()));
@@ -289,14 +289,14 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
 
 void Smb4KNetworkBrowserDockWidget::saveSettings()
 {
-    KConfigGroup configGroup(Smb4KSettings::self()->config(), "NetworkBrowserPart");
+    KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("NetworkBrowserPart"));
     configGroup.writeEntry("ColumnPositionNetwork", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Network));
     configGroup.writeEntry("ColumnPositionType", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Type));
     configGroup.writeEntry("ColumnPositionIP", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::IP));
     configGroup.writeEntry("ColumnPositionComment", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Comment));
     configGroup.sync();
 
-    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
     completionGroup.writeEntry("SearchItemCompletion", m_searchToolBar->completionItems());
     completionGroup.sync();
 }

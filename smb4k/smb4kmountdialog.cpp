@@ -158,7 +158,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
 
     create();
 
-    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "MountDialog");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("MountDialog"));
     QSize dialogSize;
 
     if (dialogGroup.exists()) {
@@ -170,7 +170,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
 
     resize(dialogSize); // workaround for QTBUG-40584
 
-    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
 
     if (completionGroup.exists()) {
         m_locationInput->completionObject()->setItems(completionGroup.readEntry("LocationCompletion", QStringList()));
@@ -340,10 +340,10 @@ void Smb4KMountDialog::slotAccepted()
         adjustDialogSize();
     }
 
-    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "MountDialog");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("MountDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
-    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
     completionGroup.writeEntry("LocationCompletion", m_locationInput->completionObject()->items());
     completionGroup.writeEntry("IpAddressCompletion", m_ipAddressInput->completionObject()->items());
     completionGroup.writeEntry("WorkgroupCompletion", m_workgroupInput->completionObject()->items());

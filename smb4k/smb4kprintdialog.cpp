@@ -95,13 +95,13 @@ Smb4KPrintDialog::Smb4KPrintDialog(QWidget *parent)
 
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("PrintDialog"));
     QSize dialogSize;
 
     // FIXME: Insert completion objects?
 
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
+    if (dialogGroup.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), dialogGroup);
         dialogSize = windowHandle()->size();
     } else {
         dialogSize = sizeHint();
@@ -139,8 +139,8 @@ void Smb4KPrintDialog::slotPrintFile()
 {
     Smb4KClient::self()->printFile(m_printer, KFileItem(m_fileInput->url()), m_copiesInput->value());
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("PrintDialog"));
+    KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
     // FIXME: Save completion objects?
 

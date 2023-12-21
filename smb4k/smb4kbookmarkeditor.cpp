@@ -53,7 +53,7 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
 
     create();
 
-    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("BookmarkEditor"));
     QSize dialogSize;
 
     if (dialogGroup.exists()) {
@@ -65,7 +65,7 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
 
     resize(dialogSize); // workaround for QTBUG-40584
 
-    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
 
     if (completionGroup.exists()) {
         QMap<QString, QStringList> completionItems;
@@ -92,10 +92,10 @@ void Smb4KBookmarkEditor::slotSaveBookmarks()
 {
     m_mainWidget->saveBookmarks();
 
-    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("BookmarkEditor"));
     KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
-    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
     QMap<QString, QStringList> completionItems = m_mainWidget->completionItems();
 
     completionGroup.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);

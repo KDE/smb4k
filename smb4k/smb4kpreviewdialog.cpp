@@ -80,11 +80,11 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(QWidget *parent)
 
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("PreviewDialog"));
     QSize dialogSize;
 
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
+    if (dialogGroup.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), dialogGroup);
         dialogSize = windowHandle()->size();
     } else {
         dialogSize = sizeHint();
@@ -140,8 +140,8 @@ void Smb4KPreviewDialog::loadPreview(const NetworkItemPtr &networkItem)
 
 void Smb4KPreviewDialog::slotCloseButtonClicked()
 {
-    KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("PreviewDialog"));
+    KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
     accept();
 }

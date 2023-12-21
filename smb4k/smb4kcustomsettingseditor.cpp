@@ -83,13 +83,13 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
 
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "CustomSettingsDialog");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("CustomSettingsDialog"));
     QSize dialogSize;
 
     // FIXME: Insert completion objects?
 
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
+    if (dialogGroup.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), dialogGroup);
         dialogSize = windowHandle()->size();
     } else {
         dialogSize = sizeHint();
@@ -183,8 +183,8 @@ void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
     Smb4KCustomSettingsManager::self()->addCustomSettings(m_customSettings);
     m_savingCustomSettings = false;
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "CustomSettingsDialog");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("CustomSettingsDialog"));
+    KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
     // FIXME: Save completion objects?
 

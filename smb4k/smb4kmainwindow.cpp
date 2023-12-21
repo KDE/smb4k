@@ -94,7 +94,8 @@ Smb4KMainWindow::Smb4KMainWindow()
     //
     // Apply the main window settings
     //
-    setAutoSaveSettings(KConfigGroup(Smb4KSettings::self()->config(), "MainWindow"), true);
+    KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("MainWindow"));
+    setAutoSaveSettings(configGroup, true);
 
     //
     // Save the setting no matter how the application is closed
@@ -265,7 +266,7 @@ void Smb4KMainWindow::setupView()
     //
     // Initial main window look
     //
-    KConfigGroup configGroup(Smb4KSettings::self()->config(), "MainWindow");
+    KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("MainWindow"));
 
     if (!configGroup.hasKey(QStringLiteral("FirstStartup"))) {
         QList<QDockWidget *> docks = findChildren<QDockWidget *>();
