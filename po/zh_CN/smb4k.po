@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-18 00:41+0000\n"
-"PO-Revision-Date: 2023-12-17 11:29\n"
+"PO-Revision-Date: 2023-12-20 11:25\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -594,10 +594,9 @@ msgid "Always remount this share"
 msgstr "总是重新挂载此共享"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "挂载设置"
+msgstr "挂载：通用设置"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -605,23 +604,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "此服务器支持 CIFS Unix 扩展"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "CIFS Unix 扩展支持"
+msgstr "挂载：CIFS Unix 扩展"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "高级设置"
+msgstr "挂载：高级设置"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "浏览设置"
+msgstr "浏览"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -1199,27 +1195,3 @@ msgstr "总共 %2，空闲 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "Page 1: Mounting"
-#~ msgstr "第 1 页：挂载"
-
-#~ msgid "Page 2: Mounting"
-#~ msgstr "第 2 页：挂载"
-
-#~ msgid "Page 3: Mounting"
-#~ msgstr "第 3 页：挂载"
-
-#~ msgid "Page 4: Browsing"
-#~ msgstr "第 4 页：挂载"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "局域网唤醒设置"
-
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "第 1 页：局域网唤醒"
-
-#~ msgid "Page 2: Browsing"
-#~ msgstr "第 2 页：浏览"
-
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "第 3 页：局域网唤醒"
