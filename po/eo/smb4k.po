@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
-"PO-Revision-Date: 2023-11-02 20:18+0100\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
+"PO-Revision-Date: 2023-12-18 23:23+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -178,6 +178,7 @@ msgid "Network"
 msgstr "Reto"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Muntado"
@@ -348,7 +349,6 @@ msgid "Common Options"
 msgstr "Ĝeneralaj opcioj"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Subteno de CIFS Uniksaj Etendaĵoj"
@@ -364,7 +364,6 @@ msgid "Choose a different group"
 msgstr "Elekti alian grupon"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Komunaj Agordoj de kundividaĵoj"
@@ -380,7 +379,6 @@ msgid "Edit the additional CIFS options."
 msgstr "Redaktu la pliajn CIFS-opciojn."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Altnivelaj Muntaj Agordoj"
@@ -391,7 +389,6 @@ msgid "Character Sets"
 msgstr "Signaroj"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Muntaj Agordoj"
@@ -422,8 +419,6 @@ msgstr[1] ""
 "legu la manlibron por pliaj detaloj."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Foliumi Agordojn"
@@ -434,6 +429,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -609,10 +606,9 @@ msgid "Always remount this share"
 msgstr "Ĉiam remunti ĉi tiun kundividaĵon"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
-msgid "Page 1: Mounting"
-msgstr "Paĝo 1: Muntado"
+msgid "Mounting: Common Settings"
+msgstr "Muntado: Komunaj Agordoj"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -621,24 +617,19 @@ msgstr "Tiu servilo subtenas la CIFS Uniks-etendojn"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
 #, kde-format
-msgid "Page 2: Mounting"
-msgstr "Paĝo 2: Muntado"
+msgid "Mounting: CIFS Unix Extensions"
+msgstr "Muntado: Uniksaj Etendaĵoj de CIFS "
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
 #, kde-format
-msgid "Page 3: Mounting"
-msgstr "Paĝo 3: Muntado"
+msgid "Mounting: Advanced Settings"
+msgstr "Muntado: Altnivelaj Agordoj"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
 #, kde-format
-msgid "Page 4: Browsing"
-msgstr "Paĝo 4: Foliumado"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Agordoj pri Wake-On-LAN"
+msgid "Browsing"
+msgstr "Foliumado"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -657,21 +648,6 @@ msgstr "Sendi magian paketon antaŭ ol skani la retan najbarecon"
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Sendi magian paketon antaŭ ol munti kundividaĵon"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, kde-format
-msgid "Page 5: Wake-On-LAN"
-msgstr "Paĝo 5: Wake-On-LAN"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Page 2: Browsing"
-msgstr "Paĝo 2: Foliumado"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, kde-format
-msgid "Page 3: Wake-On-LAN"
-msgstr "Paĝo 3: Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:131
 #, kde-format

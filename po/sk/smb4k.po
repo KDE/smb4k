@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -181,6 +181,7 @@ msgid "Network"
 msgstr "Sieť"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Pripájanie"
@@ -352,7 +353,6 @@ msgid "Common Options"
 msgstr "Obvyklé možnosti"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Podpora unixových rozšírení CIFS"
@@ -368,7 +368,6 @@ msgid "Choose a different group"
 msgstr "Vybrať inú skupinu"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Obvyklé možnosti pripojenia"
@@ -384,7 +383,6 @@ msgid "Edit the additional CIFS options."
 msgstr "Upraviť dodatočné voľby CIFS."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Pokročilé nastavenia pripojenia"
@@ -395,7 +393,6 @@ msgid "Character Sets"
 msgstr "Znakové sady"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Voľby pripojenia"
@@ -435,8 +432,6 @@ msgstr[2] ""
 "Prosím, prečítajte si príručku kvôli podrobnostiam.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Prehliadať nastavenia"
@@ -448,6 +443,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, fuzzy, kde-format
 #| msgid "Wake-On-LAN"
 msgid "Wake-On-LAN"
@@ -638,11 +635,10 @@ msgid "Always remount this share"
 msgstr "Vždy znovu pripojiť toto zdieľanie"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Page 1: Mounting"
-msgstr "Pripájanie"
+#| msgid "Mount Settings"
+msgid "Mounting: Common Settings"
+msgstr "Voľby pripojenia"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -651,26 +647,22 @@ msgstr "Tento server podporuje unixové rozšírenia CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
 #, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Page 2: Mounting"
-msgstr "Pripájanie"
+#| msgid "CIFS Unix Extensions Support"
+msgid "Mounting: CIFS Unix Extensions"
+msgstr "Podpora unixových rozšírení CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
 #, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Page 3: Mounting"
-msgstr "Pripájanie"
+#| msgid "Advanced Mount Settings"
+msgid "Mounting: Advanced Settings"
+msgstr "Pokročilé nastavenia pripojenia"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#, kde-format
-msgid "Page 4: Browsing"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Nastavenia Wake-On-LAN"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Browse Settings"
+msgid "Browsing"
+msgstr "Prehliadať nastavenia"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -691,24 +683,6 @@ msgstr "Poslať magický balík pred prehľadaním sieťového okolia"
 #| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Poslať magický balík pred pripojeným zdieľania"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
-msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Page 2: Browsing"
-msgstr "Pripájanie"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
-msgid "Page 3: Wake-On-LAN"
-msgstr "Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:131
 #, kde-format
@@ -1285,6 +1259,39 @@ msgstr "%1 voľných z %2 (%3 použitých)"
 #, kde-format
 msgid "Size:"
 msgstr "Veľkosť:"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Page 1: Mounting"
+#~ msgstr "Pripájanie"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Page 2: Mounting"
+#~ msgstr "Pripájanie"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Page 3: Mounting"
+#~ msgstr "Pripájanie"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Nastavenia Wake-On-LAN"
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Page 5: Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Page 2: Browsing"
+#~ msgstr "Pripájanie"
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Page 3: Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
 
 #~ msgid "Custom Options"
 #~ msgstr "Vlastné voľby"

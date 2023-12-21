@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-10 00:42+0000\n"
-"PO-Revision-Date: 2023-12-09 09:27\n"
+"POT-Creation-Date: 2023-12-18 00:41+0000\n"
+"PO-Revision-Date: 2023-12-20 11:25\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -178,6 +178,7 @@ msgid "Network"
 msgstr "网络"
 
 #: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "挂载"
@@ -345,7 +346,6 @@ msgid "Common Options"
 msgstr "通用选项"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS Unix 扩展支持"
@@ -361,7 +361,6 @@ msgid "Choose a different group"
 msgstr "选择其他用户组"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "通用挂载设置"
@@ -377,7 +376,6 @@ msgid "Edit the additional CIFS options."
 msgstr "编辑 CIFS 附加选项。"
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "高级挂载设置"
@@ -388,7 +386,6 @@ msgid "Character Sets"
 msgstr "字符集"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "挂载设置"
@@ -414,8 +411,6 @@ msgid_plural ""
 msgstr[0] "以下 %1 个条目将从附加选项中删除：<br>%2。<br>详情请见使用手册。"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "浏览设置"
@@ -426,6 +421,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "局域网唤醒"
@@ -597,10 +594,9 @@ msgid "Always remount this share"
 msgstr "总是重新挂载此共享"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
-msgid "Page 1: Mounting"
-msgstr "第 1 页：挂载"
+msgid "Mounting: Common Settings"
+msgstr "挂载：通用设置"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -609,24 +605,19 @@ msgstr "此服务器支持 CIFS Unix 扩展"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
 #, kde-format
-msgid "Page 2: Mounting"
-msgstr "第 2 页：挂载"
+msgid "Mounting: CIFS Unix Extensions"
+msgstr "挂载：CIFS Unix 扩展"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
 #, kde-format
-msgid "Page 3: Mounting"
-msgstr "第 3 页：挂载"
+msgid "Mounting: Advanced Settings"
+msgstr "挂载：高级设置"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
 #, kde-format
-msgid "Page 4: Browsing"
-msgstr "第 4 页：挂载"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "局域网唤醒设置"
+msgid "Browsing"
+msgstr "浏览"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -645,21 +636,6 @@ msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "挂载共享前发送局域网唤醒魔术封包"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, kde-format
-msgid "Page 5: Wake-On-LAN"
-msgstr "第 1 页：局域网唤醒"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Page 2: Browsing"
-msgstr "第 2 页：浏览"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, kde-format
-msgid "Page 3: Wake-On-LAN"
-msgstr "第 3 页：局域网唤醒"
 
 #: smb4k/smb4kmainwindow.cpp:131
 #, kde-format
