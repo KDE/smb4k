@@ -163,8 +163,8 @@ void Smb4KHomesSharesHandler::readUserNames()
 
             if (xmlReader.isStartElement()) {
                 if (xmlReader.name() == QStringLiteral("homes_shares")
-                    && (xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("1.0")
-                        || xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("2.0"))) {
+                    && xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("1.0")
+                    && xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("2.0")) {
                     xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
                     break;
                 } else {
@@ -215,15 +215,15 @@ void Smb4KHomesSharesHandler::readUserNames()
                             d->homesUsers << users;
                         }
                     } else if (versionString == QStringLiteral("2.0")) {
-                        if (xmlReader.name().endsWith(QStringLiteral("homes"))) {
-                            QUrl url(xmlReader.name().toString());
+                        if (xmlReader.name() == QStringLiteral("homes_share")) {
+                            QUrl url(xmlReader.attributes().value(QStringLiteral("url")).toString());
                             QString profile = xmlReader.attributes().value(QStringLiteral("profile")).toString();
 
                             Smb4KHomesUsers *users = new Smb4KHomesUsers();
                             users->setProfile(profile);
                             users->setUrl(url);
 
-                            while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("homes"))) {
+                            while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("homes_share"))) {
                                 xmlReader.readNext();
 
                                 if (xmlReader.isStartElement()) {
@@ -280,7 +280,8 @@ void Smb4KHomesSharesHandler::writeUserNames()
             xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("2.0"));
 
             for (Smb4KHomesUsers *users : qAsConst(d->homesUsers)) {
-                xmlWriter.writeStartElement(users->url().toString(QUrl::StripTrailingSlash));
+                xmlWriter.writeStartElement(QStringLiteral("homes_share"));
+                xmlWriter.writeAttribute(QStringLiteral("url"), users->url().toString(QUrl::StripTrailingSlash));
                 xmlWriter.writeAttribute(QStringLiteral("profile"), users->profile());
                 xmlWriter.writeTextElement(QStringLiteral("workgroup"), users->workgroupName());
                 xmlWriter.writeTextElement(QStringLiteral("ip"), users->hostIP());
