@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 00:41+0000\n"
+"POT-Creation-Date: 2023-12-22 00:41+0000\n"
 "PO-Revision-Date: 2023-12-18 10:49+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -161,7 +161,7 @@ msgstr "Adreces d'interès"
 msgid "&Edit Bookmarks"
 msgstr "&Edita les adreces d'interès"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:141
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -575,7 +575,7 @@ msgstr "Sumes de verificació"
 msgid "Main Window"
 msgstr "Finestra principal"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:213
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Veïnatge de xarxa"
@@ -659,17 +659,17 @@ msgstr "Envia un paquet màgic abans d'escanejar el veïnatge de xarxa"
 msgid "Send magic packet before mounting a share"
 msgstr "Envia un paquet màgic abans de muntar una compartició"
 
-#: smb4k/smb4kmainwindow.cpp:131
+#: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Acobla els ginys"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Comparticions muntades"
 
-#: smb4k/smb4kmainwindow.cpp:362
+#: smb4k/smb4kmainwindow.cpp:363
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -679,100 +679,100 @@ msgstr ""
 "safata del sistema.<br>Useu <i>Surt</i> des del menú <i>Fitxer</i> per a "
 "sortir de l'aplicació.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:364
+#: smb4k/smb4kmainwindow.cpp:365
 #, kde-format
 msgid "Docking"
 msgstr "Acoblament"
 
-#: smb4k/smb4kmainwindow.cpp:419
+#: smb4k/smb4kmainwindow.cpp:420
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Actualment no hi ha cap compartició muntada."
 
-#: smb4k/smb4kmainwindow.cpp:422
+#: smb4k/smb4kmainwindow.cpp:423
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Actualment hi ha %1 compartició muntada."
 msgstr[1] "Actualment hi ha %1 comparticions muntades."
 
-#: smb4k/smb4kmainwindow.cpp:565
+#: smb4k/smb4kmainwindow.cpp:566
 #, kde-format
 msgid "The wallet is used."
 msgstr "La cartera es troba en ús."
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "The password dialog is used."
 msgstr "S'usa el diàleg de contrasenya."
 
-#: smb4k/smb4kmainwindow.cpp:578
+#: smb4k/smb4kmainwindow.cpp:579
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Cercant grups de treball i dominis..."
 
-#: smb4k/smb4kmainwindow.cpp:583
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Cercant servidors en el domini %1..."
 
-#: smb4k/smb4kmainwindow.cpp:588
+#: smb4k/smb4kmainwindow.cpp:589
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Cercant comparticions proporcionades pel servidor %1..."
 
-#: smb4k/smb4kmainwindow.cpp:596 smb4k/smb4kmainwindow.cpp:604
+#: smb4k/smb4kmainwindow.cpp:597 smb4k/smb4kmainwindow.cpp:605
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Cercant fitxers i directoris a %1..."
 
-#: smb4k/smb4kmainwindow.cpp:621
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Activant els servidors remots..."
 
-#: smb4k/smb4kmainwindow.cpp:626
+#: smb4k/smb4kmainwindow.cpp:627
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "S'està enviant un fitxer a la impressora %1..."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:631
 #, kde-format
 msgid "Searching..."
 msgstr "S'està cercant..."
 
-#: smb4k/smb4kmainwindow.cpp:648 smb4k/smb4kmainwindow.cpp:687
-#: smb4k/smb4kmainwindow.cpp:774
+#: smb4k/smb4kmainwindow.cpp:649 smb4k/smb4kmainwindow.cpp:688
+#: smb4k/smb4kmainwindow.cpp:775
 #, kde-format
 msgid "Done."
 msgstr "Fet."
 
-#: smb4k/smb4kmainwindow.cpp:658
+#: smb4k/smb4kmainwindow.cpp:659
 #, kde-format
 msgid "Mounting..."
 msgstr "S'està muntant..."
 
-#: smb4k/smb4kmainwindow.cpp:662
+#: smb4k/smb4kmainwindow.cpp:663
 #, kde-format
 msgid "Unmounting..."
 msgstr "S'està desmuntant..."
 
-#: smb4k/smb4kmainwindow.cpp:666
+#: smb4k/smb4kmainwindow.cpp:667
 #, kde-format
 msgid "Waking up host..."
 msgstr "Activant el servidor..."
 
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:699
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 s'ha muntat correctament."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:724
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 s'ha desmuntat correctament."
 
-#: smb4k/smb4kmainwindow.cpp:762
+#: smb4k/smb4kmainwindow.cpp:763
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "S'està sincronitzant «%1»"

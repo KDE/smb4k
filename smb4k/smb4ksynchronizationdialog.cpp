@@ -104,11 +104,11 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(QWidget *parent)
 
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("SynchronizationDialog"));
     QSize dialogSize;
 
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
+    if (dialogGroup.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), dialogGroup);
         dialogSize = windowHandle()->size();
     } else {
         dialogSize = sizeHint();
@@ -174,8 +174,8 @@ void Smb4KSynchronizationDialog::slotSynchronize()
 {
     Smb4KSynchronizer::self()->synchronize(m_sourceInput->url(), m_destinationInput->url());
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("SynchronizationDialog"));
+    KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
     accept();
 }

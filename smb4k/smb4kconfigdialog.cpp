@@ -99,7 +99,7 @@ void Smb4KConfigDialog::setupDialog()
     bookmarksArea->setWidgetResizable(true);
     bookmarksArea->setFrameStyle(QFrame::NoFrame);
 
-    KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
+    KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), QStringLiteral("BookmarkEditor"));
 
     if (bookmarkGroup.exists()) {
         QMap<QString, QStringList> completionItems;
@@ -144,7 +144,7 @@ void Smb4KConfigDialog::setupDialog()
     create();
     windowHandle()->resize(QSize(800, 600));
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
+    KConfigGroup group(Smb4KSettings::self()->config(), QStringLiteral("ConfigDialog"));
     KWindowConfig::restoreWindowSize(windowHandle(), group);
     resize(windowHandle()->size()); // workaround for QTBUG-40584
 }
@@ -184,7 +184,7 @@ void Smb4KConfigDialog::updateSettings()
     m_bookmarksPage->saveBookmarks();
     QMap<QString, QStringList> completionItems = m_bookmarksPage->completionItems();
 
-    KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
+    KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), QStringLiteral("BookmarkEditor"));
 
     bookmarkGroup.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);
     bookmarkGroup.writeEntry("LabelCompletion", completionItems[QStringLiteral("LabelCompletion")]);
@@ -200,7 +200,7 @@ void Smb4KConfigDialog::updateSettings()
 
     (void)checkSettings();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
+    KConfigGroup group(Smb4KSettings::self()->config(), QStringLiteral("ConfigDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), group);
 
     KConfigDialog::updateSettings();
