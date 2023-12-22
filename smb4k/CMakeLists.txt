@@ -55,6 +55,7 @@ set(smb4kdialogs_LIB_SRCS
   smb4kconfigpagebookmarks.cpp
   smb4kcustomsettingseditor.cpp
   smb4kcustomsettingseditorwidget.cpp
+  smb4khomesuserdialog.cpp
   smb4kmountdialog.cpp
   smb4kpassworddialog.cpp
   smb4kpreviewdialog.cpp
