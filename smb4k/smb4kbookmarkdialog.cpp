@@ -10,6 +10,7 @@
 #include "core/smb4kbookmark.h"
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4ksettings.h"
+#include "smb4khomesuserdialog.h"
 
 // Qt includes
 #include <QDialogButtonBox>
@@ -146,6 +147,23 @@ bool Smb4KBookmarkDialog::setShares(const QList<SharePtr> &shares)
     bool bookmarksSet = false;
 
     for (const SharePtr &share : qAsConst(shares)) {
+        if (share->isHomesShare()) {
+            QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog(this);
+
+            if (homesUserDialog->setShare(share)) {
+                // We want to get a return value here, so we use exec()
+                if (homesUserDialog->exec() != QDialog::Accepted) {
+                    delete homesUserDialog;
+                    continue;
+                } else {
+                    delete homesUserDialog;
+                }
+            } else {
+                delete homesUserDialog;
+                continue;
+            }
+        }
+
         if (Smb4KBookmarkHandler::self()->isBookmarked(share)) {
             continue;
         }
