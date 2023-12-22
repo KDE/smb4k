@@ -17,7 +17,6 @@
 
 // forward declarations
 class Smb4KCustomSettingsManagerPrivate;
-class Smb4KProfileManager;
 
 /**
  * This classes manages the custom settings that were defined
