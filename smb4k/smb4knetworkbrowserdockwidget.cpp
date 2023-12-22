@@ -311,11 +311,10 @@ void Smb4KNetworkBrowserDockWidget::slotContextMenuRequested(const QPoint &pos)
     m_contextMenu->menu()->popup(m_networkBrowser->viewport()->mapToGlobal(pos));
 }
 
-void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem *item, int /*column*/)
+void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem *item, int column)
 {
-    //
-    // Process the activated item
-    //
+    Q_UNUSED(column);
+
     if (QApplication::keyboardModifiers() == Qt::NoModifier && m_networkBrowser->selectedItems().size() == 1) {
         Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>(item);
 
@@ -455,47 +454,33 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
     }
 }
 
-void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr & /*item*/, int process)
+void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr &item, int process)
 {
-    //
-    // Get the rescan/abort action
-    //
+    Q_UNUSED(item);
+
     KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")));
 
-    //
-    // Make adjustments
-    //
     if (rescanAbortAction) {
         rescanAbortAction->setActive(true);
         m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
     }
 
-    //
-    // Set the active status of the search tool bar
-    //
     if (process == NetworkSearch) {
         m_searchToolBar->setActiveState(true);
     }
 }
 
-void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr & /*item*/, int process)
+void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr &item, int process)
 {
-    //
-    // Get the rescan/abort action
-    //
+    Q_UNUSED(item);
+
     KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")));
 
-    //
-    // Make adjustments
-    //
     if (rescanAbortAction) {
         rescanAbortAction->setActive(false);
         m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
     }
 
-    //
-    // Set the active status of the search tool bar
-    //
     if (process == NetworkSearch) {
         m_searchToolBar->setActiveState(false);
     }
@@ -992,11 +977,9 @@ void Smb4KNetworkBrowserDockWidget::slotShareUnmounted(const SharePtr &share)
     }
 }
 
-void Smb4KNetworkBrowserDockWidget::slotMounterAboutToStart(int /*process*/)
+void Smb4KNetworkBrowserDockWidget::slotMounterAboutToStart(int process)
 {
-    //
-    // Unused at the moment
-    //
+    Q_UNUSED(process);
 }
 
 void Smb4KNetworkBrowserDockWidget::slotMounterFinished(int process)
