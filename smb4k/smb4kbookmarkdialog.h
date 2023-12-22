@@ -28,12 +28,12 @@ public:
     /**
      * Constructor
      */
-    Smb4KBookmarkDialog(QWidget *parent = nullptr);
+    explicit Smb4KBookmarkDialog(QWidget *parent = nullptr);
 
     /**
      * Destructor
      */
-    ~Smb4KBookmarkDialog();
+    virtual ~Smb4KBookmarkDialog();
 
     /**
      * Set the shares that are to be bookmarked. If all shares have already been

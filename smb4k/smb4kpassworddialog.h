@@ -25,12 +25,12 @@ public:
     /**
      * Constructor
      */
-    Smb4KPasswordDialog(QWidget *parent = nullptr);
+    explicit Smb4KPasswordDialog(QWidget *parent = nullptr);
 
     /**
      * Destructor
      */
-    ~Smb4KPasswordDialog();
+    virtual ~Smb4KPasswordDialog();
 
     /**
      * Setup the dialog.
