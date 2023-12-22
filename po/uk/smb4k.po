@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 00:41+0000\n"
+"POT-Creation-Date: 2023-12-22 00:41+0000\n"
 "PO-Revision-Date: 2023-12-18 12:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -160,7 +160,7 @@ msgstr "Закладки"
 msgid "&Edit Bookmarks"
 msgstr "&Редагувати закладки"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:141
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -581,7 +581,7 @@ msgstr "Контрольні суми"
 msgid "Main Window"
 msgstr "Головне вікно"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:213
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Мережеве оточення"
@@ -664,17 +664,17 @@ msgstr "Надіслати контрольний пакет до сканува
 msgid "Send magic packet before mounting a share"
 msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
 
-#: smb4k/smb4kmainwindow.cpp:131
+#: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Віджети панелей"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Змонтовані спільні ресурси"
 
-#: smb4k/smb4kmainwindow.cpp:362
+#: smb4k/smb4kmainwindow.cpp:363
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -684,17 +684,17 @@ msgstr ""
 "системному лотку.<br>Щоб завершити роботу програми, скористайтеся пунктом "
 "<i>Вийти</i> з меню <i>Файл</i>.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:364
+#: smb4k/smb4kmainwindow.cpp:365
 #, kde-format
 msgid "Docking"
 msgstr "Швартування"
 
-#: smb4k/smb4kmainwindow.cpp:419
+#: smb4k/smb4kmainwindow.cpp:420
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Зараз не змонтовано жодного спільного ресурсу."
 
-#: smb4k/smb4kmainwindow.cpp:422
+#: smb4k/smb4kmainwindow.cpp:423
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
@@ -703,83 +703,83 @@ msgstr[1] "Зараз змонтовано %1 спільні ресурси."
 msgstr[2] "Зараз змонтовано %1 спільних ресурсів."
 msgstr[3] "Зараз змонтовано %1 спільний ресурс."
 
-#: smb4k/smb4kmainwindow.cpp:565
+#: smb4k/smb4kmainwindow.cpp:566
 #, kde-format
 msgid "The wallet is used."
 msgstr "Використано сховище паролів."
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Використано діалогове вікно введення паролів."
 
-#: smb4k/smb4kmainwindow.cpp:578
+#: smb4k/smb4kmainwindow.cpp:579
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Виявлення робочих груп і доменів..."
 
-#: smb4k/smb4kmainwindow.cpp:583
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Виявлення вузлів у домені %1..."
 
-#: smb4k/smb4kmainwindow.cpp:588
+#: smb4k/smb4kmainwindow.cpp:589
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Виявлення спільних ресурсів вузла %1..."
 
-#: smb4k/smb4kmainwindow.cpp:596 smb4k/smb4kmainwindow.cpp:604
+#: smb4k/smb4kmainwindow.cpp:597 smb4k/smb4kmainwindow.cpp:605
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Виявлення файлів та каталогів у %1…"
 
-#: smb4k/smb4kmainwindow.cpp:621
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Пробуджуємо віддалені вузли…"
 
-#: smb4k/smb4kmainwindow.cpp:626
+#: smb4k/smb4kmainwindow.cpp:627
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Надсилання файла на принтер %1..."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:631
 #, kde-format
 msgid "Searching..."
 msgstr "Шукаємо…"
 
-#: smb4k/smb4kmainwindow.cpp:648 smb4k/smb4kmainwindow.cpp:687
-#: smb4k/smb4kmainwindow.cpp:774
+#: smb4k/smb4kmainwindow.cpp:649 smb4k/smb4kmainwindow.cpp:688
+#: smb4k/smb4kmainwindow.cpp:775
 #, kde-format
 msgid "Done."
 msgstr "Завершено."
 
-#: smb4k/smb4kmainwindow.cpp:658
+#: smb4k/smb4kmainwindow.cpp:659
 #, kde-format
 msgid "Mounting..."
 msgstr "Монтуємо…"
 
-#: smb4k/smb4kmainwindow.cpp:662
+#: smb4k/smb4kmainwindow.cpp:663
 #, kde-format
 msgid "Unmounting..."
 msgstr "Демонтуємо…"
 
-#: smb4k/smb4kmainwindow.cpp:666
+#: smb4k/smb4kmainwindow.cpp:667
 #, kde-format
 msgid "Waking up host..."
 msgstr "Пробуджуємо вузол…"
 
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:699
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 успішно змонтовано."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:724
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 успішно демонтовано."
 
-#: smb4k/smb4kmainwindow.cpp:762
+#: smb4k/smb4kmainwindow.cpp:763
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Синхронізація %1"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 00:41+0000\n"
+"POT-Creation-Date: 2023-12-22 00:41+0000\n"
 "PO-Revision-Date: 2023-08-13 16:37+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -162,7 +162,7 @@ msgstr "Lesezeichen"
 msgid "&Edit Bookmarks"
 msgstr "L&esezeichen bearbeiten"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:141
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -582,7 +582,7 @@ msgstr "Prüfsummen"
 msgid "Main Window"
 msgstr "Hauptfenster"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:213
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Netzwerkumgebung"
@@ -671,17 +671,17 @@ msgstr "„Magisches“ Datenpaket vor dem Durchsuchen der Netzwerkumgebung send
 msgid "Send magic packet before mounting a share"
 msgstr "„Magisches“ Datenpaket vor dem Einhängen einer Freigabe senden"
 
-#: smb4k/smb4kmainwindow.cpp:131
+#: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Andockfenster"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Eingehängte Freigaben"
 
-#: smb4k/smb4kmainwindow.cpp:362
+#: smb4k/smb4kmainwindow.cpp:363
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -691,100 +691,100 @@ msgstr ""
 "Kontrollleiste weiterlaufen.<br>Benutzen Sie <i>Beenden</i> im Menü "
 "<i>Datei</i>, um die Anwendung vollständig zu beenden.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:364
+#: smb4k/smb4kmainwindow.cpp:365
 #, kde-format
 msgid "Docking"
 msgstr "Andocken"
 
-#: smb4k/smb4kmainwindow.cpp:419
+#: smb4k/smb4kmainwindow.cpp:420
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Zurzeit sind keine Freigaben eingehängt."
 
-#: smb4k/smb4kmainwindow.cpp:422
+#: smb4k/smb4kmainwindow.cpp:423
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Zurzeit ist %1 Freigabe eingehängt."
 msgstr[1] "Zurzeit sind %1 Freigaben eingehängt."
 
-#: smb4k/smb4kmainwindow.cpp:565
+#: smb4k/smb4kmainwindow.cpp:566
 #, kde-format
 msgid "The wallet is used."
 msgstr "Der Passwortspeicher wird benutzt."
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Der Passwortdialog wird verwendet."
 
-#: smb4k/smb4kmainwindow.cpp:578
+#: smb4k/smb4kmainwindow.cpp:579
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Es wird nach Arbeitsgruppen und Domänen gesucht ..."
 
-#: smb4k/smb4kmainwindow.cpp:583
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Es wird nach nach Rechnern in der Domäne %1 gesucht ..."
 
-#: smb4k/smb4kmainwindow.cpp:588
+#: smb4k/smb4kmainwindow.cpp:589
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Es wird nach Freigaben auf dem Rechner %1 gesucht ..."
 
-#: smb4k/smb4kmainwindow.cpp:596 smb4k/smb4kmainwindow.cpp:604
+#: smb4k/smb4kmainwindow.cpp:597 smb4k/smb4kmainwindow.cpp:605
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Es wird nach nach Rechnern und Ordnern in der %1 gesucht ..."
 
-#: smb4k/smb4kmainwindow.cpp:621
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Entfernte Rechner aufwecken ..."
 
-#: smb4k/smb4kmainwindow.cpp:626
+#: smb4k/smb4kmainwindow.cpp:627
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Datei wird zum Drucker %1 gesendet ..."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:631
 #, kde-format
 msgid "Searching..."
 msgstr "Suchen ..."
 
-#: smb4k/smb4kmainwindow.cpp:648 smb4k/smb4kmainwindow.cpp:687
-#: smb4k/smb4kmainwindow.cpp:774
+#: smb4k/smb4kmainwindow.cpp:649 smb4k/smb4kmainwindow.cpp:688
+#: smb4k/smb4kmainwindow.cpp:775
 #, kde-format
 msgid "Done."
 msgstr "Fertig."
 
-#: smb4k/smb4kmainwindow.cpp:658
+#: smb4k/smb4kmainwindow.cpp:659
 #, kde-format
 msgid "Mounting..."
 msgstr "Einhängen ..."
 
-#: smb4k/smb4kmainwindow.cpp:662
+#: smb4k/smb4kmainwindow.cpp:663
 #, kde-format
 msgid "Unmounting..."
 msgstr "Aushängen ..."
 
-#: smb4k/smb4kmainwindow.cpp:666
+#: smb4k/smb4kmainwindow.cpp:667
 #, kde-format
 msgid "Waking up host..."
 msgstr "Rechner wird aufgeweckt ..."
 
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:699
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 ist erfolgreich eingehängt worden."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:724
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 ist erfolgreich ausgehängt worden."
 
-#: smb4k/smb4kmainwindow.cpp:762
+#: smb4k/smb4kmainwindow.cpp:763
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 wird abgeglichen ..."

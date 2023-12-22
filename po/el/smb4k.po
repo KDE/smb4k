@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-18 00:41+0000\n"
+"POT-Creation-Date: 2023-12-22 00:41+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -157,7 +157,7 @@ msgstr "Σελιδοδείκτες"
 msgid "&Edit Bookmarks"
 msgstr "&Επεξεργασία σελιδοδεικτών"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:141
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -594,7 +594,7 @@ msgstr "Αθροίσματα ελέγχου"
 msgid "Main Window"
 msgstr "Κύριο παράθυρο"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:213
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Τοπικό δίκτυο"
@@ -683,17 +683,17 @@ msgstr "Αποστολή μαγικού πακέτου πριν τη σάρωσ�
 msgid "Send magic packet before mounting a share"
 msgstr "Αποστολή μαγικού πακέτου πριν την προσάρτηση κοινού πόρου"
 
-#: smb4k/smb4kmainwindow.cpp:131
+#: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Προσάρτηση γραφικών συστατικών"
 
-#: smb4k/smb4kmainwindow.cpp:234 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Προσαρτημένοι κοινοί πόροι"
 
-#: smb4k/smb4kmainwindow.cpp:362
+#: smb4k/smb4kmainwindow.cpp:363
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -703,100 +703,100 @@ msgstr ""
 "στο πλαίσιο συστήματος.<br>Χρησιμοποιήστε το <i>Έξοδος</i> από το μενού "
 "<i>Αρχείο</i> για να βγείτε από την εφαρμογή.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:364
+#: smb4k/smb4kmainwindow.cpp:365
 #, kde-format
 msgid "Docking"
 msgstr "Προσάρτηση"
 
-#: smb4k/smb4kmainwindow.cpp:419
+#: smb4k/smb4kmainwindow.cpp:420
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Δεν υπάρχουν προσαρτημένοι κοινοί πόροι."
 
-#: smb4k/smb4kmainwindow.cpp:422
+#: smb4k/smb4kmainwindow.cpp:423
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Υπάρχει προσαρτημένος %1 κοινός πόρος."
 msgstr[1] "Υπάρχουν προσαρτημένοι %1 κοινοί πόροι."
 
-#: smb4k/smb4kmainwindow.cpp:565
+#: smb4k/smb4kmainwindow.cpp:566
 #, kde-format
 msgid "The wallet is used."
 msgstr "Χρησιμοποιείται το πορτοφόλι."
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Χρησιμοποιείται ο διάλογος κωδικού πρόσβασης."
 
-#: smb4k/smb4kmainwindow.cpp:578
+#: smb4k/smb4kmainwindow.cpp:579
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Αναζήτηση ομάδων εργασίας και τομέων..."
 
-#: smb4k/smb4kmainwindow.cpp:583
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Αναζήτηση υπολογιστών στον τομέα %1..."
 
-#: smb4k/smb4kmainwindow.cpp:588
+#: smb4k/smb4kmainwindow.cpp:589
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Αναζήτηση κοινών πόρων που παρέχει ο υπολογιστής %1..."
 
-#: smb4k/smb4kmainwindow.cpp:596 smb4k/smb4kmainwindow.cpp:604
+#: smb4k/smb4kmainwindow.cpp:597 smb4k/smb4kmainwindow.cpp:605
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Αναζήτηση για αρχεία και καταλόγους στο %1..."
 
-#: smb4k/smb4kmainwindow.cpp:621
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Αφύπνιση απομακρυσμένων υπολογιστών..."
 
-#: smb4k/smb4kmainwindow.cpp:626
+#: smb4k/smb4kmainwindow.cpp:627
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Αποστολή αρχείου στον εκτυπωτή %1.."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:631
 #, kde-format
 msgid "Searching..."
 msgstr "Γίνεται αναζήτηση..."
 
-#: smb4k/smb4kmainwindow.cpp:648 smb4k/smb4kmainwindow.cpp:687
-#: smb4k/smb4kmainwindow.cpp:774
+#: smb4k/smb4kmainwindow.cpp:649 smb4k/smb4kmainwindow.cpp:688
+#: smb4k/smb4kmainwindow.cpp:775
 #, kde-format
 msgid "Done."
 msgstr "Έγινε."
 
-#: smb4k/smb4kmainwindow.cpp:658
+#: smb4k/smb4kmainwindow.cpp:659
 #, kde-format
 msgid "Mounting..."
 msgstr "Γίνεται προσάρτηση..."
 
-#: smb4k/smb4kmainwindow.cpp:662
+#: smb4k/smb4kmainwindow.cpp:663
 #, kde-format
 msgid "Unmounting..."
 msgstr "Γίνεται αποπροσάρτηση..."
 
-#: smb4k/smb4kmainwindow.cpp:666
+#: smb4k/smb4kmainwindow.cpp:667
 #, kde-format
 msgid "Waking up host..."
 msgstr "Αφύπνιση υπολογιστή..."
 
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:699
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "Το %1 έχει προσαρτηθεί με επιτυχία."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:724
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "Το %1 έχει αποπροσαρτηθεί με επιτυχία."
 
-#: smb4k/smb4kmainwindow.cpp:762
+#: smb4k/smb4kmainwindow.cpp:763
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Συγχρονισμός %1"
