@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-11-04 12:38+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -119,12 +119,12 @@ msgstr "U&stawienia"
 msgid "Main Toolbar"
 msgstr "Główny pasek narzędzi"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, kde-format
 msgid "Bookmark Shares"
 msgstr "Dodaj zasób do zakładek"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
@@ -133,13 +133,13 @@ msgstr ""
 "Wszystkim wymienionym zasobom zostanie przypisana zakładka. Aby dodać "
 "etykietę lub kategorię, kliknij na odpowiedni wpis zakładki."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Etykieta:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -280,7 +280,8 @@ msgstr "Wpisz nazwę użytkownika i hasło dla wpisu %1 w portfelu."
 msgid "Set the username and password for the default login."
 msgstr "Wpisz nazwę użytkownika i hasło do domyślnego logowania."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Nazwa użytkownika:"
@@ -661,6 +662,22 @@ msgstr "Wyślij magiczny pakiet przed przeszukaniem otoczenia sieciowego"
 msgid "Send magic packet before mounting a share"
 msgstr "Wyślij magiczny pakiet przed podpięciem zasobu"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr "Podaj użytkownika"
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr "Proszę podać nazwę użytkownika."
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, fuzzy, kde-format
+#| msgid "Please enter a username and a password for the share <b>%1</b>."
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr "Podaj nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>."
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -826,8 +843,8 @@ msgid "Comment"
 msgstr "Komentarz"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "P&rzeszukaj sieć"
@@ -912,23 +929,23 @@ msgid "&Unmount"
 msgstr "&Odepnij"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Przeszukaj kompute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Przeszukaj g&rupę roboczą"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -3607,12 +3624,6 @@ msgstr "Rozmiar:"
 
 #~ msgid "%1 is not a version 1.0 file."
 #~ msgstr "%1 nie jest wersją 1.0 pliku."
-
-#~ msgid "Specify User"
-#~ msgstr "Podaj użytkownika"
-
-#~ msgid "Please specify a username."
-#~ msgstr "Proszę podać nazwę użytkownika."
 
 #~ msgid ""
 #~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "

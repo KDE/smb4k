@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-15 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-12-20 11:25\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1839,7 +1839,7 @@ msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
 #: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:168
+#: smb4khomesshareshandler.cpp:167
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "不支持 %1 格式。"

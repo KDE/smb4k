@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -113,13 +113,13 @@ msgstr "&Indstillinger"
 msgid "Main Toolbar"
 msgstr "Hovedværktøjslinje"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, fuzzy, kde-format
 #| msgid "Bookmark this share"
 msgid "Bookmark Shares"
 msgstr "Sæt bogmærke ved ressourcen"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "All listed shares will be bookmarked. To edit the label or group, click "
@@ -131,13 +131,13 @@ msgstr ""
 "Der vil blive sat bogmærke ved alle oplistede ressourcer. Klik på den "
 "pågældende bogmærkeindgang for at redigere etiket eller gruppe."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Etiket:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -286,7 +286,8 @@ msgstr "<qt>Angiv et brugernavn og en adgangskode til værten <b>%1</b>.</qt>"
 msgid "Set the username and password for the default login."
 msgstr "<qt>Angiv et brugernavn og en adgangskode til værten <b>%1</b>.</qt>"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
@@ -702,6 +703,24 @@ msgstr "Send magisk pakke før scanning af netværksnabolaget"
 msgid "Send magic packet before mounting a share"
 msgstr "Send magisk pakke før montering af en delt ressource"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr "Angiv bruger"
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr "Angiv et brugernavn."
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr ""
+"<qt>Angiv et brugernavn og en adgangskode til ressourcen <b>%1</b>.</qt>"
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -875,8 +894,8 @@ msgid "Comment"
 msgstr "Kommentar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Scan netvæ&rk"
@@ -962,23 +981,23 @@ msgid "&Unmount"
 msgstr "&Afmontér"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Scan compute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Scan a&rbejdsgruppe"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -3698,12 +3717,6 @@ msgstr "Størrelse"
 
 #~ msgid "%1 is not a version 1.0 file."
 #~ msgstr "%1 er ikke en version 1.0-fil."
-
-#~ msgid "Specify User"
-#~ msgstr "Angiv bruger"
-
-#~ msgid "Please specify a username."
-#~ msgstr "Angiv et brugernavn."
 
 #~ msgid ""
 #~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
