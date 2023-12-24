@@ -658,7 +658,8 @@ msgid "Send magic packet before mounting a share"
 msgstr "Enviar un paquete máxico antes de montar a compartición."
 
 #: smb4k/smb4khomesuserdialog.cpp:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Specify User"
 msgid "Specify User"
 msgstr "Indicar o usuario"
 

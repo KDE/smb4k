@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-23 00:42+0000\n"
-"PO-Revision-Date: 2023-12-19 13:25+0100\n"
+"PO-Revision-Date: 2023-12-23 11:25+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -26,7 +26,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - t/m 2023"
+msgstr "Freek de Kruijf - t/m 2024"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -673,12 +673,9 @@ msgid "Please specify a username."
 msgstr "Geef alstublieft een gebruikersnaam op."
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Please enter a username and a password for the share <b>%1</b>."
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-"Gaarne een gebruikersnaam en een wachtwoord voor de gedeelde map <b>%1</b> "
-"invoeren."
+msgstr "Gaarne een gebruikersnaam voor de gedeelde map <b>%1</b> specificeren."
 
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format

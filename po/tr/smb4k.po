@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-23 00:42+0000\n"
-"PO-Revision-Date: 2023-12-18 22:27+0300\n"
+"PO-Revision-Date: 2023-12-23 11:33+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -656,18 +656,17 @@ msgstr "Bir paylaşımı bağlamadan önce sihirli paket gönder"
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "Kullanıcı Belirt"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "Lütfen bir kullanıcı belirtin."
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Please enter a username and a password for the share <b>%1</b>."
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "<b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin."
+msgstr "<b>%1</b> paylaşımı için lütfen bir kullanıcı adı belirtin."
 
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format

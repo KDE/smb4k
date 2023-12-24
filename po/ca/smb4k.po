@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-23 00:42+0000\n"
-"PO-Revision-Date: 2023-12-18 10:49+0100\n"
+"PO-Revision-Date: 2023-12-23 10:39+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -663,19 +663,17 @@ msgstr "Envia un paquet màgic abans de muntar una compartició"
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "Indiqueu l'usuari"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "Especifiqueu un nom d'usuari."
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Please enter a username and a password for the share <b>%1</b>."
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-"Introduïu un nom d'usuari i una contrasenya per a la compartició <b>%1</b>."
+msgstr "Especifiqueu un nom d'usuari per a la compartició<br><b>%1</b>."
 
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
@@ -1245,27 +1243,3 @@ msgstr "%1 lliure de %2 (usat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Pàgina 1: Muntatge"
-
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Pàgina 2: Muntatge"
-
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Pàgina 3: Muntatge"
-
-#~ msgid "Page 4: Browsing"
-#~ msgstr "Pàgina 4: Exploració"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Configuració de l'activació per LAN (Wake-On-LAN)"
-
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Pàgina 5: Activació per LAN (Wake-On-LAN)"
-
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Pàgina 2: Exploració"
-
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Pàgina 3: Activació per LAN (Wake-On-LAN)"
