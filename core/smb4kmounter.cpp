@@ -497,10 +497,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         QUrl url;
 
         if (share->isHomesShare()) {
-            if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true)) {
-                return;
-            }
-
             url = share->homeUrl();
         } else {
             url = share->url();

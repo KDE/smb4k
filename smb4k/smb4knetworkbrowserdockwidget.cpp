@@ -16,6 +16,7 @@
 #include "core/smb4kworkgroup.h"
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
+#include "smb4khomesuserdialog.h"
 #include "smb4kmountdialog.h"
 #include "smb4knetworkbrowser.h"
 #include "smb4knetworkbrowseritem.h"
@@ -904,6 +905,24 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool checked)
             if (item->shareItem()->isMounted()) {
                 mountedShares << item->shareItem();
             } else {
+                if (item->shareItem()->isHomesShare()) {
+                    QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog(this);
+                    bool proceed = false;
+
+                    if (homesUserDialog->setShare(item->shareItem())) {
+                        // We want to get a return value here, so we use exec()
+                        if (homesUserDialog->exec() == QDialog::Accepted) {
+                            proceed = true;
+                        }
+                    }
+
+                    delete homesUserDialog;
+
+                    if (!proceed) {
+                        continue;
+                    }
+                }
+
                 unmountedShares << item->shareItem();
             }
         }
@@ -1062,14 +1081,7 @@ void Smb4KNetworkBrowserDockWidget::slotPerformSearch(const QString &item)
 
 void Smb4KNetworkBrowserDockWidget::slotStopSearch()
 {
-    //
-    // Stop the network search
-    //
     Smb4KClient::self()->abort();
-
-    //
-    // A global search finished
-    //
     m_searchRunning = false;
 }
 
@@ -1122,9 +1134,6 @@ void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr> &sha
 
 void Smb4KNetworkBrowserDockWidget::slotJumpToResult(const QString &url)
 {
-    //
-    // Find the share item with URL url
-    //
     QTreeWidgetItemIterator it(m_networkBrowser);
 
     while (*it) {

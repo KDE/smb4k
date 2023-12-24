@@ -149,17 +149,18 @@ bool Smb4KBookmarkDialog::setShares(const QList<SharePtr> &shares)
     for (const SharePtr &share : qAsConst(shares)) {
         if (share->isHomesShare()) {
             QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog(this);
+            bool proceed = false;
 
             if (homesUserDialog->setShare(share)) {
                 // We want to get a return value here, so we use exec()
-                if (homesUserDialog->exec() != QDialog::Accepted) {
-                    delete homesUserDialog;
-                    continue;
-                } else {
-                    delete homesUserDialog;
+                if (homesUserDialog->exec() == QDialog::Accepted) {
+                    proceed = true;
                 }
-            } else {
-                delete homesUserDialog;
+            }
+
+            delete homesUserDialog;
+
+            if (!proceed) {
                 continue;
             }
         }

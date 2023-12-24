@@ -56,13 +56,6 @@ public:
     static Smb4KBookmarkHandler *self();
 
     /**
-     * This function adds a new bookmark.
-     *
-     * @param share         The share that is to be bookmarked.
-     */
-    void addBookmark(const SharePtr &share);
-
-    /**
      * This function adds a new bookmark. The bookmark will be copied
      * internally, so it is save to clear the bookmark pointer after
      * it was passed to this function.
@@ -70,14 +63,6 @@ public:
      * @param bookmark      The bookmark that is to be added.
      */
     void addBookmark(const BookmarkPtr &bookmark);
-
-    /**
-     * This function adds several bookmarks at once. It takes a list of
-     * shares and converts them internally to bookmark items.
-     *
-     * @param list          The list of shares that are to be bookmarked
-     */
-    void addBookmarks(const QList<SharePtr> &list);
 
     /**
      * This function adds several bookmarks at once. It takes a list of

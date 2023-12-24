@@ -8,9 +8,9 @@
 // application specific includes
 #include "smb4kcustomsettingseditor.h"
 #include "core/smb4kcustomsettingsmanager.h"
-#include "core/smb4khomesshareshandler.h"
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4ksettings.h"
+#include "smb4khomesuserdialog.h"
 
 // Qt includes
 #include <QDialogButtonBox>
@@ -106,8 +106,6 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
 {
     Q_ASSERT(networkItem);
 
-    bool setCustomSettings = false;
-
     if (networkItem) {
         switch (networkItem->type()) {
         case Host: {
@@ -122,21 +120,31 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
             }
 
             m_editorWidget->setCustomSettings(*m_customSettings.data());
-            setCustomSettings = true;
-
             break;
         }
         case Share: {
             SharePtr share = networkItem.staticCast<Smb4KShare>();
-            m_descriptionText->setText(i18n("Define custom settings for share <b>%1</b>.", share->displayString()));
 
             if (!share->isPrinter()) {
                 if (share->isHomesShare()) {
-                    if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true)) {
-                        return setCustomSettings;
+                    QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog(this);
+                    bool proceed = false;
+
+                    if (homesUserDialog->setShare(share)) {
+                        // We want to get a return value here, so we use exec()
+                        if (homesUserDialog->exec() == QDialog::Accepted) {
+                            proceed = true;
+                        }
+                    }
+
+                    delete homesUserDialog;
+
+                    if (!proceed) {
+                        return false;
                     }
                 }
 
+                m_descriptionText->setText(i18n("Define custom settings for share <b>%1</b>.", share->displayString(true)));
                 m_customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(share);
 
                 if (!m_customSettings) {
@@ -150,7 +158,6 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
                 }
 
                 m_editorWidget->setCustomSettings(*m_customSettings.data());
-                setCustomSettings = true;
             }
 
             break;
@@ -161,7 +168,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
         }
     }
 
-    return setCustomSettings;
+    return true;
 }
 
 void Smb4KCustomSettingsEditor::slotRestoreDefaults()

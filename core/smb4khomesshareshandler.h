@@ -23,7 +23,6 @@
 class Smb4KAuthInfo;
 class Smb4KHomesUsers;
 class Smb4KHomesSharesHandlerPrivate;
-class Smb4KProfileManager;
 
 /**
  * This class belongs to the core of Smb4K and takes care of the
@@ -53,23 +52,6 @@ public:
      * Returns a static pointer to this class.
      */
     static Smb4KHomesSharesHandler *self();
-
-    /**
-     * This function will open a dialog where the user has to define a
-     * user name to access a 'homes' share. You also can define if the
-     * user name should be overwritten in case one has already been set
-     * (default is TRUE).
-     *
-     * In case that a new username is set by this function, the password
-     * is cleared.
-     *
-     * @param share       The share that is representing the homes share
-     *
-     * @param overwrite   Overwrite user name or not
-     *
-     * @returns TRUE if user has been chosen and FALSE otherwise.
-     */
-    SMB4K_DEPRECATED bool specifyUser(const SharePtr &share, bool overwrite = true);
 
     /**
      * Return the list of users defined for a certain homes share.

@@ -75,15 +75,6 @@ Smb4KBookmarkHandler *Smb4KBookmarkHandler::self()
     return &p->instance;
 }
 
-void Smb4KBookmarkHandler::addBookmark(const SharePtr &share)
-{
-    if (share) {
-        QList<SharePtr> shares;
-        shares << share;
-        addBookmarks(shares);
-    }
-}
-
 void Smb4KBookmarkHandler::addBookmark(const BookmarkPtr &bookmark)
 {
     if (bookmark) {
@@ -115,54 +106,6 @@ void Smb4KBookmarkHandler::addBookmark(const BookmarkPtr &bookmark)
         // Add the bookmark
         //
         addBookmarks(bookmarks, false);
-    }
-}
-
-void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
-{
-    //
-    // Prepare the list of bookmarks that should be added
-    //
-    QList<BookmarkPtr> newBookmarks;
-
-    for (const SharePtr &share : list) {
-        //
-        // Printer shares cannot be bookmarked
-        //
-        if (share->isPrinter()) {
-            Smb4KNotification::cannotBookmarkPrinter(share);
-            continue;
-        }
-
-        //
-        // Process homes shares
-        //
-        if (share->isHomesShare() && !Smb4KHomesSharesHandler::self()->specifyUser(share, true)) {
-            continue;
-        }
-
-        //
-        // Check if the share has already been bookmarked and skip it if it
-        // already exists
-        //
-        BookmarkPtr knownBookmark = findBookmarkByUrl(share->isHomesShare() ? share->homeUrl() : share->url());
-
-        if (knownBookmark) {
-            Smb4KNotification::bookmarkExists(knownBookmark);
-            continue;
-        }
-
-        BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark(share.data()));
-        bookmark->setProfile(Smb4KProfileManager::self()->activeProfile());
-        newBookmarks << bookmark;
-    }
-
-    if (!newBookmarks.isEmpty()) {
-        addBookmarks(newBookmarks, false);
-
-        while (!newBookmarks.isEmpty()) {
-            newBookmarks.takeFirst().clear();
-        }
     }
 }
 

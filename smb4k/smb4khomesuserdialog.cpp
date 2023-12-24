@@ -7,26 +7,26 @@
 
 // application specific includes
 #include "smb4khomesuserdialog.h"
-#include "core/smb4ksettings.h"
 #include "core/smb4khomesshareshandler.h"
+#include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QIcon>
 #include <QDialogButtonBox>
 #include <QGridLayout>
+#include <QIcon>
+#include <QLabel>
+#include <QVBoxLayout>
 #include <QWindow>
 
 // KDE includes
-#include <KLocalizedString>
-#include <KIconLoader>
 #include <KConfigGroup>
-#include <KWindowConfig>
+#include <KIconLoader>
 #include <KLineEdit>
+#include <KLocalizedString>
+#include <KWindowConfig>
 
 Smb4KHomesUserDialog::Smb4KHomesUserDialog(QWidget *parent)
-: QDialog(parent)
+    : QDialog(parent)
 {
     setWindowTitle(i18n("Specify User"));
     setAttribute(Qt::WA_DeleteOnClose);
@@ -132,7 +132,7 @@ void Smb4KHomesUserDialog::slotHomesUserNameEntered()
     }
 }
 
-void Smb4KHomesUserDialog::slotHomesUserNameChanged(const QString& text)
+void Smb4KHomesUserDialog::slotHomesUserNameChanged(const QString &text)
 {
     m_okButton->setEnabled(!text.isEmpty());
 }
@@ -169,5 +169,3 @@ void Smb4KHomesUserDialog::slotOkClicked()
 
     accept();
 }
-
-

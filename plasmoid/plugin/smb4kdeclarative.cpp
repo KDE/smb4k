@@ -18,6 +18,7 @@
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kworkgroup.h"
 #include "smb4k/smb4kcustomsettingseditor.h"
+#include "smb4k/smb4khomesuserdialog.h"
 #include "smb4k/smb4kpassworddialog.h"
 #include "smb4k/smb4kpreviewdialog.h"
 #include "smb4k/smb4kprintdialog.h"
@@ -252,6 +253,24 @@ void Smb4KDeclarative::mountShare(Smb4KNetworkObject *object)
         SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
 
         if (share) {
+            if (share->isHomesShare()) {
+                QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog();
+                bool proceed = false;
+
+                if (homesUserDialog->setShare(share)) {
+                    // We want to get a return value here, so we use exec()
+                    if (homesUserDialog->exec() == QDialog::Accepted) {
+                        proceed = true;
+                    }
+                }
+
+                delete homesUserDialog;
+
+                if (!proceed) {
+                    return;
+                }
+            }
+
             Smb4KMounter::self()->mountShare(share);
         }
     }

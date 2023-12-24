@@ -161,7 +161,7 @@ CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const NetworkIt
     CustomSettingsPtr settings = findCustomSettings(networkItem->url());
 
     if (!settings && !exactMatch && networkItem->type() == Share) {
-        CustomSettingsPtr hostSettings = findCustomSettings(networkItem->url().adjusted(QUrl::RemovePath|QUrl::StripTrailingSlash));
+        CustomSettingsPtr hostSettings = findCustomSettings(networkItem->url().adjusted(QUrl::RemovePath | QUrl::StripTrailingSlash));
 
         if (hostSettings) {
             settings = CustomSettingsPtr(new Smb4KCustomSettings(networkItem.data()));
@@ -323,225 +323,225 @@ void Smb4KCustomSettingsManager::read()
                         if (QString::compare(xmlReader.attributes().value(QStringLiteral("type")).toString(), QStringLiteral("host"), Qt::CaseInsensitive)
                             == 0) {
                             settings->setNetworkItem(new Smb4KHost());
-                            } else {
-                                settings->setNetworkItem(new Smb4KShare());
-                            }
+                        } else {
+                            settings->setNetworkItem(new Smb4KShare());
+                        }
 
-                            while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("options"))) {
-                                xmlReader.readNext();
+                        while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("options"))) {
+                            xmlReader.readNext();
 
-                                if (xmlReader.isStartElement()) {
-                                    if (xmlReader.name() == QStringLiteral("workgroup")) {
-                                        settings->setWorkgroupName(xmlReader.readElementText());
-                                    } else if (xmlReader.name() == QStringLiteral("url")) {
-                                        QUrl url(xmlReader.readElementText());
-                                        settings->setUrl(url);
-                                    } else if (xmlReader.name() == QStringLiteral("ip")) {
-                                        settings->setIpAddress(xmlReader.readElementText());
-                                    } else if (xmlReader.name() == QStringLiteral("custom")) {
-                                        while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("custom"))) {
-                                            xmlReader.readNext();
+                            if (xmlReader.isStartElement()) {
+                                if (xmlReader.name() == QStringLiteral("workgroup")) {
+                                    settings->setWorkgroupName(xmlReader.readElementText());
+                                } else if (xmlReader.name() == QStringLiteral("url")) {
+                                    QUrl url(xmlReader.readElementText());
+                                    settings->setUrl(url);
+                                } else if (xmlReader.name() == QStringLiteral("ip")) {
+                                    settings->setIpAddress(xmlReader.readElementText());
+                                } else if (xmlReader.name() == QStringLiteral("custom")) {
+                                    while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("custom"))) {
+                                        xmlReader.readNext();
 
-                                            if (xmlReader.isStartElement()) {
-                                                if (xmlReader.name() == QStringLiteral("smb_port")) {
-                                                    bool ok = false;
-                                                    int portNumber = xmlReader.readElementText().toInt(&ok);
+                                        if (xmlReader.isStartElement()) {
+                                            if (xmlReader.name() == QStringLiteral("smb_port")) {
+                                                bool ok = false;
+                                                int portNumber = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setSmbPort(portNumber);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_smb_port")) {
-                                                    bool ok = false;
-                                                    bool useSmbPort = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    settings->setSmbPort(portNumber);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("use_smb_port")) {
+                                                bool ok = false;
+                                                bool useSmbPort = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setUseSmbPort(useSmbPort);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("kerberos")) {
-                                                    bool ok = false;
-                                                    bool useKerberos = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    settings->setUseSmbPort(useSmbPort);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("kerberos")) {
+                                                bool ok = false;
+                                                bool useKerberos = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setUseKerberos(useKerberos);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("mac_address")) {
-                                                    QString macAddress = xmlReader.readElementText();
+                                                if (ok) {
+                                                    settings->setUseKerberos(useKerberos);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("mac_address")) {
+                                                QString macAddress = xmlReader.readElementText();
 
-                                                    QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
+                                                QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
-                                                    if (expression.match(macAddress).hasMatch()) {
-                                                        settings->setMACAddress(macAddress);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("wol_send_before_first_scan")) {
-                                                    bool ok = false;
-                                                    bool send = xmlReader.readElementText().toInt(&ok);
+                                                if (expression.match(macAddress).hasMatch()) {
+                                                    settings->setMACAddress(macAddress);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("wol_send_before_first_scan")) {
+                                                bool ok = false;
+                                                bool send = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setWakeOnLanSendBeforeNetworkScan(send);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("wol_send_before_mount")) {
-                                                    bool ok = false;
-                                                    bool send = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    settings->setWakeOnLanSendBeforeNetworkScan(send);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("wol_send_before_mount")) {
+                                                bool ok = false;
+                                                bool send = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setWakeOnLanSendBeforeMount(send);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("remount")) {
-                                                    bool ok = false;
-                                                    int remount = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    settings->setWakeOnLanSendBeforeMount(send);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("remount")) {
+                                                bool ok = false;
+                                                int remount = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setRemount(remount);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_user")) {
-                                                    bool ok = false;
-                                                    bool useUser = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    settings->setRemount(remount);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("use_user")) {
+                                                bool ok = false;
+                                                bool useUser = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setUseUser(useUser);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("uid")) {
-                                                    bool ok = false;
-                                                    int uid = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    settings->setUseUser(useUser);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("uid")) {
+                                                bool ok = false;
+                                                int uid = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        KUser user((K_UID)uid);
+                                                if (ok) {
+                                                    KUser user((K_UID)uid);
 
-                                                        if (user.isValid()) {
-                                                            settings->setUser(user);
-                                                        }
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_group")) {
-                                                    bool ok = false;
-                                                    bool useGroup = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setUseGroup(useGroup);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("gid")) {
-                                                    bool ok = false;
-                                                    int gid = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        KUserGroup group((K_GID)gid);
-
-                                                        if (group.isValid()) {
-                                                            settings->setGroup(group);
-                                                        }
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_file_mode")) {
-                                                    bool ok = false;
-                                                    bool useFileMode = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setUseFileMode(useFileMode);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("file_mode")) {
-                                                    settings->setFileMode(xmlReader.readElementText());
-                                                } else if (xmlReader.name() == QStringLiteral("use_directory_mode")) {
-                                                    bool ok = false;
-                                                    bool useDirectoryMode = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setUseDirectoryMode(useDirectoryMode);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("directory_mode")) {
-                                                    settings->setDirectoryMode(xmlReader.readElementText());
-                                                } else if (xmlReader.name() == QStringLiteral("use_client_protocol_versions")) {
-                                                    bool ok = false;
-                                                    bool useClientProtocolVersions = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setUseClientProtocolVersions(useClientProtocolVersions);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("minimal_client_protocol_version")) {
-                                                    bool ok = false;
-                                                    int minimalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setMinimalClientProtocolVersion(minimalClientProtocolVersion);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("maximal_client_protocol_version")) {
-                                                    bool ok = false;
-                                                    int maximalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setMaximalClientProtocolVersion(maximalClientProtocolVersion);
+                                                    if (user.isValid()) {
+                                                        settings->setUser(user);
                                                     }
                                                 }
-                                                #if defined(Q_OS_LINUX)
-                                                else if (xmlReader.name() == QStringLiteral("cifs_unix_extensions_support")) {
-                                                    bool ok = false;
-                                                    bool cifsUnixExtensionsSupported = xmlReader.readElementText().toInt(&ok);
+                                            } else if (xmlReader.name() == QStringLiteral("use_group")) {
+                                                bool ok = false;
+                                                bool useGroup = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setCifsUnixExtensionsSupport(cifsUnixExtensionsSupported);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_filesystem_port")) {
-                                                    bool ok = false;
-                                                    bool useFilesystemPort = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    settings->setUseGroup(useGroup);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("gid")) {
+                                                bool ok = false;
+                                                int gid = xmlReader.readElementText().toInt(&ok);
 
-                                                    if (ok) {
-                                                        settings->setUseFileSystemPort(useFilesystemPort);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("filesystem_port")) {
-                                                    bool ok = false;
-                                                    int portNumber = xmlReader.readElementText().toInt(&ok);
+                                                if (ok) {
+                                                    KUserGroup group((K_GID)gid);
 
-                                                    if (ok) {
-                                                        settings->setFileSystemPort(portNumber);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_smb_mount_protocol_version")) {
-                                                    bool ok = false;
-                                                    bool useMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setUseMountProtocolVersion(useMountProtocolVersion);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("smb_mount_protocol_version")) {
-                                                    bool ok = false;
-                                                    int mountProtocolVersion = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setMountProtocolVersion(mountProtocolVersion);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_security_mode")) {
-                                                    bool ok = false;
-                                                    bool useSecurityMode = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setUseSecurityMode(useSecurityMode);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("security_mode")) {
-                                                    bool ok = false;
-                                                    int securityMode = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setSecurityMode(securityMode);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("use_write_access")) {
-                                                    bool ok = false;
-                                                    bool useWriteAccess = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setUseWriteAccess(useWriteAccess);
-                                                    }
-                                                } else if (xmlReader.name() == QStringLiteral("write_access")) {
-                                                    bool ok = false;
-                                                    int writeAccess = xmlReader.readElementText().toInt(&ok);
-
-                                                    if (ok) {
-                                                        settings->setWriteAccess(writeAccess);
+                                                    if (group.isValid()) {
+                                                        settings->setGroup(group);
                                                     }
                                                 }
-                                                #endif
+                                            } else if (xmlReader.name() == QStringLiteral("use_file_mode")) {
+                                                bool ok = false;
+                                                bool useFileMode = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setUseFileMode(useFileMode);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("file_mode")) {
+                                                settings->setFileMode(xmlReader.readElementText());
+                                            } else if (xmlReader.name() == QStringLiteral("use_directory_mode")) {
+                                                bool ok = false;
+                                                bool useDirectoryMode = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setUseDirectoryMode(useDirectoryMode);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("directory_mode")) {
+                                                settings->setDirectoryMode(xmlReader.readElementText());
+                                            } else if (xmlReader.name() == QStringLiteral("use_client_protocol_versions")) {
+                                                bool ok = false;
+                                                bool useClientProtocolVersions = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setUseClientProtocolVersions(useClientProtocolVersions);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("minimal_client_protocol_version")) {
+                                                bool ok = false;
+                                                int minimalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setMinimalClientProtocolVersion(minimalClientProtocolVersion);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("maximal_client_protocol_version")) {
+                                                bool ok = false;
+                                                int maximalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setMaximalClientProtocolVersion(maximalClientProtocolVersion);
+                                                }
                                             }
+#if defined(Q_OS_LINUX)
+                                            else if (xmlReader.name() == QStringLiteral("cifs_unix_extensions_support")) {
+                                                bool ok = false;
+                                                bool cifsUnixExtensionsSupported = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setCifsUnixExtensionsSupport(cifsUnixExtensionsSupported);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("use_filesystem_port")) {
+                                                bool ok = false;
+                                                bool useFilesystemPort = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setUseFileSystemPort(useFilesystemPort);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("filesystem_port")) {
+                                                bool ok = false;
+                                                int portNumber = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setFileSystemPort(portNumber);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("use_smb_mount_protocol_version")) {
+                                                bool ok = false;
+                                                bool useMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setUseMountProtocolVersion(useMountProtocolVersion);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("smb_mount_protocol_version")) {
+                                                bool ok = false;
+                                                int mountProtocolVersion = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setMountProtocolVersion(mountProtocolVersion);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("use_security_mode")) {
+                                                bool ok = false;
+                                                bool useSecurityMode = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setUseSecurityMode(useSecurityMode);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("security_mode")) {
+                                                bool ok = false;
+                                                int securityMode = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setSecurityMode(securityMode);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("use_write_access")) {
+                                                bool ok = false;
+                                                bool useWriteAccess = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setUseWriteAccess(useWriteAccess);
+                                                }
+                                            } else if (xmlReader.name() == QStringLiteral("write_access")) {
+                                                bool ok = false;
+                                                int writeAccess = xmlReader.readElementText().toInt(&ok);
+
+                                                if (ok) {
+                                                    settings->setWriteAccess(writeAccess);
+                                                }
+                                            }
+#endif
                                         }
                                     }
                                 }
                             }
+                        }
 
-                            d->customSettings << settings;
+                        d->customSettings << settings;
                     }
                 }
             }

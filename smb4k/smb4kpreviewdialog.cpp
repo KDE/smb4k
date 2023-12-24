@@ -8,8 +8,8 @@
 // application specific includes
 #include "smb4kpreviewdialog.h"
 #include "core/smb4kclient.h"
-#include "core/smb4khomesshareshandler.h"
 #include "core/smb4ksettings.h"
+#include "smb4khomesuserdialog.h"
 
 // Qt includes
 #include <QDialogButtonBox>
@@ -108,7 +108,19 @@ bool Smb4KPreviewDialog::setShare(SharePtr share)
     }
 
     if (share->isHomesShare()) {
-        if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true)) {
+        QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog(this);
+        bool proceed = false;
+
+        if (homesUserDialog->setShare(share)) {
+            // We want to get a return value here, so we use exec()
+            if (homesUserDialog->exec() == QDialog::Accepted) {
+                proceed = true;
+            }
+        }
+
+        delete homesUserDialog;
+
+        if (!proceed) {
             return false;
         }
     }

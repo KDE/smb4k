@@ -8,7 +8,6 @@
 // application specific includes
 #include "smb4khomesshareshandler.h"
 #include "smb4kauthinfo.h"
-#include "smb4khomesshareshandler_p.h"
 #include "smb4knotification.h"
 #include "smb4kprofilemanager.h"
 #include "smb4ksettings.h"
@@ -23,6 +22,91 @@
 
 // KDE includes
 #include <KLocalizedString>
+
+class Smb4KHomesUsers
+{
+public:
+    Smb4KHomesUsers(const SharePtr &share, const QStringList &users)
+    {
+        m_workgroupName = share->workgroupName();
+        m_url = share->url();
+        m_userList = users;
+    }
+
+    Smb4KHomesUsers(const Smb4KHomesUsers &users)
+    {
+        m_workgroupName = users.workgroupName();
+        m_url = users.url();
+        m_userList = users.userList();
+        m_profile = users.profile();
+    }
+
+    Smb4KHomesUsers()
+    {
+    }
+
+    ~Smb4KHomesUsers()
+    {
+    }
+
+    QString workgroupName() const
+    {
+        return m_workgroupName;
+    }
+
+    void setWorkgroupName(const QString &workgroupName)
+    {
+        m_workgroupName = workgroupName;
+    }
+
+    QUrl url() const
+    {
+        return m_url;
+    }
+
+    void setUrl(const QUrl &url)
+    {
+        m_url = url;
+    }
+
+    QStringList userList() const
+    {
+        return m_userList;
+    }
+
+    void setUserList(const QStringList &userList)
+    {
+        m_userList = userList;
+    }
+
+    QString profile() const
+    {
+        return m_profile;
+    }
+
+    void setProfile(const QString &profile)
+    {
+        m_profile = profile;
+    }
+
+private:
+    QString m_workgroupName;
+    QUrl m_url;
+    QStringList m_userList;
+    QString m_profile;
+};
+
+class Smb4KHomesSharesHandlerPrivate
+{
+public:
+    QList<Smb4KHomesUsers *> homesUsers;
+};
+
+class Smb4KHomesSharesHandlerStatic
+{
+public:
+    Smb4KHomesSharesHandler instance;
+};
 
 Q_GLOBAL_STATIC(Smb4KHomesSharesHandlerStatic, p);
 
@@ -52,47 +136,6 @@ Smb4KHomesSharesHandler::~Smb4KHomesSharesHandler()
 Smb4KHomesSharesHandler *Smb4KHomesSharesHandler::self()
 {
     return &p->instance;
-}
-
-bool Smb4KHomesSharesHandler::specifyUser(const SharePtr &share, bool overwrite)
-{
-    Q_ASSERT(share);
-    bool success = false;
-
-    // Avoid that the dialog is opened although the homes
-    // user name has already been defined.
-    if (share->isHomesShare() && (share->homeUrl().isEmpty() || overwrite)) {
-        QStringList users = homesUsers(share);
-
-        QPointer<Smb4KHomesUserDialog> dlg = new Smb4KHomesUserDialog(share, QApplication::activeWindow());
-        dlg->setUserNames(users);
-
-        if (dlg->exec() == QDialog::Accepted) {
-            QString userName = dlg->userName();
-            users = dlg->userNames();
-            addHomesUsers(share, users);
-
-            if (!userName.isEmpty()) {
-                // If the login names do not match, clear the password.
-                if (!share->userName().isEmpty() && QString::compare(share->userName(), userName) != 0) {
-                    share->setPassword(QString());
-                }
-
-                // Set the login name.
-                share->setUserName(userName);
-                success = true;
-            }
-
-            writeUserNames();
-        }
-
-        delete dlg;
-    } else {
-        // The user name has already been set.
-        success = true;
-    }
-
-    return success;
 }
 
 QStringList Smb4KHomesSharesHandler::homesUsers(const SharePtr &share)
@@ -191,8 +234,6 @@ void Smb4KHomesSharesHandler::readUserNames()
                                         url.setHost(xmlReader.readElementText());
                                     } else if (xmlReader.name() == QStringLiteral("workgroup")) {
                                         users->setWorkgroupName(xmlReader.readElementText());
-                                    } else if (xmlReader.name() == QStringLiteral("ip")) {
-                                        users->setHostIP(xmlReader.readElementText());
                                     } else if (xmlReader.name() == QStringLiteral("users")) {
                                         QStringList u;
 
@@ -228,8 +269,6 @@ void Smb4KHomesSharesHandler::readUserNames()
                                 if (xmlReader.isStartElement()) {
                                     if (xmlReader.name() == QStringLiteral("workgroup")) {
                                         users->setWorkgroupName(xmlReader.readElementText());
-                                    } else if (xmlReader.name() == QStringLiteral("ip")) {
-                                        users->setHostIP(xmlReader.readElementText());
                                     } else if (xmlReader.name() == QStringLiteral("users")) {
                                         QStringList u;
 
@@ -267,7 +306,7 @@ void Smb4KHomesSharesHandler::readUserNames()
 
 void Smb4KHomesSharesHandler::writeUserNames()
 {
-    // FIXME: Use IP address and workgroup at all? We really only need the URL.
+    // FIXME: Use the workgroup at all? We really only need the URL.
     QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("homes_shares.xml"));
 
     if (!d->homesUsers.isEmpty()) {
@@ -283,7 +322,6 @@ void Smb4KHomesSharesHandler::writeUserNames()
                 xmlWriter.writeAttribute(QStringLiteral("url"), users->url().toString(QUrl::RemoveUserInfo | QUrl::StripTrailingSlash));
                 xmlWriter.writeAttribute(QStringLiteral("profile"), users->profile());
                 xmlWriter.writeTextElement(QStringLiteral("workgroup"), users->workgroupName());
-                xmlWriter.writeTextElement(QStringLiteral("ip"), users->hostIP());
                 xmlWriter.writeStartElement(QStringLiteral("users"));
 
                 QStringList userList = users->userList();
