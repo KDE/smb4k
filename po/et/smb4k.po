@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -116,13 +116,13 @@ msgstr "&Seadistused"
 msgid "Main Toolbar"
 msgstr "Peamine tööriistariba"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, fuzzy, kde-format
 #| msgid "Bookmarks"
 msgid "Bookmark Shares"
 msgstr "Järjehoidjad"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "All listed shares will be bookmarked. To edit the label or group, click "
@@ -134,13 +134,13 @@ msgstr ""
 "Kõik loetletud ressursid lisatakse järjehoidjatesse. Nime või grupi "
 "muutmiseks klõpsa vajalikul järjehoidjal."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Nimi:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -289,7 +289,8 @@ msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 msgid "Set the username and password for the default login."
 msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
@@ -698,6 +699,25 @@ msgstr "Maagilise paketi saatmine enne võrgunaabruse uurimist"
 msgid "Send magic packet before mounting a share"
 msgstr "Maagilise paketi saatmine enne jagatud ressursi ühendamist"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr "Kasutaja määramine"
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr "Palun määra kasutajanimi."
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr ""
+"<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool.</"
+"qt>"
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -871,8 +891,8 @@ msgid "Comment"
 msgstr "Kommentaar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Uu&ri võrku "
@@ -958,23 +978,23 @@ msgid "&Unmount"
 msgstr "Lah&uta"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Uuri ar&vutit"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Uuri töö&gruppi"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -3643,12 +3663,6 @@ msgstr "Suurus:"
 
 #~ msgid "%1 is not a version 1.0 file."
 #~ msgstr "%1 ei ole versiooni 1.0 fail."
-
-#~ msgid "Specify User"
-#~ msgstr "Kasutaja määramine"
-
-#~ msgid "Please specify a username."
-#~ msgstr "Palun määra kasutajanimi."
 
 #~ msgid ""
 #~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "

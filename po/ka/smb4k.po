@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-11-04 06:41+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -116,12 +116,12 @@ msgstr "&მორგება"
 msgid "Main Toolbar"
 msgstr "ხელსაწყოთა მთავარი ზოლი"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, kde-format
 msgid "Bookmark Shares"
 msgstr "რჩეული გაზიარებულების ჩანიშვნა"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
@@ -130,13 +130,13 @@ msgstr ""
 "ყველა ჩამოთვლილის ზიარი სანიშნეებში დამატება. ჭდის ან კატეგორიის "
 "დასამატებლად შესაბამის რჩეულს ორჯერ დააწკაპუნეთ."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "ჭდე:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -277,7 +277,8 @@ msgstr "დააყენეთ მომხმარებელი და პ
 msgid "Set the username and password for the default login."
 msgstr "დააყეენთ მომხმარებელი და პაროლი ნაგულისხმები შესვლისთვის."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "მომხმარებელი:"
@@ -655,6 +656,22 @@ msgstr "ქსელურ მეზობლების სკანირე�
 msgid "Send magic packet before mounting a share"
 msgstr "გაზიარებულის მიმაგრებამდე ჯადოსნური პაკეტის გაგზავნა"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, fuzzy, kde-format
+#| msgid "Please enter a username and a password for the share <b>%1</b>."
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr "შეიყვანეთ მომხმარებლის სახელი და პაროლი გაზიარებულისთვის <b>%1</b>."
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -820,8 +837,8 @@ msgid "Comment"
 msgstr "კომენტარი"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "ქსელის &სკანირება"
@@ -906,23 +923,23 @@ msgid "&Unmount"
 msgstr "&მიმაგრების მოხსნა (unmount)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "&კომპიუტერში ძებნა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "სამუშაო &ჯგუფში ძებნა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"

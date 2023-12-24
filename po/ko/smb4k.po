@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -113,12 +113,12 @@ msgstr "설정(&S)"
 msgid "Main Toolbar"
 msgstr "주 도구 모음"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, kde-format
 msgid "Bookmark Shares"
 msgstr "책갈피에 등록된 공유"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
@@ -127,13 +127,13 @@ msgstr ""
 "목록에 있는 모든 공유를 책갈피에 추가합니다. 레이블이나 분류를 추가하려면 해"
 "당 책갈피 항목을 두 번 클릭하십시오."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "이름표:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -274,7 +274,8 @@ msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
 msgid "Set the username and password for the default login."
 msgstr "기본 로그인 사용자 이름과 암호를 설정하십시오."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "사용자 이름:"
@@ -652,6 +653,22 @@ msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
 msgid "Send magic packet before mounting a share"
 msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, fuzzy, kde-format
+#| msgid "Set the username and password for wallet entry %1."
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -815,8 +832,8 @@ msgid "Comment"
 msgstr "설명"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "네트워크 검색(&K)"
@@ -901,23 +918,23 @@ msgid "&Unmount"
 msgstr "마운트 해제(&U)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "컴퓨터 검색(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "작업 그룹 검색(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"

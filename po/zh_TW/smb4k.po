@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2019-04-09 23:19+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -119,25 +119,25 @@ msgstr "一般選項"
 msgid "Main Toolbar"
 msgstr "跳至共享檢視"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, fuzzy, kde-format
 msgid "Bookmark Shares"
 msgstr "書籤"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr ""
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -278,7 +278,8 @@ msgstr ""
 msgid "Set the username and password for the default login."
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr ""
@@ -652,6 +653,21 @@ msgstr ""
 msgid "Send magic packet before mounting a share"
 msgstr ""
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, kde-format
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr ""
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, fuzzy, kde-format
 msgid "Dock Widgets"
@@ -820,8 +836,8 @@ msgid "Comment"
 msgstr "註解"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "掃描網路(&R)"
@@ -906,23 +922,23 @@ msgid "&Unmount"
 msgstr "卸載(&U)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "掃描電腦(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "掃描工作群組(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"

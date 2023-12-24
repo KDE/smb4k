@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2023-11-04 11:45+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -130,12 +130,12 @@ msgstr "Preferencia&s"
 msgid "Main Toolbar"
 msgstr "Barra de herramientas principal"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, kde-format
 msgid "Bookmark Shares"
 msgstr "Destacar recursos compartidos"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
@@ -144,13 +144,13 @@ msgstr ""
 "Mostrar todos los recursos compartidos con marcador. Para añadir una "
 "etiqueta o categoría, haga doble clic en la entrada de marcador respectiva."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -294,7 +294,8 @@ msgid "Set the username and password for the default login."
 msgstr ""
 "Establecer el nombre de usuario y contraseña para el acceso por omisión."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Nombre de usuario"
@@ -675,6 +676,24 @@ msgstr "Enviar paquete «magic» antes de escanear el entorno de red"
 msgid "Send magic packet before mounting a share"
 msgstr "Enviar paquete «magic» antes de montar un recurso compartido"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr ""
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, fuzzy, kde-format
+#| msgid "Please enter a username and a password for the share <b>%1</b>."
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr ""
+"Introduzca un nombre de usuario y una contraseña para el recurso compartido "
+"<b>%1</b>."
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -840,8 +859,8 @@ msgid "Comment"
 msgstr "Comentario"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Explorar &red"
@@ -926,23 +945,23 @@ msgid "&Unmount"
 msgstr "&Desmontar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Explo&rar equipo"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Explo&rar grupo de trabajo"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"

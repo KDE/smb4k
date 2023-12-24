@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
-"PO-Revision-Date: 2023-12-18 10:49+0100\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"PO-Revision-Date: 2023-12-23 10:39+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -119,12 +119,12 @@ msgstr "A&rranjament"
 msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, kde-format
 msgid "Bookmark Shares"
 msgstr "Adreces d'interès de les comparticions"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
@@ -134,13 +134,13 @@ msgstr ""
 "afegir una etiqueta o categoria, feu un clic doble en l'entrada de l'adreça "
 "d'interès respectiva."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -282,7 +282,8 @@ msgid "Set the username and password for the default login."
 msgstr ""
 "Defineix el nom d'usuari i la contrasenya de la connexió predeterminada."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Nom d'usuari:"
@@ -659,6 +660,21 @@ msgstr "Envia un paquet màgic abans d'escanejar el veïnatge de xarxa"
 msgid "Send magic packet before mounting a share"
 msgstr "Envia un paquet màgic abans de muntar una compartició"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr "Indiqueu l'usuari"
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr "Especifiqueu un nom d'usuari."
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, kde-format
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr "Especifiqueu un nom d'usuari per a la compartició<br><b>%1</b>."
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -824,8 +840,8 @@ msgid "Comment"
 msgstr "Comentari"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Escaneja la xa&rxa"
@@ -910,23 +926,23 @@ msgid "&Unmount"
 msgstr "Desm&unta"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Escaneja els o&rdinadors"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Escaneja els g&rups de treball"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -1227,27 +1243,3 @@ msgstr "%1 lliure de %2 (usat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Pàgina 1: Muntatge"
-
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Pàgina 2: Muntatge"
-
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Pàgina 3: Muntatge"
-
-#~ msgid "Page 4: Browsing"
-#~ msgstr "Pàgina 4: Exploració"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Configuració de l'activació per LAN (Wake-On-LAN)"
-
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Pàgina 5: Activació per LAN (Wake-On-LAN)"
-
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Pàgina 2: Exploració"
-
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Pàgina 3: Activació per LAN (Wake-On-LAN)"

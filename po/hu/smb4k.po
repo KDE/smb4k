@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-22 00:41+0000\n"
+"POT-Creation-Date: 2023-12-23 00:42+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -125,13 +125,13 @@ msgstr "&Beállítások"
 msgid "Main Toolbar"
 msgstr "Fő eszköztár"
 
-#: smb4k/smb4kbookmarkdialog.cpp:31
+#: smb4k/smb4kbookmarkdialog.cpp:32
 #, fuzzy, kde-format
 #| msgid "Bookmark Editor"
 msgid "Bookmark Shares"
 msgstr "Könyvjelzőszerkesztő"
 
-#: smb4k/smb4kbookmarkdialog.cpp:48
+#: smb4k/smb4kbookmarkdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "All listed shares will be bookmarked. To edit the label or group, click "
@@ -143,13 +143,13 @@ msgstr ""
 "Az összes listázott megosztás könyvjelzőzve lesz. A címke vagy csoport "
 "módosításához kattintson a megfelelő könyvjelző bejegyzésre."
 
-#: smb4k/smb4kbookmarkdialog.cpp:73 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
 msgstr "Címke:"
 
-#: smb4k/smb4kbookmarkdialog.cpp:80 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
@@ -298,7 +298,8 @@ msgid "Set the username and password for the default login."
 msgstr ""
 "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> géphez.</qt>"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
+#: smb4k/smb4ktooltip.cpp:233
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
@@ -704,6 +705,25 @@ msgstr "Varázscsomag küldése a hálózati mappa vizsgálata előtt"
 msgid "Send magic packet before mounting a share"
 msgstr "Varázscsomag küldése a megosztás csatolása előtt"
 
+#: smb4k/smb4khomesuserdialog.cpp:31
+#, kde-format
+msgid "Specify User"
+msgstr "Adja meg a felhasználót"
+
+#: smb4k/smb4khomesuserdialog.cpp:47
+#, kde-format
+msgid "Please specify a username."
+msgstr "Adjon meg egy felhasználónevet."
+
+#: smb4k/smb4khomesuserdialog.cpp:121
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr ""
+"<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> megosztáshoz.</"
+"qt>"
+
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
 msgid "Dock Widgets"
@@ -882,8 +902,8 @@ msgid "Comment"
 msgstr "Megjegyzés"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Hálózat &pásztázása"
@@ -969,23 +989,23 @@ msgid "&Unmount"
 msgstr "&Leválasztás"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Számí&tógép pásztázása"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Munkacsopo&rt pásztázása"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -3010,12 +3030,6 @@ msgstr "Méret"
 
 #~ msgid "%1 is not a version 1.0 file."
 #~ msgstr "%1 nem 1.0-s verziójú fájl."
-
-#~ msgid "Specify User"
-#~ msgstr "Adja meg a felhasználót"
-
-#~ msgid "Please specify a username."
-#~ msgstr "Adjon meg egy felhasználónevet."
 
 #~ msgid ""
 #~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "

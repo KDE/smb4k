@@ -94,33 +94,3 @@ msgstr "Desmunta"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Desmunta totes les comparticions"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Edita les adreces d'interès"
-
-#~ msgid "OK"
-#~ msgstr "D'acord"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancel·la"
-
-#~ msgid "Clear"
-#~ msgstr "Neteja"
-
-#~ msgid "Label:"
-#~ msgstr "Etiqueta:"
-
-#~ msgid "Login:"
-#~ msgstr "Usuari:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Adreça IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nom del grup:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Adreces d'interès de nivell superior"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Suprimeix l'adreça d'interès"
