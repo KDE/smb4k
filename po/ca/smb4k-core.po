@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-02 12:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2014,8 +2014,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 a %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "El format de %1 no està admès."
@@ -2049,28 +2049,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb el Zeroconf."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Indiqueu l'usuari"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-"Si us plau, especifiqueu un nom d'usuari per a la compartició<br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Usuari:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Neteja la llista"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2079,7 +2058,7 @@ msgstr ""
 "<p>La compartició <b>%1</b> està muntada a <br><b>%2</b> i és propietat de "
 "l'usuari <b>%3</b>.</p<p>Esteu segur que la voleu desmuntar?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartició d'aliens"
@@ -3450,3 +3429,17 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
+
+#~ msgid "Specify User"
+#~ msgstr "Indiqueu l'usuari"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr ""
+#~ "Si us plau, especifiqueu un nom d'usuari per a la compartició<br><b>%1</"
+#~ "b>."
+
+#~ msgid "User:"
+#~ msgstr "Usuari:"
+
+#~ msgid "Clear List"
+#~ msgstr "Neteja la llista"

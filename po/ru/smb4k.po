@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-11-17 12:32+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -168,7 +168,7 @@ msgid "&Edit Bookmarks"
 msgstr "&Изменить закладки..."
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
@@ -607,13 +607,13 @@ msgstr "Пользовательские параметры"
 msgid "No network item was set."
 msgstr "Объект сети"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:115
+#: smb4k/smb4kcustomsettingseditor.cpp:113
 #, fuzzy, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr "Не удалось получить просмотр."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:131
+#: smb4k/smb4kcustomsettingseditor.cpp:147
 #, fuzzy, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Не удалось получить просмотр."
@@ -852,111 +852,111 @@ msgstr "IP-адрес"
 msgid "Comment"
 msgstr "Комментарий"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:102
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "&Сканировать сеть"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:104
 #, kde-format
 msgid "&Abort"
 msgstr "&Остановить"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:116
 #, kde-format
 msgid "&Search"
 msgstr "&Поиск"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:140
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Добавить &пользовательские параметры"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
 
 # BUGME: ellipsis at the end of this string? --aspotashev
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Откр&ыть диалог подключения"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:163
 #, kde-format
 msgid "Ctrl+O"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:176
 #, kde-format
 msgid "Au&thentication"
 msgstr "&Аутентификация"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:182
 #, kde-format
 msgid "Ctrl+T"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:187
 #, kde-format
 msgid "Pre&view"
 msgstr "П&редварительный просмотр"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+V"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "&Print File"
 msgstr "На&печатать файл"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+P"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "&Mount"
 msgstr "По&дключить"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
 #: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "Откл&ючить"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:950
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "С&канировать компьютер"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Ск&анировать рабочую группу"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:952
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -1022,7 +1022,7 @@ msgstr "Отменить"
 msgid "Up"
 msgstr "Вверх"
 
-#: smb4k/smb4kpreviewdialog.cpp:118
+#: smb4k/smb4kpreviewdialog.cpp:130
 #, fuzzy, kde-format
 msgid "Preview of %1"
 msgstr "Предпросмотр"

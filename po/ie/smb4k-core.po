@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2022-11-10 12:52+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -1670,8 +1670,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 a %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, fuzzy, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Formate de %1"
@@ -1702,34 +1702,14 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4khomesshareshandler_p.cpp:112
-#, fuzzy, kde-format
-msgid "Specify User"
-msgstr "Usator"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Usator:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, fuzzy, kde-format
-msgid "Clear List"
-msgstr "Vacuar li liste"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, fuzzy, kde-format
 msgid "Foreign Share"
 msgstr "Foren"
@@ -2953,6 +2933,17 @@ msgstr "Orígine"
 #, kde-format
 msgid "Destination"
 msgstr "Destination"
+
+#, fuzzy
+#~ msgid "Specify User"
+#~ msgstr "Usator"
+
+#~ msgid "User:"
+#~ msgstr "Usator:"
+
+#, fuzzy
+#~ msgid "Clear List"
+#~ msgstr "Vacuar li liste"
 
 #, fuzzy
 #~ msgid "Use profile migration assistant"

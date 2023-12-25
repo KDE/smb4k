@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-06 12:05+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1987,8 +1987,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 %2(e)an"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1(r)en formatua ez da onartzen."
@@ -2021,27 +2021,7 @@ msgstr "«Zeroconf» euskarria ez dago erabilgarri KDEren bertsio honetan."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "«Zeroconf»ekin errore ezezagun bat gertatu da."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Zehaztu erabiltzailea"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Zehaztu ondoko partekatzerako erabiltzaile-izen bat<br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Erabiltzailea:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Garbitu zerrenda"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2050,7 +2030,7 @@ msgstr ""
 "<p><b>%1</b> partekatzea <br><b>%2</b>(e)an muntatuta dago eta jabea <b>%3</"
 "b> erabiltzailea du.</p><p>Benetan desmuntatu nahi duzu?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partekatze arrotza"
@@ -3418,6 +3398,18 @@ msgstr "Sorburua"
 #, kde-format
 msgid "Destination"
 msgstr "Jomuga"
+
+#~ msgid "Specify User"
+#~ msgstr "Zehaztu erabiltzailea"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Zehaztu ondoko partekatzerako erabiltzaile-izen bat<br><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Erabiltzailea:"
+
+#~ msgid "Clear List"
+#~ msgstr "Garbitu zerrenda"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""

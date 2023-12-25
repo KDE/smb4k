@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-09-06 19:19+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1946,8 +1946,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 på %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Formatet på %1 stöds inte."
@@ -1979,27 +1979,7 @@ msgstr "Zeroconf-stöd är inte tillgängligt i den här versionen av KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ett okänt fel uppstod med Zeroconf."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Definiera användaren"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Ange ett användarnamn för den delade resursen<br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Användare:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Rensa lista"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2008,7 +1988,7 @@ msgstr ""
 "<p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och ägs av "
 "användaren <b>%3</b>.</p<p>Vill du verkligen avmontera den?</p>>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Främmande delad resurs"
@@ -3368,6 +3348,18 @@ msgstr "Källa"
 #, kde-format
 msgid "Destination"
 msgstr "Mål"
+
+#~ msgid "Specify User"
+#~ msgstr "Definiera användaren"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Ange ett användarnamn för den delade resursen<br><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Användare:"
+
+#~ msgid "Clear List"
+#~ msgstr "Rensa lista"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""

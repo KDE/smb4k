@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1958,8 +1958,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 på %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1s format er ikke understøttet."
@@ -1991,27 +1991,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Der skete en godkendelses fejl."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Angiv bruger"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Angiv et brugernavn til ressourcen <br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Bruger:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Ryd listen"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2023,7 +2003,7 @@ msgstr ""
 "<qt><p>Ressourcen <b>%1</b> er monteret i <br><b>%2</b> og ejes af brugeren "
 "<b>%3</b>.</p><p>Vil du virkelig afmontere den?</p></qt>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Fremmed ressource"
@@ -3398,6 +3378,18 @@ msgstr "Kilde"
 #, kde-format
 msgid "Destination"
 msgstr "Destination"
+
+#~ msgid "Specify User"
+#~ msgstr "Angiv bruger"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Angiv et brugernavn til ressourcen <br><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Bruger:"
+
+#~ msgid "Clear List"
+#~ msgstr "Ryd listen"
 
 #, fuzzy
 #~| msgid "Looking for workgroups and domains..."

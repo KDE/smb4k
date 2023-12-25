@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-23 08:06+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
-"%100<=4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Generator: Poedit 3.4.1\n"
 
 #, kde-format
@@ -156,7 +156,7 @@ msgid "&Edit Bookmarks"
 msgstr "Uredi zaznamke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
@@ -594,7 +594,7 @@ msgstr "Urejevalnik nastavitev po meri"
 msgid "No network item was set."
 msgstr "Ni določenega predmeta mreže."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:115
+#: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -602,7 +602,7 @@ msgstr ""
 "Določite nastavitve po meri za gostitelja <b>%1</b> in vse vire v skupni "
 "rab, ki jih ponuja."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:131
+#: smb4k/smb4kcustomsettingseditor.cpp:147
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Določite nastavitve po meri za skupni vir <b>%1</b>."
@@ -838,110 +838,110 @@ msgstr "IP naslov"
 msgid "Comment"
 msgstr "Komentar"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:102
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Preišči omrežje"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:104
 #, kde-format
 msgid "&Abort"
 msgstr "Prekliči"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:116
 #, kde-format
 msgid "&Search"
 msgstr "Išči"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:140
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Dodaj nastavitve po meri"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Odpri pogovor o priklopu"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:163
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:176
 #, kde-format
 msgid "Au&thentication"
 msgstr "Overjanje"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:182
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:187
 #, kde-format
 msgid "Pre&view"
 msgstr "Predogled"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "&Print File"
 msgstr "Tiskaj datoteko"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "&Mount"
 msgstr "Priklopi"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
 #: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "Odklopi"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:950
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Preišči računalnik"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Preišči delovno skupino"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:952
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -1007,7 +1007,7 @@ msgstr "Prekini"
 msgid "Up"
 msgstr "Gor"
 
-#: smb4k/smb4kpreviewdialog.cpp:118
+#: smb4k/smb4kpreviewdialog.cpp:130
 #, kde-format
 msgid "Preview of %1"
 msgstr "Predogled %1"

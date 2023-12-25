@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-02 11:34+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -2007,8 +2007,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 en %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "El formato de %1 no está permitido."
@@ -2041,29 +2041,7 @@ msgstr "Zeroconf no está disponible en esta versión de KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ha ocurrido un error desconocido en Zeroconf."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Especifique el usuario"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-"Por favor, indique un nombre de usuario para el recurso compartido<br><b>%1</"
-"b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Usuario:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Borrar lista"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2072,7 +2050,7 @@ msgstr ""
 "<p>El recurso <b>%1</b> está montado en <br><b>%2</b> y es propiedad del "
 "usuario <b>%3</b>.</p><p>¿Realmente desea desmontarlo?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Recurso compartido externo"
@@ -3455,3 +3433,17 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#~ msgid "Specify User"
+#~ msgstr "Especifique el usuario"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr ""
+#~ "Por favor, indique un nombre de usuario para el recurso compartido<br><b>"
+#~ "%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Usuario:"
+
+#~ msgid "Clear List"
+#~ msgstr "Borrar lista"

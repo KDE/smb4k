@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2021-07-09 10:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2018,8 +2018,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 στο %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Ο τύπος αποθήκευσης %1 δεν υποστηρίζεται."
@@ -2050,27 +2050,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Καθορισμός χρήστη"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Καθορίστε ένα όνομα χρήστη για τον κοινό πόρο<br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Χρήστης:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Καθαρισμός λίστας"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2083,7 +2063,7 @@ msgstr ""
 "κάτοχο τον χρήστη <b>%3</b>.</p><p>Θέλετ πράγματι να τον αποπροσαρτήσετε;</"
 "p></qt>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Ξένος κοινός πόρος"
@@ -3465,6 +3445,18 @@ msgstr "Πηγή"
 #, kde-format
 msgid "Destination"
 msgstr "Προορισμός"
+
+#~ msgid "Specify User"
+#~ msgstr "Καθορισμός χρήστη"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Καθορίστε ένα όνομα χρήστη για τον κοινό πόρο<br><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Χρήστης:"
+
+#~ msgid "Clear List"
+#~ msgstr "Καθαρισμός λίστας"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""

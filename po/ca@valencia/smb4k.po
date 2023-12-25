@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-23 10:39+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -162,7 +162,7 @@ msgid "&Edit Bookmarks"
 msgstr "&Edita les adreces d'interés"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
@@ -596,7 +596,7 @@ msgstr "Editor de configuració personalitzada"
 msgid "No network item was set."
 msgstr "No s'ha establit cap element de xarxa."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:115
+#: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -604,7 +604,7 @@ msgstr ""
 "Definix la configuració personalitzada per a l'amfitrió <b>%1</b> i totes "
 "les comparticions que proporciona."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:131
+#: smb4k/smb4kcustomsettingseditor.cpp:147
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definix la configuració personalitzada per a la compartició <b>%1</b>."
@@ -838,110 +838,110 @@ msgstr "Adreça IP"
 msgid "Comment"
 msgstr "Comentari"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:102
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Escaneja la xa&rxa"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:104
 #, kde-format
 msgid "&Abort"
 msgstr "&Interromp"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:116
 #, kde-format
 msgid "&Search"
 msgstr "Bu&sca"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:140
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Afig una &configuració personalitzada"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "O&bri el diàleg de muntatge"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:163
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:176
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&tenticació"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:182
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:187
 #, kde-format
 msgid "Pre&view"
 msgstr "&Vista prèvia"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "&Print File"
 msgstr "Im&primix el fitxer"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "&Mount"
 msgstr "&Munta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
 #: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "Desm&unta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:950
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Escaneja els o&rdinadors"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Escaneja els g&rups de treball"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:952
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -1009,7 +1009,7 @@ msgstr "Interromp"
 msgid "Up"
 msgstr "Amunt"
 
-#: smb4k/smb4kpreviewdialog.cpp:118
+#: smb4k/smb4kpreviewdialog.cpp:130
 #, kde-format
 msgid "Preview of %1"
 msgstr "Vista prèvia de %1"

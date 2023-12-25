@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-10-23 15:13+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -158,7 +158,7 @@ msgid "&Edit Bookmarks"
 msgstr "&Muokkaa kirjanmerkkejä"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
@@ -597,13 +597,13 @@ msgstr "Oma asetusmuokkain"
 msgid "No network item was set."
 msgstr "Verkkotietuetta ei asetettu."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:115
+#: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr "Mukauta koneen <b>%1</b> ja sen tarjoamien jakojen asetuksia."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:131
+#: smb4k/smb4kcustomsettingseditor.cpp:147
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Mukauta jaon <b>%1</b> asetuksia."
@@ -840,110 +840,110 @@ msgstr "IP-osoite"
 msgid "Comment"
 msgstr "Kommentti"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:102
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "&Etsi verkosta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:104
 #, kde-format
 msgid "&Abort"
 msgstr "&Keskeytä"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:116
 #, kde-format
 msgid "&Search"
 msgstr "&Etsi"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:140
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Lisää &mukautetut valinnat"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Avaa liittämisikkuna"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:163
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:176
 #, kde-format
 msgid "Au&thentication"
 msgstr "&Tunnistautuminen"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:182
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:187
 #, kde-format
 msgid "Pre&view"
 msgstr "&Esikatselu"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "&Print File"
 msgstr "T&ulosta tiedosto"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "&Mount"
 msgstr "Liitä &järjestelmään"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
 #: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "&Irrota"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:931
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:950
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "T&utki tietokone"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Tutki työ&ryhmä"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:933
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:952
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -1011,7 +1011,7 @@ msgstr "Keskeytä"
 msgid "Up"
 msgstr "Ylemmäs"
 
-#: smb4k/smb4kpreviewdialog.cpp:118
+#: smb4k/smb4kpreviewdialog.cpp:130
 #, kde-format
 msgid "Preview of %1"
 msgstr "%1 – esikatselu"

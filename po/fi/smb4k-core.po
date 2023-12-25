@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-10-23 15:15+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1973,8 +1973,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 koneella %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Muotoa ei tueta: %1."
@@ -2005,27 +2005,7 @@ msgstr "Zeroconf-tuki ei ole käytettävissä tässä KDE-versiossa."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconfissa tapahtui tuntematon virhe."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Anna käyttäjätunnus"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Anna käyttäjätunnus jaolle<br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Käyttäjä:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Tyhjennä luettelo"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2034,7 +2014,7 @@ msgstr ""
 "<p>Jako <b>%1</b> on liitetty kansioon<br><b>%2</b>, ja sen omistaa <b>%3</"
 "b>.</p><p>Haluatko varmasti irrottaa sen?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Vieras jako"
@@ -3408,6 +3388,18 @@ msgstr "Lähde"
 #, kde-format
 msgid "Destination"
 msgstr "Kohde"
+
+#~ msgid "Specify User"
+#~ msgstr "Anna käyttäjätunnus"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Anna käyttäjätunnus jaolle<br><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Käyttäjä:"
+
+#~ msgid "Clear List"
+#~ msgstr "Tyhjennä luettelo"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""

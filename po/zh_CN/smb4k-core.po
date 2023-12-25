@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-23 08:02\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1838,8 +1838,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "不支持 %1 格式。"
@@ -1870,27 +1870,7 @@ msgstr "此版本的 KDE 软件不提供 Zeroconf 支持。"
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf 发生未知错误。"
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "指定用户"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "请为共享 <b>%1</b><br>指定一个用户名。"
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "用户名："
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "清除列表"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1899,7 +1879,7 @@ msgstr ""
 "<p>共享 <b>%1</b> 已挂载到 <br><b>%2</b>，所有者用户为 <b>%3</b>。</p><p>您确"
 "定要卸载它吗？</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "外部共享"
@@ -3185,3 +3165,15 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
+
+#~ msgid "Specify User"
+#~ msgstr "指定用户"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "请为共享 <b>%1</b><br>指定一个用户名。"
+
+#~ msgid "User:"
+#~ msgstr "用户名："
+
+#~ msgid "Clear List"
+#~ msgstr "清除列表"

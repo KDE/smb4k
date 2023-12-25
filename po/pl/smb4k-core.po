@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-10-14 11:40+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1959,8 +1959,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 na %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Format %1 jest nieobsługiwany."
@@ -1993,27 +1993,7 @@ msgstr "Obsługa Zeroconf jest niedostępna w tej wersji KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Wystąpił nieznany błąd z Zeroconf."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Podaj użytkownika"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Podaj nazwę użytkownika dla zasobu <br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Użytkownik:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Wyczyść listę"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2022,7 +2002,7 @@ msgstr ""
 "<p>Zasób <b>%1</b> jest podpięty w <br><b>%2</b> i należy do użytkownika <b>"
 "%3</b>.</p><p>Czy na pewno chcesz go odpiąć?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Obcy zasób"
@@ -3381,6 +3361,18 @@ msgstr "Źródło"
 #, kde-format
 msgid "Destination"
 msgstr "Cel"
+
+#~ msgid "Specify User"
+#~ msgstr "Podaj użytkownika"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Podaj nazwę użytkownika dla zasobu <br><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Użytkownik:"
+
+#~ msgid "Clear List"
+#~ msgstr "Wyczyść listę"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""
