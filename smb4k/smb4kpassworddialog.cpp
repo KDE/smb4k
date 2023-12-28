@@ -49,9 +49,9 @@ bool Smb4KPasswordDialog::setNetworkItem(const NetworkItemPtr &networkItem)
             SharePtr share = m_networkItem.staticCast<Smb4KShare>();
 
             if (share) {
-                if (share->isHomesShare()) {
-                    setPrompt(i18n("Please enter a username and a password for the share <b>%1</b>.", share->displayString(true)));
+                setPrompt(i18n("Please enter a username and a password for the share <b>%1</b>.", share->displayString()));
 
+                if (share->isHomesShare()) {
                     QStringList homesUsers = Smb4KHomesSharesHandler::self()->homesUsers(share);
                     QMap<QString, QString> knownLogins;
 
@@ -69,8 +69,6 @@ bool Smb4KPasswordDialog::setNetworkItem(const NetworkItemPtr &networkItem)
                     setKnownLogins(knownLogins);
                 } else {
                     Smb4KWalletManager::self()->readLoginCredentials(share);
-
-                    setPrompt(i18n("Please enter a username and a password for the share <b>%1</b>.", share->displayString()));
                     setUsername(share->userName());
                     setPassword(share->password());
                 }
