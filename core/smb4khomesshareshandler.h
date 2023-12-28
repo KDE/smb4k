@@ -12,7 +12,6 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QDialog>
 #include <QList>
 #include <QObject>
 #include <QScopedPointer>

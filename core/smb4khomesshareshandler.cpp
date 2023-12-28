@@ -7,16 +7,13 @@
 
 // application specific includes
 #include "smb4khomesshareshandler.h"
-#include "smb4kauthinfo.h"
 #include "smb4knotification.h"
 #include "smb4kprofilemanager.h"
 #include "smb4ksettings.h"
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QApplication>
 #include <QFile>
-#include <QPointer>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 
