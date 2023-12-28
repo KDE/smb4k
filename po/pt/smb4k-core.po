@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-03-06 15:55+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2000,8 +2000,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 em %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "O formato do %1 não é suportado."
@@ -2034,27 +2034,7 @@ msgstr "O suporte para Zeroconf não está disponível nesta versão do KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ocorreu um erro desconhecido com o Zeroconf."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Indicar o Utilizador"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Indique por favor um nome de utilizador para a partilha<br/><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Utilizador:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Limpar a Lista"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2063,7 +2043,7 @@ msgstr ""
 "<p>A partilha <b>%1</b> está montada em <br><b>%2</b> e pertence ao "
 "utilizador <b>%3</b>.</p><p>Deseja realmente desmontá-la?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partilha de Terceiros"
@@ -3431,6 +3411,19 @@ msgstr "Origem"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#~ msgid "Specify User"
+#~ msgstr "Indicar o Utilizador"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr ""
+#~ "Indique por favor um nome de utilizador para a partilha<br/><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Utilizador:"
+
+#~ msgid "Clear List"
+#~ msgstr "Limpar a Lista"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""

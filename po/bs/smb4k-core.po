@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -1961,8 +1961,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Format %1 nije podržan."
@@ -1995,28 +1995,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Izaberite korisnika"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, fuzzy, kde-format
-#| msgid "Please specify a username for share <b>%1</b>."
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Molimo izaberite korisničko ime za dijeljenje <b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Korisnik:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Očisti listu"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2029,7 +2008,7 @@ msgstr ""
 "strane korisnika <b>%3</b>.</p><p>Da li sigurno želite da je razmjestite?</"
 "p></qt>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Strana razmjena"
@@ -3401,6 +3380,20 @@ msgstr "Izvor"
 #, kde-format
 msgid "Destination"
 msgstr "Odredište"
+
+#~ msgid "Specify User"
+#~ msgstr "Izaberite korisnika"
+
+#, fuzzy
+#~| msgid "Please specify a username for share <b>%1</b>."
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Molimo izaberite korisničko ime za dijeljenje <b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Korisnik:"
+
+#~ msgid "Clear List"
+#~ msgstr "Očisti listu"
 
 #~ msgid "Use profile migration assistant"
 #~ msgstr "Koristi pomoćnika za prelaske profila"

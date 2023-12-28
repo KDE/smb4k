@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-02 09:29+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2017,8 +2017,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Формат %1 не підтримується."
@@ -2051,27 +2051,7 @@ msgstr "У цій версії KDE підтримка Zeroconf є недосту
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Невідома помилка, яку пов'язано із Zeroconf."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Вказати користувача"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Будь ласка, вкажіть ім’я користувача спільного ресурсу<br><b>%1</b>."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Користувач:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Спорожнити список"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2080,7 +2060,7 @@ msgstr ""
 "<p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
 "користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Сторонній ресурс"
@@ -3479,6 +3459,19 @@ msgstr "Джерело"
 #, kde-format
 msgid "Destination"
 msgstr "Призначення"
+
+#~ msgid "Specify User"
+#~ msgstr "Вказати користувача"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr ""
+#~ "Будь ласка, вкажіть ім’я користувача спільного ресурсу<br><b>%1</b>."
+
+#~ msgid "User:"
+#~ msgstr "Користувач:"
+
+#~ msgid "Clear List"
+#~ msgstr "Спорожнити список"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""

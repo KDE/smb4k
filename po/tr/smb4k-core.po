@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2023-12-02 14:23+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1954,8 +1954,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%2 üzerinde %1"
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 biçimi desteklenmiyor."
@@ -1988,27 +1988,7 @@ msgstr "Zeroconf desteği, KDE'nin bu sürümünde kullanılabilir değil."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf ile bilinmeyen bir hata oluştu."
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Kullanıcıyı Belirtin"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, kde-format
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı belirtin."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Kullanıcı:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Listeyi Temizle"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2018,7 +1998,7 @@ msgstr ""
 "bağlanıyor.</p><p>Paylaşımın bağlantısını gerçekten kesmek istiyor musunuz?</"
 "p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
 msgstr "Yabancı Paylaşım"
@@ -3382,6 +3362,18 @@ msgstr "Kaynak"
 #, kde-format
 msgid "Destination"
 msgstr "Hedef"
+
+#~ msgid "Specify User"
+#~ msgstr "Kullanıcıyı Belirtin"
+
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı belirtin."
+
+#~ msgid "User:"
+#~ msgstr "Kullanıcı:"
+
+#~ msgid "Clear List"
+#~ msgstr "Listeyi Temizle"
 
 #~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 #~ msgstr ""

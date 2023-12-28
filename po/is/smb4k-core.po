@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-23 00:42+0000\n"
+"POT-Creation-Date: 2023-12-25 00:41+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -1695,8 +1695,8 @@ msgstr ""
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:322 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:167
+#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
+#: smb4khomesshareshandler.cpp:210
 #, fuzzy, kde-format
 #| msgid "The net command '%1' is not supported by Smb4K."
 msgid "The format of %1 is not supported."
@@ -1728,35 +1728,14 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4khomesshareshandler_p.cpp:112
-#, kde-format
-msgid "Specify User"
-msgstr "Tilgreina notanda"
-
-#: smb4khomesshareshandler_p.cpp:160
-#, fuzzy, kde-format
-#| msgid "Please specify a user name."
-msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Vinsamlega tilgreindu notandanafn."
-
-#: smb4khomesshareshandler_p.cpp:174
-#, kde-format
-msgid "User:"
-msgstr "Notandi:"
-
-#: smb4khomesshareshandler_p.cpp:184
-#, kde-format
-msgid "Clear List"
-msgstr "Hreinsa lista"
-
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:769
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:774
 #, fuzzy, kde-format
 #| msgid "Mount Share"
 msgid "Foreign Share"
@@ -2998,6 +2977,20 @@ msgstr "Upphaf:"
 #| msgid "Destination:"
 msgid "Destination"
 msgstr "Áfangastaður:"
+
+#~ msgid "Specify User"
+#~ msgstr "Tilgreina notanda"
+
+#, fuzzy
+#~| msgid "Please specify a user name."
+#~ msgid "Please specify a username for share<br><b>%1</b>."
+#~ msgstr "Vinsamlega tilgreindu notandanafn."
+
+#~ msgid "User:"
+#~ msgstr "Notandi:"
+
+#~ msgid "Clear List"
+#~ msgstr "Hreinsa lista"
 
 #, fuzzy
 #~| msgid "Looking for workgroups and domains..."
