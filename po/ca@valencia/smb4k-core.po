@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2023-12-02 12:50+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2016,7 +2016,7 @@ msgid "%1 on %2"
 msgstr "%1 a %2"
 
 #: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:210
+#: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "El format de %1 no està admés."
