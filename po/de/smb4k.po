@@ -673,12 +673,14 @@ msgid "Send magic packet before mounting a share"
 msgstr "„Magisches“ Datenpaket vor dem Einhängen einer Freigabe senden"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Specify User"
 msgid "Specify User"
 msgstr "Benutzer angeben"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Please specify a username."
 msgid "Please specify a username."
 msgstr "Bitte geben Sie einen Benutzernamen an."
 
