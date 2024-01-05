@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-29 00:41+0000\n"
-"PO-Revision-Date: 2024-01-03 14:17+0100\n"
+"PO-Revision-Date: 2024-01-04 17:19+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -439,7 +439,7 @@ msgstr "Wake-On-LAN"
 #: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
-msgstr "s"
+msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:218
 #, kde-format
