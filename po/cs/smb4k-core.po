@@ -2931,12 +2931,3 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cíl"
-
-#~ msgid "Specify User"
-#~ msgstr "Zadat uživatele"
-
-#~ msgid "User:"
-#~ msgstr "Uživatel:"
-
-#~ msgid "Clear List"
-#~ msgstr "Smazat seznam"
