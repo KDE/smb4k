@@ -56,11 +56,7 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     addAction(QStringLiteral("bookmarks_menu"), new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, this));
     addAction(QStringLiteral("profiles_menu"), new Smb4KProfilesMenu(this));
     addAction(QStringLiteral("mount_action"), mountAction);
-#if KNOTIFICATIONS_VERSION >= QT_VERSION_CHECK(5, 240, 0)
-    addAction(QStringLiteral("config_action"), KStandardAction::preferences(associatedWindow(), SLOT(slotConfigDialog()), this));
-#else
-    addAction(QStringLiteral("config_action"), KStandardAction::preferences(associatedWidget(), SLOT(slotConfigDialog()), this));
-#endif
+    addAction(QStringLiteral("config_action"), KStandardAction::preferences(parent, SLOT(slotConfigDialog()), this));
 
     contextMenu()->addAction(action(QStringLiteral("shares_menu")));
     contextMenu()->addAction(action(QStringLiteral("bookmarks_menu")));
