@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
-"PO-Revision-Date: 2023-11-04 19:35+0100\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"PO-Revision-Date: 2023-12-31 21:14+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -613,10 +613,9 @@ msgid "Always remount this share"
 msgstr "Birmuntatu beti partekatze hau"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Muntatze-ezarpenak"
+msgstr "Muntatzea: Ezarpen komunak"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -624,23 +623,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Zerbitzari honek Unix-eko CIFS hedapenak onartzen ditu"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "Unix-eko CIFS hedapenen euskarria"
+msgstr "Muntatzea: CIFS Unix hedapenak"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Ezarpen aurreratuak"
+msgstr "Muntatzea: Ezarpen aurreratuak"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Arakatze ezarpenak"
+msgstr "Arakatzea"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -663,19 +659,17 @@ msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "Zehaztu erabiltzailea"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "Mesedez, zehaztu erabiltzaile-izen bat."
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Please enter a username and a password for the share <b>%1</b>."
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-"Mesedez, sartu <b>%1</b> partekaturako erabiltzaile-izen eta pasahitz bat."
+msgstr "Mesedez, zehaztu <b>%1</b><br> partekatzerako erabiltzaile-izen bat."
 
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
@@ -985,7 +979,7 @@ msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
 "Mesedez, sartu <b>%1</b> ostalarirako erabiltzaile-izen eta pasahitz bat."
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#: smb4k/smb4kpassworddialog.cpp:52
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""

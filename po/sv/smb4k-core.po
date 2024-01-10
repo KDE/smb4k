@@ -3,21 +3,21 @@
 # Marc Hansen <marcgie@mail.berlios.de>, 2003, 2004, 2005.
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2009, 2010.
+# SPDX-FileCopyrightText: 2009, 2010, 2023 Stefan Asserhäll <stefan.asserhall@bredband.net>
 # Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
-"PO-Revision-Date: 2023-09-06 19:19+0200\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"PO-Revision-Date: 2023-12-28 14:31+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
@@ -1915,6 +1915,7 @@ msgstr "Det här är profilen som för närvarande är aktiv."
 #, kde-format
 msgid "Transfer all relevant data to the first profile when enabling profiles"
 msgstr ""
+"Överför all relevant data till den första profilen när profiler aktiveras"
 
 #. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
 #: smb4k.kcfg:693
@@ -1923,12 +1924,14 @@ msgid ""
 "Transfer all custom settings and bookmarks to the first profile in the list "
 "when enabling profiles."
 msgstr ""
+"Överför alla egna inställningar och bokmärken till den första profilen i "
+"listan när profiler aktiveras."
 
 #. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:697
 #, kde-format
 msgid "Make all relevant data available when disabling profiles"
-msgstr ""
+msgstr "Gör all relevant data tillgänglig när profiler inaktiveras"
 
 #. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
 #: smb4k.kcfg:698
@@ -1939,6 +1942,10 @@ msgid ""
 "available in the standard profile. However, they can no longer be used in "
 "their original profiles afterwards."
 msgstr ""
+"Gör alla anpassade inställningar och bokmärken tillgängliga när profiler "
+"inaktiveras. Det innebär att all data som tidigare sparats i olika profiler "
+"nu är tillgänglig i standardprofilen. De kan dock inte längre användas i "
+"sina ursprungliga profiler efteråt."
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
@@ -1947,7 +1954,7 @@ msgid "%1 on %2"
 msgstr "%1 på %2"
 
 #: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:210
+#: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Formatet på %1 stöds inte."

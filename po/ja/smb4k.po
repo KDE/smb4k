@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -671,12 +671,12 @@ msgstr ""
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "指定ユーザ"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "ユーザ名を指定します。"
 
 #: smb4k/smb4khomesuserdialog.cpp:121
 #, kde-format
@@ -1004,7 +1004,7 @@ msgstr ""
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#: smb4k/smb4kpassworddialog.cpp:52
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
@@ -1275,23 +1275,3 @@ msgstr ""
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 1: Mounting"
-#~ msgstr "マウント中"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 2: Mounting"
-#~ msgstr "マウント中"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 3: Mounting"
-#~ msgstr "マウント中"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 2: Browsing"
-#~ msgstr "マウント中"

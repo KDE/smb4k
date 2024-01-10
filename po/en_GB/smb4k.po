@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2023-06-17 12:10+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -993,7 +993,7 @@ msgstr "Item Up"
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr "<qt>Please enter a username and a password for the share %1.</qt>"
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#: smb4k/smb4kpassworddialog.cpp:52
 #, fuzzy, kde-format
 #| msgid "<qt>Please enter a username and a password for the share %1.</qt>"
 msgid "Please enter a username and a password for the share <b>%1</b>."

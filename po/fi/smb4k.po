@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2023-10-23 15:13+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -985,7 +985,7 @@ msgstr "Tietue ylemmäs"
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr "Aseta lompakkotietueen %1 käyttäjätunnus ja salasana."
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#: smb4k/smb4kpassworddialog.cpp:52
 #, fuzzy, kde-format
 #| msgid "Set the username and password for wallet entry %1."
 msgid "Please enter a username and a password for the share <b>%1</b>."

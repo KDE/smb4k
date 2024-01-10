@@ -14,14 +14,14 @@
 # Geoffray Levasseur <geoffray.levasseurbrandin@numericable.fr>, 2013, 2014.
 # Johnny Jazeix <jazeix@gmail.com>, 2017.
 # Simon Depiets <sdepiets@gmail.com>, 2018.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
-# Xavier BESNARD <xavier.besnard@neuf.fr>, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# Xavier Besnard <xavier.besnard@kde.org>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2023-12-03 17:39+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: \n"
@@ -2049,7 +2049,7 @@ msgid "%1 on %2"
 msgstr "%1 sur %2"
 
 #: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:316
-#: smb4khomesshareshandler.cpp:210
+#: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Le format de %1 n'est pas pris en charge."

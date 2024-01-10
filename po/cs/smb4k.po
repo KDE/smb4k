@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
 "PO-Revision-Date: 2023-11-07 15:46+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -596,10 +596,9 @@ msgid "Always remount this share"
 msgstr "Vždy znovu připojit toto sdílení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Nastavení připojení"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -612,17 +611,15 @@ msgid "Mounting: CIFS Unix Extensions"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Pokročilá nastavení"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Procházet nastavení"
+msgstr "Prohlížení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -645,7 +642,7 @@ msgstr ""
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "Zadat uživatele"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
@@ -963,7 +960,7 @@ msgstr "Položku nahoru"
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#: smb4k/smb4kpassworddialog.cpp:52
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
@@ -1217,27 +1214,3 @@ msgstr "%1 volné z %2 (%3 použito)"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
-
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Strana 1: Připojování"
-
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Strana 2: Připojování"
-
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Strana 3: Připojování"
-
-#~ msgid "Page 4: Browsing"
-#~ msgstr "Strana 4: Prohlížení"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Nastavení Wake-On-LAN"
-
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Strana 5: Wake-On-LAN"
-
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Strana 2: Prohlížení"
-
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Strana 3: Wake-On-LAN"

@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the smb4k package.
 #
 # SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 giovanni <g.sora@tiscali.it>
-# giovanni <g.sora@tiscali.it>, 2023.
+# giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
-"PO-Revision-Date: 2023-11-30 10:28+0100\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"PO-Revision-Date: 2024-01-03 15:00+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -594,10 +594,9 @@ msgid "Always remount this share"
 msgstr "Semre remonta iste partition (share)"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Preferentias de Montar"
+msgstr "Montar: Preferentias Commun"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -605,23 +604,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Iste servitor supporta le extensiones de Unix de CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "CIFS Unix Extensions Support (Supporte de extension de Unix de CIFS)"
+msgstr "Montar: Extensiones de Unix de CIFS)"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Preferentias Avantiate"
+msgstr "Montar: Preferentias Avantiate"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Preferentias de navigar"
+msgstr "Navigation "
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -652,11 +648,9 @@ msgid "Please specify a username."
 msgstr ""
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-"Pro favor inserta un nomine de usator e un contrasigno per le compartite <b>"
-"%1</b>."
+msgstr "Pro favor inserta un nomine de usator per compartir <b>%1</b>."
 
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
@@ -963,12 +957,12 @@ msgstr ""
 "Pro favor tu inserta un nominee de usator e un contrasigno per le hospite <b>"
 "%1</b>."
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
-#, fuzzy, kde-format
+#: smb4k/smb4kpassworddialog.cpp:52
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
-"Pro favor inserta un nomine de usator e un contrasigno per le compartite <b>"
-"%1</b>."
+"Pro favor inserta un nomine de usator e un contrasigno per compartir <b>%1</"
+"b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format

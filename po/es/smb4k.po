@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
-"PO-Revision-Date: 2023-11-04 11:45+0100\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"PO-Revision-Date: 2023-12-30 17:53+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -629,10 +629,9 @@ msgid "Always remount this share"
 msgstr "Remontar este recurso compartido siempre"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Preferencias de montaje"
+msgstr "Montaje: Preferencias comunes"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -640,23 +639,20 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Este servidor es compatible con las extensiones CIFS de Unix"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "Implementación de extensiones CIFS de Unix"
+msgstr "Montaje: Extensiones CIFS de Unix"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Preferencias avanzadas"
+msgstr "Montaje: Preferencias avanzadas"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
-msgstr "Preferencias de navegación"
+msgstr "Navegación"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -679,20 +675,18 @@ msgstr "Enviar paquete «magic» antes de montar un recurso compartido"
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "Especifique un usuario"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "Especifique un nombre de usuario."
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Please enter a username and a password for the share <b>%1</b>."
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
-"Introduzca un nombre de usuario y una contraseña para el recurso compartido "
-"<b>%1</b>."
+"Especifique un nombre de usuario para el recurso compartido <br><b>%1</b>."
 
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
@@ -1003,7 +997,7 @@ msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
 "Introduzca un nombre de usuario y una contraseña para el servidor <b>%1</b>."
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#: smb4k/smb4kpassworddialog.cpp:52
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""

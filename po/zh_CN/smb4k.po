@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 00:41+0000\n"
-"PO-Revision-Date: 2023-12-23 08:02\n"
+"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"PO-Revision-Date: 2024-01-06 03:35\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -641,18 +641,17 @@ msgstr "挂载共享前发送局域网唤醒魔术封包"
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "指定用户"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "请指定用户名。"
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Please enter a username and a password for the share <b>%1</b>."
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "请输入共享 <b>%1</b> 的用户名和密码。"
+msgstr "请为共享 <b>%1</b><br>指定一个用户名。"
 
 #: smb4k/smb4kmainwindow.cpp:132
 #, kde-format
@@ -958,7 +957,7 @@ msgstr "项目上移"
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr "请输入主机 <b>%1</b> 的用户名和密码。"
 
-#: smb4k/smb4kpassworddialog.cpp:53 smb4k/smb4kpassworddialog.cpp:73
+#: smb4k/smb4kpassworddialog.cpp:52
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr "请输入共享 <b>%1</b> 的用户名和密码。"
