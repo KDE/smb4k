@@ -1,7 +1,7 @@
 /*
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -37,19 +37,11 @@ public:
      */
     ~Smb4KSystemTray();
 
+public Q_SLOTS:
     /**
      * This function (re-)loads the settings for this widget.
      */
     void loadSettings();
-
-Q_SIGNALS:
-    /**
-     * This signal is emitted when the config dialog has been closed and the
-     * settings changed.
-     *
-     * This signal is forwarded from @see Smb4KConfigDialog.
-     */
-    void settingsChanged(const QString &dialogName);
 
 protected Q_SLOTS:
     /**
@@ -59,20 +51,6 @@ protected Q_SLOTS:
      *                        otherwise.
      */
     void slotMountDialog();
-
-    /**
-     * This slot opens the configurations dialog.
-     */
-    void slotConfigDialog();
-
-    /**
-     * This slot is invoked when the config dialog is closed and the settings have
-     * been changed. Emits the reloadSettings() signal and adjusts the system tray
-     * widget to the new settings afterwards.
-     *
-     * @param dialogName      The name of the dialog.
-     */
-    void slotSettingsChanged(const QString &dialogName);
 
     /**
      * Set the status of the system tray icon. This slot checks the global

@@ -1,7 +1,7 @@
 /*
     The main window of Smb4K
 
-    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -24,8 +24,6 @@
 
 // forward declarations
 class Smb4KSystemTray;
-class Smb4KPrintInfo;
-class Smb4KSynchronizationInfo;
 class Smb4KNetworkBrowserDockWidget;
 class Smb4KSharesViewDockWidget;
 class Smb4KBookmarkMenu;
@@ -69,19 +67,22 @@ protected:
      */
     void timerEvent(QTimerEvent *event) override;
 
-protected Q_SLOTS:
+public Q_SLOTS:
     /**
-     * Opens the configuration dialog.
+     * Load relevant settings
      */
-    void slotConfigDialog();
+    void loadSettings();
 
     /**
-     * Reloads settings, if necessary. This slot is connected to
-     * the KConfigDialog::settingsChanged() signal.
-     *
-     * @param dialogName      The name of the configuration dialog
+     * Save settings
      */
-    void slotSettingsChanged(const QString &dialogName);
+    void saveSettings();
+
+protected Q_SLOTS:
+    /**
+     * Open the configuration dialog
+     */
+    void slotConfigDialog();
 
     /**
      * This slot is called when a bookmark should be added.
@@ -205,9 +206,6 @@ private:
     void setupStatusBar();
     void setupView();
     void setupMenuBar();
-    void setupSystemTrayWidget();
-    void loadSettings();
-    void saveSettings();
     void setupMountIndicator();
     void setupDynamicActionList(QDockWidget *dock);
 

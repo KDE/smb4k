@@ -1,7 +1,7 @@
 /*
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -26,7 +26,6 @@
 #include <KConfigDialog>
 #include <KIconLoader>
 #include <KLocalizedString>
-#include <KMessageBox>
 #include <KPluginFactory>
 #include <KPluginMetaData>
 #include <KStandardAction>
@@ -37,9 +36,6 @@ using namespace Smb4KGlobal;
 Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     : KStatusNotifierItem(QStringLiteral("smb4k_systemtray"), parent)
 {
-    //
-    // Set the icon for the system tray
-    //
     QString iconName;
 
     if (KIconLoader::global()->hasIcon(QStringLiteral("network-workgroup-symbolic"))) {
@@ -49,38 +45,23 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     }
 
     setIconByName(iconName);
-
-    //
-    // Set the tooltip text
-    //
     setToolTip(iconName, i18n("Smb4K"), KAboutData::applicationData().shortDescription());
-
-    //
-    // Set the status of the icon. By default, it is active. It will become passive,
-    // if the scanner could not find something and no shares were mounted.
-    //
     setStatus(Active);
-
-    //
-    // Set the category
-    //
     setCategory(ApplicationStatus);
 
-    //
-    // Add the actions to the action collection
-    //
     QAction *mountAction = new QAction(KDE::icon(QStringLiteral("view-form"), QStringList(QStringLiteral("emblem-mounted"))), i18n("&Open Mount Dialog"), this);
-    connect(mountAction, SIGNAL(triggered(bool)), SLOT(slotMountDialog()));
+    connect(mountAction, &QAction::triggered, this, &Smb4KSystemTray::slotMountDialog);
 
     addAction(QStringLiteral("shares_menu"), new Smb4KSharesMenu(this));
     addAction(QStringLiteral("bookmarks_menu"), new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, this));
     addAction(QStringLiteral("profiles_menu"), new Smb4KProfilesMenu(this));
     addAction(QStringLiteral("mount_action"), mountAction);
-    addAction(QStringLiteral("config_action"), KStandardAction::preferences(this, SLOT(slotConfigDialog()), this));
+#if KNOTIFICATIONS_VERSION >= QT_VERSION_CHECK(5, 240, 0)
+    addAction(QStringLiteral("config_action"), KStandardAction::preferences(associatedWindow(), SLOT(slotConfigDialog()), this));
+#else
+    addAction(QStringLiteral("config_action"), KStandardAction::preferences(associatedWidget(), SLOT(slotConfigDialog()), this));
+#endif
 
-    //
-    // Set up the menu
-    //
     contextMenu()->addAction(action(QStringLiteral("shares_menu")));
     contextMenu()->addAction(action(QStringLiteral("bookmarks_menu")));
     contextMenu()->addAction(action(QStringLiteral("profiles_menu")));
@@ -88,11 +69,8 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     contextMenu()->addAction(action(QStringLiteral("mount_action")));
     contextMenu()->addAction(action(QStringLiteral("config_action")));
 
-    //
-    // Connections
-    //
-    connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), SLOT(slotSetStatus()));
-    connect(Smb4KClient::self(), SIGNAL(workgroups()), SLOT(slotSetStatus()));
+    connect(Smb4KMounter::self(), &Smb4KMounter::mountedSharesListChanged, this, &Smb4KSystemTray::slotSetStatus);
+    connect(Smb4KClient::self(), &Smb4KClient::workgroups, this, &Smb4KSystemTray::slotSetStatus);
 }
 
 Smb4KSystemTray::~Smb4KSystemTray()
@@ -101,28 +79,19 @@ Smb4KSystemTray::~Smb4KSystemTray()
 
 void Smb4KSystemTray::loadSettings()
 {
-    //
-    // Adjust the bookmarks menu
-    //
-    Smb4KBookmarkMenu *bookmarkMenu = static_cast<Smb4KBookmarkMenu *>(action(QStringLiteral("bookmarks_menu")));
+    Smb4KBookmarkMenu *bookmarkMenu = qobject_cast<Smb4KBookmarkMenu *>(action(QStringLiteral("bookmarks_menu")));
 
     if (bookmarkMenu) {
         bookmarkMenu->refreshMenu();
     }
 
-    //
-    // Adjust the shares menu
-    //
-    Smb4KSharesMenu *sharesMenu = static_cast<Smb4KSharesMenu *>(action(QStringLiteral("shares_menu")));
+    Smb4KSharesMenu *sharesMenu = qobject_cast<Smb4KSharesMenu *>(action(QStringLiteral("shares_menu")));
 
     if (sharesMenu) {
         sharesMenu->refreshMenu();
     }
 
-    //
-    // Adjust the profiles menu
-    //
-    Smb4KProfilesMenu *profilesMenu = static_cast<Smb4KProfilesMenu *>(action(QStringLiteral("profiles_menu")));
+    Smb4KProfilesMenu *profilesMenu = qobject_cast<Smb4KProfilesMenu *>(action(QStringLiteral("profiles_menu")));
 
     if (profilesMenu) {
         profilesMenu->refreshMenu();
@@ -137,41 +106,6 @@ void Smb4KSystemTray::slotMountDialog()
 {
     QPointer<Smb4KMountDialog> mountDialog = new Smb4KMountDialog();
     mountDialog->show();
-}
-
-void Smb4KSystemTray::slotConfigDialog()
-{
-    if (KConfigDialog::showDialog(QStringLiteral("ConfigDialog"))) {
-        return;
-    }
-
-    KPluginMetaData metaData(QStringLiteral("smb4kconfigdialog"));
-    KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
-
-    if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
-#if KNOTIFICATIONS_VERSION >= QT_VERSION_CHECK(5, 240, 0)
-        QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(associatedWindow());
-#else
-        QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(associatedWidget());
-#endif
-
-        if (dlg) {
-            connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
-            connect(dlg, SIGNAL(settingsChanged(QString)), this, SIGNAL(settingsChanged(QString)), Qt::UniqueConnection);
-            dlg->show();
-        }
-    } else {
-        KMessageBox::error(nullptr, result.errorString);
-        return;
-    }
-}
-
-void Smb4KSystemTray::slotSettingsChanged(const QString &)
-{
-    //
-    // Execute loadSettings()
-    //
-    loadSettings();
 }
 
 void Smb4KSystemTray::slotSetStatus()

@@ -1,7 +1,7 @@
 /*
     The main window of Smb4K
 
-    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -28,14 +28,12 @@
 #include <QActionGroup>
 #include <QApplication>
 #include <QDockWidget>
-#include <QLabel>
 #include <QMenu>
 #include <QMenuBar>
 #include <QStatusBar>
 #include <QString>
 #include <QTabBar>
 #include <QTimer>
-#include <QVariantList>
 
 // KDE includes
 #include <KConfigDialog>
@@ -52,22 +50,21 @@ using namespace KParts;
 
 Smb4KMainWindow::Smb4KMainWindow()
     : KXmlGuiWindow()
-    , m_systemTrayWidget(nullptr)
 {
+    m_systemTrayWidget = new Smb4KSystemTray(this);
+    m_passwordDialog = new Smb4KPasswordDialog(this);
     m_focusWidget = nullptr;
 
-    m_passwordDialog = new Smb4KPasswordDialog(this);
     m_timerId = 0;
 
     setStandardToolBarMenuEnabled(true);
     createStandardStatusBarAction();
     setDockNestingEnabled(true);
     setupActions();
-    setupGUI(Default, QStringLiteral("smb4k_shell.rc"));
+    setupGUI(QSize(800, 600), Default, QStringLiteral("smb4k_shell.rc"));
     setupView();
     setupMenuBar();
     setupStatusBar();
-    setupSystemTrayWidget();
 
     switch (Smb4KSettings::mainWindowTabOrientation()) {
     case Smb4KSettings::EnumMainWindowTabOrientation::Top: {
@@ -97,12 +94,7 @@ Smb4KMainWindow::Smb4KMainWindow()
     KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("MainWindow"));
     setAutoSaveSettings(configGroup, true);
 
-    //
-    // Save the setting no matter how the application is closed
-    //
-    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, [&]() {
-        saveSettings();
-    });
+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KMainWindow::saveSettings);
 
     connect(Smb4KClient::self(), &Smb4KClient::requestCredentials, this, &Smb4KMainWindow::slotCredentialsRequested);
     connect(Smb4KMounter::self(), &Smb4KMounter::requestCredentials, this, &Smb4KMainWindow::slotCredentialsRequested);
@@ -297,20 +289,8 @@ void Smb4KMainWindow::setupMenuBar()
     }
 }
 
-void Smb4KMainWindow::setupSystemTrayWidget()
-{
-    if (!m_systemTrayWidget) {
-        m_systemTrayWidget = new Smb4KSystemTray(this);
-    }
-
-    connect(m_systemTrayWidget, &Smb4KSystemTray::settingsChanged, this, &Smb4KMainWindow::slotSettingsChanged);
-}
-
 void Smb4KMainWindow::loadSettings()
 {
-    //
-    // Main window
-    //
     switch (Smb4KSettings::mainWindowTabOrientation()) {
     case Smb4KSettings::EnumMainWindowTabOrientation::Top: {
         setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::North);
@@ -514,19 +494,14 @@ void Smb4KMainWindow::slotConfigDialog()
         QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(this);
 
         if (dlg) {
-            connect(dlg, &KConfigDialog::settingsChanged, this, &Smb4KMainWindow::slotSettingsChanged, Qt::UniqueConnection);
-            connect(dlg, &KConfigDialog::settingsChanged, m_systemTrayWidget, &Smb4KSystemTray::slotSettingsChanged, Qt::UniqueConnection);
+            connect(dlg, &KConfigDialog::settingsChanged, this, &Smb4KMainWindow::loadSettings, Qt::UniqueConnection);
+            connect(dlg, &KConfigDialog::settingsChanged, m_systemTrayWidget, &Smb4KSystemTray::loadSettings, Qt::UniqueConnection);
             dlg->show();
         }
     } else {
         KMessageBox::error(nullptr, result.errorString);
         return;
     }
-}
-
-void Smb4KMainWindow::slotSettingsChanged(const QString &)
-{
-    loadSettings();
 }
 
 void Smb4KMainWindow::slotAddBookmarks()
@@ -758,17 +733,19 @@ void Smb4KMainWindow::slotEndVisualFeedback()
     setupMountIndicator();
 }
 
-void Smb4KMainWindow::slotSynchronizerAboutToStart(const QString &dest)
+void Smb4KMainWindow::slotSynchronizerAboutToStart(const QString &destination)
 {
-    statusBar()->showMessage(i18n("Synchronizing %1", dest), 0);
+    statusBar()->showMessage(i18n("Synchronizing %1", destination), 0);
 
     if (!m_progressBar->isVisible()) {
         m_progressBar->setVisible(true);
     }
 }
 
-void Smb4KMainWindow::slotSynchronizerFinished(const QString & /*dest*/)
+void Smb4KMainWindow::slotSynchronizerFinished(const QString &destination)
 {
+    Q_UNUSED(destination);
+
     if (!coreIsRunning()) {
         m_progressBar->setVisible(false);
         m_progressBar->reset();
