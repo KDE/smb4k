@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"POT-Creation-Date: 2024-01-11 01:36+0000\n"
 "PO-Revision-Date: 2019-04-09 23:19+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -48,7 +48,7 @@ msgstr "顯示掛載點，而非共享名稱。"
 msgid "The unmount process could not be started."
 msgstr "目錄 %1 無法建立。"
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:48
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -158,7 +158,7 @@ msgstr "書籤"
 msgid "&Edit Bookmarks"
 msgstr "編輯書籤(&E)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:134
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, fuzzy, kde-format
@@ -569,7 +569,7 @@ msgstr "總和檢查碼"
 msgid "Main Window"
 msgstr ""
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:206
 #, fuzzy, kde-format
 msgid "Network Neighborhood"
 msgstr "網路芳鄰"
@@ -668,17 +668,17 @@ msgstr ""
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:132
+#: smb4k/smb4kmainwindow.cpp:124
 #, fuzzy, kde-format
 msgid "Dock Widgets"
 msgstr "停駐視窗元件(&D)"
 
-#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:227 smb4k/smb4ksharesmenu.cpp:39
 #, fuzzy, kde-format
 msgid "Mounted Shares"
 msgstr "掛載的共享(&S)"
 
-#: smb4k/smb4kmainwindow.cpp:363
+#: smb4k/smb4kmainwindow.cpp:343
 #, fuzzy, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -686,105 +686,105 @@ msgid ""
 msgstr ""
 "關閉主視窗後 Smb4K 將在系統匣中繼續執行。可用檔案選單中的離開來結束程式。"
 
-#: smb4k/smb4kmainwindow.cpp:365
+#: smb4k/smb4kmainwindow.cpp:345
 #, fuzzy, kde-format
 msgid "Docking"
 msgstr "停駐視窗元件(&D)"
 
-#: smb4k/smb4kmainwindow.cpp:420
+#: smb4k/smb4kmainwindow.cpp:400
 #, fuzzy, kde-format
 msgid "There are currently no shares mounted."
 msgstr "目錄 %1 無法建立。"
 
-#: smb4k/smb4kmainwindow.cpp:423
+#: smb4k/smb4kmainwindow.cpp:403
 #, fuzzy, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "目錄 %1 無法建立。"
 
-#: smb4k/smb4kmainwindow.cpp:566
+#: smb4k/smb4kmainwindow.cpp:541
 #, fuzzy, kde-format
 #| msgid "The wallet \"%1\" could not be opened."
 msgid "The wallet is used."
 msgstr "密碼包「%1」無法開啟。"
 
-#: smb4k/smb4kmainwindow.cpp:569
+#: smb4k/smb4kmainwindow.cpp:544
 #, fuzzy, kde-format
 #| msgid "The password is not correct. "
 msgid "The password dialog is used."
 msgstr "密碼不正確。"
 
-#: smb4k/smb4kmainwindow.cpp:579
+#: smb4k/smb4kmainwindow.cpp:554
 #, fuzzy, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "查詢此主機以取回瀏覽清單："
 
-#: smb4k/smb4kmainwindow.cpp:584
+#: smb4k/smb4kmainwindow.cpp:559
 #, fuzzy, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "查詢此主機以取回瀏覽清單："
 
-#: smb4k/smb4kmainwindow.cpp:589
+#: smb4k/smb4kmainwindow.cpp:564
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:597 smb4k/smb4kmainwindow.cpp:605
+#: smb4k/smb4kmainwindow.cpp:572 smb4k/smb4kmainwindow.cpp:580
 #, fuzzy, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "查詢此主機以取回瀏覽清單："
 
-#: smb4k/smb4kmainwindow.cpp:622
+#: smb4k/smb4kmainwindow.cpp:597
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:627
+#: smb4k/smb4kmainwindow.cpp:602
 #, fuzzy, kde-format
 #| msgid "Sending file to printer..."
 msgid "Sending file to printer %1..."
 msgstr "發送檔案到印表機…"
 
-#: smb4k/smb4kmainwindow.cpp:631
+#: smb4k/smb4kmainwindow.cpp:606
 #, fuzzy, kde-format
 #| msgid "Searching for host..."
 msgid "Searching..."
 msgstr "正在搜尋主機…"
 
-#: smb4k/smb4kmainwindow.cpp:649 smb4k/smb4kmainwindow.cpp:688
-#: smb4k/smb4kmainwindow.cpp:775
+#: smb4k/smb4kmainwindow.cpp:624 smb4k/smb4kmainwindow.cpp:663
+#: smb4k/smb4kmainwindow.cpp:752
 #, kde-format
 msgid "Done."
 msgstr "完成。"
 
-#: smb4k/smb4kmainwindow.cpp:659
+#: smb4k/smb4kmainwindow.cpp:634
 #, fuzzy, kde-format
 msgid "Mounting..."
 msgstr "掛載(&M)"
 
-#: smb4k/smb4kmainwindow.cpp:663
+#: smb4k/smb4kmainwindow.cpp:638
 #, fuzzy, kde-format
 #| msgid "Unmounting share..."
 msgid "Unmounting..."
 msgstr "正在卸載共享…"
 
-#: smb4k/smb4kmainwindow.cpp:667
+#: smb4k/smb4kmainwindow.cpp:642
 #, fuzzy, kde-format
 #| msgid "Opening host..."
 msgid "Waking up host..."
 msgstr "開啟主機…"
 
-#: smb4k/smb4kmainwindow.cpp:699
+#: smb4k/smb4kmainwindow.cpp:674
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:724
+#: smb4k/smb4kmainwindow.cpp:699
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:763
+#: smb4k/smb4kmainwindow.cpp:738
 #, fuzzy, kde-format
 #| msgid "Synchronizing data..."
 msgid "Synchronizing %1"
@@ -870,7 +870,7 @@ msgstr "Samba 選項"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:52
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr ""

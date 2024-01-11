@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"POT-Creation-Date: 2024-01-11 01:36+0000\n"
 "PO-Revision-Date: 2023-01-20 23:26+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -44,7 +44,7 @@ msgstr "Показване на точката на монтиране вмес�
 msgid "The unmount process could not be started."
 msgstr "Директория %1 не може да бъде създадена."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:48
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -156,7 +156,7 @@ msgstr "Отметки"
 msgid "&Edit Bookmarks"
 msgstr "&Редактиране на отметки"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:142
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:134
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -560,7 +560,7 @@ msgstr "контролна сума"
 msgid "Main Window"
 msgstr ""
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:214
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:206
 #, fuzzy, kde-format
 msgid "Network Neighborhood"
 msgstr "Търсене в мрежата"
@@ -657,117 +657,117 @@ msgstr ""
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:132
+#: smb4k/smb4kmainwindow.cpp:124
 #, kde-format
 msgid "Dock Widgets"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:235 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:227 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Монтирани ресурси"
 
-#: smb4k/smb4kmainwindow.cpp:363
+#: smb4k/smb4kmainwindow.cpp:343
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:365
+#: smb4k/smb4kmainwindow.cpp:345
 #, kde-format
 msgid "Docking"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:420
+#: smb4k/smb4kmainwindow.cpp:400
 #, fuzzy, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Директория %1 не може да бъде създадена."
 
-#: smb4k/smb4kmainwindow.cpp:423
+#: smb4k/smb4kmainwindow.cpp:403
 #, fuzzy, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Директория %1 не може да бъде създадена."
 msgstr[1] "Директория %1 не може да бъде създадена."
 
-#: smb4k/smb4kmainwindow.cpp:566
+#: smb4k/smb4kmainwindow.cpp:541
 #, fuzzy, kde-format
 msgid "The wallet is used."
 msgstr "Запомняне на паролата ако не се използва портфейл"
 
-#: smb4k/smb4kmainwindow.cpp:569
+#: smb4k/smb4kmainwindow.cpp:544
 #, fuzzy, kde-format
 msgid "The password dialog is used."
 msgstr "Запомняне на паролата ако не се използва портфейл"
 
-#: smb4k/smb4kmainwindow.cpp:579
+#: smb4k/smb4kmainwindow.cpp:554
 #, fuzzy, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:584
+#: smb4k/smb4kmainwindow.cpp:559
 #, fuzzy, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:589
+#: smb4k/smb4kmainwindow.cpp:564
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:597 smb4k/smb4kmainwindow.cpp:605
+#: smb4k/smb4kmainwindow.cpp:572 smb4k/smb4kmainwindow.cpp:580
 #, fuzzy, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:622
+#: smb4k/smb4kmainwindow.cpp:597
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:627
+#: smb4k/smb4kmainwindow.cpp:602
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:631
+#: smb4k/smb4kmainwindow.cpp:606
 #, fuzzy, kde-format
 msgid "Searching..."
 msgstr "Търсене"
 
-#: smb4k/smb4kmainwindow.cpp:649 smb4k/smb4kmainwindow.cpp:688
-#: smb4k/smb4kmainwindow.cpp:775
+#: smb4k/smb4kmainwindow.cpp:624 smb4k/smb4kmainwindow.cpp:663
+#: smb4k/smb4kmainwindow.cpp:752
 #, kde-format
 msgid "Done."
 msgstr "Готово."
 
-#: smb4k/smb4kmainwindow.cpp:659
+#: smb4k/smb4kmainwindow.cpp:634
 #, fuzzy, kde-format
 msgid "Mounting..."
 msgstr "Монтиране"
 
-#: smb4k/smb4kmainwindow.cpp:663
+#: smb4k/smb4kmainwindow.cpp:638
 #, fuzzy, kde-format
 msgid "Unmounting..."
 msgstr "Отдалечени ресурси"
 
-#: smb4k/smb4kmainwindow.cpp:667
+#: smb4k/smb4kmainwindow.cpp:642
 #, fuzzy, kde-format
 msgid "Waking up host..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:699
+#: smb4k/smb4kmainwindow.cpp:674
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:724
+#: smb4k/smb4kmainwindow.cpp:699
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:763
+#: smb4k/smb4kmainwindow.cpp:738
 #, fuzzy, kde-format
 msgid "Synchronizing %1"
 msgstr "Синхронизация"
@@ -854,7 +854,7 @@ msgstr "Възможности на Самба"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:52
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr ""
