@@ -46,7 +46,6 @@
 #include <KXMLGUIFactory>
 
 using namespace Smb4KGlobal;
-using namespace KParts;
 
 Smb4KMainWindow::Smb4KMainWindow()
     : KXmlGuiWindow()
@@ -124,8 +123,8 @@ void Smb4KMainWindow::setupActions()
     KActionMenu *dock_widgets_menu = new KActionMenu(KDE::icon(QStringLiteral("tab-duplicate")), i18n("Dock Widgets"), actionCollection());
     actionCollection()->addAction(QStringLiteral("dock_widgets_menu"), dock_widgets_menu);
 
-    m_dockWidgets = new QActionGroup(actionCollection());
-    m_dockWidgets->setExclusive(false);
+    // m_dockWidgets = new QActionGroup(actionCollection());
+    // m_dockWidgets->setExclusive(false);
 
     //
     // Bookmarks menu and action
@@ -200,46 +199,28 @@ void Smb4KMainWindow::setupView()
     // nonetheless.
     //
 
-    //
-    // Network browser dock widget
-    //
+    KActionMenu *dockWidgetsMenu = qobject_cast<KActionMenu *>(actionCollection()->action(QStringLiteral("dock_widgets_menu")));
+
     m_networkBrowserDockWidget = new Smb4KNetworkBrowserDockWidget(i18n("Network Neighborhood"), this);
     m_networkBrowserDockWidget->setObjectName(QStringLiteral("NetworkBrowserDockWidget"));
     m_networkBrowserDockWidget->setAllowedAreas(Qt::LeftDockWidgetArea);
     m_networkBrowserDockWidget->widget()->installEventFilter(this);
 
-    // Connections
     connect(m_networkBrowserDockWidget, &Smb4KNetworkBrowserDockWidget::visibilityChanged, this, &Smb4KMainWindow::slotNetworkBrowserVisibilityChanged);
 
-    // Add dock widget
     addDockWidget(Qt::LeftDockWidgetArea, m_networkBrowserDockWidget);
-
-    // Insert the toggle view mode action to the action group.
-    m_dockWidgets->addAction(m_networkBrowserDockWidget->toggleViewAction());
-    static_cast<KActionMenu *>(actionCollection()->action(QStringLiteral("dock_widgets_menu")))->addAction(m_networkBrowserDockWidget->toggleViewAction());
-
-    // Insert the Network menu
+    dockWidgetsMenu->addAction(m_networkBrowserDockWidget->toggleViewAction());
     plugActionList(QStringLiteral("network_menu"), m_networkBrowserDockWidget->actionCollection()->actions());
 
-    //
-    // Shares view dock widget
-    //
     m_sharesViewDockWidget = new Smb4KSharesViewDockWidget(i18n("Mounted Shares"), this);
     m_sharesViewDockWidget->setObjectName(QStringLiteral("SharesViewDockWidget"));
     m_sharesViewDockWidget->setAllowedAreas(Qt::LeftDockWidgetArea);
     m_sharesViewDockWidget->widget()->installEventFilter(this);
 
-    // Connections
     connect(m_sharesViewDockWidget, &Smb4KSharesViewDockWidget::visibilityChanged, this, &Smb4KMainWindow::slotSharesViewVisibilityChanged);
 
-    // Add dock widget
     addDockWidget(Qt::LeftDockWidgetArea, m_sharesViewDockWidget);
-
-    // Insert the toggle view mode action to the action group.
-    m_dockWidgets->addAction(m_sharesViewDockWidget->toggleViewAction());
-    static_cast<KActionMenu *>(actionCollection()->action(QStringLiteral("dock_widgets_menu")))->addAction(m_sharesViewDockWidget->toggleViewAction());
-
-    // Insert the Shares menu
+    dockWidgetsMenu->addAction(m_sharesViewDockWidget->toggleViewAction());
     plugActionList(QStringLiteral("shares_menu"), m_sharesViewDockWidget->actionCollection()->actions());
 
     // KMessageWidget *messageWidget = new KMessageWidget();
@@ -255,9 +236,6 @@ void Smb4KMainWindow::setupView()
     //
     // addDockWidget(Qt::TopDockWidgetArea, messageDockWidget);
 
-    //
-    // Initial main window look
-    //
     KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("MainWindow"));
 
     if (!configGroup.hasKey(QStringLiteral("FirstStartup"))) {

@@ -214,7 +214,6 @@ private:
     QLabel *m_feedbackIcon;
     Smb4KSystemTray *m_systemTrayWidget;
     QWidget *m_focusWidget;
-    QActionGroup *m_dockWidgets;
     Smb4KNetworkBrowserDockWidget *m_networkBrowserDockWidget;
     Smb4KSharesViewDockWidget *m_sharesViewDockWidget;
     Smb4KBookmarkMenu *m_bookmarkMenu;
