@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2023-09-06 21:19+0100\n"
+"PO-Revision-Date: 2024-01-08 22:51+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2029,7 +2029,7 @@ msgstr ""
 #: smb4kclient_p.cpp:1252
 #, kde-format
 msgid "The file %1 could not be read"
-msgstr "La dosiero %1 ne eblis legi"
+msgstr "La dosieron %1 ne eblis legi"
 
 #: smb4kclient_p.cpp:1269
 #, kde-format
