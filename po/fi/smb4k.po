@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-11 01:36+0000\n"
+"POT-Creation-Date: 2024-01-13 01:46+0000\n"
 "PO-Revision-Date: 2023-10-23 15:13+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -157,7 +157,7 @@ msgstr "Kirjanmerkit"
 msgid "&Edit Bookmarks"
 msgstr "&Muokkaa kirjanmerkkejä"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:134
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:133
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -577,7 +577,7 @@ msgstr "Tarkistussummat"
 msgid "Main Window"
 msgstr "Pääikkuna"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:206
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:204
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Verkkoympäristö"
@@ -678,17 +678,17 @@ msgstr ""
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "Aseta lompakkotietueen %1 käyttäjätunnus ja salasana."
 
-#: smb4k/smb4kmainwindow.cpp:124
+#: smb4k/smb4kmainwindow.cpp:123
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Telakat"
 
-#: smb4k/smb4kmainwindow.cpp:227 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:215 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Liitetyt jaot"
 
-#: smb4k/smb4kmainwindow.cpp:343
+#: smb4k/smb4kmainwindow.cpp:321
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -697,100 +697,100 @@ msgstr ""
 "<qt>Pääikkunan sulkeminen pitää Smb4K:n käynnissä ilmoitusalueella."
 "<br>Lopeta ohjelma valitsemalla <i>Tiedosto</i>-valikosta <i>Lopeta</i>.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:345
+#: smb4k/smb4kmainwindow.cpp:323
 #, kde-format
 msgid "Docking"
 msgstr "Telakointi"
 
-#: smb4k/smb4kmainwindow.cpp:400
+#: smb4k/smb4kmainwindow.cpp:378
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Yhtään jakoa ei ole tällä hetkellä liitetty."
 
-#: smb4k/smb4kmainwindow.cpp:403
+#: smb4k/smb4kmainwindow.cpp:381
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "%1 jako tällä hetkellä liitetty."
 msgstr[1] "%1 jakoa tällä hetkellä liitetty."
 
-#: smb4k/smb4kmainwindow.cpp:541
+#: smb4k/smb4kmainwindow.cpp:519
 #, kde-format
 msgid "The wallet is used."
 msgstr "Käytetään lompakkoa."
 
-#: smb4k/smb4kmainwindow.cpp:544
+#: smb4k/smb4kmainwindow.cpp:522
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Käytetään salasanakyselyä."
 
-#: smb4k/smb4kmainwindow.cpp:554
+#: smb4k/smb4kmainwindow.cpp:532
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Etsitään työryhmiä ja verkkoalueita…"
 
-#: smb4k/smb4kmainwindow.cpp:559
+#: smb4k/smb4kmainwindow.cpp:537
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Etsitään koneita verkkoalueelta %1…"
 
-#: smb4k/smb4kmainwindow.cpp:564
+#: smb4k/smb4kmainwindow.cpp:542
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Etsitään palvelimen %1 tarjoamia jakoja…"
 
-#: smb4k/smb4kmainwindow.cpp:572 smb4k/smb4kmainwindow.cpp:580
+#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:558
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Etsitään tiedostoja ja kansioita kohteesta %1…"
 
-#: smb4k/smb4kmainwindow.cpp:597
+#: smb4k/smb4kmainwindow.cpp:575
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Herätetään etäkoneita…"
 
-#: smb4k/smb4kmainwindow.cpp:602
+#: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Lähetetään tiedosto tulostimelle %1…"
 
-#: smb4k/smb4kmainwindow.cpp:606
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Searching..."
 msgstr "Etsitään…"
 
-#: smb4k/smb4kmainwindow.cpp:624 smb4k/smb4kmainwindow.cpp:663
-#: smb4k/smb4kmainwindow.cpp:752
+#: smb4k/smb4kmainwindow.cpp:602 smb4k/smb4kmainwindow.cpp:641
+#: smb4k/smb4kmainwindow.cpp:730
 #, kde-format
 msgid "Done."
 msgstr "Valmis."
 
-#: smb4k/smb4kmainwindow.cpp:634
+#: smb4k/smb4kmainwindow.cpp:612
 #, kde-format
 msgid "Mounting..."
 msgstr "Liitetään…"
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:616
 #, kde-format
 msgid "Unmounting..."
 msgstr "Irrotetaan…"
 
-#: smb4k/smb4kmainwindow.cpp:642
+#: smb4k/smb4kmainwindow.cpp:620
 #, kde-format
 msgid "Waking up host..."
 msgstr "Herätetään konetta…"
 
-#: smb4k/smb4kmainwindow.cpp:674
+#: smb4k/smb4kmainwindow.cpp:652
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 on onnistuneesti liitetty."
 
-#: smb4k/smb4kmainwindow.cpp:699
+#: smb4k/smb4kmainwindow.cpp:677
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 on onnistuneesti irrotettu."
 
-#: smb4k/smb4kmainwindow.cpp:738
+#: smb4k/smb4kmainwindow.cpp:716
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Synkronoidaan %1"
