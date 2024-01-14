@@ -553,9 +553,10 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
         case FileOrDirectory: {
             FilePtr file = item.staticCast<Smb4KFile>();
 
-            for (const SharePtr &s : sharesList()) {
-                if (s->workgroupName() == file->workgroupName() && s->hostName() == file->hostName() && s->shareName() == file->shareName()) {
-                    message = i18n("Looking for files and directories in %1...", s->displayString());
+            for (const SharePtr &share : sharesList()) {
+                // FIXME: Use QUrl::matches() here. Additionally, we do not really need the workgroup.
+                if (share->workgroupName() == file->workgroupName() && share->hostName() == file->hostName() && share->shareName() == file->shareName()) {
+                    message = i18n("Looking for files and directories in %1...", share->displayString());
                     break;
                 }
             }
@@ -594,8 +595,11 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
     }
 }
 
-void Smb4KMainWindow::slotClientFinished(const NetworkItemPtr & /*item*/, int /*process*/)
+void Smb4KMainWindow::slotClientFinished(const NetworkItemPtr &item, int process)
 {
+    Q_UNUSED(item);
+    Q_UNUSED(process);
+
     if (!coreIsRunning()) {
         m_progressBar->setVisible(false);
         m_progressBar->reset();
@@ -634,7 +638,7 @@ void Smb4KMainWindow::slotMounterFinished(int process)
 {
     Q_UNUSED(process);
 
-    QTimer::singleShot(250, this, [this]() {
+    QTimer::singleShot(250, this, [&]() {
         if (!coreIsRunning()) {
             m_progressBar->setVisible(false);
             m_progressBar->reset();
@@ -645,8 +649,6 @@ void Smb4KMainWindow::slotMounterFinished(int process)
 
 void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)
 {
-    Q_ASSERT(share);
-
     if (share) {
         m_feedbackIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-ok"), KIconLoader::Small, 0, KIconLoader::DefaultState));
         m_feedbackIcon->setToolTip(i18n("%1 has been mounted successfully.", share->displayString()));
@@ -664,14 +666,12 @@ void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)
             }
         }
 
-        QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
+        QTimer::singleShot(2000, this, &Smb4KMainWindow::slotEndVisualFeedback);
     }
 }
 
 void Smb4KMainWindow::slotVisualUnmountFeedback(const SharePtr &share)
 {
-    Q_ASSERT(share);
-
     if (share) {
         m_feedbackIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-ok"), KIconLoader::Small, 0, KIconLoader::DefaultState));
         m_feedbackIcon->setToolTip(i18n("%1 has been unmounted successfully.", share->displayString()));
@@ -689,7 +689,7 @@ void Smb4KMainWindow::slotVisualUnmountFeedback(const SharePtr &share)
             }
         }
 
-        QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
+        QTimer::singleShot(2000, this, &Smb4KMainWindow::slotEndVisualFeedback);
     }
 }
 
