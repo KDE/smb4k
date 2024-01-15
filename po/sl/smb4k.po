@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 01:46+0000\n"
+"POT-Creation-Date: 2024-01-15 01:38+0000\n"
 "PO-Revision-Date: 2023-12-23 08:06+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -736,48 +736,48 @@ msgstr "Pregledovanje za gostitelji in domenami %1..."
 msgid "Looking for shares provided by host %1..."
 msgstr "Pregledovanje za deli diskov, ki jih zagotavljajo gostitelji %1..."
 
-#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:558
+#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:559
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Pregledovanje za datotekami in imeniki v %1..."
 
-#: smb4k/smb4kmainwindow.cpp:575
+#: smb4k/smb4kmainwindow.cpp:576
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Zbujanje oddaljenih gostiteljev..."
 
-#: smb4k/smb4kmainwindow.cpp:580
+#: smb4k/smb4kmainwindow.cpp:581
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Pošiljanje datotek na tiskalnik %1..."
 
-#: smb4k/smb4kmainwindow.cpp:584
+#: smb4k/smb4kmainwindow.cpp:585
 #, kde-format
 msgid "Searching..."
 msgstr "Iskanje..."
 
-#: smb4k/smb4kmainwindow.cpp:602 smb4k/smb4kmainwindow.cpp:641
+#: smb4k/smb4kmainwindow.cpp:606 smb4k/smb4kmainwindow.cpp:645
 #: smb4k/smb4kmainwindow.cpp:730
 #, kde-format
 msgid "Done."
 msgstr "Dokončano."
 
-#: smb4k/smb4kmainwindow.cpp:612
+#: smb4k/smb4kmainwindow.cpp:616
 #, kde-format
 msgid "Mounting..."
 msgstr "Priklapljanje..."
 
-#: smb4k/smb4kmainwindow.cpp:616
+#: smb4k/smb4kmainwindow.cpp:620
 #, kde-format
 msgid "Unmounting..."
 msgstr "Odklapljanje..."
 
-#: smb4k/smb4kmainwindow.cpp:620
+#: smb4k/smb4kmainwindow.cpp:624
 #, kde-format
 msgid "Waking up host..."
 msgstr "Zbujanje gostitelja..."
 
-#: smb4k/smb4kmainwindow.cpp:652
+#: smb4k/smb4kmainwindow.cpp:654
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 je bil uspešno priklopljen."

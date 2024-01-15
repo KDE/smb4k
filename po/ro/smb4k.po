@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 01:46+0000\n"
+"POT-Creation-Date: 2024-01-15 01:38+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -722,48 +722,48 @@ msgstr ""
 msgid "Looking for shares provided by host %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:558
+#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:559
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:575
+#: smb4k/smb4kmainwindow.cpp:576
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:580
+#: smb4k/smb4kmainwindow.cpp:581
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:584
+#: smb4k/smb4kmainwindow.cpp:585
 #, kde-format
 msgid "Searching..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:602 smb4k/smb4kmainwindow.cpp:641
+#: smb4k/smb4kmainwindow.cpp:606 smb4k/smb4kmainwindow.cpp:645
 #: smb4k/smb4kmainwindow.cpp:730
 #, kde-format
 msgid "Done."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:612
+#: smb4k/smb4kmainwindow.cpp:616
 #, kde-format
 msgid "Mounting..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:616
+#: smb4k/smb4kmainwindow.cpp:620
 #, kde-format
 msgid "Unmounting..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:620
+#: smb4k/smb4kmainwindow.cpp:624
 #, kde-format
 msgid "Waking up host..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:652
+#: smb4k/smb4kmainwindow.cpp:654
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr ""

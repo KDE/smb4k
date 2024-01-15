@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 01:46+0000\n"
+"POT-Creation-Date: 2024-01-15 01:38+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -785,49 +785,49 @@ msgstr "Leder efter værter på domænet %1..."
 msgid "Looking for shares provided by host %1..."
 msgstr "Leder efter ressourcer leveret af værten %1..."
 
-#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:558
+#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:559
 #, fuzzy, kde-format
 #| msgid "Looking for hosts in domain %1..."
 msgid "Looking for files and directories in %1..."
 msgstr "Leder efter værter på domænet %1..."
 
-#: smb4k/smb4kmainwindow.cpp:575
+#: smb4k/smb4kmainwindow.cpp:576
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Vækker eksterne værtsmaskiner..."
 
-#: smb4k/smb4kmainwindow.cpp:580
+#: smb4k/smb4kmainwindow.cpp:581
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Sender fil til printeren %1..."
 
-#: smb4k/smb4kmainwindow.cpp:584
+#: smb4k/smb4kmainwindow.cpp:585
 #, fuzzy, kde-format
 msgid "Searching..."
 msgstr "Søger på netværket..."
 
-#: smb4k/smb4kmainwindow.cpp:602 smb4k/smb4kmainwindow.cpp:641
+#: smb4k/smb4kmainwindow.cpp:606 smb4k/smb4kmainwindow.cpp:645
 #: smb4k/smb4kmainwindow.cpp:730
 #, kde-format
 msgid "Done."
 msgstr "Færdig."
 
-#: smb4k/smb4kmainwindow.cpp:612
+#: smb4k/smb4kmainwindow.cpp:616
 #, kde-format
 msgid "Mounting..."
 msgstr "Montering..."
 
-#: smb4k/smb4kmainwindow.cpp:616
+#: smb4k/smb4kmainwindow.cpp:620
 #, kde-format
 msgid "Unmounting..."
 msgstr "Afmontering..."
 
-#: smb4k/smb4kmainwindow.cpp:620
+#: smb4k/smb4kmainwindow.cpp:624
 #, kde-format
 msgid "Waking up host..."
 msgstr "Vækker ekstern værtsmaskine..."
 
-#: smb4k/smb4kmainwindow.cpp:652
+#: smb4k/smb4kmainwindow.cpp:654
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 er blevet monteret."
