@@ -7,46 +7,46 @@
 # Jack Liu <chuany@chuany.net>, 2005.
 # Wei-Lun Chao <william.chao@ossii.com.tw>, 2006.
 # pan93412 <pan93412@gmail.com>, 2019.
+# SPDX-FileCopyrightText: 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-15 01:38+0000\n"
-"PO-Revision-Date: 2019-04-09 23:19+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2024-01-15 23:30+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 19.03.90\n"
+"X-Generator: Lokalize 24.01.90\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Kisaragi Hiu"
 
-#, fuzzy, kde-format
-#| msgid "Show hidden shares"
+#, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "顯示隱藏的共享"
+msgstr "mail@kisaragi-hiu.com"
 
 #: helpers/smb4kmounthelper.cpp:135
-#, fuzzy, kde-format
+#, kde-format
 msgid "The mount process could not be started."
-msgstr "目錄 %1 無法建立。"
+msgstr "掛載行程無法啟動。"
 
 #: helpers/smb4kmounthelper.cpp:179
-#, fuzzy, kde-format
+#, kde-format
 msgid "The mountpoint %1 is invalid."
-msgstr "顯示掛載點，而非共享名稱。"
+msgstr "掛載點 %1 無效。"
 
 #: helpers/smb4kmounthelper.cpp:241
-#, fuzzy, kde-format
+#, kde-format
 msgid "The unmount process could not be started."
-msgstr "目錄 %1 無法建立。"
+msgstr "卸載行程無法啟動。"
 
 #: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:48
 #, kde-format
@@ -54,19 +54,19 @@ msgid "Smb4K"
 msgstr "Smb4K"
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
+#, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
-msgstr "網路芳鄰"
+msgstr "進階的網路芳鄰瀏覽器兼 Samba 共享裝置掛載工具"
 
 #: smb4k/main.cpp:49
-#, fuzzy, kde-format
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "(c) 2003-2006, Alexander Reinholdt & Smb4K 團隊"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:58
 #, kde-format
 msgid "Alexander Reinholdt"
-msgstr ""
+msgstr "Alexander Reinholdt"
 
 #: smb4k/main.cpp:58
 #, kde-format
@@ -76,18 +76,18 @@ msgstr "開發人員"
 #: smb4k/main.cpp:63
 #, kde-format
 msgid "Wolfgang Geisendörfer"
-msgstr ""
+msgstr "Wolfgang Geisendörfer"
 
 #: smb4k/main.cpp:63
 #, kde-format
 msgid "Donator"
-msgstr ""
+msgstr "捐助者"
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
-#, fuzzy, kde-format
+#, kde-format
 msgid "&File"
-msgstr "檔案："
+msgstr "檔案(&F)"
 
 #. i18n: ectx: Menu (network)
 #: smb4k/smb4k_shell.rc:9
@@ -103,26 +103,26 @@ msgstr "共享(&A)"
 
 #. i18n: ectx: Menu (bookmarks)
 #: smb4k/smb4k_shell.rc:15
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Bookmarks"
-msgstr "書籤"
+msgstr "書籤(&B)"
 
 #. i18n: ectx: Menu (settings)
 #: smb4k/smb4k_shell.rc:17
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Settings"
-msgstr "一般選項"
+msgstr "設定(&S)"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: smb4k/smb4k_shell.rc:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Main Toolbar"
-msgstr "跳至共享檢視"
+msgstr "主工具列"
 
 #: smb4k/smb4kbookmarkdialog.cpp:32
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "書籤"
+msgstr "將共享裝置加入書籤"
 
 #: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
@@ -130,26 +130,28 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"列出的所有共享裝置都會被加入書籤。要為書籤設定文字標籤或分類，請雙擊對應的書"
+"籤項目。"
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "標籤："
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "類別："
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "書籤"
+msgstr "書籤編輯器"
 
 #: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bookmarks"
 msgstr "書籤"
 
@@ -161,19 +163,19 @@ msgstr "編輯書籤(&E)"
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:133
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add &Bookmark"
-msgstr "編輯書籤(&E)"
+msgstr "加入書籤(&B)"
 
 #: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "編輯書籤(&E)"
+msgstr "掛載書籤"
 
 #: smb4k/smb4kconfigdialog.cpp:124
 #, kde-format
 msgid "User Interface"
-msgstr ""
+msgstr "使用者介面"
 
 #: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
@@ -182,9 +184,9 @@ msgstr "網路"
 
 #: smb4k/smb4kconfigdialog.cpp:126
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mounting"
-msgstr "掛載(&M)"
+msgstr "掛載中"
 
 #: smb4k/smb4kconfigdialog.cpp:127
 #, kde-format
@@ -198,65 +200,63 @@ msgid "Synchronization"
 msgstr "同步化"
 
 #: smb4k/smb4kconfigdialog.cpp:130
-#, fuzzy, kde-format
+#, kde-format
 msgid "Custom Settings"
-msgstr "Samba 選項"
+msgstr "自訂設定"
 
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:72
 #: smb4k/smb4kprofilesmenu.cpp:22
-#, fuzzy, kde-format
+#, kde-format
 msgid "Profiles"
-msgstr "列印檔案(&P)"
+msgstr "設定檔"
 
 #: smb4k/smb4kconfigdialog.cpp:154
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
 "corresponding configuration page to fix it.</qt>"
-msgstr ""
+msgstr "<qt>發現不正確的設定。將會帶您至對應的設定頁面來修正問題。</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #: smb4k/smb4kconfigpageprofiles.cpp:52
-#, fuzzy, kde-format
+#, kde-format
 msgid "Settings"
-msgstr "一般選項"
+msgstr "設定"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:53
-#, fuzzy, kde-format
-#| msgid "Remove Entries"
+#, kde-format
 msgid "Wallet Entries"
-msgstr "移除項目"
+msgstr "錢包項目"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:73
-#, fuzzy, kde-format
+#, kde-format
 msgid "Load"
-msgstr "就緒。"
+msgstr "載入"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:78
-#, fuzzy, kde-format
-#| msgid "Share:"
+#, kde-format
 msgid "Save"
-msgstr "共享："
+msgstr "儲存"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remove"
-msgstr "全部删除"
+msgstr "移除"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:96
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, fuzzy, kde-format
+#, kde-format
 msgid "Clear"
-msgstr "搜尋(&S)"
+msgstr "清除"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:131
 #, kde-format
@@ -266,29 +266,29 @@ msgstr "預設登入"
 #: smb4k/smb4kconfigpageauthentication.cpp:240
 #, kde-format
 msgid "Enter the default login information."
-msgstr ""
+msgstr "輸入預設登入資訊。"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:302
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
+msgstr "為錢包項目 %1 設定使用者名稱和密碼。"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:304
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr ""
+msgstr "為預設登入設定使用者名稱和密碼。"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
-msgstr ""
+msgstr "使用者名稱："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
-#, fuzzy, kde-format
+#, kde-format
 msgid "Workgroup:"
-msgstr "工作群組："
+msgstr "工作群組：："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
@@ -299,28 +299,28 @@ msgstr "IP 位址："
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "新增分類"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
 #, kde-format
 msgid "Clear List"
-msgstr ""
+msgstr "清除清單"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:456
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "新分類"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "都沒問題。"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
-msgstr ""
+msgstr "項目 <b>%1</b> 已移除，因為所有自訂設定都已被重設。"
 
 #: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
 #, kde-format
@@ -332,79 +332,79 @@ msgstr "目錄"
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
-msgstr ""
+msgstr "行為"
 
 #: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
 #, kde-format
 msgid " min"
-msgstr ""
+msgstr " 分鐘"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#, fuzzy, kde-format
+#, kde-format
 msgid "Basic Settings"
-msgstr "一般選項"
+msgstr "基本設定"
 
 #: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
-#, fuzzy, kde-format
+#, kde-format
 msgid "Common Options"
-msgstr "Samba 選項"
+msgstr "一般選項"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
 #, kde-format
 msgid "CIFS Unix Extensions Support"
-msgstr ""
+msgstr "CIFS Unix 擴充功能支援"
 
 #: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
 #, kde-format
 msgid "Choose a different user"
-msgstr ""
+msgstr "選擇另一個使用者"
 
 #: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:630
 #, kde-format
 msgid "Choose a different group"
-msgstr ""
+msgstr "選擇另一個群組"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#, fuzzy, kde-format
+#, kde-format
 msgid "Common Mount Settings"
-msgstr "Samba 選項"
+msgstr "通用掛載設定"
 
 #: smb4k/smb4kconfigpagemounting.cpp:341
-#, fuzzy, kde-format
+#, kde-format
 msgid "Advanced Options"
-msgstr "Rsync 選項"
+msgstr "進階選項"
 
 #: smb4k/smb4kconfigpagemounting.cpp:454
 #, kde-format
 msgid "Edit the additional CIFS options."
-msgstr ""
+msgstr "編輯額外的 CIFS 選項。"
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#, fuzzy, kde-format
+#, kde-format
 msgid "Advanced Mount Settings"
-msgstr "Rsync 選項"
+msgstr "進階掛載設定"
 
 #: smb4k/smb4kconfigpagemounting.cpp:676
 #, kde-format
 msgid "Character Sets"
-msgstr ""
+msgstr "字元集"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mount Settings"
-msgstr "Samba 選項"
+msgstr "掛載設定"
 
 #: smb4k/smb4kconfigpagemounting.cpp:768
 #, kde-format
 msgid "Additional CIFS Options"
-msgstr ""
+msgstr "額外的 CIFS 選項"
 
 #: smb4k/smb4kconfigpagemounting.cpp:769
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr ""
+msgstr "<qt>將希望的選項以逗號分隔方式輸入：</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:797
 #, kde-format
@@ -417,13 +417,12 @@ msgid_plural ""
 msgstr[0] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#, fuzzy, kde-format
+#, kde-format
 msgid "Browse Settings"
-msgstr "一般選項"
+msgstr "瀏覽設定"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:137
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
@@ -446,19 +445,17 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:228
-#, fuzzy, kde-format
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Rsync 選項"
+msgstr "進階設定"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "同步化"
+msgstr "同步目錄"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:82
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
 msgstr "備份"
 
@@ -468,59 +465,57 @@ msgid "General"
 msgstr "一般"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:163
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
-msgstr "鏈結"
+msgstr "連結"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:210
-#, fuzzy, kde-format
-#| msgid "File Deletion"
+#, kde-format
 msgid "File Handling"
-msgstr "檔案刪除"
+msgstr "檔案處理"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:218
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "檔案屬性"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:263
 #, kde-format
 msgid "Ownership"
-msgstr ""
+msgstr "擁有者"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "檔案屬性與擁有者"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, kde-format
 msgid "Compression"
-msgstr ""
+msgstr "壓縮"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:327
-#, fuzzy, kde-format
+#, kde-format
 msgid "Files"
-msgstr "檔案："
+msgstr "檔案"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:337
 #: smb4k/smb4kconfigpagesynchronization.cpp:348
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:373
 #: smb4k/smb4kconfigpagesynchronization.cpp:592
 #: smb4k/smb4kconfigpagesynchronization.cpp:608
-#, fuzzy, kde-format
+#, kde-format
 msgid "Miscellaneous"
-msgstr "一般選項"
+msgstr "雜項"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:383
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, kde-format
@@ -528,13 +523,12 @@ msgid "File Transfer"
 msgstr "檔案轉送"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:399
-#, fuzzy, kde-format
+#, kde-format
 msgid "Files && Directories"
-msgstr "強制刪除非空目錄"
+msgstr "檔案與目錄"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:445
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "限制"
 
@@ -546,7 +540,7 @@ msgstr "檔案刪除"
 #: smb4k/smb4kconfigpagesynchronization.cpp:470
 #, kde-format
 msgid "General Filtering Settings"
-msgstr ""
+msgstr "一般過濾設定"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:525
 #, kde-format
@@ -559,132 +553,129 @@ msgid "Filtering"
 msgstr "過濾"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:561
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "總和檢查碼"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
 msgid "Main Window"
-msgstr ""
+msgstr "主視窗"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:204
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network Neighborhood"
 msgstr "網路芳鄰"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:106
-#, fuzzy, kde-format
-#| msgid "Shares"
+#, kde-format
 msgid "Shares View"
-msgstr "共享"
+msgstr "共享檢視"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Samba 選項"
+msgstr "自訂設定編輯器"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
-#, fuzzy, kde-format
-#| msgid "Network"
+#, kde-format
 msgid "No network item was set."
-msgstr "網路"
+msgstr "未設定網路項目。"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
-msgstr ""
+msgstr "定義主機 <b>%1</b> 及其所提供之共享裝置的自訂設定。"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:147
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "定義共享裝置 <b>%1</b> 的自訂設定。"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269
-#, fuzzy, kde-format
+#, kde-format
 msgid "Always remount this share"
-msgstr "掛載的共享(&S)"
+msgstr "總是重新掛載此共享裝置"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "Samba 選項"
+msgstr "掛載：一般設定"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "這個伺服器支援 CIFS Unix 擴充功能"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
 #, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr ""
+msgstr "掛載：CIFS Unix 擴充功能"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "Rsync 選項"
+msgstr "掛載：進階設定"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
+#, kde-format
 msgid "Browsing"
-msgstr "一般選項"
+msgstr "瀏覽"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
-#, fuzzy, kde-format
-#| msgid "IP address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "IP 位址："
+msgstr "MAC 位址："
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:399
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "掃描網路芳鄰前傳送魔法封包"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:401
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "掛載共享裝置前傳送魔法封包"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "指定使用者"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "請指定使用者名稱。"
 
 #: smb4k/smb4khomesuserdialog.cpp:121
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
+msgstr "請指定使用者名稱給共享裝置<br><b>%1</b>。"
 
 #: smb4k/smb4kmainwindow.cpp:123
-#, fuzzy, kde-format
+#, kde-format
 msgid "Dock Widgets"
-msgstr "停駐視窗元件(&D)"
+msgstr "面板元件"
 
 #: smb4k/smb4kmainwindow.cpp:215 smb4k/smb4ksharesmenu.cpp:39
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mounted Shares"
-msgstr "掛載的共享(&S)"
+msgstr "已掛載的共享裝置"
 
 #: smb4k/smb4kmainwindow.cpp:321
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
-"關閉主視窗後 Smb4K 將在系統匣中繼續執行。可用檔案選單中的離開來結束程式。"
+"<qt>關閉主視窗後 Smb4K 將在系統匣中繼續執行。<br>可使用<i>檔案</i>選單中的<i>"
+"離開</i>來結束應用程式。</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:323
 #, fuzzy, kde-format
@@ -692,64 +683,60 @@ msgid "Docking"
 msgstr "停駐視窗元件(&D)"
 
 #: smb4k/smb4kmainwindow.cpp:378
-#, fuzzy, kde-format
+#, kde-format
 msgid "There are currently no shares mounted."
-msgstr "目錄 %1 無法建立。"
+msgstr "目前沒有掛載任何共享裝置。"
 
 #: smb4k/smb4kmainwindow.cpp:381
-#, fuzzy, kde-format
+#, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
-msgstr[0] "目錄 %1 無法建立。"
+msgstr[0] "目前掛載了 %1 個共享裝置。"
 
 #: smb4k/smb4kmainwindow.cpp:519
-#, fuzzy, kde-format
-#| msgid "The wallet \"%1\" could not be opened."
+#, kde-format
 msgid "The wallet is used."
-msgstr "密碼包「%1」無法開啟。"
+msgstr "已使用錢包。"
 
 #: smb4k/smb4kmainwindow.cpp:522
-#, fuzzy, kde-format
-#| msgid "The password is not correct. "
+#, kde-format
 msgid "The password dialog is used."
-msgstr "密碼不正確。"
+msgstr "已使用密碼對話框。"
 
 #: smb4k/smb4kmainwindow.cpp:532
-#, fuzzy, kde-format
+#, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr "查詢此主機以取回瀏覽清單："
+msgstr "正在尋找工作群組及網域..."
 
 #: smb4k/smb4kmainwindow.cpp:537
-#, fuzzy, kde-format
+#, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "查詢此主機以取回瀏覽清單："
+msgstr "正在尋找網域 %1 中的主機..."
 
 #: smb4k/smb4kmainwindow.cpp:542
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr ""
+msgstr "正在尋找主機 %1 所提供的共享裝置..."
 
 #: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:559
-#, fuzzy, kde-format
+#, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "查詢此主機以取回瀏覽清單："
+msgstr "正在尋找 %1 中的檔案與目錄..."
 
 #: smb4k/smb4kmainwindow.cpp:576
 #, kde-format
 msgid "Waking up remote hosts..."
-msgstr ""
+msgstr "正在喚醒遠端主機..."
 
 #: smb4k/smb4kmainwindow.cpp:581
-#, fuzzy, kde-format
-#| msgid "Sending file to printer..."
+#, kde-format
 msgid "Sending file to printer %1..."
-msgstr "發送檔案到印表機…"
+msgstr "正在傳送檔案至印表機 %1..."
 
 #: smb4k/smb4kmainwindow.cpp:585
-#, fuzzy, kde-format
-#| msgid "Searching for host..."
+#, kde-format
 msgid "Searching..."
-msgstr "正在搜尋主機…"
+msgstr "搜尋中..."
 
 #: smb4k/smb4kmainwindow.cpp:606 smb4k/smb4kmainwindow.cpp:645
 #: smb4k/smb4kmainwindow.cpp:730
@@ -758,42 +745,39 @@ msgid "Done."
 msgstr "完成。"
 
 #: smb4k/smb4kmainwindow.cpp:616
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mounting..."
-msgstr "掛載(&M)"
+msgstr "掛載中..."
 
 #: smb4k/smb4kmainwindow.cpp:620
-#, fuzzy, kde-format
-#| msgid "Unmounting share..."
+#, kde-format
 msgid "Unmounting..."
-msgstr "正在卸載共享…"
+msgstr "卸載中..."
 
 #: smb4k/smb4kmainwindow.cpp:624
-#, fuzzy, kde-format
-#| msgid "Opening host..."
+#, kde-format
 msgid "Waking up host..."
-msgstr "開啟主機…"
+msgstr "喚醒主機中…"
 
 #: smb4k/smb4kmainwindow.cpp:654
 #, kde-format
 msgid "%1 has been mounted successfully."
-msgstr ""
+msgstr "%1 已成功掛載。"
 
 #: smb4k/smb4kmainwindow.cpp:677
 #, kde-format
 msgid "%1 has been unmounted successfully."
-msgstr ""
+msgstr "%1 已成功卸載。"
 
 #: smb4k/smb4kmainwindow.cpp:716
-#, fuzzy, kde-format
-#| msgid "Synchronizing data..."
+#, kde-format
 msgid "Synchronizing %1"
-msgstr "同步資料…"
+msgstr "正在同步 %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mount Dialog"
-msgstr "掛載(&M)"
+msgstr "掛載對話框"
 
 #: smb4k/smb4kmountdialog.cpp:51
 #, kde-format
@@ -804,21 +788,20 @@ msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Location:"
-msgstr "限制"
+msgstr "位置："
 
 #: smb4k/smb4kmountdialog.cpp:107
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bookmark this share"
-msgstr "書籤"
+msgstr "將此共享裝置加入書籤"
 
 #: smb4k/smb4kmountdialog.cpp:146
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "書籤"
+msgstr "書籤 >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -845,7 +828,7 @@ msgstr "掃描網路(&R)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:104
 #, kde-format
 msgid "&Abort"
-msgstr "放棄(&A)"
+msgstr "中止(&A)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:116
 #, kde-format
@@ -856,29 +839,29 @@ msgstr "搜尋(&S)"
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Samba 選項"
+msgstr "新增自訂設定(&C)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:52
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr ""
+msgstr "開啟掛載對話框(&O)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:163
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:176
 #, kde-format
@@ -888,7 +871,7 @@ msgstr "驗證(&T)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:182
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:187
 #, kde-format
@@ -898,17 +881,17 @@ msgstr "預覽(&V)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:198
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Print File"
-msgstr "列印檔案"
+msgstr "列印檔案(&P)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
@@ -925,7 +908,7 @@ msgstr "卸載(&U)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:950
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:398
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:409
@@ -942,158 +925,152 @@ msgstr "掃描工作群組(&R)"
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:34
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
-#, fuzzy, kde-format
-#| msgid "&Search"
+#, kde-format
 msgid "Search string"
-msgstr "搜尋(&S)"
+msgstr "搜尋字串"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:52
-#, fuzzy, kde-format
-#| msgid "&Search"
+#, kde-format
 msgid "Search"
-msgstr "搜尋(&S)"
+msgstr "搜尋"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:54
 #, kde-format
 msgid "Stop"
-msgstr ""
+msgstr "停止"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:63
 #, kde-format
 msgid "Item Down"
-msgstr ""
+msgstr "項目下移"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:72
 #, kde-format
 msgid "Item Up"
-msgstr ""
+msgstr "項目上移"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr ""
+msgstr "請輸入主機 <b>%1</b> 的使用者名稱和密碼。"
 
 #: smb4k/smb4kpassworddialog.cpp:52
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr ""
+msgstr "請輸入共享裝置 <b>%1</b> 的使用者名稱和密碼。"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
+#, kde-format
 msgid "Preview Dialog"
-msgstr "掛載(&M)"
+msgstr "預覽對話框"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "重新載入"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#, kde-format
 msgid "Abort"
-msgstr "放棄(&A)"
+msgstr "中止"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "上"
 
 #: smb4k/smb4kpreviewdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#, kde-format
 msgid "Preview of %1"
-msgstr "預覽(&V)"
+msgstr "%1 的預覽"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Print Dialog"
-msgstr "掛載(&M)"
+msgstr "列印對話框"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
+#, kde-format
 msgid "Print a file."
-msgstr "列印檔案"
+msgstr "列印一個檔案。"
 
 #: smb4k/smb4kprintdialog.cpp:61
-#, fuzzy, kde-format
+#, kde-format
 msgid "File:"
 msgstr "檔案："
 
 #: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "複本數："
 
 #: smb4k/smb4kprintdialog.cpp:87
-#, fuzzy, kde-format
+#, kde-format
 msgid "Print"
-msgstr "列印檔案"
+msgstr "列印"
 
 #: smb4k/smb4kprintdialog.cpp:123
-#, fuzzy, kde-format
-#| msgid "Sending file to printer..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "發送檔案到印表機…"
+msgstr "用印表機 <b>%1</b> 來列印檔案。"
 
 #: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
-#, fuzzy, kde-format
+#, kde-format
 msgid "U&nmount All"
 msgstr "全部卸載(&N)"
 
 #: smb4k/smb4ksharesmenu.cpp:160
-#, fuzzy, kde-format
-#| msgid "&Unmount"
+#, kde-format
 msgid "Unmount"
-msgstr "卸載(&U)"
+msgstr "卸載"
 
 #: smb4k/smb4ksharesmenu.cpp:179
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add Bookmark"
-msgstr "編輯書籤(&E)"
+msgstr "加入書籤"
 
 #: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
-#, fuzzy, kde-format
+#, kde-format
 msgid "Synchronize"
-msgstr "同步(&Y)"
+msgstr "同步"
 
 #: smb4k/smb4ksharesmenu.cpp:224
-#, fuzzy, kde-format
+#, kde-format
 msgid "Open with Konsole"
-msgstr "&Konqueror"
+msgstr "用 Konsole 開啟"
 
 #: smb4k/smb4ksharesmenu.cpp:238
-#, fuzzy, kde-format
+#, kde-format
 msgid "Open with File Manager"
-msgstr "&Konqueror"
+msgstr "使用檔案管理員開啟"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:137
 #, kde-format
 msgid "View Modes"
-msgstr ""
+msgstr "顯示模式"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:143
-#, fuzzy, kde-format
+#, kde-format
 msgid "Icon View"
-msgstr "跳至共享檢視"
+msgstr "圖示檢視"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:149
-#, fuzzy, kde-format
+#, kde-format
 msgid "List View"
-msgstr "跳至共享檢視"
+msgstr "列表檢視"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:197
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:230
 #, kde-format
@@ -1103,27 +1080,27 @@ msgstr "同步(&Y)"
 #: smb4k/smb4ksharesviewdockwidget.cpp:235
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Ctrl+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:248
-#, fuzzy, kde-format
+#, kde-format
 msgid "Open with Konso&le"
-msgstr "&Konqueror"
+msgstr "用 Konso&le 開啟"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:253
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:255
-#, fuzzy, kde-format
+#, kde-format
 msgid "Open with F&ile Manager"
-msgstr "&Konqueror"
+msgstr "使用檔案管理員開啟(&I)"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:260
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:375
 #, kde-format
@@ -1135,39 +1112,37 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "來源："
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Default Destination"
+#, kde-format
 msgid "Destination:"
-msgstr "預設目的"
+msgstr "目的地："
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "交換路徑"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr ""
+msgstr "請提供 <b>%1</b> 同步用的來源和目的地目錄。"
 
 #: smb4k/smb4ktooltip.cpp:121
-#, fuzzy, kde-format
-#| msgid "Type"
+#, kde-format
 msgid "Type:"
-msgstr "類型"
+msgstr "類型："
 
 #: smb4k/smb4ktooltip.cpp:130
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "DNS-SD 瀏覽網域"
 
 #: smb4k/smb4ktooltip.cpp:132
-#, fuzzy, kde-format
+#, kde-format
 msgid "Workgroup"
 msgstr "工作群組："
 
@@ -1178,77 +1153,68 @@ msgid "Master Browser:"
 msgstr "主伺服器："
 
 #: smb4k/smb4ktooltip.cpp:151
-#, fuzzy, kde-format
-#| msgid "Host:"
+#, kde-format
 msgid "Host"
 msgstr "主機："
 
 #: smb4k/smb4ktooltip.cpp:154 smb4k/smb4ktooltip.cpp:170
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgid "Comment:"
-msgstr "註解"
+msgstr "註解："
 
 #: smb4k/smb4ktooltip.cpp:167
-#, fuzzy, kde-format
-#| msgid "Share:"
+#, kde-format
 msgid "Share (%1)"
-msgstr "共享："
+msgstr "共享（%1）"
 
 #: smb4k/smb4ktooltip.cpp:174
-#, fuzzy, kde-format
-#| msgid "Mounted:"
+#, kde-format
 msgid "Mounted:"
-msgstr "掛載："
+msgstr "已掛載："
 
 #: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "yes"
-msgstr ""
+msgstr "是"
 
 #: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "no"
-msgstr ""
+msgstr "否"
 
 #: smb4k/smb4ktooltip.cpp:183
-#, fuzzy, kde-format
-#| msgid "Host:"
+#, kde-format
 msgid "Host:"
 msgstr "主機："
 
 #: smb4k/smb4ktooltip.cpp:229
-#, fuzzy, kde-format
-#| msgid "Mount point:"
+#, kde-format
 msgid "Mountpoint:"
 msgstr "掛載點："
 
 #: smb4k/smb4ktooltip.cpp:231 smb4k/smb4ktooltip.cpp:235
 #: smb4k/smb4ktooltip.cpp:236 smb4k/smb4ktooltip.cpp:249
-#, fuzzy, kde-format
+#, kde-format
 msgid "unknown"
-msgstr "不明的"
+msgstr "未知"
 
 #: smb4k/smb4ktooltip.cpp:239
 #, kde-format
 msgid "Owner:"
-msgstr ""
+msgstr "擁有者："
 
 #: smb4k/smb4ktooltip.cpp:242
-#, fuzzy, kde-format
-#| msgid "File system:"
+#, kde-format
 msgid "File system:"
 msgstr "檔案系統："
 
 #: smb4k/smb4ktooltip.cpp:247
-#, fuzzy, kde-format
-#| msgid "%1 %2 out of %3 %4 (%5\\% used)"
+#, kde-format
 msgid "%1 free of %2 (%3 used)"
-msgstr "%3 %4 之中的 %1 %2 (%5\\% 已使用)"
+msgstr "%1 可用，共 %2（已使用 %3）"
 
 #: smb4k/smb4ktooltip.cpp:254
-#, fuzzy, kde-format
-#| msgid "Size:"
+#, kde-format
 msgid "Size:"
 msgstr "大小："
 
