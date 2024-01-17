@@ -71,6 +71,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="uk">Виявлення і монтування спільних ресурсів SAMBA і Windows у мережі</summary>
   <summary xml:lang="x-test">xxDiscover and mount SAMBA and Windows shares over the networkxx</summary>
   <summary xml:lang="zh-CN">发现并挂载网络中的 SAMBA 和 Windows 共享</summary>
+  <summary xml:lang="zh-TW">在區域網路上尋找 SAMBA 及 Windows 共享裝置並掛載它們</summary>
   <description>
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
@@ -102,6 +103,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba. Програму засновано на KDE Frameworks 5 та клієнтській бібліотеці Samba (libsmbclient). Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
     <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
     <p xml:lang="zh-CN">Smb4K 是一款功能强大的网上邻居浏览器和 Samba 共享挂载工具。它基于 KDE 程序框架 5 和 Samba 客户端程序库 (libsmbclient) 开发。它能够扫描您的网上邻居，发现所有可用的工作组、服务器和共享，并将所需的共享挂载到您的本地文件系统。</p>
+    <p xml:lang="zh-TW">Smb4K 是一個進階的網路芳鄰瀏覽器兼 Samba 共享裝置掛載工具。它建構於 KDE Frameworks 5 及 Samba 的用戶端函式庫 (libsmbclient) 之上。它會掃描您的網路芳鄰，來尋找可用的工作群組、伺服器及共享資料夾，並且可以在希望的時候掛載共享資料夾到您的本地檔案系統中。</p>
     <p>
       Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.
     </p>
@@ -132,6 +134,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
     <p xml:lang="x-test">xxSmb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
     <p xml:lang="zh-CN">Smb4K 基于 Samba 的客户端程序库开发，致力于在保持易用性的前提下支持尽可能多的功能。</p>
+    <p xml:lang="zh-TW">Smb4K 基於 Samba 的用戶端函式庫。其目的是要提供一個易於使用的程式，並有盡可能多的功能。</p>
     <p>
       Features:
     </p>
@@ -867,6 +870,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="uk">Профілі для різних наборів налаштувань мережевого оточення</li>
       <li xml:lang="x-test">xxProfiles for different network neighborhood setupsxx</li>
       <li xml:lang="zh-CN">为不同的网上邻居设置指定不同的配置方案</li>
+      <li xml:lang="zh-TW">不同的網路芳鄰配置用的設定檔</li>
     </ul>
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
