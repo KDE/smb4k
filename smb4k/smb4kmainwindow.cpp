@@ -25,13 +25,11 @@
 #include "smb4ksystemtray.h"
 
 // Qt includes
-#include <QActionGroup>
 #include <QApplication>
 #include <QDockWidget>
 #include <QMenu>
 #include <QMenuBar>
 #include <QStatusBar>
-#include <QString>
 #include <QTabBar>
 #include <QTimer>
 
@@ -50,17 +48,11 @@ using namespace Smb4KGlobal;
 Smb4KMainWindow::Smb4KMainWindow()
     : KXmlGuiWindow()
 {
-    m_systemTrayWidget = new Smb4KSystemTray(this);
-    m_passwordDialog = new Smb4KPasswordDialog(this);
-    m_focusWidget = nullptr;
-
-    m_timerId = 0;
-
     setStandardToolBarMenuEnabled(true);
     createStandardStatusBarAction();
     setDockNestingEnabled(true);
     setupActions();
-    setupGUI(QSize(800, 600), Default, QStringLiteral("smb4k_shell.rc"));
+    setupGUI(QSize(800, 500), Default, QStringLiteral("smb4k_shell.rc"));
     setupView();
     setupMenuBar();
     setupStatusBar();
@@ -87,9 +79,12 @@ Smb4KMainWindow::Smb4KMainWindow()
     }
     }
 
-    //
-    // Apply the main window settings
-    //
+    m_systemTrayWidget = new Smb4KSystemTray(this);
+    m_passwordDialog = new Smb4KPasswordDialog(this);
+
+    m_focusWidget = nullptr;
+    m_timerId = 0;
+
     KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("MainWindow"));
     setAutoSaveSettings(configGroup, true);
 
@@ -105,30 +100,15 @@ Smb4KMainWindow::~Smb4KMainWindow()
 
 void Smb4KMainWindow::setupActions()
 {
-    //
-    // Quit action
-    //
     QAction *quitAction = KStandardAction::quit(this, &QCoreApplication::quit, actionCollection());
     actionCollection()->addAction(QStringLiteral("quit_action"), quitAction);
 
-    //
-    // Configure action
-    //
     QAction *configure_action = KStandardAction::preferences(this, SLOT(slotConfigDialog()), actionCollection());
     actionCollection()->addAction(QStringLiteral("configure_action"), configure_action);
 
-    //
-    // Dock widgets action menu
-    //
-    KActionMenu *dock_widgets_menu = new KActionMenu(KDE::icon(QStringLiteral("tab-duplicate")), i18n("Dock Widgets"), actionCollection());
-    actionCollection()->addAction(QStringLiteral("dock_widgets_menu"), dock_widgets_menu);
+    KActionMenu *dockWidgetsMenu = new KActionMenu(KDE::icon(QStringLiteral("tab-duplicate")), i18n("Dock Widgets"), actionCollection());
+    actionCollection()->addAction(QStringLiteral("dock_widgets_menu"), dockWidgetsMenu);
 
-    // m_dockWidgets = new QActionGroup(actionCollection());
-    // m_dockWidgets->setExclusive(false);
-
-    //
-    // Bookmarks menu and action
-    //
     m_bookmarkMenu = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this);
     QAction *addBookmarkAction = new QAction(KDE::icon(QStringLiteral("bookmark-new")), i18n("Add &Bookmark"), actionCollection());
     addBookmarkAction->setEnabled(false);
@@ -137,9 +117,6 @@ void Smb4KMainWindow::setupActions()
     connect(addBookmarkAction, &QAction::triggered, this, &Smb4KMainWindow::slotAddBookmarks);
     connect(m_bookmarkMenu, &Smb4KBookmarkMenu::addBookmark, this, &Smb4KMainWindow::slotAddBookmarks);
 
-    //
-    // Profiles menu
-    //
     Smb4KProfilesMenu *profiles = new Smb4KProfilesMenu(this);
     actionCollection()->addAction(QStringLiteral("profiles_menu"), profiles);
 }

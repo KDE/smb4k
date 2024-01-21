@@ -12,7 +12,6 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QActionGroup>
 #include <QDockWidget>
 #include <QLabel>
 #include <QPointer>
