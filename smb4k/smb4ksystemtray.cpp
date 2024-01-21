@@ -34,7 +34,7 @@
 using namespace Smb4KGlobal;
 
 Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
-    : KStatusNotifierItem(QStringLiteral("smb4k_systemtray"), parent)
+    : KStatusNotifierItem(QStringLiteral("org.kde.smb4k.statusnotifieritem"), parent)
 {
     QString iconName;
 
