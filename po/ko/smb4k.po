@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-15 01:38+0000\n"
+"POT-Creation-Date: 2024-01-22 01:58+0000\n"
 "PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -53,8 +53,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "고급 네트워크 환경 탐색 및 Samba 공유 마운트 유틸리티"
 
 #: smb4k/main.cpp:49
-#, kde-format
-msgid "© 2003-2023 Alexander Reinholdt"
+#, fuzzy, kde-format
+#| msgid "© 2003-2023 Alexander Reinholdt"
+msgid "© 2003-2024 Alexander Reinholdt"
 msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:58
@@ -154,7 +155,7 @@ msgstr "책갈피"
 msgid "&Edit Bookmarks"
 msgstr "책갈피 편집(&E)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:133
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:113
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -567,7 +568,7 @@ msgstr "체크섬"
 msgid "Main Window"
 msgstr "주 창"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:204
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:181
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "네트워크 환경"
@@ -669,17 +670,17 @@ msgstr ""
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
 
-#: smb4k/smb4kmainwindow.cpp:123
+#: smb4k/smb4kmainwindow.cpp:109
 #, kde-format
 msgid "Dock Widgets"
 msgstr "독 위젯"
 
-#: smb4k/smb4kmainwindow.cpp:215 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:192 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "마운트된 공유"
 
-#: smb4k/smb4kmainwindow.cpp:321
+#: smb4k/smb4kmainwindow.cpp:298
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -688,99 +689,99 @@ msgstr ""
 "<qt>주 창을 닫아도 시스템 트레이에서 Smb4K를 실행합니다.<br>앱을 끝내려면 <i>"
 "파일</i> 메뉴의 <i>끝내기</i> 항목을 사용하십시오.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:323
+#: smb4k/smb4kmainwindow.cpp:300
 #, kde-format
 msgid "Docking"
 msgstr "도킹"
 
-#: smb4k/smb4kmainwindow.cpp:378
+#: smb4k/smb4kmainwindow.cpp:355
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "마운트된 공유가 없습니다."
 
-#: smb4k/smb4kmainwindow.cpp:381
+#: smb4k/smb4kmainwindow.cpp:358
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "공유 %1개가 마운트되어 있습니다."
 
-#: smb4k/smb4kmainwindow.cpp:519
+#: smb4k/smb4kmainwindow.cpp:496
 #, kde-format
 msgid "The wallet is used."
 msgstr "지갑을 사용하고 있습니다."
 
-#: smb4k/smb4kmainwindow.cpp:522
+#: smb4k/smb4kmainwindow.cpp:499
 #, kde-format
 msgid "The password dialog is used."
 msgstr "암호 대화 상자를 사용하고 있습니다."
 
-#: smb4k/smb4kmainwindow.cpp:532
+#: smb4k/smb4kmainwindow.cpp:509
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "작업 그룹과 도메인을 찾는 중..."
 
-#: smb4k/smb4kmainwindow.cpp:537
+#: smb4k/smb4kmainwindow.cpp:514
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "%1 도메인의 호스트 찾는 중..."
 
-#: smb4k/smb4kmainwindow.cpp:542
+#: smb4k/smb4kmainwindow.cpp:519
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "%1 호스트에서 제공하는 공유 찾는 중..."
 
-#: smb4k/smb4kmainwindow.cpp:550 smb4k/smb4kmainwindow.cpp:559
+#: smb4k/smb4kmainwindow.cpp:527 smb4k/smb4kmainwindow.cpp:536
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "%1에 있는 파일과 디렉터리 찾는 중..."
 
-#: smb4k/smb4kmainwindow.cpp:576
+#: smb4k/smb4kmainwindow.cpp:553
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "원격 호스트 깨우는 중..."
 
-#: smb4k/smb4kmainwindow.cpp:581
+#: smb4k/smb4kmainwindow.cpp:558
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "%1 프린터로 파일 전송 중..."
 
-#: smb4k/smb4kmainwindow.cpp:585
+#: smb4k/smb4kmainwindow.cpp:562
 #, kde-format
 msgid "Searching..."
 msgstr "검색 중..."
 
-#: smb4k/smb4kmainwindow.cpp:606 smb4k/smb4kmainwindow.cpp:645
-#: smb4k/smb4kmainwindow.cpp:730
+#: smb4k/smb4kmainwindow.cpp:583 smb4k/smb4kmainwindow.cpp:622
+#: smb4k/smb4kmainwindow.cpp:707
 #, kde-format
 msgid "Done."
 msgstr "완료."
 
-#: smb4k/smb4kmainwindow.cpp:616
+#: smb4k/smb4kmainwindow.cpp:593
 #, kde-format
 msgid "Mounting..."
 msgstr "마운트 중..."
 
-#: smb4k/smb4kmainwindow.cpp:620
+#: smb4k/smb4kmainwindow.cpp:597
 #, kde-format
 msgid "Unmounting..."
 msgstr "마운트 해제 중..."
 
-#: smb4k/smb4kmainwindow.cpp:624
+#: smb4k/smb4kmainwindow.cpp:601
 #, kde-format
 msgid "Waking up host..."
 msgstr "호스트 깨우는 중..."
 
-#: smb4k/smb4kmainwindow.cpp:654
+#: smb4k/smb4kmainwindow.cpp:631
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1이(가) 마운트되었습니다."
 
-#: smb4k/smb4kmainwindow.cpp:677
+#: smb4k/smb4kmainwindow.cpp:654
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1이(가) 마운트 해제되었습니다."
 
-#: smb4k/smb4kmainwindow.cpp:716
+#: smb4k/smb4kmainwindow.cpp:693
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 동기화 중"
