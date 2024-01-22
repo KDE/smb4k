@@ -79,6 +79,11 @@ public Q_SLOTS:
 
 protected Q_SLOTS:
     /**
+     * Quits the application
+     */
+    void slotQuit();
+
+    /**
      * Open the configuration dialog
      */
     void slotConfigDialog();
@@ -219,6 +224,7 @@ private:
     QPointer<Smb4KPasswordDialog> m_passwordDialog;
     QList<NetworkItemPtr> m_requestQueue;
     int m_timerId;
+    bool m_quitting;
 };
 
 #endif

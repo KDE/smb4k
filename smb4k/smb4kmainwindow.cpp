@@ -84,6 +84,7 @@ Smb4KMainWindow::Smb4KMainWindow()
 
     m_focusWidget = nullptr;
     m_timerId = 0;
+    m_quitting = false;
 
     KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("MainWindow"));
     setAutoSaveSettings(configGroup, true);
@@ -100,11 +101,11 @@ Smb4KMainWindow::~Smb4KMainWindow()
 
 void Smb4KMainWindow::setupActions()
 {
-    QAction *quitAction = KStandardAction::quit(this, &QCoreApplication::quit, actionCollection());
+    QAction *quitAction = KStandardAction::quit(this, &Smb4KMainWindow::slotQuit, actionCollection());
     actionCollection()->addAction(QStringLiteral("quit_action"), quitAction);
 
-    QAction *configure_action = KStandardAction::preferences(this, SLOT(slotConfigDialog()), actionCollection());
-    actionCollection()->addAction(QStringLiteral("configure_action"), configure_action);
+    QAction *configureAction = KStandardAction::preferences(this, SLOT(slotConfigDialog()), actionCollection());
+    actionCollection()->addAction(QStringLiteral("configure_action"), configureAction);
 
     KActionMenu *dockWidgetsMenu = new KActionMenu(KDE::icon(QStringLiteral("tab-duplicate")), i18n("Dock Widgets"), actionCollection());
     actionCollection()->addAction(QStringLiteral("dock_widgets_menu"), dockWidgetsMenu);
@@ -283,6 +284,8 @@ void Smb4KMainWindow::loadSettings()
 
 void Smb4KMainWindow::saveSettings()
 {
+    qDebug() << "Smb4KMainWindow::saveSettings()";
+
     m_networkBrowserDockWidget->saveSettings();
     m_sharesViewDockWidget->saveSettings();
 
@@ -292,7 +295,9 @@ void Smb4KMainWindow::saveSettings()
 
 bool Smb4KMainWindow::queryClose()
 {
-    if (!QApplication::closingDown() && !qApp->isSavingSession() && isVisible()) {
+    qDebug() << "Smb4KMainWindow::queryClose()";
+
+    if (!m_quitting && !qApp->isSavingSession() && isVisible()) {
         // This part has been copied from JuK application.
         KMessageBox::information(this,
                                  i18n("<qt>Closing the main window will keep Smb4K running in the system tray.<br>"
@@ -435,6 +440,14 @@ void Smb4KMainWindow::timerEvent(QTimerEvent *event)
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
+
+void Smb4KMainWindow::slotQuit()
+{
+    m_quitting = true;
+    // saveSettings();
+    close();
+    QCoreApplication::quit();
+}
 
 void Smb4KMainWindow::slotConfigDialog()
 {
