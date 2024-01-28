@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-23 01:38+0000\n"
-"PO-Revision-Date: 2024-01-08 22:51+0100\n"
+"PO-Revision-Date: 2024-01-28 20:02+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -54,10 +54,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Altnivela reto najbara retumilo kaj Samba kunhavas muntan ilon"
 
 #: smb4k/main.cpp:49
-#, fuzzy, kde-format
-#| msgid "© 2003-2023 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:58
 #, kde-format
