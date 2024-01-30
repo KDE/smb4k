@@ -1,5 +1,5 @@
 # translation of smb4k.po to Italian
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023 Paolo Zamponi <feus73@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Paolo Zamponi <feus73@gmail.com>
 # Isidoro Russo <risidoro@despammed.com>, 2004.
 # Innocenzo Ventre <innocenzo.ventre@gmail.com>, 2012.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2012.
