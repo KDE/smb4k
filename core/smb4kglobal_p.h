@@ -1,7 +1,7 @@
 /*
     These are the private helper classes of the Smb4KGlobal namespace.
 
-    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -66,18 +66,6 @@ public:
      * are in the list of mounted shares
      */
     bool onlyForeignShares;
-
-    /**
-     * Boolean that is TRUE if the core classes have
-     * been initialized
-     */
-    bool coreInitialized;
-
-    /**
-     * Boolean that determines if the core classes should set
-     * a busy cursor when they are doing something or not.
-     */
-    bool modifyCursor;
 
 #ifdef Q_OS_LINUX
     /**

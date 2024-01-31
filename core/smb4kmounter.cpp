@@ -650,7 +650,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         //
         // Modify the cursor, if necessary.
         //
-        if (!hasSubjobs() && modifyCursor()) {
+        if (!hasSubjobs()) {
             QApplication::setOverrideCursor(Qt::BusyCursor);
         }
 
@@ -709,7 +709,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         //
         // Reset the busy cursor
         //
-        if (!hasSubjobs() && modifyCursor()) {
+        if (!hasSubjobs()) {
             QApplication::restoreOverrideCursor();
         }
 
@@ -827,7 +827,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         //
         // Modify the cursor, if necessary.
         //
-        if (!hasSubjobs() && modifyCursor()) {
+        if (!hasSubjobs()) {
             QApplication::setOverrideCursor(Qt::BusyCursor);
         }
 
@@ -867,7 +867,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         //
         // Reset the busy cursor
         //
-        if (!hasSubjobs() && modifyCursor()) {
+        if (!hasSubjobs()) {
             QApplication::restoreOverrideCursor();
         }
 

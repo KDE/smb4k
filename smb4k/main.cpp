@@ -1,12 +1,13 @@
 /*
     Main file of the Smb4K program.
 
-    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
-#include "core/smb4kglobal.h"
+#include "core/smb4kclient.h"
+#include "core/smb4kmounter.h"
 #include "core/smb4ksettings.h"
 #include "smb4kmainwindow.h"
 
@@ -84,8 +85,10 @@ int main(int argc, char **argv)
     Smb4KMainWindow *mainWindow = new Smb4KMainWindow();
     mainWindow->setVisible(!Smb4KSettings::startMainWindowDocked());
 
-    // Initialize the core. Use a busy cursor.
-    initCore(true);
+    // FIXME: Move this to the main window?
+    // Start scanning the network neighborhood and remounting shares.
+    Smb4KClient::self()->start();
+    Smb4KMounter::self()->start();
 
     // Unique application
     const KDBusService service(KDBusService::Unique);

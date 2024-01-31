@@ -1,7 +1,7 @@
 /*
     This is the global namespace for Smb4K.
 
-    SPDX-FileCopyrightText: 2005-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -29,43 +29,6 @@
 
 Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
 QRecursiveMutex mutex;
-
-void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
-{
-    if (!p->coreInitialized) {
-        //
-        // Busy cursor
-        //
-        p->modifyCursor = modifyCursor;
-
-        //
-        // Initialize the necessary core classes
-        //
-        if (initClasses) {
-            Smb4KClient::self()->start();
-            Smb4KMounter::self()->start();
-        }
-
-        p->coreInitialized = true;
-    }
-}
-
-void Smb4KGlobal::abortCore()
-{
-    Smb4KClient::self()->abort();
-    Smb4KMounter::self()->abort();
-    Smb4KSynchronizer::self()->abort();
-}
-
-bool Smb4KGlobal::coreIsRunning()
-{
-    return (Smb4KClient::self()->isRunning() || Smb4KMounter::self()->isRunning() || Smb4KSynchronizer::self()->isRunning());
-}
-
-bool Smb4KGlobal::coreIsInitialized()
-{
-    return p->coreInitialized;
-}
 
 const QList<WorkgroupPtr> &Smb4KGlobal::workgroupsList()
 {
@@ -781,11 +744,6 @@ const QString Smb4KGlobal::machineNetbiosName()
 const QString Smb4KGlobal::machineWorkgroupName()
 {
     return p->machineWorkgroupName;
-}
-
-bool Smb4KGlobal::modifyCursor()
-{
-    return p->modifyCursor;
 }
 
 #if defined(Q_OS_LINUX)

@@ -60,8 +60,6 @@ Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
     : QObject(parent)
     , d(new Smb4KDeclarativePrivate)
 {
-    Smb4KGlobal::initCore(true, false);
-
     d->passwordDialog = new Smb4KPasswordDialog();
     d->timerId = 0;
 

@@ -145,7 +145,7 @@ void Smb4KClient::lookupDomains()
     //
     // Set the busy cursor
     //
-    if (!hasSubjobs() && modifyCursor()) {
+    if (!hasSubjobs()) {
         QApplication::setOverrideCursor(Qt::BusyCursor);
     }
 
@@ -226,7 +226,7 @@ void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
     //
     // Set the busy cursor
     //
-    if (!hasSubjobs() && modifyCursor()) {
+    if (!hasSubjobs()) {
         QApplication::setOverrideCursor(Qt::BusyCursor);
     }
 
@@ -309,7 +309,7 @@ void Smb4KClient::lookupShares(const HostPtr &host)
     //
     // Set the busy cursor
     //
-    if (!hasSubjobs() && modifyCursor()) {
+    if (!hasSubjobs()) {
         QApplication::setOverrideCursor(Qt::BusyCursor);
     }
 
@@ -333,7 +333,7 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
         job->setNetworkItem(item);
         job->setProcess(LookupFiles);
 
-        if (!hasSubjobs() && modifyCursor()) {
+        if (!hasSubjobs()) {
             QApplication::setOverrideCursor(Qt::BusyCursor);
         }
 
@@ -369,7 +369,7 @@ void Smb4KClient::printFile(const SharePtr &share, const KFileItem &fileItem, in
     //
     // Set the busy cursor
     //
-    if (!hasSubjobs() && modifyCursor()) {
+    if (!hasSubjobs()) {
         QApplication::setOverrideCursor(Qt::BusyCursor);
     }
 
@@ -857,7 +857,7 @@ void Smb4KClient::slotResult(KJob *job)
     //
     // Restore the cursor
     //
-    if (!hasSubjobs() && modifyCursor()) {
+    if (!hasSubjobs()) {
         QApplication::restoreOverrideCursor();
     }
 }

@@ -1,7 +1,7 @@
 /*
     This is the global namespace for Smb4K.
 
-    SPDX-FileCopyrightText: 2005-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -49,44 +49,6 @@ typedef QSharedPointer<Smb4KCustomSettings> CustomSettingsPtr;
 
 namespace Smb4KGlobal
 {
-/**
- * Use this function to initialize the core classes. Besides starting several
- * core classes such as the scanner (for an initial browse list) and the mounter
- * (for the import of all externally mounted shares), it also sets some default
- * values for some of the settings used to browse the network.
- *
- * By setting the @p modifyCursor parameter to TRUE, you force the core classes
- * to set a busy cursor when they do something. Default is FALSE.
- *
- * Setting @p initClasses to FALSE will avoid starting the core classes. This
- * should only the used if you are starting the core classes in a different
- * way (e. g. if you are starting them in the plasmoid via the Smb4KDeclarative
- * class).
- *
- * You should execute this function before starting your main application.
- */
-Q_DECL_EXPORT void initCore(bool modifyCursor = false, bool initClasses = true);
-
-/**
- * Aborts all actions that are run by the core classes and that can be aborted.
- */
-Q_DECL_EXPORT void abortCore();
-
-/**
- * Check if at least one of the core classes that use KJobs (scanner, mounter, etc.)
- * is running.
- *
- * @returns TRUE if at least one of the core classes is doing something.
- */
-Q_DECL_EXPORT bool coreIsRunning();
-
-/**
- * Check if the core has been initialized through the initCore() function.
- *
- * @returns TRUE if the core has already been initialized.
- */
-Q_DECL_EXPORT bool coreIsInitialized();
-
 /**
  * This function returns the global list of workgroups that were discovered by
  * Smb4K. Use this if you want to access and modify the list with your code.

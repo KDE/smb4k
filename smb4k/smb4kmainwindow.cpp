@@ -590,7 +590,7 @@ void Smb4KMainWindow::slotClientFinished(const NetworkItemPtr &item, int process
     Q_UNUSED(item);
     Q_UNUSED(process);
 
-    if (!coreIsRunning()) {
+    if (!Smb4KClient::self()->isRunning() && !Smb4KMounter::self()->isRunning() && !Smb4KSynchronizer::self()->isRunning()) {
         m_progressBar->setVisible(false);
         m_progressBar->reset();
         statusBar()->showMessage(i18n("Done."), 2000);
@@ -629,7 +629,7 @@ void Smb4KMainWindow::slotMounterFinished(int process)
     Q_UNUSED(process);
 
     QTimer::singleShot(250, this, [&]() {
-        if (!coreIsRunning()) {
+        if (!Smb4KClient::self()->isRunning() && !Smb4KMounter::self()->isRunning() && !Smb4KSynchronizer::self()->isRunning()) {
             m_progressBar->setVisible(false);
             m_progressBar->reset();
             statusBar()->showMessage(i18n("Done."), 2000);
@@ -714,7 +714,7 @@ void Smb4KMainWindow::slotSynchronizerFinished(const QString &destination)
 {
     Q_UNUSED(destination);
 
-    if (!coreIsRunning()) {
+    if (!Smb4KClient::self()->isRunning() && !Smb4KMounter::self()->isRunning() && !Smb4KSynchronizer::self()->isRunning()) {
         m_progressBar->setVisible(false);
         m_progressBar->reset();
         statusBar()->showMessage(i18n("Done."), 2000);

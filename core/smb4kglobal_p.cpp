@@ -1,7 +1,7 @@
 /*
     These are the private helper classes of the Smb4KGlobal namespace.
 
-    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -25,7 +25,6 @@
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
     onlyForeignShares = false;
-    coreInitialized = false;
 
 #ifdef Q_OS_LINUX
     //
