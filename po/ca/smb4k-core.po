@@ -1,17 +1,17 @@
 # Translation of smb4k-core.po to Catalan
-# Copyright (C) 2014-2023 This_file_is_part_of_KDE
+# Copyright (C) 2014-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # SPDX-FileCopyrightText: 2014, 2016, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2023-10-11 20:48+0200\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"PO-Revision-Date: 2024-01-30 13:26+0100\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -361,11 +361,11 @@ msgid ""
 "Discovery (WS-Discovery) for domain and workgroup lookups instead."
 msgstr ""
 "El Smb4K establirà les versions mínima i màxima del protocol SMB que "
-"utilitzarà la biblioteca del client Samba per explorar el veïnatge de xarxa. "
-"Això sobreescriurà la configuració al fitxer «smb.conf». Normalment no cal "
-"usar aquesta opció perquè les versions correctes del protocol s'han de "
-"negociar entre el client i el servidor en establir una connexió. Tingueu en "
-"compte que aquesta opció pot no ser apropiada per a fer que funcioni el "
+"utilitzarà la biblioteca del client Samba per a explorar el veïnatge de "
+"xarxa. Això sobreescriurà la configuració al fitxer «smb.conf». Normalment "
+"no cal usar aquesta opció perquè les versions correctes del protocol s'han "
+"de negociar entre el client i el servidor en establir una connexió. Tingueu "
+"en compte que aquesta opció pot no ser apropiada per a fer que funcioni el "
 "descobriment de grups de treball i dominis mentre es manté sense "
 "interrupcions la connectivitat als servidors. En el seu lloc, useu el «DNS "
 "Service Discovery» (DNS-SD) o «Web Services Dynamic Discovery» (WS-"
@@ -976,9 +976,9 @@ msgstr ""
 "la banda de la recepció en una manera que els faci inusables però "
 "recuperables, o (2) que desmastegui els enllaços simbòlics a la banda de "
 "l'enviament que s'han emmagatzemat en un estat de mastegats (--munge-links). "
-"Això és útil si no confieu suficientment en l'origen de les dades per a no "
-"intentar introduir un enllaç simbòlic a un lloc inesperat. Per a més "
-"detalls, vegeu la pàgina del manual del «rsync»."
+"Això és útil si no confieu prou en l'origen de les dades per a no intentar "
+"introduir un enllaç simbòlic a un lloc inesperat. Per a més detalls, vegeu "
+"la pàgina del manual del «rsync»."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:362
