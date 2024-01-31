@@ -401,7 +401,7 @@
       <para
 >Introduïu el terme de cerca a la línia d'edició i premeu la tecla &Intro; o feu clic al botó <guibutton
 >Cerca</guibutton
->. El &smb4k; començarà a cercar tot el veïnatge de xarxa. Quan es finalitzi la cerca, es ressaltaran totes les comparticions que coincideixin amb el terme de cerca (seleccionades). Si voleu fer quelcom amb <emphasis
+>. El &smb4k; començarà a cercar tot el veïnatge de xarxa. Quan es finalitzi la cerca, es ressaltaran totes les comparticions que coincideixin amb el terme de cerca (seleccionades). Si voleu fer alguna cosa amb <emphasis
 >totes</emphasis
 > les comparticions descobertes (&pex;, muntar o previsualitzar), podeu fer-ho ara. En cas contrari, podeu utilitzar els botons <guibutton
 >Amunt</guibutton
@@ -620,7 +620,7 @@
           </term>
           <listitem>
             <para
->Munta les comparticions remotes seleccionades. Aquesta acció és visible només si s'han seleccionat comparticions que encara no estan muntades. De manera predeterminada, i si heu seleccionat quelcom diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada.</para>
+>Munta les comparticions remotes seleccionades. Aquesta acció és visible només si s'han seleccionat comparticions que encara no estan muntades. De manera predeterminada, i si heu seleccionat alguna cosa diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -640,13 +640,13 @@
             <para
 >Desmunta les comparticions seleccionades. De manera predeterminada, aquesta acció és invisible, i només serà visible en lloc de l'acció <guimenuitem
 >Munta</guimenuitem
-> quan al menys una compartició muntada estigui seleccionada.</para>
+> quan almenys estigui seleccionada una compartició muntada.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->A l'explorador del veïnatge de xarxa podeu fer un clic dret per obrir el menú emergent per accedir a totes les accions disponibles. Depenent de la posició on heu fet clic (sobre un element de xarxa o a l'àrea de visualització), algunes podrien estar inhabilitades. La captura de pantalla següent mostra el menú emergent obert en una compartició remota.</para>
+>A l'explorador del veïnatge de xarxa podeu fer un clic dret per a obrir el menú emergent per a accedir a totes les accions disponibles. Depenent de la posició on heu fet clic (sobre un element de xarxa o a l'àrea de visualització), algunes podrien estar inhabilitades. La captura de pantalla següent mostra el menú emergent obert en una compartició remota.</para>
 
       <screenshot>
         <screeninfo
@@ -914,7 +914,7 @@
 >Definir una configuració personalitzada</title>
       
       <para
->Es pot definir una configuració personalitzada per a servidors individuals o comparticions que es desvien de la configuració global. Per fer-ho, podeu accedir a l'editor de configuració personalitzada fent clic a l'element de menú <menuchoice
+>Es pot definir una configuració personalitzada per a servidors individuals o comparticions que es desvien de la configuració global. Per a fer-ho, podeu accedir a l'editor de configuració personalitzada fent clic a l'element de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1031,7 +1031,7 @@
 >Les accions i el menú emergent</title>
 
       <para
->Ala vista de comparticions hi ha definides diverses opcions. Es troben a la barra de menús sota l'element <guimenu
+>A la vista de comparticions hi ha definides diverses opcions. Es troben a la barra de menús sota l'element <guimenu
 >Comparticions</guimenu
 > de la barra d'eines i en el seu menú emergent. Es troben disponibles les opcions següents:</para>
 
@@ -1601,7 +1601,7 @@
       </variablelist>
     
       <para
->Per a cada compartició muntada, podreu obrir un submenú que contingui les següents entrades. Per a més informació llegiu la <link linkend="shares_view_actions_popup_menu"
+>Per a cada compartició muntada, podreu obrir un submenú que contingui les entrades següents. Per a més informació llegiu la <link linkend="shares_view_actions_popup_menu"
 >secció del menú emergent</link
 >.</para>
 
@@ -2731,7 +2731,7 @@
 ><ulink url="https://avahi.org"
 >Avahi</ulink
 ></application
->) per cercar servidors i comparticions en el veïnatge de xarxa utilitzant el «DNS Service Discovery» (DNS-SD). Perquè això funcioni, el dimoni Avahi s'ha d'habilitar i executar en el sistema. Si aquest no és el cas, el &smb4k; mostrarà un missatge d'error:</para>
+>) per a cercar servidors i comparticions en el veïnatge de xarxa utilitzant el «DNS Service Discovery» (DNS-SD). Perquè això funcioni, el dimoni Avahi s'ha d'habilitar i executar en el sistema. Si aquest no és el cas, el &smb4k; mostrarà un missatge d'error:</para>
 
       <screenshot id="notification_zeroconf_error">
         <screeninfo
@@ -2781,7 +2781,7 @@
 >10-mounthelper.rules</filename
 >, al directori <filename class="directory"
 >$PREFIX/etc/polkit-1/rules.d/</filename
-> amb el següent contingut:</para>
+> amb el contingut següent:</para>
 
 <programlisting
 >polkit.addRule(function(action, subject) {
@@ -2825,7 +2825,7 @@ polkit.addRule(function(action, subject) {
 >8</manvolnum
 ></citerefentry
 ></ulink
-> només utilitza l'autenticació NTLMv1 i el servidor no l'admet. Per a arranjar el muntatge d'un servidor de &Samba;, podeu afegir la següent entrada a la secció [global] del fitxer <filename
+> només utilitza l'autenticació NTLMv1 i el servidor no l'admet. Per a arranjar el muntatge d'un servidor de &Samba;, podeu afegir l'entrada següent a la secció [global] del fitxer <filename
 >smb.conf</filename
 > <emphasis
 >del servidor</emphasis
@@ -2857,7 +2857,7 @@ ntlm auth = yes
 >aquí</ulink
 >). Per a utilitzar <application
 >qt5ct</application
-> amb el vostre entorn d'escriptori, afegiu la següent línia al vostre fitxer <filename
+> amb el vostre entorn d'escriptori, afegiu la línia següent al vostre fitxer <filename
 >~/.xinitrc</filename
 > o <filename
 >~/.profile</filename
@@ -3120,7 +3120,7 @@ ntlm auth = yes
             <para
 >Defineix el mode de vista de la vista de les comparticions.</para>
             <para
->Estan definits els següents modes:</para>
+>Estan definits els modes següents:</para>
             <variablelist>
               <varlistentry>
                 <term>
@@ -3297,7 +3297,7 @@ ntlm auth = yes
               <para
 >Estableix les versions mínima i màxima del protocol SMB que utilitzarà la biblioteca del client &Samba; per a explorar el veïnatge de xarxa. Això superposarà la configuració al fitxer «smb.conf». Normalment no cal emprar aquesta opció perquè les versions correctes del protocol s'han de negociar entre el client i el servidor en establir una connexió. Cal tenir en compte que aquesta opció pot no ser apropiada per a fer que funcioni el descobriment de grups de treball i dominis mentre es manté sense interrupcions la connectivitat amb els servidors. En el seu lloc, empreu el «DNS Service Discovery» (DNS-SD) o «Web Services Dynamic Discovery» (WS-Discovery) per a les cerques de dominis i grups de treball.</para>
               <para
->Les següents opcions de configuració per a la versió mínima i màxima del protocol SMB s'habiliten marcant aquesta casella de selecció.</para>
+>Les opcions següents de configuració per a la versió mínima i màxima del protocol SMB s'habiliten marcant aquesta casella de selecció.</para>
               <para
 >La versió màxima del protocol SMB haurà de ser igual o més gran que la versió mínima del protocol SMB.</para>
               <para
@@ -3312,7 +3312,7 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Es poden establir les següents versions del protocol:</para>
+>Es poden establir les versions següents del protocol:</para>
                     <variablelist>
                       <varlistentry>
                         <term>
@@ -3366,7 +3366,7 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Es poden establir les següents versions del protocol:</para>
+>Es poden establir les versions següents del protocol:</para>
                     <variablelist>
                       <varlistentry>
                         <term>
@@ -4597,7 +4597,7 @@ ntlm auth = yes
             <para
 >Defineix quina versió del protocol SMB s'ha d'utilitzar. Normalment, aquesta opció no necessita estar habilitada perquè la versió del protocol es negocia entre el client i el servidor.</para>
             <para
->Es permeten els següents valors:</para>
+>Es permeten els valors següents:</para>
             <variablelist>
               <varlistentry>
                 <term>
@@ -4784,7 +4784,7 @@ ntlm auth = yes
             <para
 >Defineix com es gestionen les sol·licituds de lectura i escriptura. En cas que trieu no desar les dades dels fitxers a la memòria cau, el client mai utilitzarà la memòria cau per a les lectures i escriptures normals. Sempre accedirà directament al servidor per a satisfer una sol·licitud de lectura o escriptura. Si trieu seguir directament el protocol &CIFS;/SMB2, la memòria cau només serà confiable si el client ha establert un bloqueig d'operació («oplock»). Si el client no ha establert cap bloqueig d'operació, llavors el client ometrà la memòria cau i accedirà directament al servidor per a la sol·licitud de lectura o escriptura. Triant permetre una semàntica més laxa de la memòria cau, a vegades pot proporcionar un rendiment millor a canvi de la coherència de la memòria cau. Aquesta opció pot provocar corrupció de les dades, si diversos clients accedeixen al mateix conjunt de fitxers en el servidor al mateix temps. Per això, es recomana el mode directe de la memòria cau.</para>
             <para
->Es permeten els següents valors:</para>
+>Es permeten els valors següents:</para>
             <variablelist>
               <varlistentry>
                 <term>
@@ -6498,7 +6498,7 @@ ntlm auth = yes
 >1</manvolnum
 ></citerefentry
 ></ulink
-> no creï una nova còpia del fitxer i després el mourà al lloc. En comptes d'això, el <ulink url="man:/rsync"
+> no creï una còpia nova del fitxer i després el mourà al lloc. En comptes d'això, el <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -8074,7 +8074,7 @@ ntlm auth = yes
 >Edita</guimenuitem
 >. S'obrirà l'<link linkend="custom_settings"
 >editor de configuració personalitzada</link
-> i es podrà edita. Per a eliminar una entrada, seleccioneu-lo i feu clic dret i al botó <guimenuitem
+> i es podrà editar. Per a eliminar una entrada, seleccioneu-lo i feu clic dret i al botó <guimenuitem
 >Elimina</guimenuitem
 >. Tots els elements de la xarxa es poden eliminar alhora triant l'element <guimenuitem
 >Neteja la llista</guimenuitem
@@ -8873,7 +8873,7 @@ ntlm auth = yes
               </term>
               <listitem>
                 <para
->Oculta o mostra els giny acoblat <guilabel
+>Oculta o mostra el giny acoblat <guilabel
 >Comparticions muntades</guilabel
 >.</para>
               </listitem>
