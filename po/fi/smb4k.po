@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-23 01:38+0000\n"
-"PO-Revision-Date: 2023-10-23 15:13+0300\n"
+"PO-Revision-Date: 2023-11-30 14:51+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -409,13 +409,7 @@ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
 msgstr "<qt>Anna halutut valinnat pilkuin erotettuna luettelona:</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:797
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>The following entry is going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
-#| msgid_plural ""
-#| "<qt>The following %1 entries are going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
+#, kde-format
 msgid ""
 "The following entry is going to be removed from the additional options:<br>"
 "%2.<br>Please read the handbook for details."
@@ -423,12 +417,11 @@ msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
 msgstr[0] ""
-"<qt>Seuraava tietue poistetaan lisävalinnoista: %2. Katso käsikirjasta "
-"lisätietoa.</qt>"
+"Seuraava tietue poistetaan lisävalinnoista:<br>%2.<br>Katso lisätietoa "
+"käsikirjasta."
 msgstr[1] ""
-"<qt>Seuraavat %1 tietuetta poistetaan lisävalinnoista: %2. Katso "
-"käsikirjasta lisätietoa.</qt><qt>Seuraavat %1 tietuetta poistetaan "
-"lisävalinnoista: %2. Katso käsikirjasta lisätietoa.</qt>"
+"Seuraavat %1 tietuetta poistetaan lisävalinnoista:<br>%2.<br>Katso "
+"lisätietoa käsikirjasta."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #, kde-format
@@ -981,16 +974,14 @@ msgid "Item Up"
 msgstr "Tietue ylemmäs"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr "Aseta lompakkotietueen %1 käyttäjätunnus ja salasana."
+msgstr "Anna käyttäjätunnus ja salasana koneeseen <b>%1</b>."
 
 #: smb4k/smb4kpassworddialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr "Aseta lompakkotietueen %1 käyttäjätunnus ja salasana."
+msgstr "Anna käyttäjätunnus ja salasana verkkojakoon <b>%1</b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
@@ -1138,28 +1129,26 @@ msgstr ""
 "tiedostoja tänne.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgid "Source:"
 msgstr "Lähde:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgid "Destination:"
 msgstr "Kohde:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Vaihda sijainnit keskenään"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr ""
+msgstr "Anna synkronoinnin lähde- ja kohdekansiot: <b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:121
 #, kde-format
@@ -1169,7 +1158,7 @@ msgstr "Tyyppi:"
 #: smb4k/smb4ktooltip.cpp:130
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "DNS-SD-selauksen verkkoalue"
 
 #: smb4k/smb4ktooltip.cpp:132
 #, kde-format

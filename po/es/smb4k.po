@@ -12,13 +12,13 @@
 # Miguel Navarrete Hernandez <recados.akka@gmail.com>, 2013.
 # Raul Gonzalez <raulgf83@gmail.com>, 2013, 2014.
 # Javier Vinal <fjvinal@gmail.com>, 2015, 2016, 2017, 2018, 2019.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023.
+# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-23 01:38+0000\n"
-"PO-Revision-Date: 2023-12-30 17:53+0100\n"
+"PO-Revision-Date: 2024-01-27 18:37+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -70,10 +70,9 @@ msgstr ""
 "recursos compartidos de Samba"
 
 #: smb4k/main.cpp:49
-#, fuzzy, kde-format
-#| msgid "© 2003-2023 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:58
 #, kde-format
@@ -1258,27 +1257,3 @@ msgstr "%1 libres de %2 (%3 utilizado)"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Página 1: Montado"
-
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Página 2: Montado"
-
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Página 3: Montado"
-
-#~ msgid "Page 4: Browsing"
-#~ msgstr "Página 4: Navegación"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Preferencias Wake-On-LAN"
-
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Página 5: Wake-On-LAN"
-
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Página 2: Navegación"
-
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Página 3: Wake-On-LAN"
