@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 01:38+0000\n"
+"POT-Creation-Date: 2024-02-01 01:36+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -48,12 +48,12 @@ msgstr "A csatolási pont érvénytelen."
 msgid "The unmount process could not be started."
 msgstr "A lecsatolási folyamat nem indítható el."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:48
+#: smb4k/main.cpp:46 smb4k/smb4ksystemtray.cpp:48
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:47
+#: smb4k/main.cpp:48
 #, fuzzy, kde-format
 #| msgid ""
 #| "The advanced network neighborhood browser and Samba share mounting "
@@ -63,28 +63,28 @@ msgstr ""
 "Speciális hálózatimappa-böngésző és Samba megosztás csatoló segédprogram a "
 "KDE-hez."
 
-#: smb4k/main.cpp:49
+#: smb4k/main.cpp:50
 #, fuzzy, kde-format
 #| msgid "\\u00A9 2003-2015 Alexander Reinholdt"
 msgid "© 2003-2024 Alexander Reinholdt"
 msgstr "\\u00A9 Alexander Reinholdt, 2003-2015."
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:59
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:59
 #, kde-format
 msgid "Developer"
 msgstr "Fejlesztő"
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr ""
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "Donator"
 msgstr ""

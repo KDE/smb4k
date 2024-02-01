@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 01:38+0000\n"
+"POT-Creation-Date: 2024-02-01 01:36+0000\n"
 "PO-Revision-Date: 2024-01-23 09:23+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -43,37 +43,37 @@ msgstr "Točka priklopa %1 je neveljavna."
 msgid "The unmount process could not be started."
 msgstr "Postopka odklopa ni bilo mogoče začeti."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:48
+#: smb4k/main.cpp:46 smb4k/smb4ksystemtray.cpp:48
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:47
+#: smb4k/main.cpp:48
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Napredni omrežni brskalnik in pripomoček Sambe za priklop delov diska"
 
-#: smb4k/main.cpp:49
+#: smb4k/main.cpp:50
 #, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
 msgstr "© 2003-2024 Alexander Reinholdt"
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:59
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:59
 #, kde-format
 msgid "Developer"
 msgstr "Razvijalec"
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "Donator"
 msgstr "Donator"
