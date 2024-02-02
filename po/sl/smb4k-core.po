@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-29 00:41+0000\n"
-"PO-Revision-Date: 2023-12-02 08:39+0100\n"
+"PO-Revision-Date: 2024-02-01 16:17+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -88,7 +88,7 @@ msgid ""
 "popup menu."
 msgstr ""
 "Zaženite aplikacijo priključeno na sistemski pladenj, tj. prikazan je samo "
-"gradnik na sistemskem pladnjuin glavno okno je skrito. Glavno okno lahko "
+"gradnik na sistemskem pladnju in glavno okno je skrito. Glavno okno lahko "
 "prinesete navzgor s klikom na gradnik sistemske vrstice ali z izbiro \"Obnovi"
 "\" iz njegovega pojavnega menija."
 
@@ -96,7 +96,7 @@ msgstr ""
 #: smb4k.kcfg:45
 #, kde-format
 msgid "Show the type of the share"
-msgstr "Prikaži vrsto dela diska"
+msgstr "Prikaži vrsto skupnega diska"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:46
@@ -176,13 +176,14 @@ msgstr ""
 #: smb4k.kcfg:70
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Pokažite nasvete za nameščene dele"
+msgstr "Pokažite nasvete za priklopljene skupne diske"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
 #, kde-format
 msgid "The tooltip shows various information about the current share."
-msgstr "V orodni vrstici so prikazane različne informacije o trenutnem delu."
+msgstr ""
+"V orodni vrstici so prikazane različne informacije o trenutnem skupnem disku."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:75
@@ -222,7 +223,7 @@ msgstr "Velikost ikone za pogled ikon:"
 #: smb4k.kcfg:89
 #, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Določite velikost ikon za pogled ikon na skupne dele."
+msgstr "Določite velikost ikon za pogled ikon na skupne diske."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:95
@@ -234,7 +235,7 @@ msgstr "Velikost ikon za pogled seznama:"
 #: smb4k.kcfg:96
 #, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Določite velikost ikone za način pogleda seznama na skupne dele."
+msgstr "Določite velikost ikone za način pogleda seznama na skupne diske."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:102
@@ -534,7 +535,7 @@ msgstr "Zaznani skupni tiskalniki."
 #: smb4k.kcfg:222
 #, kde-format
 msgid "Detect hidden shares"
-msgstr "Zaznajte skrite dele diskov"
+msgstr "Zaznaj skrite skupne diske"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:223
@@ -543,8 +544,8 @@ msgid ""
 "Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
 "Musik$ or IPC$."
 msgstr ""
-"Zaznani so skriti deli diskov. Skriti deli se končajo z znakom $, npr. Musik"
-"$ ali IPC$."
+"Zaznani so skriti skupni diski. Skriti diski se končajo z znakom $, npr. "
+"Musik$ ali IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:227
@@ -635,7 +636,7 @@ msgid ""
 "synchronization begins."
 msgstr ""
 "Pod to predpono bo ustvarjena ciljna mapa za usklajevanje. Če pa želite "
-"shraniti podatke o določenem deludrugje, boste lahko izbrali drugo pot pred "
+"shraniti podatke o določenem delu drugje, boste lahko izbrali drugo pot pred "
 "dejanskim začetkom usklajevanja."
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
@@ -715,9 +716,9 @@ msgid ""
 "specified on the command line are sent to the server rather than just the "
 "last parts of the file names."
 msgstr ""
-"Uporabite relativne poti (-R, - relative). To pomeni, da se pošljejo "
-"strežniku imena celotne poti določeni v ukazni vrstici in ne le zadnji deli "
-"imen datotek."
+"Uporabi relativne poti (-R, - relative). To pomeni, da se pošlje strežniku "
+"imena celotne poti določeni v ukazni vrstici in ne le zadnji deli imen "
+"datotek."
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
 #: smb4k.kcfg:292
@@ -755,7 +756,7 @@ msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
 "level subdirectories are transferred but without their contents."
 msgstr ""
-"Prenesite mape brez rekurzije (-d, --dirs). To pomeni, da se prenesejo vse "
+"Prenesi mape brez rekurzije (-d, --dirs). To pomeni, da se prenesejo vse "
 "mape na vrhnji ravni, a brez njihove vsebine."
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
@@ -850,8 +851,7 @@ msgstr "Pretvori simbolne povezave"
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
 msgstr ""
-"Preoblikujte simbolne povezave v elemente, na katere kažejo (-L, --copy-"
-"links)."
+"Preoblikuj simbolne povezave v elemente, na katere kažejo (-L, --copy-links)."
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
 #: smb4k.kcfg:340
@@ -921,7 +921,7 @@ msgstr ""
 #: smb4k.kcfg:355
 #, kde-format
 msgid "Preserve hard links"
-msgstr "Ohrani trde povezave"
+msgstr "Ohranjaj trde povezave"
 
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:356
@@ -932,14 +932,14 @@ msgid ""
 "links are treated as though they were separate files."
 msgstr ""
 "Ohranjaj trde povezave (-H, --hard-links). Ta možnost povzroči rsync, da "
-"ohrani trde povezave, ki jih najde med prenosom. Brez tega se trde povezave "
+"ohranja trde povezave, ki jih najde med prenosom. Brez tega se trde povezave "
 "se obravnavajo kot ločene datoteke."
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:360
 #, kde-format
 msgid "Copy directory symlinks"
-msgstr "Kopiraj simbolne povezave map"
+msgstr "Kopiraj simbolne povezave imenikov"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:361
@@ -953,19 +953,19 @@ msgid ""
 "the new symlink, including a directory hierarchy (as long as --force or --"
 "delete is in effect). For more details, see the manual page of rsync."
 msgstr ""
-"Obravnavaj simbolne povezave do map na strani pošiljanja kot da so realne (-"
-"k, --copy-dirlinks). To je koristno, če ne želite vplivov, da na povezavah z "
-"ne-mape, na katere bi vplivali, če bi uporabljali ---copy-links. Brez ta "
-"možnosti, če je pošiljateljeva stran zamenjala mapo s simbolično povezavo do "
-"mape, bo sprejemna stran izbrisala vse, kar je na poti nove simbolne "
-"povezave, vključno s hierarhijo map (dokler velja --force ali -delete). Za "
-"več podrobnosti glejte stran z navodili za rsync."
+"Obravnavaj simbolne povezave do imenikov na strani pošiljanja kot da so "
+"realne (-k, --copy-dirlinks). To je koristno, če ne želite vplivov, da na "
+"povezavah z ne-mape, na katere bi vplivali, če bi uporabljali ---copy-links. "
+"Brez te možnosti, če je pošiljateljeva stran zamenjala mapo s simbolično "
+"povezavo do mape, bo sprejemna stran izbrisala vse, kar je na poti nove "
+"simbolne povezave, vključno s hierarhijo imenikov (dokler velja --force ali -"
+"delete). Za več podrobnosti glejte stran z navodili za rsync."
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:365
 #, kde-format
 msgid "Keep directory symlinks"
-msgstr "Ohranjaj simbolne povezave map"
+msgstr "Ohranjaj simbolne povezave imenikov"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:366
@@ -976,10 +976,10 @@ msgid ""
 "directory from the sending side. Without this option, the receiver's symlink "
 "will be deleted and replaced with a real directory."
 msgstr ""
-"Obravnavaj povezave do map na sprejemni strani, kot da bi bile resnične "
+"Obravnavaj povezave do imenika na sprejemni strani, kot da bi bile resnične "
 "tiste (-K, -keep-dirlinks). To deluje le, če se simbolna povezava ujema z "
-"resnično mapo na strani pošiljatelja. Brez te možnosti bo simbolna povezava "
-"sprejemnika izbrisana in zamenjana s pravo mapo."
+"resničnim imenikom na strani pošiljatelja. Brez te možnosti bo simbolna "
+"povezava sprejemnika izbrisana in zamenjana s pravim imenikom."
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
 #: smb4k.kcfg:370
@@ -1162,7 +1162,7 @@ msgstr ""
 #: smb4k.kcfg:420
 #, kde-format
 msgid "Remove synchronized source files"
-msgstr "Odstranite usklajene izvorne datoteke"
+msgstr "Odstrani usklajene izvorne datoteke"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
 #: smb4k.kcfg:421
@@ -1173,7 +1173,7 @@ msgid ""
 "part of the transfer and have been successfully duplicated on the receiving "
 "side."
 msgstr ""
-"Odstranite vse usklajene izvorne datoteke (--remove-source-files). To pove "
+"Odstrani vse usklajene izvorne datoteke (--remove-source-files). To pove "
 "rsync, da odstrani elemente, ki niso mape, s strani pošiljatelja del prenosa "
 "in so bili na strani prejema uspešno podvojeni."
 
@@ -1193,7 +1193,7 @@ msgid ""
 msgstr ""
 "Izbrišite tuje datoteke s cilja (--delete). To sporoča rsync, da izbriše vse "
 "datoteke s strani prejemnika, ki niso na strani pošiljatelja, vendar samo za "
-"mape, ki se usklajujejo."
+"imenike, ki se usklajujejo."
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
 #: smb4k.kcfg:430
@@ -1243,7 +1243,7 @@ msgid ""
 "This method is faster than --delete-before or --delete-after, but it is only "
 "supported with rsync 2.6.4 or later."
 msgstr ""
-"Med prenosom izbrišite datoteke na sprejemni strani (--delete-during). Ta "
+"Med prenosom izbriši datoteke na sprejemni strani (--delete-during). Ta "
 "metoda je hitrejša od -delete-before ali -delete-after, vendar je podprto "
 "samo z verzijo rsync 2.6.4 ali novejšo."
 
@@ -1262,16 +1262,16 @@ msgid ""
 "sending side, this tells rsync to also delete any files on the receiving "
 "side that are excluded. Refer to rsync's manual page for further information."
 msgstr ""
-"Izbrišite tudi izključene datoteke iz ciljne mape (--delete-excluded). Poleg "
-"brisanja datotek na sprejemni strani, ki niso na oddajni strani, sporoči "
-"rsync, da tudi ob prejemu izbriše vse izključene datoteke. Za dodatne "
-"informacije poglejte stran s priročnika rsync."
+"Izbriši tudi izključene datoteke iz ciljnega imenika (--delete-excluded). "
+"Poleg brisanja datotek na sprejemni strani, ki niso na oddajni strani, "
+"sporoči rsync, da tudi ob prejemu izbriše vse izključene datoteke. Za "
+"dodatne informacije poglejte stran s priročnika rsync."
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
 #: smb4k.kcfg:450
 #, kde-format
 msgid "Delete even if I/O errors occur"
-msgstr "Zbriši tudi če pride do i/o napake"
+msgstr "Zbriši tudi če pride do I/O napake"
 
 #. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
 #: smb4k.kcfg:451
@@ -1287,7 +1287,7 @@ msgstr ""
 #: smb4k.kcfg:455
 #, kde-format
 msgid "Force deletion of non-void directories"
-msgstr "Prisilno brisanje nepraznih map"
+msgstr "Prisilno brisanje nepraznih imenikov"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
 #: smb4k.kcfg:456
@@ -1297,9 +1297,9 @@ msgid ""
 "option tells rsync to delete a non-empty directory when it is to be replaced "
 "by a non-directory. This is only relevant if deletions are not active."
 msgstr ""
-"Prisilite brisanje map, tudi če niso prazne (--force). Ta možnost sporoča "
-"rsync, da ob zamenjavi izbriše neprazno mapo z ne-mapo. To je pomembno samo, "
-"če brisanja niso aktivna."
+"Prisilite brisanje imenikov, tudi če niso prazni (--force). Ta možnost "
+"sporoča rsync, da ob zamenjavi izbriše nepraznim imenikom z ne-imenikom. To "
+"je pomembno samo, če brisanja niso aktivna."
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
 #: smb4k.kcfg:460
@@ -1315,10 +1315,10 @@ msgid ""
 "rsync not to delete more than NUM files or directories (NUM must be non-"
 "zero). This is useful when mirroring very large trees to prevent disasters."
 msgstr ""
-"Izbrišite samo toliko datotek, kot je definirano tukaj (--max-delete=NUM). "
-"To pove rsync da ne ne sme izbrisati več kot NUM datotek ali map (NUM mora "
-"biti ne-nič). To je uporabno pri zrcaljenju zelo velikih dreves, da "
-"preprečimo nesreče."
+"Izbriši samo toliko datotek, kot je definirano tukaj (--max-delete=NUM). To "
+"pove rsync da ne ne sme izbrisati več kot NUM datotek ali map (NUM mora biti "
+"ne-nič). To je uporabno pri zrcaljenju zelo velikih dreves, da preprečimo "
+"nesreče."
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
 #: smb4k.kcfg:465
@@ -1401,9 +1401,9 @@ msgid ""
 "because the partially transferred file is kept in a different directory and "
 "the destination file is not overwritten."
 msgstr ""
-"V to mapo vstavi delno preneseno datoteko (--partial-dir=DIR). To je boljši "
-"način kot možnost -partial, da delne datoteke shrani, ker se delno prenesena "
-"datoteka hrani v drugi mapi in ciljna datoteka ni prepisana."
+"V ta imenik vstavi delno preneseno datoteko (--partial-dir=DIR). To je "
+"boljši način kot možnost -partial, da delne datoteke shrani, ker se delno "
+"prenesena datoteka hrani v drugem imeniku in ciljna datoteka ni prepisana."
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
 #: smb4k.kcfg:503
@@ -1435,7 +1435,7 @@ msgstr ""
 #: smb4k.kcfg:513
 #, kde-format
 msgid "Exclude files matching this pattern:"
-msgstr "Izključite datoteke, ki se ujemajo s tem vzorcem:"
+msgstr "Izključi datoteke, ki se ujemajo s tem vzorcem:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:514
@@ -1445,8 +1445,8 @@ msgid ""
 "special filter rule. For further information on filter rules see rsync's "
 "manual page."
 msgstr ""
-"Izključite datoteke, ki ustrezajo določenemu vzorcu (--exclude=PATTERN). To "
-"je posebno pravilo filtra. Za dodatne informacije o pravilih filtrov glejte "
+"Izključi datoteke, ki ustrezajo določenemu vzorcu (--exclude=PATTERN). To je "
+"posebno pravilo filtra. Za dodatne informacije o pravilih filtrov glejte "
 "rsync stran z navodili."
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
@@ -1520,8 +1520,8 @@ msgid ""
 "read from a file. This is a special filter rule. For further information on "
 "filter rules see rsync's manual page."
 msgstr ""
-"Preberite vključuje vzorce iz datoteke (--include-from=FILE). Ta možnost "
-"jepodobno kot --include=PATTERN, le da so vključeni vzorci prebrani iz "
+"Preberi vključene vzorce iz datoteke (--include-from=FILE). Ta možnost je "
+"podobno kot --include=PATTERN, le da so vključeni vzorci prebrani iz "
 "datoteke. To je posebno pravilo filtra. Za dodatne informacije opravila "
 "filtra glejte stran z priročniki rsync."
 
@@ -1572,10 +1572,10 @@ msgid ""
 "the files in the transfer. It has no effect, if you also choose to use the --"
 "filter='exclude .rsync-filter' rule."
 msgstr ""
-"To pravilo filtra sporoča rsync-u, da v vsaki mapi išče datoteke za .rsync-"
-"filter, ki so se precedile skozi hierarhijo in uporabljali svoja pravila za "
-"filtriranje datotek v prenosu. To je brez učinka, če se odločite tudi za "
-"uporabo pravila --filter='exclude .rsync-filter' ."
+"To pravilo filtra sporoča rsync-u, da v vsakem imeniku išče datoteke za ."
+"rsync-filter, ki so se precedile skozi hierarhijo in uporabljali svoja "
+"pravila za filtriranje datotek v prenosu. To je brez učinka, če se odločite "
+"tudi za uporabo pravila --filter='exclude .rsync-filter' ."
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
 #: smb4k.kcfg:568
@@ -1690,7 +1690,7 @@ msgstr ""
 #: smb4k.kcfg:598
 #, kde-format
 msgid "Delay updates until the end of transfer"
-msgstr "Zakasni posodobitev do konca prenosa"
+msgstr "Zakasni posodobitve do konca prenosa"
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
 #: smb4k.kcfg:599
@@ -1701,7 +1701,7 @@ msgid ""
 "until the end of the transfer, at which time all the files are renamed and "
 "copied into place in rapid succession."
 msgstr ""
-"Zakasni posodobitev do konca prenosa (--delay-updates). Ta možnost začasno "
+"Zakasni posodobitve do konca prenosa (--delay-updates). Ta možnost začasno "
 "datoteko iz vsake posodobljene datoteke prenese v začasno mapo z do konca "
 "prenosa, v tem času se vse datoteke hitro preimenujejo in skopirajo na svoje "
 "mesto."
@@ -1748,19 +1748,19 @@ msgstr "Pripona varnostne kopije"
 #: smb4k.kcfg:618
 #, kde-format
 msgid "Backup directory:"
-msgstr "Mapa varnostnih kopij:"
+msgstr "Imenik varnostnih kopij:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:619
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
-msgstr "Shrani varnostne kopije v to mapo (--backup-dir=DIR)."
+msgstr "Shrani varnostne kopije v ta imenik (--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
 #: smb4k.kcfg:623
 #, kde-format
 msgid "Backup directory"
-msgstr "Mapa varnostnih kopij"
+msgstr "Imenik varnostnih kopij"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
 #: smb4k.kcfg:628
@@ -1800,8 +1800,8 @@ msgid ""
 "and file MD4 checksum calculation. By default the checksum seed is generated "
 "by the server and defaults to the current time."
 msgstr ""
-"Nastavi seme kontrolne vsote bloka/datoteke (--checksum-seed=NUM). Nastavite "
-"seme kontrolne vsote MD4na to celo število. To 4 bytno seme kontrolne vsote "
+"Nastavi seme kontrolne vsote bloka/datoteke (--checksum-seed=NUM). Nastavi "
+"seme kontrolne vsote MD4 na to celo število. To 4 bytno seme kontrolne vsote "
 "je vključeno v vsak blok in izračun kontrolne vsote MD4. Privzeto seme "
 "kontrolne vsote ustvari strežnik in privzeto trenutni čas."
 
@@ -1890,7 +1890,7 @@ msgstr "Doma"
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
-msgstr "Složba"
+msgstr "Služba"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:687
@@ -1991,7 +1991,7 @@ msgstr ""
 #: smb4kmounter.cpp:774
 #, kde-format
 msgid "Foreign Share"
-msgstr "Tuji mrežni disk"
+msgstr "Tuji skupni disk"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -2048,7 +2048,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:39 smb4kmountsettings_linux.kcfg:44
 #, kde-format
 msgid "Directory mode:"
-msgstr "Način mape:"
+msgstr "Način imenika:"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -2058,8 +2058,8 @@ msgid ""
 "This is the directory mode that will be used for creating directories. It "
 "must be defined in octal."
 msgstr ""
-"To je način mape, ki bo uporabljen za ustvarjanje map. Mora biti določen v "
-"osmiških številkah."
+"To je način imenika, ki bo uporabljen za ustvarjanje imenikov. Mora biti "
+"določen v osmiških številkah."
 
 #. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:48
@@ -2077,7 +2077,7 @@ msgid ""
 "will try to automatically determine the charset by looking up the \"unix "
 "charset\" option in the smb.conf."
 msgstr ""
-"To je nabor znakov, ki ga uporablja odjemalec (tj. vaša stran) za prevod "
+"To je nabor znakov, ki ga uporablja odjemalec (tj. vaša stran) za prevod v "
 "ustrezen nabor. Če obdržite privzeto nastavitev, bo Smb4K poskusil samodejno "
 "določiti nabor znakov tako, da pogleda nastavitev \"unix charset \" v smb."
 "conf."
@@ -2455,7 +2455,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:303
 #, kde-format
 msgid "Force generated subdirectories to be lower case"
-msgstr "Prisili, da so ustvarjene podmape v malih črkah"
+msgstr "Prisili, da so ustvarjeni imeniki v malih črkah"
 
 #. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:304
@@ -2464,7 +2464,7 @@ msgid ""
 "All names of the subdirectories created by Smb4K below the mount prefix will "
 "be lowercase."
 msgstr ""
-"Vsa imena podmap, ki jih je ustvaril Smb4K pod predpono priklopa, bodo v "
+"Vsa imena imenikov, ki jih je ustvaril Smb4K pod predpono priklopa, bodo v "
 "malih črkah."
 
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
@@ -2480,14 +2480,14 @@ msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
 "are owned by other users are ignored."
 msgstr ""
-"Odstrani vse skupne mrežne diske, ki vam pripadajo, ko program zaprete. "
+"Odklopi vse skupne mrežne diske, ki vam pripadajo, ko program zaprete. "
 "Diske, ki so v lasti drugih uporabnikov prezri."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:313
 #, kde-format
 msgid "Remount shares"
-msgstr "Ponovno priklopi mrežne diske"
+msgstr "Ponovno priklopi skupne diske"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
@@ -2501,7 +2501,7 @@ msgid ""
 msgstr ""
 "Ponovno priklopi vse skupne mrežne diske, ki so bili priklopljeni ob izhodu "
 "iz programa oz. spremembi profila. Če ponovni priklop diska ne uspe, bo "
-"Smb4K poskusil znova ob naslednjem zagonu. Mrežni diski, ki so jih "
+"Smb4K poskusil znova ob naslednjem zagonu. Skupni diski, ki so jih "
 "priklopili drugi uporabniki, so prezrti. Upoštevajte, da ta nastavitev ne "
 "vpliva na samodejno ponovni priklop diskov, ko se je računalnik prebudil iz "
 "stanja spanja."
@@ -2519,7 +2519,7 @@ msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
 "gives up."
 msgstr ""
-"Nastavite število poskusov ponovnega priklopa mrežnih diskov predenj Smb4K "
+"Nastavite število poskusov ponovnega priklopa skupnih diskov preden Smb4K "
 "odneha."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
@@ -2532,14 +2532,13 @@ msgstr "Interval med ponovnimi poskusi priklopa:"
 #: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
-msgstr ""
-"Nastavite čas, ki preteče med poskusi ponovnega priklopa mrežnih diskov."
+msgstr "Nastavi čas, ki preteče med poskusi ponovnega priklopa skupnih diskov."
 
 #. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:332
 #, kde-format
 msgid "Allow the unmounting of shares that are owned by other users"
-msgstr "Dovoli odklop mrežnih diskov, ki so v lasti drugih uporabnikov"
+msgstr "Dovoli odklop skupnih diskov, ki so v lasti drugih uporabnikov"
 
 #. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
@@ -2548,14 +2547,14 @@ msgid ""
 "Allow the unmounting of shares that were mounted by other users. Please "
 "think before you enable this option."
 msgstr ""
-"Dovoli odklop mrežnih diskov, ki so jih priklopili drugi uporabniki. Prosim "
+"Dovoli odklop skupnih diskov, ki so jih priklopili drugi uporabniki. Prosim "
 "premislite, preden omogočite to možnost."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:337
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
-msgstr "Prisili odklop nedostopnih mrežnih diskov"
+msgstr "Prisili odklop nedostopnih skupnih diskov"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
@@ -2565,8 +2564,8 @@ msgid ""
 "inaccessible, a lazy unmount is performed. Before the actual unmount is "
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
-"Prisilni odklop nedostopnih mrežnih diskov (samo za Linux). V primeru, da je "
-"mrežni disk nedostopen, se izvede leni odklop. Preden je izveden dejanski "
+"Prisilni odklop nedostopnih skupnih diskov (samo za Linux). V primeru, da je "
+"skupni disk nedostopen, se izvede leni odklop. Preden je izveden dejanski "
 "odklop, se prikaže opozorilno pogovorno okno s prošnjo za odobritev odklopa."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
@@ -2640,7 +2639,7 @@ msgid ""
 msgstr ""
 "To je ID skupine (številka), ki jo imajo datoteke in mape na priklopljenem "
 "skupnem disku. Če uporabljate datotečni sistem CIFS pod Linuxom in oddaljeni "
-"strežnik podpira razširitve CIFS Unix, ta nastavitev nene upoštevana, razen "
+"strežnik podpira razširitve CIFS Unix, ta nastavitev ne bo upoštevana, razen "
 "če je dodelitev ID-ja skupine posebej zahtevana."
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
@@ -2676,7 +2675,7 @@ msgid ""
 "must be defined in octal. In case the CIFS file system is used, this setting "
 "only takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
-"To je način mape, ki bo uporabljen pri ustvarjanju map. Mora biti "
+"To je način imenika, ki bo uporabljen pri ustvarjanju imenikov. Mora biti "
 "opredeljeno v osmiškem zapisu. Če se uporablja datotečni sistem CIFS, ta "
 "nastavitev začne veljati, samo če strežnik ne podpira razširitev CIFS Unix."
 
@@ -2757,8 +2756,8 @@ msgid ""
 "the server for files and directories and to always assign the owner to be "
 "the value of the transmitted UID."
 msgstr ""
-"Odjemalcu (tj. vaši strani) naročite, da prezre kateri koli ID uporabnika "
-"(UID), ki ga ponujastrežnik za datoteke in mape in za vedno dodeli lastnika "
+"Odjemalcu (tj. vaši strani) naroči, da prezre kateri koli ID uporabnika "
+"(UID), ki ga ponuja strežnik za datoteke in mape in za vedno dodeli lastnika "
 "glede na vrednost poslanega UID-a."
 
 #. i18n: ectx: label, entry (ForceGID), group (Mounting)
@@ -2775,7 +2774,7 @@ msgid ""
 "by the server for files and directories and to always assign the owner to be "
 "the value of the transmitted GID."
 msgstr ""
-"Naročite stranki (tj. vaši stran), da prezre kateri koli ID skupine (GID) s "
+"Naroči stranki (tj. vaši stran), da prezre kateri koli ID skupine (GID) s "
 "strani strežnika za datoteke in mape in za vedno dodeli lastnika vrednosti "
 "posredovanega GID-a."
 
@@ -2797,8 +2796,8 @@ msgid ""
 msgstr ""
 "Odjemalec (tj. vaša stran) bo preveril, ali imate ustrezen UID/GID za "
 "manipuliranje datoteke ali mape. Morda boste želeli izklopiti to funkcijo, "
-"če strežniki podpirajo razširitve CIFS Unix in vam ni dovoljendostop do "
-"datotek in map. Ta nastavitev ne vpliva na normalno preverjanje ACL."
+"če strežniki podpirajo razširitve CIFS Unix in vam ni dovoljen dostop do "
+"datotek in imenikov. Ta nastavitev ne vpliva na normalno preverjanje ACL."
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:176
@@ -2837,7 +2836,7 @@ msgid ""
 "server instead of automatically generating temporary inode numbers on the "
 "client side."
 msgstr ""
-"Uporabite inode številke (edinstveni stalni identifikatorji datotek), ki jih "
+"Uporabi inode številke (edinstveni stalni identifikatorji datotek), ki jih "
 "vrne strežnik, namesto da samodejno generira začasne številke inode na "
 "odjemalcu."
 
@@ -2856,7 +2855,7 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
-"Ne pošiljajte zahtevkov zaklepanja bytov na strežnik. To je potrebno za "
+"Ne pošiljaj zahtevkov zaklepanja bytov na strežnik. To je potrebno za "
 "nekatere aplikacije, ki se lomijo z obveznimi zaklepanji v slogu ciifs (in "
 "večina strežnikov cifs še ne podpira zahtevkov za zaklepanje obsega bytov)."
 
@@ -2876,10 +2875,10 @@ msgid ""
 "that were created with such characters. This has no effect if the server "
 "does not support Unicode."
 msgstr ""
-"Prevedite šest od sedmih rezerviranih znakov (vključno dvopičje, vprašaj, "
+"Prevedi šest od sedmih rezerviranih znakov (vključno dvopičje, vprašaj, "
 "pipa, zvezdica, večje in manjše, a brez poševnice nazaj) v prevedene "
-"nastavitve (nad 0xF000). To vam omogoča odpiranje datotekki so bili "
-"ustvarjeni s takimi znaki. To nima učinka, če strežnik ne podpira Unicode."
+"nastavitve (nad 0xF000). To vam omogoča odpiranje datotek so bile ustvarjene "
+"s takimi znaki. To nima učinka, če strežnik ne podpira Unicode."
 
 #. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:196
@@ -2965,8 +2964,8 @@ msgid ""
 "access the same set of files on the server at the same time. Because of "
 "this, the strict cache mode is recommended."
 msgstr ""
-"Določite, kako naj se obravnava zahteve za branje in pisanje. V primeru, da "
-"se odločite, da ne podatkov sploh ne hranite v predpomnilnikih, odjemalec "
+"Določi, kako naj se obravnava zahteve za branje in pisanje. V primeru, da se "
+"odločite, da ne podatkov sploh ne hranite v predpomnilnikih, odjemalec "
 "nikoli ne uporablja predpomnilnika za normalno branje in pisanje. Do "
 "strežnika vedno dostopa neposredno, da izpolni zahtevek za branje oz. "
 "pisanje. Če se odločite, da boste dosledno upoštevali protokol CIFS/SMB2, je "
@@ -3190,7 +3189,7 @@ msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>.</p>"
 msgstr ""
-"<p>Nimate dovoljenja za doklop skupnega diska <b>%1</b> od <b>%2</b>. Je v "
+"<p>Nimate dovoljenja za odklop skupnega diska <b>%1</b> od <b>%2</b>. Je v "
 "lasti uporabnika <b>%3</b>.</p>"
 
 #: smb4knotification.cpp:236
