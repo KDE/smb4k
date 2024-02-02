@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2023-03-11 09:29+0100\n"
+"PO-Revision-Date: 2024-02-01 17:37+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -69,7 +69,7 @@ msgid ""
 "Do not show the name of the share that is represented by the bookmark but "
 "the custom label that was defined in the bookmark editor."
 msgstr ""
-"Ne prikaži imena dela diska, ki ga predstavlja zaznamek, ampak oznako po "
+"Ne prikaži imena skupnega diska, ki ga predstavlja zaznamek, ampak oznako po "
 "meri, kot je bila določena v urejevalniku zaznamkov."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
@@ -96,7 +96,7 @@ msgstr ""
 #: smb4k.kcfg:47
 #, kde-format
 msgid "Show the type of the share"
-msgstr "Prikaži vrsto dela diska"
+msgstr "Prikaži vrsto skupnega diska"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:48
@@ -105,8 +105,8 @@ msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Print or IPC."
 msgstr ""
-"Vrsta dela bo prikazana v ločenem stolpcu v brskalniku sosedstva omrežja. "
-"Lahko je Disk, Tisk ali IPC."
+"Vrsta skupnega diska bo prikazana v ločenem stolpcu v brskalniku sosedstva "
+"omrežja. Lahko je Disk, Tisk ali IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:52
@@ -137,8 +137,8 @@ msgid ""
 "The comment describing the server or share will be displayed in a separate "
 "column in the network neighborhood browser."
 msgstr ""
-"Komentar, ki opisuje strežnik ali del, bo prikazan ločeno v brskalniku "
-"sosedstva omrežja."
+"Komentar, ki opisuje strežnik ali skupni disk, bo prikazan ločeno v "
+"brskalniku sosedstva omrežja."
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:62
@@ -169,20 +169,21 @@ msgid ""
 "domain or host item will always be expanded when you execute it."
 msgstr ""
 "Samodejno razširite predmete domene in gostitelja, kadar se seznamu "
-"povezanega omrežja (člani domene ali deli diska) kaj doda ali posodobi. "
+"povezanega omrežja (člani domene ali skupnega diska) kaj doda ali posodobi. "
 "Upoštevajte, da bo domena ali gostitelj vedno razširjen, ko ga izvršite."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:72
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Pokažite nasvete za nameščene dele"
+msgstr "Pokažite nasvete za priklopljene skupne diske"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:73
 #, kde-format
 msgid "The tooltip shows various information about the current share."
-msgstr "V orodni vrstici so prikazane različne informacije o trenutnem delu."
+msgstr ""
+"V orodni vrstici so prikazane različne informacije o trenutnem skupnem disku."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
@@ -197,7 +198,7 @@ msgid ""
 "This setting determines the view mode of the shares view. There are two "
 "modes: the icon view and the list view."
 msgstr ""
-"Ta nastavitev določa način prikaza pogleda v skupne dele. Obstajata dva "
+"Ta nastavitev določa način prikaza pogleda v skupne diske. Obstajata dva "
 "načina: pogled ikone in pogled seznama."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
@@ -222,7 +223,7 @@ msgstr "Velikost ikone za pogled ikon:"
 #: smb4k.kcfg:91
 #, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Določite velikost ikon za pogled ikon na skupne dele."
+msgstr "Določite velikost ikon za pogled ikon na skupne diske"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
@@ -234,7 +235,7 @@ msgstr "Velikost ikon za pogled seznama:"
 #: smb4k.kcfg:98
 #, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Določite velikost ikone za način pogleda seznama na skupne dele."
+msgstr "Določite velikost ikone za način pogleda seznama na skupne diske"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
@@ -449,10 +450,10 @@ msgid ""
 "the time consumption on large network neighborhoods considerably."
 msgstr ""
 "Če je vaš računalnik v velikem omrežnem sosedstvu, odkrivanje vse delovnih "
-"skupin, gostiteljev in skupnih delov lahko traja veliko časa, saj v privzeto "
-"poizvedbe izvajajo na vseh glavnih lokalnih brskalnikih. Omogočanje te "
-"nastavitve omeji število uporabljenih lokalnih glavnih brskalnikov na tri. "
-"To lahko precej zmanjša porabo časa v sosedstvu velikih omrežij."
+"skupin, gostiteljev in skupnih diskov lahko traja veliko časa, saj v "
+"privzeto poizvedbe izvajajo na vseh glavnih lokalnih brskalnikih. Omogočanje "
+"te nastavitve omeji število uporabljenih lokalnih glavnih brskalnikov na "
+"tri. To lahko precej zmanjša porabo časa v sosedstvu velikih omrežij."
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:184
@@ -554,7 +555,7 @@ msgstr ""
 #: smb4k.kcfg:224
 #, kde-format
 msgid "Detect printer shares"
-msgstr "Zaznajte skupne tiskalnike"
+msgstr "Zaznaj skupne tiskalnike"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
 #: smb4k.kcfg:225
@@ -566,7 +567,7 @@ msgstr "Zaznani skupni tiskalniki."
 #: smb4k.kcfg:229
 #, kde-format
 msgid "Detect hidden shares"
-msgstr "Zaznajte skrite dele diskov"
+msgstr "Zaznaj skrite dele diskov"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:230
@@ -575,8 +576,8 @@ msgid ""
 "Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
 "Musik$ or IPC$."
 msgstr ""
-"Zaznani so skriti deli diskov. Skriti deli se končajo z znakom $, npr. Musik"
-"$ ali IPC$."
+"Zaznani so skriti skupni diski. Skriti skupni diski se končajo z znakom $, "
+"npr. Musik$ ali IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:234
@@ -667,8 +668,8 @@ msgid ""
 "synchronization begins."
 msgstr ""
 "Pod to predpono bo ustvarjen ciljni imenik za usklajevanje. Če pa želite "
-"shraniti podatke o določenem deludrugje, boste lahko izbrali drugo pot pred "
-"dejanskim začetkom usklajevanja."
+"shraniti podatke o določenem skupnem disku drugje, boste lahko izbrali drugo "
+"pot pred dejanskim začetkom usklajevanja."
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
 #: smb4k.kcfg:274
@@ -1187,7 +1188,7 @@ msgid ""
 "that directories are omitted when modification times are being preserved. "
 "Thus, this feature only works in conjunction with --times."
 msgstr ""
-"Izpustite imenike, ko ohranite čase (-O, -omit-dir-times). To pomeni, da so "
+"Izpusti imenike, ko ohranjate čase (-O, -omit-dir-times). To pomeni, da so "
 "imeniki izpuščeni, ko se ohranijo časi sprememb. Tako ta funkcija deluje le "
 "v povezavi s - times."
 
@@ -1206,7 +1207,7 @@ msgid ""
 "part of the transfer and have been successfully duplicated on the receiving "
 "side."
 msgstr ""
-"Odstranite vse usklajene izvorne datoteke (--remove-source-files). To pove "
+"Odstrani vse usklajene izvorne datoteke (--remove-source-files). To pove "
 "rsync, da odstrani elemente, ki niso imenik, s strani pošiljatelja del "
 "prenosa in so bili na strani prejema uspešno podvojeni."
 
@@ -1224,7 +1225,7 @@ msgid ""
 "delete all files from the receiving side that are not present on the sending "
 "side, but only for the directories that are being synchronized."
 msgstr ""
-"Izbrišite tuje datoteke s cilja (--delete). To sporoča rsync, da izbriše vse "
+"Izbriši tuje datoteke s cilja (--delete). To sporoča rsync, da izbriše vse "
 "datoteke s strani prejemnika, ki niso na strani pošiljatelja, vendar samo za "
 "imenike, ki se usklajujejo."
 
@@ -1295,7 +1296,7 @@ msgid ""
 "sending side, this tells rsync to also delete any files on the receiving "
 "side that are excluded. Refer to rsync's manual page for further information."
 msgstr ""
-"Izbrišite tudi izključene datoteke iz ciljnega imenika (--delete-excluded). "
+"Izbriši tudi izključene datoteke iz ciljnega imenika (--delete-excluded). "
 "Poleg brisanja datotek na sprejemni strani, ki niso na oddajni strani, "
 "sporoči rsync, da tudi ob prejemu izbriše vse izključene datoteke. Za "
 "dodatne informacije poglejte stran s priročnika rsync."
@@ -1330,9 +1331,9 @@ msgid ""
 "option tells rsync to delete a non-empty directory when it is to be replaced "
 "by a non-directory. This is only relevant if deletions are not active."
 msgstr ""
-"Prisilite brisanje imenikov, tudi če niso prazni (--force). Ta možnost "
-"sporoča rsync, da ob zamenjavi izbriše neprazen imenik z ne-imenikom. To je "
-"pomembno samo, če brisanja niso aktivna."
+"Prisili brisanje imenikov, tudi če niso prazni (--force). Ta možnost sporoča "
+"rsync, da ob zamenjavi izbriše neprazen imenik z ne-imenikom. To je pomembno "
+"samo, če brisanja niso aktivna."
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
 #: smb4k.kcfg:467
@@ -1348,9 +1349,9 @@ msgid ""
 "rsync not to delete more than NUM files or directories (NUM must be non-"
 "zero). This is useful when mirroring very large trees to prevent disasters."
 msgstr ""
-"Izbrišite samo toliko datotek, kot je definirano tukaj (--max-delete=NUM). "
-"To pove rsync da ne ne sme izbrisati več kot NUM datotek ali imenikov (NUM "
-"mora biti ne-nič). To je uporabno pri zrcaljenju zelo velikih dreves, da "
+"Izbriši samo toliko datotek, kot je definirano tukaj (--max-delete=NUM). To "
+"pove rsync da ne ne sme izbrisati več kot NUM datotek ali imenikov (NUM mora "
+"biti ne-nič). To je uporabno pri zrcaljenju zelo velikih dreves, da "
 "preprečimo nesreče."
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
@@ -2167,7 +2168,7 @@ msgstr "Običajne možnosti"
 #: smb4kcustomoptionsmanager_p.cpp:171 smb4kcustomoptionsmanager_p.cpp:620
 #, kde-format
 msgid "Always remount this share"
-msgstr "Vedno ponovno priklopi ta disk"
+msgstr "Vedno ponovno priklopi ta skupni disk"
 
 #: smb4kcustomoptionsmanager_p.cpp:217
 #, kde-format
@@ -2268,7 +2269,7 @@ msgstr "Določi uporabnika"
 #: smb4khomesshareshandler_p.cpp:172
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Navedite uporabniško ime za mrežni disk<br><b>%1</b>."
+msgstr "Navedite uporabniško ime za skupni disk<br><b>%1</b>."
 
 #: smb4khomesshareshandler_p.cpp:186
 #, kde-format
@@ -2286,18 +2287,18 @@ msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>Mrežni disk <b>%1</b> je priklopljen na<br><b>%2</b> in v lasti "
+"<qt><p>Skupni disk<b>%1</b> je priklopljen na<br><b>%2</b> in v lasti "
 "uporabnika <b>%3</b>.</p><p>Ali ga zares želite odklopiti?</p></qt>"
 
 #: smb4kmounter.cpp:761
 #, kde-format
 msgid "Foreign Share"
-msgstr "Tuji mrežni disk"
+msgstr "Tuji skupni disk"
 
 #: smb4kmounter_p.cpp:47
 #, kde-format
 msgid "Mount Share"
-msgstr "Priklopi mrežni disk"
+msgstr "Priklopi skupni disk"
 
 #: smb4kmounter_p.cpp:118
 #, kde-format
@@ -2877,7 +2878,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:313
 #, kde-format
 msgid "Remount shares"
-msgstr "Ponovno priklopi mrežne diske"
+msgstr "Ponovno priklopi skupne mrežne diske"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
@@ -2891,10 +2892,10 @@ msgid ""
 msgstr ""
 "Ponovno priklopi vse skupne mrežne diske, ki so bili priklopljeni ob izhodu "
 "iz programa oz. spremembi profila. Če ponovni priklop diska ne uspe, bo "
-"Smb4K poskusil znova ob naslednjem zagonu. Mrežni diski, ki so jih "
+"Smb4K poskusil znova ob naslednjem zagonu. Skupni mrežni diski, ki so jih "
 "priklopili drugi uporabniki, so prezrti. Upoštevajte, da ta nastavitev ne "
-"vpliva na samodejno ponovni priklop diskov, ko se je računalnik prebudil iz "
-"stanja spanja."
+"vpliva na samodejno ponovni priklop skupnega diska, ko se je računalnik "
+"prebudil iz stanja spanja."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:255 smb4kmountsettings_linux.kcfg:318
@@ -2909,8 +2910,8 @@ msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
 "gives up."
 msgstr ""
-"Nastavite število poskusov ponovnega priklopa mrežnih diskov predenj Smb4K "
-"odneha."
+"Nastavite število poskusov ponovnega priklopa skupnih mrežnih diskov preden "
+"Smb4K odneha."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:325
@@ -2923,13 +2924,14 @@ msgstr "Interval med ponovnimi poskusi priklopa:"
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr ""
-"Nastavite čas, ki preteče med poskusi ponovnega priklopa mrežnih diskov."
+"Nastavite čas, ki preteče med poskusi ponovnega priklopa skupnih mrežnih "
+"diskov."
 
 #. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:332
 #, kde-format
 msgid "Allow the unmounting of shares that are owned by other users"
-msgstr "Dovoli odklop mrežnih diskov, ki so v lasti drugih uporabnikov"
+msgstr "Dovoli odklop skupnih mrežnih diskov, ki so v lasti drugih uporabnikov"
 
 #. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
@@ -2938,14 +2940,14 @@ msgid ""
 "Allow the unmounting of shares that were mounted by other users. Please "
 "think before you enable this option."
 msgstr ""
-"Dovoli odklop mrežnih diskov, ki so jih priklopili drugi uporabniki. Prosim "
-"premislite, preden omogočite to možnost."
+"Dovoli odklop skupnih mrežnih diskov, ki so jih priklopili drugi uporabniki. "
+"Prosim premislite, preden omogočite to možnost."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:337
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
-msgstr "Prisili odklop nedostopnih mrežnih diskov"
+msgstr "Prisili odklop nedostopnih skupnih mrežnih diskov"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
@@ -2955,15 +2957,16 @@ msgid ""
 "inaccessible, a lazy unmount is performed. Before the actual unmount is "
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
-"Prisilni odklop nedostopnih mrežnih diskov (samo za Linux). V primeru, da je "
-"mrežni disk nedostopen, se izvede leni odklop. Preden je izveden dejanski "
-"odklop, se prikaže opozorilno pogovorno okno s prošnjo za odobritev odklopa."
+"Prisilni odklop nedostopnih skupnih mrežnih diskov (samo za Linux). V "
+"primeru, da je mrežni disk nedostopen, se izvede leni odklop. Preden je "
+"izveden dejanski odklop, se prikaže opozorilno pogovorno okno s prošnjo za "
+"odobritev odklopa."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:279 smb4kmountsettings_linux.kcfg:342
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
-msgstr "Zaznajte vse skupne diske, ki so priklopljeni v sistemu"
+msgstr "Zaznaj vse skupne diske, ki so priklopljeni v sistemu"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
@@ -3030,8 +3033,8 @@ msgid ""
 msgstr ""
 "To je ID skupine (številka), ki jo imajo datoteke in imeniki na "
 "priklopljenem skupnem disku. Če uporabljate datotečni sistem CIFS pod "
-"Linuxom in oddaljeni strežnik podpira razširitve CIFS Unix, ta nastavitev "
-"nene upoštevana, razen če je dodelitev ID-ja skupine posebej zahtevana."
+"Linuxom in oddaljeni strežnik podpira razširitve CIFS Unix, ta nastavitev ne "
+"bo upoštevana, razen če je dodelitev ID-ja skupine posebej zahtevana."
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:36
@@ -3084,8 +3087,8 @@ msgid ""
 "This is the port that is exclusively used to mount shares from remote "
 "servers. The default value is 445 (CIFS file system)."
 msgstr ""
-"To so vrata, ki se izključno uporabljajo za priklop diskov na oddaljenih "
-"strežnikih. Privzeta vrednost je 445 (datotečni sistem CIFS)."
+"To so vrata, ki se izključno uporabljajo za priklop skupnih mrežnih diskov "
+"na oddaljenih strežnikih. Privzeta vrednost je 445 (datotečni sistem CIFS)."
 
 #. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
@@ -3147,7 +3150,7 @@ msgid ""
 "the server for files and directories and to always assign the owner to be "
 "the value of the transmitted UID."
 msgstr ""
-"Odjemalcu (tj. vaši strani) naročite, da prezre kateri koli ID uporabnika "
+"Odjemalcu (tj. vaši strani) naroči, da prezre kateri koli ID uporabnika "
 "(UID), ki ga ponujastrežnik za datoteke in mape in za vedno dodeli lastnika "
 "glede na vrednost poslanega UID-a."
 
@@ -3187,8 +3190,8 @@ msgid ""
 msgstr ""
 "Odjemalec (tj. vaša stran) bo preveril, ali imate ustrezen UID/GID za "
 "manipuliranje datoteke ali imenika. Morda boste želeli izklopiti to "
-"funkcijo, če strežniki podpirajo razširitve CIFS Unix in vam ni "
-"dovoljendostop do datotek in imenikov. Ta nastavitev ne vpliva na normalno "
+"funkcijo, če strežniki podpirajo razširitve CIFS Unix in vam ni dovoljen "
+"dostop do datotek in imenikov. Ta nastavitev ne vpliva na normalno "
 "preverjanje ACL."
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
@@ -3581,7 +3584,7 @@ msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>.</p>"
 msgstr ""
-"<p>Nimate dovoljenja za doklop skupnega diska <b>%1</b> od <b>%2</b>. Je v "
+"<p>Nimate dovoljenja za odklop skupnega diska <b>%1</b> od <b>%2</b>. Je v "
 "lasti uporabnika <b>%3</b>.</p>"
 
 #: smb4knotification.cpp:234

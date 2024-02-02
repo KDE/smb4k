@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-16 02:38+0000\n"
-"PO-Revision-Date: 2023-03-11 09:31+0100\n"
+"PO-Revision-Date: 2024-02-01 17:44+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -51,7 +51,9 @@ msgstr "Smb4K"
 #: smb4k/main.cpp:45
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
-msgstr "Napredni omrežni brskalnik in pripomoček Sambe za priklop delov diska"
+msgstr ""
+"Napredni omrežni brskalnik in pripomoček Sambe za priklop skupnih mrežnih "
+"diskov"
 
 #: smb4k/main.cpp:47
 #, kde-format
@@ -94,7 +96,7 @@ msgstr "Omrežje"
 #: smb4k/smb4k_shell.rc:12
 #, kde-format
 msgid "Sh&ares"
-msgstr "Deli diska"
+msgstr "Skupni diski"
 
 #. i18n: ectx: Menu (bookmarks)
 #: smb4k/smb4k_shell.rc:15
@@ -552,10 +554,10 @@ msgstr "Trenutno ni nobenega priklopljenega dela."
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
-msgstr[0] "Trenutno je priklopljen %1 del."
-msgstr[1] "Trenutno sta priklopljena %1 dela."
-msgstr[2] "Trenutno so priklopljeni %1 deli."
-msgstr[3] "Trenutno je priklopljenih %1 delov."
+msgstr[0] "Trenutno je priklopljen %1 skupni disk."
+msgstr[1] "Trenutno sta priklopljena %1 skupna diska."
+msgstr[2] "Trenutno so priklopljeni %1 skupni diski."
+msgstr[3] "Trenutno je priklopljenih %1 skupnih diskov."
 
 #: smb4k/smb4kmainwindow.cpp:630
 #, kde-format
