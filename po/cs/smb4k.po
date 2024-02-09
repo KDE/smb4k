@@ -55,10 +55,9 @@ msgstr ""
 "Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť Samba"
 
 #: smb4k/main.cpp:50
-#, fuzzy, kde-format
-#| msgid "© 2003-2023 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr ""
 
 #: smb4k/main.cpp:59
 #, kde-format
