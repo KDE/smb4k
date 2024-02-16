@@ -89,8 +89,6 @@ Smb4KMainWindow::Smb4KMainWindow()
     KConfigGroup configGroup(Smb4KSettings::self()->config(), QStringLiteral("MainWindow"));
     setAutoSaveSettings(configGroup, true);
 
-    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KMainWindow::saveSettings);
-
     connect(Smb4KClient::self(), &Smb4KClient::requestCredentials, this, &Smb4KMainWindow::slotCredentialsRequested);
     connect(Smb4KMounter::self(), &Smb4KMounter::requestCredentials, this, &Smb4KMainWindow::slotCredentialsRequested);
 }
@@ -284,8 +282,6 @@ void Smb4KMainWindow::loadSettings()
 
 void Smb4KMainWindow::saveSettings()
 {
-    qDebug() << "Smb4KMainWindow::saveSettings()";
-
     m_networkBrowserDockWidget->saveSettings();
     m_sharesViewDockWidget->saveSettings();
 
@@ -295,8 +291,6 @@ void Smb4KMainWindow::saveSettings()
 
 bool Smb4KMainWindow::queryClose()
 {
-    qDebug() << "Smb4KMainWindow::queryClose()";
-
     if (!m_quitting && !qApp->isSavingSession() && isVisible()) {
         // This part has been copied from JuK application.
         KMessageBox::information(this,
@@ -444,7 +438,7 @@ void Smb4KMainWindow::timerEvent(QTimerEvent *event)
 void Smb4KMainWindow::slotQuit()
 {
     m_quitting = true;
-    // saveSettings();
+    saveSettings();
     close();
     QCoreApplication::quit();
 }
