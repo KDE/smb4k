@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# Shinjo Park <kde@peremen.name>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-01 01:36+0000\n"
-"PO-Revision-Date: 2023-10-08 23:57+0200\n"
+"PO-Revision-Date: 2024-02-05 23:04+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,10 +53,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "고급 네트워크 환경 탐색 및 Samba 공유 마운트 유틸리티"
 
 #: smb4k/main.cpp:50
-#, fuzzy, kde-format
-#| msgid "© 2003-2023 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:59
 #, kde-format
@@ -405,13 +404,7 @@ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
 msgstr "<qt>필요한 옵션을 쉼표로 구분하여 입력하십시오:</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:797
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>The following entry is going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
-#| msgid_plural ""
-#| "<qt>The following %1 entries are going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
+#, kde-format
 msgid ""
 "The following entry is going to be removed from the additional options:<br>"
 "%2.<br>Please read the handbook for details."
@@ -419,8 +412,8 @@ msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
 msgstr[0] ""
-"<qt>추가 옵션에서 다음 항목 %1개를 삭제합니다: %2. 자세한 사항은 도움말을 참"
-"조하십시오.</qt>"
+"추가 옵션에서 다음 항목 %1개를 삭제합니다:<br>%2.<br>자세한 사항은 도움말을 "
+"참조하십시오."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #, kde-format
@@ -607,10 +600,9 @@ msgid "Always remount this share"
 msgstr "항상 이 공유 다시 마운트"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Mounting: Common Settings"
-msgstr "마운트 설정"
+msgstr "마운트: 공통 설정"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -618,21 +610,18 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "이 서버에서 CIFS 유닉스 확장을 지원합니다"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
+#, kde-format
 msgid "Mounting: CIFS Unix Extensions"
-msgstr "CIFS 유닉스 확장 지원"
+msgstr "마운트: CIFS 유닉스 확장"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Mounting: Advanced Settings"
-msgstr "고급 설정"
+msgstr "마운트: 고급 설정"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
+#, kde-format
 msgid "Browsing"
 msgstr "탐색 설정"
 
@@ -657,18 +646,17 @@ msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "사용자 지정"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "사용자 이름을 입력하십시오."
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
+msgstr "<b>%1</b> 공유의 사용자 이름을 입력하십시오."
 
 #: smb4k/smb4kmainwindow.cpp:110
 #, kde-format
@@ -972,16 +960,14 @@ msgid "Item Up"
 msgstr "항목 위로"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
+msgstr "<b>%1</b> 호스트의 사용자 이름 및 암호를 입력하십시오."
 
 #: smb4k/smb4kpassworddialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Set the username and password for wallet entry %1."
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
+msgstr "<b>%1</b> 공유의 사용자 이름 및 암호를 입력하십시오."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
@@ -1157,7 +1143,7 @@ msgstr "형식:"
 #: smb4k/smb4ktooltip.cpp:130
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "DNS-SD 탐색 도메인"
 
 #: smb4k/smb4ktooltip.cpp:132
 #, kde-format

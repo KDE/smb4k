@@ -1220,35 +1220,3 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Монтиране"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Монтиране"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Монтиране"
-
-#, fuzzy
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Общи настройки"
-
-#, fuzzy
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Общи настройки"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Монтиране"
-
-#, fuzzy
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Общи настройки"
