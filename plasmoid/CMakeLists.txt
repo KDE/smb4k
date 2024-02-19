@@ -5,4 +5,8 @@ project(smb4kqml)
 
 add_subdirectory(plugin)
 
-plasma_install_package(package org.kde.smb4kqml)
+if (QT_MAJOR_VERSION STREQUAL "6")
+  plasma_install_package(package6 org.kde.smb4kqml)
+elseif()
+  plasma_install_package(package5 org.kde.smb4kqml)
+endif()
