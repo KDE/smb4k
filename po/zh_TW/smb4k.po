@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-01 01:36+0000\n"
+"POT-Creation-Date: 2024-02-17 01:40+0000\n"
 "PO-Revision-Date: 2024-01-15 23:30+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -161,7 +161,7 @@ msgstr "書籤"
 msgid "&Edit Bookmarks"
 msgstr "編輯書籤(&E)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:114
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:112
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
@@ -563,7 +563,7 @@ msgstr "總和檢查碼"
 msgid "Main Window"
 msgstr "主視窗"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:182
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:180
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "網路芳鄰"
@@ -659,17 +659,17 @@ msgstr "請指定使用者名稱。"
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "請指定使用者名稱給共享裝置<br><b>%1</b>。"
 
-#: smb4k/smb4kmainwindow.cpp:110
+#: smb4k/smb4kmainwindow.cpp:108
 #, kde-format
 msgid "Dock Widgets"
 msgstr "面板元件"
 
-#: smb4k/smb4kmainwindow.cpp:193 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:191 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "已掛載的共享裝置"
 
-#: smb4k/smb4kmainwindow.cpp:303
+#: smb4k/smb4kmainwindow.cpp:297
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -678,99 +678,99 @@ msgstr ""
 "<qt>關閉主視窗後 Smb4K 將在系統匣中繼續執行。<br>可使用<i>檔案</i>選單中的<i>"
 "離開</i>來結束應用程式。</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:305
+#: smb4k/smb4kmainwindow.cpp:299
 #, fuzzy, kde-format
 msgid "Docking"
 msgstr "停駐視窗元件(&D)"
 
-#: smb4k/smb4kmainwindow.cpp:360
+#: smb4k/smb4kmainwindow.cpp:354
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "目前沒有掛載任何共享裝置。"
 
-#: smb4k/smb4kmainwindow.cpp:363
+#: smb4k/smb4kmainwindow.cpp:357
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "目前掛載了 %1 個共享裝置。"
 
-#: smb4k/smb4kmainwindow.cpp:509
+#: smb4k/smb4kmainwindow.cpp:503
 #, kde-format
 msgid "The wallet is used."
 msgstr "已使用錢包。"
 
-#: smb4k/smb4kmainwindow.cpp:512
+#: smb4k/smb4kmainwindow.cpp:506
 #, kde-format
 msgid "The password dialog is used."
 msgstr "已使用密碼對話框。"
 
-#: smb4k/smb4kmainwindow.cpp:522
+#: smb4k/smb4kmainwindow.cpp:516
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "正在尋找工作群組及網域..."
 
-#: smb4k/smb4kmainwindow.cpp:527
+#: smb4k/smb4kmainwindow.cpp:521
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "正在尋找網域 %1 中的主機..."
 
-#: smb4k/smb4kmainwindow.cpp:532
+#: smb4k/smb4kmainwindow.cpp:526
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "正在尋找主機 %1 所提供的共享裝置..."
 
-#: smb4k/smb4kmainwindow.cpp:540 smb4k/smb4kmainwindow.cpp:549
+#: smb4k/smb4kmainwindow.cpp:534 smb4k/smb4kmainwindow.cpp:543
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "正在尋找 %1 中的檔案與目錄..."
 
-#: smb4k/smb4kmainwindow.cpp:566
+#: smb4k/smb4kmainwindow.cpp:560
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "正在喚醒遠端主機..."
 
-#: smb4k/smb4kmainwindow.cpp:571
+#: smb4k/smb4kmainwindow.cpp:565
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "正在傳送檔案至印表機 %1..."
 
-#: smb4k/smb4kmainwindow.cpp:575
+#: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "Searching..."
 msgstr "搜尋中..."
 
-#: smb4k/smb4kmainwindow.cpp:596 smb4k/smb4kmainwindow.cpp:635
-#: smb4k/smb4kmainwindow.cpp:720
+#: smb4k/smb4kmainwindow.cpp:590 smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:714
 #, kde-format
 msgid "Done."
 msgstr "完成。"
 
-#: smb4k/smb4kmainwindow.cpp:606
+#: smb4k/smb4kmainwindow.cpp:600
 #, kde-format
 msgid "Mounting..."
 msgstr "掛載中..."
 
-#: smb4k/smb4kmainwindow.cpp:610
+#: smb4k/smb4kmainwindow.cpp:604
 #, kde-format
 msgid "Unmounting..."
 msgstr "卸載中..."
 
-#: smb4k/smb4kmainwindow.cpp:614
+#: smb4k/smb4kmainwindow.cpp:608
 #, kde-format
 msgid "Waking up host..."
 msgstr "喚醒主機中…"
 
-#: smb4k/smb4kmainwindow.cpp:644
+#: smb4k/smb4kmainwindow.cpp:638
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 已成功掛載。"
 
-#: smb4k/smb4kmainwindow.cpp:667
+#: smb4k/smb4kmainwindow.cpp:661
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 已成功卸載。"
 
-#: smb4k/smb4kmainwindow.cpp:706
+#: smb4k/smb4kmainwindow.cpp:700
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "正在同步 %1"
