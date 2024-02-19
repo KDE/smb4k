@@ -439,7 +439,7 @@ void Smb4KMainWindow::slotQuit()
 {
     m_quitting = true;
     saveSettings();
-    close();
+    QApplication::closeAllWindows();
     QCoreApplication::quit();
 }
 
