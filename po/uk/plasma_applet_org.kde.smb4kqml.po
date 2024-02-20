@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2024-02-20 01:40+0000\n"
 "PO-Revision-Date: 2019-04-27 08:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -21,77 +21,97 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: package/contents/ui/BookmarkItemDelegate.qml:59
-#: package/contents/ui/SharesViewItemDelegate.qml:59
+#: package5/contents/ui/BookmarkItemDelegate.qml:59
+#: package5/contents/ui/SharesViewItemDelegate.qml:59
+#: package6/contents/ui/BookmarkItemDelegate.qml:59
+#: package6/contents/ui/SharesViewItemDelegate.qml:59
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">на %1</font>"
 
-#: package/contents/ui/BookmarksPage.qml:32
+#: package5/contents/ui/BookmarksPage.qml:32
+#: package6/contents/ui/BookmarksPage.qml:32
 msgid "Go back"
 msgstr "Повернутися"
 
-#: package/contents/ui/BookmarksPage.qml:41
+#: package5/contents/ui/BookmarksPage.qml:41
+#: package6/contents/ui/BookmarksPage.qml:41
 msgid "Edit bookmarks"
 msgstr "Редагувати закладки"
 
-#: package/contents/ui/ConfigurationPage.qml:21
+#: package5/contents/ui/ConfigurationPage.qml:21
+#: package6/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
 msgstr "Діалогове вікно налаштовування"
 
-#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+#: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
 msgstr "Мережеве оточення"
 
-#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package/contents/ui/SharesViewItemDelegate.qml:76
+#: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package5/contents/ui/SharesViewItemDelegate.qml:76
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package6/contents/ui/SharesViewItemDelegate.qml:76
 msgid "Bookmark"
 msgstr "Створити закладку"
 
-#: package/contents/ui/NetworkBrowserPage.qml:38
+#: package5/contents/ui/NetworkBrowserPage.qml:38
+#: package6/contents/ui/NetworkBrowserPage.qml:38
 msgid "Rescan"
 msgstr "Пересканувати"
 
-#: package/contents/ui/NetworkBrowserPage.qml:47
+#: package5/contents/ui/NetworkBrowserPage.qml:47
+#: package6/contents/ui/NetworkBrowserPage.qml:47
 msgid "Abort"
 msgstr "Перервати"
 
-#: package/contents/ui/NetworkBrowserPage.qml:56
+#: package5/contents/ui/NetworkBrowserPage.qml:56
+#: package6/contents/ui/NetworkBrowserPage.qml:56
 msgid "Go one level up"
 msgstr "Перейти на рівень вище"
 
-#: package/contents/ui/NetworkBrowserPage.qml:65
+#: package5/contents/ui/NetworkBrowserPage.qml:65
+#: package6/contents/ui/NetworkBrowserPage.qml:65
 msgid "Open the mount dialog"
 msgstr "Відкрити вікно монтування"
 
-#: package/contents/ui/PopupDialog.qml:39
+#: package5/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
 msgstr "Змонтовані спільні ресурси"
 
-#: package/contents/ui/PopupDialog.qml:46
+#: package5/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: package/contents/ui/PopupDialog.qml:53
+#: package5/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
 msgstr "Профілі"
 
-#: package/contents/ui/PopupDialog.qml:60
+#: package5/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
 msgstr "Налаштування"
 
-#: package/contents/ui/ProfileItemDelegate.qml:52
+#: package5/contents/ui/ProfileItemDelegate.qml:52
+#: package6/contents/ui/ProfileItemDelegate.qml:52
 msgid "(active)"
 msgstr "(активний)"
 
-#: package/contents/ui/SharesViewItemDelegate.qml:97
+#: package5/contents/ui/SharesViewItemDelegate.qml:97
+#: package6/contents/ui/SharesViewItemDelegate.qml:97
 msgid "Synchronize"
 msgstr "Синхронізувати"
 
-#: package/contents/ui/SharesViewItemDelegate.qml:118
+#: package5/contents/ui/SharesViewItemDelegate.qml:118
+#: package6/contents/ui/SharesViewItemDelegate.qml:118
 msgid "Unmount"
 msgstr "Демонтувати"
 
-#: package/contents/ui/SharesViewPage.qml:34
+#: package5/contents/ui/SharesViewPage.qml:34
+#: package6/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Демонтувати усі спільні ресурси"
 
