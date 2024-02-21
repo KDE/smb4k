@@ -1,13 +1,13 @@
 /*
-    SPDX-FileCopyrightText: 2019-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2019-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.3
-import QtQuick.Layouts 1.3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import org.kde.plasma.components as PlasmaComponents
 
 PlasmaComponents.Page {
   id: configurationPage
@@ -15,11 +15,11 @@ PlasmaComponents.Page {
   ColumnLayout {
     anchors.fill: parent
 
-    PlasmaComponents.Button {
+    Button {
       id: openConfigDialogButton
       Layout.alignment: Qt.AlignHCenter|Qt.AlignVCenter
       text: i18n("Configuration Dialog")
-      iconSource: "configure"
+      icon.name: "configure"
     
       onClicked: {
         iface.openConfigurationDialog()

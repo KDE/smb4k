@@ -1,14 +1,15 @@
 /*
-    SPDX-FileCopyrightText: 2017-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.3
-import QtQuick.Layouts 1.3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasmoid
+import org.kde.plasma.components as PlasmaComponents
 
 FocusScope {
   id: popupDialog
@@ -20,59 +21,54 @@ FocusScope {
     //
     // Tab bar
     //
-    PlasmaComponents.TabBar {
+    TabBar {
       id: tabBar
       
       Layout.maximumWidth: parent.width
       Layout.fillWidth: true
       Layout.fillHeight: false
           
-      PlasmaComponents.TabButton {
-        id: browserTabButton
+      TabButton {
+        id: networkBrowserTabButton
         text: i18n("Network Neighborhood")
-        iconSource: "network-workgroup-symbolic"
-        tab: networkBrowserPage
+        icon.name: "network-workgroup-symbolic"
       }
           
-      PlasmaComponents.TabButton {
-        id: sharesTabButton
+      TabButton {
+        id: sharesViewTabButton
         text: i18n("Mounted Shares")
-        iconSource: "folder-network-symbolic"
-        tab: sharesViewPage
+        icon.name: "folder-network-symbolic"
       }
         
-      PlasmaComponents.TabButton {
-        id: bookmarkTabButton
+      TabButton {
+        id: bookmarkPageTabButton
         text: i18n("Bookmarks")
-        iconSource: "bookmarks"
-        tab: bookmarksPage
+        icon.name: "bookmarks"
       }
         
-      PlasmaComponents.TabButton {
-        id: profilesTabButton
+      TabButton {
+        id: profilesPageTabButton
         text: i18n("Profiles")
-        iconSource: "format-list-unordered"
-        tab: profilesPage
+        icon.name: "format-list-unordered"
       }
       
-      PlasmaComponents.TabButton {
-        id: configurationTabButton
+      TabButton {
+        id: configurationPageTabButton
         text: i18n("Configuration")
-        iconSource: "configure"
-        tab: configurationPage
+        icon.name: "configure"
       }
     }
       
     //
     // Tab group
     //
-    PlasmaComponents.TabGroup {
+    StackLayout {
       id: tabGroup
       
       Layout.fillWidth: true
       Layout.fillHeight: true
       
-      currentTab: networkBrowserPage
+      currentIndex: tabBar.currentIndex
         
       NetworkBrowserPage {
         id: networkBrowserPage
@@ -94,19 +90,6 @@ FocusScope {
         id: configurationPage
       }
     }
-    
-//     //
-//     // Information
-//     //
-//     PlasmaComponents.Label {
-//       id: infoLabel
-//       
-//       Layout.fillWidth: true
-//       Layout.fillHeight: false
-//       
-//       color: "red"
-//       text: "lalala"
-//     }
   }
   
   //

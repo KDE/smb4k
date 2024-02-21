@@ -31,12 +31,15 @@ public:
     bool printer;
     bool isMaster;
     bool inaccessible;
+    QIcon icon;
 };
 
 Smb4KNetworkObject::Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObject *parent)
     : QObject(parent)
     , d(new Smb4KNetworkObjectPrivate)
 {
+    d->icon = networkItem->icon();
+
     switch (networkItem->type()) {
     case Smb4KGlobal::Workgroup: {
         Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(networkItem);
@@ -266,6 +269,8 @@ void Smb4KNetworkObject::setMounted(bool mounted)
 
 void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
 {
+    d->icon = networkItem->icon();
+
     if (d->type == Workgroup && networkItem->type() == Smb4KGlobal::Workgroup) {
         Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(networkItem);
 
@@ -359,4 +364,9 @@ void Smb4KNetworkObject::setInaccessible(bool inaccessible)
         d->inaccessible = inaccessible;
         Q_EMIT changed();
     }
+}
+
+QIcon Smb4KNetworkObject::icon() const
+{
+    return d->icon;
 }

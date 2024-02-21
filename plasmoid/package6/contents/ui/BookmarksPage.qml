@@ -1,16 +1,16 @@
 /*
-    SPDX-FileCopyrightText: 2017-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.3
-import QtQuick.Layouts 1.3
-import QtQml.Models 2.3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.extras 2.0 as PlasmaExtras
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import QtQml.Models
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasmoid
+import org.kde.plasma.components as PlasmaComponents
 
 PlasmaComponents.Page {
   id: bookmarksPage
@@ -18,7 +18,7 @@ PlasmaComponents.Page {
   //
   // Tool bar
   //
-  PlasmaComponents.ToolBar {
+  ToolBar {
     id: bookmarksToolBar
     anchors {
       top: parent.top
@@ -26,20 +26,20 @@ PlasmaComponents.Page {
       right: parent.right
     }
     
-    tools: PlasmaComponents.ToolBarLayout {
-      PlasmaComponents.ToolButton {
+    RowLayout {
+      ToolButton {
         id: backButton
-        tooltip: i18n("Go back")
-        iconSource: "go-previous"
+        text: i18n("Go back")
+        icon.name: "go-previous"
         width: minimumWidth
         onClicked: {
           back()
         }
       }
-      PlasmaComponents.ToolButton {
+      ToolButton {
         id: editButton
-        tooltip: i18n("Edit bookmarks")
-        iconSource: "bookmarks-organize"
+        text: i18n("Edit bookmarks")
+        icon.name: "bookmarks-organize"
         width: minimumWidth
         onClicked: {
           iface.editBookmarks()
@@ -131,7 +131,7 @@ PlasmaComponents.Page {
   //
   // List view
   //
-  PlasmaExtras.ScrollArea {
+  ScrollView {
     id: bookmarksScrollArea
     
     anchors {

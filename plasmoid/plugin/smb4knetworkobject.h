@@ -2,7 +2,7 @@
     This class derives from QObject and encapsulates the network items.
     It is for use with QtQuick.
 
-    SPDX-FileCopyrightText: 2012-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2012-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -257,6 +257,7 @@ public:
     /**
      * Returns TRUE if the network item is a share that is mounted and became
      * inaccessible. Otherwise this function returns FALSE.
+     *
      * @returns TRUE is the mounted share is inaccessible
      */
     bool isInaccessible() const;
@@ -264,9 +265,17 @@ public:
     /**
      * Mark this network item as inaccessible. This is only reasonable with a
      * mounted share.
+     *
      * @param inaccessible  Should be TRUE if the mounted share is inaccessible
      */
     void setInaccessible(bool inaccessible);
+
+    /**
+     * Get the icon of the network item.
+     *
+     * @returns the icon
+     */
+    Q_INVOKABLE QIcon icon() const;
 
 Q_SIGNALS:
     /**

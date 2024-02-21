@@ -1,18 +1,19 @@
 /*
-    SPDX-FileCopyrightText: 2017-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.3
-import QtQuick.Layouts 1.3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.smb4k.smb4kqmlplugin 2.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasmoid
+import org.kde.plasma.components as PlasmaComponents
+import org.kde.smb4k.smb4kqmlplugin
+import org.kde.kirigami as Kirigami
 
-PlasmaComponents.ListItem {
+Item {
   id: delegate
   
   signal itemClicked()
@@ -39,14 +40,9 @@ PlasmaComponents.ListItem {
       spacing: units.largeSpacing
       Column {
         anchors.verticalCenter: parent.verticalCenter
-        PlasmaCore.IconItem {
+        Kirigami.Icon {
           id: delegateItemIcon
-          source: {
-            (!object.isInaccessible ? "folder-network" : "folder-locked")
-          }
-          overlays: [
-            (object.isMounted ? "emblem-mounted" : "")
-          ]
+          source: object.icon
           width: units.iconSizes.medium
           height: units.iconSizes.medium
         }
@@ -62,18 +58,17 @@ PlasmaComponents.ListItem {
     }
   }
   
-  PlasmaComponents.ButtonRow {
+  RowLayout {
     anchors {
      verticalCenter: parent.verticalCenter
       right: parent.right
     }
-    exclusive: false
     spacing: 0
     
-    PlasmaComponents.ToolButton {
+    ToolButton {
       id: bookmarkButton
-      iconSource: "favorite"
-      tooltip: i18n("Bookmark")
+      icon.name: "favorite"
+      text: i18n("Bookmark")
       flat: true
       opacity: 0.2
       MouseArea {
@@ -91,10 +86,10 @@ PlasmaComponents.ListItem {
       }      
     }
     
-    PlasmaComponents.ToolButton {
+    ToolButton {
       id: syncButton
-      iconSource: "folder-sync"
-      tooltip: i18n("Synchronize")
+      icon.name: "folder-sync"
+      text: i18n("Synchronize")
       flat: true
       opacity: 0.2
       MouseArea {
@@ -112,10 +107,10 @@ PlasmaComponents.ListItem {
       }  
     }
     
-    PlasmaComponents.ToolButton {
+    ToolButton {
       id: unmountButton
-      iconSource: "media-eject"
-      tooltip: i18n("Unmount")
+      icon.name: "media-eject"
+      text: i18n("Unmount")
       flat: true
       opacity: 0.2
       MouseArea {

@@ -1,17 +1,16 @@
 /*
-    SPDX-FileCopyrightText: 2017-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-import QtQuick 2.3
-import QtQuick.Layouts 1.3
-import QtQml.Models 2.3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.smb4k.smb4kqmlplugin 2.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import QtQml.Models
+import org.kde.plasma.plasmoid
+import org.kde.plasma.components as PlasmaComponents
+import org.kde.smb4k.smb4kqmlplugin
 
 PlasmaComponents.Page {
   id: profilesPage
@@ -90,7 +89,7 @@ PlasmaComponents.Page {
   //
   // List view
   //
-  PlasmaExtras.ScrollArea {
+  ScrollView {
     id: profilesScrollArea
     
     anchors {
