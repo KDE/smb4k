@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-20 01:40+0000\n"
+"POT-Creation-Date: 2024-02-22 01:37+0000\n"
 "PO-Revision-Date: 2022-08-23 15:16+0300\n"
 "Last-Translator: Мария Шикунова <translation-team@basealt.ru>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -26,8 +26,8 @@ msgstr ""
 # BUGME: word puzzle here --aspotashev
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:59
-#: package6/contents/ui/SharesViewItemDelegate.qml:59
+#: package6/contents/ui/BookmarkItemDelegate.qml:56
+#: package6/contents/ui/SharesViewItemDelegate.qml:55
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">на %1</font>"
 
@@ -47,34 +47,34 @@ msgid "Configuration Dialog"
 msgstr "Диалог настройки"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "Сетевое окружение"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:76
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "Добавить закладку"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:38
+#: package6/contents/ui/NetworkBrowserPage.qml:37
 msgid "Rescan"
 msgstr "Обновить"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:47
+#: package6/contents/ui/NetworkBrowserPage.qml:46
 msgid "Abort"
 msgstr "Остановить"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:56
+#: package6/contents/ui/NetworkBrowserPage.qml:55
 msgid "Go one level up"
 msgstr "Перейти на уровень выше"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:65
+#: package6/contents/ui/NetworkBrowserPage.qml:64
 msgid "Open the mount dialog"
 msgstr "Открыть диалог подключения"
 
@@ -84,17 +84,17 @@ msgid "Mounted Shares"
 msgstr "Подключённые общие папки"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "Закладки"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:51
 msgid "Profiles"
 msgstr "Профили"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:57
 msgid "Configuration"
 msgstr "Конфигурация"
 
@@ -104,12 +104,12 @@ msgid "(active)"
 msgstr "(активный)"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:97
+#: package6/contents/ui/SharesViewItemDelegate.qml:92
 msgid "Synchronize"
 msgstr "Синхронизировать"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:118
+#: package6/contents/ui/SharesViewItemDelegate.qml:113
 msgid "Unmount"
 msgstr "Отключить"
 
@@ -117,6 +117,16 @@ msgstr "Отключить"
 #: package6/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Отключать все подключённые ресурсы"
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+msgid "Preview"
+msgstr ""
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
+#, fuzzy
+#| msgid "Configuration"
+msgid "Configure"
+msgstr "Конфигурация"
 
 #, fuzzy
 #~ msgid "Edit Bookmarks"
