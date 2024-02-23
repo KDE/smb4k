@@ -113,10 +113,8 @@ msgstr "Odpojit všechny sdílené"
 
 #: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
 msgid "Preview"
-msgstr ""
+msgstr "Náhled"
 
 #: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
-#, fuzzy
-#| msgid "Configuration"
 msgid "Configure"
-msgstr "Nastavení"
+msgstr "Nastavit"
