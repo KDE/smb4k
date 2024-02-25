@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-16 02:38+0000\n"
-"PO-Revision-Date: 2023-03-30 12:11+0300\n"
+"PO-Revision-Date: 2024-02-14 19:34+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -769,7 +769,7 @@ msgstr "Avaa päätteessä"
 #: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
-msgstr "Avaa tiedostonhallinnassa"
+msgstr "Avaa tiedostonhallintaan"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
@@ -799,7 +799,7 @@ msgstr "Avaa &päätteeseen"
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
-msgstr "Avaa &tiedostonhallinnassa"
+msgstr "Avaa tiedoston&hallintaan"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
