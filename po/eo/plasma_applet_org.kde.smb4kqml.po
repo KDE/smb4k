@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-22 01:37+0000\n"
-"PO-Revision-Date: 2023-06-08 10:55+0100\n"
+"PO-Revision-Date: 2024-02-24 22:21+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -114,10 +114,8 @@ msgstr "Malmunti ĉiujn komunaĵojn"
 
 #: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
 msgid "Preview"
-msgstr ""
+msgstr "Antaŭrigardi"
 
 #: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
-#, fuzzy
-#| msgid "Configuration"
 msgid "Configure"
-msgstr "Agordo"
+msgstr "Agordi"
