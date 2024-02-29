@@ -19,10 +19,10 @@ Item {
   
   width: parent.width
   implicitWidth: parent.implicitWidth
-  // FIXME: Use something like margin instead of the 3 * units.smallSpacing that was found
+  // FIXME: Use something like margin instead of the 3 * Kirigami.Units.smallSpacing that was found
   // by trial and error ...
-  height: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
-  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
+  height: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
   focus: true
   enabled: !object.isMounted
   
@@ -34,14 +34,14 @@ Item {
     }
   
     Row {
-      spacing: units.largeSpacing
+      spacing: Kirigami.Units.largeSpacing
       Column {
         anchors.verticalCenter: parent.verticalCenter
         Kirigami.Icon {
           id: delegateItemIcon
-          source: object.icon
-          width: units.iconSizes.medium
-          height: units.iconSizes.medium
+          source: (object.isCategory ? "folder-bookmark" : "folder-network-symbolic")
+          width: Kirigami.Units.iconSizes.medium
+          height: Kirigami.Units.iconSizes.medium
           enabled: delegate.enabled
         }
       }

@@ -21,41 +21,46 @@ FocusScope {
     //
     // Tab bar
     //
-    TabBar {
+    PlasmaComponents.TabBar {
       id: tabBar
-      
+
       Layout.maximumWidth: parent.width
       Layout.fillWidth: true
       Layout.fillHeight: false
-          
-      TabButton {
-        id: networkBrowserTabButton
+
+      PlasmaComponents.TabButton {
+        id: browserTabButton
         text: i18n("Network Neighborhood")
         icon.name: "network-workgroup-symbolic"
+        // width: implicitWidth
       }
-          
-      TabButton {
-        id: sharesViewTabButton
+
+      PlasmaComponents.TabButton {
+        id: sharesTabButton
         text: i18n("Mounted Shares")
         icon.name: "folder-network-symbolic"
+        // width: implicitWidth
       }
-        
-      TabButton {
-        id: bookmarkPageTabButton
+
+      PlasmaComponents.TabButton {
+        id: bookmarkTabButton
         text: i18n("Bookmarks")
         icon.name: "bookmarks"
+        // width: implicitWidth
       }
-        
-      TabButton {
-        id: profilesPageTabButton
+
+      PlasmaComponents.TabButton {
+        id: profilesTabButton
         text: i18n("Profiles")
-        icon.name: "format-list-unordered"
+        icon.name: "preferences-system-users"
+        // width: implicitWidth
       }
-      
-      TabButton {
-        id: configurationPageTabButton
+
+      PlasmaComponents.TabButton {
+        id: configurationTabButton
         text: i18n("Configuration")
         icon.name: "configure"
+        // width: implicitWidth
       }
     }
       
