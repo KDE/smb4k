@@ -103,14 +103,14 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    ```
    If you want to be able to remove Smb4K with your package manager later on, use the following approaches depending on your distribution:
    
-     <u>Debian, Ubuntu, openSUSE, Fedora, Redhat, Slackware:</u> Use checkinstall instead of make install. The package should be present in your distribution's repository.
+     <em>Debian, Ubuntu, openSUSE, Fedora, Redhat, Slackware:</em> Use checkinstall instead of make install. The package should be present in your distribution's repository.
       ``` bash
       $ cmake --build build
       $ cd build
       $ sudo checkinstall
       ```
 
-     <u>Arch, Manjaro:</u> Create a PKGBUILD file inside the source's root directory and run the following command to install Smb4K.
+     <em>Arch, Manjaro:</em> Create a PKGBUILD file inside the source's root directory and run the following command to install Smb4K.
      ``` bash
      $ makepkg -i
      ```
