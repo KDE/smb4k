@@ -1,6 +1,6 @@
 Smb4K README
 ============
-Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5, Samba's client library (libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system. It is released under the terms of the [GNU General Public License, version 2 (GPL v2+)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks, Samba's client library (libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system. It is released under the terms of the [GNU General Public License, version 2 (GPL v2+)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
 
 Linux, FreeBSD and its derivatives (e. g. GhostBSD), NetBSD and DragonFly BSD are officially supported.
 
@@ -49,17 +49,11 @@ To compile Smb4K, you need:
   or clang/LLVM (version >= 3.3, https://clang.llvm.org)
 
 Smb4K build depends on:
-- Qt (version >= 5.15.8, https://www.qt.io): QtCore, QtGui, QtWidgets,
-  QtNetwork, QtPrintSupport, QtQml
-- KDE Frameworks 5 (KF5, version >= 5.103.0, https://www.kde.org): ECM,
-  KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, 
-  KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, 
-  KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem,
-  KCrash, KDNSSD
+- Qt (version >= 5.15.8, https://www.qt.io): QtCore, QtGui, QtWidgets, QtNetwork, QtPrintSupport, QtQml
+- KDE Frameworks (version >= 5.103.0, https://www.kde.org): ECM, KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem, KCrash, KDNSSD
 - libsmbclient (version >= 4.10.0, https://www.samba.org)
 
-If you would like to enable WS-Discovery support, you additionally need
-(see also below for required build option):
+If you would like to enable WS-Discovery support, you additionally need (see also below for required build option):
 - KDSoap (version >= 1.9.0,
   https://www.kdab.com/development-resources/qt-tools/kd-soap/)
 - KDSoap WS-Discovery client (version >= 0.2, 
@@ -67,14 +61,13 @@ If you would like to enable WS-Discovery support, you additionally need
 
 It also runtime depends on:
 - KPlasma
+- Kirigami (Qt6 / KF6 only)
 - LinuxCIFS utils (Linux only, https://wiki.samba.org/index.php/LinuxCIFS_utils)
 
 To enable full functionality, you may also want to install:
 - rsync (https://rsync.samba.org)
 
-The full list of changes can be found in the Git log at 
-https://invent.kde.org/network/smb4k. A summary can be found in the ChangeLog file
-in the tarball.
+The full list of changes can be found in the Git log at https://invent.kde.org/network/smb4k. A summary can be found in the ChangeLog file in the tarball.
 
 
 Configuration, Compilation and Installation
