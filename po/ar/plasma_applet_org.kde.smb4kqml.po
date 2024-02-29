@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-20 01:40+0000\n"
+"POT-Creation-Date: 2024-02-22 01:37+0000\n"
 "PO-Revision-Date: 2022-08-10 23:39+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
@@ -20,8 +20,8 @@ msgstr ""
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:59
-#: package6/contents/ui/SharesViewItemDelegate.qml:59
+#: package6/contents/ui/BookmarkItemDelegate.qml:56
+#: package6/contents/ui/SharesViewItemDelegate.qml:55
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">على %1</font>"
 
@@ -41,34 +41,34 @@ msgid "Configuration Dialog"
 msgstr "حواري الضبط"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "الشبكة المجاورة"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:76
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "العلامة"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:38
+#: package6/contents/ui/NetworkBrowserPage.qml:37
 msgid "Rescan"
 msgstr "أعد الاستكشاف"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:47
+#: package6/contents/ui/NetworkBrowserPage.qml:46
 msgid "Abort"
 msgstr "أجهض"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:56
+#: package6/contents/ui/NetworkBrowserPage.qml:55
 msgid "Go one level up"
 msgstr "انتقل مستوى للأعلى"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:65
+#: package6/contents/ui/NetworkBrowserPage.qml:64
 msgid "Open the mount dialog"
 msgstr "افتح حواري الضم"
 
@@ -78,17 +78,17 @@ msgid "Mounted Shares"
 msgstr "المجلدات المشاركة المضمومة"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "العلامات"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:51
 msgid "Profiles"
 msgstr "التّشكيلات"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:57
 msgid "Configuration"
 msgstr "الضّبط"
 
@@ -98,12 +98,12 @@ msgid "(active)"
 msgstr "(نشط)"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:97
+#: package6/contents/ui/SharesViewItemDelegate.qml:92
 msgid "Synchronize"
 msgstr "زامِن"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:118
+#: package6/contents/ui/SharesViewItemDelegate.qml:113
 msgid "Unmount"
 msgstr "أزل الضم"
 
@@ -111,3 +111,13 @@ msgstr "أزل الضم"
 #: package6/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "فك ضم جميع المشاركات"
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+msgid "Preview"
+msgstr ""
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
+#, fuzzy
+#| msgid "Configuration"
+msgid "Configure"
+msgstr "الضّبط"

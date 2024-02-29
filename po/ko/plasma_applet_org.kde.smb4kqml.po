@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2014, 2015, 2018, 2019.
+# SPDX-FileCopyrightText: 2014, 2015, 2018, 2019, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-20 01:40+0000\n"
-"PO-Revision-Date: 2019-05-18 15:35+0200\n"
+"POT-Creation-Date: 2024-02-22 01:37+0000\n"
+"PO-Revision-Date: 2024-02-24 22:11+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:59
-#: package6/contents/ui/SharesViewItemDelegate.qml:59
+#: package6/contents/ui/BookmarkItemDelegate.qml:56
+#: package6/contents/ui/SharesViewItemDelegate.qml:55
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">%1에 있음</font>"
 
@@ -40,34 +40,34 @@ msgid "Configuration Dialog"
 msgstr "설정 대화 상자"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "네트워크 환경"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:76
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "책갈피"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:38
+#: package6/contents/ui/NetworkBrowserPage.qml:37
 msgid "Rescan"
 msgstr "재탐색"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:47
+#: package6/contents/ui/NetworkBrowserPage.qml:46
 msgid "Abort"
 msgstr "중지"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:56
+#: package6/contents/ui/NetworkBrowserPage.qml:55
 msgid "Go one level up"
 msgstr "한 단계 위로 이동"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:65
+#: package6/contents/ui/NetworkBrowserPage.qml:64
 msgid "Open the mount dialog"
 msgstr "마운트 대화 상자 열기"
 
@@ -77,17 +77,17 @@ msgid "Mounted Shares"
 msgstr "마운트된 공유"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "책갈피"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:51
 msgid "Profiles"
 msgstr "프로필"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:57
 msgid "Configuration"
 msgstr "설정"
 
@@ -97,12 +97,12 @@ msgid "(active)"
 msgstr "(활성)"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:97
+#: package6/contents/ui/SharesViewItemDelegate.qml:92
 msgid "Synchronize"
 msgstr "동기화"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:118
+#: package6/contents/ui/SharesViewItemDelegate.qml:113
 msgid "Unmount"
 msgstr "마운트 해제"
 
@@ -110,6 +110,14 @@ msgstr "마운트 해제"
 #: package6/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "모든 공유 마운트 해제"
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+msgid "Preview"
+msgstr "미리 보기"
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
+msgid "Configure"
+msgstr "설정"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "책갈피 편집"
