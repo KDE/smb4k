@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:33+0000\n"
+"POT-Creation-Date: 2024-02-22 01:37+0000\n"
 "PO-Revision-Date: 2019-07-24 20:55+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -19,76 +19,104 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: package/contents/ui/BookmarkItemDelegate.qml:59
-#: package/contents/ui/SharesViewItemDelegate.qml:59
+#: package5/contents/ui/BookmarkItemDelegate.qml:59
+#: package5/contents/ui/SharesViewItemDelegate.qml:59
+#: package6/contents/ui/BookmarkItemDelegate.qml:56
+#: package6/contents/ui/SharesViewItemDelegate.qml:55
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">på %1</font>"
 
-#: package/contents/ui/BookmarksPage.qml:32
+#: package5/contents/ui/BookmarksPage.qml:32
+#: package6/contents/ui/BookmarksPage.qml:32
 msgid "Go back"
 msgstr "Gå tilbake"
 
-#: package/contents/ui/BookmarksPage.qml:41
+#: package5/contents/ui/BookmarksPage.qml:41
+#: package6/contents/ui/BookmarksPage.qml:41
 msgid "Edit bookmarks"
 msgstr "Rediger bokmerke"
 
-#: package/contents/ui/ConfigurationPage.qml:21
+#: package5/contents/ui/ConfigurationPage.qml:21
+#: package6/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
 msgstr "Oppsettvindauge"
 
-#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+#: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "Nettverksnabolag"
 
-#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package/contents/ui/SharesViewItemDelegate.qml:76
+#: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package5/contents/ui/SharesViewItemDelegate.qml:76
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "Bokmerke"
 
-#: package/contents/ui/NetworkBrowserPage.qml:38
+#: package5/contents/ui/NetworkBrowserPage.qml:38
+#: package6/contents/ui/NetworkBrowserPage.qml:37
 msgid "Rescan"
 msgstr "Skann på nytt"
 
-#: package/contents/ui/NetworkBrowserPage.qml:47
+#: package5/contents/ui/NetworkBrowserPage.qml:47
+#: package6/contents/ui/NetworkBrowserPage.qml:46
 msgid "Abort"
 msgstr "Avbryt"
 
-#: package/contents/ui/NetworkBrowserPage.qml:56
+#: package5/contents/ui/NetworkBrowserPage.qml:56
+#: package6/contents/ui/NetworkBrowserPage.qml:55
 msgid "Go one level up"
 msgstr "Gå eitt nivå opp"
 
-#: package/contents/ui/NetworkBrowserPage.qml:65
+#: package5/contents/ui/NetworkBrowserPage.qml:65
+#: package6/contents/ui/NetworkBrowserPage.qml:64
 msgid "Open the mount dialog"
 msgstr "Opna monteringsvindauget"
 
-#: package/contents/ui/PopupDialog.qml:39
+#: package5/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
 msgstr "Monterte ressursar"
 
-#: package/contents/ui/PopupDialog.qml:46
+#: package5/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "Bokmerke"
 
-#: package/contents/ui/PopupDialog.qml:53
+#: package5/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:51
 msgid "Profiles"
 msgstr "Profilar"
 
-#: package/contents/ui/PopupDialog.qml:60
+#: package5/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:57
 msgid "Configuration"
 msgstr "Oppsett"
 
-#: package/contents/ui/ProfileItemDelegate.qml:52
+#: package5/contents/ui/ProfileItemDelegate.qml:52
+#: package6/contents/ui/ProfileItemDelegate.qml:52
 msgid "(active)"
 msgstr "(verksam)"
 
-#: package/contents/ui/SharesViewItemDelegate.qml:97
+#: package5/contents/ui/SharesViewItemDelegate.qml:97
+#: package6/contents/ui/SharesViewItemDelegate.qml:92
 msgid "Synchronize"
 msgstr "Synkroniser"
 
-#: package/contents/ui/SharesViewItemDelegate.qml:118
+#: package5/contents/ui/SharesViewItemDelegate.qml:118
+#: package6/contents/ui/SharesViewItemDelegate.qml:113
 msgid "Unmount"
 msgstr "Avmonter"
 
-#: package/contents/ui/SharesViewPage.qml:34
+#: package5/contents/ui/SharesViewPage.qml:34
+#: package6/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Avmonter alle ressursane"
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+msgid "Preview"
+msgstr ""
+
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
+msgid "Configure"
+msgstr ""
