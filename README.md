@@ -54,10 +54,8 @@ Smb4K build depends on:
 - libsmbclient (version >= 4.10.0, https://www.samba.org)
 
 If you would like to enable WS-Discovery support, you additionally need (see also below for required build option):
-- KDSoap (version >= 1.9.0,
-  https://www.kdab.com/development-resources/qt-tools/kd-soap/)
-- KDSoap WS-Discovery client (version >= 0.2, 
-  https://invent.kde.org/libraries/kdsoap-ws-discovery-client)
+- KDSoap (version >= 1.9.0, https://www.kdab.com/development-resources/qt-tools/kd-soap/)
+- KDSoap WS-Discovery client (version >= 0.2, https://invent.kde.org/libraries/kdsoap-ws-discovery-client)
 
 It also runtime depends on:
 - KPlasma
@@ -83,10 +81,21 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    $ cd smb4k-x.y.z
    ```
 3. Configure the source:
+
+   <em>Qt5 and KDE Frameworks 5:</em>
+
    ``` bash
    $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
    -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
    ```
+
+   <em>Qt6 and KDE Frameworks 6:</em>
+
+   ``` bash
+   $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_QT6=ON -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+   -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
+   ```
+
    If you want to enable WS-Discovery support, use `-DSMB4K_WITH_WS_DISCOVERY=ON` as argument. To compile Smb4K with debug symbols, replace `Release` by `Debug`. 
 
    There are some Smb4K specific CMake arguments you might be interested in:
@@ -103,7 +112,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    ```
    If you want to be able to remove Smb4K with your package manager later on, use the following approaches depending on your distribution:
    
-     <em>Debian, Ubuntu, openSUSE, Fedora, Redhat, Slackware</em>
+     <em>Debian, Ubuntu, openSUSE, Fedora, Redhat, Slackware:</em>
 
      Use checkinstall instead of make install. The package should be present in your distribution's repository.
       ``` bash
@@ -112,7 +121,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
       $ sudo checkinstall
       ```
 
-     <em>Arch, Manjaro</em>
+     <em>Arch, Manjaro:</em>
 
      Create a PKGBUILD file inside the source's root directory and run the following command to install Smb4K.
      ``` bash
@@ -136,9 +145,7 @@ If you found the cause for a bug, please let us know. A backtrace or a patch wil
 
 Help and Support
 ----------------
-If you encounter problems when using Smb4K and/or need help or support, please
-contact us in our [Help](https://sourceforge.net/p/smb4k/discussion/help/) or [General Discussion](https://sourceforge.net/p/smb4k/discussion/general/) 
-forums.
+If you encounter problems when using Smb4K and/or need help or support, please contact us in our [Help](https://sourceforge.net/p/smb4k/discussion/help/) or [General Discussion](https://sourceforge.net/p/smb4k/discussion/general/) forums.
 
 
 Bugs
