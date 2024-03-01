@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 01:37+0000\n"
+"POT-Creation-Date: 2024-03-01 02:00+0000\n"
 "PO-Revision-Date: 2024-01-15 22:10+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -43,13 +43,13 @@ msgid "Configuration Dialog"
 msgstr "設定對話框"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "網路芳鄰"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "書籤"
@@ -75,22 +75,22 @@ msgid "Open the mount dialog"
 msgstr "開啟掛載對話框"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:40
 msgid "Mounted Shares"
 msgstr "已掛載的共享資料夾"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
+#: package6/contents/ui/PopupDialog.qml:47
 msgid "Bookmarks"
 msgstr "書籤"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:51
+#: package6/contents/ui/PopupDialog.qml:54
 msgid "Profiles"
 msgstr "設定檔"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:57
+#: package6/contents/ui/PopupDialog.qml:61
 msgid "Configuration"
 msgstr "設定"
 
@@ -114,11 +114,11 @@ msgstr "卸載"
 msgid "Unmount all shares"
 msgstr "卸載所有共享資料夾"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"
