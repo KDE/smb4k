@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 01:37+0000\n"
-"PO-Revision-Date: 2023-02-15 08:15+0100\n"
+"POT-Creation-Date: 2024-03-01 02:00+0000\n"
+"PO-Revision-Date: 2024-02-29 03:23+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
@@ -41,13 +41,13 @@ msgid "Configuration Dialog"
 msgstr "მორგების ფანჯარა"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "ქსელური მეზობლები"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "სანიშნი"
@@ -73,22 +73,22 @@ msgid "Open the mount dialog"
 msgstr "მიმაგრების ფანჯრის გახსნა"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:40
 msgid "Mounted Shares"
 msgstr "მიმაგრებული გაზიარებულები"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
+#: package6/contents/ui/PopupDialog.qml:47
 msgid "Bookmarks"
 msgstr "სანიშნები"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:51
+#: package6/contents/ui/PopupDialog.qml:54
 msgid "Profiles"
 msgstr "პროფილები"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:57
+#: package6/contents/ui/PopupDialog.qml:61
 msgid "Configuration"
 msgstr "მორგება"
 
@@ -112,12 +112,10 @@ msgstr "მოხსნა"
 msgid "Unmount all shares"
 msgstr "ყველა გაზიარებულის მოხსნა"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
 msgid "Preview"
-msgstr ""
+msgstr "მინიატურა"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
-#, fuzzy
-#| msgid "Configuration"
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
 msgid "Configure"
 msgstr "მორგება"

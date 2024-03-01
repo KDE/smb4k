@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 01:37+0000\n"
+"POT-Creation-Date: 2024-03-01 02:00+0000\n"
 "PO-Revision-Date: 2022-08-10 23:39+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
@@ -41,13 +41,13 @@ msgid "Configuration Dialog"
 msgstr "حواري الضبط"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "الشبكة المجاورة"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "العلامة"
@@ -73,22 +73,22 @@ msgid "Open the mount dialog"
 msgstr "افتح حواري الضم"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:40
 msgid "Mounted Shares"
 msgstr "المجلدات المشاركة المضمومة"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
+#: package6/contents/ui/PopupDialog.qml:47
 msgid "Bookmarks"
 msgstr "العلامات"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:51
+#: package6/contents/ui/PopupDialog.qml:54
 msgid "Profiles"
 msgstr "التّشكيلات"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:57
+#: package6/contents/ui/PopupDialog.qml:61
 msgid "Configuration"
 msgstr "الضّبط"
 
@@ -112,11 +112,11 @@ msgstr "أزل الضم"
 msgid "Unmount all shares"
 msgstr "فك ضم جميع المشاركات"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"
