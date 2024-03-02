@@ -6,13 +6,13 @@
 # Serdar Soytetir <sendirom@gmail.com>, 2006.
 # obsoleteman <tulliana@gmail.com>, 2006-2007,2009,2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2017, 2020.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2023-09-06 12:28+0300\n"
+"PO-Revision-Date: 2024-03-01 16:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -1273,8 +1273,8 @@ msgid ""
 "specified without one of the --delete-WHEN options."
 msgstr ""
 "Aktarım başlamadan önce alıcı taraftaki dosyaları sil (--delete-before). "
-"Eğer --delete ya da --delete-excluded, --delete-WHEN seçeneklerinden biri "
-"olmadan belirtilirse, bu öntanımlı çalışma şeklidir."
+"Eğer --delete veya --delete-excluded, --delete-WHEN seçeneklerinden biri "
+"olmadan belirtilirse bu öntanımlı çalışma şeklidir."
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
 #: smb4k.kcfg:442
@@ -1314,7 +1314,7 @@ msgstr ""
 #: smb4k.kcfg:452
 #, kde-format
 msgid "Delete excluded files"
-msgstr "Hariç tutulan dosyaları sil"
+msgstr "Dışlanan dosyaları sil"
 
 #. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
 #: smb4k.kcfg:453
@@ -1325,9 +1325,9 @@ msgid ""
 "sending side, this tells rsync to also delete any files on the receiving "
 "side that are excluded. Refer to rsync's manual page for further information."
 msgstr ""
-"Ayrıca hariç tutulan dosyaları da hedef dizinden sil (--delete-excluded). "
+"Ayrıca dışlanan dosyaları da hedef dizinden sil (--delete-excluded). "
 "Gönderici tarafta olmayan dosyaların alıcı tarafta silinmesine ek olarak, "
-"bu, rsync uygulamasına alıcı tarafta hariç tutulmuş dosyalarında silinmesini "
+"bu, rsync uygulamasına alıcı tarafta dışlanmış dosyaların da silinmesini "
 "söyler. Daha fazla bilgi için rsync uygulamasının kılavuzuna bakın."
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
@@ -1491,16 +1491,16 @@ msgid ""
 "want to transfer between systems. This option uses the same algorithm that "
 "CVS uses to determine if a file should be ignored."
 msgstr ""
-"CVS uygulamasının yaptığı şekilde dosyaları otomatik yok say (-C, --cvs-"
+"CVS uygulamasının yaptığı şekilde dosyaları kendiliğinden yok say (-C, --cvs-"
 "excluded). Bu, sistemler arasında sık sık aktarmak istemediğiniz dosyaların "
-"geniş bir erimini dışarıda tutmak için kullanışlıdır. Bu seçenek yok "
-"sayılması gereken dosyayı belirlemek için CVS ile aynı algoritmayı kullanır."
+"geniş bir erimini dışlamak için kullanışlıdır. Bu seçenek yok sayılması "
+"gereken dosyayı belirlemek için CVS ile aynı algoritmayı kullanır."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:520
 #, kde-format
 msgid "Exclude files matching this pattern:"
-msgstr "Bu özellik ile örtüşen dosyaları içerme:"
+msgstr "Bu dizgi ile eşleşen dosyaları dışla:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:521
@@ -1510,21 +1510,21 @@ msgid ""
 "special filter rule. For further information on filter rules see rsync's "
 "manual page."
 msgstr ""
-"Belli bir desen ile eşleşen dosyaları hariç tut (--excluded=DESEN). Bu özel "
-"bir süzme kuralıdır. Süzme kuralları ile ilgili daha fazla bilgi için rsync "
+"Belli bir dizgi ile eşleşen dosyaları dışla (--excluded=DİZGİ). Bu özel bir "
+"süzme kuralıdır. Süzme kuralları ile ilgili daha fazla bilgi için rsync "
 "uygulamasının kılavuzuna bakın."
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
 #: smb4k.kcfg:525
 #, kde-format
 msgid "Pattern that is used for file exclusion"
-msgstr "Dosya hariç bırakmak için kullanılan desen"
+msgstr "Dosya dışlamak için kullanılan dizgi"
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
 #: smb4k.kcfg:530
 #, kde-format
 msgid "Read exclude patterns from:"
-msgstr "Hariç tutulan desenleri şuradan oku:"
+msgstr "Şuradan dışlanan dizgileri oku:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
 #: smb4k.kcfg:531
@@ -1535,16 +1535,16 @@ msgid ""
 "read from a file. This is a special filter rule. For further information on "
 "filter rules see rsync's manual page."
 msgstr ""
-"Bir dosyadan hariç tutulacak desenleri oku (--excluded-from=DOSYA). Bu "
-"seçenek, hariç tutulacak desenin dosyadan okunması haricinde --"
-"excluded=DESEN seçeneği ile benzerdir. Bu özel bir süzme kuralıdır. Süzme "
-"kuralları ile ilgili daha fazla bilgi için rsync kılavuzuna bakın."
+"Bir dosyadan dışlanacak dizgileri oku (--excluded-from=DOSYA). Bu seçenek, "
+"dışlanacak dizginin dosyadan okunması haricinde --excluded=DİZGİ seçeneği "
+"ile benzerdir. Bu özel bir süzme kuralıdır. Süzme kuralları ile ilgili daha "
+"fazla bilgi için rsync kılavuzuna bakın."
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
 #: smb4k.kcfg:535
 #, kde-format
 msgid "The file from which the exclude patterns are read"
-msgstr "Hariç tutulacak desenlerin okunduğu dosya"
+msgstr "Dışlanacak dizgilerin okunduğu dosya"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
 #: smb4k.kcfg:540
@@ -1560,7 +1560,7 @@ msgid ""
 "a special filter rule. For further information on filter rules see rsync's "
 "manual page."
 msgstr ""
-"Belli bir desen ile eşleşen dosyaları hariç tutma (--include=DESEN). Bu özel "
+"Belirli bir dizgi ile eşleşen dosyaları dışlama (--include=DİZGİ). Bu özel "
 "bir süzme kuralıdır. Süzme kuralları ile ilgili daha fazla bilgi için rsync "
 "uygulaması kılavuzuna bakın."
 
@@ -1568,13 +1568,13 @@ msgstr ""
 #: smb4k.kcfg:545
 #, kde-format
 msgid "Pattern that is used for file inclusion"
-msgstr "Dosya dahil etmek için kullanılacak desen"
+msgstr "Dosya içermek için kullanılacak dizgi"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
 #: smb4k.kcfg:550
 #, kde-format
 msgid "Read include patterns from:"
-msgstr "İçerdiği desenleri şuradan oku:"
+msgstr "Şuradan içerilen dizgileri oku:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
 #: smb4k.kcfg:551
@@ -1594,7 +1594,7 @@ msgstr ""
 #: smb4k.kcfg:555
 #, kde-format
 msgid "The file from which the include patterns are read"
-msgstr "Dahil edilecek desenlerin okunduğu dosya"
+msgstr "İçerilecek dizgilerin okunduğu dosya"
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:560
@@ -1612,9 +1612,9 @@ msgid ""
 "Thus, each rule has to start with the --filter=... argument."
 msgstr ""
 "Özel dosya süzme kuralları ekle (-f, --filter=KURAL). Bu seçenek aktarılacak "
-"dosyaların listesinden belli dosyaları hariç tutmak için kurallar eklemenize "
+"dosyaların listesinden belirli dosyaları dışlamak için kurallar eklemenize "
 "izin verir. Bu kurallar olduğu gibi rsync komutuna eklenecektir. "
-"Dolayısıyla, her kural --filter=... değişkeni ile başlamalıdır."
+"Dolayısıyla, her kural --filter=... argümanı ile başlamalıdır."
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
@@ -1638,7 +1638,7 @@ msgid ""
 "the files in the transfer. It has no effect, if you also choose to use the --"
 "filter='exclude .rsync-filter' rule."
 msgstr ""
-"Bu süzme kuralı rsync uygulamasına sıralı dizi boyunca dizin başına "
+"Bu süzme kuralı, rsync uygulamasına sıralı dizi boyunca dizin başına "
 "serpiştirilmiş .rsync-filter dosyalarını aramasını söyler ve aktarımda "
 "onların kurallarını süzmek için kullanır. Eğer ayrıca --filter='exclude ."
 "rsync-filter' kuralını kullanmayı seçerseniz hiçbir etkisi olmaz."
