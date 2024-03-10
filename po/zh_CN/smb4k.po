@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-17 01:40+0000\n"
-"PO-Revision-Date: 2024-02-29 12:57\n"
+"PO-Revision-Date: 2024-03-09 04:49\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -1045,7 +1045,7 @@ msgstr "使用 Konsole 打开"
 #: smb4k/smb4ksharesmenu.cpp:238
 #, kde-format
 msgid "Open with File Manager"
-msgstr "使用文件管理器打开"
+msgstr "用文件管理器打开"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:137
 #, kde-format
@@ -1090,7 +1090,7 @@ msgstr "Ctrl+L"
 #: smb4k/smb4ksharesviewdockwidget.cpp:255
 #, kde-format
 msgid "Open with F&ile Manager"
-msgstr "使用文件管理器打开(&I)"
+msgstr "用文件管理器打开(&I)"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:260
 #, kde-format
