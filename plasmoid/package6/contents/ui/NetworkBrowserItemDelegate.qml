@@ -7,90 +7,95 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
-import org.kde.plasma.core as PlasmaCore
-import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.smb4k.smb4kqmlplugin
 import org.kde.kirigami as Kirigami
 
-Item {
-  id: delegate
-  
+RowLayout {
+  id:delegate
+
   signal itemClicked()
   signal bookmarkClicked()
   signal previewClicked()
   signal configureClicked()
-  
+
   width: parent.width
   implicitWidth: parent.implicitWidth
-  // FIXME: Use something like margin instead of the 3 * Kirigami.Units.smallSpacing that was found
-  // by trial and error ...
-  height: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
-  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
+  height: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
   focus: true
 
   MouseArea {
-    anchors.fill: parent
-    
+    Layout.fillWidth: true
+    Layout.fillHeight: true
+
     onClicked: {
       delegate.itemClicked()
     }
 
     Row {
       spacing: Kirigami.Units.largeSpacing
-      Column {
+
+      Kirigami.Icon {
+        id: delegateItemIcon
+
         anchors.verticalCenter: parent.verticalCenter
-        
-        Kirigami.Icon {
-          id: delegateItemIcon
-          source: {
-            switch (object.type) {
-              case NetworkObject.Workgroup:
-                "network-workgroup-symbolic"
-                break
-              case NetworkObject.Host:
-                "network-server-symbolic"
-                break
-              case NetworkObject.Share:
-                "folder-network-symbolic"
-                break
-              default:
-                ""
-                break
-            }
+
+        source: {
+          switch (object.type) {
+            case NetworkObject.Workgroup:
+              "network-workgroup-symbolic"
+              break
+            case NetworkObject.Host:
+              "network-server-symbolic"
+              break
+            case NetworkObject.Share:
+              "folder-network-symbolic"
+              break
+            default:
+              ""
+              break
           }
-          width: Kirigami.Units.iconSizes.medium
-          height: Kirigami.Units.iconSizes.medium
         }
+        width: Kirigami.Units.iconSizes.medium
+        height: Kirigami.Units.iconSizes.medium
       }
-      Column {
+      Label {
+        id: delegateItemText
+
         anchors.verticalCenter: parent.verticalCenter
-        
-        PlasmaComponents.Label {
-          id: delegateItemText
-          elide: Text.ElideRight
-          text: object.name+(object.comment.length != 0 ? "<br><font size=\"-1\">"+object.comment+"</font>" : "")
-          color: ((object.type == NetworkObject.Host && object.isMasterBrowser) ? "darkblue" : Kirigami.Theme.textColor)
-        }
+
+        elide: Text.ElideRight
+        text: object.name+(object.comment.length != 0 ? "<br><font size=\"-1\">"+object.comment+"</font>" : "")
+        color: ((object.type == NetworkObject.Host && object.isMasterBrowser) ? "darkblue" : Kirigami.Theme.textColor)
       }
     }
   }
-  
-  RowLayout {
-    anchors {
-      verticalCenter: parent.verticalCenter
-      right: parent.right
-    }
+
+  Row {
+    Layout.alignment: Qt.AlignRight
+
     spacing: 0
-    
-    ToolButton {
+
+    PlasmaComponents.ToolButton {
       id: bookmarkButton
+
+      hoverEnabled: true
       icon.name: "favorite"
-      text: i18n("Bookmark")
       flat: true
       opacity: 0.2
       visible: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
       enabled: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
+
+      PlasmaComponents.ToolTip.delay: 1000
+      PlasmaComponents.ToolTip.timeout: 5000
+      PlasmaComponents.ToolTip.text: i18n("Bookmark")
+      PlasmaComponents.ToolTip.visible: hovered
+
+      onClicked: {
+        delegate.bookmarkClicked()
+      }
+
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -100,43 +105,60 @@ Item {
         onExited: {
           parent.opacity = 0.2
         }
-        onClicked: {
-          delegate.bookmarkClicked()
-        }
-      }      
-    }
-    
-    ToolButton {
-      id: previewButton
-      icon.name: "preview"
-      text: i18n("Preview")
-      flat: true
-      opacity: 0.2
-      visible: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
-      enabled: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
-      MouseArea {
-        anchors.fill: parent
-        hoverEnabled: true
-        onEntered: {
-          parent.opacity = 1.0
-        }
-        onExited: {
-          parent.opacity = 0.2
-        }
-        onClicked: {
-          delegate.previewClicked()
-        }      
       }
     }
-    
-    ToolButton {
+
+    PlasmaComponents.ToolButton {
+      id: previewButton
+
+      hoverEnabled: true
+      icon.name: "preview"
+      flat: true
+      opacity: 0.2
+      visible: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
+      enabled: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
+
+      PlasmaComponents.ToolTip.delay: 1000
+      PlasmaComponents.ToolTip.timeout: 5000
+      PlasmaComponents.ToolTip.text: i18n("Preview")
+      PlasmaComponents.ToolTip.visible: hovered
+
+      onClicked: {
+        delegate.previewClicked()
+      }
+
+      MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        onEntered: {
+          parent.opacity = 1.0
+        }
+        onExited: {
+          parent.opacity = 0.2
+        }
+      }
+    }
+
+    PlasmaComponents.ToolButton {
       id: configureButton
+
+      hoverEnabled: true
       icon.name: "settings-configure"
-      text: i18n("Configure")
       flat: true
       opacity: 0.2
       visible: (object.type != NetworkObject.Network && object.type != NetworkObject.Workgroup) ? true : false
       enabled: (object.type != NetworkObject.Network && object.type != NetworkObject.Workgroup) ? true : false
+
+      PlasmaComponents.ToolTip.delay: 1000
+      PlasmaComponents.ToolTip.timeout: 5000
+      PlasmaComponents.ToolTip.text: i18n("Configure")
+      PlasmaComponents.ToolTip.visible: hovered
+
+      onClicked: {
+        console.log("clicked")
+        delegate.configureClicked()
+      }
+
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -146,9 +168,6 @@ Item {
         onExited: {
           parent.opacity = 0.2
         }
-        onClicked: {
-          delegate.configureClicked()
-        }      
       }
     }
   }

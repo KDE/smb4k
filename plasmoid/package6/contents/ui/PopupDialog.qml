@@ -18,55 +18,51 @@ FocusScope {
   ColumnLayout {
     anchors.fill: parent
     
-    //
-    // Tab bar
-    //
     PlasmaComponents.TabBar {
       id: tabBar
 
-      Layout.maximumWidth: parent.width
+      // Layout.maximumWidth: parent.width
       Layout.fillWidth: true
       Layout.fillHeight: false
+
+      contentWidth: parent.width
 
       PlasmaComponents.TabButton {
         id: browserTabButton
         text: i18n("Network Neighborhood")
         icon.name: "network-workgroup-symbolic"
-        // width: implicitWidth
+        width: Math.max(implicitWidth, tabBar.width / 5)
       }
 
       PlasmaComponents.TabButton {
         id: sharesTabButton
         text: i18n("Mounted Shares")
         icon.name: "folder-network-symbolic"
-        // width: implicitWidth
+        width: Math.max(implicitWidth, tabBar.width / 5)
       }
 
       PlasmaComponents.TabButton {
         id: bookmarkTabButton
         text: i18n("Bookmarks")
         icon.name: "bookmarks"
-        // width: implicitWidth
+        width: Math.max(implicitWidth, tabBar.width / 5)
       }
 
       PlasmaComponents.TabButton {
         id: profilesTabButton
         text: i18n("Profiles")
         icon.name: "preferences-system-users"
-        // width: implicitWidth
+        width: Math.max(implicitWidth, tabBar.width / 5)
       }
 
       PlasmaComponents.TabButton {
         id: configurationTabButton
         text: i18n("Configuration")
         icon.name: "configure"
-        // width: implicitWidth
+        width: Math.max(implicitWidth, tabBar.width / 5)
       }
     }
       
-    //
-    // Tab group
-    //
     StackLayout {
       id: tabGroup
       

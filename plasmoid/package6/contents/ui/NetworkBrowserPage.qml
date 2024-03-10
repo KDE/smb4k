@@ -15,7 +15,6 @@ import org.kde.smb4k.smb4kqmlplugin
 
 PlasmaComponents.Page {
   id: networkBrowserPage
-  anchors.fill: parent
   
   property var parentObject: 0
   
@@ -172,7 +171,11 @@ PlasmaComponents.Page {
   //
   ScrollView {
     id: networkBrowserScrollArea
+
+    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+    ScrollBar.vertical.policy: ScrollBar.AsNeeded
     
+    // FIXME: Use layout
     anchors {
       top: networkBrowserToolBar.bottom
       left: parent.left
