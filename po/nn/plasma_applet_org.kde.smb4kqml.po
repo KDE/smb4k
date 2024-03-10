@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-22 01:37+0000\n"
+"POT-Creation-Date: 2024-03-01 02:00+0000\n"
 "PO-Revision-Date: 2019-07-24 20:55+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -42,13 +42,13 @@ msgid "Configuration Dialog"
 msgstr "Oppsettvindauge"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:17 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
 msgid "Network Neighborhood"
 msgstr "Nettverksnabolag"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:74
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "Bokmerke"
@@ -74,22 +74,22 @@ msgid "Open the mount dialog"
 msgstr "Opna monteringsvindauget"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:40
 msgid "Mounted Shares"
 msgstr "Monterte ressursar"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
+#: package6/contents/ui/PopupDialog.qml:47
 msgid "Bookmarks"
 msgstr "Bokmerke"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:51
+#: package6/contents/ui/PopupDialog.qml:54
 msgid "Profiles"
 msgstr "Profilar"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:57
+#: package6/contents/ui/PopupDialog.qml:61
 msgid "Configuration"
 msgstr "Oppsett"
 
@@ -113,10 +113,10 @@ msgstr "Avmonter"
 msgid "Unmount all shares"
 msgstr "Avmonter alle ressursane"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:97
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:120
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
 msgid "Configure"
 msgstr ""
