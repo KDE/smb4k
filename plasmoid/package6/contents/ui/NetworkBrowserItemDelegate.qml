@@ -60,14 +60,15 @@ RowLayout {
         width: Kirigami.Units.iconSizes.medium
         height: Kirigami.Units.iconSizes.medium
       }
-      Label {
+
+      PlasmaComponents.Label {
         id: delegateItemText
 
         anchors.verticalCenter: parent.verticalCenter
 
         elide: Text.ElideRight
         text: object.name+(object.comment.length != 0 ? "<br><font size=\"-1\">"+object.comment+"</font>" : "")
-        color: ((object.type == NetworkObject.Host && object.isMasterBrowser) ? "darkblue" : Kirigami.Theme.textColor)
+        color: (object.type == NetworkObject.Host && object.isMasterBrowser) ? "darkblue" : Kirigami.Theme.textColor
       }
     }
   }
@@ -92,10 +93,6 @@ RowLayout {
       PlasmaComponents.ToolTip.text: i18n("Bookmark")
       PlasmaComponents.ToolTip.visible: hovered
 
-      onClicked: {
-        delegate.bookmarkClicked()
-      }
-
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -104,6 +101,9 @@ RowLayout {
         }
         onExited: {
           parent.opacity = 0.2
+        }
+        onClicked: {
+          delegate.bookmarkClicked()
         }
       }
     }
@@ -123,10 +123,6 @@ RowLayout {
       PlasmaComponents.ToolTip.text: i18n("Preview")
       PlasmaComponents.ToolTip.visible: hovered
 
-      onClicked: {
-        delegate.previewClicked()
-      }
-
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -135,6 +131,9 @@ RowLayout {
         }
         onExited: {
           parent.opacity = 0.2
+        }
+        onClicked: {
+          delegate.previewClicked()
         }
       }
     }
@@ -154,11 +153,6 @@ RowLayout {
       PlasmaComponents.ToolTip.text: i18n("Configure")
       PlasmaComponents.ToolTip.visible: hovered
 
-      onClicked: {
-        console.log("clicked")
-        delegate.configureClicked()
-      }
-
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -167,6 +161,9 @@ RowLayout {
         }
         onExited: {
           parent.opacity = 0.2
+        }
+        onClicked: {
+          delegate.configureClicked()
         }
       }
     }

@@ -12,22 +12,21 @@ import org.kde.plasma.components as PlasmaComponents
 import org.kde.smb4k.smb4kqmlplugin
 import org.kde.kirigami as Kirigami
 
-Item {
+RowLayout {
   id: delegate
   
   signal itemClicked()
   
   width: parent.width
   implicitWidth: parent.implicitWidth
-  // FIXME: Use something like margin instead of the 3 * Kirigami.Units.smallSpacing that was found
-  // by trial and error ...
-  height: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
-  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
+  height: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
   focus: true
   enabled: !object.isMounted
   
   MouseArea {
-    anchors.fill: parent
+    Layout.fillWidth: true
+    Layout.fillHeight: true
     
     onClicked: {
       delegate.itemClicked()
@@ -35,32 +34,34 @@ Item {
   
     Row {
       spacing: Kirigami.Units.largeSpacing
-      Column {
+
+      Kirigami.Icon {
+        id: delegateItemIcon
+
         anchors.verticalCenter: parent.verticalCenter
-        Kirigami.Icon {
-          id: delegateItemIcon
-          source: (object.isCategory ? "folder-bookmark" : "folder-network-symbolic")
-          width: Kirigami.Units.iconSizes.medium
-          height: Kirigami.Units.iconSizes.medium
-          enabled: delegate.enabled
-        }
+
+        source: (object.isCategory ? "folder-bookmark" : "folder-network-symbolic")
+        width: Kirigami.Units.iconSizes.medium
+        height: Kirigami.Units.iconSizes.medium
+        enabled: delegate.enabled
       }
-      Column {
+
+      PlasmaComponents.Label {
+        id: delegateItemText
+
         anchors.verticalCenter: parent.verticalCenter
-        PlasmaComponents.Label {
-          id: delegateItemText
-          elide: Text.ElideRight
-          text: {
-            if (!object.isCategory) {
-              object.shareName+(object.label.length != 0 ? " ("+object.label+")" : "")+
-              "<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
-            }
-            else {
-              object.categoryName
-            }
+
+        elide: Text.ElideRight
+        text: {
+          if (!object.isCategory) {
+            object.shareName+(object.label.length != 0 ? " ("+object.label+")" : "")+
+            "<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
           }
-          enabled: delegate.enabled
+          else {
+            object.categoryName
+          }
         }
+        enabled: delegate.enabled
       }
     }
   }

@@ -13,7 +13,7 @@ import org.kde.plasma.components as PlasmaComponents
 import org.kde.smb4k.smb4kqmlplugin
 import org.kde.kirigami as Kirigami
 
-Item {
+RowLayout {
   id: delegate
   
   signal itemClicked()
@@ -23,14 +23,13 @@ Item {
   
   width: parent.width
   implicitWidth: parent.implicitWidth
-  // FIXME: Use something like margin instead of the 3 * Kirigami.Units.smallSpacing that was found
-  // by trial and error ...
-  height: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
-  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
+  height: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
   focus: true
   
   MouseArea {
-    anchors.fill: parent
+    Layout.fillWidth: true
+    Layout.fillHeight: true
     
     onClicked: {
       delegate.itemClicked()
@@ -38,39 +37,46 @@ Item {
     
     Row {
       spacing: Kirigami.Units.largeSpacing
-      Column {
+
+      Kirigami.Icon {
+        id: delegateItemIcon
+
         anchors.verticalCenter: parent.verticalCenter
-        Kirigami.Icon {
-          id: delegateItemIcon
-          source: (!object.isInaccessible ? "folder-network" : "folder-locked")
-          width: Kirigami.Units.iconSizes.medium
-          height: Kirigami.Units.iconSizes.medium
-        }
+
+        source: !object.isInaccessible ? "folder-network" : "folder-locked"
+        width: Kirigami.Units.iconSizes.medium
+        height: Kirigami.Units.iconSizes.medium
       }
-      Column {
+
+      PlasmaComponents.Label {
+        id: delegateItemText
+
         anchors.verticalCenter: parent.verticalCenter
-        PlasmaComponents.Label {
-          id: delegateItemText
-          elide: Text.ElideRight
-          text: object.shareName+"<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
-        }
+
+        elide: Text.ElideRight
+        text: object.shareName+"<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
       }
     }
   }
   
-  RowLayout {
-    anchors {
-     verticalCenter: parent.verticalCenter
-      right: parent.right
-    }
+  Row {
+    Layout.alignment: Qt.AlignRight
+
     spacing: 0
     
-    ToolButton {
+    PlasmaComponents.ToolButton {
       id: bookmarkButton
+
+      hoverEnabled: true
       icon.name: "favorite"
-      text: i18n("Bookmark")
       flat: true
       opacity: 0.2
+
+      PlasmaComponents.ToolTip.delay: 1000
+      PlasmaComponents.ToolTip.timeout: 5000
+      PlasmaComponents.ToolTip.text: i18n("Bookmark")
+      PlasmaComponents.ToolTip.visible: hovered
+
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -85,13 +91,20 @@ Item {
         }
       }      
     }
-    
-    ToolButton {
+
+    PlasmaComponents.ToolButton {
       id: syncButton
+
+      hoverEnabled: true
       icon.name: "folder-sync"
-      text: i18n("Synchronize")
       flat: true
       opacity: 0.2
+
+      PlasmaComponents.ToolTip.delay: 1000
+      PlasmaComponents.ToolTip.timeout: 5000
+      PlasmaComponents.ToolTip.text: i18n("Synchronize")
+      PlasmaComponents.ToolTip.visible: hovered
+
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -106,13 +119,20 @@ Item {
         }
       }  
     }
-    
-    ToolButton {
+
+    PlasmaComponents.ToolButton {
       id: unmountButton
+
+      hoverEnabled: true
       icon.name: "media-eject"
-      text: i18n("Unmount")
       flat: true
       opacity: 0.2
+
+      PlasmaComponents.ToolTip.delay: 1000
+      PlasmaComponents.ToolTip.timeout: 5000
+      PlasmaComponents.ToolTip.text: i18n("Unmount")
+      PlasmaComponents.ToolTip.visible: hovered
+
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true

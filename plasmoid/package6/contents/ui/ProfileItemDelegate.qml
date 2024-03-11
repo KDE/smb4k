@@ -12,21 +12,20 @@ import org.kde.plasma.components as PlasmaComponents
 import org.kde.smb4k.smb4kqmlplugin
 import org.kde.kirigami as Kirigami
 
-Item {
+RowLayout {
   id: delegate
   
   signal itemClicked()
   
   width: parent.width
   implicitWidth: parent.implicitWidth
-  // FIXME: Use something like margin instead of the 3 * Kirigami.Units.smallSpacing that was found
-  // by trial and error ...
-  height: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
-  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * Kirigami.Units.smallSpacing, delegateItemText.height + 3 * Kirigami.Units.smallSpacing)
+  height: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + Kirigami.Units.smallSpacing, delegateItemText.height + Kirigami.Units.smallSpacing)
   focus: true
   
   MouseArea {
-    anchors.fill: parent
+    Layout.fillWidth: true
+    Layout.fillHeight: true
     
     onClicked: {
       delegate.itemClicked()
@@ -34,24 +33,24 @@ Item {
   
     Row {
       spacing: Kirigami.Units.largeSpacing
-      Column {
+
+      Kirigami.Icon {
+        id: delegateItemIcon
+
         anchors.verticalCenter: parent.verticalCenter
-        Kirigami.Icon {
-          id: delegateItemIcon
-          source: "format-list-unordered"
-          width: Kirigami.Units.iconSizes.medium
-          height: Kirigami.Units.iconSizes.medium
-        }
+
+        source: "format-list-unordered"
+        width: Kirigami.Units.iconSizes.medium
+        height: Kirigami.Units.iconSizes.medium
       }
-      Column {
+
+      PlasmaComponents.Label {
+        id: delegateItemText
+
         anchors.verticalCenter: parent.verticalCenter
-        PlasmaComponents.Label {
-          id: delegateItemText
-          elide: Text.ElideRight
-          text: {
-            object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
-          }
-        }
+
+        elide: Text.ElideRight
+        text: object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
       }
     }
   }
