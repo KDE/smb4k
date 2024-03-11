@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:00+0000\n"
+"POT-Creation-Date: 2024-03-11 01:35+0000\n"
 "PO-Revision-Date: 2024-02-24 18:20+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -43,54 +43,54 @@ msgid "Configuration Dialog"
 msgstr "Diálogo de configuración"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
 msgstr "Entorno de red"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "Marcador"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:37
+#: package6/contents/ui/NetworkBrowserPage.qml:36
 msgid "Rescan"
 msgstr "Volver a explorar"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:46
+#: package6/contents/ui/NetworkBrowserPage.qml:45
 msgid "Abort"
 msgstr "Interrumpir"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:55
+#: package6/contents/ui/NetworkBrowserPage.qml:54
 msgid "Go one level up"
 msgstr "Subir un nivel"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:64
+#: package6/contents/ui/NetworkBrowserPage.qml:63
 msgid "Open the mount dialog"
 msgstr "Abrir el diálogo de montaje"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:40
+#: package6/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
 msgstr "Recursos compartidos montados"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:47
+#: package6/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
 msgstr "Marcadores"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:54
+#: package6/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
 msgstr "Perfiles"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:61
+#: package6/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
 msgstr "Configuración"
 
@@ -114,10 +114,10 @@ msgstr "Desmontar"
 msgid "Unmount all shares"
 msgstr "Desmontar todos los recursos compartidos"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr "Vista previa"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
 msgid "Configure"
 msgstr "Configurar"

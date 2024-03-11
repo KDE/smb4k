@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:00+0000\n"
+"POT-Creation-Date: 2024-03-11 01:35+0000\n"
 "PO-Revision-Date: 2020-06-18 17:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -40,54 +40,54 @@ msgid "Configuration Dialog"
 msgstr "Asetusikkuna"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
 msgstr "Verkkoympäristö"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "Kirjanmerkki"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:37
+#: package6/contents/ui/NetworkBrowserPage.qml:36
 msgid "Rescan"
 msgstr "Etsi uudelleen"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:46
+#: package6/contents/ui/NetworkBrowserPage.qml:45
 msgid "Abort"
 msgstr "Keskeytä"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:55
+#: package6/contents/ui/NetworkBrowserPage.qml:54
 msgid "Go one level up"
 msgstr "Siirry tasoa ylemmäs"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:64
+#: package6/contents/ui/NetworkBrowserPage.qml:63
 msgid "Open the mount dialog"
 msgstr "Avaa liittämisikkuna"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:40
+#: package6/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
 msgstr "Liitetyt jaot"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:47
+#: package6/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
 msgstr "Kirjanmerkit"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:54
+#: package6/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
 msgstr "Profiilit"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:61
+#: package6/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
 msgstr "Asetukset"
 
@@ -111,11 +111,11 @@ msgstr "Irrota"
 msgid "Unmount all shares"
 msgstr "Irrota kaikki jaot"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"
