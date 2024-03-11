@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:plasma_applet_org.kde.smb4kqml \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:00+0000\n"
+"POT-Creation-Date: 2024-03-11 01:35+0000\n"
 "PO-Revision-Date: 2019-04-29 16:47-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -42,54 +42,54 @@ msgid "Configuration Dialog"
 msgstr "Diálogo de configuração"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
 msgstr "Vizinhança na rede"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "Favoritos"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:37
+#: package6/contents/ui/NetworkBrowserPage.qml:36
 msgid "Rescan"
 msgstr "Reanalisar"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:46
+#: package6/contents/ui/NetworkBrowserPage.qml:45
 msgid "Abort"
 msgstr "Cancelar"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:55
+#: package6/contents/ui/NetworkBrowserPage.qml:54
 msgid "Go one level up"
 msgstr "Ir um nível acima"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:64
+#: package6/contents/ui/NetworkBrowserPage.qml:63
 msgid "Open the mount dialog"
 msgstr "Abrir janela de montagem"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:40
+#: package6/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
 msgstr "Compartilhamentos montados"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:47
+#: package6/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
 msgstr "Favoritos"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:54
+#: package6/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
 msgstr "Perfis"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:61
+#: package6/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
 msgstr "Configuração"
 
@@ -113,11 +113,11 @@ msgstr "Desmontar"
 msgid "Unmount all shares"
 msgstr "Desmontar todos os compartilhamentos"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"

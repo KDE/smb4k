@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:00+0000\n"
+"POT-Creation-Date: 2024-03-11 01:35+0000\n"
 "PO-Revision-Date: 2024-01-15 22:10+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -43,54 +43,54 @@ msgid "Configuration Dialog"
 msgstr "設定對話框"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
 msgstr "網路芳鄰"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "書籤"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:37
+#: package6/contents/ui/NetworkBrowserPage.qml:36
 msgid "Rescan"
 msgstr "重新掃描"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:46
+#: package6/contents/ui/NetworkBrowserPage.qml:45
 msgid "Abort"
 msgstr "中止"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:55
+#: package6/contents/ui/NetworkBrowserPage.qml:54
 msgid "Go one level up"
 msgstr "往上一層"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:64
+#: package6/contents/ui/NetworkBrowserPage.qml:63
 msgid "Open the mount dialog"
 msgstr "開啟掛載對話框"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:40
+#: package6/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
 msgstr "已掛載的共享資料夾"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:47
+#: package6/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
 msgstr "書籤"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:54
+#: package6/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
 msgstr "設定檔"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:61
+#: package6/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
 msgstr "設定"
 
@@ -114,11 +114,11 @@ msgstr "卸載"
 msgid "Unmount all shares"
 msgstr "卸載所有共享資料夾"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"

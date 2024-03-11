@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-01 02:00+0000\n"
+"POT-Creation-Date: 2024-03-11 01:35+0000\n"
 "PO-Revision-Date: 2019-06-20 20:44+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -41,54 +41,54 @@ msgid "Configuration Dialog"
 msgstr "Okno ustawień"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:33
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
 msgstr "Otoczenie sieciowe"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:89
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package6/contents/ui/SharesViewItemDelegate.qml:71
 msgid "Bookmark"
 msgstr "Zakładka"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:37
+#: package6/contents/ui/NetworkBrowserPage.qml:36
 msgid "Rescan"
 msgstr "Przeszukaj ponownie"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:46
+#: package6/contents/ui/NetworkBrowserPage.qml:45
 msgid "Abort"
 msgstr "Przerwij"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:55
+#: package6/contents/ui/NetworkBrowserPage.qml:54
 msgid "Go one level up"
 msgstr "Idź jeden poziom wyżej"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:64
+#: package6/contents/ui/NetworkBrowserPage.qml:63
 msgid "Open the mount dialog"
 msgstr "Otwórz okno dialogowe podpinania"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:40
+#: package6/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
 msgstr "Podpięte zasoby"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:47
+#: package6/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
 msgstr "Zakładki"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:54
+#: package6/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
 msgstr "Profile"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:61
+#: package6/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
 msgstr "Ustawienia"
 
@@ -112,11 +112,11 @@ msgstr "Odepnij"
 msgid "Unmount all shares"
 msgstr "Odepnij wszystkie zasoby"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:112
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:135
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"
