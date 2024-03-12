@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 01:35+0000\n"
+"POT-Creation-Date: 2024-03-12 01:35+0000\n"
 "PO-Revision-Date: 2024-02-26 23:42+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -22,8 +22,8 @@ msgstr ""
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:56
-#: package6/contents/ui/SharesViewItemDelegate.qml:55
+#: package6/contents/ui/BookmarkItemDelegate.qml:58
+#: package6/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">%1(e)an</font>"
 
@@ -49,8 +49,8 @@ msgstr "Sareko auzoa"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:71
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package6/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr "Laster-marka"
 
@@ -95,17 +95,17 @@ msgid "Configuration"
 msgstr "Konfiguratzea"
 
 #: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:52
+#: package6/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
 msgstr "(aktibo)"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:92
+#: package6/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
 msgstr "Sinkronizatu"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:113
+#: package6/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
 msgstr "Desmuntatu"
 
@@ -118,6 +118,6 @@ msgstr "Desmuntatu partekatze guztiak"
 msgid "Preview"
 msgstr "Aurreikuspegia"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
 msgstr "Konfiguratu"

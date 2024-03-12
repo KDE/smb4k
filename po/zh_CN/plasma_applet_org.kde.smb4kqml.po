@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 01:35+0000\n"
+"POT-Creation-Date: 2024-03-12 01:35+0000\n"
 "PO-Revision-Date: 2024-03-09 04:49\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -20,8 +20,8 @@ msgstr ""
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:56
-#: package6/contents/ui/SharesViewItemDelegate.qml:55
+#: package6/contents/ui/BookmarkItemDelegate.qml:58
+#: package6/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">位于 %1</font>"
 
@@ -47,8 +47,8 @@ msgstr "网上邻居"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:71
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package6/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr "书签"
 
@@ -93,17 +93,17 @@ msgid "Configuration"
 msgstr "配置"
 
 #: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:52
+#: package6/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
 msgstr "(活动)"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:92
+#: package6/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
 msgstr "同步"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:113
+#: package6/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
 msgstr "取消挂载"
 
@@ -116,6 +116,6 @@ msgstr "取消挂载所有共享"
 msgid "Preview"
 msgstr "预览"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
 msgstr "配置"

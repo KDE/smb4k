@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 01:35+0000\n"
+"POT-Creation-Date: 2024-03-12 01:35+0000\n"
 "PO-Revision-Date: 2019-04-27 07:52+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:56
-#: package6/contents/ui/SharesViewItemDelegate.qml:55
+#: package6/contents/ui/BookmarkItemDelegate.qml:58
+#: package6/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">på %1</font>"
 
@@ -46,8 +46,8 @@ msgstr "Nätverksgrannskap"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:71
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package6/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr "Bokmärke"
 
@@ -92,17 +92,17 @@ msgid "Configuration"
 msgstr "Inställning"
 
 #: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:52
+#: package6/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
 msgstr "(aktiv)"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:92
+#: package6/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
 msgstr "Synkronisera"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:113
+#: package6/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
 msgstr "Avmontera"
 
@@ -115,7 +115,7 @@ msgstr "Avmontera alla delade resurser"
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"

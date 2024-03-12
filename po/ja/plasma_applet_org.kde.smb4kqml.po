@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_smb4k-qml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 01:35+0000\n"
+"POT-Creation-Date: 2024-03-12 01:35+0000\n"
 "PO-Revision-Date: 2014-02-22 22:22-0800\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:56
-#: package6/contents/ui/SharesViewItemDelegate.qml:55
+#: package6/contents/ui/BookmarkItemDelegate.qml:58
+#: package6/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr ""
 
@@ -43,8 +43,8 @@ msgstr ""
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:71
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package6/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr ""
 
@@ -89,17 +89,17 @@ msgid "Configuration"
 msgstr ""
 
 #: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:52
+#: package6/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
 msgstr ""
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:92
+#: package6/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
 msgstr ""
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:113
+#: package6/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
 msgstr ""
 
@@ -112,6 +112,6 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
 msgstr ""
