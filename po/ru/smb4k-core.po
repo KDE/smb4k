@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"POT-Creation-Date: 2024-03-16 02:03+0000\n"
 "PO-Revision-Date: 2024-02-09 23:25+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2041,7 +2041,7 @@ msgstr "В этой версии KDE отсутствует поддержка Z
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Произошла неизвестная ошибка, связанная с Zeroconf."
 
-#: smb4kmounter.cpp:769
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2050,7 +2050,7 @@ msgstr ""
 "<p>Общий ресурс <b>%1</b> подключён к <br><b>%2</b>, владельцем является "
 "пользователь <b>%3</b>.</p><p>Отключить этот общий ресурс?</p>"
 
-#: smb4kmounter.cpp:774
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Общий сетевой ресурс подключён другим пользователем"
