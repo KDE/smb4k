@@ -62,6 +62,8 @@ Q_SIGNALS:
     void edited(bool changed);
 
 protected Q_SLOTS:
+    void slotIpAddressChanged(const QString &text);
+    void slotWorkgroupNameChanged(const QString &text);
     void slotAlwaysRemoutShareToggled(bool checked);
 #ifdef Q_OS_LINUX
     void slotUseWriteAccessToggled(bool checked);
@@ -99,6 +101,12 @@ private:
     void checkValues();
     bool m_haveCustomSettings;
     Smb4KCustomSettings m_customSettings;
+    QLabel *m_urlLabel;
+    KLineEdit *m_url;
+    QLabel *m_ipAddressLabel;
+    KLineEdit *m_ipAddress;
+    QLabel *m_workgroupLabel;
+    KLineEdit *m_workgroup;
     QCheckBox *m_alwaysRemountShare;
 #ifdef Q_OS_LINUX
     QCheckBox *m_useWriteAccess;
