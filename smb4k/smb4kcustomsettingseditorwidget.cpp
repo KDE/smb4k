@@ -58,7 +58,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     m_workgroupLabel = new QLabel(i18n("Workgroup:"), tab1);
     m_workgroup = new KLineEdit(tab1);
-    m_workgroup->setClearButtonEnabled(true);;
+    m_workgroup->setClearButtonEnabled(true);
     m_workgroupLabel->setBuddy(m_workgroup);
 
     connect(m_workgroup, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
@@ -305,7 +305,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     m_workgroupLabel = new QLabel(i18n("Workgroup:"), tab1);
     m_workgroup = new KLineEdit(tab1);
-    m_workgroup->setClearButtonEnabled(true);;
+    m_workgroup->setClearButtonEnabled(true);
     m_workgroupLabel->setBuddy(m_workgroup);
 
     connect(m_workgroup, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
@@ -327,7 +327,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     addTab(tab1, i18n("Basic Settings"));
 
     QWidget *tab2 = new QWidget(this);
-    QGridLayout *tab1Layout = new QGridLayout(tab2);
+    QGridLayout *tab2Layout = new QGridLayout(tab2);
 
     m_useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), tab2);
     m_userId = new KComboBox(tab2);
