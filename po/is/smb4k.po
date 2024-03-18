@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-18 02:00+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -185,7 +185,6 @@ msgid "Network"
 msgstr "Netkerfi"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Tengi"
@@ -290,13 +289,17 @@ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 msgid "Username:"
 msgstr "Notandi:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:59
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Vinnuhópur:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:51
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -348,6 +351,8 @@ msgstr ""
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, fuzzy, kde-format
 msgid "Basic Settings"
 msgstr "Almennir valkostir"
@@ -373,6 +378,7 @@ msgid "Choose a different group"
 msgstr "Veldu annan hóp"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:162
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Common Mount Settings"
@@ -389,6 +395,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Viðbótarvalkostir:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:197
 #, fuzzy, kde-format
 #| msgid "Advanced Options"
 msgid "Advanced Mount Settings"
@@ -401,6 +408,7 @@ msgid "Character Sets"
 msgstr "Stafatafla biðlara:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Mount Settings"
@@ -428,6 +436,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:439
 #, fuzzy, kde-format
 msgid "Browse Settings"
 msgstr "Almennir valkostir"
@@ -439,8 +449,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Wake-On-LAN"
@@ -618,58 +626,49 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "Ekki tókst að útbúa möppuna %1."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293 smb4k/smb4kmountdialog.cpp:66
+#: smb4k/smb4ktooltip.cpp:189 smb4k/smb4ktooltip.cpp:226
+#, fuzzy, kde-format
+msgid "Location:"
+msgstr "Aðgerðir"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:66
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, fuzzy, kde-format
 #| msgid "Remote Shares"
 msgid "Always remount this share"
 msgstr "Fjartengdar sameignir"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Common Options"
-msgid "Mounting: Common Settings"
-msgstr "Algengar stillingar"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:105
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Mounting: CIFS Unix Extensions"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
-msgid "Mounting: Advanced Settings"
-msgstr "Ítarlegri valkostir"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-msgid "Browsing"
-msgstr "Almennir valkostir"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, fuzzy, kde-format
 #| msgid "IP Address:"
 msgid "MAC Address:"
 msgstr "IP vistfang:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:271
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:285
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:468
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Wake-On-LAN Settings"
+msgstr "Almennar stillingar"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -825,12 +824,6 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
-
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
-#: smb4k/smb4ktooltip.cpp:226
-#, fuzzy, kde-format
-msgid "Location:"
-msgstr "Aðgerðir"
 
 #: smb4k/smb4kmountdialog.cpp:107
 #, fuzzy, kde-format
@@ -1283,6 +1276,20 @@ msgid "Size:"
 msgstr "Stærð:"
 
 #, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Algengar stillingar"
+
+#, fuzzy
+#~| msgid "Advanced Options"
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Ítarlegri valkostir"
+
+#, fuzzy
+#~ msgid "Browsing"
+#~ msgstr "Almennir valkostir"
+
+#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Tengi"
@@ -1296,11 +1303,6 @@ msgstr "Stærð:"
 #~| msgid "Mounting"
 #~ msgid "Page 3: Mounting"
 #~ msgstr "Tengi"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Almennar stillingar"
 
 #, fuzzy
 #~| msgid "General Settings"

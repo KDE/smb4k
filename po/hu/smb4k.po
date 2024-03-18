@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-18 02:00+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -194,7 +194,6 @@ msgid "Network"
 msgstr "Hálózat"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Csatolás"
@@ -305,13 +304,17 @@ msgstr ""
 msgid "Username:"
 msgstr "Felhasználó:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:59
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Munkacsoport:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:51
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -363,6 +366,8 @@ msgstr ""
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, fuzzy, kde-format
 #| msgid "Settings"
 msgid "Basic Settings"
@@ -389,6 +394,7 @@ msgid "Choose a different group"
 msgstr "Válasszon másik csoportot"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:162
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Common Mount Settings"
@@ -405,6 +411,7 @@ msgid "Edit the additional CIFS options."
 msgstr "További CIFS beállítások szerkesztése."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:197
 #, fuzzy, kde-format
 #| msgid "Advanced Settings"
 msgid "Advanced Mount Settings"
@@ -417,6 +424,7 @@ msgid "Character Sets"
 msgstr "Kliensoldali karakterkészlet:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Mount Settings"
@@ -444,6 +452,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:439
 #, fuzzy, kde-format
 #| msgid "Settings"
 msgid "Browse Settings"
@@ -456,8 +466,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, fuzzy, kde-format
 #| msgid "Wake-On-LAN"
 msgid "Wake-On-LAN"
@@ -651,59 +659,49 @@ msgstr ""
 "megosztásához.</p>"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293 smb4k/smb4kmountdialog.cpp:66
+#: smb4k/smb4ktooltip.cpp:189 smb4k/smb4ktooltip.cpp:226
+#, fuzzy, kde-format
+msgid "Location:"
+msgstr "Műveletek"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:66
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "Mindig csatolja újra ezt a megosztást"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Common Options"
-msgid "Mounting: Common Settings"
-msgstr "Közös beállítások"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:105
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Mounting: CIFS Unix Extensions"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
-msgid "Mounting: Advanced Settings"
-msgstr "Speciális beállítások"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Settings"
-msgid "Browsing"
-msgstr "Beállítások"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-cím:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:271
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
 #, fuzzy, kde-format
 #| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Varázscsomag küldése a hálózati mappa vizsgálata előtt"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, fuzzy, kde-format
 #| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Varázscsomag küldése a megosztás csatolása előtt"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:285
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:468
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -866,12 +864,6 @@ msgid ""
 msgstr ""
 "Adja meg a helyet (UNC-cím) és opcionálisan az IP-címet és munkacsoportot a "
 "megosztás csatolásához."
-
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
-#: smb4k/smb4ktooltip.cpp:226
-#, fuzzy, kde-format
-msgid "Location:"
-msgstr "Műveletek"
 
 #: smb4k/smb4kmountdialog.cpp:107
 #, fuzzy, kde-format
@@ -1327,6 +1319,21 @@ msgid "Size:"
 msgstr "Méret"
 
 #, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Közös beállítások"
+
+#, fuzzy
+#~| msgid "Advanced Settings"
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Speciális beállítások"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Browsing"
+#~ msgstr "Beállítások"
+
+#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Csatolás"
@@ -1340,11 +1347,6 @@ msgstr "Méret"
 #~| msgid "Mounting"
 #~ msgid "Page 3: Mounting"
 #~ msgstr "Csatolás"
-
-#, fuzzy
-#~| msgid "Wake-On-LAN"
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Wake-On-LAN"
 
 #, fuzzy
 #~| msgid "Wake-On-LAN"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-18 02:00+0000\n"
 "PO-Revision-Date: 2024-01-22 10:47+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -184,7 +184,6 @@ msgid "Network"
 msgstr "Xarxa"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Muntatge"
@@ -288,13 +287,17 @@ msgstr ""
 msgid "Username:"
 msgstr "Nom d'usuari:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:59
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Grup de treball:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:51
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -348,6 +351,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Basic Settings"
 msgstr "Configuració bàsica"
@@ -373,6 +378,7 @@ msgid "Choose a different group"
 msgstr "Seleccioneu un grup diferent"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:162
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Configuració normal de muntatge"
@@ -388,6 +394,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Edita les opcions addicionals de CIFS."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:197
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Configuració avançada del muntatge"
@@ -398,6 +405,7 @@ msgid "Character Sets"
 msgstr "Jocs de caràcters"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, kde-format
 msgid "Mount Settings"
 msgstr "Configuració de muntatge"
@@ -429,6 +437,8 @@ msgstr[1] ""
 "<br>Llegiu-ne els detalls en el manual."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:439
 #, kde-format
 msgid "Browse Settings"
 msgstr "Configureu l'exploració"
@@ -439,8 +449,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Activació per LAN (Wake-On-LAN)"
@@ -610,54 +618,47 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definix la configuració personalitzada per a la compartició <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293 smb4k/smb4kmountdialog.cpp:66
+#: smb4k/smb4ktooltip.cpp:189 smb4k/smb4ktooltip.cpp:226
+#, kde-format
+msgid "Location:"
+msgstr "Ubicació:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:66
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "Torna a muntar sempre esta compartició"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, kde-format
-msgid "Mounting: Common Settings"
-msgstr "Muntatge: Configuració normal"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:105
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Este servidor admet les ampliacions Unix de CIFS"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Mounting: CIFS Unix Extensions"
-msgstr "Muntatge: Ampliacions Unix de CIFS"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Mounting: Advanced Settings"
-msgstr "Muntatge: Configuració avançada"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Browsing"
-msgstr "Exploració"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, kde-format
 msgid "MAC Address:"
 msgstr "Adreça MAC:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:271
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Envia un paquet màgic abans d'escanejar el veïnatge de xarxa"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Envia un paquet màgic abans de muntar una compartició"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:285
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:468
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "Activació per LAN (Wake-On-LAN)"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -805,12 +806,6 @@ msgid ""
 msgstr ""
 "Introduïu la ubicació i de manera opcional l'adreça IP i grup de treball per "
 "a muntar una compartició."
-
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
-#: smb4k/smb4ktooltip.cpp:226
-#, kde-format
-msgid "Location:"
-msgstr "Ubicació:"
 
 #: smb4k/smb4kmountdialog.cpp:107
 #, kde-format
@@ -1242,3 +1237,15 @@ msgstr "%1 lliure de %2 (utilitzat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
+
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Muntatge: Configuració normal"
+
+#~ msgid "Mounting: CIFS Unix Extensions"
+#~ msgstr "Muntatge: Ampliacions Unix de CIFS"
+
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Muntatge: Configuració avançada"
+
+#~ msgid "Browsing"
+#~ msgstr "Exploració"

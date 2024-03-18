@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-18 02:00+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -186,7 +186,6 @@ msgid "Network"
 msgstr "Võrk"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Ühendamine"
@@ -296,13 +295,17 @@ msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 msgid "Username:"
 msgstr "Kasutaja:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:59
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Töögrupp:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:51
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -354,6 +357,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Basic Settings"
 msgstr "Põhiseadistused"
@@ -379,6 +384,7 @@ msgid "Choose a different group"
 msgstr "Teise grupi valimine"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:162
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Ühendamise üldseadistused"
@@ -394,6 +400,7 @@ msgid "Edit the additional CIFS options."
 msgstr "CIFS-i lisavalikute muutmine."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:197
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Ühendamise muud seadistused"
@@ -404,6 +411,7 @@ msgid "Character Sets"
 msgstr "Kooditabelid"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, kde-format
 msgid "Mount Settings"
 msgstr "Ühendamise seadistused"
@@ -440,6 +448,8 @@ msgstr[1] ""
 "käsiraamatust.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:439
 #, kde-format
 msgid "Browse Settings"
 msgstr "Sirvimisseadistused"
@@ -451,8 +461,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, fuzzy, kde-format
 #| msgid "Wake-On-LAN"
 msgid "Wake-On-LAN"
@@ -644,60 +652,49 @@ msgstr ""
 "b>.</p>"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293 smb4k/smb4kmountdialog.cpp:66
+#: smb4k/smb4ktooltip.cpp:189 smb4k/smb4ktooltip.cpp:226
+#, kde-format
+msgid "Location:"
+msgstr "Asukoht:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:66
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "See ressurss ühendatakse alati uuesti"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
-msgid "Mounting: Common Settings"
-msgstr "Ühendamise seadistused"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:105
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "See server toetab CIFS-i Unixi laiendusi"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
-msgid "Mounting: CIFS Unix Extensions"
-msgstr "CIFS-i Unixi laienduse toetus"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
-msgid "Mounting: Advanced Settings"
-msgstr "Muud seadistused"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
-msgid "Browsing"
-msgstr "Sirvimisseadistused"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-aadress:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:271
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
 #, fuzzy, kde-format
 #| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Maagilise paketi saatmine enne võrgunaabruse uurimist"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, fuzzy, kde-format
 #| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Maagilise paketi saatmine enne jagatud ressursi ühendamist"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:285
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:468
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -855,12 +852,6 @@ msgid ""
 msgstr ""
 "Sisesta jagatud ressursi ühendamiseks asukoht (UNC aadress) ja vajaduse "
 "korral ka IP-aadress ja töögrupp."
-
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
-#: smb4k/smb4ktooltip.cpp:226
-#, kde-format
-msgid "Location:"
-msgstr "Asukoht:"
 
 #: smb4k/smb4kmountdialog.cpp:107
 #, fuzzy, kde-format
@@ -1310,6 +1301,26 @@ msgid "Size:"
 msgstr "Suurus:"
 
 #, fuzzy
+#~| msgid "Mount Settings"
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Ühendamise seadistused"
+
+#, fuzzy
+#~| msgid "CIFS Unix Extensions Support"
+#~ msgid "Mounting: CIFS Unix Extensions"
+#~ msgstr "CIFS-i Unixi laienduse toetus"
+
+#, fuzzy
+#~| msgid "Advanced Settings"
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Muud seadistused"
+
+#, fuzzy
+#~| msgid "Browse Settings"
+#~ msgid "Browsing"
+#~ msgstr "Sirvimisseadistused"
+
+#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Ühendamine"
@@ -1323,11 +1334,6 @@ msgstr "Suurus:"
 #~| msgid "Mounting"
 #~ msgid "Page 3: Mounting"
 #~ msgstr "Ühendamine"
-
-#, fuzzy
-#~| msgid "Wake-On-LAN"
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Wake-On-LAN"
 
 #, fuzzy
 #~| msgid "Wake-On-LAN"

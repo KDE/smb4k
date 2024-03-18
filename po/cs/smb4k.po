@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-18 02:00+0000\n"
 "PO-Revision-Date: 2023-11-07 15:46+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -177,7 +177,6 @@ msgid "Network"
 msgstr "Síť"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Připojování"
@@ -278,13 +277,17 @@ msgstr "Nastavte uživatelské jméno a heslo pro výchozí přihlášení."
 msgid "Username:"
 msgstr "Uživatelské jméno:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:59
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Pracovní skupina:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:51
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -336,6 +339,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Basic Settings"
 msgstr "Základní nastavení"
@@ -361,6 +366,7 @@ msgid "Choose a different group"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:162
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Obecná nastavení připojení"
@@ -376,6 +382,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Upravit další možnosti CIFS."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:197
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Pokročilá nastavení připojení"
@@ -386,6 +393,7 @@ msgid "Character Sets"
 msgstr "Znakové sady"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, kde-format
 msgid "Mount Settings"
 msgstr "Nastavení připojení"
@@ -413,6 +421,8 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:439
 #, kde-format
 msgid "Browse Settings"
 msgstr "Procházet nastavení"
@@ -423,8 +433,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -590,54 +598,47 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293 smb4k/smb4kmountdialog.cpp:66
+#: smb4k/smb4ktooltip.cpp:189 smb4k/smb4ktooltip.cpp:226
+#, kde-format
+msgid "Location:"
+msgstr "Umístění:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:66
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "Vždy znovu připojit toto sdílení"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, kde-format
-msgid "Mounting: Common Settings"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:105
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Mounting: CIFS Unix Extensions"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Mounting: Advanced Settings"
-msgstr ""
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Browsing"
-msgstr "Prohlížení"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC adresa:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:271
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Odeslat magický paket před skenováním síťového okolí"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:285
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:468
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -783,12 +784,6 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
-
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
-#: smb4k/smb4ktooltip.cpp:226
-#, kde-format
-msgid "Location:"
-msgstr "Umístění:"
 
 #: smb4k/smb4kmountdialog.cpp:107
 #, kde-format
@@ -1214,3 +1209,6 @@ msgstr "%1 volné z %2 (%3 použito)"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
+
+#~ msgid "Browsing"
+#~ msgstr "Prohlížení"

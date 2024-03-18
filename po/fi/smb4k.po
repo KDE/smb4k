@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-18 02:00+0000\n"
 "PO-Revision-Date: 2024-02-14 19:34+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -180,7 +180,6 @@ msgid "Network"
 msgstr "Verkko"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Liittäminen"
@@ -284,13 +283,17 @@ msgstr "Aseta oletuskirjautumisen käyttäjätunnus ja salasana."
 msgid "Username:"
 msgstr "Käyttäjätunnus:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:59
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Työryhmä:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:51
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -343,6 +346,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Basic Settings"
 msgstr "Perusasetukset"
@@ -368,6 +373,7 @@ msgid "Choose a different group"
 msgstr "Valitse toinen ryhmä"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:162
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Yleiset liitosasetukset"
@@ -383,6 +389,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Muokkaa CIFS-lisäasetuksia."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:197
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Liittämisen lisäasetukset"
@@ -393,6 +400,7 @@ msgid "Character Sets"
 msgstr "Merkistöt"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, kde-format
 msgid "Mount Settings"
 msgstr "Liitosasetukset"
@@ -423,6 +431,8 @@ msgstr[1] ""
 "lisätietoa käsikirjasta."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:439
 #, kde-format
 msgid "Browse Settings"
 msgstr "Selaa asetuksia"
@@ -433,8 +443,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -602,54 +610,46 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "Mukauta jaon <b>%1</b> asetuksia."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293 smb4k/smb4kmountdialog.cpp:66
+#: smb4k/smb4ktooltip.cpp:189 smb4k/smb4ktooltip.cpp:226
+#, kde-format
+msgid "Location:"
+msgstr "Sijainti:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:66
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "Liitä tämä jako aina uudelleen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, kde-format
-msgid "Mounting: Common Settings"
-msgstr "Liittäminen: yleiset asetukset"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:105
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Tämä palvelin tukee CIFSin UNIX-laajennuksia"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Mounting: CIFS Unix Extensions"
-msgstr "Liittäminen: CIFSin UNIX-laajennukset"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Mounting: Advanced Settings"
-msgstr "Liittäminen: lisäasetukset"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Browsing"
-msgstr "Selaus"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-osoite:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:271
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Lähetä taikapaketti ennen verkkoympäristön tutkimista"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Lähetä taikapaketti ennen jaon liittämistä"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:285
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:468
+#, kde-format
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN-asetukset"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -795,12 +795,6 @@ msgid ""
 "share."
 msgstr ""
 "Anna jaettavan liitoksen sijainti ja valinnaisesti IP-osoite ja työryhmä."
-
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
-#: smb4k/smb4ktooltip.cpp:226
-#, kde-format
-msgid "Location:"
-msgstr "Sijainti:"
 
 #: smb4k/smb4kmountdialog.cpp:107
 #, kde-format
@@ -1232,6 +1226,18 @@ msgstr "Vapaana %1/%2 (%3 käytetty)"
 msgid "Size:"
 msgstr "Koko:"
 
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Liittäminen: yleiset asetukset"
+
+#~ msgid "Mounting: CIFS Unix Extensions"
+#~ msgstr "Liittäminen: CIFSin UNIX-laajennukset"
+
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Liittäminen: lisäasetukset"
+
+#~ msgid "Browsing"
+#~ msgstr "Selaus"
+
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Sivu 1: Liittäminen"
 
@@ -1243,9 +1249,6 @@ msgstr "Koko:"
 
 #~ msgid "Page 4: Browsing"
 #~ msgstr "Sivu 4: Selaus"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Wake-On-LAN-asetukset"
 
 #~ msgid "Page 5: Wake-On-LAN"
 #~ msgstr "Sivu 5: Wake-On-LAN"
