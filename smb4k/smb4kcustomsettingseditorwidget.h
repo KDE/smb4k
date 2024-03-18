@@ -101,8 +101,6 @@ private:
     void checkValues();
     bool m_haveCustomSettings;
     Smb4KCustomSettings m_customSettings;
-    QLabel *m_urlLabel;
-    KLineEdit *m_url;
     QLabel *m_ipAddressLabel;
     KLineEdit *m_ipAddress;
     QLabel *m_workgroupLabel;

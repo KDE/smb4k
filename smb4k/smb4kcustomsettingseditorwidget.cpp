@@ -43,11 +43,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     QWidget *tab1 = new QWidget(this);
     QGridLayout *tab1Layout = new QGridLayout(tab1);
 
-    m_urlLabel = new QLabel(i18n("Location:"));
-    m_url = new KLineEdit(tab1);
-    m_url->setReadOnly(true);
-    m_urlLabel->setBuddy(m_url);
-
     m_ipAddressLabel = new QLabel(i18n("IP Address:"), tab1);
     m_ipAddress = new KLineEdit(tab1);
     m_ipAddress->setClearButtonEnabled(true);
@@ -68,14 +63,12 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     connect(m_alwaysRemountShare, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotAlwaysRemoutShareToggled);
 
-    tab1Layout->addWidget(m_urlLabel, 0, 0);
-    tab1Layout->addWidget(m_url, 0, 1);
-    tab1Layout->addWidget(m_ipAddressLabel, 1, 0);
-    tab1Layout->addWidget(m_ipAddress, 1, 1);
-    tab1Layout->addWidget(m_workgroupLabel, 2, 0);
-    tab1Layout->addWidget(m_workgroup, 2, 1);
-    tab1Layout->addWidget(m_alwaysRemountShare, 3, 0, 1, 2);
-    tab1Layout->setRowStretch(4, 100);
+    tab1Layout->addWidget(m_ipAddressLabel, 0, 0);
+    tab1Layout->addWidget(m_ipAddress, 0, 1);
+    tab1Layout->addWidget(m_workgroupLabel, 1, 0);
+    tab1Layout->addWidget(m_workgroup, 1, 1);
+    tab1Layout->addWidget(m_alwaysRemountShare, 2, 0, 1, 2);
+    tab1Layout->setRowStretch(3, 100);
 
     addTab(tab1, i18n("Basic Settings"));
 
@@ -290,11 +283,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     QWidget *tab1 = new QWidget(this);
     QGridLayout *tab1Layout = new QGridLayout(tab1);
 
-    m_urlLabel = new QLabel(i18n("Location:"));
-    m_url = new KLineEdit(tab1);
-    m_url->setReadOnly(true);
-    m_urlLabel->setBuddy(m_url);
-
     m_ipAddressLabel = new QLabel(i18n("IP Address:"), tab1);
     m_ipAddress = new KLineEdit(tab1);
     m_ipAddress->setClearButtonEnabled(true);
@@ -315,14 +303,12 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     connect(m_alwaysRemountShare, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotAlwaysRemoutShareToggled);
 
-    tab1Layout->addWidget(m_urlLabel, 0, 0);
-    tab1Layout->addWidget(m_url, 0, 1);
-    tab1Layout->addWidget(m_ipAddressLabel, 1, 0);
-    tab1Layout->addWidget(m_ipAddress, 1, 1);
-    tab1Layout->addWidget(m_workgroupLabel, 2, 0);
-    tab1Layout->addWidget(m_workgroup, 2, 1);
-    tab1Layout->addWidget(m_alwaysRemountShare, 3, 0, 1, 2);
-    tab1Layout->setRowStretch(4, 100);
+    tab1Layout->addWidget(m_ipAddressLabel, 0, 0);
+    tab1Layout->addWidget(m_ipAddress, 0, 1);
+    tab1Layout->addWidget(m_workgroupLabel, 1, 0);
+    tab1Layout->addWidget(m_workgroup, 1, 1);
+    tab1Layout->addWidget(m_alwaysRemountShare, 2, 0, 1, 2);
+    tab1Layout->setRowStretch(3, 100);
 
     addTab(tab1, i18n("Basic Settings"));
 
@@ -475,7 +461,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
 void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSettings &settings)
 {
-    m_url->setText(settings.url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort));
     m_ipAddress->setText(settings.ipAddress());
     m_workgroup->setText(settings.workgroupName());
 
