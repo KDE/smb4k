@@ -667,8 +667,7 @@ msgstr "Envoyer un paquet « magique » avant de monter un partage"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:278
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:454
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN Settings"
+#, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Paramètres de « Wake-On-LAN »"
 
