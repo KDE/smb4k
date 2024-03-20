@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-11 01:35+0000\n"
+"POT-Creation-Date: 2024-03-12 01:35+0000\n"
 "PO-Revision-Date: 2024-02-24 22:11+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: package5/contents/ui/BookmarkItemDelegate.qml:59
 #: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:56
-#: package6/contents/ui/SharesViewItemDelegate.qml:55
+#: package6/contents/ui/BookmarkItemDelegate.qml:58
+#: package6/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">%1에 있음</font>"
 
@@ -46,8 +46,8 @@ msgstr "네트워크 환경"
 
 #: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package6/contents/ui/SharesViewItemDelegate.qml:71
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package6/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr "책갈피"
 
@@ -92,17 +92,17 @@ msgid "Configuration"
 msgstr "설정"
 
 #: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:52
+#: package6/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
 msgstr "(활성)"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:92
+#: package6/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
 msgstr "동기화"
 
 #: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:113
+#: package6/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
 msgstr "마운트 해제"
 
@@ -115,7 +115,7 @@ msgstr "모든 공유 마운트 해제"
 msgid "Preview"
 msgstr "미리 보기"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:154
+#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
 msgstr "설정"
 

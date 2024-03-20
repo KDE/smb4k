@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"POT-Creation-Date: 2024-03-16 02:03+0000\n"
 "PO-Revision-Date: 2023-12-28 14:31+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1986,7 +1986,7 @@ msgstr "Zeroconf-stöd är inte tillgängligt i den här versionen av KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ett okänt fel uppstod med Zeroconf."
 
-#: smb4kmounter.cpp:769
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1995,7 +1995,7 @@ msgstr ""
 "<p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och ägs av "
 "användaren <b>%3</b>.</p<p>Vill du verkligen avmontera den?</p>>"
 
-#: smb4kmounter.cpp:774
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Främmande delad resurs"

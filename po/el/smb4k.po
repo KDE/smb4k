@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-19 01:41+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -181,7 +181,6 @@ msgid "Network"
 msgstr "Δίκτυο"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Προσάρτηση"
@@ -287,13 +286,17 @@ msgstr ""
 msgid "Username:"
 msgstr "Διεπαφή χρήστη"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:54
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Ομάδα εργασίας:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:286 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -345,6 +348,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Basic Settings"
 msgstr "Βασικές ρυθμίσεις"
@@ -370,6 +375,7 @@ msgid "Choose a different group"
 msgstr "Επιλέξτε αλλη ομάδα"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:155
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Κοινές επιλογές προσάρτησης"
@@ -385,6 +391,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Επεξεργασία των πρόσθετων CIFS επιλογών."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:190
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Προηγμένες ρυθμίσεις προσάρτησης"
@@ -395,6 +402,7 @@ msgid "Character Sets"
 msgstr "Σύνολα χαρακτήρων"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:366
 #, kde-format
 msgid "Mount Settings"
 msgstr "Ρυθμίσεις προσάρτησης"
@@ -432,6 +440,8 @@ msgstr[1] ""
 "options: %2. Please read the handbook for details.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:425
 #, kde-format
 msgid "Browse Settings"
 msgstr "Ρυθμίσεις περιήγησης"
@@ -443,8 +453,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, fuzzy, kde-format
 #| msgid "Wake-On-LAN"
 msgid "Wake-On-LAN"
@@ -628,61 +636,42 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:61
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:301
 #, kde-format
 msgid "Always remount this share"
 msgstr "Πάντα να αναπροσαρτάται αυτός ο κοινός πόρος"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
-msgid "Mounting: Common Settings"
-msgstr "Ρυθμίσεις προσάρτησης"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:98
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Αυτός ο εξυπηρετητής υποστηρίζει επεκτάσεις CIFS Unix"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
-msgid "Mounting: CIFS Unix Extensions"
-msgstr "Υποστήριξη επεκτάσεων CIFS Unix"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
-msgid "Mounting: Advanced Settings"
-msgstr "Προχωρημένες ρυθμίσεις"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
-msgid "Browsing"
-msgstr "Ρυθμίσεις περιήγησης"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:254
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:430
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC διεύθυνση:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:264
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
 #, fuzzy, kde-format
 #| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Αποστολή μαγικού πακέτου πριν τη σάρωση του τοπικού δικτύου"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:442
 #, fuzzy, kde-format
 #| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Αποστολή μαγικού πακέτου πριν την προσάρτηση κοινού πόρου"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
+#, kde-format
+msgid "Wake-On-LAN Settings"
+msgstr "Ρυθμίσεις απομακρυσμένης αφύπνισης"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -1275,6 +1264,26 @@ msgid "Size:"
 msgstr "Μέγεθος:"
 
 #, fuzzy
+#~| msgid "Mount Settings"
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Ρυθμίσεις προσάρτησης"
+
+#, fuzzy
+#~| msgid "CIFS Unix Extensions Support"
+#~ msgid "Mounting: CIFS Unix Extensions"
+#~ msgstr "Υποστήριξη επεκτάσεων CIFS Unix"
+
+#, fuzzy
+#~| msgid "Advanced Settings"
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Προχωρημένες ρυθμίσεις"
+
+#, fuzzy
+#~| msgid "Browse Settings"
+#~ msgid "Browsing"
+#~ msgstr "Ρυθμίσεις περιήγησης"
+
+#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Προσάρτηση"
@@ -1288,9 +1297,6 @@ msgstr "Μέγεθος:"
 #~| msgid "Mounting"
 #~ msgid "Page 3: Mounting"
 #~ msgstr "Προσάρτηση"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Ρυθμίσεις απομακρυσμένης αφύπνισης"
 
 #, fuzzy
 #~| msgid "Wake-On-LAN"

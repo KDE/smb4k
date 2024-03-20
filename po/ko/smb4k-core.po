@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"POT-Creation-Date: 2024-03-16 02:03+0000\n"
 "PO-Revision-Date: 2024-02-05 23:04+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1928,7 +1928,7 @@ msgstr "이 KDE 버전에서는 Zeroconf 지원을 사용할 수 없습니다."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "알 수 없는 Zeroconf 오류가 발생했습니다."
 
-#: smb4kmounter.cpp:769
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1937,7 +1937,7 @@ msgstr ""
 "<p><b>%1</b> 공유가<br><b>%2</b>에 마운트되어 있으며 <b>%3</b> 사용자가 소유"
 "하고 있습니다.</p><p>마운트를 해제하시겠습니까?</p>"
 
-#: smb4kmounter.cpp:774
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "외부 공유"

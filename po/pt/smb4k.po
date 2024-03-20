@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-19 01:41+0000\n"
 "PO-Revision-Date: 2023-07-02 02:26+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -205,7 +205,6 @@ msgid "Network"
 msgstr "Rede"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Montagem"
@@ -308,13 +307,17 @@ msgstr "Define o utilizador e senha da conta predefinida."
 msgid "Username:"
 msgstr "Utilizador:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:54
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Grupo de trabalho:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:286 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -368,6 +371,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Basic Settings"
 msgstr "Configuração Básica"
@@ -393,6 +398,7 @@ msgid "Choose a different group"
 msgstr "Escolha um grupo diferente"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:155
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Configuração de Montagens Comum"
@@ -408,6 +414,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Edita as opções adicionais do CIFS."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:190
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Configuração de Montagens Avançada"
@@ -418,6 +425,7 @@ msgid "Character Sets"
 msgstr "Conjuntos de Caracteres"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:366
 #, kde-format
 msgid "Mount Settings"
 msgstr "Configuração das Montagens"
@@ -455,6 +463,8 @@ msgstr[1] ""
 "favor, leia o manual para saber mais detalhes.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:425
 #, kde-format
 msgid "Browse Settings"
 msgstr "Configuração da Navegação"
@@ -465,8 +475,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Activação por LAN"
@@ -634,60 +642,42 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:61
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:301
 #, kde-format
 msgid "Always remount this share"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
-msgid "Mounting: Common Settings"
-msgstr "Configuração das Montagens"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:98
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "CIFS Unix Extensions Support"
-msgid "Mounting: CIFS Unix Extensions"
-msgstr "Suporte às Extensões de Unix do CIFS"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
-msgid "Mounting: Advanced Settings"
-msgstr "Configuração Avançada"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Browse Settings"
-msgid "Browsing"
-msgstr "Configuração da Navegação"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:254
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:430
 #, fuzzy, kde-format
 #| msgid "IP Address:"
 msgid "MAC Address:"
 msgstr "Endereço IP:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:264
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:442
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "Activação por LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -1282,6 +1272,26 @@ msgid "Size:"
 msgstr "Tamanho:"
 
 #, fuzzy
+#~| msgid "Mount Settings"
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Configuração das Montagens"
+
+#, fuzzy
+#~| msgid "CIFS Unix Extensions Support"
+#~ msgid "Mounting: CIFS Unix Extensions"
+#~ msgstr "Suporte às Extensões de Unix do CIFS"
+
+#, fuzzy
+#~| msgid "Advanced Settings"
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Configuração Avançada"
+
+#, fuzzy
+#~| msgid "Browse Settings"
+#~ msgid "Browsing"
+#~ msgstr "Configuração da Navegação"
+
+#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Montagem"
@@ -1295,11 +1305,6 @@ msgstr "Tamanho:"
 #~| msgid "Mounting"
 #~ msgid "Page 3: Mounting"
 #~ msgstr "Montagem"
-
-#, fuzzy
-#~| msgid "Wake-On-LAN"
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Activação por LAN"
 
 #, fuzzy
 #~| msgid "Wake-On-LAN"

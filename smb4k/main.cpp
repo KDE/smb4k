@@ -63,14 +63,8 @@ int main(int argc, char **argv)
     // money
     aboutData.addCredit(i18n("Wolfgang Geisendörfer"), i18n("Donator"), QStringLiteral("wdm-lin@gmx.net"));
 
-    // Register about data
+    // Set application about data
     KAboutData::setApplicationData(aboutData);
-
-    // Now add the data to the application
-    app.setApplicationName(aboutData.componentName());
-    app.setApplicationDisplayName(aboutData.displayName());
-    app.setOrganizationDomain(aboutData.organizationDomain());
-    app.setApplicationVersion(aboutData.version());
 
     // We need to set this property because otherwise the application
     // will quit when it is embedded into the system tray, the main window

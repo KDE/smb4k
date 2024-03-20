@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"POT-Creation-Date: 2024-03-16 02:03+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1991,7 +1991,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Der skete en godkendelses fejl."
 
-#: smb4kmounter.cpp:769
+#: smb4kmounter.cpp:773
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2003,7 +2003,7 @@ msgstr ""
 "<qt><p>Ressourcen <b>%1</b> er monteret i <br><b>%2</b> og ejes af brugeren "
 "<b>%3</b>.</p><p>Vil du virkelig afmontere den?</p></qt>"
 
-#: smb4kmounter.cpp:774
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Fremmed ressource"

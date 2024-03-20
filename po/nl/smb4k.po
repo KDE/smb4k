@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-19 01:41+0000\n"
 "PO-Revision-Date: 2024-01-22 10:52+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -186,7 +186,6 @@ msgid "Network"
 msgstr "Netwerk"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Aankoppelen"
@@ -292,13 +291,17 @@ msgstr ""
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:54
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Werkgroep:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:286 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -352,6 +355,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Basic Settings"
 msgstr "Basisinstellingen"
@@ -377,6 +382,7 @@ msgid "Choose a different group"
 msgstr "Een andere groep kiezen"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:155
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Algemene instellingen voor aankoppelen"
@@ -392,6 +398,7 @@ msgid "Edit the additional CIFS options."
 msgstr "De extra CIFS-opties bewerken."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:190
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Geavanceerde instellingen voor aankoppelen"
@@ -402,6 +409,7 @@ msgid "Character Sets"
 msgstr "Tekensets"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:366
 #, kde-format
 msgid "Mount Settings"
 msgstr "Instellingen voor aankoppelen"
@@ -432,6 +440,8 @@ msgstr[1] ""
 "Lees het handboek voor details.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:425
 #, kde-format
 msgid "Browse Settings"
 msgstr "Browse-instellingen"
@@ -442,8 +452,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -612,55 +620,40 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definieer aangepaste instellingen voor gedeelde map <b>%1</b>."
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:61
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:301
 #, kde-format
 msgid "Always remount this share"
 msgstr "Deze share (gedeelde mappen) altijd opnieuw aankoppelen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, kde-format
-msgid "Mounting: Common Settings"
-msgstr "Aankoppelen: algemene instellingen"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:98
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Deze server ondersteunt CIFS Unix-extensies"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Mounting: CIFS Unix Extensions"
-msgstr "Aankoppelen: CIFS Unix-extensies"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Mounting: Advanced Settings"
-msgstr "Aankoppelen: geavanceerde instellingen"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Browsing"
-msgstr "Bladeren"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:254
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:430
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-adres:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:264
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Stuur magic-pakket alvorens de netwerkomgeving te scannen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:442
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Stuur magic-pakket alvorens een share aan te koppelen"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
+#, kde-format
+msgid "Wake-On-LAN Settings"
+msgstr "Instellingen Wake-On-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -1247,6 +1240,18 @@ msgstr "%1 vrij uit %2 (%3 gebruikt)"
 msgid "Size:"
 msgstr "Grootte:"
 
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Aankoppelen: algemene instellingen"
+
+#~ msgid "Mounting: CIFS Unix Extensions"
+#~ msgstr "Aankoppelen: CIFS Unix-extensies"
+
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Aankoppelen: geavanceerde instellingen"
+
+#~ msgid "Browsing"
+#~ msgstr "Bladeren"
+
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Pagina 1: aankoppelen"
 
@@ -1258,9 +1263,6 @@ msgstr "Grootte:"
 
 #~ msgid "Page 4: Browsing"
 #~ msgstr "Pagina 4: bladeren"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Instellingen Wake-On-LAN"
 
 #~ msgid "Page 5: Wake-On-LAN"
 #~ msgstr "Pagina 5: Wake-On-LAN"

@@ -40,16 +40,43 @@ Smb4KCustomSettingsEditorWidget::~Smb4KCustomSettingsEditorWidget()
 #if defined(Q_OS_LINUX)
 void Smb4KCustomSettingsEditorWidget::setupView()
 {
-    QGroupBox *tab1 = new QGroupBox(this);
+    QWidget *tab1 = new QWidget(this);
     QGridLayout *tab1Layout = new QGridLayout(tab1);
+
+    m_ipAddressLabel = new QLabel(i18n("IP Address:"), tab1);
+    m_ipAddress = new KLineEdit(tab1);
+    m_ipAddress->setClearButtonEnabled(true);
+    // m_ipAddress->setInputMask(QStringLiteral("000.000.000.000"));
+    m_ipAddressLabel->setBuddy(m_ipAddress);
+
+    connect(m_ipAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
+
+    m_workgroupLabel = new QLabel(i18n("Workgroup:"), tab1);
+    m_workgroup = new KLineEdit(tab1);
+    m_workgroup->setClearButtonEnabled(true);
+    m_workgroupLabel->setBuddy(m_workgroup);
+
+    connect(m_workgroup, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
 
     m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
     m_alwaysRemountShare->setEnabled(false);
 
     connect(m_alwaysRemountShare, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotAlwaysRemoutShareToggled);
 
-    m_useWriteAccess = new QCheckBox(Smb4KMountSettings::self()->useWriteAccessItem()->label(), tab1);
-    m_writeAccess = new KComboBox(tab1);
+    tab1Layout->addWidget(m_ipAddressLabel, 0, 0);
+    tab1Layout->addWidget(m_ipAddress, 0, 1);
+    tab1Layout->addWidget(m_workgroupLabel, 1, 0);
+    tab1Layout->addWidget(m_workgroup, 1, 1);
+    tab1Layout->addWidget(m_alwaysRemountShare, 2, 0, 1, 2);
+    tab1Layout->setRowStretch(3, 100);
+
+    addTab(tab1, i18n("Basic Settings"));
+
+    QWidget *tab2 = new QWidget(this);
+    QGridLayout *tab2Layout = new QGridLayout(tab2);
+
+    m_useWriteAccess = new QCheckBox(Smb4KMountSettings::self()->useWriteAccessItem()->label(), tab2);
+    m_writeAccess = new KComboBox(tab2);
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
 
@@ -60,25 +87,13 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_useWriteAccess, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseWriteAccessToggled);
     connect(m_writeAccess, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotWriteAccessChanged);
 
-    m_useFileSystemPort = new QCheckBox(Smb4KMountSettings::self()->useRemoteFileSystemPortItem()->label(), tab1);
-    m_fileSystemPort = new QSpinBox(tab1);
+    m_useFileSystemPort = new QCheckBox(Smb4KMountSettings::self()->useRemoteFileSystemPortItem()->label(), tab2);
+    m_fileSystemPort = new QSpinBox(tab2);
     m_fileSystemPort->setMinimum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->minValue().toInt());
     m_fileSystemPort->setMaximum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->maxValue().toInt());
 
     connect(m_useFileSystemPort, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseFileSystemPortToggled);
     connect(m_fileSystemPort, &QSpinBox::valueChanged, this, &Smb4KCustomSettingsEditorWidget::slotFileSystemPortChanged);
-
-    tab1Layout->addWidget(m_alwaysRemountShare, 0, 0, 1, 2);
-    tab1Layout->addWidget(m_useWriteAccess, 1, 0);
-    tab1Layout->addWidget(m_writeAccess, 1, 1);
-    tab1Layout->addWidget(m_useFileSystemPort, 2, 0);
-    tab1Layout->addWidget(m_fileSystemPort, 2, 1);
-    tab1Layout->setRowStretch(3, 100);
-
-    addTab(tab1, i18n("Mounting: Common Settings"));
-
-    QGroupBox *tab2 = new QGroupBox(this);
-    QGridLayout *tab2Layout = new QGridLayout(tab2);
 
     m_cifsUnixExtensionSupport = new QCheckBox(i18n("This server supports the CIFS Unix extensions"), tab2);
 
@@ -111,7 +126,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), tab2);
     m_fileMode = new KLineEdit(tab2);
     m_fileMode->setClearButtonEnabled(true);
-    m_fileMode->setAlignment(Qt::AlignRight);
 
     connect(m_useFileMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseFileModeToggled);
     connect(m_fileMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotFileModeChanged);
@@ -119,25 +133,28 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), tab2);
     m_directoryMode = new KLineEdit(tab2);
     m_directoryMode->setClearButtonEnabled(true);
-    m_directoryMode->setAlignment(Qt::AlignRight);
 
     connect(m_useDirectoryMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseDirectoryModeToggled);
     connect(m_directoryMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged);
 
-    tab2Layout->addWidget(m_cifsUnixExtensionSupport, 0, 0, 1, 2);
-    tab2Layout->addWidget(m_useUserId, 1, 0);
-    tab2Layout->addWidget(m_userId, 1, 1);
-    tab2Layout->addWidget(m_useGroupId, 2, 0);
-    tab2Layout->addWidget(m_groupId, 2, 1);
-    tab2Layout->addWidget(m_useFileMode, 3, 0);
-    tab2Layout->addWidget(m_fileMode, 3, 1);
-    tab2Layout->addWidget(m_useDirectoryMode, 4, 0);
-    tab2Layout->addWidget(m_directoryMode, 4, 1);
-    tab2Layout->setRowStretch(5, 100);
+    tab2Layout->addWidget(m_useWriteAccess, 0, 0);
+    tab2Layout->addWidget(m_writeAccess, 0, 1);
+    tab2Layout->addWidget(m_useFileSystemPort, 1, 0);
+    tab2Layout->addWidget(m_fileSystemPort, 1, 1);
+    tab2Layout->addWidget(m_cifsUnixExtensionSupport, 2, 0, 1, 2);
+    tab2Layout->addWidget(m_useUserId, 3, 0);
+    tab2Layout->addWidget(m_userId, 3, 1);
+    tab2Layout->addWidget(m_useGroupId, 4, 0);
+    tab2Layout->addWidget(m_groupId, 4, 1);
+    tab2Layout->addWidget(m_useFileMode, 5, 0);
+    tab2Layout->addWidget(m_fileMode, 5, 1);
+    tab2Layout->addWidget(m_useDirectoryMode, 6, 0);
+    tab2Layout->addWidget(m_directoryMode, 6, 1);
+    tab2Layout->setRowStretch(7, 100);
 
-    addTab(tab2, i18n("Mounting: CIFS Unix Extensions"));
+    addTab(tab2, i18n("Common Mount Settings"));
 
-    QGroupBox *tab3 = new QGroupBox(this);
+    QWidget *tab3 = new QWidget(this);
     QGridLayout *tab3Layout = new QGridLayout(tab3);
 
     m_useSmbMountProtocolVersion = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), tab3);
@@ -170,9 +187,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab3Layout->addWidget(m_securityMode, 1, 1);
     tab3Layout->setRowStretch(2, 100);
 
-    addTab(tab3, i18n("Mounting: Advanced Settings"));
+    addTab(tab3, i18n("Advanced Mount Settings"));
 
-    QGroupBox *tab4 = new QGroupBox(this);
+    QWidget *tab4 = new QWidget(this);
     QGridLayout *tab4Layout = new QGridLayout(tab4);
 
     m_useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), tab4);
@@ -229,9 +246,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab4Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
     tab4Layout->setRowStretch(5, 100);
 
-    addTab(tab4, i18n("Browsing"));
+    addTab(tab4, i18n("Browse Settings"));
 
-    QGroupBox *tab5 = new QGroupBox(this);
+    QWidget *tab5 = new QWidget(this);
     QGridLayout *tab5Layout = new QGridLayout(tab5);
 
     m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab5);
@@ -258,21 +275,48 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab5Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
     tab5Layout->setRowStretch(3, 100);
 
-    addTab(tab5, i18n("Wake-On-LAN"));
+    addTab(tab5, i18n("Wake-On-LAN Settings"));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 void Smb4KCustomSettingsEditorWidget::setupView()
 {
-    QGroupBox *tab1 = new QGroupBox(this);
+    QWidget *tab1 = new QWidget(this);
     QGridLayout *tab1Layout = new QGridLayout(tab1);
+
+    m_ipAddressLabel = new QLabel(i18n("IP Address:"), tab1);
+    m_ipAddress = new KLineEdit(tab1);
+    m_ipAddress->setClearButtonEnabled(true);
+    // m_ipAddress->setInputMask(QStringLiteral("000.000.000.000"));
+    m_ipAddressLabel->setBuddy(m_ipAddress);
+
+    connect(m_ipAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
+
+    m_workgroupLabel = new QLabel(i18n("Workgroup:"), tab1);
+    m_workgroup = new KLineEdit(tab1);
+    m_workgroup->setClearButtonEnabled(true);
+    m_workgroupLabel->setBuddy(m_workgroup);
+
+    connect(m_workgroup, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
 
     m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
     m_alwaysRemountShare->setEnabled(false);
 
     connect(m_alwaysRemountShare, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotAlwaysRemoutShareToggled);
 
-    m_useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), tab1);
-    m_userId = new KComboBox(tab1);
+    tab1Layout->addWidget(m_ipAddressLabel, 0, 0);
+    tab1Layout->addWidget(m_ipAddress, 0, 1);
+    tab1Layout->addWidget(m_workgroupLabel, 1, 0);
+    tab1Layout->addWidget(m_workgroup, 1, 1);
+    tab1Layout->addWidget(m_alwaysRemountShare, 2, 0, 1, 2);
+    tab1Layout->setRowStretch(3, 100);
+
+    addTab(tab1, i18n("Basic Settings"));
+
+    QWidget *tab2 = new QWidget(this);
+    QGridLayout *tab2Layout = new QGridLayout(tab2);
+
+    m_useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), tab2);
+    m_userId = new KComboBox(tab2);
 
     QList<KUser> allUsers = KUser::allUsers();
 
@@ -283,8 +327,8 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_useUserId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseUserIdToggled);
     connect(m_userId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotUserIdChanged);
 
-    m_useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), tab1);
-    m_groupId = new KComboBox(tab1);
+    m_useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), tab2);
+    m_groupId = new KComboBox(tab2);
 
     QList<KUserGroup> allGroups = KUserGroup::allGroups();
 
@@ -295,44 +339,41 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_useGroupId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseGroupIdToggled);
     connect(m_groupId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotGroupIdChanged);
 
-    m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), tab1);
-    m_fileMode = new KLineEdit(tab1);
+    m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), tab2);
+    m_fileMode = new KLineEdit(tab2);
     m_fileMode->setClearButtonEnabled(true);
-    m_fileMode->setAlignment(Qt::AlignRight);
 
     connect(m_useFileMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseFileModeToggled);
     connect(m_fileMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotFileModeChanged);
 
-    m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), tab1);
-    m_directoryMode = new KLineEdit(tab1);
+    m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), tab2);
+    m_directoryMode = new KLineEdit(tab2);
     m_directoryMode->setClearButtonEnabled(true);
-    m_directoryMode->setAlignment(Qt::AlignRight);
 
     connect(m_useDirectoryMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseDirectoryModeToggled);
     connect(m_directoryMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged);
 
-    tab1Layout->addWidget(m_alwaysRemountShare, 0, 0, 1, 2);
-    tab1Layout->addWidget(m_useUserId, 1, 0);
-    tab1Layout->addWidget(m_userId, 1, 1);
-    tab1Layout->addWidget(m_useGroupId, 2, 0);
-    tab1Layout->addWidget(m_groupId, 2, 1);
-    tab1Layout->addWidget(m_useFileMode, 3, 0);
-    tab1Layout->addWidget(m_fileMode, 3, 1);
-    tab1Layout->addWidget(m_useDirectoryMode, 4, 0);
-    tab1Layout->addWidget(m_directoryMode, 4, 1);
-    tab1Layout->setRowStretch(5, 100);
+    tab2Layout->addWidget(m_useUserId, 0, 0);
+    tab2Layout->addWidget(m_userId, 0, 1);
+    tab2Layout->addWidget(m_useGroupId, 1, 0);
+    tab2Layout->addWidget(m_groupId, 1, 1);
+    tab2Layout->addWidget(m_useFileMode, 2, 0);
+    tab2Layout->addWidget(m_fileMode, 2, 1);
+    tab2Layout->addWidget(m_useDirectoryMode, 3, 0);
+    tab2Layout->addWidget(m_directoryMode, 3, 1);
+    tab2Layout->setRowStretch(4, 100);
 
-    addTab(tab1, i18n("Mounting"));
+    addTab(tab2, i18n("Mount Settings"));
 
-    QGroupBox *tab2 = new QGroupBox(this);
-    QGridLayout *tab2Layout = new QGridLayout(tab2);
+    QWidget *tab3 = new QWidget(this);
+    QGridLayout *tab3Layout = new QGridLayout(tab3);
 
-    m_useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), tab2);
+    m_useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), tab3);
 
-    m_minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), tab2);
+    m_minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), tab3);
     m_minimalClientProtocolVersionLabel->setIndent(25);
     m_minimalClientProtocolVersionLabel->setEnabled(false);
-    m_minimalClientProtocolVersion = new KComboBox(tab2);
+    m_minimalClientProtocolVersion = new KComboBox(tab3);
     m_minimalClientProtocolVersion->setEnabled(false);
     m_minimalClientProtocolVersionLabel->setBuddy(m_minimalClientProtocolVersion);
 
@@ -342,10 +383,10 @@ void Smb4KCustomSettingsEditorWidget::setupView()
         m_minimalClientProtocolVersion->addItem(minimalClientProtocolVersionChoices.at(i).label, i);
     }
 
-    m_maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), tab2);
+    m_maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), tab3);
     m_maximalClientProtocolVersionLabel->setIndent(25);
     m_maximalClientProtocolVersionLabel->setEnabled(false);
-    m_maximalClientProtocolVersion = new KComboBox(tab2);
+    m_maximalClientProtocolVersion = new KComboBox(tab3);
     m_maximalClientProtocolVersion->setEnabled(false);
     m_maximalClientProtocolVersionLabel->setBuddy(m_maximalClientProtocolVersion);
 
@@ -359,36 +400,36 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_minimalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMinimalClientProtocolVersionChanged);
     connect(m_maximalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMaximalClientProtocolVersionChanged);
 
-    m_useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), tab2);
-    m_remoteSmbPort = new QSpinBox(tab2);
+    m_useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), tab3);
+    m_remoteSmbPort = new QSpinBox(tab3);
     m_remoteSmbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
     m_remoteSmbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
 
     connect(m_useRemoteSmbPort, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseClientProtocolVersionsToggled);
     connect(m_remoteSmbPort, &QSpinBox::valueChanged, this, &Smb4KCustomSettingsEditorWidget::slotRemoteSmbPortChanged);
 
-    m_useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), tab2);
+    m_useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), tab3);
 
     connect(m_useKerberos, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled);
 
-    tab2Layout->addWidget(m_useClientProtocolVersions, 0, 0, 1, 2);
-    tab2Layout->addWidget(m_minimalClientProtocolVersionLabel, 1, 0);
-    tab2Layout->addWidget(m_minimalClientProtocolVersion, 1, 1);
-    tab2Layout->addWidget(m_maximalClientProtocolVersionLabel, 2, 0);
-    tab2Layout->addWidget(m_maximalClientProtocolVersion, 2, 1);
-    tab2Layout->addWidget(m_useRemoteSmbPort, 3, 0);
-    tab2Layout->addWidget(m_remoteSmbPort, 3, 1);
-    tab2Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
-    tab2Layout->setRowStretch(5, 100);
+    tab3Layout->addWidget(m_useClientProtocolVersions, 0, 0, 1, 2);
+    tab3Layout->addWidget(m_minimalClientProtocolVersionLabel, 1, 0);
+    tab3Layout->addWidget(m_minimalClientProtocolVersion, 1, 1);
+    tab3Layout->addWidget(m_maximalClientProtocolVersionLabel, 2, 0);
+    tab3Layout->addWidget(m_maximalClientProtocolVersion, 2, 1);
+    tab3Layout->addWidget(m_useRemoteSmbPort, 3, 0);
+    tab3Layout->addWidget(m_remoteSmbPort, 3, 1);
+    tab3Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
+    tab3Layout->setRowStretch(5, 100);
 
-    addTab(tab2, i18n("Browsing"));
+    addTab(tab3, i18n("Browse Settings"));
 
-    QGroupBox *tab3 = new QGroupBox(this);
-    QGridLayout *tab3Layout = new QGridLayout(tab3);
+    QWidget *tab4 = new QWidget(this);
+    QGridLayout *tab4Layout = new QGridLayout(tab4);
 
-    m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab3);
+    m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab4);
     m_macAddressLabel->setEnabled(false);
-    m_macAddress = new KLineEdit(tab3);
+    m_macAddress = new KLineEdit(tab4);
     m_macAddress->setClearButtonEnabled(true);
     m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
     m_macAddress->setEnabled(false);
@@ -396,21 +437,21 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
 
-    m_sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), tab3);
+    m_sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), tab4);
     m_sendPacketBeforeScan->setEnabled(false);
-    m_sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), tab3);
+    m_sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), tab4);
     m_sendPacketBeforeMount->setEnabled(false);
 
     connect(m_sendPacketBeforeScan, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeScanToggled);
     connect(m_sendPacketBeforeMount, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeMountToggled);
 
-    tab3Layout->addWidget(m_macAddressLabel, 0, 0);
-    tab3Layout->addWidget(m_macAddress, 0, 1);
-    tab3Layout->addWidget(m_sendPacketBeforeScan, 1, 0, 1, 2);
-    tab3Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
-    tab3Layout->setRowStretch(3, 100);
+    tab4Layout->addWidget(m_macAddressLabel, 0, 0);
+    tab4Layout->addWidget(m_macAddress, 0, 1);
+    tab4Layout->addWidget(m_sendPacketBeforeScan, 1, 0, 1, 2);
+    tab4Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
+    tab4Layout->setRowStretch(3, 100);
 
-    addTab(tab3, i18n("Wake-On-LAN"));
+    addTab(tab4, i18n("Wake-On-LAN Settings"));
 }
 #else
 void Smb4KCustomSettingsEditorWidget::setupView()
@@ -420,6 +461,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
 void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSettings &settings)
 {
+    m_ipAddress->setText(settings.ipAddress());
+    m_workgroup->setText(settings.workgroupName());
+
     if (settings.type() != Host) {
         m_alwaysRemountShare->setEnabled(true);
         m_alwaysRemountShare->setChecked(settings.remount() == Smb4KCustomSettings::RemountAlways);
@@ -487,6 +531,9 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
 
 Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
 {
+    m_customSettings.setIpAddress(m_ipAddress->text());
+    m_customSettings.setWorkgroupName(m_workgroup->text());
+
     if (m_customSettings.type() != Host) {
         m_customSettings.setRemount(m_alwaysRemountShare->isChecked() ? Smb4KCustomSettings::RemountAlways : Smb4KCustomSettings::UndefinedRemount);
     }
@@ -600,6 +647,16 @@ void Smb4KCustomSettingsEditorWidget::clear()
 void Smb4KCustomSettingsEditorWidget::checkValues()
 {
     if (!m_haveCustomSettings) {
+        return;
+    }
+
+    if (m_ipAddress->text() != m_customSettings.ipAddress()) {
+        Q_EMIT edited(true);
+        return;
+    }
+
+    if (m_workgroup->text().toUpper() != m_customSettings.workgroupName().toUpper()) {
+        Q_EMIT edited(true);
         return;
     }
 
@@ -743,6 +800,22 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
     }
 
     Q_EMIT edited(false);
+}
+
+void Smb4KCustomSettingsEditorWidget::slotIpAddressChanged(const QString &text)
+{
+    Q_UNUSED(text);
+
+    // FIXME: Propagate IP address to all other shares of this host?
+    // FIXME: Check if this is indeed a valid IP address!?
+
+    checkValues();
+}
+
+void Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged(const QString &text)
+{
+    Q_UNUSED(text);
+    checkValues();
 }
 
 void Smb4KCustomSettingsEditorWidget::slotAlwaysRemoutShareToggled(bool checked)

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-29 00:41+0000\n"
+"POT-Creation-Date: 2024-03-16 02:03+0000\n"
 "PO-Revision-Date: 2023-12-03 18:14+0100\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2039,7 +2039,7 @@ msgstr "Il supporto per Zeroconf non è disponibile in questa versione di KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Si è verificato un errore sconosciuto con Zeroconf."
 
-#: smb4kmounter.cpp:769
+#: smb4kmounter.cpp:773
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2048,7 +2048,7 @@ msgstr ""
 "<p>La condivisione <b>%1</b> è montata in <br><b>%2</b> e di proprietà "
 "dell'utente <b>%3</b>.</p><p>Sei sicuro di volerla smontare?</p>"
 
-#: smb4kmounter.cpp:774
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid "Foreign Share"
 msgstr "Condivisione esterna"

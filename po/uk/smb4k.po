@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-17 01:40+0000\n"
+"POT-Creation-Date: 2024-03-19 01:41+0000\n"
 "PO-Revision-Date: 2024-01-22 09:02+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -183,7 +183,6 @@ msgid "Network"
 msgstr "Мережа"
 
 #: smb4k/smb4kconfigdialog.cpp:126
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Mounting"
 msgstr "Монтування"
@@ -288,13 +287,17 @@ msgstr ""
 msgid "Username:"
 msgstr "Користувач:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kconfigpagebookmarks.cpp:84
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:54
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "Робоча група:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kconfigpagebookmarks.cpp:92
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:286 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
@@ -347,6 +350,8 @@ msgstr " хв."
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Basic Settings"
 msgstr "Основні параметри"
@@ -372,6 +377,7 @@ msgid "Choose a different group"
 msgstr "Обрати іншу групу"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:155
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Загальні параметри монтування"
@@ -387,6 +393,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Змінити додаткові параметри CIFS."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:190
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Додаткові параметри монтування"
@@ -397,6 +404,7 @@ msgid "Character Sets"
 msgstr "Набори символів"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:366
 #, kde-format
 msgid "Mount Settings"
 msgstr "Параметри монтування"
@@ -435,6 +443,8 @@ msgstr[3] ""
 "<br>Будь ласка, ознайомтеся з підручником, щоб дізнатися більше."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:425
 #, kde-format
 msgid "Browse Settings"
 msgstr "Параметри навігації"
@@ -445,8 +455,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -615,55 +623,40 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Визначте нетипові параметри спільного ресурсу <b>%1</b>."
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:61
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:301
 #, kde-format
 msgid "Always remount this share"
 msgstr "Завжди повторно монтувати цей спільний ресурс"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, kde-format
-msgid "Mounting: Common Settings"
-msgstr "Монтування: загальні параметри"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:98
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, kde-format
-msgid "Mounting: CIFS Unix Extensions"
-msgstr "Монтування: розширення UNIX CIFS"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, kde-format
-msgid "Mounting: Advanced Settings"
-msgstr "Монтування: додаткові параметри"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, kde-format
-msgid "Browsing"
-msgstr "Навігація"
-
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:254
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:430
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-адреса:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:264
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Надіслати контрольний пакет до сканування мережевого оточення"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:442
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:454
+#, kde-format
+msgid "Wake-On-LAN Settings"
+msgstr "Параметри Wake-On-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -1253,6 +1246,18 @@ msgstr "Вільно %1 з %2 (використано %3)"
 msgid "Size:"
 msgstr "Розмір:"
 
+#~ msgid "Mounting: Common Settings"
+#~ msgstr "Монтування: загальні параметри"
+
+#~ msgid "Mounting: CIFS Unix Extensions"
+#~ msgstr "Монтування: розширення UNIX CIFS"
+
+#~ msgid "Mounting: Advanced Settings"
+#~ msgstr "Монтування: додаткові параметри"
+
+#~ msgid "Browsing"
+#~ msgstr "Навігація"
+
 #~ msgid "Page 1: Mounting"
 #~ msgstr "Сторінка 1. Монтування"
 
@@ -1264,9 +1269,6 @@ msgstr "Розмір:"
 
 #~ msgid "Page 4: Browsing"
 #~ msgstr "Сторінка 4. Навігація"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Параметри Wake-On-LAN"
 
 #~ msgid "Page 5: Wake-On-LAN"
 #~ msgstr "Сторінка 5. Wake-On-LAN"

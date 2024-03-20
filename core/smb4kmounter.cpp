@@ -101,6 +101,10 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     connect(Smb4KWalletManager::self(), &Smb4KWalletManager::credentialsUpdated, this, &Smb4KMounter::slotCredentialsUpdated);
     connect(Smb4KMountSettings::self(), &Smb4KMountSettings::configChanged, this, &Smb4KMounter::slotConfigChanged);
 
+    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::onlineStateChanged, this, &Smb4KMounter::slotOnlineStateChanged);
+    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareAdded, this, &Smb4KMounter::slotTriggerImport);
+    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareRemoved, this, &Smb4KMounter::slotTriggerImport);
+
     connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KMounter::slotAboutToQuit);
 }
 
@@ -916,16 +920,6 @@ void Smb4KMounter::unmountAllShares(bool silent)
 
 void Smb4KMounter::start()
 {
-    //
-    // Connect to the relevant signals provided by Smb4KHardwareInterface.
-    //
-    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::onlineStateChanged, this, &Smb4KMounter::slotOnlineStateChanged, Qt::UniqueConnection);
-    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareAdded, this, &Smb4KMounter::slotTriggerImport, Qt::UniqueConnection);
-    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareRemoved, this, &Smb4KMounter::slotTriggerImport, Qt::UniqueConnection);
-
-    //
-    // Start with importing shares
-    //
     if (Smb4KHardwareInterface::self()->isOnline()) {
         QTimer::singleShot(50, this, SLOT(slotStartJobs()));
     }
@@ -1909,14 +1903,8 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
 
 void Smb4KMounter::slotTriggerImport()
 {
-    //
-    // Wait a bit so that the mount or unmount process can finish and
-    // then start importing the shares, if no jobs are running anymore
-    //
     QTimer::singleShot(2 * TIMEOUT, this, [&]() {
-        if (!isRunning()) {
-            import(true);
-        }
+        import(true);
     });
 }
 
