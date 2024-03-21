@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 01:35+0000\n"
+"POT-Creation-Date: 2024-03-21 01:40+0000\n"
 "PO-Revision-Date: 2022-08-23 15:16+0300\n"
 "Last-Translator: Мария Шикунова <translation-team@basealt.ru>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -59,22 +59,22 @@ msgid "Bookmark"
 msgstr "Добавить закладку"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:36
+#: package6/contents/ui/NetworkBrowserPage.qml:43
 msgid "Rescan"
 msgstr "Обновить"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:45
+#: package6/contents/ui/NetworkBrowserPage.qml:60
 msgid "Abort"
 msgstr "Остановить"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:54
+#: package6/contents/ui/NetworkBrowserPage.qml:77
 msgid "Go one level up"
 msgstr "Перейти на уровень выше"
 
 #: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:63
+#: package6/contents/ui/NetworkBrowserPage.qml:94
 msgid "Open the mount dialog"
 msgstr "Открыть диалог подключения"
 
