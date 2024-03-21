@@ -201,7 +201,7 @@ PlasmaComponents.Page {
   //
   // List view 
   //
-  ScrollView {
+  PlasmaComponents.ScrollView {
     id: networkBrowserScrollArea
 
     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff

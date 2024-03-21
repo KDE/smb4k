@@ -89,7 +89,7 @@ PlasmaComponents.Page {
   //
   // List view
   //
-  ScrollView {
+  PlasmaComponents.ScrollView {
     id: profilesScrollArea
     
     anchors {

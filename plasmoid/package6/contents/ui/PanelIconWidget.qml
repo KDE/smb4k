@@ -16,7 +16,7 @@ import org.kde.kirigami as Kirigami
 MouseArea {
   id: panelIconWidget
   anchors.fill: parent
-  
+
   Kirigami.Icon {
     id: panelIcon
     anchors.fill: parent
@@ -36,9 +36,9 @@ MouseArea {
   }
   
   onClicked: {
-    plasmoid.expanded = !plasmoid.expanded
+    root.expanded = !root.expanded
     
-    if (!plasmoid.expanded && busyIndicator.running) {
+    if (!root.expanded && busyIndicator.running) {
       busyIndicator.visible = false
       busyIndicator.running = false
     }

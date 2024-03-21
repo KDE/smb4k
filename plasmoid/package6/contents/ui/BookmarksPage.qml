@@ -18,8 +18,9 @@ PlasmaComponents.Page {
   //
   // Tool bar
   //
-  ToolBar {
+  PlasmaComponents.ToolBar {
     id: bookmarksToolBar
+
     anchors {
       top: parent.top
       left: parent.left
@@ -27,20 +28,34 @@ PlasmaComponents.Page {
     }
     
     RowLayout {
-      ToolButton {
+      PlasmaComponents.ToolButton {
         id: backButton
-        text: i18n("Go back")
+
+        hoverEnabled: true
         icon.name: "go-previous"
-        width: minimumWidth
+        flat: true
+
+        PlasmaComponents.ToolTip.delay: 1000
+        PlasmaComponents.ToolTip.timeout: 5000
+        PlasmaComponents.ToolTip.text: i18n("Go back")
+        PlasmaComponents.ToolTip.visible: hovered
+
         onClicked: {
           back()
         }
       }
-      ToolButton {
+      PlasmaComponents.ToolButton {
         id: editButton
-        text: i18n("Edit bookmarks")
+
+        hoverEnabled: true
         icon.name: "bookmarks-organize"
-        width: minimumWidth
+        flat: true
+
+        PlasmaComponents.ToolTip.delay: 1000
+        PlasmaComponents.ToolTip.timeout: 5000
+        PlasmaComponents.ToolTip.text: i18n("Edit bookmarks")
+        PlasmaComponents.ToolTip.visible: hovered
+
         onClicked: {
           iface.editBookmarks()
         }
@@ -131,7 +146,7 @@ PlasmaComponents.Page {
   //
   // List view
   //
-  ScrollView {
+  PlasmaComponents.ScrollView {
     id: bookmarksScrollArea
     
     anchors {

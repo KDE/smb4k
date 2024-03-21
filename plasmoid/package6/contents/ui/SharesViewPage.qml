@@ -19,7 +19,7 @@ PlasmaComponents.Page {
   //
   // Tool bar
   //
-  ToolBar {
+  PlasmaComponents.ToolBar {
     id: sharesViewToolBar
     
     anchors {
@@ -29,11 +29,18 @@ PlasmaComponents.Page {
     }
     
     RowLayout {
-      ToolButton {
+      PlasmaComponents.ToolButton {
         id: unmountAllButton
-        text: i18n("Unmount all shares")
+
+        hoverEnabled: true
         icon.name: "system-run"
-        width: minimumWidth
+        flat: true
+
+        PlasmaComponents.ToolTip.delay: 1000
+        PlasmaComponents.ToolTip.timeout: 5000
+        PlasmaComponents.ToolTip.text: i18n("Unmount all shares")
+        PlasmaComponents.ToolTip.visible: hovered
+
         onClicked: {
           iface.unmountAll()
         }
@@ -134,7 +141,7 @@ PlasmaComponents.Page {
   //
   // List view
   //
-  ScrollView {
+  PlasmaComponents.ScrollView {
     id: sharesViewScrollArea
     
     anchors {
