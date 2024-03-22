@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-21 01:40+0000\n"
+"POT-Creation-Date: 2024-03-22 01:36+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -24,12 +24,12 @@ msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">på %1</font>"
 
 #: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:32
+#: package6/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "Få tilbage"
 
 #: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:41
+#: package6/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "Redigér bogmærker"
 
@@ -39,7 +39,7 @@ msgid "Configuration Dialog"
 msgstr ""
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "Netværksnabolag"
 
@@ -71,22 +71,22 @@ msgid "Open the mount dialog"
 msgstr "Åbn monteringsdialogen"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
 msgstr "Monterede ressourcer"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "Bogmærker"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
 msgstr "Profiler"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
 msgstr ""
 
@@ -106,7 +106,7 @@ msgid "Unmount"
 msgstr "Afmontér"
 
 #: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:34
+#: package6/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
 msgstr "Afmontér alle ressourcer"
 

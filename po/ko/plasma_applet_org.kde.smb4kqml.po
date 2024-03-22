@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-21 01:40+0000\n"
+"POT-Creation-Date: 2024-03-22 01:36+0000\n"
 "PO-Revision-Date: 2024-02-24 22:11+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -25,12 +25,12 @@ msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">%1에 있음</font>"
 
 #: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:32
+#: package6/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "뒤로 가기"
 
 #: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:41
+#: package6/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "책갈피 편집"
 
@@ -40,7 +40,7 @@ msgid "Configuration Dialog"
 msgstr "설정 대화 상자"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "네트워크 환경"
 
@@ -72,22 +72,22 @@ msgid "Open the mount dialog"
 msgstr "마운트 대화 상자 열기"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
 msgstr "마운트된 공유"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "책갈피"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
 msgstr "프로필"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
 msgstr "설정"
 
@@ -107,7 +107,7 @@ msgid "Unmount"
 msgstr "마운트 해제"
 
 #: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:34
+#: package6/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
 msgstr "모든 공유 마운트 해제"
 
