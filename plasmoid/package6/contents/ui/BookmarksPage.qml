@@ -148,6 +148,9 @@ PlasmaComponents.Page {
   //
   PlasmaComponents.ScrollView {
     id: bookmarksScrollArea
+
+    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+    ScrollBar.vertical.policy: ScrollBar.AsNeeded
     
     anchors {
       top: bookmarksToolBar.bottom

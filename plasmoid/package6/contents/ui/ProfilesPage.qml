@@ -91,6 +91,9 @@ PlasmaComponents.Page {
   //
   PlasmaComponents.ScrollView {
     id: profilesScrollArea
+
+    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+    ScrollBar.vertical.policy: ScrollBar.AsNeeded
     
     anchors {
       top: parent.top

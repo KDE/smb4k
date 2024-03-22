@@ -143,6 +143,9 @@ PlasmaComponents.Page {
   //
   PlasmaComponents.ScrollView {
     id: sharesViewScrollArea
+
+    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+    ScrollBar.vertical.policy: ScrollBar.AsNeeded
     
     anchors {
       top: sharesViewToolBar.bottom
@@ -182,6 +185,7 @@ PlasmaComponents.Page {
   // Functions
   //
   function shareMountedOrUnmounted() {
+    console.log("Share mounted or unmounted ...")
     while (sharesViewItemDelegateModel.model.count != 0) {
       sharesViewItemDelegateModel.model.remove(0)
     }

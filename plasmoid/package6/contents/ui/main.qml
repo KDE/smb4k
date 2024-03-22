@@ -38,6 +38,7 @@ PlasmoidItem {
     anchors.fill: parent
     focus: true
   }
+  preferredRepresentation: fullRepresentation
   
   //
   // Start interface
