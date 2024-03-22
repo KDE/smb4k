@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-21 01:40+0000\n"
+"POT-Creation-Date: 2024-03-22 01:36+0000\n"
 "PO-Revision-Date: 2024-02-23 10:56+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -25,12 +25,12 @@ msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">sur %1</font>"
 
 #: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:32
+#: package6/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "Vade retro"
 
 #: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:41
+#: package6/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "Edita marcatores de libro"
 
@@ -40,7 +40,7 @@ msgid "Configuration Dialog"
 msgstr "Dialogo de configuration"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "Vicinitate de rete"
 
@@ -72,22 +72,22 @@ msgid "Open the mount dialog"
 msgstr "Aperi le dialogo de montar"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
 msgstr "Partes Montate"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "Marcatores de libro"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
 msgstr "Profilos"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
 msgstr "Configuration"
 
@@ -107,7 +107,7 @@ msgid "Unmount"
 msgstr "Dismonta"
 
 #: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:34
+#: package6/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
 msgstr "Dismonta omne portiones"
 

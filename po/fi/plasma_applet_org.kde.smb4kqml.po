@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-21 01:40+0000\n"
+"POT-Creation-Date: 2024-03-22 01:36+0000\n"
 "PO-Revision-Date: 2020-06-18 17:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -25,12 +25,12 @@ msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">koneella %1</font>"
 
 #: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:32
+#: package6/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "Siirry taaksepäin"
 
 #: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:41
+#: package6/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "Muokkaa kirjanmerkkejä"
 
@@ -40,7 +40,7 @@ msgid "Configuration Dialog"
 msgstr "Asetusikkuna"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "Verkkoympäristö"
 
@@ -72,22 +72,22 @@ msgid "Open the mount dialog"
 msgstr "Avaa liittämisikkuna"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
 msgstr "Liitetyt jaot"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "Kirjanmerkit"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
 msgstr "Profiilit"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
 msgstr "Asetukset"
 
@@ -107,7 +107,7 @@ msgid "Unmount"
 msgstr "Irrota"
 
 #: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:34
+#: package6/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
 msgstr "Irrota kaikki jaot"
 

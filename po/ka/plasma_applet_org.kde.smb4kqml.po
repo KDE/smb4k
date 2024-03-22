@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-21 01:40+0000\n"
+"POT-Creation-Date: 2024-03-22 01:36+0000\n"
 "PO-Revision-Date: 2024-02-29 03:23+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -26,12 +26,12 @@ msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">%1-ზე</font>"
 
 #: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:32
+#: package6/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "უკან გადასვლა"
 
 #: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:41
+#: package6/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "სანიშნების ჩასწორება"
 
@@ -41,7 +41,7 @@ msgid "Configuration Dialog"
 msgstr "მორგების ფანჯარა"
 
 #: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:32
+#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "ქსელური მეზობლები"
 
@@ -73,22 +73,22 @@ msgid "Open the mount dialog"
 msgstr "მიმაგრების ფანჯრის გახსნა"
 
 #: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:39
+#: package6/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
 msgstr "მიმაგრებული გაზიარებულები"
 
 #: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:46
+#: package6/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "სანიშნები"
 
 #: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:53
+#: package6/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
 msgstr "პროფილები"
 
 #: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:60
+#: package6/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
 msgstr "მორგება"
 
@@ -108,7 +108,7 @@ msgid "Unmount"
 msgstr "მოხსნა"
 
 #: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:34
+#: package6/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
 msgstr "ყველა გაზიარებულის მოხსნა"
 
