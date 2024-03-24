@@ -16,10 +16,9 @@ PlasmoidItem {
   id: root
   
   toolTipMainText: i18n("Network Neighborhood")
-//   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
-//   Plasmoid.icon: "smb4k"
   switchWidth: Kirigami.Units.gridUnit * 10
   switchHeight: Kirigami.Units.gridUnit * 10
+  activationTogglesExpanded: true
   
   //
   // Smb4K interface
@@ -39,6 +38,7 @@ PlasmoidItem {
     anchors.fill: parent
     focus: true
   }
+  preferredRepresentation: fullRepresentation
   
   //
   // Start interface

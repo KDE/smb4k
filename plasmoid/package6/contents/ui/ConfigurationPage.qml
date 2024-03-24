@@ -15,7 +15,7 @@ PlasmaComponents.Page {
   ColumnLayout {
     anchors.fill: parent
 
-    Button {
+    PlasmaComponents.Button {
       id: openConfigDialogButton
       Layout.alignment: Qt.AlignHCenter|Qt.AlignVCenter
       text: i18n("Configuration Dialog")

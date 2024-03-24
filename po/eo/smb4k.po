@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-19 01:41+0000\n"
-"PO-Revision-Date: 2024-01-28 20:02+0100\n"
+"PO-Revision-Date: 2024-03-20 22:52+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -639,10 +639,9 @@ msgstr "Sendi magian paketon antaŭ ol munti kundividaĵon"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:278
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:454
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN"
+msgstr "Vekiĝi-Je-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -1224,15 +1223,3 @@ msgstr "%1 libera de %2 (%3 uzata)"
 #, kde-format
 msgid "Size:"
 msgstr "Grandeco:"
-
-#~ msgid "Mounting: Common Settings"
-#~ msgstr "Muntado: Komunaj Agordoj"
-
-#~ msgid "Mounting: CIFS Unix Extensions"
-#~ msgstr "Muntado: Uniksaj Etendaĵoj de CIFS "
-
-#~ msgid "Mounting: Advanced Settings"
-#~ msgstr "Muntado: Altnivelaj Agordoj"
-
-#~ msgid "Browsing"
-#~ msgstr "Foliumado"

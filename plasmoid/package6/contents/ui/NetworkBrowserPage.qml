@@ -16,14 +16,14 @@ import org.kde.smb4k.smb4kqmlplugin
 PlasmaComponents.Page {
   id: networkBrowserPage
   
-  property var parentObject: 0
+  property var parentObject: null
   
   //
   // Tool bar
   //
-  ToolBar {
+  PlasmaComponents.ToolBar {
     id: networkBrowserToolBar
-    
+
     anchors {
       top: parent.top
       left: parent.left
@@ -31,37 +31,69 @@ PlasmaComponents.Page {
     }
     
     RowLayout {
-      ToolButton {
+      PlasmaComponents.ToolButton {
         id: rescanButton
-        text: i18n("Rescan")
+
+        hoverEnabled: true
         icon.name: "view-refresh"
+        flat: true
+
+        PlasmaComponents.ToolTip.delay: 1000
+        PlasmaComponents.ToolTip.timeout: 5000
+        PlasmaComponents.ToolTip.text: i18n("Rescan")
+        PlasmaComponents.ToolTip.visible: hovered
+
         onClicked: {
           rescan()
         }
       }
 
-      ToolButton {
+      PlasmaComponents.ToolButton {
         id: abortButton
-        text: i18n("Abort")
+
+        hoverEnabled: true
         icon.name: "process-stop"
+        flat: true
+
+        PlasmaComponents.ToolTip.delay: 1000
+        PlasmaComponents.ToolTip.timeout: 5000
+        PlasmaComponents.ToolTip.text: i18n("Abort")
+        PlasmaComponents.ToolTip.visible: hovered
+
         onClicked: {
           abort()
         }
       }
       
-      ToolButton {
+      PlasmaComponents.ToolButton {
         id: upButton
-        text: i18n("Go one level up")
+
+        hoverEnabled: true
         icon.name: "go-up-symbolic"
+        flat: true
+
+        PlasmaComponents.ToolTip.delay: 1000
+        PlasmaComponents.ToolTip.timeout: 5000
+        PlasmaComponents.ToolTip.text: i18n("Go one level up")
+        PlasmaComponents.ToolTip.visible: hovered
+
         onClicked: {
           up()
         }
       }
       
-      ToolButton {
+      PlasmaComponents.ToolButton {
         id: mountDialogButton
-        text: i18n("Open the mount dialog")
+
+        hoverEnabled: true
         icon.name: "view-form"
+        flat: true
+
+        PlasmaComponents.ToolTip.delay: 1000
+        PlasmaComponents.ToolTip.timeout: 5000
+        PlasmaComponents.ToolTip.text: i18n("Open the mount dialog")
+        PlasmaComponents.ToolTip.visible: hovered
+
         onClicked: {
           // FIXME: Use Plasma dialog
           iface.openMountDialog()
@@ -169,7 +201,7 @@ PlasmaComponents.Page {
   //
   // List view 
   //
-  ScrollView {
+  PlasmaComponents.ScrollView {
     id: networkBrowserScrollArea
 
     ScrollBar.horizontal.policy: ScrollBar.AlwaysOff

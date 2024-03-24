@@ -21,7 +21,6 @@ FocusScope {
     PlasmaComponents.TabBar {
       id: tabBar
 
-      // Layout.maximumWidth: parent.width
       Layout.fillWidth: true
       Layout.fillHeight: false
 
