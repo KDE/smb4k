@@ -850,8 +850,9 @@ bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
 
 void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
 {
-    // NOTE: Do not update the workgroup, URL and the type
+    // NOTE: Do not update the URL and the type
 
+    d->workgroup = customSettings->workgroupName();
     d->ip.setAddress(customSettings->ipAddress());
     d->remount = customSettings->remount();
     d->useUser = customSettings->useUser();
