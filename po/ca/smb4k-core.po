@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-16 02:03+0000\n"
+"POT-Creation-Date: 2024-03-25 02:00+0000\n"
 "PO-Revision-Date: 2024-01-30 13:26+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2049,7 +2049,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb el Zeroconf."
 
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:684
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2058,7 +2058,7 @@ msgstr ""
 "<p>La compartició <b>%1</b> està muntada a <br><b>%2</b> i és propietat de "
 "l'usuari <b>%3</b>.</p<p>Esteu segur que la voleu desmuntar?</p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:689
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartició d'aliens"

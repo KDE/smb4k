@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-16 02:03+0000\n"
+"POT-Creation-Date: 2024-03-25 02:00+0000\n"
 "PO-Revision-Date: 2024-03-01 16:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1988,7 +1988,7 @@ msgstr "Zeroconf desteği, KDE'nin bu sürümünde kullanılabilir değil."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf ile bilinmeyen bir hata oluştu."
 
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:684
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1998,7 +1998,7 @@ msgstr ""
 "bağlanıyor.</p><p>Paylaşımın bağlantısını gerçekten kesmek istiyor musunuz?</"
 "p>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:689
 #, kde-format
 msgid "Foreign Share"
 msgstr "Yabancı Paylaşım"

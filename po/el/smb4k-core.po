@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-16 02:03+0000\n"
+"POT-Creation-Date: 2024-03-25 02:00+0000\n"
 "PO-Revision-Date: 2021-07-09 10:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2050,7 +2050,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:773
+#: smb4kmounter.cpp:684
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2063,7 +2063,7 @@ msgstr ""
 "κάτοχο τον χρήστη <b>%3</b>.</p><p>Θέλετ πράγματι να τον αποπροσαρτήσετε;</"
 "p></qt>"
 
-#: smb4kmounter.cpp:778
+#: smb4kmounter.cpp:689
 #, kde-format
 msgid "Foreign Share"
 msgstr "Ξένος κοινός πόρος"

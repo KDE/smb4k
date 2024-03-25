@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-19 01:41+0000\n"
-"PO-Revision-Date: 2024-01-27 18:37+0100\n"
+"PO-Revision-Date: 2024-03-23 17:39+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -661,10 +661,9 @@ msgstr "Enviar paquete «magic» antes de montar un recurso compartido"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:278
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:454
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN"
+msgstr "Preferencias Wake-On-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -1251,15 +1250,3 @@ msgstr "%1 libres de %2 (%3 utilizado)"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgid "Mounting: Common Settings"
-#~ msgstr "Montaje: Preferencias comunes"
-
-#~ msgid "Mounting: CIFS Unix Extensions"
-#~ msgstr "Montaje: Extensiones CIFS de Unix"
-
-#~ msgid "Mounting: Advanced Settings"
-#~ msgstr "Montaje: Preferencias avanzadas"
-
-#~ msgid "Browsing"
-#~ msgstr "Navegación"
