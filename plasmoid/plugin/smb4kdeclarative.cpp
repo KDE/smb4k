@@ -13,6 +13,7 @@
 #include "core/smb4kclient.h"
 #include "core/smb4khost.h"
 #include "core/smb4kmounter.h"
+#include "core/smb4knotification.h"
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
@@ -62,6 +63,8 @@ Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
 {
     d->passwordDialog = new Smb4KPasswordDialog();
     d->timerId = 0;
+
+    Smb4KNotification::setComponentName(QStringLiteral("smb4k"));
 
     connect(Smb4KClient::self(), &Smb4KClient::workgroups, this, &Smb4KDeclarative::slotWorkgroupsListChanged);
     connect(Smb4KClient::self(), &Smb4KClient::hosts, this, &Smb4KDeclarative::slotHostsListChanged);
