@@ -1,7 +1,7 @@
 /*
     This class provides notifications for Smb4K
 
-    SPDX-FileCopyrightText: 2010-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2010-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -14,13 +14,8 @@
 // Qt includes
 #include <QDir>
 #include <QFile>
-#include <QObject>
 #include <QProcess>
-#include <QScopedPointer>
 #include <QUrl>
-
-// forward declarations
-class Smb4KNotificationPrivate;
 
 /**
  * This namespace provides notifications used thoughout Smb4K.
@@ -31,6 +26,14 @@ class Smb4KNotificationPrivate;
 
 namespace Smb4KNotification
 {
+/**
+ * Set the component name for the notifications. This is only
+ * necessary when running from the plasmoid.
+ *
+ * @param name      The component name
+ */
+Q_DECL_EXPORT void setComponentName(const QString &name);
+
 /**
  * Notify the user that a share has been mounted.
  *
