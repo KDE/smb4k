@@ -238,7 +238,7 @@ PlasmaComponents.Page {
     function onWorkgroupsChanged() { getWorkgroups() }
     function onHostsChanged() { getHosts() }
     function onSharesChanged() { getShares() }
-    function onMountedSharesChanged() { shareMountedOrUnmounted() }
+    function onMountedSharesListChanged() { shareMountedOrUnmounted() }
   }
   
   //

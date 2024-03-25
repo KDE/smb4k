@@ -26,7 +26,7 @@ PlasmoidItem {
   Interface {
     id: iface
   }
-  
+
   //
   // Plasmoid representations
   //
