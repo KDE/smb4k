@@ -7,6 +7,6 @@ add_subdirectory(plugin)
 
 if (QT_MAJOR_VERSION STREQUAL "6")
   plasma_install_package(package6 org.kde.smb4kqml)
-elseif()
+else()
   plasma_install_package(package5 org.kde.smb4kqml)
 endif()
