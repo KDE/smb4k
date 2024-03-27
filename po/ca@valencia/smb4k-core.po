@@ -3078,8 +3078,8 @@ msgstr ""
 "servidors, és possible que vulgueu desmarcar estes opcions, de manera que es "
 "puguen passar al servidor els valors predefinits. Cal tindre en compte que "
 "si l'ordinador està ubicat en un veïnatge de xarxa dominat per Windows amb "
-"només alguns servidors de Samba, podeu desmarcar esta opció amb seguretat i "
-"definir opcions personalitzades per als servidors de Samba."
+"només alguns servidors de Samba, podeu desseleccionar esta opció amb "
+"seguretat i definir opcions personalitzades per als servidors de Samba."
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
