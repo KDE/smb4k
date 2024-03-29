@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-19 01:41+0000\n"
-"PO-Revision-Date: 2024-03-20 22:52+0100\n"
+"PO-Revision-Date: 2024-03-28 08:18+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -869,7 +869,7 @@ msgstr "Ctrl+O"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:176
 #, kde-format
 msgid "Au&thentication"
-msgstr "Aŭtentikigo"
+msgstr "Aŭ&tentikigo"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:182
 #, kde-format
