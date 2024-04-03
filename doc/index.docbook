@@ -31,12 +31,12 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
   <copyright>
-    <year>2005-2023</year>
+    <year>2005-2024</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2023-02-19</date>
-  <releaseinfo>&smb4k; 3.2.0</releaseinfo><!--FIXME change releaseinfo number-->
+  <date>2024-04-03</date>
+  <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
   </abstract>
@@ -54,7 +54,7 @@
 <chapter id="introduction" >
   <title>Introduction</title>
 
-  <para>This handbook describes &smb4k; 3.2 and to some extent earlier versions.</para>
+  <para>This handbook describes &smb4k; 4.0 and to some extent earlier versions.</para>
   <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a &Windows;-dominated network environment:</para>
 
   <itemizedlist>
@@ -64,7 +64,7 @@
     <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
     <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
     <listitem><para>Remounting of previously used shares on program start</para></listitem>
-    <listitem><para>Miscellaneous info about remote network items and mounted shares</para></listitem>
+    <listitem><para>Various information about remote network items and mounted shares</para></listitem>
     <listitem><para>Network search</para></listitem>
     <listitem><para>Preview of the contents of a remote share</para></listitem>
     <listitem><para>Default login</para></listitem>
@@ -99,7 +99,7 @@
   <sect1 id="running_smb4k" >
     <title>Running &smb4k;</title>
     
-    <para>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as a widget to the desktop or panel.</para>
+    <para>You can either launch &smb4k; from the <ulink url="https://userbase.kde.org/Plasma/Kickoff">application launcher</ulink> or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as a widget to the desktop or panel.</para>
 
     <para>If &smb4k; encounters a problem on start-up or while running, the user will be notified. For the solution of some common problems see the <link linkend="trouble_shooting">Trouble Shooting</link> section.</para>
   </sect1>
@@ -111,7 +111,7 @@
   <sect1 id="mainwindow_overview">
     <title>The Main Window</title>
   
-    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menu bar and tool bar are located. Below them you will see the status bar.</para>
+    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in tabs. Above them the menu bar and tool bar are located, and below them there is the status bar.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo>Screenshot of the main window</screeninfo>
