@@ -630,7 +630,7 @@ msgstr ""
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:454
 #, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr ""
+msgstr "Nastavení Wake-On-LAN"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
