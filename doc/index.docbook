@@ -14,9 +14,9 @@
 ]>
 
 <book id="smb4k" lang="&language;" >
+<title>The &smb4k; Handbook</title>
 
 <bookinfo>
-  <title>The &smb4k; Handbook</title>
   <authorgroup>
     <author>
       <firstname>Alexander</firstname>
@@ -30,16 +30,20 @@
     </author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
+
   <copyright>
     <year>2005-2024</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
+
   <legalnotice>&underFDL;</legalnotice>
   <date>2024-04-03</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
+
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
   </abstract>
+
   <keywordset>
     <keyword>KDE</keyword>
     <keyword>Smb4K</keyword>
@@ -121,7 +125,7 @@
       </mediaobject>
     </screenshot>
 
-    <para>The tool bar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link> and <link linkend="shares_view">mounted shares view</link>.</para>
+    <para>The tool bar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link> and <link linkend="shares_view">mounted shares view</link>, respectively.</para>
     <para>The status bar provides some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right side indicate whether shares are mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
     <para>If the dock widgets are arranged as tabs, the user gets additional visual feedback. Each time a share is mounted or unmounted, the <guilabel>Mounted Shares</guilabel> tab is highlighted for a few seconds.</para>
     <para>The main window is highly configurable. You can hide or show all tabbed widgets via <menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>. They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the tool bars can be hidden or shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
@@ -1506,8 +1510,30 @@ ntlm auth = yes
     <sect2 id="trouble_shooting_other_desktop_environments">
       <title>Other Desktop Environments Than &plasma;</title>
 
-      <para>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
-<programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+      <para>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold"><application>qt5ct</application> (<ulink url="https://sourceforge.net/projects/qt5ct/">download</ulink>) for &Qt; 5 and &kde-frameworks; 5:</emphasis> To use <application>qt5ct</application> with your desktop environment, add the following to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file.</para>
+          <para><emphasis>X11:</emphasis></para>
+<programlisting>
+export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting>
+          <para><emphasis>Wayland:</emphasis></para>
+<programlisting>
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting></listitem>
+          <listitem>
+            <para><emphasis role="bold"><application>qt6ct</application> (<ulink url="https://github.com/trialuser02/qt6ct">download</ulink>) for &Qt; 6 and &kde-frameworks; 6:</emphasis> To use <application>qt6ct</application> with your desktop environment, add the following to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file.</para>
+            <para><emphasis>X11:</emphasis></para>
+<programlisting>
+export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
+            <para><emphasis>Wayland:</emphasis></para>
+<programlisting>
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+</programlisting></listitem>
+      </itemizedlist>
     </sect2>
   </sect1>
 </chapter>
