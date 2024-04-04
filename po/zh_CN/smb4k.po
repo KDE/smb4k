@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-19 01:41+0000\n"
-"PO-Revision-Date: 2024-03-17 20:45\n"
+"PO-Revision-Date: 2024-04-03 19:21\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -627,10 +627,9 @@ msgstr "挂载共享前发送局域网唤醒魔术封包"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:278
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:454
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "局域网唤醒"
+msgstr "局域网唤醒设置"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -1205,15 +1204,3 @@ msgstr "总共 %2，空闲 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "Mounting: Common Settings"
-#~ msgstr "挂载：通用设置"
-
-#~ msgid "Mounting: CIFS Unix Extensions"
-#~ msgstr "挂载：CIFS Unix 扩展"
-
-#~ msgid "Mounting: Advanced Settings"
-#~ msgstr "挂载：高级设置"
-
-#~ msgid "Browsing"
-#~ msgstr "浏览"
