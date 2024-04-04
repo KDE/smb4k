@@ -1492,15 +1492,18 @@ polkit.addRule(function(action, subject) {
     <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title>Mounting Problems Under BSD</title>
       
-      <para>If mounting of password-protected shares from either a &Samba; or a &Windows; server fails, this might be because <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> only uses NTLMv1 authentication, and the server does not support it. To fix mounting for a &Samba; server, you can add the following entry to the [global] section of the <filename>smb.conf</filename> file of <emphasis>the server</emphasis>:</para>
+      <para>If mounting of shares from either a &Samba; or a &Windows; server fails, this might be because <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> only uses NTLMv1 authentication and requires the SMB 1.0/&CIFS; protocol, and the server does not support those. To fix mounting for a &Samba; server, you can add the following entries to the [global] section of the <ulink url="man:/smb.conf"><citerefentry><refentrytitle><filename>smb.conf</filename></refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink> file of <emphasis>the server</emphasis>:</para>
       
 <programlisting>[global]
 ...
 ntlm auth = yes
+server min protocol = NT1
 ...
 </programlisting>
       
-      <para>To fix this issue for a &Windows; server, please contact the sysadmin and tell her or him that NTLMv1 authentication should be swtiched on (if possible).</para>
+      <para>If you want to fix this issue for a &Windows; server, please contact the sysadmin and tell her or him that NTLMv1 authentication and the SMB 1.0/&CIFS; protocol should be swtiched on (if possible).</para>
+
+      <note><para>It is not advisable to enable the SMB 1.0/&CIFS; protocol on a server, because it is considered insecure (see &eg; <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858">here</ulink>) and was thus disabled in newer &Samba; and &Windows; versions (see &eg; <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect">here</ulink> and <ulink url="https://www.samba.org/samba/history/samba-4.11.0.html">here</ulink>).</para></note>
     </sect2>
     
 <!-- 
@@ -1791,7 +1794,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
               <menuchoice><guibutton>Use Web Services Dynamic Discovery (WS-Discovery) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The Web Services Dynamic Discovery (WS-Discovery) protocol is used to browse the local network and discover workgroups, domains and hosts. This is useful if your network neighborhood is dominated by servers with modern &Windows; versions. If you use this option, there should be no need to force &Samba;'s client library to use the SMB protocol version 1.0 to search for workgroups and domains.</para>
+              <para>The Web Services Dynamic Discovery (WS-Discovery) protocol is used to browse the local network and discover workgroups, domains and hosts. This is useful if your network neighborhood is dominated by servers with modern &Windows; versions.</para>
               <note><para>This setting is optional, and only appears if you compiled &smb4k; with WS-Discovery support.</para></note>
               <para>Default: selected</para>
             </listitem>
@@ -1801,17 +1804,8 @@ export QT_QPA_PLATFORMTHEME=qt6ct
               <menuchoice><guibutton>Use DNS Service Discovery (DNS-SD) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The DNS Service Discovery (DNS-SD) interface is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg;, named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force &Samba;'s client library to use the SMB protocol version 1.0 when searching for workgroups and domains.</para>
+              <para>The DNS Service Discovery (DNS-SD) interface is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg;, named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing.</para>
               <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Force SMB protocol version 1.0 for workgroup and domain lookups</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Select this option as a last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer &Samba; and &Windows; versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider switching this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need version 1.0.</para>
-              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
