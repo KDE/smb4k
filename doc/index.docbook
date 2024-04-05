@@ -1501,7 +1501,7 @@ server min protocol = NT1
 ...
 </programlisting>
       
-      <para>If you want to fix this issue for a &Windows; server, please contact the sysadmin and tell her or him that NTLMv1 authentication and the SMB 1.0/&CIFS; protocol should be swtiched on (if possible).</para>
+      <para>If you want to fix this issue for a &Windows; server, please contact the sysadmin and tell her or him that NTLMv1 authentication and the SMB 1.0/&CIFS; protocol should be switched on (if possible).</para>
 
       <note><para>It is not advisable to enable the SMB 1.0/&CIFS; protocol on a server, because it is considered insecure (see &eg; <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858">here</ulink>) and was thus disabled in newer &Samba; and &Windows; versions (see &eg; <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect">here</ulink> and <ulink url="https://www.samba.org/samba/history/samba-4.11.0.html">here</ulink>).</para></note>
     </sect2>
