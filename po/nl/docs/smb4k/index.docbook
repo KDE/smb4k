@@ -26,10 +26,10 @@
 ]>
 
 <book id="smb4k" lang="&language;">
+<title
+>Het handboek van &smb4k;</title>
 
 <bookinfo>
-  <title
->Het handboek van &smb4k;</title>
   <authorgroup>
     <author
 ><firstname
@@ -47,23 +47,27 @@
     </author>
 &Freek.de.Kruijf;&Ronald.Stroethoff; 
   </authorgroup>
+
   <copyright>
     <year
->2005-2023</year>
+>2005-2024</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
+
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2023-02-19</date>
+>2024-04-03</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
+
   <abstract>
     <para
 >&smb4k; is een geavanceerd bladerprogramma voor het nabije netwerk en een hulpprogramma voor het aankoppelen van &Samba;-shares.</para>
   </abstract>
+
   <keywordset>
     <keyword
 >KDE</keyword>
@@ -83,7 +87,7 @@
 >Inleiding</title>
 
   <para
->Dit handboek beschrijft &smb4k; 3.2 en in een bepaalde mate eerdere versies.</para>
+>Dit handboek beschrijft &smb4k; 4.0 en in een bepaalde mate eerdere versies.</para>
   <para
 >&smb4k; is een geavanceerd bladerprogramma voor het nabije netwerk en een hulpprogramma voor aankoppelen van <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -207,7 +211,9 @@
 >&smb4k; uitvoeren</title>
     
     <para
->U kunt &smb4k; starten ofwel vanuit het K-menu of vanuit <ulink url="https://userbase.kde.org/Plasma/Krunner"
+>U kunt &smb4k; starten ofwel vanuit het <ulink url="https://userbase.kde.org/Plasma/Kickoff"
+>toepassingenstarter</ulink
+>of vanuit <ulink url="https://userbase.kde.org/Plasma/Krunner"
 >&krunner;</ulink
 > door <userinput
 ><command
@@ -236,7 +242,7 @@
 >Netwerkomgeving</guilabel
 >) en weergave van de aangekoppelde shares (<guilabel
 >Aangekoppelde shares</guilabel
->) zijn in een tabbladwidget gestopt. Erboven de menu- en werkbalk. Eronder de statusbalk.</para>
+>) zijn in een tabblad gestopt. Erboven de menu- en werkbalk en eronder de statusbalk.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo
@@ -252,15 +258,15 @@
     </screenshot>
 
     <para
->De werkbalk bevat enige van de hoofdacties, zoals <guimenuitem
->&smb4k; configureren</guimenuitem
-> en <guimenuitem
->Afsluiten</guimenuitem
->. Het laadt ook dynamisch de acties van het widget dat de focus heeft. Voor meer informatie leest u de secties over <link linkend="network_neighborhood_browser"
->browser voor de netwerkomgeving</link
-> en <link linkend="shares_view"
->weergave van aangekoppelde shares</link
->.</para>
+>The tool bar contains some of the main actions, like <guimenuitem
+>Configure &smb4k;</guimenuitem
+> and <guimenuitem
+>Quit</guimenuitem
+>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser"
+>network neighborhood browser</link
+> and <link linkend="shares_view"
+>mounted shares view</link
+>, respectively.</para>
     <para
 >De statusbalk biedt u enige informatie over de huidige status van &smb4k;. als het programma een opdracht van de gebruiker uitvoert (&eg; een share aankoppelen), dan krijgt u in de linker sectie een melding met een beschrijving en een voortgangsbalk te zien. De twee pictogrammen aan de rechterkant geven aan of er shares zijn aangekoppeld (pictogram van een netwerkmap) en de status van het systeem voor authenticatie (portefeuille of sleutel pictogram) weer.</para>
     <para
@@ -2831,19 +2837,70 @@ ntlm auth = yes
 >Andere Bureaubladomgevingen dan &plasma;</title>
 
       <para
->Bij gebruik van een andere bureaubladomgeving dan &plasma;, kunnen bij &Qt; en &kde-frameworks; toepassingen sommige pictogrammen ontbreken. In dat geval zou u de toepassing <application
+>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
+      <itemizedlist>
+        <listitem>
+          <para
+><emphasis role="bold"
+><application
 >qt5ct</application
-> kunnen installeren (de broncode is <ulink url="https://sourceforge.net/projects/qt5ct/"
->hier</ulink
-> te krijgen). Om <application
+> (<ulink url="https://sourceforge.net/projects/qt5ct/"
+>download</ulink
+>) for &Qt; 5 and &kde-frameworks; 5:</emphasis
+> To use <application
 >qt5ct</application
-> met uw bureaubladomgeving te kunnen gebruiken, voeg de volgende regel toe aan uw bestanden <filename
+> with your desktop environment, add the following to your <filename
 >~/.xinitrc</filename
-> of <filename
+> or <filename
 >~/.profile</filename
-> toe:</para>
+> file.</para>
+          <para
+><emphasis
+>X11:</emphasis
+></para>
 <programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+>export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting>
+          <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting
+></listitem>
+          <listitem>
+            <para
+><emphasis role="bold"
+><application
+>qt6ct</application
+> (<ulink url="https://github.com/trialuser02/qt6ct"
+>download</ulink
+>) for &Qt; 6 and &kde-frameworks; 6:</emphasis
+> To use <application
+>qt6ct</application
+> with your desktop environment, add the following to your <filename
+>~/.xinitrc</filename
+> or <filename
+>~/.profile</filename
+> file.</para>
+            <para
+><emphasis
+>X11:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
+            <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+</programlisting
+></listitem>
+      </itemizedlist>
     </sect2>
   </sect1>
 </chapter>

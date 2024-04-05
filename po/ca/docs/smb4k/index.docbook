@@ -26,10 +26,10 @@
 ]>
 
 <book id="smb4k" lang="&language;">
+<title
+>El manual del &smb4k;</title>
 
 <bookinfo>
-  <title
->El manual del &smb4k;</title>
   <authorgroup>
     <author
 ><firstname
@@ -47,23 +47,27 @@
     </author>
 &traductor.Antoni.Bella; 
   </authorgroup>
+
   <copyright>
     <year
->2005-2023</year>
+>2005-2024</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
+
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->19 de febrer de 2023</date>
+>3 d'abril de 2024</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
+
   <abstract>
     <para
 >El &smb4k; és un explorador avançat del veïnatge de xarxa i utilitat de muntatge de les comparticions &Samba;.</para>
   </abstract>
+
   <keywordset>
     <keyword
 >KDE</keyword>
@@ -83,7 +87,7 @@
 >Introducció</title>
 
   <para
->Aquest manual descriu el &smb4k; 3.2 i, en alguns aspectes, algunes de les versions anteriors.</para>
+>Aquest manual descriu el &smb4k; 4.0 i, en alguns aspectes, algunes de les versions anteriors.</para>
   <para
 >El &smb4k; és un explorador avançat del veïnatge de xarxa i utilitat de muntatge de les comparticions <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -209,7 +213,9 @@
 >Executar el &smb4k;</title>
     
     <para
->Podeu iniciar el &smb4k; des del menú K o des del <ulink url="https://userbase.kde.org/Plasma/Krunner"
+>Podeu iniciar el &smb4k; des del <ulink url="https://userbase.kde.org/Plasma/Kickoff"
+>llançador d'aplicacions</ulink
+> o des del <ulink url="https://userbase.kde.org/Plasma/Krunner"
 >&krunner;</ulink
 > escrivint <userinput
 ><command
@@ -240,7 +246,7 @@
 >Veïnatge de xarxa</guilabel
 >) i la vista de les comparticions muntades (<guilabel
 >Comparticions muntades</guilabel
->) estan disposats en un giny amb pestanyes. A sobre es troben la barra de menús i la barra d'eines. A sota veureu la barra d'estat.</para>
+>) estan disposats en pestanyes. A sobre es troben la barra de menús i la barra d'eines, i a sota hi ha la barra d'estat.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo
@@ -256,15 +262,15 @@
     </screenshot>
 
     <para
->La barra d'eines conté algunes de les accions principals, com ara <guimenuitem
->Configura el &smb4k;</guimenuitem
-> i <guimenuitem
->Surt</guimenuitem
->. També carrega dinàmicament les accions del giny acoblat que actualment té el focus. Per a obtenir informació addicional, si us plau, mireu les seccions de debat sobre l'<link linkend="network_neighborhood_browser"
->explorador del veïnatge de xarxa</link
-> i la <link linkend="shares_view"
->vista de les comparticions muntades</link
->.</para>
+>The tool bar contains some of the main actions, like <guimenuitem
+>Configure &smb4k;</guimenuitem
+> and <guimenuitem
+>Quit</guimenuitem
+>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser"
+>network neighborhood browser</link
+> and <link linkend="shares_view"
+>mounted shares view</link
+>, respectively.</para>
     <para
 >La barra d'estat proporciona informació sobre l'estat actual del &smb4k;. Si l'aplicació està processant una sol·licitud d'usuari (&pex;, el muntatge d'una compartició), es mostrarà un missatge descriptiu en la secció més a l'esquerra i una barra de progrés amb un indicador d'ocupat. Les dues icones a la part dreta indiquen si hi ha comparticions muntades (icona de la carpeta de xarxa) i l'estat del sistema d'autenticació (la icona de cartera o de clau).</para>
     <para
@@ -2851,19 +2857,70 @@ ntlm auth = yes
 >Altres entorns d'escriptori que el &plasma;</title>
 
       <para
->Quan s'utilitza un entorn d'escriptori diferent que el &plasma;, les &Qt; i els &kde-frameworks;, podria ser que a les aplicacions hi manquin algunes icones. En aquest cas, és possible que vulgueu instal·lar l'aplicació <application
+>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
+      <itemizedlist>
+        <listitem>
+          <para
+><emphasis role="bold"
+><application
 >qt5ct</application
-> (el codi font es pot obtenir <ulink url="https://sourceforge.net/projects/qt5ct/"
->aquí</ulink
->). Per a utilitzar <application
+> (<ulink url="https://sourceforge.net/projects/qt5ct/"
+>download</ulink
+>) for &Qt; 5 and &kde-frameworks; 5:</emphasis
+> To use <application
 >qt5ct</application
-> amb el vostre entorn d'escriptori, afegiu la línia següent al vostre fitxer <filename
+> with your desktop environment, add the following to your <filename
 >~/.xinitrc</filename
-> o <filename
+> or <filename
 >~/.profile</filename
->:</para>
+> file.</para>
+          <para
+><emphasis
+>X11:</emphasis
+></para>
 <programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+>export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting>
+          <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting
+></listitem>
+          <listitem>
+            <para
+><emphasis role="bold"
+><application
+>qt6ct</application
+> (<ulink url="https://github.com/trialuser02/qt6ct"
+>download</ulink
+>) for &Qt; 6 and &kde-frameworks; 6:</emphasis
+> To use <application
+>qt6ct</application
+> with your desktop environment, add the following to your <filename
+>~/.xinitrc</filename
+> or <filename
+>~/.profile</filename
+> file.</para>
+            <para
+><emphasis
+>X11:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
+            <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+</programlisting
+></listitem>
+      </itemizedlist>
     </sect2>
   </sect1>
 </chapter>

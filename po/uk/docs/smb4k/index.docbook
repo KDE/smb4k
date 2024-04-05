@@ -26,10 +26,10 @@
 ]>
 
 <book id="smb4k" lang="&language;">
+<title
+>Підручник з &smb4k;</title>
 
 <bookinfo>
-  <title
->Підручник з &smb4k;</title>
   <authorgroup>
     <author
 ><firstname
@@ -61,23 +61,27 @@
 ></othercredit
 > 
   </authorgroup>
+
   <copyright>
     <year
->2005-2023</year>
+>2005-2024</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
+
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->19 лютого 2023 року</date>
+>3 квітня 2024 року</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
+
   <abstract>
     <para
 >&smb4k; — програма для перегляду мережевого середовища з додатковими можливостями та засіб для монтування спільних ресурсів &Samba;.</para>
   </abstract>
+
   <keywordset>
     <keyword
 >KDE</keyword>
@@ -97,7 +101,7 @@
 >Вступ</title>
 
   <para
->У цьому підручнику розглянуто можливості &smb4k; 3.2 та деяких попередніх версій програми.</para>
+>У цьому підручнику розглянуто можливості &smb4k; 4.0 та деяких попередніх версій програми.</para>
   <para
 >&smb4k; — інструмент з додатковими можливостями для навігації мережевим оточенням та засіб монтування спільних ресурсів <ulink url="http://www.samba.org"
 >програмного комплексу Samba</ulink
@@ -221,8 +225,8 @@
 >Як запустити &smb4k;?</title>
     
     <para
->Запустити &smb4k; можна або за допомогою меню, або за допомогою <ulink url="https://userbase.kde.org/Plasma/Krunner/uk"
->&krunner;</ulink
+>Запустити &smb4k; можна або за допомогою меню, або за допомогою <ulink url="https://userbase.kde.org/Plasma/Kickoff/uk"
+>засобу запуску програм</ulink
 >, ввівши <userinput
 ><command
 >smb4k</command
@@ -268,15 +272,15 @@
     </screenshot>
 
     <para
->Панель інструментів, на якій розташовано кнопки для деяких із основних дій програми, зокрема <guimenuitem
->Налаштувати &smb4k;</guimenuitem
-> та <guimenuitem
->Вийти</guimenuitem
->, і динамічно завантажує кнопки дій бічної панелі, на якій перебуває фокус. Додаткову інформацію можна знайти у розділах підручника, присвячених <link linkend="network_neighborhood_browser"
->панелі навігації оточенням</link
-> та <link linkend="shares_view"
->панелі перегляду змонтованих спільних ресурсів</link
->.</para>
+>The tool bar contains some of the main actions, like <guimenuitem
+>Configure &smb4k;</guimenuitem
+> and <guimenuitem
+>Quit</guimenuitem
+>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser"
+>network neighborhood browser</link
+> and <link linkend="shares_view"
+>mounted shares view</link
+>, respectively.</para>
     <para
 >У рядку стану буде показано відомості щодо поточного стану &smb4k;. Якщо програма оброблятиме запит користувача (наприклад запит на монтування спільного ресурсу), у лівій частині смужки стану буде показано повідомлення з описом дії, а на панелі поступу буде показано позначку того, що програма виконує якесь завдання. За допомогою піктограм у правій частині панелі програма показуватиме, чи змонтовано якісь спільні ресурси (піктограма мережі) та стан системи розпізнавання (піктограма гаманця або ключа).</para>
     <para
@@ -2849,19 +2853,70 @@ ntlm auth = yes
 >Стільничні середовища, відмінні від Плазми</title>
 
       <para
->Якщо використовуватиметься інше робоче середовище, відмінне від Плазми, програми на &Qt; і &kde-frameworks; можуть не показувати деякі з піктограм. Якщо у вашій системі виникають саме такі проблеми, вам варто встановити програму <application
+>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
+      <itemizedlist>
+        <listitem>
+          <para
+><emphasis role="bold"
+><application
 >qt5ct</application
-> (її початковий код можна отримати <ulink url="https://sourceforge.net/projects/qt5ct/"
->тут</ulink
->). Щоб скористатися <application
+> (<ulink url="https://sourceforge.net/projects/qt5ct/"
+>download</ulink
+>) for &Qt; 5 and &kde-frameworks; 5:</emphasis
+> To use <application
 >qt5ct</application
-> у вашій системі, додайте такий рядок до вашого файла <filename
+> with your desktop environment, add the following to your <filename
 >~/.xinitrc</filename
-> або <filename
+> or <filename
 >~/.profile</filename
->:</para>
+> file.</para>
+          <para
+><emphasis
+>X11:</emphasis
+></para>
 <programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+>export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting>
+          <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting
+></listitem>
+          <listitem>
+            <para
+><emphasis role="bold"
+><application
+>qt6ct</application
+> (<ulink url="https://github.com/trialuser02/qt6ct"
+>download</ulink
+>) for &Qt; 6 and &kde-frameworks; 6:</emphasis
+> To use <application
+>qt6ct</application
+> with your desktop environment, add the following to your <filename
+>~/.xinitrc</filename
+> or <filename
+>~/.profile</filename
+> file.</para>
+            <para
+><emphasis
+>X11:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
+            <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+</programlisting
+></listitem>
+      </itemizedlist>
     </sect2>
   </sect1>
 </chapter>
