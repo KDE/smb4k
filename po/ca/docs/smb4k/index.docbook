@@ -262,15 +262,15 @@
     </screenshot>
 
     <para
->The tool bar contains some of the main actions, like <guimenuitem
->Configure &smb4k;</guimenuitem
-> and <guimenuitem
->Quit</guimenuitem
->. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser"
->network neighborhood browser</link
-> and <link linkend="shares_view"
->mounted shares view</link
->, respectively.</para>
+>La barra d'eines conté algunes de les accions principals, com ara <guimenuitem
+>Configura el &smb4k;</guimenuitem
+> i <guimenuitem
+>Surt</guimenuitem
+>. També carrega dinàmicament les accions del giny acoblat que actualment té el focus. Per a obtenir informació addicional, si us plau, mireu les seccions de debat sobre l'<link linkend="network_neighborhood_browser"
+>explorador del veïnatge de xarxa</link
+> i la <link linkend="shares_view"
+>vista de les comparticions muntades</link
+>, respectivament.</para>
     <para
 >La barra d'estat proporciona informació sobre l'estat actual del &smb4k;. Si l'aplicació està processant una sol·licitud d'usuari (&pex;, el muntatge d'una compartició), es mostrarà un missatge descriptiu en la secció més a l'esquerra i una barra de progrés amb un indicador d'ocupat. Les dues icones a la part dreta indiquen si hi ha comparticions muntades (icona de la carpeta de xarxa) i l'estat del sistema d'autenticació (la icona de cartera o de clau).</para>
     <para
@@ -2823,7 +2823,7 @@ polkit.addRule(function(action, subject) {
 >Problemes de muntatge en el BSD</title>
       
       <para
->Si es munten comparticions protegides per contrasenya des d'un servidor de &Samba; o de &Windows; que falla, això es pot deure al fet que <ulink url="man:/mount_smbfs"
+>Si es munten comparticions des d'un servidor de &Samba; o de &Windows; que falla, això es pot deure al fet que <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -2831,8 +2831,16 @@ polkit.addRule(function(action, subject) {
 >8</manvolnum
 ></citerefentry
 ></ulink
-> només utilitza l'autenticació NTLMv1 i el servidor no l'admet. Per a arranjar el muntatge d'un servidor de &Samba;, podeu afegir l'entrada següent a la secció [global] del fitxer <filename
+> només utilitza l'autenticació NTLMv1 i requereix el protocol SMB 1.0/&CIFS;, i el servidor no l'admet. Per a solucionar el muntatge d'un servidor de &Samba;, podeu afegir les entrades següents a la secció [global] del fitxer <ulink url="man:/smb.conf"
+><citerefentry
+><refentrytitle
+><filename
 >smb.conf</filename
+></refentrytitle
+><manvolnum
+>5</manvolnum
+></citerefentry
+></ulink
 > <emphasis
 >del servidor</emphasis
 >:</para>
@@ -2841,11 +2849,23 @@ polkit.addRule(function(action, subject) {
 >[global]
 ...
 ntlm auth = yes
+server min protocol = NT1
 ...
 </programlisting>
       
       <para
->Per a solucionar aquest problema per a un servidor de &Windows;, poseu-vos en contacte amb l'administrador del sistema i digui-li que l'autenticació NTLMv1 hauria d'estar activada (si és possible).</para>
+>Si voleu solucionar aquest problema en un servidor de &Windows;, poseu-vos en contacte amb l'administrador del sistema i digui-li que l'autenticació NTLMv1 i el protocol SMB 1.0/&CIFS; haurien d'estar activats (si és possible).</para>
+
+      <note
+><para
+>No és aconsellables activar el protocol SMB 1.0/&CIFS; en un servidor, perquè està considerat insegur (&pex;, vegeu <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858"
+>aquí</ulink
+>) i, per tant, s'ha inhabilitat en les versions més noves del &Samba; i el &Windows; (&pex;, vegeu <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect"
+>aquí</ulink
+> i <ulink url="https://www.samba.org/samba/history/samba-4.11.0.html"
+>aquí</ulink
+>).</para
+></note>
     </sect2>
     
 <!-- 
@@ -2857,7 +2877,7 @@ ntlm auth = yes
 >Altres entorns d'escriptori que el &plasma;</title>
 
       <para
->When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
+>Quan s'utilitza un entorn d'escriptori diferent que el &plasma;, les &Qt; i els &kde-frameworks;, podria ser que hi manquin algunes icones a les aplicacions. En aquest cas, és possible que vulgueu instal·lar una d'aquestes aplicacions:</para>
       <itemizedlist>
         <listitem>
           <para
@@ -2865,15 +2885,15 @@ ntlm auth = yes
 ><application
 >qt5ct</application
 > (<ulink url="https://sourceforge.net/projects/qt5ct/"
->download</ulink
->) for &Qt; 5 and &kde-frameworks; 5:</emphasis
-> To use <application
+>baixada</ulink
+>) per a les &Qt; 5 i &kde-frameworks; 5:</emphasis
+> Per a utilitzar <application
 >qt5ct</application
-> with your desktop environment, add the following to your <filename
+> amb el vostre entorn d'escriptori, afegiu la línia següent al fitxer <filename
 >~/.xinitrc</filename
-> or <filename
+> o <filename
 >~/.profile</filename
-> file.</para>
+>.</para>
           <para
 ><emphasis
 >X11:</emphasis
@@ -2896,15 +2916,15 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 ><application
 >qt6ct</application
 > (<ulink url="https://github.com/trialuser02/qt6ct"
->download</ulink
->) for &Qt; 6 and &kde-frameworks; 6:</emphasis
-> To use <application
+>baixada</ulink
+>) per a les &Qt; 6 i &kde-frameworks; 6:</emphasis
+> Per a utilitzar <application
 >qt6ct</application
-> with your desktop environment, add the following to your <filename
+> amb el vostre entorn d'escriptori, afegiu la línia següent al fitxer <filename
 >~/.xinitrc</filename
-> or <filename
+> o <filename
 >~/.profile</filename
-> file.</para>
+>.</para>
             <para
 ><emphasis
 >X11:</emphasis
@@ -3306,7 +3326,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->El protocol «Web Services Dynamic Discovery» (WS-Discovery) s'utilitza per a explorar la xarxa local i descobrir grups de treball, dominis i servidors. Això és útil si el veïnatge de la xarxa està dominat per servidors amb versions modernes de &Windows;. Si empreu aquesta opció, no caldrà forçar a la biblioteca del client &Samba; perquè empri la versió 1.0 del protocol SMB per a cercar grups de treball i dominis.</para>
+>El protocol «Web Services Dynamic Discovery» (WS-Discovery) s'utilitza per a explorar la xarxa local i descobrir grups de treball, dominis i servidors. Això és útil si el veïnatge de la xarxa està dominat per servidors amb versions modernes de &Windows;.</para>
               <note
 ><para
 >Aquesta opció de configuració és opcional i només apareix si heu compilat el &smb4k; amb suport WS-Discovery.</para
@@ -3324,23 +3344,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Utilitza la interfície «DNS Service Discovery» (DNS-SD) per a explorar la xarxa local i descobrir els servidors que proporcionen recursos SMB compartits. Els dominis descoberts corresponen als dominis DNS locals (&pex;, anomenats LOCAL) i probablement no als definits al veïnatge de xarxa. Tanmateix, això no influirà l'exploració. En emprar aquesta opció, no caldrà forçar a la biblioteca client de &Samba; a què faci servir el protocol SMB versió 1.0 en cercar grups de treball i dominis.</para>
+>Utilitza la interfície «DNS Service Discovery» (DNS-SD) per a explorar la xarxa local i descobrir els servidors que proporcionen recursos SMB compartits. Els dominis descoberts corresponen als dominis DNS locals (&pex;, anomenats LOCAL) i probablement no als definits al veïnatge de xarxa. Tanmateix, això no influirà l'exploració.</para>
               <para
 >Omissió: seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Força el protocol SMB versió 1.0 per a les cerques de grups de treball i de dominis</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Seleccioneu aquesta opció com a últim recurs, perquè la versió 1.0 del protocol SMB no és segura i s'ha desactivat en les versions més recents de &Samba; i &Windows;. No obstant això, si teniu problemes per a descobrir grups de treball i dominis en el vostre veïnatge de xarxa, possiblement voldreu considerar activar aquesta opció de configuració. Si utilitzeu el descobriment de serveis DNS (DNS-SD) o el descobriment dinàmic de serveis web (WS-Discovery), i funcionen, és que no necessiteu la versió 1.0.</para>
-              <para
->Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>

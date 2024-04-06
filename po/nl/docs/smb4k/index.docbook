@@ -258,15 +258,15 @@
     </screenshot>
 
     <para
->The tool bar contains some of the main actions, like <guimenuitem
->Configure &smb4k;</guimenuitem
-> and <guimenuitem
->Quit</guimenuitem
->. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser"
->network neighborhood browser</link
-> and <link linkend="shares_view"
->mounted shares view</link
->, respectively.</para>
+>De werkbalk bevat enige van de hoofdacties, zoals <guimenuitem
+>&smb4k; configureren</guimenuitem
+> en <guimenuitem
+>Afsluiten</guimenuitem
+>. Het laadt ook dynamisch de acties van het widget dat de focus heeft. Voor meer informatie leest u respectievelijk de secties over <link linkend="network_neighborhood_browser"
+>browser voor de netwerkomgeving</link
+> en <link linkend="shares_view"
+>weergave van aangekoppelde shares</link
+>.</para>
     <para
 >De statusbalk biedt u enige informatie over de huidige status van &smb4k;. als het programma een opdracht van de gebruiker uitvoert (&eg; een share aankoppelen), dan krijgt u in de linker sectie een melding met een beschrijving en een voortgangsbalk te zien. De twee pictogrammen aan de rechterkant geven aan of er shares zijn aangekoppeld (pictogram van een netwerkmap) en de status van het systeem voor authenticatie (portefeuille of sleutel pictogram) weer.</para>
     <para
@@ -2803,7 +2803,7 @@ polkit.addRule(function(action, subject) {
 >Problemen met aankoppelen onder BSD</title>
       
       <para
->Als aankoppelen van shares met toegang via wachtwoord ofwel vanaf een &Samba; of een &Windows; server mislukt, dan kan dat zijn omdat <ulink url="man:/mount_smbfs"
+>Als aankoppelen van shares ofwel vanaf een &Samba; of een &Windows; server mislukt, dan kan dat zijn omdat <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -2811,8 +2811,16 @@ polkit.addRule(function(action, subject) {
 >8</manvolnum
 ></citerefentry
 ></ulink
-> alleen authenticatie met NTLMv1 gebruikt en de server dat niet ondersteunt. Om aankoppelen voor een &Samba; server te repareren, kunt u het volgende item toevoegen aan de sectie [global] van het bestand <filename
+> alleen authenticatie met NTLMv1 gebruikt en het SMB 1.0/&CIFS;-protocol vereist en de server die niet ondersteunt. Om aankoppelen voor een &Samba; server te repareren, kunt u de volgende items toevoegen aan de sectie [global] van het bestand <ulink url="man:/smb.conf"
+><citerefentry
+><refentrytitle
+><filename
 >smb.conf</filename
+></refentrytitle
+><manvolnum
+>5</manvolnum
+></citerefentry
+></ulink
 > van <emphasis
 >de server</emphasis
 >:</para>
@@ -2821,11 +2829,23 @@ polkit.addRule(function(action, subject) {
 >[global]
 ...
 ntlm auth = yes
+server min protocol = NT1
 ...
 </programlisting>
       
       <para
->Om dit probleem voor een &Windows;-server te repareren, neemt u contact op met de systeembeheerder en vertelt u haar of hem dat NTLMv1 authenticatie ingeschakeld zou moeten worden (indien mogelijk).</para>
+>Als u dit probleem voor een &Windows;-server wilt repareren, neemt u contact op met de systeembeheerder en vertelt u haar of hem dat NTLMv1 authenticatie en het SMB 1.0/&CIFS;-protocol ingeschakeld zou moeten worden (indien mogelijk).</para>
+
+      <note
+><para
+>Het is niet aan te raden om het SMB 1.0/&CIFS;-protocol op een server in te schakelen, omdat het als onveilig wordt gezien (zie &eg; <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858"
+>here</ulink
+>) en was dus uitgeschakeld in nieuwer &Samba; en &Windows; versies (zie &eg; <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect"
+>hier</ulink
+> en <ulink url="https://www.samba.org/samba/history/samba-4.11.0.html"
+>hier</ulink
+>).</para
+></note>
     </sect2>
     
 <!-- 
@@ -2837,7 +2857,7 @@ ntlm auth = yes
 >Andere Bureaubladomgevingen dan &plasma;</title>
 
       <para
->When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
+>Bij gebruik van een andere bureaubladomgeving dan &plasma;, &Qt; en &kde-frameworks; kunnen toepassingen enige pictogrammen missen. In dat geval, zou u een van deze toepassingen willen installeren:</para>
       <itemizedlist>
         <listitem>
           <para
@@ -2845,15 +2865,15 @@ ntlm auth = yes
 ><application
 >qt5ct</application
 > (<ulink url="https://sourceforge.net/projects/qt5ct/"
->download</ulink
->) for &Qt; 5 and &kde-frameworks; 5:</emphasis
-> To use <application
+>downloaden</ulink
+>) voor &Qt; 5 en &kde-frameworks; 5:</emphasis
+> Om <application
 >qt5ct</application
-> with your desktop environment, add the following to your <filename
+> te gebruiken met uw bureaubladomgeving, voeg het volgende toe aan uw bestand <filename
 >~/.xinitrc</filename
-> or <filename
+> of <filename
 >~/.profile</filename
-> file.</para>
+>.</para>
           <para
 ><emphasis
 >X11:</emphasis
@@ -2876,15 +2896,15 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 ><application
 >qt6ct</application
 > (<ulink url="https://github.com/trialuser02/qt6ct"
->download</ulink
->) for &Qt; 6 and &kde-frameworks; 6:</emphasis
-> To use <application
+>downloaden</ulink
+>) voor &Qt; 6 en &kde-frameworks; 6:</emphasis
+> Om <application
 >qt6ct</application
-> with your desktop environment, add the following to your <filename
+> te gebruiken met uw bureaubladomgeving, voeg het volgende toe aan uw bestand <filename
 >~/.xinitrc</filename
-> or <filename
+> of <filename
 >~/.profile</filename
-> file.</para>
+>.</para>
             <para
 ><emphasis
 >X11:</emphasis
@@ -3286,7 +3306,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Het protocol van de Web Services Dynamic Discovery (WS-Discovery) wordt gebruikt om in het locale netwerk te bladeren en werkgroepen, domeinen en hosts te ontdekken. Dit is nuttig, als uw netwerkomgeving gedomineerd wordt door servers met moderne &Windows; versies. Als u deze optie gebruikt, zou er geen noodzaak meer zijn om de clientbibliotheek van &Samba; te dwingen de versie van het SMB-protocol versie 1.0 voor zoeken naar werkgroepen en domeinen te gebruiken.</para>
+>Het protocol van de Web Services Dynamic Discovery (WS-Discovery) wordt gebruikt om in het locale netwerk te bladeren en werkgroepen, domeinen en hosts te ontdekken. Dit is nuttig, als uw netwerkomgeving gedomineerd wordt door servers met moderne &Windows; versies.</para>
               <note
 ><para
 >Deze instelling is optioneel en verschijnt alleen als u &smb4k; compileert met WS-Discovery ondersteuning.</para
@@ -3304,23 +3324,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Het interface van de DNS Service Discovery (DNS-SD) wordt gebruikt om in het lokale netwerk te bladeren en servers te ontdekken die gedeelde SMB-hulpmiddelen leveren. De ontdekte domeinen komen overeen met de lokale DNS-domeinen (&eg; genaamd LOCAL) en meest waarschijnlijk niet diegenen gedefinieerd in de netwerkomgeving. Dit beïnvloedt echter niet het bladeren. Als u deze optie gebruikt is er geen noodzaak om de client-bibliotheek van &Samba; te dwingen het SMB protocol versie 1.0, bij zoeken naar werkgroepen en domeinen, te gebruiken.</para>
+>Het interface van de DNS Service Discovery (DNS-SD) wordt gebruikt om in het lokale netwerk te bladeren en servers te ontdekken die gedeelde SMB-hulpmiddelen leveren. De ontdekte domeinen komen overeen met de lokale DNS-domeinen (&eg; genaamd LOCAL) en meest waarschijnlijk niet diegenen gedefinieerd in de netwerkomgeving. Dit beïnvloedt echter niet het bladeren.</para>
               <para
 >Standaard: geselecteerd</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->SMB1 protocol versie 1.0 afdwingen voor opzoeken van workgroup en domain</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Deze optie als laatste redmiddel selecteren, omdat het SMB-protocol versie 1.0 onveilig is en uitgeschakeld is in nieuwere versies van &Samba; en &Windows;. Als u echter problemen heeft bij het ontdekken van werkgroepen en domeinen in uw netwerkomgeving, dan zou u kunnen overwegen naar deze instelling om te schakelen. Als u DNS Service Discovery (DNS-SD) of Web Services Dynamic Discovery (WS-Discovery) gebruikt en die werken voor u, dan hebt u versie 1.0 niet nodig.</para>
-              <para
->Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>

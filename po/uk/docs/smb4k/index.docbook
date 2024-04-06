@@ -272,15 +272,15 @@
     </screenshot>
 
     <para
->The tool bar contains some of the main actions, like <guimenuitem
->Configure &smb4k;</guimenuitem
-> and <guimenuitem
->Quit</guimenuitem
->. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser"
->network neighborhood browser</link
-> and <link linkend="shares_view"
->mounted shares view</link
->, respectively.</para>
+>Панель інструментів, на якій розташовано кнопки для деяких із основних дій програми, зокрема <guimenuitem
+>Налаштувати &smb4k;</guimenuitem
+> та <guimenuitem
+>Вийти</guimenuitem
+>, і динамічно завантажує кнопки дій бічної панелі, на якій перебуває фокус. Додаткову інформацію можна знайти у розділах підручника, присвячених <link linkend="network_neighborhood_browser"
+>панелі навігації оточенням</link
+> та <link linkend="shares_view"
+>панелі перегляду змонтованих спільних ресурсів</link
+>, відповідно.</para>
     <para
 >У рядку стану буде показано відомості щодо поточного стану &smb4k;. Якщо програма оброблятиме запит користувача (наприклад запит на монтування спільного ресурсу), у лівій частині смужки стану буде показано повідомлення з описом дії, а на панелі поступу буде показано позначку того, що програма виконує якесь завдання. За допомогою піктограм у правій частині панелі програма показуватиме, чи змонтовано якісь спільні ресурси (піктограма мережі) та стан системи розпізнавання (піктограма гаманця або ключа).</para>
     <para
@@ -2819,7 +2819,7 @@ polkit.addRule(function(action, subject) {
 >Проблеми із монтуванням у BSD</title>
       
       <para
->Якщо не вдається змонтувати захищені паролем спільні ресурси з &Samba; або не працює зв'язок із сервером &Windows;, причиною може бути те, що <ulink url="man:/mount_smbfs"
+>Якщо не вдається змонтувати спільні ресурси з &Samba; або не працює зв'язок із сервером &Windows;, причиною може бути те, що <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -2827,21 +2827,41 @@ polkit.addRule(function(action, subject) {
 >8</manvolnum
 ></citerefentry
 ></ulink
-> використовує лише розпізнавання за NTLMv1, а на сервері не передбачено підтримки цього режиму. Щоб виправити монтування для сервера &Samba;, ви можете додати такий запис до розділу [global] файла <filename
+> використовує лише розпізнавання за NTLMv1 і потребує протоколу SMB 1.0/&CIFS;, а на сервері не передбачено підтримки цього режиму. Щоб виправити монтування для сервера &Samba;, ви можете додати такий запис до розділу [global] файла <ulink url="man:/smb.conf"
+><citerefentry
+><refentrytitle
+><filename
 >smb.conf</filename
-> <emphasis
->сервера</emphasis
+></refentrytitle
+><manvolnum
+>5</manvolnum
+></citerefentry
+></ulink
+> на <emphasis
+>сервері</emphasis
 >:</para>
       
 <programlisting
 >[global]
 ...
 ntlm auth = yes
+server min protocol = NT1
 ...
 </programlisting>
       
       <para
->Щоб виправити цю помилку на сервері &Windows;, будь ласка, зв'яжіться зі адміністратором системи і повідомте його чи її про те, що варто (якщо можливо) увімкнути розпізнавання у режимі NTLMv1.</para>
+>Якщо ви хочете виправити цю помилку на сервері &Windows;, будь ласка, зв'яжіться зі адміністратором системи і повідомте його чи її про те, що варто (якщо можливо) увімкнути розпізнавання у режимі NTLMv1 та протокол SMB 1.0/&CIFS;.</para>
+
+      <note
+><para
+>Не радимо вмикати протокол SMB 1.0/&CIFS; на сервері, оскільки його вважають незахищеним (див., наприклад, <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858"
+>тут</ulink
+>), а отже вимикають у новіших версіях &Samba; та &Windows; (див., наприклад, <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect"
+>тут</ulink
+> і <ulink url="https://www.samba.org/samba/history/samba-4.11.0.html"
+>тут</ulink
+>).</para
+></note>
     </sect2>
     
 <!-- 
@@ -2853,7 +2873,7 @@ ntlm auth = yes
 >Стільничні середовища, відмінні від Плазми</title>
 
       <para
->When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
+>При використанні стільничних середовищ, відмінних від &plasma; у програмах &Qt; і &kde-frameworks; може бути не показано деякі піктограми. Якщо маєте цю проблему, вам варто встановити одну з таких програм:</para>
       <itemizedlist>
         <listitem>
           <para
@@ -2862,14 +2882,14 @@ ntlm auth = yes
 >qt5ct</application
 > (<ulink url="https://sourceforge.net/projects/qt5ct/"
 >download</ulink
->) for &Qt; 5 and &kde-frameworks; 5:</emphasis
-> To use <application
+>) для &Qt; 5 і &kde-frameworks; 5:</emphasis
+> щоб скористатися <application
 >qt5ct</application
-> with your desktop environment, add the following to your <filename
+> у вашому стільничному середовищі, додайте такі записи до вашого файла <filename
 >~/.xinitrc</filename
-> or <filename
+> або <filename
 >~/.profile</filename
-> file.</para>
+>.</para>
           <para
 ><emphasis
 >X11:</emphasis
@@ -2893,14 +2913,14 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 >qt6ct</application
 > (<ulink url="https://github.com/trialuser02/qt6ct"
 >download</ulink
->) for &Qt; 6 and &kde-frameworks; 6:</emphasis
-> To use <application
+>) для &Qt; 6 і &kde-frameworks; 6:</emphasis
+> щоб скористатися <application
 >qt6ct</application
-> with your desktop environment, add the following to your <filename
+> у вашому стільничному середовищі, додайте такі записи до вашого файла <filename
 >~/.xinitrc</filename
-> or <filename
+> або <filename
 >~/.profile</filename
-> file.</para>
+>.</para>
             <para
 ><emphasis
 >X11:</emphasis
@@ -3302,7 +3322,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Динамічне виявлення вебслужб (WS-Discovery) використовується для навігації локальною мережею та виявлення робочих груп, доменів та вузлів. Це корисно, якщо у вашому мережевому оточенні домінують сервери із сучасними версіями &Windows;. Якщо ви скористаєтеся цим варіантом, можливо, потреби у примусовому використанні у клієнтській бібліотеці &Samba; версії протоколу SMB 1.0 для пошуку робочих груп і доменів не буде.</para>
+>Динамічне виявлення вебслужб (WS-Discovery) використовується для навігації локальною мережею та виявлення робочих груп, доменів та вузлів. Це корисно, якщо у вашому мережевому оточенні домінують сервери із сучасними версіями &Windows;.</para>
               <note
 ><para
 >Цей пункт є необов'язковим. Його буде показано, лише якщо &smb4k; було зібрано із підтримкою WS-Discovery.</para
@@ -3320,23 +3340,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Інтерфейс виявлення служб DNS (DNS-SD) використовується для навігації локальною мережею і виявлення серверів, які надають спільні ресурси SMB Виявлені домени відповідатимуть доменам DNS-SD (наприклад LOCAL) і, найімовірніше, не тим доменам, які визначено у мережевому оточенні Втім, це не стосується навігації. Якщо ви хочете скористатися цим варіантом, не слід примушувати клієнтську бібліотеку &Samba; використовувати для пошуку робочих груп та доменів протокол SMB версії 1.0.</para>
+>Інтерфейс виявлення служб DNS (DNS-SD) використовується для навігації локальною мережею і виявлення серверів, які надають спільні ресурси SMB Виявлені домени відповідатимуть доменам DNS-SD (наприклад LOCAL) і, найімовірніше, не тим доменам, які визначено у мережевому оточенні Втім, це не стосується навігації.</para>
               <para
 >Типове значення: позначено</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Примусово використовувати протокол SMB версії 1.0 для пошуку робочих груп і доменів</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Вам слід користуватися цим пунктом, лише якщо маєте кончу потребу, оскільки версія протоколу SMB 1.0 не є безпечною, і її вимкнено у новіших версіях &Samba; і &Windows;. Втім, якщо у вас виникають проблеми із виявленням робочих груп і доменів у вашому мережевому середовищі, вам варто скористатися цим перемикачем. Якщо ви використовуєте DNS Service Discovery (DNS-SD) або Web Services Dynamic Discovery (WS-Discovery), і усе працює як слід, цей пункт вам не потрібен.</para>
-              <para
->Типове значення: не позначено</para>
             </listitem>
           </varlistentry>
           <varlistentry>
