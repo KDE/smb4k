@@ -416,8 +416,8 @@ msgstr "<qt>Skriv inn vala, skilde med komma::</qt>"
 #: smb4k/smb4kconfigpagemounting.cpp:797
 #, kde-format
 msgid ""
-"The following entry is going to be removed from the additional options:"
-"<br>%2.<br>Please read the handbook for details."
+"The following entry is going to be removed from the additional options:<br>"
+"%2.<br>Please read the handbook for details."
 msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
