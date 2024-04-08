@@ -169,12 +169,8 @@ add_subdirectory(helpers)
 add_subdirectory(smb4k)
 add_subdirectory(doc)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
-  ki18n_install(po)
-  if(KF5DocTools_FOUND)
-    kdoctools_install(po)
-  endif(KF5DocTools_FOUND)
-endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
+ki18n_install(po)
+kdoctools_install(po)
 
 #
 # Make adjustments according to the options set by the user
