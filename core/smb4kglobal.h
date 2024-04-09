@@ -11,6 +11,7 @@
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
 #include "smb4kbookmark.h"
+#include "smb4kcore_export.h"
 #include "smb4kcustomsettings.h"
 #include "smb4kfile.h"
 #include "smb4khost.h"
@@ -55,7 +56,7 @@ namespace Smb4KGlobal
  *
  * @returns the global list of known workgroups.
  */
-Q_DECL_EXPORT const QList<WorkgroupPtr> &workgroupsList();
+SMB4KCORE_EXPORT const QList<WorkgroupPtr> &workgroupsList();
 
 /**
  * This function returns the workgroup or domain that matches the name @p name or
@@ -63,7 +64,7 @@ Q_DECL_EXPORT const QList<WorkgroupPtr> &workgroupsList();
  *
  * @returns a pointer to the workgroup with name @p name.
  */
-Q_DECL_EXPORT WorkgroupPtr findWorkgroup(const QString &name);
+SMB4KCORE_EXPORT WorkgroupPtr findWorkgroup(const QString &name);
 
 /**
  * This function takes a workgroup @p workgroup, checks whether it is already
@@ -76,7 +77,7 @@ Q_DECL_EXPORT WorkgroupPtr findWorkgroup(const QString &name);
  *
  * @returns TRUE if the workgroup was added and FALSE otherwise.
  */
-Q_DECL_EXPORT bool addWorkgroup(WorkgroupPtr workgroup);
+SMB4KCORE_EXPORT bool addWorkgroup(WorkgroupPtr workgroup);
 
 /**
  * This function takes a workgroup @p workgroup, and updates the respective workgroup
@@ -87,7 +88,7 @@ Q_DECL_EXPORT bool addWorkgroup(WorkgroupPtr workgroup);
  *
  * @returns TRUE if the workgroup was updated and FALSE otherwise
  */
-Q_DECL_EXPORT bool updateWorkgroup(WorkgroupPtr workgroup);
+SMB4KCORE_EXPORT bool updateWorkgroup(WorkgroupPtr workgroup);
 
 /**
  * This function removes a workgroup @p workgroup from the list of domains. The
@@ -101,12 +102,12 @@ Q_DECL_EXPORT bool updateWorkgroup(WorkgroupPtr workgroup);
  *
  * @returns TRUE if the workgroup was removed and FALSE otherwise.
  */
-Q_DECL_EXPORT bool removeWorkgroup(WorkgroupPtr workgroup);
+SMB4KCORE_EXPORT bool removeWorkgroup(WorkgroupPtr workgroup);
 
 /**
  * This function clears the global list of workgroups.
  */
-Q_DECL_EXPORT void clearWorkgroupsList();
+SMB4KCORE_EXPORT void clearWorkgroupsList();
 
 /**
  * This function returns the global list of hosts that were discovered by
@@ -114,7 +115,7 @@ Q_DECL_EXPORT void clearWorkgroupsList();
  *
  * @returns the global list of known hosts.
  */
-Q_DECL_EXPORT const QList<HostPtr> &hostsList();
+SMB4KCORE_EXPORT const QList<HostPtr> &hostsList();
 
 /**
  * This function returns the host matching the name @p name or NULL if there is no
@@ -127,7 +128,7 @@ Q_DECL_EXPORT const QList<HostPtr> &hostsList();
  *
  * @returns an Smb4KHost item of NULL if none was found that matches @p name.
  */
-Q_DECL_EXPORT HostPtr findHost(const QString &name, const QString &workgroup = QString());
+SMB4KCORE_EXPORT HostPtr findHost(const QString &name, const QString &workgroup = QString());
 
 /**
  * This function takes a host @p host, checks whether it is already
@@ -140,7 +141,7 @@ Q_DECL_EXPORT HostPtr findHost(const QString &name, const QString &workgroup = Q
  *
  * @returns TRUE if the host was added and FALSE otherwise.
  */
-Q_DECL_EXPORT bool addHost(HostPtr host);
+SMB4KCORE_EXPORT bool addHost(HostPtr host);
 
 /**
  * This function takes an host @p host, and updates the respective host
@@ -151,7 +152,7 @@ Q_DECL_EXPORT bool addHost(HostPtr host);
  *
  * @returns TRUE if the host was updated and FALSE otherwise
  */
-Q_DECL_EXPORT bool updateHost(HostPtr host);
+SMB4KCORE_EXPORT bool updateHost(HostPtr host);
 
 /**
  * This function removes a host @p host from the list of hosts. The
@@ -165,12 +166,12 @@ Q_DECL_EXPORT bool updateHost(HostPtr host);
  *
  * @returns TRUE if the host was removed and FALSE otherwise.
  */
-Q_DECL_EXPORT bool removeHost(HostPtr host);
+SMB4KCORE_EXPORT bool removeHost(HostPtr host);
 
 /**
  * This function clears the global list of hosts.
  */
-Q_DECL_EXPORT void clearHostsList();
+SMB4KCORE_EXPORT void clearHostsList();
 
 /**
  * This function returns all hosts that belong to the workgroup or domain
@@ -182,7 +183,7 @@ Q_DECL_EXPORT void clearHostsList();
  *
  * @returns the list of hosts belonging to the workgroup or domain @param workgroup.
  */
-Q_DECL_EXPORT QList<HostPtr> workgroupMembers(WorkgroupPtr workgroup);
+SMB4KCORE_EXPORT QList<HostPtr> workgroupMembers(WorkgroupPtr workgroup);
 
 /**
  * This function returns the list of shares that were discovered by Smb4K.
@@ -190,7 +191,7 @@ Q_DECL_EXPORT QList<HostPtr> workgroupMembers(WorkgroupPtr workgroup);
  *
  * @returns the global list of known shares.
  */
-Q_DECL_EXPORT const QList<SharePtr> &sharesList();
+SMB4KCORE_EXPORT const QList<SharePtr> &sharesList();
 
 /**
  * This function returns the share with URL @p url located in the workgroup or
@@ -203,7 +204,7 @@ Q_DECL_EXPORT const QList<SharePtr> &sharesList();
  *
  * @returns the share that matches @p url and optionally @p workgroup or 0.
  */
-Q_DECL_EXPORT SharePtr findShare(const QUrl &url, const QString &workgroup = QString());
+SMB4KCORE_EXPORT SharePtr findShare(const QUrl &url, const QString &workgroup = QString());
 
 /**
  * This function takes a share @p share, checks whether it is already
@@ -216,7 +217,7 @@ Q_DECL_EXPORT SharePtr findShare(const QUrl &url, const QString &workgroup = QSt
  *
  * @returns TRUE if the share was added and FALSE otherwise.
  */
-Q_DECL_EXPORT bool addShare(SharePtr share);
+SMB4KCORE_EXPORT bool addShare(SharePtr share);
 
 /**
  * This function takes a share @p share, and updates the respective share
@@ -227,7 +228,7 @@ Q_DECL_EXPORT bool addShare(SharePtr share);
  *
  * @returns TRUE if the share was updated and FALSE otherwise
  */
-Q_DECL_EXPORT bool updateShare(SharePtr share);
+SMB4KCORE_EXPORT bool updateShare(SharePtr share);
 
 /**
  * This function removes a share @p share from the list of shares. The
@@ -241,12 +242,12 @@ Q_DECL_EXPORT bool updateShare(SharePtr share);
  *
  * @returns TRUE if the share was removed and FALSE otherwise.
  */
-Q_DECL_EXPORT bool removeShare(SharePtr share);
+SMB4KCORE_EXPORT bool removeShare(SharePtr share);
 
 /**
  * This function clears the global list of shares.
  */
-Q_DECL_EXPORT void clearSharesList();
+SMB4KCORE_EXPORT void clearSharesList();
 
 /**
  * This function returns the list of shares that is provided by one specific host
@@ -258,7 +259,7 @@ Q_DECL_EXPORT void clearSharesList();
  *
  * @returns the list of shares that are provided by the host @p host.
  */
-Q_DECL_EXPORT QList<SharePtr> sharedResources(HostPtr host);
+SMB4KCORE_EXPORT QList<SharePtr> sharedResources(HostPtr host);
 
 /**
  * This function returns the global list of mounted shares that were discovered by
@@ -266,14 +267,14 @@ Q_DECL_EXPORT QList<SharePtr> sharedResources(HostPtr host);
  *
  * @returns the global list of known mounted shares.
  */
-Q_DECL_EXPORT const QList<SharePtr> &mountedSharesList();
+SMB4KCORE_EXPORT const QList<SharePtr> &mountedSharesList();
 
 /**
  * Find a mounted share by its path (i.e. mount point).
  *
  * @returns the share that is mounted to @p path.
  */
-Q_DECL_EXPORT SharePtr findShareByPath(const QString &path);
+SMB4KCORE_EXPORT SharePtr findShareByPath(const QString &path);
 
 /**
  * Find all mounts of a particular share with URL @p url on the system.
@@ -286,14 +287,14 @@ Q_DECL_EXPORT SharePtr findShareByPath(const QString &path);
  *
  * @returns the complete list of mounts with the URL @p url.
  */
-Q_DECL_EXPORT QList<SharePtr> findShareByUrl(const QUrl &url);
+SMB4KCORE_EXPORT QList<SharePtr> findShareByUrl(const QUrl &url);
 
 /**
  * This function returns the list of inaccessible shares.
  *
  * @returns the list of inaccessible shares.
  */
-Q_DECL_EXPORT QList<SharePtr> findInaccessibleShares();
+SMB4KCORE_EXPORT QList<SharePtr> findInaccessibleShares();
 
 /**
  * This function takes a mounted share @p share, checks whether it is
@@ -306,7 +307,7 @@ Q_DECL_EXPORT QList<SharePtr> findInaccessibleShares();
  *
  * @returns TRUE if the share was added and FALSE otherwise.
  */
-Q_DECL_EXPORT bool addMountedShare(SharePtr share);
+SMB4KCORE_EXPORT bool addMountedShare(SharePtr share);
 
 /**
  * This function takes a mounted share @p share and updates the share that
@@ -315,7 +316,7 @@ Q_DECL_EXPORT bool addMountedShare(SharePtr share);
  * @param share       The share item
  * @returns TRUE if a share was found and updated. Returns FALSE otherwise.
  */
-Q_DECL_EXPORT bool updateMountedShare(SharePtr share);
+SMB4KCORE_EXPORT bool updateMountedShare(SharePtr share);
 
 /**
  * This function removes a mounted share @p share from the list of mounted
@@ -329,7 +330,7 @@ Q_DECL_EXPORT bool updateMountedShare(SharePtr share);
  *
  * @returns TRUE if the share was removed and FALSE otherwise.
  */
-Q_DECL_EXPORT bool removeMountedShare(SharePtr share);
+SMB4KCORE_EXPORT bool removeMountedShare(SharePtr share);
 
 /**
  * This function returns TRUE if only shares are present that are owned by
@@ -337,7 +338,7 @@ Q_DECL_EXPORT bool removeMountedShare(SharePtr share);
  *
  * @returns TRUE if there are only shares that are owned by other users.
  */
-Q_DECL_EXPORT bool onlyForeignMountedShares();
+SMB4KCORE_EXPORT bool onlyForeignMountedShares();
 
 /**
  * This enumeration determines with which application the mount point
@@ -355,21 +356,21 @@ enum OpenWith { FileManager, Konsole };
  * @param openWith      Integer of type Smb4KCore::OpenWith. Determines with which
  *                      application the share should be opened.
  */
-Q_DECL_EXPORT void openShare(SharePtr share, OpenWith openWith = FileManager);
+SMB4KCORE_EXPORT void openShare(SharePtr share, OpenWith openWith = FileManager);
 
 /**
  * Get the NetBIOS name of this computer.
  *
  * @returns the NetBIOS name
  */
-Q_DECL_EXPORT const QString machineNetbiosName();
+SMB4KCORE_EXPORT const QString machineNetbiosName();
 
 /**
  * Get the name of the workgroup or domain this computer is in.
  *
  * @returns the workgroup or domain
  */
-Q_DECL_EXPORT const QString machineWorkgroupName();
+SMB4KCORE_EXPORT const QString machineWorkgroupName();
 
 /**
  * This function returns TRUE if the core classes should set a busy cursor when
@@ -377,7 +378,7 @@ Q_DECL_EXPORT const QString machineWorkgroupName();
  *
  * @returns TRUE in case a busy cursor should be set.
  */
-Q_DECL_EXPORT bool modifyCursor();
+SMB4KCORE_EXPORT bool modifyCursor();
 
 #if defined(Q_OS_LINUX)
 /**
@@ -386,7 +387,7 @@ Q_DECL_EXPORT bool modifyCursor();
  *
  * @returns the list of allowed mount arguments
  */
-Q_DECL_EXPORT QStringList allowedMountArguments();
+SMB4KCORE_EXPORT QStringList allowedMountArguments();
 #endif
 
 /**
@@ -394,28 +395,28 @@ Q_DECL_EXPORT QStringList allowedMountArguments();
  *
  * @returns the path of the mount executable.
  */
-Q_DECL_EXPORT const QString findMountExecutable();
+SMB4KCORE_EXPORT const QString findMountExecutable();
 
 /**
  * Find the umount executable on the system.
  *
  * @returns the path of the umount executable.
  */
-Q_DECL_EXPORT const QString findUmountExecutable();
+SMB4KCORE_EXPORT const QString findUmountExecutable();
 
 /**
  * This function returns the directory where data is to be placed.
  *
  * @returns the data location
  */
-Q_DECL_EXPORT const QString dataLocation();
+SMB4KCORE_EXPORT const QString dataLocation();
 
 /**
  * Wait the given @p time until proceeding. This wait function is non-blocking.
  *
  * @param time          The waiting time in msec
  */
-Q_DECL_EXPORT void wait(int time);
+SMB4KCORE_EXPORT void wait(int time);
 };
 
 #endif

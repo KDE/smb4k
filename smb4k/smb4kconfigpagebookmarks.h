@@ -24,7 +24,7 @@
  * This configuration page contains the bookmarks
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
- * @since 3.3.0
+ * @since 4.0.0
  */
 
 class Smb4KConfigPageBookmarks : public QWidget

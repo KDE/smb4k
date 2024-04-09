@@ -9,6 +9,7 @@
 #define SMB4KHARDWAREINTERFACE_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -24,7 +25,7 @@ class Smb4KHardwareInterfacePrivate;
  * @since 2.0.0
  */
 
-class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
+class SMB4KCORE_EXPORT Smb4KHardwareInterface : public QObject
 {
     Q_OBJECT
 

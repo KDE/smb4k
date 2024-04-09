@@ -10,6 +10,7 @@
 
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
+#include "smb4kcore_export.h"
 #include "smb4kglobalenums.h"
 
 // Qt includes
@@ -32,7 +33,7 @@ using namespace Smb4KGlobal;
  * @since 1.0.0
  */
 
-class Q_DECL_EXPORT Smb4KCustomSettings
+class SMB4KCORE_EXPORT Smb4KCustomSettings
 {
     friend class Smb4KCustomSettingsPrivate;
 

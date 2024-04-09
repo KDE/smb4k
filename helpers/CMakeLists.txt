@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Albert Astals Cid <aacid@kde.org>
-# SPDX-FileCopyrightText: 2010-2013 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2010-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -8,17 +8,18 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/core 
   ${CMAKE_BINARY_DIR}/core)
 
-set(smb4kmounthelper_SRCS smb4kmounthelper.cpp)
+add_executable(mounthelper)
 
-add_executable(mounthelper ${smb4kmounthelper_SRCS})
+target_sources(mounthelper PRIVATE
+  smb4kmounthelper.cpp)
 
 target_link_libraries(mounthelper
   smb4kcore
-  Qt${QT_MAJOR_VERSION}::Core
-  ${AUTHLIB}
-  KF${QT_MAJOR_VERSION}::CoreAddons
-  KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::KIOCore)
+  Qt6::Core
+  KF6::AuthCore
+  KF6::CoreAddons
+  KF6::I18n
+  KF6::KIOCore)
 
 install(TARGETS mounthelper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 

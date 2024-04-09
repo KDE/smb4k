@@ -10,6 +10,7 @@
 
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
+#include "smb4kcore_export.h"
 
 // Qt includes
 #include <QHostAddress>
@@ -17,7 +18,7 @@
 
 class Smb4KFilePrivate;
 
-class Q_DECL_EXPORT Smb4KFile : public Smb4KBasicNetworkItem
+class SMB4KCORE_EXPORT Smb4KFile : public Smb4KBasicNetworkItem
 {
 public:
     /**

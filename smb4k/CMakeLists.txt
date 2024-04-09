@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2009-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -13,7 +13,9 @@ add_subdirectory(icons)
 
 ########### Configuration dialog #####################
 
-set(smb4kconfigdialog_LIB_SRCS
+add_library(smb4kconfigdialog MODULE)
+
+target_sources(smb4kconfigdialog PRIVATE
   smb4kconfigdialog.cpp
   smb4kconfigpageauthentication.cpp
   smb4kconfigpagebookmarks.cpp
@@ -24,23 +26,21 @@ set(smb4kconfigdialog_LIB_SRCS
   smb4kconfigpagesynchronization.cpp
   smb4kconfigpageuserinterface.cpp
   smb4kcustomsettingseditorwidget.cpp)
-  
-add_library(smb4kconfigdialog MODULE ${smb4kconfigdialog_LIB_SRCS})
 
 target_link_libraries(smb4kconfigdialog
-  Qt${QT_MAJOR_VERSION}::Core
-  Qt${QT_MAJOR_VERSION}::Widgets
-  Qt${QT_MAJOR_VERSION}::Gui
-  KF${QT_MAJOR_VERSION}::WidgetsAddons
-  KF${QT_MAJOR_VERSION}::CoreAddons
-  KF${QT_MAJOR_VERSION}::XmlGui
-  KF${QT_MAJOR_VERSION}::IconThemes
-  KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::ConfigCore
-  KF${QT_MAJOR_VERSION}::ConfigGui
-  KF${QT_MAJOR_VERSION}::KIOCore
-  KF${QT_MAJOR_VERSION}::KIOWidgets
-  KF${QT_MAJOR_VERSION}::WindowSystem
+  Qt6::Core
+  Qt6::Widgets
+  Qt6::Gui
+  KF6::WidgetsAddons
+  KF6::CoreAddons
+  KF6::XmlGui
+  KF6::IconThemes
+  KF6::I18n
+  KF6::ConfigCore
+  KF6::ConfigGui
+  KF6::KIOCore
+  KF6::KIOWidgets
+  KF6::WindowSystem
   smb4kcore)
   
 if (SMB4K_WITH_WS_DISCOVERY)
@@ -49,7 +49,9 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 
 ########### Dialogs ################################
 
-set(smb4kdialogs_LIB_SRCS
+add_library(smb4kdialogs SHARED)
+
+target_sources(smb4kdialogs PRIVATE
   smb4kbookmarkdialog.cpp
   smb4kbookmarkeditor.cpp
   smb4kconfigpagebookmarks.cpp
@@ -62,21 +64,23 @@ set(smb4kdialogs_LIB_SRCS
   smb4kprintdialog.cpp
   smb4ksynchronizationdialog.cpp)
 
-add_library(smb4kdialogs SHARED ${smb4kdialogs_LIB_SRCS})
-
 target_link_libraries(smb4kdialogs
-  smb4kcore
-  Qt${QT_MAJOR_VERSION}::Core
-  Qt${QT_MAJOR_VERSION}::Widgets
-  KF${QT_MAJOR_VERSION}::Completion
-  KF${QT_MAJOR_VERSION}::ConfigGui
-  KF${QT_MAJOR_VERSION}::CoreAddons
-  KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::IconThemes)
+  Qt6::Core
+  Qt6::Widgets
+  KF6::Completion
+  KF6::ConfigGui
+  KF6::CoreAddons
+  KF6::I18n
+  KF6::IconThemes
+  smb4kcore)
+
+target_compile_definitions(smb4kdialogs PRIVATE SMB4KDIALOGS)
 
 ########### Main Application #########################
 
-set(smb4k_SRCS
+add_executable(smb4k)
+
+target_sources(smb4k PRIVATE
   main.cpp
   smb4k.qrc
   smb4kbookmarkmenu.cpp
@@ -92,29 +96,24 @@ set(smb4k_SRCS
   smb4ksharesviewdockwidget.cpp
   smb4ksystemtray.cpp
   smb4ktooltip.cpp)
-  
-add_executable(smb4k ${smb4k_SRCS})
 
 target_link_libraries(smb4k
   smb4kcore
   smb4kdialogs
-  Qt${QT_MAJOR_VERSION}::Core
-  Qt${QT_MAJOR_VERSION}::Gui
-  Qt${QT_MAJOR_VERSION}::Widgets
-  KF${QT_MAJOR_VERSION}::CoreAddons
-  KF${QT_MAJOR_VERSION}::WidgetsAddons
-  KF${QT_MAJOR_VERSION}::DBusAddons
-  KF${QT_MAJOR_VERSION}::XmlGui
-  KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::IconThemes
-  KF${QT_MAJOR_VERSION}::KIOCore
-  KF${QT_MAJOR_VERSION}::ConfigWidgets
-  KF${QT_MAJOR_VERSION}::Crash
-  KF${QT_MAJOR_VERSION}::WindowSystem)
-
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(smb4k KF6::StatusNotifierItem)
-endif()
+  Qt6::Core
+  Qt6::Gui
+  Qt6::Widgets
+  KF6::CoreAddons
+  KF6::WidgetsAddons
+  KF6::DBusAddons
+  KF6::XmlGui
+  KF6::I18n
+  KF6::IconThemes
+  KF6::KIOCore
+  KF6::ConfigWidgets
+  KF6::Crash
+  KF6::WindowSystem
+  KF6::StatusNotifierItem)
 
 ########### install files ###############
 

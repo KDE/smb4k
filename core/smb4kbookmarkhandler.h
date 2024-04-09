@@ -9,6 +9,7 @@
 #define SMB4KBOOKMARKHANDLER_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -31,7 +32,7 @@ class Smb4KProfileManager;
  * @author         Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
+class SMB4KCORE_EXPORT Smb4KBookmarkHandler : public QObject
 {
     Q_OBJECT
 

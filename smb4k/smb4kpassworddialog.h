@@ -10,6 +10,7 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
+#include "smb4kdialogs_export.h"
 
 // Qt includes
 #include <QMap>
@@ -17,7 +18,7 @@
 // KDE includes
 #include <KPasswordDialog>
 
-class Q_DECL_EXPORT Smb4KPasswordDialog : public KPasswordDialog
+class SMB4KDIALOGS_EXPORT Smb4KPasswordDialog : public KPasswordDialog
 {
     Q_OBJECT
 

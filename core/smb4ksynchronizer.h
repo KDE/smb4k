@@ -9,6 +9,7 @@
 #define SMB4KSYNCHRONIZER_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -21,7 +22,7 @@
 // forward declarations
 class Smb4KSynchronizerPrivate;
 
-class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
+class SMB4KCORE_EXPORT Smb4KSynchronizer : public KCompositeJob
 {
     Q_OBJECT
 

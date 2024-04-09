@@ -7,6 +7,7 @@
     <include>QDir</include>
     <include>QUrl</include>
     <include>KIconLoader</include>
+    <include>smb4kcore_export.h</include>
     <kcfgfile name="smb4krc" />
 
 <!-- User Interface -->

@@ -1,10 +1,5 @@
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
-#
-# KDSoap WS Discovery client uses 'signals' and 'slots'
-# 
-remove_definitions(
-  -DQT_NO_KEYWORDS)
+# SPDX-FileCopyrightText: 2009-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -13,7 +8,9 @@ include_directories(
   ${CMAKE_BINARY_DIR}
   ${LIBSMBCLIENT_INCLUDE_DIRS})
 
-set(smb4kcore_LIB_SRCS
+add_library(smb4kcore SHARED)
+
+target_sources(smb4kcore PRIVATE
   smb4kauthinfo.cpp
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
@@ -38,54 +35,50 @@ set(smb4kcore_LIB_SRCS
   smb4kworkgroup.cpp)
 
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
+  kconfig_add_kcfg_files(smb4kcore
   smb4ksettings.kcfgc 
   smb4kmountsettings_linux.kcfgc)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD" OR
        ${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD" OR
        ${CMAKE_HOST_SYSTEM_NAME} MATCHES "DragonFly")
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
+  kconfig_add_kcfg_files(smb4kcore
   smb4ksettings.kcfgc 
   smb4kmountsettings_bsd.kcfgc)
 else ()
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
+  kconfig_add_kcfg_files(smb4kcore
   smb4ksettings.kcfgc)
 endif ()
 
-add_library(smb4kcore SHARED ${smb4kcore_LIB_SRCS})
-
 target_link_libraries(smb4kcore
-  Qt${QT_MAJOR_VERSION}::Core
-  Qt${QT_MAJOR_VERSION}::Widgets
-  Qt${QT_MAJOR_VERSION}::PrintSupport
-  Qt${QT_MAJOR_VERSION}::Network
-  KF${QT_MAJOR_VERSION}::ConfigCore
-  KF${QT_MAJOR_VERSION}::ConfigGui
-  KF${QT_MAJOR_VERSION}::AuthCore
-  KF${QT_MAJOR_VERSION}::IconThemes
-  KF${QT_MAJOR_VERSION}::I18n
-  KF${QT_MAJOR_VERSION}::CoreAddons
-  KF${QT_MAJOR_VERSION}::Solid
-  KF${QT_MAJOR_VERSION}::KIOCore
-  KF${QT_MAJOR_VERSION}::KIOWidgets
-  KF${QT_MAJOR_VERSION}::Notifications
-  KF${QT_MAJOR_VERSION}::JobWidgets
-  KF${QT_MAJOR_VERSION}::Wallet
-  KF${QT_MAJOR_VERSION}::DNSSD
+  Qt6::Core
+  Qt6::Widgets
+  Qt6::PrintSupport
+  Qt6::Network
+  KF6::ConfigCore
+  KF6::ConfigGui
+  KF6::AuthCore
+  KF6::IconThemes
+  KF6::I18n
+  KF6::CoreAddons
+  KF6::Solid
+  KF6::KIOCore
+  KF6::KIOWidgets
+  KF6::Notifications
+  KF6::JobWidgets
+  KF6::Wallet
+  KF6::DNSSD
   ${LIBSMBCLIENT_LIBRARIES})
     
-#
-# KI18N Translation Domain for library
-#
-add_definitions(-DTRANSLATION_DOMAIN=\"smb4k-core\")
-
-install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
-
 if (SMB4K_WITH_WS_DISCOVERY)
   target_compile_definitions(smb4kcore PRIVATE USE_WS_DISCOVERY=${SMB4K_WITH_WS_DISCOVERY})
   target_link_libraries(smb4kcore KDSoap::WSDiscoveryClient)
 endif(SMB4K_WITH_WS_DISCOVERY)
 
+target_compile_definitions(smb4kcore PRIVATE SMB4KCORE)
+
+add_definitions(-DTRANSLATION_DOMAIN=\"smb4k-core\")
+
+install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
 
 ########### install files ###############
 

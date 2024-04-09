@@ -9,6 +9,7 @@
 #define SMB4KBOOKMARK_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobalenums.h"
 
 // Qt includes
@@ -29,7 +30,7 @@ class Smb4KBookmarkPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Q_DECL_EXPORT Smb4KBookmark
+class SMB4KCORE_EXPORT Smb4KBookmark
 {
     friend class Smb4KBookmarkPrivate;
 

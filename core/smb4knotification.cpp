@@ -70,13 +70,9 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
             job->start();
         };
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         auto *openAction = notification->addAction(i18nc("Open the contents of the share with the file manager", "Open"));
         QObject::connect(openAction, &KNotificationAction::activated, open);
-#else
-        notification->setActions(QStringList(i18nc("Open the contents of the share with the file manager", "Open")));
-        QObject::connect(notification, &KNotification::action1Activated, open);
-#endif
+
         QObject::connect(notification, &KNotification::closed, &loop, &QEventLoop::quit);
 
         notification->sendEvent();

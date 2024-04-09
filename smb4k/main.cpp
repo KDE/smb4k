@@ -29,12 +29,6 @@ using namespace Smb4KGlobal;
 
 int main(int argc, char **argv)
 {
-#if QT_VERSION <= QT_VERSION_CHECK(6, 0, 0)
-    // Set attributes
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-#endif
-
     // Create the application
     QApplication app(argc, argv);
 

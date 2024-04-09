@@ -379,13 +379,9 @@ bool Smb4KConfigPageBookmarks::eventFilter(QObject *obj, QEvent *e)
     if (obj == m_treeWidget->viewport()) {
         if (e->type() == QEvent::MouseButtonPress) {
             QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(e);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
             QPointF pos = m_treeWidget->viewport()->mapFromGlobal(mouseEvent->globalPosition());
             QTreeWidgetItem *item = m_treeWidget->itemAt(pos.toPoint());
-#else
-            QPoint pos = m_treeWidget->viewport()->mapFromGlobal(mouseEvent->globalPos());
-            QTreeWidgetItem *item = m_treeWidget->itemAt(pos);
-#endif
+
             m_editButton->setEnabled(item != nullptr);
             m_removeButton->setEnabled(item != nullptr);
 

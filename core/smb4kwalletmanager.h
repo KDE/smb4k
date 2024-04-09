@@ -9,6 +9,7 @@
 #define SMB4KWALLETMANAGER_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -29,7 +30,7 @@ class Smb4KWalletManagerPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Q_DECL_EXPORT Smb4KWalletManager : public QObject
+class SMB4KCORE_EXPORT Smb4KWalletManager : public QObject
 {
     Q_OBJECT
 
