@@ -90,6 +90,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba. Está baseada na versión 5 das infraestruturas de KDE e a biblioteca de cliente de Samba (libsmbclient). Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="id">Smb4K adalah sebuah penelusur  pengaitan berbagi Samba. Ini berbasiskan pada KDE Frameworks 5 dan pustaka klien Samba (libsmbclient). Ini memindaikan jaringan tetanggamu untuk semua workgroup-workgroup, server-server, dan bebagi-bebagi yang tersedia dan bisa mengaitkan semua berbagi yang diinginkan ke sistem file lokalmu.</p>
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba. È basato su KDE Frameworks 5 e sulla libreria client di Samba (libsmbclient). Analizza le risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
+    <p xml:lang="ka">Smb4k დამატებითი ქსელის სამეზობლოს დასათვალიერებელი და Samba-ის გაზიარებების მიმაგრების პროგრამაა. ის ეყრდნობა KDE Frameworks 5-ს და Samba-ის კლიენტის ბიბლიოთეკას (libsmbclient). ის ასკანირებს თქვენი ქსელის სამეზობლოს ყველა ხელმისაწვდომი სამუშაო ჯგუფების, სერვერებისა და გაზიარებების საპოვნელად და შეუძლია, ყველა სასურველი გაზიარება თქვენს ლოკალურ ფაილურ სისტემაზე მიამაგროს.</p>
     <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. KDE 프레임워크 5와 Samba 클라이언트 라이브러리(libsmbclient)를 사용합니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 리소스를 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op het KDE Frameworks 5 en de clientbibliotheek (libsmbclient). Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
     <p xml:lang="pl">Smb4K jest rozbudowaną przeglądarką otoczenia sieciowego i narzędziem do podpinania udziałów Samby. Jest oparta na Szkieletach KDE 5 i bibliotece klienckiej Samby (libsmbclient). Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić podpięcie wszystkich tych udziałów w lokalnym systemie plików.</p>
@@ -121,6 +122,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="gl">Smb4K está baseado na biblioteca de cliente de Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
     <p xml:lang="id">Smb4K adalah berbasiskan pada pustaka klien Samba. Tujuannya adalah untuk menyediakan sebuah program yang mudah digunakan dan memiliki fitur sebanyak mungkin.</p>
     <p xml:lang="it">Smb4K è basato sulla libreria client di Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
+    <p xml:lang="ka">Smb4k ეყრდნობა Samba-ის კლიენტის ბიბლიოთეკას. მისი დანიშნულებაა, მოგაწოდოთ პროგრამა, რომლის გამოყენებაც იოლია და რომელსაც რაც შეიძლება, დიდი ფუნქციონალი გააჩნია.</p>
     <p xml:lang="ko">Smb4K는 Samba 클라이언트 라이브러리를 사용합니다. 사용하기 편하면서도 기능이 풍부한 프로그램을 목적으로 합니다.</p>
     <p xml:lang="nl">Smb4K is gebaseerd op de client-bibliotheek van Samba. Het doel is een programma te bieden dat gemakkelijk is te gebruiken to use en zoveel mogelijk functies heeft.</p>
     <p xml:lang="pl">Smb4K jest oparte na bibliotece klienta Samba. Jego zadaniem jest dostarczenie łatwego w użyciu programu jednocześnie posiadającego tak wiele możliwości jaka tylko jest możliwa.</p>
@@ -224,6 +226,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="id">Dukungan sistem file CIFS (Linux) dan SMBFS (FreeBSD)</li>
       <li xml:lang="ie">Supporte del sistemas de files CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="it">Supporto dei file system CIFS (Linux) e SMBFS (FreeBSD)</li>
+      <li xml:lang="ka">CIFS (Linux) და SMBFS (FreeBSD) ფაილური სისტემების მხარდაჭერა</li>
       <li xml:lang="ko">CIFS(리눅스) 및 SMBFS(FreeBSD) 파일 시스템 지원</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
       <li xml:lang="nl">Ondersteuning van het CIFS (Linux) en SMBFS (FreeBSD) bestandssysteem</li>
@@ -288,6 +291,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
       <li xml:lang="id">Akses ke file pada berbagi yang dikaitkan menggunakan pengelola file atau terminal</li>
       <li xml:lang="it">Accesso ai file di una condivisione montata usando un gestore dei file o un terminale</li>
+      <li xml:lang="ka">წვდომა მიმაგრებული გაზიარების ფაილებთან ფაილების მმართველის, ან ტერმინალის დახმარებით</li>
       <li xml:lang="ko">파일 관리자나 터미널을 통해서 마운트된 공유 내 파일에 접근</li>
       <li xml:lang="nds">Togriep op de Dateien binnen en inhangt Freegaav över Dateipleger oder Konsool</li>
       <li xml:lang="nl">Toegang tot de bestanden van een aangekoppeld gedeelde map met gebruik van een bestandsbeheerder of terminal</li>
@@ -383,6 +387,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
       <li xml:lang="id">Beraneka info tentang butir-butir jaringan jarak jauh dan berbagi-berbagi yang dikaitkan</li>
       <li xml:lang="it">Informazioni varie sugli elementi di rete remoti e sulle condivisioni montate</li>
+      <li xml:lang="ka">სხვადასხვა ინფორმაცია დაშორებული ქსელური ელემენტებისა და მიმაგრებული გაზიარებების შესახებ</li>
       <li xml:lang="ko">원격 네트워크 항목과 마운트된 공유에 대한 정보 제공</li>
       <li xml:lang="nds">En Reeg verscheden Informatschonen över Indrääg binnen Nettwarken un inhangt Freegaven</li>
       <li xml:lang="nl">Allerlei informatie over netwerk-items en aangekoppelde shares</li>
@@ -741,6 +746,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
       <li xml:lang="id">Kemampuan untuk menentukan opsi kustom untuk berbagi dan server individu</li>
       <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e per le condivisioni</li>
+      <li xml:lang="ka">საშუალება, აღწეროთ მომხმარებლის პარამეტრები ინდივიდუალური სერვერებისა და გაზიარებებისათვის</li>
       <li xml:lang="ko">서버 및 공유 리소스별 설정</li>
       <li xml:lang="nds">Lett Di Dien egen Optschonen för enkelte Servers un Freegaven fastleggen</li>
       <li xml:lang="nl">Vermogen om eigen opties voor individuele servers en shares te definiëren</li>
@@ -772,6 +778,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Compatíbel con portátiles mediante a infraestrutura de dispositivos de soporte físico Solid.</li>
       <li xml:lang="id">Dukungan laptop melalui kerangkakerja peranti hardware Solid</li>
       <li xml:lang="it">Supporto ai computer portatili per mezzo dell'infrastruttura per i dispositivi hardware Solid</li>
+      <li xml:lang="ka">ნოუთბუქის მხარდაჭერა აპარატურული მოწყობილობების ბიბლიოთეკით Solid</li>
       <li xml:lang="ko">Solid 하드웨어 장치 프레임워크를 통한 노트북 지원</li>
       <li xml:lang="nds">Klappreekner-Ünnerstütten över't Hardware-Rahmenwark Solid</li>
       <li xml:lang="nl">Ondersteuning van laptop via het framework voor hardware apparaten Solid</li>
@@ -866,6 +873,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Perfís para distintas configuracións de veciñanza de rede</li>
       <li xml:lang="id">Memprofilkan bagi persiapan jaringan tetangga yang berbeda</li>
       <li xml:lang="it">Profili per diverse impostazioni delle risorse di rete</li>
+      <li xml:lang="ka">პროფილები სხვადასხვა ქსელური სამეზობლოს მოსარგებად</li>
       <li xml:lang="ko">다른 네트워크 환경 설정 프로필</li>
       <li xml:lang="nl">Profielen voor verschillende opzetten van netwerkomgevingen</li>
       <li xml:lang="pl">Profile dla różnych ustawień otoczenia sieciowego</li>
@@ -899,6 +907,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, esta aplicación axudará a acceder facilmente aos recursos compartidos desde Windows.</p>
     <p xml:lang="id">Jika kamu bekerja dalam lingkungan jaringan yang didominasi Windows, kamu mungkin ingin menginstal aplikasi ini untuk dapat mengakses secara mudah berbagi-berbagi yang disediakan Windows</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
+    <p xml:lang="ka">თუ მუშაობთ ქსელურ გარემოში, სადაც Windows-ის კომპიუტერები უმრავლესობაა, თქვენ ალბათ გნებავთ, ეს აპლიკაცია დააყენოთ, რომ მოწოდებულ Windows-ის გაზიარებებთან იოლი წვდომა გქონდეთ.</p>
     <p xml:lang="ko">Windows가 대다수인 네트워크 환경에서 Windows 공유에 빠르게 접근하려면 이 앱을 사용할 수 있습니다.</p>
     <p xml:lang="nds">Arbeidst Du binnen en vun Windows präägt Nettwarkümgeven, kannst Du dit Programm installeren, wenn Du eenfach op de praatstahn Windows-Freegaven togriepen wullt.</p>
     <p xml:lang="nl">Als u werkt in een door Windows gedomineerde netwerkomgeving, dan zou u deze toepassing willen installeren om in staat te zijn gemakkelijk toegang tot de geboden Windows shares te krijgen.</p>
