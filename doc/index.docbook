@@ -1398,7 +1398,7 @@
 
     <sect2 id="notifications_manage">
       <title>Managing Notifications</title>
-      <para>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton>Notifications</guibutton> page. For &plasma; 5.21 and up, next click the <guibutton>Configure</guibutton> button beside the label <guilabel>Applications</guilabel> and choose &smb4k; from the list that appears. Clicking the <guibutton>Configure Events...</guibutton> opens the following dialog:</para>
+      <para>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton>Notifications</guibutton> page. In the section <guilabel>Application-specific settings</guilabel> click the <guibutton>Configure</guibutton> button and choose &smb4k; from the list that appears. The following dialog is opened:</para>
       <screenshot>
         <screeninfo>Screenshot of the systemsettings notification module</screeninfo>
         <mediaobject>
@@ -1406,7 +1406,7 @@
           <textobject><phrase>Systemsettings notification module</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>Here, all available notifications are shown in the list view and can be edited, enabled, or disabled, any way you like.</para>
+      <para>All notifications can be edited here according to your preferences.</para>
     </sect2>
   </sect1>
 
@@ -1513,30 +1513,15 @@ server min protocol = NT1
     <sect2 id="trouble_shooting_other_desktop_environments">
       <title>Other Desktop Environments Than &plasma;</title>
 
-      <para>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install one of these applications:</para>
-      <itemizedlist>
-        <listitem>
-          <para><emphasis role="bold"><application>qt5ct</application> (<ulink url="https://sourceforge.net/projects/qt5ct/">download</ulink>) for &Qt; 5 and &kde-frameworks; 5:</emphasis> To use <application>qt5ct</application> with your desktop environment, add the following to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file.</para>
-          <para><emphasis>X11:</emphasis></para>
-<programlisting>
-export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting>
-          <para><emphasis>Wayland:</emphasis></para>
-<programlisting>
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting></listitem>
-          <listitem>
-            <para><emphasis role="bold"><application>qt6ct</application> (<ulink url="https://github.com/trialuser02/qt6ct">download</ulink>) for &Qt; 6 and &kde-frameworks; 6:</emphasis> To use <application>qt6ct</application> with your desktop environment, add the following to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file.</para>
-            <para><emphasis>X11:</emphasis></para>
+      <para>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install the <application>qt6ct</application> (<ulink url="https://github.com/trialuser02/qt6ct">download</ulink>) application. To use it with your desktop environment, add the following to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
+      <para><emphasis>X11:</emphasis></para>
 <programlisting>
 export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
-            <para><emphasis>Wayland:</emphasis></para>
+      <para><emphasis>Wayland:</emphasis></para>
 <programlisting>
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
-</programlisting></listitem>
-      </itemizedlist>
+</programlisting>
     </sect2>
   </sect1>
 </chapter>
