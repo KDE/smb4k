@@ -312,7 +312,7 @@
 >Veïnatge de xarxa</guilabel
 > conté tots els elements de la xarxa -&ead;, grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
     <para
->En l'arbre de la xarxa, l'explorador mestre en cada grup de treball o domini ressaltarà el tipus de lletra en un color blau, si l'ha detectat (&pex;, quan s'utilitza DNS-SD, no es reconeix l'explorador mestre d'un domini de &Windows;). Les comparticions muntades estaran marcades amb la icona de la carpeta respectiva i un tipus de lletra en cursiva.</para>
+>En l'arbre de la xarxa, l'explorador mestre en cada grup de treball o domini ressaltarà la lletra en un color blau, si l'ha detectat (&pex;, quan s'utilitza DNS-SD, no es reconeix l'explorador mestre d'un domini de &Windows;). Les comparticions muntades estaran marcades amb la icona de la carpeta respectiva i una lletra en cursiva.</para>
 
     <screenshot>
       <screeninfo
