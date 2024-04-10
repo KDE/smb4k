@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-26 02:00+0000\n"
+"POT-Creation-Date: 2024-04-10 00:38+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -21,49 +21,49 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:16
+#: smb4k.kcfg:17
 #, kde-format
 msgid "Tab orientation:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:17
+#: smb4k.kcfg:18
 #, kde-format
 msgid "Set the tab orientation for the tabified dock widgets."
 msgstr ""
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:20
+#: smb4k.kcfg:21
 #, kde-format
 msgid "Top"
 msgstr ""
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:23
+#: smb4k.kcfg:24
 #, kde-format
 msgid "Bottom"
 msgstr ""
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:26
+#: smb4k.kcfg:27
 #, kde-format
 msgid "Left"
 msgstr ""
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:29
+#: smb4k.kcfg:30
 #, kde-format
 msgid "Right"
 msgstr ""
 
 #. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
-#: smb4k.kcfg:35
+#: smb4k.kcfg:36
 #, kde-format
 msgid "Show custom bookmark label if available"
 msgstr "利用可能な場合カスタムブックマークラベルを表示します"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
-#: smb4k.kcfg:36
+#: smb4k.kcfg:37
 #, fuzzy, kde-format
 #| msgid ""
 #| "Do not show the name of the share that is represented by the bookmark but "
@@ -76,13 +76,13 @@ msgstr ""
 "る共有名を表示しません"
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
-#: smb4k.kcfg:40
+#: smb4k.kcfg:41
 #, kde-format
 msgid "Start docked"
 msgstr "ドックで開始"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
-#: smb4k.kcfg:41
+#: smb4k.kcfg:42
 #, kde-format
 msgid ""
 "Start the application docked to the system tray, i.e. only the system tray "
@@ -96,13 +96,13 @@ msgstr ""
 "ら「戻す」を選択してください。"
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
-#: smb4k.kcfg:45
+#: smb4k.kcfg:46
 #, kde-format
 msgid "Show the type of the share"
 msgstr "共有のタイプ表示"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
-#: smb4k.kcfg:46
+#: smb4k.kcfg:47
 #, fuzzy, kde-format
 #| msgid ""
 #| "The type of a share will be displayed in a separate column in the network "
@@ -115,13 +115,13 @@ msgstr ""
 "ク、印刷、または IPC のいずれかです。"
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
-#: smb4k.kcfg:50
+#: smb4k.kcfg:51
 #, kde-format
 msgid "Show the IP address of the server"
 msgstr "サーバの IP アドレス表示"
 
 #. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
-#: smb4k.kcfg:51
+#: smb4k.kcfg:52
 #, fuzzy, kde-format
 #| msgid ""
 #| "The IP address of the server will be displayed in a separate column in "
@@ -134,13 +134,13 @@ msgstr ""
 "しょう"
 
 #. i18n: ectx: label, entry (ShowComment), group (UserInterface)
-#: smb4k.kcfg:55
+#: smb4k.kcfg:56
 #, kde-format
 msgid "Show the comment"
 msgstr "コメントを表示"
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
-#: smb4k.kcfg:56
+#: smb4k.kcfg:57
 #, fuzzy, kde-format
 #| msgid ""
 #| "The comment describing the server or share will be displayed in a "
@@ -152,26 +152,26 @@ msgstr ""
 "サーバか共有のコメントは、ネットワークブラウザの別のカラムで表示されます。"
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
-#: smb4k.kcfg:60
+#: smb4k.kcfg:61
 #, fuzzy, kde-format
 #| msgid "Show a tooltip with information about the network item"
 msgid "Show tooltips for network items"
 msgstr "ネットワーク項目に関する情報をツールチップで表示"
 
 #. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
-#: smb4k.kcfg:61
+#: smb4k.kcfg:62
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
 msgstr "現在のネットワーク項目に関する多様な情報をツールチップで表示します。"
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
-#: smb4k.kcfg:65
+#: smb4k.kcfg:66
 #, kde-format
 msgid "Automatically expand domains and hosts"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
-#: smb4k.kcfg:66
+#: smb4k.kcfg:67
 #, kde-format
 msgid ""
 "Automatically expand domain and host items when a list of associated network "
@@ -180,27 +180,27 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
-#: smb4k.kcfg:70
+#: smb4k.kcfg:71
 #, fuzzy, kde-format
 #| msgid "Show a tooltip with information about the share"
 msgid "Show tooltips for mounted shares"
 msgstr "共有に関する情報をツールチップで表示"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
-#: smb4k.kcfg:71
+#: smb4k.kcfg:72
 #, kde-format
 msgid "The tooltip shows various information about the current share."
 msgstr "現在の共有に関する様々な情報をツールチップで表示"
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:75
+#: smb4k.kcfg:76
 #, fuzzy, kde-format
 #| msgid "File mask:"
 msgid "View mode:"
 msgstr "ファイル マスク:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:76
+#: smb4k.kcfg:77
 #, kde-format
 msgid ""
 "This setting determines the view mode of the shares view. There are two "
@@ -208,61 +208,61 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:79
+#: smb4k.kcfg:80
 #, kde-format
 msgid "Icon View"
 msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:82
+#: smb4k.kcfg:83
 #, kde-format
 msgid "List View"
 msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
-#: smb4k.kcfg:88
+#: smb4k.kcfg:89
 #, kde-format
 msgid "Icon size for the icon view:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
-#: smb4k.kcfg:89
+#: smb4k.kcfg:90
 #, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
 msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
-#: smb4k.kcfg:95
+#: smb4k.kcfg:96
 #, kde-format
 msgid "Icon size for the list view:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
-#: smb4k.kcfg:96
+#: smb4k.kcfg:97
 #, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
 msgstr ""
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
-#: smb4k.kcfg:102
+#: smb4k.kcfg:103
 #, kde-format
 msgid "Icon size:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
-#: smb4k.kcfg:103
+#: smb4k.kcfg:104
 #, kde-format
 msgid "Set the icon size for the network neighborhood browser."
 msgstr ""
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
-#: smb4k.kcfg:114
+#: smb4k.kcfg:115
 #, kde-format
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
-#: smb4k.kcfg:115
+#: smb4k.kcfg:116
 #, kde-format
 msgid ""
 "The Web Services Dynamic Discovery (WS-Discovery) is used to browse the "
@@ -274,13 +274,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
-#: smb4k.kcfg:119
+#: smb4k.kcfg:120
 #, kde-format
 msgid "Use DNS Service Discovery (DNS-SD) for browsing"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseDnsServiceDiscovery), group (Network)
-#: smb4k.kcfg:120
+#: smb4k.kcfg:121
 #, kde-format
 msgid ""
 "The DNS Service Discovery (DNS-SD) is used to browse the local network and "
@@ -293,14 +293,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:124
+#: smb4k.kcfg:125
 #, fuzzy, kde-format
 #| msgid "Protocol hint:"
 msgid "Set minimal and maximal SMB protocol version"
 msgstr "プロトコル ヒント:"
 
 #. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:125
+#: smb4k.kcfg:126
 #, kde-format
 msgid ""
 "Smb4K will set the minimal and maximal SMB protocol version that is used by "
@@ -315,14 +315,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:129
+#: smb4k.kcfg:130
 #, fuzzy, kde-format
 #| msgid "Protocol hint:"
 msgid "Minimal SMB protocol version:"
 msgstr "プロトコル ヒント:"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:130
+#: smb4k.kcfg:131
 #, kde-format
 msgid ""
 "This setting controls the minimum protocol version that Samba's client "
@@ -331,34 +331,34 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:133 smb4k.kcfg:149
+#: smb4k.kcfg:134 smb4k.kcfg:150
 #, kde-format
 msgid "NT1 (Classic CIFS/SMBv1 protocol)"
 msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:136 smb4k.kcfg:152
+#: smb4k.kcfg:137 smb4k.kcfg:153
 #, kde-format
 msgid "SMB2 (Windows Vista and above)"
 msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:139 smb4k.kcfg:155
+#: smb4k.kcfg:140 smb4k.kcfg:156
 #, kde-format
 msgid "SMB3 (Windows 8 and above)"
 msgstr ""
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:145
+#: smb4k.kcfg:146
 #, fuzzy, kde-format
 #| msgid "Protocol hint:"
 msgid "Maximal SMB protocol version:"
 msgstr "プロトコル ヒント:"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:146
+#: smb4k.kcfg:147
 #, kde-format
 msgid ""
 "This setting controls the maximum protocol version that Samba's client "
@@ -366,7 +366,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
-#: smb4k.kcfg:161
+#: smb4k.kcfg:162
 #, fuzzy, kde-format
 #| msgid "SMB port:"
 msgid "Set the SMB port to:"
@@ -374,7 +374,7 @@ msgstr "SMB ポート:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
-#: smb4k.kcfg:162 smb4k.kcfg:166
+#: smb4k.kcfg:163 smb4k.kcfg:167
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the port that is used for connecting to remote servers with the "
@@ -390,13 +390,13 @@ msgstr ""
 "す。この設定は、マウントするために使われません。"
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:172
+#: smb4k.kcfg:173
 #, kde-format
 msgid "This computer is on a large network neighborhood"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:173
+#: smb4k.kcfg:174
 #, kde-format
 msgid ""
 "In case your computer is on a large network neighborhood, discovering all "
@@ -407,14 +407,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:177
+#: smb4k.kcfg:178
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "Master browsers require authentication"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:178
+#: smb4k.kcfg:179
 #, fuzzy, kde-format
 #| msgid ""
 #| "The master browsers in your network neighborhood require a login to "
@@ -431,14 +431,14 @@ msgstr ""
 "にブロードキャストエリアを検索させたとき、少しの影響もないでしょう"
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:182
+#: smb4k.kcfg:183
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "Use Kerberos for authentication"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:183
+#: smb4k.kcfg:184
 #, fuzzy, kde-format
 #| msgid ""
 #| "Try to authenticate with Kerberos. This is only useful in an Active "
@@ -452,60 +452,60 @@ msgstr ""
 "ちます。設定は smbclient および smbtree コマンドに影響します。"
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:187
+#: smb4k.kcfg:188
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "Use Winbind ccache for authentication"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:188
+#: smb4k.kcfg:189
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "Use the Winbind ccache for authentication."
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
-#: smb4k.kcfg:192
+#: smb4k.kcfg:193
 #, kde-format
 msgid "Set the encryption level to:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:193 smb4k.kcfg:197
+#: smb4k.kcfg:194 smb4k.kcfg:198
 #, kde-format
 msgid "Set the level of encryption that is used for making connections."
 msgstr ""
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:200
+#: smb4k.kcfg:201
 #, kde-format
 msgid "None"
 msgstr "なし"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:203
+#: smb4k.kcfg:204
 #, fuzzy, kde-format
 #| msgid "Required"
 msgid "Request"
 msgstr "必須"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:206
+#: smb4k.kcfg:207
 #, fuzzy, kde-format
 #| msgid "Required"
 msgid "Require"
 msgstr "必須"
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:212
+#: smb4k.kcfg:213
 #, kde-format
 msgid "Preview hidden files and directories"
 msgstr "隠しファイルとディレクトリのプレビュ"
 
 #. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:213
+#: smb4k.kcfg:214
 #, fuzzy, kde-format
 #| msgid ""
 #| "Display hidden files and directories in the preview dialog. The hidden "
@@ -527,28 +527,28 @@ msgstr ""
 "機能を使用可能にする必要はありません。"
 
 #. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:217
+#: smb4k.kcfg:218
 #, fuzzy, kde-format
 #| msgid "Show printer shares"
 msgid "Detect printer shares"
 msgstr "プリンタ共有を表示"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:218
+#: smb4k.kcfg:219
 #, fuzzy, kde-format
 #| msgid "Printer shares will be displayed in the network browser."
 msgid "Printer shares are detected."
 msgstr "プリンタ共有をネットワークブラウザで表示します"
 
 #. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:222
+#: smb4k.kcfg:223
 #, fuzzy, kde-format
 #| msgid "Show hidden shares"
 msgid "Detect hidden shares"
 msgstr "隠された共有を表示"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:223
+#: smb4k.kcfg:224
 #, fuzzy, kde-format
 #| msgid ""
 #| "Hidden shares will be displayed in the network browser. Hidden shares are "
@@ -561,13 +561,13 @@ msgstr ""
 "います、例えば Musik$ とか IPC$。"
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:227
+#: smb4k.kcfg:228
 #, kde-format
 msgid "Enable Wake-On-LAN features"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:228
+#: smb4k.kcfg:229
 #, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
@@ -577,13 +577,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:232
+#: smb4k.kcfg:233
 #, kde-format
 msgid "Waiting time:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:233
+#: smb4k.kcfg:234
 #, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
@@ -592,13 +592,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:244
+#: smb4k.kcfg:245
 #, kde-format
 msgid "Save logins in a wallet"
 msgstr "ウォレットにログインデータを保存します"
 
 #. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:245
+#: smb4k.kcfg:246
 #, kde-format
 msgid ""
 "Use a wallet to store the login. The username and password are stored "
@@ -611,13 +611,13 @@ msgstr ""
 "す。"
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:249
+#: smb4k.kcfg:250
 #, kde-format
 msgid "Use a default login"
 msgstr "デフォルトログインを使用"
 
 #. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:250
+#: smb4k.kcfg:251
 #, kde-format
 msgid ""
 "Enable the usage of a default login. The provided data is used by default to "
@@ -630,13 +630,13 @@ msgstr ""
 "合、これは非常に便利です。"
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:262
+#: smb4k.kcfg:263
 #, kde-format
 msgid "Synchronization prefix:"
 msgstr "同期拡張子:"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:263
+#: smb4k.kcfg:264
 #, kde-format
 msgid ""
 "Under this prefix the destination directory for the synchronization will be "
@@ -646,13 +646,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:267
+#: smb4k.kcfg:268
 #, kde-format
 msgid "Archive mode"
 msgstr "アーカイブモード"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:268
+#: smb4k.kcfg:269
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr ""
@@ -660,25 +660,25 @@ msgstr ""
 "です。"
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:272
+#: smb4k.kcfg:273
 #, kde-format
 msgid "Recurse into subdirectories"
 msgstr "サブディレクトリを再帰降下"
 
 #. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:273
+#: smb4k.kcfg:274
 #, kde-format
 msgid "Recurse into directories (-r, --recursive)."
 msgstr "ディレクトリを再帰降下 (-r、--recursive)"
 
 #. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:277
+#: smb4k.kcfg:278
 #, kde-format
 msgid "Update files"
 msgstr "ファイルを更新"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:278
+#: smb4k.kcfg:279
 #, kde-format
 msgid ""
 "Update files in the destination directory that are older than in the source "
@@ -688,13 +688,13 @@ msgstr ""
 "--update)"
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:282
+#: smb4k.kcfg:283
 #, kde-format
 msgid "Update files in place"
 msgstr "その場でファイルを更新"
 
 #. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:283
+#: smb4k.kcfg:284
 #, kde-format
 msgid ""
 "Update destination files in-place (--inplace). By default, rsync first "
@@ -710,13 +710,13 @@ msgstr ""
 "オプションを組み合わせるかどうかです"
 
 #. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:287
+#: smb4k.kcfg:288
 #, kde-format
 msgid "Use relative path names"
 msgstr "相対パス名を使用します"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:288
+#: smb4k.kcfg:289
 #, kde-format
 msgid ""
 "Use relative paths (-R, --relative). This means that the full path names "
@@ -728,13 +728,13 @@ msgstr ""
 "とを意味します。"
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:292
+#: smb4k.kcfg:293
 #, kde-format
 msgid "Do not send implied directories"
 msgstr "隠しディレクトリを送らないでください"
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:293
+#: smb4k.kcfg:294
 #, kde-format
 msgid ""
 "Do not send implied directories with --relative (--no-implied-dirs). This "
@@ -752,13 +752,13 @@ msgstr ""
 "可能にします。 "
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:297
+#: smb4k.kcfg:298
 #, kde-format
 msgid "Transfer directories without recursing"
 msgstr "再帰なしで、ディレクトリを転送します"
 
 #. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:298
+#: smb4k.kcfg:299
 #, kde-format
 msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
@@ -769,13 +769,13 @@ msgstr ""
 "味します"
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:303
+#: smb4k.kcfg:304
 #, kde-format
 msgid "Compress data during transfer"
 msgstr "転送時にデータを圧縮します"
 
 #. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:304
+#: smb4k.kcfg:305
 #, kde-format
 msgid ""
 "Compress data during transfer (-z, --compress). This significantly reduces "
@@ -787,13 +787,13 @@ msgstr ""
 "むでしょう。"
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:308
+#: smb4k.kcfg:309
 #, kde-format
 msgid "Set compression level:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:309
+#: smb4k.kcfg:310
 #, kde-format
 msgid ""
 "Explicitly set the compression level to use (--compress-level=NUM). If NUM "
@@ -801,20 +801,20 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
-#: smb4k.kcfg:313
+#: smb4k.kcfg:314
 #, fuzzy, kde-format
 #| msgid "Value for DeleteMaximum config entry"
 msgid "The value for the UseCompressionLevel config entry"
 msgstr "削除の最大値設定の値"
 
 #. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:320
+#: smb4k.kcfg:321
 #, kde-format
 msgid "Skip compression for following file suffixes:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:321
+#: smb4k.kcfg:322
 #, kde-format
 msgid ""
 "Overwrite the list of file suffixes that will not be compressed (--skip-"
@@ -825,31 +825,31 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
-#: smb4k.kcfg:325
+#: smb4k.kcfg:326
 #, kde-format
 msgid "The value(s) for the UseSkipCompression config entry"
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:330
+#: smb4k.kcfg:331
 #, kde-format
 msgid "Preserve symlinks"
 msgstr "シンボリックリンクを保つ"
 
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:331
+#: smb4k.kcfg:332
 #, kde-format
 msgid "Copy symlinks as symlinks (-l, --links)."
 msgstr "シンボリックリンクをシンボリックリンクとしてコピーします (-l, --links)"
 
 #. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:335
+#: smb4k.kcfg:336
 #, kde-format
 msgid "Transform symlinks"
 msgstr "シンボリックリンクを置き換えます"
 
 #. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:336
+#: smb4k.kcfg:337
 #, kde-format
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
@@ -857,14 +857,14 @@ msgstr ""
 "シンボリックリンクを指示しているアイテムと置き換えます (-L, --copy-links)"
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:340
+#: smb4k.kcfg:341
 #, fuzzy, kde-format
 #| msgid "Only transform unsafe symlinks"
 msgid "Transform unsafe symlinks"
 msgstr "危険なシンボリックリンクのみ置き換えます"
 
 #. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:341
+#: smb4k.kcfg:342
 #, kde-format
 msgid ""
 "Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
@@ -880,13 +880,13 @@ msgstr ""
 "ンを持っていません。"
 
 #. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:345
+#: smb4k.kcfg:346
 #, kde-format
 msgid "Ignore unsafe symlinks"
 msgstr "危険なシンボリックリンクを無視します"
 
 #. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:346
+#: smb4k.kcfg:347
 #, kde-format
 msgid ""
 "Ignore symlinks that point outside the copied tree (--safe-links). All "
@@ -898,14 +898,14 @@ msgstr ""
 "ションを使用する場合、予期しない結果が得るかもしれません"
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:350
+#: smb4k.kcfg:351
 #, fuzzy, kde-format
 #| msgid "Ignore unsafe symlinks"
 msgid "Munge symlinks"
 msgstr "危険なシンボリックリンクを無視します"
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:351
+#: smb4k.kcfg:352
 #, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
@@ -917,13 +917,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:355
+#: smb4k.kcfg:356
 #, kde-format
 msgid "Preserve hard links"
 msgstr "ハードリンクを保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:356
+#: smb4k.kcfg:357
 #, kde-format
 msgid ""
 "Preserve hard links (-H, --hard-links). This options causes rsync to "
@@ -935,14 +935,14 @@ msgstr ""
 "ハードリンクは、個別のファイルのように扱われます。"
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:360
+#: smb4k.kcfg:361
 #, fuzzy, kde-format
 #| msgid "Keep directory symlinks"
 msgid "Copy directory symlinks"
 msgstr "ディレクトリのシンボリックリンクを保ちます"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:361
+#: smb4k.kcfg:362
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the sending side as though they were real "
@@ -955,13 +955,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:365
+#: smb4k.kcfg:366
 #, kde-format
 msgid "Keep directory symlinks"
 msgstr "ディレクトリのシンボリックリンクを保ちます"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:366
+#: smb4k.kcfg:367
 #, fuzzy, kde-format
 #| msgid ""
 #| "Treat symlinked directories on the receiving side as though they were "
@@ -980,13 +980,13 @@ msgstr ""
 "は、削除され、実再のディレクトリに置き換えられます。"
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:370
+#: smb4k.kcfg:371
 #, kde-format
 msgid "Preserve permissions"
 msgstr "権限を保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:371
+#: smb4k.kcfg:372
 #, kde-format
 msgid ""
 "Preserve permissions (-p, --perms). The permissions of the destination file "
@@ -998,13 +998,13 @@ msgstr ""
 "ニュアルページを参照してください。"
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:375
+#: smb4k.kcfg:376
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:376
+#: smb4k.kcfg:377
 #, kde-format
 msgid ""
 "Preserve access control lists. This option causes rsync to update the "
@@ -1014,14 +1014,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:380
+#: smb4k.kcfg:381
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve extended attributes"
 msgstr "時間を保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:381
+#: smb4k.kcfg:382
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1034,14 +1034,14 @@ msgstr ""
 "ルと同じ値に設定されます。"
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:385
+#: smb4k.kcfg:386
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve access times"
 msgstr "時間を保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:386
+#: smb4k.kcfg:387
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1054,14 +1054,14 @@ msgstr ""
 "ルと同じ値に設定されます。"
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:390
+#: smb4k.kcfg:391
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve create times"
 msgstr "時間を保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:391
+#: smb4k.kcfg:392
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1074,13 +1074,13 @@ msgstr ""
 "ルと同じ値に設定されます。"
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:395
+#: smb4k.kcfg:396
 #, kde-format
 msgid "Preserve group"
 msgstr "グループを保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:396
+#: smb4k.kcfg:397
 #, kde-format
 msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
@@ -1090,13 +1090,13 @@ msgstr ""
 "ルと同じ値に設定されます。"
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:400
+#: smb4k.kcfg:401
 #, kde-format
 msgid "Preserve owner"
 msgstr "所有者を保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:401
+#: smb4k.kcfg:402
 #, kde-format
 msgid ""
 "Preserve the owner (-o, --owner). The owner of the destination file will be "
@@ -1110,13 +1110,13 @@ msgstr ""
 "す。"
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:405
+#: smb4k.kcfg:406
 #, kde-format
 msgid "Preserve device and special files"
 msgstr "デバイスファイルおよび特別なファイルを保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:406
+#: smb4k.kcfg:407
 #, kde-format
 msgid ""
 "Preserve device and special files (-D, --devices --specials). This option "
@@ -1131,13 +1131,13 @@ msgstr ""
 "す。"
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:410
+#: smb4k.kcfg:411
 #, kde-format
 msgid "Preserve times"
 msgstr "時間を保ちます"
 
 #. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:411
+#: smb4k.kcfg:412
 #, kde-format
 msgid ""
 "Preserve times (-t, --times). The modification times are transferred along "
@@ -1149,13 +1149,13 @@ msgstr ""
 "読んでください。"
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:415
+#: smb4k.kcfg:416
 #, kde-format
 msgid "Omit directories when preserving times"
 msgstr "時間を保つ時は、ディレクトリは除外します"
 
 #. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:416
+#: smb4k.kcfg:417
 #, kde-format
 msgid ""
 "Omit directories when preserving times (-O, --omit-dir-times). This means "
@@ -1167,13 +1167,13 @@ msgstr ""
 "特徴のみ、--times とともに使用します。"
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:420
+#: smb4k.kcfg:421
 #, kde-format
 msgid "Remove synchronized source files"
 msgstr "同期されたソース・ファイルを削除します"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:421
+#: smb4k.kcfg:422
 #, kde-format
 msgid ""
 "Remove all synchronized source files (--remove-source-files). This tells "
@@ -1186,13 +1186,13 @@ msgstr ""
 "削除するように、rsync に命じます。"
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:425
+#: smb4k.kcfg:426
 #, kde-format
 msgid "Delete extraneous files"
 msgstr "余分なファイルを削除します"
 
 #. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:426
+#: smb4k.kcfg:427
 #, kde-format
 msgid ""
 "Delete extraneous files from destination (--delete). This tells rsync to "
@@ -1204,13 +1204,13 @@ msgstr ""
 "期します。"
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:430
+#: smb4k.kcfg:431
 #, kde-format
 msgid "Delete files before transfer"
 msgstr "転送前にファイルを削除します"
 
 #. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:431
+#: smb4k.kcfg:432
 #, kde-format
 msgid ""
 "Delete files on the receiving side before the transfer starts (--delete-"
@@ -1222,13 +1222,13 @@ msgstr ""
 "delete-excluded 指定している場合は、デフォルトの動作です。"
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:435
+#: smb4k.kcfg:436
 #, kde-format
 msgid "Delete files after transfer"
 msgstr "転送後にファイルを削除します"
 
 #. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:436
+#: smb4k.kcfg:437
 #, kde-format
 msgid ""
 "Delete files on the receiving side after the transfer has completed (--"
@@ -1237,13 +1237,13 @@ msgstr ""
 "転送が完了した後、受信側のファイルを削除します。(--delete-after, --del)."
 
 #. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:440
+#: smb4k.kcfg:441
 #, kde-format
 msgid "Delete files during transfer"
 msgstr "転送中にファイルを削除します"
 
 #. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:441
+#: smb4k.kcfg:442
 #, kde-format
 msgid ""
 "Delete files on the receiving side during the transfer (--delete-during). "
@@ -1255,14 +1255,14 @@ msgstr ""
 "2.6.4 以上でサポートされています。"
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:445
+#: smb4k.kcfg:446
 #, fuzzy, kde-format
 #| msgid "Also delete excluded files"
 msgid "Delete excluded files"
 msgstr "また、除外されたファイルを削除します"
 
 #. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:446
+#: smb4k.kcfg:447
 #, kde-format
 msgid ""
 "Also delete excluded files from destination directory (--delete-excluded). "
@@ -1276,13 +1276,13 @@ msgstr ""
 "rsync のマニュアルページを参照してください。"
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:450
+#: smb4k.kcfg:451
 #, kde-format
 msgid "Delete even if I/O errors occur"
 msgstr "I/O エラーが発生しても、削除します"
 
 #. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:451
+#: smb4k.kcfg:452
 #, kde-format
 msgid ""
 "Delete even if I/O errors occur (--ignore-errors). This option has to be "
@@ -1292,13 +1292,13 @@ msgstr ""
 "delete と一緒に指定されることによって、有効になります。"
 
 #. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:455
+#: smb4k.kcfg:456
 #, kde-format
 msgid "Force deletion of non-void directories"
 msgstr "無効なディレクトリの強制削除をします"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:456
+#: smb4k.kcfg:457
 #, kde-format
 msgid ""
 "Force deletion of directories even if they are not empty (--force). This "
@@ -1311,13 +1311,13 @@ msgstr ""
 "ではないならば、これは関連しているだけです。"
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:460
+#: smb4k.kcfg:461
 #, kde-format
 msgid "Do not delete more than this many files:"
 msgstr "ファイルを削除する最大数:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:461
+#: smb4k.kcfg:462
 #, kde-format
 msgid ""
 "Only delete as many files as defined here (--max-delete=NUM). This tells "
@@ -1330,19 +1330,19 @@ msgstr ""
 "ステムのファイル削除をする時に、思いがけない失敗を防止するのに便利です。"
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
-#: smb4k.kcfg:465
+#: smb4k.kcfg:466
 #, kde-format
 msgid "Value for DeleteMaximum config entry"
 msgstr "削除の最大値設定の値"
 
 #. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:471
+#: smb4k.kcfg:472
 #, kde-format
 msgid "Do not transfer any file smaller than:"
 msgstr "ファイル転送最小サイズ:"
 
 #. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:472
+#: smb4k.kcfg:473
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is smaller than the "
@@ -1352,19 +1352,19 @@ msgstr ""
 "ん。(--min-size=SIZE)."
 
 #. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:476
+#: smb4k.kcfg:477
 #, kde-format
 msgid "Value for MinimalTransferSize config entry"
 msgstr "最小転送サイズ設定の値"
 
 #. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:482
+#: smb4k.kcfg:483
 #, kde-format
 msgid "Do not transfer any file larger than:"
 msgstr "ファイル転送最大サイズ:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:483
+#: smb4k.kcfg:484
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is larger than the "
@@ -1374,19 +1374,19 @@ msgstr ""
 "ん。"
 
 #. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:487
+#: smb4k.kcfg:488
 #, kde-format
 msgid "Value for MaximalTransferSize config entry"
 msgstr "最大転送サイズ設定の値"
 
 #. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:493
+#: smb4k.kcfg:494
 #, kde-format
 msgid "Keep partially transferred files"
 msgstr "部分的に転送したファイルを保ちます"
 
 #. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:494
+#: smb4k.kcfg:495
 #, kde-format
 msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
@@ -1396,13 +1396,13 @@ msgstr ""
 "場合ファイルを削除します。"
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:498
+#: smb4k.kcfg:499
 #, kde-format
 msgid "Put partially transferred files into:"
 msgstr "部分的に転送したファイルを入れます:"
 
 #. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:499
+#: smb4k.kcfg:500
 #, kde-format
 msgid ""
 "Put a partially transferred file into this directory (--partial-dir=DIR). "
@@ -1416,19 +1416,19 @@ msgstr ""
 "は上書きされないからです。"
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
-#: smb4k.kcfg:503
+#: smb4k.kcfg:504
 #, kde-format
 msgid "The data for the UsePartialDirectory option"
 msgstr "UsePartialDirectory オプション用のデータ"
 
 #. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:508
+#: smb4k.kcfg:509
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
 msgstr "CVS がするのと同様に、自動的に無視するファイル"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:509
+#: smb4k.kcfg:510
 #, kde-format
 msgid ""
 "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
@@ -1442,13 +1442,13 @@ msgstr ""
 "めに、CVS が用いるのと同じアルゴリズムを使います。"
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:513
+#: smb4k.kcfg:514
 #, kde-format
 msgid "Exclude files matching this pattern:"
 msgstr "パターンに合うファイルを除外します:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:514
+#: smb4k.kcfg:515
 #, kde-format
 msgid ""
 "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
@@ -1460,19 +1460,19 @@ msgstr ""
 "ジを参照してください。"
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
-#: smb4k.kcfg:518
+#: smb4k.kcfg:519
 #, kde-format
 msgid "Pattern that is used for file exclusion"
 msgstr "ファイル排除に使用されるパターン"
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:523
+#: smb4k.kcfg:524
 #, kde-format
 msgid "Read exclude patterns from:"
 msgstr "除外パターンを読み込みます:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:524
+#: smb4k.kcfg:525
 #, kde-format
 msgid ""
 "Read exclude patterns from a file (--exclude-from=FILE). This option is "
@@ -1486,20 +1486,20 @@ msgstr ""
 "ニュアルのページを参照してください。"
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:528
+#: smb4k.kcfg:529
 #, kde-format
 msgid "The file from which the exclude patterns are read"
 msgstr "排除パターンが読まれるファイル"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:533
+#: smb4k.kcfg:534
 #, fuzzy, kde-format
 #| msgid "Exclude files matching this pattern:"
 msgid "Include files matching this pattern:"
 msgstr "パターンに合うファイルを除外します:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:534
+#: smb4k.kcfg:535
 #, kde-format
 msgid ""
 "Do not exclude files matching a certain pattern (--include=PATTERN). This is "
@@ -1511,19 +1511,19 @@ msgstr ""
 "ジを参照してください。"
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
-#: smb4k.kcfg:538
+#: smb4k.kcfg:539
 #, kde-format
 msgid "Pattern that is used for file inclusion"
 msgstr "ファイルの包含に使用されるパターン"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:543
+#: smb4k.kcfg:544
 #, kde-format
 msgid "Read include patterns from:"
 msgstr "包括するパターンを読み込みます:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:544
+#: smb4k.kcfg:545
 #, kde-format
 msgid ""
 "Read include patterns from a file (--include-from=FILE). This option is "
@@ -1537,19 +1537,19 @@ msgstr ""
 "rsync のマニュアルのページを参照してください。"
 
 #. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
-#: smb4k.kcfg:548
+#: smb4k.kcfg:549
 #, kde-format
 msgid "The file from which the include patterns are read"
 msgstr "インクルードパターンが読まれるファイル"
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:553
+#: smb4k.kcfg:554
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "カスタムフィルタルール:"
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:554
+#: smb4k.kcfg:555
 #, kde-format
 msgid ""
 "Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
@@ -1563,20 +1563,20 @@ msgstr ""
 "の規則は --filter=... 引数で始まる必要があります"
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:558
+#: smb4k.kcfg:559
 #, fuzzy, kde-format
 #| msgid "Custom filter rules:"
 msgid "Custom filter rules"
 msgstr "カスタムフィルタルール:"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:563
+#: smb4k.kcfg:564
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "使用方法 --filter='dir-merge rsync-filter' フィルタ ルール"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:564
+#: smb4k.kcfg:565
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1590,13 +1590,13 @@ msgstr ""
 "合、それは有効ではありません。"
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:568
+#: smb4k.kcfg:569
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "使用方法 --filter='exclude rsync-filter' フィルタ ルール"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:569
+#: smb4k.kcfg:570
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1608,13 +1608,13 @@ msgstr ""
 "を選択解除することによって作動できるフィルタ規則を含んでいます。"
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:573
+#: smb4k.kcfg:574
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr "まばらなファイルを効率的に扱ってください"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:574
+#: smb4k.kcfg:575
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1626,13 +1626,13 @@ msgstr ""
 "情報は、rsync のマニュアルのページを参照してください。"
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:578
+#: smb4k.kcfg:579
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr "ファイル全体を複写 (rsync アルゴリズムではありません)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:579
+#: smb4k.kcfg:580
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1643,13 +1643,13 @@ msgstr ""
 "になります。"
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:583
+#: smb4k.kcfg:584
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr "ファイルシステムをまたがない"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:584
+#: smb4k.kcfg:585
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1661,13 +1661,13 @@ msgstr ""
 "ションの詳細について、マニュアルのページを読んでください。"
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:588
+#: smb4k.kcfg:589
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "既に存在するファイルだけ、更新します"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:589
+#: smb4k.kcfg:590
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1683,13 +1683,13 @@ msgstr ""
 "とが無関係なファイルを削除することであるならば、有効かもしれませんが)"
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:593
+#: smb4k.kcfg:594
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "既に存在するファイルを無視します"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:594
+#: smb4k.kcfg:595
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1699,13 +1699,13 @@ msgstr ""
 "既存のディレクトリは無視されません。"
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:598
+#: smb4k.kcfg:599
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "転送終了まで、アップデートを遅延します "
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:599
+#: smb4k.kcfg:600
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1719,13 +1719,13 @@ msgstr ""
 "るまでその場所に転送されます。"
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:603
+#: smb4k.kcfg:604
 #, kde-format
 msgid "Make backups"
 msgstr "バックアップ作成"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:604
+#: smb4k.kcfg:605
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1739,49 +1739,49 @@ msgstr ""
 "suffix=SUFFIX オプションを使ってコントロールできます。"
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:608
+#: smb4k.kcfg:609
 #, kde-format
 msgid "Backup suffix:"
 msgstr "バックアップ拡張子:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:609
+#: smb4k.kcfg:610
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr "この拡張子をバックアップに使用します (--suffix=SUFFIX)."
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:613
+#: smb4k.kcfg:614
 #, kde-format
 msgid "Backup suffix"
 msgstr "バックアップ拡張子"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:618
+#: smb4k.kcfg:619
 #, kde-format
 msgid "Backup directory:"
 msgstr "バックアップ・ディレクトリ:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:619
+#: smb4k.kcfg:620
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr "このディレクトリにバックアップを格納します (--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:623
+#: smb4k.kcfg:624
 #, kde-format
 msgid "Backup directory"
 msgstr "バックアップ・ディレクトリ"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:628
+#: smb4k.kcfg:629
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr "チェックサムブロック・サイズを固定しました:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:629
+#: smb4k.kcfg:630
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1791,19 +1791,19 @@ msgstr ""
 "rsync アルゴリズムにおいて、固定した値を使用したブロックサイズを強制します。"
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:633
+#: smb4k.kcfg:634
 #, kde-format
 msgid "The block size"
 msgstr "ブロックサイズ"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:639
+#: smb4k.kcfg:640
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "ブロック/ファイル チェックサム 設定:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:640
+#: smb4k.kcfg:641
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1817,20 +1817,20 @@ msgstr ""
 "サムの種は、サーバとデフォルトでは現在時間によって作成されます。"
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:644
+#: smb4k.kcfg:645
 #, fuzzy, kde-format
 #| msgid "The data for the UsePartialDirectory option"
 msgid "The value for the UseChecksumSeed config option"
 msgstr "UsePartialDirectory オプション用のデータ"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:650
+#: smb4k.kcfg:651
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "チェックサムに基づいて、ファイルをスキップ"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:651
+#: smb4k.kcfg:652
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1842,34 +1842,34 @@ msgstr ""
 "するかは、rsync のマニュアルのページを参照してください。"
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:655
+#: smb4k.kcfg:656
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:656
+#: smb4k.kcfg:657
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
 msgstr ""
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:660
+#: smb4k.kcfg:661
 #, fuzzy, kde-format
 #| msgid "The data for the UsePartialDirectory option"
 msgid "The value for the UseBandwidthLimit config option"
 msgstr "UsePartialDirectory オプション用のデータ"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:672
+#: smb4k.kcfg:673
 #, fuzzy, kde-format
 #| msgid "Update files"
 msgid "Use profiles"
 msgstr "ファイルを更新"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:673
+#: smb4k.kcfg:674
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1878,50 +1878,50 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:677
+#: smb4k.kcfg:678
 #, kde-format
 msgid "Profiles"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:678
+#: smb4k.kcfg:679
 #, kde-format
 msgid "The list of profiles."
 msgstr ""
 
-#: smb4k.kcfg:685
+#: smb4k.kcfg:686
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr ""
 
-#: smb4k.kcfg:686
+#: smb4k.kcfg:687
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
 msgstr ""
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:687
+#: smb4k.kcfg:688
 #, fuzzy, kde-format
 #| msgid "Archive mode"
 msgid "Active profile"
 msgstr "アーカイブモード"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:688
+#: smb4k.kcfg:689
 #, kde-format
 msgid "This is the currently active profile."
 msgstr ""
 
 #. i18n: ectx: label, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:692
+#: smb4k.kcfg:693
 #, kde-format
 msgid "Transfer all relevant data to the first profile when enabling profiles"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:693
+#: smb4k.kcfg:694
 #, kde-format
 msgid ""
 "Transfer all custom settings and bookmarks to the first profile in the list "
@@ -1929,13 +1929,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:697
+#: smb4k.kcfg:698
 #, kde-format
 msgid "Make all relevant data available when disabling profiles"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:698
+#: smb4k.kcfg:699
 #, kde-format
 msgid ""
 "Make all custom settings and bookmarks available when disabling profiles. "
@@ -1998,14 +1998,14 @@ msgid "Foreign Share"
 msgstr "共有をマウント"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
+#: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "User ID:"
 msgstr "ユーザ ID:"
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_bsd.kcfg:17
+#: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_bsd.kcfg:18
 #, kde-format
 msgid ""
 "This is the user ID (a number) that the files and directories of the mounted "
@@ -2013,14 +2013,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseGroupId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:21 smb4kmountsettings_linux.kcfg:26
+#: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_linux.kcfg:27
 #, kde-format
 msgid "Group ID:"
 msgstr "グループ ID:"
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_bsd.kcfg:26
+#: smb4kmountsettings_bsd.kcfg:23 smb4kmountsettings_bsd.kcfg:27
 #, kde-format
 msgid ""
 "This is the group ID (a number) that the files and directories of the "
@@ -2028,7 +2028,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:30 smb4kmountsettings_linux.kcfg:35
+#: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_linux.kcfg:36
 #, fuzzy, kde-format
 #| msgid "File mask:"
 msgid "File mode:"
@@ -2036,7 +2036,7 @@ msgstr "ファイル マスク:"
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_bsd.kcfg:35
+#: smb4kmountsettings_bsd.kcfg:32 smb4kmountsettings_bsd.kcfg:36
 #, kde-format
 msgid ""
 "This is the file mode that will be used for creating files. It must be "
@@ -2044,7 +2044,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:39 smb4kmountsettings_linux.kcfg:44
+#: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_linux.kcfg:45
 #, fuzzy, kde-format
 #| msgid "Directory mask:"
 msgid "Directory mode:"
@@ -2052,7 +2052,7 @@ msgstr "ディレクトリ・マスク:"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_bsd.kcfg:44
+#: smb4kmountsettings_bsd.kcfg:41 smb4kmountsettings_bsd.kcfg:45
 #, kde-format
 msgid ""
 "This is the directory mode that will be used for creating directories. It "
@@ -2060,7 +2060,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:48
+#: smb4kmountsettings_bsd.kcfg:49
 #, fuzzy, kde-format
 #| msgid "Client character set:"
 msgid "Use character sets"
@@ -2068,7 +2068,7 @@ msgstr "クライアント キャラクタ セット:"
 
 #. i18n: ectx: whatsthis, entry (UseCharacterSets), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:49 smb4kmountsettings_bsd.kcfg:54
+#: smb4kmountsettings_bsd.kcfg:50 smb4kmountsettings_bsd.kcfg:55
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the character set that is used by the client side (i.e. your "
@@ -2090,162 +2090,162 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (UseClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:53 smb4kmountsettings_linux.kcfg:64
+#: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:65
 #, kde-format
 msgid "Client character set:"
 msgstr "クライアント キャラクタ セット:"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:57 smb4kmountsettings_bsd.kcfg:133
-#: smb4kmountsettings_linux.kcfg:72
+#: smb4kmountsettings_bsd.kcfg:58 smb4kmountsettings_bsd.kcfg:134
+#: smb4kmountsettings_linux.kcfg:73
 #, kde-format
 msgid "default"
 msgstr "デフォルト"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:60 smb4kmountsettings_linux.kcfg:75
+#: smb4kmountsettings_bsd.kcfg:61 smb4kmountsettings_linux.kcfg:76
 #, kde-format
 msgid "iso8859-1"
 msgstr "iso8859-1"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:63 smb4kmountsettings_linux.kcfg:78
+#: smb4kmountsettings_bsd.kcfg:64 smb4kmountsettings_linux.kcfg:79
 #, kde-format
 msgid "iso8859-2"
 msgstr "iso8859-2"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:66 smb4kmountsettings_linux.kcfg:81
+#: smb4kmountsettings_bsd.kcfg:67 smb4kmountsettings_linux.kcfg:82
 #, kde-format
 msgid "iso8859-3"
 msgstr "iso8859-3"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:69 smb4kmountsettings_linux.kcfg:84
+#: smb4kmountsettings_bsd.kcfg:70 smb4kmountsettings_linux.kcfg:85
 #, kde-format
 msgid "iso8859-4"
 msgstr "iso8859-4"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:72 smb4kmountsettings_linux.kcfg:87
+#: smb4kmountsettings_bsd.kcfg:73 smb4kmountsettings_linux.kcfg:88
 #, kde-format
 msgid "iso8859-5"
 msgstr "iso8859-5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:75 smb4kmountsettings_linux.kcfg:90
+#: smb4kmountsettings_bsd.kcfg:76 smb4kmountsettings_linux.kcfg:91
 #, kde-format
 msgid "iso8859-6"
 msgstr "iso8859-6"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:78 smb4kmountsettings_linux.kcfg:93
+#: smb4kmountsettings_bsd.kcfg:79 smb4kmountsettings_linux.kcfg:94
 #, kde-format
 msgid "iso8859-7"
 msgstr "iso8859-7"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:81 smb4kmountsettings_linux.kcfg:96
+#: smb4kmountsettings_bsd.kcfg:82 smb4kmountsettings_linux.kcfg:97
 #, kde-format
 msgid "iso8859-8"
 msgstr "iso8859-8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:84 smb4kmountsettings_linux.kcfg:99
+#: smb4kmountsettings_bsd.kcfg:85 smb4kmountsettings_linux.kcfg:100
 #, kde-format
 msgid "iso8859-9"
 msgstr "iso8859-9"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:87 smb4kmountsettings_linux.kcfg:102
+#: smb4kmountsettings_bsd.kcfg:88 smb4kmountsettings_linux.kcfg:103
 #, kde-format
 msgid "iso8859-13"
 msgstr "iso8859-13"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:90 smb4kmountsettings_linux.kcfg:105
+#: smb4kmountsettings_bsd.kcfg:91 smb4kmountsettings_linux.kcfg:106
 #, kde-format
 msgid "iso8859-14"
 msgstr "iso8859-14"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:93 smb4kmountsettings_linux.kcfg:108
+#: smb4kmountsettings_bsd.kcfg:94 smb4kmountsettings_linux.kcfg:109
 #, kde-format
 msgid "iso8859-15"
 msgstr "iso8859-15"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:96 smb4kmountsettings_linux.kcfg:111
+#: smb4kmountsettings_bsd.kcfg:97 smb4kmountsettings_linux.kcfg:112
 #, kde-format
 msgid "utf8"
 msgstr "utf8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:99 smb4kmountsettings_linux.kcfg:114
+#: smb4kmountsettings_bsd.kcfg:100 smb4kmountsettings_linux.kcfg:115
 #, kde-format
 msgid "koi8-r"
 msgstr "koi8-r"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:102 smb4kmountsettings_linux.kcfg:117
+#: smb4kmountsettings_bsd.kcfg:103 smb4kmountsettings_linux.kcfg:118
 #, kde-format
 msgid "koi8-u"
 msgstr "koi8-u"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:105 smb4kmountsettings_linux.kcfg:120
+#: smb4kmountsettings_bsd.kcfg:106 smb4kmountsettings_linux.kcfg:121
 #, kde-format
 msgid "koi8-ru"
 msgstr "koi8-ru"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:108 smb4kmountsettings_bsd.kcfg:205
-#: smb4kmountsettings_linux.kcfg:123
+#: smb4kmountsettings_bsd.kcfg:109 smb4kmountsettings_bsd.kcfg:206
+#: smb4kmountsettings_linux.kcfg:124
 #, kde-format
 msgid "cp1251"
 msgstr "cp1251"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:111 smb4kmountsettings_linux.kcfg:126
+#: smb4kmountsettings_bsd.kcfg:112 smb4kmountsettings_linux.kcfg:127
 #, kde-format
 msgid "gb2312"
 msgstr "gb2312"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:114 smb4kmountsettings_linux.kcfg:129
+#: smb4kmountsettings_bsd.kcfg:115 smb4kmountsettings_linux.kcfg:130
 #, kde-format
 msgid "big5"
 msgstr "big5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:117 smb4kmountsettings_linux.kcfg:132
+#: smb4kmountsettings_bsd.kcfg:118 smb4kmountsettings_linux.kcfg:133
 #, kde-format
 msgid "euc-jp"
 msgstr "euc-jp"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:120 smb4kmountsettings_linux.kcfg:135
+#: smb4kmountsettings_bsd.kcfg:121 smb4kmountsettings_linux.kcfg:136
 #, kde-format
 msgid "euc-kr"
 msgstr "euc-kr"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:123 smb4kmountsettings_linux.kcfg:138
+#: smb4kmountsettings_bsd.kcfg:124 smb4kmountsettings_linux.kcfg:139
 #, kde-format
 msgid "tis-620"
 msgstr "tis-620"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:129
+#: smb4kmountsettings_bsd.kcfg:130
 #, fuzzy, kde-format
 #| msgid "Client character set:"
 msgid "Server character set:"
 msgstr "クライアント キャラクタ セット:"
 
 #. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:130
+#: smb4kmountsettings_bsd.kcfg:131
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the codepage that is used by the server. The setting is only "
@@ -2263,199 +2263,199 @@ msgstr ""
 "とします"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:136
+#: smb4kmountsettings_bsd.kcfg:137
 #, kde-format
 msgid "cp437"
 msgstr "cp437"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:139
+#: smb4kmountsettings_bsd.kcfg:140
 #, kde-format
 msgid "cp720"
 msgstr "cp720"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:142
+#: smb4kmountsettings_bsd.kcfg:143
 #, kde-format
 msgid "cp737"
 msgstr "cp737"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:145
+#: smb4kmountsettings_bsd.kcfg:146
 #, kde-format
 msgid "cp775"
 msgstr "cp775"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:148
+#: smb4kmountsettings_bsd.kcfg:149
 #, kde-format
 msgid "cp850"
 msgstr "cp850"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:151
+#: smb4kmountsettings_bsd.kcfg:152
 #, kde-format
 msgid "cp852"
 msgstr "cp852"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:154
+#: smb4kmountsettings_bsd.kcfg:155
 #, kde-format
 msgid "cp855"
 msgstr "cp855"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:157
+#: smb4kmountsettings_bsd.kcfg:158
 #, kde-format
 msgid "cp857"
 msgstr "cp857"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:160
+#: smb4kmountsettings_bsd.kcfg:161
 #, kde-format
 msgid "cp858"
 msgstr "cp858"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:163
+#: smb4kmountsettings_bsd.kcfg:164
 #, kde-format
 msgid "cp860"
 msgstr "cp860"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:166
+#: smb4kmountsettings_bsd.kcfg:167
 #, kde-format
 msgid "cp861"
 msgstr "cp861"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:169
+#: smb4kmountsettings_bsd.kcfg:170
 #, kde-format
 msgid "cp862"
 msgstr "cp862"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:172
+#: smb4kmountsettings_bsd.kcfg:173
 #, kde-format
 msgid "cp863"
 msgstr "cp863"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:175
+#: smb4kmountsettings_bsd.kcfg:176
 #, kde-format
 msgid "cp864"
 msgstr "cp864"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:178
+#: smb4kmountsettings_bsd.kcfg:179
 #, kde-format
 msgid "cp865"
 msgstr "cp865"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:181
+#: smb4kmountsettings_bsd.kcfg:182
 #, kde-format
 msgid "cp866"
 msgstr "cp866"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:184
+#: smb4kmountsettings_bsd.kcfg:185
 #, kde-format
 msgid "cp869"
 msgstr "cp869"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:187
+#: smb4kmountsettings_bsd.kcfg:188
 #, kde-format
 msgid "cp874"
 msgstr "cp874"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:190
+#: smb4kmountsettings_bsd.kcfg:191
 #, kde-format
 msgid "cp932"
 msgstr "cp932"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:193
+#: smb4kmountsettings_bsd.kcfg:194
 #, kde-format
 msgid "cp936"
 msgstr "cp936"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:196
+#: smb4kmountsettings_bsd.kcfg:197
 #, kde-format
 msgid "cp949"
 msgstr "cp949"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:199
+#: smb4kmountsettings_bsd.kcfg:200
 #, kde-format
 msgid "cp950"
 msgstr "cp950"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:202
+#: smb4kmountsettings_bsd.kcfg:203
 #, kde-format
 msgid "cp1250"
 msgstr "cp1250"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:208
+#: smb4kmountsettings_bsd.kcfg:209
 #, kde-format
 msgid "cp1252"
 msgstr "cp1252"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:211
+#: smb4kmountsettings_bsd.kcfg:212
 #, kde-format
 msgid "cp1253"
 msgstr "cp1253"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:214
+#: smb4kmountsettings_bsd.kcfg:215
 #, kde-format
 msgid "cp1254"
 msgstr "cp1254"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:217
+#: smb4kmountsettings_bsd.kcfg:218
 #, kde-format
 msgid "cp1255"
 msgstr "cp1255"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:220
+#: smb4kmountsettings_bsd.kcfg:221
 #, kde-format
 msgid "cp1256"
 msgstr "cp1256"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:223
+#: smb4kmountsettings_bsd.kcfg:224
 #, kde-format
 msgid "cp1257"
 msgstr "cp1257"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:226
+#: smb4kmountsettings_bsd.kcfg:227
 #, kde-format
 msgid "cp1258"
 msgstr "cp1258"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:229
+#: smb4kmountsettings_bsd.kcfg:230
 #, kde-format
 msgid "unicode"
 msgstr "unicode"
 
 #. i18n: ectx: label, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:298
+#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
 #, kde-format
 msgid "Mount prefix:"
 msgstr "マウントプレフィックス:"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
+#: smb4kmountsettings_bsd.kcfg:237 smb4kmountsettings_linux.kcfg:300
 #, kde-format
 msgid ""
 "This is the prefix where Smb4K will create the mount points and mount the "
@@ -2465,13 +2465,13 @@ msgstr ""
 "す。"
 
 #. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:303
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:304
 #, kde-format
 msgid "Force generated subdirectories to be lower case"
 msgstr "作成されるサブディレクトリを小文字に強制"
 
 #. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:304
+#: smb4kmountsettings_bsd.kcfg:242 smb4kmountsettings_linux.kcfg:305
 #, kde-format
 msgid ""
 "All names of the subdirectories created by Smb4K below the mount prefix will "
@@ -2481,13 +2481,13 @@ msgstr ""
 "します。"
 
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:245 smb4kmountsettings_linux.kcfg:308
+#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:309
 #, kde-format
 msgid "Unmount all personal shares on exit"
 msgstr "終了時に、すべてのユーザの共有を、アンマウントします"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:309
+#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:310
 #, kde-format
 msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
@@ -2497,14 +2497,14 @@ msgstr ""
 "り所有されている共有は無視されます"
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:313
+#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
 #, fuzzy, kde-format
 #| msgid "Mount Share"
 msgid "Remount shares"
 msgstr "共有をマウント"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
+#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:315
 #, fuzzy, kde-format
 #| msgid ""
 #| "Remount all your shares that were mounted when you exited the program. If "
@@ -2522,14 +2522,14 @@ msgstr ""
 "ユーザがマウントした共有は無視されます。"
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:255 smb4kmountsettings_linux.kcfg:318
+#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
 #, fuzzy, kde-format
 #| msgid "Interval between checks:"
 msgid "Number of remount attempts:"
 msgstr "チェックの間隔:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
+#: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:320
 #, kde-format
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
@@ -2537,26 +2537,26 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:325
+#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
 #, fuzzy, kde-format
 #| msgid "Interval between checks:"
 msgid "Interval between remount attempts:"
 msgstr "チェックの間隔:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
+#: smb4kmountsettings_bsd.kcfg:264 smb4kmountsettings_linux.kcfg:327
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr ""
 
 #. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:332
+#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
 #, kde-format
 msgid "Allow the unmounting of shares that are owned by other users"
 msgstr "他のユーザによって所有される共有のアンマウントを許可する"
 
 #. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
+#: smb4kmountsettings_bsd.kcfg:271 smb4kmountsettings_linux.kcfg:334
 #, fuzzy, kde-format
 #| msgid ""
 #| "Allow the unmounting of shares that were mounted by other users. In most "
@@ -2570,13 +2570,13 @@ msgstr ""
 "必要です。このオプションを可能にする前によく考えてください。"
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:337
+#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
+#: smb4kmountsettings_bsd.kcfg:276 smb4kmountsettings_linux.kcfg:339
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2585,14 +2585,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:279 smb4kmountsettings_linux.kcfg:342
+#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
 #, fuzzy, kde-format
 #| msgid "Show all shares that are mounted on the system"
 msgid "Detect all shares that are mounted on the system"
 msgstr "システムにマウントされたすべての共有を表示"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
+#: smb4kmountsettings_bsd.kcfg:281 smb4kmountsettings_linux.kcfg:344
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -2603,13 +2603,13 @@ msgstr ""
 "れた他の共有も表示します。"
 
 #. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:12
+#: smb4kmountsettings_linux.kcfg:13
 #, kde-format
 msgid "All or most of the servers support the CIFS Unix extensions"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (CifsUnixExtensionsSupport), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:13
+#: smb4kmountsettings_linux.kcfg:14
 #, kde-format
 msgid ""
 "Most versions of Samba support the CIFS Unix or POSIX extensions. For these "
@@ -2623,7 +2623,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:18 smb4kmountsettings_linux.kcfg:22
+#: smb4kmountsettings_linux.kcfg:19 smb4kmountsettings_linux.kcfg:23
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the user ID (a number) that the files and directories of the "
@@ -2642,7 +2642,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:27 smb4kmountsettings_linux.kcfg:31
+#: smb4kmountsettings_linux.kcfg:28 smb4kmountsettings_linux.kcfg:32
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the group ID (a number) that the files and directories of the "
@@ -2660,7 +2660,7 @@ msgstr ""
 "合、この設定は無視されます。"
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:36
+#: smb4kmountsettings_linux.kcfg:37
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the mask that will be used for creating files. It must be defined "
@@ -2676,7 +2676,7 @@ msgstr ""
 "この設定は効果があります。"
 
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:40
+#: smb4kmountsettings_linux.kcfg:41
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the mask that will be used for creating files. It must be defined "
@@ -2693,7 +2693,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:45 smb4kmountsettings_linux.kcfg:49
+#: smb4kmountsettings_linux.kcfg:46 smb4kmountsettings_linux.kcfg:50
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the mask that will be used for creating directories. It must be "
@@ -2709,14 +2709,14 @@ msgstr ""
 "合、この設定は、効果があります。"
 
 #. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:53
+#: smb4kmountsettings_linux.kcfg:54
 #, kde-format
 msgid "File system port:"
 msgstr "ファイルシステムポート:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
 #. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:54 smb4kmountsettings_linux.kcfg:58
+#: smb4kmountsettings_linux.kcfg:55 smb4kmountsettings_linux.kcfg:59
 #, kde-format
 msgid ""
 "This is the port that is exclusively used to mount shares from remote "
@@ -2727,7 +2727,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:65 smb4kmountsettings_linux.kcfg:69
+#: smb4kmountsettings_linux.kcfg:66 smb4kmountsettings_linux.kcfg:70
 #, kde-format
 msgid ""
 "This is the character set that is used by the client side (i.e. your side) "
@@ -2743,14 +2743,14 @@ msgstr ""
 "ンを調べることにより、キャラセット (charset) を自動的に決定しようとします。"
 
 #. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:144
+#: smb4kmountsettings_linux.kcfg:145
 #, kde-format
 msgid "Write access:"
 msgstr "書き込みアクセス:"
 
 #. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
 #. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:145 smb4kmountsettings_linux.kcfg:149
+#: smb4kmountsettings_linux.kcfg:146 smb4kmountsettings_linux.kcfg:150
 #, kde-format
 msgid ""
 "Here you can choose if the shares should be mounted in read-write or read-"
@@ -2760,25 +2760,25 @@ msgstr ""
 "す。"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:152
+#: smb4kmountsettings_linux.kcfg:153
 #, kde-format
 msgid "read-write"
 msgstr "読み書き"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:155
+#: smb4kmountsettings_linux.kcfg:156
 #, kde-format
 msgid "read-only"
 msgstr "読み出し専用"
 
 #. i18n: ectx: label, entry (ForceUID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:161
+#: smb4kmountsettings_linux.kcfg:162
 #, kde-format
 msgid "Definitely assign the UID"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ForceUID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:162
+#: smb4kmountsettings_linux.kcfg:163
 #, kde-format
 msgid ""
 "Instruct the client (i.e. your side) to ignore any user ID (UID) provided by "
@@ -2787,13 +2787,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ForceGID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:166
+#: smb4kmountsettings_linux.kcfg:167
 #, kde-format
 msgid "Definitely assign the GID"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ForceGID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:167
+#: smb4kmountsettings_linux.kcfg:168
 #, kde-format
 msgid ""
 "Instruct the client (i.e. your side) to ignore any group ID (GID) provided "
@@ -2802,13 +2802,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PermissionChecks), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:171
+#: smb4kmountsettings_linux.kcfg:172
 #, kde-format
 msgid "Do permission checks"
 msgstr "権限を確認します"
 
 #. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:172
+#: smb4kmountsettings_linux.kcfg:173
 #, kde-format
 msgid ""
 "The client side (i.e. your side) will check if you have the right UID/GID to "
@@ -2824,13 +2824,13 @@ msgstr ""
 "の設定は、通常の ACL チェックに影響しません"
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:176
+#: smb4kmountsettings_linux.kcfg:177
 #, kde-format
 msgid "Attempt to set UID and GID"
 msgstr "set UID と GID を試みます"
 
 #. i18n: ectx: whatsthis, entry (ClientControlsIDs), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:177
+#: smb4kmountsettings_linux.kcfg:178
 #, fuzzy, kde-format
 #| msgid ""
 #| "In case the server supports the CIFS Unix Extensions, the client side (i."
@@ -2854,13 +2854,13 @@ msgstr ""
 "更する前に、mount.cifs のマニュアルページを参照することを推奨します"
 
 #. i18n: ectx: label, entry (ServerInodeNumbers), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:181
+#: smb4kmountsettings_linux.kcfg:182
 #, kde-format
 msgid "Use server inode numbers"
 msgstr "サーバ inode 番号を使用します"
 
 #. i18n: ectx: whatsthis, entry (ServerInodeNumbers), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:182
+#: smb4kmountsettings_linux.kcfg:183
 #, kde-format
 msgid ""
 "Use inode numbers (unique persistent file identifiers) returned by the "
@@ -2871,13 +2871,13 @@ msgstr ""
 "れた Inode 番号 (ユニークで持続的なファイル識別) を使用します。"
 
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:186
+#: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "Do not send byte range lock requests"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:187
+#: smb4kmountsettings_linux.kcfg:188
 #, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
@@ -2887,13 +2887,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:191
+#: smb4kmountsettings_linux.kcfg:192
 #, kde-format
 msgid "Translate reserved characters"
 msgstr "予約文字を変換します"
 
 #. i18n: ectx: whatsthis, entry (TranslateReservedChars), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:192
+#: smb4kmountsettings_linux.kcfg:193
 #, kde-format
 msgid ""
 "Translate six of the seven reserved characters (including the colon, "
@@ -2908,7 +2908,7 @@ msgstr ""
 "コードをサポートしていない場合、効果はありません。"
 
 #. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:196
+#: smb4kmountsettings_linux.kcfg:197
 #, fuzzy, kde-format
 #| msgid "Protocol hint:"
 msgid "SMB protocol version:"
@@ -2916,61 +2916,61 @@ msgstr "プロトコル ヒント:"
 
 #. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:197 smb4kmountsettings_linux.kcfg:201
+#: smb4kmountsettings_linux.kcfg:198 smb4kmountsettings_linux.kcfg:202
 #, kde-format
 msgid "Define which version of the SMB protocol is to be used."
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:204
+#: smb4kmountsettings_linux.kcfg:205
 #, kde-format
 msgid "1.0 (Classic CIFS/SMBv1 protocol)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:207
+#: smb4kmountsettings_linux.kcfg:208
 #, kde-format
 msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:210
+#: smb4kmountsettings_linux.kcfg:211
 #, kde-format
 msgid "2.1 (Windows 7/Windows Server 2008R2)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:213
+#: smb4kmountsettings_linux.kcfg:214
 #, kde-format
 msgid "3.0 (Windows 8/Windows Server 2012)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:216
+#: smb4kmountsettings_linux.kcfg:217
 #, kde-format
 msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:219
+#: smb4kmountsettings_linux.kcfg:220
 #, kde-format
 msgid "3.1.1 (Windows Server 2016)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:222
+#: smb4kmountsettings_linux.kcfg:223
 #, kde-format
 msgid "3 (Version 3.0 and above)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:225
+#: smb4kmountsettings_linux.kcfg:226
 #, kde-format
 msgid "default (Negotiate the highest version)"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:231
+#: smb4kmountsettings_linux.kcfg:232
 #, fuzzy, kde-format
 #| msgid "Archive mode"
 msgid "Cache mode:"
@@ -2978,7 +2978,7 @@ msgstr "アーカイブモード"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:232 smb4kmountsettings_linux.kcfg:236
+#: smb4kmountsettings_linux.kcfg:233 smb4kmountsettings_linux.kcfg:237
 #, kde-format
 msgid ""
 "Define how read and write requests are handled. In case you choose to not "
@@ -2995,33 +2995,33 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:239
+#: smb4kmountsettings_linux.kcfg:240
 #, fuzzy, kde-format
 #| msgid "Do not cache inode data"
 msgid "Do not cache file data at all"
 msgstr "inode データをキャッシュしない"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:242
+#: smb4kmountsettings_linux.kcfg:243
 #, kde-format
 msgid "Follow the CIFS/SMB2 protocol strictly"
 msgstr ""
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:245
+#: smb4kmountsettings_linux.kcfg:246
 #, kde-format
 msgid "Allow loose caching semantics"
 msgstr ""
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:251
+#: smb4kmountsettings_linux.kcfg:252
 #, kde-format
 msgid "Security mode:"
 msgstr "セキュリティモード"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:252 smb4kmountsettings_linux.kcfg:256
+#: smb4kmountsettings_linux.kcfg:253 smb4kmountsettings_linux.kcfg:257
 #, kde-format
 msgid ""
 "Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
@@ -3029,75 +3029,75 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:259
+#: smb4kmountsettings_linux.kcfg:260
 #, kde-format
 msgid "Connect as a null user (no name)"
 msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:262
+#: smb4kmountsettings_linux.kcfg:263
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "Kerberos 5 authentication"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:265
+#: smb4kmountsettings_linux.kcfg:266
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "Kerberos 5 authentication and packet signing"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:268
+#: smb4kmountsettings_linux.kcfg:269
 #, kde-format
 msgid "NTLM protocol"
 msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:271
+#: smb4kmountsettings_linux.kcfg:272
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "NTLM protocol and packet signing"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:274
+#: smb4kmountsettings_linux.kcfg:275
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "NTLMv2 protocol"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:277
+#: smb4kmountsettings_linux.kcfg:278
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "NTLMv2 protocol and packet signing"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:280
+#: smb4kmountsettings_linux.kcfg:281
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "NTLMSSP protocol"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:283
+#: smb4kmountsettings_linux.kcfg:284
 #, fuzzy, kde-format
 #| msgid "Use Kerberos authentication"
 msgid "NTLMSSP protocol and packet signing"
 msgstr "Kerberos 認証を使用"
 
 #. i18n: ectx: label, entry (UseCustomCifsOptions), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:289
+#: smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Additional options:"
 msgstr "追加オプション:"
 
 #. i18n: ectx: whatsthis, entry (UseCustomCifsOptions), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CustomCIFSOptions), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:290 smb4kmountsettings_linux.kcfg:294
+#: smb4kmountsettings_linux.kcfg:291 smb4kmountsettings_linux.kcfg:295
 #, kde-format
 msgid ""
 "Here you can enter advanced options for the CIFS file system in a comma-"
@@ -3116,47 +3116,47 @@ msgstr ""
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "%1 を無事にマウント解除しました。"
 
-#: smb4knotification.cpp:74 smb4knotification.cpp:77
+#: smb4knotification.cpp:73
 #, fuzzy, kde-format
 #| msgid "On"
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "オン"
 
-#: smb4knotification.cpp:99
+#: smb4knotification.cpp:95
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "%1 を無事にマウント解除しました。"
 
-#: smb4knotification.cpp:117
+#: smb4knotification.cpp:113
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "%1 を無事にマウント解除しました。"
 
-#: smb4knotification.cpp:134
+#: smb4knotification.cpp:130
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "%1 を無事にマウント解除しました。"
 
-#: smb4knotification.cpp:155
+#: smb4knotification.cpp:151
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:169
+#: smb4knotification.cpp:165
 #, kde-format
 msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
 "either no wallet available or it could not be opened.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:184
+#: smb4knotification.cpp:180
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>The mimetype \"%1\" is not supported. Please convert the file to "
@@ -3168,33 +3168,33 @@ msgstr ""
 "<qt>MIME タイプ「%1」はサポートしていません。ファイルをポストスクリプトまた"
 "は PDF に変換してください。</qt>"
 
-#: smb4knotification.cpp:202
+#: smb4knotification.cpp:198
 #, fuzzy, kde-format
 #| msgid "<qt>Printers cannot be bookmarked.</qt>"
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<qt>プリンタはブックマークを付けることができません</qt>"
 
-#: smb4knotification.cpp:220
+#: smb4knotification.cpp:216
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
 "being used and will automatically be renamed.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:240
+#: smb4knotification.cpp:236
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:242
+#: smb4knotification.cpp:238
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:265
+#: smb4knotification.cpp:261
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid ""
@@ -3202,13 +3202,13 @@ msgid ""
 "p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:267
+#: smb4knotification.cpp:263
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:294
+#: smb4knotification.cpp:290
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>You are not allowed to unmount this share. It is owned by another "
@@ -3220,19 +3220,19 @@ msgstr ""
 "<qt>別のユーザが所有者のため、あなたはこの共有のアンマウントを認められません"
 "</qt>"
 
-#: smb4knotification.cpp:309
+#: smb4knotification.cpp:305
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:311
+#: smb4knotification.cpp:307
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:333
+#: smb4knotification.cpp:329
 #, fuzzy, kde-format
 #| msgid "<qt>The command \"%1\" could not be found.</qt>"
 msgid ""
@@ -3240,85 +3240,85 @@ msgid ""
 "</p>"
 msgstr "<qt>コマンド \"%1\" は、見つかりません</qt>"
 
-#: smb4knotification.cpp:349
+#: smb4knotification.cpp:345
 #, fuzzy, kde-format
 #| msgid "<qt>Printers cannot be bookmarked.</qt>"
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "<qt>プリンタはブックマークを付けることができません</qt>"
 
-#: smb4knotification.cpp:363
+#: smb4knotification.cpp:359
 #, fuzzy, kde-format
 #| msgid "<qt>The command \"%1\" could not be found.</qt>"
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<qt>コマンド \"%1\" は、見つかりません</qt>"
 
-#: smb4knotification.cpp:373
+#: smb4knotification.cpp:369
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:375
+#: smb4knotification.cpp:371
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:394 smb4knotification.cpp:397
+#: smb4knotification.cpp:390 smb4knotification.cpp:393
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:399
+#: smb4knotification.cpp:395
 #, fuzzy, kde-format
 #| msgid "Mounting %1 failed."
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "%1 のマウントに失敗しました。"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:418
 #, fuzzy, kde-format
 #| msgid "One or more utility programs could not be found."
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "いくつかのユーティリティプログラムを見つけることができませんでした。"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:429
 #, fuzzy, kde-format
 #| msgid "<qt>The process failed to start (error code: %1).</qt>"
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<qt>プロセスの起動に失敗しました。(エラーコード: %1)</qt>"
 
-#: smb4knotification.cpp:437
+#: smb4knotification.cpp:433
 #, fuzzy, kde-format
 #| msgid "<qt>The process crashed (error code: %1).</qt>"
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<qt>プロセスがクラッシュしました。(エラーコード: %1)</qt>"
 
-#: smb4knotification.cpp:441
+#: smb4knotification.cpp:437
 #, fuzzy, kde-format
 #| msgid "<qt>The process timed out (error code: %1).</qt>"
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<qt>プロセスがタイムアウトしました。(エラーコード: %1)</qt>"
 
-#: smb4knotification.cpp:445
+#: smb4knotification.cpp:441
 #, fuzzy, kde-format
 #| msgid "<qt>Could not write to the process (error code: %1).</qt>"
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<qt>プロセスへ書き込みができませんでした。(エラーコード: %1)</qt>"
 
-#: smb4knotification.cpp:449
+#: smb4knotification.cpp:445
 #, fuzzy, kde-format
 #| msgid "<qt>Could not read from the process (error code: %1).</qt>"
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<qt>プロセスから読み込みができませんでした。(エラーコード: %1)</qt>"
 
-#: smb4knotification.cpp:454
+#: smb4knotification.cpp:450
 #, fuzzy, kde-format
 #| msgid "<qt>The process reported an unknown error.</qt>"
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<qt>プロセスは、未知のエラーを報告しました</qt>"
 
-#: smb4knotification.cpp:517
+#: smb4knotification.cpp:513
 #, fuzzy, kde-format
 #| msgid "<qt>The process timed out (error code: %1).</qt>"
 msgid ""
@@ -3326,25 +3326,25 @@ msgid ""
 "</p>"
 msgstr "<qt>プロセスがタイムアウトしました。(エラーコード: %1)</qt>"
 
-#: smb4knotification.cpp:519
+#: smb4knotification.cpp:515
 #, fuzzy, kde-format
 #| msgid "Retrieving preview from %1..."
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "%1 からプレビューを取得中..."
 
-#: smb4knotification.cpp:541
+#: smb4knotification.cpp:537
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:554
+#: smb4knotification.cpp:550
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
 
-#: smb4knotification.cpp:567
+#: smb4knotification.cpp:563
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
