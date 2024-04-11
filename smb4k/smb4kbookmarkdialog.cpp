@@ -40,7 +40,7 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(QWidget *parent)
 
     QLabel *descriptionPixmap = new QLabel(descriptionWidget);
     descriptionPixmap->setPixmap(KDE::icon(QStringLiteral("bookmark-new")).pixmap(KIconLoader::SizeHuge));
-    descriptionPixmap->setAlignment(Qt::AlignBottom);
+    descriptionPixmap->setAlignment(Qt::AlignVCenter);
     descriptionPixmap->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(descriptionPixmap);
@@ -48,7 +48,7 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(QWidget *parent)
     QLabel *descriptionText = new QLabel(this);
     descriptionText->setText(i18n("All listed shares will be bookmarked. To add a label or category, double-click the respective bookmark entry."));
     descriptionText->setWordWrap(true);
-    descriptionText->setAlignment(Qt::AlignBottom);
+    descriptionText->setAlignment(Qt::AlignVCenter);
     descriptionText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(descriptionText);

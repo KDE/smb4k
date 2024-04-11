@@ -38,7 +38,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(QWidget *parent)
 
     QLabel *descriptionPixmap = new QLabel(descriptionWidget);
     descriptionPixmap->setPixmap(KDE::icon(QStringLiteral("folder-sync")).pixmap(KIconLoader::SizeHuge));
-    descriptionPixmap->setAlignment(Qt::AlignBottom);
+    descriptionPixmap->setAlignment(Qt::AlignVCenter);
     descriptionPixmap->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     descriptionLayout->addWidget(descriptionPixmap);
@@ -46,7 +46,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(QWidget *parent)
     m_descriptionText = new QLabel(descriptionWidget);
     m_descriptionText->setText(i18n("Synchronization"));
     m_descriptionText->setWordWrap(true);
-    m_descriptionText->setAlignment(Qt::AlignBottom);
+    m_descriptionText->setAlignment(Qt::AlignVCenter);
     m_descriptionText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     descriptionLayout->addWidget(m_descriptionText);

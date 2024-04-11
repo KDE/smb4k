@@ -37,7 +37,7 @@ Smb4KPrintDialog::Smb4KPrintDialog(QWidget *parent)
 
     QLabel *descriptionPixmap = new QLabel(descriptionWidget);
     descriptionPixmap->setPixmap(KDE::icon(QStringLiteral("printer")).pixmap(KIconLoader::SizeHuge));
-    descriptionPixmap->setAlignment(Qt::AlignBottom);
+    descriptionPixmap->setAlignment(Qt::AlignVCenter);
     descriptionPixmap->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(descriptionPixmap);
@@ -45,7 +45,7 @@ Smb4KPrintDialog::Smb4KPrintDialog(QWidget *parent)
     m_descriptionText = new QLabel(this);
     m_descriptionText->setText(i18n("Print a file."));
     m_descriptionText->setWordWrap(true);
-    m_descriptionText->setAlignment(Qt::AlignBottom);
+    m_descriptionText->setAlignment(Qt::AlignVCenter);
     m_descriptionText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(m_descriptionText);

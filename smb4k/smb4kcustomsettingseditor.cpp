@@ -48,7 +48,7 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
 
     m_descriptionText = new QLabel(descriptionWidget);
     m_descriptionText->setWordWrap(true);
-    m_descriptionText->setAlignment(Qt::AlignBottom);
+    m_descriptionText->setAlignment(Qt::AlignVCenter);
     m_descriptionText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     m_descriptionText->setText(i18n("No network item was set."));
 
