@@ -2648,13 +2648,11 @@
       <para
 >Сповіщеннями можна керувати за допомогою «Системних параметрів». Щоб змінити обробку певного сповіщення, перейдіть на сторінку <guibutton
 >Сповіщення</guibutton
->. У Плазмі 5.21 та новіших версіях натисніть кнопку <guibutton
+>. У розділі <guilabel
+>Специфічні для програм параметри</guilabel
+> натисніть кнопку <guibutton
 >Налаштувати</guibutton
-> поряд із міткою <guilabel
->Програми</guilabel
-> і виберіть &smb4k; у списку, який буде показано. Натискання кнопки <guibutton
->Налаштувати події...</guibutton
-> відкриє таке діалогове вікно:</para>
+> і виберіть &smb4k; у списку, який буде показано. Буде відкрито таке діалогове вікно:</para>
       <screenshot>
         <screeninfo
 >Знімок вікна модуля сповіщень програми «Системні параметри»</screeninfo>
@@ -2668,7 +2666,7 @@
         </mediaobject>
       </screenshot>
       <para
->Усі доступні сповіщення показано на панелі списку. Їх можна редагувати, вмикати або вимикати відповідно до ваших уподобань.</para>
+>Тут можна редагувати усі сповіщення так, як вам заманеться.</para>
     </sect2>
   </sect1>
 
@@ -2873,70 +2871,29 @@ server min protocol = NT1
 >Стільничні середовища, відмінні від Плазми</title>
 
       <para
->При використанні стільничних середовищ, відмінних від &plasma; у програмах &Qt; і &kde-frameworks; може бути не показано деякі піктограми. Якщо маєте цю проблему, вам варто встановити одну з таких програм:</para>
-      <itemizedlist>
-        <listitem>
-          <para
-><emphasis role="bold"
-><application
->qt5ct</application
-> (<ulink url="https://sourceforge.net/projects/qt5ct/"
->download</ulink
->) для &Qt; 5 і &kde-frameworks; 5:</emphasis
-> щоб скористатися <application
->qt5ct</application
-> у вашому стільничному середовищі, додайте такі записи до вашого файла <filename
->~/.xinitrc</filename
-> або <filename
->~/.profile</filename
->.</para>
-          <para
-><emphasis
->X11:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting>
-          <para
-><emphasis
->Wayland:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting
-></listitem>
-          <listitem>
-            <para
-><emphasis role="bold"
-><application
+>Якщо використовуватиметься інше робоче середовище, відмінне від Плазми, програми на &Qt; і &kde-frameworks; можуть не показувати деякі з піктограм. Якщо у вашій системі виникають саме такі проблеми, вам варто встановити програму <application
 >qt6ct</application
 > (<ulink url="https://github.com/trialuser02/qt6ct"
->download</ulink
->) для &Qt; 6 і &kde-frameworks; 6:</emphasis
-> щоб скористатися <application
->qt6ct</application
-> у вашому стільничному середовищі, додайте такі записи до вашого файла <filename
+>отримання програми</ulink
+>) Щоб скористатися нею у вашій системі, додайте такий рядок до вашого файла <filename
 >~/.xinitrc</filename
 > або <filename
 >~/.profile</filename
->.</para>
-            <para
+>:</para>
+      <para
 ><emphasis
 >X11:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
-            <para
+      <para
 ><emphasis
 >Wayland:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
-</programlisting
-></listitem>
-      </itemizedlist>
+</programlisting>
     </sect2>
   </sect1>
 </chapter>

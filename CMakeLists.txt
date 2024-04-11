@@ -112,7 +112,9 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
 # Install the plasmoid if desired
 if (SMB4K_INSTALL_PLASMOID)
   find_package(Plasma)
+  find_package(KF6Kirigami)
   set_package_properties(Plasma PROPERTIES TYPE RUNTIME)
+  set_package_properties(KF6Kirigami PROPERTIES TYPE RUNTIME)
 endif()
 
 # Find libsmbclient.h

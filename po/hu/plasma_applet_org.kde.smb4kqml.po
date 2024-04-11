@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-04-10 00:38+0000\n"
 "PO-Revision-Date: 2014-02-08 22:55+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -17,115 +17,95 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: package5/contents/ui/BookmarkItemDelegate.qml:59
-#: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:58
-#: package6/contents/ui/SharesViewItemDelegate.qml:57
+#: package/contents/ui/BookmarkItemDelegate.qml:58
+#: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">ezen: %1</font>"
 
-#: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:40
+#: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr ""
 
-#: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:56
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Edit bookmarks"
 msgstr "Könyvjelzők"
 
-#: package5/contents/ui/ConfigurationPage.qml:21
-#: package6/contents/ui/ConfigurationPage.qml:21
+#: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
 msgstr ""
 
-#: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
+#: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "Hálózati mappa"
 
-#: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
-#: package6/contents/ui/SharesViewItemDelegate.qml:77
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package/contents/ui/SharesViewItemDelegate.qml:77
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Bookmark"
 msgstr "Könyvjelzők"
 
-#: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:43
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:123
+msgid "Preview"
+msgstr ""
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:153
+msgid "Configure"
+msgstr ""
+
+#: package/contents/ui/NetworkBrowserPage.qml:43
 msgid "Rescan"
 msgstr "Újraolvasás"
 
-#: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:60
+#: package/contents/ui/NetworkBrowserPage.qml:60
 msgid "Abort"
 msgstr "Megszakítás"
 
-#: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:77
+#: package/contents/ui/NetworkBrowserPage.qml:77
 msgid "Go one level up"
 msgstr ""
 
-#: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:94
+#: package/contents/ui/NetworkBrowserPage.qml:94
 #, fuzzy
 #| msgid "Mount Dialog"
 msgid "Open the mount dialog"
 msgstr "Csatolási párbeszédablak"
 
-#: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:38
+#: package/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
 msgstr "Csatolt megosztások"
 
-#: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
+#: package/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
 msgstr "Könyvjelzők"
 
-#: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:52
+#: package/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
 msgstr ""
 
-#: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:59
+#: package/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
 msgstr ""
 
-#: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:53
+#: package/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
 msgstr ""
 
-#: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:105
+#: package/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
 msgstr ""
 
-#: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:133
+#: package/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
 msgstr ""
 
-#: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:41
+#: package/contents/ui/SharesViewPage.qml:41
 #, fuzzy
 #| msgid "Unmount All"
 msgid "Unmount all shares"
 msgstr "Összes leválasztása"
-
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
-msgid "Preview"
-msgstr ""
-
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
-msgid "Configure"
-msgstr ""
 
 #, fuzzy
 #~| msgid "Bookmarks"

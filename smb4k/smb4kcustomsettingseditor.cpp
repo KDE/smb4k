@@ -40,7 +40,7 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     QHBoxLayout *descriptionWidgetLayout = new QHBoxLayout(descriptionWidget);
 
     QLabel *descriptionPixmap = new QLabel(descriptionWidget);
-    descriptionPixmap->setPixmap(KDE::icon(QStringLiteral("media-mount")).pixmap(KIconLoader::SizeHuge));
+    descriptionPixmap->setPixmap(KDE::icon(QStringLiteral("settings-configure")).pixmap(KIconLoader::SizeHuge));
     descriptionPixmap->setAlignment(Qt::AlignVCenter);
     descriptionPixmap->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
