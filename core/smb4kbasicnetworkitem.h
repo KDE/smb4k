@@ -10,6 +10,7 @@
 #define SMB4KBASICNETWORKITEM_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobalenums.h"
 
 // Qt includes
@@ -30,7 +31,7 @@ class Smb4KBasicNetworkItemPrivate;
  * @since 1.0.0
  */
 
-class Q_DECL_EXPORT Smb4KBasicNetworkItem
+class SMB4KCORE_EXPORT Smb4KBasicNetworkItem
 {
 public:
     /**

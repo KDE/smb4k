@@ -9,6 +9,7 @@
 #define SMB4KHOMESSHARESHANDLER_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -30,7 +31,7 @@ class Smb4KHomesSharesHandlerPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
+class SMB4KCORE_EXPORT Smb4KHomesSharesHandler : public QObject
 {
     Q_OBJECT
 

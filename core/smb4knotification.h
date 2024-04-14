@@ -9,6 +9,7 @@
 #define SMB4KNOTIFICATION_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -32,46 +33,46 @@ namespace Smb4KNotification
  *
  * @param name      The component name
  */
-Q_DECL_EXPORT void setComponentName(const QString &name);
+SMB4KCORE_EXPORT void setComponentName(const QString &name);
 
 /**
  * Notify the user that a share has been mounted.
  *
  * @param share     The share that has been mounted
  */
-Q_DECL_EXPORT void shareMounted(const SharePtr &share);
+SMB4KCORE_EXPORT void shareMounted(const SharePtr &share);
 
 /**
  * Notify the user that a share has been unmounted.
  *
  * @param share     The share that has been unmounted
  */
-Q_DECL_EXPORT void shareUnmounted(const SharePtr &share);
+SMB4KCORE_EXPORT void shareUnmounted(const SharePtr &share);
 
 /**
  * Notify the user that multiple shares have been mounted.
  * @param number    The number of mounts
  */
-Q_DECL_EXPORT void sharesMounted(int number);
+SMB4KCORE_EXPORT void sharesMounted(int number);
 
 /**
  * Notify the user that multiple shares have been unmounted at once.
  * @param number    The number of unmounts
  */
-Q_DECL_EXPORT void sharesUnmounted(int number);
+SMB4KCORE_EXPORT void sharesUnmounted(int number);
 
 /**
  * Warn the user that the wallet could not be opened.
  *
  * @param name      The name of the wallet
  */
-Q_DECL_EXPORT void openingWalletFailed(const QString &name);
+SMB4KCORE_EXPORT void openingWalletFailed(const QString &name);
 
 /**
  * Warn the user that the credentials stored in the wallet could not
  * be accessed.
  */
-Q_DECL_EXPORT void credentialsNotAccessible();
+SMB4KCORE_EXPORT void credentialsNotAccessible();
 
 /**
  * Tell the user that the mimetype is not supported and that he/she
@@ -79,7 +80,7 @@ Q_DECL_EXPORT void credentialsNotAccessible();
  *
  * @param mimetype  The mimetype
  */
-Q_DECL_EXPORT void mimetypeNotSupported(const QString &mimetype);
+SMB4KCORE_EXPORT void mimetypeNotSupported(const QString &mimetype);
 
 /**
  * Tell the user that this bookmark is already present and that it will
@@ -87,7 +88,7 @@ Q_DECL_EXPORT void mimetypeNotSupported(const QString &mimetype);
  *
  * @param bookmark  The bookmark
  */
-Q_DECL_EXPORT void bookmarkExists(const BookmarkPtr &bookmark);
+SMB4KCORE_EXPORT void bookmarkExists(const BookmarkPtr &bookmark);
 
 /**
  * Tell the user that the label he/she chose for the bookmark is already
@@ -95,7 +96,7 @@ Q_DECL_EXPORT void bookmarkExists(const BookmarkPtr &bookmark);
  *
  * @param bookmark  The bookmark
  */
-Q_DECL_EXPORT void bookmarkLabelInUse(const BookmarkPtr &bookmark);
+SMB4KCORE_EXPORT void bookmarkLabelInUse(const BookmarkPtr &bookmark);
 
 /**
  * This error message is shown if the mounting of a share failed.
@@ -104,7 +105,7 @@ Q_DECL_EXPORT void bookmarkLabelInUse(const BookmarkPtr &bookmark);
  *
  * @param errorMessage   The error message
  */
-Q_DECL_EXPORT void mountingFailed(const SharePtr &share, const QString &errorMessage);
+SMB4KCORE_EXPORT void mountingFailed(const SharePtr &share, const QString &errorMessage);
 
 /**
  * This error message is shown if the unmounting of a share failed.
@@ -113,7 +114,7 @@ Q_DECL_EXPORT void mountingFailed(const SharePtr &share, const QString &errorMes
  *
  * @param errorMessage   The error message
  */
-Q_DECL_EXPORT void unmountingFailed(const SharePtr &share, const QString &errorMessage);
+SMB4KCORE_EXPORT void unmountingFailed(const SharePtr &share, const QString &errorMessage);
 
 /**
  * This error message is shown if the unmounting of a certain share
@@ -121,7 +122,7 @@ Q_DECL_EXPORT void unmountingFailed(const SharePtr &share, const QString &errorM
  *
  * @param share     The share that was to be unmounted
  */
-Q_DECL_EXPORT void unmountingNotAllowed(const SharePtr &share);
+SMB4KCORE_EXPORT void unmountingNotAllowed(const SharePtr &share);
 
 /**
  * This error message is shown if the synchronization failed.
@@ -132,35 +133,35 @@ Q_DECL_EXPORT void unmountingNotAllowed(const SharePtr &share);
  *
  * @param errorMessage   The error message
  */
-Q_DECL_EXPORT void synchronizationFailed(const QUrl &src, const QUrl &dest, const QString &errorMessage);
+SMB4KCORE_EXPORT void synchronizationFailed(const QUrl &src, const QUrl &dest, const QString &errorMessage);
 
 /**
  * This error message is shown if a command could not be found.
  *
  * @param command   The command that could not be found
  */
-Q_DECL_EXPORT void commandNotFound(const QString &command);
+SMB4KCORE_EXPORT void commandNotFound(const QString &command);
 
 /**
  * This error message is shown if the user tried to bookmark a printer.
  *
  * @param share     The Smb4KShare object
  */
-Q_DECL_EXPORT void cannotBookmarkPrinter(const SharePtr &share);
+SMB4KCORE_EXPORT void cannotBookmarkPrinter(const SharePtr &share);
 
 /**
  * This error message is shown if a file could not be found.
  *
  * @param fileName  The file name
  */
-Q_DECL_EXPORT void fileNotFound(const QString &fileName);
+SMB4KCORE_EXPORT void fileNotFound(const QString &fileName);
 
 /**
  * This error message is shown if a file could not be opened.
  *
  * @param file      The QFile object
  */
-Q_DECL_EXPORT void openingFileFailed(const QFile &file);
+SMB4KCORE_EXPORT void openingFileFailed(const QFile &file);
 
 /**
  * This error message is shown if a file could not be read.
@@ -169,7 +170,7 @@ Q_DECL_EXPORT void openingFileFailed(const QFile &file);
  *
  * @param errorMessage   The error message (optional)
  */
-Q_DECL_EXPORT void readingFileFailed(const QFile &file, const QString &errorMessage);
+SMB4KCORE_EXPORT void readingFileFailed(const QFile &file, const QString &errorMessage);
 
 /**
  * This error message is shown if the creation of a directory
@@ -177,14 +178,14 @@ Q_DECL_EXPORT void readingFileFailed(const QFile &file, const QString &errorMess
  *
  * @param path      The path
  */
-Q_DECL_EXPORT void mkdirFailed(const QDir &dir);
+SMB4KCORE_EXPORT void mkdirFailed(const QDir &dir);
 
 /**
  * This error message is shown if a process threw an error.
  *
  * @param error     The code describing the process error
  */
-Q_DECL_EXPORT void processError(QProcess::ProcessError error);
+SMB4KCORE_EXPORT void processError(QProcess::ProcessError error);
 
 /**
  * This error message is shown if a KAuth action could not be
@@ -194,13 +195,13 @@ Q_DECL_EXPORT void processError(QProcess::ProcessError error);
  *
  * @param errorCode  The error code
  */
-Q_DECL_EXPORT void actionFailed(int errorCode = -1);
+SMB4KCORE_EXPORT void actionFailed(int errorCode = -1);
 
 /**
  * This error message is shown when an invalid URL was passed to some core
  * class that refuses to process it.
  */
-Q_DECL_EXPORT void invalidURLPassed();
+SMB4KCORE_EXPORT void invalidURLPassed();
 
 /**
  * This error message is shown when a network related action could not be
@@ -210,7 +211,7 @@ Q_DECL_EXPORT void invalidURLPassed();
  *
  * @param errorMessage  The error message
  */
-Q_DECL_EXPORT void networkCommunicationFailed(const QString &errorMessage);
+SMB4KCORE_EXPORT void networkCommunicationFailed(const QString &errorMessage);
 
 /**
  * This error message is shown when an error with the Zeroconf daemon
@@ -218,7 +219,7 @@ Q_DECL_EXPORT void networkCommunicationFailed(const QString &errorMessage);
  *
  * @param errorMessage  The error message
  */
-Q_DECL_EXPORT void zeroconfError(const QString &errorMessage);
+SMB4KCORE_EXPORT void zeroconfError(const QString &errorMessage);
 };
 
 #endif

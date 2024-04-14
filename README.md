@@ -49,17 +49,17 @@ To compile Smb4K, you need:
   or clang/LLVM (version >= 3.3, https://clang.llvm.org)
 
 Smb4K build depends on:
-- Qt (version >= 5.15.8, https://www.qt.io): QtCore, QtGui, QtWidgets, QtNetwork, QtPrintSupport, QtQml
-- KDE Frameworks (version >= 5.103.0, https://www.kde.org): ECM, KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem, KCrash, KDNSSD
+- Qt (version >= 6.6.2, https://www.qt.io): QtCore, QtGui, QtWidgets, QtNetwork, QtPrintSupport, QtQml
+- KDE Frameworks (version >= 6.0.0, https://www.kde.org): ECM, KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem, KCrash, KDNSSD
 - libsmbclient (version >= 4.10.0, https://www.samba.org)
 
 If you would like to enable WS-Discovery support, you additionally need (see also below for required build option):
-- KDSoap (version >= 1.9.0, https://www.kdab.com/development-resources/qt-tools/kd-soap/)
-- KDSoap WS-Discovery client (version >= 0.2, https://invent.kde.org/libraries/kdsoap-ws-discovery-client)
+- KDSoap (version >= 2.0.0, https://www.kdab.com/development-resources/qt-tools/kd-soap/)
+- KDSoap WS-Discovery client (version >= 0.4.0, https://invent.kde.org/libraries/kdsoap-ws-discovery-client)
 
 It also runtime depends on:
-- KPlasma
-- Kirigami (Qt6 / KF6 only)
+- Plasma-Framework
+- Kirigami
 - LinuxCIFS utils (Linux only, https://wiki.samba.org/index.php/LinuxCIFS_utils)
 
 To enable full functionality, you may also want to install:
@@ -82,17 +82,8 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    ```
 3. Configure the source:
 
-   <em>Qt5 and KDE Frameworks 5:</em>
-
    ``` bash
    $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
-   -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
-   ```
-
-   <em>Qt6 and KDE Frameworks 6:</em>
-
-   ``` bash
-   $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_QT6=ON -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
    -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
    ```
 

@@ -10,6 +10,7 @@
 
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -28,7 +29,7 @@ using namespace Smb4KGlobal;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Q_DECL_EXPORT Smb4KAuthInfo
+class SMB4KCORE_EXPORT Smb4KAuthInfo
 {
     friend class Smb4KAuthInfoPrivate;
 

@@ -10,6 +10,7 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
+#include "smb4kdialogs_export.h"
 
 // Qt includes
 #include <QDialog>
@@ -20,7 +21,7 @@
 #include <KComboBox>
 #include <KLineEdit>
 
-class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
+class SMB4KDIALOGS_EXPORT Smb4KBookmarkDialog : public QDialog
 {
     Q_OBJECT
 

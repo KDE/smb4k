@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Pino Toscano <pino@kde.org>
-# SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2009-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 #
 # Minimum required CMake version
@@ -33,8 +33,8 @@ endif()
 #
 # Minimum required versions of Qt and Frameworks
 #
-set(QT_MIN_VERSION "5.15.8")
-set(KF5_MIN_VERSION "5.103.0")
+set(QT_MIN_VERSION "6.6.2")
+set(KF_MIN_VERSION "6.0.0")
 
 #
 # Options for building Smb4K
@@ -52,7 +52,7 @@ add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x060000)
 #
 # Required packages and includes
 #
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/)
 
 include(KDEInstallDirs)
@@ -76,7 +76,7 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 # Qt modules
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} NO_MODULE REQUIRED COMPONENTS
+find_package(Qt6 ${QT_MIN_VERSION} NO_MODULE REQUIRED COMPONENTS
   Core
   Gui
   Network
@@ -86,7 +86,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} NO_MODULE REQUIRED COMPONEN
 )
 
 # Frameworks modules
-find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
   Auth
   Completion
   Config
@@ -102,25 +102,19 @@ find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED COMPONENTS
   KIO
   Notifications
   Solid
+  StatusNotifierItem
   Wallet
   WidgetsAddons
   WindowSystem
   XmlGui
 )
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(KF6StatusNotifierItem ${KF_MIN_VERSION} REQUIRED)
-endif()
-
 # Install the plasmoid if desired
 if (SMB4K_INSTALL_PLASMOID)
-  if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(Plasma)
-    set_package_properties(Plasma PROPERTIES TYPE RUNTIME)
-  else()
-    find_package(KF5 COMPONENTS Plasma)
-    set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
-  endif()
+  find_package(Plasma)
+  find_package(KF6Kirigami)
+  set_package_properties(Plasma PROPERTIES TYPE RUNTIME)
+  set_package_properties(KF6Kirigami PROPERTIES TYPE RUNTIME)
 endif()
 
 # Find libsmbclient.h
@@ -137,29 +131,12 @@ endif()
 
 # Find KDSoap client
 if (SMB4K_WITH_WS_DISCOVERY)
-    if (QT_MAJOR_VERSION EQUAL "6")
-      set(KDSOAP_PACKAGE KDSoap-qt6)
-      set(KDSOAP_VERSION 2.0.0)
-    else ()
-      set(KDSOAP_PACKAGE KDSoap)
-      set(KDSOAP_VERSION 1.9.0)
-    endif ()
     message(STATUS "Building with WS-Discovery support (-DSMB4K_WITH_WS_DISCOVERY=OFF to disable)")
-    find_package(${KDSOAP_PACKAGE} ${KDSOAP_VERSION} REQUIRED)
-    find_package(KDSoapWSDiscoveryClient 0.2 REQUIRED)
+    find_package(KDSoap-qt6 2.0.0 REQUIRED)
+    find_package(KDSoapWSDiscoveryClient 0.4.0 REQUIRED)
 elseif(NOT SMB4K_WITH_WS_DISCOVERY)
     message(STATUS "Not building with WS-Discovery support (-DSMB4K_WITH_WS_DISCOVERY=ON to enable)")
 endif(SMB4K_WITH_WS_DISCOVERY)
-
-#
-# Make sure that Smb4K builds when several custom targets
-# with the same name exist (happens in the po directory).
-#
-if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
-  set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS ON)
-endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
-
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055000)
 
 #
 # Add subdirectories
@@ -169,12 +146,8 @@ add_subdirectory(helpers)
 add_subdirectory(smb4k)
 add_subdirectory(doc)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
-  ki18n_install(po)
-  if(KF5DocTools_FOUND)
-    kdoctools_install(po)
-  endif(KF5DocTools_FOUND)
-endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
+ki18n_install(po)
+kdoctools_install(po)
 
 #
 # Make adjustments according to the options set by the user

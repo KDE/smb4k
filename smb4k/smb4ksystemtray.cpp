@@ -29,7 +29,6 @@
 #include <KPluginFactory>
 #include <KPluginMetaData>
 #include <KStandardAction>
-#include <knotifications_version.h>
 
 using namespace Smb4KGlobal;
 

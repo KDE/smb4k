@@ -9,6 +9,7 @@
 #define SMB4KCLIENT_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -24,7 +25,7 @@ class Smb4KBasicNetworkItem;
 class Smb4KClientBaseJob;
 class Smb4KPreviewDialog;
 
-class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
+class SMB4KCORE_EXPORT Smb4KClient : public KCompositeJob
 {
     Q_OBJECT
 

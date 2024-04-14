@@ -9,6 +9,7 @@
 #define SMB4KCUSTOMOPTIONSMANAGER_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -26,7 +27,7 @@ class Smb4KCustomSettingsManagerPrivate;
  * @since 1.0.0
  */
 
-class Q_DECL_EXPORT Smb4KCustomSettingsManager : public QObject
+class SMB4KCORE_EXPORT Smb4KCustomSettingsManager : public QObject
 {
     Q_OBJECT
 

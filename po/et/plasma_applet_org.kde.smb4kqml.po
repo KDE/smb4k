@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-04-10 00:38+0000\n"
 "PO-Revision-Date: 2019-11-30 00:01+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -17,106 +17,86 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 19.08.1\n"
 
-#: package5/contents/ui/BookmarkItemDelegate.qml:59
-#: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:58
-#: package6/contents/ui/SharesViewItemDelegate.qml:57
+#: package/contents/ui/BookmarkItemDelegate.qml:58
+#: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">asukohas %1</font>"
 
-#: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:40
+#: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "Mine tagasi"
 
-#: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "Muuda järjehoidjaid"
 
-#: package5/contents/ui/ConfigurationPage.qml:21
-#: package6/contents/ui/ConfigurationPage.qml:21
+#: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
 msgstr "Seadistustedialoog"
 
-#: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
+#: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "Võrgunaabrus"
 
-#: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
-#: package6/contents/ui/SharesViewItemDelegate.qml:77
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr "Järjehoidja"
 
-#: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:43
-msgid "Rescan"
-msgstr "Uuri uuesti"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:60
-msgid "Abort"
-msgstr "Loobu"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:77
-msgid "Go one level up"
-msgstr "Üks tase üles"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:94
-msgid "Open the mount dialog"
-msgstr "Ava ühendamisdialoog"
-
-#: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:38
-msgid "Mounted Shares"
-msgstr "Ühendatud jagatud ressursid"
-
-#: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
-msgid "Bookmarks"
-msgstr "Järjehoidjad"
-
-#: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:52
-msgid "Profiles"
-msgstr "Profiilid"
-
-#: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:59
-msgid "Configuration"
-msgstr "Seadistamine"
-
-#: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:53
-msgid "(active)"
-msgstr "(aktiivne)"
-
-#: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:105
-msgid "Synchronize"
-msgstr "Sünkrooni"
-
-#: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:133
-msgid "Unmount"
-msgstr "Lahuta"
-
-#: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:41
-msgid "Unmount all shares"
-msgstr "Lahuta kõik jagatud ressursid"
-
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr ""
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 #, fuzzy
 #| msgid "Configuration"
 msgid "Configure"
 msgstr "Seadistamine"
+
+#: package/contents/ui/NetworkBrowserPage.qml:43
+msgid "Rescan"
+msgstr "Uuri uuesti"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Loobu"
+
+#: package/contents/ui/NetworkBrowserPage.qml:77
+msgid "Go one level up"
+msgstr "Üks tase üles"
+
+#: package/contents/ui/NetworkBrowserPage.qml:94
+msgid "Open the mount dialog"
+msgstr "Ava ühendamisdialoog"
+
+#: package/contents/ui/PopupDialog.qml:38
+msgid "Mounted Shares"
+msgstr "Ühendatud jagatud ressursid"
+
+#: package/contents/ui/PopupDialog.qml:45
+msgid "Bookmarks"
+msgstr "Järjehoidjad"
+
+#: package/contents/ui/PopupDialog.qml:52
+msgid "Profiles"
+msgstr "Profiilid"
+
+#: package/contents/ui/PopupDialog.qml:59
+msgid "Configuration"
+msgstr "Seadistamine"
+
+#: package/contents/ui/ProfileItemDelegate.qml:53
+msgid "(active)"
+msgstr "(aktiivne)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:105
+msgid "Synchronize"
+msgstr "Sünkrooni"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:133
+msgid "Unmount"
+msgstr "Lahuta"
+
+#: package/contents/ui/SharesViewPage.qml:41
+msgid "Unmount all shares"
+msgstr "Lahuta kõik jagatud ressursid"

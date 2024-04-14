@@ -8,6 +8,9 @@
 #ifndef SMB4KMOUNTDIALOG_H
 #define SMB4KMOUNTDIALOG_H
 
+// application specific includes
+#include "smb4kdialogs_export.h"
+
 // Qt includes
 #include <QCheckBox>
 #include <QDialog>
@@ -19,7 +22,7 @@
 #include <KComboBox>
 #include <KLineEdit>
 
-class Q_DECL_EXPORT Smb4KMountDialog : public QDialog
+class SMB4KDIALOGS_EXPORT Smb4KMountDialog : public QDialog
 {
     Q_OBJECT
 

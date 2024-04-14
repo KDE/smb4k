@@ -131,11 +131,7 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
     // Get the item that is under the mouse. If there is no
     // item, unselect the current item.
     //
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QListWidgetItem *item = itemAt(e->position().toPoint());
-#else
-    QListWidgetItem *item = itemAt(e->pos());
-#endif
 
     if (!item && !selectedItems().isEmpty()) {
         clearSelection();
@@ -173,11 +169,7 @@ void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
     QAbstractItemView::dragMoveEvent(e);
 
     // Now we do our thing.
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
-#else
-    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->pos()));
-#endif
 
     if (item && !item->shareItem()->isInaccessible() && (item->flags() & Qt::ItemIsDropEnabled) && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction))) {
         QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
@@ -195,11 +187,7 @@ void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
 void Smb4KSharesView::dropEvent(QDropEvent *e)
 {
     // Get the item and process the drop event
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
-#else
-    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->pos()));
-#endif
 
     if (item && !item->shareItem()->isInaccessible() && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction))) {
         QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
@@ -222,11 +210,7 @@ Qt::DropActions Smb4KSharesView::supportedDropActions() const
     return (Qt::CopyAction | Qt::LinkAction);
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 QMimeData *Smb4KSharesView::mimeData(const QList<QListWidgetItem *> &list) const
-#else
-QMimeData *Smb4KSharesView::mimeData(const QList<QListWidgetItem *> list) const
-#endif
 {
     QMimeData *mimeData = new QMimeData();
     QList<QUrl> urls;

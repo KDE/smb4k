@@ -9,6 +9,7 @@
 #define SMB4KPROFILEMANAGER_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -34,7 +35,7 @@ class Smb4KProfileManagerPrivate;
  * @since 1.2.0
  */
 
-class Q_DECL_EXPORT Smb4KProfileManager : public QObject
+class SMB4KCORE_EXPORT Smb4KProfileManager : public QObject
 {
     Q_OBJECT
 

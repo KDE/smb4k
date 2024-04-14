@@ -9,6 +9,7 @@
 #define SMB4KMOUNTER_H
 
 // application specific includes
+#include "smb4kcore_export.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -39,7 +40,7 @@ class Smb4KMounterPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
+class SMB4KCORE_EXPORT Smb4KMounter : public KCompositeJob
 {
     Q_OBJECT
 

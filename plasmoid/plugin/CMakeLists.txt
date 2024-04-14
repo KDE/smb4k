@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2012-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2012-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_SOURCE_DIR}
@@ -9,19 +9,19 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/smb4k
   ${CMAKE_BINARY_DIR}/smb4k)
   
-set(smb4kqmlplugin_LIB_SRC
+add_library(smb4kqmlplugin SHARED)
+
+target_sources(smb4kqmlplugin PRIVATE
   smb4kbookmarkobject.cpp
   smb4kdeclarative.cpp
   smb4knetworkobject.cpp
   smb4kprofileobject.cpp
   smb4kqmlplugin.cpp)
 
-add_library(smb4kqmlplugin SHARED ${smb4kqmlplugin_LIB_SRC})
-
 target_link_libraries(smb4kqmlplugin
-  Qt${QT_MAJOR_VERSION}::Core
-  Qt${QT_MAJOR_VERSION}::Qml
-  KF${QT_MAJOR_VERSION}::XmlGui
+  Qt6::Core
+  Qt6::Qml
+  KF6::XmlGui
   smb4kcore
   smb4kdialogs)
 

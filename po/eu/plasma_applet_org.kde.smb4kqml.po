@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-04-10 00:38+0000\n"
 "PO-Revision-Date: 2024-02-26 23:42+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -20,104 +20,84 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: package5/contents/ui/BookmarkItemDelegate.qml:59
-#: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:58
-#: package6/contents/ui/SharesViewItemDelegate.qml:57
+#: package/contents/ui/BookmarkItemDelegate.qml:58
+#: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">%1(e)an</font>"
 
-#: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:40
+#: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "Joan atzera"
 
-#: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "Editatu laster-markak"
 
-#: package5/contents/ui/ConfigurationPage.qml:21
-#: package6/contents/ui/ConfigurationPage.qml:21
+#: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
 msgstr "Konfiguratzeko elkarrizketa-koadroa"
 
-#: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
+#: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "Sareko auzoa"
 
-#: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
-#: package6/contents/ui/SharesViewItemDelegate.qml:77
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr "Laster-marka"
 
-#: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:43
-msgid "Rescan"
-msgstr "Berriz miatu"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:60
-msgid "Abort"
-msgstr "Utzi"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:77
-msgid "Go one level up"
-msgstr "Joan maila bat gora"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:94
-msgid "Open the mount dialog"
-msgstr "Ireki muntatzeko elkarrizketa-koadroa"
-
-#: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:38
-msgid "Mounted Shares"
-msgstr "Muntatutako partekatzeak"
-
-#: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
-msgid "Bookmarks"
-msgstr "Laster-markak"
-
-#: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:52
-msgid "Profiles"
-msgstr "Profilak"
-
-#: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:59
-msgid "Configuration"
-msgstr "Konfiguratzea"
-
-#: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:53
-msgid "(active)"
-msgstr "(aktibo)"
-
-#: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:105
-msgid "Synchronize"
-msgstr "Sinkronizatu"
-
-#: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:133
-msgid "Unmount"
-msgstr "Desmuntatu"
-
-#: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:41
-msgid "Unmount all shares"
-msgstr "Desmuntatu partekatze guztiak"
-
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr "Aurreikuspegia"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
 msgstr "Konfiguratu"
+
+#: package/contents/ui/NetworkBrowserPage.qml:43
+msgid "Rescan"
+msgstr "Berriz miatu"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Utzi"
+
+#: package/contents/ui/NetworkBrowserPage.qml:77
+msgid "Go one level up"
+msgstr "Joan maila bat gora"
+
+#: package/contents/ui/NetworkBrowserPage.qml:94
+msgid "Open the mount dialog"
+msgstr "Ireki muntatzeko elkarrizketa-koadroa"
+
+#: package/contents/ui/PopupDialog.qml:38
+msgid "Mounted Shares"
+msgstr "Muntatutako partekatzeak"
+
+#: package/contents/ui/PopupDialog.qml:45
+msgid "Bookmarks"
+msgstr "Laster-markak"
+
+#: package/contents/ui/PopupDialog.qml:52
+msgid "Profiles"
+msgstr "Profilak"
+
+#: package/contents/ui/PopupDialog.qml:59
+msgid "Configuration"
+msgstr "Konfiguratzea"
+
+#: package/contents/ui/ProfileItemDelegate.qml:53
+msgid "(active)"
+msgstr "(aktibo)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:105
+msgid "Synchronize"
+msgstr "Sinkronizatu"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:133
+msgid "Unmount"
+msgstr "Desmuntatu"
+
+#: package/contents/ui/SharesViewPage.qml:41
+msgid "Unmount all shares"
+msgstr "Desmuntatu partekatze guztiak"

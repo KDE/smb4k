@@ -5,6 +5,6 @@ Mutators=true
 ItemAccessors=true
 SetUserTexts=true
 Inherits=KConfigSkeleton
-Visibility=Q_DECL_EXPORT
+Visibility=SMB4KCORE_EXPORT
 TranslationSystem=kde
 TranslationDomain=smb4k-core

@@ -312,7 +312,7 @@
 >Veïnatge de xarxa</guilabel
 > conté tots els elements de la xarxa -&ead;, grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
     <para
->En l'arbre de la xarxa, l'explorador mestre en cada grup de treball o domini ressaltarà el tipus de lletra en un color blau, si l'ha detectat (&pex;, quan s'utilitza DNS-SD, no es reconeix l'explorador mestre d'un domini de &Windows;). Les comparticions muntades estaran marcades amb la icona de la carpeta respectiva i un tipus de lletra en cursiva.</para>
+>En l'arbre de la xarxa, l'explorador mestre en cada grup de treball o domini ressaltarà la lletra en un color blau, si l'ha detectat (&pex;, quan s'utilitza DNS-SD, no es reconeix l'explorador mestre d'un domini de &Windows;). Les comparticions muntades estaran marcades amb la icona de la carpeta respectiva i una lletra en cursiva.</para>
 
     <screenshot>
       <screeninfo
@@ -2652,13 +2652,11 @@
       <para
 >Les notificacions es poden gestionar a través de l'&systemsettings;. Per a modificar el comportament d'una notificació, navegueu a la pàgina <guibutton
 >Notificacions</guibutton
->. Per al &plasma; 5.21 i superior, feu clic al botó <guibutton
+>. A la secció <guilabel
+>Configuració específica d'aplicació</guilabel
+> feu clic al botó <guibutton
 >Configura</guibutton
-> que hi ha al costat de l'etiqueta <guilabel
->Aplicacions</guilabel
-> i escolliu &smb4k; des de la llista que apareixerà. En fer clic a <guibutton
->Configura els esdeveniments...</guibutton
-> s'obrirà el diàleg següent:</para>
+> i escolliu &smb4k; des de la llista que apareixerà. S'obrirà el diàleg següent:</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del mòdul notificacions de l'&systemsettings;</screeninfo>
@@ -2672,7 +2670,7 @@
         </mediaobject>
       </screenshot>
       <para
->Aquí, totes les notificacions disponibles es mostraran a la vista de llista i es podran editar, habilitar i inhabilitar com vulgueu.</para>
+>Aquí es poden editar totes les notificacions segons les vostres preferències.</para>
     </sect2>
   </sect1>
 
@@ -2877,70 +2875,29 @@ server min protocol = NT1
 >Altres entorns d'escriptori que el &plasma;</title>
 
       <para
->Quan s'utilitza un entorn d'escriptori diferent que el &plasma;, les &Qt; i els &kde-frameworks;, podria ser que hi manquin algunes icones a les aplicacions. En aquest cas, és possible que vulgueu instal·lar una d'aquestes aplicacions:</para>
-      <itemizedlist>
-        <listitem>
-          <para
-><emphasis role="bold"
-><application
->qt5ct</application
-> (<ulink url="https://sourceforge.net/projects/qt5ct/"
->baixada</ulink
->) per a les &Qt; 5 i &kde-frameworks; 5:</emphasis
-> Per a utilitzar <application
->qt5ct</application
-> amb el vostre entorn d'escriptori, afegiu la línia següent al fitxer <filename
->~/.xinitrc</filename
-> o <filename
->~/.profile</filename
->.</para>
-          <para
-><emphasis
->X11:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting>
-          <para
-><emphasis
->Wayland:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting
-></listitem>
-          <listitem>
-            <para
-><emphasis role="bold"
-><application
+>Quan s'utilitza un entorn d'escriptori diferent del &plasma;, les &Qt; i els &kde-frameworks;, podria ser que a les aplicacions hi manquin algunes icones. En aquest cas, és possible que vulgueu instal·lar l'aplicació <application
 >qt6ct</application
 > (<ulink url="https://github.com/trialuser02/qt6ct"
 >baixada</ulink
->) per a les &Qt; 6 i &kde-frameworks; 6:</emphasis
-> Per a utilitzar <application
->qt6ct</application
-> amb el vostre entorn d'escriptori, afegiu la línia següent al fitxer <filename
+>). Per a utilitzar-lo amb el vostre entorn d'escriptori, afegiu la línia següent al fitxer <filename
 >~/.xinitrc</filename
 > o <filename
 >~/.profile</filename
->.</para>
-            <para
+>:</para>
+      <para
 ><emphasis
 >X11:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
-            <para
+      <para
 ><emphasis
 >Wayland:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
-</programlisting
-></listitem>
-      </itemizedlist>
+</programlisting>
     </sect2>
   </sect1>
 </chapter>

@@ -2632,13 +2632,11 @@
       <para
 >Meldingen kunnen beheerd worden via &systemsettings;. Om het gedrag  van een melding te wijzigen, ga naar de pagina <guibutton
 >Meldingen</guibutton
->. Voor &plasma; 5.21 en hoger, klik daarna op de knop <guibutton
+>. In de sectie <guilabel
+>Toepassing specifieke instellingen</guilabel
+> klik de knop <guibutton
 >Configureren</guibutton
-> naast het label <guilabel
->Toepassingen</guilabel
-> en kies &smb4k; uit de opkomende lijst. Klikken op <guibutton
->Gebeurtenissen configureren...</guibutton
-> opent de volgende dialoog:</para>
+> en kies &smb4k; uit de verschijnende lijst. De volgende dialoog wordt geopend:</para>
       <screenshot>
         <screeninfo
 >Schermafdruk van de meldingenmodule van systeeminstellingen</screeninfo>
@@ -2652,7 +2650,7 @@
         </mediaobject>
       </screenshot>
       <para
->Hier worden alle beschikbare meldingen in de lijstweergave getoond en kunnen worden bewerkt, ingeschakeld of uitgeschakeld worden zoals u dat wilt.</para>
+>Alle meldingen kunnen bewerkt worden volgens uw voorkeuren.</para>
     </sect2>
   </sect1>
 
@@ -2857,70 +2855,29 @@ server min protocol = NT1
 >Andere Bureaubladomgevingen dan &plasma;</title>
 
       <para
->Bij gebruik van een andere bureaubladomgeving dan &plasma;, &Qt; en &kde-frameworks; kunnen toepassingen enige pictogrammen missen. In dat geval, zou u een van deze toepassingen willen installeren:</para>
-      <itemizedlist>
-        <listitem>
-          <para
-><emphasis role="bold"
-><application
->qt5ct</application
-> (<ulink url="https://sourceforge.net/projects/qt5ct/"
->downloaden</ulink
->) voor &Qt; 5 en &kde-frameworks; 5:</emphasis
-> Om <application
->qt5ct</application
-> te gebruiken met uw bureaubladomgeving, voeg het volgende toe aan uw bestand <filename
->~/.xinitrc</filename
-> of <filename
->~/.profile</filename
->.</para>
-          <para
-><emphasis
->X11:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting>
-          <para
-><emphasis
->Wayland:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting
-></listitem>
-          <listitem>
-            <para
-><emphasis role="bold"
-><application
+>Bij gebruik van een andere bureaubladomgeving dan &plasma;, &Qt; en &kde-frameworks; kunnen toepassingen sommige pictogrammen ontbreken. In dat geval kunt u de toepassing <application
 >qt6ct</application
 > (<ulink url="https://github.com/trialuser02/qt6ct"
 >downloaden</ulink
->) voor &Qt; 6 en &kde-frameworks; 6:</emphasis
-> Om <application
->qt6ct</application
-> te gebruiken met uw bureaubladomgeving, voeg het volgende toe aan uw bestand <filename
+>). Om het met uw bureaubladomgeving te gebruiken, voeg het volgende toe aan uw bestand <filename
 >~/.xinitrc</filename
 > of <filename
 >~/.profile</filename
->.</para>
-            <para
+>:</para>
+      <para
 ><emphasis
 >X11:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
-            <para
+      <para
 ><emphasis
 >Wayland:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
-</programlisting
-></listitem>
-      </itemizedlist>
+</programlisting>
     </sect2>
   </sect1>
 </chapter>

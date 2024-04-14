@@ -42,7 +42,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
 
     QLabel *descriptionPixmap = new QLabel(descriptionWidget);
     descriptionPixmap->setPixmap(KDE::icon(QStringLiteral("media-mount")).pixmap(KIconLoader::SizeHuge));
-    descriptionPixmap->setAlignment(Qt::AlignBottom);
+    descriptionPixmap->setAlignment(Qt::AlignVCenter);
     descriptionPixmap->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(descriptionPixmap);
@@ -50,7 +50,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     QLabel *descriptionText = new QLabel(this);
     descriptionText->setText(i18n("Enter the location and optionally the IP address and workgroup to mount a share."));
     descriptionText->setWordWrap(true);
-    descriptionText->setAlignment(Qt::AlignBottom);
+    descriptionText->setAlignment(Qt::AlignVCenter);
     descriptionText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(descriptionText);

@@ -198,13 +198,8 @@ bool Smb4KConfigPageCustomSettings::eventFilter(QObject *obj, QEvent *e)
     if (obj == m_listWidget->viewport()) {
         if (e->type() == QEvent::MouseButtonPress) {
             QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(e);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
             QPointF pos = m_listWidget->viewport()->mapFromGlobal(mouseEvent->globalPosition());
             QListWidgetItem *item = m_listWidget->itemAt(pos.toPoint());
-#else
-            QPoint pos = m_listWidget->viewport()->mapFromGlobal(mouseEvent->globalPos());
-            QListWidgetItem *item = m_listWidget->itemAt(pos);
-#endif
 
             m_editButton->setEnabled(item != nullptr);
             m_removeButton->setEnabled(item != nullptr);

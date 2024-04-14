@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-19 01:41+0000\n"
+"POT-Creation-Date: 2024-04-10 00:38+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -48,39 +48,39 @@ msgstr "Sýna tengipunkt í stað nafns á sameign"
 msgid "The unmount process could not be started."
 msgstr "Ekki tókst að útbúa möppuna %1."
 
-#: smb4k/main.cpp:46 smb4k/smb4ksystemtray.cpp:48
+#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:47
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:48
+#: smb4k/main.cpp:42
 #, fuzzy, kde-format
 #| msgid "The network browser KPart of Smb4K"
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "KPart netvafri Smb4K"
 
-#: smb4k/main.cpp:50
+#: smb4k/main.cpp:44
 #, fuzzy, kde-format
 #| msgid "\\u00A9 2007-2010, Alexander Reinholdt"
 msgid "© 2003-2024 Alexander Reinholdt"
 msgstr "\\u00A9 2007-2010, Alexander Reinholdt"
 
-#: smb4k/main.cpp:59
+#: smb4k/main.cpp:53
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr ""
 
-#: smb4k/main.cpp:59
+#: smb4k/main.cpp:53
 #, kde-format
 msgid "Developer"
 msgstr "Forritari"
 
-#: smb4k/main.cpp:64
+#: smb4k/main.cpp:58
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr ""
 
-#: smb4k/main.cpp:64
+#: smb4k/main.cpp:58
 #, kde-format
 msgid "Donator"
 msgstr ""
@@ -267,17 +267,17 @@ msgstr "Hr&einsa"
 msgid "Default Login"
 msgstr "Sjálfgefin innskráning"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:240
+#: smb4k/smb4kconfigpageauthentication.cpp:235
 #, kde-format
 msgid "Enter the default login information."
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:302
+#: smb4k/smb4kconfigpageauthentication.cpp:297
 #, fuzzy, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:304
+#: smb4k/smb4kconfigpageauthentication.cpp:299
 #, fuzzy, kde-format
 msgid "Set the username and password for the default login."
 msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
@@ -316,7 +316,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Hreinsa lista"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:456
+#: smb4k/smb4kconfigpagebookmarks.cpp:452
 #, kde-format
 msgid "New Category"
 msgstr ""
@@ -888,7 +888,7 @@ msgstr "Sérsniðnir &valkostir"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:52
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:51
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Opna tengingarglugga"

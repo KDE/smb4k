@@ -10,6 +10,7 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
+#include "smb4kdialogs_export.h"
 
 // Qt includes
 #include <QDialog>
@@ -20,7 +21,7 @@
 // KDE includes
 #include <KUrlRequester>
 
-class Q_DECL_EXPORT Smb4KPrintDialog : public QDialog
+class SMB4KDIALOGS_EXPORT Smb4KPrintDialog : public QDialog
 {
     Q_OBJECT
 

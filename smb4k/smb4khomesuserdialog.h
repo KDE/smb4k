@@ -10,6 +10,7 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
+#include "smb4kdialogs_export.h"
 
 // Qt includes
 #include <QDialog>
@@ -19,7 +20,7 @@
 // KDE includes
 #include <KComboBox>
 
-class Q_DECL_EXPORT Smb4KHomesUserDialog : public QDialog
+class SMB4KDIALOGS_EXPORT Smb4KHomesUserDialog : public QDialog
 {
     Q_OBJECT
 

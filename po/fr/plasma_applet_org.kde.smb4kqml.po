@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 01:36+0000\n"
+"POT-Creation-Date: 2024-04-10 00:38+0000\n"
 "PO-Revision-Date: 2024-02-23 09:37+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -22,107 +22,87 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: package5/contents/ui/BookmarkItemDelegate.qml:59
-#: package5/contents/ui/SharesViewItemDelegate.qml:59
-#: package6/contents/ui/BookmarkItemDelegate.qml:58
-#: package6/contents/ui/SharesViewItemDelegate.qml:57
+#: package/contents/ui/BookmarkItemDelegate.qml:58
+#: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
 msgstr "<font size=\"-1\">sur %1</font>"
 
-#: package5/contents/ui/BookmarksPage.qml:32
-#: package6/contents/ui/BookmarksPage.qml:40
+#: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
 msgstr "Revenir en arrière"
 
-#: package5/contents/ui/BookmarksPage.qml:41
-#: package6/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:56
 msgid "Edit bookmarks"
 msgstr "Modifier les signets"
 
-#: package5/contents/ui/ConfigurationPage.qml:21
-#: package6/contents/ui/ConfigurationPage.qml:21
+#: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
 msgstr "Boîte de dialogue de configuration"
 
-#: package5/contents/ui/main.qml:17 package5/contents/ui/PopupDialog.qml:32
-#: package6/contents/ui/main.qml:18 package6/contents/ui/PopupDialog.qml:31
+#: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
 msgstr "Voisinage réseau"
 
-#: package5/contents/ui/NetworkBrowserItemDelegate.qml:92
-#: package5/contents/ui/SharesViewItemDelegate.qml:76
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:93
-#: package6/contents/ui/SharesViewItemDelegate.qml:77
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
 msgstr "Signet"
 
-#: package5/contents/ui/NetworkBrowserPage.qml:38
-#: package6/contents/ui/NetworkBrowserPage.qml:43
-msgid "Rescan"
-msgstr "Reparcourir"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:47
-#: package6/contents/ui/NetworkBrowserPage.qml:60
-msgid "Abort"
-msgstr "Avorter"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:56
-#: package6/contents/ui/NetworkBrowserPage.qml:77
-msgid "Go one level up"
-msgstr "Revenir au niveau supérieur"
-
-#: package5/contents/ui/NetworkBrowserPage.qml:65
-#: package6/contents/ui/NetworkBrowserPage.qml:94
-msgid "Open the mount dialog"
-msgstr "Ouvrir la boîte de dialogue de montage"
-
-#: package5/contents/ui/PopupDialog.qml:39
-#: package6/contents/ui/PopupDialog.qml:38
-msgid "Mounted Shares"
-msgstr "Partages montés"
-
-#: package5/contents/ui/PopupDialog.qml:46
-#: package6/contents/ui/PopupDialog.qml:45
-msgid "Bookmarks"
-msgstr "Préférés"
-
-#: package5/contents/ui/PopupDialog.qml:53
-#: package6/contents/ui/PopupDialog.qml:52
-msgid "Profiles"
-msgstr "Profils"
-
-#: package5/contents/ui/PopupDialog.qml:60
-#: package6/contents/ui/PopupDialog.qml:59
-msgid "Configuration"
-msgstr "Configuration"
-
-#: package5/contents/ui/ProfileItemDelegate.qml:52
-#: package6/contents/ui/ProfileItemDelegate.qml:53
-msgid "(active)"
-msgstr "(actif)"
-
-#: package5/contents/ui/SharesViewItemDelegate.qml:97
-#: package6/contents/ui/SharesViewItemDelegate.qml:105
-msgid "Synchronize"
-msgstr "Synchroniser"
-
-#: package5/contents/ui/SharesViewItemDelegate.qml:118
-#: package6/contents/ui/SharesViewItemDelegate.qml:133
-msgid "Unmount"
-msgstr "Libérer"
-
-#: package5/contents/ui/SharesViewPage.qml:34
-#: package6/contents/ui/SharesViewPage.qml:41
-msgid "Unmount all shares"
-msgstr "Libérer tous les partages"
-
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:123
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
 msgstr "Aperçu"
 
-#: package6/contents/ui/NetworkBrowserItemDelegate.qml:153
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
 msgstr "Configurer"
+
+#: package/contents/ui/NetworkBrowserPage.qml:43
+msgid "Rescan"
+msgstr "Reparcourir"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Avorter"
+
+#: package/contents/ui/NetworkBrowserPage.qml:77
+msgid "Go one level up"
+msgstr "Revenir au niveau supérieur"
+
+#: package/contents/ui/NetworkBrowserPage.qml:94
+msgid "Open the mount dialog"
+msgstr "Ouvrir la boîte de dialogue de montage"
+
+#: package/contents/ui/PopupDialog.qml:38
+msgid "Mounted Shares"
+msgstr "Partages montés"
+
+#: package/contents/ui/PopupDialog.qml:45
+msgid "Bookmarks"
+msgstr "Préférés"
+
+#: package/contents/ui/PopupDialog.qml:52
+msgid "Profiles"
+msgstr "Profils"
+
+#: package/contents/ui/PopupDialog.qml:59
+msgid "Configuration"
+msgstr "Configuration"
+
+#: package/contents/ui/ProfileItemDelegate.qml:53
+msgid "(active)"
+msgstr "(actif)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:105
+msgid "Synchronize"
+msgstr "Synchroniser"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:133
+msgid "Unmount"
+msgstr "Libérer"
+
+#: package/contents/ui/SharesViewPage.qml:41
+msgid "Unmount all shares"
+msgstr "Libérer tous les partages"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "Modifier les signets"

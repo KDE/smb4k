@@ -40,7 +40,7 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(QWidget *parent)
 
     QLabel *descriptionPixmap = new QLabel(descriptionWidget);
     descriptionPixmap->setPixmap(KDE::icon(QStringLiteral("bookmark-new")).pixmap(KIconLoader::SizeHuge));
-    descriptionPixmap->setAlignment(Qt::AlignBottom);
+    descriptionPixmap->setAlignment(Qt::AlignVCenter);
     descriptionPixmap->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(descriptionPixmap);
@@ -48,7 +48,7 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(QWidget *parent)
     QLabel *descriptionText = new QLabel(this);
     descriptionText->setText(i18n("All listed shares will be bookmarked. To add a label or category, double-click the respective bookmark entry."));
     descriptionText->setWordWrap(true);
-    descriptionText->setAlignment(Qt::AlignBottom);
+    descriptionText->setAlignment(Qt::AlignVCenter);
     descriptionText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     descriptionWidgetLayout->addWidget(descriptionText);
@@ -190,13 +190,9 @@ bool Smb4KBookmarkDialog::eventFilter(QObject *object, QEvent *event)
     if (object == m_listWidget->viewport()) {
         if (event->type() == QEvent::MouseButtonPress) {
             QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
             QPointF pos = m_listWidget->viewport()->mapFromGlobal(mouseEvent->globalPosition());
             QListWidgetItem *item = m_listWidget->itemAt(pos.toPoint());
-#else
-            QPoint pos = m_listWidget->viewport()->mapFromGlobal(mouseEvent->globalPos());
-            QListWidgetItem *item = m_listWidget->itemAt(pos);
-#endif
+
             if (!item) {
                 m_listWidget->clearSelection();
             }

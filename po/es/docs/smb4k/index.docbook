@@ -26,10 +26,10 @@
 ]>
 
 <book id="smb4k" lang="&language;">
+<title
+>El manual de &smb4k;</title>
 
 <bookinfo>
-  <title
->El manual de &smb4k;</title>
   <authorgroup>
     <author
 ><firstname
@@ -89,23 +89,27 @@
 > </othercredit
 > 
   </authorgroup>
+
   <copyright>
     <year
->2005-2023</year>
+>2005-2024</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
+
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2023-02-19</date>
+>2024-04-03</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
+
   <abstract>
     <para
 >&smb4k; es un navegador avanzado de entornos de red y una utilidad para el montaje de los recursos compartidos de &Samba;.</para>
   </abstract>
+
   <keywordset>
     <keyword
 >KDE</keyword>
@@ -125,7 +129,7 @@
 >Introducción</title>
 
   <para
->Este manual describe &smb4k; 3.2.x y, en alguna medida, versiones anteriores.</para>
+>Este manual describe &smb4k; 4.0 y, en alguna medida, versiones anteriores.</para>
   <para
 >&smb4k; es un navegador avanzado de entornos de red y una utilidad para el montaje de los recursos compartidos de <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -158,7 +162,7 @@
 ></listitem>
     <listitem
 ><para
->Información diversa sobre los elementos de red remotos y los recursos compartidos montados</para
+>Información variada sobre los elementos de red remotos y los recursos compartidos montados</para
 ></listitem>
     <listitem
 ><para
@@ -249,7 +253,9 @@
 >Ejecución de &smb4k;</title>
     
     <para
->Puede lanzar &smb4k; desde el menú K o desde <ulink url="https://userbase.kde.org/Plasma/Krunner"
+>Puede lanzar &smb4k; desde el <ulink url="https://userbase.kde.org/Plasma/Kickoff"
+>lanzador de aplicaciones</ulink
+> o desde <ulink url="https://userbase.kde.org/Plasma/Krunner"
 >&krunner;</ulink
 > escribiendo <userinput
 ><command
@@ -278,7 +284,7 @@
 >Entorno de red</guilabel
 >) y la vista de recursos compartidos montados (<guilabel
 >Recursos compartidos montados</guilabel
->) están dispuestos en un control pestaña. Sobre ellos se encuentran la barra de menús y las barras de herramientas. Bajo ellos verá la barra de estado.</para>
+>) están dispuestos en pestañas. Sobre ellos se encuentran la barra de menús y las barras de herramientas y bajo ellos verá la barra de estado.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo
@@ -302,7 +308,7 @@
 >navegador del entorno de red</link
 > y la <link linkend="shares_view"
 >vista de recursos compartidos montados</link
->.</para>
+> respectivamente.</para>
     <para
 >La barra de estado ofrece información sobre el estado actual de &smb4k;. Si la aplicación está procesando una solicitud del usuario (&eg; montando un recurso compartido), se muestra un mensaje descriptivo en la parte más a la izquierda y una barra de progreso con un indicador de ocupado. Los dos iconos del lado derecho indican si hay recursos compartidos montados (icono de carpeta de red) y el estado del sistema de autenticación (icono de cartera o llave).</para>
     <para
@@ -2839,7 +2845,7 @@ polkit.addRule(function(action, subject) {
 >Problemas de montaje en BSD</title>
       
       <para
->Si el montaje de recursos compartidos protegidos por contraseña desde un servidor &Samba; o &Windows; falla, esto puede ser debido porque <ulink url="man:/mount_smbfs"
+>Si el montaje de recursos compartidos desde un servidor &Samba; o &Windows; falla, esto puede ser debido porque <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -2847,8 +2853,16 @@ polkit.addRule(function(action, subject) {
 >8</manvolnum
 ></citerefentry
 ></ulink
->  solo usa autenticación NTLMv1, y el servidor no la admite. Para arreglar el montaje para un servidor &Samba;, puede añadir la siguiente entrada a la sección [global] del archivo <filename
+>  solo usa autenticación NTLMv1 y requiere el protocolo SMB 1.0/&CIFS;, y el servidor no los admite. Para arreglar el montaje para un servidor &Samba;, puede añadir las siguientes entradas a la sección [global] del archivo <ulink url="man:/smb.conf"
+><citerefentry
+><refentrytitle
+><filename
 >smb.conf</filename
+></refentrytitle
+><manvolnum
+>5</manvolnum
+></citerefentry
+></ulink
 > del <emphasis
 >servidor</emphasis
 >:</para>
@@ -2857,11 +2871,23 @@ polkit.addRule(function(action, subject) {
 >[global]
 ...
 ntlm auth = yes
+server min protocol = NT1
 ...
 </programlisting>
       
       <para
->Para arreglar este problema en un servidor &Windows;, por favor contacte con el administrado del sistema y dígale que hay que activar la autenticación NTLMv1 (si es posible).</para>
+>Si quiere arreglar este problema en un servidor &Windows;, por favor contacte con el administrado del sistema y dígale que hay que activar la autenticación NTLMv1 y el protocolo SMB 1.0/&CIFS; (si es posible).</para>
+
+      <note
+><para
+>No se recomienda activar el protocolo SMB 1.0/&CIFS; en un servidor, porque se considera inseguro (vea &eg; <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858"
+>esto</ulink
+>) y por tanto se ha deshabilitado en las nuevas versiones de &Samba; y &Windows; (vea &eg; <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect"
+>esto</ulink
+> y <ulink url="https://www.samba.org/samba/history/samba-4.11.0.html"
+>esto</ulink
+>).</para
+></note>
     </sect2>
     
 <!-- 
@@ -2873,19 +2899,70 @@ ntlm auth = yes
 >Otros entornos de escritorio distintos de &plasma;</title>
 
       <para
->Cuando use un entorno de escritorio distinto de &plasma;, las aplicaciones &Qt; y &kde-frameworks; podrían perder algunos de los iconos. En ese caso, usted podría querer descargar los fuentes de <application
+>Cuando use un escritorio diferente de &plasma;, las aplicaciones &Qt; y &kde-frameworks; puede que no muestren ciertos iconos. En ese caso, quizás le interese instalar alguna de las siguientes aplicaciones:</para>
+      <itemizedlist>
+        <listitem>
+          <para
+><emphasis role="bold"
+><application
 >qt5ct</application
-> (el código fuente puede obtenerse <ulink url="https://sourceforge.net/projects/qt5ct/"
->aquí</ulink
->). Para usar <application
+> (<ulink url="https://sourceforge.net/projects/qt5ct/"
+>descarga</ulink
+>) para &Qt; 5 y &kde-frameworks; 5:</emphasis
+> Para usar <application
 >qt5ct</application
-> con su entorno de escritorio, añada la siguiente línea en su archivo <filename
+> con su entorno de escritorio, añada lo siguiente a su archivo <filename
 >~/.xinitrc</filename
 > o <filename
 >~/.profile</filename
->:</para>
+>.</para>
+          <para
+><emphasis
+>X11:</emphasis
+></para>
 <programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+>export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting>
+          <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+</programlisting
+></listitem>
+          <listitem>
+            <para
+><emphasis role="bold"
+><application
+>qt6ct</application
+> (<ulink url="https://github.com/trialuser02/qt6ct"
+>descarga</ulink
+>) para &Qt; 6 y &kde-frameworks; 6:</emphasis
+> Para usar <application
+>qt6ct</application
+> con su entorno de escritorio, añada lo siguiente a su archivo <filename
+>~/.xinitrc</filename
+> o <filename
+>~/.profile</filename
+>.</para>
+            <para
+><emphasis
+>X11:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
+            <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+</programlisting
+></listitem>
+      </itemizedlist>
     </sect2>
   </sect1>
 </chapter>
@@ -3271,7 +3348,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->El protocolo de Descubrimiento Dinámico de Servicios Web (WS-Discovery) se usa para navegar en la red local y descubrir grupos de trabajo, dominios y servidores. Es útil si su vecindad de red está compuesta mayormente por servidores con versiones de &Windows; actuales. Si usa esta opción, no debería ser necesario forzar a la librería cliente de &Samba; a usar la versión del protocolo SMB 1.0 para buscar grupos de trabajo y dominios.</para>
+>El protocolo de Descubrimiento Dinámico de Servicios Web (WS-Discovery) se usa para navegar en la red local y descubrir grupos de trabajo, dominios y servidores. Es útil si su vecindad de red está compuesta mayormente por servidores con versiones de &Windows; actuales.</para>
               <note
 ><para
 >Esta preferencia es opcional, y solo aparece si compiló &smb4k; con el soporte para WS-Discovery.</para
@@ -3289,23 +3366,9 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->La interfaz del servicio de descubrimiento DNS (DNS-SD) se usa para navegar en la red local y descubrir servidores que proporcionan recursos SMB compartidos. Los dominios descubiertos corresponden a dominios DNS locales (&eg;, de nombre LOCAL) y posiblemente no a aquellos definidos en la vecindad de red. Sin embargo, esto no influencia la navegación. Si usa esta opción, no debería ser necesario forzar a la librería cliente de &Samba; a usar la versión del protocolo SMB 1.0 cuando se buscan grupos de trabajo y dominios.</para>
+>La interfaz del servicio de descubrimiento DNS (DNS-SD) se usa para navegar en la red local y descubrir servidores que proporcionan recursos SMB compartidos. Los dominios descubiertos corresponden a dominios DNS locales (&eg;, de nombre LOCAL) y posiblemente no a aquellos definidos en la vecindad de red. Sin embargo, esto no influencia la navegación.</para>
               <para
 >Predeterminado: seleccionado</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Forzar el uso de la versión 1.0 del protocolo SMB para búsquedas de grupos de trabajo y dominios</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Seleccione esta opción como último recurso, porque esta versión es insegura y ha sido desactivada en las versiones más actuales de &Samba; y &Windows;. Sin embargo, si tiene problemas descubriendo grupos de trabajo y dominios en su vecindad de red, puede considerar activar esta opción. Si está usando el servicio de descubrimiento DNS (DNS-SD) o los servicios de descubrimiento de servicios web (WS-Discovery) y estos le funcionen, no necesita la versión 1.0.</para>
-              <para
->Predeterminado: no seleccionado</para>
             </listitem>
           </varlistentry>
           <varlistentry>

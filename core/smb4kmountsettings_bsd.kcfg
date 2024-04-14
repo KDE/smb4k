@@ -5,6 +5,7 @@
                           http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <include>KUser</include>
   <include>QDir</include>
+  <include>smb4kcore_export.h</include>
   <kcfgfile name="smb4krc" />
   
   <group name="Mounting">
