@@ -8064,6 +8064,35 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </sect2>
   </sect1>
 
+<!--
+      Configuring Smb4K : Bookmarks
+-->
+
+  <sect1 id="configuration_page_bookmarks">
+    <title
+>Adreces d'interès</title>
+
+    <para
+>...</para>
+
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de la pàgina de configuració «Adreces d'interès»</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La pàgina de configuració «Adreces d'interès»</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>...</para>
+
+  </sect1>
+
 
 <!-- 
       Configuring Smb4K : Custom Settings

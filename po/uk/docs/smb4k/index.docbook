@@ -8060,6 +8060,35 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </sect2>
   </sect1>
 
+<!--
+      Configuring Smb4K : Bookmarks
+-->
+
+  <sect1 id="configuration_page_bookmarks">
+    <title
+>Закладки</title>
+
+    <para
+>...</para>
+
+    <screenshot>
+      <screeninfo
+>Знімок сторінки налаштування «Закладки»</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>Сторінка налаштувань «Закладки»</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>...</para>
+
+  </sect1>
+
 
 <!-- 
       Configuring Smb4K : Custom Settings
