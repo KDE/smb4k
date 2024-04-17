@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-10 00:38+0000\n"
-"PO-Revision-Date: 2024-01-15 23:11+0900\n"
+"PO-Revision-Date: 2024-04-17 05:19+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.01.90\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -866,6 +866,8 @@ msgid ""
 "preserve the hard links that are found during the transfer. Without it, hard "
 "links are treated as though they were separate files."
 msgstr ""
+"保留硬式連結 (-H, --hard-links)。這個選項會讓 rsync 保留傳輸時遇到的硬式連"
+"結。沒有指定這個選項時，硬式連結會被當作分開來的檔案處理。"
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:361
@@ -921,7 +923,7 @@ msgstr ""
 #: smb4k.kcfg:376
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "保留存取控制清單 (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:377
@@ -932,6 +934,9 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"保留存取控制清單 (ACL)。這個選項會使 rsync 將目的地的 ACL 更新成與來源相同。"
+"這個選項也有傳遞 --perms 的效果。來源與目的地的系統必須有相容的 ACL 項目，這"
+"個選項才能正確運作。"
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:381
@@ -945,7 +950,7 @@ msgstr "保留擴充屬性"
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
-msgstr ""
+msgstr "保留擴充屬性。這個選項會使 rsync 將目的地的擴充屬性更新成與來源相同。"
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:386
@@ -1004,6 +1009,9 @@ msgid ""
 "run as the super user. Without this option, the owner is set to the invoking "
 "user on the receiving side."
 msgstr ""
+"保留擁有者（-o, --owner）。這會讓目標檔案的擁有者與來源檔案的擁有者相同，但這"
+"只在接收方的 rsync 以超級使用者執行時有作用。未使用此選項時，擁有者會設為接收"
+"方執行 rsync 的使用者。"
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
 #: smb4k.kcfg:406
@@ -1055,7 +1063,7 @@ msgstr ""
 #: smb4k.kcfg:421
 #, kde-format
 msgid "Remove synchronized source files"
-msgstr ""
+msgstr "移除已同步的來源檔案"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
 #: smb4k.kcfg:422
@@ -1066,6 +1074,8 @@ msgid ""
 "part of the transfer and have been successfully duplicated on the receiving "
 "side."
 msgstr ""
+"移除所有已同步的來源檔案 (--remove-source-files)。這會告訴 rsync 要將成功於接"
+"收方再製的非目錄項目從傳送方這邊移除。"
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
 #: smb4k.kcfg:426
@@ -1173,8 +1183,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
 #: smb4k.kcfg:461
-#, fuzzy, kde-format
-#| msgid "Don't delete more than this many files:"
+#, kde-format
 msgid "Do not delete more than this many files:"
 msgstr "刪除檔案數目不超過："
 
@@ -1794,7 +1803,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_linux.kcfg:27
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "群組 ID："
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
@@ -1807,8 +1816,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_linux.kcfg:36
-#, fuzzy, kde-format
-#| msgid "File mask:"
+#, kde-format
 msgid "File mode:"
 msgstr "檔案模式："
 
@@ -1823,10 +1831,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_linux.kcfg:45
-#, fuzzy, kde-format
-#| msgid "Directory mask:"
+#, kde-format
 msgid "Directory mode:"
-msgstr "目錄遮罩："
+msgstr "目錄模式："
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -2408,9 +2415,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:54
-#, fuzzy, kde-format
+#, kde-format
 msgid "File system port:"
-msgstr "檔案系統："
+msgstr "檔案系統連接埠："
 
 #. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
 #. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
@@ -2952,7 +2959,7 @@ msgstr "<p>以 root 權限執行動作時失敗。</p>"
 #: smb4knotification.cpp:537
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
-msgstr ""
+msgstr "<p>傳遞的網址是無效的。</p>"
 
 #: smb4knotification.cpp:550
 #, kde-format
