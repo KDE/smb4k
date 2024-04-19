@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-10 00:38+0000\n"
-"PO-Revision-Date: 2024-01-15 23:30+0900\n"
+"PO-Revision-Date: 2024-04-19 02:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.01.90\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -59,10 +59,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "進階的網路芳鄰瀏覽器兼 Samba 共享裝置掛載工具"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2023 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -423,7 +422,7 @@ msgid ""
 msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
-msgstr[0] ""
+msgstr[0] "以下 %1 個項目將從額外選項中移除：<br>%2。<br>詳情請參閱手冊。"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
@@ -440,18 +439,18 @@ msgstr "Samba"
 #: smb4k/smb4kconfigpagenetwork.cpp:189
 #, kde-format
 msgid "Wake-On-LAN"
-msgstr ""
+msgstr "網路喚醒 (Wake-on-LAN)"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
-msgstr ""
+msgstr " 秒"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:218
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
-msgstr ""
+msgstr "用自訂設定編輯器定義要喚醒的主機。"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:228
 #, kde-format
@@ -1141,10 +1140,9 @@ msgid "Workgroup"
 msgstr "工作群組："
 
 #: smb4k/smb4ktooltip.cpp:137
-#, fuzzy, kde-format
-#| msgid "Master browser:"
+#, kde-format
 msgid "Master Browser:"
-msgstr "主伺服器："
+msgstr "主瀏覽器："
 
 #: smb4k/smb4ktooltip.cpp:151
 #, kde-format
