@@ -225,7 +225,7 @@ void Smb4KConfigPageMounting::setupWidget()
     cifsExtensionSupportLayout->addWidget(cifsExtensionsSupport);
 
     m_singleCifsExtensionsSettingsWidget = new QWidget(cifsExtensionSupportBox);
-    m_singleCifsExtensionsSettingsWidget->setEnabled(false);
+    m_singleCifsExtensionsSettingsWidget->setEnabled(!Smb4KMountSettings::cifsUnixExtensionsSupport());
     QGridLayout *singleCifsSettingsWidgetLayout = new QGridLayout(m_singleCifsExtensionsSettingsWidget);
     singleCifsSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
