@@ -156,6 +156,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Ominaisuuksia:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="he">יכולות:</p>
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="ie">Caracteristicas:</p>
@@ -941,6 +942,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fi">Pääikkuna</caption>
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal.</caption>
+      <caption xml:lang="he">החלון הראשי</caption>
       <caption xml:lang="id">Jendela utama</caption>
       <caption xml:lang="ie">Li fenestre principal</caption>
       <caption xml:lang="it">La finestra principale</caption>
