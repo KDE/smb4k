@@ -2674,13 +2674,11 @@
       <para
 >Las notificaciones pueden configurarse a través de &systemsettings;. Para modificar el comportamiento de una notificación, navegue a la página <guibutton
 >Notificaciones</guibutton
->. Para &plasma; 5.21 y siguientes, luego pulse el botón <guibutton
+>.  En la sección <guilabel
+>Preferencias específicas de la aplicación</guilabel
+> pulse el botón <guibutton
 >Configurar</guibutton
-> al lado de la etiqueta <guilabel
->Aplicaciones</guilabel
-> y elija &smb4k; en la lista que aparece. Al pulsar <guibutton
->Configurar eventos...</guibutton
-> se abre el siguiente diálogo:</para>
+> y elija &smb4k; en la lista que aparece. El siguiente diálogo aparecerá:</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del módulo de notificación de preferencias del sistema</screeninfo>
@@ -2694,7 +2692,7 @@
         </mediaobject>
       </screenshot>
       <para
->Aquí, todas las notificaciones disponibles se muestran en la vista de lista y pueden editarse, activarse o desactivarse de la manera que quiera.</para>
+>Todas la notificaciones pueden editarse aquí de acuerdo a sus preferencias.</para>
     </sect2>
   </sect1>
 
@@ -2899,70 +2897,29 @@ server min protocol = NT1
 >Otros entornos de escritorio distintos de &plasma;</title>
 
       <para
->Cuando use un escritorio diferente de &plasma;, las aplicaciones &Qt; y &kde-frameworks; puede que no muestren ciertos iconos. En ese caso, quizás le interese instalar alguna de las siguientes aplicaciones:</para>
-      <itemizedlist>
-        <listitem>
-          <para
-><emphasis role="bold"
-><application
->qt5ct</application
-> (<ulink url="https://sourceforge.net/projects/qt5ct/"
->descarga</ulink
->) para &Qt; 5 y &kde-frameworks; 5:</emphasis
-> Para usar <application
->qt5ct</application
-> con su entorno de escritorio, añada lo siguiente a su archivo <filename
->~/.xinitrc</filename
-> o <filename
->~/.profile</filename
->.</para>
-          <para
-><emphasis
->X11:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting>
-          <para
-><emphasis
->Wayland:</emphasis
-></para>
-<programlisting
->export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
-</programlisting
-></listitem>
-          <listitem>
-            <para
-><emphasis role="bold"
-><application
+>Al usar un entorno de escritorio diferente a &plasma;, &Qt; y &kde-frameworks; puede que falten algunos iconos en las aplicaciones. En ese caso, quizás le interese instalar la aplicación <application
 >qt6ct</application
 > (<ulink url="https://github.com/trialuser02/qt6ct"
 >descarga</ulink
->) para &Qt; 6 y &kde-frameworks; 6:</emphasis
-> Para usar <application
->qt6ct</application
-> con su entorno de escritorio, añada lo siguiente a su archivo <filename
+>) . Para usarla con su entorno de escritorio, añada lo siguiente a su archivo <filename
 >~/.xinitrc</filename
 > o <filename
 >~/.profile</filename
->.</para>
-            <para
+>:</para>
+      <para
 ><emphasis
 >X11:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
-            <para
+      <para
 ><emphasis
 >Wayland:</emphasis
 ></para>
 <programlisting
 >export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
-</programlisting
-></listitem>
-      </itemizedlist>
+</programlisting>
     </sect2>
   </sect1>
 </chapter>
@@ -8127,6 +8084,35 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       </sect3>
 
     </sect2>
+  </sect1>
+
+<!--
+      Configuring Smb4K : Bookmarks
+-->
+
+  <sect1 id="configuration_page_bookmarks">
+    <title
+>Marcadores</title>
+
+    <para
+>...</para>
+
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de la página de configuración «Marcadores»</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La página de configuración «Marcadores»</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>...</para>
+
   </sect1>
 
 
