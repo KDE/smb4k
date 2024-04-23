@@ -28,3 +28,6 @@ Dependencies:
     'plasma/libplasma': '@latest-kf6'
     'third-party/kdsoap': '@latest'
     'libraries/kdsoap-ws-discovery-client': '@stable'
+
+Options:
+  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
