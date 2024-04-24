@@ -7,57 +7,57 @@
 # Barcza Károly <kbarcza@blackpanther.hu>, 2004.
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2011, 2012.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
+# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-10 00:38+0000\n"
-"PO-Revision-Date: 2014-06-15 16:44+0200\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"PO-Revision-Date: 2024-04-23 13:33+0200\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
-#, fuzzy, kde-format
-#| msgid "Documentation"
+#, kde-format
 msgid "Tab orientation:"
-msgstr "Dokumentáció"
+msgstr "Lapelrendezés:"
 
 #. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
 #, kde-format
 msgid "Set the tab orientation for the tabified dock widgets."
-msgstr ""
+msgstr "A laposított dokkelemek lapelrendezésének beállítása."
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:21
 #, kde-format
 msgid "Top"
-msgstr ""
+msgstr "Felül"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:24
 #, kde-format
 msgid "Bottom"
-msgstr ""
+msgstr "Lent"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:27
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "Balra"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:30
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "Jobbra"
 
 #. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
@@ -67,16 +67,13 @@ msgstr "Egyéni könyvjelzőcímke megjelenítése, ha elérhető"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:37
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"Csak a könyvjelzőszerkesztőben definiált egyéni címkék jelenjenek meg a "
-"megosztás neve helyett."
+"Ne a könyvjelzővel ellátott megosztás neve jelenjen meg, hanem a "
+"könyvjelzőszerkesztőben definiált egyéni címke."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
@@ -105,16 +102,13 @@ msgstr "Megosztás típusának megjelenítése"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Print or IPC."
 msgstr ""
-"A megosztás típusa megjelenik egy külön  oszlopban a hálózatböngészőben. "
-"Lehet lemez, nyomtató vagy IPC."
+"A megosztás típusa megjelenik egy külön  oszlopban a hálózatimappa-"
+"böngészőben. Lehet lemez, nyomtató vagy IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
@@ -124,15 +118,13 @@ msgstr "A kiszolgáló IP-címének megjelenítése"
 
 #. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:52
-#, fuzzy, kde-format
-#| msgid ""
-#| "The IP address of the server will be displayed in a separate column in "
-#| "the network browser."
+#, kde-format
 msgid ""
 "The IP address of the server will be displayed in a separate column in the "
 "network neighborhood browser."
 msgstr ""
-"A kiszolgáló IP-címe megjelenik egy külön oszlopban a hálózatböngészőben."
+"A kiszolgáló IP-címe megjelenik egy külön oszlopban a hálózatimappa-"
+"böngészőben."
 
 #. i18n: ectx: label, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:56
@@ -142,16 +134,13 @@ msgstr "Megjegyzés megjelenítése"
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:57
-#, fuzzy, kde-format
-#| msgid ""
-#| "The comment describing the server or share will be displayed in a "
-#| "separate column in the network browser."
+#, kde-format
 msgid ""
 "The comment describing the server or share will be displayed in a separate "
 "column in the network neighborhood browser."
 msgstr ""
 "A kiszolgálót vagy megosztást leíró megjegyzés megjelenik egy külön "
-"oszlopban a hálózatböngészőben."
+"oszlopban a hálózatimappa-böngészőben."
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:61
