@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-10 00:38+0000\n"
-"PO-Revision-Date: 2024-04-23 13:33+0200\n"
+"PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -144,10 +144,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:61
-#, fuzzy, kde-format
-#| msgid "Show a tooltip with information about the network item"
+#, kde-format
 msgid "Show tooltips for network items"
-msgstr "A hálózati elem jellemzőinek megjelenítése buboréksúgóban"
+msgstr "Buboréksúgó megjelenítése a hálózati elemekhez"
 
 #. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:62
@@ -178,10 +177,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
-#, fuzzy, kde-format
-#| msgid "Show a tooltip with information about the share"
+#, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Buboréksúgó megjelenítése a megosztás jellemzőivel"
+msgstr "Buboréksúgó megjelenítése a csatolt megosztásokhoz"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:72
@@ -192,10 +190,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:76
-#, fuzzy, kde-format
-#| msgid "File mask:"
+#, kde-format
 msgid "View mode:"
-msgstr "Fájlmaszk:"
+msgstr "Nézetmód:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
@@ -204,6 +201,8 @@ msgid ""
 "This setting determines the view mode of the shares view. There are two "
 "modes: the icon view and the list view."
 msgstr ""
+"Ez a beállítás határozza meg a megosztások nézetmódját. Kétféle mód van: az "
+"ikon- és a listanézet."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:80
@@ -219,49 +218,47 @@ msgstr "Listanézet"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:89
-#, fuzzy, kde-format
-#| msgid "Settings for the list view:"
+#, kde-format
 msgid "Icon size for the icon view:"
-msgstr "A listanézet beállításai:"
+msgstr "Ikonméret az ikonnézetben:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Megosztások Megtekintése"
+msgstr "Az ikonméret beállítása a megosztások nézet ikonnézet módjához."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:96
-#, fuzzy, kde-format
-#| msgid "Settings for the list view:"
+#, kde-format
 msgid "Icon size for the list view:"
-msgstr "A listanézet beállításai:"
+msgstr "Ikonméret a listanézetben:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Megosztások Megtekintése"
+msgstr "Az ikonméret beállítása a megosztások nézet listanézet módjához."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Icon View"
+#, kde-format
 msgid "Icon size:"
-msgstr "Ikonnézet"
+msgstr "Ikonméret:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "The advanced network neighborhood browser for KDE."
+#, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Speciális hálózatimappa-böngésző a KDE-hez."
+msgstr "A hálózatimappa-böngésző ikonméretének beállítása."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:115
 #, kde-format
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
 msgstr ""
+"Webszolgáltatások dinamikus felfedezésének (WS-Discovery) használata a "
+"böngészéshez"
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
