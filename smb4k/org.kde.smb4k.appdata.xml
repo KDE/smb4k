@@ -23,6 +23,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="fi">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
+  <name xml:lang="hu">Smb4K</name>
   <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
   <name xml:lang="ie">Smb4K</name>
@@ -56,6 +57,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="fi">Etsi ja liitä Samba- ja Windows-jakoja verkon yli</summary>
   <summary xml:lang="fr">Découvre et monte des partages Windows et SAMBA à travers le réseau</summary>
   <summary xml:lang="gl">Descubrir e montar comparticións de rede de SAMBA e de Windows.</summary>
+  <summary xml:lang="hu">SAMBA és Windows megosztások felfedezése és csatolása a hálózaton keresztül</summary>
   <summary xml:lang="id">Temukan dan kaitkan SAMBA dan berbagi Windows melalui jaringan</summary>
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
   <summary xml:lang="ka">აღმოაჩინეთ და მიამაგრეთ SAMBA-ის და Windows-ის გაზიარებულები ქსელში</summary>
@@ -88,6 +90,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Smb4K on kehittynyt verkkoympäristöselain ja Samba-jakoliitostyökalu. Se pohjautuu KDE Frameworks 5:een ja Samban asiakaskirjastoon (libsmbclient). Se etsii verkkoympäristöstä työryhmiä, palvelimia ja jakoja ja osaa liittää halutut jaot paikalliseen tiedostojärjestelmään.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba. Il repose sur KDE Frameworks 5 et la librairie client de Samba (libsmbclient). Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba. Está baseada na versión 5 das infraestruturas de KDE e a biblioteca de cliente de Samba (libsmbclient). Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
+    <p xml:lang="hu">Az Smb4K egy fejlett hálózati böngésző és Samba megosztási segédprogram. A KDE Frameworks 5 és a Samba klienskönyvtárán (libsmbclient) alapul. Átvizsgálja a hálózati szomszédságot az összes elérhető munkacsoport, kiszolgáló és megosztás után, és képes az összes kívánt megosztást a helyi fájlrendszerre csatolni.</p>
     <p xml:lang="id">Smb4K adalah sebuah penelusur  pengaitan berbagi Samba. Ini berbasiskan pada KDE Frameworks 5 dan pustaka klien Samba (libsmbclient). Ini memindaikan jaringan tetanggamu untuk semua workgroup-workgroup, server-server, dan bebagi-bebagi yang tersedia dan bisa mengaitkan semua berbagi yang diinginkan ke sistem file lokalmu.</p>
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba. È basato su KDE Frameworks 5 e sulla libreria client di Samba (libsmbclient). Analizza le risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
     <p xml:lang="ka">Smb4k დამატებითი ქსელის სამეზობლოს დასათვალიერებელი და Samba-ის გაზიარებების მიმაგრების პროგრამაა. ის ეყრდნობა KDE Frameworks 5-ს და Samba-ის კლიენტის ბიბლიოთეკას (libsmbclient). ის ასკანირებს თქვენი ქსელის სამეზობლოს ყველა ხელმისაწვდომი სამუშაო ჯგუფების, სერვერებისა და გაზიარებების საპოვნელად და შეუძლია, ყველა სასურველი გაზიარება თქვენს ლოკალურ ფაილურ სისტემაზე მიამაგროს.</p>
@@ -120,6 +123,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Smb4K perustuu Samban asiakaskirjastoon. Se pyrkii tarjoamaan ohjelman, joka on sekä helppokäyttöinen että mahdollisimman monipuolinen.</p>
     <p xml:lang="fr">Smb4K utilise la librairie client de Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
     <p xml:lang="gl">Smb4K está baseado na biblioteca de cliente de Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
+    <p xml:lang="hu">Az Smb4K a Samba klienskönyvtárán alapul. Célja, hogy egy könnyen használható és minél több funkcióval rendelkező programot biztosítson.</p>
     <p xml:lang="id">Smb4K adalah berbasiskan pada pustaka klien Samba. Tujuannya adalah untuk menyediakan sebuah program yang mudah digunakan dan memiliki fitur sebanyak mungkin.</p>
     <p xml:lang="it">Smb4K è basato sulla libreria client di Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
     <p xml:lang="ka">Smb4k ეყრდნობა Samba-ის კლიენტის ბიბლიოთეკას. მისი დანიშნულებაა, მოგაწოდოთ პროგრამა, რომლის გამოყენებაც იოლია და რომელსაც რაც შეიძლება, დიდი ფუნქციონალი გააჩნია.</p>
@@ -156,6 +160,8 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Ominaisuuksia:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="he">יכולות:</p>
+    <p xml:lang="hu">Szolgáltatások:</p>
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="ie">Caracteristicas:</p>
@@ -191,6 +197,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">(Aktiivisten) työryhmien, verkkokoneiden ja -jakojen etsintä</li>
       <li xml:lang="fr">Balayage des groupes de travail (actifs), hôtes et partages</li>
       <li xml:lang="gl">Buscando grupos de traballo (activos), servidores e comparticións</li>
+      <li xml:lang="hu">Aktív munkacsoportok, gépek és megosztások keresése</li>
       <li xml:lang="id">Pemindaian untuk workgroup, host, dan berbagi (yang aktif)</li>
       <li xml:lang="it">Ricerca di gruppi di lavoro, host e condivisioni (attivi)</li>
       <li xml:lang="ka">(აქტიური) ამუშაო ჯგუფების, ჰოსტებისა და გაზიარებულების სკანირება</li>
@@ -223,6 +230,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">CIFS- (Linux) ja SMBFS-tiedostojärjestelmien (FreeBSD) tuki</li>
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
+      <li xml:lang="hu">CIFS (Linux) és SMBFS (FreeBSD) fájlrendszerek támogatása</li>
       <li xml:lang="id">Dukungan sistem file CIFS (Linux) dan SMBFS (FreeBSD)</li>
       <li xml:lang="ie">Supporte del sistemas de files CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="it">Supporto dei file system CIFS (Linux) e SMBFS (FreeBSD)</li>
@@ -256,6 +264,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Jakojen liittäminen ja irrottaminen</li>
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
+      <li xml:lang="hu">Megosztások csatolása és leválasztása</li>
       <li xml:lang="id">Pengaitan dan pelepaskaitan berbagi</li>
       <li xml:lang="ie">Montage e demontage de partites</li>
       <li xml:lang="it">Montaggio e smontaggio delle condivisioni</li>
@@ -289,6 +298,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Pääsy liitetyn jaon tiedostoihin tiedostonhallinnasta tai päätteestä</li>
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
+      <li xml:lang="hu">Hozzáférés a csatlakoztatott megosztás fájljaihoz fájlkezelő vagy terminál segítségével</li>
       <li xml:lang="id">Akses ke file pada berbagi yang dikaitkan menggunakan pengelola file atau terminal</li>
       <li xml:lang="it">Accesso ai file di una condivisione montata usando un gestore dei file o un terminale</li>
       <li xml:lang="ka">წვდომა მიმაგრებული გაზიარების ფაილებთან ფაილების მმართველის, ან ტერმინალის დახმარებით</li>
@@ -321,6 +331,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Ulkoisten liitosten ja irrotusten automaattinen havaitseminen</li>
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
+      <li xml:lang="hu">Külső csatolások és leválasztások automatikus felismerése</li>
       <li xml:lang="id">Auto deteksi kait dan lepaskait eksternal</li>
       <li xml:lang="it">Rilevazione automatica di montaggi o di smontaggi esterni</li>
       <li xml:lang="ka">გარე მიმაგრებებისა და მოხსნების ავტომატური აღმოჩენა</li>
@@ -353,6 +364,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Aiemmin käytettyjen jakojen uudelleenliittäminen ohjelman käynnistyessä</li>
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
       <li xml:lang="gl">Pode volver a montar comparticións usadas previamente ao iniciar o programa.</li>
+      <li xml:lang="hu">Korábban használt megosztások újra csatolása a program indulásakor</li>
       <li xml:lang="id">Mengaitkan-ulang berbagi-berbagi yang digunakan sebelumnya saat memulai program</li>
       <li xml:lang="it">Rimontaggio all'avvio del programma di una condivisione usata in precedenza</li>
       <li xml:lang="ka">პროგრამის გაშვებისას ადრე მიმაგრებული გაზიარებულების თავიდან მიმაგრება</li>
@@ -385,6 +397,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Erilaiset tiedot etäverkkokohteista ja liitetyistä jaoista</li>
       <li xml:lang="fr">Infos diverses sur les éléments réseau distants et les partages montés</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
+      <li xml:lang="hu">Egyéb információk távoli hálózati elemekről és csatlakoztatott megosztásokról</li>
       <li xml:lang="id">Beraneka info tentang butir-butir jaringan jarak jauh dan berbagi-berbagi yang dikaitkan</li>
       <li xml:lang="it">Informazioni varie sugli elementi di rete remoti e sulle condivisioni montate</li>
       <li xml:lang="ka">სხვადასხვა ინფორმაცია დაშორებული ქსელური ელემენტებისა და მიმაგრებული გაზიარებების შესახებ</li>
@@ -419,6 +432,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Verkkohaku</li>
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
+      <li xml:lang="hu">Hálózati keresés</li>
       <li xml:lang="id">Pencarian jaringan</li>
       <li xml:lang="ie">Sercha in li rete</li>
       <li xml:lang="it">Ricerca in rete</li>
@@ -452,6 +466,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Etäjaon sisällön esikatselu</li>
       <li xml:lang="fr">Aperçu des contenus d'un partage distant</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición remota</li>
+      <li xml:lang="hu">Távoli megosztások tartalmának előnézete</li>
       <li xml:lang="id">Pratinjaunya konten dari berbagi jarak jauh</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione remota</li>
       <li xml:lang="ka">დაშორებული გაზიარებულის შემცველობის მინიატურები</li>
@@ -485,6 +500,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Oletuskirjautuminen</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
+      <li xml:lang="hu">Alapértelmezett bejelentkezés</li>
       <li xml:lang="ia">Authentication predefinite</li>
       <li xml:lang="id">Login baku</li>
       <li xml:lang="it">Nome utente predefinito</li>
@@ -518,6 +534,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Kotikansiojakojen erityiskäsittely</li>
       <li xml:lang="fr">Prise en charge spéciale des dossiers personnels partagés</li>
       <li xml:lang="gl">Xestiona de forma especial as particións de cartafoles persoais.</li>
+      <li xml:lang="hu">Otthoni megosztások speciális kezelése</li>
       <li xml:lang="id">Penanganan spesial pemberbagian beranda</li>
       <li xml:lang="it">Gestione speciale delle condivisioni delle home</li>
       <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
@@ -550,6 +567,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Mahdollisuus tehdä suosikkijaoista kirjanmerkkejä</li>
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
+      <li xml:lang="hu">Könyvjelző hozzáadása a kedvenc megosztásokhoz</li>
       <li xml:lang="id">Kemampuan untuk memarkahi berbagi-berbagi favorit</li>
       <li xml:lang="it">Possibilità di aggiungere le condivisioni preferite nei segnalibri</li>
       <li xml:lang="ka">რჩეული გაზიარებულების ჩანიშვნა</li>
@@ -583,6 +601,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Ilmoitusaluekuvake</li>
       <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
+      <li xml:lang="hu">Paneltálca kisalkalmazás</li>
       <li xml:lang="id">Widget system tray</li>
       <li xml:lang="it">Oggetto per il vassoio di sistema</li>
       <li xml:lang="ka">სისტემის კუთხეში ხატულის ჩართვა</li>
@@ -615,6 +634,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Lisäliitosasetusten tuki</li>
       <li xml:lang="fr">Prise en charge des options de montage avancées</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de montaxe</li>
+      <li xml:lang="hu">Speciális csatolási beállítások támogatása</li>
       <li xml:lang="id">Dukungan opsi kait tingkat-lanjut</li>
       <li xml:lang="it">Supporto alle opzioni avanzate di montaggio</li>
       <li xml:lang="ka">მიმაგრების დამატებითი პარამეტრების მხარდაჭერა</li>
@@ -646,6 +666,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Tulostinjakojen tuki</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
+      <li xml:lang="hu">Nyomtatómegosztások támogatása</li>
       <li xml:lang="id">Dukungan berbagi printer</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
       <li xml:lang="ka">პრინტერის გაზიარების მხარდაჭერა</li>
@@ -679,6 +700,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">KWallet-tuki</li>
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Compatibilidade con KWallet.</li>
+      <li xml:lang="hu">KWallet támogatás</li>
       <li xml:lang="id">Dukungan KWallet</li>
       <li xml:lang="ie">Supporte de KWallet</li>
       <li xml:lang="it">Supporto a KWallet</li>
@@ -712,6 +734,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Etäjakojen synkronointi paikallisen kopion kanssa ja päinvastoin</li>
       <li xml:lang="fr">Synchronisation d'un partage distant avec une copie locale et vice-versa</li>
       <li xml:lang="gl">Permite sincronizar comparticións remotas con copias locais en ambos sentidos.</li>
+      <li xml:lang="hu">Távoli megosztások szinkronizálása a helyi másolattal és fordítva</li>
       <li xml:lang="id">Sinkronisasi berbagi jarak jauh dengan salinan lokal dan sebaliknya</li>
       <li xml:lang="it">Sincronizzazione di una condivisione remota con una copia locale e viceversa</li>
       <li xml:lang="ka">დაშორებული გაზიარებულის ლოკალურთან სინქრონიზაცია და პირიქით</li>
@@ -744,6 +767,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Mahdollisuus mukauttaa määräpalvelinten ja -jakojen asetuksia</li>
       <li xml:lang="fr">Possibilité de définir des options personnalisées pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
+      <li xml:lang="hu">Egyéni beállítások definiálásának lehetősége az egyes kiszolgálók és megosztások számára</li>
       <li xml:lang="id">Kemampuan untuk menentukan opsi kustom untuk berbagi dan server individu</li>
       <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e per le condivisioni</li>
       <li xml:lang="ka">საშუალება, აღწეროთ მომხმარებლის პარამეტრები ინდივიდუალური სერვერებისა და გაზიარებებისათვის</li>
@@ -776,6 +800,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Kannettavan tietokoneen tuki Solid-laitteistokehyksen avulla</li>
       <li xml:lang="fr">Prise en charge des ordinateurs portables avec le framework de gestion matérielle Solid</li>
       <li xml:lang="gl">Compatíbel con portátiles mediante a infraestrutura de dispositivos de soporte físico Solid.</li>
+      <li xml:lang="hu">Laptop támogatás a Solid hardvereszköz-keretrendszeren keresztül</li>
       <li xml:lang="id">Dukungan laptop melalui kerangkakerja peranti hardware Solid</li>
       <li xml:lang="it">Supporto ai computer portatili per mezzo dell'infrastruttura per i dispositivi hardware Solid</li>
       <li xml:lang="ka">ნოუთბუქის მხარდაჭერა აპარატურული მოწყობილობების ბიბლიოთეკით Solid</li>
@@ -808,6 +833,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Wake-On-LAN-ominaisuudet</li>
       <li xml:lang="fr">Capacités de réveil par le réseau (Wake-on-LAN)</li>
       <li xml:lang="gl">Ofrece funcionalidades de espertar na rede (Wake-On-LAN).</li>
+      <li xml:lang="hu">Wake-On-LAN képességek</li>
       <li xml:lang="id">Kemampuan Wake-On-LAN</li>
       <li xml:lang="it">Funzionalità Wake-On-LAN</li>
       <li xml:lang="ka">ქსელით-გაღვიძების შესაძლებლობა</li>
@@ -840,6 +866,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Sovelma työpöytäintegrointiin</li>
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
       <li xml:lang="gl">Ofrece integración co escritorio mediante un trebello.</li>
+      <li xml:lang="hu">Plasmoid az asztali integrációhoz</li>
       <li xml:lang="id">Plasmoid untuk integrasi desktop</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
       <li xml:lang="ka">პლაზმოიდი სამუშაო მაგიდასთან ინტეგრაციისთვის</li>
@@ -871,6 +898,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Profiilit eri verkkoympäristömäärityksille</li>
       <li xml:lang="fr">Profils pour les différentes configurations de voisinage réseau</li>
       <li xml:lang="gl">Perfís para distintas configuracións de veciñanza de rede</li>
+      <li xml:lang="hu">Profilok különböző hálózati szomszédsági beállításokhoz</li>
       <li xml:lang="id">Memprofilkan bagi persiapan jaringan tetangga yang berbeda</li>
       <li xml:lang="it">Profili per diverse impostazioni delle risorse di rete</li>
       <li xml:lang="ka">პროფილები სხვადასხვა ქსელური სამეზობლოს მოსარგებად</li>
@@ -905,6 +933,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Windowsin hallitsemassa verkkoympäristössä tämä sovellus helpottaa tarjolla olevien Windows-jakojen käyttöä.</p>
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, esta aplicación axudará a acceder facilmente aos recursos compartidos desde Windows.</p>
+    <p xml:lang="hu">Ha többnyire Windows hálózati környezetben dolgozik, érdemes telepíteni ezt az alkalmazást, hogy könnyedén hozzáférhessen a Windows-megosztásokhoz.</p>
     <p xml:lang="id">Jika kamu bekerja dalam lingkungan jaringan yang didominasi Windows, kamu mungkin ingin menginstal aplikasi ini untuk dapat mengakses secara mudah berbagi-berbagi yang disediakan Windows</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
     <p xml:lang="ka">თუ მუშაობთ ქსელურ გარემოში, სადაც Windows-ის კომპიუტერები უმრავლესობაა, თქვენ ალბათ გნებავთ, ეს აპლიკაცია დააყენოთ, რომ მოწოდებულ Windows-ის გაზიარებებთან იოლი წვდომა გქონდეთ.</p>
@@ -941,6 +970,8 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fi">Pääikkuna</caption>
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal.</caption>
+      <caption xml:lang="he">החלון הראשי</caption>
+      <caption xml:lang="hu">A főablak</caption>
       <caption xml:lang="id">Jendela utama</caption>
       <caption xml:lang="ie">Li fenestre principal</caption>
       <caption xml:lang="it">La finestra principale</caption>
@@ -978,6 +1009,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fi">Sovelma</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O trebello.</caption>
+      <caption xml:lang="hu">A plasmoid</caption>
       <caption xml:lang="id">Plasmoid</caption>
       <caption xml:lang="ie">Li plasmoid</caption>
       <caption xml:lang="it">Il plasmoide</caption>

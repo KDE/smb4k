@@ -4036,7 +4036,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                   </term>
                   <listitem>
                     <para
->ISO/IEC 8859-5:1999. Es coneix informalment com a llatí/ciríl·lic. Es va dissenyar per a cobrir els idiomes que empren un alfabet ciríl·lic com el búlgar, bielorús, rus, serbi i macedoni, però mai s'ha emprat àmpliament.</para>
+>ISO/IEC 8859-5:1999. Es coneix informalment com a llatí/ciríl·lic. Es va dissenyar per a cobrir els idiomes que empren un alfabet ciríl·lic com el búlgar, belarús, rus, serbi i macedoni, però mai s'ha emprat àmpliament.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4168,7 +4168,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                   </term>
                   <listitem>
                     <para
->El KOI8-RU és una codificació de caràcters de 8 bits, dissenyada per a cobrir el rus, l'ucraïnès i el bielorús, les quals empren un alfabet ciríl·lic.</para>
+>El KOI8-RU és una codificació de caràcters de 8 bits, dissenyada per a cobrir el rus, l'ucraïnès i el belarús, les quals empren un alfabet ciríl·lic.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -5329,7 +5329,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->ISO/IEC 8859-5:1999. Es coneix informalment com a llatí/ciríl·lic. Es va dissenyar per a cobrir els idiomes que empren un alfabet ciríl·lic com el búlgar, bielorús, rus, serbi i macedoni, però mai s'ha emprat àmpliament.</para>
+>ISO/IEC 8859-5:1999. Es coneix informalment com a llatí/ciríl·lic. Es va dissenyar per a cobrir els idiomes que empren un alfabet ciríl·lic com el búlgar, belarús, rus, serbi i macedoni, però mai s'ha emprat àmpliament.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -5461,7 +5461,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->El KOI8-RU és una codificació de caràcters de 8 bits, dissenyada per a cobrir el rus, l'ucraïnès i el bielorús, les quals empren un alfabet ciríl·lic.</para>
+>El KOI8-RU és una codificació de caràcters de 8 bits, dissenyada per a cobrir el rus, l'ucraïnès i el belarús, les quals empren un alfabet ciríl·lic.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
