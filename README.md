@@ -17,7 +17,7 @@ Features
 - Network search
 - Preview of the contents of a remote share
 - Default login
-- Special handling of homes shares
+- Special handling of home shares
 - Ability to bookmark favorite shares
 - System tray widget
 - Support of advanced mount options
