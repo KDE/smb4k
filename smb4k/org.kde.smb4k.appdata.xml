@@ -520,39 +520,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxDefault loginxx</li>
       <li xml:lang="zh-CN">默认登录</li>
       <li xml:lang="zh-TW">預設登入</li>
-      <li>Special handling of homes shares</li>
-      <li xml:lang="bs">Posebno korištenje početnih razmjena</li>
-      <li xml:lang="ca">Gestió especial de les comparticions personals</li>
-      <li xml:lang="ca-valencia">Gestió especial de les comparticions personals</li>
-      <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
-      <li xml:lang="el">Ειδικός χειρισμός πόρων περιοχών χρηστών</li>
-      <li xml:lang="en-GB">Special handling of homes shares</li>
-      <li xml:lang="eo">Speciala uzado de hejmaj komunaĵoj</li>
-      <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
-      <li xml:lang="et">Jagatud ressursside kogukataloogide spetsiaalne kohtlemine</li>
-      <li xml:lang="eu">«Etxeko» partekatzeen trataera berezia</li>
-      <li xml:lang="fi">Kotikansiojakojen erityiskäsittely</li>
-      <li xml:lang="fr">Prise en charge spéciale des dossiers personnels partagés</li>
-      <li xml:lang="gl">Xestiona de forma especial as particións de cartafoles persoais.</li>
-      <li xml:lang="hu">Otthoni megosztások speciális kezelése</li>
-      <li xml:lang="id">Penanganan spesial pemberbagian beranda</li>
-      <li xml:lang="it">Gestione speciale delle condivisioni delle home</li>
-      <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
-      <li xml:lang="ko">홈 공유 특수 처리</li>
-      <li xml:lang="nds">Besünner Hanteren vun Tohuus-Freegaven</li>
-      <li xml:lang="nl">Speciale behandeling van shares van hoofdmappen</li>
-      <li xml:lang="pl">Wyjątkowa obsługa udziałów w postaci katalogów domowych</li>
-      <li xml:lang="pt">Tratamento especial para as partilhas de áreas pessoais</li>
-      <li xml:lang="pt-BR">Tratamento especial para os compartilhamentos de áreas pessoais</li>
-      <li xml:lang="ru">Особая обработка «домашних» общих сетевых ресурсов;</li>
-      <li xml:lang="sk">Špeciálne zaobchádzanie so zdieľaniami home</li>
-      <li xml:lang="sl">Posebna obravnava domačih skupnih diskov</li>
-      <li xml:lang="sv">Särskild hantering av delade hemkataloger</li>
-      <li xml:lang="tr">Ev paylaşımlarına özel işlemler</li>
-      <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
-      <li xml:lang="x-test">xxSpecial handling of homes sharesxx</li>
-      <li xml:lang="zh-CN">针对家庭共享的特殊处理功能</li>
-      <li xml:lang="zh-TW">家目錄分享的特別處理</li>
+      <li>Special handling of home shares</li>
       <li>Ability to bookmark favorite shares</li>
       <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
       <li xml:lang="ca">La capacitat d'apuntar les comparticions com a adreces d'interès</li>
