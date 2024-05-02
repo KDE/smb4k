@@ -37,7 +37,7 @@ K_PLUGIN_FACTORY(Smb4KConfigDialogFactory, registerPlugin<Smb4KConfigDialog>();)
 Smb4KConfigDialog::Smb4KConfigDialog(QWidget *parent, const QList<QVariant> & /*args*/)
     : KConfigDialog(parent, QStringLiteral("ConfigDialog"), Smb4KSettings::self())
 {
-    setAttribute(Qt::WA_DeleteOnClose, true);
+    // setAttribute(Qt::WA_DeleteOnClose, true);
 
     setupDialog();
 }
@@ -121,14 +121,14 @@ void Smb4KConfigDialog::setupDialog()
     //
     // Pages to the configuration dialog
     //
-    m_userInterface = addPage(userInterfaceArea, Smb4KSettings::self(), i18n("User Interface"), QStringLiteral("preferences-desktop"));
-    m_network = addPage(networkArea, Smb4KSettings::self(), i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
+    m_userInterface = addPage(userInterfaceArea, i18n("User Interface"), QStringLiteral("preferences-desktop"));
+    m_network = addPage(networkArea, i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
     m_mounting = addPage(mountingArea, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
-    m_authentication = addPage(authenticationArea, Smb4KSettings::self(), i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"));
-    m_synchronization = addPage(synchronizationArea, Smb4KSettings::self(), i18n("Synchronization"), QStringLiteral("folder-sync"));
-    m_bookmarks = addPage(bookmarksArea, Smb4KSettings::self(), i18n("Bookmarks"), QStringLiteral("bookmarks"));
-    m_customSettings = addPage(customSettingsArea, Smb4KSettings::self(), i18n("Custom Settings"), QStringLiteral("settings-configure"));
-    m_profiles = addPage(profilesArea, Smb4KSettings::self(), i18n("Profiles"), QStringLiteral("preferences-system-users"));
+    m_authentication = addPage(authenticationArea, i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"));
+    m_synchronization = addPage(synchronizationArea, i18n("Synchronization"), QStringLiteral("folder-sync"));
+    m_bookmarks = addPage(bookmarksArea, i18n("Bookmarks"), QStringLiteral("bookmarks"));
+    m_customSettings = addPage(customSettingsArea, i18n("Custom Settings"), QStringLiteral("settings-configure"));
+    m_profiles = addPage(profilesArea, i18n("Profiles"), QStringLiteral("preferences-system-users"));
 
     //
     // Connections
@@ -178,6 +178,8 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 
 void Smb4KConfigDialog::updateSettings()
 {
+    KConfigDialog::updateSettings();
+
     m_authenticationPage->saveLoginCredentials();
     m_customSettingsPage->saveCustomSettings();
 
@@ -202,8 +204,6 @@ void Smb4KConfigDialog::updateSettings()
 
     KConfigGroup group(Smb4KSettings::self()->config(), QStringLiteral("ConfigDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), group);
-
-    KConfigDialog::updateSettings();
 }
 
 void Smb4KConfigDialog::slotEnableApplyButton()
