@@ -1,7 +1,7 @@
 /*
     The configuration page for the profiles
 
-    SPDX-FileCopyrightText: 2014-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -13,9 +13,11 @@
 #include <QList>
 #include <QPair>
 #include <QWidget>
+#include <QListWidget>
+#include <QPushButton>
 
 // KDE includes
-#include <KEditListWidget>
+#include <KLineEdit>
 
 // forward declarations
 struct ProfileContainer;
@@ -45,19 +47,31 @@ public:
      */
     bool profilesChanged() const;
 
+protected:
+    bool eventFilter(QObject *watched, QEvent * event) override;
+
 protected Q_SLOTS:
     void slotProfileUsageChanged(bool checked);
-    void slotProfileAdded(const QString &text);
-    void slotProfileRemoved(const QString &text);
-    void slotProfileChanged();
+    void slotAddProfile(bool checked);
+    void slotEditProfile(bool checked);
+    void slotRemoveProfile(bool checked);
+    void slotProfileDoubleClicked(QListWidgetItem *profileItem);
+    void slotProfileChanged(QListWidgetItem *profileItem);
+    void slotEnableButtons();
 
 private:
+    bool checkProfilesChanged();
+    ProfileContainer *findProfileContainer(QListWidgetItem *profileItem);
     QCheckBox *m_useProfiles;
-    QCheckBox *m_transferToFirstProfile;
-    QCheckBox *m_makeAllDataAvailable;
-    KEditListWidget *m_profilesWidget;
+    QWidget *m_profilesEditorWidget;
+    KLineEdit *m_profilesInputLineEdit;
+    QListWidget *m_profilesListWidget;
+    QPushButton *m_addButton;
+    QPushButton *m_editButton;
+    QPushButton *m_removeButton;
     QList<ProfileContainer> m_profiles;
     bool m_profilesChanged;
+    ProfileContainer *m_currentProfileContainer;
 };
 
 #endif

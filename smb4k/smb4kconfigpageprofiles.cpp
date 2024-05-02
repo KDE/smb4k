@@ -1,7 +1,7 @@
 /*
     The configuration page for the profiles
 
-    SPDX-FileCopyrightText: 2014-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -16,9 +16,11 @@
 #include <QLabel>
 #include <QPointer>
 #include <QVBoxLayout>
+#include <QGridLayout>
+#include <QDialogButtonBox>
+#include <QMouseEvent>
 
 // KDE includes
-#include <KLineEdit>
 #include <KLocalizedString>
 
 struct ProfileContainer {
@@ -33,6 +35,57 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     : QWidget(parent)
 {
     m_profilesChanged = false;
+    m_currentProfileContainer = nullptr;
+
+    QVBoxLayout *layout = new QVBoxLayout(this);
+
+    QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
+    QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
+
+    m_useProfiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settingsBox);
+    m_useProfiles->setObjectName(QStringLiteral("kcfg_UseProfiles"));
+
+    settingsBoxLayout->addWidget(m_useProfiles);
+
+    layout->addWidget(settingsBox);
+
+    QGroupBox *profilesBox = new QGroupBox(i18n("Profiles"), this);
+    QVBoxLayout *profilesBoxLayout = new QVBoxLayout(profilesBox);
+    profilesBoxLayout->setContentsMargins(0, 0, 0, 0);
+
+    m_profilesEditorWidget = new QWidget(profilesBox);
+    m_profilesEditorWidget->setEnabled(Smb4KSettings::self()->useProfiles());
+
+    QGridLayout *profilesEditorWidgetLayout = new QGridLayout(m_profilesEditorWidget);
+
+    m_profilesInputLineEdit = new KLineEdit(m_profilesEditorWidget);
+    m_profilesInputLineEdit->setClearButtonEnabled(true);
+
+    profilesEditorWidgetLayout->addWidget(m_profilesInputLineEdit, 0, 0);
+
+    m_profilesListWidget = new QListWidget(m_profilesEditorWidget);
+    m_profilesListWidget->viewport()->installEventFilter(this);
+
+    profilesEditorWidgetLayout->addWidget(m_profilesListWidget, 1, 0);
+
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Vertical, m_profilesEditorWidget);
+
+    m_addButton = new QPushButton(KDE::icon(QStringLiteral("list-add")), i18n("Add"), buttonBox);
+    buttonBox->addButton(m_addButton, QDialogButtonBox::ActionRole);
+
+    m_editButton = new QPushButton(KDE::icon(QStringLiteral("edit-rename")), i18n("Edit"), buttonBox);
+    m_editButton->setEnabled(false);
+    buttonBox->addButton(m_editButton, QDialogButtonBox::ActionRole);
+
+    m_removeButton = new QPushButton(KDE::icon(QStringLiteral("list-remove")), i18n("Remove"), buttonBox);
+    m_removeButton->setEnabled(false);
+    buttonBox->addButton(m_removeButton, QDialogButtonBox::ActionRole);
+
+    profilesEditorWidgetLayout->addWidget(buttonBox, 0, 1, 2, 1);
+
+    profilesBoxLayout->addWidget(m_profilesEditorWidget);
+
+    layout->addWidget(profilesBox);
 
     QStringList profiles = Smb4KSettings::profilesList();
 
@@ -45,45 +98,21 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
         p.added = false;
 
         m_profiles << p;
+
+        QListWidgetItem *profileItem = new QListWidgetItem(profile, m_profilesListWidget);
+        profileItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsEnabled);
     }
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
-
-    QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
-    QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
-
-    m_useProfiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settingsBox);
-    m_useProfiles->setObjectName(QStringLiteral("kcfg_UseProfiles"));
-
-    settingsBoxLayout->addWidget(m_useProfiles);
-
-    m_transferToFirstProfile = new QCheckBox(Smb4KSettings::self()->transferToFirstProfileItem()->label(), settingsBox);
-    m_transferToFirstProfile->setObjectName(QStringLiteral("kcfg_TransferToFirstProfile"));
-
-    settingsBoxLayout->addWidget(m_transferToFirstProfile);
-
-    m_makeAllDataAvailable = new QCheckBox(Smb4KSettings::self()->makeAllDataAvailableItem()->label(), settingsBox);
-    m_makeAllDataAvailable->setObjectName(QStringLiteral("kcfg_MakeAllDataAvailable"));
-
-    settingsBoxLayout->addWidget(m_makeAllDataAvailable);
-
-    layout->addWidget(settingsBox);
-
-    QGroupBox *profilesBox = new QGroupBox(i18n("Profiles"), this);
-    QVBoxLayout *profilesBoxLayout = new QVBoxLayout(profilesBox);
-
-    m_profilesWidget = new KEditListWidget(profilesBox);
-    m_profilesWidget->setObjectName(QStringLiteral("kcfg_ProfilesList"));
-    m_profilesWidget->setEnabled(Smb4KSettings::self()->useProfiles());
-
-    profilesBoxLayout->addWidget(m_profilesWidget);
-
-    layout->addWidget(profilesBox);
-
     connect(m_useProfiles, &QCheckBox::toggled, this, &Smb4KConfigPageProfiles::slotProfileUsageChanged);
-    connect(m_profilesWidget, &KEditListWidget::added, this, &Smb4KConfigPageProfiles::slotProfileAdded);
-    connect(m_profilesWidget, &KEditListWidget::removed, this, &Smb4KConfigPageProfiles::slotProfileRemoved);
-    connect(m_profilesWidget->lineEdit(), &QLineEdit::editingFinished, this, &Smb4KConfigPageProfiles::slotProfileChanged);
+    connect(m_addButton, &QPushButton::clicked, this, &Smb4KConfigPageProfiles::slotAddProfile);
+    connect(m_editButton, &QPushButton::clicked, this, &Smb4KConfigPageProfiles::slotEditProfile);
+    connect(m_removeButton, &QPushButton::clicked, this, &Smb4KConfigPageProfiles::slotRemoveProfile);
+
+    connect(m_profilesListWidget, &QListWidget::itemSelectionChanged, this, &Smb4KConfigPageProfiles::slotEnableButtons);
+    connect(m_profilesListWidget, &QListWidget::itemDoubleClicked, this, &Smb4KConfigPageProfiles::slotProfileDoubleClicked);
+    connect(m_profilesListWidget, &QListWidget::itemChanged, this, &Smb4KConfigPageProfiles::slotProfileChanged);
+
+    // connect(m_profilesInputLineEdit, &QLineEdit::editingFinished, this, &Smb4KConfigPageProfiles::slotProfileChanged);
 }
 
 Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
@@ -93,6 +122,15 @@ Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
 void Smb4KConfigPageProfiles::applyChanges()
 {
     if (m_profilesChanged) {
+        QStringList profiles;
+
+        for (int i = 0; i < m_profilesListWidget->count(); i++) {
+            profiles << m_profilesListWidget->item(i)->text();
+        }
+
+        Smb4KSettings::setProfilesList(profiles);
+        Smb4KSettings::self()->save();
+
         QMutableListIterator<ProfileContainer> it(m_profiles);
 
         while (it.hasNext()) {
@@ -108,33 +146,19 @@ void Smb4KConfigPageProfiles::applyChanges()
             }
 
             if (p.renamed && !p.added) {
-                // When we just rename a profile, do not use the migration dialog
                 Smb4KProfileManager::self()->migrateProfile(p.initialName, p.currentName);
                 it.value().initialName = p.currentName;
                 it.value().renamed = false;
             }
 
             if (p.added) {
-                // We do not need to do anything here, because the new profile
-                // will be saved by KConfig XT.
                 it.value().initialName = p.currentName;
                 it.value().added = false;
                 it.value().renamed = false;
             }
         }
 
-        // Migrate all data from the default profile to the first profile in the list
-        if (m_useProfiles->isChecked() && m_transferToFirstProfile->isChecked() && m_useProfiles->isChecked() != Smb4KSettings::useProfiles()) {
-            QString firstProfile = m_profilesWidget->items().first();
-            Smb4KProfileManager::self()->migrateProfile(QStringLiteral(""), firstProfile);
-        }
-
-        // Migrate all data from all profiles to the default profile
-        if (!m_useProfiles->isChecked() && m_makeAllDataAvailable->isChecked() && m_useProfiles->isChecked() != Smb4KSettings::useProfiles()) {
-            Smb4KProfileManager::self()->migrateProfile(QStringLiteral("*"), QStringLiteral(""));
-        }
-
-        m_profilesChanged = false;
+        m_profilesChanged = checkProfilesChanged();
     }
 }
 
@@ -143,63 +167,150 @@ bool Smb4KConfigPageProfiles::profilesChanged() const
     return m_profilesChanged;
 }
 
+bool Smb4KConfigPageProfiles::checkProfilesChanged()
+{
+    bool changed = false;
+
+    for (const ProfileContainer &p : qAsConst(m_profiles)) {
+        if (p.added || p.removed || p.renamed) {
+            changed = true;
+            break;
+        }
+    }
+
+    return changed;
+}
+
+ProfileContainer * Smb4KConfigPageProfiles::findProfileContainer(QListWidgetItem* profileItem)
+{
+    int index = 0;
+
+    for (int i = 0; i < m_profiles.size(); i++) {
+        if (m_profiles.at(i).currentName == profileItem->text()) {
+            index = i;
+            break;
+        }
+    }
+
+    return &m_profiles[index];
+}
+
+
+bool Smb4KConfigPageProfiles::eventFilter(QObject* watched, QEvent* event)
+{
+    if (watched == m_profilesListWidget->viewport()) {
+        if (event->type() == QEvent::MouseButtonPress) {
+            QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+
+            if (mouseEvent) {
+                QListWidgetItem *profileItem = m_profilesListWidget->itemAt(mouseEvent->position().toPoint());
+
+                if (!profileItem) {
+                    m_profilesListWidget->setCurrentItem(nullptr);
+                    m_profilesListWidget->clearSelection();
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    return QWidget::eventFilter(watched, event);
+}
+
 void Smb4KConfigPageProfiles::slotProfileUsageChanged(bool checked)
 {
     m_profilesChanged = (checked != Smb4KSettings::useProfiles());
-    m_profilesWidget->setEnabled(checked);
+    m_profilesEditorWidget->setEnabled(checked);
 }
 
-void Smb4KConfigPageProfiles::slotProfileAdded(const QString &text)
+void Smb4KConfigPageProfiles::slotAddProfile(bool checked)
 {
-    Q_UNUSED(text);
+    Q_UNUSED(checked);
+
+    QString profile = m_profilesInputLineEdit->text();
+    m_profilesInputLineEdit->clear();
+
+    m_profilesListWidget->addItem(profile);
 
     ProfileContainer p;
-    p.initialName = text;
-    p.currentName = text;
+    p.initialName = profile;
+    p.currentName = profile;
     p.removed = false;
     p.renamed = false;
     p.added = true;
 
     m_profiles << p;
 
-    m_profilesChanged = true;
+    m_profilesChanged = checkProfilesChanged();
 }
 
-void Smb4KConfigPageProfiles::slotProfileRemoved(const QString &text)
+void Smb4KConfigPageProfiles::slotEditProfile(bool checked)
 {
-    for (int i = 0; i < m_profiles.size(); i++) {
-        if (m_profiles.at(i).initialName == text || m_profiles.at(i).currentName == text) {
-            m_profiles[i].removed = true;
+    Q_UNUSED(checked);
+
+    if (m_profilesListWidget->currentItem()) {
+        slotProfileDoubleClicked(m_profilesListWidget->currentItem());
+    }
+}
+
+void Smb4KConfigPageProfiles::slotRemoveProfile(bool checked)
+{
+    Q_UNUSED(checked);
+
+    QString profile = m_profilesListWidget->currentItem()->text();
+    delete m_profilesListWidget->currentItem();
+
+    QMutableListIterator<ProfileContainer> it(m_profiles);
+
+    while (it.hasNext()) {
+        ProfileContainer p = it.next();
+
+        if (p.initialName == profile || p.currentName == profile) {
+            if (!p.added) {
+                p.removed = true;
+            } else {
+                it.remove();
+            }
+
             break;
         }
     }
 
-    m_profilesChanged = true;
+    m_profilesChanged = checkProfilesChanged();
 }
 
-void Smb4KConfigPageProfiles::slotProfileChanged()
+void Smb4KConfigPageProfiles::slotProfileDoubleClicked(QListWidgetItem* profileItem)
 {
-    QStringList listedProfiles = m_profilesWidget->items();
-    int renamedIndex = -1;
-
-    for (int i = 0; i < m_profiles.size(); i++) {
-        if (!m_profiles.at(i).removed) {
-            int index = listedProfiles.indexOf(m_profiles.at(i).currentName);
-
-            if (index == -1) {
-                renamedIndex = i;
-                break;
-            } else {
-                listedProfiles.removeAt(index);
-            }
-        }
-    }
-
-    if (renamedIndex != -1) {
-        QString newName = listedProfiles.first();
-        m_profiles[renamedIndex].currentName = newName;
-        m_profiles[renamedIndex].renamed = true;
-
-        m_profilesChanged = true;
+    if (profileItem) {
+        m_currentProfileContainer = findProfileContainer(profileItem);
+        m_profilesListWidget->setFocus();
+        m_profilesListWidget->editItem(profileItem);
     }
 }
+
+void Smb4KConfigPageProfiles::slotProfileChanged(QListWidgetItem *profileItem)
+{
+    if (profileItem && m_currentProfileContainer) {
+        m_currentProfileContainer->currentName = profileItem->text();
+        m_currentProfileContainer->renamed = !(m_currentProfileContainer->initialName == profileItem->text());
+        m_currentProfileContainer = nullptr;
+    }
+
+    m_profilesChanged = checkProfilesChanged();
+}
+
+void Smb4KConfigPageProfiles::slotEnableButtons()
+{
+    bool enable = (m_profilesListWidget->currentItem() && m_profilesListWidget->currentItem()->isSelected());
+
+    m_editButton->setEnabled(Smb4KSettings::useProfiles() && enable);
+    m_removeButton->setEnabled(Smb4KSettings::useProfiles() && enable);
+}
+
