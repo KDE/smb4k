@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -204,7 +204,7 @@ msgstr "Synkroniseren"
 msgid "Custom Settings"
 msgstr "Allmeen Optschonen"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:72
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
@@ -218,7 +218,7 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigpageprofiles.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgid "Settings"
@@ -243,6 +243,7 @@ msgstr "Sekern"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Edit"
 msgstr "Bewerken"
@@ -250,6 +251,7 @@ msgstr "Bewerken"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Remove"
 msgstr "Wegmaken"
@@ -476,6 +478,12 @@ msgstr ""
 #| msgid "Advanced Options"
 msgid "Advanced Settings"
 msgstr "Verwiedert Optschonen"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:73
+#, fuzzy, kde-format
+#| msgid "A&dd"
+msgid "Add"
+msgstr "&Tofögen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, fuzzy, kde-format
@@ -2599,9 +2607,6 @@ msgstr "Grött"
 
 #~ msgid "Massimo Callegari"
 #~ msgstr "Massimo Callegari"
-
-#~ msgid "A&dd"
-#~ msgstr "&Tofögen"
 
 #~ msgid "automatic"
 #~ msgstr "automaatsch"

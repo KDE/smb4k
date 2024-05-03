@@ -8052,6 +8052,35 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </sect2>
   </sect1>
 
+<!--
+      Configuring Smb4K : Bookmarks
+-->
+
+  <sect1 id="configuration_page_bookmarks">
+    <title
+>Bladwijzers</title>
+
+    <para
+>...</para>
+
+    <screenshot>
+      <screeninfo
+>Schermafdruk van de "Bladwijzers"-configuratiepagina</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>De "Bladwijzers"-configuratiepagina</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>...</para>
+
+  </sect1>
+
 
 <!-- 
       Configuring Smb4K : Custom Settings

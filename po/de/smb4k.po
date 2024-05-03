@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2023-08-13 16:37+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -206,7 +206,7 @@ msgstr "Abgleich"
 msgid "Custom Settings"
 msgstr "Benutzerdefinierte Einstellungen"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:72
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
@@ -222,7 +222,7 @@ msgstr ""
 "entsprechende Einstellungsdialog aufgerufen, um sie zu korrigieren.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigpageprofiles.cpp:42
 #, kde-format
 msgid "Settings"
 msgstr "Einstellungen"
@@ -245,6 +245,7 @@ msgstr "Speichern"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -252,6 +253,7 @@ msgstr "Bearbeiten"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Remove"
 msgstr "Entfernen"
@@ -478,6 +480,12 @@ msgstr ""
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Erweiterte Einstellungen"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:73
+#, fuzzy, kde-format
+#| msgid "A&dd"
+msgid "Add"
+msgstr "Hi&nzufügen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
@@ -4281,9 +4289,6 @@ msgstr "Größe:"
 
 #~ msgid "Massimo Callegari"
 #~ msgstr "Massimo Callegari"
-
-#~ msgid "A&dd"
-#~ msgstr "Hi&nzufügen"
 
 #~ msgid ""
 #~ "The Uniform Naming Convention (UNC) address describes the location of the "

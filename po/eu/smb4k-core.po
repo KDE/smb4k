@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2023-12-06 12:05+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1944,43 +1944,6 @@ msgstr "Profil aktiboa"
 msgid "This is the currently active profile."
 msgstr "Hau da une honetan profil aktiboa."
 
-#. i18n: ectx: label, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:693
-#, kde-format
-msgid "Transfer all relevant data to the first profile when enabling profiles"
-msgstr ""
-"Transferitu, beharrezko datu guztiak lehenengo profilera, profilak gaitzean"
-
-#. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:694
-#, kde-format
-msgid ""
-"Transfer all custom settings and bookmarks to the first profile in the list "
-"when enabling profiles."
-msgstr ""
-"Transferitu, neurrira ipinitako datu guztiak eta laster-markak lehenengo "
-"profilera, profilak gaitzean."
-
-#. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid "Make all relevant data available when disabling profiles"
-msgstr "Ipini, beharrezko datu guztiak erabilgarri, profilak ezgaitzean"
-
-#. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:699
-#, kde-format
-msgid ""
-"Make all custom settings and bookmarks available when disabling profiles. "
-"This means that all data previously saved in different profiles is now "
-"available in the standard profile. However, they can no longer be used in "
-"their original profiles afterwards."
-msgstr ""
-"Ipini, neurrira ipinitako datu guztiak eta laster-markak erabilgarri "
-"profilak ezgaitzean. Horrek esan nahi du, profil ezberdinetan gordetako datu "
-"guztiak, orain, profil estandarrean erabilgarri daudela. Dena den, "
-"aurrerantzean ezingo dira haien jatorrizko profiletan erabili."
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
@@ -3398,6 +3361,33 @@ msgstr "Sorburua"
 #, kde-format
 msgid "Destination"
 msgstr "Jomuga"
+
+#~ msgid ""
+#~ "Transfer all relevant data to the first profile when enabling profiles"
+#~ msgstr ""
+#~ "Transferitu, beharrezko datu guztiak lehenengo profilera, profilak "
+#~ "gaitzean"
+
+#~ msgid ""
+#~ "Transfer all custom settings and bookmarks to the first profile in the "
+#~ "list when enabling profiles."
+#~ msgstr ""
+#~ "Transferitu, neurrira ipinitako datu guztiak eta laster-markak lehenengo "
+#~ "profilera, profilak gaitzean."
+
+#~ msgid "Make all relevant data available when disabling profiles"
+#~ msgstr "Ipini, beharrezko datu guztiak erabilgarri, profilak ezgaitzean"
+
+#~ msgid ""
+#~ "Make all custom settings and bookmarks available when disabling profiles. "
+#~ "This means that all data previously saved in different profiles is now "
+#~ "available in the standard profile. However, they can no longer be used in "
+#~ "their original profiles afterwards."
+#~ msgstr ""
+#~ "Ipini, neurrira ipinitako datu guztiak eta laster-markak erabilgarri "
+#~ "profilak ezgaitzean. Horrek esan nahi du, profil ezberdinetan gordetako "
+#~ "datu guztiak, orain, profil estandarrean erabilgarri daudela. Dena den, "
+#~ "aurrerantzean ezingo dira haien jatorrizko profiletan erabili."
 
 #~ msgid "Specify User"
 #~ msgstr "Zehaztu erabiltzailea"

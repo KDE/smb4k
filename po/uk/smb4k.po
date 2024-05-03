@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2024-01-22 09:02+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -203,7 +203,7 @@ msgstr "Синхронізація"
 msgid "Custom Settings"
 msgstr "Нетипові параметри"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:72
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
@@ -219,7 +219,7 @@ msgstr ""
 "сторінки налаштувань, де ви зможете його виправити.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigpageprofiles.cpp:42
 #, kde-format
 msgid "Settings"
 msgstr "Параметри"
@@ -242,6 +242,7 @@ msgstr "Зберегти"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Edit"
 msgstr "Змінити"
@@ -249,6 +250,7 @@ msgstr "Змінити"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Remove"
 msgstr "Вилучити"
@@ -476,6 +478,11 @@ msgstr ""
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Додаткові параметри"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:73
+#, kde-format
+msgid "Add"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

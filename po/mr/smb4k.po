@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -197,7 +197,7 @@ msgstr ""
 msgid "Custom Settings"
 msgstr "सामान्य पर्याय"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:72
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
@@ -211,7 +211,7 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigpageprofiles.cpp:42
 #, fuzzy, kde-format
 msgid "Settings"
 msgstr "संयोजना (&S)"
@@ -234,6 +234,7 @@ msgstr "साठवा"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, fuzzy, kde-format
 msgid "Edit"
 msgstr "संपादन"
@@ -241,6 +242,7 @@ msgstr "संपादन"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Remove"
 msgstr "काढून टाका"
@@ -459,6 +461,11 @@ msgstr ""
 #| msgid "Advanced Settings"
 msgid "Advanced Settings"
 msgstr "प्रगत संयोजना"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:73
+#, kde-format
+msgid "Add"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, fuzzy, kde-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -207,7 +207,7 @@ msgstr "Sünkroonimine"
 msgid "Custom Settings"
 msgstr "Samba üldseadistused"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:72
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
@@ -223,7 +223,7 @@ msgstr ""
 "leheküljele, kus saab seda parandada.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigpageprofiles.cpp:42
 #, kde-format
 msgid "Settings"
 msgstr "Seadistused"
@@ -247,6 +247,7 @@ msgstr "Salvesta"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Edit"
 msgstr "Muuda"
@@ -254,6 +255,7 @@ msgstr "Muuda"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Remove"
 msgstr "Eemalda"
@@ -486,6 +488,12 @@ msgstr ""
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Muud seadistused"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:73
+#, fuzzy, kde-format
+#| msgid "A&dd"
+msgid "Add"
+msgstr "Lis&a"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, fuzzy, kde-format
@@ -4123,9 +4131,6 @@ msgstr "Suurus:"
 
 #~ msgid "Massimo Callegari"
 #~ msgstr "Massimo Callegari"
-
-#~ msgid "A&dd"
-#~ msgstr "Lis&a"
 
 #~ msgid ""
 #~ "The Uniform Naming Convention (UNC) address describes the location of the "

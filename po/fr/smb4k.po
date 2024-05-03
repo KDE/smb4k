@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2024-01-22 21:56+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -219,7 +219,7 @@ msgstr "Synchronisation"
 msgid "Custom Settings"
 msgstr "Configuration personnalisées"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:72
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
@@ -235,7 +235,7 @@ msgstr ""
 "page de configuration correspondante afin de pouvoir le corriger.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigpageprofiles.cpp:42
 #, kde-format
 msgid "Settings"
 msgstr "Configuration"
@@ -258,6 +258,7 @@ msgstr "Enregistrer"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Edit"
 msgstr "Modifier"
@@ -265,6 +266,7 @@ msgstr "Modifier"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Remove"
 msgstr "Supprimer"
@@ -489,6 +491,11 @@ msgstr ""
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Configuration avancée de Samba"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:73
+#, kde-format
+msgid "Add"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

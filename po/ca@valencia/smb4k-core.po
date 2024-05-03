@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2024-01-30 13:26+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1970,45 +1970,6 @@ msgstr "Perfil actiu"
 msgid "This is the currently active profile."
 msgstr "Este és el perfil actualment actiu."
 
-#. i18n: ectx: label, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:693
-#, kde-format
-msgid "Transfer all relevant data to the first profile when enabling profiles"
-msgstr ""
-"Transferix totes les dades rellevants al primer perfil quan s'habiliten els "
-"perfils"
-
-#. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:694
-#, kde-format
-msgid ""
-"Transfer all custom settings and bookmarks to the first profile in the list "
-"when enabling profiles."
-msgstr ""
-"Transferix tots els paràmetres i adreces d'interés personalitzats al primer "
-"perfil de la llista quan s'habiliten els perfils."
-
-#. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid "Make all relevant data available when disabling profiles"
-msgstr "Fa disponibles totes les dades rellevants en desactivar els perfils"
-
-#. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:699
-#, kde-format
-msgid ""
-"Make all custom settings and bookmarks available when disabling profiles. "
-"This means that all data previously saved in different profiles is now "
-"available in the standard profile. However, they can no longer be used in "
-"their original profiles afterwards."
-msgstr ""
-"Fa que tots els paràmetres i adreces d'interés personalitzats estiguen "
-"disponibles en desactivar els perfils. Açò significa que totes les dades "
-"guardades prèviament en perfils diferents ja estaran disponibles en el "
-"perfil estàndard. No obstant açò, després ja no es podran utilitzar en els "
-"seus perfils originals."
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
@@ -3432,3 +3393,31 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
+
+#~ msgid ""
+#~ "Transfer all relevant data to the first profile when enabling profiles"
+#~ msgstr ""
+#~ "Transferix totes les dades rellevants al primer perfil quan s'habiliten "
+#~ "els perfils"
+
+#~ msgid ""
+#~ "Transfer all custom settings and bookmarks to the first profile in the "
+#~ "list when enabling profiles."
+#~ msgstr ""
+#~ "Transferix tots els paràmetres i adreces d'interés personalitzats al "
+#~ "primer perfil de la llista quan s'habiliten els perfils."
+
+#~ msgid "Make all relevant data available when disabling profiles"
+#~ msgstr "Fa disponibles totes les dades rellevants en desactivar els perfils"
+
+#~ msgid ""
+#~ "Make all custom settings and bookmarks available when disabling profiles. "
+#~ "This means that all data previously saved in different profiles is now "
+#~ "available in the standard profile. However, they can no longer be used in "
+#~ "their original profiles afterwards."
+#~ msgstr ""
+#~ "Fa que tots els paràmetres i adreces d'interés personalitzats estiguen "
+#~ "disponibles en desactivar els perfils. Açò significa que totes les dades "
+#~ "guardades prèviament en perfils diferents ja estaran disponibles en el "
+#~ "perfil estàndard. No obstant açò, després ja no es podran utilitzar en "
+#~ "els seus perfils originals."

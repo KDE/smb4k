@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2022-11-10 12:52+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -1633,36 +1633,6 @@ msgstr "Activ profil"
 #, fuzzy, kde-format
 msgid "This is the currently active profile."
 msgstr "Activ session:"
-
-#. i18n: ectx: label, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:693
-#, kde-format
-msgid "Transfer all relevant data to the first profile when enabling profiles"
-msgstr ""
-
-#. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:694
-#, kde-format
-msgid ""
-"Transfer all custom settings and bookmarks to the first profile in the list "
-"when enabling profiles."
-msgstr ""
-
-#. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid "Make all relevant data available when disabling profiles"
-msgstr ""
-
-#. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:699
-#, kde-format
-msgid ""
-"Make all custom settings and bookmarks available when disabling profiles. "
-"This means that all data previously saved in different profiles is now "
-"available in the standard profile. However, they can no longer be used in "
-"their original profiles afterwards."
-msgstr ""
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162

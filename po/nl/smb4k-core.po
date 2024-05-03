@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-03 00:38+0000\n"
 "PO-Revision-Date: 2023-12-02 11:31+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1945,45 +1945,6 @@ msgstr "Actief profiel"
 msgid "This is the currently active profile."
 msgstr "Dit is het huidige actieve profiel."
 
-#. i18n: ectx: label, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:693
-#, kde-format
-msgid "Transfer all relevant data to the first profile when enabling profiles"
-msgstr ""
-"Breng alle relevante gegevens naar het eerste profiel bij inschakelen van "
-"profielen"
-
-#. i18n: ectx: whatsthis, entry (TransferToFirstProfile), group (Profiles)
-#: smb4k.kcfg:694
-#, kde-format
-msgid ""
-"Transfer all custom settings and bookmarks to the first profile in the list "
-"when enabling profiles."
-msgstr ""
-"Breng alle aangepaste instellingen en bladwijzers naar het eerste profiel in "
-"de lijst bij inschakelen van profielen."
-
-#. i18n: ectx: label, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:698
-#, kde-format
-msgid "Make all relevant data available when disabling profiles"
-msgstr ""
-"Maak alle relevante gegevens beschikbaar bij uitschakelen van profielen"
-
-#. i18n: ectx: whatsthis, entry (MakeAllDataAvailable), group (Profiles)
-#: smb4k.kcfg:699
-#, kde-format
-msgid ""
-"Make all custom settings and bookmarks available when disabling profiles. "
-"This means that all data previously saved in different profiles is now "
-"available in the standard profile. However, they can no longer be used in "
-"their original profiles afterwards."
-msgstr ""
-"Maak alle aangepaste instellingen en bladwijzers beschikbaar bij "
-"uitschakelen van profielen. Dit betekent dat alle gegevens eerder opgeslagen "
-"in verschillende profielen nu beschikbaar zijn in het standaard profiel. Ze "
-"kunnen daarna echter niet langer gebruikt worden in hun originele profielen."
-
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
@@ -3404,6 +3365,35 @@ msgstr "Bron"
 #, kde-format
 msgid "Destination"
 msgstr "Bestemming"
+
+#~ msgid ""
+#~ "Transfer all relevant data to the first profile when enabling profiles"
+#~ msgstr ""
+#~ "Breng alle relevante gegevens naar het eerste profiel bij inschakelen van "
+#~ "profielen"
+
+#~ msgid ""
+#~ "Transfer all custom settings and bookmarks to the first profile in the "
+#~ "list when enabling profiles."
+#~ msgstr ""
+#~ "Breng alle aangepaste instellingen en bladwijzers naar het eerste profiel "
+#~ "in de lijst bij inschakelen van profielen."
+
+#~ msgid "Make all relevant data available when disabling profiles"
+#~ msgstr ""
+#~ "Maak alle relevante gegevens beschikbaar bij uitschakelen van profielen"
+
+#~ msgid ""
+#~ "Make all custom settings and bookmarks available when disabling profiles. "
+#~ "This means that all data previously saved in different profiles is now "
+#~ "available in the standard profile. However, they can no longer be used in "
+#~ "their original profiles afterwards."
+#~ msgstr ""
+#~ "Maak alle aangepaste instellingen en bladwijzers beschikbaar bij "
+#~ "uitschakelen van profielen. Dit betekent dat alle gegevens eerder "
+#~ "opgeslagen in verschillende profielen nu beschikbaar zijn in het "
+#~ "standaard profiel. Ze kunnen daarna echter niet langer gebruikt worden in "
+#~ "hun originele profielen."
 
 #~ msgid "Specify User"
 #~ msgstr "Geef Gebruiker Op"
