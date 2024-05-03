@@ -521,6 +521,14 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">默认登录</li>
       <li xml:lang="zh-TW">預設登入</li>
       <li>Special handling of home shares</li>
+      <li xml:lang="ca">Gestió especial de les comparticions personals</li>
+      <li xml:lang="eo">Speciala traktado de hejm-kunhavaĵoj</li>
+      <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
+      <li xml:lang="nl">Speciale behandeling van shares van hoofdmappen</li>
+      <li xml:lang="sl">Posebna obravnava domačih skupnih diskov</li>
+      <li xml:lang="tr">Ev paylaşımlarına özel işlemler</li>
+      <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
+      <li xml:lang="x-test">xxSpecial handling of home sharesxx</li>
       <li>Ability to bookmark favorite shares</li>
       <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
       <li xml:lang="ca">La capacitat d'apuntar les comparticions com a adreces d'interès</li>
