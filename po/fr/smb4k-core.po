@@ -14,7 +14,7 @@
 # Geoffray Levasseur <geoffray.levasseurbrandin@numericable.fr>, 2013, 2014.
 # Johnny Jazeix <jazeix@gmail.com>, 2017.
 # Simon Depiets <sdepiets@gmail.com>, 2018.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2022, 2023.
 #
 msgid ""
@@ -22,9 +22,9 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:38+0000\n"
-"PO-Revision-Date: 2023-12-03 17:39+0100\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"PO-Revision-Date: 2024-05-02 15:48+0200\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
+"Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Text-Markup: kde4\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
@@ -1171,8 +1171,8 @@ msgid ""
 msgstr ""
 "Préserve le propriétaire (-o, --owner). Le propriétaire du fichier de "
 "destination sera associé à la même valeur que le fichier source, mais "
-"seulement si le « rsync » récepteur est exécuté en tant que "
-"superutilisateur. Sans cette option, le propriétaire est associé à "
+"seulement si le « rsync » récepteur est exécuté avec les privilèges du "
+"compte administrateur. Sans cette option, le propriétaire est associé à "
 "l'utilisateur demandeur côté réception."
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
@@ -1193,8 +1193,9 @@ msgstr ""
 "Préserve le périphérique et les fichiers spéciaux(-D, --devices --specials). "
 "Cette option amène « rsync » à transférer les périphériques caractère et "
 "bloc ainsi que les fichiers spéciaux tels que les sockets et les « FIFO » "
-"nommés. Elle ne fonctionne que partiellement si « rsync » n'est pas lancé en "
-"tant que superutilisateur et l'option « --super » n'est pas spécifiée."
+"nommés. Elle ne fonctionne que partiellement si « rsync » n'est pas lancé "
+"avec les privilèges du compte administrateur et l'option « --super » n'est "
+"pas spécifiée."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
 #: smb4k.kcfg:411
@@ -3374,15 +3375,15 @@ msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 "</p>"
 msgstr ""
-"<p>L'exécution d'une action avec les privilèges de superutilisateur a échoué "
-"(code d'erreur :<tt>%1</tt>).</p>"
+"<p>L'exécution d'une action avec les privilèges du compte administrateur a "
+"échoué (Code d'erreur :<tt>%1</tt>).</p>"
 
 #: smb4knotification.cpp:515
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr ""
-"<p>L'exécution d'une action avec les privilèges de superutilisateur a échoué."
-"</p>"
+"<p>L'exécution d'une action avec les privilèges du compte administrateur a "
+"échoué.</p>"
 
 #: smb4knotification.cpp:537
 #, kde-format

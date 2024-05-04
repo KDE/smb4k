@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:38+0000\n"
-"PO-Revision-Date: 2024-03-18 10:02+0100\n"
+"PO-Revision-Date: 2024-05-03 09:10+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -476,7 +476,7 @@ msgstr "Configuració avançada"
 #: smb4k/smb4kconfigpageprofiles.cpp:73
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Afegeix"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

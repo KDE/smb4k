@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:38+0000\n"
-"PO-Revision-Date: 2024-02-02 06:44+0100\n"
+"PO-Revision-Date: 2024-05-03 10:27+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -475,7 +475,7 @@ msgstr "Napredne nastavitve"
 #: smb4k/smb4kconfigpageprofiles.cpp:73
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
