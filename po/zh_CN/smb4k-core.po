@@ -3132,25 +3132,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid ""
-#~ "Transfer all relevant data to the first profile when enabling profiles"
-#~ msgstr "启用配置方案时将所有相关数据传输到第一个方案中"
-
-#~ msgid ""
-#~ "Transfer all custom settings and bookmarks to the first profile in the "
-#~ "list when enabling profiles."
-#~ msgstr "启用配置方案时将所有自定义设置和书签传输到列表中的第一个方案。"
-
-#~ msgid "Make all relevant data available when disabling profiles"
-#~ msgstr "禁用配置方案时使所有相关数据可用"
-
-#~ msgid ""
-#~ "Make all custom settings and bookmarks available when disabling profiles. "
-#~ "This means that all data previously saved in different profiles is now "
-#~ "available in the standard profile. However, they can no longer be used in "
-#~ "their original profiles afterwards."
-#~ msgstr ""
-#~ "禁用配置方案时使所有自定义设置和书签可用。这意味着以前保存在不同配置方案中"
-#~ "的所有数据现在都可以在标准配置方案中找到。然而在禁用之后，它们的原始配置方"
-#~ "案将不能再使用这些数据。"
