@@ -123,13 +123,13 @@ void Smb4KConfigPageCustomSettings::loadCustomSettings()
 
     QList<CustomSettingsPtr> customSettings = Smb4KCustomSettingsManager::self()->customSettings(true);
 
-    for (const CustomSettingsPtr &option : qAsConst(customSettings)) {
-        QVariant variant = QVariant::fromValue(*option.data());
+    for (const CustomSettingsPtr &settings : qAsConst(customSettings)) {
+        QVariant variant = QVariant::fromValue(*settings.data());
 
-        QListWidgetItem *item = new QListWidgetItem(option->displayString(), m_listWidget);
+        QListWidgetItem *item = new QListWidgetItem(settings->displayString(), m_listWidget);
         item->setData(Qt::UserRole, variant);
 
-        if (option->type() == Host) {
+        if (settings->type() == Host) {
             item->setIcon(KDE::icon(QStringLiteral("network-server")));
         } else {
             item->setIcon(KDE::icon(QStringLiteral("folder-network")));
@@ -172,10 +172,12 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
         QList<CustomSettingsPtr> customSettingsList;
 
         for (int i = 0; i < m_listWidget->count(); ++i) {
-            CustomSettingsPtr optionsPtr = CustomSettingsPtr(new Smb4KCustomSettings(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomSettings>()));
+            CustomSettingsPtr settings = CustomSettingsPtr(new Smb4KCustomSettings(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomSettings>()));
 
-            if (optionsPtr) {
-                customSettingsList << optionsPtr;
+            // NOTE: We do not test if the object carries custom settings. This
+            // is done in the custom settings manager.
+            if (settings) {
+                customSettingsList << settings;
             }
         }
 
