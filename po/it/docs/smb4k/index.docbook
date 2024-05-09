@@ -26,10 +26,10 @@
 ]>
 
 <book id="smb4k" lang="&language;">
+<title
+>Manuale di &smb4k;</title>
 
 <bookinfo>
-  <title
->Manuale di &smb4k;</title>
   <authorgroup>
     <author
 ><firstname
@@ -75,23 +75,27 @@
 ></othercredit
 > 
   </authorgroup>
+
   <copyright>
     <year
->2005-2023</year>
+>2005-2024</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
+
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->25/02/2022</date>
+>03/04/2024</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
+
   <abstract>
     <para
 >&smb4k; è un navigatore avanzato delle risorse di rete e un programma per montare le condivisioni &Samba;.</para>
   </abstract>
+
   <keywordset>
     <keyword
 >KDE</keyword>
@@ -111,7 +115,7 @@
 >Introduzione</title>
 
   <para
->Questo manuale descrive &smb4k; 3.2 e, in una certa misura, alcune versioni precedenti.</para>
+>Questo manuale descrive &smb4k; 4.0 e, in una certa misura, alcune versioni precedenti.</para>
   <para
 >&smb4k; è un navigatore avanzato delle risorse di rete e uno strumento per il montaggio delle condivisioni <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -235,7 +239,9 @@
 >Esecuzione di &smb4k;</title>
     
     <para
->Puoi avviare &smb4k; dal menu K oppure da <ulink url="https://userbase.kde.org/Plasma/Krunner"
+>Puoi avviare &smb4k; sia dal <ulink url="https://userbase.kde.org/Plasma/Kickoff"
+>lanciatore di applicazioni</ulink
+> che da <ulink url="https://userbase.kde.org/Plasma/Krunner"
 >&krunner;</ulink
 >, digitando <userinput
 ><command
@@ -264,7 +270,7 @@
 >Risorse di rete</guilabel
 >) e la vista delle condivisioni montate (<guilabel
 >Condivisioni montate</guilabel
->) sono disposti in un oggetto a schede. Sopra di loro si trovano la barra dei menu e degli strumenti. Sotto di loro vedrai la barra di stato.</para>
+>) sono disposti in schede. Sopra di loro si trovano la barra dei menu e degli strumenti, mentre sotto c'è la barra di stato.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo
@@ -284,9 +290,9 @@
 >Configura &smb4k;</guimenuitem
 > ed <guimenuitem
 >Esci</guimenuitem
->, inoltre carica dinamicamente le azioni dell'oggetto agganciabile che hanno attualmente il fuoco. Per ulteriori informazioni dai un'occhiata alle sezioni che parlano di <link linkend="network_neighborhood_browser"
+>, inoltre carica dinamicamente le azioni dell'oggetto agganciabile che hanno attualmente il fuoco. Per ulteriori informazioni dai un'occhiata alle sezioni che parlano rispettivamente del <link linkend="network_neighborhood_browser"
 >navigatore delle risorse di rete</link
-> e di <link linkend="shares_view"
+> e della <link linkend="shares_view"
 >vista delle condivisioni montate</link
 >.</para>
     <para
@@ -2656,13 +2662,11 @@
       <para
 >Le notifiche possono essere gestite dalle &systemsettings;. Per modificare il comportamento di una notifica, vai alla pagina <guibutton
 >Notifiche</guibutton
->. Da &plasma; 5.21 in avanti fai clic sul pulsante <guibutton
+>: nella sezione <guilabel
+>Impostazioni specifiche dell'applicazione</guilabel
+> fai clic sul pulsante <guibutton
 >Configura</guibutton
-> accanto l'etichetta <guilabel
->Applicazioni</guilabel
-> e scegli &smb4k; dalla vista ad elenco che appare. Un clic su <guibutton
->Configura eventi...</guibutton
-> apre la seguente finestra:</para>
+>, quindi scegli &smb4k; dall'elenco che appare. Si apre la seguente finestra:</para>
       <screenshot>
         <screeninfo
 >Schermata del modulo delle notifiche in Impostazioni di sistema</screeninfo>
@@ -2676,7 +2680,7 @@
         </mediaobject>
       </screenshot>
       <para
->Qui possono essere modificate, abilitate o disabilitate tutte le notifiche disponibili che sono mostrate nella vista ad elenco, in qualsiasi modo tu voglia.</para>
+>Tutte le notifiche possono essere modificate qui secondo le tue preferenze.</para>
     </sect2>
   </sect1>
 
@@ -2827,7 +2831,7 @@ polkit.addRule(function(action, subject) {
 >Problemi di montaggio in BSD</title>
       
       <para
->Se il montaggio di condivisioni protette da password, sia residenti su un server &Samba; che su uno &Windows;, non ha successo, questo può essere a causa del fatto che <ulink url="man:/mount_smbfs"
+>Se il montaggio di condivisioni, sia residenti su un server &Samba; che su uno &Windows;, non ha successo, questo può essere a causa del fatto che <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -2835,21 +2839,41 @@ polkit.addRule(function(action, subject) {
 >8</manvolnum
 ></citerefentry
 ></ulink
-> usa solo l'autenticazione NTLMv1, e questa non è supportata dal server. Per far funzionare il montaggio su un server &Samba; puoi aggiungere la seguente voce alla sezione [global] del file <filename
+> usa solo l'autenticazione NTLMv1 e richiede il protocollo SMB 1.0/&CIFS;, ma il server non le supporta. Per far funzionare il montaggio su un server &Samba; puoi aggiungere le seguenti voci alla sezione [global] del file <ulink url="man:/smb.conf"
+><citerefentry
+><refentrytitle
+><filename
 >smb.conf</filename
-> del <emphasis
->the server</emphasis
+></refentrytitle
+><manvolnum
+>5</manvolnum
+></citerefentry
+></ulink
+> del<emphasis
+>server</emphasis
 >:</para>
       
 <programlisting
 >[global]
 ...
 ntlm auth = yes
+server min protocol = NT1
 ...
 </programlisting>
       
       <para
->Per risolvere questo problema per un server &Windows;, contatta l'amministratore di sistema e digli che dovrebbe attivare l'autenticazione NTLMv1 (se possibile).</para>
+>Se vuoi risolvere questo problema per un server &Windows;, contatta l'amministratore di sistema e digli che dovrebbe attivare l'autenticazione NTLMv1 e il protocollo SMB 1.0/&CIFS;, se possibile.</para>
+
+      <note
+><para
+>Non è consigliabile attivare il protocollo SMB 1.0/&CIFS; su un server, perché è considerato insicuro (vedi &eg; <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858"
+>qui</ulink
+>) ed è stato quindi disabilitato nelle nuove versioni di &Samba; e di &Windows; (vedi &eg; <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect"
+>qui</ulink
+> e <ulink url="https://www.samba.org/samba/history/samba-4.11.0.html"
+>qui</ulink
+>).</para
+></note>
     </sect2>
     
 <!-- 
@@ -2866,14 +2890,28 @@ ntlm auth = yes
 > (il codice sorgente può essere prelevato da <ulink url="https://sourceforge.net/projects/qt5ct/"
 >qui</ulink
 >). Per usare <application
->qt5ct</application
-> col tuo ambiente desktop, aggiungi la seguente riga al file <filename
+>qt6ct</application
+> (<ulink url="https://github.com/trialuser02/qt6ct"
+>scarica</ulink
+>). Per usarla col tuo ambiente desktop, aggiungi quanto segue al file <filename
 >~/.xinitrc</filename
-> oppure <filename
+>, oppure <filename
 >~/.profile</filename
 >:</para>
+      <para
+><emphasis
+>X11:</emphasis
+></para>
 <programlisting
->export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+>export QT_QPA_PLATFORMTHEME=qt6ct</programlisting>
+      <para
+><emphasis
+>Wayland:</emphasis
+></para>
+<programlisting
+>export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+</programlisting>
     </sect2>
   </sect1>
 </chapter>
@@ -3259,7 +3297,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Il protocollo di rilevamento dinamico dei servizi Web (WS-Discovery) viene usato per navigare nella rete locale e per rilevare i gruppi di lavoro, i domini e gli host. Ciò è utile se le tue risorse di rete sono prevalentemente costituite da server con versioni di &Windows; moderne. Se utilizzi questa opzione non dovrebbe essere necessario forzare le librerie client di &Samba; ad utilizzare la versione 1.0 del protocollo SMB per cercare i gruppi di lavoro e i domini.</para>
+>Il protocollo di rilevamento dinamico dei servizi Web (WS-Discovery) viene usato per navigare nella rete locale e per rilevare i gruppi di lavoro, i domini e gli host. Ciò è utile se le tue risorse di rete sono prevalentemente costituite da server con versioni moderne di &Windows;.</para>
               <note
 ><para
 >Questa impostazione è facoltativa, ed appare solo se compili &smb4k; con il supporto a WS-Discovery.</para
@@ -3277,23 +3315,9 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->L'interfaccia al sistema di rilevamento dei servizi via DNS (DNS-SD) è utilizzata per navigare nella rete locale e per rilevare i server che forniscono risorse SMB condivise. I domini rilevati corrispondono ai domini DNS locali (chiamati &eg; LOCAL) e probabilmente non quelli definiti nelle risorse di rete. Questo non influenza la navigazione. Se utilizzi questa opzione non c'è bisogno di forzare le librerie client di &Samba; ad usare la versione 1.0 del protocollo nella ricerca dei gruppi di lavoro e di domini.</para>
+>L'interfaccia al sistema di rilevamento dei servizi via DNS (DNS-SD) è utilizzata per navigare nella rete locale e per rilevare i server che forniscono risorse SMB condivise. I domini rilevati corrispondono ai domini DNS locali (chiamati &eg; LOCAL) e probabilmente non quelli definiti nelle risorse di rete. Questo non influenza la navigazione</para>
               <para
 >Predefinito: selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Forza la versione 1.0 del protocollo SMB per le ricerche nei gruppi di lavoro e nei domini</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Seleziona questa opzione come ultima risorsa, in quanto la versione 1.0 del protocollo non è sicura ed è stata disabilitata nelle ultime versioni di &Samba; e di &Windows;. Ad ogni modo, se hai problemi a trovare i gruppi di lavoro e i domini nelle tue risorse di rete, potresti voler considerare l'attivazione di questa opzione. Se stai utilizzando il sistema di rilevamento dei servizi via DNS (DNS-SD), oppure il rilevamento dinamico dei servizi Web (WS-Discovery), e questi funzionano, allora non hai bisogno della versione 1.0.</para>
-              <para
->Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -8052,6 +8076,35 @@ ntlm auth = yes
       </sect3>
 
     </sect2>
+  </sect1>
+
+<!--
+      Configuring Smb4K : Bookmarks
+-->
+
+  <sect1 id="configuration_page_bookmarks">
+    <title
+>Segnalibri</title>
+
+    <para
+>...</para>
+
+    <screenshot>
+      <screeninfo
+>Schermata della pagina di configurazione «Segnalibri»</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La pagina di configurazione «Segnalibri»</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>...</para>
+
   </sect1>
 
 
