@@ -1,7 +1,7 @@
 /*
     Manage custom settings
 
-    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -244,9 +244,14 @@ void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPt
 {
     QMutableListIterator<CustomSettingsPtr> it(d->customSettings);
 
+    // NOTE: Do not use Smb4KCustomSettingsManager::remove() here to avoid crashes.
     while (it.hasNext()) {
         CustomSettingsPtr settings = it.next();
-        remove(settings);
+
+        if (!Smb4KSettings::useProfiles() || settings->profile() == Smb4KSettings::activeProfile()) {
+            it.remove();
+            settings.clear();
+        }
     }
 
     for (const CustomSettingsPtr &settings : settingsList) {
@@ -259,28 +264,30 @@ void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPt
 
 void Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
 {
-    CustomSettingsPtr knownSettings = findCustomSettings(settings->url());
+    if (settings->hasCustomSettings()) {
+        CustomSettingsPtr knownSettings = findCustomSettings(settings->url());
 
-    if (knownSettings) {
-        knownSettings->update(settings.data());
-    } else {
-        if (settings->profile().isEmpty()) {
-            settings->setProfile(Smb4KProfileManager::self()->activeProfile());
+        if (knownSettings) {
+            knownSettings->update(settings.data());
+        } else {
+            if (settings->profile().isEmpty()) {
+                settings->setProfile(Smb4KProfileManager::self()->activeProfile());
+            }
+
+            d->customSettings << settings;
         }
 
-        d->customSettings << settings;
-    }
+        // Propagate the settings to the host's shares if the type is 'Host'
+        if (settings->type() == Host) {
+            QList<CustomSettingsPtr> customSettingsList = customSettings(true);
 
-    // Propagate the settings to the host's shares if the type is 'Host'
-    if (settings->type() == Host) {
-        QList<CustomSettingsPtr> customSettingsList = customSettings(true);
-
-        for (const CustomSettingsPtr &cs : qAsConst(customSettingsList)) {
-            // Since only the URL is important, do not check for the workgroup.
-            // Also, if the workgroup is a DNS-SD domain, it is most likely not
-            // a valid SMB workgroup or domain.
-            if (cs->type() == Share && cs->hostName() == settings->hostName()) {
-                cs->update(settings.data());
+            for (const CustomSettingsPtr &cs : qAsConst(customSettingsList)) {
+                // Since only the URL is important, do not check for the workgroup.
+                // Also, if the workgroup is a DNS-SD domain, it is most likely not
+                // a valid SMB workgroup or domain.
+                if (cs->type() == Share && cs->hostName() == settings->hostName()) {
+                    cs->update(settings.data());
+                }
             }
         }
     }
@@ -370,7 +377,7 @@ void Smb4KCustomSettingsManager::read()
                                                 QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
                                                 if (expression.match(macAddress).hasMatch()) {
-                                                    settings->setMACAddress(macAddress);
+                                                    settings->setMacAddress(macAddress);
                                                 }
                                             } else if (xmlReader.name() == QStringLiteral("wol_send_before_first_scan")) {
                                                 bool ok = false;

@@ -1,7 +1,7 @@
 /*
     Manage custom settings
 
-    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -20,7 +20,7 @@
 class Smb4KCustomSettingsManagerPrivate;
 
 /**
- * This classes manages the custom settings that were defined
+ * This class manages the custom settings that were defined
  * for a certain share or host.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
