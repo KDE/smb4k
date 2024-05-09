@@ -578,9 +578,9 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
     m_customSettings.setUseKerberos(m_useKerberos->isChecked());
 
     if (m_macAddress->hasAcceptableInput()) {
-        m_customSettings.setMACAddress(m_macAddress->text());
+        m_customSettings.setMacAddress(m_macAddress->text());
     } else {
-        m_customSettings.setMACAddress(QString());
+        m_customSettings.setMacAddress(QString());
     }
     m_customSettings.setWakeOnLanSendBeforeNetworkScan(m_sendPacketBeforeScan->isChecked());
     m_customSettings.setWakeOnLanSendBeforeMount(m_sendPacketBeforeMount->isChecked());
