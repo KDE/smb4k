@@ -527,7 +527,7 @@ public:
      *
      * @param macAddress        The MAC address of the host
      */
-    void setMACAddress(const QString &macAddress) const;
+    void setMacAddress(const QString &macAddress) const;
 
     /**
      * This function returns the MAC address of the host or an empty string if
