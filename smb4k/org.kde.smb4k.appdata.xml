@@ -524,6 +524,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">Gestió especial de les comparticions personals</li>
       <li xml:lang="ca-valencia">Gestió especial de les comparticions personals</li>
       <li xml:lang="eo">Speciala traktado de hejm-kunhavaĵoj</li>
+      <li xml:lang="fr">Prise en charge spéciale des dossiers personnels partagés</li>
       <li xml:lang="it">Gestione speciale delle condivisioni della home</li>
       <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
       <li xml:lang="nl">Speciale behandeling van shares van hoofdmappen</li>
@@ -531,6 +532,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Ev paylaşımlarına özel işlemler</li>
       <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
       <li xml:lang="x-test">xxSpecial handling of home sharesxx</li>
+      <li xml:lang="zh-CN">针对家庭共享的特殊处理功能</li>
       <li>Ability to bookmark favorite shares</li>
       <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
       <li xml:lang="ca">La capacitat d'apuntar les comparticions com a adreces d'interès</li>
