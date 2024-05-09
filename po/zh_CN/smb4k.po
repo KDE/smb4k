@@ -457,7 +457,7 @@ msgstr "高级设置"
 #: smb4k/smb4kconfigpageprofiles.cpp:73
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

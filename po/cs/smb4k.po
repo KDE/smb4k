@@ -458,7 +458,7 @@ msgstr "Pokročilá nastavení"
 #: smb4k/smb4kconfigpageprofiles.cpp:73
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Přidat"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
