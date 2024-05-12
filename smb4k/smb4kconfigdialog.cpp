@@ -1,7 +1,7 @@
 /*
     The configuration dialog of Smb4K
 
-    SPDX-FileCopyrightText: 2004-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -99,21 +99,21 @@ void Smb4KConfigDialog::setupDialog()
     bookmarksArea->setWidgetResizable(true);
     bookmarksArea->setFrameStyle(QFrame::NoFrame);
 
-    KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), QStringLiteral("BookmarkEditor"));
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
 
-    if (bookmarkGroup.exists()) {
+    if (completionGroup.exists()) {
         QMap<QString, QStringList> completionItems;
-        completionItems[QStringLiteral("CategoryCompletion")] = bookmarkGroup.readEntry("CategoryCompletion", QStringList());
-        completionItems[QStringLiteral("LabelCompletion")] = bookmarkGroup.readEntry("LabelCompletion", QStringList());
-        // For backward compatibility (since Smb4K 3.3.0)
-        if (bookmarkGroup.hasKey(QStringLiteral("IPCompletion"))) {
-            completionItems[QStringLiteral("IpAddressCompletion")] = bookmarkGroup.readEntry("IPCompletion", QStringList());
-            bookmarkGroup.deleteEntry("IPCompletion");
+        completionItems[QStringLiteral("CategoryCompletion")] = completionGroup.readEntry("CategoryCompletion", QStringList());
+        completionItems[QStringLiteral("LabelCompletion")] = completionGroup.readEntry("LabelCompletion", QStringList());
+        // For backward compatibility (since Smb4K 4.0.0)
+        if (completionGroup.hasKey(QStringLiteral("IPCompletion"))) {
+            completionItems[QStringLiteral("IpAddressCompletion")] = completionGroup.readEntry("IPCompletion", QStringList());
+            completionGroup.deleteEntry("IPCompletion");
         } else {
-            completionItems[QStringLiteral("IpAddressCompletion")] = bookmarkGroup.readEntry("IpAddressCompletion", QStringList());
+            completionItems[QStringLiteral("IpAddressCompletion")] = completionGroup.readEntry("IpAddressCompletion", QStringList());
         }
-        completionItems[QStringLiteral("LoginCompletion")] = bookmarkGroup.readEntry("LoginCompletion", QStringList());
-        completionItems[QStringLiteral("WorkgroupCompletion")] = bookmarkGroup.readEntry("WorkgroupCompletion", QStringList());
+        completionItems[QStringLiteral("LoginCompletion")] = completionGroup.readEntry("LoginCompletion", QStringList());
+        completionItems[QStringLiteral("WorkgroupCompletion")] = completionGroup.readEntry("WorkgroupCompletion", QStringList());
 
         m_bookmarksPage->setCompletionItems(completionItems);
     }
@@ -180,19 +180,11 @@ void Smb4KConfigDialog::updateSettings()
 {
     KConfigDialog::updateSettings();
 
+    (void)checkSettings();
+
     m_authenticationPage->saveLoginCredentials();
     m_customSettingsPage->saveCustomSettings();
-
     m_bookmarksPage->saveBookmarks();
-    QMap<QString, QStringList> completionItems = m_bookmarksPage->completionItems();
-
-    KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), QStringLiteral("BookmarkEditor"));
-
-    bookmarkGroup.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);
-    bookmarkGroup.writeEntry("LabelCompletion", completionItems[QStringLiteral("LabelCompletion")]);
-    bookmarkGroup.writeEntry("IpAddressCompletion", completionItems[QStringLiteral("IpAddressCompletion")]);
-    bookmarkGroup.writeEntry("LoginCompletion", completionItems[QStringLiteral("LoginCompletion")]);
-    bookmarkGroup.writeEntry("WorkgroupCompletion", completionItems[QStringLiteral("WorkgroupCompletion")]);
 
     if (m_profilesPage->profilesChanged()) {
         m_profilesPage->applyChanges();
@@ -200,7 +192,14 @@ void Smb4KConfigDialog::updateSettings()
         m_bookmarksPage->loadBookmarks();
     }
 
-    (void)checkSettings();
+    QMap<QString, QStringList> completionItems = m_bookmarksPage->completionItems();
+
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
+    completionGroup.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);
+    completionGroup.writeEntry("LabelCompletion", completionItems[QStringLiteral("LabelCompletion")]);
+    completionGroup.writeEntry("IpAddressCompletion", completionItems[QStringLiteral("IpAddressCompletion")]);
+    completionGroup.writeEntry("LoginCompletion", completionItems[QStringLiteral("LoginCompletion")]);
+    completionGroup.writeEntry("WorkgroupCompletion", completionItems[QStringLiteral("WorkgroupCompletion")]);
 
     KConfigGroup group(Smb4KSettings::self()->config(), QStringLiteral("ConfigDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), group);
