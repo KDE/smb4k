@@ -433,9 +433,9 @@ msgstr ""
 "En cas que este ordinador estiga a un veïnatge de xarxa gran, el "
 "descobriment de tots els grups de treball, amfitrions i comparticions pot "
 "tardar una estona llarga, ja que amb la configuració predeterminada es "
-"consulten tots els exploradors mestres locals. Quan se selecciona esta "
-"opció, es limita el nombre d'exploradors mestres locals a tres. Açò pot "
-"reduir considerablement el consum de temps als veïnatges de xarxa grans."
+"consulten tots els exploradors mestres locals. Quan es marca esta opció, es "
+"limita el nombre d'exploradors mestres locals a tres. Açò pot reduir "
+"considerablement el consum de temps als veïnatges de xarxa grans."
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:178
@@ -583,7 +583,7 @@ msgstr ""
 "permet iniciar o despertar un ordinador amb un missatge de xarxa. Smb4K "
 "utilitza un paquet màgic enviat mitjançant un sòcol UDP per a despertar els "
 "servidors remots. Si voleu disposar dels avantatges de la característica "
-"«Wake-On-LAN» cal seleccionar esta opció."
+"«Wake-On-LAN» cal marcar esta opció."
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:233
@@ -618,9 +618,9 @@ msgid ""
 "stored permanently but only temporarily."
 msgstr ""
 "Utilitza una cartera per a emmagatzemar l'inici de sessió. El nom d'usuari i "
-"la contrasenya s'emmagatzemaran encriptats en el disc dur. Si es "
-"desselecciona esta opció, l'inici de sessió no es guardarà permanentment, "
-"només temporalment."
+"la contrasenya s'emmagatzemaran encriptats en el disc dur. Si es desmarca "
+"esta opció, l'inici de sessió no es guardarà permanentment, només "
+"temporalment."
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
 #: smb4k.kcfg:250
@@ -1036,7 +1036,7 @@ msgid ""
 msgstr ""
 "Conserva els permisos (-p, --perms). Els permisos del fitxer de destinació "
 "seran els mateixos que els del fitxer d'origen. Per a conéixer què passa si "
-"es desselecciona esta opció, llegiu la pàgina del manual de «rsync»."
+"es desmarca esta opció, llegiu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:376
@@ -1181,8 +1181,8 @@ msgid ""
 "rsync's manual page."
 msgstr ""
 "Conserva les hores (-t, --times). Les hores de modificació es transferixen "
-"junt amb els fitxers. Per a conéixer què passa si es desselecciona esta "
-"opció, llegiu la pàgina del manual de «rsync»."
+"junt amb els fitxers. Per a conéixer què passa si es desmarca esta opció, "
+"llegiu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
 #: smb4k.kcfg:416
@@ -1605,7 +1605,7 @@ msgstr ""
 "filter=REGLA). Esta opció permet afegir regles per a excloure selectivament "
 "determinats fitxers de la llista de fitxers que es transferiran. Estes "
 "regles s'afegiran a l'ordre «rsync» tal com estiguen. Per tant, cada regla "
-"haurà de començar amb l'argument --filter=..."
+"haurà de començar amb l'argument --filter=…"
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:559
@@ -2022,7 +2022,7 @@ msgstr ""
 #: smb4kmounter.cpp:689
 #, kde-format
 msgid "Foreign Share"
-msgstr "Compartició d'aliens"
+msgstr "Compartiu els aliens"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
@@ -2583,7 +2583,7 @@ msgid ""
 "think before you enable this option."
 msgstr ""
 "Permet el desmuntatge de les comparticions que van ser muntades per altres "
-"usuaris. Penseu-ho bé abans de seleccionar esta opció."
+"usuaris. Penseu-ho bé abans de marcar esta opció."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
@@ -2646,8 +2646,8 @@ msgstr ""
 "servidors, és possible que vulgueu desmarcar estes opcions, de manera que es "
 "puguen passar al servidor els valors predefinits. Cal tindre en compte que "
 "si l'ordinador està ubicat en un veïnatge de xarxa dominat per Windows amb "
-"només alguns servidors de Samba, podeu desseleccionar esta opció amb "
-"seguretat i definir opcions personalitzades per als servidors de Samba."
+"només alguns servidors de Samba, podeu desmarcar esta opció amb seguretat i "
+"definir opcions personalitzades per als servidors de Samba."
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
@@ -3382,7 +3382,7 @@ msgstr "IPC"
 #: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
-msgstr "Sincronització"
+msgstr "Sincronitzeu"
 
 #: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
@@ -3393,31 +3393,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid ""
-#~ "Transfer all relevant data to the first profile when enabling profiles"
-#~ msgstr ""
-#~ "Transferix totes les dades rellevants al primer perfil quan s'habiliten "
-#~ "els perfils"
-
-#~ msgid ""
-#~ "Transfer all custom settings and bookmarks to the first profile in the "
-#~ "list when enabling profiles."
-#~ msgstr ""
-#~ "Transferix tots els paràmetres i adreces d'interés personalitzats al "
-#~ "primer perfil de la llista quan s'habiliten els perfils."
-
-#~ msgid "Make all relevant data available when disabling profiles"
-#~ msgstr "Fa disponibles totes les dades rellevants en desactivar els perfils"
-
-#~ msgid ""
-#~ "Make all custom settings and bookmarks available when disabling profiles. "
-#~ "This means that all data previously saved in different profiles is now "
-#~ "available in the standard profile. However, they can no longer be used in "
-#~ "their original profiles afterwards."
-#~ msgstr ""
-#~ "Fa que tots els paràmetres i adreces d'interés personalitzats estiguen "
-#~ "disponibles en desactivar els perfils. Açò significa que totes les dades "
-#~ "guardades prèviament en perfils diferents ja estaran disponibles en el "
-#~ "perfil estàndard. No obstant açò, després ja no es podran utilitzar en "
-#~ "els seus perfils originals."

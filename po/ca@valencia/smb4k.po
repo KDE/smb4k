@@ -724,37 +724,37 @@ msgstr "S'utilitza el diàleg de contrasenya."
 #: smb4k/smb4kmainwindow.cpp:516
 #, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr "Buscant grups de treball i dominis..."
+msgstr "Buscant grups de treball i dominis…"
 
 #: smb4k/smb4kmainwindow.cpp:521
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "Buscant amfitrions en el domini %1..."
+msgstr "Buscant amfitrions en el domini %1…"
 
 #: smb4k/smb4kmainwindow.cpp:526
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr "Buscant comparticions proporcionades per l'amfitrió %1..."
+msgstr "Buscant comparticions proporcionades per l'amfitrió %1…"
 
 #: smb4k/smb4kmainwindow.cpp:534 smb4k/smb4kmainwindow.cpp:543
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "Buscant fitxers i directoris a %1..."
+msgstr "Buscant fitxers i directoris a %1…"
 
 #: smb4k/smb4kmainwindow.cpp:560
 #, kde-format
 msgid "Waking up remote hosts..."
-msgstr "Activant els amfitrions remots..."
+msgstr "Activant els amfitrions remots…"
 
 #: smb4k/smb4kmainwindow.cpp:565
 #, kde-format
 msgid "Sending file to printer %1..."
-msgstr "S'està enviant un fitxer a la impressora %1..."
+msgstr "S'està enviant un fitxer a la impressora %1…"
 
 #: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "Searching..."
-msgstr "S'està buscant..."
+msgstr "S'està buscant…"
 
 #: smb4k/smb4kmainwindow.cpp:590 smb4k/smb4kmainwindow.cpp:629
 #: smb4k/smb4kmainwindow.cpp:714
@@ -765,17 +765,17 @@ msgstr "Fet."
 #: smb4k/smb4kmainwindow.cpp:600
 #, kde-format
 msgid "Mounting..."
-msgstr "S'està muntant..."
+msgstr "S'està muntant…"
 
 #: smb4k/smb4kmainwindow.cpp:604
 #, kde-format
 msgid "Unmounting..."
-msgstr "S'està desmuntant..."
+msgstr "S'està desmuntant…"
 
 #: smb4k/smb4kmainwindow.cpp:608
 #, kde-format
 msgid "Waking up host..."
-msgstr "Activant l'amfitrió..."
+msgstr "Activant l'amfitrió…"
 
 #: smb4k/smb4kmainwindow.cpp:638
 #, kde-format

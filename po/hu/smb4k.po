@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-10 00:38+0000\n"
-"PO-Revision-Date: 2024-04-23 13:32+0200\n"
+"PO-Revision-Date: 2024-05-10 14:21+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -39,10 +39,9 @@ msgid "The mount process could not be started."
 msgstr "A csatolási folyamat nem indítható el."
 
 #: helpers/smb4kmounthelper.cpp:179
-#, fuzzy, kde-format
-#| msgid "The mountpoint is invalid."
+#, kde-format
 msgid "The mountpoint %1 is invalid."
-msgstr "A csatolási pont érvénytelen."
+msgstr "A(z) %1 csatolási pont érvénytelen."
 
 #: helpers/smb4kmounthelper.cpp:241
 #, kde-format
@@ -55,20 +54,15 @@ msgid "Smb4K"
 msgstr "Smb4K"
 
 #: smb4k/main.cpp:42
-#, fuzzy, kde-format
-#| msgid ""
-#| "The advanced network neighborhood browser and Samba share mounting "
-#| "utility for KDE."
+#, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
-"Speciális hálózatimappa-böngésző és Samba megosztás csatoló segédprogram a "
-"KDE-hez."
+"Speciális hálózatimappa-böngésző és Samba megosztás csatoló segédprogram"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "\\u00A9 2003-2015 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "\\u00A9 Alexander Reinholdt, 2003-2015."
+msgstr "© Alexander Reinholdt, 2003-2024."
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -83,12 +77,12 @@ msgstr "Fejlesztő"
 #: smb4k/main.cpp:58
 #, kde-format
 msgid "Wolfgang Geisendörfer"
-msgstr ""
+msgstr "Wolfgang Geisendörfer"
 
 #: smb4k/main.cpp:58
 #, kde-format
 msgid "Donator"
-msgstr ""
+msgstr "Adományozó"
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -127,22 +121,18 @@ msgid "Main Toolbar"
 msgstr "Fő eszköztár"
 
 #: smb4k/smb4kbookmarkdialog.cpp:32
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Könyvjelzőszerkesztő"
+msgstr "Megosztások könyvjelzőzése"
 
 #: smb4k/smb4kbookmarkdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "All listed shares will be bookmarked. To edit the label or group, click "
-#| "the respective bookmark entry."
+#, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
-"Az összes listázott megosztás könyvjelzőzve lesz. A címke vagy csoport "
-"módosításához kattintson a megfelelő könyvjelző bejegyzésre."
+"Az összes listázott megosztás könyvjelzőzve lesz. Címke vagy csoport "
+"hozzáadásához kattintson a megfelelő könyvjelző bejegyzésre."
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
@@ -154,7 +144,7 @@ msgstr "Címke:"
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Kategória:"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
@@ -179,10 +169,9 @@ msgid "Add &Bookmark"
 msgstr "Kö&nyvjelző hozzáadása"
 
 #: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Az összes könyvjelző csatolása"
+msgstr "Könyvjelzők csatolása"
 
 #: smb4k/smb4kconfigdialog.cpp:124
 #, kde-format
@@ -211,10 +200,9 @@ msgid "Synchronization"
 msgstr "Szinkronizálás"
 
 #: smb4k/smb4kconfigdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Közös beállítások"
+msgstr "Egyéni beállítások"
 
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -228,6 +216,8 @@ msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
 "corresponding configuration page to fix it.</qt>"
 msgstr ""
+"<qt>Helytelen beállítás található. Ön most a megfelelő beállítóoldalra kerül "
+"a javításához.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #: smb4k/smb4kconfigpageprofiles.cpp:42
@@ -236,10 +226,9 @@ msgid "Settings"
 msgstr "Beállítások"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:53
-#, fuzzy, kde-format
-#| msgid "Wallet Entries"
+#, kde-format
 msgid "Wallet Entries"
-msgstr "A jelszótároló bejegyzései"
+msgstr "Jelszótároló bejegyzései"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:73
 #, kde-format
@@ -269,10 +258,9 @@ msgstr "Eltávolítás"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:96
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Clear"
+#, kde-format
 msgid "Clear"
-msgstr "&Törlés"
+msgstr "Törlés"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:131
 #, kde-format
@@ -285,27 +273,21 @@ msgid "Enter the default login information."
 msgstr "Adja meg az alapértelmezett bejelentkezési információkat."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:297
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
-"<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> géphez.</qt>"
+msgstr "Adja meg a(z) %1 bejegyzés felhasználónevét és jelszavát."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:299
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""
-"<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> géphez.</qt>"
+"Adja meg az alapértelmezett bejelentkezés felhasználónevét és jelszavát."
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Felhasználó:"
+msgstr "Felhasználónév:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -326,7 +308,7 @@ msgstr "IP-cím:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Kategória hozzáadása"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -337,17 +319,19 @@ msgstr "Lista törlése"
 #: smb4k/smb4kconfigpagebookmarks.cpp:452
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Új kategória"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Minden rendben."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:195
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
+"A(z) <b>%1</b> elem eltávolításra került, mivel minden egyéni beállítás "
+"visszaállításra került."
 
 #: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
 #, kde-format
@@ -364,27 +348,26 @@ msgstr "Működés"
 #: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
 #, kde-format
 msgid " min"
-msgstr ""
+msgstr " perc"
 
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:73
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:313
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgid "Basic Settings"
-msgstr "Beállítások"
+msgstr "Alapvető beállítások"
 
 #: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
 #, kde-format
 msgid "Common Options"
-msgstr "Közös beállítások"
+msgstr "Általános beállítások"
 
 #: smb4k/smb4kconfigpagemounting.cpp:218
 #, kde-format
 msgid "CIFS Unix Extensions Support"
-msgstr ""
+msgstr "CIFS Unix kiterjesztések támogatása"
 
 #: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
 #, kde-format
@@ -398,10 +381,9 @@ msgstr "Válasszon másik csoportot"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:155
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Common Mount Settings"
-msgstr "Közös beállítások"
+msgstr "Általános csatolási beállítások"
 
 #: smb4k/smb4kconfigpagemounting.cpp:341
 #, kde-format
@@ -415,23 +397,20 @@ msgstr "További CIFS beállítások szerkesztése."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:190
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Mount Settings"
-msgstr "Speciális beállítások"
+msgstr "Speciális csatolási beállítások"
 
 #: smb4k/smb4kconfigpagemounting.cpp:676
-#, fuzzy, kde-format
-#| msgid "Client character set:"
+#, kde-format
 msgid "Character Sets"
-msgstr "Kliensoldali karakterkészlet:"
+msgstr "Karakterkészletek"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:366
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Mount Settings"
-msgstr "Közös beállítások"
+msgstr "Csatolási beállítások"
 
 #: smb4k/smb4kconfigpagemounting.cpp:768
 #, kde-format
@@ -441,7 +420,7 @@ msgstr "További CIFS beállítások"
 #: smb4k/smb4kconfigpagemounting.cpp:769
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr ""
+msgstr "<qt>Adja meg a kívánt opciókat vesszővel elválasztott listaként:</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:797
 #, kde-format
@@ -452,67 +431,61 @@ msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
 msgstr[0] ""
+"A következő bejegyzést eltávolításra kerül a további opciók közül:<br>%2."
+"<br>Kérjük, olvassa el a kézikönyvet a részletekért."
 msgstr[1] ""
+"A következő %1 bejegyzés eltávolításra kerül a további opciók közül:<br>%2."
+"<br>Kérjük, olvassa el a kézikönyvet a részletekért."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:425
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgid "Browse Settings"
-msgstr "Beállítások"
+msgstr "Böngészési beállítások"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:137
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:209
 #, kde-format
 msgid " s"
-msgstr ""
+msgstr " másodperc"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:218
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Define the hosts that should be woken up via the custom options "
-#| "dialog.</qt>"
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"<qt>Határozza meg azokat a gépeket, amelyek felébreszthetők az egyéni "
-"beállítások párbeszédablakon keresztül.</qt>"
+"Meghatározza azokat a gépeket, amelyek felébreszthetők az egyéni beállítások "
+"párbeszédablakon keresztül."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:228
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Settings"
 msgstr "Speciális beállítások"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:73
-#, fuzzy, kde-format
-#| msgid "A&dd"
+#, kde-format
 msgid "Add"
-msgstr "&Hozzáadás"
+msgstr "Hozzáadás"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
-#, fuzzy, kde-format
-#| msgid "Synchronization prefix:"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Szinkronizációs előtag:"
+msgstr "Szinkronizációs könyvtár"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:82
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Biztonsági mentés"
+msgstr "Biztonsági mentések"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:127
 #, kde-format
@@ -520,62 +493,57 @@ msgid "General"
 msgstr "Általános"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:163
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Hivatkozások"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:210
-#, fuzzy, kde-format
-#| msgid "File Deletion"
+#, kde-format
 msgid "File Handling"
-msgstr "Fájltörlés"
+msgstr "Fájlkezelés"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:218
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "Fájlattribútumok"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:263
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Ownership"
-msgstr "Tulajdonos"
+msgstr "Tulajdonjog"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Fájlattribútumok és tulajdonjog"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, kde-format
 msgid "Compression"
-msgstr ""
+msgstr "Tömörítés"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:327
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgid "Files"
-msgstr "Fájl"
+msgstr "Fájlok"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:337
 #: smb4k/smb4kconfigpagesynchronization.cpp:348
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:373
 #: smb4k/smb4kconfigpagesynchronization.cpp:592
 #: smb4k/smb4kconfigpagesynchronization.cpp:608
-#, fuzzy, kde-format
-#| msgid "Miscellaneous Settings"
+#, kde-format
 msgid "Miscellaneous"
-msgstr "Egyéb beállítások"
+msgstr "Egyéb"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:383
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, kde-format
@@ -583,14 +551,12 @@ msgid "File Transfer"
 msgstr "Fájlátvitel"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:399
-#, fuzzy, kde-format
-#| msgid "Hidden Files && Directories"
+#, kde-format
 msgid "Files && Directories"
-msgstr "Rejtett fájlok és mappák"
+msgstr "Fájlok és mappák"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:445
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Korlátozások"
 
@@ -600,10 +566,9 @@ msgid "File Deletion"
 msgstr "Fájltörlés"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:470
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "General Filtering Settings"
-msgstr "Általános beállítások"
+msgstr "Általános szűrési beállítások"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:525
 #, kde-format
@@ -616,15 +581,14 @@ msgid "Filtering"
 msgstr "Szűrés"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:561
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Ellenőrzőösszegek"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
 msgid "Main Window"
-msgstr ""
+msgstr "Főablak"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:180
 #, kde-format
@@ -764,16 +728,14 @@ msgstr[0] "%1 csatolt megosztás van."
 msgstr[1] "%1 csatolt megosztás van."
 
 #: smb4k/smb4kmainwindow.cpp:503
-#, fuzzy, kde-format
-#| msgid "The wallet is in use."
+#, kde-format
 msgid "The wallet is used."
-msgstr "A jelszótároló használatban van."
+msgstr "A jelszótároló van használva."
 
 #: smb4k/smb4kmainwindow.cpp:506
-#, fuzzy, kde-format
-#| msgid "The password dialog mode is used."
+#, kde-format
 msgid "The password dialog is used."
-msgstr "A jelszóablak mód van használva."
+msgstr "A jelszóablak van használva."
 
 #: smb4k/smb4kmainwindow.cpp:516
 #, kde-format
@@ -791,10 +753,9 @@ msgid "Looking for shares provided by host %1..."
 msgstr "A(z) %1 gép által nyújtott megosztások keresése…"
 
 #: smb4k/smb4kmainwindow.cpp:534 smb4k/smb4kmainwindow.cpp:543
-#, fuzzy, kde-format
-#| msgid "Looking for hosts in domain %1..."
+#, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "Gépek keresése a(z) %1 tartományban…"
+msgstr "Fájlok és mappák keresése itt: %1…"
 
 #: smb4k/smb4kmainwindow.cpp:560
 #, kde-format
@@ -807,9 +768,9 @@ msgid "Sending file to printer %1..."
 msgstr "Fájl küldése a(z) %1 nyomtatóra…"
 
 #: smb4k/smb4kmainwindow.cpp:569
-#, fuzzy, kde-format
+#, kde-format
 msgid "Searching..."
-msgstr "Keresés a hálózaton:"
+msgstr "Keresés…"
 
 #: smb4k/smb4kmainwindow.cpp:590 smb4k/smb4kmainwindow.cpp:629
 #: smb4k/smb4kmainwindow.cpp:714
@@ -818,22 +779,19 @@ msgid "Done."
 msgstr "Kész."
 
 #: smb4k/smb4kmainwindow.cpp:600
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Mounting..."
-msgstr "Csatolás"
+msgstr "Csatolás…"
 
 #: smb4k/smb4kmainwindow.cpp:604
-#, fuzzy, kde-format
-#| msgid "Unmounting share %1..."
+#, kde-format
 msgid "Unmounting..."
-msgstr "%1 megosztás leválasztása…"
+msgstr "Leválasztás…"
 
 #: smb4k/smb4kmainwindow.cpp:608
-#, fuzzy, kde-format
-#| msgid "Waking up host %1..."
+#, kde-format
 msgid "Waking up host..."
-msgstr "%1 gép felébresztése…"
+msgstr "Gép felébresztése…"
 
 #: smb4k/smb4kmainwindow.cpp:638
 #, kde-format
@@ -869,22 +827,20 @@ msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
-#, fuzzy, kde-format
+#, kde-format
 msgid "Location:"
-msgstr "Műveletek"
+msgstr "Hely:"
 
 #: smb4k/smb4kmountdialog.cpp:107
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Könyvjelzőszerkesztő"
+msgstr "Megosztás könyvjelzőzése"
 
 #: smb4k/smb4kmountdialog.cpp:146
-#, fuzzy, kde-format
-#| msgid "Bookmark"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Könyvjelző"
+msgstr "Könyvjelző >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -922,20 +878,19 @@ msgstr "Kere&sés"
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
-#, fuzzy, kde-format
-#| msgid "&Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "&Egyéni beállítások"
+msgstr "&Egyéni beállítások hozzáadása"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:51
 #, kde-format
@@ -945,7 +900,7 @@ msgstr "Csat&olási párbeszédablak megnyitása"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:163
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:176
 #, kde-format
@@ -955,7 +910,7 @@ msgstr "H&itelesítés"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:182
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:187
 #, kde-format
@@ -965,7 +920,7 @@ msgstr "Elő&nézet"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
@@ -975,7 +930,7 @@ msgstr "Fájl &nyomtatása"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
@@ -992,7 +947,7 @@ msgstr "&Leválasztás"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:950
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:398
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:409
@@ -1009,17 +964,17 @@ msgstr "Munkacsopo&rt pásztázása"
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:34
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Search string"
-msgstr "Kiszolgáló:"
+msgstr "Szöveg keresése"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:52
 #, kde-format
@@ -1029,19 +984,17 @@ msgstr "Keresés"
 #: smb4k/smb4knetworksearchtoolbar.cpp:54
 #, kde-format
 msgid "Stop"
-msgstr ""
+msgstr "Leállítás"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:63
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Down"
-msgstr "Elem"
+msgstr "Elem le"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:72
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Up"
-msgstr "Elem"
+msgstr "Elem fel"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, fuzzy, kde-format
@@ -1062,8 +1015,7 @@ msgstr ""
 "qt>"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Preview Dialog"
 msgstr "Párbeszédablak előnézete"
 
@@ -1083,22 +1035,19 @@ msgid "Up"
 msgstr "Fel"
 
 #: smb4k/smb4kpreviewdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Preview"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Előnézet"
+msgstr "%1 előnézete"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Párbeszédablak előnézete"
+msgstr "Nyomtatás párbeszédablak"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Fájl nyomtatása"
+msgstr "Fájl nyomtatása."
 
 #: smb4k/smb4kprintdialog.cpp:61
 #, kde-format
@@ -1111,10 +1060,9 @@ msgid "Copies:"
 msgstr "Másolatok:"
 
 #: smb4k/smb4kprintdialog.cpp:87
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "Nyomtató"
+msgstr "Nyomtatás"
 
 #: smb4k/smb4kprintdialog.cpp:123
 #, fuzzy, kde-format
@@ -1155,7 +1103,7 @@ msgstr "Megnyitás fájlkezelővel"
 #: smb4k/smb4ksharesviewdockwidget.cpp:137
 #, kde-format
 msgid "View Modes"
-msgstr ""
+msgstr "Nézetmódok"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:143
 #, kde-format
@@ -1170,7 +1118,7 @@ msgstr "Listanézet"
 #: smb4k/smb4ksharesviewdockwidget.cpp:197
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:230
 #, kde-format
@@ -1180,7 +1128,7 @@ msgstr "Sz&inkronizálás"
 #: smb4k/smb4ksharesviewdockwidget.cpp:235
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Ctrl+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:248
 #, kde-format
@@ -1190,7 +1138,7 @@ msgstr "Megnyitás Konso&le-lal"
 #: smb4k/smb4ksharesviewdockwidget.cpp:253
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:255
 #, kde-format
@@ -1200,7 +1148,7 @@ msgstr "Megny&itás fájlkezelővel"
 #: smb4k/smb4ksharesviewdockwidget.cpp:260
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:375
 #, kde-format
@@ -1250,10 +1198,9 @@ msgid "Workgroup"
 msgstr "Munkacsoport"
 
 #: smb4k/smb4ktooltip.cpp:137
-#, fuzzy, kde-format
-#| msgid "Master browser"
+#, kde-format
 msgid "Master Browser:"
-msgstr "Főtallózó"
+msgstr "Főtallózó:"
 
 #: smb4k/smb4ktooltip.cpp:151
 #, kde-format
@@ -1261,9 +1208,9 @@ msgid "Host"
 msgstr "Gép"
 
 #: smb4k/smb4ktooltip.cpp:154 smb4k/smb4ktooltip.cpp:170
-#, fuzzy, kde-format
+#, kde-format
 msgid "Comment:"
-msgstr "Megjegyzés"
+msgstr "Megjegyzés:"
 
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
@@ -1271,10 +1218,9 @@ msgid "Share (%1)"
 msgstr "Megosztás (%1)"
 
 #: smb4k/smb4ktooltip.cpp:174
-#, fuzzy, kde-format
-#| msgid "Mounted"
+#, kde-format
 msgid "Mounted:"
-msgstr "Csatolva"
+msgstr "Csatolva:"
 
 #: smb4k/smb4ktooltip.cpp:177
 #, kde-format
@@ -1292,10 +1238,9 @@ msgid "Host:"
 msgstr "Gép:"
 
 #: smb4k/smb4ktooltip.cpp:229
-#, fuzzy, kde-format
-#| msgid "Mountpoint"
+#, kde-format
 msgid "Mountpoint:"
-msgstr "Csatolási pont"
+msgstr "Csatolási pont:"
 
 #: smb4k/smb4ktooltip.cpp:231 smb4k/smb4ktooltip.cpp:235
 #: smb4k/smb4ktooltip.cpp:236 smb4k/smb4ktooltip.cpp:249
@@ -1304,16 +1249,14 @@ msgid "unknown"
 msgstr "ismeretlen"
 
 #: smb4k/smb4ktooltip.cpp:239
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Owner:"
-msgstr "Tulajdonos"
+msgstr "Tulajdonos:"
 
 #: smb4k/smb4ktooltip.cpp:242
-#, fuzzy, kde-format
-#| msgid "File system"
+#, kde-format
 msgid "File system:"
-msgstr "Fájlrendszer"
+msgstr "Fájlrendszer:"
 
 #: smb4k/smb4ktooltip.cpp:247
 #, kde-format
@@ -1321,10 +1264,9 @@ msgid "%1 free of %2 (%3 used)"
 msgstr "%1 / %2 szabad (%3 használt)"
 
 #: smb4k/smb4ktooltip.cpp:254
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "Méret"
+msgstr "Méret:"
 
 #, fuzzy
 #~| msgid "Common Options"
