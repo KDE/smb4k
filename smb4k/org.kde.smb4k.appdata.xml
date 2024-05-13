@@ -524,11 +524,13 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">Gestió especial de les comparticions personals</li>
       <li xml:lang="ca-valencia">Gestió especial de les comparticions personals</li>
       <li xml:lang="eo">Speciala traktado de hejm-kunhavaĵoj</li>
+      <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
       <li xml:lang="fr">Prise en charge spéciale des dossiers personnels partagés</li>
       <li xml:lang="hu">Otthoni megosztások speciális kezelése</li>
       <li xml:lang="it">Gestione speciale delle condivisioni della home</li>
       <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
       <li xml:lang="nl">Speciale behandeling van shares van hoofdmappen</li>
+      <li xml:lang="pl">Szczególna obsługa zasobów katalogów domowych</li>
       <li xml:lang="sl">Posebna obravnava domačih skupnih diskov</li>
       <li xml:lang="tr">Ev paylaşımlarına özel işlemler</li>
       <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
@@ -555,7 +557,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ko">자주 찾는 공유 책갈피 추가</li>
       <li xml:lang="nds">Leestekens för vörtrocken Freegaven</li>
       <li xml:lang="nl">Vermogen om van favoriete shares een bladwijzer te maken</li>
-      <li xml:lang="pl">Możliwość nadania zakładki ulubionym udziałom</li>
+      <li xml:lang="pl">Możliwość nadania zakładki ulubionym zasobom</li>
       <li xml:lang="pt">A capacidade de marcar as partilhas como favoritos</li>
       <li xml:lang="pt-BR">Capacidade de marcar os compartilhamentos como favoritos</li>
       <li xml:lang="ru">Возможность добавления выбранных общих сетевых ресурсов в закладки;</li>
