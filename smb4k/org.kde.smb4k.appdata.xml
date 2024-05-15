@@ -23,6 +23,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="fi">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
+  <name xml:lang="he">Smb4K</name>
   <name xml:lang="hu">Smb4K</name>
   <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
@@ -57,6 +58,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="fi">Etsi ja liitä Samba- ja Windows-jakoja verkon yli</summary>
   <summary xml:lang="fr">Découvre et monte des partages Windows et SAMBA à travers le réseau</summary>
   <summary xml:lang="gl">Descubrir e montar comparticións de rede de SAMBA e de Windows.</summary>
+  <summary xml:lang="he">גילוי ועיגון שיתופי SAMBA ו־Windows דרך הרשת</summary>
   <summary xml:lang="hu">SAMBA és Windows megosztások felfedezése és csatolása a hálózaton keresztül</summary>
   <summary xml:lang="id">Temukan dan kaitkan SAMBA dan berbagi Windows melalui jaringan</summary>
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
@@ -197,6 +199,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">(Aktiivisten) työryhmien, verkkokoneiden ja -jakojen etsintä</li>
       <li xml:lang="fr">Balayage des groupes de travail (actifs), hôtes et partages</li>
       <li xml:lang="gl">Buscando grupos de traballo (activos), servidores e comparticións</li>
+      <li xml:lang="he">ביצוע סריקה אחר קבוצות עבודה (פעילות), מארחים ושיתופים</li>
       <li xml:lang="hu">Aktív munkacsoportok, gépek és megosztások keresése</li>
       <li xml:lang="id">Pemindaian untuk workgroup, host, dan berbagi (yang aktif)</li>
       <li xml:lang="it">Ricerca di gruppi di lavoro, host e condivisioni (attivi)</li>
@@ -230,6 +233,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">CIFS- (Linux) ja SMBFS-tiedostojärjestelmien (FreeBSD) tuki</li>
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
+      <li xml:lang="he">תמיכה במערכות הקבצים CIFS (לינוקס) וב־SMBFS‏ (FreeBSD)</li>
       <li xml:lang="hu">CIFS (Linux) és SMBFS (FreeBSD) fájlrendszerek támogatása</li>
       <li xml:lang="id">Dukungan sistem file CIFS (Linux) dan SMBFS (FreeBSD)</li>
       <li xml:lang="ie">Supporte del sistemas de files CIFS (Linux) e SMBFS (FreeBSD)</li>
@@ -264,6 +268,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Jakojen liittäminen ja irrottaminen</li>
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
+      <li xml:lang="he">עיגון וניתוק שיתופים</li>
       <li xml:lang="hu">Megosztások csatolása és leválasztása</li>
       <li xml:lang="id">Pengaitan dan pelepaskaitan berbagi</li>
       <li xml:lang="ie">Montage e demontage de partites</li>
@@ -298,6 +303,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Pääsy liitetyn jaon tiedostoihin tiedostonhallinnasta tai päätteestä</li>
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
+      <li xml:lang="he">גישה לקבצים של שיתוף מעוגן באמצעות מנהל קבצים או מסוף</li>
       <li xml:lang="hu">Hozzáférés a csatlakoztatott megosztás fájljaihoz fájlkezelő vagy terminál segítségével</li>
       <li xml:lang="id">Akses ke file pada berbagi yang dikaitkan menggunakan pengelola file atau terminal</li>
       <li xml:lang="it">Accesso ai file di una condivisione montata usando un gestore dei file o un terminale</li>
@@ -331,6 +337,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Ulkoisten liitosten ja irrotusten automaattinen havaitseminen</li>
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
+      <li xml:lang="he">זיהוי אוטומטי של עיגונים וניתוקים חיצוניים</li>
       <li xml:lang="hu">Külső csatolások és leválasztások automatikus felismerése</li>
       <li xml:lang="id">Auto deteksi kait dan lepaskait eksternal</li>
       <li xml:lang="it">Rilevazione automatica di montaggi o di smontaggi esterni</li>
@@ -364,6 +371,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Aiemmin käytettyjen jakojen uudelleenliittäminen ohjelman käynnistyessä</li>
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
       <li xml:lang="gl">Pode volver a montar comparticións usadas previamente ao iniciar o programa.</li>
+      <li xml:lang="he">עיגון מחדש של שיתופים שנעשה בהם שימוש בעבר עם עליית התוכנית</li>
       <li xml:lang="hu">Korábban használt megosztások újra csatolása a program indulásakor</li>
       <li xml:lang="id">Mengaitkan-ulang berbagi-berbagi yang digunakan sebelumnya saat memulai program</li>
       <li xml:lang="it">Rimontaggio all'avvio del programma di una condivisione usata in precedenza</li>
@@ -397,6 +405,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Erilaiset tiedot etäverkkokohteista ja liitetyistä jaoista</li>
       <li xml:lang="fr">Infos diverses sur les éléments réseau distants et les partages montés</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
+      <li xml:lang="he">פרטים שונים על פריטי רשת מרוחקים ושיתופים מעוגנים</li>
       <li xml:lang="hu">Egyéb információk távoli hálózati elemekről és csatlakoztatott megosztásokról</li>
       <li xml:lang="id">Beraneka info tentang butir-butir jaringan jarak jauh dan berbagi-berbagi yang dikaitkan</li>
       <li xml:lang="it">Informazioni varie sugli elementi di rete remoti e sulle condivisioni montate</li>
@@ -432,6 +441,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Verkkohaku</li>
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
+      <li xml:lang="he">חיפוש ברשת</li>
       <li xml:lang="hu">Hálózati keresés</li>
       <li xml:lang="id">Pencarian jaringan</li>
       <li xml:lang="ie">Sercha in li rete</li>
@@ -466,6 +476,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Etäjaon sisällön esikatselu</li>
       <li xml:lang="fr">Aperçu des contenus d'un partage distant</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición remota</li>
+      <li xml:lang="he">תצוגה מקדימה של התוכן בשיתוף המרוחק</li>
       <li xml:lang="hu">Távoli megosztások tartalmának előnézete</li>
       <li xml:lang="id">Pratinjaunya konten dari berbagi jarak jauh</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione remota</li>
@@ -500,6 +511,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Oletuskirjautuminen</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
+      <li xml:lang="he">פרטי כניסה כברירת מחדל</li>
       <li xml:lang="hu">Alapértelmezett bejelentkezés</li>
       <li xml:lang="ia">Authentication predefinite</li>
       <li xml:lang="id">Login baku</li>
@@ -526,6 +538,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="eo">Speciala traktado de hejm-kunhavaĵoj</li>
       <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
       <li xml:lang="fr">Prise en charge spéciale des dossiers personnels partagés</li>
+      <li xml:lang="he">טיפול מיוחד בטיפולי תיקיות בית</li>
       <li xml:lang="hu">Otthoni megosztások speciális kezelése</li>
       <li xml:lang="it">Gestione speciale delle condivisioni della home</li>
       <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
@@ -550,6 +563,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Mahdollisuus tehdä suosikkijaoista kirjanmerkkejä</li>
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
+      <li xml:lang="he">יכולת לסמן שיתופים מועדפים</li>
       <li xml:lang="hu">Könyvjelző hozzáadása a kedvenc megosztásokhoz</li>
       <li xml:lang="id">Kemampuan untuk memarkahi berbagi-berbagi favorit</li>
       <li xml:lang="it">Possibilità di aggiungere le condivisioni preferite nei segnalibri</li>
@@ -584,6 +598,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Ilmoitusaluekuvake</li>
       <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
+      <li xml:lang="he">וידג׳ט לשורת המערכת</li>
       <li xml:lang="hu">Paneltálca kisalkalmazás</li>
       <li xml:lang="id">Widget system tray</li>
       <li xml:lang="it">Oggetto per il vassoio di sistema</li>
@@ -617,6 +632,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Lisäliitosasetusten tuki</li>
       <li xml:lang="fr">Prise en charge des options de montage avancées</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de montaxe</li>
+      <li xml:lang="he">תמיכה באפשרויות עיגון מתקדמות</li>
       <li xml:lang="hu">Speciális csatolási beállítások támogatása</li>
       <li xml:lang="id">Dukungan opsi kait tingkat-lanjut</li>
       <li xml:lang="it">Supporto alle opzioni avanzate di montaggio</li>
@@ -649,6 +665,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Tulostinjakojen tuki</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
+      <li xml:lang="he">תמיכה בשיתופי מדפסות</li>
       <li xml:lang="hu">Nyomtatómegosztások támogatása</li>
       <li xml:lang="id">Dukungan berbagi printer</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
@@ -683,6 +700,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">KWallet-tuki</li>
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Compatibilidade con KWallet.</li>
+      <li xml:lang="he">תמיכה ב־KWallet</li>
       <li xml:lang="hu">KWallet támogatás</li>
       <li xml:lang="id">Dukungan KWallet</li>
       <li xml:lang="ie">Supporte de KWallet</li>
@@ -717,6 +735,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Etäjakojen synkronointi paikallisen kopion kanssa ja päinvastoin</li>
       <li xml:lang="fr">Synchronisation d'un partage distant avec une copie locale et vice-versa</li>
       <li xml:lang="gl">Permite sincronizar comparticións remotas con copias locais en ambos sentidos.</li>
+      <li xml:lang="he">סנכרון של שיתוף מרוחק מול עותק מקומי ולהפך</li>
       <li xml:lang="hu">Távoli megosztások szinkronizálása a helyi másolattal és fordítva</li>
       <li xml:lang="id">Sinkronisasi berbagi jarak jauh dengan salinan lokal dan sebaliknya</li>
       <li xml:lang="it">Sincronizzazione di una condivisione remota con una copia locale e viceversa</li>
@@ -750,6 +769,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Mahdollisuus mukauttaa määräpalvelinten ja -jakojen asetuksia</li>
       <li xml:lang="fr">Possibilité de définir des options personnalisées pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
+      <li xml:lang="he">היכולת להגדיר אפשרויות משלך לשרתים ושיתופים באופן פרטני</li>
       <li xml:lang="hu">Egyéni beállítások definiálásának lehetősége az egyes kiszolgálók és megosztások számára</li>
       <li xml:lang="id">Kemampuan untuk menentukan opsi kustom untuk berbagi dan server individu</li>
       <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e per le condivisioni</li>
@@ -816,6 +836,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Wake-On-LAN-ominaisuudet</li>
       <li xml:lang="fr">Capacités de réveil par le réseau (Wake-on-LAN)</li>
       <li xml:lang="gl">Ofrece funcionalidades de espertar na rede (Wake-On-LAN).</li>
+      <li xml:lang="he">יכולות Wake-On-LAN (התעוררות דרך הרשת)</li>
       <li xml:lang="hu">Wake-On-LAN képességek</li>
       <li xml:lang="id">Kemampuan Wake-On-LAN</li>
       <li xml:lang="it">Funzionalità Wake-On-LAN</li>
@@ -881,6 +902,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Profiilit eri verkkoympäristömäärityksille</li>
       <li xml:lang="fr">Profils pour les différentes configurations de voisinage réseau</li>
       <li xml:lang="gl">Perfís para distintas configuracións de veciñanza de rede</li>
+      <li xml:lang="he">פרופילים להגדרות שונות של סביבות רשת</li>
       <li xml:lang="hu">Profilok különböző hálózati szomszédsági beállításokhoz</li>
       <li xml:lang="id">Memprofilkan bagi persiapan jaringan tetangga yang berbeda</li>
       <li xml:lang="it">Profili per diverse impostazioni delle risorse di rete</li>
