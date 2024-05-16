@@ -188,8 +188,6 @@ void Smb4KConfigDialog::updateSettings()
 
     if (m_profilesPage->profilesChanged()) {
         m_profilesPage->applyChanges();
-        m_customSettingsPage->loadCustomSettings();
-        m_bookmarksPage->loadBookmarks();
     }
 
     QMap<QString, QStringList> completionItems = m_bookmarksPage->completionItems();
