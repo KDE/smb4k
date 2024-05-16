@@ -11,10 +11,10 @@
 // Qt includes
 #include <QCheckBox>
 #include <QList>
-#include <QPair>
-#include <QWidget>
 #include <QListWidget>
+#include <QPair>
 #include <QPushButton>
+#include <QWidget>
 
 // KDE includes
 #include <KLineEdit>
@@ -48,7 +48,7 @@ public:
     bool profilesChanged() const;
 
 protected:
-    bool eventFilter(QObject *watched, QEvent * event) override;
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 protected Q_SLOTS:
     void slotProfileUsageChanged(bool checked);

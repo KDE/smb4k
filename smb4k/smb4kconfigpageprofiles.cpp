@@ -12,13 +12,13 @@
 
 // Qt includes
 #include <QCheckBox>
+#include <QDialogButtonBox>
+#include <QGridLayout>
 #include <QGroupBox>
 #include <QLabel>
+#include <QMouseEvent>
 #include <QPointer>
 #include <QVBoxLayout>
-#include <QGridLayout>
-#include <QDialogButtonBox>
-#include <QMouseEvent>
 
 // KDE includes
 #include <KLocalizedString>
@@ -73,13 +73,13 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     m_addButton = new QPushButton(KDE::icon(QStringLiteral("list-add")), i18n("Add"), buttonBox);
     buttonBox->addButton(m_addButton, QDialogButtonBox::ActionRole);
 
+    m_removeButton = new QPushButton(KDE::icon(QStringLiteral("edit-delete")), i18n("Remove"), buttonBox);
+    m_removeButton->setEnabled(false);
+    buttonBox->addButton(m_removeButton, QDialogButtonBox::ActionRole);
+
     m_editButton = new QPushButton(KDE::icon(QStringLiteral("edit-rename")), i18n("Edit"), buttonBox);
     m_editButton->setEnabled(false);
     buttonBox->addButton(m_editButton, QDialogButtonBox::ActionRole);
-
-    m_removeButton = new QPushButton(KDE::icon(QStringLiteral("list-remove")), i18n("Remove"), buttonBox);
-    m_removeButton->setEnabled(false);
-    buttonBox->addButton(m_removeButton, QDialogButtonBox::ActionRole);
 
     profilesEditorWidgetLayout->addWidget(buttonBox, 0, 1, 2, 1);
 
@@ -100,7 +100,7 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
         m_profiles << p;
 
         QListWidgetItem *profileItem = new QListWidgetItem(profile, m_profilesListWidget);
-        profileItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsEnabled);
+        profileItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsEnabled);
     }
 
     connect(m_useProfiles, &QCheckBox::toggled, this, &Smb4KConfigPageProfiles::slotProfileUsageChanged);
@@ -111,8 +111,6 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     connect(m_profilesListWidget, &QListWidget::itemSelectionChanged, this, &Smb4KConfigPageProfiles::slotEnableButtons);
     connect(m_profilesListWidget, &QListWidget::itemDoubleClicked, this, &Smb4KConfigPageProfiles::slotProfileDoubleClicked);
     connect(m_profilesListWidget, &QListWidget::itemChanged, this, &Smb4KConfigPageProfiles::slotProfileChanged);
-
-    // connect(m_profilesInputLineEdit, &QLineEdit::editingFinished, this, &Smb4KConfigPageProfiles::slotProfileChanged);
 }
 
 Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
@@ -129,7 +127,12 @@ void Smb4KConfigPageProfiles::applyChanges()
         }
 
         Smb4KSettings::setProfilesList(profiles);
-        Smb4KSettings::self()->save();
+
+        // if (m_useProfiles->isChecked()) {
+        //     Smb4KProfileManager::self()->setActiveProfile(m_profilesListWidget->item(0)->text());
+        // } else {
+        //     Smb4KProfileManager::self()->setActiveProfile(QStringLiteral(""));
+        // }
 
         QMutableListIterator<ProfileContainer> it(m_profiles);
 
@@ -181,7 +184,7 @@ bool Smb4KConfigPageProfiles::checkProfilesChanged()
     return changed;
 }
 
-ProfileContainer * Smb4KConfigPageProfiles::findProfileContainer(QListWidgetItem* profileItem)
+ProfileContainer *Smb4KConfigPageProfiles::findProfileContainer(QListWidgetItem *profileItem)
 {
     int index = 0;
 
@@ -195,8 +198,7 @@ ProfileContainer * Smb4KConfigPageProfiles::findProfileContainer(QListWidgetItem
     return &m_profiles[index];
 }
 
-
-bool Smb4KConfigPageProfiles::eventFilter(QObject* watched, QEvent* event)
+bool Smb4KConfigPageProfiles::eventFilter(QObject *watched, QEvent *event)
 {
     if (watched == m_profilesListWidget->viewport()) {
         if (event->type() == QEvent::MouseButtonPress) {
@@ -215,8 +217,7 @@ bool Smb4KConfigPageProfiles::eventFilter(QObject* watched, QEvent* event)
             } else {
                 return false;
             }
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -286,7 +287,7 @@ void Smb4KConfigPageProfiles::slotRemoveProfile(bool checked)
     m_profilesChanged = checkProfilesChanged();
 }
 
-void Smb4KConfigPageProfiles::slotProfileDoubleClicked(QListWidgetItem* profileItem)
+void Smb4KConfigPageProfiles::slotProfileDoubleClicked(QListWidgetItem *profileItem)
 {
     if (profileItem) {
         m_currentProfileContainer = findProfileContainer(profileItem);
@@ -310,7 +311,6 @@ void Smb4KConfigPageProfiles::slotEnableButtons()
 {
     bool enable = (m_profilesListWidget->currentItem() && m_profilesListWidget->currentItem()->isSelected());
 
-    m_editButton->setEnabled(Smb4KSettings::useProfiles() && enable);
-    m_removeButton->setEnabled(Smb4KSettings::useProfiles() && enable);
+    m_editButton->setEnabled(m_useProfiles->isChecked() && enable);
+    m_removeButton->setEnabled(m_useProfiles->isChecked() && enable);
 }
-
