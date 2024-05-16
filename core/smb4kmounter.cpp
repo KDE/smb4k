@@ -389,7 +389,6 @@ void Smb4KMounter::import(bool checkInaccessible)
     }
 
     if (changedMountedSharesList) {
-        qDebug() << "Changed list of mounted shares!";
         Q_EMIT mountedSharesListChanged();
     }
 }
