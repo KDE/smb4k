@@ -193,6 +193,13 @@ protected Q_SLOTS:
      */
     void slotProfileMigrated(const QString &oldName, const QString &newName);
 
+    /**
+     * Called when the active profile changed
+     *
+     * @param name          Profile name
+     */
+    void slotActiveProfileChanged(const QString &name);
+
 private:
     /**
      * Add custom settings

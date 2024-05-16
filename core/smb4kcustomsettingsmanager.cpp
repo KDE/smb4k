@@ -64,6 +64,7 @@ Smb4KCustomSettingsManager::Smb4KCustomSettingsManager(QObject *parent)
 
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileRemoved, this, &Smb4KCustomSettingsManager::slotProfileRemoved);
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::profileMigrated, this, &Smb4KCustomSettingsManager::slotProfileMigrated);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KCustomSettingsManager::slotActiveProfileChanged);
 }
 
 Smb4KCustomSettingsManager::~Smb4KCustomSettingsManager()
@@ -196,7 +197,7 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::customSettings(bool without
     QList<CustomSettingsPtr> settingsList;
 
     for (const CustomSettingsPtr &settings : qAsConst(d->customSettings)) {
-        if (Smb4KSettings::useProfiles() && settings->profile() != Smb4KProfileManager::self()->activeProfile()) {
+        if (Smb4KSettings::useProfiles() && (settings->profile() != Smb4KProfileManager::self()->activeProfile())) {
             continue;
         }
 
@@ -248,7 +249,7 @@ void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPt
     while (it.hasNext()) {
         CustomSettingsPtr settings = it.next();
 
-        if (!Smb4KSettings::useProfiles() || settings->profile() == Smb4KSettings::activeProfile()) {
+        if (!Smb4KSettings::useProfiles() || (settings->profile() == Smb4KProfileManager::self()->activeProfile())) {
             it.remove();
             settings.clear();
         }
@@ -273,7 +274,6 @@ void Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
             if (settings->profile().isEmpty()) {
                 settings->setProfile(Smb4KProfileManager::self()->activeProfile());
             }
-
             d->customSettings << settings;
         }
 
@@ -295,6 +295,7 @@ void Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
 
 void Smb4KCustomSettingsManager::remove(const CustomSettingsPtr &settings)
 {
+    // FIXME: Use while loop here
     for (int i = 0; i < d->customSettings.size(); i++) {
         if ((!Smb4KSettings::useProfiles() || Smb4KProfileManager::self()->activeProfile() == d->customSettings.at(i)->profile())
             && d->customSettings.at(i)->url().matches(settings->url(), QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
@@ -630,6 +631,7 @@ void Smb4KCustomSettingsManager::slotProfileRemoved(const QString &name)
 
         if (name == settings->profile()) {
             it.remove();
+            settings.clear();
         }
     }
 
@@ -648,3 +650,10 @@ void Smb4KCustomSettingsManager::slotProfileMigrated(const QString &oldName, con
     write();
     Q_EMIT updated();
 }
+
+void Smb4KCustomSettingsManager::slotActiveProfileChanged(const QString &name)
+{
+    Q_UNUSED(name);
+    Q_EMIT updated();
+}
+
