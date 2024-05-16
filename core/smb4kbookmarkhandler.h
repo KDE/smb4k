@@ -1,7 +1,7 @@
 /*
     This class handles the bookmarks.
 
-    SPDX-FileCopyrightText: 2004-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -19,11 +19,7 @@
 #include <QUrl>
 
 // forward declarations
-class Smb4KBookmark;
 class Smb4KBookmarkHandlerPrivate;
-class Smb4KBookmarkDialog;
-class Smb4KBookmarkEditor;
-class Smb4KProfileManager;
 
 /**
  * This class belongs the to core classes of Smb4K and manages the
@@ -145,20 +141,6 @@ public:
 
 Q_SIGNALS:
     /**
-     * This signal is emitted when a bookmark was added.
-     *
-     * @param bookmark      The bookmark that was added
-     */
-    void bookmarkAdded(const BookmarkPtr &bookmark);
-
-    /**
-     * This signal is emitted when a bookmark was removed.
-     *
-     * @param bookmark      The bookmark that was removed
-     */
-    void bookmarkRemoved(const BookmarkPtr &bookmark);
-
-    /**
      * Signal emitted when the list of bookmarks has been updated.
      */
     void updated();
@@ -179,21 +161,47 @@ protected Q_SLOTS:
      */
     void slotProfileMigrated(const QString &oldName, const QString &newName);
 
+    /**
+     * Called when the active profile changed
+     *
+     * @param name          Profile name
+     */
+    void slotActiveProfileChanged(const QString &name);
+
 private:
     /**
-     * This function reads the list of bookmarks from the bookmarks file.
+     * Add a @p bookmark to the list. Return TRUE on success.
      */
-    void readBookmarkList();
+    bool add(const BookmarkPtr &bookmark);
 
     /**
-     * This function updates the data of the bookmarks.
+     * Remove the @p bookmark from the list. Return TRUE on success.
+     *
+     * @param bookmark      The bookmark to be removed
+     *
+     * @returns TRUE if successful.
      */
-    void update() const;
+    bool remove(const BookmarkPtr &bookmark);
 
     /**
-     * This function writes the bookmarks to the disk.
+     * Remove the category with @p name from the list. Return TRUE
+     * on success.
+     *
+     * @parem name          The category to be removed
+     *
+     * @returns TRUE if successful.
      */
-    void writeBookmarkList();
+    bool remove(const QString &name);
+
+    /**
+     * Read the bookmarks from the file
+     */
+    void read();
+
+    /**
+     * Write the bookmarks to the file
+     */
+    void write();
 
     /**
      * Pointer to Smb4KBookmarkHandlerPrivate class
