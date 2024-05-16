@@ -125,6 +125,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Smb4K perustuu Samban asiakaskirjastoon. Se pyrkii tarjoamaan ohjelman, joka on sekä helppokäyttöinen että mahdollisimman monipuolinen.</p>
     <p xml:lang="fr">Smb4K utilise la librairie client de Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
     <p xml:lang="gl">Smb4K está baseado na biblioteca de cliente de Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
+    <p xml:lang="he">Smb4K מבוסס על ספריית הלקוח של Samba. המטרה היא לספק תוכנית שקל להשתמש ויש בה מגוון יכולות.</p>
     <p xml:lang="hu">Az Smb4K a Samba klienskönyvtárán alapul. Célja, hogy egy könnyen használható és minél több funkcióval rendelkező programot biztosítson.</p>
     <p xml:lang="id">Smb4K adalah berbasiskan pada pustaka klien Samba. Tujuannya adalah untuk menyediakan sebuah program yang mudah digunakan dan memiliki fitur sebanyak mungkin.</p>
     <p xml:lang="it">Smb4K è basato sulla libreria client di Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
@@ -803,6 +804,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Kannettavan tietokoneen tuki Solid-laitteistokehyksen avulla</li>
       <li xml:lang="fr">Prise en charge des ordinateurs portables avec le framework de gestion matérielle Solid</li>
       <li xml:lang="gl">Compatíbel con portátiles mediante a infraestrutura de dispositivos de soporte físico Solid.</li>
+      <li xml:lang="he">תמיכה במחשבנים ניידים דרך תשתית מכשירי החומרה Solid</li>
       <li xml:lang="hu">Laptop támogatás a Solid hardvereszköz-keretrendszeren keresztül</li>
       <li xml:lang="id">Dukungan laptop melalui kerangkakerja peranti hardware Solid</li>
       <li xml:lang="it">Supporto ai computer portatili per mezzo dell'infrastruttura per i dispositivi hardware Solid</li>
@@ -938,6 +940,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Windowsin hallitsemassa verkkoympäristössä tämä sovellus helpottaa tarjolla olevien Windows-jakojen käyttöä.</p>
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, esta aplicación axudará a acceder facilmente aos recursos compartidos desde Windows.</p>
+    <p xml:lang="he">אם סביבת העבודה שלך היא בעיקרה Windows, כדאי להתקין את היישום הזה כדי להקל על הגישה לשיתופי Windows נחוצים.</p>
     <p xml:lang="hu">Ha többnyire Windows hálózati környezetben dolgozik, érdemes telepíteni ezt az alkalmazást, hogy könnyedén hozzáférhessen a Windows-megosztásokhoz.</p>
     <p xml:lang="id">Jika kamu bekerja dalam lingkungan jaringan yang didominasi Windows, kamu mungkin ingin menginstal aplikasi ini untuk dapat mengakses secara mudah berbagi-berbagi yang disediakan Windows</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
