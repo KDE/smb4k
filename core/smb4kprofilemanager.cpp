@@ -146,7 +146,6 @@ void Smb4KProfileManager::removeProfile(const QString &name)
 
 void Smb4KProfileManager::slotConfigChanged()
 {
-    // FIXME: Do we need to emit the signals here?
     if (d->useProfiles != Smb4KSettings::useProfiles()) {
         d->useProfiles = Smb4KSettings::useProfiles();
         Q_EMIT profileUsageChanged(d->useProfiles);
@@ -157,9 +156,13 @@ void Smb4KProfileManager::slotConfigChanged()
         Q_EMIT profilesListChanged(d->profiles);
     }
 
-    if (!Smb4KSettings::activeProfile().isEmpty() && d->profiles.contains(Smb4KSettings::activeProfile())) {
-        setActiveProfile(Smb4KSettings::activeProfile());
+    if (d->useProfiles) {
+        if (!Smb4KSettings::activeProfile().isEmpty() && d->profiles.contains(Smb4KSettings::activeProfile())) {
+            setActiveProfile(Smb4KSettings::activeProfile());
+        } else {
+            setActiveProfile(d->profiles.first());
+        }
     } else {
-        setActiveProfile(d->profiles.first());
+        setActiveProfile(QStringLiteral(""));
     }
 }
