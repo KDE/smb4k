@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-05-02 15:48+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -2008,7 +2008,7 @@ msgstr "C'est le profil actuellement actif."
 msgid "%1 on %2"
 msgstr "%1 sur %2"
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -2043,7 +2043,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Une erreur inconnue est survenue avec Zeroconf."
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2052,7 +2052,7 @@ msgstr ""
 "<p>Le partage <b>%1</b> est monté sur <br><b>%2</b>et appartient à "
 "l'utilisateur <b>%3</b>.</p><p>Voulez-vous vraiment le libérer ?</p>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partage étranger"

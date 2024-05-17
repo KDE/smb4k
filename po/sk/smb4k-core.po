@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1922,7 +1922,7 @@ msgstr "Toto je aktuálny aktívny profil."
 msgid "%1 on %2"
 msgstr "%1 na %2"
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1954,7 +1954,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -1966,7 +1966,7 @@ msgstr ""
 "<qt><p>Zdieľanie <b>%1</b> je pripojené k <br><b>%2</b> a vlastné "
 "používateľom <b>%3</b>.</p><p>Naozaj ho chcete odpojiť?</p></qt>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Cudzie zdieľanie"

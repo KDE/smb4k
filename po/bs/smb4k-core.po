@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -1931,7 +1931,7 @@ msgstr "Ovo je trenutni aktivni profil."
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1965,7 +1965,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -1978,7 +1978,7 @@ msgstr ""
 "strane korisnika <b>%3</b>.</p><p>Da li sigurno želite da je razmjestite?</"
 "p></qt>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Strana razmjena"

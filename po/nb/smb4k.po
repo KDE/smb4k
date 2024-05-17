@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2006-04-12 21:04+0200\n"
 "Last-Translator: Nils Kristian Tomren <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -234,7 +234,7 @@ msgstr "Lagre"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#: smb4k/smb4kconfigpageprofiles.cpp:76
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr ""
@@ -242,7 +242,7 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Remove"
 msgstr ""

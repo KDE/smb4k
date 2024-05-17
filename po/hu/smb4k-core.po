@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1758,7 +1758,7 @@ msgstr "%1 csatolt megosztás van."
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1791,7 +1791,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ismeretlen hiba történt a hitelesítéskor"
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -1803,7 +1803,7 @@ msgstr ""
 "<qt><p>A(z) <b>%1</b> megosztás csatolva van a <br><b>%2</b> helyre, a "
 "tulajdonosa <b>%3</b>.</p><p>Biztosan leválasztja?</p></qt>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Külső megosztás"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -234,7 +234,7 @@ msgstr "साठवा"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#: smb4k/smb4kconfigpageprofiles.cpp:76
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, fuzzy, kde-format
 msgid "Edit"
 msgstr "संपादन"
@@ -242,7 +242,7 @@ msgstr "संपादन"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Remove"
 msgstr "काढून टाका"
