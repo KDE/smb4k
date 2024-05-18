@@ -92,6 +92,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fi">Smb4K on kehittynyt verkkoympäristöselain ja Samba-jakoliitostyökalu. Se pohjautuu KDE Frameworks 5:een ja Samban asiakaskirjastoon (libsmbclient). Se etsii verkkoympäristöstä työryhmiä, palvelimia ja jakoja ja osaa liittää halutut jaot paikalliseen tiedostojärjestelmään.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba. Il repose sur KDE Frameworks 5 et la librairie client de Samba (libsmbclient). Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba. Está baseada na versión 5 das infraestruturas de KDE e a biblioteca de cliente de Samba (libsmbclient). Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
+    <p xml:lang="he">Smb4K הוא דפדפן מתקדם לשכונה ברשת וכלי לעיגון שיתופי Samba. הוא מבוסס על תשתיות KDE 5 וספריית הלקוח של Samba ‏(libsmbclient). הוא סורק את השכונה הרשת לאיתור קבוצות עבודה, שרתים ושיתופים זמינים ויכול לעגן את כל השיתופים הרצויים למערכת הקבצים המקומית שלך.</p>
     <p xml:lang="hu">Az Smb4K egy fejlett hálózati böngésző és Samba megosztási segédprogram. A KDE Frameworks 5 és a Samba klienskönyvtárán (libsmbclient) alapul. Átvizsgálja a hálózati szomszédságot az összes elérhető munkacsoport, kiszolgáló és megosztás után, és képes az összes kívánt megosztást a helyi fájlrendszerre csatolni.</p>
     <p xml:lang="id">Smb4K adalah sebuah penelusur  pengaitan berbagi Samba. Ini berbasiskan pada KDE Frameworks 5 dan pustaka klien Samba (libsmbclient). Ini memindaikan jaringan tetanggamu untuk semua workgroup-workgroup, server-server, dan bebagi-bebagi yang tersedia dan bisa mengaitkan semua berbagi yang diinginkan ke sistem file lokalmu.</p>
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba. È basato su KDE Frameworks 5 e sulla libreria client di Samba (libsmbclient). Analizza le risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
@@ -872,6 +873,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fi">Sovelma työpöytäintegrointiin</li>
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
       <li xml:lang="gl">Ofrece integración co escritorio mediante un trebello.</li>
+      <li xml:lang="he">Plasmoid לשילוב בשולחן העבודה</li>
       <li xml:lang="hu">Plasmoid az asztali integrációhoz</li>
       <li xml:lang="id">Plasmoid untuk integrasi desktop</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
@@ -1017,6 +1019,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fi">Sovelma</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O trebello.</caption>
+      <caption xml:lang="he">ה־plasmoid</caption>
       <caption xml:lang="hu">A plasmoid</caption>
       <caption xml:lang="id">Plasmoid</caption>
       <caption xml:lang="ie">Li plasmoid</caption>
