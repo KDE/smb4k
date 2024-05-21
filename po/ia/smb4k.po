@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-02-23 10:55+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -233,7 +233,7 @@ msgstr "Salveguarda"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#: smb4k/smb4kconfigpageprofiles.cpp:76
+#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Modifica"
@@ -241,7 +241,7 @@ msgstr "Modifica"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:80
+#: smb4k/smb4kconfigpageprofiles.cpp:76
 #, kde-format
 msgid "Remove"
 msgstr "Remove"

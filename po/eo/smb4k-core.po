@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-01-08 22:51+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -1922,7 +1922,7 @@ msgstr "Ĉi tiu estas la nuntempe aktiva profilo."
 msgid "%1 on %2"
 msgstr "%1 sur %2"
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1956,7 +1956,7 @@ msgstr "Zeroconf-subteno ne haveblas en ĉi tiu versio de KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Nekonata eraro kun Zeroconf okazis."
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1965,7 +1965,7 @@ msgstr ""
 "<p>La parto <b>%1</b> estas muntita al <br><b>%2</b> kaj posedata de uzanto "
 "<b>%3</b>.</p><p> Ĉu vi vere volas malmunti ĝin?</p>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Eksterlanda kunhavaĵo"

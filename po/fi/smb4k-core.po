@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2023-12-12 16:37+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1943,7 +1943,7 @@ msgstr "Tämä nyt tällä hetkellä aktiivinen profiili."
 msgid "%1 on %2"
 msgstr "%1 koneella %2"
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1975,7 +1975,7 @@ msgstr "Zeroconf-tuki ei ole käytettävissä tässä KDE-versiossa."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconfissa tapahtui tuntematon virhe."
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1984,7 +1984,7 @@ msgstr ""
 "<p>Jako <b>%1</b> on liitetty kansioon<br><b>%2</b>, ja sen omistaa <b>%3</"
 "b>.</p><p>Haluatko varmasti irrottaa sen?</p>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Vieras jako"

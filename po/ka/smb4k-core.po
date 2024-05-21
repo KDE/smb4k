@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2024-04-09 08:37+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1926,7 +1926,7 @@ msgstr "ეს ამჟამად აქტიური პროფილი
 msgid "%1 on %2"
 msgstr "%1-ი %2-ზე"
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1959,7 +1959,7 @@ msgstr "Zeroconf-ის მხარდაჭერა KDE-ის ამ ვე�
 msgid "An unknown error with Zeroconf occurred."
 msgstr "აღმოჩენილია Zeroconf-ის უცნობი შეცდომა."
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1968,7 +1968,7 @@ msgstr ""
 "<p>ზიარი <b>%1</b> მიმაგრებულია საქაღალდეზე <br><b>%2</b> და მისი მფლობელია "
 "მომხმარებელი <b>%3</b>.</p><p>მართლა გნებავთ, მოხსნათ ის?</p>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "უცხოს ზიარი"

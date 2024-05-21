@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1946,7 +1946,7 @@ msgstr "Dat is opstunns dat aktive Profil."
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1980,7 +1980,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -1992,7 +1992,7 @@ msgstr ""
 "<qt><p>De Freegaav <b>%1</b> is inhangt op<br><b>%2</b> un höört den Bruker "
 "<b>%3</b> to.</p><p>Wullt Du ehr redig afhangen?</p></qt>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Frömd Freegaav"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-10 00:38+0000\n"
+"POT-Creation-Date: 2024-05-17 00:38+0000\n"
 "PO-Revision-Date: 2023-12-02 09:29+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -1981,7 +1981,7 @@ msgstr "Це поточний активний профіль."
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
-#: smb4kbookmarkhandler.cpp:265 smb4kcustomsettingsmanager.cpp:323
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:324
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -2015,7 +2015,7 @@ msgstr "У цій версії KDE підтримка Zeroconf є недосту
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Невідома помилка, яку пов'язано із Zeroconf."
 
-#: smb4kmounter.cpp:684
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2024,7 +2024,7 @@ msgstr ""
 "<p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
 "користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p>"
 
-#: smb4kmounter.cpp:689
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Сторонній ресурс"
