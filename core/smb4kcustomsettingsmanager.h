@@ -204,12 +204,12 @@ private:
     /**
      * Add custom settings
      */
-    void add(const CustomSettingsPtr &settings);
+    bool add(const CustomSettingsPtr &settings);
 
     /**
      * Remove custom settings
      */
-    void remove(const CustomSettingsPtr &settings);
+    bool remove(const CustomSettingsPtr &settings);
 
     /**
      * Read custom settings

@@ -79,12 +79,13 @@ Smb4KCustomSettingsManager *Smb4KCustomSettingsManager::self()
 void Smb4KCustomSettingsManager::addRemount(const SharePtr &share, bool always)
 {
     if (share) {
+        bool addedSettings = false;
         CustomSettingsPtr settings = findCustomSettings(share, true);
 
         if (!settings) {
             settings = CustomSettingsPtr(new Smb4KCustomSettings(share.data()));
             // add() takes care of the profile, we do not need to set it here.
-            add(settings);
+            addedSettings = add(settings);
         }
 
         // If the options are already in the list, check if the share is
@@ -94,8 +95,10 @@ void Smb4KCustomSettingsManager::addRemount(const SharePtr &share, bool always)
             settings->setRemount(always ? Smb4KCustomSettings::RemountAlways : Smb4KCustomSettings::RemountOnce);
         }
 
-        write();
-        Q_EMIT updated();
+        if (addedSettings) {
+            write();
+            Q_EMIT updated();
+        }
     }
 }
 
@@ -211,8 +214,7 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::customSettings(bool without
 
 void Smb4KCustomSettingsManager::addCustomSettings(const CustomSettingsPtr &settings)
 {
-    if (settings) {
-        add(settings);
+    if (settings && add(settings)) {
         write();
         Q_EMIT updated();
     }
@@ -220,8 +222,7 @@ void Smb4KCustomSettingsManager::addCustomSettings(const CustomSettingsPtr &sett
 
 void Smb4KCustomSettingsManager::removeCustomSettings(const CustomSettingsPtr &settings)
 {
-    if (settings) {
-        remove(settings);
+    if (settings && remove(settings)) {
         write();
         Q_EMIT updated();
     }
@@ -244,6 +245,7 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::wakeOnLanEntries() const
 void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPtr> &settingsList)
 {
     QMutableListIterator<CustomSettingsPtr> it(d->customSettings);
+    bool addedSettings = false;
 
     // NOTE: Do not use Smb4KCustomSettingsManager::remove() here to avoid crashes.
     while (it.hasNext()) {
@@ -256,15 +258,21 @@ void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPt
     }
 
     for (const CustomSettingsPtr &settings : settingsList) {
-        add(settings);
+        if (add(settings)) {
+            addedSettings = true;
+        }
     }
 
-    write();
-    Q_EMIT updated();
+    if (addedSettings) {
+        write();
+        Q_EMIT updated();
+    }
 }
 
-void Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
+bool Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
 {
+    bool addedSettings = false;
+
     if (settings->hasCustomSettings()) {
         CustomSettingsPtr knownSettings = findCustomSettings(settings->url());
 
@@ -290,19 +298,28 @@ void Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
                 }
             }
         }
+
+        addedSettings = true;
     }
+
+    return addedSettings;
 }
 
-void Smb4KCustomSettingsManager::remove(const CustomSettingsPtr &settings)
+bool Smb4KCustomSettingsManager::remove(const CustomSettingsPtr &settings)
 {
+    bool removedSettings = false;
+
     // FIXME: Use while loop here
     for (int i = 0; i < d->customSettings.size(); i++) {
         if ((!Smb4KSettings::useProfiles() || Smb4KProfileManager::self()->activeProfile() == d->customSettings.at(i)->profile())
             && d->customSettings.at(i)->url().matches(settings->url(), QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
             d->customSettings.takeAt(i).clear();
+            removedSettings = true;
             break;
         }
     }
+
+    return removedSettings;
 }
 
 void Smb4KCustomSettingsManager::read()
