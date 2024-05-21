@@ -50,17 +50,27 @@ public:
 protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
+Q_SIGNALS:
+    /**
+     * This signal is emitted when the profile settings were modified.
+     */
+    void profilesModified();
+
 protected Q_SLOTS:
     void slotProfileUsageChanged(bool checked);
     void slotAddProfile(bool checked);
     void slotEditProfile(bool checked);
     void slotRemoveProfile(bool checked);
-    void slotProfileDoubleClicked(QListWidgetItem *profileItem);
+    void slotMoveProfileUp(bool checked);
+    void slotMoveProfileDown(bool checked);
+    void slotSetProfileActive(bool checked);
     void slotProfileChanged(QListWidgetItem *profileItem);
-    void slotEnableButtons();
+    void slotResetProfiles(bool checked);
+    void slotEnableButtons(int row);
 
 private:
-    bool checkProfilesChanged();
+    void loadProfiles();
+    void checkProfilesChanged();
     ProfileContainer *findProfileContainer(QListWidgetItem *profileItem);
     QCheckBox *m_useProfiles;
     QWidget *m_profilesEditorWidget;
@@ -69,6 +79,10 @@ private:
     QPushButton *m_addButton;
     QPushButton *m_editButton;
     QPushButton *m_removeButton;
+    QPushButton *m_upButton;
+    QPushButton *m_downButton;
+    QPushButton *m_setActiveButton;
+    QPushButton *m_resetButton;
     QList<ProfileContainer> m_profiles;
     bool m_profilesChanged;
     ProfileContainer *m_currentProfileContainer;
