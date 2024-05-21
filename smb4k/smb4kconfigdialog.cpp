@@ -136,6 +136,7 @@ void Smb4KConfigDialog::setupDialog()
     connect(m_customSettingsPage, &Smb4KConfigPageCustomSettings::customSettingsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(m_authenticationPage, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(m_bookmarksPage, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
+    connect(m_profilesPage, &Smb4KConfigPageProfiles::profilesModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(this, &Smb4KConfigDialog::currentPageChanged, this, &Smb4KConfigDialog::slotCheckPage);
 
     //
@@ -206,17 +207,8 @@ void Smb4KConfigDialog::updateSettings()
 void Smb4KConfigDialog::slotEnableApplyButton()
 {
     // FIXME: Can this be moved to updateButtons()?
-    bool enable = false;
-
-    enable = m_authenticationPage->loginCredentialsChanged();
-
-    if (!enable) {
-        enable = m_customSettingsPage->customSettingsChanged();
-    }
-
-    if (!enable && m_bookmarksPage) {
-        enable = m_bookmarksPage->bookmarksChanged();
-    }
+    bool enable = m_authenticationPage->loginCredentialsChanged() || m_customSettingsPage->customSettingsChanged() || m_bookmarksPage->bookmarksChanged()
+        || m_profilesPage->profilesChanged();
 
     QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);
 
