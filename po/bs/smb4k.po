@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-17 00:38+0000\n"
+"POT-Creation-Date: 2024-05-22 00:39+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -209,13 +209,13 @@ msgstr "Usklađivanje"
 msgid "Custom Settings"
 msgstr "Uobičajene opcije"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profili"
 
-#: smb4k/smb4kconfigdialog.cpp:154
+#: smb4k/smb4kconfigdialog.cpp:155
 #, fuzzy, kde-format
 #| msgid ""
 #| "An incorrect setting has been found. You are now taken to the "
@@ -228,7 +228,7 @@ msgstr ""
 "stranice da je popravite."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:44
 #, kde-format
 msgid "Settings"
 msgstr "Podešavanje"
@@ -252,7 +252,6 @@ msgstr "Snimi"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Izmijeni"
@@ -260,7 +259,7 @@ msgstr "Izmijeni"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:76
+#: smb4k/smb4kconfigpageprofiles.cpp:78
 #, kde-format
 msgid "Remove"
 msgstr "Ukloni"
@@ -501,10 +500,32 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Napredna podešavanja"
 
-#: smb4k/smb4kconfigpageprofiles.cpp:73
+#: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
 msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:82
+#, kde-format
+msgid "Set Active"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:86
+#, kde-format
+msgid "Move Up"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:90
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Move Down"
+msgstr "Predmet"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:94
+#, fuzzy, kde-format
+#| msgid "User Interface"
+msgid "Rename"
+msgstr "Korisnički interfejs"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, fuzzy, kde-format
@@ -1389,11 +1410,6 @@ msgstr "Veličina"
 
 #~ msgid "Entry"
 #~ msgstr "Unos"
-
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Korisnički interfejs"
 
 #~ msgid "Password"
 #~ msgstr "Lozinka"

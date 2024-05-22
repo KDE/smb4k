@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-17 00:38+0000\n"
+"POT-Creation-Date: 2024-05-22 00:39+0000\n"
 "PO-Revision-Date: 2023-11-17 12:32+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -211,13 +211,13 @@ msgstr "Синхронизация"
 msgid "Custom Settings"
 msgstr "Пользовательские параметры"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Профили"
 
-#: smb4k/smb4kconfigdialog.cpp:154
+#: smb4k/smb4kconfigdialog.cpp:155
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -227,7 +227,7 @@ msgstr ""
 "соответствующая страница окна настройки.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:44
 #, kde-format
 msgid "Settings"
 msgstr "Параметры"
@@ -250,7 +250,6 @@ msgstr "Сохранить"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Изменить"
@@ -258,7 +257,7 @@ msgstr "Изменить"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:76
+#: smb4k/smb4kconfigpageprofiles.cpp:78
 #, kde-format
 msgid "Remove"
 msgstr "Удалить"
@@ -484,11 +483,32 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Дополнительные параметры"
 
-#: smb4k/smb4kconfigpageprofiles.cpp:73
+#: smb4k/smb4kconfigpageprofiles.cpp:75
 #, fuzzy, kde-format
 #| msgid "A&dd"
 msgid "Add"
 msgstr "До&бавить"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:82
+#, kde-format
+msgid "Set Active"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:86
+#, kde-format
+msgid "Move Up"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:90
+#, fuzzy, kde-format
+#| msgid "Item Down"
+msgid "Move Down"
+msgstr "Переместить вниз"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:94
+#, fuzzy, kde-format
+msgid "Rename"
+msgstr "Интерфейс пользователя"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
@@ -1328,10 +1348,6 @@ msgstr "Размер:"
 
 #~ msgid "Entry"
 #~ msgstr "Запись"
-
-#, fuzzy
-#~ msgid "Username"
-#~ msgstr "Интерфейс пользователя"
 
 #~ msgid "Password"
 #~ msgstr "Пароль"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-17 00:38+0000\n"
+"POT-Creation-Date: 2024-05-22 00:39+0000\n"
 "PO-Revision-Date: 2024-02-05 23:04+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -197,13 +197,13 @@ msgstr "동기화"
 msgid "Custom Settings"
 msgstr "사용자 정의 설정"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "프로필"
 
-#: smb4k/smb4kconfigdialog.cpp:154
+#: smb4k/smb4kconfigdialog.cpp:155
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -213,7 +213,7 @@ msgstr ""
 "수 있습니다.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:44
 #, kde-format
 msgid "Settings"
 msgstr "설정"
@@ -236,7 +236,6 @@ msgstr "저장"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "편집"
@@ -244,7 +243,7 @@ msgstr "편집"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:76
+#: smb4k/smb4kconfigpageprofiles.cpp:78
 #, kde-format
 msgid "Remove"
 msgstr "삭제"
@@ -458,10 +457,32 @@ msgstr "사용자 정의 설정 편집기에서 깨울 호스트를 정의하십
 msgid "Advanced Settings"
 msgstr "고급 설정"
 
-#: smb4k/smb4kconfigpageprofiles.cpp:73
+#: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
 msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:82
+#, kde-format
+msgid "Set Active"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:86
+#, kde-format
+msgid "Move Up"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:90
+#, fuzzy, kde-format
+#| msgid "Item Down"
+msgid "Move Down"
+msgstr "항목 아래로"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:94
+#, fuzzy, kde-format
+#| msgid "Username"
+msgid "Rename"
+msgstr "사용자 이름"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
@@ -1279,9 +1300,6 @@ msgstr "크기:"
 
 #~ msgid "Entry"
 #~ msgstr "항목"
-
-#~ msgid "Username"
-#~ msgstr "사용자 이름"
 
 #~ msgid "Password"
 #~ msgstr "암호"

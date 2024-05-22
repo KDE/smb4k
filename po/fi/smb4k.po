@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-17 00:38+0000\n"
+"POT-Creation-Date: 2024-05-22 00:39+0000\n"
 "PO-Revision-Date: 2024-02-14 19:34+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -200,13 +200,13 @@ msgstr "Synkronointi"
 msgid "Custom Settings"
 msgstr "Mukautetut valinnat"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profiilit"
 
-#: smb4k/smb4kconfigdialog.cpp:154
+#: smb4k/smb4kconfigdialog.cpp:155
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -217,7 +217,7 @@ msgstr ""
 "josta voit korjata sen.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:44
 #, kde-format
 msgid "Settings"
 msgstr "Asetukset"
@@ -240,7 +240,6 @@ msgstr "Tallenna"
 #: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#: smb4k/smb4kconfigpageprofiles.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Muokkaa"
@@ -248,7 +247,7 @@ msgstr "Muokkaa"
 #: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:76
+#: smb4k/smb4kconfigpageprofiles.cpp:78
 #, kde-format
 msgid "Remove"
 msgstr "Poista"
@@ -467,10 +466,32 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Lisäasetukset"
 
-#: smb4k/smb4kconfigpageprofiles.cpp:73
+#: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
 msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:82
+#, kde-format
+msgid "Set Active"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:86
+#, kde-format
+msgid "Move Up"
+msgstr ""
+
+#: smb4k/smb4kconfigpageprofiles.cpp:90
+#, fuzzy, kde-format
+#| msgid "Item Down"
+msgid "Move Down"
+msgstr "Tietue alemmas"
+
+#: smb4k/smb4kconfigpageprofiles.cpp:94
+#, fuzzy, kde-format
+#| msgid "Username"
+msgid "Rename"
+msgstr "Käyttäjätunnus"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
@@ -1290,9 +1311,6 @@ msgstr "Koko:"
 
 #~ msgid "Entry"
 #~ msgstr "Tietue"
-
-#~ msgid "Username"
-#~ msgstr "Käyttäjätunnus"
 
 #~ msgid "Password"
 #~ msgstr "Salasana"
