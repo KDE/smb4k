@@ -469,16 +469,14 @@ msgid "Move Up"
 msgstr ""
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "项目下移"
+msgstr ""
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username:"
+#, kde-format
 msgid "Rename"
-msgstr "用户名："
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

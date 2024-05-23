@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:39+0000\n"
-"PO-Revision-Date: 2024-05-03 11:30+0200\n"
+"PO-Revision-Date: 2024-05-22 14:01+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -483,24 +483,22 @@ msgstr "Toevoegen"
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "Actief maken"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Omhoog verplaatsen"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "Item omlaag verplaatsen"
+msgstr "Omlaag verplaatsen"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username"
+#, kde-format
 msgid "Rename"
-msgstr "Gebruikersnaam"
+msgstr "Hernoemen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

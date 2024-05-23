@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:39+0000\n"
-"PO-Revision-Date: 2024-05-03 04:10+0200\n"
+"PO-Revision-Date: 2024-05-22 04:48+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -473,24 +473,22 @@ msgstr "დამატება"
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "აქტიურად მონიშვნა"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "აწევა"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "ჩანაწერი დაბლა"
+msgstr "ჩამოწევა"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username:"
+#, kde-format
 msgid "Rename"
-msgstr "მომხმარებელი:"
+msgstr "სახელის გადარქმევა"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

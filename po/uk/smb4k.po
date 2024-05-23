@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:39+0000\n"
-"PO-Revision-Date: 2024-05-03 07:37+0300\n"
+"PO-Revision-Date: 2024-05-22 08:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -486,24 +486,22 @@ msgstr "Додати"
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "Зробити активним"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Пересунути вище"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "На пункт нижче"
+msgstr "Пересунути нижче"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username"
+#, kde-format
 msgid "Rename"
-msgstr "Користувач"
+msgstr "Перейменувати"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
