@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:39+0000\n"
-"PO-Revision-Date: 2024-05-04 01:43+0300\n"
+"PO-Revision-Date: 2024-05-23 01:35+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,12 +26,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "KDE Çevirmenleri, Emir SARI"
+msgstr "Emir SARI"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-l10n-tr@kde.org, emir_sari@icloud.com"
+msgstr "emir_sari@icloud.com"
 
 #: helpers/smb4kmounthelper.cpp:135
 #, kde-format
@@ -41,7 +41,7 @@ msgstr "Bağlama süreci başlatılamadı."
 #: helpers/smb4kmounthelper.cpp:179
 #, kde-format
 msgid "The mountpoint %1 is invalid."
-msgstr "'%1' bağlama noktası geçersiz."
+msgstr "“%1” bağlama noktası geçersiz."
 
 #: helpers/smb4kmounthelper.cpp:241
 #, kde-format
@@ -61,7 +61,7 @@ msgstr "Gelişmiş ağ komşuları tarayıcısı ve Samba paylaşım bağlama ar
 #: smb4k/main.cpp:44
 #, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2024 Alexander Reinholdt"
+msgstr "© 2003–2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -475,24 +475,22 @@ msgstr "Ekle"
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "Etkin Olarak Ayarla"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Yukarı Taşı"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "Öge Aşağı"
+msgstr "Aşağı Taşı"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username:"
+#, kde-format
 msgid "Rename"
-msgstr "Kullanıcı adı:"
+msgstr "Yeniden Adlandır"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
@@ -707,7 +705,7 @@ msgid ""
 msgstr ""
 "<qt>Ana pencereyi kapattığınızda Smb4K sistem tepsisinde çalışmayı "
 "sürdürecektir.<br>Programı kapatmak için <i>Dosya</i> menüsünden <i>Çık</"
-"i>'ı seçin.</qt>"
+"i>’ı seçin.</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:299
 #, kde-format
@@ -739,37 +737,37 @@ msgstr "Parola iletişim kutusu kullanıldı."
 #: smb4k/smb4kmainwindow.cpp:516
 #, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr "Çalışma gruplarına ve alanlara bakılıyor..."
+msgstr "Çalışma gruplarına ve alanlara bakılıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:521
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "%1 alanındaki istemcilere bakılıyor..."
+msgstr "%1 alanındaki istemcilere bakılıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:526
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr "%1 istemcisi tarafından sağlanan paylaşımlara bakılıyor..."
+msgstr "%1 istemcisi tarafından sağlanan paylaşımlara bakılıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:534 smb4k/smb4kmainwindow.cpp:543
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "%1 içindeki dosya ve dizinlere bakılıyor..."
+msgstr "%1 içindeki dosya ve dizinlere bakılıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:560
 #, kde-format
 msgid "Waking up remote hosts..."
-msgstr "Uzak istemciler uyandırılıyor..."
+msgstr "Uzak istemciler uyandırılıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:565
 #, kde-format
 msgid "Sending file to printer %1..."
-msgstr "Dosya %1 yazıcısına gönderiliyor..."
+msgstr "Dosya %1 yazıcısına gönderiliyor…"
 
 #: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "Searching..."
-msgstr "Aranıyor..."
+msgstr "Aranıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:590 smb4k/smb4kmainwindow.cpp:629
 #: smb4k/smb4kmainwindow.cpp:714
@@ -780,17 +778,17 @@ msgstr "Tamamlandı."
 #: smb4k/smb4kmainwindow.cpp:600
 #, kde-format
 msgid "Mounting..."
-msgstr "Bağlanıyor..."
+msgstr "Bağlanıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:604
 #, kde-format
 msgid "Unmounting..."
-msgstr "Bağlantı kesiliyor..."
+msgstr "Bağlantı kesiliyor…"
 
 #: smb4k/smb4kmainwindow.cpp:608
 #, kde-format
 msgid "Waking up host..."
-msgstr "Sunucu uyandırılıyor..."
+msgstr "Sunucu uyandırılıyor…"
 
 #: smb4k/smb4kmainwindow.cpp:638
 #, kde-format

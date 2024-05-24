@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2014, 2015, 2017, 2018, 2019.
+# SPDX-FileCopyrightText: 2014, 2015, 2017, 2018, 2019, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-10 00:38+0000\n"
-"PO-Revision-Date: 2019-04-27 12:05+0100\n"
+"PO-Revision-Date: 2024-05-23 19:56+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language-Team: British English\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.07.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:58
 #: package/contents/ui/SharesViewItemDelegate.qml:57
@@ -45,13 +45,11 @@ msgstr "Bookmark"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
-msgstr ""
+msgstr "Preview"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:153
-#, fuzzy
-#| msgid "Configuration"
 msgid "Configure"
-msgstr "Configuration"
+msgstr "Configure"
 
 #: package/contents/ui/NetworkBrowserPage.qml:43
 msgid "Rescan"
