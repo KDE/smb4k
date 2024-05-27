@@ -1,4 +1,5 @@
 {
+    "KPackageStructure": "Plasma/Applet",
     "KPlugin": {
         "Authors": [
             {
@@ -106,7 +107,6 @@
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     },
-    "KPackageStructure": "Plasma/Applet",
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-DefaultSize": "200,300",
     "X-Plasma-Requires-FileDialog": "Unused",
