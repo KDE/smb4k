@@ -27,6 +27,7 @@ Dependencies:
     'frameworks/kstatusnotifieritem': '@latest-kf6'
     'plasma/libplasma': '@latest-kf6'
     'third-party/kdsoap': '@latest'
+    'third-party/qtkeychain': '@latest-kf6'
     'libraries/kdsoap-ws-discovery-client': '@stable'
 
 Options:
