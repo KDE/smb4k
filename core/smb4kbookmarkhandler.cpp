@@ -271,8 +271,7 @@ bool Smb4KBookmarkHandler::remove(const QString &name)
     while (it.hasNext()) {
         BookmarkPtr b = it.next();
 
-        if ((!Smb4KSettings::useProfiles() || b->profile() == Smb4KProfileManager::self()->activeProfile())
-            && b->categoryName() == name) {
+        if ((!Smb4KSettings::useProfiles() || b->profile() == Smb4KProfileManager::self()->activeProfile()) && b->categoryName() == name) {
             it.remove();
             removedCategory = true;
             b.clear();
