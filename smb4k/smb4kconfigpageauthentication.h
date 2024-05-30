@@ -1,25 +1,20 @@
 /*
     The configuration page for the authentication settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 #ifndef SMB4KCONFIGPAGEAUTHENTICATION_H
 #define SMB4KCONFIGPAGEAUTHENTICATION_H
 
-// Application specific includes
-#include "core/smb4kauthinfo.h"
-
 // Qt includes
-#include <QCheckBox>
-#include <QList>
-#include <QListWidget>
-#include <QPushButton>
 #include <QWidget>
+#include <QLabel>
 
-// Forward declarations
-class QListWidgetItem;
+// KDE includes
+#include <KPasswordLineEdit>
+#include <KLineEdit>
 
 /**
  * This is the configuration tab for the authentication settings
@@ -46,131 +41,45 @@ public:
     virtual ~Smb4KConfigPageAuthentication();
 
     /**
-     * Load the login credentials.
+     * Saves the current default login credentials to the secure storage.
      */
-    void loadLoginCredentials();
+    void saveDefaultLoginCredentials();
 
     /**
-     * Save the login credentials.
-     */
-    void saveLoginCredentials();
-
-    /**
-     * Returns TRUE if the wallet entries are loaded and FALSE otherwise.
+     * Returns TRUE if the current default login credentials were changed.
      *
-     * @returns TRUE if the wallet entries are loaded
+     * @returns TRUE if the current default login credentials changed.
      */
-    bool loginCredentialsLoaded();
-
-    /**
-     * This functions checks the entries in this widget against the ones in
-     * the wallet and returns the result. If the login credentials were not
-     * loaded, this function will always return FALSE.
-     *
-     * @returns TRUE if the wallet entries have changed and FALSE otherwise.
-     */
-    bool loginCredentialsChanged();
+    bool defaultLoginCredentialsChanged();
 
 Q_SIGNALS:
     /**
-     * This signal is emitted every time the wallet entries potentially were
-     * modified by the user. When this signal is emitted, it does not necessarily
-     * mean that any wallet entry indeed changed. It only means that the user
-     * edited one.
+     * This signal is emitted every time the default login credentials of
+     * the current profile changed.
      */
-    void walletEntriesModified();
-
-protected:
-    /**
-     * Reimplemented.
-     */
-    bool eventFilter(QObject *object, QEvent *event) override;
+    void defaultLoginCredentialsModified();
 
 protected Q_SLOTS:
     /**
-     * This slot is called when the "Use wallet" check box is toggled.
+     * This slot is called when the username was edited.
      *
-     * @param checked       TRUE if the check box is checked and otherwise
-     *                      FALSE.
+     * @param userName        The default username
      */
-    void slotKWalletButtonToggled(bool checked);
+    void slotDefaultUserNameEdited(const QString &userName);
 
     /**
-     * This slot is invoked when the "Default login" check box is toggled.
+     * This slot is called when the password was edited.
      *
-     * @param checked       TRUE if the check box is checked and otherwise
-     *                      FALSE.
+     * @param password        The default password
      */
-    void slotDefaultLoginToggled(bool checked);
-
-    /**
-     * This slot is called when the wallet entries are to be loaded.
-     *
-     * @param checked         TRUE if the button is checked and FALSE otherwise.
-     */
-    void slotLoadButtonClicked(bool checked);
-
-    /**
-     * This slot is called when the list of all wallet entries is to be saved.
-     *
-     * @param checked         TRUE if the button is checked and FALSE otherwise.
-     */
-    void slotSaveButtonClicked(bool checked);
-
-    /**
-     * This slot is called when a wallet entry is to be edited.
-     *
-     * @param checked         TRUE if the button is checked and FALSE otherwise.
-     */
-    void slotEditButtonClicked(bool checked);
-
-    /**
-     * This slot is called when a wallet entry is to be removed.
-     *
-     * @param checked         TRUE if the button is checked and FALSE otherwise.
-     */
-    void slotRemoveButtonClicked(bool checked);
-
-    /**
-     * This slot is called when the list of all wallet entries is to be cleared.
-     *
-     * @param checked         TRUE if the button is checked and FALSE otherwise.
-     */
-    void slotClearButtonClicked(bool checked);
-
-    /**
-     * This slot is called when the actions performed on the custom options
-     * are to be reset.
-     *
-     * @param checked         TRUE if the button is checked and FALSE otherwise.
-     */
-    void slotResetButtonClicked(bool checked);
-
-    /**
-     * This slot is called when the reset button is to be enabled/disabled.
-     */
-    void slotEnableResetButton();
-
-    /**
-     * This slot is called when an wallet item in the list view is double clicked.
-     *
-     * @param item          The item that was double clicked.
-     */
-    void slotWalletItemDoubleClicked(QListWidgetItem *item);
+    void slotDefaultPasswordEdited(const QString &password);
 
 private:
-    QWidget *m_walletEntriesEditor;
-    QListWidget *m_walletEntriesWidget;
-    QPushButton *m_loadButton;
-    QPushButton *m_saveButton;
-    QPushButton *m_editButton;
-    QPushButton *m_removeButton;
-    QPushButton *m_clearButton;
-    QPushButton *m_resetButton;
-    QCheckBox *m_useDefaultLogin;
-    QList<Smb4KAuthInfo *> m_entriesList;
-    // FIXME: Do we need this at all?
-    bool m_entriesLoaded;
+    void loadDefaultLoginCredentials();
+    QLabel *m_activeProfile;
+    KLineEdit *m_defaultUserName;
+    KPasswordLineEdit *m_defaultPassword;
+    bool m_defaultCredentialsModified;
 };
 
 #endif

@@ -140,34 +140,6 @@ void Smb4KNotification::sharesUnmounted(int number)
 // Warnings
 //
 
-void Smb4KNotification::openingWalletFailed(const QString &name)
-{
-    KNotification *notification = new KNotification(QStringLiteral("openingWalletFailed"), KNotification::CloseOnTimeout);
-
-    if (!p->componentName.isEmpty()) {
-        notification->setComponentName(p->componentName);
-    }
-
-    notification->setText(i18n("<p>Opening the wallet <b>%1</b> failed.</p>", name));
-    notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
-    notification->sendEvent();
-}
-
-void Smb4KNotification::credentialsNotAccessible()
-{
-    KNotification *notification = new KNotification(QStringLiteral("credentialsNotAccessible"), KNotification::CloseOnTimeout);
-
-    if (!p->componentName.isEmpty()) {
-        notification->setComponentName(p->componentName);
-    }
-
-    notification->setText(
-        i18n("<p>The credentials stored in the wallet could not be accessed. "
-             "There is either no wallet available or it could not be opened.</p>"));
-    notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
-    notification->sendEvent();
-}
-
 void Smb4KNotification::mimetypeNotSupported(const QString &mimetype)
 {
     KNotification *notification = new KNotification(QStringLiteral("mimetypeNotSupported"), KNotification::CloseOnTimeout);
@@ -561,6 +533,19 @@ void Smb4KNotification::zeroconfError(const QString &errorMessage)
     }
 
     notification->setText(i18n("<p>An error with the Zeroconf service occurred: <s>%1</s></p>", errorMessage));
+    notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
+    notification->sendEvent();
+}
+
+void Smb4KNotification::keychainError(const QString &errorMessage)
+{
+    KNotification *notification = new KNotification(QStringLiteral("keychainError"), KNotification::CloseOnTimeout);
+
+    if (!p->componentName.isEmpty()) {
+        notification->setComponentName(p->componentName);
+    }
+
+    notification->setText(i18n("<p>An error occurred while reading the login credentials from the secure storage:\n<tt>%1</tt></p>", errorMessage));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }

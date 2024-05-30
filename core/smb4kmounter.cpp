@@ -1,15 +1,15 @@
 /*
     The core class that mounts the shares.
 
-    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // Application specific includes
 #include "smb4kmounter.h"
-#include "smb4kauthinfo.h"
 #include "smb4kbookmark.h"
 #include "smb4kbookmarkhandler.h"
+#include "smb4kcredentialsmanager.h"
 #include "smb4kcustomsettings.h"
 #include "smb4kcustomsettingsmanager.h"
 #include "smb4khardwareinterface.h"
@@ -18,7 +18,6 @@
 #include "smb4kprofilemanager.h"
 #include "smb4ksettings.h"
 #include "smb4kshare.h"
-#include "smb4kwalletmanager.h"
 #include "smb4kworkgroup.h"
 
 #if defined(Q_OS_LINUX)
@@ -98,7 +97,7 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     //
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::aboutToChangeProfile, this, &Smb4KMounter::slotAboutToChangeProfile);
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KMounter::slotActiveProfileChanged);
-    connect(Smb4KWalletManager::self(), &Smb4KWalletManager::credentialsUpdated, this, &Smb4KMounter::slotCredentialsUpdated);
+    connect(Smb4KCredentialsManager::self(), &Smb4KCredentialsManager::credentialsUpdated, this, &Smb4KMounter::slotCredentialsUpdated);
     connect(Smb4KMountSettings::self(), &Smb4KMountSettings::configChanged, this, &Smb4KMounter::slotConfigChanged);
 
     connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::onlineStateChanged, this, &Smb4KMounter::slotOnlineStateChanged);
@@ -536,7 +535,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         //
         // Get the authentication information
         //
-        Smb4KWalletManager::self()->readLoginCredentials(share);
+        Smb4KCredentialsManager::self()->readLoginCredentials(share);
 
         //
         // Mount arguments

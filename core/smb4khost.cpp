@@ -7,7 +7,6 @@
 
 // application specific includes
 #include "smb4khost.h"
-#include "smb4kauthinfo.h"
 
 // Qt includes
 #include <QDebug>
@@ -16,6 +15,8 @@
 
 // KDE includes
 #include <KIconLoader>
+
+using namespace Smb4KGlobal;
 
 class Smb4KHostPrivate
 {

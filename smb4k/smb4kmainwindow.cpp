@@ -15,7 +15,6 @@
 #include "core/smb4ksettings.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
-#include "core/smb4kwalletmanager.h"
 #include "core/smb4kworkgroup.h"
 #include "smb4kbookmarkmenu.h"
 #include "smb4knetworkbrowserdockwidget.h"
@@ -131,12 +130,6 @@ void Smb4KMainWindow::setupStatusBar()
     m_progressBar->setAlignment(Qt::AlignCenter);
     m_progressBar->setVisible(false);
 
-    // Set the icon on the right side that represents the initial
-    // state of the wallet manager.
-    m_passwordIcon = new QLabel(statusBar());
-    m_passwordIcon->setContentsMargins(0, 0, 0, 0);
-    m_passwordIcon->setAlignment(Qt::AlignCenter);
-
     // The feedback icon.
     m_feedbackIcon = new QLabel(statusBar());
     m_feedbackIcon->setContentsMargins(0, 0, 0, 0);
@@ -144,9 +137,7 @@ void Smb4KMainWindow::setupStatusBar()
 
     statusBar()->addPermanentWidget(m_progressBar);
     statusBar()->addPermanentWidget(m_feedbackIcon);
-    statusBar()->addPermanentWidget(m_passwordIcon);
 
-    slotWalletManagerInitialized();
     setupMountIndicator();
 
     //
@@ -154,8 +145,6 @@ void Smb4KMainWindow::setupStatusBar()
     //
     connect(Smb4KClient::self(), &Smb4KClient::aboutToStart, this, &Smb4KMainWindow::slotClientAboutToStart);
     connect(Smb4KClient::self(), &Smb4KClient::finished, this, &Smb4KMainWindow::slotClientFinished);
-
-    connect(Smb4KWalletManager::self(), &Smb4KWalletManager::initialized, this, &Smb4KMainWindow::slotWalletManagerInitialized);
 
     connect(Smb4KMounter::self(), &Smb4KMounter::mounted, this, &Smb4KMainWindow::slotVisualMountFeedback);
     connect(Smb4KMounter::self(), &Smb4KMounter::unmounted, this, &Smb4KMainWindow::slotVisualUnmountFeedback);
@@ -271,10 +260,6 @@ void Smb4KMainWindow::loadSettings()
     m_sharesViewDockWidget->loadSettings();
 
     m_bookmarkMenu->refreshMenu();
-
-    // Check the state of the password handler and the wallet settings and
-    // set the pixmap in the status bar accordingly.
-    slotWalletManagerInitialized();
 
     // Set up the mount indicator icon.
     setupMountIndicator();
@@ -488,22 +473,6 @@ void Smb4KMainWindow::slotAddBookmarks()
                 action->trigger();
             }
         }
-    }
-}
-
-void Smb4KMainWindow::slotWalletManagerInitialized()
-{
-    if (Smb4KWalletManager::self()->useWalletSystem()) {
-        if (KIconLoader::global()->hasIcon(QStringLiteral("kwalletmanager"))) {
-            m_passwordIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("kwalletmanager"), KIconLoader::Small, 0, KIconLoader::DefaultState));
-        } else {
-            m_passwordIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("security-high"), KIconLoader::Small, 0, KIconLoader::DefaultState));
-        }
-
-        m_passwordIcon->setToolTip(i18n("The wallet is used."));
-    } else {
-        m_passwordIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-password"), KIconLoader::Small, 0, KIconLoader::DefaultState));
-        m_passwordIcon->setToolTip(i18n("The password dialog is used."));
     }
 }
 

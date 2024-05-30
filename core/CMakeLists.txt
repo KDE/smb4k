@@ -11,7 +11,6 @@ include_directories(
 add_library(smb4kcore SHARED)
 
 target_sources(smb4kcore PRIVATE
-  smb4kauthinfo.cpp
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
   smb4kbookmarkhandler.cpp
@@ -19,6 +18,7 @@ target_sources(smb4kcore PRIVATE
   smb4kclient_p.cpp
   smb4kcustomsettings.cpp
   smb4kcustomsettingsmanager.cpp
+  smb4kcredentialsmanager.cpp
   smb4kfile.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
@@ -31,7 +31,6 @@ target_sources(smb4kcore PRIVATE
   smb4kshare.cpp
   smb4ksynchronizer.cpp
   smb4ksynchronizer_p.cpp
-  smb4kwalletmanager.cpp
   smb4kworkgroup.cpp)
 
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
@@ -67,6 +66,7 @@ target_link_libraries(smb4kcore
   KF6::JobWidgets
   KF6::Wallet
   KF6::DNSSD
+  qt6keychain
   ${LIBSMBCLIENT_LIBRARIES})
     
 if (SMB4K_WITH_WS_DISCOVERY)

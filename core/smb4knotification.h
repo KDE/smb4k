@@ -62,19 +62,6 @@ SMB4KCORE_EXPORT void sharesMounted(int number);
 SMB4KCORE_EXPORT void sharesUnmounted(int number);
 
 /**
- * Warn the user that the wallet could not be opened.
- *
- * @param name      The name of the wallet
- */
-SMB4KCORE_EXPORT void openingWalletFailed(const QString &name);
-
-/**
- * Warn the user that the credentials stored in the wallet could not
- * be accessed.
- */
-SMB4KCORE_EXPORT void credentialsNotAccessible();
-
-/**
  * Tell the user that the mimetype is not supported and that he/she
  * should convert the file.
  *
@@ -220,6 +207,14 @@ SMB4KCORE_EXPORT void networkCommunicationFailed(const QString &errorMessage);
  * @param errorMessage  The error message
  */
 SMB4KCORE_EXPORT void zeroconfError(const QString &errorMessage);
+
+/**
+ * This error message is shown when an error occurred while reading the
+ * login credentials from the secure storage.
+ *
+ * @param errorMessage  The error message
+ */
+SMB4KCORE_EXPORT void keychainError(const QString &errorMessage);
 };
 
 #endif

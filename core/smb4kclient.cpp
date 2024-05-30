@@ -9,13 +9,13 @@
 #include "smb4kclient.h"
 #include "smb4kbasicnetworkitem.h"
 #include "smb4kclient_p.h"
+#include "smb4kcredentialsmanager.h"
 #include "smb4kcustomsettings.h"
 #include "smb4kcustomsettingsmanager.h"
 #include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
-#include "smb4kwalletmanager.h"
 
 // Qt includes
 #include <QApplication>
@@ -33,7 +33,7 @@ Smb4KClient::Smb4KClient(QObject *parent)
     , d(new Smb4KClientPrivate)
 {
     connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KClient::slotAboutToQuit);
-    connect(Smb4KWalletManager::self(), &Smb4KWalletManager::credentialsUpdated, this, &Smb4KClient::slotCredentialsUpdated);
+    connect(Smb4KCredentialsManager::self(), &Smb4KCredentialsManager::credentialsUpdated, this, &Smb4KClient::slotCredentialsUpdated);
 }
 
 Smb4KClient::~Smb4KClient()

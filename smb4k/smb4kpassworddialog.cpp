@@ -1,14 +1,14 @@
 /*
  *  Password dialog
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 // application specific includes
 #include "smb4kpassworddialog.h"
+#include "core/smb4kcredentialsmanager.h"
 #include "core/smb4khomesshareshandler.h"
-#include "core/smb4kwalletmanager.h"
 
 // KDE includes
 #include <KLocalizedString>
@@ -34,7 +34,7 @@ bool Smb4KPasswordDialog::setNetworkItem(const NetworkItemPtr &networkItem)
             HostPtr host = m_networkItem.staticCast<Smb4KHost>();
 
             if (host) {
-                Smb4KWalletManager::self()->readLoginCredentials(host);
+                Smb4KCredentialsManager::self()->readLoginCredentials(host);
 
                 setPrompt(i18n("Please enter a username and a password for the host <b>%1</b>.", host->hostName()));
                 setUsername(host->userName());
@@ -59,7 +59,7 @@ bool Smb4KPasswordDialog::setNetworkItem(const NetworkItemPtr &networkItem)
                         SharePtr tempShare = SharePtr(new Smb4KShare(*share.data()));
                         tempShare->setUserName(user);
 
-                        Smb4KWalletManager::self()->readLoginCredentials(tempShare);
+                        Smb4KCredentialsManager::self()->readLoginCredentials(tempShare);
 
                         knownLogins.insert(tempShare->userName(), tempShare->password());
 
@@ -68,7 +68,7 @@ bool Smb4KPasswordDialog::setNetworkItem(const NetworkItemPtr &networkItem)
 
                     setKnownLogins(knownLogins);
                 } else {
-                    Smb4KWalletManager::self()->readLoginCredentials(share);
+                    Smb4KCredentialsManager::self()->readLoginCredentials(share);
                     setUsername(share->userName());
                     setPassword(share->password());
                 }
@@ -94,7 +94,7 @@ void Smb4KPasswordDialog::accept()
     url.setPassword(password());
 
     m_networkItem->setUrl(url);
-    Smb4KWalletManager::self()->writeLoginCredentials(m_networkItem);
+    Smb4KCredentialsManager::self()->writeLoginCredentials(m_networkItem);
 
     KPasswordDialog::accept();
 }

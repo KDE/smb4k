@@ -1,7 +1,7 @@
 /*
     The network neighborhood browser dock widget
 
-    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -12,7 +12,6 @@
 #include "core/smb4kmounter.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kshare.h"
-#include "core/smb4kwalletmanager.h"
 #include "core/smb4kworkgroup.h"
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"

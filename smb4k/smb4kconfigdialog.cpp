@@ -124,17 +124,17 @@ void Smb4KConfigDialog::setupDialog()
     m_userInterface = addPage(userInterfaceArea, i18n("User Interface"), QStringLiteral("preferences-desktop"));
     m_network = addPage(networkArea, i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
     m_mounting = addPage(mountingArea, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
-    m_authentication = addPage(authenticationArea, i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"));
     m_synchronization = addPage(synchronizationArea, i18n("Synchronization"), QStringLiteral("folder-sync"));
-    m_bookmarks = addPage(bookmarksArea, i18n("Bookmarks"), QStringLiteral("bookmarks"));
-    m_customSettings = addPage(customSettingsArea, i18n("Custom Settings"), QStringLiteral("settings-configure"));
     m_profiles = addPage(profilesArea, i18n("Profiles"), QStringLiteral("preferences-system-users"));
+    m_authentication = addPage(authenticationArea, i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"), QString(), false);
+    m_bookmarks = addPage(bookmarksArea, i18n("Bookmarks"), QStringLiteral("bookmarks"), QString(), false);
+    m_customSettings = addPage(customSettingsArea, i18n("Custom Settings"), QStringLiteral("settings-configure"), QString(), false);
 
     //
     // Connections
     //
     connect(m_customSettingsPage, &Smb4KConfigPageCustomSettings::customSettingsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
-    connect(m_authenticationPage, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
+    connect(m_authenticationPage, &Smb4KConfigPageAuthentication::defaultLoginCredentialsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(m_bookmarksPage, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(m_profilesPage, &Smb4KConfigPageProfiles::profilesModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(this, &Smb4KConfigDialog::currentPageChanged, this, &Smb4KConfigDialog::slotCheckPage);
@@ -183,7 +183,7 @@ void Smb4KConfigDialog::updateSettings()
 
     (void)checkSettings();
 
-    m_authenticationPage->saveLoginCredentials();
+    m_authenticationPage->saveDefaultLoginCredentials();
     m_customSettingsPage->saveCustomSettings();
     m_bookmarksPage->saveBookmarks();
 
@@ -207,7 +207,7 @@ void Smb4KConfigDialog::updateSettings()
 void Smb4KConfigDialog::slotEnableApplyButton()
 {
     // FIXME: Can this be moved to updateButtons()?
-    bool enable = m_authenticationPage->loginCredentialsChanged() || m_customSettingsPage->customSettingsChanged() || m_bookmarksPage->bookmarksChanged()
+    bool enable = m_authenticationPage->defaultLoginCredentialsChanged() || m_customSettingsPage->customSettingsChanged() || m_bookmarksPage->bookmarksChanged()
         || m_profilesPage->profilesChanged();
 
     QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);

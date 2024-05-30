@@ -109,6 +109,11 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
   XmlGui
 )
 
+# QtKeychain: For secure storage of credentials
+# (https://github.com/frankosterfeld/qtkeychain)
+find_package(Qt6Keychain 0.14.2 REQUIRED)
+
+
 # Install the plasmoid if desired
 if (SMB4K_INSTALL_PLASMOID)
   find_package(Plasma)

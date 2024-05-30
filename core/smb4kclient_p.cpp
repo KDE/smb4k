@@ -7,11 +7,11 @@
 
 // application specific includes
 #include "smb4kclient_p.h"
+#include "smb4kcredentialsmanager.h"
 #include "smb4kcustomsettings.h"
 #include "smb4kcustomsettingsmanager.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
-#include "smb4kwalletmanager.h"
 
 // System includes
 #include <errno.h>
@@ -273,7 +273,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
                 //
                 // Get the authentication data
                 //
-                Smb4KWalletManager::self()->readLoginCredentials(masterBrowser);
+                Smb4KCredentialsManager::self()->readLoginCredentials(masterBrowser);
 
                 //
                 // Copy the authentication data
@@ -296,7 +296,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         //
         // Get the authentication data
         //
-        Smb4KWalletManager::self()->readLoginCredentials(host);
+        Smb4KCredentialsManager::self()->readLoginCredentials(host);
 
         //
         // Copy the authentication data
@@ -317,7 +317,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         //
         // Get the authentication data
         //
-        Smb4KWalletManager::self()->readLoginCredentials(share);
+        Smb4KCredentialsManager::self()->readLoginCredentials(share);
 
         //
         // Copy the authentication data
@@ -346,7 +346,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
             //
             // Get the authentication data
             //
-            Smb4KWalletManager::self()->readLoginCredentials(share);
+            Smb4KCredentialsManager::self()->readLoginCredentials(share);
 
             //
             // Copy the authentication data

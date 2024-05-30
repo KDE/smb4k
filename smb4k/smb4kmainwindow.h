@@ -96,13 +96,6 @@ protected Q_SLOTS:
     void slotAddBookmarks();
 
     /**
-     * This slot is connected to the Smb4KWalletManager::initialized() signal.
-     * It checks the state of the wallet manager and sets the icon in the status
-     * bar accordingly.
-     */
-    void slotWalletManagerInitialized();
-
-    /**
      * This slot shows a busy bar and a status message according to the action performed by
      * the client. It is connected to the Smb4KClient::aboutToStart() signal.
      *
@@ -214,7 +207,6 @@ private:
     void setupDynamicActionList(QDockWidget *dock);
 
     QProgressBar *m_progressBar;
-    QLabel *m_passwordIcon;
     QLabel *m_feedbackIcon;
     Smb4KSystemTray *m_systemTrayWidget;
     QWidget *m_focusWidget;

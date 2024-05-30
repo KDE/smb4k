@@ -1,395 +1,121 @@
 /*
     The configuration page for the authentication settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
 #include "smb4kconfigpageauthentication.h"
+#include "core/smb4kcredentialsmanager.h"
+#include "core/smb4kprofilemanager.h"
 #include "core/smb4ksettings.h"
-#include "core/smb4kwalletmanager.h"
 
 // Qt includes
-#include <QDialogButtonBox>
+#include <QGridLayout>
 #include <QGroupBox>
-#include <QHBoxLayout>
-#include <QListWidgetItem>
-#include <QMouseEvent>
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KIconLoader>
 #include <KLocalizedString>
-#include <KPasswordDialog>
+#include <KPasswordLineEdit>
 
 Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     : QWidget(parent)
 {
-    m_entriesLoaded = false;
+    m_defaultCredentialsModified = false;
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
-    QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
+    QGroupBox *defaultLoginCredentialsBox = new QGroupBox(i18n("Default Login"), this);
+    QGridLayout *defaultLoginCredentialsBoxLayout = new QGridLayout(defaultLoginCredentialsBox);
 
-    QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), settingsBox);
-    useWallet->setObjectName(QStringLiteral("kcfg_UseWallet"));
+    QLabel *hint = new QLabel(i18n("The default login is depending on the profile you are using."), defaultLoginCredentialsBox);
+    defaultLoginCredentialsBoxLayout->addWidget(hint, 0, 0, 1, 2);
 
-    connect(useWallet, &QCheckBox::toggled, this, &Smb4KConfigPageAuthentication::slotKWalletButtonToggled);
+    QLabel *activeProfileLabel = new QLabel(i18n("Active profile:"), defaultLoginCredentialsBox);
+    m_activeProfile = new QLabel(i18n("Unknown"), defaultLoginCredentialsBox);
 
-    settingsBoxLayout->addWidget(useWallet);
+    QFont font = m_activeProfile->font();
+    font.setBold(true);
+    m_activeProfile->setFont(font);
 
-    m_useDefaultLogin = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), settingsBox);
-    m_useDefaultLogin->setObjectName(QStringLiteral("kcfg_UseDefaultLogin"));
-    m_useDefaultLogin->setEnabled(false);
+    defaultLoginCredentialsBoxLayout->addWidget(activeProfileLabel, 1, 0);
+    defaultLoginCredentialsBoxLayout->addWidget(m_activeProfile, 1, 1);
 
-    connect(m_useDefaultLogin, &QCheckBox::toggled, this, &Smb4KConfigPageAuthentication::slotDefaultLoginToggled);
+    QLabel *defaultUserNameLabel = new QLabel(i18n("Username:"), defaultLoginCredentialsBox);
+    m_defaultUserName = new KLineEdit(defaultLoginCredentialsBox);
+    // FIXME: Add completion items?
 
-    settingsBoxLayout->addWidget(m_useDefaultLogin);
+    defaultLoginCredentialsBoxLayout->addWidget(defaultUserNameLabel, 2, 0);
+    defaultLoginCredentialsBoxLayout->addWidget(m_defaultUserName, 2, 1);
 
-    layout->addWidget(settingsBox);
+    QLabel *defaultPasswordLabel = new QLabel(i18n("Password:"), defaultLoginCredentialsBox);
+    m_defaultPassword = new KPasswordLineEdit(defaultLoginCredentialsBox);
 
-    QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
-    QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
+    defaultLoginCredentialsBoxLayout->addWidget(defaultPasswordLabel, 3, 0);
+    defaultLoginCredentialsBoxLayout->addWidget(m_defaultPassword, 3, 1);
 
-    m_walletEntriesEditor = new QWidget(walletEntriesBox);
-    m_walletEntriesEditor->setEnabled(false);
-    QHBoxLayout *walletEntriesEditorLayout = new QHBoxLayout(m_walletEntriesEditor);
-    walletEntriesEditorLayout->setContentsMargins(0, 0, 0, 0);
+    layout->addWidget(defaultLoginCredentialsBox);
 
-    m_walletEntriesWidget = new QListWidget(m_walletEntriesEditor);
-    m_walletEntriesWidget->setDragDropMode(QListWidget::NoDragDrop);
-    m_walletEntriesWidget->setSelectionMode(QListWidget::SingleSelection);
-    m_walletEntriesWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
-    m_walletEntriesWidget->viewport()->installEventFilter(this);
+    layout->addStretch(100);
 
-    connect(m_walletEntriesWidget, &QListWidget::itemDoubleClicked, this, &Smb4KConfigPageAuthentication::slotWalletItemDoubleClicked);
+    loadDefaultLoginCredentials();
 
-    walletEntriesEditorLayout->addWidget(m_walletEntriesWidget);
-
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Vertical, m_walletEntriesEditor);
-
-    m_loadButton = buttonBox->addButton(i18n("Load"), QDialogButtonBox::ActionRole);
-    m_loadButton->setIcon(KDE::icon(QStringLiteral("document-open")));
-
-    connect(m_loadButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotLoadButtonClicked);
-
-    m_saveButton = buttonBox->addButton(i18n("Save"), QDialogButtonBox::ActionRole);
-    m_saveButton->setIcon(KDE::icon(QStringLiteral("document-save-all")));
-    m_saveButton->setEnabled(false);
-
-    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotSaveButtonClicked);
-
-    m_editButton = buttonBox->addButton(i18n("Edit"), QDialogButtonBox::ActionRole);
-    m_editButton->setIcon(KDE::icon(QStringLiteral("edit-rename")));
-    m_editButton->setEnabled(false);
-
-    connect(m_editButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotEditButtonClicked);
-
-    m_removeButton = buttonBox->addButton(i18n("Remove"), QDialogButtonBox::ActionRole);
-    m_removeButton->setIcon(KDE::icon(QStringLiteral("edit-delete")));
-    m_removeButton->setEnabled(false);
-
-    connect(m_removeButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotRemoveButtonClicked);
-
-    m_clearButton = buttonBox->addButton(i18n("Clear"), QDialogButtonBox::ActionRole);
-    m_clearButton->setIcon(KDE::icon(QStringLiteral("edit-clear-list")));
-    m_clearButton->setEnabled(false);
-
-    connect(m_clearButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotClearButtonClicked);
-
-    m_resetButton = buttonBox->addButton(QDialogButtonBox::Reset);
-    m_resetButton->setEnabled(false);
-
-    connect(m_resetButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotResetButtonClicked);
-
-    walletEntriesEditorLayout->addWidget(buttonBox);
-
-    walletEntriesBoxLayout->addWidget(m_walletEntriesEditor);
-
-    layout->addWidget(walletEntriesBox);
-
-    connect(this, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigPageAuthentication::slotEnableResetButton);
+    connect(m_defaultUserName, &KLineEdit::textChanged, this, &Smb4KConfigPageAuthentication::slotDefaultUserNameEdited);
+    connect(m_defaultPassword, &KPasswordLineEdit::passwordChanged, this, &Smb4KConfigPageAuthentication::slotDefaultPasswordEdited);
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KConfigPageAuthentication::loadDefaultLoginCredentials);
 }
 
 Smb4KConfigPageAuthentication::~Smb4KConfigPageAuthentication()
 {
 }
 
-void Smb4KConfigPageAuthentication::loadLoginCredentials()
+void Smb4KConfigPageAuthentication::saveDefaultLoginCredentials()
 {
-    m_entriesList = Smb4KWalletManager::self()->loginCredentialsList();
-
-    Q_EMIT walletEntriesModified();
-
-    m_walletEntriesWidget->clear();
-
-    for (Smb4KAuthInfo *authInfo : qAsConst(m_entriesList)) {
-        switch (authInfo->type()) {
-        case UnknownNetworkItem: {
-            QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("dialog-password")), i18n("Default Login"), m_walletEntriesWidget);
-            item->setData(Qt::UserRole, authInfo->url());
-            break;
-        }
-        default: {
-            QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("dialog-password")), authInfo->displayString(), m_walletEntriesWidget);
-            item->setData(Qt::UserRole, authInfo->url());
-            break;
-        }
-        }
-    }
-
-    m_walletEntriesWidget->sortItems();
-
-    m_entriesLoaded = true;
-
-    m_saveButton->setEnabled(m_walletEntriesWidget->count() != 0);
-    m_clearButton->setEnabled(m_walletEntriesWidget->count() != 0);
+    (void)Smb4KCredentialsManager::self()->writeDefaultLoginCredentials(m_defaultUserName->text(), m_defaultPassword->password());
 }
 
-void Smb4KConfigPageAuthentication::saveLoginCredentials()
+void Smb4KConfigPageAuthentication::loadDefaultLoginCredentials()
 {
-    if (loginCredentialsChanged()) {
-        Smb4KWalletManager::self()->writeLoginCredentialsList(m_entriesList);
+    QString activeProfile = Smb4KProfileManager::self()->activeProfile();
+    m_activeProfile->setText(Smb4KSettings::useProfiles() ? activeProfile : i18n("Default Profile"));
 
-        // Do not emit walletEntriesModified() signal, because we do not
-        // want to enable/disable the "Apply" button as well.
-        slotEnableResetButton();
+    QString user, pass;
+
+    if (Smb4KCredentialsManager::self()->readDefaultLoginCredentials(&user, &pass)) {
+        m_defaultUserName->setText(user);
+        m_defaultPassword->setPassword(pass);
+    } else {
+        // FIXME: Report an error!?
     }
 }
 
-bool Smb4KConfigPageAuthentication::loginCredentialsLoaded()
+bool Smb4KConfigPageAuthentication::defaultLoginCredentialsChanged()
 {
-    return m_entriesLoaded;
+    return m_defaultCredentialsModified;
 }
 
-bool Smb4KConfigPageAuthentication::loginCredentialsChanged()
+void Smb4KConfigPageAuthentication::slotDefaultUserNameEdited(const QString &userName)
 {
-    bool changed = false;
+    QString user, pass;
 
-    if (m_entriesLoaded) {
-        QList<Smb4KAuthInfo *> savedLoginCredentials = Smb4KWalletManager::self()->loginCredentialsList();
-
-        if (savedLoginCredentials.size() != m_entriesList.size()) {
-            changed = true;
-        } else {
-            for (Smb4KAuthInfo *oldEntry : qAsConst(savedLoginCredentials)) {
-                for (Smb4KAuthInfo *newEntry : qAsConst(m_entriesList)) {
-                    if (oldEntry->url().matches(newEntry->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
-                        changed = (oldEntry->url().userInfo() != newEntry->url().userInfo());
-                        break;
-                    }
-                }
-
-                if (changed) {
-                    break;
-                }
-            }
-        }
-    }
-
-    return changed;
-}
-
-bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
-{
-    if (object == m_walletEntriesWidget->viewport()) {
-        // If the user clicked on the viewport of the entries view, clear
-        // the details widget and the "Details" button, if no item
-        // is under the mouse.
-        if (e->type() == QEvent::MouseButtonPress) {
-            QMouseEvent *event = static_cast<QMouseEvent *>(e);
-            QPointF pos = m_walletEntriesWidget->mapFromGlobal(event->globalPosition());
-            QListWidgetItem *item = m_walletEntriesWidget->itemAt(pos.toPoint());
-
-            m_editButton->setEnabled(item != nullptr);
-            m_removeButton->setEnabled(item != nullptr);
-
-            if (!item) {
-                m_walletEntriesWidget->clearSelection();
-            }
-        }
-    }
-
-    return QWidget::eventFilter(object, e);
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KConfigPageAuthentication::slotKWalletButtonToggled(bool checked)
-{
-    m_useDefaultLogin->setEnabled(checked);
-    m_walletEntriesEditor->setEnabled(checked);
-}
-
-void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
-{
-    if (checked && !Smb4KSettings::useDefaultLogin()) {
-        if (!Smb4KWalletManager::self()->hasDefaultCredentials()) {
-            Smb4KAuthInfo authInfo;
-            // If there are no default credentials, we do not need to read them.
-            KPasswordDialog dlg(this, KPasswordDialog::ShowUsernameLine);
-            dlg.setPrompt(i18n("Enter the default login information."));
-            dlg.setUsername(authInfo.userName());
-            dlg.setPassword(authInfo.password());
-
-            if (dlg.exec() == KPasswordDialog::Accepted) {
-                authInfo.setUserName(dlg.username());
-                authInfo.setPassword(dlg.password());
-
-                Smb4KWalletManager::self()->writeLoginCredentials(&authInfo);
-
-                if (m_entriesLoaded) {
-                    loadLoginCredentials();
-                }
-            } else {
-                m_useDefaultLogin->setChecked(false);
-            }
+    if (Smb4KCredentialsManager::self()->readDefaultLoginCredentials(&user, &pass)) {
+        if (user != userName) {
+            m_defaultCredentialsModified = true;
+            Q_EMIT defaultLoginCredentialsModified();
         }
     }
 }
 
-void Smb4KConfigPageAuthentication::slotLoadButtonClicked(bool checked)
+void Smb4KConfigPageAuthentication::slotDefaultPasswordEdited(const QString &password)
 {
-    Q_UNUSED(checked);
+    QString user, pass;
 
-    if (!m_entriesLoaded) {
-        loadLoginCredentials();
-    }
-
-    m_loadButton->setEnabled(false);
-    m_walletEntriesWidget->setFocus();
-}
-
-void Smb4KConfigPageAuthentication::slotSaveButtonClicked(bool checked)
-{
-    Q_UNUSED(checked);
-
-    if (m_entriesLoaded) {
-        saveLoginCredentials();
-    }
-
-    m_editButton->setEnabled(false);
-    m_removeButton->setEnabled(false);
-    m_clearButton->setEnabled((m_walletEntriesWidget->count() != 0));
-
-    m_walletEntriesWidget->clearSelection();
-
-    Q_EMIT walletEntriesModified();
-}
-
-void Smb4KConfigPageAuthentication::slotEditButtonClicked(bool checked)
-{
-    Q_UNUSED(checked);
-
-    KPasswordDialog dlg(this, KPasswordDialog::ShowUsernameLine);
-
-    if (m_walletEntriesWidget->currentItem()) {
-        Smb4KAuthInfo *authInfo = nullptr;
-
-        for (Smb4KAuthInfo *walletEntry : qAsConst(m_entriesList)) {
-            // The following check also finds the default login, because it has an empty URL.
-            if (m_walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == walletEntry->url()) {
-                if (walletEntry->type() != Smb4KGlobal::UnknownNetworkItem) {
-                    dlg.setPrompt(i18n("Set the username and password for wallet entry %1.", walletEntry->displayString()));
-                } else {
-                    dlg.setPrompt(i18n("Set the username and password for the default login."));
-                }
-                dlg.setUsername(walletEntry->userName());
-                dlg.setPassword(walletEntry->password());
-
-                authInfo = walletEntry;
-
-                break;
-            }
-        }
-
-        if (authInfo) {
-            if (dlg.exec() == KPasswordDialog::Accepted) {
-                authInfo->setUserName(dlg.username());
-                authInfo->setPassword(dlg.password());
-
-                Q_EMIT walletEntriesModified();
-            }
+    if (Smb4KCredentialsManager::self()->readDefaultLoginCredentials(&user, &pass)) {
+        if (pass != password) {
+            m_defaultCredentialsModified = true;
+            Q_EMIT defaultLoginCredentialsModified();
         }
     }
-}
-
-void Smb4KConfigPageAuthentication::slotRemoveButtonClicked(bool checked)
-{
-    Q_UNUSED(checked);
-
-    for (int i = 0; i < m_entriesList.size(); ++i) {
-        // The following check also finds the default login, because it has an empty URL.
-        if (m_walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == m_entriesList.at(i)->url()) {
-            switch (m_entriesList.at(i)->type()) {
-            case UnknownNetworkItem: {
-                m_useDefaultLogin->setChecked(false);
-                break;
-            }
-            default: {
-                break;
-            }
-            }
-
-            delete m_entriesList.takeAt(i);
-            break;
-        } else {
-            continue;
-        }
-    }
-
-    delete m_walletEntriesWidget->currentItem();
-
-    m_clearButton->setEnabled((m_walletEntriesWidget->count() != 0));
-
-    Q_EMIT walletEntriesModified();
-}
-
-void Smb4KConfigPageAuthentication::slotClearButtonClicked(bool checked)
-{
-    Q_UNUSED(checked);
-
-    while (m_walletEntriesWidget->count() != 0) {
-        delete m_walletEntriesWidget->item(0);
-    }
-
-    while (!m_entriesList.isEmpty()) {
-        delete m_entriesList.takeFirst();
-    }
-
-    m_clearButton->setEnabled(false);
-
-    m_useDefaultLogin->setChecked(false);
-
-    Q_EMIT walletEntriesModified();
-}
-
-void Smb4KConfigPageAuthentication::slotResetButtonClicked(bool checked)
-{
-    Q_UNUSED(checked);
-
-    if (m_entriesLoaded) {
-        loadLoginCredentials();
-    }
-
-    Q_EMIT walletEntriesModified();
-
-    m_clearButton->setEnabled((m_walletEntriesWidget->count() != 0));
-}
-
-void Smb4KConfigPageAuthentication::slotEnableResetButton()
-{
-    bool changed = loginCredentialsChanged();
-    m_resetButton->setEnabled(changed);
-}
-
-void Smb4KConfigPageAuthentication::slotWalletItemDoubleClicked(QListWidgetItem *item)
-{
-    Q_UNUSED(item);
-
-    slotEditButtonClicked(false);
 }
