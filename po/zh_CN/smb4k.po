@@ -461,22 +461,22 @@ msgstr "添加"
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "设置为活动"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "上移"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "下移"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
 #, kde-format
 msgid "Rename"
-msgstr ""
+msgstr "重命名"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

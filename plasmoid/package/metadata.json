@@ -1,4 +1,5 @@
 {
+    "KPackageStructure": "Plasma/Applet",
     "KPlugin": {
         "Authors": [
             {
@@ -103,9 +104,6 @@
         "Name[x-test]": "xxNetwork Neighborhoodxx",
         "Name[zh_CN]": "网上邻居",
         "Name[zh_TW]": "網路芳鄰",
-        "ServiceTypes": [
-            "Plasma/Applet"
-        ],
         "Version": "1.0",
         "Website": "https://kde.org/plasma-desktop"
     },

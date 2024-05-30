@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:39+0000\n"
-"PO-Revision-Date: 2024-01-08 22:51+0100\n"
+"PO-Revision-Date: 2024-05-26 21:13+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -341,7 +341,7 @@ msgid ""
 "This setting controls the minimum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
-"Ĉi tiu agordo kontrolas la minimuman protokolversion, kiun provos uzi la "
+"Ĉi tiu agordo mastrumas la minimuman protokolversion, kiun provos uzi la "
 "klientbiblioteko de Samba."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
@@ -378,7 +378,7 @@ msgid ""
 "This setting controls the maximum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
-"Ĉi tiu agordo kontrolas la maksimuman protokolversion, kiun provos uzi la "
+"Ĉi tiu agordo mastrumas la maksimuman protokolversion, kiun provos uzi la "
 "klientbiblioteko de Samba."
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
@@ -1735,7 +1735,7 @@ msgid ""
 msgstr ""
 "Faru sekurkopiojn (-b, --backup). Kun ĉi tiu opcio, antaŭekzistantaj "
 "celdosieroj estas renomitaj kiam ĉiu dosiero estas translokigita aŭ "
-"forigita. Vi povas kontroli kien iras la rezerva dosiero kaj kia (se iu) "
+"forigita. Vi povas mastrumi kien iras la rezerva dosiero kaj kia (se iu) "
 "sufikso estas aldonita uzante la opciojn --backup-dir=DIR kaj --"
 "suffix=SUFFIX."
 
@@ -1801,7 +1801,7 @@ msgstr "La grandeco de bloko"
 #: smb4k.kcfg:640
 #, kde-format
 msgid "Set block/file checksum seed:"
-msgstr "Agordi blokan/dosieron ĉeksum semon:"
+msgstr "Agordi blokan/dosieron kontrolsum-semon:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:641
@@ -1812,10 +1812,10 @@ msgid ""
 "and file MD4 checksum calculation. By default the checksum seed is generated "
 "by the server and defaults to the current time."
 msgstr ""
-"Agordu blokan/dosieron ĉeksum semon (--checksum-seed=NUM). Agordu la MD4-"
+"Agordu blokan/dosieron kontrolsum-semon (--checksum-seed=NUM). Agordu la MD4-"
 "kontrolsuman semon al ĉi tiu entjero. Ĉi tiu semo de kontrolsumo de 4 bajtoj "
 "estas inkluzivita en ĉiu bloko kaj dosiero MD4-kontrolsumokalkulo. Defaŭlte "
-"la ĉeksumsemo estas generita de la servilo kaj defaŭlte al la nuna tempo."
+"la kontrolsumsemo estas generita de la servilo kaj defaŭlte al la nuna tempo."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:645
@@ -1827,7 +1827,7 @@ msgstr "La valoro por la agorda opcio UseChecksumSeed"
 #: smb4k.kcfg:651
 #, kde-format
 msgid "Skip files based on checksum"
-msgstr "Salti dosierojn bazitajn sur ĉeksumo"
+msgstr "Salti dosierojn bazitajn sur kontrolsumo"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
 #: smb4k.kcfg:652
@@ -1837,8 +1837,8 @@ msgid ""
 "c, --checksum). For further information on how this feature works read "
 "rsync's manual page."
 msgstr ""
-"Preterpasi dosierojn surbaze de ĉeksumo kaj ne surbaze de modifa tempo kaj "
-"grandeco (-c, --checksum). Por pliaj informoj pri kiel ĉi tiu funkcio "
+"Preterpasi dosierojn surbaze de kontrolsumo kaj ne surbaze de modifa tempo "
+"kaj grandeco (-c, --checksum). Por pliaj informoj pri kiel ĉi tiu funkcio "
 "funkcias, legu la manlibron de rsync."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
