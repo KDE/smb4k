@@ -262,6 +262,28 @@ void Smb4KConfigPageProfiles::slotProfileUsageChanged(bool checked)
 {
     m_profilesChanged = (checked != Smb4KSettings::useProfiles());
     m_profilesEditorWidget->setEnabled(checked);
+
+    if (checked) {
+        bool haveActiveProfile = false;
+
+        for (const ProfileContainer &p : qAsConst(m_profiles)) {
+            if (p.active) {
+                haveActiveProfile = true;
+                break;
+            }
+        }
+
+        if (!haveActiveProfile) {
+            QListWidgetItem *profileItem = m_profilesListWidget->item(0);
+            profileItem->setCheckState(Qt::Checked);
+
+             ProfileContainer *p = findProfileContainer(profileItem);
+
+             if (p) {
+                 p->active = true;
+            }
+        }
+    }
 }
 
 void Smb4KConfigPageProfiles::slotAddProfile(bool checked)
