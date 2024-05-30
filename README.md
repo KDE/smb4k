@@ -22,7 +22,7 @@ Features
 - System tray widget
 - Support of advanced mount options
 - Support of printer shares
-- KWallet support
+- Support of several secure storage solutions for the login credentials via QtKeychain
 - Synchronization of a remote share with a local copy and vice versa
 - Ability to define custom settings for individual servers and shares
 - Hardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network module
@@ -51,6 +51,7 @@ To compile Smb4K, you need:
 Smb4K build depends on:
 - Qt (version >= 6.6.2, https://www.qt.io): QtCore, QtGui, QtWidgets, QtNetwork, QtPrintSupport, QtQml
 - KDE Frameworks (version >= 6.0.0, https://www.kde.org): ECM, KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem, KCrash, KDNSSD
+- QtKeychain (version >= 0.14.2, https://github.com/frankosterfeld/qtkeychain)
 - libsmbclient (version >= 4.10.0, https://www.samba.org)
 
 If you would like to enable WS-Discovery support, you additionally need (see also below for required build option):
@@ -87,10 +88,10 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
    ```
 
-   If you want to enable WS-Discovery support, use `-DSMB4K_WITH_WS_DISCOVERY=ON` as argument. To compile Smb4K with debug symbols, replace `Release` by `Debug`. 
+   If you want to enable WS-Discovery support, use `-DSMB4K_WITH_WS_DISCOVERY=ON` as argument. To compile Smb4K with debug symbols, replace `Release` by `Debug`.
 
    There are some Smb4K specific CMake arguments you might be interested in:
-   
+
    | Argument                                                          | Description                                                         |
    |:--------------------------------------------------------------|:---------------------------------------------------------------|
    | -DSMB4K_INSTALL_PLASMOID=ON/OFF     | Install the plasmoid. This is on by default.   |
@@ -102,7 +103,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    $ sudo cmake --install build
    ```
    If you want to be able to remove Smb4K with your package manager later on, use the following approaches depending on your distribution:
-   
+
      <em>Debian, Ubuntu, openSUSE, Fedora, Redhat, Slackware:</em>
 
      Use checkinstall instead of make install. The package should be present in your distribution's repository.
@@ -118,7 +119,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
      ``` bash
      $ makepkg -i
      ```
-      
+
    For all other distributions and operating systems, please have a look at the respective documentation.
 
 
