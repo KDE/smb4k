@@ -673,4 +673,3 @@ void Smb4KCustomSettingsManager::slotActiveProfileChanged(const QString &name)
     Q_UNUSED(name);
     Q_EMIT updated();
 }
-
