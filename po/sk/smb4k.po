@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:39+0000\n"
+"POT-Creation-Date: 2024-05-31 00:39+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -147,7 +147,7 @@ msgstr ""
 msgid "Bookmark Editor"
 msgstr "Záložky"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
 #, kde-format
 msgid "Bookmarks"
 msgstr "Záložky"
@@ -157,8 +157,8 @@ msgstr "Záložky"
 msgid "&Edit Bookmarks"
 msgstr "&Upraviť záložky"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:112
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
@@ -185,28 +185,28 @@ msgstr "Sieť"
 msgid "Mounting"
 msgstr "Pripájanie"
 
-#: smb4k/smb4kconfigdialog.cpp:127
-#, kde-format
-msgid "Authentication"
-msgstr "Autentifikácia"
-
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Synchronizácia"
 
-#: smb4k/smb4kconfigdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Common Settings:"
-msgid "Custom Settings"
-msgstr "Spoločné nastavenia:"
-
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profily"
+
+#: smb4k/smb4kconfigdialog.cpp:129
+#, kde-format
+msgid "Authentication"
+msgstr "Autentifikácia"
+
+#: smb4k/smb4kconfigdialog.cpp:131
+#, fuzzy, kde-format
+#| msgid "Common Settings:"
+msgid "Custom Settings"
+msgstr "Spoločné nastavenia:"
 
 #: smb4k/smb4kconfigdialog.cpp:155
 #, kde-format
@@ -217,74 +217,45 @@ msgstr ""
 "<qt>Našlo sa nesprávne nastavenie. Budete presmerovaný na dialóg na jeho "
 "opravu.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:44
-#, kde-format
-msgid "Settings"
-msgstr "Nastavenia"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:53
-#, fuzzy, kde-format
-#| msgid "Wallet Entries:"
-msgid "Wallet Entries"
-msgstr "Položky peňaženky:"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:73
-#, kde-format
-msgid "Load"
-msgstr "Načítať"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:78
-#, kde-format
-msgid "Save"
-msgstr "Uložiť"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:84
-#: smb4k/smb4kconfigpagebookmarks.cpp:125
-#: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#, kde-format
-msgid "Edit"
-msgstr "Upraviť"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:90
-#: smb4k/smb4kconfigpagebookmarks.cpp:137
-#: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:78
-#, kde-format
-msgid "Remove"
-msgstr "Odstrániť"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:96
-#: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, kde-format
-msgid "Clear"
-msgstr "Vyčistiť"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:131
+#: smb4k/smb4kconfigpageauthentication.cpp:30
 #, kde-format
 msgid "Default Login"
 msgstr "Štandardné prihlásenie"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:235
+#: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
-msgid "Enter the default login information."
-msgstr "Zadajte predvolené informácie prihlásenia."
-
-#: smb4k/smb4kconfigpageauthentication.cpp:297
-#, kde-format
-msgid "Set the username and password for wallet entry %1."
+msgid "The default login is depending on the profile you are using."
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:299
+#: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
-msgid "Set the username and password for the default login."
+msgid "Active profile:"
 msgstr ""
 
+#: smb4k/smb4kconfigpageauthentication.cpp:37
+#, fuzzy, kde-format
+#| msgid "unknown"
+msgid "Unknown"
+msgstr "neznáme"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Užívateľské meno:"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:53
+#, fuzzy, kde-format
+#| msgid "Password"
+msgid "Password:"
+msgstr "Heslo"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:82
+#, fuzzy, kde-format
+#| msgid "Default Login"
+msgid "Default Profile"
+msgstr "Štandardné prihlásenie"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -302,10 +273,23 @@ msgstr "Pracovná skupina:"
 msgid "IP Address:"
 msgstr "IP adresa:"
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#, kde-format
+msgid "Edit"
+msgstr "Upraviť"
+
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
 msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
+#: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:78
+#, kde-format
+msgid "Remove"
+msgstr "Odstrániť"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -482,6 +466,11 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Pokročilé nastavenia pripojenia"
 
+#: smb4k/smb4kconfigpageprofiles.cpp:44
+#, kde-format
+msgid "Settings"
+msgstr "Nastavenia"
+
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
@@ -632,7 +621,7 @@ msgstr "Kontrolné súčty"
 msgid "Main Window"
 msgstr "Hlavné okno"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:180
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Sieťové okolie"
@@ -717,17 +706,17 @@ msgstr ""
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:108
+#: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Dokovať prvky"
 
-#: smb4k/smb4kmainwindow.cpp:191 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:180 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Pripojené zdieľania"
 
-#: smb4k/smb4kmainwindow.cpp:297
+#: smb4k/smb4kmainwindow.cpp:282
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -737,17 +726,17 @@ msgstr ""
 "chcete aplikáciu ukončiť, použite položku <i>Koniec</i> z ponuky <i>Súbor</"
 "i>.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:299
+#: smb4k/smb4kmainwindow.cpp:284
 #, kde-format
 msgid "Docking"
 msgstr "Plávajúce okná"
 
-#: smb4k/smb4kmainwindow.cpp:354
+#: smb4k/smb4kmainwindow.cpp:339
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Práve nie sú pripojené žiadne zdieľania."
 
-#: smb4k/smb4kmainwindow.cpp:357
+#: smb4k/smb4kmainwindow.cpp:342
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
@@ -755,83 +744,73 @@ msgstr[0] "Aktuálne je pripojené %1 zdieľanie."
 msgstr[1] "Aktuálne sú pripojené %1 zdieľania."
 msgstr[2] "Aktuálne je pripojených %1 zdieľaní."
 
-#: smb4k/smb4kmainwindow.cpp:503
-#, kde-format
-msgid "The wallet is used."
-msgstr "Peňaženka sa používa."
-
-#: smb4k/smb4kmainwindow.cpp:506
-#, kde-format
-msgid "The password dialog is used."
-msgstr "Používa sa režim dialógu hesla."
-
-#: smb4k/smb4kmainwindow.cpp:516
+#: smb4k/smb4kmainwindow.cpp:485
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Hľadanie pracovných skupín a domén..."
 
-#: smb4k/smb4kmainwindow.cpp:521
+#: smb4k/smb4kmainwindow.cpp:490
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Hľadanie hostiteľov v doméne %1..."
 
-#: smb4k/smb4kmainwindow.cpp:526
+#: smb4k/smb4kmainwindow.cpp:495
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Hľadám zdieľanie poskytované hostiteľom %1..."
 
-#: smb4k/smb4kmainwindow.cpp:534 smb4k/smb4kmainwindow.cpp:543
+#: smb4k/smb4kmainwindow.cpp:503 smb4k/smb4kmainwindow.cpp:512
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Hľadanie súborov a adresárov v %1..."
 
-#: smb4k/smb4kmainwindow.cpp:560
+#: smb4k/smb4kmainwindow.cpp:529
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Prebúdzam vzdialených hostiteľov..."
 
-#: smb4k/smb4kmainwindow.cpp:565
+#: smb4k/smb4kmainwindow.cpp:534
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Posielam súbor na tlačiareň %1..."
 
-#: smb4k/smb4kmainwindow.cpp:569
+#: smb4k/smb4kmainwindow.cpp:538
 #, kde-format
 msgid "Searching..."
 msgstr "Hľadá sa..."
 
-#: smb4k/smb4kmainwindow.cpp:590 smb4k/smb4kmainwindow.cpp:629
-#: smb4k/smb4kmainwindow.cpp:714
+#: smb4k/smb4kmainwindow.cpp:559 smb4k/smb4kmainwindow.cpp:598
+#: smb4k/smb4kmainwindow.cpp:683
 #, kde-format
 msgid "Done."
 msgstr "Hotovo."
 
-#: smb4k/smb4kmainwindow.cpp:600
+#: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "Mounting..."
 msgstr "Pripájanie..."
 
-#: smb4k/smb4kmainwindow.cpp:604
+#: smb4k/smb4kmainwindow.cpp:573
 #, kde-format
 msgid "Unmounting..."
 msgstr "Odpájam..."
 
-#: smb4k/smb4kmainwindow.cpp:608
+#: smb4k/smb4kmainwindow.cpp:577
 #, kde-format
 msgid "Waking up host..."
 msgstr "Prebúdzam hostiteľa..."
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:607
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 bol úspešne pripojený."
 
-#: smb4k/smb4kmainwindow.cpp:661
+#: smb4k/smb4kmainwindow.cpp:630
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 bol úspešne odpojený."
 
-#: smb4k/smb4kmainwindow.cpp:700
+#: smb4k/smb4kmainwindow.cpp:669
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Synchronizujem %1"
@@ -883,111 +862,111 @@ msgstr "IP adresa"
 msgid "Comment"
 msgstr "Poznámka"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:102
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Prehľadať sieť"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:104
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
 #, kde-format
 msgid "&Abort"
 msgstr "P&rerušiť"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:116
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
 #, kde-format
 msgid "&Search"
 msgstr "&Hľadať"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:140
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
 msgid "Add &Custom Settings"
 msgstr "Vlastné voľby"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Otvoriť dialóg pripojenia"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:163
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
 msgid "Ctrl+O"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:176
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&tentifikácia"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:182
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
 msgid "Ctrl+T"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:187
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
 #, kde-format
 msgid "Pre&view"
 msgstr "&Náhľad"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Ctrl+V"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
 #, kde-format
 msgid "&Print File"
 msgstr "Vytlačiť súbor"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+P"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "&Mount"
 msgstr "&Pripojiť"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "&Odpojiť"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:950
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Prehľadať počítač"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Prehľadať pracovnú skupinu"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:952
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -1022,6 +1001,11 @@ msgstr "Položka dolu"
 #, kde-format
 msgid "Item Up"
 msgstr "Položka hore"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:81
+#, kde-format
+msgid "Clear"
+msgstr "Vyčistiť"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
@@ -1294,6 +1278,26 @@ msgid "Size:"
 msgstr "Veľkosť:"
 
 #, fuzzy
+#~| msgid "Wallet Entries:"
+#~ msgid "Wallet Entries"
+#~ msgstr "Položky peňaženky:"
+
+#~ msgid "Load"
+#~ msgstr "Načítať"
+
+#~ msgid "Save"
+#~ msgstr "Uložiť"
+
+#~ msgid "Enter the default login information."
+#~ msgstr "Zadajte predvolené informácie prihlásenia."
+
+#~ msgid "The wallet is used."
+#~ msgstr "Peňaženka sa používa."
+
+#~ msgid "The password dialog is used."
+#~ msgstr "Používa sa režim dialógu hesla."
+
+#, fuzzy
 #~| msgid "Mount Settings"
 #~ msgid "Mounting: Common Settings"
 #~ msgstr "Voľby pripojenia"
@@ -1369,9 +1373,6 @@ msgstr "Veľkosť:"
 
 #~ msgid "Entry"
 #~ msgstr "Položka"
-
-#~ msgid "Password"
-#~ msgstr "Heslo"
 
 #~ msgid "Behavior:"
 #~ msgstr "Správanie:"

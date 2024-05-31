@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:39+0000\n"
+"POT-Creation-Date: 2024-05-31 00:39+0000\n"
 "PO-Revision-Date: 2023-01-20 23:26+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Bookmark Editor"
 msgstr "Отметки"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
 #, kde-format
 msgid "Bookmarks"
 msgstr "Отметки"
@@ -156,8 +156,8 @@ msgstr "Отметки"
 msgid "&Edit Bookmarks"
 msgstr "&Редактиране на отметки"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:112
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
@@ -184,27 +184,27 @@ msgstr "Мрежа"
 msgid "Mounting"
 msgstr "Монтиране"
 
-#: smb4k/smb4kconfigdialog.cpp:127
-#, kde-format
-msgid "Authentication"
-msgstr "Удостоверяване"
-
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Синхронизиране"
 
-#: smb4k/smb4kconfigdialog.cpp:130
-#, fuzzy, kde-format
-msgid "Custom Settings"
-msgstr "Потребителски настройки"
-
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr ""
+
+#: smb4k/smb4kconfigdialog.cpp:129
+#, kde-format
+msgid "Authentication"
+msgstr "Удостоверяване"
+
+#: smb4k/smb4kconfigdialog.cpp:131
+#, fuzzy, kde-format
+msgid "Custom Settings"
+msgstr "Потребителски настройки"
 
 #: smb4k/smb4kconfigdialog.cpp:155
 #, kde-format
@@ -213,73 +213,44 @@ msgid ""
 "corresponding configuration page to fix it.</qt>"
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:44
-#, fuzzy, kde-format
-msgid "Settings"
-msgstr "&Настройки"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:53
-#, fuzzy, kde-format
-msgid "Wallet Entries"
-msgstr "Премахване на въведените"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:73
-#, kde-format
-msgid "Load"
-msgstr "Зареждане"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:78
-#, kde-format
-msgid "Save"
-msgstr "Запазване"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:84
-#: smb4k/smb4kconfigpagebookmarks.cpp:125
-#: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#, kde-format
-msgid "Edit"
-msgstr "Редактиране"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:90
-#: smb4k/smb4kconfigpagebookmarks.cpp:137
-#: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:78
-#, kde-format
-msgid "Remove"
-msgstr "Премахване"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:96
-#: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, fuzzy, kde-format
-msgid "Clear"
-msgstr "&Изчистване"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:131
+#: smb4k/smb4kconfigpageauthentication.cpp:30
 #, kde-format
 msgid "Default Login"
 msgstr "Свързване по подразбиране"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:235
+#: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
-msgid "Enter the default login information."
+msgid "The default login is depending on the profile you are using."
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:297
+#: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
-msgid "Set the username and password for wallet entry %1."
+msgid "Active profile:"
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:299
-#, kde-format
-msgid "Set the username and password for the default login."
-msgstr ""
+#: smb4k/smb4kconfigpageauthentication.cpp:37
+#, fuzzy, kde-format
+#| msgid "unknown"
+msgid "Unknown"
+msgstr "непознато"
 
+#: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, fuzzy, kde-format
 msgid "Username:"
 msgstr "Потребител:"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:53
+#, kde-format
+msgid "Password:"
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:82
+#, fuzzy, kde-format
+#| msgid "Default Login"
+msgid "Default Profile"
+msgstr "Свързване по подразбиране"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -297,10 +268,23 @@ msgstr "Работна група:"
 msgid "IP Address:"
 msgstr "IP-адрес:"
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#, kde-format
+msgid "Edit"
+msgstr "Редактиране"
+
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
 msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
+#: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:78
+#, kde-format
+msgid "Remove"
+msgstr "Премахване"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -456,6 +440,11 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Разширени CIFS настройки"
 
+#: smb4k/smb4kconfigpageprofiles.cpp:44
+#, fuzzy, kde-format
+msgid "Settings"
+msgstr "&Настройки"
+
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
@@ -594,7 +583,7 @@ msgstr "контролна сума"
 msgid "Main Window"
 msgstr ""
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:180
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:169
 #, fuzzy, kde-format
 msgid "Network Neighborhood"
 msgstr "Търсене в мрежата"
@@ -676,117 +665,107 @@ msgstr ""
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:108
+#: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
 msgid "Dock Widgets"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:191 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:180 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Монтирани ресурси"
 
-#: smb4k/smb4kmainwindow.cpp:297
+#: smb4k/smb4kmainwindow.cpp:282
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:299
+#: smb4k/smb4kmainwindow.cpp:284
 #, kde-format
 msgid "Docking"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:354
+#: smb4k/smb4kmainwindow.cpp:339
 #, fuzzy, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Директория %1 не може да бъде създадена."
 
-#: smb4k/smb4kmainwindow.cpp:357
+#: smb4k/smb4kmainwindow.cpp:342
 #, fuzzy, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Директория %1 не може да бъде създадена."
 msgstr[1] "Директория %1 не може да бъде създадена."
 
-#: smb4k/smb4kmainwindow.cpp:503
-#, fuzzy, kde-format
-msgid "The wallet is used."
-msgstr "Запомняне на паролата ако не се използва портфейл"
-
-#: smb4k/smb4kmainwindow.cpp:506
-#, fuzzy, kde-format
-msgid "The password dialog is used."
-msgstr "Запомняне на паролата ако не се използва портфейл"
-
-#: smb4k/smb4kmainwindow.cpp:516
+#: smb4k/smb4kmainwindow.cpp:485
 #, fuzzy, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:521
+#: smb4k/smb4kmainwindow.cpp:490
 #, fuzzy, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:526
+#: smb4k/smb4kmainwindow.cpp:495
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:534 smb4k/smb4kmainwindow.cpp:543
+#: smb4k/smb4kmainwindow.cpp:503 smb4k/smb4kmainwindow.cpp:512
 #, fuzzy, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:560
+#: smb4k/smb4kmainwindow.cpp:529
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:565
+#: smb4k/smb4kmainwindow.cpp:534
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:569
+#: smb4k/smb4kmainwindow.cpp:538
 #, fuzzy, kde-format
 msgid "Searching..."
 msgstr "Търсене"
 
-#: smb4k/smb4kmainwindow.cpp:590 smb4k/smb4kmainwindow.cpp:629
-#: smb4k/smb4kmainwindow.cpp:714
+#: smb4k/smb4kmainwindow.cpp:559 smb4k/smb4kmainwindow.cpp:598
+#: smb4k/smb4kmainwindow.cpp:683
 #, kde-format
 msgid "Done."
 msgstr "Готово."
 
-#: smb4k/smb4kmainwindow.cpp:600
+#: smb4k/smb4kmainwindow.cpp:569
 #, fuzzy, kde-format
 msgid "Mounting..."
 msgstr "Монтиране"
 
-#: smb4k/smb4kmainwindow.cpp:604
+#: smb4k/smb4kmainwindow.cpp:573
 #, fuzzy, kde-format
 msgid "Unmounting..."
 msgstr "Отдалечени ресурси"
 
-#: smb4k/smb4kmainwindow.cpp:608
+#: smb4k/smb4kmainwindow.cpp:577
 #, fuzzy, kde-format
 msgid "Waking up host..."
 msgstr "Запитване към текущия главен компютър за връщане на списък с ресурси."
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:607
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:661
+#: smb4k/smb4kmainwindow.cpp:630
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:700
+#: smb4k/smb4kmainwindow.cpp:669
 #, fuzzy, kde-format
 msgid "Synchronizing %1"
 msgstr "Синхронизация"
@@ -838,110 +817,110 @@ msgstr "IP-адрес"
 msgid "Comment"
 msgstr "Коментар"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:102
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Претърсване на &мрежата"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:104
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
 #, kde-format
 msgid "&Abort"
 msgstr "&Прекъсване"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:116
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
 #, kde-format
 msgid "&Search"
 msgstr "&Търсене"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:140
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 msgid "Add &Custom Settings"
 msgstr "Възможности на Самба"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:163
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
 msgid "Ctrl+O"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:176
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
 #, fuzzy, kde-format
 msgid "Au&thentication"
 msgstr "Удостоверяване"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:182
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
 msgid "Ctrl+T"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:187
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
 #, fuzzy, kde-format
 msgid "Pre&view"
 msgstr "Преглед"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Ctrl+V"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
 #, fuzzy, kde-format
 msgid "&Print File"
 msgstr "Файл за отпечатване"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+P"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "&Mount"
 msgstr "&Монтиране"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "&Демонтиране"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:950
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Сканиране на компютър"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Сканиране на работна група"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:952
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -976,6 +955,11 @@ msgstr "точка"
 #, fuzzy, kde-format
 msgid "Item Up"
 msgstr "точка"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:81
+#, fuzzy, kde-format
+msgid "Clear"
+msgstr "&Изчистване"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
@@ -1241,13 +1225,19 @@ msgid "Size:"
 msgstr "Размер"
 
 #, fuzzy
-#~ msgid "Mounting: Common Settings"
-#~ msgstr "Потребителски настройки"
+#~ msgid "Wallet Entries"
+#~ msgstr "Премахване на въведените"
+
+#~ msgid "Load"
+#~ msgstr "Зареждане"
+
+#~ msgid "Save"
+#~ msgstr "Запазване"
 
 #, fuzzy
-#~ msgid "Mounting: Advanced Settings"
-#~ msgstr "Разширени CIFS настройки"
+#~ msgid "The wallet is used."
+#~ msgstr "Запомняне на паролата ако не се използва портфейл"
 
 #, fuzzy
-#~ msgid "Browsing"
-#~ msgstr "&Настройки"
+#~ msgid "The password dialog is used."
+#~ msgstr "Запомняне на паролата ако не се използва портфейл"

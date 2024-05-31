@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:39+0000\n"
+"POT-Creation-Date: 2024-05-31 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -545,48 +545,14 @@ msgstr ""
 "这是发送局域网唤醒魔术封包后，进行网上邻居扫描或者共享挂载之前的等待时间，单"
 "位为秒。"
 
-#. i18n: ectx: label, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:245
-#, kde-format
-msgid "Save logins in a wallet"
-msgstr "保存登录信息到密码库"
-
-#. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:246
-#, kde-format
-msgid ""
-"Use a wallet to store the login. The username and password are stored "
-"encrypted on your hard drive. If this setting is disabled, the login is not "
-"stored permanently but only temporarily."
-msgstr ""
-"使用密码库程序来存储登录信息。用户名和密码将被加密后存储在您的硬盘中。如果此"
-"选项被禁用，登录信息将只会临时保存，而不是永久保存。"
-
-#. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:250
-#, kde-format
-msgid "Use a default login"
-msgstr "使用默认身份登录"
-
-#. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:251
-#, kde-format
-msgid ""
-"Enable the usage of a default login. The provided data is used by default to "
-"authenticate to a remote server. This is very useful e.g. if you are working "
-"in an Active Directory environment or an NT domain."
-msgstr ""
-"启用默认登录信息。在此提供的数据将作为默认登录信息用于远程服务器的身份验证。"
-"如果您在 Active Directory 环境或者 NT 域中工作，此选项将十分有用。"
-
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:263
+#: smb4k.kcfg:248
 #, kde-format
 msgid "Synchronization prefix:"
 msgstr "同步前缀："
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:264
+#: smb4k.kcfg:249
 #, kde-format
 msgid ""
 "Under this prefix the destination directory for the synchronization will be "
@@ -598,37 +564,37 @@ msgstr ""
 "到其他位置，您可以在同步开始之前选择一个不同的路径。"
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:268
+#: smb4k.kcfg:253
 #, kde-format
 msgid "Archive mode"
 msgstr "归档模式"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:269
+#: smb4k.kcfg:254
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr "使用归档模式 (-a, --archive)。这是 -rlptgoD 的缩略形式。"
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:273
+#: smb4k.kcfg:258
 #, kde-format
 msgid "Recurse into subdirectories"
 msgstr "递归处理子目录"
 
 #. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:274
+#: smb4k.kcfg:259
 #, kde-format
 msgid "Recurse into directories (-r, --recursive)."
 msgstr "递归处理子目录 (-r, --recursive)。"
 
 #. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:278
+#: smb4k.kcfg:263
 #, kde-format
 msgid "Update files"
 msgstr "更新文件"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:279
+#: smb4k.kcfg:264
 #, kde-format
 msgid ""
 "Update files in the destination directory that are older than in the source "
@@ -636,13 +602,13 @@ msgid ""
 msgstr "更新目标目录中比来源目录中更旧的文件 (-u, --update)。"
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:283
+#: smb4k.kcfg:268
 #, kde-format
 msgid "Update files in place"
 msgstr "原地更新文件"
 
 #. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:284
+#: smb4k.kcfg:269
 #, kde-format
 msgid ""
 "Update destination files in-place (--inplace). By default, rsync first "
@@ -656,13 +622,13 @@ msgstr ""
 "本，而是直接覆盖目标文件。将此选项与 --backup 结合使用时例外。"
 
 #. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:288
+#: smb4k.kcfg:273
 #, kde-format
 msgid "Use relative path names"
 msgstr "使用相对路径名"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:289
+#: smb4k.kcfg:274
 #, kde-format
 msgid ""
 "Use relative paths (-R, --relative). This means that the full path names "
@@ -673,13 +639,13 @@ msgstr ""
 "到服务器，而不只是发送文件名的最后一部分。"
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:293
+#: smb4k.kcfg:278
 #, kde-format
 msgid "Do not send implied directories"
 msgstr "不发送隐含目录"
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:294
+#: smb4k.kcfg:279
 #, kde-format
 msgid ""
 "Do not send implied directories with --relative (--no-implied-dirs). This "
@@ -695,13 +661,13 @@ msgstr ""
 "号链接，而另一侧则是真实目录时。"
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:298
+#: smb4k.kcfg:283
 #, kde-format
 msgid "Transfer directories without recursing"
 msgstr "传输目录但不递归处理"
 
 #. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:299
+#: smb4k.kcfg:284
 #, kde-format
 msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
@@ -711,13 +677,13 @@ msgstr ""
 "包括它们的内容。"
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:304
+#: smb4k.kcfg:289
 #, kde-format
 msgid "Compress data during transfer"
 msgstr "传输时压缩数据"
 
 #. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:305
+#: smb4k.kcfg:290
 #, kde-format
 msgid ""
 "Compress data during transfer (-z, --compress). This significantly reduces "
@@ -728,13 +694,13 @@ msgstr ""
 "用此选项。"
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:309
+#: smb4k.kcfg:294
 #, kde-format
 msgid "Set compression level:"
 msgstr "压缩级别："
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:310
+#: smb4k.kcfg:295
 #, kde-format
 msgid ""
 "Explicitly set the compression level to use (--compress-level=NUM). If NUM "
@@ -744,19 +710,19 @@ msgstr ""
 "--compress 参数。"
 
 #. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
-#: smb4k.kcfg:314
+#: smb4k.kcfg:299
 #, kde-format
 msgid "The value for the UseCompressionLevel config entry"
 msgstr "UseCompressionLevel 配置项的值"
 
 #. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:321
+#: smb4k.kcfg:306
 #, kde-format
 msgid "Skip compression for following file suffixes:"
 msgstr "压缩时跳过下列文件名后缀："
 
 #. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:322
+#: smb4k.kcfg:307
 #, kde-format
 msgid ""
 "Overwrite the list of file suffixes that will not be compressed (--skip-"
@@ -771,44 +737,44 @@ msgstr ""
 "面。"
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
-#: smb4k.kcfg:326
+#: smb4k.kcfg:311
 #, kde-format
 msgid "The value(s) for the UseSkipCompression config entry"
 msgstr "UseSkipCompression 配置项的值"
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:331
+#: smb4k.kcfg:316
 #, kde-format
 msgid "Preserve symlinks"
 msgstr "保留符号链接"
 
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:332
+#: smb4k.kcfg:317
 #, kde-format
 msgid "Copy symlinks as symlinks (-l, --links)."
 msgstr "将符号链接复制为符号链接 (-l, --links)。"
 
 #. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:336
+#: smb4k.kcfg:321
 #, kde-format
 msgid "Transform symlinks"
 msgstr "转换符号链接"
 
 #. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:337
+#: smb4k.kcfg:322
 #, kde-format
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
 msgstr "将符号链接转换为它们指向的项目 (-L, --copy-links)。"
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:341
+#: smb4k.kcfg:326
 #, kde-format
 msgid "Transform unsafe symlinks"
 msgstr "转换不安全的符号链接"
 
 #. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:342
+#: smb4k.kcfg:327
 #, kde-format
 msgid ""
 "Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
@@ -823,13 +789,13 @@ msgstr ""
 "果。"
 
 #. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:346
+#: smb4k.kcfg:331
 #, kde-format
 msgid "Ignore unsafe symlinks"
 msgstr "忽略不安全的符号链接"
 
 #. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:347
+#: smb4k.kcfg:332
 #, kde-format
 msgid ""
 "Ignore symlinks that point outside the copied tree (--safe-links). All "
@@ -840,13 +806,13 @@ msgstr ""
 "忽略。与 --relative 选项同时使用时可能会导致预期之外的结果。"
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:351
+#: smb4k.kcfg:336
 #, kde-format
 msgid "Munge symlinks"
 msgstr "伪装符号链接"
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:352
+#: smb4k.kcfg:337
 #, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
@@ -862,13 +828,13 @@ msgstr ""
 "位置)，可以使用此选项。详情请见 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:356
+#: smb4k.kcfg:341
 #, kde-format
 msgid "Preserve hard links"
 msgstr "保留硬链接"
 
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:357
+#: smb4k.kcfg:342
 #, kde-format
 msgid ""
 "Preserve hard links (-H, --hard-links). This options causes rsync to "
@@ -879,13 +845,13 @@ msgstr ""
 "接。不使用此选项时，硬链接将被视作单独文件。"
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:361
+#: smb4k.kcfg:346
 #, kde-format
 msgid "Copy directory symlinks"
 msgstr "复制目录符号链接"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:362
+#: smb4k.kcfg:347
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the sending side as though they were real "
@@ -903,13 +869,13 @@ msgstr ""
 "选项生效时)。详情请见 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:366
+#: smb4k.kcfg:351
 #, kde-format
 msgid "Keep directory symlinks"
 msgstr "保持目录符号链接"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:367
+#: smb4k.kcfg:352
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the receiving side as though they were real "
@@ -922,13 +888,13 @@ msgstr ""
 "时，接收端的符号链接将被删除并替换为真实目录。"
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:371
+#: smb4k.kcfg:356
 #, kde-format
 msgid "Preserve permissions"
 msgstr "保留权限"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:372
+#: smb4k.kcfg:357
 #, kde-format
 msgid ""
 "Preserve permissions (-p, --perms). The permissions of the destination file "
@@ -939,13 +905,13 @@ msgstr ""
 "的情况，请阅读 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:376
+#: smb4k.kcfg:361
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
 msgstr "保留访问控制列表 (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:377
+#: smb4k.kcfg:362
 #, kde-format
 msgid ""
 "Preserve access control lists. This option causes rsync to update the "
@@ -958,13 +924,13 @@ msgstr ""
 "正常工作。"
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:381
+#: smb4k.kcfg:366
 #, kde-format
 msgid "Preserve extended attributes"
 msgstr "保留扩展属性"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:382
+#: smb4k.kcfg:367
 #, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
@@ -974,13 +940,13 @@ msgstr ""
 "性。"
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:386
+#: smb4k.kcfg:371
 #, kde-format
 msgid "Preserve access times"
 msgstr "保留访问时间"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:387
+#: smb4k.kcfg:372
 #, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
@@ -990,13 +956,13 @@ msgstr ""
 "访问时间。"
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:391
+#: smb4k.kcfg:376
 #, kde-format
 msgid "Preserve create times"
 msgstr "保留创建时间"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:392
+#: smb4k.kcfg:377
 #, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
@@ -1006,13 +972,13 @@ msgstr ""
 "创建时间。"
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:396
+#: smb4k.kcfg:381
 #, kde-format
 msgid "Preserve group"
 msgstr "保留用户组"
 
 #. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:397
+#: smb4k.kcfg:382
 #, kde-format
 msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
@@ -1020,13 +986,13 @@ msgid ""
 msgstr "保留用户组 (-g, --group)。目标文件的用户组将按照来源文件进行设置。"
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:401
+#: smb4k.kcfg:386
 #, kde-format
 msgid "Preserve owner"
 msgstr "保留所有者"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:402
+#: smb4k.kcfg:387
 #, kde-format
 msgid ""
 "Preserve the owner (-o, --owner). The owner of the destination file will be "
@@ -1039,13 +1005,13 @@ msgstr ""
 "用户。"
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:406
+#: smb4k.kcfg:391
 #, kde-format
 msgid "Preserve device and special files"
 msgstr "保留设备和特殊文件"
 
 #. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:407
+#: smb4k.kcfg:392
 #, kde-format
 msgid ""
 "Preserve device and special files (-D, --devices --specials). This option "
@@ -1058,13 +1024,13 @@ msgstr ""
 "rsync，或者没有指定 --super 选项时，此选项将无法传输所有设备和特殊文件。"
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:411
+#: smb4k.kcfg:396
 #, kde-format
 msgid "Preserve times"
 msgstr "保留修改时间"
 
 #. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:412
+#: smb4k.kcfg:397
 #, kde-format
 msgid ""
 "Preserve times (-t, --times). The modification times are transferred along "
@@ -1075,13 +1041,13 @@ msgstr ""
 "时的情况，请阅读 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:416
+#: smb4k.kcfg:401
 #, kde-format
 msgid "Omit directories when preserving times"
 msgstr "保留时间时忽略目录"
 
 #. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:417
+#: smb4k.kcfg:402
 #, kde-format
 msgid ""
 "Omit directories when preserving times (-O, --omit-dir-times). This means "
@@ -1092,13 +1058,13 @@ msgstr ""
 "录。必须与 --times 选项同时使用。"
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:421
+#: smb4k.kcfg:406
 #, kde-format
 msgid "Remove synchronized source files"
 msgstr "移除已同步的来源文件"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:422
+#: smb4k.kcfg:407
 #, kde-format
 msgid ""
 "Remove all synchronized source files (--remove-source-files). This tells "
@@ -1110,13 +1076,13 @@ msgstr ""
 "端中参与了传输，并在接受端中成功创建了副本的非目录项目。"
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:426
+#: smb4k.kcfg:411
 #, kde-format
 msgid "Delete extraneous files"
 msgstr "删除多余文件"
 
 #. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:427
+#: smb4k.kcfg:412
 #, kde-format
 msgid ""
 "Delete extraneous files from destination (--delete). This tells rsync to "
@@ -1127,13 +1093,13 @@ msgstr ""
 "送端中不存在的所有文件，仅对正在进行同步的目录有效。"
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:431
+#: smb4k.kcfg:416
 #, kde-format
 msgid "Delete files before transfer"
 msgstr "传输前删除文件"
 
 #. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:432
+#: smb4k.kcfg:417
 #, kde-format
 msgid ""
 "Delete files on the receiving side before the transfer starts (--delete-"
@@ -1144,13 +1110,13 @@ msgstr ""
 "delete-excluded 选项，且没有指定 --delete-WHEN 选项时，这是默认行为。"
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:436
+#: smb4k.kcfg:421
 #, kde-format
 msgid "Delete files after transfer"
 msgstr "传输后删除文件"
 
 #. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:437
+#: smb4k.kcfg:422
 #, kde-format
 msgid ""
 "Delete files on the receiving side after the transfer has completed (--"
@@ -1158,13 +1124,13 @@ msgid ""
 msgstr "在传输完成后删除接收端中的文件 (--delete-after, --del)。"
 
 #. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:441
+#: smb4k.kcfg:426
 #, kde-format
 msgid "Delete files during transfer"
 msgstr "传输时删除文件"
 
 #. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:442
+#: smb4k.kcfg:427
 #, kde-format
 msgid ""
 "Delete files on the receiving side during the transfer (--delete-during). "
@@ -1175,13 +1141,13 @@ msgstr ""
 "和 --delete-after 更快，但需要 rsync 2.6.4 和更高版本才能支持。"
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:446
+#: smb4k.kcfg:431
 #, kde-format
 msgid "Delete excluded files"
 msgstr "删除排除的文件"
 
 #. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:447
+#: smb4k.kcfg:432
 #, kde-format
 msgid ""
 "Also delete excluded files from destination directory (--delete-excluded). "
@@ -1194,13 +1160,13 @@ msgstr ""
 "件。详情请见 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:451
+#: smb4k.kcfg:436
 #, kde-format
 msgid "Delete even if I/O errors occur"
 msgstr "发生 I/O 错误时依然删除"
 
 #. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:452
+#: smb4k.kcfg:437
 #, kde-format
 msgid ""
 "Delete even if I/O errors occur (--ignore-errors). This option has to be "
@@ -1209,13 +1175,13 @@ msgstr ""
 "发生 I/O 错误时依然删除 (--ignore-errors)。此选项必须与 --delete 同时使用。"
 
 #. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:456
+#: smb4k.kcfg:441
 #, kde-format
 msgid "Force deletion of non-void directories"
 msgstr "强制删除非空目录"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:457
+#: smb4k.kcfg:442
 #, kde-format
 msgid ""
 "Force deletion of directories even if they are not empty (--force). This "
@@ -1226,13 +1192,13 @@ msgstr ""
 "换为非目录时，直接删除原来的非空目录。此选项仅在删除选项未被激活时有效。"
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:461
+#: smb4k.kcfg:446
 #, kde-format
 msgid "Do not delete more than this many files:"
 msgstr "删除文件数上限："
 
 #. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:462
+#: smb4k.kcfg:447
 #, kde-format
 msgid ""
 "Only delete as many files as defined here (--max-delete=NUM). This tells "
@@ -1244,19 +1210,19 @@ msgstr ""
 "作时可以用于预防意外。"
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
-#: smb4k.kcfg:466
+#: smb4k.kcfg:451
 #, kde-format
 msgid "Value for DeleteMaximum config entry"
 msgstr "DeleteMaximum 配置项的值"
 
 #. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:472
+#: smb4k.kcfg:457
 #, kde-format
 msgid "Do not transfer any file smaller than:"
 msgstr "传输文件大小下限："
 
 #. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:473
+#: smb4k.kcfg:458
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is smaller than the "
@@ -1264,19 +1230,19 @@ msgid ""
 msgstr "此选项命令 sync 不要传输任何小于指定大小的文件 (--min-size=SIZE)。"
 
 #. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:477
+#: smb4k.kcfg:462
 #, kde-format
 msgid "Value for MinimalTransferSize config entry"
 msgstr "MinimalTransferSize 配置项的值"
 
 #. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:483
+#: smb4k.kcfg:468
 #, kde-format
 msgid "Do not transfer any file larger than:"
 msgstr "传输文件大小上限："
 
 #. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:484
+#: smb4k.kcfg:469
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is larger than the "
@@ -1284,19 +1250,19 @@ msgid ""
 msgstr "此选项命令 sync 不要传输任何大于指定大小的文件 (--max-size=SIZE)。"
 
 #. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:488
+#: smb4k.kcfg:473
 #, kde-format
 msgid "Value for MaximalTransferSize config entry"
 msgstr "MaximalTransferSize 配置项的值"
 
 #. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:494
+#: smb4k.kcfg:479
 #, kde-format
 msgid "Keep partially transferred files"
 msgstr "保留部分传输的文件"
 
 #. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:495
+#: smb4k.kcfg:480
 #, kde-format
 msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
@@ -1306,13 +1272,13 @@ msgstr ""
 "都会被删除。"
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:499
+#: smb4k.kcfg:484
 #, kde-format
 msgid "Put partially transferred files into:"
 msgstr "部分传输文件暂存位置："
 
 #. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:500
+#: smb4k.kcfg:485
 #, kde-format
 msgid ""
 "Put a partially transferred file into this directory (--partial-dir=DIR). "
@@ -1325,19 +1291,19 @@ msgstr ""
 "件。"
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
-#: smb4k.kcfg:504
+#: smb4k.kcfg:489
 #, kde-format
 msgid "The data for the UsePartialDirectory option"
 msgstr "UsePartialDirectory 选项的数据"
 
 #. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:509
+#: smb4k.kcfg:494
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
 msgstr "按照 CVS 方式自动忽略文件"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:510
+#: smb4k.kcfg:495
 #, kde-format
 msgid ""
 "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
@@ -1349,13 +1315,13 @@ msgstr ""
 "需要传输的文件。它使用了与 CVS 相同的算法来确定是否忽略文件。"
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:514
+#: smb4k.kcfg:499
 #, kde-format
 msgid "Exclude files matching this pattern:"
 msgstr "排除匹配此模式的文件："
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:515
+#: smb4k.kcfg:500
 #, kde-format
 msgid ""
 "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
@@ -1366,19 +1332,19 @@ msgstr ""
 "过滤规则的更多信息，请查阅 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
-#: smb4k.kcfg:519
+#: smb4k.kcfg:504
 #, kde-format
 msgid "Pattern that is used for file exclusion"
 msgstr "用于排除文件的模式"
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:524
+#: smb4k.kcfg:509
 #, kde-format
 msgid "Read exclude patterns from:"
 msgstr "读取排除模式来源："
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:525
+#: smb4k.kcfg:510
 #, kde-format
 msgid ""
 "Read exclude patterns from a file (--exclude-from=FILE). This option is "
@@ -1391,19 +1357,19 @@ msgstr ""
 "信息，请查阅 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:529
+#: smb4k.kcfg:514
 #, kde-format
 msgid "The file from which the exclude patterns are read"
 msgstr "用于读取排除模式的文件"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:534
+#: smb4k.kcfg:519
 #, kde-format
 msgid "Include files matching this pattern:"
 msgstr "包含匹配此模式的文件："
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:535
+#: smb4k.kcfg:520
 #, kde-format
 msgid ""
 "Do not exclude files matching a certain pattern (--include=PATTERN). This is "
@@ -1414,19 +1380,19 @@ msgstr ""
 "解过滤规则的更多信息，请查阅 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
-#: smb4k.kcfg:539
+#: smb4k.kcfg:524
 #, kde-format
 msgid "Pattern that is used for file inclusion"
 msgstr "用于包含文件的模式"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:544
+#: smb4k.kcfg:529
 #, kde-format
 msgid "Read include patterns from:"
 msgstr "读取包含模式来源："
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:545
+#: smb4k.kcfg:530
 #, kde-format
 msgid ""
 "Read include patterns from a file (--include-from=FILE). This option is "
@@ -1439,19 +1405,19 @@ msgstr ""
 "信息，请查阅 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
-#: smb4k.kcfg:549
+#: smb4k.kcfg:534
 #, kde-format
 msgid "The file from which the include patterns are read"
 msgstr "用于读取包含模式的文件"
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:554
+#: smb4k.kcfg:539
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "自定义过滤规则："
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:555
+#: smb4k.kcfg:540
 #, kde-format
 msgid ""
 "Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
@@ -1464,19 +1430,19 @@ msgstr ""
 "则必须以 --filter=... 参数开头。"
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:559
+#: smb4k.kcfg:544
 #, kde-format
 msgid "Custom filter rules"
 msgstr "自定义过滤规则"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:564
+#: smb4k.kcfg:549
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "使用 --filter='dir-merge /.rsync-filter' 过滤规则"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:565
+#: smb4k.kcfg:550
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1489,13 +1455,13 @@ msgstr ""
 "rsync-filter' 选项，则此选项不生效。"
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:569
+#: smb4k.kcfg:554
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "使用 --filter='exclude .rsync-filter' 过滤规则"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:570
+#: smb4k.kcfg:555
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1506,13 +1472,13 @@ msgstr ""
 "这些规则，请选择 --filter='dir-merge /.rsync-filter' 规则，并取消选择此规则。"
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:574
+#: smb4k.kcfg:559
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr "减少稀疏文件空间消耗"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:575
+#: smb4k.kcfg:560
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1523,13 +1489,13 @@ msgstr ""
 "选项与 --inplace 选项冲突。详情请见 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:579
+#: smb4k.kcfg:564
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr "完整复制文件 (不使用 rsync 算法)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:580
+#: smb4k.kcfg:565
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1539,13 +1505,13 @@ msgstr ""
 "法，而是直接复制完整的文件。"
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:584
+#: smb4k.kcfg:569
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr "防止跨越文件系统边界"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:585
+#: smb4k.kcfg:570
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1556,13 +1522,13 @@ msgstr ""
 "时避免跨越文件系统的边界。详情请见 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:589
+#: smb4k.kcfg:574
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "仅更新已存在的文件"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:590
+#: smb4k.kcfg:575
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1576,13 +1542,13 @@ msgstr ""
 "何文件 (如果您只需要删除多余文件时可以用到)。"
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:594
+#: smb4k.kcfg:579
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "忽略已存在的文件"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:595
+#: smb4k.kcfg:580
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1590,13 +1556,13 @@ msgid ""
 msgstr "跳过更新接收端已存在的文件 (--ignore-existing)。不会忽略已有目录。"
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:599
+#: smb4k.kcfg:584
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "传输完成前暂缓更新"
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:600
+#: smb4k.kcfg:585
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1608,13 +1574,13 @@ msgstr ""
 "时目录，在传输结束后再快速重命名并复制它们到目标位置。"
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:604
+#: smb4k.kcfg:589
 #, kde-format
 msgid "Make backups"
 msgstr "保留备份"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:605
+#: smb4k.kcfg:590
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1627,49 +1593,49 @@ msgstr ""
 "的保存位置，使用 --suffix=SUFFIX 指定附加的文件名后缀 (可选)。"
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:609
+#: smb4k.kcfg:594
 #, kde-format
 msgid "Backup suffix:"
 msgstr "备份文件名后缀："
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:610
+#: smb4k.kcfg:595
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr "备份文件名附加此后缀 (--suffix=SUFFIX)。"
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:614
+#: smb4k.kcfg:599
 #, kde-format
 msgid "Backup suffix"
 msgstr "备份文件名后缀"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:619
+#: smb4k.kcfg:604
 #, kde-format
 msgid "Backup directory:"
 msgstr "备份文件存储目录："
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:620
+#: smb4k.kcfg:605
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr "备份文件将被存储到此目录 (--backup-dir=DIR)。"
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:624
+#: smb4k.kcfg:609
 #, kde-format
 msgid "Backup directory"
 msgstr "备份文件存储目录"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:629
+#: smb4k.kcfg:614
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr "强制使用固定的校验和数据块大小："
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:630
+#: smb4k.kcfg:615
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1679,19 +1645,19 @@ msgstr ""
 "法使用固定的校验和数据块大小。"
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:634
+#: smb4k.kcfg:619
 #, kde-format
 msgid "The block size"
 msgstr "数据块大小"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:640
+#: smb4k.kcfg:625
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "设置数据块/文件校验和种子："
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:641
+#: smb4k.kcfg:626
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1704,19 +1670,19 @@ msgstr ""
 "默认情况下，该校验和种子由服务器生成，默认使用当前时间。"
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:645
+#: smb4k.kcfg:630
 #, kde-format
 msgid "The value for the UseChecksumSeed config option"
 msgstr "UseChecksumSeed 配置选项的值"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:651
+#: smb4k.kcfg:636
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "基于校验和跳过文件"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:652
+#: smb4k.kcfg:637
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1727,32 +1693,32 @@ msgstr ""
 "详情请见 rsync 的使用手册页面。"
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:656
+#: smb4k.kcfg:641
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr "带宽限制："
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:657
+#: smb4k.kcfg:642
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
 msgstr "设置最大数据传输速率，单位为 kB/s (--bwlimit=RATE)。"
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:661
+#: smb4k.kcfg:646
 #, kde-format
 msgid "The value for the UseBandwidthLimit config option"
 msgstr "UseBandwidthLimit 配置选项的值"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:673
+#: smb4k.kcfg:658
 #, kde-format
 msgid "Use profiles"
 msgstr "使用配置方案"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:674
+#: smb4k.kcfg:659
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1764,48 +1730,48 @@ msgstr ""
 "电脑)，可以使用此选项。"
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:678
+#: smb4k.kcfg:663
 #, kde-format
 msgid "Profiles"
 msgstr "配置方案"
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:679
+#: smb4k.kcfg:664
 #, kde-format
 msgid "The list of profiles."
 msgstr "配置方案列表。"
 
-#: smb4k.kcfg:686
+#: smb4k.kcfg:671
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr "Home"
 
-#: smb4k.kcfg:687
+#: smb4k.kcfg:672
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
 msgstr "Work"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:688
+#: smb4k.kcfg:673
 #, kde-format
 msgid "Active profile"
 msgstr "活动配置方案"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:689
+#: smb4k.kcfg:674
 #, kde-format
 msgid "This is the currently active profile."
 msgstr "这是当前活动的配置方案。"
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:307
-#: smb4kshare.cpp:159 smb4kshare.cpp:162
+#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:307 smb4kshare.cpp:160
+#: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:341
+#: smb4kbookmarkhandler.cpp:302 smb4kcustomsettingsmanager.cpp:341
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -1837,7 +1803,25 @@ msgstr "此版本的 KDE 软件不提供 Zeroconf 支持。"
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf 发生未知错误。"
 
-#: smb4kmounter.cpp:683
+#: smb4kcredentialsmanager.cpp:334
+#, kde-format
+msgid ""
+"The way Smb4K stores the login credentials changed.\n"
+"\n"
+"Do you want to migrate your login credentials?"
+msgstr ""
+
+#: smb4kcredentialsmanager.cpp:336
+#, kde-format
+msgid "Migrate Login Credentials"
+msgstr ""
+
+#: smb4kcredentialsmanager.cpp:337
+#, kde-format
+msgid "Migrate"
+msgstr ""
+
+#: smb4kmounter.cpp:682
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1846,7 +1830,7 @@ msgstr ""
 "<p>共享 <b>%1</b> 已挂载到 <br><b>%2</b>，所有者用户为 <b>%3</b>。</p><p>您确"
 "定要卸载它吗？</p>"
 
-#: smb4kmounter.cpp:688
+#: smb4kmounter.cpp:687
 #, kde-format
 msgid "Foreign Share"
 msgstr "外部共享"
@@ -2925,21 +2909,7 @@ msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>已卸载 %1 个共享。</p>"
 
-#: smb4knotification.cpp:151
-#, kde-format
-msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-msgstr "<p>打开密码库 <b>%1</b> 失败。</p>"
-
-#: smb4knotification.cpp:165
-#, kde-format
-msgid ""
-"<p>The credentials stored in the wallet could not be accessed. There is "
-"either no wallet available or it could not be opened.</p>"
-msgstr ""
-"<p>无法访问存储在密码库中的身份验证信息。该密码库要么不可用，要么无法打开。</"
-"p>"
-
-#: smb4knotification.cpp:180
+#: smb4knotification.cpp:152
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -2948,42 +2918,42 @@ msgstr ""
 "<p>打印功能不支持 MIME 类型 <b>%1</b> 。请将文件转换为 PDF 或者 Postscript，"
 "然后重试。</p>"
 
-#: smb4knotification.cpp:198
+#: smb4knotification.cpp:170
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<p>共享 <b>%1</b> 的书签已存在，它将被跳过。</p>"
 
-#: smb4knotification.cpp:216
+#: smb4knotification.cpp:188
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
 "being used and will automatically be renamed.</p>"
 msgstr "<p>共享 <b>%2</b> 的标签 <b>%1</b> 已被使用，它将被自动重命名。</p>"
 
-#: smb4knotification.cpp:236
+#: smb4knotification.cpp:208
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>挂载共享 <b>%1</b> 失败：</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:238
+#: smb4knotification.cpp:210
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>挂载共享 <b>%1</b> 失败。</p>"
 
-#: smb4knotification.cpp:261
+#: smb4knotification.cpp:233
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
 "p>"
 msgstr "<p>卸载 <b>%2</b> 上的共享 <b>%1</b> 失败：</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:263
+#: smb4knotification.cpp:235
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>卸载 <b>%2</b> 上的共享 <b>%1</b> 失败。</p>"
 
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:262
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -2992,128 +2962,136 @@ msgstr ""
 "<p>您不具备从 <b>%2</b> 卸载共享 <b>%1</b> 的权限。它的所有者是用户 <b>%3</"
 "b>。</p>"
 
-#: smb4knotification.cpp:305
+#: smb4knotification.cpp:277
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "<p>同步 <b>%1</b> 和 <b>%2</b> 失败：</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:307
+#: smb4knotification.cpp:279
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>同步 <b>%1</b> 和 <b>%2</b> 失败。</p>"
 
-#: smb4knotification.cpp:329
+#: smb4knotification.cpp:301
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p>命令 <b>%1</b> 无法找到。请检查本机系统的软件安装情况。</p>"
 
-#: smb4knotification.cpp:345
+#: smb4knotification.cpp:317
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "<p>共享 <b>%1</b> 是一台打印机，它无法被添加为书签。</p>"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:331
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>文件 <b>%1</b> 无法找到。</p>"
 
-#: smb4knotification.cpp:369
+#: smb4knotification.cpp:341
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>打开文件 <b>%1</b> 失败：</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:371
+#: smb4knotification.cpp:343
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>打开文件 <b>%1</b> 失败。</p>"
 
-#: smb4knotification.cpp:390 smb4knotification.cpp:393
+#: smb4knotification.cpp:362 smb4knotification.cpp:365
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>读取文件 <b>%1</b> 失败：</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:395
+#: smb4knotification.cpp:367
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>读取文件 <b>%1</b> 失败。</p>"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:390
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>无法创建以下目录：</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:401
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>进程启动失败 (错误代码：<tt>%1</tt>)。</p>"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:405
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>进程已崩溃 (错误代码：<tt>%1</tt>)。</p>"
 
-#: smb4knotification.cpp:437
+#: smb4knotification.cpp:409
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>进程超时 (错误代码：<tt>%1</tt>)。</p>"
 
-#: smb4knotification.cpp:441
+#: smb4knotification.cpp:413
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>无法写入进程 (错误代码：<tt>%1</tt>)。</p>"
 
-#: smb4knotification.cpp:445
+#: smb4knotification.cpp:417
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>无法读取进程数据 (错误代码：<tt>%1</tt>)。</p>"
 
-#: smb4knotification.cpp:450
+#: smb4knotification.cpp:422
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>该进程报告了一个未知错误。</p>"
 
-#: smb4knotification.cpp:513
+#: smb4knotification.cpp:485
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 "</p>"
 msgstr "<p>使用 root 权限执行操作失败 (错误代码：<tt>%1</tt>)。</p>"
 
-#: smb4knotification.cpp:515
+#: smb4knotification.cpp:487
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>使用 root 权限执行操作失败。</p>"
 
-#: smb4knotification.cpp:537
+#: smb4knotification.cpp:509
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>传递的 URL 无效</p>"
 
-#: smb4knotification.cpp:550
+#: smb4knotification.cpp:522
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr "<p>网络通信失败，错误消息：<s>%1</s></p>"
 
-#: smb4knotification.cpp:563
+#: smb4knotification.cpp:535
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>Zeroconf 服务出错：<s>%1</s></p>"
 
-#: smb4kshare.cpp:192
+#: smb4knotification.cpp:548
+#, kde-format
+msgid ""
+"<p>An error occurred while reading the login credentials from the secure "
+"storage:\n"
+"<tt>%1</tt></p>"
+msgstr ""
+
+#: smb4kshare.cpp:193
 #, kde-format
 msgid "Disk"
 msgstr "磁盘"
 
-#: smb4kshare.cpp:196
+#: smb4kshare.cpp:197
 #, kde-format
 msgid "Printer"
 msgstr "打印机"
 
-#: smb4kshare.cpp:200
+#: smb4kshare.cpp:201
 #, kde-format
 msgid "IPC"
 msgstr "IPC"
@@ -3132,3 +3110,35 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "保存登录信息到密码库"
+
+#~ msgid ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+#~ msgstr ""
+#~ "使用密码库程序来存储登录信息。用户名和密码将被加密后存储在您的硬盘中。如果"
+#~ "此选项被禁用，登录信息将只会临时保存，而不是永久保存。"
+
+#~ msgid "Use a default login"
+#~ msgstr "使用默认身份登录"
+
+#~ msgid ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+#~ msgstr ""
+#~ "启用默认登录信息。在此提供的数据将作为默认登录信息用于远程服务器的身份验"
+#~ "证。如果您在 Active Directory 环境或者 NT 域中工作，此选项将十分有用。"
+
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "<p>打开密码库 <b>%1</b> 失败。</p>"
+
+#~ msgid ""
+#~ "<p>The credentials stored in the wallet could not be accessed. There is "
+#~ "either no wallet available or it could not be opened.</p>"
+#~ msgstr ""
+#~ "<p>无法访问存储在密码库中的身份验证信息。该密码库要么不可用，要么无法打"
+#~ "开。</p>"
