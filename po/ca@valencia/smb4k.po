@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-22 10:52+0200\n"
+"PO-Revision-Date: 2024-05-31 10:29+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -228,17 +228,17 @@ msgstr "Connexió predeterminada"
 #, kde-format
 msgid "The default login is depending on the profile you are using."
 msgstr ""
+"L'inici de la sessió predeterminat depén del perfil que esteu fent servir."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "Perfil actiu:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "desconegut"
+msgstr "Desconegut"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -250,13 +250,12 @@ msgstr "Nom d'usuari:"
 #: smb4k/smb4kconfigpageauthentication.cpp:53
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "Contrasenya:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "Connexió predeterminada"
+msgstr "Perfil predeterminat"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1244,29 +1243,3 @@ msgstr "%1 lliure de %2 (utilitzat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "Wallet Entries"
-#~ msgstr "Entrades de la cartera"
-
-#~ msgid "Load"
-#~ msgstr "Carrega"
-
-#~ msgid "Save"
-#~ msgstr "Guarda"
-
-#~ msgid "Enter the default login information."
-#~ msgstr "Introduïu la informació de connexió predeterminada."
-
-#~ msgid "Set the username and password for wallet entry %1."
-#~ msgstr ""
-#~ "Establix el nom d'usuari i contrasenya de l'entrada %1 de la cartera."
-
-#~ msgid "Set the username and password for the default login."
-#~ msgstr ""
-#~ "Establix el nom d'usuari i la contrasenya de la connexió predeterminada."
-
-#~ msgid "The wallet is used."
-#~ msgstr "La cartera es troba en ús."
-
-#~ msgid "The password dialog is used."
-#~ msgstr "S'utilitza el diàleg de contrasenya."

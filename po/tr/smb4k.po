@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-23 01:35+0300\n"
+"PO-Revision-Date: 2024-05-31 14:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -226,18 +226,17 @@ msgstr "Öntanımlı Oturum Açma Verisi"
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
 msgid "The default login is depending on the profile you are using."
-msgstr ""
+msgstr "Öntanımlı oturum açma, kullandığınız profile bağlıdır."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "Etkin profil:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "bilinmeyen"
+msgstr "Bilinmiyor"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -249,13 +248,12 @@ msgstr "Kullanıcı adı:"
 #: smb4k/smb4kconfigpageauthentication.cpp:53
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "Parola:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "Öntanımlı Oturum Açma Verisi"
+msgstr "Öntanımlı Profil"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54

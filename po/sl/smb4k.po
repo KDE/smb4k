@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-22 09:32+0200\n"
+"PO-Revision-Date: 2024-05-31 11:00+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -222,18 +222,17 @@ msgstr "Privzeta prijava"
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
 msgid "The default login is depending on the profile you are using."
-msgstr ""
+msgstr "Privzeta prijava je odvisna od profila, ki ga uporabljate."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "Dejavni profil:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "neznano"
+msgstr "Neznano"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -243,16 +242,14 @@ msgid "Username:"
 msgstr "Uporabniško ime:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:53
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Geslo"
+msgstr "Geslo:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "Privzeta prijava"
+msgstr "Privzeti profil"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54

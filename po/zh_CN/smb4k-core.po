@@ -3110,35 +3110,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid "Save logins in a wallet"
-#~ msgstr "保存登录信息到密码库"
-
-#~ msgid ""
-#~ "Use a wallet to store the login. The username and password are stored "
-#~ "encrypted on your hard drive. If this setting is disabled, the login is "
-#~ "not stored permanently but only temporarily."
-#~ msgstr ""
-#~ "使用密码库程序来存储登录信息。用户名和密码将被加密后存储在您的硬盘中。如果"
-#~ "此选项被禁用，登录信息将只会临时保存，而不是永久保存。"
-
-#~ msgid "Use a default login"
-#~ msgstr "使用默认身份登录"
-
-#~ msgid ""
-#~ "Enable the usage of a default login. The provided data is used by default "
-#~ "to authenticate to a remote server. This is very useful e.g. if you are "
-#~ "working in an Active Directory environment or an NT domain."
-#~ msgstr ""
-#~ "启用默认登录信息。在此提供的数据将作为默认登录信息用于远程服务器的身份验"
-#~ "证。如果您在 Active Directory 环境或者 NT 域中工作，此选项将十分有用。"
-
-#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-#~ msgstr "<p>打开密码库 <b>%1</b> 失败。</p>"
-
-#~ msgid ""
-#~ "<p>The credentials stored in the wallet could not be accessed. There is "
-#~ "either no wallet available or it could not be opened.</p>"
-#~ msgstr ""
-#~ "<p>无法访问存储在密码库中的身份验证信息。该密码库要么不可用，要么无法打"
-#~ "开。</p>"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-22 17:51+0200\n"
+"PO-Revision-Date: 2024-05-31 10:15+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -222,13 +222,12 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "Profilo active:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "incognite"
+msgstr "Incognoscite"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -238,16 +237,14 @@ msgid "Username:"
 msgstr "Nomine de usator:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:53
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Contrasigno"
+msgstr "Contrasigno:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "Authentication predefinite"
+msgstr "Profilo predefinite"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -445,7 +442,7 @@ msgstr "Preferentias"
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Adde"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
@@ -455,7 +452,7 @@ msgstr ""
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Move in alto"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-22 04:48+0200\n"
+"PO-Revision-Date: 2024-05-31 07:42+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -223,16 +223,15 @@ msgstr "ნაგულისხმები მომხმარებელ�
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
 msgid "The default login is depending on the profile you are using."
-msgstr ""
+msgstr "ნაგულიხმევი მომხმარებელი დამოკიდებულია პროფილზე, რომელსაც იყენებთ."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "აქტიური პროფილი:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
 msgstr "უცნობი"
 
@@ -246,13 +245,12 @@ msgstr "მომხმარებელი:"
 #: smb4k/smb4kconfigpageauthentication.cpp:53
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "პაროლი:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "ნაგულისხმები მომხმარებელი"
+msgstr "ნაგულისხმევი პროფილი"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54

@@ -227,10 +227,9 @@ msgid "Active profile:"
 msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "未知"
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -245,10 +244,9 @@ msgid "Password:"
 msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "默认登录"
+msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1214,27 +1212,3 @@ msgstr "总共 %2，空闲 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "Wallet Entries"
-#~ msgstr "密码库条目"
-
-#~ msgid "Load"
-#~ msgstr "加载"
-
-#~ msgid "Save"
-#~ msgstr "保存"
-
-#~ msgid "Enter the default login information."
-#~ msgstr "输入默认登录信息。"
-
-#~ msgid "Set the username and password for wallet entry %1."
-#~ msgstr "设置密码库条目 %1 的用户名和密码。"
-
-#~ msgid "Set the username and password for the default login."
-#~ msgstr "设置默认登录的用户名和密码。"
-
-#~ msgid "The wallet is used."
-#~ msgstr "已使用密码库。"
-
-#~ msgid "The password dialog is used."
-#~ msgstr "已使用密码对话框。"

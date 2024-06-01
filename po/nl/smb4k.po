@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-22 14:01+0200\n"
+"PO-Revision-Date: 2024-05-31 13:21+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -229,18 +229,17 @@ msgstr "Standaard Login"
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
 msgid "The default login is depending on the profile you are using."
-msgstr ""
+msgstr "De standaard aanmelding hangt af van het profiel dat u gebruikt."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "Actief profiel:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "onbekend"
+msgstr "Onbekend"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -250,16 +249,14 @@ msgid "Username:"
 msgstr "Gebruikersnaam:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:53
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Wachtwoord"
+msgstr "Wachtwoord:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "Standaard Login"
+msgstr "Standaard profiel"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54

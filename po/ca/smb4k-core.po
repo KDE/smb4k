@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-01-30 13:26+0100\n"
+"PO-Revision-Date: 2024-05-31 10:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1979,16 +1979,20 @@ msgid ""
 "\n"
 "Do you want to migrate your login credentials?"
 msgstr ""
+"Ha canviat la manera en què el Smb4K emmagatzema les credencials d'inici de "
+"sessió.\n"
+"\n"
+"Voleu migrar les credencials d'inici de sessió?"
 
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
+msgstr "Migra les credencials d'inici de sessió"
 
 #: smb4kcredentialsmanager.cpp:337
 #, kde-format
 msgid "Migrate"
-msgstr ""
+msgstr "Migra"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3334,6 +3338,9 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>S'ha produït un error en llegir les credencials de l'emmagatzematge "
+"segur:\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format

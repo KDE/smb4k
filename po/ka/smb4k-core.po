@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-04-09 08:37+0200\n"
+"PO-Revision-Date: 2024-05-31 07:43+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1929,16 +1929,19 @@ msgid ""
 "\n"
 "Do you want to migrate your login credentials?"
 msgstr ""
+"გზა, როგორც Smb4K ავტორიზაციის დეტალებს ინახავს, შეიცვალა.\n"
+"\n"
+"გნებავთ თქვენი ავტორიზაციის დეტალების მიგრაცია?"
 
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
+msgstr "ავტორიზაციის დეტალების მიგრაცია"
 
 #: smb4kcredentialsmanager.cpp:337
 #, kde-format
 msgid "Migrate"
-msgstr ""
+msgstr "მიგრაცია"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3272,6 +3275,8 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>შეცდომა ავტორიზაციის დეტალების დაცული საცავიდან წაკითხვისას:\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format

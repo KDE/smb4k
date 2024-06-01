@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-01-30 13:26+0100\n"
+"PO-Revision-Date: 2024-05-31 10:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1979,16 +1979,20 @@ msgid ""
 "\n"
 "Do you want to migrate your login credentials?"
 msgstr ""
+"Ha canviat la manera en què Smb4K emmagatzema les credencials d'inici de "
+"sessió.\n"
+"\n"
+"Voleu migrar les credencials d'inici de sessió?"
 
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
+msgstr "Migra les credencials d'inici de sessió"
 
 #: smb4kcredentialsmanager.cpp:337
 #, kde-format
 msgid "Migrate"
-msgstr ""
+msgstr "Migra"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3337,6 +3341,9 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>S'ha produït un error en llegir les credencials de l'emmagatzematge "
+"segur:\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format
@@ -3367,39 +3374,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid "Save logins in a wallet"
-#~ msgstr "Guarda els inicis de sessió en una cartera"
-
-#~ msgid ""
-#~ "Use a wallet to store the login. The username and password are stored "
-#~ "encrypted on your hard drive. If this setting is disabled, the login is "
-#~ "not stored permanently but only temporarily."
-#~ msgstr ""
-#~ "Utilitza una cartera per a emmagatzemar l'inici de sessió. El nom "
-#~ "d'usuari i la contrasenya s'emmagatzemaran encriptats en el disc dur. Si "
-#~ "es desmarca esta opció, l'inici de sessió no es guardarà permanentment, "
-#~ "només temporalment."
-
-#~ msgid "Use a default login"
-#~ msgstr "Utilitza un inici de sessió predeterminat"
-
-#~ msgid ""
-#~ "Enable the usage of a default login. The provided data is used by default "
-#~ "to authenticate to a remote server. This is very useful e.g. if you are "
-#~ "working in an Active Directory environment or an NT domain."
-#~ msgstr ""
-#~ "Activa l'ús d'un inici de sessió predeterminat. Les dades proporcionades "
-#~ "s'utilitzaran de manera predeterminada per a autenticar en un servidor "
-#~ "remot. Açò és molt útil, p. ex., si esteu treballant en un entorn de "
-#~ "Directori Actiu o en un domini NT."
-
-#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-#~ msgstr "<p>No s'ha pogut fer l'obertura de la cartera <b>%1</b>.</p>"
-
-#~ msgid ""
-#~ "<p>The credentials stored in the wallet could not be accessed. There is "
-#~ "either no wallet available or it could not be opened.</p>"
-#~ msgstr ""
-#~ "<p>No s'ha pogut accedir a les credencials emmagatzemades en la cartera. "
-#~ "No hi ha cap cartera disponible o no s'ha pogut obrir.</p>"

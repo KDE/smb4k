@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-26 21:13+0200\n"
+"PO-Revision-Date: 2024-05-31 16:09+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1927,16 +1927,19 @@ msgid ""
 "\n"
 "Do you want to migrate your login credentials?"
 msgstr ""
+"La maniero en kiu Smb4K konservas la ensalutajn akreditaĵojn ŝanĝiĝis\n"
+"\n"
+"Ĉu vi volas transigi viajn ensalutajn akreditaĵojn?"
 
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
+msgstr "Transigi Ensalutajn Akreditaĵojn"
 
 #: smb4kcredentialsmanager.cpp:337
 #, kde-format
 msgid "Migrate"
-msgstr ""
+msgstr "Transigi"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3264,6 +3267,9 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>Okazis eraro dum legado de la ensalutaj akreditaĵoj el la sekura "
+"konservejo:\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format
