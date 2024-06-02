@@ -219,17 +219,17 @@ msgstr "默认登录"
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
 msgid "The default login is depending on the profile you are using."
-msgstr ""
+msgstr "默认登录取决于您使用的配置方案。"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "活动配置方案："
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -241,12 +241,12 @@ msgstr "用户名："
 #: smb4k/smb4kconfigpageauthentication.cpp:53
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "密码："
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
 #, kde-format
 msgid "Default Profile"
-msgstr ""
+msgstr "默认方案"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54

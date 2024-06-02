@@ -1810,16 +1810,19 @@ msgid ""
 "\n"
 "Do you want to migrate your login credentials?"
 msgstr ""
+"Smb4K 存储登录凭据的方式发生了更改。\n"
+"\n"
+"您想要迁移您的登录凭据吗？"
 
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
+msgstr "迁移登录凭据"
 
 #: smb4kcredentialsmanager.cpp:337
 #, kde-format
 msgid "Migrate"
-msgstr ""
+msgstr "迁移"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3080,6 +3083,8 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>读取安全存储中的凭据时发生错误：\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format
