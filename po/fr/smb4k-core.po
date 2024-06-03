@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-02 15:48+0200\n"
+"PO-Revision-Date: 2024-06-01 10:31+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -2011,16 +2011,20 @@ msgid ""
 "\n"
 "Do you want to migrate your login credentials?"
 msgstr ""
+"La façon dont Smb4K enregistre les modifications concernant les identifiants "
+"de connexion.\n"
+"\n"
+"Voulez-vous migrer vos identifiants de connexion ?"
 
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
+msgstr "Migrer les identifiants de connexion"
 
 #: smb4kcredentialsmanager.cpp:337
 #, kde-format
 msgid "Migrate"
-msgstr ""
+msgstr "Effectuer une migration"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3376,6 +3380,9 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>Une erreur s'est produite lors de la lecture des identifiants de "
+"connexion à partir du média sécurisé :\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format
