@@ -1212,9 +1212,3 @@ msgstr ""
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#~ msgid "Load"
-#~ msgstr "Last inn"
-
-#~ msgid "Save"
-#~ msgstr "Lagre"

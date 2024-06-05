@@ -2991,28 +2991,3 @@ msgstr "Kilde"
 #, kde-format
 msgid "Destination"
 msgstr "Mål"
-
-#~ msgid "Save logins in a wallet"
-#~ msgstr "Lagre innlogginger i en lommebok"
-
-#~ msgid ""
-#~ "Use a wallet to store the login. The username and password are stored "
-#~ "encrypted on your hard drive. If this setting is disabled, the login is "
-#~ "not stored permanently but only temporarily."
-#~ msgstr ""
-#~ "Bruk en lommebok til å lagre innloggingen. Brukernavnet og passordet blir "
-#~ "lagret kryptert på disken. Hvis dette er slått av blir innloggingen bare "
-#~ "lagret midlertidig, ikke permanent."
-
-#~ msgid "Use a default login"
-#~ msgstr "Bruk en standard innlogging"
-
-#~ msgid ""
-#~ "Enable the usage of a default login. The provided data is used by default "
-#~ "to authenticate to a remote server. This is very useful e.g. if you are "
-#~ "working in an Active Directory environment or an NT domain."
-#~ msgstr ""
-#~ "Tillat bruk av en standard innlogging. De data som blir oppgitt blir som "
-#~ "standard brukt til å autentisere mot en tjener på nettverket. Dette er "
-#~ "svært nyttig hvis du for eksempel arbeider i et Active Directory-miljø "
-#~ "eller i et NT-domene."

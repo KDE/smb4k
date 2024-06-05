@@ -1220,21 +1220,3 @@ msgstr "%1 ledig av %2 (%3 brukt)"
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#~ msgid "Wallet Entries"
-#~ msgstr "Lommebokoppføringar"
-
-#~ msgid "Load"
-#~ msgstr "Last inn"
-
-#~ msgid "Save"
-#~ msgstr "Lagra"
-
-#~ msgid "Enter the default login information."
-#~ msgstr "Skriv inn standard påloggingsinformasjon."
-
-#~ msgid "The wallet is used."
-#~ msgstr "Lommaboka er brukt."
-
-#~ msgid "The password dialog is used."
-#~ msgstr "Passordvindauget er brukt."
