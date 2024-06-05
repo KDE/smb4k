@@ -19,9 +19,9 @@
 #include <qt6keychain/keychain.h>
 
 // KDE & Qt includes for migrate() function
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KWallet>
-#include <KLocalizedString>
 #include <QApplication>
 
 class Smb4KCredentialsManagerStatic
@@ -175,11 +175,13 @@ bool Smb4KCredentialsManager::readDefaultLoginCredentials(QString *username, QSt
 bool Smb4KCredentialsManager::writeDefaultLoginCredentials(const QString &username, const QString &password)
 {
     bool success = false;
-    // FIXME: If the credentials are empty, remove the entry from the secure storage?
 
     if (!username.isEmpty() /* allow empty passwords */) {
         QString key = QStringLiteral("DEFAULT::") + Smb4KProfileManager::self()->activeProfile();
         success = (write(key, username + QStringLiteral(":") + password) == QKeychain::NoError);
+    } else {
+        QString key = QStringLiteral("DEFAULT::") + Smb4KProfileManager::self()->activeProfile();
+        success = (remove(key) == QKeychain::NoError);
     }
 
     return success;
@@ -330,12 +332,12 @@ void Smb4KCredentialsManager::migrate()
     if (QFile::exists(configFile) && !authenticationGroup.hasKey(QStringLiteral("MigratedToKeychain"))) {
         int returnValue = QKeychain::NoError;
 
-        int buttonCode = KMessageBox::questionTwoActions(QApplication::activeWindow() ? QApplication::activeWindow() : nullptr,
-                                                         i18n("The way Smb4K stores the login credentials changed.\n\n"
-                                                              "Do you want to migrate your login credentials?"),
-                                                         i18n("Migrate Login Credentials"),
-                                                         KGuiItem(i18n("Migrate"), KDE::icon(QStringLiteral("edit-duplicate"))),
-                                                         KStandardGuiItem::cancel());
+        int buttonCode = KMessageBox::questionTwoActionsCancel(QApplication::activeWindow() ? QApplication::activeWindow() : nullptr,
+                                                               i18n("The way Smb4K stores the login credentials changed.\n\n"
+                                                                    "Do you want to migrate your login credentials?"),
+                                                               i18n("Migrate Login Credentials"),
+                                                               KGuiItem(i18n("Migrate"), KDE::icon(QStringLiteral("edit-duplicate"))),
+                                                               KGuiItem(i18n("Don't Migrate"), KDE::icon(QStringLiteral("edit-delete-remove"))));
 
         if (buttonCode == KMessageBox::PrimaryAction) {
             KWallet::Wallet *wallet =
@@ -380,7 +382,7 @@ void Smb4KCredentialsManager::migrate()
                         }
                     }
 
-                    wallet->removeFolder(QStringLiteral("Smb4K"));
+                    // wallet->removeFolder(QStringLiteral("Smb4K"));
                 }
             }
 
