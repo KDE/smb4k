@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:39+0000\n"
-"PO-Revision-Date: 2024-01-30 13:26+0100\n"
+"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"PO-Revision-Date: 2024-05-31 10:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -603,52 +603,14 @@ msgstr ""
 "«Wake-On-LAN» i l'escaneig del veïnatge de xarxa o del muntatge d'una "
 "compartició."
 
-#. i18n: ectx: label, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:245
-#, kde-format
-msgid "Save logins in a wallet"
-msgstr "Guarda els inicis de sessió en una cartera"
-
-#. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:246
-#, kde-format
-msgid ""
-"Use a wallet to store the login. The username and password are stored "
-"encrypted on your hard drive. If this setting is disabled, the login is not "
-"stored permanently but only temporarily."
-msgstr ""
-"Utilitza una cartera per a emmagatzemar l'inici de sessió. El nom d'usuari i "
-"la contrasenya s'emmagatzemaran encriptats en el disc dur. Si es desmarca "
-"esta opció, l'inici de sessió no es guardarà permanentment, només "
-"temporalment."
-
-#. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:250
-#, kde-format
-msgid "Use a default login"
-msgstr "Utilitza un inici de sessió predeterminat"
-
-#. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:251
-#, kde-format
-msgid ""
-"Enable the usage of a default login. The provided data is used by default to "
-"authenticate to a remote server. This is very useful e.g. if you are working "
-"in an Active Directory environment or an NT domain."
-msgstr ""
-"Activa l'ús d'un inici de sessió predeterminat. Les dades proporcionades "
-"s'utilitzaran de manera predeterminada per a autenticar en un servidor "
-"remot. Açò és molt útil, p. ex., si esteu treballant en un entorn de "
-"Directori Actiu o en un domini NT."
-
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:263
+#: smb4k.kcfg:248
 #, kde-format
 msgid "Synchronization prefix:"
 msgstr "Prefix de sincronització:"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:264
+#: smb4k.kcfg:249
 #, kde-format
 msgid ""
 "Under this prefix the destination directory for the synchronization will be "
@@ -662,38 +624,38 @@ msgstr ""
 "comence la sincronització real."
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:268
+#: smb4k.kcfg:253
 #, kde-format
 msgid "Archive mode"
 msgstr "Mode d'arxiu"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:269
+#: smb4k.kcfg:254
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr ""
 "Utilitza el mode d'arxiu (-a, --archive). Esta és la forma curta de -rlptgoD."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:273
+#: smb4k.kcfg:258
 #, kde-format
 msgid "Recurse into subdirectories"
 msgstr "Recursiu en els subdirectoris"
 
 #. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:274
+#: smb4k.kcfg:259
 #, kde-format
 msgid "Recurse into directories (-r, --recursive)."
 msgstr "Recursiu en els directoris (-r, --recursive)."
 
 #. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:278
+#: smb4k.kcfg:263
 #, kde-format
 msgid "Update files"
 msgstr "Actualitza els fitxers"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:279
+#: smb4k.kcfg:264
 #, kde-format
 msgid ""
 "Update files in the destination directory that are older than in the source "
@@ -703,13 +665,13 @@ msgstr ""
 "que en el directori d'origen (-u, --update)."
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:283
+#: smb4k.kcfg:268
 #, kde-format
 msgid "Update files in place"
 msgstr "Actualitza els fitxers en el lloc"
 
 #. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:284
+#: smb4k.kcfg:269
 #, kde-format
 msgid ""
 "Update destination files in-place (--inplace). By default, rsync first "
@@ -726,13 +688,13 @@ msgstr ""
 "amb --backup."
 
 #. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:288
+#: smb4k.kcfg:273
 #, kde-format
 msgid "Use relative path names"
 msgstr "Utilitza noms de camins relatius"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:289
+#: smb4k.kcfg:274
 #, kde-format
 msgid ""
 "Use relative paths (-R, --relative). This means that the full path names "
@@ -744,13 +706,13 @@ msgstr ""
 "comptes de només les últimes parts dels noms de fitxer."
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:293
+#: smb4k.kcfg:278
 #, kde-format
 msgid "Do not send implied directories"
 msgstr "No envies directoris implícits"
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:294
+#: smb4k.kcfg:279
 #, kde-format
 msgid ""
 "Do not send implied directories with --relative (--no-implied-dirs). This "
@@ -769,13 +731,13 @@ msgstr ""
 "real en l'altra costat."
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:298
+#: smb4k.kcfg:283
 #, kde-format
 msgid "Transfer directories without recursing"
 msgstr "Transferix els directoris sense recursivitat"
 
 #. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:299
+#: smb4k.kcfg:284
 #, kde-format
 msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
@@ -786,13 +748,13 @@ msgstr ""
 "contingut."
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:304
+#: smb4k.kcfg:289
 #, kde-format
 msgid "Compress data during transfer"
 msgstr "Comprimix les dades durant la transferència"
 
 #. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:305
+#: smb4k.kcfg:290
 #, kde-format
 msgid ""
 "Compress data during transfer (-z, --compress). This significantly reduces "
@@ -804,13 +766,13 @@ msgstr ""
 "connexió lenta, potser voldreu utilitzar esta opció."
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:309
+#: smb4k.kcfg:294
 #, kde-format
 msgid "Set compression level:"
 msgstr "Establix el nivell de compressió:"
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:310
+#: smb4k.kcfg:295
 #, kde-format
 msgid ""
 "Explicitly set the compression level to use (--compress-level=NUM). If NUM "
@@ -820,19 +782,19 @@ msgstr ""
 "level=NÚM). Si NÚM no és zero, l'argument --compress és implícit."
 
 #. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
-#: smb4k.kcfg:314
+#: smb4k.kcfg:299
 #, kde-format
 msgid "The value for the UseCompressionLevel config entry"
 msgstr "El valor per a l'entrada de configuració «UseCompressionLevel»"
 
 #. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:321
+#: smb4k.kcfg:306
 #, kde-format
 msgid "Skip compression for following file suffixes:"
 msgstr "Omet la compressió per als sufixos següents:"
 
 #. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:322
+#: smb4k.kcfg:307
 #, kde-format
 msgid ""
 "Overwrite the list of file suffixes that will not be compressed (--skip-"
@@ -849,33 +811,33 @@ msgstr ""
 "del manual de «rsync»."
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
-#: smb4k.kcfg:326
+#: smb4k.kcfg:311
 #, kde-format
 msgid "The value(s) for the UseSkipCompression config entry"
 msgstr "Els valors per a l'entrada de configuració «UseSkipCompression»"
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:331
+#: smb4k.kcfg:316
 #, kde-format
 msgid "Preserve symlinks"
 msgstr "Conserva els enllaços simbòlics"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:332
+#: smb4k.kcfg:317
 #, kde-format
 msgid "Copy symlinks as symlinks (-l, --links)."
 msgstr "Copia els enllaços simbòlics com a enllaços simbòlics (-l, --links)."
 
 #. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:336
+#: smb4k.kcfg:321
 #, kde-format
 msgid "Transform symlinks"
 msgstr "Transforma els enllaços simbòlics"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:337
+#: smb4k.kcfg:322
 #, kde-format
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
@@ -884,14 +846,14 @@ msgstr ""
 "copy-links)."
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:341
+#: smb4k.kcfg:326
 #, kde-format
 msgid "Transform unsafe symlinks"
 msgstr "Transforma els enllaços simbòlics insegurs"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:342
+#: smb4k.kcfg:327
 #, kde-format
 msgid ""
 "Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
@@ -907,14 +869,14 @@ msgstr ""
 "opció no té efectes addicionals si s'ha especificat --copy-links."
 
 #. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:346
+#: smb4k.kcfg:331
 #, kde-format
 msgid "Ignore unsafe symlinks"
 msgstr "Ignora els enllaços simbòlics insegurs"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:347
+#: smb4k.kcfg:332
 #, kde-format
 msgid ""
 "Ignore symlinks that point outside the copied tree (--safe-links). All "
@@ -927,14 +889,14 @@ msgstr ""
 "inesperats."
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:351
+#: smb4k.kcfg:336
 #, kde-format
 msgid "Munge symlinks"
 msgstr "Mastega («munge») els enllaços simbòlics"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:352
+#: smb4k.kcfg:337
 #, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
@@ -953,14 +915,14 @@ msgstr ""
 "vegeu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:356
+#: smb4k.kcfg:341
 #, kde-format
 msgid "Preserve hard links"
 msgstr "Conserva els enllaços durs"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:357
+#: smb4k.kcfg:342
 #, kde-format
 msgid ""
 "Preserve hard links (-H, --hard-links). This options causes rsync to "
@@ -972,13 +934,13 @@ msgstr ""
 "ella, els enllaços durs es tractaran com si foren fitxers separats."
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:361
+#: smb4k.kcfg:346
 #, kde-format
 msgid "Copy directory symlinks"
 msgstr "Copia els enllaços simbòlics cap a directoris"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:362
+#: smb4k.kcfg:347
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the sending side as though they were real "
@@ -999,14 +961,14 @@ msgstr ""
 "detalls, vegeu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:366
+#: smb4k.kcfg:351
 #, kde-format
 msgid "Keep directory symlinks"
 msgstr "Mantín els enllaços simbòlics cap a directoris"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:367
+#: smb4k.kcfg:352
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the receiving side as though they were real "
@@ -1021,13 +983,13 @@ msgstr ""
 "substituiran amb un directori real."
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:371
+#: smb4k.kcfg:356
 #, kde-format
 msgid "Preserve permissions"
 msgstr "Conserva els permisos"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:372
+#: smb4k.kcfg:357
 #, kde-format
 msgid ""
 "Preserve permissions (-p, --perms). The permissions of the destination file "
@@ -1039,13 +1001,13 @@ msgstr ""
 "es desmarca esta opció, llegiu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:376
+#: smb4k.kcfg:361
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
 msgstr "Conserva les llistes de control d'accés (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:377
+#: smb4k.kcfg:362
 #, kde-format
 msgid ""
 "Preserve access control lists. This option causes rsync to update the "
@@ -1060,13 +1022,13 @@ msgstr ""
 "funcione adequadament."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:381
+#: smb4k.kcfg:366
 #, kde-format
 msgid "Preserve extended attributes"
 msgstr "Conserva els atributs ampliats"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:382
+#: smb4k.kcfg:367
 #, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
@@ -1076,13 +1038,13 @@ msgstr ""
 "atributs ampliats de destí perquè siguen els mateixos que els d'origen."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:386
+#: smb4k.kcfg:371
 #, kde-format
 msgid "Preserve access times"
 msgstr "Conserva les hores d'accés"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:387
+#: smb4k.kcfg:372
 #, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
@@ -1093,13 +1055,13 @@ msgstr ""
 "d'origen."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:391
+#: smb4k.kcfg:376
 #, kde-format
 msgid "Preserve create times"
 msgstr "Conserva les hores de creació"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:392
+#: smb4k.kcfg:377
 #, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
@@ -1110,13 +1072,13 @@ msgstr ""
 "dels fitxers d'origen."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:396
+#: smb4k.kcfg:381
 #, kde-format
 msgid "Preserve group"
 msgstr "Conserva el grup"
 
 #. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:397
+#: smb4k.kcfg:382
 #, kde-format
 msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
@@ -1126,13 +1088,13 @@ msgstr ""
 "amb el mateix valor que el del fitxer d'origen."
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:401
+#: smb4k.kcfg:386
 #, kde-format
 msgid "Preserve owner"
 msgstr "Conserva el propietari"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:402
+#: smb4k.kcfg:387
 #, kde-format
 msgid ""
 "Preserve the owner (-o, --owner). The owner of the destination file will be "
@@ -1146,13 +1108,13 @@ msgstr ""
 "propietari s'establirà amb l'usuari invocant en la banda de la recepció."
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:406
+#: smb4k.kcfg:391
 #, kde-format
 msgid "Preserve device and special files"
 msgstr "Conserva els dispositius i fitxers especials"
 
 #. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:407
+#: smb4k.kcfg:392
 #, kde-format
 msgid ""
 "Preserve device and special files (-D, --devices --specials). This option "
@@ -1167,13 +1129,13 @@ msgstr ""
 "especificat l'opció --super."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:411
+#: smb4k.kcfg:396
 #, kde-format
 msgid "Preserve times"
 msgstr "Conserva les hores"
 
 #. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:412
+#: smb4k.kcfg:397
 #, kde-format
 msgid ""
 "Preserve times (-t, --times). The modification times are transferred along "
@@ -1185,13 +1147,13 @@ msgstr ""
 "llegiu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:416
+#: smb4k.kcfg:401
 #, kde-format
 msgid "Omit directories when preserving times"
 msgstr "Omet els directoris en conservar les hores"
 
 #. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:417
+#: smb4k.kcfg:402
 #, kde-format
 msgid ""
 "Omit directories when preserving times (-O, --omit-dir-times). This means "
@@ -1204,13 +1166,13 @@ msgstr ""
 "times."
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:421
+#: smb4k.kcfg:406
 #, kde-format
 msgid "Remove synchronized source files"
 msgstr "Elimina els fitxers d'origen sincronitzats"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:422
+#: smb4k.kcfg:407
 #, kde-format
 msgid ""
 "Remove all synchronized source files (--remove-source-files). This tells "
@@ -1224,13 +1186,13 @@ msgstr ""
 "correctament en la banda de la recepció."
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:426
+#: smb4k.kcfg:411
 #, kde-format
 msgid "Delete extraneous files"
 msgstr "Suprimix els fitxers estranys"
 
 #. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:427
+#: smb4k.kcfg:412
 #, kde-format
 msgid ""
 "Delete extraneous files from destination (--delete). This tells rsync to "
@@ -1243,13 +1205,13 @@ msgstr ""
 "que se sincronitzen."
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:431
+#: smb4k.kcfg:416
 #, kde-format
 msgid "Delete files before transfer"
 msgstr "Suprimix els fitxers abans de la transferència"
 
 #. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:432
+#: smb4k.kcfg:417
 #, kde-format
 msgid ""
 "Delete files on the receiving side before the transfer starts (--delete-"
@@ -1262,13 +1224,13 @@ msgstr ""
 "delete-QUAN."
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:436
+#: smb4k.kcfg:421
 #, kde-format
 msgid "Delete files after transfer"
 msgstr "Suprimix els fitxers després de la transferència"
 
 #. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:437
+#: smb4k.kcfg:422
 #, kde-format
 msgid ""
 "Delete files on the receiving side after the transfer has completed (--"
@@ -1278,13 +1240,13 @@ msgstr ""
 "transferència (--delete-after, --del)."
 
 #. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:441
+#: smb4k.kcfg:426
 #, kde-format
 msgid "Delete files during transfer"
 msgstr "Suprimix els fitxers durant la transferència"
 
 #. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:442
+#: smb4k.kcfg:427
 #, kde-format
 msgid ""
 "Delete files on the receiving side during the transfer (--delete-during). "
@@ -1296,13 +1258,13 @@ msgstr ""
 "after, però només està acceptat amb «rsync» 2.6.4 o posterior."
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:446
+#: smb4k.kcfg:431
 #, kde-format
 msgid "Delete excluded files"
 msgstr "Suprimix els fitxers exclosos"
 
 #. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:447
+#: smb4k.kcfg:432
 #, kde-format
 msgid ""
 "Also delete excluded files from destination directory (--delete-excluded). "
@@ -1317,13 +1279,13 @@ msgstr ""
 "pàgina del manual de «rsync» per a més informació."
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:451
+#: smb4k.kcfg:436
 #, kde-format
 msgid "Delete even if I/O errors occur"
 msgstr "Suprimix encara que hi haja un error d'E/S"
 
 #. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:452
+#: smb4k.kcfg:437
 #, kde-format
 msgid ""
 "Delete even if I/O errors occur (--ignore-errors). This option has to be "
@@ -1333,13 +1295,13 @@ msgstr ""
 "que s'especifique conjuntament amb --delete perquè siga efectiva."
 
 #. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:456
+#: smb4k.kcfg:441
 #, kde-format
 msgid "Force deletion of non-void directories"
 msgstr "Força la supressió dels directoris no buits"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:457
+#: smb4k.kcfg:442
 #, kde-format
 msgid ""
 "Force deletion of directories even if they are not empty (--force). This "
@@ -1352,13 +1314,13 @@ msgstr ""
 "supressions no estan activades."
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:461
+#: smb4k.kcfg:446
 #, kde-format
 msgid "Do not delete more than this many files:"
 msgstr "No suprimisques més que este nombre de fitxers:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:462
+#: smb4k.kcfg:447
 #, kde-format
 msgid ""
 "Only delete as many files as defined here (--max-delete=NUM). This tells "
@@ -1371,19 +1333,19 @@ msgstr ""
 "grans per a previndre desastres."
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
-#: smb4k.kcfg:466
+#: smb4k.kcfg:451
 #, kde-format
 msgid "Value for DeleteMaximum config entry"
 msgstr "Valor per a l'entrada de configuració «DeleteMaximum»"
 
 #. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:472
+#: smb4k.kcfg:457
 #, kde-format
 msgid "Do not transfer any file smaller than:"
 msgstr "No transferisques cap fitxer més xicotet que:"
 
 #. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:473
+#: smb4k.kcfg:458
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is smaller than the "
@@ -1393,19 +1355,19 @@ msgstr ""
 "que la mida especificada (--min-size=MIDA)."
 
 #. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:477
+#: smb4k.kcfg:462
 #, kde-format
 msgid "Value for MinimalTransferSize config entry"
 msgstr "Valor per a l'entrada de configuració «MinimalTransferSize»"
 
 #. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:483
+#: smb4k.kcfg:468
 #, kde-format
 msgid "Do not transfer any file larger than:"
 msgstr "No transferisques cap fitxer més gran que:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:484
+#: smb4k.kcfg:469
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is larger than the "
@@ -1415,19 +1377,19 @@ msgstr ""
 "la mida especificada (--max-size=MIDA)."
 
 #. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:488
+#: smb4k.kcfg:473
 #, kde-format
 msgid "Value for MaximalTransferSize config entry"
 msgstr "Valor per a l'entrada de configuració «MaximalTransferSize»"
 
 #. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:494
+#: smb4k.kcfg:479
 #, kde-format
 msgid "Keep partially transferred files"
 msgstr "Conserva els fitxers transferits parcialment"
 
 #. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:495
+#: smb4k.kcfg:480
 #, kde-format
 msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
@@ -1438,13 +1400,13 @@ msgstr ""
 "si s'interromp la transferència."
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:499
+#: smb4k.kcfg:484
 #, kde-format
 msgid "Put partially transferred files into:"
 msgstr "Situa els fitxers transferits parcialment a:"
 
 #. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:500
+#: smb4k.kcfg:485
 #, kde-format
 msgid ""
 "Put a partially transferred file into this directory (--partial-dir=DIR). "
@@ -1458,19 +1420,19 @@ msgstr ""
 "directori diferent i el fitxer de destinació no se sobreescriurà."
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
-#: smb4k.kcfg:504
+#: smb4k.kcfg:489
 #, kde-format
 msgid "The data for the UsePartialDirectory option"
 msgstr "Les dades per a l'opció «UsePartialDirectory»"
 
 #. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:509
+#: smb4k.kcfg:494
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
 msgstr "Ignora automàticament els fitxers de la mateixa manera que ho fa CVS"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:510
+#: smb4k.kcfg:495
 #, kde-format
 msgid ""
 "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
@@ -1485,13 +1447,13 @@ msgstr ""
 "d'excloure un fitxer."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:514
+#: smb4k.kcfg:499
 #, kde-format
 msgid "Exclude files matching this pattern:"
 msgstr "Exclou els fitxers que coincidisquen amb este patró:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:515
+#: smb4k.kcfg:500
 #, kde-format
 msgid ""
 "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
@@ -1503,19 +1465,19 @@ msgstr ""
 "informació quant a les regles de filtratge, vegeu el manual de «rsync»."
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
-#: smb4k.kcfg:519
+#: smb4k.kcfg:504
 #, kde-format
 msgid "Pattern that is used for file exclusion"
 msgstr "Patró que s'utilitza per a l'exclusió dels fitxers"
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:524
+#: smb4k.kcfg:509
 #, kde-format
 msgid "Read exclude patterns from:"
 msgstr "Llig els patrons d'exclusió des de:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:525
+#: smb4k.kcfg:510
 #, kde-format
 msgid ""
 "Read exclude patterns from a file (--exclude-from=FILE). This option is "
@@ -1530,19 +1492,19 @@ msgstr ""
 "manual de «rsync»."
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:529
+#: smb4k.kcfg:514
 #, kde-format
 msgid "The file from which the exclude patterns are read"
 msgstr "El fitxer des del qual es lligen els patrons d'exclusió"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:534
+#: smb4k.kcfg:519
 #, kde-format
 msgid "Include files matching this pattern:"
 msgstr "Inclou els fitxers que coincidisquen amb este patró:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:535
+#: smb4k.kcfg:520
 #, kde-format
 msgid ""
 "Do not exclude files matching a certain pattern (--include=PATTERN). This is "
@@ -1554,19 +1516,19 @@ msgstr ""
 "informació quant a les regles de filtratge, vegeu el manual de «rsync»."
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
-#: smb4k.kcfg:539
+#: smb4k.kcfg:524
 #, kde-format
 msgid "Pattern that is used for file inclusion"
 msgstr "Patró que s'utilitza per a la inclusió dels fitxers"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:544
+#: smb4k.kcfg:529
 #, kde-format
 msgid "Read include patterns from:"
 msgstr "Llig els patrons d'inclusió des de:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:545
+#: smb4k.kcfg:530
 #, kde-format
 msgid ""
 "Read include patterns from a file (--include-from=FILE). This option is "
@@ -1581,19 +1543,19 @@ msgstr ""
 "manual de «rsync»."
 
 #. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
-#: smb4k.kcfg:549
+#: smb4k.kcfg:534
 #, kde-format
 msgid "The file from which the include patterns are read"
 msgstr "El fitxer des del qual es lligen els patrons d'inclusió"
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:554
+#: smb4k.kcfg:539
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "Regles de filtratge personalitzades:"
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:555
+#: smb4k.kcfg:540
 #, kde-format
 msgid ""
 "Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
@@ -1608,20 +1570,20 @@ msgstr ""
 "haurà de començar amb l'argument --filter=…"
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:559
+#: smb4k.kcfg:544
 #, kde-format
 msgid "Custom filter rules"
 msgstr "Regles de filtratge personalitzades"
 
 # skip-rule: t-apo_fim
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:564
+#: smb4k.kcfg:549
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "Utilitza la regla de filtratge --filter='dir-merge /.rsync-filter'"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:565
+#: smb4k.kcfg:550
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1636,14 +1598,14 @@ msgstr ""
 
 # skip-rule: t-apo_fim
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:569
+#: smb4k.kcfg:554
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "Utilitza la regla de filtratge --filter='exclude .rsync-filter'"
 
 # skip-rule: t-apo_fin
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:570
+#: smb4k.kcfg:555
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1655,13 +1617,13 @@ msgstr ""
 "la regla --filter='dir-merge /.rsync-filter' i desseleccionant esta."
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:574
+#: smb4k.kcfg:559
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr "Gestiona eficientment els fitxers dispersos"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:575
+#: smb4k.kcfg:560
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1673,13 +1635,13 @@ msgstr ""
 "inplace. Per a més informació, vegeu el manual de «rsync»."
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:579
+#: smb4k.kcfg:564
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr "Copia els fitxers sencers (sense l'algorisme de «rsync»)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:580
+#: smb4k.kcfg:565
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1690,13 +1652,13 @@ msgstr ""
 "tal com estiga."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:584
+#: smb4k.kcfg:569
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr "No ultrapasses els límits del sistema de fitxers"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:585
+#: smb4k.kcfg:570
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1709,13 +1671,13 @@ msgstr ""
 "pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:589
+#: smb4k.kcfg:574
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "Actualitza només els fitxers que ja existixen"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:590
+#: smb4k.kcfg:575
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1731,13 +1693,13 @@ msgstr ""
 "qual pot ser útil si voleu suprimir fitxers aliens)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:594
+#: smb4k.kcfg:579
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "Ignora els fitxers que ja existixen"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:595
+#: smb4k.kcfg:580
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1747,13 +1709,13 @@ msgstr ""
 "(--ignore-existing). Els directoris existents no s'ignoraran."
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:599
+#: smb4k.kcfg:584
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "Retarda les actualitzacions fins al final de la transferència"
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:600
+#: smb4k.kcfg:585
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1768,13 +1730,13 @@ msgstr ""
 "ràpida."
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:604
+#: smb4k.kcfg:589
 #, kde-format
 msgid "Make backups"
 msgstr "Fes còpies de seguretat"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:605
+#: smb4k.kcfg:590
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1789,50 +1751,50 @@ msgstr ""
 "suffix=SUFIX."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:609
+#: smb4k.kcfg:594
 #, kde-format
 msgid "Backup suffix:"
 msgstr "Sufix de les còpies de seguretat:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:610
+#: smb4k.kcfg:595
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr "Utilitzeu este sufix per a les còpies de seguretat: (--suffix=SUFIX)."
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:614
+#: smb4k.kcfg:599
 #, kde-format
 msgid "Backup suffix"
 msgstr "Sufix de les còpies de seguretat"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:619
+#: smb4k.kcfg:604
 #, kde-format
 msgid "Backup directory:"
 msgstr "Directori per a les còpies de seguretat:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:620
+#: smb4k.kcfg:605
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr ""
 "Emmagatzema les còpies de seguretat en este directori (--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:624
+#: smb4k.kcfg:609
 #, kde-format
 msgid "Backup directory"
 msgstr "Directori per a les còpies de seguretat"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:629
+#: smb4k.kcfg:614
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr "Força una mida fixa per al bloc de la suma de verificació:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:630
+#: smb4k.kcfg:615
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1843,19 +1805,19 @@ msgstr ""
 "a un valor fix."
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:634
+#: smb4k.kcfg:619
 #, kde-format
 msgid "The block size"
 msgstr "La mida del bloc"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:640
+#: smb4k.kcfg:625
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "Establix la llavor de la suma de verificació del bloc/fitxer:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:641
+#: smb4k.kcfg:626
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1871,19 +1833,19 @@ msgstr ""
 "predeterminada a l'hora actual."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:645
+#: smb4k.kcfg:630
 #, kde-format
 msgid "The value for the UseChecksumSeed config option"
 msgstr "El valor per a l'entrada de configuració «UseChecksumSeed»"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:651
+#: smb4k.kcfg:636
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "Omet els fitxers en funció de la suma de verificació"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:652
+#: smb4k.kcfg:637
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1895,13 +1857,13 @@ msgstr ""
 "funciona esta característica, vegeu el manual de «rsync»."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:656
+#: smb4k.kcfg:641
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr "Establix el límit de l'amplada de banda:"
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:657
+#: smb4k.kcfg:642
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
@@ -1910,19 +1872,19 @@ msgstr ""
 "segon (--bwlimit=VELOCITAT)."
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:661
+#: smb4k.kcfg:646
 #, kde-format
 msgid "The value for the UseBandwidthLimit config option"
 msgstr "El valor per a l'entrada de configuració «UseBandwidthLimit»"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:673
+#: smb4k.kcfg:658
 #, kde-format
 msgid "Use profiles"
 msgstr "Utilitza els perfils"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:674
+#: smb4k.kcfg:659
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1935,48 +1897,48 @@ msgstr ""
 "p. ex., a casa i a la faena."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:678
+#: smb4k.kcfg:663
 #, kde-format
 msgid "Profiles"
 msgstr "Perfils"
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:679
+#: smb4k.kcfg:664
 #, kde-format
 msgid "The list of profiles."
 msgstr "La llista dels perfils."
 
-#: smb4k.kcfg:686
+#: smb4k.kcfg:671
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr "Casa"
 
-#: smb4k.kcfg:687
+#: smb4k.kcfg:672
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
 msgstr "Treball"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:688
+#: smb4k.kcfg:673
 #, kde-format
 msgid "Active profile"
 msgstr "Perfil actiu"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:689
+#: smb4k.kcfg:674
 #, kde-format
 msgid "This is the currently active profile."
 msgstr "Este és el perfil actualment actiu."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:307
-#: smb4kshare.cpp:159 smb4kshare.cpp:162
+#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:307 smb4kshare.cpp:160
+#: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 a %2"
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:341
+#: smb4kbookmarkhandler.cpp:302 smb4kcustomsettingsmanager.cpp:341
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
@@ -2010,7 +1972,29 @@ msgstr "La implementació de Zeroconf no està disponible en esta versió de KDE
 msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb Zeroconf."
 
-#: smb4kmounter.cpp:683
+#: smb4kcredentialsmanager.cpp:334
+#, kde-format
+msgid ""
+"The way Smb4K stores the login credentials changed.\n"
+"\n"
+"Do you want to migrate your login credentials?"
+msgstr ""
+"Ha canviat la manera en què Smb4K emmagatzema les credencials d'inici de "
+"sessió.\n"
+"\n"
+"Voleu migrar les credencials d'inici de sessió?"
+
+#: smb4kcredentialsmanager.cpp:336
+#, kde-format
+msgid "Migrate Login Credentials"
+msgstr "Migra les credencials d'inici de sessió"
+
+#: smb4kcredentialsmanager.cpp:337
+#, kde-format
+msgid "Migrate"
+msgstr "Migra"
+
+#: smb4kmounter.cpp:682
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2019,7 +2003,7 @@ msgstr ""
 "<p>La compartició <b>%1</b> està muntada a <br><b>%2</b> i és propietat de "
 "l'usuari <b>%3</b>.</p<p>Segur que la voleu desmuntar?</p>"
 
-#: smb4kmounter.cpp:688
+#: smb4kmounter.cpp:687
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartiu els aliens"
@@ -3167,21 +3151,7 @@ msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>S'ha desmuntat %1 compartició.</p>"
 msgstr[1] "<p>S'han desmuntat %1 comparticions.</p>"
 
-#: smb4knotification.cpp:151
-#, kde-format
-msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-msgstr "<p>No s'ha pogut fer l'obertura de la cartera <b>%1</b>.</p>"
-
-#: smb4knotification.cpp:165
-#, kde-format
-msgid ""
-"<p>The credentials stored in the wallet could not be accessed. There is "
-"either no wallet available or it could not be opened.</p>"
-msgstr ""
-"<p>No s'ha pogut accedir a les credencials emmagatzemades en la cartera. No "
-"hi ha cap cartera disponible o no s'ha pogut obrir.</p>"
-
-#: smb4knotification.cpp:180
+#: smb4knotification.cpp:152
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3190,7 +3160,7 @@ msgstr ""
 "<p>El tipus MIME <b>%1</b> no permet la impressió. Per favor, convertiu el "
 "fitxer a PDF o Postscript i torneu-ho a intentar.</p>"
 
-#: smb4knotification.cpp:198
+#: smb4knotification.cpp:170
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
@@ -3198,7 +3168,7 @@ msgstr ""
 "<p>L'adreça d'interés per a la compartició <b>%1</b> ja existix i serà omesa."
 "</p>"
 
-#: smb4knotification.cpp:216
+#: smb4knotification.cpp:188
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3207,18 +3177,18 @@ msgstr ""
 "<p>L'etiqueta <b>%1</b> de l'adreça d'interés per a la compartició <b>%2</b> "
 "ja s'està utilitzant i es canviarà automàticament el seu nom.</p>"
 
-#: smb4knotification.cpp:236
+#: smb4knotification.cpp:208
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>No s'ha pogut muntar la compartició <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:238
+#: smb4knotification.cpp:210
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>No s'ha pogut muntar la compartició <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:261
+#: smb4knotification.cpp:233
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3227,13 +3197,13 @@ msgstr ""
 "<p>No s'ha pogut desmuntar la compartició <b>%1</b> des de <b>%2</b>:</"
 "p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:263
+#: smb4knotification.cpp:235
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr ""
 "<p>No s'ha pogut desmuntar la compartició <b>%1</b> des de <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:262
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3242,18 +3212,18 @@ msgstr ""
 "<p>No es permet desmuntar la compartició <b>%1</b> des de <b>%2</b>. És "
 "propietat de l'usuari <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:305
+#: smb4knotification.cpp:277
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>No s'ha pogut sincronitzar <b>%1</b> amb <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:307
+#: smb4knotification.cpp:279
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>No s'ha pogut sincronitzar <b>%1</b> amb <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:329
+#: smb4knotification.cpp:301
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -3261,77 +3231,77 @@ msgid ""
 msgstr ""
 "<p>No s'ha pogut trobar l'ordre <b>%1</b>. Comproveu la instal·lació.</p>"
 
-#: smb4knotification.cpp:345
+#: smb4knotification.cpp:317
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>La compartició <b>%1</b> és una impressora i no es pot afegir a les "
 "adreces d'interés.</p>"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:331
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>No s'ha pogut trobar el fitxer <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:369
+#: smb4knotification.cpp:341
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>No s'ha pogut obrir el fitxer <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:371
+#: smb4knotification.cpp:343
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>No s'ha pogut obrir el fitxer <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:390 smb4knotification.cpp:393
+#: smb4knotification.cpp:362 smb4knotification.cpp:365
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>No s'ha pogut llegir des del fitxer <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:395
+#: smb4knotification.cpp:367
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>No s'ha pogut llegir des del fitxer <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:390
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>No s'ha pogut crear el directori següent:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:401
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>No s'ha pogut iniciar el procés (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:405
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>El procés ha fallat (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:437
+#: smb4knotification.cpp:409
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>El procés ha excedit el temps (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:441
+#: smb4knotification.cpp:413
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>No s'ha pogut escriure en el procés (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:445
+#: smb4knotification.cpp:417
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>No s'ha pogut llegir des del procés (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:450
+#: smb4knotification.cpp:422
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>El procés ha informat d'un error desconegut.</p>"
 
-#: smb4knotification.cpp:513
+#: smb4knotification.cpp:485
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3340,17 +3310,17 @@ msgstr ""
 "<p>No s'ha pogut executar una acció amb privilegis de superusuari (codi "
 "d'error:<tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:515
+#: smb4knotification.cpp:487
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>No s'ha pogut executar una acció amb privilegis de superusuari.</p>"
 
-#: smb4knotification.cpp:537
+#: smb4knotification.cpp:509
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>L'URL que s'ha indicat no és vàlid.</p>"
 
-#: smb4knotification.cpp:550
+#: smb4knotification.cpp:522
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
@@ -3359,22 +3329,33 @@ msgstr ""
 "<p>La xarxa de comunicació ha fallat amb el missatge d'error següent:<s>%1</"
 "s></p>"
 
-#: smb4knotification.cpp:563
+#: smb4knotification.cpp:535
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>S'ha produït un error desconegut amb Zeroconf: <s>%1</s></p>"
 
-#: smb4kshare.cpp:192
+#: smb4knotification.cpp:548
+#, kde-format
+msgid ""
+"<p>An error occurred while reading the login credentials from the secure "
+"storage:\n"
+"<tt>%1</tt></p>"
+msgstr ""
+"<p>S'ha produït un error en llegir les credencials de l'emmagatzematge "
+"segur:\n"
+"<tt>%1</tt></p>"
+
+#: smb4kshare.cpp:193
 #, kde-format
 msgid "Disk"
 msgstr "Disc"
 
-#: smb4kshare.cpp:196
+#: smb4kshare.cpp:197
 #, kde-format
 msgid "Printer"
 msgstr "Impressora"
 
-#: smb4kshare.cpp:200
+#: smb4kshare.cpp:201
 #, kde-format
 msgid "IPC"
 msgstr "IPC"

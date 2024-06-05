@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:39+0000\n"
-"PO-Revision-Date: 2024-05-05 18:28+0200\n"
+"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"PO-Revision-Date: 2024-05-31 15:41+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -149,7 +149,7 @@ msgstr "Categoria:"
 msgid "Bookmark Editor"
 msgstr "Editor dei segnalibri"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
 #, kde-format
 msgid "Bookmarks"
 msgstr "Segnalibri"
@@ -159,8 +159,8 @@ msgstr "Segnalibri"
 msgid "&Edit Bookmarks"
 msgstr "Modifica i s&egnalibri"
 
-#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:112
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
+#: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
@@ -186,27 +186,27 @@ msgstr "Rete"
 msgid "Mounting"
 msgstr "Montaggio"
 
-#: smb4k/smb4kconfigdialog.cpp:127
-#, kde-format
-msgid "Authentication"
-msgstr "Autenticazione"
-
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Sincronizzazione"
 
-#: smb4k/smb4kconfigdialog.cpp:130
-#, kde-format
-msgid "Custom Settings"
-msgstr "Impostazioni personalizzate"
-
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profili"
+
+#: smb4k/smb4kconfigdialog.cpp:129
+#, kde-format
+msgid "Authentication"
+msgstr "Autenticazione"
+
+#: smb4k/smb4kconfigdialog.cpp:131
+#, kde-format
+msgid "Custom Settings"
+msgstr "Impostazioni personalizzate"
 
 #: smb4k/smb4kconfigdialog.cpp:155
 #, kde-format
@@ -217,73 +217,42 @@ msgstr ""
 "<qt>È stato trovata un'impostazione non corretta; sarai ora portato alla "
 "corrispondente pagina di configurazione per sistemarla.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#: smb4k/smb4kconfigpageprofiles.cpp:44
-#, kde-format
-msgid "Settings"
-msgstr "Impostazioni"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:53
-#, kde-format
-msgid "Wallet Entries"
-msgstr "Voci del portafogli"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:73
-#, kde-format
-msgid "Load"
-msgstr "Carica"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:78
-#, kde-format
-msgid "Save"
-msgstr "Salva"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:84
-#: smb4k/smb4kconfigpagebookmarks.cpp:125
-#: smb4k/smb4kconfigpagecustomsettings.cpp:80
-#, kde-format
-msgid "Edit"
-msgstr "Modifica"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:90
-#: smb4k/smb4kconfigpagebookmarks.cpp:137
-#: smb4k/smb4kconfigpagecustomsettings.cpp:84
-#: smb4k/smb4kconfigpageprofiles.cpp:78
-#, kde-format
-msgid "Remove"
-msgstr "Rimuovi"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:96
-#: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, kde-format
-msgid "Clear"
-msgstr "Pulisci"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:131
+#: smb4k/smb4kconfigpageauthentication.cpp:30
 #, kde-format
 msgid "Default Login"
 msgstr "Nome utente predefinito"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:235
+#: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
-msgid "Enter the default login information."
-msgstr "Inserisci le informazioni del nome utente predefinito."
+msgid "The default login is depending on the profile you are using."
+msgstr "Il nome utente predefinito dipende dal profilo che stai usando."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:297
+#: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
-msgid "Set the username and password for wallet entry %1."
-msgstr "Imposta il nome utente e la password per la voce del portafogli %1."
+msgid "Active profile:"
+msgstr "Profilo attivo:"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:299
+#: smb4k/smb4kconfigpageauthentication.cpp:37
 #, kde-format
-msgid "Set the username and password for the default login."
-msgstr "Imposta il nome utente e la password per il nome utente predefinito."
+msgid "Unknown"
+msgstr "Sconosciuto"
 
+#: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Nome utente:"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:53
+#, kde-format
+msgid "Password:"
+msgstr "Password:"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:82
+#, kde-format
+msgid "Default Profile"
+msgstr "Profilo predefinito"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -301,10 +270,23 @@ msgstr "Gruppo di lavoro:"
 msgid "IP Address:"
 msgstr "Indirizzo IP:"
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#: smb4k/smb4kconfigpagecustomsettings.cpp:80
+#, kde-format
+msgid "Edit"
+msgstr "Modifica"
+
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
 msgstr "Aggiungi categoria"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
+#: smb4k/smb4kconfigpagecustomsettings.cpp:84
+#: smb4k/smb4kconfigpageprofiles.cpp:78
+#, kde-format
+msgid "Remove"
+msgstr "Rimuovi"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -469,6 +451,11 @@ msgstr ""
 msgid "Advanced Settings"
 msgstr "Impostazioni avanzate"
 
+#: smb4k/smb4kconfigpageprofiles.cpp:44
+#, kde-format
+msgid "Settings"
+msgstr "Impostazioni"
+
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
@@ -477,24 +464,22 @@ msgstr "Aggiungi"
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "Imposta attiva"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Sposta in alto"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "Elemento giù"
+msgstr "Sposta in basso"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username"
+#, kde-format
 msgid "Rename"
-msgstr "Nome utente"
+msgstr "Rinomina"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
@@ -609,7 +594,7 @@ msgstr "Codici di controllo"
 msgid "Main Window"
 msgstr "Finestra principale"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:180
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Risorse di rete"
@@ -693,17 +678,17 @@ msgstr "Specifica un nome utente."
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "Specifica un nome utente per la condivisione <br><b>%1</b>."
 
-#: smb4k/smb4kmainwindow.cpp:108
+#: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Oggetti agganciabili"
 
-#: smb4k/smb4kmainwindow.cpp:191 smb4k/smb4ksharesmenu.cpp:39
+#: smb4k/smb4kmainwindow.cpp:180 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Condivisioni montate"
 
-#: smb4k/smb4kmainwindow.cpp:297
+#: smb4k/smb4kmainwindow.cpp:282
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -713,100 +698,90 @@ msgstr ""
 "di sistema. <br>Utilizza <i>Esci</i> dal menu <i>File</i> per uscire "
 "dall'applicazione.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:299
+#: smb4k/smb4kmainwindow.cpp:284
 #, kde-format
 msgid "Docking"
 msgstr "Agganciamento"
 
-#: smb4k/smb4kmainwindow.cpp:354
+#: smb4k/smb4kmainwindow.cpp:339
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Attualmente non ci sono condivisioni montate."
 
-#: smb4k/smb4kmainwindow.cpp:357
+#: smb4k/smb4kmainwindow.cpp:342
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Attualmente c'è %1 condivisione montata."
 msgstr[1] "Attualmente ci sono %1 condivisioni montate."
 
-#: smb4k/smb4kmainwindow.cpp:503
-#, kde-format
-msgid "The wallet is used."
-msgstr "Il portafogli è in uso."
-
-#: smb4k/smb4kmainwindow.cpp:506
-#, kde-format
-msgid "The password dialog is used."
-msgstr "La finestra della password è in uso."
-
-#: smb4k/smb4kmainwindow.cpp:516
+#: smb4k/smb4kmainwindow.cpp:485
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Ricerca di gruppi di lavoro e di domini..."
 
-#: smb4k/smb4kmainwindow.cpp:521
+#: smb4k/smb4kmainwindow.cpp:490
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Ricerca di host nel dominio %1..."
 
-#: smb4k/smb4kmainwindow.cpp:526
+#: smb4k/smb4kmainwindow.cpp:495
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Ricerca delle condivisioni fornite dall'host %1..."
 
-#: smb4k/smb4kmainwindow.cpp:534 smb4k/smb4kmainwindow.cpp:543
+#: smb4k/smb4kmainwindow.cpp:503 smb4k/smb4kmainwindow.cpp:512
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Ricerca di file e cartelle in %1..."
 
-#: smb4k/smb4kmainwindow.cpp:560
+#: smb4k/smb4kmainwindow.cpp:529
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Risveglio degli host remoti..."
 
-#: smb4k/smb4kmainwindow.cpp:565
+#: smb4k/smb4kmainwindow.cpp:534
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Invio del file alla stampante %1..."
 
-#: smb4k/smb4kmainwindow.cpp:569
+#: smb4k/smb4kmainwindow.cpp:538
 #, kde-format
 msgid "Searching..."
 msgstr "Ricerca..."
 
-#: smb4k/smb4kmainwindow.cpp:590 smb4k/smb4kmainwindow.cpp:629
-#: smb4k/smb4kmainwindow.cpp:714
+#: smb4k/smb4kmainwindow.cpp:559 smb4k/smb4kmainwindow.cpp:598
+#: smb4k/smb4kmainwindow.cpp:683
 #, kde-format
 msgid "Done."
 msgstr "Fatto."
 
-#: smb4k/smb4kmainwindow.cpp:600
+#: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "Mounting..."
 msgstr "Montaggio in corso..."
 
-#: smb4k/smb4kmainwindow.cpp:604
+#: smb4k/smb4kmainwindow.cpp:573
 #, kde-format
 msgid "Unmounting..."
 msgstr "Smontaggio in corso..."
 
-#: smb4k/smb4kmainwindow.cpp:608
+#: smb4k/smb4kmainwindow.cpp:577
 #, kde-format
 msgid "Waking up host..."
 msgstr "Risveglio dell'host..."
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:607
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 è stata montato con successo."
 
-#: smb4k/smb4kmainwindow.cpp:661
+#: smb4k/smb4kmainwindow.cpp:630
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 è stata smontato con successo."
 
-#: smb4k/smb4kmainwindow.cpp:700
+#: smb4k/smb4kmainwindow.cpp:669
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Sincronizzazione di %1"
@@ -857,110 +832,110 @@ msgstr "Indirizzo IP"
 msgid "Comment"
 msgstr "Commento"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:102
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:384
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:447
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:101
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:383
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Analizza la &rete"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:104
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:103
 #, kde-format
 msgid "&Abort"
 msgstr "&Interrompi"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:116
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:115
 #, kde-format
 msgid "&Search"
 msgstr "&Cerca"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:140
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:139
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:145 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Aggiungi &impostazioni personalizzate"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:157 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Apri la finestra di montaggi&o"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:163
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:176
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:175
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&tenticazione"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:182
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:187
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:186
 #, kde-format
 msgid "Pre&view"
 msgstr "A&nteprima"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:197
 #, kde-format
 msgid "&Print File"
 msgstr "Stam&pa file"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "&Mount"
 msgstr "&Monta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "&Smonta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:950
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:398
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:409
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:397
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Analizza il compute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:434
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Analizza g&ruppo di lavoro"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:952
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
@@ -995,6 +970,11 @@ msgstr "Elemento giù"
 #, kde-format
 msgid "Item Up"
 msgstr "Elemento su"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:81
+#, kde-format
+msgid "Clear"
+msgstr "Pulisci"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
@@ -1260,6 +1240,31 @@ msgstr "%1 liberi di %2 (usato %3)"
 msgid "Size:"
 msgstr "Dimensione:"
 
+#~ msgid "Wallet Entries"
+#~ msgstr "Voci del portafogli"
+
+#~ msgid "Load"
+#~ msgstr "Carica"
+
+#~ msgid "Save"
+#~ msgstr "Salva"
+
+#~ msgid "Enter the default login information."
+#~ msgstr "Inserisci le informazioni del nome utente predefinito."
+
+#~ msgid "Set the username and password for wallet entry %1."
+#~ msgstr "Imposta il nome utente e la password per la voce del portafogli %1."
+
+#~ msgid "Set the username and password for the default login."
+#~ msgstr ""
+#~ "Imposta il nome utente e la password per il nome utente predefinito."
+
+#~ msgid "The wallet is used."
+#~ msgstr "Il portafogli è in uso."
+
+#~ msgid "The password dialog is used."
+#~ msgstr "La finestra della password è in uso."
+
 #~ msgid "Mounting: Common Settings"
 #~ msgstr "Montaggio: impostazioni comuni"
 
@@ -1335,9 +1340,6 @@ msgstr "Dimensione:"
 
 #~ msgid "Entry"
 #~ msgstr "Voce"
-
-#~ msgid "Password"
-#~ msgstr "Password"
 
 #~ msgid "Behavior:"
 #~ msgstr "Comportamento:"
