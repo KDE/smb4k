@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-06 00:39+0000\n"
 "PO-Revision-Date: 2024-05-31 10:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1972,7 +1972,7 @@ msgstr "La implementació de Zeroconf no està disponible en esta versió de KDE
 msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb Zeroconf."
 
-#: smb4kcredentialsmanager.cpp:334
+#: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed.\n"
@@ -1984,14 +1984,20 @@ msgstr ""
 "\n"
 "Voleu migrar les credencials d'inici de sessió?"
 
-#: smb4kcredentialsmanager.cpp:336
+#: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
 msgstr "Migra les credencials d'inici de sessió"
 
-#: smb4kcredentialsmanager.cpp:337
+#: smb4kcredentialsmanager.cpp:339
 #, kde-format
 msgid "Migrate"
+msgstr "Migra"
+
+#: smb4kcredentialsmanager.cpp:340
+#, fuzzy, kde-format
+#| msgid "Migrate"
+msgid "Don't Migrate"
 msgstr "Migra"
 
 #: smb4kmounter.cpp:682

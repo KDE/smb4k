@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-06 00:39+0000\n"
 "PO-Revision-Date: 2024-05-31 07:43+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1922,7 +1922,7 @@ msgstr "Zeroconf-ის მხარდაჭერა KDE-ის ამ ვე�
 msgid "An unknown error with Zeroconf occurred."
 msgstr "აღმოჩენილია Zeroconf-ის უცნობი შეცდომა."
 
-#: smb4kcredentialsmanager.cpp:334
+#: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed.\n"
@@ -1933,14 +1933,20 @@ msgstr ""
 "\n"
 "გნებავთ თქვენი ავტორიზაციის დეტალების მიგრაცია?"
 
-#: smb4kcredentialsmanager.cpp:336
+#: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
 msgstr "ავტორიზაციის დეტალების მიგრაცია"
 
-#: smb4kcredentialsmanager.cpp:337
+#: smb4kcredentialsmanager.cpp:339
 #, kde-format
 msgid "Migrate"
+msgstr "მიგრაცია"
+
+#: smb4kcredentialsmanager.cpp:340
+#, fuzzy, kde-format
+#| msgid "Migrate"
+msgid "Don't Migrate"
 msgstr "მიგრაცია"
 
 #: smb4kmounter.cpp:682

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-06 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 23:25+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1972,7 +1972,7 @@ msgstr "В этой версии KDE отсутствует поддержка Z
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Произошла неизвестная ошибка, связанная с Zeroconf."
 
-#: smb4kcredentialsmanager.cpp:334
+#: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed.\n"
@@ -1980,14 +1980,19 @@ msgid ""
 "Do you want to migrate your login credentials?"
 msgstr ""
 
-#: smb4kcredentialsmanager.cpp:336
+#: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
 msgstr ""
 
-#: smb4kcredentialsmanager.cpp:337
+#: smb4kcredentialsmanager.cpp:339
 #, kde-format
 msgid "Migrate"
+msgstr ""
+
+#: smb4kcredentialsmanager.cpp:340
+#, kde-format
+msgid "Don't Migrate"
 msgstr ""
 
 #: smb4kmounter.cpp:682
