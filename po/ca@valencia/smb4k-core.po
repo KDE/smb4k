@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 10:27+0200\n"
+"PO-Revision-Date: 2024-06-06 12:18+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1995,10 +1995,9 @@ msgid "Migrate"
 msgstr "Migra"
 
 #: smb4kcredentialsmanager.cpp:340
-#, fuzzy, kde-format
-#| msgid "Migrate"
+#, kde-format
 msgid "Don't Migrate"
-msgstr "Migra"
+msgstr "No migres"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3164,7 +3163,7 @@ msgid ""
 "file to PDF or Postscript and try again.</p>"
 msgstr ""
 "<p>El tipus MIME <b>%1</b> no permet la impressió. Per favor, convertiu el "
-"fitxer a PDF o Postscript i torneu-ho a intentar.</p>"
+"fitxer a PDF o Postscript i torneu-ho a provar.</p>"
 
 #: smb4knotification.cpp:170
 #, kde-format

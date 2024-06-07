@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 07:43+0200\n"
+"PO-Revision-Date: 2024-06-06 05:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1944,10 +1944,9 @@ msgid "Migrate"
 msgstr "მიგრაცია"
 
 #: smb4kcredentialsmanager.cpp:340
-#, fuzzy, kde-format
-#| msgid "Migrate"
+#, kde-format
 msgid "Don't Migrate"
-msgstr "მიგრაცია"
+msgstr "მიგრაციის გარეშე"
 
 #: smb4kmounter.cpp:682
 #, kde-format

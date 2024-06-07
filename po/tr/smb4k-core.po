@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 14:37+0300\n"
+"PO-Revision-Date: 2024-06-06 11:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1936,10 +1936,9 @@ msgid "Migrate"
 msgstr "Göç Ettir"
 
 #: smb4kcredentialsmanager.cpp:340
-#, fuzzy, kde-format
-#| msgid "Migrate"
+#, kde-format
 msgid "Don't Migrate"
-msgstr "Göç Ettir"
+msgstr "Göç Ettirme"
 
 #: smb4kmounter.cpp:682
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 13:40+0300\n"
+"PO-Revision-Date: 2024-06-06 09:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -1999,10 +1999,9 @@ msgid "Migrate"
 msgstr "Перенести"
 
 #: smb4kcredentialsmanager.cpp:340
-#, fuzzy, kde-format
-#| msgid "Migrate"
+#, kde-format
 msgid "Don't Migrate"
-msgstr "Перенести"
+msgstr "Не переносити"
 
 #: smb4kmounter.cpp:682
 #, kde-format

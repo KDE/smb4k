@@ -1825,10 +1825,9 @@ msgid "Migrate"
 msgstr "迁移"
 
 #: smb4kcredentialsmanager.cpp:340
-#, fuzzy, kde-format
-#| msgid "Migrate"
+#, kde-format
 msgid "Don't Migrate"
-msgstr "迁移"
+msgstr ""
 
 #: smb4kmounter.cpp:682
 #, kde-format
