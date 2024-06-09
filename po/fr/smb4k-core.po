@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2024-06-01 10:31+0200\n"
+"PO-Revision-Date: 2024-06-07 08:33+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -2027,10 +2027,9 @@ msgid "Migrate"
 msgstr "Effectuer une migration"
 
 #: smb4kcredentialsmanager.cpp:340
-#, fuzzy, kde-format
-#| msgid "Migrate"
+#, kde-format
 msgid "Don't Migrate"
-msgstr "Effectuer une migration"
+msgstr "Ne pas effectuer de migration"
 
 #: smb4kmounter.cpp:682
 #, kde-format
