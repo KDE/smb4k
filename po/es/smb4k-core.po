@@ -12,13 +12,13 @@
 # Miguel Navarrete Hernandez <recados.akka@gmail.com>, 2013.
 # Raul Gonzalez <raulgf83@gmail.com>, 2013, 2014, 2015.
 # Javier Vinal <fjvinal@gmail.com>, 2015, 2016, 2017, 2018, 2019.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023.
+# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-06 00:39+0000\n"
-"PO-Revision-Date: 2023-12-02 11:34+0100\n"
+"PO-Revision-Date: 2024-06-08 17:44+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1970,21 +1970,24 @@ msgid ""
 "\n"
 "Do you want to migrate your login credentials?"
 msgstr ""
+"La manera en la que Smb4K almacena las credenciales ha cambiado.\n"
+"\n"
+"¿Quiere migrar sus credenciales de acceso?"
 
 #: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
+msgstr "Migrar credenciales de acceso"
 
 #: smb4kcredentialsmanager.cpp:339
 #, kde-format
 msgid "Migrate"
-msgstr ""
+msgstr "Migrar"
 
 #: smb4kcredentialsmanager.cpp:340
 #, kde-format
 msgid "Don't Migrate"
-msgstr ""
+msgstr "No migrar"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3342,6 +3345,9 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>Ocurrió un error al leer las credenciales de acceso desde el almacenaje "
+"seguro:\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format
@@ -3372,83 +3378,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
-
-#~ msgid "Save logins in a wallet"
-#~ msgstr "Guardar la información de inicio de sesión en la cartera"
-
-#~ msgid ""
-#~ "Use a wallet to store the login. The username and password are stored "
-#~ "encrypted on your hard drive. If this setting is disabled, the login is "
-#~ "not stored permanently but only temporarily."
-#~ msgstr ""
-#~ "Utilice la cartera para guardar la información de inicio de sesión. El "
-#~ "nombre de usuario y la contraseña se cifrarán para almacenarse en su "
-#~ "disco duro. Si esta opción está deshabilitada, la información de "
-#~ "autenticación no se almacenará de forma permanente, solo de manera "
-#~ "temporal."
-
-#~ msgid "Use a default login"
-#~ msgstr "Usar el usuario predeterminado"
-
-#~ msgid ""
-#~ "Enable the usage of a default login. The provided data is used by default "
-#~ "to authenticate to a remote server. This is very useful e.g. if you are "
-#~ "working in an Active Directory environment or an NT domain."
-#~ msgstr ""
-#~ "Habilitar el uso de una autenticación predeterminada. Los datos "
-#~ "proporcionados se utiliza de forma predeterminada para autenticar a un "
-#~ "servidor remoto. Esto es muy útil por ejemplo, si está trabajando en un "
-#~ "entorno de Active Directory o un dominio NT."
-
-#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-#~ msgstr "<p>Ha fallado la apertura de la cartera <b>%1</b>.</p>"
-
-#~ msgid ""
-#~ "<p>The credentials stored in the wallet could not be accessed. There is "
-#~ "either no wallet available or it could not be opened.</p>"
-#~ msgstr ""
-#~ "<p>No se puede acceder a los credenciales almacenados en la cartera. La "
-#~ "cartera no esta disponible o no se ha podido abrir.</p>"
-
-#~ msgid ""
-#~ "Transfer all relevant data to the first profile when enabling profiles"
-#~ msgstr ""
-#~ "Transferir todos los datos relevantes al primer perfil cuando se activan "
-#~ "perfiles"
-
-#~ msgid ""
-#~ "Transfer all custom settings and bookmarks to the first profile in the "
-#~ "list when enabling profiles."
-#~ msgstr ""
-#~ "Transferir todas las preferencias por defecto y marcadores al primer "
-#~ "perfil de la lista cuando se activan perfiles."
-
-#~ msgid "Make all relevant data available when disabling profiles"
-#~ msgstr ""
-#~ "Hacer disponible todos los datos relevantes disponibles al desactivar "
-#~ "perfiles"
-
-#~ msgid ""
-#~ "Make all custom settings and bookmarks available when disabling profiles. "
-#~ "This means that all data previously saved in different profiles is now "
-#~ "available in the standard profile. However, they can no longer be used in "
-#~ "their original profiles afterwards."
-#~ msgstr ""
-#~ "Hacer disponibles todas las preferencias por defecto y marcadores al "
-#~ "desactivar perfiles. Esto implica que todos los datos previamente "
-#~ "guardados en perfiles diferentes estarán ahora en el perfil estándar. Sin "
-#~ "embargo, ya no podrán usarse en sus perfiles originales de nuevo."
-
-#~ msgid "Specify User"
-#~ msgstr "Especifique el usuario"
-
-#~ msgid "Please specify a username for share<br><b>%1</b>."
-#~ msgstr ""
-#~ "Por favor, indique un nombre de usuario para el recurso compartido<br><b>"
-#~ "%1</b>."
-
-#~ msgid "User:"
-#~ msgstr "Usuario:"
-
-#~ msgid "Clear List"
-#~ msgstr "Borrar lista"
