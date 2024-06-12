@@ -277,10 +277,10 @@ void Smb4KConfigPageProfiles::slotProfileUsageChanged(bool checked)
             QListWidgetItem *profileItem = m_profilesListWidget->item(0);
             profileItem->setCheckState(Qt::Checked);
 
-             ProfileContainer *p = findProfileContainer(profileItem);
+            ProfileContainer *p = findProfileContainer(profileItem);
 
-             if (p) {
-                 p->active = true;
+            if (p) {
+                p->active = true;
             }
         }
     }
