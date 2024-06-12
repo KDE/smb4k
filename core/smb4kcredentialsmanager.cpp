@@ -206,7 +206,7 @@ int Smb4KCredentialsManager::read(const QString &key, QString *credentials) cons
 
     QEventLoop loop;
 
-    QKeychain::ReadPasswordJob *readPasswordJob = new QKeychain::ReadPasswordJob(QStringLiteral("org.kde.smb4k"));
+    QKeychain::ReadPasswordJob *readPasswordJob = new QKeychain::ReadPasswordJob(QStringLiteral("Smb4K"));
     readPasswordJob->setAutoDelete(true);
     readPasswordJob->setKey(key);
 
@@ -248,7 +248,7 @@ int Smb4KCredentialsManager::write(const QString &key, const QString &credential
 
     QEventLoop loop;
 
-    QKeychain::WritePasswordJob *writePasswordJob = new QKeychain::WritePasswordJob(QStringLiteral("org.kde.smb4k"));
+    QKeychain::WritePasswordJob *writePasswordJob = new QKeychain::WritePasswordJob(QStringLiteral("Smb4K"));
     writePasswordJob->setAutoDelete(true);
     writePasswordJob->setKey(key);
     writePasswordJob->setTextData(credentials);
@@ -289,7 +289,7 @@ int Smb4KCredentialsManager::remove(const QString &key)
 
     QEventLoop loop;
 
-    QKeychain::DeletePasswordJob *deletePasswordJob = new QKeychain::DeletePasswordJob(QStringLiteral("org.kde.smb4k"));
+    QKeychain::DeletePasswordJob *deletePasswordJob = new QKeychain::DeletePasswordJob(QStringLiteral("Smb4K"));
     deletePasswordJob->setAutoDelete(true);
     deletePasswordJob->setKey(key);
 
@@ -332,69 +332,64 @@ void Smb4KCredentialsManager::migrate()
     if (QFile::exists(configFile) && !authenticationGroup.hasKey(QStringLiteral("MigratedToKeychain"))) {
         int returnValue = QKeychain::NoError;
 
-        int buttonCode = KMessageBox::questionTwoActionsCancel(QApplication::activeWindow() ? QApplication::activeWindow() : nullptr,
-                                                               i18n("The way Smb4K stores the login credentials changed.\n\n"
-                                                                    "Do you want to migrate your login credentials?"),
-                                                               i18n("Migrate Login Credentials"),
-                                                               KGuiItem(i18n("Migrate"), KDE::icon(QStringLiteral("edit-duplicate"))),
-                                                               KGuiItem(i18n("Don't Migrate"), KDE::icon(QStringLiteral("edit-delete-remove"))));
+        KMessageBox::information(QApplication::activeWindow() ? QApplication::activeWindow() : nullptr,
+                                 i18n("The way Smb4K stores the login credentials changed. They will now be migrated.\n\n"
+                                      "This change is incompatible with earlier versions of Smb4K."),
+                                 i18n("Migrate Login Credentials"));
 
-        if (buttonCode == KMessageBox::PrimaryAction) {
-            KWallet::Wallet *wallet =
-                KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), QApplication::activeWindow() ? QApplication::activeWindow()->winId() : 0);
+        KWallet::Wallet *wallet =
+            KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), QApplication::activeWindow() ? QApplication::activeWindow()->winId() : 0);
 
-            if (wallet && wallet->isOpen()) {
-                if (wallet->hasFolder(QStringLiteral("Smb4K"))) {
-                    wallet->setFolder(QStringLiteral("Smb4K"));
+        if (wallet && wallet->isOpen()) {
+            if (wallet->hasFolder(QStringLiteral("Smb4K"))) {
+                wallet->setFolder(QStringLiteral("Smb4K"));
 
-                    bool ok = false;
-                    QMap<QString, QMap<QString, QString>> allWalletEntries = wallet->mapList(&ok);
+                bool ok = false;
+                QMap<QString, QMap<QString, QString>> allWalletEntries = wallet->mapList(&ok);
 
-                    if (ok) {
-                        QMapIterator<QString, QMap<QString, QString>> it(allWalletEntries);
+                if (ok) {
+                    QMapIterator<QString, QMap<QString, QString>> it(allWalletEntries);
 
-                        while (it.hasNext()) {
-                            it.next();
+                    while (it.hasNext()) {
+                        it.next();
 
-                            QString key, userInfo;
+                        QString key, userInfo;
 
-                            if (it.key() == QStringLiteral("DEFAULT_LOGIN")) {
-                                QUrl url;
-                                url.setUserName(it.value().value(QStringLiteral("Login")));
-                                url.setPassword(it.value().value(QStringLiteral("Password")));
+                        if (it.key() == QStringLiteral("DEFAULT_LOGIN")) {
+                            // We migrate the default login to the default profile.
+                            key = QStringLiteral("DEFAULT::") /* the default profile is an empty string */;
+                            userInfo = it.value().value(QStringLiteral("Login")) + QStringLiteral(":") + it.value().value(QStringLiteral("Password"));
+                        } else {
+                            QUrl url;
+                            url.setUrl(it.key(), QUrl::TolerantMode);
+                            url.setUserName(it.value().value(QStringLiteral("Login")));
+                            url.setPassword(it.value().value(QStringLiteral("Password")));
 
-                                // We migrate the default login to the default profile.
-                                key = QStringLiteral("DEFAULT::") /* the default profile is an empty string */;
-                                userInfo = url.userInfo();
-                            } else {
-                                QUrl url;
-                                url.setUrl(it.key(), QUrl::TolerantMode);
-                                url.setUserName(it.value().value(QStringLiteral("Login")));
-                                url.setPassword(it.value().value(QStringLiteral("Password")));
-
-                                key = it.key();
-                                userInfo = url.userInfo();
-                            }
-
-                            if ((returnValue = write(key, userInfo)) != QKeychain::NoError) {
-                                break;
-                            }
+                            key = it.key();
+                            userInfo = url.userInfo();
                         }
-                    }
 
-                    // wallet->removeFolder(QStringLiteral("Smb4K"));
+                        // We don't want to have any collision, if KWallet is used as
+                        // secure storage.
+                        QString backupKey = it.key() + QStringLiteral(".backup");
+                        wallet->renameEntry(it.key(), backupKey);
+
+                        if ((returnValue = write(key, userInfo)) != QKeychain::NoError) {
+                            wallet->renameEntry(backupKey, it.key());
+                            break;
+                        }
+
+                        wallet->removeEntry(backupKey);
+                    }
                 }
             }
+        }
 
-            wallet->closeWallet(KWallet::Wallet::NetworkWallet(), false);
-            delete wallet;
+        wallet->closeWallet(KWallet::Wallet::NetworkWallet(), false);
+        delete wallet;
 
-            if (returnValue == QKeychain::NoError) {
-                authenticationGroup.writeEntry(QStringLiteral("MigratedToKeychain"), true);
-                authenticationGroup.sync();
-            }
-        } else if (buttonCode == KMessageBox::SecondaryAction) {
-            authenticationGroup.writeEntry(QStringLiteral("MigratedToKeychain"), false);
+        if (returnValue == QKeychain::NoError) {
+            authenticationGroup.writeEntry(QStringLiteral("MigratedToKeychain"), true);
             authenticationGroup.sync();
         }
     }

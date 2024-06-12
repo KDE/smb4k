@@ -45,7 +45,7 @@ public:
      */
     static Smb4KCredentialsManager *self();
 
-   /**
+    /**
      * Read the login credentials for the given @p networkItem from
      * the secure storage.
      *
@@ -90,7 +90,6 @@ public:
      * @returns TRUE if writing to the secure storage was successful.
      */
     bool writeDefaultLoginCredentials(const QString &username, const QString &password);
-
 
     /**
      * This function returns TRUE if default credentials are defined and
@@ -155,4 +154,3 @@ private:
 };
 
 #endif
-
