@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 16:09+0200\n"
+"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"PO-Revision-Date: 2024-06-08 10:47+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1920,7 +1920,7 @@ msgstr "Zeroconf-subteno ne haveblas en ĉi tiu versio de KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Nekonata eraro kun Zeroconf okazis."
 
-#: smb4kcredentialsmanager.cpp:334
+#: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed.\n"
@@ -1931,15 +1931,20 @@ msgstr ""
 "\n"
 "Ĉu vi volas transigi viajn ensalutajn akreditaĵojn?"
 
-#: smb4kcredentialsmanager.cpp:336
+#: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
 msgstr "Transigi Ensalutajn Akreditaĵojn"
 
-#: smb4kcredentialsmanager.cpp:337
+#: smb4kcredentialsmanager.cpp:339
 #, kde-format
 msgid "Migrate"
 msgstr "Transigi"
+
+#: smb4kcredentialsmanager.cpp:340
+#, kde-format
+msgid "Don't Migrate"
+msgstr "Ne Transigi"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3300,186 +3305,3 @@ msgstr "Fonto"
 #, kde-format
 msgid "Destination"
 msgstr "Celo"
-
-#~ msgid "Save logins in a wallet"
-#~ msgstr "Konservi ensalutojn en monujo"
-
-#~ msgid ""
-#~ "Use a wallet to store the login. The username and password are stored "
-#~ "encrypted on your hard drive. If this setting is disabled, the login is "
-#~ "not stored permanently but only temporarily."
-#~ msgstr ""
-#~ "Uzu monujon por konservi la ensaluton. La uzantnomo kaj pasvorto estas "
-#~ "konservitaj ĉifrite sur via malmola disko. Se ĉi tiu agordo estas "
-#~ "malŝaltita, la ensaluto ne estas konservita konstante sed nur provizore."
-
-#~ msgid "Use a default login"
-#~ msgstr "Uzi defaŭltan ensaluton"
-
-#~ msgid ""
-#~ "Enable the usage of a default login. The provided data is used by default "
-#~ "to authenticate to a remote server. This is very useful e.g. if you are "
-#~ "working in an Active Directory environment or an NT domain."
-#~ msgstr ""
-#~ "Ebligu la uzadon de defaŭlta ensaluto. La provizitaj datumoj estas uzataj "
-#~ "defaŭlte por aŭtentikigi al fora servilo. Ĉi tio estas tre utila ekz. se "
-#~ "vi laboras en Active Directory-medio aŭ NT-domajno."
-
-#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-#~ msgstr "<p>Malfermo de la monujo <b>%1</b> malsukcesis.</p>"
-
-#~ msgid ""
-#~ "<p>The credentials stored in the wallet could not be accessed. There is "
-#~ "either no wallet available or it could not be opened.</p>"
-#~ msgstr ""
-#~ "<p>La akreditaĵoj konservitaj en la monujo ne estis alireblaj. Aŭ ne "
-#~ "estas monujo disponebla aŭ ĝi ne povus esti malfermita.</p>"
-
-#~ msgid ""
-#~ "Transfer all relevant data to the first profile when enabling profiles"
-#~ msgstr ""
-#~ "Ŝaltante profilojn, transdoni ĉiujn koncernajn datumojn al la unua "
-#~ "profilo."
-
-#~ msgid ""
-#~ "Transfer all custom settings and bookmarks to the first profile in the "
-#~ "list when enabling profiles."
-#~ msgstr ""
-#~ "Ŝaltante profilojn, transdoni ĉiujn proprajn agordojn kaj legosignojn al "
-#~ "la unua profilo en la listo."
-
-#~ msgid "Make all relevant data available when disabling profiles"
-#~ msgstr "Malŝaltante profilojn, disponigi ĉiujn koncernajn datumojn"
-
-#~ msgid ""
-#~ "Make all custom settings and bookmarks available when disabling profiles. "
-#~ "This means that all data previously saved in different profiles is now "
-#~ "available in the standard profile. However, they can no longer be used in "
-#~ "their original profiles afterwards."
-#~ msgstr ""
-#~ "Malŝaltante profilojn, disponigi ĉiujn proprajn agordojn kaj legosignojn. "
-#~ "Ĉi tio signifas, ke ĉiuj datumoj antaŭe konservitaj en malsamaj profiloj "
-#~ "nun estos disponeblaj en la norma profilo. Tamen ili ne plu povos esti "
-#~ "uzataj en siaj originaj profiloj poste."
-
-#~ msgid "Specify User"
-#~ msgstr "Specifi Uzanton"
-
-#~ msgid "Please specify a username for share<br><b>%1</b>."
-#~ msgstr "Bonvolu specifi uzantnomon por kundivido<br><b>%1</b>."
-
-#~ msgid "User:"
-#~ msgstr "Uzanto:"
-
-#~ msgid "Clear List"
-#~ msgstr "Forigi la liston"
-
-#~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
-#~ msgstr ""
-#~ "Devigi SMB-protokolon versio 1.0 por laborgrupoj kaj domajnaj serĉoj"
-
-#~ msgid ""
-#~ "Smb4K will force Samba's client library to use the SMB protocol version "
-#~ "1.0 for browsing workgroups and domains. You should use this option only "
-#~ "as last resort, because the SMB protocol version 1.0 is unsafe and has "
-#~ "been disabled in newer Samba and Windows versions. However, if you have "
-#~ "trouble discovering workgroups and domains in your network neighborhood, "
-#~ "you might want to consider to switch this setting on. If you are using "
-#~ "DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-"
-#~ "Discovery), and those are working for you, you do not need it."
-#~ msgstr ""
-#~ "Smb4K devigos la klientbibliotekon de Samba uzi la SMB-protokolan version "
-#~ "1.0 por foliumi laborgrupojn kaj domajnojn. Vi devus uzi ĉi tiun opcion "
-#~ "nur kiel lasta rimedo, ĉar la SMB-protokolo versio 1.0 estas nesekura kaj "
-#~ "estis malŝaltita en pli novaj Samba kaj Windows versioj. Tamen, se vi "
-#~ "havas problemojn por malkovri laborgrupojn kaj domajnojn en via reto "
-#~ "najbareco, vi eble volas konsideri ŝalti ĉi tiun agordon. Se vi uzas DNS "
-#~ "Service Discovery (DNS-SD) aŭ Web Services Dynamic Discovery (WS-"
-#~ "Discovery), kaj tiuj funkcias por vi, vi ne bezonas ĝin."
-
-#~ msgid "Use profile migration assistant"
-#~ msgstr "Uzi asistanton pri migrado de profilo"
-
-#~ msgid ""
-#~ "Use the profile migration assistant when profiles are removed or the use "
-#~ "of profiles is enabled or disabled. The profile migration assistant "
-#~ "allows you to migrate all settings that were saved for a certain profile "
-#~ "to a different one."
-#~ msgstr ""
-#~ "Uzu la asistanton pri migrado de profiloj kiam profiloj estas forigitaj "
-#~ "aŭ la uzo de profiloj estas ebligita aŭ malŝaltita. La asistanto pri "
-#~ "migrado de profiloj permesas al vi migri ĉiujn agordojn konservitajn por "
-#~ "certa profilo al alia."
-
-#~ msgid "%1 is not a version 1.0 file."
-#~ msgstr "%1 ne estas versio 1.0 dosiero."
-
-#~ msgid "Profile Migration Assistant"
-#~ msgstr "Asistanto pri Migrado de Profilo"
-
-#~ msgid "Migrate all relevant settings of one profile to another."
-#~ msgstr "Migri ĉiujn koncernajn agordojn de unu profilo al alia."
-
-#~ msgid "Old Profile:"
-#~ msgstr "Malnova Profilo:"
-
-#~ msgid "<Default Profile>"
-#~ msgstr "<Defaŭlta Profilo>"
-
-#~ msgid "<All Profiles>"
-#~ msgstr "<Ĉiuj Profiloj>"
-
-#~ msgid "New Profile:"
-#~ msgstr "Nova Profilo:"
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-#~ msgstr ""
-#~ "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la gastiganto <b>%1</b>.</"
-#~ "qt>"
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgstr ""
-#~ "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la kundivido <b>%1</b>.</"
-#~ "qt>"
-
-#~ msgid "Synchronization"
-#~ msgstr "Sinkronigo"
-
-#~ msgid "Swap Paths"
-#~ msgstr "Interŝanĝi Vojetojn"
-
-#~ msgid "Swap source and destination"
-#~ msgstr "Interŝanĝi fonton kaj celon"
-
-#~ msgid "Synchronize"
-#~ msgstr "Sinkronigi"
-
-#~ msgid "Synchronize the destination with the source"
-#~ msgstr "Sinkronigi la celon kun la fonto"
-
-#~ msgid ""
-#~ "Please provide the source and destination directory for the "
-#~ "synchronization."
-#~ msgstr "Bonvolu provizi la fontan kaj cel-dosierujon por la sinkronigo."
-
-#~ msgid "Source:"
-#~ msgstr "Fonto:"
-
-#~ msgid ""
-#~ "This is the source directory. The data that it contains is to be written "
-#~ "to the destination directory."
-#~ msgstr ""
-#~ "Ĉi tio estas la fonta dosierujo. La datumoj kiujn ĝi enhavas estas "
-#~ "skribendaj al la celdosierujo."
-
-#~ msgid "Destination:"
-#~ msgstr "Celo:"
-
-#~ msgid ""
-#~ "This is the destination directory. It will be updated with the data from "
-#~ "the source directory."
-#~ msgstr ""
-#~ "Ĉi tio estas la cela dosierujo. Ĝi estos ĝisdatigita kun la datumoj de la "
-#~ "fonta dosierujo."

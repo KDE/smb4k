@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 11:05+0200\n"
+"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"PO-Revision-Date: 2024-06-06 06:16+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1907,7 +1907,7 @@ msgstr "Podpora Zeroconf ni na voljo v tej različici KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Nastala je neznana napaka z Zeroconf."
 
-#: smb4kcredentialsmanager.cpp:334
+#: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed.\n"
@@ -1918,15 +1918,20 @@ msgstr ""
 "\n"
 "Ali želite preseliti svoje poverilnice za prijavo?"
 
-#: smb4kcredentialsmanager.cpp:336
+#: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
 msgstr "Preseli poverilnice za prijavo"
 
-#: smb4kcredentialsmanager.cpp:337
+#: smb4kcredentialsmanager.cpp:339
 #, kde-format
 msgid "Migrate"
 msgstr "Preseli"
+
+#: smb4kcredentialsmanager.cpp:340
+#, kde-format
+msgid "Don't Migrate"
+msgstr "Ne preseli"
 
 #: smb4kmounter.cpp:682
 #, kde-format

@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-31 00:39+0000\n"
-"PO-Revision-Date: 2024-05-25 17:28+0200\n"
+"PO-Revision-Date: 2024-06-08 17:46+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -237,18 +237,17 @@ msgstr "Usuario predeterminado"
 #: smb4k/smb4kconfigpageauthentication.cpp:33
 #, kde-format
 msgid "The default login is depending on the profile you are using."
-msgstr ""
+msgstr "El inicio de sesión por omisión depende del perfil qu esté usando."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:36
 #, kde-format
 msgid "Active profile:"
-msgstr ""
+msgstr "Perfil activo:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "desconocido"
+msgstr "Desconocido"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:46
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -260,13 +259,12 @@ msgstr "Nombre de usuario"
 #: smb4k/smb4kconfigpageauthentication.cpp:53
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "Contraseña:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
+#, kde-format
 msgid "Default Profile"
-msgstr "Usuario predeterminado"
+msgstr "Perfil por omisión"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1257,30 +1255,3 @@ msgstr "%1 libres de %2 (%3 utilizado)"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgid "Wallet Entries"
-#~ msgstr "Entradas de la cartera"
-
-#~ msgid "Load"
-#~ msgstr "Cargar"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
-
-#~ msgid "Enter the default login information."
-#~ msgstr "Introduzca información de acceso predeterminada."
-
-#~ msgid "Set the username and password for wallet entry %1."
-#~ msgstr ""
-#~ "Establecer el nombre de usuario y contraseña para la entrada de la "
-#~ "cartera %1."
-
-#~ msgid "Set the username and password for the default login."
-#~ msgstr ""
-#~ "Establecer el nombre de usuario y contraseña para el acceso por omisión."
-
-#~ msgid "The wallet is used."
-#~ msgstr "La cartera está en uso."
-
-#~ msgid "The password dialog is used."
-#~ msgstr "El diálogo de contraseña esta en uso."
