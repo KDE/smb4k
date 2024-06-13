@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"POT-Creation-Date: 2024-06-13 00:38+0000\n"
 "PO-Revision-Date: 2024-06-06 11:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1915,11 +1915,16 @@ msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf ile bilinmeyen bir hata oluştu."
 
 #: smb4kcredentialsmanager.cpp:336
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The way Smb4K stores the login credentials changed.\n"
+#| "\n"
+#| "Do you want to migrate your login credentials?"
 msgid ""
-"The way Smb4K stores the login credentials changed.\n"
+"The way Smb4K stores the login credentials changed. They will now be "
+"migrated.\n"
 "\n"
-"Do you want to migrate your login credentials?"
+"This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 "Smb4K’nin oturum açma bilgilerini depolama yöntemi değişti.\n"
 "\n"
@@ -1929,16 +1934,6 @@ msgstr ""
 #, kde-format
 msgid "Migrate Login Credentials"
 msgstr "Oturum Açma Bilgilerini Göç Ettir"
-
-#: smb4kcredentialsmanager.cpp:339
-#, kde-format
-msgid "Migrate"
-msgstr "Göç Ettir"
-
-#: smb4kcredentialsmanager.cpp:340
-#, kde-format
-msgid "Don't Migrate"
-msgstr "Göç Ettirme"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3311,6 +3306,12 @@ msgstr "Kaynak"
 #, kde-format
 msgid "Destination"
 msgstr "Hedef"
+
+#~ msgid "Migrate"
+#~ msgstr "Göç Ettir"
+
+#~ msgid "Don't Migrate"
+#~ msgstr "Göç Ettirme"
 
 #~ msgid "Save logins in a wallet"
 #~ msgstr "Oturum açma bilgilerini bir cüzdanda kaydet"

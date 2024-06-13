@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"POT-Creation-Date: 2024-06-13 00:38+0000\n"
 "PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1758,24 +1758,15 @@ msgstr "Ismeretlen hiba történt a hitelesítéskor"
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid ""
-"The way Smb4K stores the login credentials changed.\n"
+"The way Smb4K stores the login credentials changed. They will now be "
+"migrated.\n"
 "\n"
-"Do you want to migrate your login credentials?"
+"This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 
 #: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
-
-#: smb4kcredentialsmanager.cpp:339
-#, kde-format
-msgid "Migrate"
-msgstr ""
-
-#: smb4kcredentialsmanager.cpp:340
-#, kde-format
-msgid "Don't Migrate"
 msgstr ""
 
 #: smb4kmounter.cpp:682

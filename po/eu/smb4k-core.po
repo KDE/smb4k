@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"POT-Creation-Date: 2024-06-13 00:38+0000\n"
 "PO-Revision-Date: 2023-12-06 12:05+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1950,24 +1950,15 @@ msgstr "«Zeroconf»ekin errore ezezagun bat gertatu da."
 #: smb4kcredentialsmanager.cpp:336
 #, kde-format
 msgid ""
-"The way Smb4K stores the login credentials changed.\n"
+"The way Smb4K stores the login credentials changed. They will now be "
+"migrated.\n"
 "\n"
-"Do you want to migrate your login credentials?"
+"This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 
 #: smb4kcredentialsmanager.cpp:338
 #, kde-format
 msgid "Migrate Login Credentials"
-msgstr ""
-
-#: smb4kcredentialsmanager.cpp:339
-#, kde-format
-msgid "Migrate"
-msgstr ""
-
-#: smb4kcredentialsmanager.cpp:340
-#, kde-format
-msgid "Don't Migrate"
 msgstr ""
 
 #: smb4kmounter.cpp:682

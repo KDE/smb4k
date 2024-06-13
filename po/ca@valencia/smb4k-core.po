@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-06 00:39+0000\n"
+"POT-Creation-Date: 2024-06-13 00:38+0000\n"
 "PO-Revision-Date: 2024-06-06 12:18+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1973,11 +1973,16 @@ msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb Zeroconf."
 
 #: smb4kcredentialsmanager.cpp:336
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The way Smb4K stores the login credentials changed.\n"
+#| "\n"
+#| "Do you want to migrate your login credentials?"
 msgid ""
-"The way Smb4K stores the login credentials changed.\n"
+"The way Smb4K stores the login credentials changed. They will now be "
+"migrated.\n"
 "\n"
-"Do you want to migrate your login credentials?"
+"This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 "Ha canviat la manera en què Smb4K emmagatzema les credencials d'inici de "
 "sessió.\n"
@@ -1988,16 +1993,6 @@ msgstr ""
 #, kde-format
 msgid "Migrate Login Credentials"
 msgstr "Migra les credencials d'inici de sessió"
-
-#: smb4kcredentialsmanager.cpp:339
-#, kde-format
-msgid "Migrate"
-msgstr "Migra"
-
-#: smb4kcredentialsmanager.cpp:340
-#, kde-format
-msgid "Don't Migrate"
-msgstr "No migres"
 
 #: smb4kmounter.cpp:682
 #, kde-format
@@ -3379,3 +3374,9 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
+
+#~ msgid "Migrate"
+#~ msgstr "Migra"
+
+#~ msgid "Don't Migrate"
+#~ msgstr "No migres"
