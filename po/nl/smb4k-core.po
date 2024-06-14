@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-13 00:38+0000\n"
-"PO-Revision-Date: 2024-06-06 09:17+0200\n"
+"PO-Revision-Date: 2024-06-13 23:39+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1948,20 +1948,17 @@ msgid "An unknown error with Zeroconf occurred."
 msgstr "Er is een onbekende fout opgetreden met Zeroconf."
 
 #: smb4kcredentialsmanager.cpp:336
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed.\n"
-#| "\n"
-#| "Do you want to migrate your login credentials?"
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed. They will now be "
 "migrated.\n"
 "\n"
 "This change is incompatible with earlier versions of Smb4K."
 msgstr ""
-"De manier waarop Smb4K de aanmeldcredentials opslaat is gewijzigd.\n"
+"De manier waarop Smb4K de aanmeldcredentials opslaat is gewijzigd. Ze zullen "
+"nu gemigreerd worden.\n"
 "\n"
-"Wilt u uw aanmeldcredentials migreren?"
+"DEze wijziging is niet compatibel met eerdere versies van Smb4K?"
 
 #: smb4kcredentialsmanager.cpp:338
 #, kde-format

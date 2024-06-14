@@ -2881,9 +2881,3 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cíl"
-
-#~ msgid "Migrate"
-#~ msgstr "Převést"
-
-#~ msgid "Don't Migrate"
-#~ msgstr "Nepřevádět"

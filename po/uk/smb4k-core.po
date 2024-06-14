@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-13 00:38+0000\n"
-"PO-Revision-Date: 2024-06-06 09:46+0300\n"
+"PO-Revision-Date: 2024-06-13 08:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -1978,20 +1978,17 @@ msgid "An unknown error with Zeroconf occurred."
 msgstr "Невідома помилка, яку пов'язано із Zeroconf."
 
 #: smb4kcredentialsmanager.cpp:336
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed.\n"
-#| "\n"
-#| "Do you want to migrate your login credentials?"
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed. They will now be "
 "migrated.\n"
 "\n"
 "This change is incompatible with earlier versions of Smb4K."
 msgstr ""
-"Спосіб, у який Smb4K зберігає реєстраційні дані, було змінено.\n"
+"Спосіб, у який Smb4K зберігає реєстраційні дані, було змінено. Тепер ці "
+"реєстраційні дані буде перенесено у нову версію.\n"
 "\n"
-"Хочете перенести старі реєстраційні дані до нового сховища?"
+"Внесені зміни будуть несумісними із попередніми версіями Smb4K."
 
 #: smb4kcredentialsmanager.cpp:338
 #, kde-format
