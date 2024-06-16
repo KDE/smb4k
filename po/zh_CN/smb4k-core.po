@@ -1805,10 +1805,6 @@ msgstr "Zeroconf 发生未知错误。"
 
 #: smb4kcredentialsmanager.cpp:336
 #, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed.\n"
-#| "\n"
-#| "Do you want to migrate your login credentials?"
 msgid ""
 "The way Smb4K stores the login credentials changed. They will now be "
 "migrated.\n"
