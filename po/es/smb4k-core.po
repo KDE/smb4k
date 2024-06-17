@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-13 00:38+0000\n"
-"PO-Revision-Date: 2024-06-08 17:44+0200\n"
+"PO-Revision-Date: 2024-06-16 17:01+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1964,20 +1964,17 @@ msgid "An unknown error with Zeroconf occurred."
 msgstr "Ha ocurrido un error desconocido en Zeroconf."
 
 #: smb4kcredentialsmanager.cpp:336
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed.\n"
-#| "\n"
-#| "Do you want to migrate your login credentials?"
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials changed. They will now be "
 "migrated.\n"
 "\n"
 "This change is incompatible with earlier versions of Smb4K."
 msgstr ""
-"La manera en la que Smb4K almacena las credenciales ha cambiado.\n"
+"La manera en la que Smb4K almacena las credenciales ha cambiado. serán "
+"migradas ahora.\n"
 "\n"
-"¿Quiere migrar sus credenciales de acceso?"
+"Este cambio es incompatible con versiones previas de Smb4K."
 
 #: smb4kcredentialsmanager.cpp:338
 #, kde-format
@@ -3373,9 +3370,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
-
-#~ msgid "Migrate"
-#~ msgstr "Migrar"
-
-#~ msgid "Don't Migrate"
-#~ msgstr "No migrar"
