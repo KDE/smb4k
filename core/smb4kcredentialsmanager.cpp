@@ -392,5 +392,8 @@ void Smb4KCredentialsManager::migrate()
             authenticationGroup.writeEntry(QStringLiteral("MigratedToKeychain"), true);
             authenticationGroup.sync();
         }
+    } else {
+	authenticationGroup.writeEntry(QStringLiteral("MigratedToKeychain"), false);
+	authenticationGroup.sync();
     }
 }
