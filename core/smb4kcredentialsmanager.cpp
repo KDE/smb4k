@@ -393,7 +393,7 @@ void Smb4KCredentialsManager::migrate()
             authenticationGroup.sync();
         }
     } else {
-	authenticationGroup.writeEntry(QStringLiteral("MigratedToKeychain"), false);
-	authenticationGroup.sync();
+        authenticationGroup.writeEntry(QStringLiteral("MigratedToKeychain"), false);
+        authenticationGroup.sync();
     }
 }
