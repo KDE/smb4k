@@ -65,6 +65,7 @@ protected Q_SLOTS:
     void slotMoveProfileDown(bool checked);
     void slotSetProfileActive(bool checked);
     void slotProfileChanged(QListWidgetItem *profileItem);
+    void slotProfileDoubleClicked(QListWidgetItem *profileItem);
     void slotResetProfiles(bool checked);
     void slotEnableButtons(int row);
 
@@ -72,6 +73,7 @@ private:
     void loadProfiles();
     void checkProfilesChanged();
     ProfileContainer *findProfileContainer(QListWidgetItem *profileItem);
+    void setProfileActive(QListWidgetItem *profileItem);
     QCheckBox *m_useProfiles;
     QWidget *m_profilesEditorWidget;
     KLineEdit *m_profilesInputLineEdit;

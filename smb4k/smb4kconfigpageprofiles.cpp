@@ -115,9 +115,9 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     connect(m_setActiveButton, &QPushButton::clicked, this, &Smb4KConfigPageProfiles::slotSetProfileActive);
     connect(m_resetButton, &QPushButton::clicked, this, &Smb4KConfigPageProfiles::slotResetProfiles);
 
-    // FIXME: Use double clicking for setting active profile? Or single click over the checkbox?
     connect(m_profilesListWidget, &QListWidget::itemChanged, this, &Smb4KConfigPageProfiles::slotProfileChanged);
     connect(m_profilesListWidget, &QListWidget::currentRowChanged, this, &Smb4KConfigPageProfiles::slotEnableButtons);
+    connect(m_profilesListWidget, &QListWidget::itemDoubleClicked, this, &Smb4KConfigPageProfiles::slotProfileDoubleClicked);
 }
 
 Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
@@ -231,6 +231,26 @@ ProfileContainer *Smb4KConfigPageProfiles::findProfileContainer(QListWidgetItem 
     return &m_profiles[index];
 }
 
+void Smb4KConfigPageProfiles::setProfileActive(QListWidgetItem *profileItem)
+{
+    for (int i = 0; i < m_profilesListWidget->count(); i++) {
+        QListWidgetItem *item = m_profilesListWidget->item(i);
+
+        if (item->checkState() == Qt::Checked) {
+            item->setCheckState(Qt::Unchecked);
+
+            ProfileContainer *p = findProfileContainer(item);
+            p->active = false;
+        }
+    }
+
+    m_currentProfileContainer = findProfileContainer(profileItem);
+    m_profilesListWidget->setFocus();
+    profileItem->setCheckState(Qt::Checked);
+
+    m_setActiveButton->setEnabled(false);
+}
+
 bool Smb4KConfigPageProfiles::eventFilter(QObject *watched, QEvent *event)
 {
     if (watched == m_profilesListWidget->viewport()) {
@@ -264,23 +284,41 @@ void Smb4KConfigPageProfiles::slotProfileUsageChanged(bool checked)
     m_profilesEditorWidget->setEnabled(checked);
 
     if (checked) {
-        bool haveActiveProfile = false;
+        QString activeProfile = Smb4KProfileManager::self()->activeProfile();
+        bool haveActiveProfile = !activeProfile.isEmpty();
+        QListWidgetItem *profileItem = nullptr;
 
-        for (const ProfileContainer &p : qAsConst(m_profiles)) {
-            if (p.active) {
-                haveActiveProfile = true;
-                break;
+        if (!haveActiveProfile) {
+            profileItem = m_profilesListWidget->item(0);
+        } else {
+            QList<QListWidgetItem *> profileItems = m_profilesListWidget->findItems(activeProfile, Qt::MatchExactly);
+
+            if (profileItems.size() == 1) {
+                profileItem = profileItems[0];
+            } else {
+                qDebug() << "Smb4KConfigPageProfiles::slotProfileUsageChanged(): Too many items in the list of profiles!";
             }
         }
 
-        if (!haveActiveProfile) {
-            QListWidgetItem *profileItem = m_profilesListWidget->item(0);
-            profileItem->setCheckState(Qt::Checked);
+        profileItem->setCheckState(Qt::Checked);
 
-            ProfileContainer *p = findProfileContainer(profileItem);
+        ProfileContainer *p = findProfileContainer(profileItem);
 
-            if (p) {
-                p->active = true;
+        if (p) {
+            p->active = true;
+        }
+    } else {
+        for (int i = 0; i < m_profilesListWidget->count(); i++) {
+            QListWidgetItem *profileItem = m_profilesListWidget->item(i);
+
+            if (profileItem->checkState() == Qt::Checked) {
+                profileItem->setCheckState(Qt::Unchecked);
+
+                ProfileContainer *p = findProfileContainer(profileItem);
+
+                if (p) {
+                    p->active = false;
+                }
             }
         }
     }
@@ -326,23 +364,8 @@ void Smb4KConfigPageProfiles::slotSetProfileActive(bool checked)
 {
     Q_UNUSED(checked);
 
-    for (int i = 0; i < m_profilesListWidget->count(); i++) {
-        QListWidgetItem *item = m_profilesListWidget->item(i);
-
-        if (item->checkState() == Qt::Checked) {
-            item->setCheckState(Qt::Unchecked);
-
-            ProfileContainer *p = findProfileContainer(item);
-            p->active = false;
-        }
-    }
-
     if (m_profilesListWidget->currentItem()) {
-        m_currentProfileContainer = findProfileContainer(m_profilesListWidget->currentItem());
-        m_profilesListWidget->setFocus();
-        m_profilesListWidget->currentItem()->setCheckState(Qt::Checked);
-
-        m_setActiveButton->setEnabled(false);
+        setProfileActive(m_profilesListWidget->currentItem());
     }
 }
 
@@ -418,6 +441,13 @@ void Smb4KConfigPageProfiles::slotProfileChanged(QListWidgetItem *profileItem)
     }
 
     checkProfilesChanged();
+}
+
+void Smb4KConfigPageProfiles::slotProfileDoubleClicked(QListWidgetItem *profileItem)
+{
+    if (profileItem) {
+        setProfileActive(profileItem);
+    }
 }
 
 void Smb4KConfigPageProfiles::slotResetProfiles(bool checked)
