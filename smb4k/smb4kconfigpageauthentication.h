@@ -10,11 +10,10 @@
 
 // Qt includes
 #include <QWidget>
-#include <QLabel>
 
 // KDE includes
-#include <KPasswordLineEdit>
 #include <KLineEdit>
+#include <KPasswordLineEdit>
 
 /**
  * This is the configuration tab for the authentication settings
@@ -76,7 +75,6 @@ protected Q_SLOTS:
 
 private:
     void loadDefaultLoginCredentials();
-    QLabel *m_activeProfile;
     KLineEdit *m_defaultUserName;
     KPasswordLineEdit *m_defaultPassword;
     bool m_defaultCredentialsModified;
