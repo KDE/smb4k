@@ -7,6 +7,7 @@
 
 // application specific includes
 #include "smb4kconfigdialog.h"
+#include "core/smb4kprofilemanager.h"
 #include "core/smb4ksettings.h"
 
 #if defined(Q_OS_LINUX)
@@ -40,6 +41,8 @@ Smb4KConfigDialog::Smb4KConfigDialog(QWidget *parent, const QList<QVariant> & /*
     // setAttribute(Qt::WA_DeleteOnClose, true);
 
     setupDialog();
+
+    connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KConfigDialog::slotActiveProfileChanged);
 }
 
 Smb4KConfigDialog::~Smb4KConfigDialog()
@@ -118,17 +121,19 @@ void Smb4KConfigDialog::setupDialog()
         m_bookmarksPage->setCompletionItems(completionItems);
     }
 
-    //
-    // Pages to the configuration dialog
-    //
+    QString activeProfile = Smb4KProfileManager::self()->activeProfile();
+
     m_userInterface = addPage(userInterfaceArea, i18n("User Interface"), QStringLiteral("preferences-desktop"));
     m_network = addPage(networkArea, i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
     m_mounting = addPage(mountingArea, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
     m_synchronization = addPage(synchronizationArea, i18n("Synchronization"), QStringLiteral("folder-sync"));
     m_profiles = addPage(profilesArea, i18n("Profiles"), QStringLiteral("preferences-system-users"));
     m_authentication = addPage(authenticationArea, i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"), QString(), false);
+    m_authentication->setHeader(!activeProfile.isEmpty() ? m_authentication->name() + i18n(" (Profile: %1)", activeProfile) : QString());
     m_bookmarks = addPage(bookmarksArea, i18n("Bookmarks"), QStringLiteral("bookmarks"), QString(), false);
+    m_bookmarks->setHeader(!activeProfile.isEmpty() ? m_bookmarks->name() + i18n(" (Profile: %1)", activeProfile) : QString());
     m_customSettings = addPage(customSettingsArea, i18n("Custom Settings"), QStringLiteral("settings-configure"), QString(), false);
+    m_customSettings->setHeader(!activeProfile.isEmpty() ? m_customSettings->name() + i18n(" (Profile: %1)", activeProfile) : QString());
 
     //
     // Connections
@@ -169,6 +174,8 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
             return false;
         }
     }
+
+    // FIXME: Check profiles, bookmarks and custom settings page, if necessary!
 
     return true;
 }
@@ -221,6 +228,13 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem *current, KPageWidgetItem 
 {
     Q_UNUSED(current);
     checkSettings(before);
+}
+
+void Smb4KConfigDialog::slotActiveProfileChanged(const QString &activeProfile)
+{
+    m_authentication->setHeader(!activeProfile.isEmpty() ? m_authentication->name() + i18n(" (Profile: %1)", activeProfile) : QString());
+    m_bookmarks->setHeader(!activeProfile.isEmpty() ? m_bookmarks->name() + i18n(" (Profile: %1)", activeProfile) : QString());
+    m_customSettings->setHeader(!activeProfile.isEmpty() ? m_customSettings->name() + i18n(" (Profile: %1)", activeProfile) : QString());
 }
 
 #include "smb4kconfigdialog.moc"

@@ -67,10 +67,17 @@ protected Q_SLOTS:
     /**
      * This slot is used to check the settings of the different pages.
      *
-     * @param current     the current dialog page
-     * @param before      the previous dialog page
+     * @param current           the current dialog page
+     * @param before            the previous dialog page
      */
     void slotCheckPage(KPageWidgetItem *current, KPageWidgetItem *before);
+
+    /**
+     * This slot is called when the active profile changed.
+     *
+     * @param activeProfile     the name of the active profile
+     */
+    void slotActiveProfileChanged(const QString &activeProfile);
 
 private:
     /**
