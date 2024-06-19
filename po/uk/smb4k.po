@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-19 00:39+0000\n"
 "PO-Revision-Date: 2024-05-31 13:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
@@ -150,7 +150,7 @@ msgstr "Категорія:"
 msgid "Bookmark Editor"
 msgstr "Редактор закладок"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:133
 #, kde-format
 msgid "Bookmarks"
 msgstr "Закладки"
@@ -172,44 +172,52 @@ msgstr "&Додати закладку"
 msgid "Mount Bookmarks"
 msgstr "Змонтувати закладки"
 
-#: smb4k/smb4kconfigdialog.cpp:124
+#: smb4k/smb4kconfigdialog.cpp:126
 #, kde-format
 msgid "User Interface"
 msgstr "Інтерфейс користувача"
 
-#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Мережа"
 
-#: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kconfigdialog.cpp:128
 #, kde-format
 msgid "Mounting"
 msgstr "Монтування"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:129 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Синхронізація"
 
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Профілі"
 
-#: smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
 msgid "Authentication"
 msgstr "Розпізнавання"
 
-#: smb4k/smb4kconfigdialog.cpp:131
+#: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
+#: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
+#, fuzzy, kde-format
+#| msgid "Profiles:"
+msgid " (Profile: %1)"
+msgstr "Профілі:"
+
+#: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format
 msgid "Custom Settings"
 msgstr "Нетипові параметри"
 
-#: smb4k/smb4kconfigdialog.cpp:155
+#: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -218,42 +226,22 @@ msgstr ""
 "<qt>Виявлено некоректне значення параметра. Переходимо до відповідної "
 "сторінки налаштувань, де ви зможете його виправити.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:30
+#: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
 msgstr "Типова реєстрація"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#, kde-format
-msgid "The default login is depending on the profile you are using."
-msgstr "Типовий користувача залежить від використаного вами профілю."
-
-#: smb4k/smb4kconfigpageauthentication.cpp:36
-#, kde-format
-msgid "Active profile:"
-msgstr "Активний профіль:"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:37
-#, kde-format
-msgid "Unknown"
-msgstr "Невідомий"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:46
+#: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Користувач:"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:53
+#: smb4k/smb4kconfigpageauthentication.cpp:42
 #, kde-format
 msgid "Password:"
 msgstr "Пароль:"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:82
-#, kde-format
-msgid "Default Profile"
-msgstr "Типовий профіль"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1252,6 +1240,18 @@ msgstr "Вільно %1 з %2 (використано %3)"
 msgid "Size:"
 msgstr "Розмір:"
 
+#~ msgid "The default login is depending on the profile you are using."
+#~ msgstr "Типовий користувача залежить від використаного вами профілю."
+
+#~ msgid "Active profile:"
+#~ msgstr "Активний профіль:"
+
+#~ msgid "Unknown"
+#~ msgstr "Невідомий"
+
+#~ msgid "Default Profile"
+#~ msgstr "Типовий профіль"
+
 #~ msgid "Wallet Entries"
 #~ msgstr "Записи торбинки"
 
@@ -1376,9 +1376,6 @@ msgstr "Розмір:"
 
 #~ msgid "Browse Settings:"
 #~ msgstr "Параметри навігації:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Профілі:"
 
 #~ msgid "Authentication:"
 #~ msgstr "Розпізнавання:"

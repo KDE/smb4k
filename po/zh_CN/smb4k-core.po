@@ -1811,6 +1811,9 @@ msgid ""
 "\n"
 "This change is incompatible with earlier versions of Smb4K."
 msgstr ""
+"Smb4K 存储登录信息的方式已经更改。这些登录信息将被迁移。\n"
+"\n"
+"此更改不兼容之前版本的 Smb4K。"
 
 #: smb4kcredentialsmanager.cpp:338
 #, kde-format

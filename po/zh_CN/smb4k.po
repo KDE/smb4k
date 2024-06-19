@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-19 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -145,7 +145,7 @@ msgstr "分类："
 msgid "Bookmark Editor"
 msgstr "书签编辑器"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:133
 #, kde-format
 msgid "Bookmarks"
 msgstr "书签"
@@ -167,86 +167,74 @@ msgstr "添加书签(&B)"
 msgid "Mount Bookmarks"
 msgstr "挂载书签"
 
-#: smb4k/smb4kconfigdialog.cpp:124
+#: smb4k/smb4kconfigdialog.cpp:126
 #, kde-format
 msgid "User Interface"
 msgstr "用户界面"
 
-#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "网络"
 
-#: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kconfigdialog.cpp:128
 #, kde-format
 msgid "Mounting"
 msgstr "挂载"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:129 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "同步"
 
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "配置方案"
 
-#: smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
 msgid "Authentication"
 msgstr "身份验证"
 
-#: smb4k/smb4kconfigdialog.cpp:131
+#: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
+#: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
+#, fuzzy, kde-format
+#| msgid "Profiles"
+msgid " (Profile: %1)"
+msgstr "配置方案"
+
+#: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format
 msgid "Custom Settings"
 msgstr "自定义设置"
 
-#: smb4k/smb4kconfigdialog.cpp:155
+#: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
 "corresponding configuration page to fix it.</qt>"
 msgstr "<qt>发现了错误的设置。程序将跳转到相关的配置页面以便您手动修复。</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:30
+#: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
 msgstr "默认登录"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#, kde-format
-msgid "The default login is depending on the profile you are using."
-msgstr "默认登录取决于您使用的配置方案。"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:36
-#, kde-format
-msgid "Active profile:"
-msgstr "活动配置方案："
-
-#: smb4k/smb4kconfigpageauthentication.cpp:37
-#, kde-format
-msgid "Unknown"
-msgstr "未知"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:46
+#: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "用户名："
 
-#: smb4k/smb4kconfigpageauthentication.cpp:53
+#: smb4k/smb4kconfigpageauthentication.cpp:42
 #, kde-format
 msgid "Password:"
 msgstr "密码："
-
-#: smb4k/smb4kconfigpageauthentication.cpp:82
-#, kde-format
-msgid "Default Profile"
-msgstr "默认方案"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1212,3 +1200,15 @@ msgstr "总共 %2，空闲 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
+
+#~ msgid "The default login is depending on the profile you are using."
+#~ msgstr "默认登录取决于您使用的配置方案。"
+
+#~ msgid "Active profile:"
+#~ msgstr "活动配置方案："
+
+#~ msgid "Unknown"
+#~ msgstr "未知"
+
+#~ msgid "Default Profile"
+#~ msgstr "默认方案"
