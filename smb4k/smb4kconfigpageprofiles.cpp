@@ -175,7 +175,7 @@ void Smb4KConfigPageProfiles::applyChanges()
 
 bool Smb4KConfigPageProfiles::profilesChanged() const
 {
-    return m_profilesChanged;
+    return m_profilesChanged || (m_useProfiles->isChecked() != Smb4KSettings::useProfiles());
 }
 
 void Smb4KConfigPageProfiles::loadProfiles()

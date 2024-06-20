@@ -127,13 +127,13 @@ void Smb4KConfigDialog::setupDialog()
     m_network = addPage(networkArea, i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
     m_mounting = addPage(mountingArea, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
     m_synchronization = addPage(synchronizationArea, i18n("Synchronization"), QStringLiteral("folder-sync"));
-    m_profiles = addPage(profilesArea, i18n("Profiles"), QStringLiteral("preferences-system-users"));
     m_authentication = addPage(authenticationArea, i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"), QString(), false);
     m_authentication->setHeader(!activeProfile.isEmpty() ? m_authentication->name() + i18n(" (Profile: %1)", activeProfile) : QString());
     m_bookmarks = addPage(bookmarksArea, i18n("Bookmarks"), QStringLiteral("bookmarks"), QString(), false);
     m_bookmarks->setHeader(!activeProfile.isEmpty() ? m_bookmarks->name() + i18n(" (Profile: %1)", activeProfile) : QString());
     m_customSettings = addPage(customSettingsArea, i18n("Custom Settings"), QStringLiteral("settings-configure"), QString(), false);
     m_customSettings->setHeader(!activeProfile.isEmpty() ? m_customSettings->name() + i18n(" (Profile: %1)", activeProfile) : QString());
+    m_profiles = addPage(profilesArea, i18n("Profiles"), QStringLiteral("preferences-system-users"));
 
     //
     // Connections
@@ -157,7 +157,9 @@ void Smb4KConfigDialog::setupDialog()
 
 bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 {
-    QString errorMessage = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
+    QString errorMessage = i18n(
+        "An incorrect setting has been found. You are now taken\n"
+        "to the corresponding configuration page to fix it.");
 
     if (!page || page == m_mounting) {
         if (!m_mountingPage->checkSettings()) {
@@ -174,8 +176,6 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
             return false;
         }
     }
-
-    // FIXME: Check profiles, bookmarks and custom settings page, if necessary!
 
     return true;
 }
@@ -227,6 +227,18 @@ void Smb4KConfigDialog::slotEnableApplyButton()
 void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem *current, KPageWidgetItem *before)
 {
     Q_UNUSED(current);
+
+    if (before == m_profiles) {
+        if (m_profilesPage->profilesChanged()) {
+            KMessageBox::information(this,
+                                     i18n("You have made changes to the profiles. You have to apply\n"
+                                          "them in order to be able to use them in the rest of the\n"
+                                          "configuration dialog."),
+                                     QString(),
+                                     QStringLiteral("InformationProfiles"));
+        }
+    }
+
     checkSettings(before);
 }
 
