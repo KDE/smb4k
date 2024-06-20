@@ -56,7 +56,7 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     profilesBoxLayout->setContentsMargins(0, 0, 0, 0);
 
     m_profilesEditorWidget = new QWidget(profilesBox);
-    m_profilesEditorWidget->setEnabled(Smb4KSettings::self()->useProfiles());
+    m_profilesEditorWidget->setEnabled(Smb4KSettings::useProfiles());
 
     QGridLayout *profilesEditorWidgetLayout = new QGridLayout(m_profilesEditorWidget);
 
@@ -133,6 +133,7 @@ void Smb4KConfigPageProfiles::applyChanges()
             profiles << m_profilesListWidget->item(i)->text();
         }
 
+        // FIXME: Do we need this here?
         Smb4KSettings::setProfilesList(profiles);
 
         QMutableListIterator<ProfileContainer> it(m_profiles);
@@ -201,20 +202,21 @@ void Smb4KConfigPageProfiles::loadProfiles()
         profileItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
         profileItem->setCheckState(p.active ? Qt::Checked : Qt::Unchecked);
     }
-
-    m_profilesChanged = (m_useProfiles->isChecked() != Smb4KSettings::useProfiles());
 }
 
 void Smb4KConfigPageProfiles::checkProfilesChanged()
 {
+    m_profilesChanged = false;
+
     for (const ProfileContainer &p : qAsConst(m_profiles)) {
         if (p.added || p.removed || p.renamed || (p.active && p.currentName != Smb4KProfileManager::self()->activeProfile()) || p.moved) {
             m_profilesChanged = true;
             m_resetButton->setEnabled(true);
-            Q_EMIT profilesModified();
             break;
         }
     }
+
+    Q_EMIT profilesModified();
 }
 
 ProfileContainer *Smb4KConfigPageProfiles::findProfileContainer(QListWidgetItem *profileItem)
@@ -280,7 +282,6 @@ bool Smb4KConfigPageProfiles::eventFilter(QObject *watched, QEvent *event)
 
 void Smb4KConfigPageProfiles::slotProfileUsageChanged(bool checked)
 {
-    m_profilesChanged = (checked != Smb4KSettings::useProfiles());
     m_profilesEditorWidget->setEnabled(checked);
 
     if (checked) {
