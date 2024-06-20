@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-19 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 14:40+0300\n"
+"PO-Revision-Date: 2024-06-19 11:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -207,10 +207,9 @@ msgstr "Kimlik Denetimi"
 #: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
 #: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
 #: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
-#, fuzzy, kde-format
-#| msgid "Profiles"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Profiller"
+msgstr " (Profil: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format

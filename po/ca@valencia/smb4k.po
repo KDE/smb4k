@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-19 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 10:29+0200\n"
+"PO-Revision-Date: 2024-06-19 12:47+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -208,10 +208,9 @@ msgstr "Autenticació"
 #: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
 #: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
 #: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
-#, fuzzy, kde-format
-#| msgid "Profiles"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Perfils"
+msgstr " (Perfil: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format
@@ -1168,7 +1167,7 @@ msgstr "Explorador mestre:"
 #: smb4k/smb4ktooltip.cpp:151
 #, kde-format
 msgid "Host"
-msgstr "Servidor"
+msgstr "Amfitrió"
 
 #: smb4k/smb4ktooltip.cpp:154 smb4k/smb4ktooltip.cpp:170
 #, kde-format
@@ -1230,16 +1229,3 @@ msgstr "%1 lliure de %2 (utilitzat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "The default login is depending on the profile you are using."
-#~ msgstr ""
-#~ "L'inici de la sessió predeterminat depén del perfil que esteu fent servir."
-
-#~ msgid "Active profile:"
-#~ msgstr "Perfil actiu:"
-
-#~ msgid "Unknown"
-#~ msgstr "Desconegut"
-
-#~ msgid "Default Profile"
-#~ msgstr "Perfil predeterminat"

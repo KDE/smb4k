@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-19 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 11:00+0200\n"
+"PO-Revision-Date: 2024-06-19 09:03+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -203,10 +203,9 @@ msgstr "Overitev"
 #: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
 #: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
 #: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
-#, fuzzy, kde-format
-#| msgid "Profiles:"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Profili:"
+msgstr " (Profil: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-19 00:39+0000\n"
-"PO-Revision-Date: 2024-05-31 16:09+0200\n"
+"PO-Revision-Date: 2024-06-19 23:49+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -202,10 +202,9 @@ msgstr "Aŭtentigo"
 #: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
 #: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
 #: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
-#, fuzzy, kde-format
-#| msgid "Profiles"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Profiloj"
+msgstr "(Profilo: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format
@@ -1219,39 +1218,3 @@ msgstr "%1 libera de %2 (%3 uzata)"
 #, kde-format
 msgid "Size:"
 msgstr "Grandeco:"
-
-#~ msgid "The default login is depending on the profile you are using."
-#~ msgstr "La defaŭlta ensaluto estas dependa de la profilo kiun vi uzas."
-
-#~ msgid "Active profile:"
-#~ msgstr "Aktiva profilo:"
-
-#~ msgid "Unknown"
-#~ msgstr "Nekonata"
-
-#~ msgid "Default Profile"
-#~ msgstr "Defaŭlta Profilo"
-
-#~ msgid "Wallet Entries"
-#~ msgstr "Monujo Eniroj"
-
-#~ msgid "Load"
-#~ msgstr "Ŝargi"
-
-#~ msgid "Save"
-#~ msgstr "Konservi"
-
-#~ msgid "Enter the default login information."
-#~ msgstr "Enigu la defaŭltan ensalutinformon."
-
-#~ msgid "Set the username and password for wallet entry %1."
-#~ msgstr "Agordu la uzantnomon kaj pasvorton por monujo %1."
-
-#~ msgid "Set the username and password for the default login."
-#~ msgstr "Agordu la uzantnomon kaj pasvorton por la defaŭlta ensaluto."
-
-#~ msgid "The wallet is used."
-#~ msgstr "La monujo estas uzata."
-
-#~ msgid "The password dialog is used."
-#~ msgstr "La dialogo de pasvorto estas uzata."
