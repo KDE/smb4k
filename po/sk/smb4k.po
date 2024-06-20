@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-19 00:39+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -147,7 +147,7 @@ msgstr ""
 msgid "Bookmark Editor"
 msgstr "Záložky"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:133
 #, kde-format
 msgid "Bookmarks"
 msgstr "Záložky"
@@ -170,45 +170,53 @@ msgstr "Prid&ať záložku"
 msgid "Mount Bookmarks"
 msgstr "Pripojiť všetky záložky"
 
-#: smb4k/smb4kconfigdialog.cpp:124
+#: smb4k/smb4kconfigdialog.cpp:126
 #, kde-format
 msgid "User Interface"
 msgstr "Užívateľské rozhranie"
 
-#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Sieť"
 
-#: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kconfigdialog.cpp:128
 #, kde-format
 msgid "Mounting"
 msgstr "Pripájanie"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:129 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Synchronizácia"
 
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profily"
 
-#: smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
 msgid "Authentication"
 msgstr "Autentifikácia"
 
-#: smb4k/smb4kconfigdialog.cpp:131
+#: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
+#: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
+#, fuzzy, kde-format
+#| msgid "Profiles:"
+msgid " (Profile: %1)"
+msgstr "Profily:"
+
+#: smb4k/smb4kconfigdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "Common Settings:"
 msgid "Custom Settings"
 msgstr "Spoločné nastavenia:"
 
-#: smb4k/smb4kconfigdialog.cpp:155
+#: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -217,45 +225,23 @@ msgstr ""
 "<qt>Našlo sa nesprávne nastavenie. Budete presmerovaný na dialóg na jeho "
 "opravu.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:30
+#: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
 msgstr "Štandardné prihlásenie"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#, kde-format
-msgid "The default login is depending on the profile you are using."
-msgstr ""
-
-#: smb4k/smb4kconfigpageauthentication.cpp:36
-#, kde-format
-msgid "Active profile:"
-msgstr ""
-
-#: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
-msgid "Unknown"
-msgstr "neznáme"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:46
+#: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Užívateľské meno:"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:53
+#: smb4k/smb4kconfigpageauthentication.cpp:42
 #, fuzzy, kde-format
 #| msgid "Password"
 msgid "Password:"
 msgstr "Heslo"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
-msgid "Default Profile"
-msgstr "Štandardné prihlásenie"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1278,6 +1264,16 @@ msgid "Size:"
 msgstr "Veľkosť:"
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown"
+#~ msgstr "neznáme"
+
+#, fuzzy
+#~| msgid "Default Login"
+#~ msgid "Default Profile"
+#~ msgstr "Štandardné prihlásenie"
+
+#, fuzzy
 #~| msgid "Wallet Entries:"
 #~ msgid "Wallet Entries"
 #~ msgstr "Položky peňaženky:"
@@ -1401,9 +1397,6 @@ msgstr "Veľkosť:"
 
 #~ msgid "Browse Settings:"
 #~ msgstr "Prehliadať nastavenia:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Profily:"
 
 #~ msgid "Authentication:"
 #~ msgstr "Overenie:"

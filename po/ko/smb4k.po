@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-19 00:39+0000\n"
 "PO-Revision-Date: 2024-02-05 23:04+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -144,7 +144,7 @@ msgstr "분류:"
 msgid "Bookmark Editor"
 msgstr "책갈피 편집기"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:133
 #, kde-format
 msgid "Bookmarks"
 msgstr "책갈피"
@@ -166,44 +166,52 @@ msgstr "책갈피 추가(&B)"
 msgid "Mount Bookmarks"
 msgstr "책갈피 마운트"
 
-#: smb4k/smb4kconfigdialog.cpp:124
+#: smb4k/smb4kconfigdialog.cpp:126
 #, kde-format
 msgid "User Interface"
 msgstr "사용자 인터페이스"
 
-#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "네트워크"
 
-#: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kconfigdialog.cpp:128
 #, kde-format
 msgid "Mounting"
 msgstr "마운트"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:129 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "동기화"
 
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "프로필"
 
-#: smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
 msgid "Authentication"
 msgstr "인증"
 
-#: smb4k/smb4kconfigdialog.cpp:131
+#: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
+#: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
+#, fuzzy, kde-format
+#| msgid "Profiles:"
+msgid " (Profile: %1)"
+msgstr "프로필:"
+
+#: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format
 msgid "Custom Settings"
 msgstr "사용자 정의 설정"
 
-#: smb4k/smb4kconfigdialog.cpp:155
+#: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -212,45 +220,23 @@ msgstr ""
 "<qt>잘못된 설정을 발견했습니다. 해당 설정 페이지로 이동하며, 거기에서 수정할 "
 "수 있습니다.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:30
+#: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
 msgstr "기본 로그인"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#, kde-format
-msgid "The default login is depending on the profile you are using."
-msgstr ""
-
-#: smb4k/smb4kconfigpageauthentication.cpp:36
-#, kde-format
-msgid "Active profile:"
-msgstr ""
-
-#: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
-msgid "Unknown"
-msgstr "알 수 없음"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:46
+#: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "사용자 이름:"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:53
+#: smb4k/smb4kconfigpageauthentication.cpp:42
 #, fuzzy, kde-format
 #| msgid "Password"
 msgid "Password:"
 msgstr "암호"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
-msgid "Default Profile"
-msgstr "기본 로그인"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1227,6 +1213,16 @@ msgstr "%2 중 %1 남음(%3% 사용함)"
 msgid "Size:"
 msgstr "크기:"
 
+#, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown"
+#~ msgstr "알 수 없음"
+
+#, fuzzy
+#~| msgid "Default Login"
+#~ msgid "Default Profile"
+#~ msgstr "기본 로그인"
+
 #~ msgid "Wallet Entries"
 #~ msgstr "지갑 항목"
 
@@ -1333,9 +1329,6 @@ msgstr "크기:"
 
 #~ msgid "Browse Settings:"
 #~ msgstr "탐색 설정:"
-
-#~ msgid "Profiles:"
-#~ msgstr "프로필:"
 
 #, fuzzy
 #~| msgid "Authentication"

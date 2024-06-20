@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-31 00:39+0000\n"
+"POT-Creation-Date: 2024-06-19 00:39+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Bookmark Editor"
 msgstr "Bogmærkeredigering"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:130
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:133
 #, kde-format
 msgid "Bookmarks"
 msgstr "Bogmærker"
@@ -171,45 +171,53 @@ msgstr "Tilføj &bogmærke"
 msgid "Mount Bookmarks"
 msgstr "Montér alle bogmærker"
 
-#: smb4k/smb4kconfigdialog.cpp:124
+#: smb4k/smb4kconfigdialog.cpp:126
 #, kde-format
 msgid "User Interface"
 msgstr "Brugerflade"
 
-#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Netværk"
 
-#: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kconfigdialog.cpp:128
 #, kde-format
 msgid "Mounting"
 msgstr "Montering"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:129 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Synkronisering"
 
-#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profiler"
 
-#: smb4k/smb4kconfigdialog.cpp:129
+#: smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
 msgid "Authentication"
 msgstr "Autentificering"
 
-#: smb4k/smb4kconfigdialog.cpp:131
+#: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
+#: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
+#, fuzzy, kde-format
+#| msgid "Profiles"
+msgid " (Profile: %1)"
+msgstr "Profiler"
+
+#: smb4k/smb4kconfigdialog.cpp:135
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Custom Settings"
 msgstr "Fælles indstillinger"
 
-#: smb4k/smb4kconfigdialog.cpp:155
+#: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -218,28 +226,12 @@ msgstr ""
 "<qt>Der er blevet fundet en forkert indstilling. Du bliver nu ført til den "
 "tilsvarende konfigurationsside for at rette den.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:30
+#: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
 msgstr "Standard-login"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:33
-#, kde-format
-msgid "The default login is depending on the profile you are using."
-msgstr ""
-
-#: smb4k/smb4kconfigpageauthentication.cpp:36
-#, kde-format
-msgid "Active profile:"
-msgstr ""
-
-#: smb4k/smb4kconfigpageauthentication.cpp:37
-#, fuzzy, kde-format
-#| msgid "unknown"
-msgid "Unknown"
-msgstr "ukendt"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:46
+#: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:233
 #, fuzzy, kde-format
@@ -247,17 +239,11 @@ msgstr "ukendt"
 msgid "Username:"
 msgstr "Bruger:"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:53
+#: smb4k/smb4kconfigpageauthentication.cpp:42
 #, fuzzy, kde-format
 #| msgid "Password"
 msgid "Password:"
 msgstr "Adgangskode"
-
-#: smb4k/smb4kconfigpageauthentication.cpp:82
-#, fuzzy, kde-format
-#| msgid "Default Login"
-msgid "Default Profile"
-msgstr "Standard-login"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -1320,6 +1306,16 @@ msgid "Size:"
 msgstr "Størrelse"
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown"
+#~ msgstr "ukendt"
+
+#, fuzzy
+#~| msgid "Default Login"
+#~ msgid "Default Profile"
+#~ msgstr "Standard-login"
+
+#, fuzzy
 #~| msgid "Wallet Entries"
 #~ msgid "Wallet Entries"
 #~ msgstr "Tegnebogsindgange"
@@ -1463,11 +1459,6 @@ msgstr "Størrelse"
 #~| msgid "Settings"
 #~ msgid "Browse Settings:"
 #~ msgstr "Indstillinger"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Profiler"
 
 #, fuzzy
 #~| msgid "Authentication"
