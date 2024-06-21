@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-19 00:39+0000\n"
+"POT-Creation-Date: 2024-06-21 00:38+0000\n"
 "PO-Revision-Date: 2024-04-19 02:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -150,7 +150,7 @@ msgstr "類別："
 msgid "Bookmark Editor"
 msgstr "書籤編輯器"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:133
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:132
 #, kde-format
 msgid "Bookmarks"
 msgstr "書籤"
@@ -193,35 +193,46 @@ msgstr "掛載中"
 msgid "Synchronization"
 msgstr "同步化"
 
-#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:130
+#, kde-format
+msgid "Authentication"
+msgstr "身分驗證"
+
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
+#: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
+#, fuzzy, kde-format
+msgid " (Profile: %1)"
+msgstr "列印檔案(&P)"
+
+#: smb4k/smb4kconfigdialog.cpp:134
+#, kde-format
+msgid "Custom Settings"
+msgstr "自訂設定"
+
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "設定檔"
 
-#: smb4k/smb4kconfigdialog.cpp:131
-#, kde-format
-msgid "Authentication"
-msgstr "身分驗證"
-
-#: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
-#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
-#: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
+#: smb4k/smb4kconfigdialog.cpp:161
 #, fuzzy, kde-format
-msgid " (Profile: %1)"
-msgstr "列印檔案(&P)"
+#| msgid ""
+#| "<qt>An incorrect setting has been found. You are now taken to the "
+#| "corresponding configuration page to fix it.</qt>"
+msgid ""
+"An incorrect setting has been found. You are now taken\n"
+"to the corresponding configuration page to fix it."
+msgstr "<qt>發現不正確的設定。將會帶您至對應的設定頁面來修正問題。</qt>"
 
-#: smb4k/smb4kconfigdialog.cpp:135
-#, kde-format
-msgid "Custom Settings"
-msgstr "自訂設定"
-
-#: smb4k/smb4kconfigdialog.cpp:160
+#: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
 msgid ""
-"<qt>An incorrect setting has been found. You are now taken to the "
-"corresponding configuration page to fix it.</qt>"
-msgstr "<qt>發現不正確的設定。將會帶您至對應的設定頁面來修正問題。</qt>"
+"You have made changes to the profiles. You have to apply\n"
+"them in order to be able to use them in the rest of the\n"
+"configuration dialog."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format

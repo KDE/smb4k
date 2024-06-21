@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-19 00:39+0000\n"
+"POT-Creation-Date: 2024-06-21 00:38+0000\n"
 "PO-Revision-Date: 2023-08-13 16:37+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -153,7 +153,7 @@ msgstr "Kategorie:"
 msgid "Bookmark Editor"
 msgstr "Lesezeichen-Editor"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:133
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:132
 #, kde-format
 msgid "Bookmarks"
 msgstr "Lesezeichen"
@@ -196,38 +196,49 @@ msgstr "Einhängen"
 msgid "Synchronization"
 msgstr "Abgleich"
 
-#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigpageprofiles.cpp:54
-#: smb4k/smb4kprofilesmenu.cpp:22
-#, kde-format
-msgid "Profiles"
-msgstr "Profile"
-
-#: smb4k/smb4kconfigdialog.cpp:131
+#: smb4k/smb4kconfigdialog.cpp:130
 #, kde-format
 msgid "Authentication"
 msgstr "Authentifizierung"
 
-#: smb4k/smb4kconfigdialog.cpp:132 smb4k/smb4kconfigdialog.cpp:134
-#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigdialog.cpp:235
-#: smb4k/smb4kconfigdialog.cpp:236 smb4k/smb4kconfigdialog.cpp:237
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
+#: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
 #, fuzzy, kde-format
 #| msgid "Profiles:"
 msgid " (Profile: %1)"
 msgstr "Profile:"
 
-#: smb4k/smb4kconfigdialog.cpp:135
+#: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
 msgid "Custom Settings"
 msgstr "Benutzerdefinierte Einstellungen"
 
-#: smb4k/smb4kconfigdialog.cpp:160
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
+msgid "Profiles"
+msgstr "Profile"
+
+#: smb4k/smb4kconfigdialog.cpp:161
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>An incorrect setting has been found. You are now taken to the "
+#| "corresponding configuration page to fix it.</qt>"
 msgid ""
-"<qt>An incorrect setting has been found. You are now taken to the "
-"corresponding configuration page to fix it.</qt>"
+"An incorrect setting has been found. You are now taken\n"
+"to the corresponding configuration page to fix it."
 msgstr ""
 "<qt>Eine fehlerhafte Einstellung wurde gefunden. Es wird jetzt der "
 "entsprechende Einstellungsdialog aufgerufen, um sie zu korrigieren.</qt>"
+
+#: smb4k/smb4kconfigdialog.cpp:234
+#, kde-format
+msgid ""
+"You have made changes to the profiles. You have to apply\n"
+"them in order to be able to use them in the rest of the\n"
+"configuration dialog."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
