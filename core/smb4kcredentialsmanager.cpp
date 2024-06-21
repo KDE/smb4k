@@ -332,10 +332,7 @@ void Smb4KCredentialsManager::migrate()
     if (QFile::exists(configFile) && !authenticationGroup.hasKey(QStringLiteral("MigratedToKeychain"))) {
         int returnValue = QKeychain::NoError;
 
-        KMessageBox::information(QApplication::activeWindow() ? QApplication::activeWindow() : nullptr,
-                                 i18n("The way Smb4K stores the login credentials changed. They will now be migrated.\n\n"
-                                      "This change is incompatible with earlier versions of Smb4K."),
-                                 i18n("Migrate Login Credentials"));
+        Smb4KNotification::migratingLoginCredentials();
 
         KWallet::Wallet *wallet =
             KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), QApplication::activeWindow() ? QApplication::activeWindow()->winId() : 0);

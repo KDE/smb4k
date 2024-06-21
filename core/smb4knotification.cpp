@@ -136,6 +136,23 @@ void Smb4KNotification::sharesUnmounted(int number)
     notification->sendEvent();
 }
 
+void Smb4KNotification::migratingLoginCredentials()
+{
+    KNotification *notification = new KNotification(QStringLiteral("migratingCredentials"), KNotification::CloseOnTimeout);
+
+    if (!p->componentName.isEmpty()) {
+        notification->setComponentName(p->componentName);
+    }
+
+    notification->setText(i18n("The way Smb4K stores the login credentials has changed. They will now be migrated. "
+    "This change is incompatible with earlier versions of Smb4K."));
+    notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-information"),
+                                                            KIconLoader::NoGroup,
+                                                            0,
+                                                            KIconLoader::DefaultState));
+    notification->sendEvent();
+}
+
 //
 // Warnings
 //

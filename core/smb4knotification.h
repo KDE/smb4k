@@ -62,6 +62,11 @@ SMB4KCORE_EXPORT void sharesMounted(int number);
 SMB4KCORE_EXPORT void sharesUnmounted(int number);
 
 /**
+ * Notify the user that the login credentials are being migrated
+ */
+SMB4KCORE_EXPORT void migratingLoginCredentials();
+
+/**
  * Tell the user that the mimetype is not supported and that he/she
  * should convert the file.
  *

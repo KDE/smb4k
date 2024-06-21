@@ -608,6 +608,12 @@ Comment[zh_TW]=多個分享資料夾已卸載
 Contexts=Notification
 Action=Popup
 
+[Event/migratingCredentials]
+Name=Migrating login credentials
+Comment=The login credentials are migrated to the new format and the active password manager
+Context=Notification
+Action=Popup
+
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
 Name[bs]=Mimetype nije podržan
