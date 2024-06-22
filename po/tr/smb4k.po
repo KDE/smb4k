@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-06-19 11:40+0300\n"
+"PO-Revision-Date: 2024-06-22 00:51+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -217,16 +217,13 @@ msgid "Profiles"
 msgstr "Profiller"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>Hatalı bir ayar bulundu. Bunu düzeltebilmeniz için ilgini yapılandırma "
-"sayfası açılacaktır.</qt>"
+"Hatalı bir ayar bulundu. Bunu düzeltebilmeniz için\n"
+"ilgili yapılandırma sayfası açılacaktır."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -235,6 +232,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Profillere değişiklikler yaptınız. Onları, yapılandırma\n"
+"iletişim kutusunun geri kalanında kullanabilmeniz için\n"
+"uygulamanız gerekmektedir."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format

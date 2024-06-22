@@ -3,21 +3,21 @@
 # Marc Hansen <marcgie@mail.berlios.de>, 2003, 2004, 2005.
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
-# SPDX-FileCopyrightText: 2009, 2010, 2023 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2009, 2010, 2023, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
 # Stefan Asserhall <stefan.asserhall@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2023-12-28 14:28+0100\n"
+"PO-Revision-Date: 2024-06-21 08:19+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -58,10 +58,9 @@ msgstr ""
 "Samba-resurser"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2023 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -201,10 +200,9 @@ msgstr "Behörighetskontroll"
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
-#, fuzzy, kde-format
-#| msgid "Profiles"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Profiler"
+msgstr " (Profil: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
@@ -218,16 +216,13 @@ msgid "Profiles"
 msgstr "Profiler"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>En felaktig inställning har hittats. Nu visas motsvarande "
-"inställningssida för att du ska kunna rätta den.</qt>"
+"En felaktig inställning har hittats. Nu visas motsvarande\n"
+"inställningssida för att du ska kunna rätta den."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -236,6 +231,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Du har gjort ändringar i profilerna. Du måste\n"
+"verkställa dem för att kunna använda dem i\n"
+"resten av inställningsdialogrutan."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
@@ -250,10 +248,9 @@ msgid "Username:"
 msgstr "Användarnamn:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Lösenord"
+msgstr "Lösenord:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -457,32 +454,29 @@ msgid "Settings"
 msgstr "Inställningar"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:75
-#, fuzzy, kde-format
-#| msgid "A&dd"
+#, kde-format
 msgid "Add"
-msgstr "&Lägg till"
+msgstr "Lägg till"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "Gör aktiv"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Flytta upp"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "Objekt neråt"
+msgstr "Flytta ner"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username:"
+#, kde-format
 msgid "Rename"
-msgstr "Användarnamn:"
+msgstr "Byt namn"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

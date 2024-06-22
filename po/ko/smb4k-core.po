@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:38+0000\n"
+"POT-Creation-Date: 2024-06-22 00:39+0000\n"
 "PO-Revision-Date: 2024-02-05 23:04+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1857,20 +1857,6 @@ msgstr "이 KDE 버전에서는 Zeroconf 지원을 사용할 수 없습니다."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "알 수 없는 Zeroconf 오류가 발생했습니다."
 
-#: smb4kcredentialsmanager.cpp:336
-#, kde-format
-msgid ""
-"The way Smb4K stores the login credentials changed. They will now be "
-"migrated.\n"
-"\n"
-"This change is incompatible with earlier versions of Smb4K."
-msgstr ""
-
-#: smb4kcredentialsmanager.cpp:338
-#, kde-format
-msgid "Migrate Login Credentials"
-msgstr ""
-
 #: smb4kmounter.cpp:682
 #, kde-format
 msgid ""
@@ -2980,7 +2966,14 @@ msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>공유 %1개의 마운트를 해제했습니다.</p>"
 
-#: smb4knotification.cpp:152
+#: smb4knotification.cpp:147
+#, kde-format
+msgid ""
+"The way Smb4K stores the login credentials has changed. They will now be "
+"migrated. This change is incompatible with earlier versions of Smb4K."
+msgstr ""
+
+#: smb4knotification.cpp:169
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -2989,13 +2982,13 @@ msgstr ""
 "<p><b>%1</b> MIME 형식을 인쇄할 수 없습니다. PDF나 포스트스크립트로 변환한 "
 "후 다시 시도하십시오.</p>"
 
-#: smb4knotification.cpp:170
+#: smb4knotification.cpp:187
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<p><b>%1</b> 공유에 대한 책갈피가 이미 있으며 건너뜁니다.</p>"
 
-#: smb4knotification.cpp:188
+#: smb4knotification.cpp:205
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3004,17 +2997,17 @@ msgstr ""
 "<p><b>%2</b> 공유에 대한 책갈피 <b>%1</b>의 이름표가 이미 사용 중이며 자동으"
 "로 이름이 변경됩니다.</p>"
 
-#: smb4knotification.cpp:208
+#: smb4knotification.cpp:225
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> 공유를 마운트할 수 없습니다:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:210
+#: smb4knotification.cpp:227
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> 공유를 마운트할 수 없습니다.</p>"
 
-#: smb4knotification.cpp:233
+#: smb4knotification.cpp:250
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3023,12 +3016,12 @@ msgstr ""
 "<p><b>%1</b> 공유를 <b>%2</b>에서 마운트 해제할 수 없습니다:</p><p><tt>%3</"
 "tt></p>"
 
-#: smb4knotification.cpp:235
+#: smb4knotification.cpp:252
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p><b>%1</b> 공유를 <b>%2</b>에서 마운트 해제할 수 없습니다.</p>"
 
-#: smb4knotification.cpp:262
+#: smb4knotification.cpp:279
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3037,90 +3030,90 @@ msgstr ""
 "<p><b>%1</b> 공유를 <b>%2</b>에서 마운트 해제할 수 없습니다. <b>%3</b> 사용자"
 "가 소유하고 있습니다.</p>"
 
-#: smb4knotification.cpp:277
+#: smb4knotification.cpp:294
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p><b>%1</b>에서 <b>%2</b>(으)로 동기화할 수 없습니다:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:279
+#: smb4knotification.cpp:296
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p><b>%1</b>에서 <b>%2</b>(으)로 동기화할 수 없습니다.</p>"
 
-#: smb4knotification.cpp:301
+#: smb4knotification.cpp:318
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p><b>%1</b> 명령을 찾을 수 없습니다. 설치 상태를 확인하십시오.</p>"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:334
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "<p><b>%1</b> 공유가 프린터이며 책갈피에 등록할 수 없습니다.</p>"
 
-#: smb4knotification.cpp:331
+#: smb4knotification.cpp:348
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p><b>%1</b> 파일을 찾을 수 없습니다.</p>"
 
-#: smb4knotification.cpp:341
+#: smb4knotification.cpp:358
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> 파일을 열 수 없습니다:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:343
+#: smb4knotification.cpp:360
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> 파일을 열 수 없습니다.</p>"
 
-#: smb4knotification.cpp:362 smb4knotification.cpp:365
+#: smb4knotification.cpp:379 smb4knotification.cpp:382
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> 파일에서 읽을 수 없습니다:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:367
+#: smb4knotification.cpp:384
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> 파일에서 읽을 수 없습니다.</p>"
 
-#: smb4knotification.cpp:390
+#: smb4knotification.cpp:407
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>다음 디렉터리를 만들 수 없습니다:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:401
+#: smb4knotification.cpp:418
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>프로세스를 시작할 수 없습니다(오류 코드: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:405
+#: smb4knotification.cpp:422
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>프로세스가 충돌했습니다(오류 코드: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:409
+#: smb4knotification.cpp:426
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>프로세스 시간이 초과되었습니다(오류 코드: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:413
+#: smb4knotification.cpp:430
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>프로세스에 쓸 수 없습니다(오류 코드: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:434
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>프로세스에서 읽을 수 없습니다(오류 코드: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:439
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>프로세스에서 알 수 없는 오류를 반환했습니다.</p>"
 
-#: smb4knotification.cpp:485
+#: smb4knotification.cpp:502
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3128,17 +3121,17 @@ msgid ""
 msgstr ""
 "<p>루트 권한으로 동작을 실행할 수 없습니다(오류 코드: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:487
+#: smb4knotification.cpp:504
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>루트 권한으로 동작을 실행할 수 없습니다.</p>"
 
-#: smb4knotification.cpp:509
+#: smb4knotification.cpp:526
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>전달한 URL이 잘못되었습니다.</p>"
 
-#: smb4knotification.cpp:522
+#: smb4knotification.cpp:539
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
@@ -3146,12 +3139,12 @@ msgid ""
 msgstr ""
 "<p>네트워크 통신이 실패했으며 다음 오류 메시지를 반환했습니다: <s>%1</s></p>"
 
-#: smb4knotification.cpp:535
+#: smb4knotification.cpp:552
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>Zeroconf 서비스에서 오류가 발생함: <s>%1</s></p>"
 
-#: smb4knotification.cpp:548
+#: smb4knotification.cpp:565
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-06-19 05:40+0200\n"
+"PO-Revision-Date: 2024-06-21 06:01+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -214,16 +214,13 @@ msgid "Profiles"
 msgstr "პროფილები"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>აღმოჩენილია არასწორი პარამეტრი. ახლა შესაბამის გვერდზე გადაგიყვანთ, რათა "
-"ჩაასწოროთ ის.</qt>"
+"აღმოჩენილია არასწორი პარამეტრი. ახლა შესაბამის\n"
+"გვერდზე გადაგიყვანთ, რათა ჩაასწოროთ ის."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -232,6 +229,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"პროფილებში ცვლილებები შეიტანეთ. იმისათვის, რომ ისინი\n"
+"კონფიგურაციის დიალოგის დანარჩენ ნაწილშიც გამოიყენოთ,\n"
+"ეს ცვლილებები, ჯერ, უნდა გადაატაროთ."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format

@@ -196,10 +196,9 @@ msgstr "身份验证"
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
-#, fuzzy, kde-format
-#| msgid "Profiles"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "配置方案"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
@@ -213,14 +212,11 @@ msgid "Profiles"
 msgstr "配置方案"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
-msgstr "<qt>发现了错误的设置。程序将跳转到相关的配置页面以便您手动修复。</qt>"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -1211,15 +1207,3 @@ msgstr "总共 %2，空闲 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "The default login is depending on the profile you are using."
-#~ msgstr "默认登录取决于您使用的配置方案。"
-
-#~ msgid "Active profile:"
-#~ msgstr "活动配置方案："
-
-#~ msgid "Unknown"
-#~ msgstr "未知"
-
-#~ msgid "Default Profile"
-#~ msgstr "默认方案"

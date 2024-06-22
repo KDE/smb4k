@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-13 00:38+0000\n"
+"POT-Creation-Date: 2024-06-22 00:39+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -1929,20 +1929,6 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kcredentialsmanager.cpp:336
-#, kde-format
-msgid ""
-"The way Smb4K stores the login credentials changed. They will now be "
-"migrated.\n"
-"\n"
-"This change is incompatible with earlier versions of Smb4K."
-msgstr ""
-
-#: smb4kcredentialsmanager.cpp:338
-#, kde-format
-msgid "Migrate Login Credentials"
-msgstr ""
-
 #: smb4kmounter.cpp:682
 #, fuzzy, kde-format
 #| msgid ""
@@ -3108,7 +3094,14 @@ msgstr[0] "<p>Sva dijeljenja su demontirana.</p>"
 msgstr[1] "<p>Sva dijeljenja su demontirana.</p>"
 msgstr[2] "<p>Sva dijeljenja su demontirana.</p>"
 
-#: smb4knotification.cpp:152
+#: smb4knotification.cpp:147
+#, kde-format
+msgid ""
+"The way Smb4K stores the login credentials has changed. They will now be "
+"migrated. This change is incompatible with earlier versions of Smb4K."
+msgstr ""
+
+#: smb4knotification.cpp:169
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3117,14 +3110,14 @@ msgstr ""
 "<p>Mimetype <b>%1</b> nije podržan za štampanje. Molimo pretvorite datoteku "
 "u PDF iliPostscript i pokušajte ponovo.</p>"
 
-#: smb4knotification.cpp:170
+#: smb4knotification.cpp:187
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr ""
 "<p>Zabilješka za razmjenu <b>%1</b> već postoji i bit će preskočena.</p>"
 
-#: smb4knotification.cpp:188
+#: smb4knotification.cpp:205
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3133,17 +3126,17 @@ msgstr ""
 "<p>Natpis <b>%1</b> zabilješke za razmjenu <b>%2</b> je već korišten i bit "
 "će automatski uklonjen.</p>"
 
-#: smb4knotification.cpp:208
+#: smb4knotification.cpp:225
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Montiranje dijeljenja <b>%1</b> nije uspjelo:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:210
+#: smb4knotification.cpp:227
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Montiranje dijeljenja <b>%1</b> nije uspjelo.</p>"
 
-#: smb4knotification.cpp:233
+#: smb4knotification.cpp:250
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3152,12 +3145,12 @@ msgstr ""
 "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo:</p><p><tt>"
 "%3</tt></p>"
 
-#: smb4knotification.cpp:235
+#: smb4knotification.cpp:252
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo.</p>"
 
-#: smb4knotification.cpp:262
+#: smb4knotification.cpp:279
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3166,18 +3159,18 @@ msgstr ""
 "<p>Nije vam dozvoljeno da demontirate dijeljenje <b>%1</b> iz <b>%2</b>. Ono "
 "je u posjedu od strane korisnika <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:277
+#: smb4knotification.cpp:294
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>Sinhroniziranje <b>%1</b> sa <b>%2</b> nije uspjelo:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:279
+#: smb4knotification.cpp:296
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Sinhroniziranje <b>%1</b> sa <b>%2</b> nije uspjelo.</p>"
 
-#: smb4knotification.cpp:301
+#: smb4knotification.cpp:318
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -3185,73 +3178,73 @@ msgid ""
 msgstr ""
 "<p>Komanda <b>%1</b> nije pronađena. Molimo provjerite vašu instalaciju.</p>"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:334
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>Razmjena <b>%1</b> je štampač i ne može biti spašena u zabilješkama.</p>"
 
-#: smb4knotification.cpp:331
+#: smb4knotification.cpp:348
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>Datoteka <b>%1</b> nije pronađena.</p>"
 
-#: smb4knotification.cpp:341
+#: smb4knotification.cpp:358
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Otvaranje datoteke <b>%1</b> nije uspjelo:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:343
+#: smb4knotification.cpp:360
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Otvaranje datoteke <b>%1</b> nije uspjelo.</p>"
 
-#: smb4knotification.cpp:362 smb4knotification.cpp:365
+#: smb4knotification.cpp:379 smb4knotification.cpp:382
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Čitanje iz datoteke <b>%1</b> nije uspjelo:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:367
+#: smb4knotification.cpp:384
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Čitanje iz datoteke <b>%1</b> nije uspjelo.</p>"
 
-#: smb4knotification.cpp:390
+#: smb4knotification.cpp:407
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Sljedeći direktorij ne može biti kreiran:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:401
+#: smb4knotification.cpp:418
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Proces nije uspio započeti (kod greške: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:405
+#: smb4knotification.cpp:422
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Proces je krahirao (kod greške: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:409
+#: smb4knotification.cpp:426
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Proces je napravio predah (kod greške: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:413
+#: smb4knotification.cpp:430
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nije moguće pisati procesu (kod greške: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:434
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nije moguće čitati iz procesa (kod greške: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:439
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>Proces je prijavio nepoznatu grešku.</p>"
 
-#: smb4knotification.cpp:485
+#: smb4knotification.cpp:502
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Executing an action with root privileges failed (error code:<tt>%1</"
@@ -3263,29 +3256,29 @@ msgstr ""
 "<p>Izvršavanje akcije sa korijenskim privilegijama nije uspjelo (kod greške:"
 "<tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:487
+#: smb4knotification.cpp:504
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Izvršavanje akcije sa korijenskim privilegijama nije uspjelo.</p>"
 
-#: smb4knotification.cpp:509
+#: smb4knotification.cpp:526
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>URL koji je proslijeđen nije ispravan.</p>"
 
-#: smb4knotification.cpp:522
+#: smb4knotification.cpp:539
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
 
-#: smb4knotification.cpp:535
+#: smb4knotification.cpp:552
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
-#: smb4knotification.cpp:548
+#: smb4knotification.cpp:565
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "
