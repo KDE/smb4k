@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-1510:04+0200\n"
+"PO-Revision-Date: 2024-06-22 06:48+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -3065,20 +3065,14 @@ msgstr[0] "<p>%1 kunhavigaĵo estis malmuntita.</p>"
 msgstr[1] "<p>%1 kunhavigaĵoj estis malmuntitaj.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed. They will now be "
-#| "migrated.\n"
-#| "\n"
-#| "This change is incompatible with earlier versions of Smb4K."
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 "La maniero en kiu Smb4K konservas la ensalutajn akreditaĵojn ŝanĝiĝis. Ili "
-"nun estos transigitaj.\n"
-"\n"
-"Ĉi tiu ŝanĝo estas nekongrua kun antaŭaj versioj de Smb4K."
+"nun estos transigitaj. Ĉi tiu ŝanĝo estas nekongrua kun antaŭaj versioj de "
+"Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format

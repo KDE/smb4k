@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-21 07:39+0200\n"
+"PO-Revision-Date: 2024-06-22 07:53+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -3057,20 +3057,13 @@ msgstr[0] "<p>%1 delad katalog har avmonterats.</p>"
 msgstr[1] "<p>%1 delade kataloger har avmonterats.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed. They will now be "
-#| "migrated.\n"
-#| "\n"
-#| "This change is incompatible with earlier versions of Smb4K."
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 "Hur Smb4K lagrar inloggningsuppgifterna har ändrats. De kommer nu att "
-"konverteras.\n"
-"\n"
-"Ändringen är inkompatibel med tidigare versioner av Smb4K."
+"konverteras. Ändringen är inkompatibel med tidigare versioner av Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format

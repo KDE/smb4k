@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-13 21:39+0300\n"
+"PO-Revision-Date: 2024-06-22 12:50+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -3066,12 +3066,7 @@ msgstr[0] "<p>%1 paylaşımının bağlantısı kesildi.</p>"
 msgstr[1] "<p>%1 paylaşımlarının bağlantıları kesildi.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed. They will now be "
-#| "migrated.\n"
-#| "\n"
-#| "This change is incompatible with earlier versions of Smb4K."
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-13 08:42+0300\n"
+"PO-Revision-Date: 2024-06-22 09:43+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -3152,20 +3152,14 @@ msgstr[2] "<p>Було демонтовано %1 спільних ресурсі
 msgstr[3] "<p>Було демонтовано один спільний ресурс.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed. They will now be "
-#| "migrated.\n"
-#| "\n"
-#| "This change is incompatible with earlier versions of Smb4K."
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 "Спосіб, у який Smb4K зберігає реєстраційні дані, було змінено. Тепер ці "
-"реєстраційні дані буде перенесено у нову версію.\n"
-"\n"
-"Внесені зміни будуть несумісними із попередніми версіями Smb4K."
+"реєстраційні дані буде перенесено у нову версію. Внесені зміни будуть "
+"несумісними із попередніми версіями Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format

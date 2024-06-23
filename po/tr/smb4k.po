@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-06-22 00:51+0300\n"
+"PO-Revision-Date: 2024-06-22 13:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -122,7 +122,7 @@ msgstr "Ana Araç Çubuğu"
 #: smb4k/smb4kbookmarkdialog.cpp:32
 #, kde-format
 msgid "Bookmark Shares"
-msgstr "Paylaşımları Yer İmlerine Ekle"
+msgstr "Paylaşımlara Yer İmi Koy"
 
 #: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "Yer İmlerini Dü&zenle"
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
-msgstr "Yer İmi &Ekle"
+msgstr "Yer İmi &Koy"
 
 #: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
@@ -808,7 +808,7 @@ msgstr "Bu paylaşımı yer imlerine ekle"
 #, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Yer İmlerine Ekle >>"
+msgstr "Yer İmi Koy >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -1047,7 +1047,7 @@ msgstr "Bağlantıyı Kes"
 #: smb4k/smb4ksharesmenu.cpp:179
 #, kde-format
 msgid "Add Bookmark"
-msgstr "Yer İmi Ekle"
+msgstr "Yer İmi Koy"
 
 #: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format

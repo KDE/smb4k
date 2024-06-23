@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-08 12:26+0100\n"
+"PO-Revision-Date: 2024-06-22 13:10+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -3045,18 +3045,13 @@ msgstr[0] "<p>%1 share has been unmounted.</p>"
 msgstr[1] "<p>%1 shares have been unmounted.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed.\n"
-#| "\n"
-#| "Do you want to migrate your login credentials?"
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
-"The way Smb4K stores the login credentials changed.\n"
-"\n"
-"Do you want to migrate your login credentials?"
+"The way Smb4K stores the login credentials has changed. They will now be "
+"migrated. This change is incompatible with earlier versions of Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format

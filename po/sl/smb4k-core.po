@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-13 10:14+0200\n"
+"PO-Revision-Date: 2024-06-22 07:55+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -3050,20 +3050,13 @@ msgstr[2] "<p>%1 skupni diski so bili odklopljeni.</p>"
 msgstr[3] "<p>%1 skupnih diskov je bilo odklopljenih.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed. They will now be "
-#| "migrated.\n"
-#| "\n"
-#| "This change is incompatible with earlier versions of Smb4K."
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
-"Spremenil se je način, kako Smb4K shranjuje prijavne podatke. Zdaj bodo "
-"preneseni.\n"
-"\n"
-"Ta sprememba ni združljiva s prejšnjimi različicami Smb4K."
+"Način, kako Smb4K shranjuje poverilnice za prijavo, se je spremenil. Zdaj "
+"bodo preseljene. Ta sprememba ni združljiva s starejšimi različicami Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format
