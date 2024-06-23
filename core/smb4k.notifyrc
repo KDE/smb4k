@@ -610,7 +610,23 @@ Action=Popup
 
 [Event/migratingCredentials]
 Name=Migrating login credentials
+Name[ca]=Migració de les credencials d'inici de sessió
+Name[en_GB]=Migrating login credentials
+Name[ka]=ავტორიზაციის დეტალების მიგრაცია
+Name[sl]=Selitev poverilnic za prijavo
+Name[sv]=Konverterar inloggningsinformation
+Name[tr]=Oturum Açma Bilgileri Aktarılıyor
+Name[uk]=Перенесення реєстраційних даних
+Name[x-test]=xxMigrating login credentialsxx
 Comment=The login credentials are migrated to the new format and the active password manager
+Comment[ca]=Les credencials d'inici de sessió s'han migrat al format nou i al gestor de contrasenyes actiu
+Comment[en_GB]=The login credentials are migrated to the new format and the active password manager
+Comment[ka]=მიმდინარეობს ავტორიზაციის დეტალების მიგრაცია ახალ ფორმატში და აქტიურ პაროლების მმართველში
+Comment[sl]=Poverilnice za prijavo so preseljene v novo obliko in v aktivnega upravitelja gesel
+Comment[sv]=Inloggningsinformationen har konverterats till det nya formatet och den aktiva lösenordshanteraren
+Comment[tr]=Oturum açma bilgileri yeni biçime ve etkin parola yöneticisine aktarıldı
+Comment[uk]=Реєстраційні дані перенесено до нового формату та активної програми для керування паролями
+Comment[x-test]=xxThe login credentials are migrated to the new format and the active password managerxx
 Context=Notification
 Action=Popup
 
