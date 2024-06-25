@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-13 13:02+0200\n"
+"PO-Revision-Date: 2024-06-22 10:17+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -3130,20 +3130,14 @@ msgstr[0] "<p>S'ha desmuntat %1 compartició.</p>"
 msgstr[1] "<p>S'han desmuntat %1 comparticions.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed. They will now be "
-#| "migrated.\n"
-#| "\n"
-#| "This change is incompatible with earlier versions of Smb4K."
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 "Ha canviat la manera en què Smb4K emmagatzema les credencials d'inici de "
-"sessió. Ara es migraran.\n"
-"\n"
-"Este canvi és incompatible amb les versions anteriors de Smb4K."
+"sessió. Ara es migraran. Este canvi és incompatible amb les versions "
+"anteriors de Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format
@@ -3368,6 +3362,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid "Migrate Login Credentials"
-#~ msgstr "Migra les credencials d'inici de sessió"

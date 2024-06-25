@@ -2874,6 +2874,3 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cíl"
-
-#~ msgid "Migrate Login Credentials"
-#~ msgstr "Migrovat přihlašovací údaje"
