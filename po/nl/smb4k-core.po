@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-13 23:39+0200\n"
+"PO-Revision-Date: 2024-06-22 11:49+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -3103,20 +3103,14 @@ msgstr[0] "<p>%1 gedeelde map is afgekoppeld.</p>"
 msgstr[1] "<p>%1 gedeelde mappen zijn afgekoppeld.</p>"
 
 #: smb4knotification.cpp:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "The way Smb4K stores the login credentials changed. They will now be "
-#| "migrated.\n"
-#| "\n"
-#| "This change is incompatible with earlier versions of Smb4K."
+#, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
-"De manier waarop Smb4K de aanmeldcredentials opslaat is gewijzigd. Ze zullen "
-"nu gemigreerd worden.\n"
-"\n"
-"DEze wijziging is niet compatibel met eerdere versies van Smb4K?"
+"De manier waarop Smb4K de aanmeldgegevens opslaat is gewijzigd. Ze zullen nu "
+"gemigreerd worden. Deze wijziging is niet compatibel met eerdere versies van "
+"Smb4K?"
 
 #: smb4knotification.cpp:169
 #, kde-format
@@ -3307,7 +3301,7 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
-"<p>Er was een fout bij lezen van de aanmeldcredentials uit de beveiligde "
+"<p>Er was een fout bij lezen van de aanmeldgegevens uit de beveiligde "
 "opslag:\n"
 "<tt>%1</tt></p>"
 
