@@ -323,6 +323,8 @@ void Smb4KConfigPageProfiles::slotProfileUsageChanged(bool checked)
             }
         }
     }
+
+    checkProfilesChanged();
 }
 
 void Smb4KConfigPageProfiles::slotAddProfile(bool checked)
