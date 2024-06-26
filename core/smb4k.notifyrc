@@ -2012,6 +2012,7 @@ Comment[ca@valencia]=S'ha produït un error en llegir les credencials d'inici de
 Comment[ka]=შეცდომა ავტორიზაციის დეტალების წაკითხვისას დაცული საცავიდან
 Comment[nl]=Er was een fout bij lezen van de aanmeldgegevens uit de beveiligde opslag
 Comment[sl]=Prišlo je do napake med branjem poverilnic iz varnega pomnilnika
+Comment[sv]=Ett fel uppstod vid läsning av inloggningsuppgifterna från säker lagring
 Comment[tr]=Oturum açma bilgilerini güvenli depolama aygıtından okurken bir hata oluştu
 Comment[uk]=Під час спроби прочитати реєстраційні дані для входу з захищеного сховища сталася помилка
 Comment[x-test]=xxAn error occurred while reading the login credentials from the secure storagexx
