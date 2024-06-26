@@ -1217,13 +1217,3 @@ msgstr "%1 ledig av %2 (%3 brukt)"
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown"
-#~ msgstr "ukjend"
-
-#, fuzzy
-#~| msgid "Default Login"
-#~ msgid "Default Profile"
-#~ msgstr "Standard brukernamn"

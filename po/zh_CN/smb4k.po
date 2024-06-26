@@ -198,7 +198,7 @@ msgstr "身份验证"
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
 #, kde-format
 msgid " (Profile: %1)"
-msgstr ""
+msgstr " (配置方案：%1)"
 
 #: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
@@ -217,6 +217,8 @@ msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
+"发现了错误的设置。\n"
+"程序将跳转到相关的配置页面以便您手动修复。"
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -225,6 +227,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"您对配置方案作出了更改。\n"
+"您必须应用这些更改后才能\n"
+"在配置对话框的其他部分中使用这些更改。"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format

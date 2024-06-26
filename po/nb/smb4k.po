@@ -1207,8 +1207,3 @@ msgstr ""
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Default Login"
-#~ msgid "Default Profile"
-#~ msgstr "Standard brukernavn"
