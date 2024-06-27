@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-06-19 18:43+0200\n"
+"PO-Revision-Date: 2024-06-23 09:20+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -216,16 +216,13 @@ msgid "Profiles"
 msgstr "Profili"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>È stato trovata un'impostazione non corretta; sarai ora portato alla "
-"corrispondente pagina di configurazione per sistemarla.</qt>"
+"È stato trovata un'impostazione non corretta; sarai ora portato\n"
+"alla pagina di configurazione appropriata per correggerla."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -234,6 +231,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Hai apportato delle modifiche al profilo. Per poterle\n"
+"usare nel resto della finestra di configurazione le\n"
+"devi applicare."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
