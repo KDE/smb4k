@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-06-19 23:49+0200\n"
+"PO-Revision-Date: 2024-06-28 16:51+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -212,16 +212,13 @@ msgid "Profiles"
 msgstr "Profiloj"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>Malĝusta agordo estis trovita. Vi nun estas kondukata al la responda "
-"agorda paĝo por ripari ĝin.</qt>"
+"Malĝusta agordo estis trovita. Vi nun estos kondukata al la responda agorda "
+"paĝo por ripari ĝin."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -230,6 +227,8 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Vi faris ŝanĝojn al la profiloj. Vi devas apliki\n"
+"ilin por povi uzi ilin en la cetera agorddialogo."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
