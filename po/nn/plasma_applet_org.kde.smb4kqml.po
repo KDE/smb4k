@@ -1,12 +1,11 @@
 # Translation of plasma_applet_org.kde.smb4kqml to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-10 00:38+0000\n"
-"PO-Revision-Date: 2019-07-24 20:55+0200\n"
+"PO-Revision-Date: 2024-07-06 14:59+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Lokalize 24.05.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -47,11 +46,11 @@ msgstr "Bokmerke"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
-msgstr ""
+msgstr "Førehandsvising"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
-msgstr ""
+msgstr "Set opp"
 
 #: package/contents/ui/NetworkBrowserPage.qml:43
 msgid "Rescan"
