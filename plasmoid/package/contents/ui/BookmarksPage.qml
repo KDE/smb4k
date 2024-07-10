@@ -41,7 +41,10 @@ PlasmaComponents.Page {
         PlasmaComponents.ToolTip.visible: hovered
 
         onClicked: {
-          back()
+          // Since the 'Back' button is only useful when you
+          // are currently in a category subfolder and want to
+          // go back to the toplevel, just run fillView() here.
+          fillView()
         }
       }
       PlasmaComponents.ToolButton {
@@ -187,13 +190,6 @@ PlasmaComponents.Page {
   //
   // Functions
   //
-  function back() {
-    // Since the 'Back' button is only useful when you
-    // are currently in a category subfolder and want to 
-    // go back to the toplevel, just run fillView() here.
-    fillView()
-  }
-  
   function bookmarkOrCategoryClicked(object) {
     if (object.isCategory) {
       while (bookmarkItemDelegateModel.model.count != 0) {
