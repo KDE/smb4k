@@ -17,87 +17,133 @@ PlasmaComponents.Page {
   id: networkBrowserPage
   
   property var parentObject: null
-  
-  //
-  // Tool bar
-  //
-  PlasmaComponents.ToolBar {
-    id: networkBrowserToolBar
 
-    anchors {
-      top: parent.top
-      left: parent.left
-      right: parent.right
+  ColumnLayout {
+    anchors.fill: parent
+
+    PlasmaComponents.ToolBar {
+      id: networkBrowserToolBar
+
+      Layout.fillWidth: true
+      Layout.fillHeight: false
+
+      RowLayout {
+        PlasmaComponents.ToolButton {
+          id: rescanButton
+
+          hoverEnabled: true
+          icon.name: "view-refresh"
+          flat: true
+
+          PlasmaComponents.ToolTip.delay: 1000
+          PlasmaComponents.ToolTip.timeout: 5000
+          PlasmaComponents.ToolTip.text: i18n("Rescan")
+          PlasmaComponents.ToolTip.visible: hovered
+
+          onClicked: {
+            if (parentObject !== null) {
+              iface.lookup(parentObject)
+            }
+            else {
+              iface.lookup()
+            }
+          }
+        }
+
+        PlasmaComponents.ToolButton {
+          id: abortButton
+
+          hoverEnabled: true
+          icon.name: "process-stop"
+          flat: true
+
+          PlasmaComponents.ToolTip.delay: 1000
+          PlasmaComponents.ToolTip.timeout: 5000
+          PlasmaComponents.ToolTip.text: i18n("Abort")
+          PlasmaComponents.ToolTip.visible: hovered
+
+          onClicked: {
+            iface.abortClient()
+            iface.abortMounter()
+          }
+        }
+
+        PlasmaComponents.ToolButton {
+          id: upButton
+
+          hoverEnabled: true
+          icon.name: "go-up-symbolic"
+          flat: true
+
+          PlasmaComponents.ToolTip.delay: 1000
+          PlasmaComponents.ToolTip.timeout: 5000
+          PlasmaComponents.ToolTip.text: i18n("Go one level up")
+          PlasmaComponents.ToolTip.visible: hovered
+
+          onClicked: {
+            if (parentObject !== null) {
+
+              switch (parentObject.type) {
+                case NetworkObject.Workgroup:
+                  networkBrowserListView.currentIndex = -1
+                  iface.lookup()
+                  break
+                case NetworkObject.Host:
+                  var object = iface.findNetworkItem(parentObject.parentUrl, parentObject.parentType)
+                  if (object !== null) {
+                    parentObject = object
+                    iface.lookup(object)
+                  }
+                  break
+                default:
+                  break
+              }
+            }
+          }
+        }
+
+        PlasmaComponents.ToolButton {
+          id: mountDialogButton
+
+          hoverEnabled: true
+          icon.name: "view-form"
+          flat: true
+
+          PlasmaComponents.ToolTip.delay: 1000
+          PlasmaComponents.ToolTip.timeout: 5000
+          PlasmaComponents.ToolTip.text: i18n("Open the mount dialog")
+          PlasmaComponents.ToolTip.visible: hovered
+
+          onClicked: {
+            // FIXME: Use Plasma dialog
+            iface.openMountDialog()
+          }
+        }
+      }
     }
-    
-    RowLayout {
-      PlasmaComponents.ToolButton {
-        id: rescanButton
 
-        hoverEnabled: true
-        icon.name: "view-refresh"
-        flat: true
+    PlasmaComponents.ScrollView {
+      id: networkBrowserScrollArea
 
-        PlasmaComponents.ToolTip.delay: 1000
-        PlasmaComponents.ToolTip.timeout: 5000
-        PlasmaComponents.ToolTip.text: i18n("Rescan")
-        PlasmaComponents.ToolTip.visible: hovered
+      Layout.fillWidth: true
+      Layout.fillHeight: true
 
-        onClicked: {
-          rescan()
-        }
-      }
+      ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+      ScrollBar.vertical.policy: ScrollBar.AsNeeded
 
-      PlasmaComponents.ToolButton {
-        id: abortButton
+      ListView {
+        id: networkBrowserListView
 
-        hoverEnabled: true
-        icon.name: "process-stop"
-        flat: true
-
-        PlasmaComponents.ToolTip.delay: 1000
-        PlasmaComponents.ToolTip.timeout: 5000
-        PlasmaComponents.ToolTip.text: i18n("Abort")
-        PlasmaComponents.ToolTip.visible: hovered
-
-        onClicked: {
-          abort()
-        }
-      }
-      
-      PlasmaComponents.ToolButton {
-        id: upButton
-
-        hoverEnabled: true
-        icon.name: "go-up-symbolic"
-        flat: true
-
-        PlasmaComponents.ToolTip.delay: 1000
-        PlasmaComponents.ToolTip.timeout: 5000
-        PlasmaComponents.ToolTip.text: i18n("Go one level up")
-        PlasmaComponents.ToolTip.visible: hovered
-
-        onClicked: {
-          up()
-        }
-      }
-      
-      PlasmaComponents.ToolButton {
-        id: mountDialogButton
-
-        hoverEnabled: true
-        icon.name: "view-form"
-        flat: true
-
-        PlasmaComponents.ToolTip.delay: 1000
-        PlasmaComponents.ToolTip.timeout: 5000
-        PlasmaComponents.ToolTip.text: i18n("Open the mount dialog")
-        PlasmaComponents.ToolTip.visible: hovered
-
-        onClicked: {
-          // FIXME: Use Plasma dialog
-          iface.openMountDialog()
-        }
+        anchors.fill: parent
+        model: networkBrowserItemDelegateModel
+        clip: true
+        focus: true
+        highlightRangeMode: ListView.StrictlyEnforceRange
+        // highlight: Rectangle {
+        //   color: theme.highlightColor
+        //   radius: 5
+        //   opacity: 0.2
+        // }
       }
     }
   }
@@ -107,10 +153,10 @@ PlasmaComponents.Page {
   //
   DelegateModel {
     id: networkBrowserItemDelegateModel
-    
+
     function lessThan(left, right) {
       var less = false
-      
+
       switch (left.type) {
         case NetworkObject.Workgroup:
           less = (left.workgroupName < right.workgroupName)
@@ -122,15 +168,15 @@ PlasmaComponents.Page {
           less = (left.shareName < right.shareName)
           break
         default:
-          break          
+          break
       }
       return less
     }
-    
+
     function insertPosition(item) {
       var lower = 0
       var upper = items.count
-      
+
       while (lower < upper) {
         var middle = Math.floor(lower + (upper - lower) / 2)
         var result = lessThan(item.model.object, items.get(middle).model.object)
@@ -143,26 +189,26 @@ PlasmaComponents.Page {
       }
       return lower
     }
-    
+
     function sort() {
       while (unsortedItems.count > 0) {
         var item = unsortedItems.get(0)
         var index = insertPosition(item)
-        
+
         item.groups = "items"
         items.move(item.itemsIndex, index)
       }
     }
-    
+
     items.includeByDefault: false
-    
-    groups: [ 
+
+    groups: [
       DelegateModelGroup {
         id: unsortedItems
         name: "unsorted"
-      
+
         includeByDefault: true
-      
+
         onChanged: {
           networkBrowserItemDelegateModel.sort()
         }
@@ -170,66 +216,34 @@ PlasmaComponents.Page {
     ]
 
     filterOnGroup: "items"
-    
+
     model: ListModel {}
-    
+
     delegate: NetworkBrowserItemDelegate {
       id: networkBrowserItemDelegate
-        
+
       onItemClicked: {
         networkBrowserListView.currentIndex = DelegateModel.itemsIndex
         networkItemClicked()
       }
-        
+
       onBookmarkClicked: {
         networkBrowserListView.currentIndex = DelegateModel.itemsIndex
         iface.addBookmark(object)
       }
-        
+
       onPreviewClicked: {
         networkBrowserListView.currentIndex = DelegateModel.itemsIndex
         iface.preview(object)
       }
-        
+
       onConfigureClicked: {
         networkBrowserListView.currentIndex = DelegateModel.itemsIndex
         iface.openCustomOptionsDialog(object)
       }
     }
   }
-      
-  //
-  // List view 
-  //
-  PlasmaComponents.ScrollView {
-    id: networkBrowserScrollArea
 
-    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-    ScrollBar.vertical.policy: ScrollBar.AsNeeded
-    
-    // FIXME: Use layout
-    anchors {
-      top: networkBrowserToolBar.bottom
-      left: parent.left
-      right: parent.right
-      bottom: parent.bottom
-    }
-    
-    ListView {
-      id: networkBrowserListView
-      anchors.fill: parent
-      model: networkBrowserItemDelegateModel
-      clip: true
-      focus: true
-      highlightRangeMode: ListView.StrictlyEnforceRange
-//       highlight: Rectangle {
-//         color: theme.highlightColor
-//         radius: 5
-//         opacity: 0.2
-//       }
-    }
-  }
-  
   //
   // Connections
   //
@@ -253,41 +267,6 @@ PlasmaComponents.Page {
   //
   // Functions
   //
-  function rescan() {
-    if (parentObject !== null) {
-      iface.lookup(parentObject)
-    }
-    else {
-      iface.lookup()
-    }
-  }
-  
-  function abort() {
-    iface.abortClient()
-    iface.abortMounter()
-  }
-  
-  function up() {
-    if (parentObject !== null) {
-      
-      switch (parentObject.type) {
-        case NetworkObject.Workgroup:
-          networkBrowserListView.currentIndex = -1
-          iface.lookup()
-          break
-        case NetworkObject.Host:
-          var object = iface.findNetworkItem(parentObject.parentUrl, parentObject.parentType)
-          if (object !== null) {
-            parentObject = object
-            iface.lookup(object)
-          }
-          break
-        default:
-          break
-      }
-    }
-  }
-  
   function networkItemClicked() {
     if (networkBrowserListView.currentIndex != -1) {
       var object = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object
