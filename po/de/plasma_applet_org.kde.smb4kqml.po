@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-07-11 00:38+0000\n"
 "PO-Revision-Date: 2019-07-24 06:09+0200\n"
 "Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -23,7 +23,7 @@ msgstr "<font size=\"-1\">auf %1</font>"
 msgid "Go back"
 msgstr "Zurück"
 
-#: package/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:59
 msgid "Edit bookmarks"
 msgstr "Lesezeichen bearbeiten"
 
@@ -50,19 +50,19 @@ msgstr ""
 msgid "Configure"
 msgstr "Einrichtung"
 
-#: package/contents/ui/NetworkBrowserPage.qml:43
+#: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
 msgstr "Erneut einlesen"
 
-#: package/contents/ui/NetworkBrowserPage.qml:60
+#: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
 msgstr "Abbrechen"
 
-#: package/contents/ui/NetworkBrowserPage.qml:77
+#: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
 msgstr "Eine Ebene nach oben"
 
-#: package/contents/ui/NetworkBrowserPage.qml:94
+#: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
 msgstr "Dialog zum Einhängen öffnen"
 

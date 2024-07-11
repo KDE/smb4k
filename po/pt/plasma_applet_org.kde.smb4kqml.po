@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_smb4k-qml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-07-11 00:38+0000\n"
 "PO-Revision-Date: 2018-06-25 15:30+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -21,7 +21,7 @@ msgstr "<font size=\"-1\">em %1</font>"
 msgid "Go back"
 msgstr "Recuar"
 
-#: package/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:59
 msgid "Edit bookmarks"
 msgstr "Editar os favoritos"
 
@@ -48,19 +48,19 @@ msgstr ""
 msgid "Configure"
 msgstr "Configuração"
 
-#: package/contents/ui/NetworkBrowserPage.qml:43
+#: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
 msgstr "Pesquisar de Novo"
 
-#: package/contents/ui/NetworkBrowserPage.qml:60
+#: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
 msgstr "Interromper"
 
-#: package/contents/ui/NetworkBrowserPage.qml:77
+#: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
 msgstr "Subir"
 
-#: package/contents/ui/NetworkBrowserPage.qml:94
+#: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
 msgstr "Abrir a janela de montagem"
 

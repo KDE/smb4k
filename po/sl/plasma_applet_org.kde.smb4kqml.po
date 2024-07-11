@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-07-11 00:38+0000\n"
 "PO-Revision-Date: 2024-02-22 04:59+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -27,7 +27,7 @@ msgstr "<font size=\"-1\">na %1</font>"
 msgid "Go back"
 msgstr "Pojdi nazaj"
 
-#: package/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:59
 msgid "Edit bookmarks"
 msgstr "Uredi zaznamke"
 
@@ -52,19 +52,19 @@ msgstr "Predogled"
 msgid "Configure"
 msgstr "Konfiguriraj"
 
-#: package/contents/ui/NetworkBrowserPage.qml:43
+#: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
 msgstr "Ponovni pregled"
 
-#: package/contents/ui/NetworkBrowserPage.qml:60
+#: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
 msgstr "Prekini"
 
-#: package/contents/ui/NetworkBrowserPage.qml:77
+#: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
 msgstr "Pojdi nivo višje"
 
-#: package/contents/ui/NetworkBrowserPage.qml:94
+#: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
 msgstr "Odpri dialog priklopa"
 

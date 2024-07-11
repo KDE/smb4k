@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_smb4k-qml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-10 00:38+0000\n"
+"POT-Creation-Date: 2024-07-11 00:38+0000\n"
 "PO-Revision-Date: 2019-09-01 19:33+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -25,7 +25,7 @@ msgstr "<font size=\"-1\">na %1</font>"
 msgid "Go back"
 msgstr "Ísť späť"
 
-#: package/contents/ui/BookmarksPage.qml:56
+#: package/contents/ui/BookmarksPage.qml:59
 msgid "Edit bookmarks"
 msgstr "Upraviť záložky"
 
@@ -52,19 +52,19 @@ msgstr ""
 msgid "Configure"
 msgstr "Nastavenie"
 
-#: package/contents/ui/NetworkBrowserPage.qml:43
+#: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
 msgstr "Znovu prehľadať"
 
-#: package/contents/ui/NetworkBrowserPage.qml:60
+#: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
 msgstr "Prerušiť"
 
-#: package/contents/ui/NetworkBrowserPage.qml:77
+#: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
 msgstr "Ísť o úroveň vyššie"
 
-#: package/contents/ui/NetworkBrowserPage.qml:94
+#: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
 msgstr "Dialóg pripojenia"
 

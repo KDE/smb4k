@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-01-28 11:17+0100\n"
+"PO-Revision-Date: 2024-07-10 20:45+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -201,10 +201,9 @@ msgstr "Autentifikatzea"
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
-#, fuzzy, kde-format
-#| msgid "Profiles"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Profilak"
+msgstr "(Profila: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
@@ -218,16 +217,13 @@ msgid "Profiles"
 msgstr "Profilak"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>Ezarpen akastun bat aurkitu da. Orain hura konpontzeko, dagokion "
-"konfiguratzeko orria irekiko da.</qt>"
+"Ezarpen akastun bat aurkitu da. Hura konpontzeko, orain, konfiguratzeko "
+"dagokion orrira eramango zaitu."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -236,6 +232,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Profilari aldaketak egin dizkiozu. Haiek ezarri behar dituzu\n"
+"konfiguratzeko elkarrizketa-koadroaren gainerakoan haiek\n"
+"erabili ahal izateko."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
@@ -250,10 +249,9 @@ msgid "Username:"
 msgstr "Erabiltzaile-izena:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Pasahitza"
+msgstr "Pasahitza:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -459,29 +457,27 @@ msgstr "Ezarpenak"
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Gehitu"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "Ezarri aktibo"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Mugitu gora"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "Elementua zama-jaitsi"
+msgstr "Mugitu behera"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Rename"
-msgstr "Erabiltzailearen interfazea"
+msgstr "Berrizendatu"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
