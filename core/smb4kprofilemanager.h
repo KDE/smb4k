@@ -1,7 +1,7 @@
 /*
     This class manages the profiles that were defined by the user.
 
-    SPDX-FileCopyrightText: 2014-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

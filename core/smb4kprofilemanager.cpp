@@ -1,7 +1,7 @@
 /*
     This class manages the profiles that were defined by the user.
 
-    SPDX-FileCopyrightText: 2014-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -43,7 +43,7 @@ Smb4KProfileManager::Smb4KProfileManager(QObject *parent)
         d->activeProfile.clear();
     }
 
-    connect(Smb4KSettings::self(), SIGNAL(configChanged()), this, SLOT(slotConfigChanged()));
+    connect(Smb4KSettings::self(), &Smb4KSettings::configChanged, this, &Smb4KProfileManager::slotConfigChanged);
 }
 
 Smb4KProfileManager::~Smb4KProfileManager()
@@ -163,6 +163,6 @@ void Smb4KProfileManager::slotConfigChanged()
             setActiveProfile(d->profiles.first());
         }
     } else {
-        setActiveProfile(QStringLiteral(""));
+        setActiveProfile(QString());
     }
 }
