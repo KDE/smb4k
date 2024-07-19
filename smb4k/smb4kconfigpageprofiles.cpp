@@ -133,7 +133,7 @@ void Smb4KConfigPageProfiles::applyChanges()
             profiles << m_profilesListWidget->item(i)->text();
         }
 
-        // FIXME: Do we need this here?
+        Smb4KSettings::setUseProfiles(m_useProfiles->isChecked());
         Smb4KSettings::setProfilesList(profiles);
 
         QMutableListIterator<ProfileContainer> it(m_profiles);
@@ -335,8 +335,6 @@ void Smb4KConfigPageProfiles::slotAddProfile(bool checked)
         QString profile = m_profilesInputLineEdit->text();
         m_profilesInputLineEdit->clear();
 
-        m_profilesListWidget->addItem(profile);
-
         ProfileContainer p;
         p.initialName = profile;
         p.currentName = profile;
@@ -347,6 +345,10 @@ void Smb4KConfigPageProfiles::slotAddProfile(bool checked)
         p.moved = false;
 
         m_profiles << p;
+
+        QListWidgetItem *profileItem = new QListWidgetItem(profile, m_profilesListWidget);
+        profileItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        profileItem->setCheckState(p.active ? Qt::Checked : Qt::Unchecked);
 
         checkProfilesChanged();
     }
@@ -359,7 +361,9 @@ void Smb4KConfigPageProfiles::slotEditProfile(bool checked)
     if (m_profilesListWidget->currentItem()) {
         m_currentProfileContainer = findProfileContainer(m_profilesListWidget->currentItem());
         m_profilesListWidget->setFocus();
+        m_profilesListWidget->currentItem()->setFlags(m_profilesListWidget->currentItem()->flags() | Qt::ItemIsEditable);
         m_profilesListWidget->editItem(m_profilesListWidget->currentItem());
+        m_profilesListWidget->currentItem()->setFlags(m_profilesListWidget->currentItem()->flags() & ~Qt::ItemIsEditable);
     }
 }
 
