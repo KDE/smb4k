@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-02-11 11:52+0100\n"
+"PO-Revision-Date: 2024-07-20 09:26+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -3080,6 +3081,8 @@ msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
+"Sposób w jaki Smb4K przechowuje dane dostępowe uległ zmianie. Nastąpi ich "
+"przeniesienie teraz. Zmiana ta zrywa zgodność z poprzednimi wersjami Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format
@@ -3264,6 +3267,8 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>Nastąpił błąd przy odczycie danych dostępowych z bezpiecznej pamięci:\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-05-26 11:13+0200\n"
+"PO-Revision-Date: 2024-07-20 09:28+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -200,10 +201,9 @@ msgstr "Uwierzytelnianie"
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
-#, fuzzy, kde-format
-#| msgid "Profiles:"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Profile:"
+msgstr " (Profil: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
@@ -217,16 +217,13 @@ msgid "Profiles"
 msgstr "Profile"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>Znaleziono niepoprawne ustawienie. Nastąpi teraz przejście do "
-"odpowiedniej strony ustawień, aby można było poprawić ustawienie.</qt>"
+"Znaleziono niepoprawne ustawienie. Nastąpi teraz przejście do odpowiedniej "
+"strony ustawień, aby można było poprawić ustawienie."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -235,6 +232,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Wprowadziłeś zmiany do profili. Musisz je zastosować\n"
+"aby móc ich używać w pozostałej części okna\n"
+"ustawień."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
@@ -249,10 +249,9 @@ msgid "Username:"
 msgstr "Nazwa użytkownika:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Hasło"
+msgstr "Hasło:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
