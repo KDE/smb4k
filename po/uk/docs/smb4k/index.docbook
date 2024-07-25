@@ -72,7 +72,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->3 квітня 2024 року</date>
+>22 липня 2024 року</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -5968,117 +5968,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </variablelist>
       </sect3>
     </sect2>
-  </sect1
->  
-  
-<!-- 
-      Configuring Smb4K : Authentication 
--->
-
-  <sect1 id="configuration_page_authentication">
-    <title
->Розпізнавання</title>
-
-    <para
->Тут ви можете змінити значення параметрів, що стосуються розпізнавання.</para>
-
-    <screenshot>
-      <screeninfo
->Знімок сторінки налаштовування «Розпізнавання»</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->Сторінка налаштовування «Розпізнавання»</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Authentication : Settings
--->
-
-    <sect2 id="configuration_page_authentication_settings">
-      <title
->Параметри</title>
-      
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Зберігати реєстраційні дані у торбинці</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Записи імен користувачів та паролі зберігаються у підтеці з назвою <filename role="directory"
->Smb4K</filename
-> поточної торбинки мережевих даних (типово: «kdewallet»). Перевагою цього способу є те, що реєстраційні дані постійно зберігаються на вашому жорсткому диску у зашифрованому форматі. Вам достатньо вказати їх один раз. Під час наступної потреби у цих даних &smb4k; прочитає їх з торбинки. Якщо ви знімете позначку з цього пункту, програма не зберігатиме їх взагалі.</para>
-            <para
->Типове значення: позначено</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Використовувати типовий вхід</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Типовий вхід використовуватиметься для стандартного розпізнавання на серверах у мережевому оточенні вашого комп’ютера. Якщо ви увімкнете цю можливість, програма відкриє діалогове вікно введення пароля, в якому ви зможете вказати типові реєстраційні дані.</para>
-            <screenshot>
-              <screeninfo
->Знімок діалогового вікна введення типових реєстраційних даних</screeninfo>
-              <mediaobject>
-                <imageobject
-><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG"/></imageobject>
-                <textobject
-><phrase
->Діалогове вікно введення типових реєстраційних даних</phrase
-></textobject>
-              </mediaobject>
-            </screenshot>
-            <para
->Вам слід заповнити принаймні поле імені користувача. Програма може працювати з порожнім полем пароля.</para>
-            <para
->Типове значення: не позначено</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Authentication : Wallet Entries 
--->
-
-    <sect2 id="configuration_page_authentication_wallet_entries">
-      <title
->Записи торбинки</title>
-      
-      <para
->За допомогою цього редактора ви можете вносити зміни до наявних записів торбинки або вилучати їх. Перш ніж редагувати записи торбинки, вам слід завантажити їх з торбинки за допомогою кнопки <guibutton
->Завантажити</guibutton
->. Список записів буде показано ліворуч. Щоб змінити запис, позначте його у списку і натисніть кнопку <guibutton
->Змінити</guibutton
-> праворуч. Альтернативою є просте подвійне клацання на записі. Буде показано діалогове вікно введення пароля, і ви зможете змінити ім'я користувача і пароль.</para>
-      <para
->Щоб вилучити запис, позначте його і натисніть кнопку <guibutton
->Вилучити</guibutton
->. Ви можете вилучити всі пункти списку одразу натисканням кнопки <guibutton
->Спорожнити</guibutton
->. За допомогою кнопки <guibutton
->Скинути</guibutton
-> ви зможете відновити початковий стан.</para>
-      <para
->Щоб зміни було внесено до торбинки, після завершення редагування натисніть кнопку <guibutton
->Зберегти</guibutton
->.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -8061,6 +7950,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   </sect1>
 
 <!--
+      Configuring Smb4K : Authentication
+-->
+
+  <sect1 id="configuration_page_authentication">
+    <title
+>Розпізнавання</title>
+
+    <para
+>Тут ви можете ввести типові реєстраційні дані для входу. Якщо ви користуєтеся профілями, вони будуть чинними лише для активного профілю.</para>
+
+    <screenshot>
+      <screeninfo
+>Знімок сторінки налаштовування «Розпізнавання»</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase
+>Сторінка налаштовування «Розпізнавання»</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Усі реєстраційні дані для входу зберігатимуться у сховищі вашої програми для керування паролями (наприклад, KeePassXC, &kwallet; або у сховищі ключів GNOME). Щоб змінити їх, ви можете скористатися <link linkend="network_neighborhood_browser_authentication"
+>вікном паролів</link
+>. Щоб вилучити окремі записи, скористайтеся вашою програмою для керування паролями.</para>
+  </sect1>
+
+<!--
       Configuring Smb4K : Bookmarks
 -->
 
@@ -8069,7 +7989,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Закладки</title>
 
     <para
->...</para>
+>На цій сторінці налаштувань, ви можете редагувати ваші закладки. Якщо ви користуєтеся профілями, буде показано лише закладки активного профілю.</para>
 
     <screenshot>
       <screeninfo
@@ -8098,6 +8018,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     <title
 >Нетипові параметри</title>
 
+    <!-- FIXME -->
     <para
 >Тут буде показано список всіх серверів та спільних ресурсів, для яких вами було визначено нетипові параметри роботи.</para>
 

@@ -58,7 +58,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->3 d'abril de 2024</date>
+>22 de juliol de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -5972,117 +5972,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </variablelist>
       </sect3>
     </sect2>
-  </sect1
->  
-  
-<!-- 
-      Configuring Smb4K : Authentication 
--->
-
-  <sect1 id="configuration_page_authentication">
-    <title
->Autenticació</title>
-
-    <para
->Aquí podreu canviar les opcions de configuració que afecten l'autenticació.</para>
-
-    <screenshot>
-      <screeninfo
->Captura de pantalla de la pàgina de configuració «Autenticació»</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->La pàgina de configuració «Autenticació»</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Authentication : Settings
--->
-
-    <sect2 id="configuration_page_authentication_settings">
-      <title
->Arranjament</title>
-      
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Desa els inicis de sessió en una cartera</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Els noms d'usuari d'inici de sessió i les contrasenyes s'emmagatzemen en una subcarpeta anomenada <filename role="directory"
->Smb4K</filename
-> de la cartera de la xarxa actual (predeterminat: «kdewallet»). L'avantatge d'aquest mètode és que les dades d'autenticació s'emmagatzemen permanentment i estan encriptades al disc dur. Només haureu de proporcionar-la una vegada i la pròxima vegada que sigui necessària, el &smb4k; la llegirà a la cartera. Si desmarqueu aquesta opció, les dades d'autenticació no s'emmagatzemaran.</para>
-            <para
->Omissió: seleccionada</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Usa un inici de sessió predeterminat</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->El nom d'usuari predeterminat s'utilitza de manera predeterminada per a autenticar-se als servidors del veïnatge de xarxa. Si habiliteu aquesta característica, apareixerà un diàleg de contrasenya, on podreu proporcionar la informació predeterminada per a l'inici de la sessió.</para>
-            <screenshot>
-              <screeninfo
->Captura de pantalla del diàleg d'entrada d'inici de la sessió predeterminat</screeninfo>
-              <mediaobject>
-                <imageobject
-><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG"/></imageobject>
-                <textobject
-><phrase
->El diàleg d'entrada d'inici de la sessió predeterminat</phrase
-></textobject>
-              </mediaobject>
-            </screenshot>
-            <para
->Haureu d'omplir com a mínim el nom d'usuari. El fet de deixar buida la contrasenya està admès.</para>
-            <para
->Omissió: no seleccionada</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Authentication : Wallet Entries 
--->
-
-    <sect2 id="configuration_page_authentication_wallet_entries">
-      <title
->Entrades de la cartera</title>
-      
-      <para
->En aquest editor podreu canviar o suprimir les entrades existents de la cartera. Abans de poder-les editar, haureu de carregar-les des de la cartera digital prement el botó <guibutton
->Carrega</guibutton
->. Llavors apareixerà la llista de les entrades a la vista de la llista. Es pot editar una entrada seleccionant-la i marcant el botó <guibutton
->Edita</guibutton
-> de la dreta o fent-hi doble clic. Es mostrarà un diàleg de contrasenya amb el nom d'usuari i la contrasenya i podreu modificar les credencials.</para>
-      <para
->Es pot eliminar una entrada seleccionant-la i fent clic al botó <guibutton
->Elimina</guibutton
->. Totes les entrades de la cartera es poden eliminar alhora fent clic al botó <guibutton
->Neteja</guibutton
->. Amb el botó <guibutton
->Reinicia</guibutton
-> podeu restaurar l'estat inicial.</para>
-      <para
->Un cop hàgiu finalitzat l'edició, es podran cometre els canvis a la cartera fent clic a <guibutton
->Desa</guibutton
->.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -8065,6 +7954,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   </sect1>
 
 <!--
+      Configuring Smb4K : Authentication
+-->
+
+  <sect1 id="configuration_page_authentication">
+    <title
+>Autenticació</title>
+
+    <para
+>Aquí podeu introduir les credencials predeterminades d'inici de sessió. Si utilitzeu perfils, només són vàlids per al perfil actiu.</para>
+
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de la pàgina de configuració «Autenticació»</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase
+>La pàgina de configuració «Autenticació»</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Totes les credencials d'inici de sessió estan emmagatzemades en el gestor de contrasenyes (&pex; KeePassXC, &kwallet; o Keyring de GNOME). Per a canviar-les, podeu fer servir el <link linkend="network_neighborhood_browser_authentication"
+>diàleg de contrasenyes</link
+>. Per a suprimir entrades individuals, feu servir el gestor de contrasenyes.</para>
+  </sect1>
+
+<!--
       Configuring Smb4K : Bookmarks
 -->
 
@@ -8073,7 +7993,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Adreces d'interès</title>
 
     <para
->...</para>
+>En aquesta pàgina de configuració, podeu editar les adreces d'interès. Si feu servir perfils, només es mostren els del perfil actiu.</para>
 
     <screenshot>
       <screeninfo
@@ -8102,6 +8022,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     <title
 >Configuració personalitzada</title>
 
+    <!-- FIXME -->
     <para
 >Tots els servidors i comparticions per a les quals heu definit la configuració personalitzada estan llistats aquí.</para>
 
