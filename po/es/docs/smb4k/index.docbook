@@ -100,7 +100,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-04-03</date>
+>2024-07-22</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -5994,117 +5994,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </variablelist>
       </sect3>
     </sect2>
-  </sect1
->  
-  
-<!-- 
-      Configuring Smb4K : Authentication 
--->
-
-  <sect1 id="configuration_page_authentication">
-    <title
->Autenticación</title>
-
-    <para
->Aquí, usted puede cambiar las preferencias que afectan a la autenticación.</para>
-
-    <screenshot>
-      <screeninfo
->Captura de pantalla de la pagina de configuración «Autenticación»</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->La pagina de configuración «Autenticación»</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Authentication : Settings
--->
-
-    <sect2 id="configuration_page_authentication_settings">
-      <title
->Preferencias</title>
-      
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Guardar contraseñas en una cartera</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Los nombres de usuario y contraseñas se almacenan en una subcarpeta denominada <filename role="directory"
->Smb4K</filename
-> de la actual cartera de red (predeterminado: «kdewallet»). La ventaja de este método es que los datos de autenticación se almacenan permanentemente y se cifran en su disco duro. Usted solo tiene que proporcionarlos una vez y la siguiente vez que se necesiten, &smb4k; los leerá de la cartera. Si usted desmarca esta opción, los datos de autenticación no se guardarán.</para>
-            <para
->Predeterminado: seleccionado</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Usar como inicio de sesión predeterminado</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->El inicio de sesión predeterminado se usa por omisión para autenticar a los servidores de su entorno de red. Si usted activa esta característica, se presenta un diálogo de contraseña, donde usted puede proporcionar la información de inicio de sesión predeterminada.</para>
-            <screenshot>
-              <screeninfo
->Captura de pantalla del diálogo de entrada de inicio de sesión predeterminado</screeninfo>
-              <mediaobject>
-                <imageobject
-><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG"/></imageobject>
-                <textobject
-><phrase
->El diálogo de entrada de inicio de sesión predeterminado</phrase
-></textobject>
-              </mediaobject>
-            </screenshot>
-            <para
->Usted tiene que cumplimentar al menos el nombre de usuario. Se admiten contraseñas vacías.</para>
-            <para
->Predeterminado: no seleccionado</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Authentication : Wallet Entries 
--->
-
-    <sect2 id="configuration_page_authentication_wallet_entries">
-      <title
->Entradas de cartera</title>
-      
-      <para
->En el editor usted puede cambiar o borrar las entradas existentes en la cartera. Sim embargo, antes de que pueda editarlas, deben cargarse desde la cartera digitalpulsando el botón <guibutton
->Cargar</guibutton
->. Las entradas de la carteraaparecerá entonces en la vista de lista. Una entrada puede editarse siendo seleccionada y pulsando en el botón <guibutton
->Editar</guibutton
-> o haciendo doble click. Un diálogo con el nombre de usuario almacenado y la contraseña aparecerá y podrá modificar las credenciales.</para>
-      <para
->Se puede eliminar una entrada seleccionando y pulsando el botón <guimenuitem
->Eliminar</guimenuitem
->. Todas las entradas de la cartera pueden eliminarse de una vez al pulsar el botón <guibutton
->Limpiar</guibutton
->. Con el botón <guibutton
->Restaurar</guibutton
-> puede volver al estado inicial.</para>
-      <para
->Después de que haya finalizado la edición, los cambios pueden aplicarse a la cartera pulsando <guibutton
->Guardar</guibutton
->.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -8087,6 +7976,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   </sect1>
 
 <!--
+      Configuring Smb4K : Authentication
+-->
+
+  <sect1 id="configuration_page_authentication">
+    <title
+>Autenticación</title>
+
+    <para
+>Aquí puede introducir las credenciales de acceso por omisión. Si usa perfiles, serán solo válidas para el perfil activo.</para>
+
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de la pagina de configuración «Autenticación»</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase
+>La pagina de configuración «Autenticación»</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Todas sus credenciales de acceso son almacenadas en su administrador de contraseñas, (&eg; KeePassXC, &kwallet; o GNOME Keyring). Para cambiarlas, puede usar el <link linkend="network_neighborhood_browser_authentication"
+>diálogo de contraseñas</link
+>. Para borrar entradas individuales, use su administrador de contraseñas.</para>
+  </sect1>
+
+<!--
       Configuring Smb4K : Bookmarks
 -->
 
@@ -8095,7 +8015,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Marcadores</title>
 
     <para
->...</para>
+>En esta página de configuración, puede editar sus marcadores. Si usa perfiles, solo se muestran los del perfil activo.</para>
 
     <screenshot>
       <screeninfo
@@ -8124,6 +8044,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     <title
 >Preferencias personalizadas</title>
 
+    <!-- FIXME -->
     <para
 >Todos los servidores y recursos compartidos para los que usted definió preferencias personalizadas se listan aquí.</para>
 
