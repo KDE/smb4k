@@ -5964,7 +5964,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Authenticatie</title>
 
     <para
->Hier kunt u de instellingen voor de authenticatie wijzigen.</para>
+>Here you can change the settings affecting the authentication.</para>
 
     <screenshot>
       <screeninfo
@@ -5993,14 +5993,14 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Sla de informatie voor aanmelden op in een portefeuille</guibutton
+>Save logins in a wallet</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->De gebruikersnamen en wachtwoorden worden opgeslagen in een submap van de huidige netwerk portefeuille genaamd <filename role="directory"
+>The user names and passwords are stored in a subfolder named <filename role="directory"
 >Smb4K</filename
-> (standaard: "kdewallet"). Het voordeel van deze methode is, dat de authenticatie data permanent en versleuteld op uw harde schijf is opgeslagen. U hoeft het maar een keer op te geven en de volgende keer dat het nodig is, zal &smb4k; het in de portefeuille opzoeken. Als u deze optie uitschakelt, dan zal de authenticatie data helemaal niet worden opgeslagen.</para>
+> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
             <para
 >Standaard: geselecteerd</para>
           </listitem>
@@ -6009,26 +6009,26 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Gebruik een standaard aanmelding</guibutton
+>Use a default login</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->De standaard login wordt standaard gebruikt voor authenticatie bij de servers in uw netwerkomgeving. Als u dit inschakelt, dan opent een dialoogvenster voor wachtwoorden, waar u de standaard login informatie kunt invoeren.</para>
+>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
             <screenshot>
               <screeninfo
->Schermafdruk van de invoerdialoog voor aanmelden</screeninfo>
+>Screenshot of the default login input dialog</screeninfo>
               <mediaobject>
                 <imageobject
 ><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG"/></imageobject>
                 <textobject
 ><phrase
->De invoerdialoog voor aanmelden</phrase
+>The default login input dialog</phrase
 ></textobject>
               </mediaobject>
             </screenshot>
             <para
->U moet in ieder geval een gebruikersnaam opgegeven. Lege wachtwoorden worden geaccepteerd.</para>
+>You have to fill in at least the user name. Empty passwords are supported.</para>
             <para
 >Standaard: niet geselecteerd</para>
           </listitem>
@@ -6042,25 +6042,25 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title
->Items in portefeuille</title>
+>Wallet Entries</title>
       
       <para
->In de bewerker kunt u items in de portefeuille wijzigen en verwijderen. Echter voordat u ze kunt bewerken, moeten ze geladen worden uit de digitale portefeuille door op de knop <guibutton
->Laden</guibutton
-> te drukken. De portefeuille-items verschijnen dan in de lijstweergave. Een item kan bewerkt worden door het te selecteren en te klikken op de knop <guibutton
->Bewerken</guibutton
-> of u kunt er op dubbelklikken. Er verschijnt een wachtwoorddialoog met de gebruikersnaam en het wachtwoord wordt getoond en u kunt ze wijzigen.</para>
+>In the editor you can change or delete existing wallet entries. However, before you can edit them, they have to be loaded from the digital wallet by pressing the <guibutton
+>Load</guibutton
+> button. The wallet entries then appear in the list view. An entry can be edited either by selecting it and clicking the <guibutton
+>Edit</guibutton
+> button or by double-clicking. A password dialog with the stored user name and password is shown and you can modify the credentials.</para>
       <para
->Een item kan verwijderd worden door het te selecteren en te klikken op de knop <guibutton
->Verwijderen</guibutton
->. Alle items in de portefeuille kunnen in een keer worden verwijderd door op de knop <guibutton
->Wissen</guibutton
-> te klikken.Met de knop <guibutton
+>An entry can be removed by selecting it and clicking the <guibutton
+>Remove</guibutton
+> button. All wallet entries can be removed at once by clicking the <guibutton
+>Clear</guibutton
+> button. With the <guibutton
 >Reset</guibutton
-> kunt u de initiële status herstellen.</para>
+> button you can restore the initial state.</para>
       <para
->Als u klaar bent met bewerken, kunt u de wijzigingen in de portefeuille vastleggen door te klikken op <guibutton
->Opslaan</guibutton
+>After you finished editing, the changes can be committed to the wallet by clicking <guibutton
+>Save</guibutton
 >.</para>
     </sect2>
   </sect1>
