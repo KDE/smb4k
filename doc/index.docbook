@@ -4171,8 +4171,17 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       </mediaobject>
     </screenshot>
 
-    <para>...</para>
+    <para>To edit a category or bookmark, double click it or click the <guibutton>Edit</guibutton> button on the righthand side. Categories can directly be renamed. For bookmarks, the editor opens and you can set the label, the category and the username for login as well as the workgroup or domain and the ip address of its host.</para>
 
+    <screenshot>
+      <screeninfo>Screenshot of the "Bookmarks" configuration page with open editor</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="configuration_page_bookmarks_editor.png" format="PNG" /></imageobject>
+        <textobject><phrase>The "Bookmarks" configuration page with open editor</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>Categories can be added by either using the <guibutton>Add Category</guibutton> button, or by entering a new category name in the editor. Individual entries or the entire list can be deleted by pressing the <guibutton>Remove</guibutton> or <guibutton>Clear List</guibutton> button. To undo your changes, click the <guibutton>Reset</guibutton> button.</para>
   </sect1>
 
 
