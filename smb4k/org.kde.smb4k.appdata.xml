@@ -78,7 +78,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="zh-TW">在區域網路上尋找 SAMBA 及 Windows 共享裝置並掛載它們</summary>
   <description>
     <p>
-      Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
+      Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 del KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 de KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
