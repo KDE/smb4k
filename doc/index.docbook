@@ -37,7 +37,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-07-22</date>
+  <date>2024-07-31</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -4171,7 +4171,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       </mediaobject>
     </screenshot>
 
-    <para>To edit a category or bookmark, double click it or click the <guibutton>Edit</guibutton> button on the righthand side. Categories can directly be renamed. For bookmarks, the editor opens and you can set the label, the category and the username for login as well as the workgroup or domain and the ip address of its host.</para>
+    <para>To edit a category or bookmark, double click it or select it and click the <guibutton>Edit</guibutton> button on the righthand side. Categories can directly be renamed. For bookmarks, the editor opens and you can set the label, the category and the username for login as well as the workgroup or domain and the ip address of its host.</para>
 
     <screenshot>
       <screeninfo>Screenshot of the "Bookmarks" configuration page with open editor</screeninfo>
@@ -4182,6 +4182,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para>Categories can be added by either using the <guibutton>Add Category</guibutton> button, or by entering a new category name in the editor. Individual entries or the entire list can be deleted by pressing the <guibutton>Remove</guibutton> or <guibutton>Clear List</guibutton> button. To undo your changes, click the <guibutton>Reset</guibutton> button.</para>
+    <para>For further information about bookmarks, read this <link linkend="bookmarks">section</link>.</para>
   </sect1>
 
 
@@ -4192,8 +4193,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   <sect1 id="configuration_page_custom_settings">
     <title>Custom Settings</title>
 
-    <!-- FIXME -->
-    <para>All servers and shares for which you defined custom settings are listed here.</para>
+    <para>All servers and shares for which you defined custom settings are listed here. If you use profiles, only those of the active profile are shown.</para>
 
     <screenshot>
       <screeninfo>Screenshot of the "Custom Settings" configuration tab</screeninfo>
@@ -4203,8 +4203,18 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       </mediaobject>
     </screenshot>
 
-    <para>The options defined for a network item can be edited by either double clicking an entry in the list view or by clicking the <guibutton>Edit</guibutton> button. The <link linkend="custom_settings">custom settings editor</link> is opened and the settings can be edited. To remove an entry, select it and click the <guibutton>Remove</guibutton> button. All network items may be removed at once by clicking the <guibutton>Clear List</guibutton> button. To reset your changes, click the <guibutton>Reset</guibutton> button.</para>
-    <para>For further information about the custom settings editor, read this <link linkend="custom_settings">section</link>.</para>
+    <para>You can edit the custom settings for a network item by either double clicking it or by selecting it and clicking the <guibutton>Edit</guibutton> button on the righthand side. The editor will then open and you can change all the desired settings.</para>
+
+    <screenshot>
+      <screeninfo>Screenshot of the "Custom Settings" configuration page with open editor</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="configuration_page_custom_settings_editor.png" format="PNG" /></imageobject>
+        <textobject><phrase>The "Custom Settings" configuration page with open editor</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>To remove an entry, select it and click the <guibutton>Remove</guibutton> button. All network items may be removed at once by clicking the <guibutton>Clear List</guibutton> button. To reset your changes, click the <guibutton>Reset</guibutton> button.</para>
+    <para>For further information about custom settings, read this <link linkend="custom_settings">section</link>.</para>
   </sect1>
 
 <!-- 
@@ -4241,15 +4251,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Use profile migration assistant</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Use the profile migration assistant when profiles are removed or the use of profiles is enabled or disabled. The profile migration assistant allows you to migrate all settings that were saved for a certain profile to a different one.</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
 
@@ -4260,8 +4261,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     <sect2 id="configuration_page_profiles_profiles">
       <title>Profiles</title>
 
-      <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>), but you can add your own ones. When you enabled the use of profiles the first time, the first entry in the list will be the active profile.</para>
-      <para>When you rename a profile, the settings are migrated automatically (without showing the migration assistant). If you enabled the use of the migration assistant, it is shown when you remove a profile giving you the opportunity to migrate the stored settings to another profile. If the use of the migration assistant is disabled, the profile and all of its settings are removed.</para>
+      <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>). When you enable the use of profiles, the first entry in the list will be the active profile.</para>
+      <para>To add a new profile, enter it into the line edit and click the <guibutton>Add</guibutton> button. Entries can be deleted by selecting them and clicking the <guibutton>Remove</guibutton> button. To change the order, you can use the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons. The active profile can be changed by either double clicking the profile name in the list or by selecting the profile and using the <guibutton>Set Active</guibutton> button. To rename a profile, select it and click the <guibutton>Rename</guibutton> button. You will then be able to change the name in the list widget. All settings of the renamed profile are migrated automatically. To reset your changes, click the <guibutton>Reset</guibutton> button.</para>
+      <para>For further information about profiles, read this <link linkend="profiles">section</link>.</para>
     </sect2>
   </sect1>
 </chapter>
