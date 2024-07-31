@@ -8009,8 +8009,33 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->...</para>
+>Per a editar una categoria o una adreça d'interès, feu-hi doble clic o feu clic al botó <guibutton
+>Edita</guibutton
+> de la part dreta. Les categories es poden canviar directament de nom. Per a les adreces d'interès, s'obre l'editor i podeu establir l'etiqueta, la categoria i el nom d'usuari per a iniciar sessió, així com el grup de treball o el domini i l'adreça IP del seu amfitrió.</para>
 
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de la pàgina de configuració «Adreces d'interès» amb un editor obert</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks_editor.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La pàgina de configuració «Adreces d'interès» amb un editor obert</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Les categories es poden afegir fent servir el botó <guibutton
+>Afegeix una categoria</guibutton
+> o introduïnt un nom de categoria nova a l'editor. Es poden suprimir les entrades individuals o la llista sencera prement el botó <guibutton
+>Elimina</guibutton
+> o <guibutton
+>Neteja la llista</guibutton
+>. Per a desfer els canvis, feu clic al botó <guibutton
+>Reinicia</guibutton
+>.</para>
   </sect1>
 
 
