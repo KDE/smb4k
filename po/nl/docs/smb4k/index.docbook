@@ -58,7 +58,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-04-03</date>
+>2024-07-31</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -5952,117 +5952,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </variablelist>
       </sect3>
     </sect2>
-  </sect1
->  
-  
-<!-- 
-      Configuring Smb4K : Authentication 
--->
-
-  <sect1 id="configuration_page_authentication">
-    <title
->Authenticatie</title>
-
-    <para
->Here you can change the settings affecting the authentication.</para>
-
-    <screenshot>
-      <screeninfo
->Schermafdruk van de instellingenpagina voor "Authenticatie"</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->De instellingenpagina voor "Authenticatie"</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Authentication : Settings
--->
-
-    <sect2 id="configuration_page_authentication_settings">
-      <title
->Instellingen</title>
-      
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Save logins in a wallet</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->The user names and passwords are stored in a subfolder named <filename role="directory"
->Smb4K</filename
-> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
-            <para
->Standaard: geselecteerd</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Use a default login</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
-            <screenshot>
-              <screeninfo
->Screenshot of the default login input dialog</screeninfo>
-              <mediaobject>
-                <imageobject
-><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG"/></imageobject>
-                <textobject
-><phrase
->The default login input dialog</phrase
-></textobject>
-              </mediaobject>
-            </screenshot>
-            <para
->You have to fill in at least the user name. Empty passwords are supported.</para>
-            <para
->Standaard: niet geselecteerd</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Authentication : Wallet Entries 
--->
-
-    <sect2 id="configuration_page_authentication_wallet_entries">
-      <title
->Wallet Entries</title>
-      
-      <para
->In the editor you can change or delete existing wallet entries. However, before you can edit them, they have to be loaded from the digital wallet by pressing the <guibutton
->Load</guibutton
-> button. The wallet entries then appear in the list view. An entry can be edited either by selecting it and clicking the <guibutton
->Edit</guibutton
-> button or by double-clicking. A password dialog with the stored user name and password is shown and you can modify the credentials.</para>
-      <para
->An entry can be removed by selecting it and clicking the <guibutton
->Remove</guibutton
-> button. All wallet entries can be removed at once by clicking the <guibutton
->Clear</guibutton
-> button. With the <guibutton
->Reset</guibutton
-> button you can restore the initial state.</para>
-      <para
->After you finished editing, the changes can be committed to the wallet by clicking <guibutton
->Save</guibutton
->.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -8053,6 +7942,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   </sect1>
 
 <!--
+      Configuring Smb4K : Authentication
+-->
+
+  <sect1 id="configuration_page_authentication">
+    <title
+>Authenticatie</title>
+
+    <para
+>Hier kunt u se standaard aanmeldgegevens invoeren. Als u profielen gebruikt, dan zijn ze alleen geldig voor het actieve profiel.</para>
+
+    <screenshot>
+      <screeninfo
+>Schermafdruk van de instellingenpagina voor "Authenticatie"</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase
+>De instellingenpagina voor "Authenticatie"</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Alle aanmeldgegevens worden opgeslagen in uw wachtwoordbeheerder (&eg; KeePassXC, &kwallet; of GNOME Keyring). Om ze te wijzigen kunt u de <link linkend="network_neighborhood_browser_authentication"
+>wachtwoorddialoog</link
+> gebruiken. Om individuele items te verwijderen, gebruik uw wachtwoordbeheerder.</para>
+  </sect1>
+
+<!--
       Configuring Smb4K : Bookmarks
 -->
 
@@ -8061,7 +7981,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Bladwijzers</title>
 
     <para
->...</para>
+>Op deze configuratiepagina kunt u uw bladwijzers bewerken. Als u profielen gebruikt worden alleen die van het actieve profiel getoond.</para>
 
     <screenshot>
       <screeninfo
@@ -8077,8 +7997,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->...</para>
+>Om een categorie of bladwijzer te bewerken, dubbelklik er op of selecteer het en klik op de knop <guibutton
+>Bewerken</guibutton
+> aan de rechterkant. Categorieën kunnen direct hernoemd worden. Voor bladwijzers opent de bewerker en u kunt het label, de categorie en de gebruikersnaam voor aanmelden instellen evenals de werkgroep of het domein en het IP-adres van zijn host.</para>
 
+    <screenshot>
+      <screeninfo
+>Schermafdruk van de "Bladwijzers"-configuratiepagina met geopende bewerker</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks_editor.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>De "Bladwijzers"-configuratiepagina met geopende bewerker</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Categorieën kunnen toegevoegd worden door ofwel de knop <guibutton
+>Categorie toevoegen</guibutton
+> te gebruiken of door een nieuwe categorienaam in de bewerker in te voeren. Individuele items of de gehele lijst kunnen verwijderd worden door op de knop <guibutton
+>Verwijderen</guibutton
+> of <guibutton
+>Lijst wissen</guibutton
+> to drukken. Om uw wijzigingen ongedaan te maken, klik op de knop <guibutton
+>Reset</guibutton
+>.</para>
+    <para
+>Voor verdere informatie over de bladwijzers, lees deze <link linkend="custom_settings"
+>sectie</link
+>.</para>
   </sect1>
 
 
@@ -8091,7 +8040,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Aangepaste instellingen</title>
 
     <para
->Alle servers en shares, waarvoor u Aangepaste instellingen hebt gedefinieerd, worden hier opgenoemd.</para>
+>Alle servers en shares, waarvoor u Aangepaste instellingen hebt gedefinieerd, worden hier opgenoemd. Als u profielen gebruikt, worden alleen die van het actieve profiel getoond.</para>
 
     <screenshot>
       <screeninfo
@@ -8107,19 +8056,33 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->De opties gedefinieerd voor een netwerkitem kunnen bewerkt worden door ofwel op een item in de lijst te dubbelklikken of te klikken op de knop <guimenuitem
->Bewerken</guimenuitem
->. De <link linkend="custom_settings"
->bewerker voor aangepaste instellingen</link
-> wordt dan geopend en de instellingen kunnen worden bewerkt. Om een item te verwijderen, selecteer deze en klik op de knop <guimenuitem
->Verwijderen</guimenuitem
->. Alle netwerkitems kunnen kunnen tegelijk worden verwijderd door op de knop <guimenuitem
->Lijst wissen</guimenuitem
-> te klikken. Om alle wijzigingen te resetten klik op de knop <guibutton
+>U kunt de aangepaste instellingen voor een netwerkitem bewerken door ofwel erop te dubbelklikken of door deze te selecteren en te klikken op de knop <guibutton
+>Bewerken</guibutton
+> aan de rechterkant. De bewerker zal dan openen en u kunt alle gewenste instellingen wijzigen.</para>
+
+    <screenshot>
+      <screeninfo
+>Schermafdruk van de configuratiepagina "Aangepaste instellingen" met geopende bewerker</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_custom_settings_editor.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>De configuratiepagina "Aangepaste instellingen" met geopende bewerker</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Om een item te verwijderen, selecteer het en klik op de knop <guibutton
+>Verwijderen</guibutton
+>. Alle netwerkitems kunnen in een keer worden verwijderd door op de knop <guibutton
+>Lijst wissen</guibutton
+> te klikken. Om uw wijzigingen te resetten, klik op de knop <guibutton
 >Reset</guibutton
 >.</para>
     <para
->Voor verdere informatie over de bewerker voor aangepaste instellingen, lees deze <link linkend="custom_settings"
+>Voor verdere informatie over aangepaste instellingen, lees deze <link linkend="custom_settings"
 >sectie</link
 >.</para>
   </sect1>
@@ -8173,20 +8136,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Standaard: niet geselecteerd</para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Assistent voor migratie van profielen gebruiken</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->De assistent voor migratie van profielen gebruiken wanneer profielen verwijderd worden of het gebruik van profielen wordt in- of uitgeschakeld. De assistent voor migratie van profielen stelt u in staat om alle instellingen die zijn opgeslagen voor een bepaald profiel naar een andere te migreren.</para>
-            <para
->Standaard: niet geselecteerd</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
 
@@ -8203,9 +8152,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Thuis</guilabel
 > en <guilabel
 >Werk</guilabel
->), maar u kunt uw eigen profielen toevoegen. Als u het gebruik van profielen de eerste keer heeft ingeschakeld, dan wordt het eerste profiel in de lijst actief gemaakt.</para>
+>). Wanneer u het gebruik van profielen inschakelt zal het eerste item in de lijst het actieve profiel zijn.</para>
       <para
->Als u een profiel hernoemt, dan worden de instellingen automatisch overgezet (zonder dat de assistent voor migratie wordt geopend). Als u het gebruik van de assistent voor migratie heeft ingeschakeld, dan wordt het geopend als u een profiel verwijdert zodat u de mogelijkheid heeft om de opgeslagen instellingen over te zetten naar een ander profiel. Als u het gebruik van de assistent voor migratie heeft uitgeschakeld, dan word het profiel met al zijn instellingen verwijdert.</para>
+>Om een nieuw profiel toe te voegen, voer het in in de regelbewerking en klik op de knop <guibutton
+>Toevoegen</guibutton
+>. Items kunnen verwijderd worden door ze te selecteren en te klikken op de knop <guibutton
+>Verwijderen</guibutton
+>. Om de volgorde te wijzigen kunt u de knoppen <guibutton
+>Omhoog verplaatsen</guibutton
+> en <guibutton
+>Omlaag verplaatsen</guibutton
+> gebruiken. Het actieve profiel kan gewijzigd worden door ofwel dubbel te klikken op de profielnaam in de lijst of door het profiel te selecteren en de knop <guibutton
+>Actief maken</guibutton
+> te gebruiken. Om een profiel te hernoemen, selecteer deze en klik op de knop <guibutton
+>Hernoemen</guibutton
+>. U zult daarna in staat zijn om de naam in de lijstwidget te wijzigen. Alle instellingen van het hernoemde profiel automatisch gemigreerd. Om uw wijzigingen te resetten, klik op de knop <guibutton
+>Reset</guibutton
+>.</para>
+      <para
+>Voor verdere informatie over profielen, lees deze <link linkend="custom_settings"
+>sectie</link
+>.</para>
     </sect2>
   </sect1>
 </chapter>
