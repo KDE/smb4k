@@ -1,22 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# SPDX-FileCopyrightText: 2024 OIS <mistresssilvara@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2022-11-10 12:50+0700\n"
+"PO-Revision-Date: 2024-08-04 16:58+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
-"Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
+"Language-Team: Interlingue <>\n"
 "Language: ie\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -54,10 +53,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -132,13 +130,13 @@ msgstr ""
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "Etiquette:"
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Categorie:"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, fuzzy, kde-format
@@ -245,7 +243,7 @@ msgstr "Nómine de usator:"
 #: smb4k/smb4kconfigpageauthentication.cpp:42
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "Contrasigne:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -272,7 +270,7 @@ msgstr "Modificar"
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Adjunter un categorie"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
@@ -290,7 +288,7 @@ msgstr "Vacuar li liste"
 #: smb4k/smb4kconfigpagebookmarks.cpp:452
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Nov categorie"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, fuzzy, kde-format
@@ -443,7 +441,7 @@ msgstr "Parametres"
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Adjunter"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
@@ -461,10 +459,9 @@ msgid "Move Down"
 msgstr "Mover li selectet element al sequent linea"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username:"
+#, kde-format
 msgid "Rename"
-msgstr "Nómine de usator:"
+msgstr "Renominar"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, fuzzy, kde-format
@@ -981,10 +978,9 @@ msgid "Reload"
 msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#, kde-format
 msgid "Abort"
-msgstr "In&terrupter"
+msgstr "Interrupter"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
@@ -1009,10 +1005,9 @@ msgid "Print a file."
 msgstr "&Printar li file"
 
 #: smb4k/smb4kprintdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&File"
+msgstr "File:"
 
 #: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
@@ -1125,10 +1120,9 @@ msgid "Source:"
 msgstr ""
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Destination:"
-msgstr "Restrictiones"
+msgstr "Destination:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
