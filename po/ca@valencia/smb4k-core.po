@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2014, 2016, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-22 10:17+0200\n"
+"PO-Revision-Date: 2024-07-31 12:46+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -979,8 +979,8 @@ msgstr ""
 "Tracta els enllaços simbòlics cap a directoris en la banda de la recepció "
 "com si foren reals (-K, --keep-dirlinks). Açò només funciona si l'enllaç "
 "simbòlic coincidix amb un directori real des de la banda de l'enviament. "
-"Sense esta opció, els enllaços simbòlics del receptor s'eliminaran i se "
-"substituiran amb un directori real."
+"Sense esta opció, els enllaços simbòlics del receptor se suprimiran i se "
+"substituiran per un directori real."
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
 #: smb4k.kcfg:356
@@ -1746,7 +1746,7 @@ msgid ""
 msgstr ""
 "Fa còpies de seguretat (-b, --backup). Amb esta opció, els fitxers de "
 "destinació preexistents es canviaran de nom mentre cada fitxer és transferit "
-"o eliminat. Es pot controlar cap a on va el fitxer de la còpia de seguretat "
+"o suprimit. Es pot controlar cap a on va el fitxer de la còpia de seguretat "
 "i quin (si cal) sufix s'afegirà utilitzant les opcions --backup-dir=DIR i --"
 "suffix=SUFIX."
 
