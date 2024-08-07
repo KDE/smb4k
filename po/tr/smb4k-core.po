@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-22 12:50+0300\n"
+"PO-Revision-Date: 2024-08-06 11:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -90,8 +90,8 @@ msgid ""
 "popup menu."
 msgstr ""
 "Sistem tepsisine yerleştirilen uygulamayı başlat, yani sistem tepsisi "
-"parçacığı gösterilir ve ana pencere gizlenir. Açılır menüden \"Geri Yükle\" "
-"seçerek ya da sistem tepsisi parçacığını tıklayarak ana pencereye "
+"parçacığı gösterilir ve ana pencere gizlenir. Açılır menüden “Geri Yükle” "
+"seçerek veya sistem tepsisi parçacığını tıklayarak ana pencereye "
 "getirebilirsiniz."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
@@ -270,8 +270,8 @@ msgstr ""
 "gruplarını, etki alanlarını ve ana bilgisayarları keşfetmek için kullanılır. "
 "Bu, ağ çevrenizde çağdaş Windows sürümlerine sahip sunucular tarafından "
 "yönetiliyorsa kullanışlıdır. Bu seçeneği kullanırsanız çalışma gruplarını ve "
-"etki alanlarını aramak için Samba'nın istemci kitaplığını SMB protokolü "
-"sürüm 1.0'ı kullanmaya zorlamanız gerekmez."
+"etki alanlarını aramak için Samba’nın istemci kitaplığını SMB protokolü "
+"sürüm 1.0’ı kullanmaya zorlamanız gerekmez."
 
 #. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
 #: smb4k.kcfg:120
@@ -291,13 +291,13 @@ msgid ""
 "Samba's client library to use the SMB protocol version 1.0 for searching for "
 "workgroups and domains."
 msgstr ""
-"DNS Hizmet Keşfi (DNS-SD), yerel ağda gezinmek ve paylaşılan SMB kaynakları "
-"sağlayan sunucuları keşfetmek için kullanılır. Keşfedilen etki alanları, "
-"yerel DNS etki alanlarına (ör. LOCAL olarak adlandırılır) karşılık gelir ve "
-"büyük olasılıkla ağ komşuluğunda tanımlananlara değil. Ancak, bu taramayı "
-"etkilemez. Bu seçeneği kullanırsanız çalışma gruplarını ve etki alanlarını "
-"aramak için Samba'nın istemci kitaplığını SMB protokolü sürüm 1.0'ı "
-"kullanmaya zorlamanıza gerek yoktur."
+"DNS Hizmet Keşfi (DNS-SD), yerel ağda gezinmek ve paylaşılan SMB "
+"özkaynakları sağlayan sunucuları keşfetmek için kullanılır. Keşfedilen etki "
+"alanları, yerel DNS etki alanlarına (ör. LOCAL olarak adlandırılır) karşılık "
+"gelir ve büyük olasılıkla ağ komşuluğunda tanımlananlara değil. Ancak, bu "
+"taramayı etkilemez. Bu seçeneği kullanırsanız çalışma gruplarını ve etki "
+"alanlarını aramak için Samba’nın istemci kitaplığını SMB protokolü sürüm "
+"1.0’ı kullanmaya zorlamanıza gerek yoktur."
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:125
@@ -319,7 +319,7 @@ msgid ""
 "servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic "
 "Discovery (WS-Discovery) for domain and workgroup lookups instead."
 msgstr ""
-"Smb4K, ağ komşularına göz atmak için Samba'nın istemci kitaplığı tarafından "
+"Smb4K, ağ komşularına göz atmak için Samba’nın istemci kitaplığı tarafından "
 "kullanılan minimum ve maksimum SMB protokolü sürümünü ayarlayacaktır. Bu, "
 "smb.conf dosyasındaki ayarların üzerine yazacaktır. Normalde bu seçeneği "
 "kullanmanıza gerek yoktur; çünkü bir bağlantı kurulurken istemci ve sunucu "
@@ -342,7 +342,7 @@ msgid ""
 "This setting controls the minimum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
-"Bu ayar, Samba'nın istemci kitaplığının kullanmayı deneyeceği en düşük "
+"Bu ayar, Samba’nın istemci kitaplığının kullanmayı deneyeceği en düşük "
 "protokol sürümünü denetler."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
@@ -379,7 +379,7 @@ msgid ""
 "This setting controls the maximum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
-"Bu ayar, Samba'nın istemci kitaplığının kullanmayı deneyeceği enr yüksek "
+"Bu ayar, Samba’nın istemci kitaplığının kullanmayı deneyeceği enr yüksek "
 "protokol sürümünü denetler."
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
@@ -398,7 +398,7 @@ msgid ""
 "mounting."
 msgstr ""
 "Bu, uzak sunuculara bağlanmak için kullanılan kapıdır. Öntanımlı değer "
-"139'dur (NetBIOS). FreeBSD altında, bu ayar aynı zamanda bağlama için de "
+"139’dur (NetBIOS). FreeBSD altında, bu ayar aynı zamanda bağlama için de "
 "kullanılır."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
@@ -616,7 +616,7 @@ msgstr "Arşiv kipi"
 #: smb4k.kcfg:254
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
-msgstr "Arşiv kipi kullan (-a, --archive). Bu -rlptgoD'ın kısa biçemidir."
+msgstr "Arşiv kipi kullan (-a, --archive). Bu -rlptgoD’ın kısa biçemidir."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
 #: smb4k.kcfg:258
@@ -786,7 +786,7 @@ msgstr ""
 "compress=LİSTE). LİSTE, eğik çizgilerle ayrılmış bir veya daha fazla dosya "
 "soneki (nokta olmadan) olmalıdır. Hiçbir dosyanın atlanmaması gerektiğini "
 "belirtmek için boş bir dizi belirtebilirsiniz. Öntanımlı sonekler listesi bu "
-"liste ile değiştirilecektir. Daha fazla ayrıntı için rsync'in kılavuz "
+"liste ile değiştirilecektir. Daha fazla ayrıntı için rsync’in kılavuz "
 "sayfasına bakın."
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
@@ -878,12 +878,12 @@ msgid ""
 "to slip in a symlink to an unexpected place. For more details, see the "
 "manual page of rsync."
 msgstr ""
-"Bu seçenek, rsync'e (1) alıcı taraftaki tüm sembolik bağlantıları, onları "
+"Bu seçenek, rsync’e (1) alıcı taraftaki tüm sembolik bağlantıları, onları "
 "kullanılamaz; ancak kurtarılabilir duruma getirecek biçimde değiştirmesini "
 "veya (2) gönderen taraftaki muged durumda saklanan sembolik bağlantıları "
 "açmasını söyler (--munge-links). Bu, beklenmedik bir yere bir sembolik "
 "bağlantıda kaymaya çalışmamak için veri kaynağına tam olarak güvenmiyorsanız "
-"yararlıdır. Daha fazla ayrıntı için rsync'in kılavuz sayfasına bakın."
+"yararlıdır. Daha fazla ayrıntı için rsync’in kılavuz sayfasına bakın."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:341
@@ -926,9 +926,9 @@ msgstr ""
 "olmayanlara olan sembolik bağlantıların etkilenmesini istemiyorsanız "
 "kullanışlıdır. Bu seçenek olmadan, gönderen taraf bir dizini bir dizine bir "
 "sembolik bağlantıyla değiştirmişse alıcı taraf bir dizin hiyerarşisi de "
-"dahil olmak üzere yeni sembolik bağlantının yolunda olan her şeyi siler (--"
+"içerilmek üzere yeni sembolik bağlantının yolunda olan her şeyi siler (--"
 "force veya --delete yürürlükte olduğu sürece). Daha fazla ayrıntı için "
-"rsync'in kılavuz sayfasına bakın."
+"rsync’in kılavuz sayfasına bakın."
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:351
@@ -972,7 +972,7 @@ msgstr ""
 #: smb4k.kcfg:361
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr "Erişim denetim listelerini koru (ACL'ler)"
+msgstr "Erişim denetim listelerini koru (ACL’ler)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:362
@@ -983,7 +983,7 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
-"Erişim denetim listelerini koru. Bu seçenek, rsync'in hedef erişim denetim "
+"Erişim denetim listelerini koru. Bu seçenek, rsync’in hedef erişim denetim "
 "listelerini kaynak olanlarıyla aynı biçimde güncellemesini sağlar. Bu "
 "seçenek ayrıca --perms ima eder. Bunun düzgünce çalışması için kaynak ve "
 "hedef sistemlerde uyumlu erişim denetim listeleri olmalıdır."
@@ -1001,7 +1001,7 @@ msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Genişletilmiş öznitelikleri koru. Bu seçenek, rsync'in hedef öznitelikleri "
+"Genişletilmiş öznitelikleri koru. Bu seçenek, rsync’in hedef öznitelikleri "
 "kaynak olanlarıyla aynı biçimde güncellemesini sağlar."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
@@ -1017,7 +1017,7 @@ msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Erişim zamanlarını koru. Bu seçenek, rsync'e hedef dosyaların erişim "
+"Erişim zamanlarını koru. Bu seçenek, rsync’e hedef dosyaların erişim "
 "(kullanım) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
@@ -1033,7 +1033,7 @@ msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Oluşturma zamanlarını koru. Bu seçenek, rsync'e hedef dosyaların oluşturma "
+"Oluşturma zamanlarını koru. Bu seçenek, rsync’e hedef dosyaların oluşturma "
 "(yenilik) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
@@ -1388,7 +1388,7 @@ msgstr "UsePartialDirectory seçeneği için veriler"
 #: smb4k.kcfg:494
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
-msgstr "CVS'nin yaptığı gibi dosyaları otomatik olarak yok say"
+msgstr "CVS’nin yaptığı gibi dosyaları otomatik olarak yok say"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
 #: smb4k.kcfg:495
@@ -1522,7 +1522,7 @@ msgstr ""
 "Özel dosya süzme kuralları ekle (-f, --filter=KURAL). Bu seçenek aktarılacak "
 "dosyaların listesinden belirli dosyaları dışlamak için kurallar eklemenize "
 "izin verir. Bu kurallar olduğu gibi rsync komutuna eklenecektir. "
-"Dolayısıyla, her kural --filter=... argümanı ile başlamalıdır."
+"Dolayısıyla, her kural --filter=… argümanı ile başlamalıdır."
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:544
@@ -1907,7 +1907,7 @@ msgstr ""
 #: smb4kclient_p.cpp:1347
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr "Zeroconf desteği, KDE'nin bu sürümünde kullanılabilir değil."
+msgstr "Zeroconf desteği, KDE’nin bu sürümünde kullanılabilir değil."
 
 #: smb4kclient_p.cpp:1351
 #, kde-format
@@ -2013,10 +2013,10 @@ msgid ""
 "will try to automatically determine the charset by looking up the \"unix "
 "charset\" option in the smb.conf."
 msgstr ""
-"Bu, ya Unicode'dan (CIFS, Linux) yerel dosya adlarına dönüştürmek ya da kod "
+"Bu, ya Unicode’dan (CIFS, Linux) yerel dosya adlarına dönüştürmek ya da kod "
 "sayfalarında karakter kümesi çevrimleri (SMBFS, FreeBSD) için istemci "
 "tarafından kullanılan bir karakter kümesidir (yani sizin tarafınızdan). Eğer "
-"öntanımlı ayarı kullanırsanız, Smb4K, smb.conf içindeki \"unix charset\" "
+"öntanımlı ayarı kullanırsanız, Smb4K, smb.conf içindeki “unix charset” "
 "seçeneğini arayarak karakter kümesini otomatik olarak belirlemeyi "
 "deneyecektir."
 
@@ -2184,8 +2184,8 @@ msgid ""
 "looking up the \"dos charset\" option in the smb.conf file."
 msgstr ""
 "Bu, sunucu tarafından kullanılan karakter kümesidir. Öntanımlı ayarı "
-"korursanız Smb4K, smb.conf dosyasındaki \"dos charset\" seçeneğini arayarak "
-"kod sayfasını otomatik olarak belirlemeye çalışacaktır."
+"korursanız Smb4K, smb.conf dosyasındaki “dos charset” seçeneğini arayarak "
+"kod sayfasını kendiliğinden belirlemeyi deneyecektir."
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:137
@@ -2546,7 +2546,7 @@ msgid ""
 "neighborhood with only a few Samba servers, you can safely uncheck this "
 "option and define custom options for the Samba servers."
 msgstr ""
-"Samba'nın çoğu sürümü CIFS Unix veya POSIX uzantılarını destekler. Bu "
+"Samba’nın çoğu sürümü CIFS Unix veya POSIX uzantılarını destekler. Bu "
 "sunucularda, bağlama işlemi sırasında doğru değerlerde anlaşma yapıldığı "
 "için için bazı seçeneklere gereksinim yoktur. Diğer sunucularda, önceden "
 "tanımlanmış değerlerin sunucuya aktarılabilmesi için bu seçeneğin işaretini "
@@ -2637,7 +2637,7 @@ msgid ""
 "servers. The default value is 445 (CIFS file system)."
 msgstr ""
 "Bu uzak sunuculardan paylaşımları bağlamak için özellikle kullanılan bir "
-"porttur. Öntanımlı değeri 445'tir (CIFS dosya sistemi)."
+"kapıdır. Öntanımlı değeri 445’tir (CIFS dosya sistemi)."
 
 #. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
@@ -2650,12 +2650,11 @@ msgid ""
 "setting, Smb4K will try to automatically determine the charset by looking up "
 "the \"unix charset\" option in the smb.conf."
 msgstr ""
-"Bu ya Unicode'dan (CIFS, Linux) yerel dosya adlarına dönüştürmek ya da kod "
+"Bu ya Unicode’dan (CIFS, Linux) yerel dosya adlarına dönüştürmek ya da kod "
 "sayfalarında karakter kümesi çevrimleri (SMBFS, FreeBSD) için istemci "
 "tarafından kullanılan bir karakter kümesidir (yani sizin tarafınızdan). Eğer "
-"öntanımlı ayarı kullanırsanız, Smb4K, smb.conf içindeki \"unix charset\" "
-"seçeneğini arayarak karakter kümesini otomatik olarak belirlemeyi "
-"deneyecektir."
+"öntanımlı ayarı kullanırsanız, Smb4K, smb.conf içindeki “unix charset” "
+"seçeneğini arayarak karakter kümesini kendiliğinden belirlemeyi deneyecektir."
 
 #. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:145
@@ -3030,9 +3029,9 @@ msgid ""
 "enter options that have already been defined in the configuration dialog."
 msgstr ""
 "Burada CIFS dosya sistemi için gelişmiş seçenekleri virgül ile ayrılmış bir "
-"listede girebilirsiniz (daha fazlasını öğrenmek için mount.cifs klavuzuna "
-"bakınız). \"-o\" mount.cifs değişkeni listeye olduğu gibi eklenecektir. "
-"Lütfen yapılandırma penceresinde daha önce tanımlanmış seçenekleri girmeyin."
+"listede girebilirsiniz (daha fazlasını öğrenmek için mount.cifs kılavuzuna "
+"bakınız). “-o” mount.cifs değişkeni listeye olduğu gibi eklenecektir. Lütfen "
+"yapılandırma penceresinde daha önce tanımlanmış seçenekleri girmeyin."
 
 #: smb4knotification.cpp:59
 #, kde-format
