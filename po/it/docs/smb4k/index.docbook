@@ -86,7 +86,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->03/04/2024</date>
+>31/07/2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -5986,117 +5986,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </variablelist>
       </sect3>
     </sect2>
-  </sect1
->  
-  
-<!-- 
-      Configuring Smb4K : Authentication 
--->
-
-  <sect1 id="configuration_page_authentication">
-    <title
->Autenticazione</title>
-
-    <para
->Qui puoi modificare le impostazioni che riguardano l'autenticazione.</para>
-
-    <screenshot>
-      <screeninfo
->Schermata della pagina di configurazione «Autenticazione»</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->La pagina di configurazione «Autenticazione»</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Authentication : Settings
--->
-
-    <sect2 id="configuration_page_authentication_settings">
-      <title
->Impostazioni</title>
-      
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Salva i nomi utente in un portafogli</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->I nomi utente e le password vengono memorizzati in una sotto-cartella del portafoglio di rete attuale (predefinito: «kdewallet») chiamata <filename role="directory"
->Smb4K</filename
->. Il vantaggio di questo metodo è che i dati di autenticazione vengono memorizzati in modo permanente e crittografato sul disco rigido: devi fornirli una sola volta, successivamente, quando sarà necessario, &smb4k; li leggerà dal portafoglio. Se deselezioni questa opzione, i dati di autenticazione non saranno immagazzinati.</para>
-            <para
->Predefinito: selezionato</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Usa il nome utente predefinito</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Il nome utente predefinito viene usato come impostazione predefinita per autenticarsi in un server nelle risorse di rete. Se attivi questa funzione si apre una finestra per la password, dove puoi inserire il nome utente predefinito.</para>
-            <screenshot>
-              <screeninfo
->Schermata della finestra di immissione del nome utente predefinito</screeninfo>
-              <mediaobject>
-                <imageobject
-><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG"/></imageobject>
-                <textobject
-><phrase
->La finestra di immissione del nome utente predefinito</phrase
-></textobject>
-              </mediaobject>
-            </screenshot>
-            <para
->Devi compilare almeno il nome utente. Sono supportate le password vuote.</para>
-            <para
->Predefinito: non selezionato</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Authentication : Wallet Entries 
--->
-
-    <sect2 id="configuration_page_authentication_wallet_entries">
-      <title
->Voci del portafoglio</title>
-      
-      <para
->Nell'editor puoi modificare o eliminare le voci esistenti del portafogli. Tuttavia, prima di poterle modificare devono essere caricate dal portafogli premendo il pulsante <guibutton
->Carica</guibutton
->. Le voci del portafogli appaiono quindi nella vista a elenco. Una voce può essere modificata sia selezionandola e facendo clic sul pulsante <guibutton
->Modifica</guibutton
->, sia facendoci doppio clic. Viene mostrata una finestra per la password con il nome utente e la password memorizzata, così puoi modificare le credenziali.</para>
-      <para
->Una voce può essere rimossa selezionandola E facendo clic sul pulsante <guimenuitem
->Rimuovi</guimenuitem
->. Tutte le voci del portafogli possono essere rimosse contemporaneamente facendo clic sul pulsante<guimenuitem
->Pulisci</guimenuitem
->. Con <guibutton
->Azzera</guibutton
-> puoi ripristinare lo stato iniziale.</para>
-      <para
->Una volta terminata la modifica, i cambiamenti possono essere inviati al portafogli facendo clic su <guibutton
->Salva</guibutton
->.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -8079,6 +7968,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   </sect1>
 
 <!--
+      Configuring Smb4K : Authentication
+-->
+
+  <sect1 id="configuration_page_authentication">
+    <title
+>Autenticazione</title>
+
+    <para
+>Qui puoi inserire le credenziali dell'accesso predefinito. Se utilizzi i profili, queste saranno valide solo per quello attivo.</para>
+
+    <screenshot>
+      <screeninfo
+>Schermata della pagina di configurazione «Autenticazione»</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="configuration_page_authentication.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase
+>La pagina di configurazione «Autenticazione»</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Tutti le credenziali di accesso sono salvate nel gestore delle password (&eg; KeePassXC, &kwallet; o il portachiavi di GNOME). Per modificarle puoi usare la <link linkend="network_neighborhood_browser_authentication"
+>finestra delle password</link
+>, mentre per eliminare le voci puoi usare il gestore delle password.</para>
+  </sect1>
+
+<!--
       Configuring Smb4K : Bookmarks
 -->
 
@@ -8087,7 +8007,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Segnalibri</title>
 
     <para
->...</para>
+>In questa pagina di configurazione puoi modificare i tuoi segnalibri. Se utilizzi i profili, verranno mostrati solo quelli attivi.</para>
 
     <screenshot>
       <screeninfo
@@ -8103,8 +8023,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->...</para>
+>Per modificare una categoria o un segnalibro, doppio clic oppure selezionalo e fai clic sul pulsante <guibutton
+>Modifica</guibutton
+> nella parte destra. Le categorie possono essere rinominate direttamente, mentre per i segnalibri si apre un editor dal quale puoi impostare l'etichetta, la categoria e il nome utente per l'accesso, oltre al gruppo di lavoro, al dominio e all'indirizzo IP dei suo host.</para>
 
+    <screenshot>
+      <screeninfo
+>Schermata della pagina di configurazione dei «Segnalibri» con l'editor aperto</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks_editor.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La pagina di configurazione dei «Segnalibri» con l'editor aperto</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Le categorie possono essere aggiunte sia usando il pulsante <guibutton
+>Aggiungi categoria</guibutton
+> che inserendo il nome di una categoria nell'editor. Le voci individuali o gli elenchi interi possono essere eliminate premendo i pulsanti <guibutton
+>Rimuovi</guibutton
+> oppure <guibutton
+>Pulisci elenco</guibutton
+>. Per annullare le modifiche, premi il pulsante <guibutton
+>Azzera</guibutton
+>.</para>
+    <para
+>Per maggiori informazioni sui segnalibri, consulta questa <link linkend="bookmarks"
+>sezione</link
+>.</para>
   </sect1>
 
 
@@ -8117,7 +8066,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Impostazioni personalizzate</title>
 
     <para
->Tutti i server e le condivisioni su cui hai definito delle impostazioni personalizzate sono elencati qui.</para>
+>Tutti i server e le condivisioni su cui hai definito delle impostazioni personalizzate sono elencati qui. Se utilizzi i profili, vengono mostrati solo quelli del profilo attivo.</para>
 
     <screenshot>
       <screeninfo
@@ -8133,19 +8082,33 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->Le opzioni definite per un elemento di rete possono possono essere modificate sia con un doppio clic su un elemento nella vista ad elenco, sia scegliendo la voce <guimenuitem
->Modifica</guimenuitem
->. Si apre quindi l' <link linkend="custom_settings"
->editor delle impostazioni personalizzate</link
-> ed è possibile modificare le impostazioni. Per rimuovere un elemento, selezionalo e fai clic sul pulsante <guimenuitem
+>Puoi modificare le impostazioni personalizzate di un elemento di rete con un doppio clic, oppure selezionandolo e facendo clic sul pulsante <guibutton
+>Modifica</guibutton
+> che si trova nella parte destra: si aprirà l'editor, dal quale puoi modificare tutte le impostazioni che vuoi.</para>
+
+    <screenshot>
+      <screeninfo
+>Schermata della pagina di configurazione delle «Impostazioni personalizzate» con l'editor aperto</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_custom_settings_editor.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La pagina di configurazione dei «Impostazioni personalizzate» con l'editor aperto</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Per rimuovere un elemento, selezionalo e fai clic sul pulsante <guimenuitem
 >Rimuovi</guimenuitem
 >. Tutti gli elementi di rete possono essere rimossi contemporaneamente facendo clic sul pulsante <guimenuitem
 >Svuota l'elenco</guimenuitem
->. Per azzerare le modifiche, fai clic sul pulsante <guibutton
+>. Per annullare le modifiche, fai clic sul pulsante <guibutton
 >Azzera</guibutton
 >.</para>
     <para
->Per maggiori informazioni sull'editor delle impostazioni personalizzate, consulta questa <link linkend="custom_settings"
+>Per maggiori informazioni sulle impostazioni personalizzate, consulta questa <link linkend="custom_settings"
 >sezione</link
 >.</para>
   </sect1>
@@ -8199,20 +8162,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Usa l'assistente di migrazione dei profili</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Usa l'assistente di migrazione dei profili quando i profili vengono rimossi, oppure ne viene abilitato o disabilitato l'uso. Questo ti permette di trasferire tutte le impostazioni che sono state salvate per un certo profilo in un altro.</para>
-            <para
->Predefinito: non selezionato</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
 
@@ -8229,9 +8178,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Casa</guilabel
 > e <guilabel
 >Lavoro</guilabel
->), ma puoi aggiungerci i tuoi. Quando abiliti per la prima volta l'uso dei profili, la prima voce nell'elenco sarà il profilo attivo.</para>
+>). Quando abiliti l'uso dei profili, la prima voce nell'elenco diventerà quello attivo.</para>
       <para
->Quando rinomini un profilo le impostazioni vengono migrate automaticamente, senza cioè mostrarti l'assistente di migrazione. Se ne hai abilitato l'uso, questo viene invocato durante la rimozione, dandoti così l'opportunità di migrare i dati immagazzinati in un altro profilo, diversamente vengono rimossi sia il profilo che i suoi dati.</para>
+>Per aggiungere un nuovo profilo, entra nella casella di testo e fai clic sul pulsante <guibutton
+>Aggiungi</guibutton
+>. Puoi eliminare gli elementi selezionandoli e poi facendo clic sul pulsante <guibutton
+>Rimuovi</guibutton
+>. Per modificare l'ordine puoi usare invece i pulsanti <guibutton
+>Sposta in su</guibutton
+> e <guibutton
+>Sposta in giù</guibutton
+>. Puoi modificare il profilo attivo facendo doppio clic sul suo nome nell'elenco, oppure selezionandolo e usando poi il pulsante <guibutton
+>Imposta attivo</guibutton
+>. Per rinominarlo, invece, selezionalo e fai clic su <guibutton
+>Rinomina</guibutton
+>: sarai quindi in grado di modificare il nome nell'elenco. Tutte le impostazioni del profilo rinominato saranno migrate automaticamente. Per annullare le modifiche, fai clic sul pulsante <guibutton
+>Azzera</guibutton
+>.</para>
+      <para
+>Per maggiori informazioni sui profili, consulta questa <link linkend="profiles"
+>sezione</link
+>.</para>
     </sect2>
   </sect1>
 </chapter>
