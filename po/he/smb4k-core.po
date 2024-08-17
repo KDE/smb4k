@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-14 22:06+0300\n"
+"PO-Revision-Date: 2024-08-16 22:24+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -143,13 +143,13 @@ msgstr "הצגת חלוניות עצה לפריטי רשת"
 #: smb4k.kcfg:62
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
-msgstr ""
+msgstr "החלונית הצצה מציגה פרטים מגוונים על פריט הרשת הנוכחי."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:66
 #, kde-format
 msgid "Automatically expand domains and hosts"
-msgstr ""
+msgstr "הרחבת שמות תחום ומארחים אוטומטית"
 
 #. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:67
@@ -164,13 +164,13 @@ msgstr ""
 #: smb4k.kcfg:71
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr ""
+msgstr "הצגת חלוניות צצות לשיתופים מעוגנים"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:72
 #, kde-format
 msgid "The tooltip shows various information about the current share."
-msgstr ""
+msgstr "החלונית הצצה מציגה פרטים מגוונים על השיתוף הנוכחי."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:76
@@ -185,6 +185,8 @@ msgid ""
 "This setting determines the view mode of the shares view. There are two "
 "modes: the icon view and the list view."
 msgstr ""
+"ההגדרה הזאת קובעת את מצב התצוגה של תצוגת השיתופים. יש שני מצבים: תצוגת סמלים "
+"ותצוגת רשימה."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:80
@@ -1703,6 +1705,8 @@ msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
+"<p>השיתוף <b>%1</b> מעוגן אל <br><b>%2</b> ובבעלות המשתמש <b>%3</b>.</"
+"p><p>לנתק אותו?</p>"
 
 #: smb4kmounter.cpp:687
 #, kde-format
@@ -2146,7 +2150,7 @@ msgstr "יוניקוד"
 #: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
 #, kde-format
 msgid "Mount prefix:"
-msgstr ""
+msgstr "קידומת עיגון:"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:237 smb4kmountsettings_linux.kcfg:300
