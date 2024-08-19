@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-16 22:24+0300\n"
+"PO-Revision-Date: 2024-08-18 09:20+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2192,7 +2192,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
 #, kde-format
 msgid "Remount shares"
-msgstr ""
+msgstr "לעגן שיתופים מחדש"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:315
@@ -2204,12 +2204,16 @@ msgid ""
 "ignored. Please note that this setting does not affect the automatic "
 "remounting of shares when your computer woke up from a sleep state."
 msgstr ""
+"לעגן את כל השיתופים שהיו מעוגנים כשיצאת מהתוכנית או ששינית פרופיל מחדש. אם "
+"עיגון שיתוף מחדש נכשל, Smb4K ינסה שוב עם ההפעלה הבאה. שיתופים שעוגנו על ידי "
+"משתמשים אחרים לא יתופעלו. נא לשים לב שההגדרה הזאת לא משפיעה על עיגון אוטומטי "
+"מחדש של שיתופים כאשר המחשב שלך התעורר ממצב שינה."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
 #, kde-format
 msgid "Number of remount attempts:"
-msgstr ""
+msgstr "מספר הניסיונות לעיגון מחדש:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:320
@@ -2217,25 +2221,25 @@ msgstr ""
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
 "gives up."
-msgstr ""
+msgstr "הגדרת מספר הניסיונות שיתבצעו לעיגון שיתופים מחדש לפני ש־Smb4K יוותר."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
 #, kde-format
 msgid "Interval between remount attempts:"
-msgstr ""
+msgstr "המתנה בין ניסיונות לעיגון מחדש:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:264 smb4kmountsettings_linux.kcfg:327
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
-msgstr ""
+msgstr "אפשר להגדיר כאן את הזמן להמתנה בין ניסיונות לעיגון מחדש."
 
 #. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
 #, kde-format
 msgid "Allow the unmounting of shares that are owned by other users"
-msgstr ""
+msgstr "לאפשר ניתוק עיגון של שיתופים שבבעלותם של משתמשים אחרים"
 
 #. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:271 smb4kmountsettings_linux.kcfg:334
@@ -2244,12 +2248,14 @@ msgid ""
 "Allow the unmounting of shares that were mounted by other users. Please "
 "think before you enable this option."
 msgstr ""
+"לאפשר ניתוק של שיתופים שעוגנו על ידי משתמשים אחרים. נא לחשוב היטב בטרם הפעלת "
+"האפשרות הזאת."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
-msgstr ""
+msgstr "אילוץ ניתוק שיתופים בלתי נגישים"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:276 smb4kmountsettings_linux.kcfg:339
@@ -2259,12 +2265,15 @@ msgid ""
 "inaccessible, a lazy unmount is performed. Before the actual unmount is "
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
+"אילוץ ניתוק שיתופים בלתי נגישים (לינוקס בלבד). אם שיתוף אינו נגיש, יבוצע "
+"ניתוק עיגון עצל. לפני שמבוצע ניתוק העיגון בפועל, תוצג חלונית אזהרה שתבקש ממך "
+"לאשר את הניתוק."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
-msgstr ""
+msgstr "לזהות את כל השיתופים שמעוגנים במערכת"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:281 smb4kmountsettings_linux.kcfg:344
@@ -2274,6 +2283,8 @@ msgid ""
 "also all other mounts using the SMBFS and CIFS file system that are present "
 "on the system."
 msgstr ""
+"לא רק שהשיתופים שעוגנו יופיעו ויהיו בבעלותך, אלא גם כל שאר השיתופים שמשתמשים "
+"במערכת הקבצים SMBFS ו־CIFS שקיימים במערכת."
 
 #. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:13
