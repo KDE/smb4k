@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-18 09:20+0300\n"
+"PO-Revision-Date: 2024-08-19 10:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -399,7 +399,7 @@ msgstr ""
 #: smb4k.kcfg:183
 #, kde-format
 msgid "Use Kerberos for authentication"
-msgstr ""
+msgstr "להשתמש ב־Kerberos לאימות"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:184
@@ -407,7 +407,7 @@ msgstr ""
 msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
 "environment."
-msgstr ""
+msgstr "להשתמש ב־Kerberos לאימות. שימושי רק לסביבת Active Directory."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:188
