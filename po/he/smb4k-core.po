@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-13 22:45+0300\n"
+"PO-Revision-Date: 2024-08-19 10:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -28,7 +28,7 @@ msgstr "כיוון לשוניות:"
 #: smb4k.kcfg:18
 #, kde-format
 msgid "Set the tab orientation for the tabified dock widgets."
-msgstr ""
+msgstr "הגדרת כיוון הלשוניות לווידג׳טים המוצמדים כלשוניות."
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:21
@@ -58,7 +58,7 @@ msgstr "ימין"
 #: smb4k.kcfg:36
 #, kde-format
 msgid "Show custom bookmark label if available"
-msgstr ""
+msgstr "הצגת תווית סימנייה מותאמת אישית אם ניתן"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:37
@@ -67,6 +67,8 @@ msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
+"לא להציג את שם השיתוף ששמור בסימנייה, במקום להציג את התווית המותאמת אישית "
+"שהוגדרה בעורך הסימניות."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
@@ -83,6 +85,9 @@ msgid ""
 "up by clicking on the system tray widget or by choosing \"Restore\" from its "
 "popup menu."
 msgstr ""
+"להתחיל את היישום מעוגן לשורת המערכת, כלומר רק וידג׳ט שורת המערכת מופיע "
+"והחלון הראשי מוסתר. אפשר לקדם את החלון הראשי לחזית על ידי לחיצה עליו בוודג׳ט "
+"שורת המערכת או על ידי בחירה ב„שחזור” מהתפריט הצץ שלו."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:46
@@ -138,13 +143,13 @@ msgstr "הצגת חלוניות עצה לפריטי רשת"
 #: smb4k.kcfg:62
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
-msgstr ""
+msgstr "החלונית הצצה מציגה פרטים מגוונים על פריט הרשת הנוכחי."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:66
 #, kde-format
 msgid "Automatically expand domains and hosts"
-msgstr ""
+msgstr "הרחבת שמות תחום ומארחים אוטומטית"
 
 #. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:67
@@ -159,13 +164,13 @@ msgstr ""
 #: smb4k.kcfg:71
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr ""
+msgstr "הצגת חלוניות צצות לשיתופים מעוגנים"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:72
 #, kde-format
 msgid "The tooltip shows various information about the current share."
-msgstr ""
+msgstr "החלונית הצצה מציגה פרטים מגוונים על השיתוף הנוכחי."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:76
@@ -180,6 +185,8 @@ msgid ""
 "This setting determines the view mode of the shares view. There are two "
 "modes: the icon view and the list view."
 msgstr ""
+"ההגדרה הזאת קובעת את מצב התצוגה של תצוגת השיתופים. יש שני מצבים: תצוגת סמלים "
+"ותצוגת רשימה."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:80
@@ -392,7 +399,7 @@ msgstr ""
 #: smb4k.kcfg:183
 #, kde-format
 msgid "Use Kerberos for authentication"
-msgstr ""
+msgstr "להשתמש ב־Kerberos לאימות"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:184
@@ -400,7 +407,7 @@ msgstr ""
 msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
 "environment."
-msgstr ""
+msgstr "להשתמש ב־Kerberos לאימות. שימושי רק לסביבת Active Directory."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:188
@@ -1113,13 +1120,13 @@ msgstr ""
 #: smb4k.kcfg:451
 #, kde-format
 msgid "Value for DeleteMaximum config entry"
-msgstr ""
+msgstr "ערך לרשומת ההגדרות DeleteMaximum"
 
 #. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
 #: smb4k.kcfg:457
 #, kde-format
 msgid "Do not transfer any file smaller than:"
-msgstr ""
+msgstr "לא להעביר קבצים שגודלם קטן מאשר:"
 
 #. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
 #: smb4k.kcfg:458
@@ -1128,12 +1135,14 @@ msgid ""
 "This option causes rsync to not transfer any file that is smaller than the "
 "specified size (--min-size=SIZE)."
 msgstr ""
+"האפשרות הזאת גורמת ל־rsync לא להעביר קבצים שגודלם קטן מהגודל שצוין (‎--min-"
+"size=SIZE)."
 
 #. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
 #: smb4k.kcfg:462
 #, kde-format
 msgid "Value for MinimalTransferSize config entry"
-msgstr ""
+msgstr "ערך לרשומת ההגדרות MinimalTransferSize"
 
 #. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
 #: smb4k.kcfg:468
@@ -1155,13 +1164,13 @@ msgstr ""
 #: smb4k.kcfg:473
 #, kde-format
 msgid "Value for MaximalTransferSize config entry"
-msgstr ""
+msgstr "ערך לרשומת ההגדרות MaximalTransferSize"
 
 #. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
 #: smb4k.kcfg:479
 #, kde-format
 msgid "Keep partially transferred files"
-msgstr ""
+msgstr "להשאיר קבצים שהועברו חלקית"
 
 #. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
 #: smb4k.kcfg:480
@@ -1170,12 +1179,14 @@ msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
 "any partially transferred file is deleted if the transfer is interrupted."
 msgstr ""
+"להשאיר קבצים שהועברו חלקית (‎--partial). התנהגות ברירת המחדל היא שקבצים "
+"שהועברו חלקית נמחקים אם ההעברה נקטעה."
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
 #: smb4k.kcfg:484
 #, kde-format
 msgid "Put partially transferred files into:"
-msgstr ""
+msgstr "להציב קבצים שהועברו חלקית תחת:"
 
 #. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
 #: smb4k.kcfg:485
@@ -1186,18 +1197,21 @@ msgid ""
 "because the partially transferred file is kept in a different directory and "
 "the destination file is not overwritten."
 msgstr ""
+"להציב קבצים שהועברו חלקית בתיקייה הזאת (‎--partial-dir=DIR). הדרך הזאת עדיפה "
+"על האפשרות ‎--partial כדי להשאיר קבצים חלקיים, כיוון שהקבצים שהועברו חלקית "
+"נשמרים בתיקייה שונה וקובץ היעד לא משוכתב."
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
 #: smb4k.kcfg:489
 #, kde-format
 msgid "The data for the UsePartialDirectory option"
-msgstr ""
+msgstr "הנתונים לאפשרות UsePartialDirectory"
 
 #. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
 #: smb4k.kcfg:494
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
-msgstr ""
+msgstr "התעלמות מקבצים אוטומטית כמו CVS"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
 #: smb4k.kcfg:495
@@ -1213,7 +1227,7 @@ msgstr ""
 #: smb4k.kcfg:499
 #, kde-format
 msgid "Exclude files matching this pattern:"
-msgstr ""
+msgstr "החרגת קבצים שתואמים לתבנית הזאת:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:500
@@ -1223,18 +1237,20 @@ msgid ""
 "special filter rule. For further information on filter rules see rsync's "
 "manual page."
 msgstr ""
+"החרגת קבצים שעונים על תבנית מסוימת (‎--exclude=PATTERN). זה כלל מסנן מיוחד. "
+"למידע נוסף על כללי סינון ניתן לפנות לעמוד ההדרכה של rsync."
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
 #: smb4k.kcfg:504
 #, kde-format
 msgid "Pattern that is used for file exclusion"
-msgstr ""
+msgstr "תבנית שמשמשת להחרגת קבצים"
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
 #: smb4k.kcfg:509
 #, kde-format
 msgid "Read exclude patterns from:"
-msgstr ""
+msgstr "קריאת תבנית החרגה מתוך:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
 #: smb4k.kcfg:510
@@ -1245,18 +1261,21 @@ msgid ""
 "read from a file. This is a special filter rule. For further information on "
 "filter rules see rsync's manual page."
 msgstr ""
+"קריאת תבניות החרגה מקובץ (--exclude-from=FILE). האפשרות הזאת דומה לאפשרות --"
+"exclude=PATTERN למעט העובדה שתבניות ההחרגה נקראות מקובץ. זה כלל מסנן מיוחד. "
+"למידע נוסף על כללי סינון אפשר לפנות לעמוד ההדרכה של rsync."
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
 #: smb4k.kcfg:514
 #, kde-format
 msgid "The file from which the exclude patterns are read"
-msgstr ""
+msgstr "הקובץ ממנו תיקראנה תבניות ההחרגה"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
 #: smb4k.kcfg:519
 #, kde-format
 msgid "Include files matching this pattern:"
-msgstr ""
+msgstr "לכלול קבצים שתואמים לתבנית הזאת:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
 #: smb4k.kcfg:520
@@ -1277,7 +1296,7 @@ msgstr ""
 #: smb4k.kcfg:529
 #, kde-format
 msgid "Read include patterns from:"
-msgstr ""
+msgstr "קריאת תבנית הכללה מתוך:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
 #: smb4k.kcfg:530
@@ -1288,18 +1307,21 @@ msgid ""
 "read from a file. This is a special filter rule. For further information on "
 "filter rules see rsync's manual page."
 msgstr ""
+"קריאת תבניות הכללה מקובץ (‎--include-from=FILE). האפשרות הזאת דומה לאפשרות ‎--"
+"include=PATTERN למעט העובדה שתבניות ההכללה נקראות מקובץ. זה כלל מסנן מיוחד. "
+"למידע נוסף על כללי סינון אפשר לפנות לעמוד ההדרכה של rsync."
 
 #. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
 #: smb4k.kcfg:534
 #, kde-format
 msgid "The file from which the include patterns are read"
-msgstr ""
+msgstr "הקובץ ממנו תיקראנה תבניות ההכללה"
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:539
 #, kde-format
 msgid "Custom filter rules:"
-msgstr ""
+msgstr "כללי סינון מותאמים אישית:"
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:540
@@ -1315,13 +1337,13 @@ msgstr ""
 #: smb4k.kcfg:544
 #, kde-format
 msgid "Custom filter rules"
-msgstr ""
+msgstr "כללי סינון מותאמים אישית"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:549
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
-msgstr ""
+msgstr "להשתמש בכלל הסינון ‎--filter='dir-merge /.rsync-filter'‎"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:550
@@ -1337,7 +1359,7 @@ msgstr ""
 #: smb4k.kcfg:554
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
-msgstr ""
+msgstr "להשתמש בכלל הסינון ‎--filter='exclude .rsync-filter'‎"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
 #: smb4k.kcfg:555
@@ -1381,7 +1403,7 @@ msgstr ""
 #: smb4k.kcfg:569
 #, kde-format
 msgid "Do not cross file system boundaries"
-msgstr ""
+msgstr "לא לחצות את גבולות מערכת הקבצים"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
 #: smb4k.kcfg:570
@@ -1391,12 +1413,15 @@ msgid ""
 "rsync to avoid crossing a filesystem boundary when recursing. For further "
 "information on this option, read the manual page."
 msgstr ""
+"לא לחצות את גבולות מערכת הקבצים (‎-x,‏ ‎--one-file-system). מנחה את rsync "
+"להימנע מחציית גבולות מערכת הקבצים ברקורסיה. למידע נוסף על האפשרות הזאת, נא "
+"לקרוא את עמוד ההדרכה."
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
 #: smb4k.kcfg:574
 #, kde-format
 msgid "Only update files that already exist"
-msgstr ""
+msgstr "לעדכן רק קבצים שכבר קיימים"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
 #: smb4k.kcfg:575
@@ -1408,6 +1433,10 @@ msgid ""
 "no files will be updated (which can be useful if all you want to do is to "
 "delete extraneous files)."
 msgstr ""
+"דילוג על יצירת קבצים חדשים בצד המקבל (‎--existing). כך אומרים ל־rsync לדלג על "
+"יצירת קבצים (כולל תיקיות) שאינם קיימים עדיין ביעד. אם האפשרות הזאת משולבת עם "
+"האפשרות ‎--ignore-existing, אף קובץ לא יעודכן (יכול להיות שימושי אם מטרתך היא "
+"למחוק קבצים עודפים)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
 #: smb4k.kcfg:579
@@ -1459,6 +1488,10 @@ msgid ""
 "the backup file goes and what (if any) suffix gets appended using the --"
 "backup-dir=DIR and --suffix=SUFFIX options."
 msgstr ""
+"ביצוע גיבויים (‎-b,‏ ‎--backup). עם האפשרות הזאת, קובצי יעד קיימים יקבלו שם חדש "
+"עם העברה של כל אחד מהקבצים או שיימחקו. אפשר לשלוט היכן יישמר קובץ הגיבוי "
+"ואיזו סיומת (אם בכלל) suffix תתווסף באמצעות האפשרויות ‎--backup-dir=DIR ו־‎--"
+"suffix=SUFFIX."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:594
@@ -1514,7 +1547,7 @@ msgstr ""
 #: smb4k.kcfg:619
 #, kde-format
 msgid "The block size"
-msgstr ""
+msgstr "גודל המקטע"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:625
@@ -1536,13 +1569,13 @@ msgstr ""
 #: smb4k.kcfg:630
 #, kde-format
 msgid "The value for the UseChecksumSeed config option"
-msgstr ""
+msgstr "הערך לאפשרות ההגדרה UseChecksumSeed"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
 #: smb4k.kcfg:636
 #, kde-format
 msgid "Skip files based on checksum"
-msgstr ""
+msgstr "דילוג על הקבצים לפי סיכום הביקורת"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
 #: smb4k.kcfg:637
@@ -1552,25 +1585,27 @@ msgid ""
 "c, --checksum). For further information on how this feature works read "
 "rsync's manual page."
 msgstr ""
+"דילוג על קבצים על בסיס סיכום ביקורת ולא על בסיס זמן השינוי והגודל (‎-c, --"
+"checksum). למידע נוסף על איך היכולת הזאת עובדת ניתן לפנות למדריך של rsync."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
 #: smb4k.kcfg:641
 #, kde-format
 msgid "Set bandwidth limit:"
-msgstr ""
+msgstr "הגדרת מגבלת קצב תעבורה:"
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
 #: smb4k.kcfg:642
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
-msgstr ""
+msgstr "הגדרת קצב העברת הנתונים המרבי בקילובתים לשנייה (‎--bwlimit=RATE)."
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
 #: smb4k.kcfg:646
 #, kde-format
 msgid "The value for the UseBandwidthLimit config option"
-msgstr ""
+msgstr "הערך לאפשרות ההגדרה UseBandwidthLimit"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
 #: smb4k.kcfg:658
@@ -1586,6 +1621,9 @@ msgid ""
 "custom options for each profile. This is especially useful if you are using "
 "a laptop in different network neighborhoods, e. g. at home and at work."
 msgstr ""
+"לגרום ל־Smb4K להשתמש בפרופילים. המצב הזה מאפשר להגדיר ערכות שונות של סימניות "
+"ואפשרויות מסוימות לכל פרופיל. שימושי למחשבים ניידים שעוברים בין מגוון רשתות "
+"עם הבדלי בשכני הרשת, למשל: בבית ובעבודה."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:663
@@ -1667,11 +1705,13 @@ msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
+"<p>השיתוף <b>%1</b> מעוגן אל <br><b>%2</b> ובבעלות המשתמש <b>%3</b>.</"
+"p><p>לנתק אותו?</p>"
 
 #: smb4kmounter.cpp:687
 #, kde-format
 msgid "Foreign Share"
-msgstr ""
+msgstr "שיתוף מרוחק"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
@@ -1686,7 +1726,7 @@ msgstr "מזהה משתמש:"
 msgid ""
 "This is the user ID (a number) that the files and directories of the mounted "
 "share will have."
-msgstr ""
+msgstr "זה מזהה המשתמש (מספרי) שיהיה לקבצים ולתיקיות בשיתוף המעוגן."
 
 #. i18n: ectx: label, entry (UseGroupId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_linux.kcfg:27
@@ -1701,13 +1741,13 @@ msgstr "מזהה קבוצה:"
 msgid ""
 "This is the group ID (a number) that the files and directories of the "
 "mounted share will have."
-msgstr ""
+msgstr "זה מזהה הקבוצה (מספרי) שיהיה לקבצים ולתיקיות בשיתוף המעוגן."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_linux.kcfg:36
 #, kde-format
 msgid "File mode:"
-msgstr "מצב קובץ:"
+msgstr "מצב קבצים:"
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
@@ -1716,13 +1756,13 @@ msgstr "מצב קובץ:"
 msgid ""
 "This is the file mode that will be used for creating files. It must be "
 "defined in octal."
-msgstr ""
+msgstr "זה מצב הקבצים לשימוש ליצירת קבצים. יש להגדיר אותו בבסיס אוקטלי."
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_linux.kcfg:45
 #, kde-format
 msgid "Directory mode:"
-msgstr ""
+msgstr "מצב תיקיות:"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -1731,13 +1771,13 @@ msgstr ""
 msgid ""
 "This is the directory mode that will be used for creating directories. It "
 "must be defined in octal."
-msgstr ""
+msgstr "זה מצב התיקיות לשימוש ביצירת תיקיות. יש להגדיר אותו בבסיס אוקטלי."
 
 #. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:49
 #, kde-format
 msgid "Use character sets"
-msgstr ""
+msgstr "להשתמש בערכות תווים"
 
 #. i18n: ectx: whatsthis, entry (UseCharacterSets), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
@@ -1749,13 +1789,16 @@ msgid ""
 "will try to automatically determine the charset by looking up the \"unix "
 "charset\" option in the smb.conf."
 msgstr ""
+"זאת ערכת התווים בה משתמש צד הלקוח (כלומר הצד שלך) לתרגום קוד עמוד לערכת "
+"תווים. אם השארת את הגדרת ברירת המחדל, ינסה Smb4K לזהות את ערכת התווים "
+"אוטומטית על ידי איתור באפשרות „unix charset” ב־smb.conf"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (UseClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:65
 #, kde-format
 msgid "Client character set:"
-msgstr ""
+msgstr "ערכת התווים של צד הלקוח:"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
@@ -1903,7 +1946,7 @@ msgstr "tis-620"
 #: smb4kmountsettings_bsd.kcfg:130
 #, kde-format
 msgid "Server character set:"
-msgstr ""
+msgstr "ערכת התווים של צד השרת:"
 
 #. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:131
@@ -1913,6 +1956,9 @@ msgid ""
 "default setting, Smb4K will try to automatically determine the codepage by "
 "looking up the \"dos charset\" option in the smb.conf file."
 msgstr ""
+"זאת ערכת התווים בה משתמש השרת. השארת הגדרת ברירת המחדל תגרום ל־Smb4K לנסות "
+"לקבוע את קוד העמוד אוטומטית על ידי איתור באפשרות „dos charset” בקובץ smb."
+"conf."
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:137
@@ -2104,7 +2150,7 @@ msgstr "יוניקוד"
 #: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
 #, kde-format
 msgid "Mount prefix:"
-msgstr ""
+msgstr "קידומת עיגון:"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:237 smb4kmountsettings_linux.kcfg:300
@@ -2146,7 +2192,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
 #, kde-format
 msgid "Remount shares"
-msgstr ""
+msgstr "לעגן שיתופים מחדש"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:315
@@ -2158,12 +2204,16 @@ msgid ""
 "ignored. Please note that this setting does not affect the automatic "
 "remounting of shares when your computer woke up from a sleep state."
 msgstr ""
+"לעגן את כל השיתופים שהיו מעוגנים כשיצאת מהתוכנית או ששינית פרופיל מחדש. אם "
+"עיגון שיתוף מחדש נכשל, Smb4K ינסה שוב עם ההפעלה הבאה. שיתופים שעוגנו על ידי "
+"משתמשים אחרים לא יתופעלו. נא לשים לב שההגדרה הזאת לא משפיעה על עיגון אוטומטי "
+"מחדש של שיתופים כאשר המחשב שלך התעורר ממצב שינה."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
 #, kde-format
 msgid "Number of remount attempts:"
-msgstr ""
+msgstr "מספר הניסיונות לעיגון מחדש:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:320
@@ -2171,25 +2221,25 @@ msgstr ""
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
 "gives up."
-msgstr ""
+msgstr "הגדרת מספר הניסיונות שיתבצעו לעיגון שיתופים מחדש לפני ש־Smb4K יוותר."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
 #, kde-format
 msgid "Interval between remount attempts:"
-msgstr ""
+msgstr "המתנה בין ניסיונות לעיגון מחדש:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:264 smb4kmountsettings_linux.kcfg:327
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
-msgstr ""
+msgstr "אפשר להגדיר כאן את הזמן להמתנה בין ניסיונות לעיגון מחדש."
 
 #. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
 #, kde-format
 msgid "Allow the unmounting of shares that are owned by other users"
-msgstr ""
+msgstr "לאפשר ניתוק עיגון של שיתופים שבבעלותם של משתמשים אחרים"
 
 #. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:271 smb4kmountsettings_linux.kcfg:334
@@ -2198,12 +2248,14 @@ msgid ""
 "Allow the unmounting of shares that were mounted by other users. Please "
 "think before you enable this option."
 msgstr ""
+"לאפשר ניתוק של שיתופים שעוגנו על ידי משתמשים אחרים. נא לחשוב היטב בטרם הפעלת "
+"האפשרות הזאת."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
-msgstr ""
+msgstr "אילוץ ניתוק שיתופים בלתי נגישים"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:276 smb4kmountsettings_linux.kcfg:339
@@ -2213,12 +2265,15 @@ msgid ""
 "inaccessible, a lazy unmount is performed. Before the actual unmount is "
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
+"אילוץ ניתוק שיתופים בלתי נגישים (לינוקס בלבד). אם שיתוף אינו נגיש, יבוצע "
+"ניתוק עיגון עצל. לפני שמבוצע ניתוק העיגון בפועל, תוצג חלונית אזהרה שתבקש ממך "
+"לאשר את הניתוק."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
-msgstr ""
+msgstr "לזהות את כל השיתופים שמעוגנים במערכת"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:281 smb4kmountsettings_linux.kcfg:344
@@ -2228,6 +2283,8 @@ msgid ""
 "also all other mounts using the SMBFS and CIFS file system that are present "
 "on the system."
 msgstr ""
+"לא רק שהשיתופים שעוגנו יופיעו ויהיו בבעלותך, אלא גם כל שאר השיתופים שמשתמשים "
+"במערכת הקבצים SMBFS ו־CIFS שקיימים במערכת."
 
 #. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:13
@@ -2423,7 +2480,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:182
 #, kde-format
 msgid "Use server inode numbers"
-msgstr ""
+msgstr "להשתמש במספרי ה־inode של השרת"
 
 #. i18n: ectx: whatsthis, entry (ServerInodeNumbers), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:183
