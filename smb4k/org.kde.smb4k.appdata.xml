@@ -78,7 +78,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="zh-TW">在區域網路上尋找 SAMBA 及 Windows 共享裝置並掛載它們</summary>
   <description>
     <p>
-      Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
+      Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks, QtKeychain, Samba's client library (libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
@@ -98,40 +98,6 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba. Програму засновано на KDE Frameworks та клієнтській бібліотеці Samba (libsmbclient). Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
     <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
     <p xml:lang="zh-CN">Smb4K 是一款功能强大的网上邻居浏览器和 Samba 共享挂载工具。它基于 KDE 程序框架和 Samba 客户端程序库 (libsmbclient) 开发。它能够扫描您的网上邻居，发现所有可用的工作组、服务器和共享，并将所需的共享挂载到您的本地文件系统。</p>
-    <p>
-      Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.
-    </p>
-    <p xml:lang="ca">El Smb4K està basat en la biblioteca del client Samba. La seva finalitat és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
-    <p xml:lang="ca-valencia">Smb4K està basat en la biblioteca del client Samba. La seua finalitat és proporcionar un programa de fàcil ús i contindre tantes característiques com siga possible.</p>
-    <p xml:lang="de">Smb4K benutzt die Samba-Bibliothek, um ein Programm mit leichter Handhabung und möglichst vielen Funktionen zur Verfügung zu stellen.</p>
-    <p xml:lang="el">Το Smb4K βασίζεται στη βιβλιοθήκη πελάτη της Samba. Ο σκοπός του είναι να παρέχει ένα πρόγραμμα εύκολο στη χρήση και με όσο το δυνατόν περισσότερα χαρακτηριστικά.</p>
-    <p xml:lang="en-GB">Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
-    <p xml:lang="eo">Smb4K baziĝas sur la klientbiblioteko de Samba. Ĝia celo estas provizi programon, kiu estas facile uzebla kaj havas kiel eble plej multajn funkciojn.</p>
-    <p xml:lang="es">Smb4K se basa en la biblioteca de clientes de Samba. Su propósito es proporcionar un programa que sea fácil de usar y tenga tantas prestaciones como sea posible.</p>
-    <p xml:lang="et">Smb4K aluseks on Samba kliendi teek. Eesmärk on pakkuda rakendust, mis oleks hõlpsalt kasutatav ja võimalikult paljude võimalustega.</p>
-    <p xml:lang="eu">Smb4K Samba-ren bezero-liburutegian oinarrituta dago. Bere helburua erabiltzen erraza den programa bat ahal den ezaugarri gehienekin eskaintzea da.</p>
-    <p xml:lang="fi">Smb4K perustuu Samban asiakaskirjastoon. Se pyrkii tarjoamaan ohjelman, joka on sekä helppokäyttöinen että mahdollisimman monipuolinen.</p>
-    <p xml:lang="fr">Smb4K utilise la librairie client de Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
-    <p xml:lang="gl">Smb4K está baseado na biblioteca de cliente de Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
-    <p xml:lang="he">Smb4K מבוסס על ספריית הלקוח של Samba. המטרה היא לספק תוכנית שקל להשתמש ויש בה מגוון יכולות.</p>
-    <p xml:lang="hu">Az Smb4K a Samba klienskönyvtárán alapul. Célja, hogy egy könnyen használható és minél több funkcióval rendelkező programot biztosítson.</p>
-    <p xml:lang="id">Smb4K adalah berbasiskan pada pustaka klien Samba. Tujuannya adalah untuk menyediakan sebuah program yang mudah digunakan dan memiliki fitur sebanyak mungkin.</p>
-    <p xml:lang="it">Smb4K è basato sulla libreria client di Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
-    <p xml:lang="ka">Smb4k ეყრდნობა Samba-ის კლიენტის ბიბლიოთეკას. მისი დანიშნულებაა, მოგაწოდოთ პროგრამა, რომლის გამოყენებაც იოლია და რომელსაც რაც შეიძლება, დიდი ფუნქციონალი გააჩნია.</p>
-    <p xml:lang="ko">Smb4K는 Samba 클라이언트 라이브러리를 사용합니다. 사용하기 편하면서도 기능이 풍부한 프로그램을 목적으로 합니다.</p>
-    <p xml:lang="nl">Smb4K is gebaseerd op de client-bibliotheek van Samba. Het doel is een programma te bieden dat gemakkelijk is te gebruiken to use en zoveel mogelijk functies heeft.</p>
-    <p xml:lang="pl">Smb4K jest oparte na bibliotece klienta Samba. Jego zadaniem jest dostarczenie łatwego w użyciu programu jednocześnie posiadającego tak wiele możliwości jaka tylko jest możliwa.</p>
-    <p xml:lang="pt">O Smb4K baseia-se na biblioteca-cliente do Samba. O seu objectivo é oferecer um programa que seja simples de usar e tenha tantas funcionalidades quantas possíveis.</p>
-    <p xml:lang="pt-BR">O Smb4K tem como base a biblioteca-cliente do Samba. Seu objetivo é oferecer um programa que seja simples de usar e tenha todas as funcionalidades possíveis.</p>
-    <p xml:lang="ru">Приложения Smb4K, основано на клиентской библиотеке из набора приложений Samba, оно простое в использовании и содержит максимальное количество функций. </p>
-    <p xml:lang="sk">Smb4K používa programy softvérového balíka Samba. Jeho cieľom je poskytnúť program, ktorý sa ľahko používa a obsahuje toľko funkcií, ako je len možné.</p>
-    <p xml:lang="sl">Smb4K temelji na knjižnici odjemalcev Samba. Namen je zagotoviti program, ki je enostaven za uporabo in ima čim več funkcij.</p>
-    <p xml:lang="sv">Smb4K är baserat på Sambas klientbibliotek. Dess syfte är att tillhandahålla ett program som är enkelt att använda och har så många funktioner som möjligt.</p>
-    <p xml:lang="tr">Smb4K, Samba istemci kitaplığı temellidir. Amacı, kullanımı kolay ve mümkün olduğunca çok özelliğe sahip bir program sunmaktır.</p>
-    <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
-    <p xml:lang="x-test">xxSmb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
-    <p xml:lang="zh-CN">Smb4K 基于 Samba 的客户端程序库开发，致力于在保持易用性的前提下支持尽可能多的功能。</p>
-    <p xml:lang="zh-TW">Smb4K 基於 Samba 的用戶端函式庫。其目的是要提供一個易於使用的程式，並有盡可能多的功能。</p>
     <p>
       Features:
     </p>
@@ -174,7 +140,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="zh-CN">程序功能：</p>
     <p xml:lang="zh-TW">功能：</p>
     <ul>
-      <li>Scanning for (active) workgroups, hosts, and shares</li>
+      <li>Scanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</li>
       <li xml:lang="bs">Pretraživanje (aktivnih) radnih grupa, hostova i razmjena</li>
       <li xml:lang="ca">Exploració de grups de treball (actius), servidors i comparticions</li>
       <li xml:lang="ca-valencia">Exploració de grups de treball (actius), amfitrions i comparticions</li>
@@ -208,7 +174,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and sharesxx</li>
       <li xml:lang="zh-CN">扫描活动的工作组、主机和共享</li>
       <li xml:lang="zh-TW">掃描（活躍的）工作群組、主機與分享</li>
-      <li>Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
+      <li>Support of the CIFS and SMB3 file system under Linux as well as the SMBFS file system under BSD</li>
       <li xml:lang="bs">Podrška za CIFS (Linux) i SMBFS (FreeBSD) sistem datoteka</li>
       <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
       <li xml:lang="ca-valencia">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
@@ -380,7 +346,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxRemounting of previously used shares on program startxx</li>
       <li xml:lang="zh-CN">启动时重新挂载最近使用的共享</li>
       <li xml:lang="zh-TW">在程式啟動時重新掛載先前使用過的分享</li>
-      <li>Miscellaneous infos about remote network items and mounted shares</li>
+      <li>Miscellaneous information about remote network items and mounted shares</li>
       <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
       <li xml:lang="ca">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="ca-valencia">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
@@ -678,7 +644,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxSupport of printer sharesxx</li>
       <li xml:lang="zh-CN">支持打印机共享</li>
       <li xml:lang="zh-TW">印表機分享的支援</li>
-      <li>KWallet support</li>
+      <li>Support of several secure storage solutions for the login credentials via QtKeychain</li>
       <li xml:lang="bs">KWallet podrška</li>
       <li xml:lang="ca">Implementació del KWallet</li>
       <li xml:lang="ca-valencia">Implementació de KWallet</li>
@@ -748,7 +714,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxSynchronization of a remote share with a local copy and vice versaxx</li>
       <li xml:lang="zh-CN">远程共享与本地副本之间的正向和反向同步</li>
       <li xml:lang="zh-TW">將遠端分享與本機複本同步的能力，反過來也可以</li>
-      <li>Ability to define custom options for individual servers and shares</li>
+      <li>Ability to define custom settings for individual servers and shares</li>
       <li xml:lang="bs">Sposobnost definisanja prilagođenih opcija za individualne servere i razmjene</li>
       <li xml:lang="ca">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
       <li xml:lang="ca-valencia">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
@@ -782,7 +748,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxAbility to define custom options for individual servers and sharesxx</li>
       <li xml:lang="zh-CN">支持为独立服务器和共享指定自定义选项</li>
       <li xml:lang="zh-TW">為每個伺服器與分享定義自訂選項的能力</li>
-      <li>Laptop support through the Solid hardware device framework</li>
+      <li>Hardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network module</li>
       <li xml:lang="bs">Laptop podrška preko čvrstog hardver uređajnog okruženja</li>
       <li xml:lang="ca">Implementació per a portàtils a través del marc de treball Solid per a dispositius de maquinari</li>
       <li xml:lang="ca-valencia">Implementació per a portàtils a través del marc de treball Solid per a dispositius de maquinari</li>
