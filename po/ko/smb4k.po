@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-21 00:38+0000\n"
-"PO-Revision-Date: 2024-02-05 23:04+0100\n"
+"PO-Revision-Date: 2024-08-21 00:47+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -195,10 +195,9 @@ msgstr "인증"
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
-#, fuzzy, kde-format
-#| msgid "Profiles:"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "프로필:"
+msgstr " (프로필: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
@@ -212,16 +211,13 @@ msgid "Profiles"
 msgstr "프로필"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>잘못된 설정을 발견했습니다. 해당 설정 페이지로 이동하며, 거기에서 수정할 "
-"수 있습니다.</qt>"
+"잘못된 설정을 발견했습니다. 해당 설정 페이지로 이동하며, 거기에서 수정할 수 "
+"있습니다."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -230,6 +226,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"프로필을 변경했습니다. 나머지 대화 상자에서 변경 사항을\n"
+"이용하려면 먼저 변경 사항을 적용해야\n"
+"합니다."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
@@ -244,10 +243,9 @@ msgid "Username:"
 msgstr "사용자 이름:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "암호"
+msgstr "암호:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -447,29 +445,27 @@ msgstr "설정"
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "추가"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "활성으로 설정"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "위로 이동"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "항목 아래로"
+msgstr "아래로 이동"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username"
+#, kde-format
 msgid "Rename"
-msgstr "사용자 이름"
+msgstr "이름 바꾸기"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format

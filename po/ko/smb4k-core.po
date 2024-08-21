@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-02-05 23:04+0100\n"
+"PO-Revision-Date: 2024-08-21 00:46+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -2972,6 +2972,8 @@ msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
+"Smb4K에서 로그인 자격 증명을 저장하는 방법이 변경되었습니다. 해당 자격 증명"
+"은 이전됩니다. Smb4K의 이전 버전과 호환되지 않습니다."
 
 #: smb4knotification.cpp:169
 #, kde-format
@@ -3151,6 +3153,8 @@ msgid ""
 "storage:\n"
 "<tt>%1</tt></p>"
 msgstr ""
+"<p>보안 저장소에서 로그인 자격 증명을 읽는 중 오류가 발생함:\n"
+"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format

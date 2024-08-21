@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-19 10:09+0300\n"
+"PO-Revision-Date: 2024-08-20 09:35+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -159,6 +159,9 @@ msgid ""
 "items (domain members or shares) is added or updated. Please note that a "
 "domain or host item will always be expanded when you execute it."
 msgstr ""
+"הרחבת פריטי שם התחום והמארח אוטומטית כאשר רשימה של פריטי רשת משויכים (חברים "
+"או שיתופים בשם התחום) מעודכנים. נא לשים לב שפריט שם תחום או מארח תמיד יורכב "
+"עם הפעלתו."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
@@ -385,7 +388,7 @@ msgstr ""
 #: smb4k.kcfg:178
 #, kde-format
 msgid "Master browsers require authentication"
-msgstr ""
+msgstr "דפדפנים ראשיים דורשים אימות"
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:179
@@ -394,6 +397,8 @@ msgid ""
 "The master browsers in your network neighborhood require a login to return "
 "the browse list. This setting is rarely needed."
 msgstr ""
+"הדפדפנים הראשיים בשכנים ברשת שלך דורשים כניסה כדי לחזור לרשימת העיון. ההגדרה "
+"הזאת נחוצה לעיתים נדירות."
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:183
@@ -413,26 +418,26 @@ msgstr "להשתמש ב־Kerberos לאימות. שימושי רק לסביבת A
 #: smb4k.kcfg:188
 #, kde-format
 msgid "Use Winbind ccache for authentication"
-msgstr ""
+msgstr "ה־ccache של Winbind לאימות"
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:189
 #, kde-format
 msgid "Use the Winbind ccache for authentication."
-msgstr ""
+msgstr "להשתמש ב־ccache של Winbind לאימות"
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:193
 #, kde-format
 msgid "Set the encryption level to:"
-msgstr ""
+msgstr "הגדרת רמת ההצפנה לכדי:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:194 smb4k.kcfg:198
 #, kde-format
 msgid "Set the level of encryption that is used for making connections."
-msgstr ""
+msgstr "הגדרת רמת ההצפנה שתשמש להקמת חיבורים."
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:201
@@ -456,7 +461,7 @@ msgstr "דרישה"
 #: smb4k.kcfg:213
 #, kde-format
 msgid "Preview hidden files and directories"
-msgstr ""
+msgstr "תצוגה מקדימה של קבצים ותיקיות נסתרים"
 
 #. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
 #: smb4k.kcfg:214
@@ -473,19 +478,19 @@ msgstr ""
 #: smb4k.kcfg:218
 #, kde-format
 msgid "Detect printer shares"
-msgstr ""
+msgstr "זיהוי שיתופי מדפסות"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
 #: smb4k.kcfg:219
 #, kde-format
 msgid "Printer shares are detected."
-msgstr ""
+msgstr "שיתופי מדפסות התגלו."
 
 #. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:223
 #, kde-format
 msgid "Detect hidden shares"
-msgstr ""
+msgstr "זיהוי שיתופים נסתרים"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:224
@@ -494,12 +499,13 @@ msgid ""
 "Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
 "Musik$ or IPC$."
 msgstr ""
+"שיתופים נסתרים התגלו. שיתופים נסתרים מסתיים בתו $, למשל: Musik$‎ או IPC$‎."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:228
 #, kde-format
 msgid "Enable Wake-On-LAN features"
-msgstr ""
+msgstr "הפעלת יכולות השכמת רשת (Wake-On-LAN)"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:229
@@ -510,12 +516,16 @@ msgid ""
 "magic packet send via a UDP socket to wake up remote servers. If you want to "
 "take advantage of the Wake-On-LAN feature, you need to enable this option."
 msgstr ""
+"Wake-on-LAN (WOL - השכמה דרך השרת) הוא תקן לתקשורת מחשבים דרך אתרנט שמאפשר "
+"להפעיל או להעיר מחשבים דרך הודעת רשת. Smb4K משתמש במנת הנתונים הקסומה הזאת "
+"דרך שקע UDP כדי להעיר שרתים מרוחקים. כדי להשתמש ביכולת ההשכמה דרך הרשת, יש "
+"להפעיל את האפשרות הזאת."
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:233
 #, kde-format
 msgid "Waiting time:"
-msgstr ""
+msgstr "זמן המתנה:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:234
@@ -525,12 +535,14 @@ msgid ""
 "LAN packets and the scanning of the network neighborhood or the mounting of "
 "a share."
 msgstr ""
+"זה זמן ההמתנה בשניות בין שליחת מנות הנתונים Wake-On-LAN (השכמה דרך הרשת "
+"המקומית) לבין סריקת השכנים ברשת או לעיגון שיתוף."
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:248
 #, kde-format
 msgid "Synchronization prefix:"
-msgstr ""
+msgstr "קידומת סנכרון:"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:249
@@ -541,6 +553,8 @@ msgid ""
 "elsewhere, you will be able to choose a different path before the actual "
 "synchronization begins."
 msgstr ""
+"עם הקידומת הזאת תיווצר תיקיית היעד לסנכרון. עם זאת, כדי לאחסן את הנתונים של "
+"שיתוף מסוים במקום אחר, יתאפשר לך לבחור נתיב אחר לפני שהסנכרון מתחיל בפועל."
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
 #: smb4k.kcfg:253
@@ -552,19 +566,19 @@ msgstr "מצב ארכיון"
 #: smb4k.kcfg:254
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
-msgstr ""
+msgstr "להשתמש במצב ארכיון (‎-a,‏ ‎--archive). זאת הצורה המקוצרת של ‎-rlptgoD."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
 #: smb4k.kcfg:258
 #, kde-format
 msgid "Recurse into subdirectories"
-msgstr ""
+msgstr "נסיגה לתוך תת־תיקיות"
 
 #. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
 #: smb4k.kcfg:259
 #, kde-format
 msgid "Recurse into directories (-r, --recursive)."
-msgstr ""
+msgstr "נסיגה/רקורסיה לתוך תת־תיקיות (‎-r,‏ ‎--recursive)."
 
 #. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
 #: smb4k.kcfg:263
@@ -578,13 +592,13 @@ msgstr "עדכון קבצים"
 msgid ""
 "Update files in the destination directory that are older than in the source "
 "directory (-u, --update)."
-msgstr ""
+msgstr "עדכון קבצים בתיקיית היעד שהם ותיקים יותר מתיקיית המקור (‎-u,‏ ‎--update)."
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
 #: smb4k.kcfg:268
 #, kde-format
 msgid "Update files in place"
-msgstr ""
+msgstr "עדכון קבצים באותו המקום"
 
 #. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
 #: smb4k.kcfg:269
@@ -601,7 +615,7 @@ msgstr ""
 #: smb4k.kcfg:273
 #, kde-format
 msgid "Use relative path names"
-msgstr ""
+msgstr "להשתמש בשמות נתיבים יחסיים"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
 #: smb4k.kcfg:274
@@ -611,6 +625,8 @@ msgid ""
 "specified on the command line are sent to the server rather than just the "
 "last parts of the file names."
 msgstr ""
+"להשתמש בנתיבים יחסיים (‎-R,‏ ‎--relative). כלומר ששמות הנתיבים המלאים שצוינו "
+"שצוינו בשורת הפקודה נשלחים לשרת במקום רק החלקים האחרונים של שמות הקבצים."
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
 #: smb4k.kcfg:278
@@ -2445,7 +2461,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:172
 #, kde-format
 msgid "Do permission checks"
-msgstr ""
+msgstr "ביצוע בדיקות הרשאות"
 
 #. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:173
@@ -2457,12 +2473,16 @@ msgid ""
 "access the files and directories. This setting does not affect the normal "
 "ACL check."
 msgstr ""
+"צד הלקוח (כלומר הצד שלך) יבדוק אם יש לך את מזהה המשתמש והקבוצה (UID/GID) "
+"לפעול על קובץ או תיקייה. אולי כדאי לכבות את היכולת הזאת אם בשרת/ים יש תמיכה "
+"בהרחבות יוניקס ל־CIFS ואסור לך לגשת לקבצים ותיקיות. ההגדרה הזאת לא משפיעה על "
+"בדיקת רשימת הבקרה הרגילה."
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:177
 #, kde-format
 msgid "Attempt to set UID and GID"
-msgstr ""
+msgstr "ניסיון להגדיר מזהה משתמש וקבוצה (UID/GID)"
 
 #. i18n: ectx: whatsthis, entry (ClientControlsIDs), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:178
@@ -2475,6 +2495,11 @@ msgid ""
 "recommended that you read the manual page of mount.cifs before you change "
 "this setting."
 msgstr ""
+"במקרה שהשרת תומך בהרחבות יוניקס ל־CIFS, צד הלקוח (כלומר הצד שלך) מנסה להגדיר "
+"את מזהה המשתמש והקבוצה (UID/GID) בפועל של התהליך הנוכחי על קבצים, תיקיות "
+"והתקנים חדשים שנוצרים. אם היכולת הזאת כבוי השרת יגדיר את מזה המשתמש והקבוצה "
+"לברירת המחדל של השיתוף. מומלץ לקרוא את חוברת ההדרכה של mount.cifs בטרם שינוי "
+"ההגדרה הזאת."
 
 #. i18n: ectx: label, entry (ServerInodeNumbers), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:182
