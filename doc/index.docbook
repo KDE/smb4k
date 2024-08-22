@@ -37,7 +37,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-07-31</date>
+  <date>2024-08-22</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -1320,8 +1320,20 @@
   
     <sect2 id="profiles_enable">
       <title>Enabling and Managing Profiles</title>
-      <para>The use of different profiles can be enabled in the <link linkend="configuration_page_profiles">configuration dialog</link>. The first profile in the list, most likely the <guilabel>Home</guilabel> profile, is picked to be the active profile. You can also enable the profile migration assistant.</para>
-      <para>Two profiles are pre-defined, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton>Profiles</guibutton> configuration page and clicking <guibutton>Add</guibutton> afterwards.</para>
+      <para>The use of different profiles can be enabled in the <link linkend="configuration_page_profiles">configuration dialog</link> by ticking the <guibutton>Use profiles</guibutton> checkbox. The initial active profile is then set and indicated by the tick mark next to it in the list view. The name of the active profile is also shown in parentheses in the title of the <guilabel>Authentication</guilabel>, <guilabel>Bookmarks</guilabel> and <guilabel>Custom Settings</guilabel> configuration pages.</para>
+      <screenshot>
+        <screeninfo>Screenshot of the title section of the Authentication configuration page with indicated profile</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="configuration_page_authentication_profile_indicator.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>Screenshot of the title section of the Authentication configuration page with indicated profile</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>There are two pre-defined profiles, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, but you can have as many profiles as you want. A new profile is added by entering its name into the input line and then clicking the <guibutton>Add</guibutton> button.</para>
       <screenshot>
         <screeninfo>Screenshot of the Profiles configuration page (add profile)</screeninfo>
         <mediaobject>
@@ -1333,22 +1345,7 @@
           </textobject>
         </mediaobject>
       </screenshot>
-      <para>If you want to rename a profile, just click it and edit the name in the input line. Clicking <guibutton>Add</guibutton> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. You may also change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
-      <para>In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It takes care of the migration of all relevant settings.</para>
-      <para>The following screenshot illustrates the profile migration assistant after you have enabled the use of profiles:</para>
-      <screenshot>
-        <screeninfo>Screenshot of the profile migration assistant</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="configuration_page_profiles_migration_assistant.png" format="PNG" />
-          </imageobject>
-          <textobject>
-            <phrase>Profile Migration Assistant</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <para>The old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed under <guilabel>Old Profile</guilabel>. Under <guilabel>New Profile</guilabel> you can choose the profile from the drop-down menu to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton>OK</guibutton> button migrates the settings. Clicking <guibutton>Cancel</guibutton> cancels the action.</para>
-      <note><para>In order to use the migration assistant when you first enable the use of profiles, you must enable its use at the same time you enable the use of profiles.</para></note>
+      <para>To set the active profile, either double click the profile name or mark the profile name and click the <guibutton>Set Active</guibutton> button. To rename a profile, select it, click <guibutton>Rename</guibutton> and edit the name in the list view. All custom settings, bookmarks and default login credentials will be migrated seamlessly to the new name. To remove a profile, select it and click <guibutton>Remove</guibutton>. You may also change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
     </sect2>
   
 <!-- 
@@ -1357,12 +1354,13 @@
   
     <sect2 id="profiles_activate_profile">
       <title>Activating a Profile</title>
-      <para>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu>Profiles</guimenu> menu of the main window, or via the system tray widget, or on the <guilabel>Profiles</guilabel> page of the plasmoid.</para>
-      <para>When a profile is activated, several things happen:</para>
+
+      <para>The active profile can either be changed in the configuration dialog as mentioned <link linkend="profiles_enable">above</link>, or in the <guimenu>Profiles</guimenu> menu of the main window or system tray widget, or on the <guilabel>Profiles</guilabel> page of the plasmoid.</para>
+      <para>When a profile is activated, these things happen:</para>
       <itemizedlist>
         <listitem><para>All currently mounted shares are unmounted and scheduled for remount.</para></listitem>
         <listitem><para>All shares that were previously mounted under the newly activated profile are remounted.</para></listitem>
-        <listitem><para>The bookmarks and custom settings from the new profile are loaded.</para></listitem>
+        <listitem><para>The default login credentials (if defined), bookmarks and custom settings from the new profile are loaded.</para></listitem>
       </itemizedlist>
       <para>So, don't be surprised when things change after you select a different profile ...</para>
     </sect2>
