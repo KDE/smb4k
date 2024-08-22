@@ -80,6 +80,16 @@ SPDX-License-Identifier: CC0-1.0
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks, QtKeychain, Samba's client library (libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
+    <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE, QtKeychain i la biblioteca del client Samba (libsmbclient), i opcionalment, el client KDSoap WS-Discovery. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
+    <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE, QtKeychain i la biblioteca del client Samba (libsmbclient), i de manera opcional, el client KDSoap WS-Discovery. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
+    <p xml:lang="eu">Smb4K auzo-sare arakatzaile aurreratu bat da eta Samba partekatzeak muntatzeko erabilgarritasuna. KDE Frameworks, QtKeychain, Samba-ren bezero-liburutegian (libsmbclient) eta, aukeran , KDSoap WS-Discovery bezeroan oinarritzen da. Zure sareko auzoa miatzen du erabilgarri dauden lantalde, zerbitzari eta partekatzeen bila eta nahi diren partekatzeak muntatu ditzake zure fitxategi-sistema lokalean.</p>
+    <p xml:lang="ka">Smb4k დამატებითი ქსელის სამეზობლოს დასათვალიერებელი და Samba-ის გაზიარებების მიმაგრების პროგრამაა. ის ეყრდნობა KDE Framework-ს და Samba-ის კლიენტის ბიბლიოთეკას (libsmbclient). ის ასკანირებს თქვენი ქსელის სამეზობლოს ყველა ხელმისაწვდომი სამუშაო ჯგუფების, სერვერებისა და გაზიარებების საპოვნელად და შეუძლია, ყველა სასურველი გაზიარება თქვენს ლოკალურ ფაილურ სისტემაზე მიამაგროს.</p>
+    <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op het KDE Frameworks, QtKeychain, clientbibliotheek van Samba (libsmbclient) en, optioneel, de KDSoap WS-Discovery-client. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
+    <p xml:lang="sl">Smb4K je napredni brskalnik sosedstva omrežja in pomožni program Samba za priklop skupnih diskov. Temelji na ogrodju KDE Frameworks, QtKeychain knjižnici odjemalcev Samba (libsmbclient) in neobvezno odjemalcu KDSoap WS-Discovery. Pregleduje sosedstvo omrežja za vsem, kar je na voljo delovnih skupin, strežnikov in delov diskov in kar lahko priklopite v vaš lokalni sistem datotek.</p>
+    <p xml:lang="sv">Smb4K är en avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-kataloger. Den är baserad på KDE:s ramverk, QtKeychain, Sambas klientbibliotek (libsmbclient), och valfritt KDSoap WS-Discovery klienten. Den söker igenom ditt nätverksgrannskap för att hitta alla tillgängliga arbetsgrupper, servrar och delade kataloger, och kan montera alla delade kataloger som önskas i det lokala filsystemet.</p>
+    <p xml:lang="tr">Smb4K, gelişmiş bir ağ komşuları tarayıcısı ve samba paylaşım bağlama programıdır. KDE Frameworks, QtKeyChain, Samba istemci kitaplığı (libsmbclient) ve isteğe bağlı olarak KDSoap WS-Discovery istemcisi temellidir. Tüm ulaşılabilir çalışma grupları, sunucular ve paylaşımlar sizin ağ komşularınızı tarar, gerekli paylaşımları yerel dosya sisteminize bağlar.</p>
+    <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba Програму засновано на KDE Frameworks, QtKeychain та клієнтській бібліотеці Samba (libsmbclient), а також, за можливості, клієнті WS-Discovery KDSoap. Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
+    <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks, QtKeychain, Samba's client library (libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
     <p>
       Features:
     </p>
@@ -123,7 +133,27 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="zh-TW">功能：</p>
     <ul>
       <li>Scanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</li>
+      <li xml:lang="ca">Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de Samba, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery)</li>
+      <li xml:lang="ca-valencia">Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de Samba, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery)</li>
+      <li xml:lang="eu">Lantalde (aktiboak), ostalariak eta Samba partekatzeak bila aztertzea, Sambaren bezero liburutegia, DNS zerbitzu aurkikuntza (DNS-SD) eta, aukeran, Web zerbitzuen aurkikuntza dinamikoa (WS-Discovery) erabiliz</li>
+      <li xml:lang="ka">(აქტიური) სამუშაო ჯგუფების, ჰოსტების და გაზიარებების სკანირება Samba-ის კლიენტის ბიბლიოთეკის, DNS სერვისის აღმოჩენით (DNS-SD) და არასავალდებულოდ, ვებსერვისების დინამიკური აღმოჩენით (WS-Discovery)</li>
+      <li xml:lang="nl">Scannen naar (actieve) werkgroepen, hosts en shares met de client-bibliotheek van Samba, DNS Service Discovery (DNS-SD) en, optioneel, Web Services Dynamic Discovery (WS-Discovery)</li>
+      <li xml:lang="sl">Prečesavanje (aktivnih) delovnih skupin, gostiteljev in skupnih rab z uporabo Sambine odjemalske knjižnice, DNS Service Discovery (DNS-SD) in izbirino še Web Services Dynamic Discovery (WS-Discovery)</li>
+      <li xml:lang="sv">Sökning efter (aktiva) arbetsgrupper, värddatorer och delade resurser genom att använda Sambas klientbibliotek, DNS Service Discovery (DNS-SD) och, valfritt, Web Services Dynamic Discovery (WS-Discovery)</li>
+      <li xml:lang="tr">Samba’nın istemci kitaplığını, DNS Hizmet Keşfini (DNS-SD) ve isteğe bağlı olarak Wib Hizmetleri Dinamik Keşfi’ni (WS-Discovery) kullanarak (etkin) çalışma gruplarını, makineleri ve paylaşımları tarayın</li>
+      <li xml:lang="uk">Пошук (активних) робочих груп, вузлів та спільних ресурсів за допомогою клієнтської бібліотеки Samba, засобів виявлення служб DNS (DNS-SD) і, якщо вказано, динамічного виявлення вебслужб (WS-Discovery)</li>
+      <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)xx</li>
       <li>Support of the CIFS and SMB3 file system under Linux as well as the SMBFS file system under BSD</li>
+      <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS i SMB3 al Linux, així com el sistema de fitxers SMBFS al BSD</li>
+      <li xml:lang="ca-valencia">Implementació dels sistemes de fitxers CIFS i SMB3 a Linux, així com el sistema de fitxers SMBFS a BSD</li>
+      <li xml:lang="eu">CIFS eta SMB3 fitxategi-sistemaren euskarria Linux-en, eta SMBFS fitxategi-sistemarena BSDn</li>
+      <li xml:lang="ka">CIFS და SMB3 ფაილური სისტემების მხარდაჭერა ლინუქსში და ფაილური სისტემა SMBFS BSD-ში</li>
+      <li xml:lang="nl">Ondersteuning van het CIFS en SMB3 bestandssysteem onder Linux evenals het SMBFS bestandssysteem onder BSD</li>
+      <li xml:lang="sl">Podpora datotečnemu sistemu CIFS in SMB3 pod Linuxom ter datotečnemu sistemu SMBFS pod BSD</li>
+      <li xml:lang="sv">Stöd för CIFS och SMB3 filsystemen på Linux samt SMBFS filsystemet på BSD</li>
+      <li xml:lang="tr">Linux altında CIFS ve SMB3 dosya sistemini ve BSD altında SMBFS dosya sistemini destekler</li>
+      <li xml:lang="uk">Підтримка файлових систем CIFS і SMB3 у Linux, а також файлової системи SMBFS у BSD</li>
+      <li xml:lang="x-test">xxSupport of the CIFS and SMB3 file system under Linux as well as the SMBFS file system under BSDxx</li>
       <li>Mounting and unmounting of shares</li>
       <li xml:lang="bs">Namještanje i razmještanje razmjena</li>
       <li xml:lang="ca">El muntatge i desmuntatge de les comparticions</li>
@@ -262,6 +292,16 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">启动时重新挂载最近使用的共享</li>
       <li xml:lang="zh-TW">在程式啟動時重新掛載先前使用過的分享</li>
       <li>Miscellaneous information about remote network items and mounted shares</li>
+      <li xml:lang="ca">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
+      <li xml:lang="ca-valencia">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
+      <li xml:lang="eu">Urruneko sare-elementuei buruzko eta muntatutako partekatzeei buruzko askotariko informazioa</li>
+      <li xml:lang="ka">სხვადასხვა ინფორმაცია დაშორებული ქსელური ელემენტებისა და მიმაგრებული გაზიარებების შესახებ</li>
+      <li xml:lang="nl">Allerlei informatie over netwerk-items en aangekoppelde shares</li>
+      <li xml:lang="sl">Razne informacije o oddaljenih omrežnih predmetih in priklopljenih skupnih diskih</li>
+      <li xml:lang="sv">Diverse information om fjärrobjekt i nätverket och monterade delade resurser</li>
+      <li xml:lang="tr">Uzak ağ ögeleri ve bağlı paylaşımlar hakkında çeşitli bilgiler</li>
+      <li xml:lang="uk">Показ різноманітних відомостей щодо віддалених елементів мережі та змонтованих спільних ресурсів</li>
+      <li xml:lang="x-test">xxMiscellaneous information about remote network items and mounted sharesxx</li>
       <li>Network search</li>
       <li xml:lang="bs">Pretraga mreže</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
@@ -528,6 +568,16 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">支持打印机共享</li>
       <li xml:lang="zh-TW">印表機分享的支援</li>
       <li>Support of several secure storage solutions for the login credentials via QtKeychain</li>
+      <li xml:lang="ca">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
+      <li xml:lang="ca-valencia">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
+      <li xml:lang="eu">QtKeyChain bidez saio-hasteko egiaztagirien biltegiratze segururako hainbat soluzioren euskarria</li>
+      <li xml:lang="ka">რამდენიმე დაცული საცავის გადაწყვეტილების მხარდაჭერა ავტორიზაციის დეტალებისთვის QtKeychain-ით</li>
+      <li xml:lang="nl">Ondersteuning van verschillende veilige oplossingen voor opslag voor de aanmeldgegevens via QtKeychain</li>
+      <li xml:lang="sl">Podpora več varnim rešitvam za shranjevanje poverilnic za prijavo prek QtKeychain</li>
+      <li xml:lang="sv">Stöd för flera säkra lagringslösningar för inloggningsuppgifter via QtKeychain</li>
+      <li xml:lang="tr">Oturum açma bilgilerini kaydetmek için QtKeyChain de içerilmek üzere çeşitli güvenli depolama çözümleri desteği</li>
+      <li xml:lang="uk">Підтримка декількох рішень безпечного сховища даних для реєстраційних даних шляхом використання QtKeychain</li>
+      <li xml:lang="x-test">xxSupport of several secure storage solutions for the login credentials via QtKeychainxx</li>
       <li>Synchronization of a remote share with a local copy and vice versa</li>
       <li xml:lang="bs">Sinhronizacija udaljenih razmjena sa lokalnom kopijom i obrnuto</li>
       <li xml:lang="ca">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
@@ -563,7 +613,27 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">远程共享与本地副本之间的正向和反向同步</li>
       <li xml:lang="zh-TW">將遠端分享與本機複本同步的能力，反過來也可以</li>
       <li>Ability to define custom settings for individual servers and shares</li>
+      <li xml:lang="ca">La capacitat per a definir una configuració personalitzada individual per a servidors i comparticions</li>
+      <li xml:lang="ca-valencia">La capacitat per a definir una configuració personalitzada individual per a servidors i comparticions</li>
+      <li xml:lang="eu">Banakako zerbitzarietarako eta partekatzeetarako neurrira ipinitako ezarpenak definitzeko gaitasuna</li>
+      <li xml:lang="ka">საშუალება, აღწეროთ მორგებული პარამეტრები ინდივიდუალური სერვერებისა და გაზიარებებისათვის</li>
+      <li xml:lang="nl">Vermogen om eigen instellingen voor individuele servers en shares te definiëren</li>
+      <li xml:lang="sl">Sposobnost določanja nstavitev po meri za posamezne strežnike in skupne diske</li>
+      <li xml:lang="sv">Möjlighet att definiera egna inställningar för enskilda servrar och delade resurser</li>
+      <li xml:lang="tr">Kişisel sunucular ve paylaşımlar için özel ayarlar tanımlama yeteneği</li>
+      <li xml:lang="uk">Можливість визначення нетипових параметрів для окремих серверів та спільних ресурсів</li>
+      <li xml:lang="x-test">xxAbility to define custom settings for individual servers and sharesxx</li>
       <li>Hardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network module</li>
+      <li xml:lang="ca">Suport de maquinari mitjançant el framework Solid d'integració de dispositius, les classes d'utilitat de KDBusAddons i el mòdul Qt Network</li>
+      <li xml:lang="ca-valencia">Suport de maquinari mitjançant el framework Solid d'integració de dispositius, les classes d'utilitat de KDBusAddons i el mòdul Qt Network</li>
+      <li xml:lang="eu">Hardwarearen euskarria gailuak bateratzeko Solid «framework»aren, KDBusAddons egokitasun klaseen eta Qt sare moduluen bidez</li>
+      <li xml:lang="ka">აპარატურის მხარდაჭერა Solid device integration framework-ით, KDBusAddons-ის შესაბამისი კლასებით და Qt-ის ქსელური მოდულით</li>
+      <li xml:lang="nl">Hardware ondersteuning via het apparaatintegratieframework Solid, de KDBusAddons; gemaksklassen en de Qt-netwerkmodule</li>
+      <li xml:lang="sl">Podpora za strojno opremo prek ogrodja integracije naprav Solid, priročnih razredov KDBusAddons in modula Qt Network</li>
+      <li xml:lang="sv">Hårdvarustöd via Solid ramverket för enhetsintegrering, KDBusAddons bekvämlighetsklasserna  och Qt nätverksmodulen</li>
+      <li xml:lang="tr">Solid aygıt çatısı, KDBusAddons kolaylık sınıfları ve Qt ağ modülü aracılığıyla donanım desteği</li>
+      <li xml:lang="uk">Підтримка апаратних засобів за допомогою бібліотек інтеграції пристроїв Solid, зручних класів KDBusAddons та модуля Network Qt</li>
+      <li xml:lang="x-test">xxHardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network modulexx</li>
       <li>Wake-On-LAN capabilities</li>
       <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
       <li xml:lang="ca">Capacitats de l'activació per LAN (Wake-On-LAN)</li>
