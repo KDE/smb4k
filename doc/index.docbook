@@ -9,7 +9,6 @@
   <!ENTITY CIFS "<acronym>CIFS</acronym>">
   <!ENTITY SMB3 "<acronym>SMB3</acronym>">
   <!ENTITY Samba "<application>Samba</application>">
-  <!ENTITY solid "<application>Solid</application>">
   <!ENTITY kdbusaddons "<application>KDBusAddons</application>">
 ]>
 
@@ -37,7 +36,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-08-22</date>
+  <date>2024-08-23</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -77,7 +76,7 @@
     <listitem><para>System tray widget</para></listitem>
     <listitem><para>Support of advanced mount options</para></listitem>
     <listitem><para>Support of printer shares</para></listitem>
-    <listitem><para>&kwallet5; support</para></listitem>
+    <listitem><para>Support of several secure storage solutions for the login credentials via QtKeychain</para></listitem>
     <listitem><para>Synchronization of a remote share with a local copy, and vice versa</para></listitem>
     <listitem><para>Ability to define custom settings for individual servers and shares</para></listitem>
     <listitem><para>Hardware support through the &solid; device integration framework, the &kdbusaddons; convenience classes and the &Qt; Network module</para></listitem>
@@ -103,7 +102,7 @@
   <sect1 id="running_smb4k" >
     <title>Running &smb4k;</title>
     
-    <para>You can either launch &smb4k; from the <ulink url="https://userbase.kde.org/Plasma/Kickoff">application launcher</ulink> or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as a widget to the desktop or panel.</para>
+    <para>You can either launch &smb4k; from the <ulink url="https://userbase.kde.org/Plasma/Kickoff">application launcher</ulink> or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration that can be added as a widget to the desktop or panel.</para>
 
     <para>If &smb4k; encounters a problem on start-up or while running, the user will be notified. For the solution of some common problems see the <link linkend="trouble_shooting">Trouble Shooting</link> section.</para>
   </sect1>
@@ -4149,7 +4148,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       </mediaobject>
     </screenshot>
 
-    <para>All login credentials are stored in your password manager (&eg; KeePassXC, &kwallet; or GNOME Keyring). To change them, you can use the <link linkend="network_neighborhood_browser_authentication">password dialog</link>. To delete individual entries, use your password manager.</para>
+    <para>All login credentials are stored in your password manager (&eg; &kwallet;, GNOME Keyring or KeePassXC). To change them, you can use the <link linkend="network_neighborhood_browser_authentication">password dialog</link> or your password manager. To delete individual entries, you need to use your password manager.</para>
   </sect1>
 
 <!--
