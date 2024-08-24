@@ -83,6 +83,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE, QtKeychain i la biblioteca del client Samba (libsmbclient), i opcionalment, el client KDSoap WS-Discovery. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE, QtKeychain i la biblioteca del client Samba (libsmbclient), i de manera opcional, el client KDSoap WS-Discovery. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="eu">Smb4K auzo-sare arakatzaile aurreratu bat da eta Samba partekatzeak muntatzeko erabilgarritasuna. KDE Frameworks, QtKeychain, Samba-ren bezero-liburutegian (libsmbclient) eta, aukeran , KDSoap WS-Discovery bezeroan oinarritzen da. Zure sareko auzoa miatzen du erabilgarri dauden lantalde, zerbitzari eta partekatzeen bila eta nahi diren partekatzeak muntatu ditzake zure fitxategi-sistema lokalean.</p>
+    <p xml:lang="fr">Smb4K est un navigateur avancé de votre voisinage réseau et un utilitaire de montage pour Samba. Il repose sur les environnements de développement de KDE, le module « QtKeyChain », la bibliothèque de client pour Samba (libsmbclient) et, de façon optionnelle, le client « KDSoap WS-Discovery ». Il analyse votre voisinage réseau à la recherche de tous les groupes de travail, les serveurs et les partages disponibles. Il peut monter tous les partages demandés sur votre système de fichiers locaux.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba. Está baseada nas infraestruturas de KDE, QtKeychain, a biblioteca de cliente de Samba (libsmbclient) e, opcionalmente, o cliente KDSoap-WS-Discovery. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="ka">Smb4k დამატებითი ქსელის სამეზობლოს დასათვალიერებელი და Samba-ის გაზიარებების მიმაგრების პროგრამაა. ის ეყრდნობა KDE Framework-ს და Samba-ის კლიენტის ბიბლიოთეკას (libsmbclient). ის ასკანირებს თქვენი ქსელის სამეზობლოს ყველა ხელმისაწვდომი სამუშაო ჯგუფების, სერვერებისა და გაზიარებების საპოვნელად და შეუძლია, ყველა სასურველი გაზიარება თქვენს ლოკალურ ფაილურ სისტემაზე მიამაგროს.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op het KDE Frameworks, QtKeychain, clientbibliotheek van Samba (libsmbclient) en, optioneel, de KDSoap WS-Discovery-client. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
@@ -138,6 +139,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de Samba, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery)</li>
       <li xml:lang="ca-valencia">Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de Samba, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery)</li>
       <li xml:lang="eu">Lantalde (aktiboak), ostalariak eta Samba partekatzeak bila aztertzea, Sambaren bezero liburutegia, DNS zerbitzu aurkikuntza (DNS-SD) eta, aukeran, Web zerbitzuen aurkikuntza dinamikoa (WS-Discovery) erabiliz</li>
+      <li xml:lang="fr">Analyse des groupes de travail (actifs), hôtes et partages à l’aide de la bibliothèque « DNS-SD » (DNS Service Discovery) du client Samba, et, éventuellement, les services Internet  « WS-Discovery » (Web Services Dynamic Discovery)</li>
       <li xml:lang="gl">Buscando grupos de traballo (activos), servidores e comparticións mediante a biblioteca de cliente de Samba, o descubrimento de servizos de DNS (DNS-SD) e, opcionalmente, o descubrimento dinámico de servizos web (WS-Discovery).</li>
       <li xml:lang="ka">(აქტიური) სამუშაო ჯგუფების, ჰოსტების და გაზიარებების სკანირება Samba-ის კლიენტის ბიბლიოთეკის, DNS სერვისის აღმოჩენით (DNS-SD) და არასავალდებულოდ, ვებსერვისების დინამიკური აღმოჩენით (WS-Discovery)</li>
       <li xml:lang="nl">Scannen naar (actieve) werkgroepen, hosts en shares met de client-bibliotheek van Samba, DNS Service Discovery (DNS-SD) en, optioneel, Web Services Dynamic Discovery (WS-Discovery)</li>
@@ -151,6 +153,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS i SMB3 al Linux, així com el sistema de fitxers SMBFS al BSD</li>
       <li xml:lang="ca-valencia">Implementació dels sistemes de fitxers CIFS i SMB3 a Linux, així com el sistema de fitxers SMBFS a BSD</li>
       <li xml:lang="eu">CIFS eta SMB3 fitxategi-sistemaren euskarria Linux-en, eta SMBFS fitxategi-sistemarena BSDn</li>
+      <li xml:lang="fr">Prise en charge des systèmes de fichiers « CIFS » et « SMB3 » sous Linux, ainsi que le système de fichiers « SMBFS » sous BSD</li>
       <li xml:lang="gl">Compatibilidade cos sistemas de ficheiros CIFS e SMB3 en Linux, así como o sistema de ficheiros SMBFS en BSD.</li>
       <li xml:lang="ka">CIFS და SMB3 ფაილური სისტემების მხარდაჭერა ლინუქსში და ფაილური სისტემა SMBFS BSD-ში</li>
       <li xml:lang="nl">Ondersteuning van het CIFS en SMB3 bestandssysteem onder Linux evenals het SMBFS bestandssysteem onder BSD</li>
@@ -301,6 +304,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="ca-valencia">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="eu">Urruneko sare-elementuei buruzko eta muntatutako partekatzeei buruzko askotariko informazioa</li>
+      <li xml:lang="fr">Informations diverses sur les éléments distants de réseaux et les partages actifs</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
       <li xml:lang="ka">სხვადასხვა ინფორმაცია დაშორებული ქსელური ელემენტებისა და მიმაგრებული გაზიარებების შესახებ</li>
       <li xml:lang="nl">Allerlei informatie over netwerk-items en aangekoppelde shares</li>
@@ -579,6 +583,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
       <li xml:lang="ca-valencia">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
       <li xml:lang="eu">QtKeyChain bidez saio-hasteko egiaztagirien biltegiratze segururako hainbat soluzioren euskarria</li>
+      <li xml:lang="fr">Prise en charge de plusieurs solutions d'enregistrement sécurisé pour les identifiants de connexion grâce à QtKeychain</li>
       <li xml:lang="gl">Compatibilidade con varias solucións de almacenamento seguro para as credenciais de acceso mediante QtKeychain.</li>
       <li xml:lang="ka">რამდენიმე დაცული საცავის გადაწყვეტილების მხარდაჭერა ავტორიზაციის დეტალებისთვის QtKeychain-ით</li>
       <li xml:lang="nl">Ondersteuning van verschillende veilige oplossingen voor opslag voor de aanmeldgegevens via QtKeychain</li>
@@ -626,6 +631,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">La capacitat per a definir una configuració personalitzada individual per a servidors i comparticions</li>
       <li xml:lang="ca-valencia">La capacitat per a definir una configuració personalitzada individual per a servidors i comparticions</li>
       <li xml:lang="eu">Banakako zerbitzarietarako eta partekatzeetarako neurrira ipinitako ezarpenak definitzeko gaitasuna</li>
+      <li xml:lang="fr">Possibilité de définir une configuration personnalisée pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
       <li xml:lang="ka">საშუალება, აღწეროთ მორგებული პარამეტრები ინდივიდუალური სერვერებისა და გაზიარებებისათვის</li>
       <li xml:lang="nl">Vermogen om eigen instellingen voor individuele servers en shares te definiëren</li>
@@ -639,6 +645,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca">Suport de maquinari mitjançant el framework Solid d'integració de dispositius, les classes d'utilitat de KDBusAddons i el mòdul Qt Network</li>
       <li xml:lang="ca-valencia">Suport de maquinari mitjançant el framework Solid d'integració de dispositius, les classes d'utilitat de KDBusAddons i el mòdul Qt Network</li>
       <li xml:lang="eu">Hardwarearen euskarria gailuak bateratzeko Solid «framework»aren, KDBusAddons egokitasun klaseen eta Qt sare moduluen bidez</li>
+      <li xml:lang="fr">Prise en charge matérielle grâce à l'environnement de développement pour l'intégration de périphériques sous Solid, les classes pré-définies « KDBusAddons » et le module « QtNetwork »</li>
       <li xml:lang="gl">Compatibilidade con soporte físico mediante a infraestrutura de integración de dispositivos Solid, as clases de asistencia KDBusAddons e o módulo Network (rede) de Qt.</li>
       <li xml:lang="ka">აპარატურის მხარდაჭერა Solid device integration framework-ით, KDBusAddons-ის შესაბამისი კლასებით და Qt-ის ქსელური მოდულით</li>
       <li xml:lang="nl">Hardware ondersteuning via het apparaatintegratieframework Solid, de KDBusAddons; gemaksklassen en de Qt-netwerkmodule</li>
