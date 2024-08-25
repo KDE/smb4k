@@ -2480,19 +2480,37 @@
       <title
 >Beheer van profielen</title>
       <para
->U kunt het gebruik van verschillende profielen inschakelen in het <link linkend="configuration_page_profiles"
->configuratievenster</link
->. Het eerste profiel in de lijst, waarschijnlijk het <guilabel
->Thuis</guilabel
-> profiel. zal als actief profiel worden gebruikt. U kunt ook de assistent voor migratie van profielen inschakelen.</para>
+>Het gebruik van verschillende profielen kan ingeschakeld worden in de <link linkend="configuration_page_profiles"
+>configuratiedialoog</link
+> door het keuzevakje <guibutton
+>Profielen gebruiken</guibutton
+> te activeren. Het initiële actieve profiel wordt dan ingesteld en aangegeven door het vinkje ernaast in de lijst. De naam van het actieve profiel wordt ook in haakjes in de titel van de configuratiepagina's <guilabel
+>Authenticatie</guilabel
+>, <guilabel
+>Bladwijzers</guilabel
+> en <guilabel
+>Aangepaste instellingen</guilabel
+> getoond.</para>
+      <screenshot>
+        <screeninfo
+>Schermafdruk van de titelsectie van de configuratiepagina Authenticatie met het aangegeven profiel</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="configuration_page_authentication_profile_indicator.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Schermafdruk van de titelsectie van de configuratiepagina Authenticatie met het aangegeven profiel</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
       <para
->Er zijn al twee profielen voorgedefinieerd, <guilabel
->Thuis</guilabel
+>Er zijn twee voorgedefinieerde profielen, <guilabel
+>Home</guilabel
 > en <guilabel
 >Werk</guilabel
->, maar u kunt net zo veel profielen aanmaken als u wilt. U voegt een nieuw profiel toe door zijn naam in de invoerregel in het configuratievenster <guibutton
->Profielen</guibutton
-> in te voeren en daarna op de knop <guibutton
+>, maar u kunt net zo veel profielen aanmaken als u wilt. Een nieuw profiel wordt toegevoegd door zijn naam in de invoerregel in te voeren en daarna op de knop <guibutton
 >Toevoegen</guibutton
 > te klikken.</para>
       <screenshot>
@@ -2509,48 +2527,17 @@
         </mediaobject>
       </screenshot>
       <para
->Als u een profiel een andere naam wilt geven, dan klikt u erop om vervolgens de naam in de invoerregel te bewerken. Klik tenslotte op de knop <guibutton
->Toevoegen</guibutton
-> om de naam in de lijst bij te werken. Alle opgeslagen instellingen worden naadloos overgenomen (zonder gebruik van de assistent voor migratie). U kunt een profiel uit de lijst verwijderen door het in de lijst te selecteren en daarna op de knop <guibutton
+>Om het actieve profiel in te stellen, klik ofwel dubbel op de profielnaam of markeer de profielnaam en klik op de knop <guibutton
+>Actief maken</guibutton
+>. Om een profiel een andere naam te geven, selecteer het, klikt op <guibutton
+>Hernoemen</guibutton
+> en bewerk de naam in de lijst. Alle aangepaste instellingen, bladwijzers en standaard aanmeldgegevens zullen naadloos naar de nieuwe naam gaan. Om een profiel te verwijderen, selecteer het en klik op de knop <guibutton
 >Verwijderen</guibutton
-> te klikken. U kunt ook de volgorde van de profielen wijzigen met de knoppen <guibutton
+>. U kunt ook de volgorde van de profielen wijzigen met de knoppen <guibutton
 >Omhoog</guibutton
 > en <guibutton
 >Omlaag</guibutton
 >.</para>
-      <para
->Indien u de assistent voor migratie hebt ingeschakeld, wordt deze altijd gestart wanneer u een profiel verwijdert of wanneer u het gebruik van profielen in- of uitschakelt. Het zorgt voor migratie van alle relevante instellingen.</para>
-      <para
->De volgende schermafdrukken illustreert de assistent voor migratie van profielen nadat u het gebruik van profielen hebt ingeschakeld:</para>
-      <screenshot>
-        <screeninfo
->Schermafdruk van de assistent voor migratie van profielen</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="configuration_page_profiles_migration_assistant.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Assistent voor migratie van profielen</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <para
->Het oude profiel (<guilabel
->&lt;Standaard profiel</guilabel
-> in dit geval) staat in de lijst onder <guilabel
->Oud profiel</guilabel
->. Onder <guilabel
->Nieuw Profiel</guilabel
-> kunt u het profiel uit een afrolmenu gebruiken waarnaar de instellingen gemigreerd moeten worden. Het eerste profiel in de lijst is voorgeselecteerd. Het klikken op de knop <guibutton
->OK</guibutton
-> migreert de instellingen. Klikken op de knop <guibutton
->Annuleren</guibutton
-> annuleert de actie.</para>
-      <note
-><para
->Om de assistent voor migratie te kunnen gebruiken nadat u het gebruik van profielen de eerste keer hebt ingeschakeld, moet u het gebruik daarvan tegelijk inschakelen met het inschakelen van het gebruik van profielen.</para
-></note>
     </sect2>
   
 <!-- 
@@ -2560,14 +2547,17 @@
     <sect2 id="profiles_activate_profile">
       <title
 >Een profiel actieveren</title>
+
       <para
->Standaard wordt het eerste profiel in de lijst actief gemaakt bij het inschakelen van het gebruik van profielen. Welk profiel actief is, kunt u wijzigen in het menu <guimenu
+>Het actieve profiel kan ofwel gewijzigd worden in de configuratiedialoog zoals <link linkend="profiles_enable"
+>boven</link
+> genoemd. of in het menu <guimenu
 >Profielen</guimenu
-> van het hoofdvenster of via het widget in het systeemvak of op de <guilabel
+> van het hoofdvenster of via het widget in het systeemvak of op de pagina <guilabel
 >Profielen</guilabel
->-pagina van de plasmoid.</para>
+> van de plasmoid.</para>
       <para
->Bij het actief maken van een profiel gebeuren er verschillende dingen:</para>
+>Bij het actief maken van een profiel gebeuren deze dingen:</para>
       <itemizedlist>
         <listitem
 ><para
@@ -2579,7 +2569,7 @@
 ></listitem>
         <listitem
 ><para
->De bladwijzers en aangepaste instellingen van het nieuwe profiel zijn geladen.</para
+>De standaard aanmeldgegevens (indien gedefinieerd), bladwijzers en aangepaste instellingen van het nieuwe profiel worden geladen.</para
 ></listitem>
       </itemizedlist>
       <para

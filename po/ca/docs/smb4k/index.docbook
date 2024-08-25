@@ -58,7 +58,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->31 de juliol de 2024</date>
+>22 d'agost de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2500,19 +2500,37 @@
       <title
 >Habilitar i gestionar els perfils</title>
       <para
->L'ús de diferents perfils es pot habilitar al <link linkend="configuration_page_profiles"
+>Es pot activar l'ús de perfils diferents al <link linkend="configuration_page_profiles"
 >diàleg de configuració</link
->. El primer perfil de la llista, el més probable és que sigui el perfil de <guilabel
->Casa</guilabel
->, marcat com el perfil actiu. També podeu habilitar l'assistent per a la migració de perfils.</para>
+> marcant la casella de selecció <guibutton
+>Usa perfils</guibutton
+>. El perfil actiu inicial s'estableix i s'indica amb la marca al costat a la vista de llista. El nom del perfil actiu també es mostra entre parèntesis al títol de les pàgines de configuració <guilabel
+>Autenticació</guilabel
+>, <guilabel
+>Adreces d'interès</guilabel
+> i <guilabel
+>Configuració personalitzada</guilabel
+>.</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla de la pàgina de Configuració d'autenticació amb el perfil indicat</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="configuration_page_authentication_profile_indicator.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Captura de pantalla de la pàgina de Configuració d'autenticació amb el perfil indicat</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
       <para
 >Hi ha dos perfils predefinits, <guilabel
 >Casa</guilabel
 > i <guilabel
 >Feina</guilabel
->, però podeu definir tants perfils com vulgueu. Un perfil nou serà afegit introduint el seu nom a la línia d'entrada a la pàgina de configuració dels <guibutton
->Perfils</guibutton
-> i després fent clic a <guibutton
+>, però podeu tenir tants perfils com vulgueu. S'afegeix un perfil nou introduint el seu nom a la línia d'entrada i després fent clic al botó <guibutton
 >Afegeix</guibutton
 >.</para>
       <screenshot>
@@ -2529,48 +2547,17 @@
         </mediaobject>
       </screenshot>
       <para
->Si voleu canviar el nom d'un perfil, feu-hi clic i editeu el nom a la línia d'edició. En fer clic a <guibutton
->Afegeix</guibutton
-> s'actualitzarà el nom a la vista de llista. Totes les opcions de configuració emmagatzemades es migraran sense problemes (sense l'ús de l'assistent per a la migració). Es pot eliminar un perfil seleccionant-lo a la vista de llista i fent clic a <guibutton
->Elimina</guibutton
+>Per a definir el perfil actiu, feu doble clic al nom del perfil o marqueu el nom del perfil i feu clic al botó <guibutton
+>Estableix actiu</guibutton
+>. Per a canviar el nom d'un perfil, seleccioneu-lo, feu clic a <guibutton
+>Reanomena</guibutton
+> i editeu el nom a la vista de llista. Tots els paràmetres personalitzats, adreces d'interès i credencials predeterminades d'inici de sessió es migren sense problemes al nom nou. Per a eliminar un perfil, seleccioneu-lo i feu clic a <guibutton
+>Eliminar</guibutton
 >. També podeu canviar l'ordre dels perfils amb els botons <guibutton
 >Mou amunt</guibutton
 > i <guibutton
 >Mou avall</guibutton
 >.</para>
-      <para
->En cas que hi hàgiu habilitat l'assistent de migració, sempre es llançarà quan elimineu un perfil o quan habiliteu/inhabiliteu l'ús de perfils. Té cura de la migració de totes les opcions de configuració rellevants.</para>
-      <para
->La captura de pantalla següent il·lustra l'assistent de migració de perfils després d'habilitar l'ús dels perfils:</para>
-      <screenshot>
-        <screeninfo
->Captura de pantalla de l'assistent de migració de perfils</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="configuration_page_profiles_migration_assistant.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Assistent de migració de perfils</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <para
->El perfil antic (el <guilabel
->&lt;Perfil predeterminat&gt;</guilabel
-> en aquest cas) es llista sota <guilabel
->Perfil antic</guilabel
->. Sota <guilabel
->Perfil nou</guilabel
->, podreu utilitzar triar el perfil des del menú desplegable al qual s'hauran de migrar les opcions de configuració. Estarà preseleccionat el primer perfil de la llista. En fer clic al botó <guibutton
->D'acord</guibutton
-> es migraran les opcions de configuració. Fent clic a <guibutton
->Cancel·la</guibutton
-> es cancel·larà l'acció.</para>
-      <note
-><para
->Per a utilitzar l'assistent per a la migració quan habiliteu l'ús dels perfils, haureu d'habilitar el seu ús alhora que habiliteu l'ús dels perfils.</para
-></note>
     </sect2>
   
 <!-- 
@@ -2580,14 +2567,17 @@
     <sect2 id="profiles_activate_profile">
       <title
 >Activar un perfil</title>
+
       <para
->De manera predeterminada, el primer perfil de la llista estarà activat quan habiliteu l'ús dels perfils. El perfil actiu es podrà canviar al menú <guimenu
+>El perfil actiu es podrà canviar en el diàleg de configuració tal com s'ha dit <link linkend="profiles_enable"
+>abans</link
+>, o en el menú <guimenu
 >Perfils</guimenu
-> de la finestra principal o mitjançant el giny de la safata del sistema o a la pàgina <guilabel
+> de la finestra principal o el giny de la safata del sistema, o a la pàgina <guilabel
 >Perfils</guilabel
 > del plasmoide.</para>
       <para
->Quan s'activa un perfil, succeeixen diverses coses:</para>
+>Quan s'activa un perfil, succeeixen aquestes coses:</para>
       <itemizedlist>
         <listitem
 ><para
@@ -2599,7 +2589,7 @@
 ></listitem>
         <listitem
 ><para
->Es carregaran les adreces d'interès i la configuració personalitzada des d'aquest perfil.</para
+>Es carregen les credencials predeterminades d'inici de sessió (si s'han definit), les adreces d'interès i la configuració personalitzada des del perfil nou.</para
 ></listitem>
       </itemizedlist>
       <para
