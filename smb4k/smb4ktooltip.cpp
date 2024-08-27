@@ -1,7 +1,7 @@
 /*
     smb4ktooltip  -  Provides tooltips for Smb4K
 
-    SPDX-FileCopyrightText: 2020-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2020-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -29,7 +29,16 @@ using namespace Smb4KGlobal;
 Smb4KToolTip::Smb4KToolTip(QWidget *parent)
     : KToolTipWidget(parent)
 {
-    m_contentsWidget = new QWidget(parent);
+    m_contentsWidget = new QWidget(this);
+    QHBoxLayout *layout = new QHBoxLayout(m_contentsWidget);
+
+    m_iconLabel = new QLabel(m_contentsWidget);
+    m_iconLabel->setPixmap(KDE::icon(QStringLiteral("unknown")).pixmap(KIconLoader::SizeEnormous));
+    layout->addWidget(m_iconLabel, Qt::AlignHCenter);
+
+    m_formLayout = new QFormLayout();
+    layout->addLayout(m_formLayout);
+
     m_type = Unknown;
 }
 
@@ -47,9 +56,11 @@ void Smb4KToolTip::setupToolTip(Smb4KToolTip::Type type, NetworkItemPtr item)
         m_item = item;
     }
 
-    qDeleteAll(m_contentsWidget->children());
+    m_iconLabel->clear();
 
-    m_mainLayout = new QHBoxLayout(m_contentsWidget);
+    while (m_formLayout->rowCount() != 0) {
+        m_formLayout->removeRow(0);
+    }
 
     switch (m_type) {
     case NetworkItem: {
@@ -64,6 +75,9 @@ void Smb4KToolTip::setupToolTip(Smb4KToolTip::Type type, NetworkItemPtr item)
         break;
     }
     }
+
+    m_contentsWidget->adjustSize();
+    m_contentsWidget->ensurePolished();
 }
 
 void Smb4KToolTip::update()
@@ -99,12 +113,7 @@ void Smb4KToolTip::show(const QPoint &pos, QWindow *transientParent)
 
 void Smb4KToolTip::setupNetworkItemContents()
 {
-    QLabel *iconLabel = new QLabel(m_contentsWidget);
-    iconLabel->setPixmap(m_item->icon().pixmap(KIconLoader::SizeEnormous));
-    m_mainLayout->addWidget(iconLabel, Qt::AlignHCenter);
-
-    QFormLayout *descriptionLayout = new QFormLayout();
-    m_mainLayout->addLayout(descriptionLayout);
+    m_iconLabel->setPixmap(m_item->icon().pixmap(KIconLoader::SizeEnormous));
 
     QFont captionFont = font();
     captionFont.setBold(true);
@@ -112,13 +121,13 @@ void Smb4KToolTip::setupNetworkItemContents()
     QLabel *caption = new QLabel(m_contentsWidget);
     caption->setAlignment(Qt::AlignCenter);
     caption->setFont(captionFont);
-    descriptionLayout->addRow(caption);
+    m_formLayout->addRow(caption);
 
     KSeparator *separator = new KSeparator(Qt::Horizontal, m_contentsWidget);
-    descriptionLayout->addRow(separator);
+    m_formLayout->addRow(separator);
 
     QLabel *typeName = new QLabel(m_contentsWidget);
-    descriptionLayout->addRow(i18n("Type:"), typeName);
+    m_formLayout->addRow(i18n("Type:"), typeName);
 
     switch (m_item->type()) {
     case Workgroup: {
@@ -134,7 +143,7 @@ void Smb4KToolTip::setupNetworkItemContents()
 
         if (workgroup->hasMasterBrowser()) {
             QLabel *masterBrowserName = new QLabel(m_contentsWidget);
-            descriptionLayout->addRow(i18n("Master Browser:"), masterBrowserName);
+            m_formLayout->addRow(i18n("Master Browser:"), masterBrowserName);
 
             if (workgroup->hasMasterBrowserIpAddress()) {
                 masterBrowserName->setText(workgroup->masterBrowserName() + QStringLiteral(" (") + workgroup->masterBrowserIpAddress() + QStringLiteral(")"));
@@ -151,13 +160,13 @@ void Smb4KToolTip::setupNetworkItemContents()
         typeName->setText(i18n("Host"));
 
         QLabel *commentString = new QLabel(!host->comment().isEmpty() ? host->comment() : QStringLiteral("-"), m_contentsWidget);
-        descriptionLayout->addRow(i18n("Comment:"), commentString);
+        m_formLayout->addRow(i18n("Comment:"), commentString);
 
         QLabel *ipAddress = new QLabel(host->hasIpAddress() ? host->ipAddress() : QStringLiteral("-"), m_contentsWidget);
-        descriptionLayout->addRow(i18n("IP Address:"), ipAddress);
+        m_formLayout->addRow(i18n("IP Address:"), ipAddress);
 
         QLabel *workgroupName = new QLabel(host->workgroupName(), m_contentsWidget);
-        descriptionLayout->addRow(i18n("Workgroup:"), workgroupName);
+        m_formLayout->addRow(i18n("Workgroup:"), workgroupName);
 
         break;
     }
@@ -167,11 +176,11 @@ void Smb4KToolTip::setupNetworkItemContents()
         typeName->setText(i18n("Share (%1)", share->shareTypeString()));
 
         QLabel *commentString = new QLabel(!share->comment().isEmpty() ? share->comment() : QStringLiteral("-"), m_contentsWidget);
-        descriptionLayout->addRow(i18n("Comment:"), commentString);
+        m_formLayout->addRow(i18n("Comment:"), commentString);
 
         QLabel *mountedState = new QLabel(m_contentsWidget);
         mountedState->setObjectName(QStringLiteral("MountedState"));
-        descriptionLayout->addRow(i18n("Mounted:"), mountedState);
+        m_formLayout->addRow(i18n("Mounted:"), mountedState);
 
         if (!share->isPrinter()) {
             mountedState->setText(share->isMounted() ? i18n("yes") : i18n("no"));
@@ -180,13 +189,13 @@ void Smb4KToolTip::setupNetworkItemContents()
         }
 
         QLabel *hostName = new QLabel(share->hostName(), m_contentsWidget);
-        descriptionLayout->addRow(i18n("Host:"), hostName);
+        m_formLayout->addRow(i18n("Host:"), hostName);
 
         QLabel *ipAddressString = new QLabel(share->hasHostIpAddress() ? share->hostIpAddress() : QStringLiteral("-"), m_contentsWidget);
-        descriptionLayout->addRow(i18n("IP Address:"), ipAddressString);
+        m_formLayout->addRow(i18n("IP Address:"), ipAddressString);
 
         QLabel *locationString = new QLabel(share->displayString(), m_contentsWidget);
-        descriptionLayout->addRow(i18n("Location:"), locationString);
+        m_formLayout->addRow(i18n("Location:"), locationString);
 
         break;
     }
@@ -194,22 +203,13 @@ void Smb4KToolTip::setupNetworkItemContents()
         break;
     }
     }
-
-    m_contentsWidget->adjustSize();
-    m_contentsWidget->ensurePolished();
 }
 
 void Smb4KToolTip::setupMountedShareContents()
 {
     SharePtr share = m_item.staticCast<Smb4KShare>();
 
-    QLabel *iconLabel = new QLabel(m_contentsWidget);
-    iconLabel->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
-    iconLabel->setObjectName(QStringLiteral("IconLabel"));
-    m_mainLayout->addWidget(iconLabel, Qt::AlignHCenter);
-
-    QFormLayout *descriptionLayout = new QFormLayout();
-    m_mainLayout->addLayout(descriptionLayout);
+    m_iconLabel->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
 
     QFont captionFont = font();
     captionFont.setBold(true);
@@ -217,29 +217,28 @@ void Smb4KToolTip::setupMountedShareContents()
     QLabel *caption = new QLabel(share->shareName(), m_contentsWidget);
     caption->setAlignment(Qt::AlignCenter);
     caption->setFont(captionFont);
-    descriptionLayout->addRow(caption);
+    m_formLayout->addRow(caption);
 
     KSeparator *separator = new KSeparator(Qt::Horizontal, m_contentsWidget);
-    descriptionLayout->addRow(separator);
+    m_formLayout->addRow(separator);
 
     QLabel *locationString = new QLabel(share->displayString(), m_contentsWidget);
-    descriptionLayout->addRow(i18n("Location:"), locationString);
+    m_formLayout->addRow(i18n("Location:"), locationString);
 
     QLabel *mountpointString = new QLabel(share->path(), m_contentsWidget);
-    descriptionLayout->addRow(i18n("Mountpoint:"), mountpointString);
+    m_formLayout->addRow(i18n("Mountpoint:"), mountpointString);
 
     QLabel *loginString = new QLabel(!share->userName().isEmpty() ? share->userName() : i18n("unknown"), m_contentsWidget);
-    loginString->setObjectName(QStringLiteral("LoginString"));
-    descriptionLayout->addRow(i18n("Username:"), loginString);
+    m_formLayout->addRow(i18n("Username:"), loginString);
 
     QString owner(!share->user().loginName().isEmpty() ? share->user().loginName() : i18n("unknown"));
     QString group(!share->group().name().isEmpty() ? share->group().name() : i18n("unknown"));
 
     QLabel *ownerString = new QLabel(owner + QStringLiteral(" - ") + group, m_contentsWidget);
-    descriptionLayout->addRow(i18n("Owner:"), ownerString);
+    m_formLayout->addRow(i18n("Owner:"), ownerString);
 
     QLabel *fileSystemString = new QLabel(share->fileSystemString(), m_contentsWidget);
-    descriptionLayout->addRow(i18n("File system:"), fileSystemString);
+    m_formLayout->addRow(i18n("File system:"), fileSystemString);
 
     QString sizeIndication;
 
@@ -250,9 +249,5 @@ void Smb4KToolTip::setupMountedShareContents()
     }
 
     QLabel *sizeString = new QLabel(sizeIndication, m_contentsWidget);
-    sizeString->setObjectName(QStringLiteral("SizeString"));
-    descriptionLayout->addRow(i18n("Size:"), sizeString);
-
-    m_contentsWidget->adjustSize();
-    m_contentsWidget->ensurePolished();
+    m_formLayout->addRow(i18n("Size:"), sizeString);
 }

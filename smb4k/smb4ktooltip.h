@@ -1,7 +1,7 @@
 /*
     smb4ktooltip  -  Provides tooltips for Smb4K
 
-    SPDX-FileCopyrightText: 2020-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2020-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -15,6 +15,8 @@
 #include <QHBoxLayout>
 #include <QPoint>
 #include <QWindow>
+#include <QLabel>
+#include <QFormLayout>
 
 // KDE includes
 #include <KToolTipWidget>
@@ -67,7 +69,8 @@ private:
     NetworkItemPtr m_item;
     Type m_type;
     QWidget *m_contentsWidget;
-    QHBoxLayout *m_mainLayout;
+    QLabel *m_iconLabel;
+    QFormLayout *m_formLayout;
 };
 
 #endif
