@@ -199,7 +199,6 @@ msgstr "Autentisering"
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
 #, fuzzy, kde-format
-#| msgid "Profiles"
 msgid " (Profile: %1)"
 msgstr "Profilar"
 
@@ -216,9 +215,6 @@ msgstr "Profilar"
 
 #: smb4k/smb4kconfigdialog.cpp:161
 #, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."

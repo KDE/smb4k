@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-24 14:07+0300\n"
+"PO-Revision-Date: 2024-08-24 17:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2795,12 +2795,14 @@ msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again.</p>"
 msgstr ""
+"<p>אין תמיכה בהדפסה לסוג התוכן <b>%1</b>. נא להמיר את הקובץ ל־PDF או "
+"Postscript ולנסות שוב.</p>"
 
 #: smb4knotification.cpp:187
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
-msgstr ""
+msgstr "<p>הסימנייה לשיתוף <b>%1</b> כבר קיימת ולכן נדלג עליה.</p>"
 
 #: smb4knotification.cpp:205
 #, kde-format

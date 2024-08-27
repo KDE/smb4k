@@ -196,7 +196,6 @@ msgstr "Autentisere"
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
 #, fuzzy, kde-format
-#| msgid "Profiles"
 msgid " (Profile: %1)"
 msgstr "Profiler"
 
