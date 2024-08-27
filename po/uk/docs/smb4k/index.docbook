@@ -17,9 +17,6 @@
   <!ENTITY Samba "<application
 >Samba</application
 >">
-  <!ENTITY solid "<application
->Solid</application
->">
   <!ENTITY kdbusaddons "<application
 >KDBusAddons</application
 >">
@@ -72,7 +69,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->22 серпня 2024 року</date>
+>23 серпня 2024 року</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -170,7 +167,7 @@
 ></listitem>
     <listitem
 ><para
->Підтримка роботи з &kwallet5;</para
+>Підтримка декількох рішень безпечного сховища даних для реєстраційних даних шляхом використання QtKeychain</para
 ></listitem>
     <listitem
 ><para
@@ -7965,9 +7962,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->Усі реєстраційні дані для входу зберігатимуться у сховищі вашої програми для керування паролями (наприклад, KeePassXC, &kwallet; або у сховищі ключів GNOME). Щоб змінити їх, ви можете скористатися <link linkend="network_neighborhood_browser_authentication"
+>Усі реєстраційні дані для входу зберігатимуться у сховищі вашої програми для керування паролями (наприклад, &kwallet;, у сховищі ключів GNOME або KeePassXC). Щоб змінити їх, ви можете скористатися <link linkend="network_neighborhood_browser_authentication"
 >вікном паролів</link
->. Щоб вилучити окремі записи, скористайтеся вашою програмою для керування паролями.</para>
+> або програмою для керування паролями. Щоб вилучити окремі записи, скористайтеся вашою програмою для керування паролями.</para>
   </sect1>
 
 <!--
