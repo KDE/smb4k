@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-21 00:38+0000\n"
+"POT-Creation-Date: 2024-08-28 00:39+0000\n"
 "PO-Revision-Date: 2024-05-10 14:21+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -245,7 +245,7 @@ msgstr "Alapértelmezett belépés"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
-#: smb4k/smb4ktooltip.cpp:233
+#: smb4k/smb4ktooltip.cpp:230
 #, kde-format
 msgid "Username:"
 msgstr "Felhasználónév:"
@@ -259,7 +259,7 @@ msgstr "Jelszó"
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:294 smb4k/smb4kmountdialog.cpp:82
-#: smb4k/smb4ktooltip.cpp:160
+#: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "Munkacsoport:"
@@ -267,7 +267,7 @@ msgstr "Munkacsoport:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:286 smb4k/smb4kmountdialog.cpp:75
-#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
+#: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-cím:"
@@ -822,8 +822,8 @@ msgstr ""
 "Adja meg a helyet (UNC-cím) és opcionálisan az IP-címet és munkacsoportot a "
 "megosztás csatolásához."
 
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:189
-#: smb4k/smb4ktooltip.cpp:226
+#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:196
+#: smb4k/smb4ktooltip.cpp:224
 #, kde-format
 msgid "Location:"
 msgstr "Hely:"
@@ -1184,88 +1184,88 @@ msgid ""
 "of <b>%1</b>."
 msgstr "Adja meg a forrás- és célmappát a szinkronizációhoz."
 
-#: smb4k/smb4ktooltip.cpp:121
+#: smb4k/smb4ktooltip.cpp:128
 #, kde-format
 msgid "Type:"
 msgstr "Típus:"
 
-#: smb4k/smb4ktooltip.cpp:130
+#: smb4k/smb4ktooltip.cpp:137
 #, kde-format
 msgid "DNS-SD Browsing Domain"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:132
+#: smb4k/smb4ktooltip.cpp:139
 #, kde-format
 msgid "Workgroup"
 msgstr "Munkacsoport"
 
-#: smb4k/smb4ktooltip.cpp:137
+#: smb4k/smb4ktooltip.cpp:144
 #, kde-format
 msgid "Master Browser:"
 msgstr "Főtallózó:"
 
-#: smb4k/smb4ktooltip.cpp:151
+#: smb4k/smb4ktooltip.cpp:158
 #, kde-format
 msgid "Host"
 msgstr "Gép"
 
-#: smb4k/smb4ktooltip.cpp:154 smb4k/smb4ktooltip.cpp:170
+#: smb4k/smb4ktooltip.cpp:161 smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "Comment:"
 msgstr "Megjegyzés:"
 
-#: smb4k/smb4ktooltip.cpp:167
+#: smb4k/smb4ktooltip.cpp:174
 #, kde-format
 msgid "Share (%1)"
 msgstr "Megosztás (%1)"
 
-#: smb4k/smb4ktooltip.cpp:174
+#: smb4k/smb4ktooltip.cpp:181
 #, kde-format
 msgid "Mounted:"
 msgstr "Csatolva:"
 
-#: smb4k/smb4ktooltip.cpp:177
+#: smb4k/smb4ktooltip.cpp:184
 #, kde-format
 msgid "yes"
 msgstr "igen"
 
-#: smb4k/smb4ktooltip.cpp:177
+#: smb4k/smb4ktooltip.cpp:184
 #, kde-format
 msgid "no"
 msgstr "nem"
 
-#: smb4k/smb4ktooltip.cpp:183
+#: smb4k/smb4ktooltip.cpp:190
 #, kde-format
 msgid "Host:"
 msgstr "Gép:"
 
-#: smb4k/smb4ktooltip.cpp:229
+#: smb4k/smb4ktooltip.cpp:227
 #, kde-format
 msgid "Mountpoint:"
 msgstr "Csatolási pont:"
 
-#: smb4k/smb4ktooltip.cpp:231 smb4k/smb4ktooltip.cpp:235
-#: smb4k/smb4ktooltip.cpp:236 smb4k/smb4ktooltip.cpp:249
+#: smb4k/smb4ktooltip.cpp:229 smb4k/smb4ktooltip.cpp:232
+#: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:246
 #, kde-format
 msgid "unknown"
 msgstr "ismeretlen"
 
-#: smb4k/smb4ktooltip.cpp:239
+#: smb4k/smb4ktooltip.cpp:236
 #, kde-format
 msgid "Owner:"
 msgstr "Tulajdonos:"
 
-#: smb4k/smb4ktooltip.cpp:242
+#: smb4k/smb4ktooltip.cpp:239
 #, kde-format
 msgid "File system:"
 msgstr "Fájlrendszer:"
 
-#: smb4k/smb4ktooltip.cpp:247
+#: smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
 msgstr "%1 / %2 szabad (%3 használt)"
 
-#: smb4k/smb4ktooltip.cpp:254
+#: smb4k/smb4ktooltip.cpp:250
 #, kde-format
 msgid "Size:"
 msgstr "Méret:"
