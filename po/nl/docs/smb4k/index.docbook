@@ -17,9 +17,6 @@
   <!ENTITY Samba "<application
 >Samba</application
 >">
-  <!ENTITY solid "<application
->Solid</application
->">
   <!ENTITY kdbusaddons "<application
 >KDBusAddons</application
 >">
@@ -58,7 +55,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-07-31</date>
+>2024-08-23</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -156,7 +153,7 @@
 ></listitem>
     <listitem
 ><para
->Ondersteuning van &kwallet5;</para
+>Ondersteuning van verschillende veilige oplossingen voor opslag voor de aanmeldgegevens via QtKeychain</para
 ></listitem>
     <listitem
 ><para
@@ -221,7 +218,7 @@
 ></userinput
 > te typen. &smb4k; komt met een <link linkend="plasmoid"
 >&plasmoid;</link
-> voor betere bureaubladintegratie. Het kan toegevoegd worden als een widget aan het bureaublad of paneel.</para>
+> voor betere bureaubladintegratie, die toegevoegd kan worden als een widget aan het bureaublad of paneel.</para>
 
     <para
 >Als &smb4k; een probleem tegenkomt bij opstarten of tijdens werking zal de gebruiker een melding krijgen. Voor de oplossing van sommige algemene problemen zie de sectie <link linkend="trouble_shooting"
@@ -268,7 +265,7 @@
 >weergave van aangekoppelde shares</link
 >.</para>
     <para
->De statusbalk biedt u enige informatie over de huidige status van &smb4k;. als het programma een opdracht van de gebruiker uitvoert (&eg; een share aankoppelen), dan krijgt u in de linker sectie een melding met een beschrijving en een voortgangsbalk te zien. De twee pictogrammen aan de rechterkant geven aan of er shares zijn aangekoppeld (pictogram van een netwerkmap) en de status van het systeem voor authenticatie (portefeuille of sleutel pictogram) weer.</para>
+>De statusbalk biedt u enige informatie over de huidige status van &smb4k;. als het programma een opdracht van de gebruiker uitvoert (&eg; een share aankoppelen), dan krijgt u in de linker sectie een melding met een beschrijving en een voortgangsbalk te zien. Het pictogram aan de rechterkant geeft aan of er shares zijn aangekoppeld (pictogram van een netwerkmap) en de status van het systeem voor authenticatie (portefeuille of sleutel pictogram) weer.</para>
     <para
 >Als u de dock widgets als tabs heeft gearrangeerd, dan krijgt u extra visuele informatie. Elke keer als een share wordt aangekoppeld of afgekoppeld, dan licht de tab <guilabel
 >Aangekoppelde gedeelde mappen</guilabel
@@ -280,7 +277,7 @@
 ><guimenuitem
 >Widgets vastzetten</guimenuitem
 ></menuchoice
->). U kunt ze ook met de muis verslepen en binnen het hoofdvenster op verschillende plekken vastzetten. U kunt ze zelfs van het hoofdvenster losmaken. U kunt de statusbalk en de werkbalken via de respectievelijke menu-items <menuchoice
+>). U kunt ze ook met de muis verslepen en binnen het hoofdvenster op verschillende plekken vastzetten. U kunt ze zelfs van het hoofdvenster losmaken. U kunt de statusbalk en de werkbalk via de respectievelijke menu-items <menuchoice
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
@@ -290,9 +287,9 @@
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
->Getoonde werkbalken</guimenuitem
+>Werkbalk tonen</guimenuitem
 ></menuchoice
-> tonen of verbergen.</para>
+>.</para>
   </sect1>
 
 <!-- 
@@ -349,19 +346,19 @@
 >LOCAL</emphasis
 > in de netwerkomgevingsbrowser. Dit is het standaard lokale DNS domein gebruikt door services zoals <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)"
 >Avahi</ulink
-> en niet een actueel &Windows;-domein. Een domein of werkgroepitem openen toont de servers die er toe behoren. Als u toegang tot de shares van een van de servers wilt, moet u de gewenste server openen.</para>
-      <para
->Ook is het mogelijk om voordat u de netwerkomgeving gaat scannen de servers die in slaapstand staan weer in te schakelen (Wake-On-LAN). Als deze mogelijkheid is ingeschakeld, dan zal &smb4k; een speciaal pakket sturen naar elke server die weer wakker gemaakt moet worden en daarna een ingestelde tijd wachten voordat het de werkgroepen en domeinen gaat opvragen. U kunt de Wake-On-LAN inschakelen in het <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->configuratiedialoog</link
->. De servers die uit de slaapstand moet komen kunt u opgeven in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_settings"
->Aangepaste instellingen</link
->.</para>
+> en niet een actueel &Windows;-domein. Een domein of werkgroepitem openen toont de servers die er toe behoren. Als u toegang tot de shares van een van de servers wilt, is het nodig dat u de gewenste server opent.</para>
       <note>
         <para
 >Als u DNS Service Discovery gebruikt en de Zeroconf-daemon (Avahi) is niet actief, dan toont &smb4k; een foutmelding. Voor details zie de sectie <link linkend="trouble_shooting_zeroconf"
 >Probleemoplossing</link
 >.</para>
       </note>
+      <para
+>Ook is het mogelijk om voordat u de netwerkomgeving gaat scannen de servers die in slaapstand staan weer in te schakelen (Wake-On-LAN). Als deze mogelijkheid is ingeschakeld, dan zal &smb4k; een speciaal pakket sturen naar elke server die weer wakker gemaakt moet worden en daarna een ingestelde tijd wachten voordat het de werkgroepen en domeinen gaat opvragen. U kunt de Wake-On-LAN inschakelen in het <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>configuratiedialoog</link
+>. De servers die uit de slaapstand moet komen kunt u opgeven in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
+>.</para>
     </sect2>
     
 <!--
@@ -563,7 +560,7 @@
           <listitem>
             <para
 >Open het <link linkend="network_neighborhood_browser_authentication"
->dialoog voor authenticatie</link
+>wachtwoorddialoog</link
 > waar u voor de gekozen server en share de gebruikersnaam en wachtwoord kunt opgeven. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
           </listitem>
         </varlistentry>
@@ -754,8 +751,8 @@
       </orderedlist>
 
       <para
->Een share is vaak met een wachtwoord beveiligd. In een dergelijk geval zal een <link linkend="network_neighborhood_browser_authentication"
->dialoogvenster voor authenticatie</link
+>Shares zijn vaak met een wachtwoord beveiligd. In een dergelijk geval zal e <link linkend="network_neighborhood_browser_authentication"
+>wachtwoorddialoog</link
 >worden geopend zodat u de juiste gebruikersnaam (als deze nog niet is opgegeven) en wachtwoord kunt opgeven. &smb4k; zal daarna verder gaan met het aankoppelen van de share tenzij u een verkeerde naam of wachtwoord heeft opgegeven. In dat geval zal het dialoogvenster voor authenticatie opnieuw openen. U krijgt een melding als het aankoppelen gelukt is en zal de share verschijnen in de weergave <link linkend="shares_view"
 >Aangekoppelde shares</link
 >. Als het aankoppelen is mislukt, krijgt u door <ulink url="man:/mount.cifs"
@@ -7957,9 +7954,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->Alle aanmeldgegevens worden opgeslagen in uw wachtwoordbeheerder (&eg; KeePassXC, &kwallet; of GNOME Keyring). Om ze te wijzigen kunt u de <link linkend="network_neighborhood_browser_authentication"
+>Alle aanmeldgegevens worden opgeslagen in uw wachtwoordbeheerder (&eg; &kwallet;, GNOME Keyring of KeePassXC). Om ze te wijzigen kunt u de <link linkend="network_neighborhood_browser_authentication"
 >wachtwoorddialoog</link
-> gebruiken. Om individuele items te verwijderen, gebruik uw wachtwoordbeheerder.</para>
+> of uw wachtwoordbeheerder gebruiken. Om individuele items te verwijderen, moet u uw wachtwoordbeheerder gebruiken.</para>
   </sect1>
 
 <!--

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-24 17:09+0300\n"
+"PO-Revision-Date: 2024-08-27 16:55+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -243,7 +243,7 @@ msgstr "הגדרת גודל הסמל לדפדפן שכנים ברשת."
 #: smb4k.kcfg:115
 #, kde-format
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
-msgstr ""
+msgstr "להשתמש בגילוי שירותי רשת דינמי (WS-Discovery) לעיון"
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116

@@ -17,9 +17,6 @@
   <!ENTITY Samba "<application
 >Samba</application
 >">
-  <!ENTITY solid "<application
->Solid</application
->">
   <!ENTITY kdbusaddons "<application
 >KDBusAddons</application
 >">
@@ -58,7 +55,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->22 d'agost de 2024</date>
+>23 d'agost de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -156,7 +153,7 @@
 ></listitem>
     <listitem
 ><para
->Implementació del &kwallet5;</para
+>Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</para
 ></listitem>
     <listitem
 ><para
@@ -272,7 +269,7 @@
 >vista de les comparticions muntades</link
 >, respectivament.</para>
     <para
->La barra d'estat proporciona informació sobre l'estat actual del &smb4k;. Si l'aplicació està processant una sol·licitud d'usuari (&pex;, el muntatge d'una compartició), es mostrarà un missatge descriptiu en la secció més a l'esquerra i una barra de progrés amb un indicador d'ocupat. Les dues icones a la part dreta indiquen si hi ha comparticions muntades (icona de la carpeta de xarxa) i l'estat del sistema d'autenticació (la icona de cartera o de clau).</para>
+>La barra d'estat proporciona informació sobre l'estat actual del &smb4k;. Si l'aplicació està processant una sol·licitud d'usuari (&pex;, el muntatge d'una compartició), es mostrarà un missatge descriptiu en la secció més a l'esquerra i una barra de progrés amb un indicador d'ocupat. La icona de la part dreta indica si hi ha comparticions muntades.</para>
     <para
 >Si els ginys acoblats estan disposats en pestanyes, l'usuari obté informació visual addicional. Cada vegada que es munta o desmunta una compartició, la pestanya <guilabel
 >Comparticions muntades</guilabel
@@ -284,7 +281,7 @@
 ><guimenuitem
 >Acobla els ginys</guimenuitem
 ></menuchoice
->. També es poden arrossegar amb el ratolí i acoblar a diferents àrees de la finestra principal. Fins i tot podeu desacoblar-los de la finestra principal. La barra d'estat i les barres d'eines es poden ocultar o mostrar alternant les entrades de menú <menuchoice
+>. També es poden arrossegar amb el ratolí i acoblar a diferents àrees de la finestra principal. Fins i tot podeu desacoblar-los de la finestra principal. La barra d'estat i la barra d'eines es poden ocultar o mostrar alternant les entrades de menú <menuchoice
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
@@ -294,7 +291,7 @@
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
->Mostra les barres d'eines</guimenuitem
+>Mostra la barra d'eines</guimenuitem
 ></menuchoice
 >, respectivament.</para>
   </sect1>
@@ -353,19 +350,19 @@
 >LOCAL</emphasis
 >. Aquest és el domini DNS local predeterminat utilitzat per serveis com <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)"
 >Avahi</ulink
-> i no un domini real de &Windows;. En obrir un element de domini o grup de treball, es mostraran els servidors que li pertanyen. Si voleu accedir als recursos compartits d'un dels servidors, haureu d'obrir el servidor desitjat.</para>
-      <para
->També hi ha la possibilitat de despertar els servidors en suspensió abans d'escanejar el veïnatge de xarxa (activació per LAN «Wake-On-LAN»). Si aquesta característica està habilitada, el &smb4k; envia un paquet màgic a cada servidor que s'ha de despertar i espera el temps definit fins que comença la cerca dels grups de treball i dominis. L'ajust de l'activació per LAN (Wake-On-LAN) pot activar-se en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->diàleg de configuració</link
->. Els servidors que s'han de despertar s'han de definir al diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
-> editor.</para>
+> i no un domini real de &Windows;. En obrir un element de domini o grup de treball, es mostraran els servidors que li pertanyen. Si voleu accedir a les comparticions d'un dels servidors, cal obrir el servidor desitjat.</para>
       <note>
         <para
 >Si esteu utilitzant el descobriment de serveis DNS i el dimoni Zeroconf (Avahi) no s'està executant, el &smb4k; mostrarà una notificació d'error. Vegeu la secció <link linkend="trouble_shooting_zeroconf"
 >Resolució de problemes</link
 > per als detalls.</para>
       </note>
+      <para
+>També hi ha la possibilitat de despertar els servidors en suspensió abans d'escanejar el veïnatge de xarxa (activació per LAN «Wake-On-LAN»). Si aquesta característica està habilitada, el &smb4k; envia un paquet màgic a cada servidor que s'ha de despertar i espera el temps definit fins que comença la cerca dels grups de treball i dominis. L'ajust de l'activació per LAN (Wake-On-LAN) pot activar-se en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>diàleg de configuració</link
+>. Els servidors que s'han de despertar s'han de definir al diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
+> editor.</para>
     </sect2>
     
 <!--
@@ -567,7 +564,7 @@
           <listitem>
             <para
 >Obre el <link linkend="network_neighborhood_browser_authentication"
->diàleg d'autenticació</link
+>diàleg de contrasenya</link
 > a on es pot proporcionar el nom d'usuari i la contrasenya per a cada servidor i compartició seleccionada. Si no s'ha seleccionat cap element ni cap grup de treball, aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
@@ -758,9 +755,9 @@
       </orderedlist>
 
       <para
->Sovint, una compartició està protegida amb una contrasenya. En aquest cas, apareixerà un <link linkend="network_neighborhood_browser_authentication"
->diàleg d'autenticació</link
-> i haureu d'introduir el nom d'usuari (si no n'hi ha ja un) i una contrasenya correcta. El &smb4k; procedirà al muntatge de la compartició a menys que s'hagi subministrat un nom d'usuari o contrasenya incorrectes. En aquest cas, el diàleg d'autenticació tornarà a aparèixer. Si el procés de muntatge s'ha realitzat correctament, es mostrarà una notificació a l'usuari i la compartició apareixerà a la vista de les <link linkend="shares_view"
+>Sovint, les comparticions estan protegides amb contrasenyes. En aquest cas, apareixerà el <link linkend="network_neighborhood_browser_authentication"
+>diàleg de contrasenya</link
+> i caldrà introduir el nom d'usuari (si no n'hi ha ja un) i la contrasenya correcta. El &smb4k; procedirà al muntatge de la compartició a menys que s'hagi subministrat un nom d'usuari o contrasenya incorrectes. En aquest cas, el diàleg d'autenticació tornarà a aparèixer. Si el procés de muntatge s'ha realitzat correctament, es mostrarà una notificació a l'usuari i la compartició apareixerà a la vista de les <link linkend="shares_view"
 >comparticions muntades</link
 >. Si el muntatge falla, una notificació amb el missatge d'error serà retornada per <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -7969,9 +7966,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->Totes les credencials d'inici de sessió estan emmagatzemades en el gestor de contrasenyes (&pex; KeePassXC, &kwallet; o Keyring de GNOME). Per a canviar-les, podeu fer servir el <link linkend="network_neighborhood_browser_authentication"
+>Totes les credencials d'inici de sessió estan emmagatzemades en el gestor de contrasenyes (&pex; &kwallet;, Keyring de GNOME o KeePassXC). Per a canviar-les, podeu fer servir el <link linkend="network_neighborhood_browser_authentication"
 >diàleg de contrasenyes</link
->. Per a suprimir entrades individuals, feu servir el gestor de contrasenyes.</para>
+> o el gestor de contrasenyes. Per a suprimir entrades individuals, cal fer servir el gestor de contrasenyes.</para>
   </sect1>
 
 <!--
