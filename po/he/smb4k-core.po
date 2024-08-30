@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-27 16:55+0300\n"
+"PO-Revision-Date: 2024-08-29 22:28+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -684,7 +684,7 @@ msgstr ""
 #: smb4k.kcfg:294
 #, kde-format
 msgid "Set compression level:"
-msgstr ""
+msgstr "הגדרת רמת דחיסה:"
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
 #: smb4k.kcfg:295
@@ -693,6 +693,8 @@ msgid ""
 "Explicitly set the compression level to use (--compress-level=NUM). If NUM "
 "is non-zero, the --compress argument is implied."
 msgstr ""
+"הגדרה מפורשת של רמת הדחיסה לשימוש (‎--compress-level=NUM). אם NUM שונה מאפס, "
+"הארגומנט ‎--compress יוסק אוטומטית."
 
 #. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
 #: smb4k.kcfg:299
@@ -704,7 +706,7 @@ msgstr ""
 #: smb4k.kcfg:306
 #, kde-format
 msgid "Skip compression for following file suffixes:"
-msgstr ""
+msgstr "דילוג על דחיסה לסיומות הקבצים הבאות:"
 
 #. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
 #: smb4k.kcfg:307
@@ -727,32 +729,32 @@ msgstr ""
 #: smb4k.kcfg:316
 #, kde-format
 msgid "Preserve symlinks"
-msgstr ""
+msgstr "שימור קישורים סמליים"
 
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
 #: smb4k.kcfg:317
 #, kde-format
 msgid "Copy symlinks as symlinks (-l, --links)."
-msgstr ""
+msgstr "העתקת קישורים סמליים כקישורים סמליים (‎-l,‏ ‎--links)."
 
 #. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
 #: smb4k.kcfg:321
 #, kde-format
 msgid "Transform symlinks"
-msgstr ""
+msgstr "התמרת קישורים סמליים"
 
 #. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
 #: smb4k.kcfg:322
 #, kde-format
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
-msgstr ""
+msgstr "התמרת קישורים סמליים לכדי הפריטים אליהם הם מצביעים (‎-L,‏ ‎--copy-links)."
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
 #: smb4k.kcfg:326
 #, kde-format
 msgid "Transform unsafe symlinks"
-msgstr ""
+msgstr "התמרת קישורים סמליים מפוקפקים"
 
 #. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
 #: smb4k.kcfg:327
@@ -764,12 +766,16 @@ msgid ""
 "same way. This option has no additional effect if --copy-links has also been "
 "specified."
 msgstr ""
+"התמרת קישורים סמליים מפוקפקים לפריטים אליהם הם מצביעים (‎--copy-unsafe-"
+"links). משמעות הדבר היא שרק הקישורים הסמליים שמצביעים לפריטים מחוץ לעץ "
+"המועתק יותמרו. קישורים סמליים מלאים ומוחלטים מקבלים את אותו היחס. לאפשרות "
+"הזאת אין השפעה נוספת אם צוין גם ‎--copy-links."
 
 #. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
 #: smb4k.kcfg:331
 #, kde-format
 msgid "Ignore unsafe symlinks"
-msgstr ""
+msgstr "התעלמות מקישורים סמליים מפוקפקים"
 
 #. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
 #: smb4k.kcfg:332
@@ -1311,7 +1317,7 @@ msgstr ""
 #: smb4k.kcfg:524
 #, kde-format
 msgid "Pattern that is used for file inclusion"
-msgstr ""
+msgstr "תבנית שמשמשת להכללת קבצים"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
 #: smb4k.kcfg:529
@@ -2436,7 +2442,7 @@ msgstr "לקריאה בלבד"
 #: smb4kmountsettings_linux.kcfg:162
 #, kde-format
 msgid "Definitely assign the UID"
-msgstr ""
+msgstr "קיבוע הקצאת מזהה המשתמש"
 
 #. i18n: ectx: whatsthis, entry (ForceUID), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:163
@@ -2446,12 +2452,14 @@ msgid ""
 "the server for files and directories and to always assign the owner to be "
 "the value of the transmitted UID."
 msgstr ""
+"להנחות את הלקוח (כלומר הצד שלך) להתעלם ממזהה משתמש (UID) שסופק על ידי השרת "
+"לקבצים ותיקיות ותמיד להקצות את הבעלים לערך מזהה המשתמש שמועבר."
 
 #. i18n: ectx: label, entry (ForceGID), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:167
 #, kde-format
 msgid "Definitely assign the GID"
-msgstr ""
+msgstr "קיבוע הקצאת מזהה הקבוצה"
 
 #. i18n: ectx: whatsthis, entry (ForceGID), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:168
@@ -2461,6 +2469,8 @@ msgid ""
 "by the server for files and directories and to always assign the owner to be "
 "the value of the transmitted GID."
 msgstr ""
+"להנחות את הלקוח (כלומר הצד שלך) להתעלם ממזהה קבוצה (GID) שסופק על ידי השרת "
+"לקבצים ותיקיות ותמיד להקצות את הבעלים לערך מזהה הקבוצה שמועבר."
 
 #. i18n: ectx: label, entry (PermissionChecks), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:172
@@ -2768,19 +2778,19 @@ msgstr "<p>השיתוף <b>%1</b> נותק מ־<b>%2</b>.</p>"
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "<p>שיתוף עוגן.</p>"
+msgstr[1] "<p>שני שיתופים עוגנו.</p>"
+msgstr[2] "<p>%1 שיתופים עוגנו.</p>"
+msgstr[3] "<p>%1 שיתופים עוגנו.</p>"
 
 #: smb4knotification.cpp:130
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "<p>שיתוף נותק.</p>"
+msgstr[1] "<p>שני שיתופים נותקו.</p>"
+msgstr[2] "<p>%1 שיתופים נותקו.</p>"
+msgstr[3] "<p>%1 שיתופים נותקו.</p>"
 
 #: smb4knotification.cpp:147
 #, kde-format
@@ -2788,6 +2798,8 @@ msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
+"הדרך שבה Smb4K מאחסן את פרטי הגישה השתנתה. הם יוסבו מעתה. השינוי הזה לא תואם "
+"לגרסאות קודמות של Smb4K."
 
 #: smb4knotification.cpp:169
 #, kde-format
