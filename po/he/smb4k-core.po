@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-29 22:28+0300\n"
+"PO-Revision-Date: 2024-08-31 21:40+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -794,7 +794,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
 #: smb4k.kcfg:337
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
 "a way that makes them unusable but recoverable, or (2) to unmunge symlinks "
@@ -803,12 +803,14 @@ msgid ""
 "to slip in a symlink to an unexpected place. For more details, see the "
 "manual page of rsync."
 msgstr ""
+"האפשרות הזאת מורה ל־rsync‏ (1) לשנות את כל הקישורים הסמליים בצד המקבל בדרך "
+"שתהפוך אותם לבלתי שמישים אך ניתנים לשיקום, או (2) "
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:341
 #, kde-format
 msgid "Preserve hard links"
-msgstr ""
+msgstr "שימור קישורים קשיחים"
 
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:342
@@ -818,12 +820,15 @@ msgid ""
 "preserve the hard links that are found during the transfer. Without it, hard "
 "links are treated as though they were separate files."
 msgstr ""
+"שימור קישורים קשיחים (‎-H,‏ ‎--hard-links). האפשרויות האלו גורמות ל־rsync את "
+"הקישורים הקשיחים שנמצאים במהלך ההעברה. בלעדיהן, קישורים קשיחים יזכו ליחס של "
+"קבצים נפרדים."
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:346
 #, kde-format
 msgid "Copy directory symlinks"
-msgstr ""
+msgstr "העתקת קישורים סמליים לתיקיות"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:347
