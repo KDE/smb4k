@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-08-31 21:40+0300\n"
+"PO-Revision-Date: 2024-09-02 07:55+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -637,7 +637,7 @@ msgstr ""
 #: smb4k.kcfg:278
 #, kde-format
 msgid "Do not send implied directories"
-msgstr ""
+msgstr "לא לשלוח תיקיות מרומזות"
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
 #: smb4k.kcfg:279
@@ -650,12 +650,17 @@ msgid ""
 "elements to have big differences, such as being a symlink to a directory on "
 "one side of the transfer, and a real directory on the other side."
 msgstr ""
+"לא לשלוח תיקיות מרומזות עם ‎--relative‏ (‎--no-implied-dirs). המשמעות היא "
+"שרכיבי הנתיב המתאימים במערכת היעד נותרים ללא שינוי אם הם קיימים ותיקיות "
+"מרומזות חסרות נוצרות עם תכונות ברירת המחדל. כך אפילו אפשר שלרכיבי הנתיבים "
+"המרומזים האלה יהיו פערים גדולים, כגון קישור סמלי לתיקייה בצד אחד של ההעברה "
+"ותיקייה אמיתית בצד השני."
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
 #: smb4k.kcfg:283
 #, kde-format
 msgid "Transfer directories without recursing"
-msgstr ""
+msgstr "העברת תיקיות בלי נסיגה"
 
 #. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
 #: smb4k.kcfg:284
@@ -664,12 +669,14 @@ msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
 "level subdirectories are transferred but without their contents."
 msgstr ""
+"העברת תיקיות בלי נסיגה (‎-d,‏ ‎--dirs). משמעות הדבר היא שכל תת־התיקיותברמה "
+"העליונה מועברות ללא התוכן שלהן."
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
 #: smb4k.kcfg:289
 #, kde-format
 msgid "Compress data during transfer"
-msgstr ""
+msgstr "לדחוס את הנתונים במהלך ההעברה"
 
 #. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
 #: smb4k.kcfg:290
@@ -679,6 +686,8 @@ msgid ""
 "the amount of data that is being transferred. You may want to use this "
 "option, if you have a slow connection."
 msgstr ""
+"לדחוס את הנתונים במהלך ההעברה (‎-z,‏ ‎--compress). מפחית את כמות הנתונים "
+"שמועברים משמעותית. כדאי להשתמש באפשרות הזאת אם יש לך חיבור איטי."
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
 #: smb4k.kcfg:294
