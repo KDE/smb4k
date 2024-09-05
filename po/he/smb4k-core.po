@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-09-02 07:55+0300\n"
+"PO-Revision-Date: 2024-09-04 10:33+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -709,7 +709,7 @@ msgstr ""
 #: smb4k.kcfg:299
 #, kde-format
 msgid "The value for the UseCompressionLevel config entry"
-msgstr ""
+msgstr "הערך של רשומת ההגדרה UseCompressionLevel (להשתמש ברמת דחיסה)"
 
 #. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
 #: smb4k.kcfg:306
@@ -727,12 +727,17 @@ msgid ""
 "no file should be skipped. The default list of suffixes will be replaced by "
 "this list. For further details, see the manual page of rsync."
 msgstr ""
+"שכתוב רשימת סיומות הקבצים שלא יידחסו (‎--skip-compress=LIST). כאשר LIST אמור "
+"להיות סיומת קובץ אחת או יותר (בלי הנקודה) עם לוכסנים מפרידים ביניהם. אפשר "
+"לציין מחרוזת ריקה כדי לא לדלג על אף קובץ. רשימת סיומות ברירת המחדל תוחלף "
+"ברשימה הזאת. לפרטים נוספים, ניתן לגשת לעמוד ההנחיות של rsync."
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
 #: smb4k.kcfg:311
 #, kde-format
 msgid "The value(s) for the UseSkipCompression config entry"
 msgstr ""
+"הערך או הערכים של רשומת ההגדרות UseSkipCompression (להשתמש בדילוג על דחיסה)"
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
 #: smb4k.kcfg:316
