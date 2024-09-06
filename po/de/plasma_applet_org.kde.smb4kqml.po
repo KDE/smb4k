@@ -2,7 +2,7 @@
 # Alexander Reinholdt <alexander.reinholdt@t-online.de>, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-11 00:38+0000\n"
 "PO-Revision-Date: 2019-07-24 06:09+0200\n"

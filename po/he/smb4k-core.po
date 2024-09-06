@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-09-04 10:33+0300\n"
+"PO-Revision-Date: 2024-09-05 05:21+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -799,6 +799,9 @@ msgid ""
 "absolute symlinks are also ignored. If you use this option in conjunction "
 "with --relative you might get unexpected results."
 msgstr ""
+"התעלמות מקישורים סמליים שמפנים אל מחוץ לעץ המועתק (‎--safe-links). כל "
+"הקישורים הסמליים המלאים/מוחלטים גם יזכו להתעלמות. שימוש באפשרות הזאת בשילוב "
+"עם ‎--relative עשוי להוביל לתוצאות בלתי צפויות."
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
 #: smb4k.kcfg:336
@@ -861,7 +864,7 @@ msgstr ""
 #: smb4k.kcfg:351
 #, kde-format
 msgid "Keep directory symlinks"
-msgstr ""
+msgstr "שמירה על קישורים סמליים לתיקיות"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:352
