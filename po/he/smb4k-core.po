@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-09-05 05:21+0300\n"
+"PO-Revision-Date: 2024-09-06 17:33+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -807,11 +807,11 @@ msgstr ""
 #: smb4k.kcfg:336
 #, kde-format
 msgid "Munge symlinks"
-msgstr ""
+msgstr "התאמת נתיבים של קישורים סמליים"
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
 #: smb4k.kcfg:337
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
 "a way that makes them unusable but recoverable, or (2) to unmunge symlinks "
@@ -821,7 +821,10 @@ msgid ""
 "manual page of rsync."
 msgstr ""
 "האפשרות הזאת מורה ל־rsync‏ (1) לשנות את כל הקישורים הסמליים בצד המקבל בדרך "
-"שתהפוך אותם לבלתי שמישים אך ניתנים לשיקום, או (2) "
+"שתהפוך אותם לבלתי שמישים אך ניתנים לשיקום, או (2) לבטל התאמה של נתיבים "
+"בקישורים סמליים בצד השולח ששוחזרו במצב נתיב מותאם (‎--munge-links). שימושי אם "
+"יש לך ספק בנוגע לכך שמקור הנתונים לא ינסה להגניב קישור סמלי למקום לא צפוי. "
+"לפרטים נוספים ניתן לפנות לעמוד ההנחיות של rsync."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:341
@@ -1089,7 +1092,7 @@ msgstr ""
 #: smb4k.kcfg:426
 #, kde-format
 msgid "Delete files during transfer"
-msgstr ""
+msgstr "למחוק קבצים במהלך ההעברה"
 
 #. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
 #: smb4k.kcfg:427
@@ -1099,6 +1102,8 @@ msgid ""
 "This method is faster than --delete-before or --delete-after, but it is only "
 "supported with rsync 2.6.4 or later."
 msgstr ""
+"למחוק קבצים בצד המקבל בזמן ההעברה (‎--delete-during). השיטה הזאת מהירה יותר "
+"מ־‎--delete-before או ‎--delete-after, אך היא נתמכת רק ב־rsync 2.6.4 ומעלה."
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
 #: smb4k.kcfg:431
@@ -1438,7 +1443,7 @@ msgstr ""
 #: smb4k.kcfg:564
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
-msgstr ""
+msgstr "העתקתם קבצים בשלמותם (בלי אלגוריתם rsync)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
 #: smb4k.kcfg:565
@@ -1447,6 +1452,8 @@ msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
 "algorithm is not used and the whole file is sent as-is instead."
 msgstr ""
+"העתקת קבצים במלואם (‎-W,‏ ‎--whole-file). עם האפשרות הזאת לא ייעשה שימוש "
+"באלגוריתם המצרפי של rsync והקבצים נשלחים במלואם כפי שהם במקום."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
 #: smb4k.kcfg:569
@@ -1720,7 +1727,7 @@ msgstr "%1 על גבי %2"
 #: smb4khomesshareshandler.cpp:207
 #, kde-format
 msgid "The format of %1 is not supported."
-msgstr ""
+msgstr "התבנית של %1 אינה נתמכת."
 
 #: smb4kclient_p.cpp:1236
 #, kde-format
@@ -2207,13 +2214,13 @@ msgstr "קידומת עיגון:"
 msgid ""
 "This is the prefix where Smb4K will create the mount points and mount the "
 "remote shares."
-msgstr ""
+msgstr "זו הקידומת בה יצור Smb4K את נקודות העגינה ויעגן את השיתופים המרוחקים."
 
 #. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:304
 #, kde-format
 msgid "Force generated subdirectories to be lower case"
-msgstr ""
+msgstr "לאכוף תת־תיקיות שנוצרות שתהיינה באותיות קטנות"
 
 #. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:242 smb4kmountsettings_linux.kcfg:305
@@ -2222,6 +2229,8 @@ msgid ""
 "All names of the subdirectories created by Smb4K below the mount prefix will "
 "be lowercase."
 msgstr ""
+"כל השמות של תת־התיקיות שנוצרו על ידי Smb4K תחת העיגון תקבל קידומת באותיות "
+"קטנות."
 
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:309
@@ -2384,6 +2393,9 @@ msgid ""
 "defined in octal. In case the CIFS file system is used, this setting only "
 "takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
+"זה מצב הקבצים לשימוש ליצירת קבצים. יש להגדיר אותו בבסיס אוקטלי. במקרה שנעשה "
+"שימוש במערכת קבצים CIFS, ההגדרה הזאת תקפה רק אם השרת לא תומך בהרחבות יוניקס "
+"ל־CIFS."
 
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:41
@@ -2393,6 +2405,9 @@ msgid ""
 "defined in octal. In case the CIFS file system is used, this setting only "
 "takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
+"זה מצב הקבצים לשימוש ליצירת קבצים. יש להגדיר אותו בבסיס אוקטלי. במקרה שנעשה "
+"שימוש במערכת קבצים CIFS, ההגדרה הזאת תקפה רק אם השרת לא תומך בהרחבות יוניקס "
+"ל־CIFS."
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -2403,6 +2418,9 @@ msgid ""
 "must be defined in octal. In case the CIFS file system is used, this setting "
 "only takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
+"זה מצב התיקיות לשימוש ליצירת תיקיות. יש להגדיר אותו בבסיס אוקטלי. במקרה "
+"שנעשה שימוש במערכת קבצים CIFS, ההגדרה הזאת תקפה רק אם השרת לא תומך בהרחבות "
+"יוניקס ל־CIFS."
 
 #. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:54
@@ -2557,7 +2575,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "לא לשלוח בקשות נעילת טווח בתים"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:188
@@ -2568,6 +2586,9 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"לא לשלוח בקשות נעילת טווח בתים לשרת. הכרחי ליישומים מסוימים שנקטעים עקב "
+"נעילות טווח בתים מחייב בסגנון CIFS (ורוב שרתי ה־CIFS לא תומכים עדיין בבקשת "
+"נעילת טווח בתים כהמלצה)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:192
@@ -2675,7 +2696,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:240
 #, kde-format
 msgid "Do not cache file data at all"
-msgstr ""
+msgstr "לא להוסיף את נתוני הקבצים למטמון כלל"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:243
@@ -2844,6 +2865,8 @@ msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
 "being used and will automatically be renamed.</p>"
 msgstr ""
+"<p>התווית <b>%1</b> של הסימנייה לשיתוף <b>%2</b> כבר נמצאת בשימוש והשם שלה "
+"ישתנה אוטומטית.</p>"
 
 #: smb4knotification.cpp:225
 #, kde-format
