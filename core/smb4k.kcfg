@@ -44,7 +44,7 @@
         </entry>
         <entry name="ShowType" type="Bool">
             <label>Show the type of the share</label>
-            <whatsthis>The type of a share will be displayed in a separate column in the network neighborhood browser. It can either be Disk, Print or IPC.</whatsthis>
+            <whatsthis>The type of a share will be displayed in a separate column in the network neighborhood browser. It can either be Disk, Printer or IPC.</whatsthis>
             <default>true</default>
         </entry>
         <entry name="ShowIPAddress" type="Bool">
