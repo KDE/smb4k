@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:39+0000\n"
+"POT-Creation-Date: 2024-09-09 00:39+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -96,7 +96,7 @@ msgstr "फाइल सिस्टमः"
 #, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
-"neighborhood browser. It can either be Disk, Print or IPC."
+"neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)

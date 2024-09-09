@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:39+0000\n"
-"PO-Revision-Date: 2024-09-07 16:00+0300\n"
+"POT-Creation-Date: 2024-09-09 00:39+0000\n"
+"PO-Revision-Date: 2024-09-08 21:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -97,10 +97,13 @@ msgstr "הצגת סוג השיתוף"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The type of a share will be displayed in a separate column in the network "
+#| "neighborhood browser. It can either be Disk, Print or IPC."
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
-"neighborhood browser. It can either be Disk, Print or IPC."
+"neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 "סוג השיתוף יוצג בעמודה נפרדת בדפדפן שכנים ברשת. זה יכול להיות כונן, מדפסת או "
 "IPC."
@@ -258,7 +261,9 @@ msgid ""
 msgstr ""
 "גילוי שירותי רשת דינמי (WS-Discovery) משמש לעיון ברשת המקומית ולגלות קבוצות "
 "עבודה, שמות תחום ומארחים. שימוש אם השכנים בקשת שלך נשלטים על ידי שרתים עם "
-"גרסאות עדכניות של Windows "
+"גרסאות עדכניות של Windows. אם בחרת להשתמש באפשרות הזאת, לא אמורה להיות סיבה "
+"לאלץ את ספריית הלקוח של Samba להשתמש בפרוטוקול SMB בגרסה 1.0 לחיפוש אחר "
+"קבוצות עבודה ושמות תחום."
 
 #. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
 #: smb4k.kcfg:120
@@ -278,6 +283,12 @@ msgid ""
 "Samba's client library to use the SMB protocol version 1.0 for searching for "
 "workgroups and domains."
 msgstr ""
+"‏DNS לגילוי שירותים (DNS-SD) לגלישה משמש לעיון ברשת המקומית ולגילוי שרתים "
+"שמספקים משאבים שמשותפים דרך SMB. שמות התחום שמתגלים תואמים לשמות תחום ה־DNS "
+"המקומיים (כלומר, נקראים LOCAL) ורוב הסיכויים שהם לא אלו שמוגדרים בקרב השכנים "
+"ברשת. עם זאת, אין לזה השפעה על העיון. אם בחרת להשתמש באפשרות הזאת, אין סיבה "
+"לאלץ את ספריית לקוח ה־Samba להשתמש בפרוטוקול SMB בגרסה 1.0 לחיפוש אחר קבוצות "
+"עבודה ושמות תחום."
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:125
@@ -622,6 +633,10 @@ msgid ""
 "destination file will immediately be overwritten instead. An exception to "
 "this is if you combine this option with --backup."
 msgstr ""
+"עדכון קובצי היעד באותו המקום (‎--inplace). כברירת מחדל, rsync יוצר קודם עותק "
+"חדש של הקובץ ומעביר אותו למקום לאחר סיום ההעברה. הפעלת האפשרות הזאת תגרום "
+"לכך שלא ייווצר עותק אך קובץ היעד ישוכתב מיידית במקום. החריגה לכך היא לשלב את "
+"האפשרות הזאת עם ‎--backup."
 
 #. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
 #: smb4k.kcfg:273
@@ -943,7 +958,7 @@ msgstr ""
 #: smb4k.kcfg:371
 #, kde-format
 msgid "Preserve access times"
-msgstr ""
+msgstr "שימור זמני גישה"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:372
@@ -952,12 +967,14 @@ msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
+"שימור זמני גישה. מורה ל־rsync להגדיר את זמני הגישה (שימוש) של קובצי היעד "
+"לאותם הערכים כמו בקובצי המקור."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:376
 #, kde-format
 msgid "Preserve create times"
-msgstr ""
+msgstr "שימור זמני יצירה"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:377
@@ -966,6 +983,8 @@ msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
+"שימור זמני יצירה. מורה ל־rsync להגדיר את זמני היצירה (כמה הם חדשים) של קובצי "
+"היעד לאותם הערכים כמו בקובצי המקור."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:381
@@ -980,6 +999,8 @@ msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
 "set to the same value as the source file."
 msgstr ""
+"שימור הקבוצה (‎-g,‏ ‎--group). הקבוצה של קובץ היעד תוגדר לאותו הערך כמו בקובץ "
+"המקור."
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
 #: smb4k.kcfg:386
@@ -996,6 +1017,9 @@ msgid ""
 "run as the super user. Without this option, the owner is set to the invoking "
 "user on the receiving side."
 msgstr ""
+"שימור הבעלים (‎-o,‏ ‎--owner). הבעלים של קובץ היעד יוגדר לאותו הערך כמו בקובץ "
+"המקור, אבל רק אם ה־rsync המקבל מופעל בתור משתמש על. בלי האפשרות הזאת, הבעלים "
+"יוגדרו למשתמש המפעיל מהצד המקבל."
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
 #: smb4k.kcfg:391
@@ -1012,6 +1036,10 @@ msgid ""
 "files such as named sockets and fifos. It works only partially if rsync is "
 "not run as super user and the --super option is not specified."
 msgstr ""
+"שימור התקנים וקבצים מיוחדים (‎-D,‏ ‎--devices --specials). האפשרות הזאת גורמת ל־"
+"rsync להעביר התקנים תווים ובלוקים לצד קבצים מיוחדים כגון שקעים עם שם ו־fifos "
+"(תורי עדיפות). עובד חלקית בלבד אם rsync לא פועל עם הרשאות על והאפשרות ‎--"
+"super לא מצוינת."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
 #: smb4k.kcfg:396
@@ -1027,12 +1055,14 @@ msgid ""
 "with the files. For what happens if this option is switched off, please read "
 "rsync's manual page."
 msgstr ""
+"שימור זמנים (‎-t,‏ ‎--times). זמני השינוי מועברים יחד עם הקבצים. כדי להבין עוד "
+"מה קורה כשהאפשרות הזאת כבויה, נא לגשת אל עמוד ההנחיות של rsync."
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
 #: smb4k.kcfg:401
 #, kde-format
 msgid "Omit directories when preserving times"
-msgstr ""
+msgstr "להשמיט תיקיות בעת שימור זמנים"
 
 #. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
 #: smb4k.kcfg:402
@@ -1042,6 +1072,9 @@ msgid ""
 "that directories are omitted when modification times are being preserved. "
 "Thus, this feature only works in conjunction with --times."
 msgstr ""
+"להשמיט תיקיות בעת שימור זמנים (-O, --omit-dir-times). המשמעות היא שהתיקיות "
+"מושמטות מבחינת שימור זמני שינוי. לפיכך, היכולת הזאת עובדת רק בשילוב עם ‎--"
+"times."
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
 #: smb4k.kcfg:406
@@ -1058,6 +1091,8 @@ msgid ""
 "part of the transfer and have been successfully duplicated on the receiving "
 "side."
 msgstr ""
+"הסרת כל קובצי המקור המסונכרנים (‎--remove-source-files). מורה ל־rsync להסיר "
+"את הפריטים מהצד השולח שאינם תיקיות ושהם חלק מההעברה ושוכפלו בהצלחה בצד המקבל."
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
 #: smb4k.kcfg:411
@@ -1073,12 +1108,14 @@ msgid ""
 "delete all files from the receiving side that are not present on the sending "
 "side, but only for the directories that are being synchronized."
 msgstr ""
+"מחיקת קבצים עודפים מהיעד (‎--delete). מורה ל־rsync למחוק את כל הקבצים מהצד "
+"המקבל שאינם קיימים בצד השולח, אך רק לתיקיות שמיועדות לסנכרון."
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
 #: smb4k.kcfg:416
 #, kde-format
 msgid "Delete files before transfer"
-msgstr ""
+msgstr "מחיקת קבצים לפני ההעברה"
 
 #. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
 #: smb4k.kcfg:417
@@ -1088,12 +1125,15 @@ msgid ""
 "before). This is the default behavior if --delete or --delete-excluded is "
 "specified without one of the --delete-WHEN options."
 msgstr ""
+"מחיקת קבצים בצד המקבל לפני תחילת ההעברה (‎--delete-before). זאת התנהגות ברירת "
+"המחדל אם צוינו ‎--delete או ‎--delete-excluded בלי אחת מהאפשרויות ‎--delete-"
+"WHEN (למחוק מתי)."
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
 #: smb4k.kcfg:421
 #, kde-format
 msgid "Delete files after transfer"
-msgstr ""
+msgstr "מחיקת קבצים אחרי ההעברה"
 
 #. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
 #: smb4k.kcfg:422
@@ -1101,7 +1141,7 @@ msgstr ""
 msgid ""
 "Delete files on the receiving side after the transfer has completed (--"
 "delete-after, --del)."
-msgstr ""
+msgstr "מחיקת קבצים בצד המקבל אחרי השלמת ההעברה (‎--delete-after,‏ ‎--del)."
 
 #. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
 #: smb4k.kcfg:426
@@ -1135,6 +1175,9 @@ msgid ""
 "sending side, this tells rsync to also delete any files on the receiving "
 "side that are excluded. Refer to rsync's manual page for further information."
 msgstr ""
+"גם למחוק את הקבצים שהוחרגו מתיקיית היעד (‎--delete-excluded). בנוסף למחיקת "
+"הקבצים בצד המקבל שאינם בצד השולח, הגדרה זו מורה ל־rsync גם למחוק קבצים כלשהם "
+"בצד המקבל שהוחרגו. אפשר לפנות לעמוד ההנחיות של rsync לקבלת מידע נוסף."
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
 #: smb4k.kcfg:436
@@ -1184,6 +1227,9 @@ msgid ""
 "rsync not to delete more than NUM files or directories (NUM must be non-"
 "zero). This is useful when mirroring very large trees to prevent disasters."
 msgstr ""
+"למחוק לכל היותר את כמות הקבצים שמוגדרת כאן (‎--max-delete=NUM). מורה ל־rsync "
+"לא למחוק יותר מ־NUM (מס׳) קבצים או תיקיות (NUM חייב להיות שונה מאפס. מאוד "
+"שימוש בעת שיקוף מראה של עצים גדולים מאוד כדי למנוע אסונות."
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
 #: smb4k.kcfg:451
@@ -1604,7 +1650,7 @@ msgstr "תיקיית גיבוי"
 #: smb4k.kcfg:614
 #, kde-format
 msgid "Force fixed checksum block size:"
-msgstr ""
+msgstr "אילוץ גודל מקטע סיכום ביקורת קבוע:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
 #: smb4k.kcfg:615
@@ -1613,6 +1659,8 @@ msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
 "block size used in the rsync algorithm to a fixed value."
 msgstr ""
+"אילוץ גודל מקטע סיכום ביקורת קבוע (‎-B,‏ ‎--block-size=SIZE). אוכף גודל מקטע "
+"לשימוש באלגוריתם של rsync לערך קבוע."
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
 #: smb4k.kcfg:619
@@ -2379,6 +2427,12 @@ msgid ""
 "neighborhood with only a few Samba servers, you can safely uncheck this "
 "option and define custom options for the Samba servers."
 msgstr ""
+"רוב הגרסאות של Samba תומכות בהרחבות יוניקס או POSIX של CIFS. לשרתים האלה, "
+"חלק מהאפשרויות אינן נחוצות, כיוון שהערכים הנכונים מועברים במהלך המשא ומתן "
+"במהלך העיגון. לשרתים אחרים, אולי כדאי לבטל את סימון האפשרות הזאת, כדי לאפשר "
+"העברת ערכים שהוגדרו מראש לשרת. נא לשים לב שאם המחשב שלך נמצא בין רוב של "
+"מחשבי Windows כשכנים ברשת עם מיעוט של שרתי Samba, ניתן לבטל את האפשרות הזאת "
+"ללא חשש ולהגדיר אפשרויות מותאמות אישית לשרתי ה־Samba."
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
@@ -2390,6 +2444,9 @@ msgid ""
 "remote server supports the CIFS Unix Extensions, this setting will be "
 "ignored unless the assignment of the user ID is forced."
 msgstr ""
+"זה מזהה המשתמש (מספר) שיהיה לקבצים ולתיקיות של השיתוף המעוגן. אם בחרת להשתמש "
+"במערכת הקבצים CIFS תחת לינוקס והשרת המרוחק תומך בהרחבות יוניקס ל־CIFS, "
+"ההגדרה הזאת לא תחול אלמלא הקצאת מזהה משתמש נאכף."
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
@@ -2401,6 +2458,9 @@ msgid ""
 "and the remote server supports the CIFS Unix Extensions, this setting will "
 "be ignored unless the assignment of the group ID is forced."
 msgstr ""
+"זה מזהה הקבוצה (מספר) שיהיה לקבצים ולתיקיות של השיתוף המעוגן. אם בחרת להשתמש "
+"במערכת הקבצים CIFS תחת לינוקס והשרת המרוחק תומך בהרחבות יוניקס ל־CIFS, "
+"ההגדרה הזאת לא תחול אלמלא הקצאת מזהה קבוצה נאכף."
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:37
@@ -2467,6 +2527,10 @@ msgid ""
 "setting, Smb4K will try to automatically determine the charset by looking up "
 "the \"unix charset\" option in the smb.conf."
 msgstr ""
+"זאת ערכת התווים בה משתמש צד הלקוח (כלומר הצד שלך) או כדי להמיר את הנתיב את "
+"שמות הנתיבים מיוניקוד ואליו (CIFS, לינוקס) או לתרגומי קוד עמוד לערכת תווים "
+"(SMBFS,‏ FreeBSD). אם השארת את הגדרת ברירת המחדל, ינסה Smb4K לזהות את ערכת "
+"התווים אוטומטית על ידי איתור באפשרות „unix charset” ב־smb.conf"
 
 #. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:145

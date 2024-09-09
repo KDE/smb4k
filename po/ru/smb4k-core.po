@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:39+0000\n"
+"POT-Creation-Date: 2024-09-09 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 23:25+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -106,10 +106,13 @@ msgstr "Показывать тип общего ресурса"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The type of a share will be displayed in a separate column in the network "
+#| "neighborhood browser. It can either be Disk, Print or IPC."
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
-"neighborhood browser. It can either be Disk, Print or IPC."
+"neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 "В отдельном столбце в списке ресурсов сети будет указан тип для каждого "
 "общего ресурса. По типу ресурсы делятся на общие папки, принтеры и IPC "

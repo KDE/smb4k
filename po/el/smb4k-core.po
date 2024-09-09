@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:39+0000\n"
+"POT-Creation-Date: 2024-09-09 00:39+0000\n"
 "PO-Revision-Date: 2021-07-09 10:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -103,10 +103,13 @@ msgstr "Να εμφανίζεται ο τύπος του κοινού πόρου
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The type of a share will be displayed in a separate column in the network "
+#| "neighborhood browser. It can either be Disk, Print or IPC."
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
-"neighborhood browser. It can either be Disk, Print or IPC."
+"neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 "Ο τύπος του πόρου θα εμφανίζεται σε μια ξεχωριστή στήλη στον περιηγητή "
 "τοπικού δικτύου. Μπορεί να είναι δίσκος, εκτυπωτής ή IPC."

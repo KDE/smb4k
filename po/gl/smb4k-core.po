@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:39+0000\n"
+"POT-Creation-Date: 2024-09-09 00:39+0000\n"
 "PO-Revision-Date: 2024-08-31 13:36+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -101,10 +101,13 @@ msgstr "Amosar o tipo de compartición"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The type of a share will be displayed in a separate column in the network "
+#| "neighborhood browser. It can either be Disk, Print or IPC."
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
-"neighborhood browser. It can either be Disk, Print or IPC."
+"neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 "O tipo de compartición aparece nunha columna separada no navegador da "
 "veciñanza de rede. Pode ser Disco, Impresora ou IPC."

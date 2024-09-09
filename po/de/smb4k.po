@@ -1,4 +1,4 @@
-# Alexander Reinholdt <alexander.reinholdt@t-online.de>, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011, 2013, 2017, 2019.
+# SPDX-FileCopyrightText: 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011, 2013, 2017, 2019, 2024 Alexander Reinholdt <alexander.reinholdt@t-online.de>
 # Frederik Schwarzer <schwarzer@kde.org>, 2009, 2010, 2011, 2012, 2016, 2018, 2020, 2022, 2023.
 # Burkhard Lück <lueck@hube-lueck.de>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-28 00:39+0000\n"
-"PO-Revision-Date: 2023-08-13 16:37+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2024-09-08 11:33+0200\n"
+"Last-Translator: Alexander Reinholdt <alexander.reinholdt@t-online.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -56,10 +56,9 @@ msgstr ""
 "Einhängen von Samba-Freigaben"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2023 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "Copyright © 2003-2023 Alexander Reinholdt"
+msgstr "Copyright © 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -118,29 +117,25 @@ msgid "Main Toolbar"
 msgstr "Haupt-Werkzeugleiste"
 
 #: smb4k/smb4kbookmarkdialog.cpp:32
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Lesezeichen für diese Freigabe hinzufügen"
+msgstr "Freigaben merken"
 
 #: smb4k/smb4kbookmarkdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "All listed shares will be bookmarked. To edit the label or group, click "
-#| "the respective bookmark entry."
+#, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
-"Alle aufgeführten Freigaben werden als Lesezeichen abgespeichert. Um die "
-"Beschreibung oder die Gruppe zu bearbeiten, klicken Sie auf den "
+"Für alle aufgelisteten Freigaben werden Lesezeichen angelegt. Um eine "
+"Bezeichnung oder eine Kategorie hinzuzufügen, doppelklicken Sie den "
 "entsprechenden Lesezeicheneintrag."
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
-msgstr "Beschriftung:"
+msgstr "Bezeichnung:"
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
@@ -204,10 +199,9 @@ msgstr "Authentifizierung"
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
 #: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
-#, fuzzy, kde-format
-#| msgid "Profiles:"
+#, kde-format
 msgid " (Profile: %1)"
-msgstr "Profile:"
+msgstr " (Profil: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
@@ -221,16 +215,14 @@ msgid "Profiles"
 msgstr "Profile"
 
 #: smb4k/smb4kconfigdialog.cpp:161
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>An incorrect setting has been found. You are now taken to the "
-#| "corresponding configuration page to fix it.</qt>"
+#, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
-"<qt>Eine fehlerhafte Einstellung wurde gefunden. Es wird jetzt der "
-"entsprechende Einstellungsdialog aufgerufen, um sie zu korrigieren.</qt>"
+"Eine fehlerhafte Einstellung wurde gefunden. Es wird jetzt der "
+"entsprechende\n"
+"Einstellungsdialog aufgerufen, um sie zu korrigieren."
 
 #: smb4k/smb4kconfigdialog.cpp:234
 #, kde-format
@@ -239,6 +231,9 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Sie haben Änderungen an den Profilen vorgenommen. Sie müssen\n"
+"diese anwenden, damit Sie sie im Rest des Konfigurationsdialogs\n"
+"nutzen können."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
@@ -253,10 +248,9 @@ msgid "Username:"
 msgstr "Benutzername:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Passwort"
+msgstr "Passwort:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -407,13 +401,7 @@ msgstr ""
 "qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:797
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>The following entry is going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
-#| msgid_plural ""
-#| "<qt>The following %1 entries are going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
+#, kde-format
 msgid ""
 "The following entry is going to be removed from the additional options:<br>"
 "%2.<br>Please read the handbook for details."
@@ -421,11 +409,11 @@ msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
 msgstr[0] ""
-"<qt>Der folgende Eintrag wird aus den zusätzlichen Optionen entfernt: %2. Im "
-"Handbuch finden Sie weitere Details.</qt>"
+"Der folgende Eintrag wird aus den zusätzlichen Optionen entfernt:<br>%2."
+"<br>Im Handbuch finden Sie weitere Details."
 msgstr[1] ""
-"<qt>Die folgenden %1 Einträge werden aus den zusätzlichen Optionen entfernt: "
-"%2. Im Handbuch finden Sie weitere Details.</qt>"
+"Die folgenden %1 Einträge werden aus den zusätzlichen Optionen entfernt:<br>"
+"%2.<br> Im Handbuch finden Sie weitere Details."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
@@ -468,32 +456,29 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:75
-#, fuzzy, kde-format
-#| msgid "A&dd"
+#, kde-format
 msgid "Add"
-msgstr "Hi&nzufügen"
+msgstr "Hinzufügen"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
 msgid "Set Active"
-msgstr ""
+msgstr "Aktiv setzen"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Nach oben"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item Down"
+#, kde-format
 msgid "Move Down"
-msgstr "Eintrag nach unten"
+msgstr "Nach unten"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "Username"
+#, kde-format
 msgid "Rename"
-msgstr "Benutzername"
+msgstr "Umbenennen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
@@ -619,16 +604,14 @@ msgid "Shares View"
 msgstr "Freigabenansicht"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Benutzerdefinierte Einstellungen"
+msgstr "Editor für benutzerdefinierte Einstellungen"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
-#, fuzzy, kde-format
-#| msgid "Network Item"
+#, kde-format
 msgid "No network item was set."
-msgstr "Netzwerkeintrag"
+msgstr "Es wurde kein Netzwerkeintrag angegeben."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
@@ -679,25 +662,19 @@ msgid "Wake-On-LAN Settings"
 msgstr "Wake-On-LAN-Einstellungen"
 
 #: smb4k/smb4khomesuserdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Specify User"
+#, kde-format
 msgid "Specify User"
-msgstr "Benutzer angeben"
+msgstr "Nutzer angeben"
 
 #: smb4k/smb4khomesuserdialog.cpp:47
-#, fuzzy, kde-format
-#| msgid "Please specify a username."
+#, kde-format
 msgid "Please specify a username."
 msgstr "Bitte geben Sie einen Benutzernamen an."
 
 #: smb4k/smb4khomesuserdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
-"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für die Freigabe <b>"
-"%1</b> ein.</qt>"
+msgstr "Bitte geben Sie einen Benutzernamen für die Freigabe <b>%1</b> an."
 
 #: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
@@ -998,88 +975,73 @@ msgid "Clear"
 msgstr "Leeren"
 
 #: smb4k/smb4kpassworddialog.cpp:39
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
 msgstr ""
-"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für die Freigabe <b>"
-"%1</b> ein.</qt>"
+"Bitte geben Sie einen Benutzernamen und ein Passwort für den Server <b>%1</"
+"b> an."
 
 #: smb4k/smb4kpassworddialog.cpp:52
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
-"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für die Freigabe <b>"
-"%1</b> ein.</qt>"
+"Bitte geben Sie einen Benutzernamen und ein Passwort für die Freigabe <b>%1</"
+"b> an."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Preview Dialog"
 msgstr "Vorschaudialog"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
-#, fuzzy, kde-format
-#| msgid "Reload"
+#, kde-format
 msgid "Reload"
 msgstr "Erneut laden"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "Abort"
+#, kde-format
 msgid "Abort"
 msgstr "Abbrechen"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
-#, fuzzy, kde-format
-#| msgid "Up"
+#, kde-format
 msgid "Up"
 msgstr "Hoch"
 
 #: smb4k/smb4kpreviewdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Preview"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Vorschau"
+msgstr "Vorschau von %1"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Vorschaudialog"
+msgstr "Druckdialog"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Datei drucken"
+msgstr "Eine Datei drucken."
 
 #: smb4k/smb4kprintdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid "File:"
+#, kde-format
 msgid "File:"
 msgstr "Datei:"
 
 #: smb4k/smb4kprintdialog.cpp:69
-#, fuzzy, kde-format
-#| msgid "Copies:"
+#, kde-format
 msgid "Copies:"
 msgstr "Kopien:"
 
 #: smb4k/smb4kprintdialog.cpp:87
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "Drucker"
+msgstr "Drucken"
 
 #: smb4k/smb4kprintdialog.cpp:123
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Datei wird zum Drucker %1 gesendet ..."
+msgstr "Eine Datei auf Drucker <b>%1</b> drucken."
 
 #: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
@@ -1171,33 +1133,28 @@ msgstr ""
 "hier keine Dateien ablegen.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgid "Source:"
-msgstr "Quellordner:"
+msgstr "Quelle:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgid "Destination:"
-msgstr "Zielordner:"
+msgstr "Ziel:"
 
-# vertauschen klingt hier i-wie, als ob das Programm mit Absicht etwas falsch machen soll... :-D
 #: smb4k/smb4ksynchronizationdialog.cpp:90
-#, fuzzy, kde-format
-#| msgid "Swap Paths"
+#, kde-format
 msgid "Swap Paths"
 msgstr "Pfade vertauschen"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Please provide the source and destination directory for the "
-#| "synchronization."
+#, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr "Bitte geben Sie den Quell- und Zielordner für den Abgleich an."
+msgstr ""
+"Bitte geben Sie das Quell- und das Zielverzeichnis für den Abgleich von <b>"
+"%1</b> an."
 
 #: smb4k/smb4ktooltip.cpp:128
 #, kde-format
@@ -1207,7 +1164,7 @@ msgstr "Typ:"
 #: smb4k/smb4ktooltip.cpp:137
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "DNS-SD-Browsing-Domäne"
 
 #: smb4k/smb4ktooltip.cpp:139
 #, kde-format
