@@ -93,15 +93,11 @@ msgstr "显示共享类型"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
-"共享类型将显示在网上邻居浏览器的单独列中。它可以是磁盘、打印机或者 IPC。"
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51

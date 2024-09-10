@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-06-22 06:07+0200\n"
+"PO-Revision-Date: 2024-09-09 04:48+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -98,10 +98,7 @@ msgstr "ზიარის ტიპის ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."

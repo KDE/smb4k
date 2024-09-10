@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-09-08 21:11+0300\n"
+"PO-Revision-Date: 2024-09-09 19:03+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1484,6 +1484,9 @@ msgid ""
 "normally contain filter rules that can be activated by choosing the --"
 "filter='dir-merge /.rsync-filter' rule and deselecting this one."
 msgstr ""
+"הכלל הזה מסנן את קובצי ה־‎.rsync-filter מחוץ להעברה. הקבצים האלו בדרך כלל "
+"מכילים כללי סינון שאפשר להפעיל על ידי בחירה בכלל ‎--filter='dir-merge /.rsync-"
+"filter' וביטול הבחירה בכלל הזה."
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
 #: smb4k.kcfg:559
@@ -2687,6 +2690,10 @@ msgid ""
 "that were created with such characters. This has no effect if the server "
 "does not support Unicode."
 msgstr ""
+"תרגום של שישה מתוך שבעה התווים השמורים (כולל התווים נקודתיים, סימן שאלה, קו "
+"אנכי, כוכבית, גדול מאשר וקטן מאשר אך לא הלוכסנים) לטווח מיפוי מחדש (מעל "
+"0xF000). כך אפשר לפתוח קבצים שנוצרו עם תווים כאלה. אין לזה השפעה אם השרת לא "
+"תומך ביוניקוד."
 
 #. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:197

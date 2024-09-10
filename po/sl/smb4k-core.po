@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-06-22 07:55+0200\n"
+"PO-Revision-Date: 2024-09-09 08:26+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -100,16 +100,13 @@ msgstr "Prikaži vrsto skupnega diska"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
-"Vrsta dela bo prikazana v ločenem stolpcu v brskalniku sosedstva omrežja. "
-"Lahko je Disk, Tisk ali IPC."
+"Vrsta deljenega skupnega vira bo prikazana v ločenem stolpcu v brskalniku "
+"sosedstva omrežja. Lahko je Disk, Printer ali IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
