@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-09-09 19:03+0300\n"
+"PO-Revision-Date: 2024-09-10 11:36+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1400,6 +1400,8 @@ msgid ""
 "a special filter rule. For further information on filter rules see rsync's "
 "manual page."
 msgstr ""
+"לא לכלול קבצים שעונים על תבנית מסוימת (‎--include=PATTERN). זה כלל סינון "
+"מיוחד. למידע נוסף על כללי סינון ניתן לעיין בעמוד ההנחיות של rsync."
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
 #: smb4k.kcfg:524
@@ -1447,6 +1449,10 @@ msgid ""
 "be transferred. These rules will be added to the rsync command as they are. "
 "Thus, each rule has to start with the --filter=... argument."
 msgstr ""
+"הוספת כללים מותאמים לסינון קבצים (‎-f,‏ ‎--filter=RULE). האפשרות הזאת מאפשר לך "
+"להוסיף כללים כדי להחריג קבצים מסוימים מרשימת הקבצים להעברה באופן פרטני. "
+"הכללים האלה יתווספו לפקודות rsync כמו שהם. לכן, כל כלל חייב להתחיל בארגומנט"
+" ‎--filter=…‎."
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:544
@@ -1469,6 +1475,9 @@ msgid ""
 "the files in the transfer. It has no effect, if you also choose to use the --"
 "filter='exclude .rsync-filter' rule."
 msgstr ""
+"כלל הסינון הזה מורה ל־rsync לחפש קובצי ‎.rsync-filter לפי תיקייה שפוזרו על "
+"פני היררכיית התיקיות ומשתמש בכללים שלהם כדי לסנן את הקבצים בהעברה. אין לזה "
+"השפעה אם בחרת להשתמש גם בכלל --filter='exclude .rsync-filter'."
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
 #: smb4k.kcfg:554
@@ -1492,7 +1501,7 @@ msgstr ""
 #: smb4k.kcfg:559
 #, kde-format
 msgid "Handle sparse files efficiently"
-msgstr ""
+msgstr "טיפול בקבצים דלילים ביעילות"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
 #: smb4k.kcfg:560
@@ -1502,6 +1511,8 @@ msgid ""
 "space on the destination. This option conflicts with --inplace. For further "
 "information read rsync's manual page."
 msgstr ""
+"טיפול בקבצים דלילים ביעילות (‎-S,‏ ‎--sparse) כך שיתפסו פחות מקום ביעד. האפשרות "
+"הזאת סותרת את ‎--inplace. לפרטים נוספים ניתן לעיין בעמוד ההנחיות של rsync."
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
 #: smb4k.kcfg:564
@@ -2796,7 +2807,7 @@ msgstr "לעקוב אחר פרוטוקול CIFS/SMB2 באדיקות"
 #: smb4kmountsettings_linux.kcfg:246
 #, kde-format
 msgid "Allow loose caching semantics"
-msgstr ""
+msgstr "לאפשר סמנטיקות מטמון רופפות"
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:252
