@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-09-01 18:16+0200\n"
+"PO-Revision-Date: 2024-09-10 08:42+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -118,17 +118,14 @@ msgstr "Afficher le type du partage"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 "Le type d'un partage sera affiché dans une colonne séparée dans le "
-"navigateur de voisinage réseau. Ce peut soit être Disque, soit Impression, "
-"soit IPC."
+"navigateur de voisinage réseau. Ce peut soit être « Disque », « Impression » "
+"ou « IPC »."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
