@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-09-10 11:36+0300\n"
+"PO-Revision-Date: 2024-09-12 11:23+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -97,10 +97,7 @@ msgstr "הצגת סוג השיתוף"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
@@ -1337,6 +1334,9 @@ msgid ""
 "want to transfer between systems. This option uses the same algorithm that "
 "CVS uses to determine if a file should be ignored."
 msgstr ""
+"התעלמות אוטומטית מקבצים כמו שעושה CVS‏ (‎-C,‏ ‎--cvs-exclude). זה קיצור דרך "
+"שימושי להחרגת מגוון רחב של קבצים שבדרך כלל אין לך צורך להעביר בין מערכות. "
+"האפשרות הזאת משתמשת באוטו האלגוריתם כמו CVS כדי לקבוע האם להתעלם מקובץ."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:499
