@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-09-12 11:23+0300\n"
+"PO-Revision-Date: 2024-09-14 09:57+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -307,6 +307,14 @@ msgid ""
 "servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic "
 "Discovery (WS-Discovery) for domain and workgroup lookups instead."
 msgstr ""
+"Smb4K יגדיר את המספר המזערי והמרבי של פרוטוקול SMB שספריית לקוח Samba משתמש "
+"בה לעיון בשכנים ברשת. ההגדרה הזאת תדרוס את ההגדרות שבקובץ smb.conf. בדרך "
+"כלל, לא צריך להשתמש באפשרות הזאת, כיוון שצריך לערוך משא ומתן סביב גרסאות "
+"הפרוטוקול הנכונות בין הלקוח והשרת תוך יצירת החיבור. נא לשים לב שההגדרה הזאת "
+"עלולה שלא לתת מענה במקרה שרוצים שגילוי של קבוצות עבודה ושמות תחום יעבוד תוך "
+"שמירה על קישוריות ללא הפרעה לשרתים. להשתמש בגילוי שירותים עם DNS‏ (DNS-SD) או "
+"גילוי שירותים מקוונים דינמי (WS-Discovery) לאיתורים של שמות תחום וקבוצות "
+"עבודה במקום."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:130
@@ -881,6 +889,12 @@ msgid ""
 "the new symlink, including a directory hierarchy (as long as --force or --"
 "delete is in effect). For more details, see the manual page of rsync."
 msgstr ""
+"להתייחס לקישורים סמליים בצד השולח כאילו הם האמיתיים(‎-k,‏ ‎--copy-dirlinks). "
+"שימושי כדי שקישורים סמליים לפריטים שאינם תיקיות לא יושפעו, כאילו שהם משתמשים "
+"ב־‎--copy-links. בלי אפשרות הזאת, אם הצד השולח החליף תיקיית בקישור סמלי "
+"לתיקייה, הצד המקבל ימחק כל מה שבדרכו של הקישור הסמלי החדש, כולל את היררכיית "
+"התיקיות (כל עוד ‎--force או ‎--delete לוקחים חלק). לפרטים נוספים, אפשר לעיין "
+"בעמוד ההנחיות של rsync."
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:351
@@ -897,6 +911,9 @@ msgid ""
 "directory from the sending side. Without this option, the receiver's symlink "
 "will be deleted and replaced with a real directory."
 msgstr ""
+"להתייחס לקישורים סמליים בצד המקבל כאילו הם האמיתיים(‎-K,‏ ‎--keep-dirlinks). "
+"עובד רק אם הקישור הסמלי תואם לתיקייה אמיתית מהצד השולח. בלי האפשרות הזאת, "
+"הקישור הסמלי של השולח יימחק ויוחלף בתיקייה אמיתית."
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
 #: smb4k.kcfg:356
@@ -1686,7 +1703,7 @@ msgstr "גודל המקטע"
 #: smb4k.kcfg:625
 #, kde-format
 msgid "Set block/file checksum seed:"
-msgstr ""
+msgstr "הגדרת גרעין סכום ביקורת בלוק/קובץ:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:626
@@ -1697,6 +1714,10 @@ msgid ""
 "and file MD4 checksum calculation. By default the checksum seed is generated "
 "by the server and defaults to the current time."
 msgstr ""
+"הגדרת גרעין סכום ביקורת בלוק/קובץ (‎--checksum-seed=NUM). הגדרת סכום ביקורת "
+"MD4 למספק השלם הזה. סכום ביקורת בגודל 4 בתים נכלל בכל בלוק וקובץ בחישוב סכום "
+"ביקורת MD4 של קבצים. כברירת מחדל גרעין סכום הביקורת נוצר על ידי השרת וברירת "
+"המחדל שלו היא השעה הנוכחית."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:630
@@ -2665,6 +2686,8 @@ msgid ""
 "server instead of automatically generating temporary inode numbers on the "
 "client side."
 msgstr ""
+"להשתמש במספרי inode (מזהי קבצים ייחודיים וקבועים) שמוחזרים מהשרת במקום לייצר "
+"מספרי inode אוטומטית בצד הלקוח."
 
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -2790,6 +2813,14 @@ msgid ""
 "access the same set of files on the server at the same time. Because of "
 "this, the strict cache mode is recommended."
 msgstr ""
+"להגדיר איך קריאה וכתיבה מטופלות. אם בחרת לא לשמור נתוני קבצים במטמון כלל, "
+"הלקוח אף פעם לא ישתמש במטמון לקריאות וכתיבות שגרתיים. הן תמיד תיגשנה לשרת "
+"ישירות כדי לספק בקשת קריאה או כתיבה. אם בחרת להיצמד לפרוטוקול CIFS/SMB2 "
+"בקפדנות, המטמון נחשב אמין אם הלקוח לא מחזיר oplock (נעילת פעולה), אז הלקוח "
+"מעביר את המטמון וניגש לשרת ישירות כדי לענות על בקשת קריאה או כתיבה. בחירה "
+"לאפשר סמנטיקת מטמון רופפת יכולה לפעמים לספק ביצועים משופרים על חשבון עקביות "
+"מטמון. האפשרות הזאת עלולה לגרום להשחתת נתונים, אם מגוון לקוחות ניגשים לאותה "
+"סדרת קבצים בשרת בו־זמנית. זאת הסיבה שמצב מטמון קפדני מומלץ."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:240
