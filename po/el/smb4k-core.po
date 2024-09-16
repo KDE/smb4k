@@ -1586,10 +1586,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:544
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Κανόνες προσαρμοσμένου φίλτρου:"
+msgstr "Κανόνες προσαρμοσμένου φίλτρου"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:549
@@ -3127,8 +3126,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Ο κοινός πόρος <b>%1</b> έχει προσαρτηθεί στο <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:73
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Άνοιγμα"

@@ -250,10 +250,9 @@ msgid "Username:"
 msgstr "Διεπαφή χρήστη"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Κωδικός πρόσβασης"
+msgstr "Κωδικός πρόσβασης:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:54
@@ -429,14 +428,12 @@ msgid "Browse Settings"
 msgstr "Ρυθμίσεις περιήγησης"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:137
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:189
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Απομακρυσμένη αφύπνιση"
 
@@ -457,8 +454,7 @@ msgstr ""
 "προσαρμοσμένων επιλογών.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:228
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Settings"
 msgstr "Προχωρημένες ρυθμίσεις"
 
@@ -512,8 +508,7 @@ msgid "General"
 msgstr "Γενικά"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:163
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Σύνδεσμοι"
 
@@ -539,14 +534,12 @@ msgid "File Attributes && Ownership"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:288
-#, fuzzy, kde-format
-#| msgid "Compression"
+#, kde-format
 msgid "Compression"
 msgstr "Συμπίεση"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:327
-#, fuzzy, kde-format
-#| msgid "Files"
+#, kde-format
 msgid "Files"
 msgstr "Αρχεία"
 
@@ -574,14 +567,12 @@ msgid "File Transfer"
 msgstr "Μεταφορά αρχείου"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:399
-#, fuzzy, kde-format
-#| msgid "Files && Directories"
+#, kde-format
 msgid "Files && Directories"
 msgstr "Αρχεία && κατάλογοι"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:445
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Περιορισμοί"
 
@@ -607,8 +598,7 @@ msgid "Filtering"
 msgstr "Φιλτράρισμα"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:561
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Αθροίσματα ελέγχου"
 
@@ -1052,10 +1042,9 @@ msgid "Print a file."
 msgstr "&Εκτύπωση αρχείου"
 
 #: smb4k/smb4kprintdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&Αρχείο"
+msgstr "Αρχείο:"
 
 #: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
