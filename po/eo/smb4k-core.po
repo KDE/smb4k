@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-06-22 06:48+0200\n"
+"PO-Revision-Date: 2024-09-18 19:03+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -99,16 +99,13 @@ msgstr "Montri la tipon de la parto"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 "La tipo de kunhavaĵo estos montrata en aparta kolumno en la retumilo de "
-"najbareco. Ĝi povas aŭ esti Disko, Presaĵo aŭ IPC."
+"najbareco. Ĝi povas aŭ esti Disko, Presilo aŭ IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
@@ -3292,6 +3289,3 @@ msgstr "Fonto"
 #, kde-format
 msgid "Destination"
 msgstr "Celo"
-
-#~ msgid "Migrate Login Credentials"
-#~ msgstr "Transigi Ensalutajn Akreditaĵojn"
