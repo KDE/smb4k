@@ -1,24 +1,21 @@
-# translation of es.po to Español
-# Translation of es to Spanish
-# Translation of Smb4K to Castilian aka Spanish
-# This file is distributed under the same license as the Smb4K package.
-# Copyright (C) 2004 Alexander Reinholdt <dustpuppy@mail.berlios.de>
+# Translation of smb4k-core to Spanish
+# This file is distributed under the same license as the smb4k package.
 #
-# Quique <quique@sindominio.net>, 2004.
-# Martín Carr <tincarr@gmail.com>, 2005, 2006, 2007, 2008.
-# Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>, 2010.
-# Xavier Corredor Llano <xavier.corredor.llano@gmail.com>, 2010, 2011, 2012.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2011, 2014, 2015, 2019, 2020.
-# Miguel Navarrete Hernandez <recados.akka@gmail.com>, 2013.
-# Raul Gonzalez <raulgf83@gmail.com>, 2013, 2014, 2015.
-# Javier Vinal <fjvinal@gmail.com>, 2015, 2016, 2017, 2018, 2019.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2004 Quique <quique@sindominio.net>
+# SPDX-FileCopyrightText: 2005, 2006, 2007, 2008 Martín Carr <tincarr@gmail.com>
+# SPDX-FileCopyrightText: 2010 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
+# SPDX-FileCopyrightText: 2010, 2011, 2012 Xavier Corredor Llano <xavier.corredor.llano@gmail.com>
+# SPDX-FileCopyrightText: 2011, 2014, 2015, 2019, 2020 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2013 Miguel Navarrete Hernandez <recados.akka@gmail.com>
+# SPDX-FileCopyrightText: 2013, 2014, 2015 Raul Gonzalez <raulgf83@gmail.com>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:39+0000\n"
-"PO-Revision-Date: 2024-06-22 17:58+0200\n"
+"PO-Revision-Date: 2024-09-22 16:52+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -111,16 +108,13 @@ msgstr "Mostrar el tipo del recurso compartido"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
 "El tipo de recurso compartido se mostrará en una columna independiente en el "
-"navegador de entorno de red. Este puede ser de disco, de impresión o IPC."
+"navegador de entorno de red. Este puede ser un disco, una impresora o IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
