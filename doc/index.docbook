@@ -36,7 +36,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-08-23</date>
+  <date>2024-09-22</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -137,7 +137,7 @@
   <sect1 id="network_neighborhood_browser">
     <title>The Network Neighborhood Browser</title>
 
-    <para>The <guilabel>Network Neighborhood</guilabel> browser contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, which you can navigate through by either clicking on the control next to the item's name or by executing the item itself.</para>
+    <para>The <guilabel>Network Neighborhood</guilabel> browser contains all network items &#8212; &ie; domains or workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, which you can navigate through by either clicking on the control next to the item's name or by executing the item itself.</para>
     <para>In the network tree, the master browser in each workgroup or domain is highlighted by a blue font color, if it was detected (&eg; when using DNS-SD, the master browser of a &Windows; domain is not recognized). Mounted shares are marked with the respective folder icon and an italic font.</para>
 
     <screenshot>
@@ -258,7 +258,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares "manually". This feature may be needed if &smb4k; cannot find the server from which you want to mount a certain shared resource.</para>
+            <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares using their address (URL or UNC). This feature may be needed if &smb4k; cannot find the server from which you want to mount a certain shared resource.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -302,7 +302,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Mount the selected remote shares. This action is visible if only shares are selected that are not already mounted. By default, and if you selected anything different than a share with type "Disk" or "IPC", this action is disabled.</para>
+            <para>Mount the selected remote shares. This action is visible by default as long as you do not select mounted shares (see below). If you select anything different than a share with type "Disk" or "IPC", this action is disabled.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -356,7 +356,7 @@
       <orderedlist>
         <listitem><para>Execute the icon representing the remote share in the network neighborhood browser. (Depending on your &kde; settings, this is done by either single or double clicking the icon.)</para></listitem>
         <listitem><para>Select the remote shares and click the <guimenuitem>Mount</guimenuitem> menu entry. Alternatively, you can press the <keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo> keyboard shortcut.</para></listitem>
-        <listitem><para>Press the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry and a mount dialog will be opened:</para>
+        <listitem><para>Press the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry to open the mount dialog:</para>
         <screenshot>
           <screeninfo>Screenshot of the "Mount Share" dialog</screeninfo>
           <mediaobject>
@@ -364,10 +364,10 @@
             <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
           </mediaobject>
         </screenshot>
-        <para>Here you can enter the location of the share as a <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as an URL in the form <programlisting>[smb:]//[user@]server[:port]/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend so you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
+        <para>Here you can enter the location of the share as a <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as an <ulink url="https://en.wikipedia.org/wiki/URL">URL</ulink> in the form <programlisting>[smb:]//[user@]server[:port]/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend so you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
       </orderedlist>
 
-      <para>Shares are often password protected. In this case, the <link linkend="network_neighborhood_browser_authentication">password dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed with mounting the share unless the wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be displayed.</para>
+      <para>Shares are often password protected. In this case, the <link linkend="network_neighborhood_browser_authentication">password dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed with mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be displayed.</para>
     </sect2>
 
 <!-- 
@@ -1686,7 +1686,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       <variablelist>
         <varlistentry>
           <term>
-            <menuchoice><guibutton>View mode of the shares view</guibutton></menuchoice>
+            <menuchoice><guibutton>View mode</guibutton></menuchoice>
           </term>
           <listitem>
             <para>Define the view mode of the shares view.</para>
@@ -1750,7 +1750,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   <sect1 id="configuration_page_network">
     <title>Network</title>
 
-    <para>The options located here influence the network communication. You can modify the browsing and display behavior in the <guibutton>Basic Settings</guibutton> tab and the more advanced options for Samba and the Wake-On-LAN capabilities in the <guibutton>Advanced Settings</guibutton> tab.</para>
+    <para>The settings located here influence the network communication. You can modify the browse settings and behavior in the <guibutton>Basic Settings</guibutton> tab and the more advanced options for Samba and the Wake-On-LAN capabilities in the <guibutton>Advanced Settings</guibutton> tab.</para>
     
     <screenshot>
       <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
@@ -1786,7 +1786,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
               <menuchoice><guibutton>Use DNS Service Discovery (DNS-SD) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The DNS Service Discovery (DNS-SD) interface is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg;, named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing.</para>
+              <para>The DNS Service Discovery (DNS-SD) interface is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg; named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing.</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -1812,7 +1812,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                           <menuchoice><guimenuitem>NT1 (Classic CIFS/SMBv1 protocol)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>This is the current up to date version of the protocol. It is used by &Windows; NT and it is known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
+                          <para>This is the classic version of the protocol. It is used by &Windows; NT and is known as CIFS or SMBv1. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; versions.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -1828,7 +1828,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                           <menuchoice><guimenuitem>SMB3 (Windows 8 and above)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>This is the same as SMB2. This protocol version is used by &Windows; 8 and above.</para>
+                          <para>This is the SMBv3 protocol version. It features serveral improvements of the functionality and performance of SMBv2 as well as serveral security enhancements. This protocol version is used by &Windows; 8 and above.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -1847,7 +1847,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                           <menuchoice><guimenuitem>NT1 (Classic CIFS/SMBv1 protocol)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>This is the current up to date version of the protocol. It is used by &Windows; NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
+                          <para>This is the classic version of the protocol. It is used by &Windows; NT and is known as CIFS or SMBv1. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; versions.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -1863,7 +1863,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                           <menuchoice><guimenuitem>SMB3 (Windows 8 and above)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>This is the same as SMB2. This protocol version is used by &Windows; 8 and above.</para>
+                          <para>This is the SMBv3 protocol version. It features serveral improvements of the functionality and performance of SMBv2 as well as serveral security enhancements. This protocol version is used by &Windows; 8 and above.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
