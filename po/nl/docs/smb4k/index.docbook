@@ -55,7 +55,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-08-23</date>
+>2024-09-22</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -303,7 +303,7 @@
     <para
 >De browser voor de <guilabel
 >netwerkomgeving</guilabel
->. bevat alle netwerkitems &#8212; &ie; werkgroepen, servers, en shares &#8212; die &smb4k; kon vinden. Ze zijn in een netwerkstructuur weergegeven, waardoor u kunt navigeren door op de besturing naast de naam van het item of op het item zelf te klikken.</para>
+>. bevat alle netwerkitems &#8212; &ie; domeinen of werkgroepen, servers, en shares &#8212; die &smb4k; kon vinden. Ze zijn in een netwerkstructuur weergegeven, waardoor u kunt navigeren door op de besturing naast de naam van het item of op het item zelf te klikken.</para>
     <para
 >In de netwerkstructuur is de top van elke werkgroep blauw gemarkeerd, als het is gedetecteerd (&eg; wanneer DNS-SD wordt gebruikt, de masterbrowser van een &Windows;-domein niet wordt herkend). Aangekoppelde shares zijn met een bijbehorende pictogram en cursief lettertype gemarkeerd.</para>
 
@@ -541,7 +541,7 @@
             <para
 >Open het <link linkend="network_neighborhood_browser_mounting"
 >dialoogvenster</link
-> voor "handmatig" aankoppelen van shares. Dit hulpmiddel kan nodig zijn als &smb4k; de server niet kan vinden waarvan u een bepaalde share wilt aankoppelen.</para>
+> voor met hun adres (URL of UNC) aankoppelen van shares. Dit hulpmiddel kan nodig zijn als &smb4k; de server niet kan vinden waarvan u een bepaalde share wilt aankoppelen.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -619,7 +619,7 @@
           </term>
           <listitem>
             <para
->Koppelt de geselecteerde externe shares aan. Deze actie is zichtbaar als alleen shares zijn geselecteerd die niet zijn aangekoppeld. Standaard, en ook als u iets anders dan een share van het type "Schijf" of "IPC" hebt geselecteerd, kunt u deze actie niet selecteren.</para>
+>Koppelt de geselecteerde externe shares aan. Deze actie is standaard zichtbaar zolang  u geen aangekoppelde schares selecteert (zie onderstaand). Als u iets anders dan een share van het type "Schijf" of "IPC" selecteert, dan is deze actie uitgeschakeld.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -716,7 +716,7 @@
 ><guimenuitem
 >Dialoog voor aankoppelen openen</guimenuitem
 ></menuchoice
-> en een dialoog voor aankoppelen zal worden geopend:</para>
+> om de dialoog voor aankoppelen te openen:</para>
         <screenshot>
           <screeninfo
 >Schermafdruk van de dialoog voor "Share aankoppelen"</screeninfo>
@@ -736,7 +736,9 @@
 >//[USER@]SERVER/SHARE</programlisting
 > of <programlisting
 >\\[USER@]SERVER\SHARE</programlisting
-> of als URL in de vorm <programlisting
+> of als een <ulink url="https://en.wikipedia.org/wiki/URL"
+>URL</ulink
+> in de vorm <programlisting
 >[smb:]//[user@]server:port/share</programlisting
 > De knop <guibutton
 >OK</guibutton
@@ -3114,7 +3116,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Weergavemodus van de weergave van shares</guibutton
+>Weergavemodus</guibutton
 ></menuchoice>
           </term>
           <listitem>
@@ -3209,7 +3211,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Netwerk</title>
 
     <para
->De hier aanwezige opties beïnvloeden de netwerkcommunicatie. U kunt het blader- en weergavegedrag wijzigen in het tabblad <guibutton
+>De hier aanwezige instellingen beïnvloeden de netwerkcommunicatie. U kunt de bladerinstellingen en het gedrag wijzigen in het tabblad <guibutton
 >Basisinstellingen</guibutton
 > en de meer geavanceerde opties voor Samba en de mogelijkheden voor Wake-On-LAN in het tabblad <guibutton
 >Geavanceerde instellingen</guibutton
@@ -3310,7 +3312,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Dit is de huidige up-to-date versie van het protocol. Het wordt gebruikt door &Windows; NT en is bekend als CIFS. Het wordt als onveilig beschouwd en is uitgeschakeld in de laatste &Samba; en &Windows; versie.</para>
+>Dit is de klassieke versie van het protocol. Het wordt gebruikt door &Windows; NT en is bekend als CIFS of SMBv1. Het wordt als onveilig beschouwd en is uitgeschakeld in de laatste versies van &Samba; en &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3334,7 +3336,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Dit is hetzelfde als SMB2. Deze protocolversie wordt gebruikt door &Windows; 8 en hoger.</para>
+>Dit is de SMBv3 protocolversie. Het heeft een aantal verbeteringen boven de functionaliteit en prestaties van SMBv2 evenals verschillende verbeteringen in beveiliging. Deze protocolversie wordt door &Windows; 8 en hoger gebruikt.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -3364,7 +3366,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Dit is de huidige up-to-date versie van het protocol. Het wordt gebruikt door &Windows; NT en is bekend als CIFS. Het wordt als onveilig beschouwd en is uitgeschakeld in de laatste &Samba; en &Windows; versie.</para>
+>Dit is de klassieke versie van het protocol. Het wordt gebruikt door &Windows; NT en is bekend als CIFS of SMBv1. Het wordt als onveilig beschouwd en is uitgeschakeld in de laatste versies van &Samba; en &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3388,7 +3390,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Dit is hetzelfde als SMB2. Deze protocolversie wordt gebruikt door &Windows; 8 en hoger.</para>
+>Dit is de SMBv3 protocolversie. Het heeft een aantal verbeteringen boven de functionaliteit en prestaties van SMBv2 evenals verschillende verbeteringen in beveiliging. Deze protocolversie wordt door &Windows; 8 en hoger gebruikt.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>

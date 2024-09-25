@@ -55,7 +55,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->23 d'agost de 2024</date>
+>22 de setembre de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -307,7 +307,7 @@
     <para
 >L'explorador del <guilabel
 >Veïnatge de xarxa</guilabel
-> conté tots els elements de la xarxa -&ead;, grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
+> conté tots els elements de la xarxa -&ead;, dominis o grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
     <para
 >En l'arbre de la xarxa, l'explorador mestre en cada grup de treball o domini ressaltarà la lletra en un color blau, si l'ha detectat (&pex;, quan s'utilitza DNS-SD, no es reconeix l'explorador mestre d'un domini de &Windows;). Les comparticions muntades estaran marcades amb la icona de la carpeta respectiva i una lletra en cursiva.</para>
 
@@ -545,7 +545,7 @@
             <para
 >Obre el <link linkend="network_neighborhood_browser_mounting"
 >diàleg</link
-> per a muntar les comparticions «manualment». Aquesta característica pot ser necessària si el &smb4k; no pot trobar el servidor des del qual voleu muntar un determinat recurs compartit.</para>
+> per a muntar les comparticions fent servir la seva adreça (URL o UNC). Aquesta característica pot ser necessària si el &smb4k; no pot trobar el servidor des del qual voleu muntar un determinat recurs compartit.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -623,7 +623,7 @@
           </term>
           <listitem>
             <para
->Munta les comparticions remotes seleccionades. Aquesta acció és visible només si s'han seleccionat comparticions que encara no estan muntades. De manera predeterminada, i si heu seleccionat alguna cosa diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada.</para>
+>Munta les comparticions remotes seleccionades. Aquesta acció és visible de manera predeterminada només si no s'han seleccionat comparticions muntades (vegeu a sota). Si heu seleccionat alguna cosa diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -720,7 +720,7 @@
 ><guimenuitem
 >Obre el diàleg de muntatge</guimenuitem
 ></menuchoice
-> i s'obrirà un diàleg de muntatge:</para>
+> per a obrir el diàleg de muntatge:</para>
         <screenshot>
           <screeninfo
 >Captura de pantalla del diàleg «Muntatge de la compartició»</screeninfo>
@@ -740,7 +740,9 @@
 >//[USUARI@]SERVIDOR/COMPARTICIÓ</programlisting
 > o <programlisting
 >\\[USUARI@]SERVIDOR\COMPARTICIÓ</programlisting
-> o com un URL en la forma <programlisting
+> o com un <ulink url="https://en.wikipedia.org/wiki/URL"
+>URL</ulink
+> en la forma <programlisting
 >[smb:]//[usuari@]servidor[:port]/compartició</programlisting
 > S'habilitarà el botó <guibutton
 >D'acord</guibutton
@@ -3134,7 +3136,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Mode de vista de la vista de les comparticions</guibutton
+>Modes de vista</guibutton
 ></menuchoice>
           </term>
           <listitem>
@@ -3229,7 +3231,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Xarxa</title>
 
     <para
->Les opcions ubicades aquí influeixen en la comunicació de la xarxa. Podeu modificar el comportament de la navegació i visualització a la pestanya <guibutton
+>Els paràmetres ubicats aquí influeixen en la comunicació de la xarxa. Podeu modificar els paràmetres i el comportament de la visualització a la pestanya <guibutton
 >Configuració bàsica</guibutton
 > i les opcions més avançades per al Samba i les característiques de l'activació per LAN a la pestanya <guibutton
 >Configuració avançada</guibutton
@@ -3330,7 +3332,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Aquesta és la versió actualitzada del protocol. És utilitzada pel &Windows; NT i conegut com a CIFS. Es considera insegur i s'ha desactivat en l'última versió de &Samba; i &Windows;.</para>
+>Aquesta és la versió clàssica del protocol. És utilitzada pel &Windows; NT i conegut com a CIFS o SMBv1. Es considera insegur i s'ha desactivat en l'última versió del &Samba; i &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3354,7 +3356,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->És el mateix que SMB2. Aquesta versió del protocol és utilitzada pel &Windows; 8 i superior.</para>
+>Aquesta és la versió del protocol SMBv3. Aporta millores diverses de funcionalitat i rendiment del SMBv2 així com diverses millores de seguretat. Aquesta versió del protocol s'utilitza al &Windows; 8 i superior.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -3384,7 +3386,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Aquesta és la versió actualitzada del protocol. És utilitzada pel &Windows; NT i conegut com a CIFS. Es considera insegur i s'ha desactivat en l'última versió de &Samba; i &Windows;.</para>
+>Aquesta és la versió clàssica del protocol. És utilitzada pel &Windows; NT i conegut com a CIFS o SMBv1. Es considera insegur i s'ha desactivat en l'última versió del &Samba; i &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3408,7 +3410,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->És el mateix que SMB2. Aquesta versió del protocol és utilitzada pel &Windows; 8 i superior.</para>
+>Aquesta és la versió del protocol SMBv3. Aporta millores diverses de funcionalitat i rendiment del SMBv2 així com diverses millores de seguretat. Aquesta versió del protocol s'utilitza al &Windows; 8 i superior.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
