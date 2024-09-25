@@ -10,6 +10,9 @@
 
 // application specific includes
 #include "smb4kmountdialog.h"
+#include "smb4ksharesmenu.h"
+#include "smb4kbookmarkmenu.h"
+#include "smb4kprofilesmenu.h"
 
 // Qt includes
 #include <QString>
@@ -59,6 +62,11 @@ protected Q_SLOTS:
      * the lists is populated.
      */
     void slotSetStatus();
+
+private:
+    Smb4KBookmarkMenu *m_bookmarkMenu;
+    Smb4KProfilesMenu *m_profilesMenu;
+    Smb4KSharesMenu *m_sharesMenu;
 };
 
 #endif
