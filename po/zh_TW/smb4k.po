@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:39+0000\n"
+"POT-Creation-Date: 2024-09-26 00:39+0000\n"
 "PO-Revision-Date: 2024-04-19 02:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -48,7 +48,7 @@ msgstr "掛載點 %1 無效。"
 msgid "The unmount process could not be started."
 msgstr "卸載行程無法啟動。"
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:47
+#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -850,7 +850,7 @@ msgstr "新增自訂設定(&C)"
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "開啟掛載對話框(&O)"

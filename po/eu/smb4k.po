@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:39+0000\n"
+"POT-Creation-Date: 2024-09-26 00:39+0000\n"
 "PO-Revision-Date: 2024-07-10 20:45+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -45,7 +45,7 @@ msgstr "%1 muntaia-puntua ez da baliozkoa."
 msgid "The unmount process could not be started."
 msgstr "Desmuntatzeko prozesua ezin izan da abiarazi."
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:47
+#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -863,7 +863,7 @@ msgstr "Gehitu &neurrira ipinitako ezarpenak"
 msgid "Ctrl+C"
 msgstr "Ktrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Ireki muntatzeko elkarrizketa-koadroa"

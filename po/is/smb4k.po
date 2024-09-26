@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:39+0000\n"
+"POT-Creation-Date: 2024-09-26 00:39+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -48,7 +48,7 @@ msgstr "Sýna tengipunkt í stað nafns á sameign"
 msgid "The unmount process could not be started."
 msgstr "Ekki tókst að útbúa möppuna %1."
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:47
+#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -885,7 +885,7 @@ msgstr "Sérsniðnir &valkostir"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Opna tengingarglugga"

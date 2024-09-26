@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:39+0000\n"
+"POT-Creation-Date: 2024-09-26 00:39+0000\n"
 "PO-Revision-Date: 2024-09-19 16:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -43,7 +43,7 @@ msgstr "Το σημείο προσάρτησης %1 δεν είναι έγκυρ
 msgid "The unmount process could not be started."
 msgstr "Αδυναμία έναρξης της διαδικασίας αποπροσάρτησης."
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:47
+#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -884,7 +884,7 @@ msgstr "Προσαρ&μοσμένες επιλογές"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Άν&οιγμα διαλόγου προσάρτησης"

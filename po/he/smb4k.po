@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:39+0000\n"
+"POT-Creation-Date: 2024-09-26 00:39+0000\n"
 "PO-Revision-Date: 2024-06-29 07:40+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -43,7 +43,7 @@ msgstr "נקודת העיגון %1 שגויה."
 msgid "The unmount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך ניתוק העיגון."
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:47
+#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -858,7 +858,7 @@ msgstr "הוספת הגדרות מותאמות &אישית"
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "פתיחת חלונית &עיגון"

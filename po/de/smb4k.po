@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:39+0000\n"
+"POT-Creation-Date: 2024-09-26 00:39+0000\n"
 "PO-Revision-Date: 2024-09-08 11:33+0200\n"
 "Last-Translator: Alexander Reinholdt <alexander.reinholdt@t-online.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -43,7 +43,7 @@ msgstr "Der Einhängepunkt %1 ist ungültig."
 msgid "The unmount process could not be started."
 msgstr "Der Aushängevorgang kann nicht gestartet werden."
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:47
+#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -865,7 +865,7 @@ msgstr "B&enutzerdefinierte Einstellungen hinzufügen"
 msgid "Ctrl+C"
 msgstr "Strg+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:51
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Dial&og zum Einhängen öffnen"
