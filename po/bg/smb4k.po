@@ -1216,31 +1216,3 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown"
-#~ msgstr "непознато"
-
-#, fuzzy
-#~| msgid "Default Login"
-#~ msgid "Default Profile"
-#~ msgstr "Свързване по подразбиране"
-
-#, fuzzy
-#~ msgid "Wallet Entries"
-#~ msgstr "Премахване на въведените"
-
-#~ msgid "Load"
-#~ msgstr "Зареждане"
-
-#~ msgid "Save"
-#~ msgstr "Запазване"
-
-#, fuzzy
-#~ msgid "The wallet is used."
-#~ msgstr "Запомняне на паролата ако не се използва портфейл"
-
-#, fuzzy
-#~ msgid "The password dialog is used."
-#~ msgstr "Запомняне на паролата ако не се използва портфейл"

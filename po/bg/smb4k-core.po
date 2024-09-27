@@ -2894,14 +2894,3 @@ msgstr "Източник:"
 #, fuzzy, kde-format
 msgid "Destination"
 msgstr "Назначение:"
-
-#, fuzzy
-#~ msgid "Save logins in a wallet"
-#~ msgstr "Моля въведете удостоверяващи данни за %1"
-
-#~ msgid "Use a default login"
-#~ msgstr "Използване на свързване по подразбиране"
-
-#, fuzzy
-#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-#~ msgstr "Файл за отпечатване"
