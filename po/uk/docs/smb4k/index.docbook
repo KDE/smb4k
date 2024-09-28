@@ -3406,7 +3406,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->This is the SMBv3 protocol version. It features serveral improvements of the functionality and performance of SMBv2 as well as serveral security enhancements. This protocol version is used by &Windows; 8 and above.</para>
+>Це версія протоколу SMBv3. У ній впроваджено декілька удосконалень у функціональних можливостях та швидкодії порівняно із SMBv2, а також декілька удосконалень захисту. Цю версію протоколу використано у &Windows; 8 та новіших версіях системи.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
