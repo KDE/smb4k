@@ -17,9 +17,6 @@
   <!ENTITY Samba "<application
 >Samba</application
 >">
-  <!ENTITY solid "<application
->Solid</application
->">
   <!ENTITY kdbusaddons "<application
 >KDBusAddons</application
 >">
@@ -100,7 +97,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-07-22</date>
+>2024-09-22</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -198,7 +195,7 @@
 ></listitem>
     <listitem
 ><para
->Implementación de &kwallet5;</para
+>Soporte de varias soluciones de almacenamiento seguro para las credenciales de inicio via QtKeychain</para
 ></listitem>
     <listitem
 ><para
@@ -263,7 +260,7 @@
 ></userinput
 >. &smb4k; también viene con un <link linkend="plasmoid"
 >&plasmoid;</link
-> para una mejor integración con el escritorio. Puede añadirse como un control al escritorio o el panel.</para>
+> para una mejor integración con el escritorio que puede añadirse como un control al escritorio o el panel.</para>
 
     <para
 >Si &smb4k; encuentra un problema al inicio o ejecutando, el usuario será notificado. Para encontrar la solución a algunos problemas comunes vea la sección <link linkend="trouble_shooting"
@@ -310,7 +307,7 @@
 >vista de recursos compartidos montados</link
 > respectivamente.</para>
     <para
->La barra de estado ofrece información sobre el estado actual de &smb4k;. Si la aplicación está procesando una solicitud del usuario (&eg; montando un recurso compartido), se muestra un mensaje descriptivo en la parte más a la izquierda y una barra de progreso con un indicador de ocupado. Los dos iconos del lado derecho indican si hay recursos compartidos montados (icono de carpeta de red) y el estado del sistema de autenticación (icono de cartera o llave).</para>
+>La barra de estado ofrece información sobre el estado actual de &smb4k;. Si la aplicación está procesando una solicitud del usuario (&eg; montando un recurso compartido), se muestra un mensaje descriptivo en la parte más a la izquierda y una barra de progreso con un indicador de ocupado. El icono del lado derecho indica si hay recursos compartidos montados.</para>
     <para
 >Si los controles de paneles están organizados como pestañas, el usuario obtiene sugerencias visuales adicionales. Cada vez que un recurso compartido es montado o desmontado, la pestaña <guilabel
 >Recursos compartidos montados</guilabel
@@ -322,17 +319,17 @@
 ><guimenuitem
 >Zona de paneles</guimenuitem
 ></menuchoice
->. También se pueden arrastrar con el ratón y anclarlos en diferentes áreas de la ventana principal. Incluso se pueden desanclar de la ventana principal. La barra de estado y las barras de herramientas se pueden mostrar u ocultar activando/desactivando la opción de menú <menuchoice
+>. También se pueden arrastrar con el ratón y anclarlos en diferentes áreas de la ventana principal. Incluso se pueden desanclar de la ventana principal. La barra de estado y la barra de herramientas se pueden mostrar u ocultar activando/desactivando la opción de menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
 >Mostrar barra de estado</guimenuitem
 ></menuchoice
-> y las que se encuentran en la opción <menuchoice
+> y <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Barras de herramientas</guimenuitem
+>Mostrar barra de herramientas</guimenuitem
 ></menuchoice
 >, respectivamente.</para>
   </sect1>
@@ -348,7 +345,7 @@
     <para
 >El navegador del <guilabel
 >entorno de red</guilabel
-> contiene todos los elementos de la red &#8212; &ie; grupos de trabajo, servidores y recursos compartidos &#8212; que &smb4k; sea capaz de encontrar. Están organizados en un árbol de red, y puede navegar por él, bien haciendo clic en el control que hay al lado del nombre del elemento, o bien ejecutando el propio elemento.</para>
+> contiene todos los elementos de la red &#8212; &ie; dominios o grupos de trabajo, servidores y recursos compartidos &#8212; que &smb4k; sea capaz de encontrar. Están organizados en un árbol de red, el cual puede navegar, bien haciendo clic en el control que hay al lado del nombre del elemento, o bien ejecutando el propio elemento.</para>
     <para
 >En el árbol de red, el navegador maestro en cada grupo de trabajo o dominio está resaltado por un color de letra azul, si fue detectado (&eg; cuando se usa DNS-SD, el navegador maestro de un dominio &Windows; no se reconoce). Los recursos compartidos montados están marcados con el icono de carpeta respectivo y un tipo de letra cursiva.</para>
 
@@ -391,19 +388,19 @@
 >LOCAL</emphasis
 > en el navegador de vecindad de red. Este es el dominio DNS local por omisión usado por servicios como <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)"
 >Avahi</ulink
-> y no es un dominio real de &Windows;. Abrir un elemento de dominio o grupo de trabajo mostrará los servidores que pertenezcan a él. Si quiere acceder a los recursos compartidos de uno de los servidores, tiene que abrir el servidor deseado.</para>
-      <para
->También existe la posibilidad de despertar a los servidores dormidos antes de explorar el entorno de red (Wake-On-LAN). Si esta funcionalidad está activada, &smb4k; envía un paquete mágico a cada servidor que se pretende despertar y espera el tiempo definido hasta que comienza a buscar los grupos de trabajo y los dominios. La funcionalidad Wake-On-LAN se puede activar en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->diálogo de configuración</link
->. Los servidores que se deben despertar se tienen que definir en el diálogo <link linkend="network_neighborhood_browser_defining_custom_settings"
->Preferencias personalizadas</link
->.</para>
+> y no es un dominio real de &Windows;. Abrir un elemento de dominio o grupo de trabajo mostrará los servidores que pertenezcan a él. Si quiere acceder a los recursos compartidos de uno de los servidores, tendrá que abrir el servidor deseado.</para>
       <note>
         <para
 >Si está usando el servicio de descubrimiento DNS y el demonio Zeroconf (Avahi) no está ejecutando, &smb4k; mostrará una notificación de error. Para más detalles, vea la sección <link linkend="trouble_shooting_zeroconf"
 >Solución de errores</link
 >.</para>
       </note>
+      <para
+>También existe la posibilidad de despertar a los servidores dormidos antes de explorar el entorno de red (Wake-On-LAN). Si esta funcionalidad está activada, &smb4k; envía un paquete mágico a cada servidor que se pretende despertar y espera el tiempo definido hasta que comienza a buscar los grupos de trabajo y los dominios. La funcionalidad Wake-On-LAN se puede activar en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>diálogo de configuración</link
+>. Los servidores que se deben despertar se tienen que definir en el diálogo <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Preferencias personalizadas</link
+>.</para>
     </sect2>
     
 <!--
@@ -586,7 +583,7 @@
             <para
 >Abra el <link linkend="network_neighborhood_browser_mounting"
 >diálogo</link
-> para montar recursos «manualmente». Esta característica puede ser necesaria si &smb4k; no puede encontrar el servidor desde el cual usted quiera montar un cierto recurso compartido.</para>
+> para montar recursos usando su dirección (URL o UNC). Esta característica puede ser necesaria si &smb4k; no puede encontrar el servidor desde el cual usted quiera montar un cierto recurso compartido.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -605,7 +602,7 @@
           <listitem>
             <para
 >Abra el <link linkend="network_neighborhood_browser_authentication"
->diálogo de autenticación</link
+>diálogo de contraseñas</link
 > donde puede proporcionar el nombre de inicio de sesión y la contraseña para cada servidor o recurso compartido seleccionado. Si no hay ningún grupo de trabajo ni elemento seleccionado, esta acción estará desactivada.</para>
           </listitem>
         </varlistentry>
@@ -664,7 +661,7 @@
           </term>
           <listitem>
             <para
->Monta los recursos compartidos remotos seleccionados. Esta acción es visible solo si los recursos seleccionados no están montados. De manera predeterminada y si se ha seleccionado cualquier elemento que no sea un recurso compartido con tipo «Disco» o «IPC», esta acción estará desactivada.</para>
+>Monta los recursos compartidos remotos seleccionados. Esta acción es visible mientras no seleccione recursos compartido montados (vea más abajo). Si selecciona algo que no sea un recurso compartido de tipo «disco» o «IPC», esta acción no estará disponible.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -761,7 +758,7 @@
 ><guimenuitem
 >Abrir diálogo de montaje</guimenuitem
 ></menuchoice
-> y se abrirá un diálogo de montaje:</para>
+> para abrir el diálogo de montaje:</para>
         <screenshot>
           <screeninfo
 >Captura de pantalla del diálogo «Montar recurso compartido»</screeninfo>
@@ -781,7 +778,9 @@
 >//[USER@]SERVER/SHARE</programlisting
 > or <programlisting
 >\ \[USER@]SERVER\SHARE</programlisting
-> o como una URL en la forma <programlisting
+> o como una <ulink url="https://en.wikipedia.org/wiki/URL"
+>URL</ulink
+> en la forma <programlisting
 >[smb:]//[user@]server[:port]/share</programlisting
 > El botón <guibutton
 >Aceptar</guibutton
@@ -796,8 +795,8 @@
       </orderedlist>
 
       <para
->A menudo un recurso compartido está protegido mediante una contraseña. En ese caso, aparecerá un <link linkend="network_neighborhood_browser_authentication"
-> diálogo de autenticación</link
+>Los recursos compartidos están protegidos mediante una contraseña. En ese caso, aparecerá un <link linkend="network_neighborhood_browser_authentication"
+>diálogo de contraseñas</link
 > y tendrá que introducir el nombre de usuario correcto (si no lo ha proporcionado ya) y la contraseña. &smb4k; procederá a montar el recurso compartido a menos que se haya suministrado un nombre de usuario o una contraseña erróneos. En este caso, el diálogo de autenticación volverá a aparecer. Si el proceso de montaje finaliza con éxito, el usuario verá una notificación y el recurso compartido aparecerá en la <link linkend="shares_view"
 >Vista de recursos compartidos montados</link
 >. Si el montaje falla, se mostrará una notificación con el mensaje de error devuelto por <ulink url="man:/mount.cifs"
@@ -2524,17 +2523,35 @@
       <para
 >El uso de diferentes perfiles puede activarse en el <link linkend="configuration_page_profiles"
 >diálogo de configuración</link
->. El primer perfil en la lista, seguramente el perfil <guilabel
->Casa</guilabel
->, se toma como perfil activo. Usted también puede activar el asistente de migración de perfiles.</para>
+> al activar la casilla <guibutton
+>Usar perfiles</guibutton
+>. El perfil activo inicial se crea entonces y se indica por una marca a su lado en la vista de lista. El nombre del perfil activo se muestra también entre paréntesis en el título de las páginas de configuración de <guilabel
+>Autenticación</guilabel
+>, <guilabel
+>Marcadores</guilabel
+> y <guilabel
+>Preferencias personalizadas</guilabel
+>.</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del título de la sección de la página de configuración de autenticación con el perfil indicado</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="configuration_page_authentication_profile_indicator.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Captura de pantalla del título de la sección de la página de configuración de autenticación con el perfil indicado</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
       <para
->Están predefinidos dos perfiles, <guilabel
+>Hay dos perfiles predefinidos, <guilabel
 >Casa</guilabel
 > y <guilabel
 >Trabajo</guilabel
->, pero usted puede definir tantos perfiles como quiera. Se añade un nuevo perfil introduciendo su nombre en la línea de entrada de la página de configuración de <guibutton
->Perfiles</guibutton
-> y pulsando posteriormente <guibutton
+>, pero puede definir tantos perfiles como quiera. Un nuevo perfil se añade introduciendo su nombre en la línea de entrada y después pulsando el botón <guibutton
 >Añadir</guibutton
 >.</para>
       <screenshot>
@@ -2551,48 +2568,17 @@
         </mediaobject>
       </screenshot>
       <para
->Si usted quiere cambiar el nombre de un perfil, solo pulse y edite el nombre en la línea de entrada. Pulsando <guibutton
->Añadir</guibutton
-> actualizará el nombre en la vista de lista. Todas las preferencias almacenadas se migrarán silenciosamente (sin la ayuda del asistente de migración). Un perfil puede eliminarse seleccionándolo en la vista de lista y pulsando <guibutton
+>Para establecer el perfil activo, haga doble clic en el nombre del perfil o marque el nombre del perfil y pulse el botón <guibutton
+>Establecer como activo</guibutton
+>. Para renombrar un perfil, selecciónelo, pulse <guibutton
+>Renombrar</guibutton
+> y edite el nombre en la vista de lista. Todas las preferencias personalizadas, marcadores y credenciales de acceso por omisión se migrarán al nuevo nombre. Para eliminar un perfil, selecciónelo y pulse <guibutton
 >Eliminar</guibutton
->. También puede cambiar el orden de los perfiles con los botones <guibutton
->Subir</guibutton
+>. Puede también cambiar el orden de los perfiles con los botones <guibutton
+>Mover arriba</guibutton
 > y <guibutton
->Bajar</guibutton
+>Mover abajo</guibutton
 >.</para>
-      <para
->En caso de que usted haya activado el asistente de migración, se lanza siempre que elimine un perfil o cuando active/desactive el uso de perfiles. Se encarga de la migración de todas las preferencias importantes.</para>
-      <para
->Las siguiente captura de pantalla ilustra el asistente de migración de perfiles después de que usted haya activado el uso de perfiles:</para>
-      <screenshot>
-        <screeninfo
->Captura de pantalla del asistente de migración de perfiles</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="configuration_page_profiles_migration_assistant.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Asistente de migración de perfiles</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <para
->El perfil antiguo (<guilabel
->&lt;Perfil por omisión&gt;</guilabel
-> en este caso) se muestra bajo <guilabel
->Perfil antiguo</guilabel
->. Bajo <guilabel
->Perfil nuevo</guilabel
-> usted puede elegir el perfil desde el menú desplegable adonde se deberían migrar las preferencias. El primer perfil en la lista es preseleccionado. Pulsando el botón <guibutton
->Aceptar</guibutton
-> se migran las preferencias. Pulsando el botón <guibutton
->Cancelar</guibutton
-> cancela la acción.</para>
-      <note
-><para
->Para usar el asistente de migración cuando usted activa por primera vez el uso de perfiles, usted debe activar su uso al mismo tiempo que activa el uso de perfiles.</para
-></note>
     </sect2>
   
 <!-- 
@@ -2602,14 +2588,17 @@
     <sect2 id="profiles_activate_profile">
       <title
 >Activación de un perfil</title>
+
       <para
->Por omisión, el primer perfil en la lista se activa cuando usted activa el uso de perfiles. El perfil activo puede cambiarse en el menú <guimenu
+>El perfil activo puede cambiarse en el diálogo de configuración como se menciona <link linkend="profiles_enable"
+>más arriba</link
+> o en el menú <guimenu
 >Perfiles</guimenu
-> de la ventana principal o a través del control de la bandeja del sistema o la página <guilabel
+> de la ventana principal, el control de la bandeja del sistema, o la página <guilabel
 >Perfiles</guilabel
 > del plasmoide.</para>
       <para
->Cuando un perfil se activa, suceden varias cosas:</para>
+>Cuando un perfil se activa, suceden estas cosas:</para>
       <itemizedlist>
         <listitem
 ><para
@@ -2621,7 +2610,7 @@
 ></listitem>
         <listitem
 ><para
->Los marcadores y preferencias personalizadas para el nuevo perfil son cargadas.</para
+>Se cargarán las credenciales de acceso predeterminadas (si están definidas), los marcadores y las preferencias personalizadas para el nuevo perfil.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -3169,7 +3158,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Modo de vista de la vista de recursos compartidos</guibutton
+>Modo de vista</guibutton
 ></menuchoice>
           </term>
           <listitem>
@@ -3264,7 +3253,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Red</title>
 
     <para
->Las opciones localizadas aquí influyen en la comunicación de red. Puede modificar el comportamiento de la navegación y visualización en la pestaña <guibutton
+>Las preferencias localizadas aquí influyen en la comunicación de red. Puede modificar la preferencias de navegación y comportamiento en la pestaña <guibutton
 >Preferencias básicas</guibutton
 > y las opciones más avanzadas para Samba y las capacidades Wake-On-LAN en la pestaña <guibutton
 >Preferencias avanzadas</guibutton
@@ -3323,7 +3312,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->La interfaz del servicio de descubrimiento DNS (DNS-SD) se usa para navegar en la red local y descubrir servidores que proporcionan recursos SMB compartidos. Los dominios descubiertos corresponden a dominios DNS locales (&eg;, de nombre LOCAL) y posiblemente no a aquellos definidos en la vecindad de red. Sin embargo, esto no influencia la navegación.</para>
+>La interfaz del servicio de descubrimiento DNS (DNS-SD) se usa para navegar en la red local y descubrir servidores que proporcionan recursos SMB compartidos. Los dominios descubiertos corresponden a dominios DNS locales (&eg; de nombre LOCAL) y posiblemente no a aquellos definidos en la vecindad de red. Sin embargo, esto no influencia la navegación.</para>
               <para
 >Predeterminado: seleccionado</para>
             </listitem>
@@ -3365,7 +3354,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Esta es la versión previa del protocolo. Es usada por &Windows; NT y es conocida como CIFS. Se considera insegura y fue desactivada en la última versión de &Samba; y &Windows;.</para>
+>Esta es la versión clásica del protocolo. Es usada por &Windows; NT y es conocida como CIFS o SMBv1. Se considera insegura y fue desactivada en las últimas versiones de &Samba; y &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3389,7 +3378,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Esta es la misma que SMB2. Esta versión del protocolo es usada por &Windows; 8 y superiores.</para>
+>Esta es la versión SMBv3 del protocolo. Proporciona varias mejoras en la funcionalidad y el rendimiento sobre SMBv2, como también, varias mejoras de seguridad. Esta versión del protocolo es usada por &Windows; 8 y posteriores.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -3419,7 +3408,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Esta es la versión previa del protocolo. Es usada por &Windows; NT y es conocida como CIFS. Se considera insegura y fue desactivada en la última versión de &Samba; y &Windows;.</para>
+>Esta es la versión clásica del protocolo. Es usada por &Windows; NT y es conocida como CIFS o SMBv1. Se considera insegura y fue desactivada en las últimas versiones de &Samba; y &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3443,7 +3432,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Esta es la misma que SMB2. Esta versión del protocolo es usada por &Windows; 8 y superiores.</para>
+>Esta es la versión SMBv3 del protocolo. Proporciona varias mejoras en la funcionalidad y el rendimiento sobre SMBv2, como también, varias mejoras de seguridad. Esta versión del protocolo es usada por &Windows; 8 y posteriores.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -8001,9 +7990,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->Todas sus credenciales de acceso son almacenadas en su administrador de contraseñas, (&eg; KeePassXC, &kwallet; o GNOME Keyring). Para cambiarlas, puede usar el <link linkend="network_neighborhood_browser_authentication"
+>Todas sus credenciales de acceso son almacenadas en su administrador de contraseñas, (&eg; &kwallet;, GNOME Keyring o KeePassXC). Para cambiarlas, puede usar el <link linkend="network_neighborhood_browser_authentication"
 >diálogo de contraseñas</link
->. Para borrar entradas individuales, use su administrador de contraseñas.</para>
+> o su administrador de contraseñas. Para borrar entradas individuales, debe de usar su administrador de contraseñas.</para>
   </sect1>
 
 <!--
@@ -8031,8 +8020,37 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->...</para>
+>Para editar una categoría o marcador, haga doble click en ellos o selecciónelos y pulse el botón <guibutton
+>Editar</guibutton
+> en la parte derecha. La categorías pueden renombrarse directamente. Para los marcadores, el editor se abre y puede cambiar la etiqueta, la categoría, el nombre de usuario para el acceso como  también el grupo de trabajo o el dominio y la dirección IP del servidor.</para>
 
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de la página de configuración «Marcadores» con el editor abierto</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_bookmarks_editor.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La página de configuración «Marcadores» con el editor abierto</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Se pueden añadir categorías usando el botón <guibutton
+>Añadir categoría</guibutton
+> o introduciendo un nuevo nombre de categoría en el editor. Las entradas individuales o la lista entera pueden ser borradas pulsando los botones <guibutton
+>Eliminar</guibutton
+> o <guibutton
+>Limpiar lista</guibutton
+>. Para deshacer sus cambios, pulse el botón <guibutton
+>Reiniciar</guibutton
+>.</para>
+    <para
+>Para ampliar información sobre marcadores, lea esta <link linkend="bookmarks"
+>sección</link
+>.</para>
   </sect1>
 
 
@@ -8044,9 +8062,8 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     <title
 >Preferencias personalizadas</title>
 
-    <!-- FIXME -->
     <para
->Todos los servidores y recursos compartidos para los que usted definió preferencias personalizadas se listan aquí.</para>
+>Todos los servidores y recursos compartidos para los que usted definió preferencias personalizadas se listan aquí. Si usa perfiles, solo se muestran los del perfil activo.</para>
 
     <screenshot>
       <screeninfo
@@ -8062,11 +8079,25 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->Las opciones definidas para cada elemento de red pueden editarse, bien por doble clic en una entrada de la vista de lista, o bien pulsando el botón  <guibutton
+>Puede editar las preferencias personalizadas de un elemento de red haciendo doble click en él o seleccionándolo y pulsando en el botón <guibutton
 >Editar</guibutton
->. El <link linkend="custom_settings"
->editor de preferencias personalizadas</link
-> se abre y las preferencias se pueden editar. Para eliminar una entrada, selecciónela y pulse el botón <guibutton
+> en la parte derecha. El editor se abrirá y podrá cambiar las preferencias que desee.</para>
+
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de la página de configuración «Preferencias personalizadas» con el editor abierto</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="configuration_page_custom_settings_editor.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La página de configuración «Preferencias personalizadas» con el editor abierto</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Para eliminar una entrada, selecciónela y pulse el botón <guibutton
 >Eliminar</guibutton
 >. Todos los elementos de red pueden eliminarse al mismo tiempo pulsando el botón <guibutton
 >Limpiar lista</guibutton
@@ -8074,7 +8105,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Reiniciar</guibutton
 >.</para>
     <para
->Para ampliar información sobre el editor de preferencias personalizadas, lea esta <link linkend="custom_settings"
+>Para ampliar información sobre preferencias personalizadas, lea esta <link linkend="custom_settings"
 >sección</link
 >.</para>
   </sect1>
@@ -8128,20 +8159,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Predeterminado: no seleccionado</para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Usar el asistente de migración de perfiles</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Use el asistente de migración de perfiles cuando se eliminen perfiles o se active o desactive el uso de perfiles. El asistente de migración de perfiles le permite migrar todas las preferencias que se guardaron para un cierto perfil en uno distinto.</para>
-            <para
->Predeterminado: no seleccionado</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
 
@@ -8158,9 +8175,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Casa</guilabel
 > y <guilabel
 >Trabajo</guilabel
->), pero usted puede añadir los suyos propios. Cuando usted activó el uso de perfiles por primera vez, la primera entrada de la lista será el perfil activo.</para>
+>). Cuando usted active el uso de perfiles, la primera entrada de la lista será el perfil activo.</para>
       <para
->Cuando usted cambie de nombre un perfil, las preferencias se migran automáticamente (sin mostrar el asistente de migración). Si usted activó el uso del asistente de migración, se muestra cuando usted elimina un perfil proporcionándole la oportunidad de migrar las preferencias almacenadas a otro perfil. Si el uso del asistente de migración está desactivado, el perfil y todas sus preferencias se eliminan.</para>
+>Para añadir un nuevo perfil, introduzcalo en la línea de edición y pulse el botón <guibutton
+>Añadir</guibutton
+>. Las entradas pueden borrarse al seleccionarlas, pulsando el botón <guibutton
+>Eliminar</guibutton
+>. Para cambiar el órden, puede usar los botones <guibutton
+>Mover arriba</guibutton
+> y <guibutton
+>Mover abajo</guibutton
+>. El perfil activo puede cambiarse haciendo doble clic en el nombre del perfil en la lista o seleccionando el perfil y usando el botón <guibutton
+>Establecer como activo</guibutton
+>. Para renombrar un perfil, selecciónelo y pulse el botón <guibutton
+>Renombrar</guibutton
+>. Entonces podrña cambiar el nombre en el control de la lista. Todas las preferencias del perfil renombrado se migrarán automáticamente. Para deshacer sus cambios, pulse el botón <guibutton
+>Reiniciar</guibutton
+>.</para>
+      <para
+>Para ampliar información sobre perfiles, lea esta <link linkend="profiles"
+>sección</link
+>.</para>
     </sect2>
   </sect1>
 </chapter>
