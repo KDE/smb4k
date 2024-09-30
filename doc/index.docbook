@@ -36,7 +36,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-09-22</date>
+  <date>2024-09-30</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -356,7 +356,7 @@
       <orderedlist>
         <listitem><para>Execute the icon representing the remote share in the network neighborhood browser. (Depending on your &kde; settings, this is done by either single or double clicking the icon.)</para></listitem>
         <listitem><para>Select the remote shares and click the <guimenuitem>Mount</guimenuitem> menu entry. Alternatively, you can press the <keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo> keyboard shortcut.</para></listitem>
-        <listitem><para>Press the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry to open the mount dialog:</para>
+        <listitem><para>Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry to open the mount dialog:</para>
         <screenshot>
           <screeninfo>Screenshot of the "Mount Share" dialog</screeninfo>
           <mediaobject>
@@ -364,10 +364,10 @@
             <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
           </mediaobject>
         </screenshot>
-        <para>Here you can enter the location of the share as a <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as an <ulink url="https://en.wikipedia.org/wiki/URL">URL</ulink> in the form <programlisting>[smb:]//[user@]server[:port]/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend so you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
+        <para>Here you can enter the location of the share as a <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as an <ulink url="https://en.wikipedia.org/wiki/URL">URL</ulink> in the form <programlisting>[smb:]//[user@]server[:port]/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend, so that you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. See the section <link linkend="bookmarks">Bookmarks</link> for more details.</para></listitem>
       </orderedlist>
 
-      <para>Shares are often password protected. In this case, the <link linkend="network_neighborhood_browser_authentication">password dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed with mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be displayed.</para>
+      <para>In this case a share is password protected, a <link linkend="network_neighborhood_browser_authentication">password dialog</link> will appear and you have to enter the correct user name (if not already present) and password. &smb4k; will proceed with mounting the share unless a wrong user name or password was entered. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be displayed.</para>
     </sect2>
 
 <!-- 
@@ -405,7 +405,7 @@
         </mediaobject>
       </screenshot>
       <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view. You can go one level up by using the <guibutton>Up</guibutton> button and reload the contents of the current folder by pressing the <guibutton>Reload</guibutton> button. The current location is displayed in the combo box on the right hand side. You can also access already visited folders with it.</para>
-      <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_basic_settings_behavior">configuration dialog</link>. File transfers and the like are not possible.</para>
+      <para>By default, the preview dialog does not show hidden folders and files. You can change this behavior in the <link linkend="configuration_page_network_basic_settings_behavior">configuration dialog</link>. File transfers and the like are not possible.</para>
     </sect2>
 
 <!-- 
@@ -415,7 +415,7 @@
     <sect2 id="network_neighborhood_browser_authentication">
       <title>Providing Authentication Information</title>
 
-      <para>Many servers and remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same thing happens if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
+      <para>In case the server or share you want to access is password protected, a password dialog appears asking you for the user name and password. The same thing happens if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
       <screenshot>
         <screeninfo>Screenshot of the authentication dialog</screeninfo>
         <mediaobject>
@@ -423,7 +423,8 @@
           <textobject><phrase>The authentication dialog</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong, or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button commits the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not at all. In the latter case you have to provide them <emphasis>every time</emphasis> they are needed.</para>
+      <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong, or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button commits the data.</para>
+      <para>Please note that you can also define default login information in the <link linkend="configuration_page_authentication">configuration dialog</link>.</para>
     </sect2>
     
 <!-- 
@@ -433,7 +434,7 @@
     <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title>Defining Custom Settings</title>
       
-      <para>For individual servers or shares you can define custom settings that deviate from the global settings. To do so, you can access the custom settings editor by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> menu item. See the section <link linkend="custom_settings">Custom Settings</link> for more details.</para>
+      <para>For individual servers or shares you can define custom settings that deviate from the global settings. To do so, access the custom settings editor by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> menu item. See the section <link linkend="custom_settings">Custom Settings</link> for more details.</para>
     </sect2>
 
 <!-- 
@@ -455,7 +456,7 @@
   <sect1 id="shares_view">
     <title>The Mounted Shares View</title>
 
-    <para>In the shares view, you can interact with the mounted shares on your system.</para>
+    <para>In the shares view, you can interact with the shares mounted on your system.</para>
 
 <!-- 
       Using Smb4K : The Mounted Shares View : Different Views 
@@ -491,7 +492,7 @@
       </screenshot>
 
       <para>You can switch between the two views by selecting the appropriate entry in the <guimenuitem>View Modes</guimenuitem> submenu of the tool bar, in the menu bar under <link linkend="mainwindow_overview"><guimenu>Shares</guimenu></link> or in the shares view's <link linkend="shares_view_actions_popup_menu">popup menu</link>.</para>
-      <para>By default, only your own mounts are displayed. However, you can adjust &smb4k; to show all mounts with the <link linkend="configuration_page_mounting_basic_settings_behavior">respective settings</link>.</para>
+      <para>By default, only your own mounts are displayed. However, you can adjust &smb4k; to show all mounts in the <link linkend="configuration_page_mounting_basic_settings_behavior">configuration dialog</link>.</para>
     </sect2>
 
 <!-- 
@@ -574,7 +575,8 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the custom settings editor for the selected shares. Read the section about the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor for more details.</para>
+            <para>Open the custom settings editor for the selected shares.</para>
+            <para>Read the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> section for more details.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -585,7 +587,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para><link linkend="shares_view_synchronization">Synchronize</link> a share with a local copy or vice versa. This menu entry is only enabled if you installed the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and a share is selected.</para>
+            <para><link linkend="shares_view_synchronization">Synchronize</link> a share with a local copy or vice versa. This menu entry is only enabled if the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is installed and a share is selected.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -712,7 +714,7 @@
     <sect2 id="shares_view_adding_custom_settings">
       <title>Defining Custom Settings</title>
       
-      <para>For the selected shares custom settings can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> action to open the Custom Settings dialog. For more details, please see <link linkend="custom_settings">this section</link>.</para>
+      <para>For the selected shares, custom settings can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> action to open the Custom Settings dialog. For more details, please see <link linkend="custom_settings">this section</link>.</para>
     </sect2>
     
 <!-- 
@@ -722,7 +724,7 @@
     <sect2 id="shares_view_synchronization">
       <title>Synchronization</title>
 
-      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> menu item opens the synchronization dialog. It offers the mount point of the share as the source and a path below the <link linkend="configuration_page_synchronization_basic_settings_default_destination">synchronization prefix</link> as the destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
+      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> action opens the synchronization dialog. It offers the mount point of the share as the source and a path below the <link linkend="configuration_page_synchronization_basic_settings_default_destination">synchronization prefix</link> as the destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
       <screenshot>
         <screeninfo>Screenshot of the synchronization input dialog</screeninfo>
         <mediaobject>
