@@ -55,7 +55,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->22 de setembre de 2024</date>
+>30 de setembre de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -710,7 +710,7 @@
 ></listitem>
         <listitem
 ><para
->Premeu l'entrada de menú <menuchoice
+>Cliqueu l'entrada de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -752,14 +752,16 @@
 ></guibutton
 >. El diàleg s'estendrà de manera que podreu marcar la casella de selecció <guibutton
 >Afegeix aquesta compartició a les adreces d'interès</guibutton
-> i introduir una etiqueta i categoria per a l'adreça d'interès. </para
+> i introduir una etiqueta i categoria per a l'adreça d'interès. Vegeu la secció <link linkend="bookmarks"
+>Adreces d'interès</link
+> per a més detalls.</para
 ></listitem>
       </orderedlist>
 
       <para
->Sovint, les comparticions estan protegides amb contrasenyes. En aquest cas, apareixerà el <link linkend="network_neighborhood_browser_authentication"
+>En cas que una compartició estigui protegida amb contrasenya, apareixerà el <link linkend="network_neighborhood_browser_authentication"
 >diàleg de contrasenya</link
-> i caldrà introduir el nom d'usuari (si no n'hi ha ja un) i la contrasenya correcta. El &smb4k; procedirà al muntatge de la compartició a menys que s'hagi subministrat un nom d'usuari o contrasenya incorrectes. En aquest cas, el diàleg d'autenticació tornarà a aparèixer. Si el procés de muntatge s'ha realitzat correctament, es mostrarà una notificació a l'usuari i la compartició apareixerà a la vista de les <link linkend="shares_view"
+> i caldrà introduir el nom d'usuari (si no n'hi ha cap) i la contrasenya correcta. El &smb4k; procedirà al muntatge de la compartició a menys que s'hagi introduït un nom d'usuari o contrasenya incorrectes. En aquest cas, el diàleg d'autenticació tornarà a aparèixer. Si el procés de muntatge s'ha realitzat correctament, es mostrarà una notificació a l'usuari i la compartició apareixerà a la vista de les <link linkend="shares_view"
 >comparticions muntades</link
 >. Si el muntatge falla, una notificació amb el missatge d'error serà retornada per <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -863,7 +865,7 @@
 >Actualitza</guibutton
 >. La ubicació actual es mostra al quadre combinat a la part dreta. Amb ell també podreu accedir a les carpetes visitades.</para>
       <para
->De manera predeterminada, el diàleg de vista prèvia només mostra les carpetes i fitxers que no estan ocults. Podeu canviar aquest comportament en el <link linkend="configuration_page_network_basic_settings_behavior"
+>De manera predeterminada, el diàleg de vista prèvia no mostra les carpetes i fitxers ocults. Podeu canviar aquest comportament en el <link linkend="configuration_page_network_basic_settings_behavior"
 >diàleg de configuració</link
 >. Les transferències de fitxers i similars no són possibles.</para>
     </sect2>
@@ -877,7 +879,7 @@
 >Proporcionar la informació d'autenticació</title>
 
       <para
->Molts servidors i comparticions remotes estan protegides per una contrasenya. En aquest cas, apareixerà un diàleg de contrasenya demanant-vos el nom d'usuari i la contrasenya. El mateix succeeix, si feu clic a l'entrada de menú <menuchoice
+>En cas que el servidor o compartició estigui protegit amb contrasenya, apareixerà un diàleg de contrasenya demanant-vos el nom d'usuari i la contrasenya. El mateix succeeix, si feu clic a l'entrada de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -903,11 +905,11 @@
       <para
 >Si ja s'ha proporcionat un nom d'usuari, es mostrarà en el seu camp respectiu. Si és incorrecte o no es va proporcionar el nom d'usuari, n'haureu d'introduir un. La contrasenya, però, es pot deixar en blanc. Fent clic al botó <guibutton
 >D'acord</guibutton
-> cometreu les dades. Depenent de la vostra elecció en el <link linkend="configuration_page_authentication"
+> cometreu les dades.</para>
+      <para
+>Tingueu en compte que també podeu definir la informació predeterminada d'inici de sessió en el <link linkend="configuration_page_authentication"
 >diàleg de configuració</link
->, el nom d'usuari i la contrasenya s'emmagatzemaran o no permanentment en una cartera digital. En aquest últim cas, els haureu de proporcionar <emphasis
->cada vegada</emphasis
-> que sigui necessari.</para>
+>.</para>
     </sect2>
     
 <!-- 
@@ -919,7 +921,7 @@
 >Definir una configuració personalitzada</title>
       
       <para
->Es pot definir una configuració personalitzada per a servidors individuals o comparticions que es desvien de la configuració global. Per a fer-ho, podeu accedir a l'editor de configuració personalitzada fent clic a l'element de menú <menuchoice
+>Es pot definir una configuració personalitzada per a servidors individuals o comparticions que es desvien de la configuració global. Per a fer-ho, accediu a l'editor de configuració personalitzada fent clic a l'element de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1022,8 +1024,8 @@
 >menú emergent</link
 > de la vista de comparticions.</para>
       <para
->De manera predeterminada, només es mostraran les muntades pròpies. Tanmateix, podeu ajustar el &smb4k; perquè mostri totes les muntades amb les <link linkend="configuration_page_mounting_basic_settings_behavior"
->opcions de configuració respectives</link
+>De manera predeterminada, només es mostraran les muntades pròpies. Tanmateix, podeu ajustar el &smb4k; perquè mostri totes les muntades al <link linkend="configuration_page_mounting_basic_settings_behavior"
+>diàleg de configuració</link
 >.</para>
     </sect2>
 
@@ -1160,7 +1162,9 @@
           </term>
           <listitem>
             <para
->Obre el diàleg de configuració personalitzada. Vegeu la secció quant al diàleg de l'editor de <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Obre l'editor de configuració personalitzada per a les comparticions seleccionades.</para>
+            <para
+>Llegiu la secció de <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Configuració personalitzada</link
 > per a més detalls.</para>
           </listitem>
@@ -1182,7 +1186,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Sincronitza</link
-> una compartició amb una còpia local o viceversa. Aquesta entrada de menú només estarà habilitada si heu instal·lat el programa <ulink url="man:/rsync"
+> una compartició amb una còpia local o viceversa. Aquesta entrada de menú només estarà habilitada si està instal·lat el programa <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1190,7 +1194,7 @@
 >1</manvolnum
 ></citerefentry
 ></ulink
-> i si hi ha una compartició seleccionada.</para>
+> i hi ha una compartició seleccionada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1420,7 +1424,7 @@
 >Sincronitzar</title>
 
       <para
->L'element de menú <menuchoice
+>L'acció <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap

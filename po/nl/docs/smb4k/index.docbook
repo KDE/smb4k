@@ -55,7 +55,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-09-22</date>
+>2024-09-30</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -706,7 +706,7 @@
 ></listitem>
         <listitem
 ><para
->Druk op het menu-item <menuchoice
+>Klik op het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -748,14 +748,16 @@
 ></guibutton
 >. De dialoog zal vergroot worden dus kunt u het keuzevakje <guibutton
 >Voeg een bladwijzer toe voor deze gedeelde map</guibutton
-> aanvinken en een label en categorie invoeren voor de bladwijzer. </para
+> aanvinken en een label en categorie invoeren voor de bladwijzer. Zie de sectie <link linkend="bookmarks"
+>Bladwijzers</link
+> voor meer details.</para
 ></listitem>
       </orderedlist>
 
       <para
->Shares zijn vaak met een wachtwoord beveiligd. In een dergelijk geval zal e <link linkend="network_neighborhood_browser_authentication"
+>In het geval dat een share met een wachtwoord is beveiligd, zal een <link linkend="network_neighborhood_browser_authentication"
 >wachtwoorddialoog</link
->worden geopend zodat u de juiste gebruikersnaam (als deze nog niet is opgegeven) en wachtwoord kunt opgeven. &smb4k; zal daarna verder gaan met het aankoppelen van de share tenzij u een verkeerde naam of wachtwoord heeft opgegeven. In dat geval zal het dialoogvenster voor authenticatie opnieuw openen. U krijgt een melding als het aankoppelen gelukt is en zal de share verschijnen in de weergave <link linkend="shares_view"
+> worden geopend zodat u de juiste gebruikersnaam (als deze nog niet aanwezig is) en een wachtwoord op kunt geven. &smb4k; zal daarna verder gaan met het aankoppelen van de share tenzij u een verkeerde naam of wachtwoord heeft opgegeven. In dat geval zal het dialoogvenster voor authenticatie opnieuw openen. U krijgt een melding als het aankoppelen gelukt is en zal de share verschijnen in de weergave <link linkend="shares_view"
 >Aangekoppelde shares</link
 >. Als het aankoppelen is mislukt, krijgt u door <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -859,7 +861,7 @@
 >Herladen</guibutton
 > te drukken. De huidige locatie wordt getoond in de keuzelijst rechts. U kunt er ook eerder bezochte mappen mee bezoeken.</para>
       <para
->Standaard zijn in het voorbeeldweergave-venster alleen niet verborgen mappen en bestanden te zien. U kunt dit wijzigen in het <link linkend="configuration_page_network_basic_settings_behavior"
+>Standaard wordt in het voorbeeldweergavevenster geen verborgen mappen en bestanden getoond. U kunt dit wijzigen in het <link linkend="configuration_page_network_basic_settings_behavior"
 >configuratiedialoog</link
 >. Het verplaatsen van bestanden en soortgelijke bewerkingen zijn niet mogelijk.</para>
     </sect2>
@@ -873,7 +875,7 @@
 >Het verstrekken van identificatie-informatie</title>
 
       <para
->Veel servers en externe shares zijn beveiligd met een wachtwoord. In dat geval zal een dialoogvenster openen waarin u wordt gevraagd naar een gebruikersnaam en wachtwoord. Hetzelfde gebeurt ook als u klikt op het menu-item <menuchoice
+>Als de server of share die u wilt benaderen is beveiligd met een wachtwoord, wordt een dialoogvenster geopend waarin u wordt gevraagd naar een gebruikersnaam en wachtwoord. Hetzelfde gebeurt ook als u klikt op het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -899,11 +901,11 @@
       <para
 >als een gebruikersnaam al eens eerder is opgegeven, dan krijgt u deze in het betreffende tekstvak te zien. Als deze ongeldig is of er is nog geen gebruikersnaam opgegeven, dan moet u er een opgeven. Het wachtwoord mag echter leeg blijven. Door op de knop <guibutton
 >OK</guibutton
-> te klikken, legt u de data vast. Afhankelijk van uw instellingen in het <link linkend="configuration_page_authentication"
->configuratievenster</link
->, zullen de gebruikersnaam en het wachtwoord permanent in een digitale portefeuille worden bewaart of helemaal niet. In dat laatste geval moet u ze<emphasis
->iedere keer</emphasis
-> dat ze nodig zijn, opgeven.</para>
+> te klikken, legt u de data vast.</para>
+      <para
+>Merk op dat u ook standaard aanmeldinformatie kunt definiëren in de <link linkend="configuration_page_authentication"
+>configuratiedialoog</link
+>.</para>
     </sect2>
     
 <!-- 
@@ -915,7 +917,7 @@
 >Aangepaste instellingen definiëren</title>
       
       <para
->Voor individuele servers  of shares kunt u aangepaste instellingen definiëren. Om dat te doen kunt de bewerker voor aangepaste instellingen gebruiken door te klikken op het menu-item <menuchoice
+>Voor individuele servers  of shares kunt u aangepaste instellingen definiëren. Om dat te doen gebruik de bewerker voor aangepaste instellingen door te klikken op het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1018,8 +1020,8 @@
 >pop-up-menu</link
 > van weergave van de gedeelde mappen</para>
       <para
->Standaard krijgt u in alleen uw eigen aangekoppelde mappen te zien. Maar u kunt &smb4k; aanpassen om alle aangekoppelde mappen te laten zien met de <link linkend="configuration_page_mounting_basic_settings_behavior"
->respectievelijke instellingen</link
+>Standaard krijgt u in alleen uw eigen aangekoppelde mappen te zien. Maar u kunt &smb4k; aanpassen om alle aangekoppelde mappen te laten zien in de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>configuratiedialoog</link
 >.</para>
     </sect2>
 
@@ -1156,7 +1158,9 @@
           </term>
           <listitem>
             <para
->Open de bewerker voor aangepaste instellingen voor de geselecteerde shares. Lees de sectie over de dialoog <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Open de bewerker voor aangepaste instellingen voor een de geselecteerde shares.</para>
+            <para
+>Lees de sectie <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Aangepaste instellingen</link
 > voor meer details.</para>
           </listitem>
@@ -1178,7 +1182,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Synchroniseren</link
-> van een share met een locale kopie of vice versa. Dit menu-item is alleen te selecteren als u het programma <ulink url="man:/rsync"
+> van een share met een locale kopie of vice versa. Dit menu-item is alleen te selecteren als het programma <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1186,7 +1190,7 @@
 >1</manvolnum
 ></citerefentry
 ></ulink
-> heeft geïnstalleerd en een share is geselecteerd.</para>
+> is geïnstalleerd en een share is geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1416,7 +1420,7 @@
 >Synchronisatie</title>
 
       <para
->Het menuitem <menuchoice
+>De actie <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1429,7 +1433,7 @@
 > opent het synchronisatie dialoogvenster. Het geeft als bron het aankoppelpunt van de share en een pad onder het <link linkend="configuration_page_synchronization_basic_settings_default_destination"
 >Synchronisatie-voorvoegsel</link
 > als doel. Om de data op de share bij te werken, kunt u de bron met het doel omwisselen door op de knop <guibutton
->Wissel Paden Om</guibutton
+>Wissel paden om</guibutton
 >te klikken.</para>
       <screenshot>
         <screeninfo
