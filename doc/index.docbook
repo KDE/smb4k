@@ -502,7 +502,7 @@
     <sect2 id="shares_view_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>In the shares view, several options are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, in the tool bar, and in the popup menu. The following options are available:</para>
+      <para>In the shares view, several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, in the tool bar, and in the popup menu. The following options are available:</para>
 
       <variablelist>
         <varlistentry>
