@@ -1086,14 +1086,7 @@ void Smb4KNetworkBrowserDockWidget::slotStopSearch()
 
 void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr> &shares)
 {
-    //
-    // A global search finished
-    //
     m_searchRunning = false;
-
-    //
-    // Process the search results
-    //
     QTreeWidgetItemIterator it(m_networkBrowser);
 
     while (*it) {
@@ -1102,15 +1095,8 @@ void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr> &sha
         if (networkItem->type() == Share) {
             for (const SharePtr &share : shares) {
                 if (networkItem->shareItem() == share) {
-                    //
-                    // Select the search result
-                    //
                     networkItem->setSelected(true);
 
-                    //
-                    // Expand the branch of the network tree where a search result
-                    // was retrieved
-                    //
                     if (!networkItem->parent()->isExpanded()) {
                         m_networkBrowser->expandItem(networkItem->parent());
                     }
@@ -1125,9 +1111,9 @@ void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr> &sha
         it++;
     }
 
-    //
-    // Pass the search results to the search toolbar
-    //
+    QTreeWidgetItem *firstItem = m_networkBrowser->selectedItems().first();
+    m_networkBrowser->scrollToItem(firstItem, QTreeWidget::PositionAtTop);
+
     m_searchToolBar->setSearchResults(shares);
 }
 
