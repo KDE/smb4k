@@ -97,7 +97,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-09-22</date>
+>2024-09-30</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -790,14 +790,16 @@
 ></guibutton
 >. Se desplegará un diálogo y podrá marcar la casilla de verificación <guibutton
 >Añadir este recurso compartido a los marcadores</guibutton
-> e introduzca una etiqueta y una categoría para el marcador. </para
+> e introduzca una etiqueta y una categoría para el marcador. Vea la sección <link linkend="bookmarks"
+>Marcadores</link
+> para más detalles.</para
 ></listitem>
       </orderedlist>
 
       <para
->Los recursos compartidos están protegidos mediante una contraseña. En ese caso, aparecerá un <link linkend="network_neighborhood_browser_authentication"
+>En ese caso un recurso compartido está protegido por contraseña, aparecerá un <link linkend="network_neighborhood_browser_authentication"
 >diálogo de contraseñas</link
-> y tendrá que introducir el nombre de usuario correcto (si no lo ha proporcionado ya) y la contraseña. &smb4k; procederá a montar el recurso compartido a menos que se haya suministrado un nombre de usuario o una contraseña erróneos. En este caso, el diálogo de autenticación volverá a aparecer. Si el proceso de montaje finaliza con éxito, el usuario verá una notificación y el recurso compartido aparecerá en la <link linkend="shares_view"
+> y tendrá que introducir el nombre de usuario correcto (si no está ya presente) y la contraseña. &smb4k; procederá a montar el recurso compartido a menos que se haya introducido un nombre de usuario o una contraseña erróneos. En este caso, el diálogo de autenticación volverá a aparecer. Si el proceso de montaje finaliza con éxito, el usuario verá una notificación y el recurso compartido aparecerá en la <link linkend="shares_view"
 >Vista de recursos compartidos montados</link
 >. Si el montaje falla, se mostrará una notificación con el mensaje de error devuelto por <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -901,7 +903,7 @@
 >Recargar</guibutton
 >. La ubicación actual se muestra en la lista desplegable que hay a la derecha. También pude acceder a las carpetas ya visitadas con ella.</para>
       <para
->De manera predeterminada, el diálogo de vista previa solo muestra las carpetas y los archivos que no están ocultos. Puede cambiar este comportamiento en el <link linkend="configuration_page_network_basic_settings_behavior"
+>De manera predeterminada, el diálogo de vista previa no muestra carpetas y los archivos ocultos. Puede cambiar este comportamiento en el <link linkend="configuration_page_network_basic_settings_behavior"
 >diálogo de configuración</link
 >. Las transferencias de archivos y similares no son posibles.</para>
     </sect2>
@@ -915,7 +917,7 @@
 >Proporcionando información de autenticación</title>
 
       <para
->Muchos servidores y recursos compartidos remotos están protegidos por contraseña. En este caso, aparecerá un diálogo de contraseña pidiéndole un nombre de usuario y una contraseña. Lo mismo ocurre, si hace clic en la entrada de menú <menuchoice
+>I caso de que el servidor o recurso compartido al que quire acceder esté protegido por contraseña, aparecerá un diálogo de contraseña pidiéndole un nombre de usuario y una contraseña. Lo mismo ocurre, si hace clic en la entrada de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -941,11 +943,11 @@
       <para
 >Si ya se ha proporcionado un nombre de usuario, este se mostrará en el campo correspondiente. Si es erróneo o si no se ha proporcionado ningún nombre de usuario, tendrá que introducir uno. Sin embargo, la contraseña se puede dejar vacía. Al hacer clic en el botón <guibutton
 >aceptar</guibutton
-> se enviarán los datos. Dependiendo de su elección en el <link linkend="configuration_page_authentication"
+> se enviarán los datos.</para>
+      <para
+>Tenga en cuenta que también puede definir el inicio de sesión predeterminado en el <link linkend="configuration_page_user_interface_network"
 >diálogo de configuración</link
->, el nombre de usuario y la contraseña se almacenarán permanentemente en una cartera digital o nunca. En el último caso tendrá que proporcionarlos <emphasis
->cada vez</emphasis
-> que sean necesarios.</para>
+>.</para>
     </sect2>
     
 <!-- 
@@ -957,7 +959,7 @@
 >Definiendo preferencias personalizadas</title>
       
       <para
->Para servidores individuales y recursos compartidos puede definir preferencias personalizadas que se separan de las preferencias globales. Para hacerlo, puede acceder al editor de preferencias personalizadas pulsando el elemento del menú <menuchoice
+>Para servidores individuales y recursos compartidos puede definir preferencias personalizadas que se separan de las preferencias globales. Para hacerlo, acceda al editor de preferencias personalizadas pulsando el elemento del menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1060,8 +1062,8 @@
 >menú emergente</link
 >.</para>
       <para
->De manera predeterminada, solo se muestran sus propios montajes. No obstante, puede ajustar &smb4k; para que muestre todos los montajes con las <link linkend="configuration_page_mounting_basic_settings_behavior"
->respectivas preferencias</link
+>De manera predeterminada, solo se muestran sus propios montajes. No obstante, puede ajustar &smb4k; para que muestre todos los montajes en el <link linkend="configuration_page_mounting_basic_settings_behavior"
+>diálogo de configuración</link
 >.</para>
     </sect2>
 
@@ -1198,9 +1200,11 @@
           </term>
           <listitem>
             <para
->Abre el editor de preferencias personalizadas para los recursos compartidos seleccionados. Lea la sección sobre el editor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Abre el editor de preferencias personalizadas para los recursos compartidos seleccionados.</para>
+            <para
+>Lea la sección <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Preferencias personalizadas</link
-> para más opciones.</para>
+> para más detalles.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1220,7 +1224,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Sincronizar</link
-> un recurso compartido con una copia local o viceversa. Esta entrada de menú solo estará activada si ha instalado previamente el programa <ulink url="man:/rsync"
+> un recurso compartido con una copia local o viceversa. Esta entrada de menú solo estará activada si ha instalado el programa <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1434,7 +1438,7 @@
 >Definiendo preferencias personalizadas</title>
       
       <para
->Para los recursos compartidos seleccionados se pueden definir preferencias personalizadas. Pulse la acción <menuchoice
+>Para los recursos compartidos seleccionados, se pueden definir preferencias personalizadas. Pulse la acción <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1458,7 +1462,7 @@
 >Sincronización</title>
 
       <para
->La opción de menú <menuchoice
+>La acción <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
