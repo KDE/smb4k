@@ -2009,6 +2009,7 @@ Action=Popup|Sound
 
 [Event/keychainError]
 Name=Keychain error
+Name[ar]=خطأ في حَمَّالَة المَفَاتِيح
 Name[ca]=Error del clauer
 Name[ca@valencia]=S'ha produït un error del clauer
 Name[de]=Schlüsselbund-Fehler
