@@ -14,9 +14,9 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/smb4k/plasma_applet_org.kde.smb4kqml."
+"X-Crowdin-File: /kf6-stable/messages/smb4k/plasma_applet_org.kde.smb4kqml."
 "pot\n"
-"X-Crowdin-File-ID: 53208\n"
+"X-Crowdin-File-ID: 56184\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:58
 #: package/contents/ui/SharesViewItemDelegate.qml:57
