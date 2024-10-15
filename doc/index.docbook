@@ -502,7 +502,7 @@
     <sect2 id="shares_view_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>In the shares view, several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, in the tool bar, and in the popup menu. The following options are available:</para>
+      <para>In the shares view, several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, in the tool bar, and in the popup menu. The following actions are available:</para>
 
       <variablelist>
         <varlistentry>
@@ -587,7 +587,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para><link linkend="shares_view_synchronization">Synchronize</link> a share with a local copy or vice versa. This menu entry is only enabled if the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is installed and a share is selected.</para>
+            <para><link linkend="shares_view_synchronization">Synchronize</link> a share with a local copy or vice versa. This action is only enabled if the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is installed and a share is selected.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -598,7 +598,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the base folder of a share in &konsole;. This menu item is useful if you need to run shell scripts, &etc;</para>
+            <para>Open the base folder of a share in &konsole;. This action is useful if you need to run shell scripts, &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -714,7 +714,7 @@
     <sect2 id="shares_view_adding_custom_settings">
       <title>Defining Custom Settings</title>
       
-      <para>For the selected shares, custom settings can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> action to open the Custom Settings dialog. For more details, please see <link linkend="custom_settings">this section</link>.</para>
+      <para>For the selected shares, custom settings can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> action to open the Custom Settings dialog. Read the <link linkend="custom_settings">Custom Settings</link> section for more details.</para>
     </sect2>
     
 <!-- 
@@ -761,7 +761,7 @@
       <para>&smb4k; provides two possibilities to open a mounted share:</para>
       <itemizedlist>
         <listitem><formalpara><title>Open a share with &konsole;</title>
-          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run a shell script on the share or do spmething similar.</para>
+          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run a shell script on the share or do something similar.</para>
         </formalpara></listitem>
         <listitem><formalpara><title>Open a share with the default file manager</title>
           <para>You can open the share in the default file manager (&eg; &dolphin;) by clicking the share icon or by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>I</keycap></keycombo></shortcut><guimenuitem>Open with File Manager</guimenuitem></menuchoice> action.</para>
