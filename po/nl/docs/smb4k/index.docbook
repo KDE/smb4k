@@ -1034,9 +1034,9 @@
 >Acties en popup-menu</title>
 
       <para
->In de weergave van shares zijn verschillende opties gedefinieerd. U kunt ze zien in de menubalk onder <guimenu
+>In de weergave van shares zijn verschillende acties gedefinieerd. U kunt ze zien in de menubalk onder <guimenu
 >Shares</guimenu
->, de werkbalk en het contextmenu. De volgende opties zijn beschikbaar:</para>
+>, de werkbalk en het contextmenu. De volgende acties zijn beschikbaar:</para>
 
       <variablelist>
         <varlistentry>
@@ -1182,7 +1182,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Synchroniseren</link
-> van een share met een locale kopie of vice versa. Dit menu-item is alleen te selecteren als het programma <ulink url="man:/rsync"
+> van een share met een locale kopie of vice versa. Deze actie is alleen te selecteren als het programma <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1208,7 +1208,7 @@
           </term>
           <listitem>
             <para
->Opent de basismap van een share in &konsole;. Dit menuitem is handig als u shell scripts, &etc; wilt opstarten</para>
+>Opent de basismap van een share in &konsole;. Deze actie is handig als u shell scripts, &etc; wilt opstarten</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1406,9 +1406,9 @@
 ><guimenuitem
 >Aangepaste instellingen toevoegen</guimenuitem
 ></menuchoice
-> om de bewerker voor aangepaste opties te openen. Voor meer details zie <link linkend="custom_settings"
->deze sectie</link
->.</para>
+> om de bewerker voor aangepaste opties te openen. Lees de sectie <link linkend="custom_settings"
+>Aangepaste instellingen</link
+> voor meer details.</para>
     </sect2>
     
 <!-- 

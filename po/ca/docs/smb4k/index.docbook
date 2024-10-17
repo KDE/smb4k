@@ -1040,7 +1040,7 @@
       <para
 >A la vista de comparticions hi ha definides diverses accions. Es troben a la barra de menús sota l'element <guimenu
 >Comparticions</guimenu
-> de la barra d'eines i en el seu menú emergent. Es troben disponibles les opcions següents:</para>
+> de la barra d'eines i en el seu menú emergent. Es troben disponibles les accions següents:</para>
 
       <variablelist>
         <varlistentry>
@@ -1186,7 +1186,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Sincronitza</link
-> una compartició amb una còpia local o viceversa. Aquesta entrada de menú només estarà habilitada si està instal·lat el programa <ulink url="man:/rsync"
+> una compartició amb una còpia local o viceversa. Aquesta acció només estarà habilitada si està instal·lat el programa <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1212,7 +1212,7 @@
           </term>
           <listitem>
             <para
->Obriu la carpeta base d'una compartició al &konsole;. Aquest element del menú és útil si necessiteu executar scripts de l'intèrpret d'ordres, &etc;</para>
+>Obriu la carpeta base d'una compartició al &konsole;. Aquesta acció és útil si necessiteu executar scripts de l'intèrpret d'ordres, &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1410,9 +1410,9 @@
 ><guimenuitem
 >Afegeix una configuració personalitzada</guimenuitem
 ></menuchoice
-> per a obrir el diàleg de configuració personalitzada. Per a més detalls, vegeu <link linkend="custom_settings"
->aquí</link
->.</para>
+> per a obrir el diàleg de configuració personalitzada. Llegiu la secció <link linkend="custom_settings"
+>Configuració personalitzada</link
+> per a més detalls.</para>
     </sect2>
     
 <!-- 
