@@ -1078,7 +1078,7 @@
       <para
 >Hay varias acciones definidas en la vista de recursos compartidos. Se encuentran en la barra de menús bajo <guimenu
 >Recursos compartidos</guimenu
->, en la barra de herramientas y en el menú emergente. Las siguientes opciones están disponibles:</para>
+>, en la barra de herramientas y en el menú emergente. Las siguientes acciones están disponibles:</para>
 
       <variablelist>
         <varlistentry>
@@ -1224,7 +1224,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Sincronizar</link
-> un recurso compartido con una copia local o viceversa. Esta entrada de menú solo estará activada si ha instalado el programa <ulink url="man:/rsync"
+> un recurso compartido con una copia local o viceversa. Esta acción solo estará activada si ha instalado el programa <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1250,7 +1250,7 @@
           </term>
           <listitem>
             <para
->Abre la carpeta base de un recurso compartido en &konsole;. Esta opción de menú es útil si usted necesita ejecutar «shell scripts», &etc;</para>
+>Abre la carpeta base de un recurso compartido en &konsole;. Esta acción es útil si usted necesita ejecutar «shell scripts», &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1448,9 +1448,9 @@
 ><guimenuitem
 >Añadir preferencias personalizadas</guimenuitem
 ></menuchoice
-> para abrir el diálogo de preferencias personalizadas. Para más detalles, consulte <link linkend="network_neighborhood_browser_defining_custom_settings"
->aquí</link
->.</para>
+> para abrir el diálogo de preferencias personalizadas. Lea la sección <link linkend="custom_settings"
+>Preferencias personalizadas</link
+></para>
     </sect2>
     
 <!-- 
