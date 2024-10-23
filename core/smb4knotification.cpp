@@ -144,12 +144,10 @@ void Smb4KNotification::migratingLoginCredentials()
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("The way Smb4K stores the login credentials has changed. They will now be migrated. "
-    "This change is incompatible with earlier versions of Smb4K."));
-    notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-information"),
-                                                            KIconLoader::NoGroup,
-                                                            0,
-                                                            KIconLoader::DefaultState));
+    notification->setText(
+        i18n("The way Smb4K stores the login credentials has changed. They will now be migrated. "
+             "This change is incompatible with earlier versions of Smb4K."));
+    notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-information"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
 
