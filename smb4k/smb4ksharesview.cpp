@@ -1,7 +1,7 @@
 /*
     This is the shares view of Smb4K.
 
-    SPDX-FileCopyrightText: 2006-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -15,6 +15,7 @@
 // Qt includes
 #include <QDrag>
 #include <QMouseEvent>
+#include <QStorageInfo>
 #include <QWheelEvent>
 
 // KDE includes
@@ -165,19 +166,27 @@ void Smb4KSharesView::dragEnterEvent(QDragEnterEvent *e)
 
 void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
 {
-    // Let the QAbstractItemView do the highlighting of the item, etc.
     QAbstractItemView::dragMoveEvent(e);
 
-    // Now we do our thing.
-    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
+    if (e->proposedAction() == Qt::CopyAction || e->proposedAction() == Qt::MoveAction) {
+        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
 
-    if (item && !item->shareItem()->isInaccessible() && (item->flags() & Qt::ItemIsDropEnabled) && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction))) {
-        QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+        if (item) {
+            QStorageInfo storageInfo(item->shareItem()->canonicalPath());
 
-        if (e->source() == this && e->mimeData()->urls().first() == url) {
-            e->ignore();
+            if (!storageInfo.isReadOnly() && !item->shareItem()->isInaccessible() && (item->flags() & Qt::ItemIsDropEnabled)) {
+                QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+
+                if (e->source() == this && e->mimeData()->urls().first() == url) {
+                    e->ignore();
+                } else {
+                    e->accept();
+                }
+            } else {
+                e->ignore();
+            }
         } else {
-            e->accept();
+            e->ignore();
         }
     } else {
         e->ignore();
@@ -186,18 +195,28 @@ void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
 
 void Smb4KSharesView::dropEvent(QDropEvent *e)
 {
-    // Get the item and process the drop event
-    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
+    if (e->proposedAction() == Qt::CopyAction || e->proposedAction() == Qt::MoveAction) {
+        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
 
-    if (item && !item->shareItem()->isInaccessible() && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction))) {
-        QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+        if (item) {
+            QStorageInfo storageInfo(item->shareItem()->canonicalPath());
 
-        if (e->source() == this && e->mimeData()->urls().first() == url) {
-            e->ignore();
+            if (!storageInfo.isReadOnly() && !item->shareItem()->isInaccessible() && (item->flags() & Qt::ItemIsDropEnabled)
+                && (e->proposedAction() == Qt::CopyAction || e->proposedAction() == Qt::MoveAction)) {
+                QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+
+                if (e->source() == this && e->mimeData()->urls().first() == url) {
+                    e->ignore();
+                } else {
+                    e->acceptProposedAction();
+                    Q_EMIT acceptedDropEvent(item, e);
+                    // e->accept();
+                }
+            } else {
+                e->ignore();
+            }
         } else {
-            e->acceptProposedAction();
-            Q_EMIT acceptedDropEvent(item, e);
-            e->accept();
+            e->ignore();
         }
     } else {
         e->ignore();
@@ -206,7 +225,6 @@ void Smb4KSharesView::dropEvent(QDropEvent *e)
 
 Qt::DropActions Smb4KSharesView::supportedDropActions() const
 {
-    // Only allow copying and linking.
     return (Qt::CopyAction | Qt::LinkAction);
 }
 
