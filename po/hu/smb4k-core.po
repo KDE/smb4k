@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:39+0000\n"
+"POT-Creation-Date: 2024-10-24 02:32+0000\n"
 "PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2893,14 +2893,14 @@ msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>Az összes megosztás lecsatolva.</p>"
 msgstr[1] "<p>Az összes megosztás lecsatolva.</p>"
 
-#: smb4knotification.cpp:147
+#: smb4knotification.cpp:148
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 
-#: smb4knotification.cpp:169
+#: smb4knotification.cpp:167
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -2909,7 +2909,7 @@ msgstr ""
 "<p>A(z) <b>%1</b> MIME-típus nem nyomtatható. Konvertálja PDF vagy "
 "Postscript  formátumba, és próbálkozzon újból.</p>"
 
-#: smb4knotification.cpp:187
+#: smb4knotification.cpp:185
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
@@ -2917,7 +2917,7 @@ msgstr ""
 "<p>A(z) <b>%1</b> megosztás könyvjelzője már létezik, ezért ki lesz hagyva.</"
 "p>"
 
-#: smb4knotification.cpp:205
+#: smb4knotification.cpp:203
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -2926,18 +2926,18 @@ msgstr ""
 "<p>A(z) <b>%2</b> megosztás könyvjelzőjének <b>%1</b> címkéje már "
 "használatban van, ezért automatikusan át lesz nevezve.</p>"
 
-#: smb4knotification.cpp:225
+#: smb4knotification.cpp:223
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:227
+#: smb4knotification.cpp:225
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást.</p>"
 
-#: smb4knotification.cpp:250
+#: smb4knotification.cpp:248
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -2946,14 +2946,14 @@ msgstr ""
 "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
 "helyről:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:252
+#: smb4knotification.cpp:250
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr ""
 "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
 "helyről.</p>"
 
-#: smb4knotification.cpp:279
+#: smb4knotification.cpp:277
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -2962,19 +2962,19 @@ msgstr ""
 "<p>Nincs engedélye a(z) <b>%1</b> megosztás leválasztására a(z) <b>%2</b> "
 "helyről, a megosztás tulajdonosa: <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:294
+#: smb4knotification.cpp:292
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>Nem sikerült <b>%1</b> és <b>%2</b> szinkronizációja:</p><p><tt>%3</tt></"
 "p>"
 
-#: smb4knotification.cpp:296
+#: smb4knotification.cpp:294
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Nem sikerült <b>%1</b> és <b>%2</b> szinkronizációja.</p>"
 
-#: smb4knotification.cpp:318
+#: smb4knotification.cpp:316
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -2982,73 +2982,73 @@ msgid ""
 msgstr ""
 "<p>A(z) <b>%1</b> parancs nem található. Kérjük ellenőrizze a telepítést.</p>"
 
-#: smb4knotification.cpp:334
+#: smb4knotification.cpp:332
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>A(z) <b>%1</b> megosztás egy nyomtató, nem adható a könyvjelzőkhöz.</p>"
 
-#: smb4knotification.cpp:348
+#: smb4knotification.cpp:346
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>A(z) <b>%1</b> fájl nem található.</p>"
 
-#: smb4knotification.cpp:358
+#: smb4knotification.cpp:356
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Nem sikerült megnyitni a(z) <b>%1</b> fájlt:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:360
+#: smb4knotification.cpp:358
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Nem sikerült megnyitni a(z) <b>%1</b> fájlt.</p>"
 
-#: smb4knotification.cpp:379 smb4knotification.cpp:382
+#: smb4knotification.cpp:377 smb4knotification.cpp:380
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Nem sikerült olvasni a(z) <b>%1</b> fájlból:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:384
+#: smb4knotification.cpp:382
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Nem sikerült olvasni a(z) <b>%1</b> fájlból.</p>"
 
-#: smb4knotification.cpp:407
+#: smb4knotification.cpp:405
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>A következő mappa nem hozható létre:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:416
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nem sikerült elindítani a folyamatot (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:420
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>A folyamat összeomlott (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:424
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>A folyamat túllépte az időkorlátot (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:428
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nem lehet írni a folyamatba (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:434
+#: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nem lehet olvasni a folyamatból (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:439
+#: smb4knotification.cpp:437
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>A folyamat ismeretlen hibát jelentett.</p>"
 
-#: smb4knotification.cpp:502
+#: smb4knotification.cpp:500
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Executing an action with root privileges failed (error code:<tt>%1</"
@@ -3060,18 +3060,18 @@ msgstr ""
 "<p>Egy művelet rendszergazdai jogokkal való végrehajtása nem sikerült "
 "(hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:504
+#: smb4knotification.cpp:502
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr ""
 "<p>Egy művelet rendszergazdai jogokkal való végrehajtása nem sikerült.</p>"
 
-#: smb4knotification.cpp:526
+#: smb4knotification.cpp:524
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>Az átadott URL érvénytelen.</p>"
 
-#: smb4knotification.cpp:539
+#: smb4knotification.cpp:537
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid ""
@@ -3079,12 +3079,12 @@ msgid ""
 "s></p>"
 msgstr "A hozzáférés megtagadva."
 
-#: smb4knotification.cpp:552
+#: smb4knotification.cpp:550
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
-#: smb4knotification.cpp:565
+#: smb4knotification.cpp:563
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "
