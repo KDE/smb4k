@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:39+0000\n"
+"POT-Creation-Date: 2024-10-24 00:39+0000\n"
 "PO-Revision-Date: 2024-09-09 21:01+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -3102,7 +3102,7 @@ msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>Partekatze %1 desmuntatu da.</p>"
 msgstr[1] "<p>%1 partekatze desmuntatu dira.</p>"
 
-#: smb4knotification.cpp:147
+#: smb4knotification.cpp:148
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -3111,7 +3111,7 @@ msgstr ""
 "«Smb4K»ak saio-hasteko egiaztagiriak gordetzeko era aldatu da. Orain migratu "
 "egingo dira. Aldaketa hau «Smb4K»ren aurreko bertsioekin bateraezina da."
 
-#: smb4knotification.cpp:169
+#: smb4knotification.cpp:167
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3120,7 +3120,7 @@ msgstr ""
 "<p><b>%1</b> MIME-mota inprimatzeko ez da onartzen. Bihurtu fitxategia PDFra "
 "edo Postscript-era eta berriz saiatu.</p>"
 
-#: smb4knotification.cpp:187
+#: smb4knotification.cpp:185
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
@@ -3128,7 +3128,7 @@ msgstr ""
 "<p><b>%1</b> partekatzearen laster-marka jada badago eta salto egingo zaio.</"
 "p>"
 
-#: smb4knotification.cpp:205
+#: smb4knotification.cpp:203
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3137,17 +3137,17 @@ msgstr ""
 "<p><b>%2</b> partekatzearen laster-markako <b>%1</b> etiketa erabiltzen ari "
 "da dagoeneko eta automatikoki berrizendatuko da.</p>"
 
-#: smb4knotification.cpp:225
+#: smb4knotification.cpp:223
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> partekatzea muntatzea huts egin du:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:227
+#: smb4knotification.cpp:225
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> partekatzea muntatzea huts egin du..</p>"
 
-#: smb4knotification.cpp:250
+#: smb4knotification.cpp:248
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3156,13 +3156,13 @@ msgstr ""
 "<p><b>%1</b> partekatzea <b>%2</b>(e)tik desmuntatzea huts egin du:</"
 "p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:252
+#: smb4knotification.cpp:250
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr ""
 "<p><b>%1</b> partekatzea <b>%2</b>(e)tik desmuntatzea huts egin du.</p>"
 
-#: smb4knotification.cpp:279
+#: smb4knotification.cpp:277
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3171,94 +3171,94 @@ msgstr ""
 "<p>Ez duzu <b>%1</b> partekatzea <b>%2</b>(e)tik muntatzeko baimenik. <b>%3</"
 "b> erabiltzailearena da.</p>"
 
-#: smb4knotification.cpp:294
+#: smb4knotification.cpp:292
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p><b>%1</b> <b>%2</b>rekin sinkronizatzea huts egin du:</p><p><tt>%3</tt></"
 "p>"
 
-#: smb4knotification.cpp:296
+#: smb4knotification.cpp:294
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p><b>%1</b> <b>%2</b>(r)ekin sinkronizatzea huts egin du.</p>"
 
-#: smb4knotification.cpp:318
+#: smb4knotification.cpp:316
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p>Ez da aurkitu <b>%1</b> komandoa. Ikuskatu zure instalazioa.</p>"
 
-#: smb4knotification.cpp:334
+#: smb4knotification.cpp:332
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p><b>%1</b> partekatzea inprimagailu bat da eta ezin da bere laster-marka "
 "egin.</p>"
 
-#: smb4knotification.cpp:348
+#: smb4knotification.cpp:346
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>Ezin izan da <b>%1</b> fitxategia aurkitu.</p>"
 
-#: smb4knotification.cpp:358
+#: smb4knotification.cpp:356
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> fitxategia irekitzea huts egin du:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:360
+#: smb4knotification.cpp:358
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> fitxategia irekitzea huts egin du.</p>"
 
-#: smb4knotification.cpp:379 smb4knotification.cpp:382
+#: smb4knotification.cpp:377 smb4knotification.cpp:380
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p><b>%1</b> fitxategitik irakurtzea huts egin du:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:384
+#: smb4knotification.cpp:382
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> fitxategitik irakurtzea huts egin du.</p>"
 
-#: smb4knotification.cpp:407
+#: smb4knotification.cpp:405
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Ondoko direktorioa ezin izan da sortu:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:416
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prozesua abiatzea huts egin du (errore kodea: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:420
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prozesua kraskatu egin da (errore kodea: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:424
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prozesuak denbora-muga gainditu du (errore kodea: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:428
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Ezin izan da prozesura idatzi (errore kodea: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:434
+#: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Ezin izan da prozesutik irakurri (errore kodea: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:439
+#: smb4knotification.cpp:437
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>Prozesuak errore ezezagun baten berri eman du.</p>"
 
-#: smb4knotification.cpp:502
+#: smb4knotification.cpp:500
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3267,17 +3267,17 @@ msgstr ""
 "<p>Ekintza bat root pribilegioekin exekutatzea huts egin du (errore kodea: "
 "<tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:504
+#: smb4knotification.cpp:502
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Ekintza bat root pribilegioekin exekutatzea huts egin du.</p>"
 
-#: smb4knotification.cpp:526
+#: smb4knotification.cpp:524
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>Pasatu den URLa baliogabea da.</p>"
 
-#: smb4knotification.cpp:539
+#: smb4knotification.cpp:537
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
@@ -3285,12 +3285,12 @@ msgid ""
 msgstr ""
 "<p>Sareko komunikazioak ondoko errore mezuarekin huts egin du: <s>%1</s></p>"
 
-#: smb4knotification.cpp:552
+#: smb4knotification.cpp:550
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>«Zeroconf» zerbitzuarekin errore bat gertatu da: <s>%1</s></p>"
 
-#: smb4knotification.cpp:565
+#: smb4knotification.cpp:563
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "
