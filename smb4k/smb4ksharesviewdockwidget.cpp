@@ -1,7 +1,7 @@
 /*
     The network search widget dock widget
 
-    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -35,6 +35,7 @@
 
 // KDE includes
 #include <KIO/DropJob>
+#include <KIO/CopyJob>
 #include <KIconLoader>
 #include <KJobUiDelegate>
 #include <KJobWidgets>
@@ -365,11 +366,27 @@ void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem *item, QDropEv
         if (e->mimeData()->hasUrls()) {
             if (Smb4KHardwareInterface::self()->isOnline()) {
                 QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
+
+                // FIXME: Either modify the drop menu that it only shows the allowed
+                // drop actions or implement the following code.
+                //
+                // KIO::CopyJob *job = nullptr;
+                //
+                // if (e->proposedAction() == Qt::CopyAction) {
+                //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+                // } else if (e->proposedAction() == Qt::MoveAction) {
+                //     job = KIO::move(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+                // } else {
+                //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+                // }
+
                 KIO::DropJob *job = KIO::drop(e, dest, KIO::DefaultFlags);
-                KJobWidgets::setWindow(job, m_sharesView->viewport());
+
+                KJobWidgets::setWindow(job, m_sharesView);
                 job->uiDelegate()->setAutoErrorHandlingEnabled(true);
                 job->uiDelegate()->setAutoWarningHandlingEnabled(true);
             } else {
+                // FIXME: Move this to the notifications.
                 KMessageBox::error(
                     m_sharesView,
                     i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop any files here.</qt>", item->shareItem()->displayString()));
