@@ -9,10 +9,10 @@
 #define SMB4KSYSTEMTRAY_H
 
 // application specific includes
-#include "smb4kmountdialog.h"
-#include "smb4ksharesmenu.h"
 #include "smb4kbookmarkmenu.h"
+#include "smb4kmountdialog.h"
 #include "smb4kprofilesmenu.h"
+#include "smb4ksharesmenu.h"
 
 // Qt includes
 #include <QString>

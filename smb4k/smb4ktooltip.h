@@ -12,11 +12,11 @@
 #include <smb4kglobal.h>
 
 // Qt includes
+#include <QFormLayout>
 #include <QHBoxLayout>
+#include <QLabel>
 #include <QPoint>
 #include <QWindow>
-#include <QLabel>
-#include <QFormLayout>
 
 // KDE includes
 #include <KToolTipWidget>
