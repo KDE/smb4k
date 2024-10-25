@@ -1,6 +1,7 @@
 [Global]
 IconName=smb4k
 Name=Smb4K
+Name[ar]=كيدي سامبا4
 Name[bs]=Smb4K
 Name[ca]=Smb4K
 Name[ca@valencia]=Smb4K
@@ -40,6 +41,7 @@ Name[x-test]=xxSmb4Kxx
 Name[zh_CN]=Smb4K
 Name[zh_TW]=Smb4K
 Comment=Advanced Network Neighborhood Browser
+Comment[ar]=متصفح متقدم لشبكة الجوار
 Comment[bs]=Napredni pregledač mrežnog susjedstva
 Comment[ca]=Explorador avançat del veïnatge de xarxa
 Comment[ca@valencia]=Explorador avançat del veïnatge de xarxa
@@ -120,6 +122,7 @@ Name[x-test]=xxNotificationxx
 Name[zh_CN]=通知
 Name[zh_TW]=通知
 Comment=The user is notified about an action
+Comment[ar]=يخطر المستخدم بشأن الإجراء
 Comment[bs]=Korisnik je obavješten o akciji
 Comment[ca]=L'usuari ha estat notificat quant a una acció
 Comment[ca@valencia]=L'usuari ha sigut notificat quant a una acció
@@ -198,6 +201,7 @@ Name[x-test]=xxWarningxx
 Name[zh_CN]=警告
 Name[zh_TW]=警告
 Comment=A warning is shown to the user
+Comment[ar]=يظهر تحذير للمستخدم
 Comment[bs]=Prikazana je upozoravajuća poruka korisniku
 Comment[ca]=Es mostra un avís a l'usuari
 Comment[ca@valencia]=Es mostra un avís a l'usuari
@@ -277,6 +281,7 @@ Name[x-test]=xxErrorxx
 Name[zh_CN]=错误
 Name[zh_TW]=錯誤
 Comment=An error message is shown to the user
+Comment[ar]=يظهر تحذير للمستخدم
 Comment[bs]=Poruka greške je prikazana korisniku
 Comment[ca]=Es mostra un missatge d'error a l'usuari
 Comment[ca@valencia]=Es mostra un missatge d'error a l'usuari
@@ -314,6 +319,7 @@ Comment[zh_TW]=錯誤訊息已顯示給使用者
 
 [Event/shareMounted]
 Name=Share mounted
+Name[ar]=المشاركة ضمت
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Compartició muntada
 Name[ca@valencia]=Compartició muntada
@@ -349,6 +355,7 @@ Name[x-test]=xxShare mountedxx
 Name[zh_CN]=共享已挂载
 Name[zh_TW]=分享資料夾已掛載
 Comment=A share has been mounted
+Comment[ar]=المشاركة ضمت
 Comment[bs]=Dijeljeni disk je bio montiran
 Comment[ca]=S'ha muntat una compartició
 Comment[ca@valencia]=S'ha muntat una compartició
@@ -388,6 +395,7 @@ Action=Popup
 
 [Event/shareUnmounted]
 Name=Share unmounted
+Name[ar]=فك ضم مشاركة
 Name[bs]=Dijeljeni disk je demontiran
 Name[ca]=Compartició desmuntada
 Name[ca@valencia]=Compartició desmuntada
@@ -423,6 +431,7 @@ Name[x-test]=xxShare unmountedxx
 Name[zh_CN]=共享已卸载
 Name[zh_TW]=分享資料夾已卸載
 Comment=A share has been unmounted
+Comment[ar]=مشاركة فك ضمها
 Comment[bs]=Dijeljeni disk je bio demontiran
 Comment[ca]=S'ha desmuntat una compartició
 Comment[ca@valencia]=S'ha desmuntat una compartició
@@ -462,6 +471,7 @@ Action=Popup
 
 [Event/sharesMounted]
 Name=Shares mounted
+Name[ar]=المشاركة ضمت
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Comparticions muntades
 Name[ca@valencia]=Comparticions muntades
@@ -497,6 +507,7 @@ Name[x-test]=xxShares mountedxx
 Name[zh_CN]=多个共享已挂载
 Name[zh_TW]=分享資料夾已掛載
 Comment=Multiple shares have been mounted
+Comment[ar]=مشاركات متعددة ضمت
 Comment[bs]=Višestruka dijeljenja diska su bila montirana
 Comment[ca]=S'han muntat múltiples comparticions
 Comment[ca@valencia]=S'han muntat múltiples comparticions
@@ -536,6 +547,7 @@ Action=Popup
 
 [Event/sharesUnmounted]
 Name=Shares unmounted
+Name[ar]=فُك ضم المشاركات
 Name[bs]=Dijeljenja diska su demontirana
 Name[ca]=Comparticions desmuntades
 Name[ca@valencia]=Comparticions desmuntades
@@ -571,6 +583,7 @@ Name[x-test]=xxShares unmountedxx
 Name[zh_CN]=多个共享已卸载
 Name[zh_TW]=分享資料夾已卸載
 Comment=Multiple shares have been unmounted
+Comment[ar]=مشاركات متعددة فكت ضمها
 Comment[bs]=Višestruka dijeljenja su bila demontirana
 Comment[ca]=S'han desmuntat múltiples comparticions
 Comment[ca@valencia]=S'han desmuntat múltiples comparticions
@@ -610,6 +623,7 @@ Action=Popup
 
 [Event/migratingCredentials]
 Name=Migrating login credentials
+Name[ar]=نقل بيانات اعتماد الولوج
 Name[ca]=Migració de les credencials d'inici de sessió
 Name[ca@valencia]=Migració de les credencials d'inici de sessió
 Name[cs]=Migrace přihlašovacích údajů
@@ -633,6 +647,7 @@ Name[uk]=Перенесення реєстраційних даних
 Name[x-test]=xxMigrating login credentialsxx
 Name[zh_CN]=迁移登录凭据
 Comment=The login credentials are migrated to the new format and the active password manager
+Comment[ar]=تنقل بيانات اعتماد الولوج إلى التنسيق الجديد ومدير كلمات السري الحالي
 Comment[ca]=Les credencials d'inici de sessió s'han migrat al format nou i al gestor de contrasenyes actiu
 Comment[ca@valencia]=Les credencials d'inici de sessió s'han migrat al format nou i al gestor de contrasenyes actiu
 Comment[de]=Die Anmeldedaten werden in das neue Format und in den aktiven Passwort-Manager migriert
@@ -659,6 +674,7 @@ Action=Popup
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
+Name[ar]=نسق الملف غير مدعوم
 Name[bs]=Mimetype nije podržan
 Name[ca]=Tipus MIME no admès
 Name[ca@valencia]=Tipus MIME no admés
@@ -694,6 +710,7 @@ Name[x-test]=xxMimetype not supportedxx
 Name[zh_CN]=不支持的 MIME 类型
 Name[zh_TW]=MIME 型態不支援
 Comment=The mimetype of the file that is to be printed is not supported
+Comment[ar]=نسق الملف المراد طباعته غير مدعوم
 Comment[bs]=Mimetype datoteke koji je trebao biti ispisan nije podržan
 Comment[ca]=El tipus MIME del fitxer a imprimir no està admès
 Comment[ca@valencia]=El tipus MIME del fitxer que s'ha d'imprimir no està admés
@@ -733,6 +750,7 @@ Action=Popup|Sound
 
 [Event/bookmarkExists]
 Name=Bookmark exists
+Name[ar]=العلامة موجودة
 Name[bs]=Zabilješka postoji
 Name[ca]=L'adreça d'interès ja existeix
 Name[ca@valencia]=L'adreça d'interés ja existix
@@ -768,6 +786,7 @@ Name[x-test]=xxBookmark existsxx
 Name[zh_CN]=书签已存在
 Name[zh_TW]=書籤已存在
 Comment=The bookmark exists
+Comment[ar]=العلامة موجودة
 Comment[bs]=Zabilješka postoji
 Comment[ca]=L'adreça d'interès ja existeix
 Comment[ca@valencia]=L'adreça d'interés ja existix
@@ -808,6 +827,7 @@ Action=Popup|Sound
 
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
+Name[ar]=تسمية العلامة مستعملة
 Name[bs]=Oznaka zabilješke u upotrebi
 Name[ca]=L'etiqueta de l'adreça d'interès s'està emprant
 Name[ca@valencia]=L'etiqueta de l'adreça d'interés s'està emprant
@@ -843,6 +863,7 @@ Name[x-test]=xxBookmark label in usexx
 Name[zh_CN]=书签标签已被使用
 Name[zh_TW]=書籤標記已在使用中
 Comment=The label for the bookmark already exists
+Comment[ar]=تسمية العلامة مستعملة بالفعل
 Comment[bs]=Oznaka za zabilješku već postoji
 Comment[ca]=L'etiqueta per a l'adreça d'interès ja existeix
 Comment[ca@valencia]=L'etiqueta per a l'adreça d'interés ja existix
@@ -883,6 +904,7 @@ Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
+Name[ar]=فشل الضم
 Name[bs]=Montiranje neuspješno
 Name[ca]=Ha fallat el muntatge
 Name[ca@valencia]=No s'ha pogut muntar
@@ -919,6 +941,7 @@ Name[x-test]=xxMounting failedxx
 Name[zh_CN]=挂载失败
 Name[zh_TW]=掛載失敗
 Comment=Mounting a share failed
+Comment[ar]=فشل ضم مشاركة
 Comment[bs]=Montiranje dijela neuspješno
 Comment[ca]=Ha fallat el muntatge d'una compartició
 Comment[ca@valencia]=No s'ha pogut muntar una compartició
@@ -996,6 +1019,7 @@ Name[x-test]=xxUnmounting failedxx
 Name[zh_CN]=卸载失败
 Name[zh_TW]=卸載失敗
 Comment=Unmounting a share failed
+Comment[ar]=فشل في فك ضم مشاركة
 Comment[bs]=Demontiranje dijela neuspješno
 Comment[ca]=Ha fallat el desmuntatge d'una compartició
 Comment[ca@valencia]=No s'ha pogut desmuntar una compartició
@@ -1036,6 +1060,7 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[ar]=فك الضم غير مسموح
 Name[bs]=Demontiranje nije dozvoljeno
 Name[ca]=No s'ha permès el desmuntatge
 Name[ca@valencia]=No s'ha permés el desmuntatge
@@ -1071,6 +1096,7 @@ Name[x-test]=xxUnmounting not allowedxx
 Name[zh_CN]=不允许卸载
 Name[zh_TW]=不允許卸載
 Comment=The unmounting of a certain share is not allowed
+Comment[ar]=فك الضم غير مسموح لبعض المشاركات
 Comment[bs]=Demontiranje određenog dijela nije dozvoljeno
 Comment[ca]=No s'ha permès el desmuntatge d'una compartició concreta
 Comment[ca@valencia]=No s'ha permés el desmuntatge d'una compartició concreta
@@ -1111,6 +1137,7 @@ Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
+Name[ar]=فشلت المزامنة
 Name[bs]=Sinhronizacija nije uspjela
 Name[ca]=Ha fallat la sincronització
 Name[ca@valencia]=No s'ha pogut sincronitzar
@@ -1147,6 +1174,7 @@ Name[x-test]=xxSynchronization failedxx
 Name[zh_CN]=同步失败
 Name[zh_TW]=同步失敗
 Comment=The synchronization of a share and a local copy failed
+Comment[ar]=مزامنة مشاركات والنسخة المحلية فشلت
 Comment[bs]=Sinhronizacija dijela i lokalne kopije nije uspjela
 Comment[ca]=Ha fallat la sincronització d'una compartició amb una còpia local
 Comment[ca@valencia]=No s'ha pogut sincronitzar una compartició amb una còpia local
@@ -1224,6 +1252,7 @@ Name[x-test]=xxCommand not foundxx
 Name[zh_CN]=找不到命令
 Name[zh_TW]=找不到指令
 Comment=A required command could not be found
+Comment[ar]=الأمر المطلوب غير موجود
 Comment[bs]=Tražena komanda nije pronađena
 Comment[ca]=No s'ha pogut trobar l'ordre requerida
 Comment[ca@valencia]=No s'ha pogut trobar l'ordre requerida
@@ -1264,6 +1293,7 @@ Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
 Name=Cannot bookmark printer
+Name[ar]=لا يمكن وضع علامة على طابعة
 Name[bs]=Ne može zabilježiti printer
 Name[ca]=No s'ha pogut afegir l'adreça d'interès de la impressora
 Name[ca@valencia]=No s'ha pogut afegir l'adreça d'interés de la impressora
@@ -1299,6 +1329,7 @@ Name[x-test]=xxCannot bookmark printerxx
 Name[zh_CN]=无法为打印机添加书签
 Name[zh_TW]=無法將印表機加入書籤
 Comment=A printer cannot be bookmarked
+Comment[ar]=لا يمكن وضع علامة على طابعة
 Comment[bs]=Printer ne može biti zabilježen
 Comment[ca]=Una impressora no es pot afegir com a adreça d'interès
 Comment[ca@valencia]=Una impressora no es pot afegir com a adreça d'interés
@@ -1378,6 +1409,7 @@ Name[x-test]=xxFile not foundxx
 Name[zh_CN]=找不到文件
 Name[zh_TW]=找不到檔案
 Comment=A file could not be found
+Comment[ar]=لم يعثر على ملف
 Comment[bs]=Datoteka niej pronađena
 Comment[ca]=No s'ha pogut trobar un fitxer
 Comment[ca@valencia]=No s'ha pogut trobar un fitxer
@@ -1418,6 +1450,7 @@ Action=Popup|Sound
 
 [Event/openingFileFailed]
 Name=Opening file failed
+Name[ar]=فشل فتح ملف
 Name[bs]=Otvaranje datoteke nije uspjelo
 Name[ca]=Ha fallat en obrir el fitxer
 Name[ca@valencia]=No s'ha pogut obrir el fitxer
@@ -1453,6 +1486,7 @@ Name[x-test]=xxOpening file failedxx
 Name[zh_CN]=打开文件失败
 Name[zh_TW]=開啟檔案失敗
 Comment=A file could not be opened
+Comment[ar]=لا يمكن فتح ملف
 Comment[bs]=Datoteka nije mogla biti otvorena
 Comment[ca]=No s'ha pogut obrir un fitxer
 Comment[ca@valencia]=No s'ha pogut obrir un fitxer
@@ -1493,6 +1527,7 @@ Action=Popup|Sound
 
 [Event/readingFileFailed]
 Name=Reading file failed
+Name[ar]=قراءة ملف فشلت
 Name[bs]=Čitanje datoteke nije uspjelo
 Name[ca]=Ha fallat en llegir el fitxer
 Name[ca@valencia]=No s'ha pogut llegir el fitxer
@@ -1528,6 +1563,7 @@ Name[x-test]=xxReading file failedxx
 Name[zh_CN]=读取文件失败
 Name[zh_TW]=讀取檔案失敗
 Comment=A file could not be read
+Comment[ar]=لا يمكن قراءة ملف
 Comment[bs]=Datoteka nije mogla biti pročitana
 Comment[ca]=No s'ha pogut llegir un fitxer
 Comment[ca@valencia]=No s'ha pogut llegir un fitxer
@@ -1568,6 +1604,7 @@ Action=Popup|Sound
 
 [Event/mkdirFailed]
 Name=mkdir failed
+Name[ar]=فشل mkdir
 Name[bs]=mkdir nije uspio
 Name[ca]=Ha fallat el «mkdir»
 Name[ca@valencia]=No s'ha pogut executar «mkdir»
@@ -1604,6 +1641,7 @@ Name[x-test]=xxmkdir failedxx
 Name[zh_CN]=mkdir 失败
 Name[zh_TW]=建立目錄失敗
 Comment=A directory could not be created
+Comment[ar]=لا يمكن إنشاء دليل
 Comment[bs]=Direktorij nije mogao biti kreiran
 Comment[ca]=No s'ha pogut crear un directori
 Comment[ca@valencia]=No s'ha pogut crear un directori
@@ -1682,6 +1720,7 @@ Name[x-test]=xxProcess errorxx
 Name[zh_CN]=处理错误
 Name[zh_TW]=行程錯誤
 Comment=A process error occurred
+Comment[ar]=حدث خطأ في عملية
 Comment[bs]=Greška u procesu se pojavila
 Comment[ca]=Hi ha hagut un error de procés
 Comment[ca@valencia]=S'ha produït un error de procés
@@ -1722,6 +1761,7 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
+Name[ar]=فشل الإجراء
 Name[bs]=Radnja nije uspjela
 Name[ca]=L'acció ha fallat
 Name[ca@valencia]=L'acció ha fallat
@@ -1759,6 +1799,7 @@ Name[x-test]=xxAction failedxx
 Name[zh_CN]=操作失败
 Name[zh_TW]=動作失敗
 Comment=A KAuth action failed
+Comment[ar]=فشل إجراء الاستيثاق KAuth
 Comment[bs]=KAuth radnja nije uspjela
 Comment[ca]=Una acció del KAuth ha fallat
 Comment[ca@valencia]=Una acció del KAuth ha fallat
@@ -1837,6 +1878,7 @@ Name[x-test]=xxInvalid URLxx
 Name[zh_CN]=无效的 URL
 Name[zh_TW]=無效的網址
 Comment=An invalid URL was passed
+Comment[ar]=مرر عنوان غير صالح
 Comment[bs]=Pogrešan URL je premošten
 Comment[ca]=S'han passat un URL no vàlid
 Comment[ca@valencia]=S'han passat un URL no vàlid
@@ -1876,6 +1918,7 @@ Action=Popup|Sound
 
 [Event/networkCommunicationFailed]
 Name=Network communication failed
+Name[ar]=فشل اتصال الشبكة
 Name[ca]=La xarxa de comunicació ha fallat
 Name[ca@valencia]=La xarxa de comunicació ha fallat
 Name[cs]=Síťová komunikace selhala
@@ -1908,6 +1951,7 @@ Name[x-test]=xxNetwork communication failedxx
 Name[zh_CN]=网络通信失败
 Name[zh_TW]=網路通訊失敗
 Comment=A network related action could not be performed or failed
+Comment[ar]=تعذر تنفيذ الإجراء المتعلق بالشبكة أو فشل
 Comment[ca]=No s'ha pogut portar a terme una acció relativa a la xarxa o ha fallat
 Comment[ca@valencia]=No s'ha pogut portar a terme una acció relativa a la xarxa o ha fallat
 Comment[cs]=Požadovanou síťovou operaci nelze provést nebo selhala
@@ -1945,6 +1989,7 @@ Action=Popup|Sound
 
 [Event/zeroconfError]
 Name=Zeroconf error
+Name[ar]=خطأ Zeroconf
 Name[ca]=Error del Zeroconf
 Name[ca@valencia]=S'ha produït un error de Zeroconf
 Name[cs]=Chyba Zeroconf
@@ -1975,6 +2020,7 @@ Name[x-test]=xxZeroconf errorxx
 Name[zh_CN]=Zeroconf 错误
 Name[zh_TW]=Zeroconf 錯誤
 Comment=An error with the Zeroconf daemon occurred
+Comment[ar]=حدث خطأ مع برنامج مراقب Zeroconf
 Comment[ca]=S'ha produït un error amb el dimoni Zeroconf
 Comment[ca@valencia]=S'ha produït un error amb el dimoni Zeroconf
 Comment[cs]=Nastala chyba v démonu Zeroconf
@@ -2033,6 +2079,7 @@ Name[uk]=Помилка ланцюжка ключів
 Name[x-test]=xxKeychain errorxx
 Name[zh_CN]=密钥链错误
 Comment=An error occurred while reading the login credentials from the secure storage
+Comment[ar]=حدث خطأ أثناء قراءة بيانات اعتماد الولوج من التخزين الآمن
 Comment[ca]=S'ha produït un error en llegir les credencials d'inici de sessió des de l'emmagatzematge segur
 Comment[ca@valencia]=S'ha produït un error en llegir les credencials d'inici de sessió des de l'emmagatzematge segur
 Comment[de]=Es ist ein Fehler während des Lesens der Anmeldedaten aus dem sicheren Speicher aufgetreten
