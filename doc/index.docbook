@@ -761,7 +761,7 @@
       <para>&smb4k; provides two possibilities to open a mounted share:</para>
       <itemizedlist>
         <listitem><formalpara><title>Open a share with &konsole;</title>
-          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run a shell script on the share or do so+mething similar.</para>
+          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run a shell script on the share or do something similar.</para>
         </formalpara></listitem>
         <listitem><formalpara><title>Open a share with the default file manager</title>
           <para>You can open the share in the default file manager (&eg; &dolphin;) by clicking the share icon or by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>I</keycap></keycombo></shortcut><guimenuitem>Open with File Manager</guimenuitem></menuchoice> action.</para>
