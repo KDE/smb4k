@@ -5,6 +5,7 @@
             {
                 "Email": "alexander.reinholdt@kdemail.net",
                 "Name": "Alexander Reinholdt",
+                "Name[ar]": "ألكسندر رينهولت",
                 "Name[ca@valencia]": "Alexander Reinholdt",
                 "Name[ca]": "Alexander Reinholdt",
                 "Name[cs]": "Alexander Reinholdt",
@@ -39,6 +40,7 @@
         ],
         "Category": "Utilities",
         "Description": "Network neighborhood browser based on Smb4K",
+        "Description[ar]": "متصفح شبكة الجوار يعتمد على كيدي سامبا 4",
         "Description[ca@valencia]": "Explorador del veïnatge de xarxa basat en Smb4K",
         "Description[ca]": "Explorador del veïnatge de xarxa basat en el Smb4K",
         "Description[cs]": "Prohlížeč síťového okolí založený na Smb4K",
@@ -74,6 +76,7 @@
         "Id": "org.kde.smb4kqml",
         "License": "GPL-2.0+",
         "Name": "Network Neighborhood",
+        "Name[ar]": "الشبكة المجاورة",
         "Name[ca@valencia]": "Veïnatge de xarxa",
         "Name[ca]": "Veïnatge de xarxa",
         "Name[cs]": "Síťové okolí",

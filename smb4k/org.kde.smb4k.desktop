@@ -1,6 +1,7 @@
 # KDE Config File
 [Desktop Entry]
 Name=Smb4K
+Name[ar]=كيدي سامبا4
 Name[bs]=Smb4K
 Name[ca]=Smb4K
 Name[ca@valencia]=Smb4K
@@ -40,6 +41,7 @@ Name[x-test]=xxSmb4Kxx
 Name[zh_CN]=Smb4K
 Name[zh_TW]=Smb4K
 GenericName=Advanced Network Browser for SAMBA
+GenericName[ar]=متصف الشبكة المتقدم لسامبا
 GenericName[ca]=Explorador de xarxa avançat per a SAMBA
 GenericName[ca@valencia]=Explorador de xarxa avançat per a SAMBA
 GenericName[cs]=Pokročilý prohlížeč síťového okolí pro SAMBA
@@ -73,6 +75,7 @@ GenericName[x-test]=xxAdvanced Network Browser for SAMBAxx
 GenericName[zh_CN]=多功能 SAMBA 网络浏览器
 GenericName[zh_TW]=SAMBA 用的進階網路芳鄰瀏覽器
 Comment=Advanced Network Neighborhood Browser
+Comment[ar]=متصفح متقدم لشبكة الجوار
 Comment[bs]=Napredni pregledač mrežnog susjedstva
 Comment[ca]=Explorador avançat del veïnatge de xarxa
 Comment[ca@valencia]=Explorador avançat del veïnatge de xarxa
