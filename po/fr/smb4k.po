@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-26 00:39+0000\n"
+"POT-Creation-Date: 2024-10-25 00:40+0000\n"
 "PO-Revision-Date: 2024-06-26 13:06+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -178,7 +178,7 @@ msgstr "&Modifier des signets"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Ajouter un signet"
@@ -865,19 +865,19 @@ msgid "&Search"
 msgstr "&Chercher"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:215
+#: smb4k/smb4ksharesviewdockwidget.cpp:216
 #, kde-format
 msgid "Ctrl+B"
 msgstr "CTRL + B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
-#: smb4k/smb4ksharesviewdockwidget.cpp:220
+#: smb4k/smb4ksharesviewdockwidget.cpp:221
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Ajouter une &configuration personnalisée"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Ctrl+C"
 msgstr "CTRL + C"
@@ -928,7 +928,7 @@ msgid "&Mount"
 msgstr "&Monter"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:182
+#: smb4k/smb4ksharesviewdockwidget.cpp:183
 #, kde-format
 msgid "&Unmount"
 msgstr "&Libérer"
@@ -951,7 +951,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "Analyser le grou&pe de travail"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:951
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:188
 #, kde-format
 msgid "Ctrl+U"
 msgstr "CTRL + U"
@@ -1060,7 +1060,7 @@ msgstr "Imprimer"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Imprimer un fichier sur l'imprimante <b>%1</b>."
 
-#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "U&nmount All"
 msgstr "To&ut libérer"
@@ -1090,57 +1090,57 @@ msgstr "Ouvrir avec Konsole"
 msgid "Open with File Manager"
 msgstr "Ouvrir avec un gestionnaire de fichiers"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:137
+#: smb4k/smb4ksharesviewdockwidget.cpp:138
 #, kde-format
 msgid "View Modes"
 msgstr "Modes d'affichage"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:143
+#: smb4k/smb4ksharesviewdockwidget.cpp:144
 #, kde-format
 msgid "Icon View"
 msgstr "Vue en icônes"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#: smb4k/smb4ksharesviewdockwidget.cpp:150
 #, kde-format
 msgid "List View"
 msgstr "Vue en liste"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:197
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "Ctrl+N"
 msgstr "CTRL + N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:230
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynchroniser"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:235
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "CTRL + Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:248
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Ouvrir avec Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:253
+#: smb4k/smb4ksharesviewdockwidget.cpp:254
 #, kde-format
 msgid "Ctrl+L"
 msgstr "CTRL + L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:255
+#: smb4k/smb4ksharesviewdockwidget.cpp:256
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Ouvrir avec un gestionnaire de f&ichiers"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:260
+#: smb4k/smb4ksharesviewdockwidget.cpp:261
 #, kde-format
 msgid "Ctrl+I"
 msgstr "CTRL + I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:375
+#: smb4k/smb4ksharesviewdockwidget.cpp:392
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
