@@ -1491,7 +1491,7 @@
 ><title
 >Obrir una compartició amb el &konsole;</title>
           <para
->You can open the mounted share in &konsole; by selecting the <menuchoice
+>Podeu obrir la compartició muntada en el &konsole; seleccionant l'acció <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1499,9 +1499,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Open with Konsole</guimenuitem
+>Obre amb el Konsole</guimenuitem
 ></menuchoice
-> action. This is useful if you need to run a shell script on the share or do something similar.</para>
+>. Això és útil si heu d'executar scripts de shell en el recurs compartit o fer alguna cosa similar.</para>
         </formalpara
 ></listitem>
         <listitem
