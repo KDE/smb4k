@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-24 00:39+0000\n"
-"PO-Revision-Date: 2024-09-09 13:42+0300\n"
+"PO-Revision-Date: 2024-10-27 21:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -150,7 +150,7 @@ msgstr "Ağ ögeleri hakkında ipuçları göster"
 #: smb4k.kcfg:62
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
-msgstr "Araç ipucu mevcut ağ ögesi hakkında çeşitli bilgiler gösterir."
+msgstr "Araç ipucu, geçerli ağ ögesi hakkında çeşitli bilgiler gösterir."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:66
@@ -166,10 +166,10 @@ msgid ""
 "items (domain members or shares) is added or updated. Please note that a "
 "domain or host item will always be expanded when you execute it."
 msgstr ""
-"Ağ ögeleri (etki alanı üyeleri ya da paylaşımlar) eklendiğinde ya da liste "
-"güncellendiğinde etki alanı ve sunucu ögelerini otomatik genişlet. Lütfen "
-"bir etki alanı ya da sunucu ögesinin siz çalıştırdığınızda genişleyeceğini "
-"dikkate alınız."
+"Ağ ögeleri (etki alanı üyeleri ya da paylaşımlar) eklendiğinde veya liste "
+"güncellendiğinde etki alanı ve sunucu ögelerini kendiliğinden genişletin. "
+"Lütfen bir etki alanı veya sunucu ögesinin siz çalıştırdığınızda "
+"genişleyeceğini dikkate alın."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
@@ -181,7 +181,7 @@ msgstr "Bağlı paylaşımlar hakkında ipuçları göster"
 #: smb4k.kcfg:72
 #, kde-format
 msgid "The tooltip shows various information about the current share."
-msgstr "Araç ipucu mevcut paylaşım hakkında çeşitli bilgiler gösterir."
+msgstr "Araç ipucu, geçerli paylaşım hakkında çeşitli bilgiler gösterir."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:76
@@ -417,7 +417,7 @@ msgid ""
 "limits the number of used local master browsers to three. This can reduced "
 "the time consumption on large network neighborhoods considerably."
 msgstr ""
-"Bilgisayarınızın büyük bir ağ komşuluğunda olması durumunda, varsayılan "
+"Bilgisayarınızın büyük bir ağ komşuluğunda olması durumunda, öntanımlı "
 "yapılandırmada tüm yerel ana tarayıcılar sorgulandığı için tüm çalışma "
 "gruplarını, ana bilgisayarları ve paylaşımları keşfetmek uzun sürebilir. Bu "
 "ayarın etkinleştirilmesi, kullanılan yerel ana tarayıcıların sayısını üçle "
@@ -453,7 +453,7 @@ msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
 "environment."
 msgstr ""
-"Kimlik doğrulaması için Kerberos kullan. Bu yalnızca Active Directory "
+"Kimlik doğrulaması için Kerberos kullanın. Bu yalnızca Active Directory "
 "ortamında kullanışlıdır."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
@@ -515,10 +515,11 @@ msgid ""
 "etc.). Since they are not of any importance for your regular work, you "
 "normally do not need to enable this feature."
 msgstr ""
-"Gizli dosyaları ve dizinleri önizle. Gizli dosya ve dizinlerin adları nokta "
-"ile başlar. Genellikle çok özel amaçlar için gereklidirler (bir uygulamanın "
-"yapılandırma bilgilerini depolar ve benzeri.). Sizin günlük işleriniz için "
-"bir önem taşımıyorsa, bu özelliği etkin hale getirmenize gerek yoktur."
+"Gizli dosyaları ve dizinleri önizleyin. Gizli dosya ve dizinlerin adları "
+"nokta ile başlar. Genellikle çok özel amaçlar için gereklidirler (bir "
+"uygulamanın yapılandırma bilgilerini depolar ve benzeri.). Sizin günlük "
+"işleriniz için bir önem taşımıyorsa bu özelliği etkin hale getirmenize gerek "
+"yoktur."
 
 #. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
 #: smb4k.kcfg:218
@@ -591,7 +592,7 @@ msgstr ""
 #: smb4k.kcfg:248
 #, kde-format
 msgid "Synchronization prefix:"
-msgstr "Eşleme ön eki:"
+msgstr "Eşzamanlama öneki:"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:249
@@ -604,7 +605,7 @@ msgid ""
 msgstr ""
 "Bu önek altında, eşleme için hedef dizin oluşturulacaktır. Bununla beraber, "
 "eğer belirli bir paylaşımın verilerini başka bir yerde depolamak "
-"istiyorsanız, gerçek eşleme başlamadan önce farklı bir yol seçebilirsiniz."
+"istiyorsanız gerçek eşleme başlamadan önce farklı bir yol seçebilirsiniz."
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
 #: smb4k.kcfg:253
@@ -703,8 +704,8 @@ msgid ""
 "elements to have big differences, such as being a symlink to a directory on "
 "one side of the transfer, and a real directory on the other side."
 msgstr ""
-"Kastedilen dizinleri --relative (--no-implied-dirs) ile gönderme. Bu uyuşan "
-"yol ögelerinin hedef sistemde varsa değiştirilmeden bırakılması ve "
+"Kastedilen dizinleri --relative (--no-implied-dirs) ile göndermeyin. Bu "
+"uyuşan yol ögelerinin hedef sistemde varsa değiştirilmeden bırakılması ve "
 "kastedilen eksik dizinlerin öntanımlı öznitelikler ile oluşturulması "
 "anlamına gelir. Kastedilen yol ögelerinde büyük farklılıklar olmasına, "
 "örneğin aktarımın bir tarafında bir dizine sembolik bir bağlantı ve diğer "
@@ -723,7 +724,7 @@ msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
 "level subdirectories are transferred but without their contents."
 msgstr ""
-"Dizinleri alt dizinleri içermeden aktar (-d, --dirs). Bu üst düzey alt "
+"Dizinleri alt dizinleri içermeden aktarın (-d, --dirs). Bu üst düzey alt "
 "dizinler içerikleri olmadan aktarılır anlamına gelir."
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
@@ -741,7 +742,7 @@ msgid ""
 "option, if you have a slow connection."
 msgstr ""
 "Aktarım sırasında verileri sıkıştır (-z, --compress). Bu önemli ölçüde "
-"aktarılan verilerin boyutunu azaltır. Eğer yavaş bir bağlantınız varsa, bu "
+"aktarılan verilerin boyutunu azaltır. Eğer yavaş bir bağlantınız varsa bu "
 "seçeneği kullanmak isteyebilirsiniz."
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
@@ -856,9 +857,9 @@ msgid ""
 "absolute symlinks are also ignored. If you use this option in conjunction "
 "with --relative you might get unexpected results."
 msgstr ""
-"Kopyalanacak ağacın dışındaki sembolik bağlantıları yok say (--safe-links). "
-"Ayrıca bütün tam sembolik bağlantılar da yok sayılacaktır. Eğer bu seçeneği "
-"--relative ile birlikte kullanırsanız beklenmeyen sonuçlarla "
+"Kopyalanacak ağacın dışındaki sembolik bağlantıları yok sayın (--safe-"
+"links). Ayrıca bütün tam sembolik bağlantılar da yok sayılacaktır. Eğer bu "
+"seçeneği --relative ile birlikte kullanırsanız beklenmeyen sonuçlarla "
 "karşılaşabilirsiniz."
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
@@ -899,7 +900,7 @@ msgid ""
 "preserve the hard links that are found during the transfer. Without it, hard "
 "links are treated as though they were separate files."
 msgstr ""
-"Sabit bağlantıları koru (-H, --hard-links). Bu seçenekler, rsync "
+"Sabit bağlantıları koruyun (-H, --hard-links). Bu seçenekler, rsync "
 "uygulamasının aktarım sırasında bulunan sabit bağlantıları korumasını "
 "sağlar. Bu olmadan, sabit bağlantılara ayrı dosyalar gibi davranılır."
 
@@ -965,7 +966,7 @@ msgid ""
 "off, please read rsync's manual page."
 msgstr ""
 "İzinleri koru (-p, -perms). Hedef dosyanın izinleri kaynak dosya ile aynı "
-"olacak. Eğer bu seçenek kapanırsa ne olacağını öğrenmek için, lütfen rsync "
+"olacak. Eğer bu seçenek kapanırsa ne olacağını öğrenmek için lütfen rsync "
 "kılavuzunu okuyun."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
@@ -983,9 +984,9 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
-"Erişim denetim listelerini koru. Bu seçenek, rsync’in hedef erişim denetim "
-"listelerini kaynak olanlarıyla aynı biçimde güncellemesini sağlar. Bu "
-"seçenek ayrıca --perms ima eder. Bunun düzgünce çalışması için kaynak ve "
+"Erişim denetimi listelerini koruyun. Bu seçenek, rsync’in hedef erişim "
+"denetim listelerini kaynak olanlarıyla aynı biçimde güncellemesini sağlar. "
+"Bu seçenek ayrıca --perms ima eder. Bunun düzgünce çalışması için kaynak ve "
 "hedef sistemlerde uyumlu erişim denetim listeleri olmalıdır."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
@@ -1001,8 +1002,8 @@ msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Genişletilmiş öznitelikleri koru. Bu seçenek, rsync’in hedef öznitelikleri "
-"kaynak olanlarıyla aynı biçimde güncellemesini sağlar."
+"Genişletilmiş öznitelikleri koruyun. Bu seçenek, rsync’in hedef "
+"öznitelikleri kaynak olanlarıyla aynı biçimde güncellemesini sağlar."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:371
@@ -1017,7 +1018,7 @@ msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Erişim zamanlarını koru. Bu seçenek, rsync’e hedef dosyaların erişim "
+"Erişim zamanlarını koruyun. Bu seçenek, rsync’e hedef dosyaların erişim "
 "(kullanım) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
@@ -1033,8 +1034,9 @@ msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Oluşturma zamanlarını koru. Bu seçenek, rsync’e hedef dosyaların oluşturma "
-"(yenilik) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
+"Oluşturma zamanlarını koruyun. Bu seçenek, rsync’e hedef dosyaların "
+"oluşturma (yenilik) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını "
+"söyler."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:381
@@ -1049,7 +1051,7 @@ msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
 "set to the same value as the source file."
 msgstr ""
-"Grup koru (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
+"Grubu koruyun (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
 "ayarlanacaktır."
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
@@ -1067,10 +1069,10 @@ msgid ""
 "run as the super user. Without this option, the owner is set to the invoking "
 "user on the receiving side."
 msgstr ""
-"Sahibini koru (-o, --owner). Hedef dosyanın sahibi, kaynak dosyanın sahibi "
-"olarak ayarlanacaktır, fakat yalnızca alıcı rsync süper kullanıcı ile "
-"çalıştırılırsa. Bu seçenek olmadan, alıcı tarafta sahip çağıran kullanıcı "
-"ayarlanır."
+"Sahibi koruyun (-o, --owner). Hedef dosyanın sahibi, kaynak dosyanın sahibi "
+"olarak ayarlanacaktır; ancak yalnızca alıcı rsync süper kullanıcı ile "
+"çalıştırılırsa geçerlidir. Bu seçenek olmadan, alıcı tarafta sahip çağıran "
+"kullanıcı ayarlanır."
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
 #: smb4k.kcfg:391
@@ -1087,11 +1089,11 @@ msgid ""
 "files such as named sockets and fifos. It works only partially if rsync is "
 "not run as super user and the --super option is not specified."
 msgstr ""
-"Aygıt ve özel dosyaları koru (-D, --devices --specials). Bu seçenek, rsync "
-"uygulamasının karakter aktarmasına ve aygıtları, aynı zamanda soket ve fifo "
-"olarak adlandırılan özel dosyaları bloklamasına neden olur. Rsync uygulaması "
-"süper kullanıcı olarak çalıştırılmazsa ve --super seçeneği belirtilmezse "
-"yalnızca kısmi olarak çalışır."
+"Aygıtı ve özel dosyaları koruyun (-D, --devices --specials). Bu seçenek, "
+"rsync uygulamasının karakter aktarmasına ve aygıtları, aynı zamanda yuva ve "
+"fifo olarak adlandırılan özel dosyaları bloklamasına neden olur. rsync "
+"uygulaması süper kullanıcı olarak çalıştırılmazsa ve --super seçeneği "
+"belirtilmezse yalnızca kısımsal olarak çalışır."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
 #: smb4k.kcfg:396
@@ -1107,7 +1109,7 @@ msgid ""
 "with the files. For what happens if this option is switched off, please read "
 "rsync's manual page."
 msgstr ""
-"Zamanları koru (-t, --times). Değiştirme zamanları dosyalar ile birlikte "
+"Zamanları koruyun (-t, --times). Değiştirme zamanları dosyalar ile birlikte "
 "aktarılır. Bu seçenek kapalıysa ne olacağını öğrenmek için lütfen rsync "
 "kılavuzunu okuyun."
 
@@ -1125,7 +1127,7 @@ msgid ""
 "that directories are omitted when modification times are being preserved. "
 "Thus, this feature only works in conjunction with --times."
 msgstr ""
-"Zamanlar korunurken dizinleri atla (-O, --omit-dir-times). Değiştirilme "
+"Zamanlar korunurken dizinleri atlayın (-O, --omit-dir-times). Değiştirilme "
 "zamanları korunmuş dizinlerin atlanması anlamına gelir. Dolayısıyla bu "
 "özellik yalnızca --times ile birlikte çalışır."
 
@@ -1144,7 +1146,7 @@ msgid ""
 "part of the transfer and have been successfully duplicated on the receiving "
 "side."
 msgstr ""
-"Eşzamanlanmış bütün kaynak dosyaları kaldır (--remove-source-files). Bu, "
+"Eşzamanlanmış bütün kaynak dosyaları kaldırın (--remove-source-files). Bu, "
 "rsync uygulamasına alıcı tarafta başarılı şekilde çoğaltılmış ve aktarımın "
 "bir kısmı olan dizin olmayan ögeleri gönderen taraftan kaldırması söyler."
 
@@ -1162,7 +1164,7 @@ msgid ""
 "delete all files from the receiving side that are not present on the sending "
 "side, but only for the directories that are being synchronized."
 msgstr ""
-"Hedeften fazlalık dosyaları sil (--delete). Bu, gönderici tarafta olmayan "
+"Hedeften fazlalık dosyaları silin (--delete). Bu, gönderici tarafta olmayan "
 "tüm dosyaların, alıcı taraftan silinmesini söyler; ancak yalnızca "
 "eşzamanlanmış dizinler içindir."
 
@@ -1180,7 +1182,7 @@ msgid ""
 "before). This is the default behavior if --delete or --delete-excluded is "
 "specified without one of the --delete-WHEN options."
 msgstr ""
-"Aktarım başlamadan önce alıcı taraftaki dosyaları sil (--delete-before). "
+"Aktarım başlamadan önce alıcı taraftaki dosyaları silin (--delete-before). "
 "Eğer --delete veya --delete-excluded, --delete-WHEN seçeneklerinden biri "
 "olmadan belirtilirse bu öntanımlı çalışma şeklidir."
 
@@ -1214,9 +1216,9 @@ msgid ""
 "This method is faster than --delete-before or --delete-after, but it is only "
 "supported with rsync 2.6.4 or later."
 msgstr ""
-"Aktarım sırasında alıcı taraftaki dosyaları sil (--delete-during). Bu yöntem "
-"--delete-before ya da --delete-after seçeneklerinden daha hızlıdır fakat "
-"yalnızca rsync 2.6.4 ya da sonrasındaki sürümlerde desteklenir."
+"Aktarım sırasında alıcı taraftaki dosyaları silin (--delete-during). Bu "
+"yöntem --delete-before ya da --delete-after seçeneklerinden daha hızlıdır; "
+"ancak yalnızca rsync 2.6.4 veya sonrasındaki sürümlerde desteklenir."
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
 #: smb4k.kcfg:431
@@ -1233,10 +1235,10 @@ msgid ""
 "sending side, this tells rsync to also delete any files on the receiving "
 "side that are excluded. Refer to rsync's manual page for further information."
 msgstr ""
-"Ayrıca dışlanan dosyaları da hedef dizinden sil (--delete-excluded). "
-"Gönderici tarafta olmayan dosyaların alıcı tarafta silinmesine ek olarak, "
-"bu, rsync uygulamasına alıcı tarafta dışlanmış dosyaların da silinmesini "
-"söyler. Daha fazla bilgi için rsync uygulamasının kılavuzuna bakın."
+"Ayrıca dışlanan dosyaları da hedef dizinden silin (--delete-excluded). "
+"Gönderici tarafta olmayan dosyaların alıcı tarafta silinmesine ek olarak bu, "
+"rsync uygulamasına alıcı tarafta dışlanmış dosyaların da silinmesini söyler. "
+"Daha fazla bilgi için rsync uygulamasının kılavuzuna bakın."
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
 #: smb4k.kcfg:436
@@ -1251,8 +1253,8 @@ msgid ""
 "Delete even if I/O errors occur (--ignore-errors). This option has to be "
 "specified in conjunction with --delete to take effect."
 msgstr ""
-"Girdi/Çıktı hatası oluşursa bile sil (--ignore-errors). Bu seçeneğin etkili "
-"olması için --delete ile birlikte kullanılmalıdır."
+"Girdi/Çıktı hatası oluşursa bile silin (--ignore-errors). Bu seçeneğin "
+"etkili olması için --delete ile birlikte kullanılmalıdır."
 
 #. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
 #: smb4k.kcfg:441
@@ -1268,8 +1270,8 @@ msgid ""
 "option tells rsync to delete a non-empty directory when it is to be replaced "
 "by a non-directory. This is only relevant if deletions are not active."
 msgstr ""
-"Boş olmadığı durumlarda bile dizinlerin silinmesini zorla (--force). Bu "
-"seçenek, rsync uygulamasına, boş olmayan bir dizinin olmayan bir dizin ile "
+"Boş olmadığı durumlarda bile dizinlerin silinmesini zorlayın (--force). Bu "
+"seçenek rsync uygulamasına, boş olmayan bir dizinin olmayan bir dizin ile "
 "değiştirildiğinde silinmesini söyler. Bu yalnızca silme işlemleri etkin "
 "değilse ilgilidir."
 
@@ -1287,10 +1289,10 @@ msgid ""
 "rsync not to delete more than NUM files or directories (NUM must be non-"
 "zero). This is useful when mirroring very large trees to prevent disasters."
 msgstr ""
-"Yalnızca burada belirtildiği sayıda dosya sil (--max-delete=SAYI). Bu rsync "
-"uygulamasına belirtilen SAYIdan fazla dosya ya da dizin silmemesini söyler "
-"(SAYI sıfır olmamalıdır). Bu çok büyük ağaçları yansıtırken olağanüstü "
-"durumları engellemek için kullanışlıdır."
+"Yalnızca burada belirtildiği sayıda dosya silin (--max-delete=SAYI). Bu "
+"rsync uygulamasına belirtilen SAYI’dan fazla dosya veya dizin silmemesini "
+"söyler (SAYI sıfır olmamalıdır). Bu çok büyük ağaçları yansıtırken "
+"olağanüstü durumları engellemek için kullanışlıdır."
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
 #: smb4k.kcfg:451
@@ -1355,8 +1357,8 @@ msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
 "any partially transferred file is deleted if the transfer is interrupted."
 msgstr ""
-"Kısmen aktarılmış dosyaları koru (--partial). Öntanımlı davranış, eğer "
-"aktarım kesilirse, kısmen aktarılmış dosyaların silinmesidir."
+"Kısmen aktarılmış dosyaları koruyun (--partial). Öntanımlı davranış, eğer "
+"aktarım kesilirse kısmen aktarılmış dosyaların silinmesidir."
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
 #: smb4k.kcfg:484
@@ -1373,8 +1375,8 @@ msgid ""
 "because the partially transferred file is kept in a different directory and "
 "the destination file is not overwritten."
 msgstr ""
-"Kısmen aktarılmış bir dosyayı bu dizine koy (--partial-dir=DİZİN). Bu "
-"parçalı dosyaları korumak için --partial seçeneğinden daha iyi bir yoldur "
+"Kısmen aktarılmış bir dosyayı bu dizine koyun (--partial-dir=DİZİN). Bu "
+"parçalı dosyaları korumak için --partial seçeneğinden daha iyi bir yoldur; "
 "çünkü kısmen aktarılmış dosya farklı bir dizinde tutulur ve hedef dosyanın "
 "üzerine yazılmaz."
 
@@ -1399,10 +1401,10 @@ msgid ""
 "want to transfer between systems. This option uses the same algorithm that "
 "CVS uses to determine if a file should be ignored."
 msgstr ""
-"CVS uygulamasının yaptığı şekilde dosyaları kendiliğinden yok say (-C, --cvs-"
-"excluded). Bu, sistemler arasında sık sık aktarmak istemediğiniz dosyaların "
-"geniş bir erimini dışlamak için kullanışlıdır. Bu seçenek yok sayılması "
-"gereken dosyayı belirlemek için CVS ile aynı algoritmayı kullanır."
+"CVS uygulamasının yaptığı şekilde dosyaları kendiliğinden yok sayın (-C, --"
+"cvs-excluded). Bu, sistemler arasında sık sık aktarmak istemediğiniz "
+"dosyaların geniş bir erimini dışlamak için kullanışlıdır. Bu seçenek, yok "
+"sayılması gereken dosyayı belirlemek için CVS ile aynı algoritmayı kullanır."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:499
@@ -1418,8 +1420,8 @@ msgid ""
 "special filter rule. For further information on filter rules see rsync's "
 "manual page."
 msgstr ""
-"Belli bir dizgi ile eşleşen dosyaları dışla (--excluded=DİZGİ). Bu özel bir "
-"süzme kuralıdır. Süzme kuralları ile ilgili daha fazla bilgi için rsync "
+"Belli bir dizgi ile eşleşen dosyaları dışlayın (--excluded=DİZGİ). Bu özel "
+"bir süzme kuralıdır. Süzme kuralları ile ilgili daha fazla bilgi için rsync "
 "uygulamasının kılavuzuna bakın."
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
@@ -1443,10 +1445,10 @@ msgid ""
 "read from a file. This is a special filter rule. For further information on "
 "filter rules see rsync's manual page."
 msgstr ""
-"Bir dosyadan dışlanacak dizgileri oku (--excluded-from=DOSYA). Bu seçenek, "
-"dışlanacak dizginin dosyadan okunması haricinde --excluded=DİZGİ seçeneği "
-"ile benzerdir. Bu özel bir süzme kuralıdır. Süzme kuralları ile ilgili daha "
-"fazla bilgi için rsync kılavuzuna bakın."
+"Bir dosyadan dışlanacak dizgileri okuyun (--excluded-from=DOSYA). Bu "
+"seçenek, dışlanacak dizginin dosyadan okunması dışında --excluded=DİZGİ "
+"seçeneği ile benzerdir. Bu özel bir süzme kuralıdır. Süzme kuralları ile "
+"ilgili daha fazla bilgi için rsync kılavuzuna bakın."
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
 #: smb4k.kcfg:514
@@ -1468,9 +1470,9 @@ msgid ""
 "a special filter rule. For further information on filter rules see rsync's "
 "manual page."
 msgstr ""
-"Belirli bir dizgi ile eşleşen dosyaları dışlama (--include=DİZGİ). Bu özel "
-"bir süzme kuralıdır. Süzme kuralları ile ilgili daha fazla bilgi için rsync "
-"uygulaması kılavuzuna bakın."
+"Belirli bir dizgi ile eşleşen dosyaları dışlamayın (--include=DİZGİ). Bu "
+"özel bir süzme kuralıdır. Süzme kuralları ile ilgili daha fazla bilgi için "
+"rsync uygulaması kılavuzuna bakın."
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
 #: smb4k.kcfg:524
@@ -1493,8 +1495,8 @@ msgid ""
 "read from a file. This is a special filter rule. For further information on "
 "filter rules see rsync's manual page."
 msgstr ""
-"Bir dosyadan içerdiği desenleri oku (--include-from=DOSYA). Bu seçenek, "
-"içerdiği desenlerin bir dosyadan okunması haricinde --include=DESEN seçeneği "
+"Bir dosyadan içerdiği dizgileri okuyun (--include-from=DOSYA). Bu seçenek, "
+"içerdiği desenlerin bir dosyadan okunması dışında --include=DİZGİ seçeneği "
 "ile benzerdir. Bu özel bir süzme kuralıdır. Süzme kuralları ile ilgili daha "
 "fazla bilgi için rsync kılavuzuna bakın."
 
@@ -1519,10 +1521,10 @@ msgid ""
 "be transferred. These rules will be added to the rsync command as they are. "
 "Thus, each rule has to start with the --filter=... argument."
 msgstr ""
-"Özel dosya süzme kuralları ekle (-f, --filter=KURAL). Bu seçenek aktarılacak "
-"dosyaların listesinden belirli dosyaları dışlamak için kurallar eklemenize "
-"izin verir. Bu kurallar olduğu gibi rsync komutuna eklenecektir. "
-"Dolayısıyla, her kural --filter=… argümanı ile başlamalıdır."
+"Özel dosya süzme kuralları ekleyin (-f, --filter=KURAL). Bu seçenek "
+"aktarılacak dosyaların listesinden belirli dosyaları dışlamak için kurallar "
+"eklemenize izin verir. Bu kurallar olduğu gibi rsync komutuna eklenecektir. "
+"Dolayısıyla her kural, --filter=… argümanı ile başlamalıdır."
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:544
@@ -1582,9 +1584,9 @@ msgid ""
 "space on the destination. This option conflicts with --inplace. For further "
 "information read rsync's manual page."
 msgstr ""
-"Aralıklı dosyaları verimli işle (-S, --sparse) böylece hedefte daha az yer "
-"kaplayabilsin. Bu seçenek --inplace ile çatışır. Daha fazla bilgi için rsync "
-"kılavuzunu okuyun."
+"Aralıklı dosyaları verimli işleyin (-S, --sparse) böylece hedefte daha az "
+"yer kaplayabilir. Bu seçenek --inplace ile çatışır. Daha fazla bilgi için "
+"rsync kılavuzunu okuyun."
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
 #: smb4k.kcfg:564
@@ -1599,8 +1601,8 @@ msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
 "algorithm is not used and the whole file is sent as-is instead."
 msgstr ""
-"Dosyaların tümünü kopyala (-W, --whole-file). Bu seçenek ile artımlı rsycn "
-"algoritması kullanılmaz ve tüm dosyalar olduğu gibi gönderilir."
+"Dosyaların tümünü kopyalayın (-W, --whole-file). Bu seçenek ile artımlı "
+"rsync algoritması kullanılmaz ve tüm dosyalar olduğu gibi gönderilir."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
 #: smb4k.kcfg:569
@@ -1616,7 +1618,7 @@ msgid ""
 "rsync to avoid crossing a filesystem boundary when recursing. For further "
 "information on this option, read the manual page."
 msgstr ""
-"Dosya sistemi sınırlarını aşma (-x, --one-file-system). Bu rsync "
+"Dosya sistemi sınırlarını aşmayın (-x, --one-file-system). Bu rsync "
 "uygulamasına, özyinelerken dosya sistemi sınırlarını aşmaktan kaçınmasını "
 "söyler. Daha fazla bilgi için kılavuzu okuyun."
 
@@ -1636,10 +1638,10 @@ msgid ""
 "no files will be updated (which can be useful if all you want to do is to "
 "delete extraneous files)."
 msgstr ""
-"Alıcı tarafta yeni dosya oluşturmayı atla (--existing). Bu, rsync "
+"Alıcı tarafta yeni dosya oluşturmayı atlayın (--existing). Bu, rsync "
 "uygulamasına hedefte henüz olmayan dosyaları (dizinlerde dahil) oluşturma "
 "işlemini atlamasını söyler. Eğer bu seçenek --ignore-existing seçeneği ile "
-"birleştirilirse, hiçbir dosya güncellenemeyecektir (eğer yapmak istediğiniz "
+"birleştirilirse hiçbir dosya güncellenemeyecektir (eğer yapmak istediğiniz "
 "yalnızca fazlalık dosyaları silmek ise bu seçenek kullanışlı olabilir)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
@@ -1655,8 +1657,8 @@ msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
 "existing). Existing directories are not ignored."
 msgstr ""
-"Alıcı tarafta zaten mevcut dosyaları güncellemeyi atla (--ignore-existing). "
-"Mevcut dizinler yok sayılır."
+"Alıcı tarafta halihazırda var olan dosyaları güncellemeyi atlayın (--ignore-"
+"existing). Var olan dizinler yok sayılmaz."
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
 #: smb4k.kcfg:584
@@ -1673,9 +1675,10 @@ msgid ""
 "until the end of the transfer, at which time all the files are renamed and "
 "copied into place in rapid succession."
 msgstr ""
-"Güncellemeleri aktarımın sonuna kadar geciktir (--delay-updates). Bu seçenek "
-"aktarım sonuna kadar tutulduğu dizine güncellenen her dosyadan geçici dosya "
-"koyar, bütün dosyalar yeniden adlandırıldığında peş peşe yerine kopyalanır."
+"Güncellemeleri aktarımın sonuna kadar geciktirin (--delay-updates). Bu "
+"seçenek aktarım sonuna kadar tutulduğu dizine güncellenen her dosyadan "
+"geçici dosya koyar, bütün dosyalar yeniden adlandırıldığında peş peşe yerine "
+"kopyalanır."
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
 #: smb4k.kcfg:589
@@ -1692,8 +1695,8 @@ msgid ""
 "the backup file goes and what (if any) suffix gets appended using the --"
 "backup-dir=DIR and --suffix=SUFFIX options."
 msgstr ""
-"Yedekleme yap (-b --backup). Bu seçenekle önceden var olan hedefteki "
-"dosyalar silindi ya da aktarıldı olarak yeniden adlandırılır. --backup-"
+"Yedekleme yapın (-b --backup). Bu seçenekle önceden var olan hedefteki "
+"dosyalar silindi veya aktarıldı olarak yeniden adlandırılır. --backup-"
 "dir=DİZİN ve --suffix=SONEK kullanarak yedeklenmiş dosyaların nereye gittiği "
 "ve son ek olarak ne eklendiğini denetleyebilirsiniz."
 
@@ -1746,7 +1749,7 @@ msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
 "block size used in the rsync algorithm to a fixed value."
 msgstr ""
-"Sabit özet blok boyutunu zorla (-B, --block-size=BOYUT). Bu rsync "
+"Sabit özet blok boyutunu zorlayın (-B, --block-size=BOYUT). Bu rsync "
 "algoritmasında sabit bir değerde blok boyutunu zorlar."
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
@@ -1770,10 +1773,10 @@ msgid ""
 "and file MD4 checksum calculation. By default the checksum seed is generated "
 "by the server and defaults to the current time."
 msgstr ""
-"Blok/dosya özeti kaynağını ayarla (--checksum-seed=SAYI). MD4 özet kaynağını "
-"bu tam sayıya ayarla. Bu 4 bayt özet kaynağını her blokta ve MD4 dosya özeti "
-"hesaplamasında içerir. Özet kaynağı öntanımlı olarak sunucu tarafından ve o "
-"anki zamana göre üretilir."
+"Blok/dosya özeti kaynağını ayarlayın (--checksum-seed=SAYI). MD4 özet "
+"kaynağını bu tam sayıya ayarlayın. Bu 4 bayt özet kaynağını her blokta ve "
+"MD4 dosya özeti hesaplamasında içerir. Özet kaynağı öntanımlı olarak sunucu "
+"tarafından ve o anki zamana göre üretilir."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:630
@@ -1795,9 +1798,9 @@ msgid ""
 "c, --checksum). For further information on how this feature works read "
 "rsync's manual page."
 msgstr ""
-"Boyut ve değiştirilme zamanı tabanlı olmayan, özet tabanlı dosyaları atla (-"
-"c, --checksum). Bu özelliğin nasıl çalıştığıyla ilgili daha fazla bilgi için "
-"rsync kılavuzunu okuyun."
+"Boyut ve değiştirilme zamanı tabanlı olmayan, özet tabanlı dosyaları atlayın "
+"(-c, --checksum). Bu özelliğin nasıl çalıştığıyla ilgili daha fazla bilgi "
+"için rsync kılavuzunu okuyun."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
 #: smb4k.kcfg:641
@@ -1834,9 +1837,9 @@ msgid ""
 "custom options for each profile. This is especially useful if you are using "
 "a laptop in different network neighborhoods, e. g. at home and at work."
 msgstr ""
-"Smb4K kullanım profillerini oluştur. Bu, her profil için özel seçenekler ve "
-"farklı yer imleri tanımlamayı etkinleştirir. Eğer evde ya da işte, farklı "
-"komşu ağlarda diz üstü kullanıyorsanız, kullanışlıdır."
+"Smb4K kullanım profilleri oluşturun. Bu, her profil için özel seçenekler ve "
+"farklı yer imleri tanımlamayı etkinleştirir. Eğer evde veya işte, farklı "
+"komşu ağlarda dizüstü kullanıyorsanız kullanışlıdır."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:663
@@ -2016,9 +2019,8 @@ msgstr ""
 "Bu, ya Unicode’dan (CIFS, Linux) yerel dosya adlarına dönüştürmek ya da kod "
 "sayfalarında karakter kümesi çevrimleri (SMBFS, FreeBSD) için istemci "
 "tarafından kullanılan bir karakter kümesidir (yani sizin tarafınızdan). Eğer "
-"öntanımlı ayarı kullanırsanız, Smb4K, smb.conf içindeki “unix charset” "
-"seçeneğini arayarak karakter kümesini otomatik olarak belirlemeyi "
-"deneyecektir."
+"öntanımlı ayarı kullanırsanız Smb4K, smb.conf içindeki “unix charset” "
+"seçeneğini arayarak karakter kümesini kendiliğinden belirlemeyi deneyecektir."
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (UseClientCharset), group (Mounting)
@@ -2377,7 +2379,7 @@ msgstr "unicode"
 #: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
 #, kde-format
 msgid "Mount prefix:"
-msgstr "Bağlama dizini:"
+msgstr "Bağlama öneki:"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:237 smb4kmountsettings_linux.kcfg:300
@@ -2437,12 +2439,12 @@ msgid ""
 "ignored. Please note that this setting does not affect the automatic "
 "remounting of shares when your computer woke up from a sleep state."
 msgstr ""
-"Programdan çıktığınızda ya da profil değiştirdiğinizde bütün bağlanmış "
+"Programdan çıktığınızda veya profil değiştirdiğinizde bütün bağlanmış "
 "paylaşımlarınızı yeniden bağlayın. Eğer bir paylaşımın yeniden bağlanması "
-"başarısız olursa, Smb4K sonraki sefer başlarken yeniden deneyecektir. Diğer "
+"başarısız olursa Smb4K, sonraki kerede başlarken yeniden deneyecektir. Diğer "
 "kullanıcılar tarafından bağlanan paylaşımlar yok sayılacaktır. Lütfen bu "
-"ayarın bilgisayarınız uyku durumundan çıktığında paylaşımların otomatik "
-"olarak yeniden bağlanması işlemini etkilemeyeceğini dikkate alın."
+"ayarın bilgisayarınız uyku durumundan çıktığında paylaşımların kendiliğinden "
+"yeniden bağlanması işlemini etkilemeyeceğini dikkate alın."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
@@ -2489,7 +2491,7 @@ msgid ""
 "think before you enable this option."
 msgstr ""
 "Diğer kullanıcılar tarafından bağlanmış paylaşımların bağlantılarının "
-"kesilmesine izin ver. Bu seçeneği etkinleştirmeden önce lütfen iyi düşünün."
+"kesilmesine izin verin. Bu seçeneği etkinleştirmeden önce lütfen iyi düşünün."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
@@ -2505,10 +2507,10 @@ msgid ""
 "inaccessible, a lazy unmount is performed. Before the actual unmount is "
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
-"Erişilemez paylaşımların bağlantılarını kesmeye zorla (yalnızca Linux). Bir "
-"paylaşım erişilemez durumda olduğunda, yavaş bağlantı kesme "
-"gerçekleştirilir. Gerçek bağlantı kesme gerçekleştirilmeden önce, ayırma "
-"işlemini onaylamanızı isteyen bir uyarı penceresi görüntülenir."
+"Erişilemez paylaşımların bağlantılarını kesmeye zorlayın (yalnızca Linux). "
+"Bir paylaşım erişilemez durumda olduğunda, yavaş bağlantı kesme "
+"gerçekleştirilir. Gerçek bağlantı kesme gerçekleştirilmeden önce, bağlantı "
+"kesme işlemini onaylamanızı isteyen bir uyarı penceresi görüntülenir."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
@@ -2548,11 +2550,11 @@ msgid ""
 msgstr ""
 "Samba’nın çoğu sürümü CIFS Unix veya POSIX uzantılarını destekler. Bu "
 "sunucularda, bağlama işlemi sırasında doğru değerlerde anlaşma yapıldığı "
-"için için bazı seçeneklere gereksinim yoktur. Diğer sunucularda, önceden "
+"için bazı seçeneklere gereksinim yoktur. Diğer sunucularda, önceden "
 "tanımlanmış değerlerin sunucuya aktarılabilmesi için bu seçeneğin işaretini "
 "kaldırmak isteyebilirsiniz. Bilgisayarınız yalnızca birkaç Samba sunucusuna "
-"sahip bir Windows çoğunluklu ağ bölgesinde bulunuyorsa, bu seçeneğin "
-"işaretini kaldırabilir ve Samba sunucuları için özel seçenekler "
+"sahip bir Windows çoğunluklu ağ bölgesinde bulunuyorsa bu seçeneğin "
+"işaretini kaldırabilireceğinizi ve Samba sunucuları için özel seçenekler "
 "tanımlayabileceğinizi lütfen unutmayın."
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
@@ -2567,7 +2569,7 @@ msgid ""
 msgstr ""
 "Bu bağlanan paylaşımların sahip olduğu dosya ve dizinlerin kullanıcı "
 "kimliğidir (bir numara). Eğer Linux CIFS dosya sistemi kullanıyorsanız ve "
-"uzak sunucular CIFS Unix Uzantılarını destekliyorsa, bu ayar kullanıcı "
+"uzak sunucular CIFS Unix Uzantılarını destekliyorsa bu ayar kullanıcı "
 "kimliği ataması zorlanmazsa yok sayılacaktır."
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
@@ -2582,7 +2584,7 @@ msgid ""
 msgstr ""
 "Bu bağlanan paylaşımın dosya ve dizinlerinin sahip olacağı grup kimliğidir "
 "(bir sayı). Eğer Linux işletim sisteminde CIFS dosya sistemi kullanıyorsanız "
-"ve uzak sunucu CIFS Unix Uzantıları destekliyorsa, bu ayar, grup kimliği "
+"ve uzak sunucu CIFS Unix Uzantıları destekliyorsa bu ayar, grup kimliği "
 "ataması zorlanmazsa yok sayılacaktır."
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
@@ -2653,7 +2655,7 @@ msgstr ""
 "Bu ya Unicode’dan (CIFS, Linux) yerel dosya adlarına dönüştürmek ya da kod "
 "sayfalarında karakter kümesi çevrimleri (SMBFS, FreeBSD) için istemci "
 "tarafından kullanılan bir karakter kümesidir (yani sizin tarafınızdan). Eğer "
-"öntanımlı ayarı kullanırsanız, Smb4K, smb.conf içindeki “unix charset” "
+"öntanımlı ayarı kullanırsanız Smb4K, smb.conf içindeki “unix charset” "
 "seçeneğini arayarak karakter kümesini kendiliğinden belirlemeyi deneyecektir."
 
 #. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
@@ -2670,7 +2672,7 @@ msgid ""
 "Here you can choose if the shares should be mounted in read-write or read-"
 "only mode."
 msgstr ""
-"Paylaşımların yazma-okuma ya da salt-okunur kipte bağlanması gerektiğini "
+"Paylaşımların yazma–okuma ya da saltokunur kipte bağlanması gerektiğini "
 "burada seçebilirsiniz."
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
@@ -2737,7 +2739,7 @@ msgid ""
 "access the files and directories. This setting does not affect the normal "
 "ACL check."
 msgstr ""
-"Bir dosya ya da dizini değiştirmek için doğru UID/GID sahipliğinizi, istemci "
+"Bir dosya veya dizini değiştirmek için doğru UID/GID sahipliğinizi, istemci "
 "tarafı (yani sizin tarafınız) denetleyecek. Eğer sunucu(lar) CIFS Unix "
 "Eklentilerini destekliyorsa ve siz dosya ve dizinlere erişim hakkına sahip "
 "değilseniz bu özelliği kapatabilirsiniz. Bu ayar standart ACL denetimini "
@@ -2762,8 +2764,8 @@ msgid ""
 msgstr ""
 "Sunucunun CIFS Unix Uzantılarını desteklediği durumda, istemci tarafı (yani "
 "sizin tarafınız) yakın zamanda oluşturulan dosyalar, dizinler ve aygıtlar "
-"üzerinde mevcut sürecin etkin UID ve GID ayarlamak için çalışır. Eğer bu "
-"özelliği kapatırsanız, sunucu paylaşımlar için öntanımlı UID ve GID "
+"üzerinde geçerli sürecin etkin UID ve GID ayarlamak için çalışır. Eğer bu "
+"özelliği kapatırsanız sunucu paylaşımlar için öntanımlı UID ve GID "
 "ayarlayacaktır. Bu ayarı değiştirmeden önce mount.cifs kılavuzunu okumanız "
 "önerilir."
 
@@ -2800,7 +2802,7 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
-"Sunucuya bayt erimi kilit istekleri gönderme. Bu, CIFS tarzı zorunlu bayt "
+"Sunucuya bayt erimi kilit istekleri göndermeyin. Bu, CIFS tarzı zorunlu bayt "
 "erimi kilitlerini bozan kimi uygulamalar için gereklidir (ve henüz tavsiye "
 "niteliğinde bayt erimi kilitlerini istemeyi desteklemeyen çoğu CIFS "
 "sunucuları için)."
@@ -2968,7 +2970,7 @@ msgstr "Boş kullanıcı olarak bağlan (ad yok)"
 #: smb4kmountsettings_linux.kcfg:263
 #, kde-format
 msgid "Kerberos 5 authentication"
-msgstr "Kerberos 5 kimlik doğrulama"
+msgstr "Kerberos 5 kimlik doğrulaması"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:266
@@ -3295,421 +3297,3 @@ msgstr "Kaynak"
 #, kde-format
 msgid "Destination"
 msgstr "Hedef"
-
-#~ msgid "Migrate Login Credentials"
-#~ msgstr "Oturum Açma Bilgilerini Göç Ettir"
-
-#~ msgid "Migrate"
-#~ msgstr "Göç Ettir"
-
-#~ msgid "Don't Migrate"
-#~ msgstr "Göç Ettirme"
-
-#~ msgid "Save logins in a wallet"
-#~ msgstr "Oturum açma bilgilerini bir cüzdanda kaydet"
-
-#~ msgid ""
-#~ "Use a wallet to store the login. The username and password are stored "
-#~ "encrypted on your hard drive. If this setting is disabled, the login is "
-#~ "not stored permanently but only temporarily."
-#~ msgstr ""
-#~ "Oturum açma bilgilerini saklamak için bir cüzdan kullanın. Kullanıcı adı "
-#~ "ve parola, sabit sürücünüzde şifrelenmiş olarak saklanır. Bu ayar devre "
-#~ "dışı bırakılırsa oturum açma bilgileri kalıcı olarak değil, yalnızca "
-#~ "geçici olarak saklanır."
-
-#~ msgid "Use a default login"
-#~ msgstr "Bir öntanımlı oturum açma kullan"
-
-#~ msgid ""
-#~ "Enable the usage of a default login. The provided data is used by default "
-#~ "to authenticate to a remote server. This is very useful e.g. if you are "
-#~ "working in an Active Directory environment or an NT domain."
-#~ msgstr ""
-#~ "Öntanımlı açma kullanımını etkinleştir. Sağlanan veriler uzak bir "
-#~ "sunucuda kimlik doğrulaması için öntanımlı olarak kullanılır. Örneğin "
-#~ "Active Directory ortamında ya da bir NT etki alanında çalışıyorsanız bu "
-#~ "özellik oldukça kullanışlıdır."
-
-#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-#~ msgstr "<p><b>%1</b> cüzdanı açılamadı.</p>"
-
-#~ msgid ""
-#~ "<p>The credentials stored in the wallet could not be accessed. There is "
-#~ "either no wallet available or it could not be opened.</p>"
-#~ msgstr ""
-#~ "<p>Cüzdanda depolanan kimlik bilgilerine erişilemedi. Ya kullanılabilir "
-#~ "cüzdan yok ya da açılamadı.</p>"
-
-#~ msgid ""
-#~ "Transfer all relevant data to the first profile when enabling profiles"
-#~ msgstr "Profilleri etkinleştirirken tüm ilgili veriyi ilk profile aktar"
-
-#~ msgid ""
-#~ "Transfer all custom settings and bookmarks to the first profile in the "
-#~ "list when enabling profiles."
-#~ msgstr ""
-#~ "Profilleri etkinleştirirken tüm özel ayarları ve yer imlerini listedeki "
-#~ "ilk profile aktar"
-
-#~ msgid "Make all relevant data available when disabling profiles"
-#~ msgstr ""
-#~ "Profilleri devre dışı bırakırken tüm ilgili veriyi kullanılabilir yap"
-
-#~ msgid ""
-#~ "Make all custom settings and bookmarks available when disabling profiles. "
-#~ "This means that all data previously saved in different profiles is now "
-#~ "available in the standard profile. However, they can no longer be used in "
-#~ "their original profiles afterwards."
-#~ msgstr ""
-#~ "Profilleri devre dışı bırakırken tüm özel ayarları ve yer imlerini "
-#~ "kullanılabilir yapın. Bu, daha önce farklı profillerde kaydedilen tüm "
-#~ "verinin artık standart profilde kullanılabilir olduğu anlamına gelir. "
-#~ "Ancak daha sonra özgün profillerinde artık kullanılamazlar."
-
-#~ msgid "Specify User"
-#~ msgstr "Kullanıcıyı Belirtin"
-
-#~ msgid "Please specify a username for share<br><b>%1</b>."
-#~ msgstr "Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı belirtin."
-
-#~ msgid "User:"
-#~ msgstr "Kullanıcı:"
-
-#~ msgid "Clear List"
-#~ msgstr "Listeyi Temizle"
-
-#~ msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
-#~ msgstr ""
-#~ "Çalışma grubu ve alan adı aramalarında SMB protokol sürümü 1.0 kullanmaya "
-#~ "zorla"
-
-#~ msgid ""
-#~ "Smb4K will force Samba's client library to use the SMB protocol version "
-#~ "1.0 for browsing workgroups and domains. You should use this option only "
-#~ "as last resort, because the SMB protocol version 1.0 is unsafe and has "
-#~ "been disabled in newer Samba and Windows versions. However, if you have "
-#~ "trouble discovering workgroups and domains in your network neighborhood, "
-#~ "you might want to consider to switch this setting on. If you are using "
-#~ "DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-"
-#~ "Discovery), and those are working for you, you do not need it."
-#~ msgstr ""
-#~ "Smb4K, Samba'nın istemci kitaplığını, çalışma gruplarına ve etki "
-#~ "alanlarına göz atmak için SMB protokolü sürüm 1.0'ı kullanmaya "
-#~ "zorlayacaktır. SMB protokolü sürüm 1.0 güvenli olmadığından ve daha yeni "
-#~ "Samba ve Windows sürümlerinde devre dışı bırakıldığından, bu seçeneği "
-#~ "yalnızca son çare olarak kullanmalısınız. Ancak, ağ çevrenizdeki çalışma "
-#~ "gruplarını ve etki alanlarını keşfetmekte sorun yaşıyorsanız bu ayarı "
-#~ "açmayı düşünebilirsiniz. DNS Hizmet Keşfi (DNS-SD) veya Web Hizmetleri "
-#~ "Devingen Keşfi (WS-Discovery) kullanıyorsanız ve bunlar sizin için "
-#~ "çalışıyorsa buna gereksiniminiz yoktur."
-
-#~ msgid "Use profile migration assistant"
-#~ msgstr "Profil taşıma asistanı kullan"
-
-#~ msgid ""
-#~ "Use the profile migration assistant when profiles are removed or the use "
-#~ "of profiles is enabled or disabled. The profile migration assistant "
-#~ "allows you to migrate all settings that were saved for a certain profile "
-#~ "to a different one."
-#~ msgstr ""
-#~ "Profiller kaldırıldığında, kullanımı etkinleştirildiğinde ya da "
-#~ "kapatıldığında profil taşıma asistanını kullanın. Profil taşıma asistanı "
-#~ "belli bir profil için kaydedilen bütün ayarların bir diğerine taşınmasına "
-#~ "olanak sağlar."
-
-#~ msgid "%1 is not a version 1.0 file."
-#~ msgstr "%1 1.0 sürümünden bir dosya değil."
-
-#~ msgid "Profile Migration Assistant"
-#~ msgstr "Profil Taşıma Asistanı"
-
-#~ msgid "Migrate all relevant settings of one profile to another."
-#~ msgstr "Bir profilin ilgili bütün ayarlarını bir başkasına taşı."
-
-#~ msgid "Old Profile:"
-#~ msgstr "Eski Profil:"
-
-#~ msgid "<Default Profile>"
-#~ msgstr "<Öntanımlı Profil>"
-
-#~ msgid "<All Profiles>"
-#~ msgstr "<Tüm Profiller>"
-
-#~ msgid "New Profile:"
-#~ msgstr "Yeni Profil:"
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-#~ msgstr ""
-#~ "<qt>Lütfen <b>%1</b> sunucusu için bir kullanıcı adı ve parola girin.</qt>"
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgstr ""
-#~ "<qt>Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin.</"
-#~ "qt>"
-
-#~ msgid "Synchronization"
-#~ msgstr "Eşleme"
-
-#~ msgid "Swap Paths"
-#~ msgstr "Takas Yolları"
-
-#~ msgid "Swap source and destination"
-#~ msgstr "Takas kaynağı ve hedefi"
-
-#~ msgid "Synchronize"
-#~ msgstr "Eşzamanla"
-
-#~ msgid "Synchronize the destination with the source"
-#~ msgstr "Hedefi kaynak ile eşzamanla"
-
-#~ msgid ""
-#~ "Please provide the source and destination directory for the "
-#~ "synchronization."
-#~ msgstr "Lütfen eş zamanlama için kaynak ve hedef dizin belirtin."
-
-#~ msgid "Source:"
-#~ msgstr "Kaynak:"
-
-#~ msgid ""
-#~ "This is the source directory. The data that it contains is to be written "
-#~ "to the destination directory."
-#~ msgstr "Bu kaynak dizindir. Hedef dizine yazılacak olan verileri içerir."
-
-#~ msgid "Destination:"
-#~ msgstr "Hedef:"
-
-#~ msgid ""
-#~ "This is the destination directory. It will be updated with the data from "
-#~ "the source directory."
-#~ msgstr "Bu hedef dizindir. Kaynak dizin verileri ile güncellenecektir."
-
-#~ msgid "Preview of %1"
-#~ msgstr "%1 ögesinin Önizlemesi"
-
-#~ msgid "Reload"
-#~ msgstr "Yeniden Yükle"
-
-#~ msgid "Abort"
-#~ msgstr "İptal"
-
-#~ msgid "Up"
-#~ msgstr "Yukarı"
-
-#~ msgid "Print File"
-#~ msgstr "Dosyayı Yazdır"
-
-#~ msgid "Information"
-#~ msgstr "Bilgi"
-
-#~ msgid "Printer:"
-#~ msgstr "Yazıcı:"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP Adresi:"
-
-#~ msgid "Domain:"
-#~ msgstr "Alan adı:"
-
-#~ msgid "File and Settings"
-#~ msgstr "Dosya ve Ayarlar"
-
-#~ msgid "File:"
-#~ msgstr "Dosya:"
-
-#~ msgid ""
-#~ "This is the file you want to print on the remote printer. Currently only "
-#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
-#~ "images. If the file's mimetype is not supported, you need to convert it."
-#~ msgstr ""
-#~ "Bu uzak yazıcıdan yazdırmak istediğiniz dosyadır. Mevcut durumda PDF, "
-#~ "Postscript, düz metin ve resim gibi yalnızca birkaç mime türünü "
-#~ "destekliyor. Eğer dosyanın mime türü desteklenmiyorsa, dosyayı "
-#~ "dönüştürmeniz gerekir."
-
-#~ msgid "Copies:"
-#~ msgstr "Kopya:"
-
-#~ msgid "This is the number of copies you want to print."
-#~ msgstr "Bu yazdırmak istediğiniz kopya sayısıdır."
-
-#~ msgid "Print"
-#~ msgstr "Yazdır"
-
-#~ msgid "Custom Settings"
-#~ msgstr "Özel Ayarlar"
-
-#~ msgid ""
-#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
-#~ "provides.</p>"
-#~ msgstr ""
-#~ "<p>Sağlanan tüm paylaşımları ve <b>%1</b> sunucusu için özel ayarlar "
-#~ "tanımlayın.</p>"
-
-#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-#~ msgstr "<p><b>%1</b> paylaşımı için özel ayarlar tanımlayın.</p>"
-
-#~ msgid "Common Options"
-#~ msgstr "Ortak Seçenekler"
-
-#~ msgid "Always remount this share"
-#~ msgstr "Bu paylaşımı her zaman yeniden bağla"
-
-#~ msgid "CIFS Unix Extensions Support"
-#~ msgstr "CIFS Unix Eklentileri Desteği"
-
-#~ msgid "This server supports the CIFS Unix extensions"
-#~ msgstr "Bu sunucu CIFS Unix eklentilerini destekler"
-
-#~ msgid "Common Mount Settings"
-#~ msgstr "Ortak Bağlama Seçenekleri"
-
-#~ msgid "Advanced Options"
-#~ msgstr "Gelişmiş Seçenekler"
-
-#~ msgid "Advanced Mount Settings"
-#~ msgstr "Gelişmiş Bağlama Seçenekleri"
-
-#~ msgid "Authentication"
-#~ msgstr "Kimlik Doğrulama"
-
-#~ msgid "Browse Settings"
-#~ msgstr "Tarama Ayarları"
-
-#~ msgid "MAC Address"
-#~ msgstr "MAC Adresi"
-
-#~ msgid "MAC Address:"
-#~ msgstr "MAC Adresi:"
-
-#~ msgid "Actions"
-#~ msgstr "İşlemler"
-
-#~ msgid "Send magic packet before scanning the network neighborhood"
-#~ msgstr "Ağ komşularını taramadan önce özel paket gönder"
-
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "Bir paylaşımı bağlamadan önce özel paket gönder"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Ağdan Uyan Ayarları"
-
-#~ msgid "Mount Settings"
-#~ msgstr "Bağlama Ayarları"
-
-#~ msgid "Samba"
-#~ msgstr "Samba"
-
-#~ msgid "Wake-On-LAN"
-#~ msgstr "Ağdan Uyan"
-
-#~ msgid "Add Bookmarks"
-#~ msgstr "Yer İmi Ekle"
-
-#~ msgid ""
-#~ "All listed shares will be bookmarked. To edit the label or group, click "
-#~ "the respective bookmark entry."
-#~ msgstr ""
-#~ "Bütün listelenmiş paylaşımlar yer imlerine eklenecektir. Etiket ya da "
-#~ "grubu düzenlemek için, ilgili yer imi girdisini tıklayın."
-
-#~ msgid "Label:"
-#~ msgstr "Etiket:"
-
-#~ msgid "Category:"
-#~ msgstr "Kategori:"
-
-#~ msgid "Mount Share"
-#~ msgstr "&Bağlı Paylaşımlar"
-
-#~ msgid ""
-#~ "Enter the location and optionally the IP address and workgroup to mount a "
-#~ "share."
-#~ msgstr ""
-#~ "Bir paylaşımı bağlamak için çalışma grubu, isteğe bağlı IP adresi ve "
-#~ "konum girin."
-
-#~ msgid "Location:"
-#~ msgstr "Konum:"
-
-#~ msgid ""
-#~ "The location of the share is provided by the Uniform Resource Locator "
-#~ "(URL). It generally has the following syntax: [smb:]//[USER:"
-#~ "PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are "
-#~ "optional. You should omit to enter the password here, because it is shown "
-#~ "in cleartext."
-#~ msgstr ""
-#~ "Paylaşımın konumu, Tekdüzen Kaynak Bulucu (URL) tarafından sağlanır. "
-#~ "Genellikle şu sözdizime sahiptir: [smb:]//[KULLANICI:PAROLA@]MAKİNE[:"
-#~ "KAPI]/PAYLAŞIM. Şema, kullanıcı adı, parola ve bağlantı noktası isteğe "
-#~ "bağlıdır. Şifre açık metin olarak gösterildiği için buraya şifreyi "
-#~ "girmeyi ihmal etmelisiniz."
-
-#~ msgid ""
-#~ "The Internet Protocol (IP) address identifies the host in the network and "
-#~ "indicates where it is. It has two valid formats, the one known as IP "
-#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-#~ msgstr ""
-#~ "Ağ Protokolü (IP) adresi ağdaki sunucuları tanımlar ve nerede olduklarını "
-#~ "belirtir. IP sürüm 4 (192.168.2.11) ve sürüm 6 "
-#~ "(2001:0db8:85a3:08d3:1319:8a2e:0370:7334) olarak bilinen iki geçerli "
-#~ "biçimi vardır."
-
-#~ msgid "Workgroup:"
-#~ msgstr "Çalışma grubu:"
-
-#~ msgid ""
-#~ "The workgroup or domain identifies the peer-to-peer computer network the "
-#~ "host is located in."
-#~ msgstr ""
-#~ "Çalışma grubu veya etki alanı, ev sahibi olduğu eş düzeyde bilgisayar ağı "
-#~ "tanımlar."
-
-#~ msgid "Add this share to the bookmarks"
-#~ msgstr "Bu paylaşımı yer imlerine ekle"
-
-#~ msgid ""
-#~ "If you tick this checkbox, the share will be bookmarked and you can "
-#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
-#~ msgstr ""
-#~ "Eğer bu onay kutusunu işaretlerseniz paylaşım yer imlerine eklenecek ve "
-#~ "ana pencerede \"Yer İmleri\" menü girdisi üzerinden erişebileceksiniz."
-
-#~ msgid ""
-#~ "Add a label describing your bookmark. It is then shown instead of the "
-#~ "location."
-#~ msgstr ""
-#~ "Yer iminizi açıklayan bir etiket ekleyin. Daha sonra konum yerine "
-#~ "gösterilir."
-
-#~ msgid ""
-#~ "Assign a category to your bookmark. This way you can organize your "
-#~ "bookmarks."
-#~ msgstr ""
-#~ "Yer iminize bir kategori atayın. Bu şekilde yer imlerinizi "
-#~ "düzenleyebilirsiniz."
-
-#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-#~ msgid "Bookmark >>"
-#~ msgstr "Yer İmi Ekle >>"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Yer İmlerini Düzenle"
-
-#~ msgid "Add Category"
-#~ msgstr "Kategori Ekle"
-
-#~ msgid "Remove"
-#~ msgstr "Kaldır"
-
-#~ msgid "Clear"
-#~ msgstr "Temizle"
-
-#~ msgid "Username:"
-#~ msgstr "Kullanıcı adı:"
-
-#~ msgid "Category name:"
-#~ msgstr "Kategori adı:"
