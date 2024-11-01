@@ -99,7 +99,6 @@ protected Q_SLOTS:
 private:
     void setupView();
     void checkValues();
-    bool m_haveCustomSettings;
     Smb4KCustomSettings m_customSettings;
     QLabel *m_ipAddressLabel;
     KLineEdit *m_ipAddress;
