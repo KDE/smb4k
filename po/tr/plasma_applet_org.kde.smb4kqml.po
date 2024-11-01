@@ -100,18 +100,3 @@ msgstr "Bağlantıyı kes"
 #: package/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
 msgstr "Tüm Paylaşımların Bağlantısını Kes"
-
-#, fuzzy
-#~| msgid "Edit bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Yer imlerini düzenle"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Yer İmleri"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Delete Bookmark"
-#~ msgstr "Yer İmleri"
