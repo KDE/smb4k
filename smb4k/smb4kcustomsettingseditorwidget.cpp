@@ -27,9 +27,8 @@ Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget *parent
     : QTabWidget(parent)
 {
     // FIXME: Implement mount point!?
-
     // FIXME: Honor disabled widgets and unchecked check boxes!?
-    m_haveCustomSettings = false;
+
     setupView();
 }
 
@@ -526,7 +525,6 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
     }
 
     m_customSettings = settings;
-    m_haveCustomSettings = true;
 }
 
 Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
@@ -591,7 +589,6 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
 void Smb4KCustomSettingsEditorWidget::clear()
 {
     m_customSettings = Smb4KCustomSettings();
-    m_haveCustomSettings = false;
     setCurrentIndex(0);
 
     m_alwaysRemountShare->setChecked(false);
@@ -646,7 +643,7 @@ void Smb4KCustomSettingsEditorWidget::clear()
 
 void Smb4KCustomSettingsEditorWidget::checkValues()
 {
-    if (!m_haveCustomSettings) {
+    if (!m_customSettings.hasCustomSettings(true)) {
         return;
     }
 
