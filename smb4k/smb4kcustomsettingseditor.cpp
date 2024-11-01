@@ -61,7 +61,7 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     connect(m_editorWidget, &Smb4KCustomSettingsEditorWidget::edited, this, &Smb4KCustomSettingsEditor::slotCustomSettingsEdited);
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
-    m_resetButton = buttonBox->addButton(QDialogButtonBox::RestoreDefaults);
+    m_restoreButton = buttonBox->addButton(QDialogButtonBox::RestoreDefaults);
 
     m_saveButton = buttonBox->addButton(QDialogButtonBox::Save);
     m_saveButton->setEnabled(false);
@@ -70,7 +70,7 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
     m_cancelButton->setShortcut(QKeySequence::Cancel);
 
-    connect(m_resetButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotRestoreDefaults);
+    connect(m_restoreButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotRestoreDefaults);
     connect(m_saveButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotSaveCustomSettings);
     connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::reject);
 
@@ -166,6 +166,8 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
             break;
         }
         }
+
+        m_restoreButton->setEnabled(m_customSettings->hasCustomSettings(true));
     }
 
     return true;
@@ -177,7 +179,7 @@ void Smb4KCustomSettingsEditor::slotRestoreDefaults()
     Smb4KCustomSettings customSettings = *m_customSettings.data();
     customSettings.update(&defaultCustomSettings);
     m_editorWidget->setCustomSettings(customSettings);
-    m_resetButton->setEnabled(false);
+    m_restoreButton->setEnabled(false);
     m_defaultsRestored = true;
 }
 
@@ -201,7 +203,7 @@ void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
 void Smb4KCustomSettingsEditor::slotCustomSettingsEdited(bool changed)
 {
     m_saveButton->setEnabled(changed || m_defaultsRestored);
-    m_resetButton->setEnabled((changed && m_defaultsRestored) || !m_defaultsRestored);
+    m_restoreButton->setEnabled((changed && m_defaultsRestored) || !m_defaultsRestored);
 
     m_changedCustomSettings = changed;
 }
