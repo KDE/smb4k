@@ -55,7 +55,7 @@ private:
     CustomSettingsPtr m_customSettings;
     QLabel *m_descriptionText;
     Smb4KCustomSettingsEditorWidget *m_editorWidget;
-    QPushButton *m_resetButton;
+    QPushButton *m_restoreButton;
     QPushButton *m_saveButton;
     QPushButton *m_cancelButton;
     bool m_defaultsRestored;
