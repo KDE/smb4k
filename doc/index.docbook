@@ -36,7 +36,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-09-30</date>
+  <date>2024-11-03</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -502,7 +502,7 @@
     <sect2 id="shares_view_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>In the shares view, several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, in the tool bar, and in the popup menu. The following options are available:</para>
+      <para>In the shares view, several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, in the tool bar, and in the popup menu. The following actions are available:</para>
 
       <variablelist>
         <varlistentry>
@@ -587,7 +587,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para><link linkend="shares_view_synchronization">Synchronize</link> a share with a local copy or vice versa. This menu entry is only enabled if the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is installed and a share is selected.</para>
+            <para><link linkend="shares_view_synchronization">Synchronize</link> a share with a local copy or vice versa. This action is only enabled if the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is installed and a share is selected.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -598,7 +598,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the base folder of a share in &konsole;. This menu item is useful if you need to run shell scripts, &etc;</para>
+            <para>Open the base folder of a share in &konsole;. This action is useful if you need to run shell scripts, &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -704,7 +704,7 @@
       <para>One or multiple selected shares may be unmounted by either clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> action, or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior">configuration dialog</link>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount. If you proceed, the share will definitely be unmounted. So, please think twice before you decide to unmount those shares!</para>
       <para>&smb4k; provides the ability to force unmounting of shares (&Linux; only). This can be useful with inaccessible shares that cannot in be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> in the configuration dialog. &smb4k; will then perform a <ulink url="man:/umount(8)">lazy unmount</ulink> on inaccessible shares.</para>
       <para>All shares can be unmounted at once by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut><guimenuitem>Unmount All</guimenuitem></menuchoice> action. Depending on your settings, this will also unmount foreign and inaccessible shares.</para>
-      <para>After a successful unmount process, the user is notified. If unmounting fails, a notification with the returned error message is shown.</para>
+      <para>After a successful unmount process, the user is <link linkend="notifications">notified</link>. If unmounting fails, a notification with the returned error message is shown.</para>
     </sect2>
     
 <!--
@@ -714,7 +714,7 @@
     <sect2 id="shares_view_adding_custom_settings">
       <title>Defining Custom Settings</title>
       
-      <para>For the selected shares, custom settings can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> action to open the Custom Settings dialog. For more details, please see <link linkend="custom_settings">this section</link>.</para>
+      <para>For selected shares, custom settings can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> action to open the Custom Settings dialog. Read the <link linkend="custom_settings">Custom Settings</link> section for more details.</para>
     </sect2>
     
 <!-- 
@@ -761,7 +761,7 @@
       <para>&smb4k; provides two possibilities to open a mounted share:</para>
       <itemizedlist>
         <listitem><formalpara><title>Open a share with &konsole;</title>
-          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run a shell script on the share or do spmething similar.</para>
+          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run a shell script on the share or do something similar.</para>
         </formalpara></listitem>
         <listitem><formalpara><title>Open a share with the default file manager</title>
           <para>You can open the share in the default file manager (&eg; &dolphin;) by clicking the share icon or by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>I</keycap></keycombo></shortcut><guimenuitem>Open with File Manager</guimenuitem></menuchoice> action.</para>
@@ -826,7 +826,7 @@
         </varlistentry>
       </variablelist>
     
-      <para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">the popup menu section</link>.</para>
+      <para>For each mounted share you can open a submenu that contains the following entries. For further information read the shares view's <link linkend="shares_view_actions_popup_menu">Actions and Popup Menu</link> section.</para>
 
       <variablelist>
         <varlistentry>
@@ -852,7 +852,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the custom settings editor for the selected share. For further information read the section about the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor.</para>
+            <para>Open the custom settings editor for the selected share. For further information read the section about <link linkend="custom_settings">Custom Settings</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -860,7 +860,7 @@
             <menuchoice><guimenuitem>Synchronize</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu">actions and popup menu</link> and the <link linkend="shares_view_synchronization">synchronization</link>.</para>
+            <para>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu">Actions and Popup Menu</link> and <link linkend="shares_view_synchronization">Synchronization</link> sections.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -881,7 +881,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="bookmarks_adding">adding bookmarks</link> and <link linkend="bookmarks_editor">editing bookmarks</link>).</para>
+      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also the <link linkend="bookmarks">Bookmarks</link> section).</para>
 
       <screenshot>
         <screeninfo>Screenshot of the Bookmarks menu of the system tray widget</screeninfo>
@@ -903,7 +903,7 @@
       </screenshot>
 
       <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> in the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
-      <para>These are the other menu entries:</para>
+      <para>These are the four additional menu entries:</para>
 
       <variablelist>
         <varlistentry>
@@ -911,7 +911,7 @@
             <menuchoice><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares by manually providing the URL, IP address and domain or workgroup.</para>
+            <para>Open the <link linkend="network_neighborhood_browser_mounting">mount dialog</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1079,7 +1079,7 @@
     <sect2 id="bookmarks_adding">
       <title>Adding Bookmarks</title>
 
-      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or more shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category.</para>
+      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the main window, this is done by selecting one or more shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
@@ -4260,8 +4260,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     <sect2 id="configuration_page_profiles_profiles">
       <title>Profiles</title>
 
-      <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>). When you enable the use of profiles, the first entry in the list will be the active profile.</para>
-      <para>To add a new profile, enter it into the line edit and click the <guibutton>Add</guibutton> button. Entries can be deleted by selecting them and clicking the <guibutton>Remove</guibutton> button. To change the order, you can use the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons. The active profile can be changed by either double clicking the profile name in the list or by selecting the profile and using the <guibutton>Set Active</guibutton> button. To rename a profile, select it and click the <guibutton>Rename</guibutton> button. You will then be able to change the name in the list widget. All settings of the renamed profile are migrated automatically. To reset your changes, click the <guibutton>Reset</guibutton> button.</para>
+      <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>). To add a new profile, enter it into the line edit and click the <guibutton>Add</guibutton> button. Entries can be deleted by selecting them and clicking the <guibutton>Remove</guibutton> button. To change the order, you can use the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons. The active profile can be changed by either double clicking the profile name in the list or by selecting the profile and using the <guibutton>Set Active</guibutton> button. To rename a profile, select it and click the <guibutton>Rename</guibutton> button. You will then be able to change the name in the list widget. All settings of the renamed profile are migrated automatically. To reset your changes, click the <guibutton>Reset</guibutton> button.</para>
       <para>For further information about profiles, read this <link linkend="profiles">section</link>.</para>
     </sect2>
   </sect1>
