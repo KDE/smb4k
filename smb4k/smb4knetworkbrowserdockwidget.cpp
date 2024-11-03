@@ -1112,7 +1112,7 @@ void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr> &sha
     }
 
     QTreeWidgetItem *firstItem = m_networkBrowser->selectedItems().first();
-    m_networkBrowser->scrollToItem(firstItem, QTreeWidget::PositionAtTop);
+    m_networkBrowser->scrollToItem(firstItem, QTreeWidget::PositionAtCenter);
 
     m_searchToolBar->setSearchResults(shares);
 }
