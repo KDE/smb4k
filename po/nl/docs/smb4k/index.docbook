@@ -55,7 +55,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-09-30</date>
+>2024-11-03</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1384,7 +1384,9 @@
 ></menuchoice
 >. Afhankelijk van uw instellingen zal deze ook externe en ontoegankelijke shares afkoppelen.</para>
       <para
->Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker een melding daarvan. Als de afkoppeling mislukt krijgt u een foutmelding.</para>
+>Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker daarvan een <link linkend="notifications"
+>melding</link
+>. Als de afkoppeling mislukt krijgt u een foutmelding.</para>
     </sect2>
     
 <!--
@@ -1396,7 +1398,7 @@
 >Aangepaste instellingen definiëren</title>
       
       <para
->Voor de geselecteerde shares kunnen aangepaste instellingen gedefinieerd worden. Klik op het actie <menuchoice
+>Voor geselecteerde shares kunnen aangepaste instellingen gedefinieerd worden. Klik op het actie <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1604,8 +1606,8 @@
       </variablelist>
     
       <para
->Bij elk aangekoppeld share heeft u een submenu met de volgende menuitems. Meer informatie daarover kunt u <link linkend="shares_view_actions_popup_menu"
->de sectie pop-up-menu</link
+>Bij elke aangekoppeld share heeft u een submenu met de volgende menu-items. Meer informatie daarover kunt u de weergave van de shares sectie <link linkend="shares_view_actions_popup_menu"
+>Acties en opkomend menu</link
 > lezen.</para>
 
       <variablelist>
@@ -1642,7 +1644,7 @@
           </term>
           <listitem>
             <para
->Open de bewerker voor aangepaste instellingen voor de geselecteerde share. Voor verdere informatie lees de sectie over de bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Open de bewerker voor aangepaste instellingen voor de geselecteerde share. Voor verdere informatie lees de sectie over <link linkend="custom_settings"
 >Aangepaste instellingen</link
 >.</para>
           </listitem>
@@ -1657,9 +1659,9 @@
           <listitem>
             <para
 >Synchroniseer de aangekoppelde share met een lokale kopie of omgekeerd. Voor meer informatie lees de secties over <link linkend="shares_view_actions_popup_menu"
->de acties in de de weergave van shares</link
-> en de <link linkend="shares_view_synchronization"
->synchronisatie</link
+>Acties en opkomend menu</link
+> en <link linkend="shares_view_synchronization"
+>Synchronisatie</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1692,11 +1694,9 @@
       <para
 >In het menu <guimenuitem
 >Bladwijzer</guimenuitem
-> kunt u al uw bladwijzers vinden die georganiseerd zijn volgens de door u opgegeven structuur (meer informatie daarover kunt u <link linkend="bookmarks_adding"
->bladwijzers toevoegen</link
-> en <link linkend="bookmarks_editor"
->bladwijzers bewerken</link
-> lezen).</para>
+> kunt u al uw bladwijzers vinden die georganiseerd zijn volgens de door u opgegeven structuur (zie ook de sectie <link linkend="bookmarks"
+>Bladwijzers</link
+>).</para>
 
       <screenshot>
         <screeninfo
@@ -1744,7 +1744,7 @@
 >instellingendialoog</link
 >.</para>
       <para
->Dit zijn de andere menu-items:</para>
+>Er zijn vier extra menu-items:</para>
 
       <variablelist>
         <varlistentry>
@@ -1757,8 +1757,8 @@
           <listitem>
             <para
 >Open de <link linkend="network_neighborhood_browser_mounting"
->dialoog</link
-> voor "handmatig" aankoppelen van shares met een URL, IP-adres en domein of werkgroep.</para>
+>dialoog aankoppelen</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2064,7 +2064,7 @@
 >gedeelde mappen weergave</link
 > en de <link linkend="plasmoid"
 >&plasmoid;</link
-> bladwijzers voor uw favoriete shares aanmaken. In de widgets Vastzetten van het hoofdvenster doet u dit door een of meer shares te selecteren en daarna op de actie <menuchoice
+> bladwijzers voor uw favoriete shares aanmaken. In het hoofdvenster doet u dit door een of meer shares te selecteren en daarna op de actie <menuchoice
 ><guimenuitem
 >Bladwijzer toevoegen</guimenuitem
 ></menuchoice
@@ -8141,13 +8141,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Profielen</title>
 
       <para
->Hier kunt u uw profielen beheren. Standaard zijn er twee voorgedefinieerd (<guilabel
->Thuis</guilabel
+>Hier kunt u uw profielen beheren. Standaard zijn er twee voorgedefinieerde (<guilabel
+>Home</guilabel
 > en <guilabel
 >Werk</guilabel
->). Wanneer u het gebruik van profielen inschakelt zal het eerste item in de lijst het actieve profiel zijn.</para>
-      <para
->Om een nieuw profiel toe te voegen, voer het in in de regelbewerking en klik op de knop <guibutton
+>). Om een nieuw profiel toe te voegen, voer het in in de regelbewerking en klik op de knop <guibutton
 >Toevoegen</guibutton
 >. Items kunnen verwijderd worden door ze te selecteren en te klikken op de knop <guibutton
 >Verwijderen</guibutton
