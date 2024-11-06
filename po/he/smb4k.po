@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 02:31+0000\n"
+"POT-Creation-Date: 2024-11-06 02:31+0000\n"
 "PO-Revision-Date: 2024-06-29 07:40+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -604,7 +604,7 @@ msgstr "תצוגת שיתופים"
 msgid "Custom Settings Editor"
 msgstr "עורך הגדרות מותאמות אישית"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:53
+#: smb4k/smb4kcustomsettingseditor.cpp:52
 #, kde-format
 msgid "No network item was set."
 msgstr "לא הוגדר פריט רשת."

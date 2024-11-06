@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 02:31+0000\n"
+"POT-Creation-Date: 2024-11-06 02:31+0000\n"
 "PO-Revision-Date: 2023-11-17 12:32+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -625,7 +625,7 @@ msgstr "Вид списка папок"
 msgid "Custom Settings Editor"
 msgstr "Пользовательские параметры"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:53
+#: smb4k/smb4kcustomsettingseditor.cpp:52
 #, fuzzy, kde-format
 msgid "No network item was set."
 msgstr "Объект сети"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 02:31+0000\n"
+"POT-Creation-Date: 2024-11-06 02:31+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -637,7 +637,7 @@ msgstr "Ressursivaade"
 msgid "Custom Settings Editor"
 msgstr "Samba üldseadistused"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:53
+#: smb4k/smb4kcustomsettingseditor.cpp:52
 #, fuzzy, kde-format
 #| msgid "Network Item"
 msgid "No network item was set."
