@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -27,9 +27,8 @@ Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget *parent
     : QTabWidget(parent)
 {
     // FIXME: Implement mount point!?
-
     // FIXME: Honor disabled widgets and unchecked check boxes!?
-    m_haveCustomSettings = false;
+
     setupView();
 }
 
@@ -461,72 +460,71 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
 void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSettings &settings)
 {
-    m_ipAddress->setText(settings.ipAddress());
-    m_workgroup->setText(settings.workgroupName());
+    m_customSettings = settings;
 
-    if (settings.type() != Host) {
+    m_ipAddress->setText(m_customSettings.ipAddress());
+    m_workgroup->setText(m_customSettings.workgroupName());
+
+    if (m_customSettings.type() != Host) {
         m_alwaysRemountShare->setEnabled(true);
-        m_alwaysRemountShare->setChecked(settings.remount() == Smb4KCustomSettings::RemountAlways);
+        m_alwaysRemountShare->setChecked(m_customSettings.remount() == Smb4KCustomSettings::RemountAlways);
     }
 
 #ifdef Q_OS_LINUX
-    m_useWriteAccess->setChecked(settings.useWriteAccess());
-    m_writeAccess->setCurrentIndex(settings.writeAccess());
+    m_useWriteAccess->setChecked(m_customSettings.useWriteAccess());
+    m_writeAccess->setCurrentIndex(m_customSettings.writeAccess());
 
-    m_useFileSystemPort->setChecked(settings.useFileSystemPort());
-    m_fileSystemPort->setValue(settings.fileSystemPort());
+    m_useFileSystemPort->setChecked(m_customSettings.useFileSystemPort());
+    m_fileSystemPort->setValue(m_customSettings.fileSystemPort());
 
-    m_cifsUnixExtensionSupport->setChecked(settings.cifsUnixExtensionsSupport());
+    m_cifsUnixExtensionSupport->setChecked(m_customSettings.cifsUnixExtensionsSupport());
 #endif
 
-    m_useUserId->setChecked(settings.useUser());
-    int userIndex = m_userId->findData(settings.user().userId().toString());
+    m_useUserId->setChecked(m_customSettings.useUser());
+    int userIndex = m_userId->findData(m_customSettings.user().userId().toString());
     m_userId->setCurrentIndex(userIndex);
 
-    m_useGroupId->setChecked(settings.useGroup());
-    int groupIndex = m_groupId->findData(settings.group().groupId().toString());
+    m_useGroupId->setChecked(m_customSettings.useGroup());
+    int groupIndex = m_groupId->findData(m_customSettings.group().groupId().toString());
     m_groupId->setCurrentIndex(groupIndex);
 
-    m_useFileMode->setChecked(settings.useFileMode());
-    m_fileMode->setText(settings.fileMode());
+    m_useFileMode->setChecked(m_customSettings.useFileMode());
+    m_fileMode->setText(m_customSettings.fileMode());
 
-    m_useDirectoryMode->setChecked(settings.useDirectoryMode());
-    m_directoryMode->setText(settings.directoryMode());
+    m_useDirectoryMode->setChecked(m_customSettings.useDirectoryMode());
+    m_directoryMode->setText(m_customSettings.directoryMode());
 
 #ifdef Q_OS_LINUX
-    m_useSmbMountProtocolVersion->setChecked(settings.useMountProtocolVersion());
-    int mountProtocolVersionIndex = m_smbMountProtocolVersion->findData(settings.mountProtocolVersion());
+    m_useSmbMountProtocolVersion->setChecked(m_customSettings.useMountProtocolVersion());
+    int mountProtocolVersionIndex = m_smbMountProtocolVersion->findData(m_customSettings.mountProtocolVersion());
     m_smbMountProtocolVersion->setCurrentIndex(mountProtocolVersionIndex);
 
-    m_useSecurityMode->setChecked(settings.useSecurityMode());
-    int securityModeIndex = m_securityMode->findData(settings.securityMode());
+    m_useSecurityMode->setChecked(m_customSettings.useSecurityMode());
+    int securityModeIndex = m_securityMode->findData(m_customSettings.securityMode());
     m_securityMode->setCurrentIndex(securityModeIndex);
 #endif
 
-    m_useClientProtocolVersions->setChecked(settings.useClientProtocolVersions());
-    int minimalClientProtocolVersionIndex = m_minimalClientProtocolVersion->findData(settings.minimalClientProtocolVersion());
+    m_useClientProtocolVersions->setChecked(m_customSettings.useClientProtocolVersions());
+    int minimalClientProtocolVersionIndex = m_minimalClientProtocolVersion->findData(m_customSettings.minimalClientProtocolVersion());
     m_minimalClientProtocolVersion->setCurrentIndex(minimalClientProtocolVersionIndex);
-    int maximalClientProtocolVersionIndex = m_maximalClientProtocolVersion->findData(settings.maximalClientProtocolVersion());
+    int maximalClientProtocolVersionIndex = m_maximalClientProtocolVersion->findData(m_customSettings.maximalClientProtocolVersion());
     m_maximalClientProtocolVersion->setCurrentIndex(maximalClientProtocolVersionIndex);
 
-    m_useRemoteSmbPort->setChecked(settings.useSmbPort());
-    m_remoteSmbPort->setValue(settings.smbPort());
+    m_useRemoteSmbPort->setChecked(m_customSettings.useSmbPort());
+    m_remoteSmbPort->setValue(m_customSettings.smbPort());
 
-    m_useKerberos->setChecked(settings.useKerberos());
+    m_useKerberos->setChecked(m_customSettings.useKerberos());
 
-    if (settings.type() == Host) {
+    if (m_customSettings.type() == Host) {
         m_macAddressLabel->setEnabled(Smb4KSettings::enableWakeOnLAN());
         m_macAddress->setEnabled(Smb4KSettings::enableWakeOnLAN());
         m_sendPacketBeforeScan->setEnabled(Smb4KSettings::enableWakeOnLAN());
         m_sendPacketBeforeMount->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
-        m_macAddress->setText(settings.macAddress());
-        m_sendPacketBeforeScan->setChecked(settings.wakeOnLanSendBeforeNetworkScan());
-        m_sendPacketBeforeMount->setChecked(settings.wakeOnLanSendBeforeMount());
+        m_macAddress->setText(m_customSettings.macAddress());
+        m_sendPacketBeforeScan->setChecked(m_customSettings.wakeOnLanSendBeforeNetworkScan());
+        m_sendPacketBeforeMount->setChecked(m_customSettings.wakeOnLanSendBeforeMount());
     }
-
-    m_customSettings = settings;
-    m_haveCustomSettings = true;
 }
 
 Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
@@ -591,7 +589,6 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
 void Smb4KCustomSettingsEditorWidget::clear()
 {
     m_customSettings = Smb4KCustomSettings();
-    m_haveCustomSettings = false;
     setCurrentIndex(0);
 
     m_alwaysRemountShare->setChecked(false);
@@ -646,10 +643,6 @@ void Smb4KCustomSettingsEditorWidget::clear()
 
 void Smb4KCustomSettingsEditorWidget::checkValues()
 {
-    if (!m_haveCustomSettings) {
-        return;
-    }
-
     if (m_ipAddress->text() != m_customSettings.ipAddress()) {
         Q_EMIT edited(true);
         return;
@@ -806,7 +799,6 @@ void Smb4KCustomSettingsEditorWidget::slotIpAddressChanged(const QString &text)
 {
     Q_UNUSED(text);
 
-    // FIXME: Propagate IP address to all other shares of this host?
     // FIXME: Check if this is indeed a valid IP address!?
 
     checkValues();

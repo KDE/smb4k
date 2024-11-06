@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -99,7 +99,6 @@ protected Q_SLOTS:
 private:
     void setupView();
     void checkValues();
-    bool m_haveCustomSettings;
     Smb4KCustomSettings m_customSettings;
     QLabel *m_ipAddressLabel;
     KLineEdit *m_ipAddress;

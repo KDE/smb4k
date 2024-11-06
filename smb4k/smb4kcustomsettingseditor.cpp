@@ -1,7 +1,7 @@
 /*
  *  Editor dialog for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -30,7 +30,6 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
 
     m_customSettings = nullptr;
-    m_defaultsRestored = false;
     m_savingCustomSettings = false;
     m_changedCustomSettings = false;
 
@@ -61,16 +60,17 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     connect(m_editorWidget, &Smb4KCustomSettingsEditorWidget::edited, this, &Smb4KCustomSettingsEditor::slotCustomSettingsEdited);
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
-    m_resetButton = buttonBox->addButton(QDialogButtonBox::RestoreDefaults);
+    m_resetButton = buttonBox->addButton(QDialogButtonBox::Reset);
 
     m_saveButton = buttonBox->addButton(QDialogButtonBox::Save);
     m_saveButton->setEnabled(false);
     m_saveButton->setShortcut(QKeySequence::Save);
+    m_saveButton->setDefault(true);
 
     m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
     m_cancelButton->setShortcut(QKeySequence::Cancel);
 
-    connect(m_resetButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotRestoreDefaults);
+    connect(m_resetButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotResetCustomSettings);
     connect(m_saveButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotSaveCustomSettings);
     connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::reject);
 
@@ -166,19 +166,20 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
             break;
         }
         }
+
+        m_resetButton->setEnabled(m_customSettings->hasCustomSettings(true));
     }
 
     return true;
 }
 
-void Smb4KCustomSettingsEditor::slotRestoreDefaults()
+void Smb4KCustomSettingsEditor::slotResetCustomSettings()
 {
-    Smb4KCustomSettings defaultCustomSettings;
-    Smb4KCustomSettings customSettings = *m_customSettings.data();
-    customSettings.update(&defaultCustomSettings);
-    m_editorWidget->setCustomSettings(customSettings);
+    // The data stored in m_customSettings is untouched until the user
+    // saves the modifications and the dialog is closed. So, we can
+    // use it to restore the default values.
+    m_editorWidget->setCustomSettings(*m_customSettings.data());
     m_resetButton->setEnabled(false);
-    m_defaultsRestored = true;
 }
 
 void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
@@ -200,8 +201,8 @@ void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
 
 void Smb4KCustomSettingsEditor::slotCustomSettingsEdited(bool changed)
 {
-    m_saveButton->setEnabled(changed || m_defaultsRestored);
-    m_resetButton->setEnabled((changed && m_defaultsRestored) || !m_defaultsRestored);
+    m_saveButton->setEnabled(changed);
+    m_resetButton->setEnabled(changed);
 
     m_changedCustomSettings = changed;
 }
@@ -213,7 +214,7 @@ void Smb4KCustomSettingsEditor::slotCustomSettingsUpdated()
 
         // Only reload existing custom settings, because only those could have
         // been changed externally.
-        if (customSettings && !m_changedCustomSettings && !m_defaultsRestored) {
+        if (customSettings && !m_changedCustomSettings) {
             m_customSettings = customSettings;
             m_editorWidget->setCustomSettings(*m_customSettings.data());
         }
