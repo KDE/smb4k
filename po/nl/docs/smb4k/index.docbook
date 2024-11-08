@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Dutch "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -2321,7 +2319,7 @@
       <itemizedlist>
         <listitem
 ><para
->individuele aankoppelen of bladerinstellingen wilt definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in het configuratievenster,</para
+>individuele blader- of aankoppelinstellingen definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in de configuratiedialoog,</para
 ></listitem>
         <listitem
 ><para
@@ -2341,11 +2339,11 @@
 >Aangepaste instellingen toevoegen</title>
 
       <para
->In het geval dat u aangepaste instellingen voor een share wilt definiëren, in zowel, de <link linkend="network_neighborhood_browser_actions_popup_menu"
+>Om aangepaste instellingen, in zowel, de <link linkend="network_neighborhood_browser_actions_popup_menu"
 >netwerkomgevingsbrowser</link
 > als de <link linkend="shares_view_actions_popup_menu"
 >shares weergave</link
->, dan kunt u de bewerker voor de aangepaste instellingen openen door te klikken op menu-item <menuchoice
+> te definiëren, kunt u de bewerker voor de aangepaste instellingen openen door te klikken op menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -2371,12 +2369,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>Aangepaste instellingen die u definieert voor een server zullen ook toegepast worden op zijn shares.</para>
 
       <para
->Individuele instellingen kunnen gemaakt worden in de volgende secties / tabbladen:</para>
+>De volgende instellingen kunnen gemaakt worden:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Basisinstellingen</guilabel>
+          </term>
+          <listitem>
+            <para
+>U kunt hier het IP-adres en de werkgroep of het domein van de server instellen. Als u en share selecteert, dan kunt u ook de knop <guibutton
+>Deze share altijd opnieuw aankoppelen</guibutton
+> activeren elke keer opnieuw aan te koppelen wanneer u &smb4k; start of het respectievelijke <link linkend="profiles"
+>profile</link
+> laadt.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2384,9 +2397,7 @@
 > (alleen &Linux;) </term>
           <listitem>
             <para
->U kunt hier algemene instellingen definiëren gerelateerd aan aankoppelen. Activeer de knop <guibutton
->Deze share altijd opnieuw aankoppelen</guibutton
-> als u de geselecteerde share opnieuw wilt aankoppelen bij elke start van &smb4k;. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_common_mount_settings"
+>U kunt hier gemeenschappelijke instellingen definiëren gerelateerd aan aankoppelen. Voor gedetailleerde informatie over deze instellingen kijk in <link linkend="configuration_page_mounting_common_mount_settings"
 >deze sectie</link
 >.</para>
           </listitem>
@@ -2435,16 +2446,26 @@
           <listitem>
             <para
 >Om het Wake-On-LAN onderdeel te laten werken, moet u het MAC adres van de gekozen server opgeven. Op dit moment heeft &smb4k; geen methode om het MAC adres vast te stellen, u moet het daarom zelf vast stellen. Daarna kunt u instellen of de server moet ontwaken voordat het de netwerkomgeving gaat scannen of een share gaat aankoppelen, een magisch Wake-On-LAN pakket moet versturen.</para>
+            <para
+>Merk op dat u De Wake-On-LAN mogelijkheden moet inschakelen in de <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>configuratiedialoog</link
+> om voordeel te hebben van deze instellingen.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->De knop <guibutton
->Standaarden</guibutton
-> is pas te selecteren als de instellingen die u heeft gedaan afwijken van de ingestelde waarden in het configuratievenster. Door erop te klikken, kunt u de instellingen in het dialoogvenster terugzetten naar hun standaardwaarden. De knop <guibutton
->OK</guibutton
-> is pas selecteerbaar nadat u de waarden in het dialoogvenster heeft gewijzigd. Door erop te klikken slaat u de aangepaste instellingen op en sluit u het dialoogvenster.</para>
+>De knoppen <guibutton
+>Reset</guibutton
+> en <guibutton
+>Opslaan</guibutton
+> zijn ingeschakeld als u sommige waarden in de bewerker wijzigt. Met de knop <guibutton
+>Reset</guibutton
+> kunt u de items in de dialoog naar hun initiële waarden terugzetten. Klikken op <guibutton
+>Opslaan</guibutton
+> zal de aangepaste instellingen opslaan en de dialoog sluiten. Om aangepaste instellingen te verwijderen, gebruik de <link linkend="configuration_page_custom_settings"
+>configuratiedialoog</link
+>.</para>
       <para
 >Merk op dat bij gebruik van BSD er in het dialoogvenster minder ingangen zijn dan als u &Linux; gebruikt, omdat verschillende opties niet worden ondersteund.</para>
     </sect2>

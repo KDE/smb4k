@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Ukrainian "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -2357,11 +2355,11 @@
 >Додавання нетипових параметрів</title>
 
       <para
->Якщо вам потрібно визначити нетипові параметри для спільного ресурсу на панелях <link linkend="network_neighborhood_browser_actions_popup_menu"
+>Для визначення нетипових параметрів на панелях <link linkend="network_neighborhood_browser_actions_popup_menu"
 >навігатора мережевим середовищем</link
 > та <link linkend="shares_view_actions_popup_menu"
 >перегляду спільних ресурсів</link
->, ви можете відкрити вікно редактора нетипових параметрів за допомогою пункту меню <menuchoice
+> ви можете відкрити вікно редактора нетипових параметрів за допомогою пункту меню <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -2387,12 +2385,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>Нетипові параметри, які ви визначили для сервера, буде також застосовано до його спільних ресурсів.</para>
 
       <para
->Окремі параметри можна встановити за допомогою таких розділів або вкладок:</para>
+>Можна встановлювати такі параметри:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Базові параметри</guilabel>
+          </term>
+          <listitem>
+            <para
+>Тут ви можете вказати IP-адресу та робочу групу або домен сервера. Якщо вами було позначено спільний ресурс, ви також можете позначити пункт <guibutton
+>Завжди повторно монтувати цей спільний ресурс</guibutton
+>, щоб система повторно монтувала ресурс кожного разу, коли ви запускатимете &smb4k; або завантажуватимете відповідний <link linkend="profiles"
+>профіль</link
+>.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2400,9 +2413,7 @@
 > (лише &Linux;) </term>
           <listitem>
             <para
->Тут ви можете визначити загальні параметри, які пов'язано із монтуванням. Якщо натиснути кнопку <guibutton
->Завжди повторно монтувати цей спільний ресурс</guibutton
-> ресурс повторно монтуватиметься під час кожного запуску програми. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_common_mount_settings"
+>Тут ви можете визначити загальні параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_common_mount_settings"
 >тут</link
 >.</para>
           </listitem>
@@ -2451,16 +2462,26 @@
           <listitem>
             <para
 >Щоб мати змогу скористатися можливістю пробудження спільних ресурсів у локальній мережі, вам слід вказати MAC-адресу потрібного вам сервера. У поточній версії у &smb4k; не передбачено можливості визначення такої MAC-адреси засобами програми, отже, вам доведеться визначити її самостійно. Щойно буде вказано адресу, ви можете визначити, чи слід пробуджувати сервер надсиланням контрольного пакета Wake-On-LAN перед пошуком ресурсів у мережевому оточенні та/або монтуванням одного зі спільних ресурсів сервера.</para>
+            <para
+>Будь ласка, зауважте, що вам слід увімкнути можливості Wake-On-LAN у <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>вікні налаштувань</link
+>, щоб скористатися перевагами цих параметрів.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->Доступ до кнопки <guibutton
->Типові</guibutton
-> буде відкрито, лише якщо пункти діалогового вікна відрізнятимуться від типових параметрів, визначених за допомогою діалогового вікна налаштування. Натисканням цієї кнопки ви можете повернути значення параметрів діалогового вікна до типових. Якщо ви внесете до значень параметрів діалогового вікна зміни, буде відкрито доступ до кнопки <guibutton
->Гаразд</guibutton
->. Після натискання цієї кнопки зміни буде застосовано, а діалогове вікно закрито.</para>
+>Кнопки <guibutton
+>Скинути</guibutton
+> і <guibutton
+>Зберегти</guibutton
+> буде увімкнено, якщо ви зміните якісь значення у редакторі. За допомогою кнопки <guibutton
+>Скинути</guibutton
+> ви можете відновити початкові значення параметрів у вікні. Натискання кнопки <guibutton
+>Зберегти</guibutton
+> призведе до збереження нетипових параметрів і закриття вікна. Щоб вилучити нетипові параметри, скористайтеся <link linkend="configuration_page_custom_settings"
+>вікном налаштувань</link
+>.</para>
       <para
 >Будь ласка, зауважте, що у BSD у цьому діалоговому вікні міститиметься менше пунктів, ніж у &Linux;, оскільки підтримки деяких з параметрів не передбачено.</para>
     </sect2>
@@ -3256,7 +3277,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     
     <sect2 id="configuration_page_network_basic_settings">
       <title
->Основні параметри</title>
+>Базові параметри</title>
       
       <sect3 id="configuration_page_network_basic_settings_browse_settings">
         <title
@@ -3695,7 +3716,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     
     <sect2 id="configuration_page_mounting_basic_settings">
       <title
->Основні параметри</title>
+>Базові параметри</title>
       
       <para
 >Параметри на цій сторінці стосуються усіх підтримуваних операційних систем.</para>
@@ -6011,7 +6032,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     
     <sect2 id="configuration_page_synchronisation_basic_settings">
       <title
->Основні параметри</title>
+>Базові параметри</title>
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title

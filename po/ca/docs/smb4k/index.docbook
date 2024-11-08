@@ -2339,7 +2339,7 @@
       <itemizedlist>
         <listitem
 ><para
->define individual browse or mount settings for a single server or share that deviate from the values defined in the configuration dialog,</para
+>definir les opcions de configuració individuals de muntatge o d'exploració per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
 ></listitem>
         <listitem
 ><para
@@ -2359,11 +2359,11 @@
 >Afegir una configuració personalitzada</title>
 
       <para
->To define custom settings, in both, the <link linkend="network_neighborhood_browser_actions_popup_menu"
->network neighborhood browser</link
-> and the <link linkend="shares_view_actions_popup_menu"
->shares view</link
->, you can open the editor for the custom settings by clicking the <menuchoice
+>Per a definir una configuració personalitzada, tant a l'<link linkend="network_neighborhood_browser_actions_popup_menu"
+>explorador del veïnatge de xarxa</link
+> com a la <link linkend="shares_view_actions_popup_menu"
+>vista de comparticions</link
+>, podreu obrir l'editor per a la configuració personalitzada fent clic a l'entrada de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -2371,9 +2371,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Add Custom Settings</guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
 ></menuchoice
-> menu entry.</para>
+>.</para>
     
       <screenshot>
         <screeninfo
@@ -2390,24 +2390,24 @@
       </screenshot>
 
       <para
->Custom settings that you defined for a server will also be applied to its shares.</para>
+>La configuració personalitzada que heu definit per a un servidor també s'aplicaran a les seves comparticions.</para>
 
       <para
->The following settings can be made:</para>
+>Es poden fer les opcions de configuració següents:</para>
       
       <variablelist>
         <varlistentry>
           <term>
             <guilabel
->Basic Settings</guilabel>
+>Configuració bàsica</guilabel>
           </term>
           <listitem>
             <para
->You can set the IP address and the workgroup or domain of the server here. If you selected a share, you can also check the <guibutton
->Always remount this share</guibutton
-> button to remount it every time you start &smb4k; or load the respective <link linkend="profiles"
->profile</link
->.</para>
+>Aquí podeu establir l'adreça IP i el grup de treball o domini del servidor. Si heu seleccionat una compartició, també podeu activar el botó <guibutton
+>Torna a muntar sempre aquesta compartició</guibutton
+> per a tornar a muntar la compartició seleccionada cada vegada que s'iniciï el &smb4k; o carregueu el <link linkend="profiles"
+>perfil</link
+> respectiu.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2417,8 +2417,8 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->You can define common settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings"
->this section</link
+>Aquí podreu definir els paràmetres normals relacionats amb el muntatge. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
+>aquesta secció</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2467,24 +2467,24 @@
             <para
 >Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el servidor s'hauria de despertar enviant un paquet màgic Wake-On-LAN abans que s'explori el veïnatge de xarxa i/o es munti una de les seves comparticions.</para>
             <para
->Please note that you need to enable the Wake-On-LAN capabilities in the <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->configuration dialog</link
-> to take advantage of these settings.</para>
+>Tingueu en compte que cal habilitar les capacitats d'activació per LAN (Wake-On-LAN) al <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>diàleg de configuració</link
+> per a fer ús d'aquestes opcions.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->The <guibutton
->Reset</guibutton
-> and <guibutton
->Save</guibutton
-> buttons are enabled if you changed some values in the editor. With the <guibutton
->Reset</guibutton
-> button you can reset the entries in the dialog to their initial values. Clicking the <guibutton
->Save</guibutton
-> will save the custom settings and close the dialog. To delete custom settings, use the <link linkend="configuration_page_custom_settings"
->configuration dialog</link
+>Els botons <guibutton
+>Reinicia</guibutton
+> i <guibutton
+>Desa</guibutton
+> estan habilitats si heu canviat alguns valors a l'editor. Amb el botó <guibutton
+>Reinicia</guibutton
+> podreu reiniciar les entrades del diàleg als seus valors inicials. En fer clic a <guibutton
+>Desa</guibutton
+> es desaran els paràmetres personalitzats i es tancarà el diàleg. Per a suprimir la configuració personalitzada, utilitzeu el <link linkend="configuration_page_custom_settings"
+>diàleg de configuració</link
 >.</para>
       <para
 >Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
@@ -3281,7 +3281,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     
     <sect2 id="configuration_page_network_basic_settings">
       <title
->Basic Settings</title>
+>Configuració bàsica</title>
       
       <sect3 id="configuration_page_network_basic_settings_browse_settings">
         <title
@@ -3664,7 +3664,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Habilita les característiques Wake-on-LAN. El «Wake-on-LAN» (WOL) és un estàndard de xarxa ethernet d'ordinadors que permet engegar o despertar un ordinador amb un missatge de xarxa. El &smb4k; utilitza un paquet màgic enviat mitjançant un sòcol UDP per a despertar servidors remots. Si voleu disposar dels avantatges de la funcionalitat «Wake-On-LAN» cal activar aquesta opció.</para>
+>Habilita les característiques Wake-on-LAN. El «Wake-on-LAN» (WOL) és un estàndard de xarxa ethernet d'ordinadors que permet engegar o despertar un ordinador amb un missatge de xarxa. El &smb4k; utilitza un paquet màgic enviat mitjançant un sòcol UDP per a despertar servidors remots. Si voleu aprofitar la funcionalitat «Wake-On-LAN» cal activar aquesta opció.</para>
               <para
 >Omissió: no seleccionada</para>
               <variablelist>
@@ -3720,7 +3720,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     
     <sect2 id="configuration_page_mounting_basic_settings">
       <title
->Basic Settings</title>
+>Configuració bàsica</title>
       
       <para
 >Les opcions de configuració en aquesta pestanya són les mateixes per a tots els sistemes operatius admesos.</para>
@@ -6036,7 +6036,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     
     <sect2 id="configuration_page_synchronisation_basic_settings">
       <title
->Basic Settings</title>
+>Configuració bàsica</title>
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
