@@ -34,6 +34,7 @@
 #include <QPointer>
 
 // KDE includes
+#include <KIO/CopyJob>
 #include <KIO/DropJob>
 #include <KIconLoader>
 #include <KJobUiDelegate>
