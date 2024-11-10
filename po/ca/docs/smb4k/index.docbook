@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Catalan  "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -55,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->30 de setembre de 2024</date>
+>3 de novembre de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1388,7 +1386,9 @@
 ></menuchoice
 >. Depenent de les opcions de configuració, també es desmuntaran les comparticions alienes i inaccessibles.</para>
       <para
->Després d'un procés de desmuntatge amb èxit, se li notificarà a l'usuari. Si es produeix un error durant el desmuntatge, es mostrarà una notificació amb el missatge d'error retornat.</para>
+>Després d'un procés de desmuntatge amb èxit, se li <link linkend="notifications"
+>notificarà</link
+> a l'usuari. Si es produeix un error durant el desmuntatge, es mostrarà una notificació amb el missatge d'error retornat.</para>
     </sect2>
     
 <!--
@@ -1610,8 +1610,8 @@
       </variablelist>
     
       <para
->Per a cada compartició muntada, podreu obrir un submenú que contingui les entrades següents. Per a més informació llegiu la <link linkend="shares_view_actions_popup_menu"
->secció del menú emergent</link
+>Per a cada compartició muntada, podreu obrir un submenú que conté les entrades següents. Per a més informació llegiu la secció <link linkend="shares_view_actions_popup_menu"
+>Accions i menú emergent</link
 >.</para>
 
       <variablelist>
@@ -1648,7 +1648,7 @@
           </term>
           <listitem>
             <para
->Obre el diàleg de configuració personalitzada per a la compartició seleccionada. Llegiu la secció quant a l'editor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Obre el diàleg de configuració personalitzada per a la compartició seleccionada. Llegiu la secció quant a l'editor <link linkend="custom_settings"
 >Configuració personalitzada</link
 > per a més informació.</para>
           </listitem>
@@ -1664,9 +1664,9 @@
             <para
 >Sincronitza la compartició muntada amb una còpia local o viceversa. Per a més informació, llegiu les seccions sobre les <link linkend="shares_view_actions_popup_menu"
 >accions i menú emergent</link
-> de les vistes de comparticions i la <link linkend="shares_view_synchronization"
+> i la <link linkend="shares_view_synchronization"
 >sincronització</link
->.</para>
+> de les vistes de comparticions.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1698,10 +1698,8 @@
       <para
 >El menú <guimenuitem
 >Adreces d'interès</guimenuitem
-> conté totes les adreces d'interès organitzades d'acord amb l'estructura que les vau proporcionar (vegeu també <link linkend="bookmarks_adding"
->afegir adreces d'interès</link
-> i <link linkend="bookmarks_editor"
->editar les adreces d'interès</link
+> conté totes les adreces d'interès organitzades d'acord amb l'estructura que les vau proporcionar (vegeu també la secció <link linkend="bookmarks"
+>adreces d'interès</link
 >).</para>
 
       <screenshot>
@@ -1750,7 +1748,7 @@
 >diàleg de configuració</link
 >.</para>
       <para
->Aquestes són les altres entrades de menú:</para>
+>Aquestes són les quatre entrades addicionals del menú:</para>
 
       <variablelist>
         <varlistentry>
@@ -1763,8 +1761,8 @@
           <listitem>
             <para
 >Obre el <link linkend="network_neighborhood_browser_mounting"
->diàleg</link
-> per a muntar comparticions manualment proporcionant l'URL, l'adreça IP i el domini o grup de treball.</para>
+>diàleg de muntatge</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2080,7 +2078,7 @@
 ><application
 >plasmoide</application
 ></link
->. Als ginys acoblats de la finestra principal, això es fa seleccionant una o més comparticions i fent clic al botó d'acció <menuchoice
+>. A la finestra principal, això es fa seleccionant una o més comparticions i fent clic al botó d'acció <menuchoice
 ><guimenuitem
 >Afegeix una adreça d'interès</guimenuitem
 ></menuchoice
@@ -2341,7 +2339,7 @@
       <itemizedlist>
         <listitem
 ><para
->definir les opcions de configuració individuals de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
+>definir les opcions de configuració individuals de muntatge o d'exploració per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
 ></listitem>
         <listitem
 ><para
@@ -2361,7 +2359,7 @@
 >Afegir una configuració personalitzada</title>
 
       <para
->En cas que vulgueu definir una configuració personalitzada per a una compartició, tant a l'<link linkend="network_neighborhood_browser_actions_popup_menu"
+>Per a definir una configuració personalitzada, tant a l'<link linkend="network_neighborhood_browser_actions_popup_menu"
 >explorador del veïnatge de xarxa</link
 > com a la <link linkend="shares_view_actions_popup_menu"
 >vista de comparticions</link
@@ -2391,12 +2389,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>La configuració personalitzada que heu definit per a un servidor també s'aplicaran a les seves comparticions.</para>
 
       <para
->Es poden fer configuracions individuals en les seccions/pestanyes següents:</para>
+>Es poden fer les opcions de configuració següents:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Configuració bàsica</guilabel>
+          </term>
+          <listitem>
+            <para
+>Aquí podeu establir l'adreça IP i el grup de treball o domini del servidor. Si heu seleccionat una compartició, també podeu activar el botó <guibutton
+>Torna a muntar sempre aquesta compartició</guibutton
+> per a tornar a muntar la compartició seleccionada cada vegada que s'iniciï el &smb4k; o carregueu el <link linkend="profiles"
+>perfil</link
+> respectiu.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2404,9 +2417,7 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->Aquí podeu definir els paràmetres normals relacionats amb el muntatge. Activeu el botó <guibutton
->Torna a muntar sempre aquesta compartició</guibutton
-> si voleu tornar a muntar la compartició seleccionada cada vegada que s'iniciï el &smb4k;. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
+>Aquí podreu definir els paràmetres normals relacionats amb el muntatge. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
 >aquesta secció</link
 >.</para>
           </listitem>
@@ -2455,16 +2466,26 @@
           <listitem>
             <para
 >Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el servidor s'hauria de despertar enviant un paquet màgic Wake-On-LAN abans que s'explori el veïnatge de xarxa i/o es munti una de les seves comparticions.</para>
+            <para
+>Tingueu en compte que cal habilitar les capacitats d'activació per LAN (Wake-On-LAN) al <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>diàleg de configuració</link
+> per a fer ús d'aquestes opcions.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->El botó <guibutton
->Predeterminat</guibutton
-> estarà habilitat si les entrades del diàleg es desvien de la configuració que heu definit al diàleg de configuració. En fer-hi clic, restablireu les entrades del diàleg als valors predeterminats. El botó <guibutton
->D'acord</guibutton
-> estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, es desarà la configuració personalitzada i es tancarà el diàleg.</para>
+>Els botons <guibutton
+>Reinicia</guibutton
+> i <guibutton
+>Desa</guibutton
+> estan habilitats si heu canviat alguns valors a l'editor. Amb el botó <guibutton
+>Reinicia</guibutton
+> podreu reiniciar les entrades del diàleg als seus valors inicials. En fer clic a <guibutton
+>Desa</guibutton
+> es desaran els paràmetres personalitzats i es tancarà el diàleg. Per a suprimir la configuració personalitzada, utilitzeu el <link linkend="configuration_page_custom_settings"
+>diàleg de configuració</link
+>.</para>
       <para
 >Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
     </sect2>
@@ -3643,7 +3664,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Habilita les característiques Wake-on-LAN. El «Wake-on-LAN» (WOL) és un estàndard de xarxa ethernet d'ordinadors que permet engegar o despertar un ordinador amb un missatge de xarxa. El &smb4k; utilitza un paquet màgic enviat mitjançant un sòcol UDP per a despertar servidors remots. Si voleu disposar dels avantatges de la funcionalitat «Wake-On-LAN» cal activar aquesta opció.</para>
+>Habilita les característiques Wake-on-LAN. El «Wake-on-LAN» (WOL) és un estàndard de xarxa ethernet d'ordinadors que permet engegar o despertar un ordinador amb un missatge de xarxa. El &smb4k; utilitza un paquet màgic enviat mitjançant un sòcol UDP per a despertar servidors remots. Si voleu aprofitar la funcionalitat «Wake-On-LAN» cal activar aquesta opció.</para>
               <para
 >Omissió: no seleccionada</para>
               <variablelist>
@@ -8153,13 +8174,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Perfils</title>
 
       <para
->Aquí podeu gestionar els vostres perfils. De manera predeterminada, n'hi ha dos de predefinits (<guilabel
+>Aquí podeu gestionar els perfils. De manera predeterminada n'hi ha dos predefinits (<guilabel
 >Casa</guilabel
 > i <guilabel
 >Treball</guilabel
->). Quan hàgiu habilitat l'ús dels perfils, la primera entrada a la llista serà el perfil actiu.</para>
-      <para
->Per a afegir un perfil nou, introduïu-lo a la línia d'edició i feu clic al botó <guibutton
+>). Per a afegir un perfil nou, introduïu-lo a la línia d'edició i feu clic al botó <guibutton
 >Afegeix</guibutton
 >. Les entrades es poden suprimir seleccionant-les i fent clic al botó <guibutton
 >Elimina</guibutton

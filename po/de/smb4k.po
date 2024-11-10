@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 00:39+0000\n"
+"POT-Creation-Date: 2024-11-06 00:40+0000\n"
 "PO-Revision-Date: 2024-09-08 11:33+0200\n"
 "Last-Translator: Alexander Reinholdt <alexander.reinholdt@t-online.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -608,7 +608,7 @@ msgstr "Freigabenansicht"
 msgid "Custom Settings Editor"
 msgstr "Editor für benutzerdefinierte Einstellungen"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:53
+#: smb4k/smb4kcustomsettingseditor.cpp:52
 #, kde-format
 msgid "No network item was set."
 msgstr "Es wurde kein Netzwerkeintrag angegeben."

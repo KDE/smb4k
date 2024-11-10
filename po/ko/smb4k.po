@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 00:39+0000\n"
+"POT-Creation-Date: 2024-11-06 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 00:47+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -595,7 +595,7 @@ msgstr "공유 보기"
 msgid "Custom Settings Editor"
 msgstr "사용자 정의 설정 편집기"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:53
+#: smb4k/smb4kcustomsettingseditor.cpp:52
 #, kde-format
 msgid "No network item was set."
 msgstr "네트워크 항목을 설정하지 않았습니다."

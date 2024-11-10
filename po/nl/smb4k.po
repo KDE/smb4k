@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 00:39+0000\n"
+"POT-Creation-Date: 2024-11-06 00:40+0000\n"
 "PO-Revision-Date: 2024-06-21 09:40+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -610,7 +610,7 @@ msgstr "Gedeelde Mappen Weergave"
 msgid "Custom Settings Editor"
 msgstr "Bewerker voor aangepaste instellingen"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:53
+#: smb4k/smb4kcustomsettingseditor.cpp:52
 #, kde-format
 msgid "No network item was set."
 msgstr "Geen netwerkitem is gezet"

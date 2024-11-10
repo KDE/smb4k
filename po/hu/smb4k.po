@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 00:39+0000\n"
+"POT-Creation-Date: 2024-11-06 00:40+0000\n"
 "PO-Revision-Date: 2024-05-10 14:21+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -613,7 +613,7 @@ msgstr "Megosztások nézet"
 msgid "Custom Settings Editor"
 msgstr "Közös beállítások"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:53
+#: smb4k/smb4kcustomsettingseditor.cpp:52
 #, fuzzy, kde-format
 #| msgid "Network"
 msgid "No network item was set."
