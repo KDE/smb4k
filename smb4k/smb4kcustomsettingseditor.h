@@ -46,6 +46,7 @@ public:
     bool setNetworkItem(NetworkItemPtr networkItem);
 
 protected Q_SLOTS:
+    void slotRestoreDefaultCustomSettings();
     void slotResetCustomSettings();
     void slotSaveCustomSettings();
     void slotCustomSettingsEdited(bool changed);
@@ -55,6 +56,7 @@ private:
     CustomSettingsPtr m_customSettings;
     QLabel *m_descriptionText;
     Smb4KCustomSettingsEditorWidget *m_editorWidget;
+    QPushButton *m_restoreButton;
     QPushButton *m_resetButton;
     QPushButton *m_saveButton;
     QPushButton *m_cancelButton;

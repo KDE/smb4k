@@ -58,6 +58,14 @@ public:
      */
     void clear();
 
+    /**
+     * Returns TRUE if the custom settings have default values
+     * otherwise returns FALSE.
+     *
+     *  @returns TRUE if the custom settings have default values
+     */
+    bool hasDefaultCustomSettings() const;
+
 Q_SIGNALS:
     void edited(bool changed);
 
@@ -99,6 +107,7 @@ protected Q_SLOTS:
 private:
     void setupView();
     void checkValues();
+    bool m_hasDefaultCustomSettings;
     Smb4KCustomSettings m_customSettings;
     QLabel *m_ipAddressLabel;
     KLineEdit *m_ipAddress;

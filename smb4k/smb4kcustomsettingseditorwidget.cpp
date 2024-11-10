@@ -26,6 +26,8 @@ using namespace Smb4KGlobal;
 Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget *parent)
     : QTabWidget(parent)
 {
+    m_hasDefaultCustomSettings = true;
+
     // FIXME: Implement mount point!?
     // FIXME: Honor disabled widgets and unchecked check boxes!?
 
@@ -641,8 +643,144 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_sendPacketBeforeMount->setChecked(false);
 }
 
+bool Smb4KCustomSettingsEditorWidget::hasDefaultCustomSettings() const
+{
+    return m_hasDefaultCustomSettings;
+}
+
 void Smb4KCustomSettingsEditorWidget::checkValues()
 {
+    // Reset m_hasDefaultCustomSettings for this check.
+    m_hasDefaultCustomSettings = true;
+
+    // Check against default values. We won't check the URL, IP address
+    // and workgroup name, because those settings aren't pre-defined.
+    Smb4KCustomSettings defaultCustomSettings;
+
+    switch (defaultCustomSettings.remount()) {
+    case Smb4KCustomSettings::RemountAlways: {
+        if (!m_alwaysRemountShare->isChecked()) {
+            m_hasDefaultCustomSettings = false;
+        }
+        break;
+    }
+    default: {
+        if (m_alwaysRemountShare->isChecked()) {
+            m_hasDefaultCustomSettings = false;
+        }
+        break;
+    }
+    }
+
+#ifdef Q_OS_LINUX
+    if (m_useWriteAccess->isChecked() != defaultCustomSettings.useWriteAccess()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_writeAccess->currentIndex() != defaultCustomSettings.writeAccess()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_useFileSystemPort->isChecked() != defaultCustomSettings.useFileSystemPort()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_fileSystemPort->value() != defaultCustomSettings.fileSystemPort()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_cifsUnixExtensionSupport->isChecked() != defaultCustomSettings.cifsUnixExtensionsSupport()) {
+        m_hasDefaultCustomSettings = false;
+    }
+#endif
+
+    if (m_useUserId->isChecked() != defaultCustomSettings.useUser()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_userId->currentData().toString() != defaultCustomSettings.user().userId().toString()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_useGroupId->isChecked() != defaultCustomSettings.useGroup()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_groupId->currentData().toString() != defaultCustomSettings.group().groupId().toString()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_useFileMode->isChecked() != defaultCustomSettings.useFileMode()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_fileMode->text() != defaultCustomSettings.fileMode()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_useDirectoryMode->isChecked() != defaultCustomSettings.useDirectoryMode()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_directoryMode->text() != defaultCustomSettings.directoryMode()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+#ifdef Q_OS_LINUX
+    if (m_useSmbMountProtocolVersion->isChecked() != defaultCustomSettings.useMountProtocolVersion()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_smbMountProtocolVersion->currentData().toInt() != defaultCustomSettings.mountProtocolVersion()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_useSecurityMode->isChecked() != defaultCustomSettings.useSecurityMode()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_securityMode->currentData().toInt() != defaultCustomSettings.securityMode()) {
+        m_hasDefaultCustomSettings = false;
+    }
+#endif
+
+    if (m_useClientProtocolVersions->isChecked() != defaultCustomSettings.useClientProtocolVersions()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_minimalClientProtocolVersion->currentData().toInt() != defaultCustomSettings.minimalClientProtocolVersion()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_maximalClientProtocolVersion->currentData().toInt() != defaultCustomSettings.maximalClientProtocolVersion()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_useRemoteSmbPort->isChecked() != defaultCustomSettings.useSmbPort()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_remoteSmbPort->value() != defaultCustomSettings.smbPort()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_useKerberos->isChecked() != defaultCustomSettings.useKerberos()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_macAddress->hasAcceptableInput() && (m_macAddress->text() != defaultCustomSettings.macAddress())) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_sendPacketBeforeScan->isChecked() != defaultCustomSettings.wakeOnLanSendBeforeNetworkScan()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    if (m_sendPacketBeforeMount->isChecked() != defaultCustomSettings.wakeOnLanSendBeforeMount()) {
+        m_hasDefaultCustomSettings = false;
+    }
+
+    // Check if the initial values were edited.
     if (m_ipAddress->text() != m_customSettings.ipAddress()) {
         Q_EMIT edited(true);
         return;
@@ -653,9 +791,21 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
-    if (m_alwaysRemountShare->isChecked() != (m_customSettings.remount() == Smb4KCustomSettings::RemountAlways)) {
-        Q_EMIT edited(true);
-        return;
+    switch (m_customSettings.remount()) {
+    case Smb4KCustomSettings::RemountAlways: {
+        if (!m_alwaysRemountShare->isChecked()) {
+            Q_EMIT edited(true);
+            return;
+        }
+        break;
+    }
+    default: {
+        if (m_alwaysRemountShare->isChecked()) {
+            Q_EMIT edited(true);
+            return;
+        }
+        break;
+    }
     }
 
 #ifdef Q_OS_LINUX
@@ -978,8 +1128,12 @@ void Smb4KCustomSettingsEditorWidget::slotMacAddressChanged(const QString &text)
 {
     Q_UNUSED(text);
 
-    m_sendPacketBeforeScan->setEnabled(!text.isEmpty() && m_macAddress->hasAcceptableInput());
-    m_sendPacketBeforeMount->setEnabled(!text.isEmpty() && m_macAddress->hasAcceptableInput());
+    if (!m_macAddress->hasAcceptableInput()) {
+        m_macAddress->clear();
+    }
+
+    m_sendPacketBeforeScan->setEnabled(!m_macAddress->text().isEmpty() && m_macAddress->hasAcceptableInput());
+    m_sendPacketBeforeMount->setEnabled(!m_macAddress->text().isEmpty() && m_macAddress->hasAcceptableInput());
 
     checkValues();
 }
