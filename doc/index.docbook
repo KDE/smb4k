@@ -34,7 +34,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-11-03</date>
+  <date>2024-11-11</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -1301,7 +1301,7 @@
         </varlistentry>
       </variablelist>
       
-      <para>The <guibutton>Reset</guibutton> and <guibutton>Save</guibutton> buttons are enabled if you changed some values in the editor. With the <guibutton>Reset</guibutton> button you can reset the entries in the dialog to their initial values. Clicking the <guibutton>Save</guibutton> will save the custom settings and close the dialog. To delete custom settings, use the <link linkend="configuration_page_custom_settings">configuration dialog</link>.</para>
+      <para>With the <guibutton>Defaults</guibutton> button you can reset all settings in the editor to their default values as they are defined in the configuration dialog. Custom settings that only contain default values are removed. Using the <guibutton>Reset</guibutton> button, you can reset the entries in the dialog to their initial values. Clicking the <guibutton>Save</guibutton> button saves the custom settings and closes the dialog.</para>
       <para>Please note that under BSD the dialog contains fewer entries than if you run &Linux;, because several of the options are not supported.</para>
     </sect2>
 
