@@ -146,7 +146,7 @@ bool Smb4KBookmarkDialog::setShares(const QList<SharePtr> &shares)
 {
     bool bookmarksSet = false;
 
-    for (const SharePtr &share : qAsConst(shares)) {
+    for (const SharePtr &share : std::as_const(shares)) {
         if (share->isHomesShare()) {
             QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog(this);
             bool proceed = false;

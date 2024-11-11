@@ -123,7 +123,7 @@ void Smb4KConfigPageCustomSettings::loadCustomSettings()
 
     QList<CustomSettingsPtr> customSettings = Smb4KCustomSettingsManager::self()->customSettings(true);
 
-    for (const CustomSettingsPtr &settings : qAsConst(customSettings)) {
+    for (const CustomSettingsPtr &settings : std::as_const(customSettings)) {
         QVariant variant = QVariant::fromValue(*settings.data());
 
         QListWidgetItem *item = new QListWidgetItem(settings->displayString(), m_listWidget);

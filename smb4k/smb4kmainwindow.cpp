@@ -372,7 +372,7 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget *dock)
             actionsList = m_sharesViewDockWidget->actionCollection()->actions();
         }
 
-        for (QAction *action : qAsConst(actionsList)) {
+        for (QAction *action : std::as_const(actionsList)) {
             if (action->objectName() == QStringLiteral("bookmark_action")) {
                 m_bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
                 connect(action, &QAction::changed, this, &Smb4KMainWindow::slotEnableBookmarkAction);

@@ -51,7 +51,7 @@ void Smb4KProfilesMenu::refreshMenu()
     //
     QStringList profiles = Smb4KProfileManager::self()->profilesList();
 
-    for (const QString &profile : qAsConst(profiles)) {
+    for (const QString &profile : std::as_const(profiles)) {
         QAction *action = addAction(profile);
 
         if (action) {
@@ -84,7 +84,7 @@ void Smb4KProfilesMenu::slotProfileUsageChanged(bool use)
 {
     QList<QAction *> actionList = actions();
 
-    for (QAction *action : qAsConst(actionList)) {
+    for (QAction *action : std::as_const(actionList)) {
         if (action) {
             action->setEnabled(use);
         }

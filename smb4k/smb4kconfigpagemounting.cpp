@@ -177,7 +177,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : qAsConst(writeAccessChoices)) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : std::as_const(writeAccessChoices)) {
         writeAccess->addItem(wa.label);
     }
 
@@ -193,7 +193,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> charsetChoices = Smb4KMountSettings::self()->clientCharsetItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(charsetChoices)) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : std::as_const(charsetChoices)) {
         characterSet->addItem(c.label);
     }
 
@@ -254,7 +254,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KUser> allUsers = KUser::allUsers();
 
-    for (const KUser &u : qAsConst(allUsers)) {
+    for (const KUser &u : std::as_const(allUsers)) {
         QAction *userAction = userMenu->addAction(u.loginName() + QStringLiteral(" (") + u.userId().toString() + QStringLiteral(")"));
         userAction->setData(u.userId().nativeId());
     }
@@ -290,7 +290,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KUserGroup> groupList = KUserGroup::allGroups();
 
-    for (const KUserGroup &g : qAsConst(groupList)) {
+    for (const KUserGroup &g : std::as_const(groupList)) {
         QAction *groupAction = groupMenu->addAction(g.name() + QStringLiteral(" (") + g.groupId().toString() + QStringLiteral(")"));
         groupAction->setData(g.groupId().nativeId());
     }
@@ -397,7 +397,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(smbProtocolChoices)) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : std::as_const(smbProtocolChoices)) {
         smbProtocol->addItem(c.label);
     }
 
@@ -413,7 +413,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> cacheModeChoices = Smb4KMountSettings::self()->cacheModeItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(cacheModeChoices)) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : std::as_const(cacheModeChoices)) {
         cacheMode->addItem(c.label);
     }
 
@@ -429,7 +429,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
 
-    for (const KConfigSkeleton::ItemEnum::Choice &c : qAsConst(securityModeChoices)) {
+    for (const KConfigSkeleton::ItemEnum::Choice &c : std::as_const(securityModeChoices)) {
         securityMode->addItem(c.label);
     }
 

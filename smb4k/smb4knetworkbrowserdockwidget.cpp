@@ -225,7 +225,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     //
     QList<QAction *> actionsList = m_actionCollection->actions();
 
-    for (QAction *action : qAsConst(actionsList)) {
+    for (QAction *action : std::as_const(actionsList)) {
         m_contextMenu->addAction(action);
     }
 }
@@ -366,7 +366,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
         int unmountedShares = selectedItems.size();
         int printerShares = 0;
 
-        for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        for (QTreeWidgetItem *selectedItem : std::as_const(selectedItems)) {
             Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
             if (item) {
@@ -549,7 +549,7 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr &wor
             m_networkBrowser->findItems(workgroup->workgroupName(), Qt::MatchFixedString | Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
         Smb4KNetworkBrowserItem *workgroupItem = nullptr;
 
-        for (QTreeWidgetItem *item : qAsConst(workgroups)) {
+        for (QTreeWidgetItem *item : std::as_const(workgroups)) {
             Smb4KNetworkBrowserItem *tempWorkgroup = static_cast<Smb4KNetworkBrowserItem *>(item);
 
             if (tempWorkgroup->type() == Workgroup && tempWorkgroup->workgroupItem()->workgroupName() == workgroup->workgroupName()) {
@@ -590,7 +590,7 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr &wor
             QList<HostPtr> members = workgroupMembers(workgroup);
 
             if (!members.isEmpty()) {
-                for (const HostPtr &host : qAsConst(members)) {
+                for (const HostPtr &host : std::as_const(members)) {
                     bool foundHost = false;
 
                     for (int i = 0; i < workgroupItem->childCount(); ++i) {
@@ -637,7 +637,7 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr &host)
         QList<QTreeWidgetItem *> hosts = m_networkBrowser->findItems(host->hostName(), Qt::MatchFixedString | Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
         Smb4KNetworkBrowserItem *hostItem = nullptr;
 
-        for (QTreeWidgetItem *item : qAsConst(hosts)) {
+        for (QTreeWidgetItem *item : std::as_const(hosts)) {
             Smb4KNetworkBrowserItem *tempHost = static_cast<Smb4KNetworkBrowserItem *>(item);
 
             if (tempHost->type() == Host && tempHost->hostItem()->workgroupName() == host->workgroupName()) {
@@ -678,7 +678,7 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr &host)
             QList<SharePtr> shares = sharedResources(host);
 
             if (!shares.isEmpty()) {
-                for (const SharePtr &share : qAsConst(shares)) {
+                for (const SharePtr &share : std::as_const(shares)) {
                     bool foundShare = false;
 
                     for (int i = 0; i < hostItem->childCount(); ++i) {
@@ -815,7 +815,7 @@ void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)
 
     QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
 
-    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QTreeWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         if (item) {
@@ -836,7 +836,7 @@ void Smb4KNetworkBrowserDockWidget::slotAddCustomSettings(bool checked)
 
     QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
 
-    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QTreeWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor(this);
@@ -854,7 +854,7 @@ void Smb4KNetworkBrowserDockWidget::slotPreview(bool checked)
 
     QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
 
-    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QTreeWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
@@ -875,7 +875,7 @@ void Smb4KNetworkBrowserDockWidget::slotPrint(bool checked)
 
     QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
 
-    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QTreeWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         if (item && item->shareItem()->isPrinter()) {
@@ -897,7 +897,7 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool checked)
     QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
     QList<SharePtr> unmountedShares, mountedShares;
 
-    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QTreeWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         if (item && item->type() == Share && !item->shareItem()->isPrinter()) {

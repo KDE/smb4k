@@ -100,7 +100,7 @@ void Smb4KSharesViewDockWidget::loadSettings()
         } else if (selectedItems.size() > 1) {
             int foreign = 0;
 
-            for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+            for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
                 Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
                 if (item && item->shareItem()->isForeign()) {
@@ -265,7 +265,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     QList<QAction *> actionsList = m_actionCollection->actions();
 
-    for (QAction *action : qAsConst(actionsList)) {
+    for (QAction *action : std::as_const(actionsList)) {
         m_contextMenu->addAction(action);
     }
 }
@@ -314,7 +314,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         int inaccessible = 0;
         int foreign = 0;
 
-        for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
             Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
             if (item) {
@@ -474,7 +474,7 @@ void Smb4KSharesViewDockWidget::slotUnmountActionTriggered(bool checked)
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
     QList<SharePtr> shares;
 
-    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item) {
@@ -499,7 +499,7 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool checked)
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
     QList<SharePtr> shares;
 
-    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
         shares << item->shareItem();
     }
@@ -519,7 +519,7 @@ void Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered(bool checked)
 
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
-    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor(this);
@@ -537,7 +537,7 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool checked)
 
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
-    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()))) {
@@ -557,7 +557,7 @@ void Smb4KSharesViewDockWidget::slotKonsoleActionTriggered(bool checked)
 
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
-    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item && !item->shareItem()->isInaccessible()) {
@@ -572,7 +572,7 @@ void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool checked)
 
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
-    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+    for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item && !item->shareItem()->isInaccessible()) {
