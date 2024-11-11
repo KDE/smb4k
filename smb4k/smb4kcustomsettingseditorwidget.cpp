@@ -81,7 +81,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : qAsConst(writeAccessChoices)) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : std::as_const(writeAccessChoices)) {
         m_writeAccess->addItem(wa.label);
     }
 
@@ -105,7 +105,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     QList<KUser> allUsers = KUser::allUsers();
 
-    for (const KUser &user : qAsConst(allUsers)) {
+    for (const KUser &user : std::as_const(allUsers)) {
         m_userId->addItem(user.loginName() + QStringLiteral(" (") + user.userId().toString() + QStringLiteral(")"), user.userId().toString());
     }
 
@@ -117,7 +117,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     QList<KUserGroup> allGroups = KUserGroup::allGroups();
 
-    for (const KUserGroup &group : qAsConst(allGroups)) {
+    for (const KUserGroup &group : std::as_const(allGroups)) {
         m_groupId->addItem(group.name() + QStringLiteral(" (") + group.groupId().toString() + QStringLiteral(")"), group.groupId().toString());
     }
 
@@ -321,7 +321,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     QList<KUser> allUsers = KUser::allUsers();
 
-    for (const KUser &user : qAsConst(allUsers)) {
+    for (const KUser &user : std::as_const(allUsers)) {
         m_userId->addItem(user.loginName() + QStringLiteral(" (") + user.userId().toString() + QStringLiteral(")"), user.userId().toString());
     }
 
@@ -333,7 +333,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     QList<KUserGroup> allGroups = KUserGroup::allGroups();
 
-    for (const KUserGroup &group : qAsConst(allGroups)) {
+    for (const KUserGroup &group : std::as_const(allGroups)) {
         m_groupId->addItem(group.name() + QStringLiteral(" (") + group.groupId().toString() + QStringLiteral(")"), group.groupId().toString());
     }
 

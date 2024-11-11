@@ -177,7 +177,7 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
         m_categoryEdit->addItem(QStringLiteral(""));
     }
 
-    for (const QString &category : qAsConst(categories)) {
+    for (const QString &category : std::as_const(categories)) {
         QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarkList(category);
         QTreeWidgetItem *categoryItem = nullptr;
 
@@ -186,7 +186,7 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
         }
 
         if (!bookmarks.isEmpty()) {
-            for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
+            for (const BookmarkPtr &bookmark : std::as_const(bookmarks)) {
                 QVariant variant = QVariant::fromValue(*bookmark.data());
                 QTreeWidgetItem *bookmarkItem = nullptr;
 

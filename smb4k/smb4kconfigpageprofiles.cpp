@@ -186,7 +186,7 @@ void Smb4KConfigPageProfiles::loadProfiles()
 
     QStringList profiles = Smb4KSettings::profilesList();
 
-    for (const QString &profile : qAsConst(profiles)) {
+    for (const QString &profile : std::as_const(profiles)) {
         ProfileContainer p;
         p.initialName = profile;
         p.currentName = profile;
@@ -208,7 +208,7 @@ void Smb4KConfigPageProfiles::checkProfilesChanged()
 {
     m_profilesChanged = false;
 
-    for (const ProfileContainer &p : qAsConst(m_profiles)) {
+    for (const ProfileContainer &p : std::as_const(m_profiles)) {
         if (p.added || p.removed || p.renamed || (p.active && p.currentName != Smb4KProfileManager::self()->activeProfile()) || p.moved) {
             m_profilesChanged = true;
             m_resetButton->setEnabled(true);
