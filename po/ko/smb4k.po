@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-06 00:40+0000\n"
+"POT-Creation-Date: 2024-11-11 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 00:47+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -248,16 +248,16 @@ msgid "Password:"
 msgstr "암호:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:53
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:293 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:55
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:295 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "작업 그룹:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:45
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:285 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:47
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:287 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -323,8 +323,8 @@ msgstr "분"
 #: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:72
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:312
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
 #, kde-format
 msgid "Basic Settings"
 msgstr "기본 설정"
@@ -350,7 +350,7 @@ msgid "Choose a different group"
 msgstr "다른 그룹 선택"
 
 #: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:154
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:156
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "공통 마운트 설정"
@@ -366,7 +366,7 @@ msgid "Edit the additional CIFS options."
 msgstr "추가 CIFS 옵션을 편집합니다."
 
 #: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:189
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:191
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "고급 마운트 설정"
@@ -377,7 +377,7 @@ msgid "Character Sets"
 msgstr "문자 인코딩"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:365
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:367
 #, kde-format
 msgid "Mount Settings"
 msgstr "마운트 설정"
@@ -405,8 +405,8 @@ msgstr[0] ""
 "참조하십시오."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:248
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:424
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:250
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:426
 #, kde-format
 msgid "Browse Settings"
 msgstr "탐색 설정"
@@ -600,49 +600,49 @@ msgstr "사용자 정의 설정 편집기"
 msgid "No network item was set."
 msgstr "네트워크 항목을 설정하지 않았습니다."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
 "<b>%1</b> 호스트와 호스트에 속한 모든 공유의 사용자 정의 옵션을 정의합니다."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:147
+#: smb4k/smb4kcustomsettingseditor.cpp:149
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "<b>%1</b> 공유의 사용자 정의 옵션을 정의합니다."
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:60
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:300
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:62
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:302
 #, kde-format
 msgid "Always remount this share"
 msgstr "항상 이 공유 다시 마운트"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:97
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:99
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "이 서버에서 CIFS 유닉스 확장을 지원합니다"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:253
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:429
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 주소:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:263
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:439
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:443
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:277
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:453
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Wake-On-LAN 설정"

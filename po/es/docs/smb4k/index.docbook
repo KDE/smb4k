@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Spanish "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -97,7 +95,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-09-30</date>
+>2024-11-03</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1426,7 +1424,9 @@
 ></menuchoice
 >. Dependiendo de sus preferencias, esto desmontara recursos compartidos extranjeros e inaccesibles.</para>
       <para
->Después de un proceso de desmontaje satisfactorio, se le notifica al usuario. Si el desmontaje falla, se mostrará una notificación con el mensaje de error devuelto.</para>
+>Después de un proceso de desmontaje satisfactorio, el usuario es <link linkend="notifications"
+>notificado</link
+>. Si el desmontaje falla, se mostrará una notificación con el mensaje de error devuelto.</para>
     </sect2>
     
 <!--
@@ -1438,7 +1438,7 @@
 >Definiendo preferencias personalizadas</title>
       
       <para
->Para los recursos compartidos seleccionados, se pueden definir preferencias personalizadas. Pulse la acción <menuchoice
+>Para recursos compartidos seleccionados, se pueden definir preferencias personalizadas. Pulse la acción <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1646,8 +1646,8 @@
       </variablelist>
     
       <para
->Para cada recurso compartido montado, usted puede abrir un submenú que contiene las siguientes entradas. Para una información más amplia lea <link linkend="shares_view_actions_popup_menu"
->la sección del menú emergente</link
+>Para cada recurso compartido montado, se puede abrir un submenú que contiene las siguientes entradas. Para más información, lea la sección de vista de recursos compartidos <link linkend="shares_view_actions_popup_menu"
+>Acciones y menú emergente</link
 >.</para>
 
       <variablelist>
@@ -1684,8 +1684,8 @@
           </term>
           <listitem>
             <para
->Abre el editor de preferencias personalizadas para el recurso compartido seleccionado. Para información adicional lea la sección sobre el diálogo <link linkend="network_neighborhood_browser_defining_custom_settings"
->Preferencias personalizadas</link
+>Abre el editor de preferencias personalizadas para el recurso compartido seleccionado. Para más información lea la sección sobre <link linkend="custom_settings"
+>Preferencias por omisión</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1698,10 +1698,10 @@
           </term>
           <listitem>
             <para
->Sincroniza el recurso compartido montado con una copia local o viceversa. Para una información más amplia consulte las secciones sobre las <link linkend="shares_view_actions_popup_menu"
->acciones y el menú emergente</link
-> de la  vista de recursos compartidos y la <link linkend="shares_view_synchronization"
->sincronización</link
+>Sincroniza el recurso compartido montado con una copia local o viceversa. Para más información lea las secciones sobre la vista de recursos compartidos en las secciones <link linkend="shares_view_actions_popup_menu"
+>Acciones y menú emergente</link
+> y <link linkend="shares_view_synchronization"
+>Sincronización</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1734,10 +1734,8 @@
       <para
 >El menú <guimenuitem
 >Marcadores</guimenuitem
->contiene todos sus marcadores organizados conforme a la estructura que usted les dio (consulte también <link linkend="bookmarks_adding"
->añadiendo marcadores</link
-> y <link linkend="bookmarks_editor"
->editando marcadores</link
+>contiene todos sus marcadores organizados conforme a la estructura que usted les dio (vea también la sección <link linkend="bookmarks"
+>Marcadores</link
 >).</para>
 
       <screenshot>
@@ -1786,7 +1784,7 @@
 >diálogo de configuración</link
 >.</para>
       <para
->Estas son las otras opciones de menú son:</para>
+>Estas son las cuatro entradas adicionales del menú:</para>
 
       <variablelist>
         <varlistentry>
@@ -1798,9 +1796,9 @@
           </term>
           <listitem>
             <para
->Abre el <link linkend="network_neighborhood_browser_mounting"
->diálogo</link
-> para los recursos compartidos montados proporcionando la URL, la dirección IP y el dominio o grupo de trabajo.</para>
+>Abra el <link linkend="network_neighborhood_browser_mounting"
+>diálogo de montaje</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2106,7 +2104,7 @@
 >navegador del entorno de red</link
 >, la <link linkend="shares_view"
 >vista de recursos compartidos</link
->. En los controles de la ventana principal, esto se hace seleccionando uno o más recursos compartidos y haciendo clic en la acción <menuchoice
+>. En la ventana principal, esto se hace seleccionando uno o más recursos compartidos y haciendo clic en la acción <menuchoice
 ><guimenuitem
 >Añadir marcador</guimenuitem
 ></menuchoice
@@ -2363,7 +2361,7 @@
       <itemizedlist>
         <listitem
 ><para
->define un montaje individual o las preferencias del navegador para un servidor único o comparta los que se derivan de los valores definidos en el diálogo de configuración,</para
+>define un montaje individual o las preferencias para un servidor único o comparta los que se derivan de los valores definidos en el diálogo de configuración,</para
 ></listitem>
         <listitem
 ><para
@@ -2383,7 +2381,7 @@
 >Añadiendo preferencias personalizadas</title>
 
       <para
->En caso de que quiera definir preferencias individuales para un recurso compartido, tanto en, el <link linkend="network_neighborhood_browser_actions_popup_menu"
+>Para definir preferencias individuales, tanto en, el <link linkend="network_neighborhood_browser_actions_popup_menu"
 >navegador de vecindad de red</link
 > y en la <link linkend="shares_view_actions_popup_menu"
 >vista de recursos compartidos</link
@@ -2413,12 +2411,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>Las preferencias personalizadas que define para un servidor se aplicarán también a sus recursos compartidos.</para>
 
       <para
->Se pueden configurar preferencias individuales en las siguientes secciones / pestañas:</para>
+>Se puede optar por las siguientes preferencias:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Preferencias básicas</guilabel>
+          </term>
+          <listitem>
+            <para
+>Puede establecer la dirección IP y el grupo de trabajo o dominio del servidor aquí. Si selecciona un recurso compartido, puede pulsar el botón <guibutton
+>Siempre montar este recurso compartido</guibutton
+> para montarlo cada vez que se inicia &smb4k; o se carga el <link linkend="profiles"
+>perfil</link
+> respectivo.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2426,10 +2439,8 @@
 > (solo &Linux;) </term>
           <listitem>
             <para
->Puede definir las preferencias comunes relacionadas con el montaje aquí. Pulse el botón <guibutton
->Re-Montar siempre este elemento compartido</guibutton
-> si quiere remontar el recurso compartido seleccionado siempre que inicie &smb4k;. Para obtener información detallada sobre estas preferencias acceda <link linkend="configuration_page_mounting"
->a esta sección</link
+>Puede definir preferencias comunes asociadas al montaje aquí. Para obtener más información detallada sobre estas preferencias mire <link linkend="configuration_page_mounting_common_mount_settings"
+>esta sección</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2477,16 +2488,26 @@
           <listitem>
             <para
 >Para que la funcionalidad «Wake-On-LAN» funcione, debe proporcionar la dirección MAC del servidor que ha seleccionado. Actualmente, &smb4k; no tiene manera de determinar la dirección MAC, por lo que debe averiguarla usted mismo. Después, puede definir si el servidor debe ser levantado con un paquete «Wake-On-LAN» mágico antes de que el entorno de red sea escaneado o uno de sus recursos compartidos montado.</para>
+            <para
+>Tenga en cuenta que necesita activar la funcionalidad Wake-On-LAN en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>diálogo de configuración</link
+> para aprovechar estas preferencias.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->El botón <guibutton
->Predeterminados</guibutton
-> está activado si las entradas del diálogo difieren de las preferencias que usted definió en el diálogo de configuración. Pulsándolo, puede reiniciar las entradas del diálogo a los valores predeterminados. El botón <guibutton
->Aceptar</guibutton
-> estará activado si cambia las preferencias del diálogo. Al pulsarlo salvará las preferencias personalizadas y se cerrará el diálogo.</para>
+>Los botones <guibutton
+>Reiniciar</guibutton
+> y <guibutton
+>Guardar</guibutton
+> se activan si cambia algunos valores en el editor. Con el botón <guibutton
+>Reiniciar</guibutton
+> puede reiniciar las entradas en el diálogo a sus valores iniciales. Pulsando <guibutton
+>Guardar</guibutton
+> guardará las preferencias personalizadas y cerrará el diálogo. Para borrar las preferencias personalizadas, use el <link linkend="configuration_page_custom_settings"
+>diálogo de configuración</link
+>.</para>
       <para
 >Tenga en cuenta que nn BSD, el diálogo contiene menos entradas que las que aparecen si se ejecuta en &Linux;, debido a que varias de las opciones no están soportadas.</para>
     </sect2>
@@ -8175,17 +8196,15 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Perfiles</title>
 
       <para
->Aquí, usted puede gestionar sus perfiles. Por omisión, existen dos perfiles predefinidos (<guilabel
+>Aquí puede administrar sus perfiles. Por omisión, hay dos predefinidos (<guilabel
 >Casa</guilabel
 > y <guilabel
 >Trabajo</guilabel
->). Cuando usted active el uso de perfiles, la primera entrada de la lista será el perfil activo.</para>
-      <para
->Para añadir un nuevo perfil, introduzcalo en la línea de edición y pulse el botón <guibutton
+>). Para añadir un nuevo perfil, introduzcalo en la línea de edición y pulse el botón <guibutton
 >Añadir</guibutton
 >. Las entradas pueden borrarse al seleccionarlas, pulsando el botón <guibutton
 >Eliminar</guibutton
->. Para cambiar el órden, puede usar los botones <guibutton
+>. Para cambiar el orden, puede usar los botones <guibutton
 >Mover arriba</guibutton
 > y <guibutton
 >Mover abajo</guibutton
@@ -8193,7 +8212,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Establecer como activo</guibutton
 >. Para renombrar un perfil, selecciónelo y pulse el botón <guibutton
 >Renombrar</guibutton
->. Entonces podrña cambiar el nombre en el control de la lista. Todas las preferencias del perfil renombrado se migrarán automáticamente. Para deshacer sus cambios, pulse el botón <guibutton
+>. Entonces podrá cambiar el nombre en el control de la lista. Todas las preferencias del perfil renombrado se migrarán automáticamente. Para deshacer sus cambios, pulse el botón <guibutton
 >Reiniciar</guibutton
 >.</para>
       <para
