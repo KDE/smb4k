@@ -513,10 +513,10 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
     //
     QList<WorkgroupPtr> discoveredWorkgroups = job->workgroups();
 
-    for (const WorkgroupPtr &newWorkgroup : qAsConst(discoveredWorkgroups)) {
+    for (const WorkgroupPtr &newWorkgroup : std::as_const(discoveredWorkgroups)) {
         bool foundWorkgroup = false;
 
-        for (const WorkgroupPtr &workgroup : qAsConst(d->tempWorkgroupList)) {
+        for (const WorkgroupPtr &workgroup : std::as_const(d->tempWorkgroupList)) {
             if (workgroup->workgroupName() == newWorkgroup->workgroupName()) {
                 foundWorkgroup = true;
                 break;
@@ -540,7 +540,7 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
 
             bool foundWorkgroup = false;
 
-            for (const WorkgroupPtr &w : qAsConst(d->tempWorkgroupList)) {
+            for (const WorkgroupPtr &w : std::as_const(d->tempWorkgroupList)) {
                 if (w->workgroupName() == workgroup->workgroupName()) {
                     foundWorkgroup = true;
                     break;
@@ -559,7 +559,7 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
         }
 
         // Add new workgroups and update existing ones
-        for (const WorkgroupPtr &workgroup : qAsConst(d->tempWorkgroupList)) {
+        for (const WorkgroupPtr &workgroup : std::as_const(d->tempWorkgroupList)) {
             if (!findWorkgroup(workgroup->workgroupName())) {
                 addWorkgroup(workgroup);
 
@@ -577,7 +577,7 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
                 // Check if the master browser changed
                 QList<HostPtr> members = workgroupMembers(workgroup);
 
-                for (const HostPtr &host : qAsConst(members)) {
+                for (const HostPtr &host : std::as_const(members)) {
                     if (workgroup->masterBrowserName() == host->hostName()) {
                         host->setIsMasterBrowser(true);
 
@@ -609,7 +609,7 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
     //
     QList<HostPtr> discoveredHosts = job->hosts();
 
-    for (const HostPtr &newHost : qAsConst(discoveredHosts)) {
+    for (const HostPtr &newHost : std::as_const(discoveredHosts)) {
         bool foundHost = false;
 
         QMutableListIterator<HostPtr> it(d->tempHostList);
@@ -650,7 +650,7 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
 
             bool foundHost = false;
 
-            for (const HostPtr &h : qAsConst(d->tempHostList)) {
+            for (const HostPtr &h : std::as_const(d->tempHostList)) {
                 if (h->workgroupName() == host->workgroupName() && h->hostName() == host->hostName()) {
                     foundHost = true;
                     break;
@@ -669,7 +669,7 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
         }
 
         // Add new hosts and update existing ones
-        for (const HostPtr &host : qAsConst(d->tempHostList)) {
+        for (const HostPtr &host : std::as_const(d->tempHostList)) {
             if (host->hostName() == workgroup->masterBrowserName()) {
                 host->setIsMasterBrowser(true);
             } else {
@@ -719,7 +719,7 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
 
         bool foundShare = false;
 
-        for (const SharePtr &s : qAsConst(discoveredShares)) {
+        for (const SharePtr &s : std::as_const(discoveredShares)) {
             if (s->workgroupName() == share->workgroupName() && s->url().matches(share->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
                 foundShare = true;
                 break;
@@ -734,7 +734,7 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
     //
     // Add new shares and update existing ones
     //
-    for (const SharePtr &share : qAsConst(discoveredShares)) {
+    for (const SharePtr &share : std::as_const(discoveredShares)) {
         // Process only those shares that the user wants to see
         if (share->isHidden() && !Smb4KSettings::detectHiddenShares()) {
             continue;
@@ -760,7 +760,7 @@ void Smb4KClient::processFiles(Smb4KClientBaseJob *job)
     QList<FilePtr> discoveredFiles = job->files();
     QList<FilePtr> list;
 
-    for (const FilePtr &file : qAsConst(discoveredFiles)) {
+    for (const FilePtr &file : std::as_const(discoveredFiles)) {
         if (file->isHidden() && !Smb4KSettings::previewHiddenItems()) {
             continue;
         }

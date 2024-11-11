@@ -142,7 +142,7 @@ QStringList Smb4KHomesSharesHandler::homesUsers(const SharePtr &share)
     QStringList userList;
 
     if (!d->homesUsers.isEmpty()) {
-        for (const Smb4KHomesUsers *users : qAsConst(d->homesUsers)) {
+        for (const Smb4KHomesUsers *users : std::as_const(d->homesUsers)) {
             if (users->profile() == Smb4KSettings::activeProfile()
                 && QString::compare(share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                     users->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort))
@@ -314,7 +314,7 @@ void Smb4KHomesSharesHandler::writeUserNames()
             xmlWriter.writeStartElement(QStringLiteral("homes_shares"));
             xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("2.0"));
 
-            for (Smb4KHomesUsers *users : qAsConst(d->homesUsers)) {
+            for (Smb4KHomesUsers *users : std::as_const(d->homesUsers)) {
                 xmlWriter.writeStartElement(QStringLiteral("homes_share"));
                 xmlWriter.writeAttribute(QStringLiteral("url"), users->url().toString(QUrl::RemoveUserInfo | QUrl::StripTrailingSlash));
                 xmlWriter.writeAttribute(QStringLiteral("profile"), users->profile());
@@ -323,7 +323,7 @@ void Smb4KHomesSharesHandler::writeUserNames()
 
                 QStringList userList = users->userList();
 
-                for (const QString &user : qAsConst(userList)) {
+                for (const QString &user : std::as_const(userList)) {
                     xmlWriter.writeTextElement(QStringLiteral("user"), user);
                 }
 

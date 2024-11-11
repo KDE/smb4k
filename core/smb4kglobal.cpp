@@ -41,7 +41,7 @@ WorkgroupPtr Smb4KGlobal::findWorkgroup(const QString &name)
 
     mutex.lock();
 
-    for (const WorkgroupPtr &w : qAsConst(p->workgroupsList)) {
+    for (const WorkgroupPtr &w : std::as_const(p->workgroupsList)) {
         if (QString::compare(w->workgroupName(), name, Qt::CaseInsensitive) == 0) {
             workgroup = w;
             break;
@@ -154,7 +154,7 @@ HostPtr Smb4KGlobal::findHost(const QString &name, const QString &workgroup)
 
     mutex.lock();
 
-    for (const HostPtr &h : qAsConst(p->hostsList)) {
+    for (const HostPtr &h : std::as_const(p->hostsList)) {
         if ((workgroup.isEmpty() || QString::compare(h->workgroupName(), workgroup, Qt::CaseInsensitive) == 0)
             && QString::compare(h->hostName(), name, Qt::CaseInsensitive) == 0) {
             host = h;
@@ -263,7 +263,7 @@ QList<HostPtr> Smb4KGlobal::workgroupMembers(WorkgroupPtr workgroup)
 
     mutex.lock();
 
-    for (const HostPtr &h : qAsConst(p->hostsList)) {
+    for (const HostPtr &h : std::as_const(p->hostsList)) {
         if (QString::compare(h->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive) == 0) {
             hosts << h;
         }
@@ -285,7 +285,7 @@ SharePtr Smb4KGlobal::findShare(const QUrl &url, const QString &workgroup)
 
     mutex.lock();
 
-    for (const SharePtr &s : qAsConst(p->sharesList)) {
+    for (const SharePtr &s : std::as_const(p->sharesList)) {
         if (QString::compare(s->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                              url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                              Qt::CaseInsensitive)
@@ -321,7 +321,7 @@ bool Smb4KGlobal::addShare(SharePtr share)
             QList<SharePtr> mountedShares = findShareByUrl(share->url());
 
             if (!mountedShares.isEmpty()) {
-                for (const SharePtr &s : qAsConst(mountedShares)) {
+                for (const SharePtr &s : std::as_const(mountedShares)) {
                     if (!s->isForeign()) {
                         share->setMountData(s.data());
                         break;
@@ -366,7 +366,7 @@ bool Smb4KGlobal::updateShare(SharePtr share)
             QList<SharePtr> mountedShares = findShareByUrl(share->url());
 
             if (!mountedShares.isEmpty()) {
-                for (const SharePtr &s : qAsConst(mountedShares)) {
+                for (const SharePtr &s : std::as_const(mountedShares)) {
                     if (!s->isForeign()) {
                         share->setMountData(s.data());
                         break;
@@ -443,7 +443,7 @@ QList<SharePtr> Smb4KGlobal::sharedResources(HostPtr host)
 
     mutex.lock();
 
-    for (const SharePtr &s : qAsConst(p->sharesList)) {
+    for (const SharePtr &s : std::as_const(p->sharesList)) {
         if (QString::compare(s->hostName(), host->hostName(), Qt::CaseInsensitive) == 0
             && QString::compare(s->workgroupName(), host->workgroupName(), Qt::CaseInsensitive) == 0) {
             shares += s;
@@ -467,7 +467,7 @@ SharePtr Smb4KGlobal::findShareByPath(const QString &path)
     mutex.lock();
 
     if (!path.isEmpty() && !p->mountedSharesList.isEmpty()) {
-        for (const SharePtr &s : qAsConst(p->mountedSharesList)) {
+        for (const SharePtr &s : std::as_const(p->mountedSharesList)) {
             if (QString::compare(s->path(), path, Qt::CaseInsensitive) == 0
                 || (!s->isInaccessible() && QString::compare(s->canonicalPath(), path, Qt::CaseInsensitive) == 0)) {
                 share = s;
@@ -488,7 +488,7 @@ QList<SharePtr> Smb4KGlobal::findShareByUrl(const QUrl &url)
     mutex.lock();
 
     if (!url.isEmpty() && url.isValid() && !p->mountedSharesList.isEmpty()) {
-        for (const SharePtr &s : qAsConst(p->mountedSharesList)) {
+        for (const SharePtr &s : std::as_const(p->mountedSharesList)) {
             if (QString::compare(s->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                  url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                  Qt::CaseInsensitive)
@@ -510,7 +510,7 @@ QList<SharePtr> Smb4KGlobal::findInaccessibleShares()
 
     mutex.lock();
 
-    for (const SharePtr &s : qAsConst(p->mountedSharesList)) {
+    for (const SharePtr &s : std::as_const(p->mountedSharesList)) {
         if (s->isInaccessible()) {
             inaccessibleShares += s;
         }
@@ -566,7 +566,7 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
 
             p->onlyForeignShares = true;
 
-            for (const SharePtr &s : qAsConst(p->mountedSharesList)) {
+            for (const SharePtr &s : std::as_const(p->mountedSharesList)) {
                 if (!s->isForeign()) {
                     p->onlyForeignShares = false;
                     break;
@@ -681,7 +681,7 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
             share.clear();
         }
 
-        for (const SharePtr &s : qAsConst(p->mountedSharesList)) {
+        for (const SharePtr &s : std::as_const(p->mountedSharesList)) {
             if (!s->isForeign()) {
                 p->onlyForeignShares = false;
                 break;

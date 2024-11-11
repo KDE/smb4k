@@ -138,7 +138,7 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
 
         // Get the IP address for the host. For the time being, prefer the
         // IPv4 address over the IPv6 address.
-        for (const QHostAddress &addr : qAsConst(addresses)) {
+        for (const QHostAddress &addr : std::as_const(addresses)) {
             // We only use global addresses.
             if (addr.isGlobal()) {
                 if (addr.protocol() == QAbstractSocket::IPv4Protocol) {
@@ -159,7 +159,7 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
 
             // Get the IP address for the host. For the time being, prefer the
             // IPv4 address over the IPv6 address.
-            for (const QHostAddress &addr : qAsConst(addresses)) {
+            for (const QHostAddress &addr : std::as_const(addresses)) {
                 // We only use global addresses.
                 if (addr.isGlobal()) {
                     if (addr.protocol() == QAbstractSocket::IPv4Protocol) {
@@ -1370,7 +1370,7 @@ void Smb4KDnsDiscoveryJob::slotServiceAdded(KDNSSD::RemoteService::Ptr service)
         //
         bool foundWorkgroup = false;
 
-        for (const WorkgroupPtr &w : qAsConst(*pWorkgroups)) {
+        for (const WorkgroupPtr &w : std::as_const(*pWorkgroups)) {
             if (QString::compare(w->workgroupName(), service->domain(), Qt::CaseInsensitive) == 0) {
                 foundWorkgroup = true;
                 break;
@@ -1409,7 +1409,7 @@ void Smb4KDnsDiscoveryJob::slotServiceAdded(KDNSSD::RemoteService::Ptr service)
         //
         bool foundServer = false;
 
-        for (const HostPtr &h : qAsConst(*pHosts)) {
+        for (const HostPtr &h : std::as_const(*pHosts)) {
             //
             // On a local network there will most likely be no two servers with
             // identical name, thus, to avoid duplicates, only test the hostname
@@ -1562,7 +1562,7 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                 if (!response.isFault()) {
                     KDSoapValueList childValues = response.childValues();
 
-                    for (const KDSoapValue &value : qAsConst(childValues)) {
+                    for (const KDSoapValue &value : std::as_const(childValues)) {
                         QString entry = value.childValues()
                                             .child(QStringLiteral("Relationship"))
                                             .childValues()
@@ -1593,7 +1593,7 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                             //
                             bool foundWorkgroup = false;
 
-                            for (const WorkgroupPtr &w : qAsConst(*pWorkgroups)) {
+                            for (const WorkgroupPtr &w : std::as_const(*pWorkgroups)) {
                                 if (QString::compare(w->workgroupName(), workgroupName, Qt::CaseInsensitive) == 0) {
                                     foundWorkgroup = true;
                                     break;
@@ -1658,7 +1658,7 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                                 //
                                 bool foundServer = false;
 
-                                for (const HostPtr &h : qAsConst(*pHosts)) {
+                                for (const HostPtr &h : std::as_const(*pHosts)) {
                                     if (QString::compare(h->hostName(), hostName, Qt::CaseInsensitive) == 0
                                         && QString::compare(h->workgroupName(), workgroupName, Qt::CaseInsensitive) == 0) {
                                         foundServer = true;
@@ -1756,7 +1756,7 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
             if (!response.isFault()) {
                 KDSoapValueList childValues = response.childValues();
 
-                for (const KDSoapValue &value : qAsConst(childValues)) {
+                for (const KDSoapValue &value : std::as_const(childValues)) {
                     QString entry = value.childValues()
                                         .child(QStringLiteral("Relationship"))
                                         .childValues()
@@ -1787,7 +1787,7 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
                         //
                         bool foundWorkgroup = false;
 
-                        for (const WorkgroupPtr &w : qAsConst(*pWorkgroups)) {
+                        for (const WorkgroupPtr &w : std::as_const(*pWorkgroups)) {
                             if (QString::compare(w->workgroupName(), workgroupName, Qt::CaseInsensitive) == 0) {
                                 foundWorkgroup = true;
                                 break;
@@ -1852,7 +1852,7 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
                             //
                             bool foundServer = false;
 
-                            for (const HostPtr &h : qAsConst(*pHosts)) {
+                            for (const HostPtr &h : std::as_const(*pHosts)) {
                                 if (QString::compare(h->hostName(), hostName, Qt::CaseInsensitive) == 0
                                     && QString::compare(h->workgroupName(), workgroupName, Qt::CaseInsensitive) == 0) {
                                     foundServer = true;

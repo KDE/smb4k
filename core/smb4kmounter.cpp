@@ -150,7 +150,7 @@ void Smb4KMounter::triggerRemounts(bool fillList)
         //
         // Process the list and honor the settings the user chose
         //
-        for (const CustomSettingsPtr &option : qAsConst(options)) {
+        for (const CustomSettingsPtr &option : std::as_const(options)) {
             //
             // Skip one time remount shares, if needed
             //
@@ -164,7 +164,7 @@ void Smb4KMounter::triggerRemounts(bool fillList)
             QList<SharePtr> mountedShares = findShareByUrl(option->url());
             bool remountShare = true;
 
-            for (const SharePtr &share : qAsConst(mountedShares)) {
+            for (const SharePtr &share : std::as_const(mountedShares)) {
                 if (!share->isForeign()) {
                     remountShare = false;
                     break;
@@ -177,7 +177,7 @@ void Smb4KMounter::triggerRemounts(bool fillList)
             if (remountShare) {
                 bool insertShare = true;
 
-                for (const SharePtr &share : qAsConst(d->remounts)) {
+                for (const SharePtr &share : std::as_const(d->remounts)) {
                     if (QString::compare(share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                          option->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort))
                         == 0) {
@@ -225,7 +225,7 @@ void Smb4KMounter::import(bool checkInaccessible)
     //
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
 
-    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints)) {
+    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : std::as_const(mountPoints)) {
         if (!mountPoint->isOnNetwork()) {
             continue;
         }
@@ -250,7 +250,7 @@ void Smb4KMounter::import(bool checkInaccessible)
 
             QStringList mountOptions = mountPoint->mountOptions();
 
-            for (const QString &option : qAsConst(mountOptions)) {
+            for (const QString &option : std::as_const(mountOptions)) {
                 if (option.startsWith(QStringLiteral("domain=")) || option.startsWith(QStringLiteral("workgroup="))) {
                     share->setWorkgroupName(option.section(QStringLiteral("="), 1, 1).trimmed());
                 } else if (option.startsWith(QStringLiteral("addr="))) {
@@ -418,7 +418,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         QList<SharePtr> mountedShares = findShareByUrl(url);
         bool isMounted = false;
 
-        for (const SharePtr &s : qAsConst(mountedShares)) {
+        for (const SharePtr &s : std::as_const(mountedShares)) {
             if (!s->isForeign()) {
                 isMounted = true;
                 break;
@@ -1722,12 +1722,12 @@ void Smb4KMounter::slotAboutToQuit()
     QStringList hostDirs = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
     QStringList mountpoints;
 
-    for (const QString &hostDir : qAsConst(hostDirs)) {
+    for (const QString &hostDir : std::as_const(hostDirs)) {
         dir.cd(hostDir);
 
         QStringList shareDirs = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
 
-        for (const QString &shareDir : qAsConst(shareDirs)) {
+        for (const QString &shareDir : std::as_const(shareDirs)) {
             dir.cd(shareDir);
             mountpoints << dir.absolutePath();
             dir.cdUp();
@@ -1737,12 +1737,12 @@ void Smb4KMounter::slotAboutToQuit()
     }
 
     // Remove those mountpoints where a share is actually mounted.
-    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints)) {
+    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : std::as_const(mountPoints)) {
         mountpoints.removeOne(mountPoint->mountPoint());
     }
 
     // Remove the empty mountpoints.
-    for (const QString &mp : qAsConst(mountpoints)) {
+    for (const QString &mp : std::as_const(mountpoints)) {
         dir.cd(mp);
         dir.rmdir(dir.canonicalPath());
 
