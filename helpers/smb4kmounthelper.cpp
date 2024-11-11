@@ -38,7 +38,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     bool online = false;
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
-    for (const QNetworkInterface &interface : qAsConst(interfaces)) {
+    for (const QNetworkInterface &interface : std::as_const(interfaces)) {
         if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online) {
             online = true;
             break;
@@ -162,7 +162,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     bool mountPointOk = false;
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
 
-    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints)) {
+    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : std::as_const(mountPoints)) {
         if (args[QStringLiteral("mh_mountpoint")].toString() == mountPoint->mountPoint()
             && (mountPoint->mountType() == QStringLiteral("cifs") || mountPoint->mountType() == QStringLiteral("smb3")
                 || mountPoint->mountType() == QStringLiteral("smbfs"))) {
@@ -205,7 +205,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     bool online = false;
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
-    for (const QNetworkInterface &interface : qAsConst(interfaces)) {
+    for (const QNetworkInterface &interface : std::as_const(interfaces)) {
         if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online) {
             online = true;
             break;
