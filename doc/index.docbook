@@ -4,8 +4,6 @@
   <!ENTITY smb4k "<application>Smb4K</application>">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym>CIFS</acronym>">
   <!ENTITY SMB3 "<acronym>SMB3</acronym>">
   <!ENTITY Samba "<application>Samba</application>">
@@ -36,7 +34,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-11-03</date>
+  <date>2024-11-11</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -1224,7 +1222,7 @@
 
       <para>Besides the global settings that can be defined in the <link linkend="configuration">configuration dialog</link>, &smb4k; offers the possibility to configure individual settings per server or share. You can make use of these custom settings if you want to</para>
       <itemizedlist>
-        <listitem><para>define individual mount or browse settings for a single server or share that deviate from the values defined in the configuration dialog,</para></listitem>
+        <listitem><para>define individual browse or mount settings for a single server or share that deviate from the values defined in the configuration dialog,</para></listitem>
         <listitem><para>define a server that should be awakened prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_advanced_settings_wake_on_lan">here</link>),</para></listitem>
         <listitem><para>always mount a particular share on start-up or when the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
@@ -1233,7 +1231,7 @@
     <sect2 id="custom_settings_adding">
       <title>Adding Custom Settings</title>
 
-      <para>In the case you want to define custom settings for a share, in both, the <link linkend="network_neighborhood_browser_actions_popup_menu">network neighborhood browser</link> and the <link linkend="shares_view_actions_popup_menu">shares view</link>, you can open the editor for the custom settings by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> menu entry.</para>
+      <para>To define custom settings, in both, the <link linkend="network_neighborhood_browser_actions_popup_menu">network neighborhood browser</link> and the <link linkend="shares_view_actions_popup_menu">shares view</link>, you can open the editor for the custom settings by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> menu entry.</para>
     
       <screenshot>
         <screeninfo>Screenshot of the custom settings editor for a share</screeninfo>
@@ -1247,17 +1245,25 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para>Custom settings that you defined for a server will also be applied to its shares.</para>
 
-      <para>Individual settings can be made in the following sections / tabs:</para>
+      <para>The following settings can be made:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel>Basic Settings</guilabel>
+          </term>
+          <listitem>
+            <para>You can set the IP address and the workgroup or domain of the server here. If you selected a share, you can also check the <guibutton>Always remount this share</guibutton> button to remount it every time you start &smb4k; or load the respective <link linkend="profiles">profile</link>.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term>
             <guilabel>Common Mount Settings</guilabel> (&Linux; only)
           </term>
           <listitem>
-            <para>You can define common settings related to mounting here. Check the <guibutton>Always remount this share</guibutton> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings">this section</link>.</para>
+            <para>You can define common settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings">this section</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1290,11 +1296,12 @@
           </term>
           <listitem>
             <para>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
+            <para>Please note that you need to enable the Wake-On-LAN capabilities in the <link linkend="configuration_page_network_advanced_settings_wake_on_lan">configuration dialog</link> to take advantage of these settings.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
-      <para>The <guibutton>Defaults</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will save the custom settings and close the dialog.</para>
+      <para>With the <guibutton>Defaults</guibutton> button you can reset all settings in the editor to their default values as they are defined in the configuration dialog. Custom settings that only contain default values are removed. Using the <guibutton>Reset</guibutton> button, you can reset the entries in the dialog to their initial values. Clicking the <guibutton>Save</guibutton> button saves the custom settings and closes the dialog.</para>
       <para>Please note that under BSD the dialog contains fewer entries than if you run &Linux;, because several of the options are not supported.</para>
     </sect2>
 
