@@ -128,7 +128,7 @@ void Smb4KCustomSettingsManager::clearRemounts(bool force)
 {
     QList<CustomSettingsPtr> settingsList = customSettings(false);
 
-    for (const CustomSettingsPtr &settings : qAsConst(settingsList)) {
+    for (const CustomSettingsPtr &settings : std::as_const(settingsList)) {
         if (settings->type() == Share) {
             if (settings->remount() == Smb4KCustomSettings::RemountOnce) {
                 settings->setRemount(Smb4KCustomSettings::UndefinedRemount);
@@ -151,7 +151,7 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::sharesToRemount()
     QList<CustomSettingsPtr> settingsList = customSettings(false);
     QList<CustomSettingsPtr> remountsList;
 
-    for (const CustomSettingsPtr &settings : qAsConst(settingsList)) {
+    for (const CustomSettingsPtr &settings : std::as_const(settingsList)) {
         if (settings->remount() != Smb4KCustomSettings::UndefinedRemount) {
             remountsList << settings;
         }
@@ -183,7 +183,7 @@ CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const QUrl &url
     if (url.isValid() && url.scheme() == QStringLiteral("smb")) {
         QList<CustomSettingsPtr> settingsList = customSettings(false);
 
-        for (const CustomSettingsPtr &cs : qAsConst(settingsList)) {
+        for (const CustomSettingsPtr &cs : std::as_const(settingsList)) {
             if (cs->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)
                 == url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
                 settings = cs;
@@ -199,7 +199,7 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::customSettings(bool without
 {
     QList<CustomSettingsPtr> settingsList;
 
-    for (const CustomSettingsPtr &settings : qAsConst(d->customSettings)) {
+    for (const CustomSettingsPtr &settings : std::as_const(d->customSettings)) {
         if (Smb4KSettings::useProfiles() && (settings->profile() != Smb4KProfileManager::self()->activeProfile())) {
             continue;
         }
@@ -233,7 +233,7 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::wakeOnLanEntries() const
     QList<CustomSettingsPtr> wakeOnLanList;
     QList<CustomSettingsPtr> settingsList = customSettings();
 
-    for (const CustomSettingsPtr &settings : qAsConst(settingsList)) {
+    for (const CustomSettingsPtr &settings : std::as_const(settingsList)) {
         if (!settings->macAddress().isEmpty() && (settings->wakeOnLanSendBeforeNetworkScan() || settings->wakeOnLanSendBeforeMount())) {
             wakeOnLanList << settings;
         }
@@ -289,7 +289,7 @@ bool Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
         if (settings->type() == Host) {
             QList<CustomSettingsPtr> customSettingsList = customSettings(true);
 
-            for (const CustomSettingsPtr &cs : qAsConst(customSettingsList)) {
+            for (const CustomSettingsPtr &cs : std::as_const(customSettingsList)) {
                 // Since only the URL is important, do not check for the workgroup.
                 // Also, if the workgroup is a DNS-SD domain, it is most likely not
                 // a valid SMB workgroup or domain.
@@ -600,7 +600,7 @@ void Smb4KCustomSettingsManager::write()
         xmlWriter.writeStartElement(QStringLiteral("custom_options"));
         xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("3.0"));
 
-        for (const CustomSettingsPtr &settings : qAsConst(d->customSettings)) {
+        for (const CustomSettingsPtr &settings : std::as_const(d->customSettings)) {
             if (settings->hasCustomSettings()) {
                 xmlWriter.writeStartElement(QStringLiteral("options"));
                 xmlWriter.writeAttribute(QStringLiteral("type"), settings->type() == Host ? QStringLiteral("host") : QStringLiteral("share"));
@@ -658,7 +658,7 @@ void Smb4KCustomSettingsManager::slotProfileRemoved(const QString &name)
 
 void Smb4KCustomSettingsManager::slotProfileMigrated(const QString &oldName, const QString &newName)
 {
-    for (const CustomSettingsPtr &settings : qAsConst(d->customSettings)) {
+    for (const CustomSettingsPtr &settings : std::as_const(d->customSettings)) {
         if (oldName == settings->profile()) {
             settings->setProfile(newName);
         }

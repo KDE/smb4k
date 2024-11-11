@@ -131,7 +131,7 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
     QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
     if (!url.isEmpty() && url.isValid() && !temporalBookmarkList.isEmpty()) {
-        for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
+        for (const BookmarkPtr &b : std::as_const(temporalBookmarkList)) {
             // NOTE: Since also user provided URLs can be bookmarked, we cannot use
             // QUrl::matches() here, because it does not allow for case insensitive
             // comparison.
@@ -153,7 +153,7 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
     BookmarkPtr bookmark;
     QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
-    for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
+    for (const BookmarkPtr &b : std::as_const(temporalBookmarkList)) {
         if (b->label().toUpper() == label.toUpper()) {
             bookmark = b;
             break;
@@ -168,7 +168,7 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarkList() const
     QList<BookmarkPtr> bookmarks;
 
     if (Smb4KSettings::useProfiles()) {
-        for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
+        for (const BookmarkPtr &bookmark : std::as_const(d->bookmarks)) {
             if (bookmark->profile() == Smb4KProfileManager::self()->activeProfile()) {
                 bookmarks << bookmark;
             }
@@ -185,7 +185,7 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarkList(const QString &categoryNam
     QList<BookmarkPtr> bookmarks;
     QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
-    for (const BookmarkPtr &bookmark : qAsConst(temporalBookmarkList)) {
+    for (const BookmarkPtr &bookmark : std::as_const(temporalBookmarkList)) {
         if (categoryName == bookmark->categoryName()) {
             bookmarks << bookmark;
         }
@@ -199,7 +199,7 @@ QStringList Smb4KBookmarkHandler::categoryList() const
     QStringList categories;
     QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
-    for (const BookmarkPtr &bookmark : qAsConst(temporalBookmarkList)) {
+    for (const BookmarkPtr &bookmark : std::as_const(temporalBookmarkList)) {
         if (!categories.contains(bookmark->categoryName())) {
             categories << bookmark->categoryName();
         }
@@ -365,7 +365,7 @@ void Smb4KBookmarkHandler::write()
             xmlWriter.writeStartElement(QStringLiteral("bookmarks"));
             xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("3.1"));
 
-            for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
+            for (const BookmarkPtr &bookmark : std::as_const(d->bookmarks)) {
                 if (!bookmark->url().isValid()) {
                     Smb4KNotification::invalidURLPassed();
                     continue;
@@ -412,7 +412,7 @@ void Smb4KBookmarkHandler::slotProfileRemoved(const QString &name)
 
 void Smb4KBookmarkHandler::slotProfileMigrated(const QString &oldName, const QString &newName)
 {
-    for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
+    for (const BookmarkPtr &bookmark : std::as_const(d->bookmarks)) {
         if (oldName == bookmark->profile()) {
             bookmark->setProfile(newName);
             continue;

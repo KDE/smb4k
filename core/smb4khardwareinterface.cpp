@@ -83,7 +83,7 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     //
     QList<Solid::Device> allDevices = Solid::Device::allDevices();
 
-    for (const Solid::Device &device : qAsConst(allDevices)) {
+    for (const Solid::Device &device : std::as_const(allDevices)) {
         const Solid::DeviceInterface *iface = device.asDeviceInterface(Solid::DeviceInterface::NetworkShare);
         const Solid::NetworkShare *networkShare = qobject_cast<const Solid::NetworkShare *>(iface);
 
@@ -162,7 +162,7 @@ void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
     bool online = false;
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
-    for (const QNetworkInterface &interface : qAsConst(interfaces)) {
+    for (const QNetworkInterface &interface : std::as_const(interfaces)) {
         if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning) {
             online = true;
             break;
