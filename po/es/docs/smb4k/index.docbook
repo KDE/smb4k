@@ -97,7 +97,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-09-30</date>
+>2024-11-03</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1078,7 +1078,7 @@
       <para
 >Hay varias acciones definidas en la vista de recursos compartidos. Se encuentran en la barra de menús bajo <guimenu
 >Recursos compartidos</guimenu
->, en la barra de herramientas y en el menú emergente. Las siguientes opciones están disponibles:</para>
+>, en la barra de herramientas y en el menú emergente. Las siguientes acciones están disponibles:</para>
 
       <variablelist>
         <varlistentry>
@@ -1224,7 +1224,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Sincronizar</link
-> un recurso compartido con una copia local o viceversa. Esta entrada de menú solo estará activada si ha instalado el programa <ulink url="man:/rsync"
+> un recurso compartido con una copia local o viceversa. Esta acción solo estará activada si ha instalado el programa <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1250,7 +1250,7 @@
           </term>
           <listitem>
             <para
->Abre la carpeta base de un recurso compartido en &konsole;. Esta opción de menú es útil si usted necesita ejecutar «shell scripts», &etc;</para>
+>Abre la carpeta base de un recurso compartido en &konsole;. Esta acción es útil si usted necesita ejecutar «shell scripts», &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1426,7 +1426,9 @@
 ></menuchoice
 >. Dependiendo de sus preferencias, esto desmontara recursos compartidos extranjeros e inaccesibles.</para>
       <para
->Después de un proceso de desmontaje satisfactorio, se le notifica al usuario. Si el desmontaje falla, se mostrará una notificación con el mensaje de error devuelto.</para>
+>Después de un proceso de desmontaje satisfactorio, el usuario es <link linkend="notifications"
+>notificado</link
+>. Si el desmontaje falla, se mostrará una notificación con el mensaje de error devuelto.</para>
     </sect2>
     
 <!--
@@ -1438,7 +1440,7 @@
 >Definiendo preferencias personalizadas</title>
       
       <para
->Para los recursos compartidos seleccionados, se pueden definir preferencias personalizadas. Pulse la acción <menuchoice
+>Para recursos compartidos seleccionados, se pueden definir preferencias personalizadas. Pulse la acción <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1448,9 +1450,9 @@
 ><guimenuitem
 >Añadir preferencias personalizadas</guimenuitem
 ></menuchoice
-> para abrir el diálogo de preferencias personalizadas. Para más detalles, consulte <link linkend="network_neighborhood_browser_defining_custom_settings"
->aquí</link
->.</para>
+> para abrir el diálogo de preferencias personalizadas. Lea la sección <link linkend="custom_settings"
+>Preferencias personalizadas</link
+></para>
     </sect2>
     
 <!-- 
@@ -1646,8 +1648,8 @@
       </variablelist>
     
       <para
->Para cada recurso compartido montado, usted puede abrir un submenú que contiene las siguientes entradas. Para una información más amplia lea <link linkend="shares_view_actions_popup_menu"
->la sección del menú emergente</link
+>Para cada recurso compartido montado, se puede abrir un submenú que contiene las siguientes entradas. Para más información, lea la sección de vista de recursos compartidos <link linkend="shares_view_actions_popup_menu"
+>Acciones y menú emergente</link
 >.</para>
 
       <variablelist>
@@ -1684,8 +1686,8 @@
           </term>
           <listitem>
             <para
->Abre el editor de preferencias personalizadas para el recurso compartido seleccionado. Para información adicional lea la sección sobre el diálogo <link linkend="network_neighborhood_browser_defining_custom_settings"
->Preferencias personalizadas</link
+>Abre el editor de preferencias personalizadas para el recurso compartido seleccionado. Para más información lea la sección sobre <link linkend="custom_settings"
+>Preferencias por omisión</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1698,10 +1700,10 @@
           </term>
           <listitem>
             <para
->Sincroniza el recurso compartido montado con una copia local o viceversa. Para una información más amplia consulte las secciones sobre las <link linkend="shares_view_actions_popup_menu"
->acciones y el menú emergente</link
-> de la  vista de recursos compartidos y la <link linkend="shares_view_synchronization"
->sincronización</link
+>Sincroniza el recurso compartido montado con una copia local o viceversa. Para más información lea las secciones sobre la vista de recursos compartidos en las secciones <link linkend="shares_view_actions_popup_menu"
+>Acciones y menú emergente</link
+> y <link linkend="shares_view_synchronization"
+>Sincronización</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1734,10 +1736,8 @@
       <para
 >El menú <guimenuitem
 >Marcadores</guimenuitem
->contiene todos sus marcadores organizados conforme a la estructura que usted les dio (consulte también <link linkend="bookmarks_adding"
->añadiendo marcadores</link
-> y <link linkend="bookmarks_editor"
->editando marcadores</link
+>contiene todos sus marcadores organizados conforme a la estructura que usted les dio (vea también la sección <link linkend="bookmarks"
+>Marcadores</link
 >).</para>
 
       <screenshot>
@@ -1786,7 +1786,7 @@
 >diálogo de configuración</link
 >.</para>
       <para
->Estas son las otras opciones de menú son:</para>
+>Estas son las cuatro entradas adicionales del menú:</para>
 
       <variablelist>
         <varlistentry>
@@ -1798,9 +1798,9 @@
           </term>
           <listitem>
             <para
->Abre el <link linkend="network_neighborhood_browser_mounting"
->diálogo</link
-> para los recursos compartidos montados proporcionando la URL, la dirección IP y el dominio o grupo de trabajo.</para>
+>Abra el <link linkend="network_neighborhood_browser_mounting"
+>diálogo de montaje</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2106,7 +2106,7 @@
 >navegador del entorno de red</link
 >, la <link linkend="shares_view"
 >vista de recursos compartidos</link
->. En los controles de la ventana principal, esto se hace seleccionando uno o más recursos compartidos y haciendo clic en la acción <menuchoice
+>. En la ventana principal, esto se hace seleccionando uno o más recursos compartidos y haciendo clic en la acción <menuchoice
 ><guimenuitem
 >Añadir marcador</guimenuitem
 ></menuchoice
@@ -8175,17 +8175,15 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Perfiles</title>
 
       <para
->Aquí, usted puede gestionar sus perfiles. Por omisión, existen dos perfiles predefinidos (<guilabel
+>Aquí puede administrar sus perfiles. Por omisión, hay dos predefinidos (<guilabel
 >Casa</guilabel
 > y <guilabel
 >Trabajo</guilabel
->). Cuando usted active el uso de perfiles, la primera entrada de la lista será el perfil activo.</para>
-      <para
->Para añadir un nuevo perfil, introduzcalo en la línea de edición y pulse el botón <guibutton
+>). Para añadir un nuevo perfil, introduzcalo en la línea de edición y pulse el botón <guibutton
 >Añadir</guibutton
 >. Las entradas pueden borrarse al seleccionarlas, pulsando el botón <guibutton
 >Eliminar</guibutton
->. Para cambiar el órden, puede usar los botones <guibutton
+>. Para cambiar el orden, puede usar los botones <guibutton
 >Mover arriba</guibutton
 > y <guibutton
 >Mover abajo</guibutton
@@ -8193,7 +8191,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Establecer como activo</guibutton
 >. Para renombrar un perfil, selecciónelo y pulse el botón <guibutton
 >Renombrar</guibutton
->. Entonces podrña cambiar el nombre en el control de la lista. Todas las preferencias del perfil renombrado se migrarán automáticamente. Para deshacer sus cambios, pulse el botón <guibutton
+>. Entonces podrá cambiar el nombre en el control de la lista. Todas las preferencias del perfil renombrado se migrarán automáticamente. Para deshacer sus cambios, pulse el botón <guibutton
 >Reiniciar</guibutton
 >.</para>
       <para
