@@ -201,7 +201,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
     if (url.isValid()) {
         switch (type) {
         case Smb4KNetworkObject::Workgroup: {
-            for (Smb4KNetworkObject *obj : qAsConst(d->workgroupObjects)) {
+            for (Smb4KNetworkObject *obj : std::as_const(d->workgroupObjects)) {
                 if (url == obj->url()) {
                     object = obj;
                     break;
@@ -212,7 +212,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
             break;
         }
         case Smb4KNetworkObject::Host: {
-            for (Smb4KNetworkObject *obj : qAsConst(d->hostObjects)) {
+            for (Smb4KNetworkObject *obj : std::as_const(d->hostObjects)) {
                 if (url == obj->url()) {
                     object = obj;
                     break;
@@ -223,7 +223,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
             break;
         }
         case Smb4KNetworkObject::Share: {
-            for (Smb4KNetworkObject *obj : qAsConst(d->shareObjects)) {
+            for (Smb4KNetworkObject *obj : std::as_const(d->shareObjects)) {
                 if (url == obj->url()) {
                     object = obj;
                     break;
@@ -315,7 +315,7 @@ bool Smb4KDeclarative::isShareMounted(const QUrl &url)
 {
     QList<SharePtr> shares = Smb4KGlobal::findShareByUrl(url);
 
-    for (const SharePtr &share : qAsConst(shares)) {
+    for (const SharePtr &share : std::as_const(shares)) {
         if (!share->isForeign()) {
             return true;
         }
@@ -470,7 +470,7 @@ QString Smb4KDeclarative::activeProfile() const
 {
     QString activeProfile;
 
-    for (Smb4KProfileObject *profile : qAsConst(d->profileObjects)) {
+    for (Smb4KProfileObject *profile : std::as_const(d->profileObjects)) {
         if (profile->isActiveProfile()) {
             activeProfile = profile->profileName();
             break;
@@ -612,11 +612,11 @@ void Smb4KDeclarative::slotBookmarksListChanged()
     QList<BookmarkPtr> bookmarksList = Smb4KBookmarkHandler::self()->bookmarkList();
     QStringList categoriesList = Smb4KBookmarkHandler::self()->categoryList();
 
-    for (const BookmarkPtr &bookmark : qAsConst(bookmarksList)) {
+    for (const BookmarkPtr &bookmark : std::as_const(bookmarksList)) {
         d->bookmarkObjects << new Smb4KBookmarkObject(bookmark.data());
     }
 
-    for (const QString &category : qAsConst(categoriesList)) {
+    for (const QString &category : std::as_const(categoriesList)) {
         d->bookmarkCategoryObjects << new Smb4KBookmarkObject(category);
     }
 
@@ -646,7 +646,7 @@ void Smb4KDeclarative::slotProfilesListChanged(const QStringList &profiles)
 
 void Smb4KDeclarative::slotActiveProfileChanged(const QString &activeProfile)
 {
-    for (Smb4KProfileObject *profile : qAsConst(d->profileObjects)) {
+    for (Smb4KProfileObject *profile : std::as_const(d->profileObjects)) {
         if (QString::compare(profile->profileName(), activeProfile) == 0) {
             profile->setActiveProfile(true);
         } else {
