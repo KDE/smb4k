@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Catalan  "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -55,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->3 de novembre de 2024</date>
+>11 de novembre de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2341,7 +2339,7 @@
       <itemizedlist>
         <listitem
 ><para
->definir les opcions de configuració individuals de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
+>definir les opcions de configuració individuals de muntatge o d'exploració per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
 ></listitem>
         <listitem
 ><para
@@ -2361,7 +2359,7 @@
 >Afegir una configuració personalitzada</title>
 
       <para
->En cas que vulgueu definir una configuració personalitzada per a una compartició, tant a l'<link linkend="network_neighborhood_browser_actions_popup_menu"
+>Per a definir una configuració personalitzada, tant a l'<link linkend="network_neighborhood_browser_actions_popup_menu"
 >explorador del veïnatge de xarxa</link
 > com a la <link linkend="shares_view_actions_popup_menu"
 >vista de comparticions</link
@@ -2391,12 +2389,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>La configuració personalitzada que heu definit per a un servidor també s'aplicaran a les seves comparticions.</para>
 
       <para
->Es poden fer configuracions individuals en les seccions/pestanyes següents:</para>
+>Es poden fer les opcions de configuració següents:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Configuració bàsica</guilabel>
+          </term>
+          <listitem>
+            <para
+>Aquí podeu establir l'adreça IP i el grup de treball o domini del servidor. Si heu seleccionat una compartició, també podeu activar el botó <guibutton
+>Torna a muntar sempre aquesta compartició</guibutton
+> per a tornar a muntar la compartició seleccionada cada vegada que s'iniciï el &smb4k; o carregueu el <link linkend="profiles"
+>perfil</link
+> respectiu.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2404,9 +2417,7 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->Aquí podeu definir els paràmetres normals relacionats amb el muntatge. Activeu el botó <guibutton
->Torna a muntar sempre aquesta compartició</guibutton
-> si voleu tornar a muntar la compartició seleccionada cada vegada que s'iniciï el &smb4k;. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
+>Aquí podreu definir els paràmetres normals relacionats amb el muntatge. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
 >aquesta secció</link
 >.</para>
           </listitem>
@@ -2455,16 +2466,22 @@
           <listitem>
             <para
 >Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el servidor s'hauria de despertar enviant un paquet màgic Wake-On-LAN abans que s'explori el veïnatge de xarxa i/o es munti una de les seves comparticions.</para>
+            <para
+>Tingueu en compte que cal habilitar les capacitats d'activació per LAN (Wake-On-LAN) al <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>diàleg de configuració</link
+> per a fer ús d'aquestes opcions.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->El botó <guibutton
+>Amb el botó <guibutton
 >Predeterminat</guibutton
-> estarà habilitat si les entrades del diàleg es desvien de la configuració que heu definit al diàleg de configuració. En fer-hi clic, restablireu les entrades del diàleg als valors predeterminats. El botó <guibutton
->D'acord</guibutton
-> estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, es desarà la configuració personalitzada i es tancarà el diàleg.</para>
+> podeu restablir tota la configuració de l'editor als seus valors predeterminats tal com s'hagin definit en el diàleg de configuració. Els paràmetres personalitzats que només continguin valors predeterminats s'eliminaran. Utilitzant el botó <guibutton
+>Reinicia</guibutton
+> podeu restablir les entrades en el diàleg als seus valors inicials. En fer clic al botó <guibutton
+>Desa</guibutton
+> es desarà la configuració personalitzada i es tancarà el diàleg.</para>
       <para
 >Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
     </sect2>
