@@ -53,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->3 de novembre de 2024</date>
+>2024-11-12</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2475,17 +2475,13 @@
       </variablelist>
       
       <para
->Els botons <guibutton
+>Amb el botó <guibutton
+>Predeterminat</guibutton
+> podeu restablir tota la configuració de l'editor als seus valors predeterminats tal com s'hagin definit en el diàleg de configuració. Els paràmetres personalitzats que només continguin valors predeterminats s'eliminaran. Utilitzant el botó <guibutton
 >Reinicia</guibutton
-> i <guibutton
+> podeu restablir les entrades en el diàleg als seus valors inicials. En fer clic al botó <guibutton
 >Desa</guibutton
-> estan habilitats si heu canviat alguns valors a l'editor. Amb el botó <guibutton
->Reinicia</guibutton
-> podreu reiniciar les entrades del diàleg als seus valors inicials. En fer clic a <guibutton
->Desa</guibutton
-> es desaran els paràmetres personalitzats i es tancarà el diàleg. Per a suprimir la configuració personalitzada, utilitzeu el <link linkend="configuration_page_custom_settings"
->diàleg de configuració</link
->.</para>
+> es desarà la configuració personalitzada i es tancarà el diàleg.</para>
       <para
 >Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
     </sect2>
