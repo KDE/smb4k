@@ -95,7 +95,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-11-03</date>
+>2024-11-12</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2497,17 +2497,13 @@
       </variablelist>
       
       <para
->Los botones <guibutton
+>Con el botón <guibutton
+>Por omisión</guibutton
+> puede reiniciar todas las preferencias en el editor a sus valores por omisión como están definidos en el diálogo de configuración. Las preferencias personalizadas que solo contienen valores por defecto son eliminadas. Usando el botón <guibutton
 >Reiniciar</guibutton
-> y <guibutton
+>, puede reiniciar las entradas en el diálogo a sus valores iniciales. Pulsando el botón <guibutton
 >Guardar</guibutton
-> se activan si cambia algunos valores en el editor. Con el botón <guibutton
->Reiniciar</guibutton
-> puede reiniciar las entradas en el diálogo a sus valores iniciales. Pulsando <guibutton
->Guardar</guibutton
-> guardará las preferencias personalizadas y cerrará el diálogo. Para borrar las preferencias personalizadas, use el <link linkend="configuration_page_custom_settings"
->diálogo de configuración</link
->.</para>
+> guardará las preferencias personalizadas y se cerrará el diálogo.</para>
       <para
 >Tenga en cuenta que nn BSD, el diálogo contiene menos entradas que las que aparecen si se ejecuta en &Linux;, debido a que varias de las opciones no están soportadas.</para>
     </sect2>
