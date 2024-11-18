@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Spanish "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -97,7 +95,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-11-03</date>
+>2024-11-12</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2363,7 +2361,7 @@
       <itemizedlist>
         <listitem
 ><para
->define un montaje individual o las preferencias del navegador para un servidor único o comparta los que se derivan de los valores definidos en el diálogo de configuración,</para
+>define un montaje individual o las preferencias para un servidor único o comparta los que se derivan de los valores definidos en el diálogo de configuración,</para
 ></listitem>
         <listitem
 ><para
@@ -2383,7 +2381,7 @@
 >Añadiendo preferencias personalizadas</title>
 
       <para
->En caso de que quiera definir preferencias individuales para un recurso compartido, tanto en, el <link linkend="network_neighborhood_browser_actions_popup_menu"
+>Para definir preferencias individuales, tanto en, el <link linkend="network_neighborhood_browser_actions_popup_menu"
 >navegador de vecindad de red</link
 > y en la <link linkend="shares_view_actions_popup_menu"
 >vista de recursos compartidos</link
@@ -2413,12 +2411,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>Las preferencias personalizadas que define para un servidor se aplicarán también a sus recursos compartidos.</para>
 
       <para
->Se pueden configurar preferencias individuales en las siguientes secciones / pestañas:</para>
+>Se puede optar por las siguientes preferencias:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Preferencias básicas</guilabel>
+          </term>
+          <listitem>
+            <para
+>Puede establecer la dirección IP y el grupo de trabajo o dominio del servidor aquí. Si selecciona un recurso compartido, puede pulsar el botón <guibutton
+>Siempre montar este recurso compartido</guibutton
+> para montarlo cada vez que se inicia &smb4k; o se carga el <link linkend="profiles"
+>perfil</link
+> respectivo.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2426,10 +2439,8 @@
 > (solo &Linux;) </term>
           <listitem>
             <para
->Puede definir las preferencias comunes relacionadas con el montaje aquí. Pulse el botón <guibutton
->Re-Montar siempre este elemento compartido</guibutton
-> si quiere remontar el recurso compartido seleccionado siempre que inicie &smb4k;. Para obtener información detallada sobre estas preferencias acceda <link linkend="configuration_page_mounting"
->a esta sección</link
+>Puede definir preferencias comunes asociadas al montaje aquí. Para obtener más información detallada sobre estas preferencias mire <link linkend="configuration_page_mounting_common_mount_settings"
+>esta sección</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2477,16 +2488,22 @@
           <listitem>
             <para
 >Para que la funcionalidad «Wake-On-LAN» funcione, debe proporcionar la dirección MAC del servidor que ha seleccionado. Actualmente, &smb4k; no tiene manera de determinar la dirección MAC, por lo que debe averiguarla usted mismo. Después, puede definir si el servidor debe ser levantado con un paquete «Wake-On-LAN» mágico antes de que el entorno de red sea escaneado o uno de sus recursos compartidos montado.</para>
+            <para
+>Tenga en cuenta que necesita activar la funcionalidad Wake-On-LAN en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>diálogo de configuración</link
+> para aprovechar estas preferencias.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->El botón <guibutton
->Predeterminados</guibutton
-> está activado si las entradas del diálogo difieren de las preferencias que usted definió en el diálogo de configuración. Pulsándolo, puede reiniciar las entradas del diálogo a los valores predeterminados. El botón <guibutton
->Aceptar</guibutton
-> estará activado si cambia las preferencias del diálogo. Al pulsarlo salvará las preferencias personalizadas y se cerrará el diálogo.</para>
+>Con el botón <guibutton
+>Por omisión</guibutton
+> puede reiniciar todas las preferencias en el editor a sus valores por omisión como están definidos en el diálogo de configuración. Las preferencias personalizadas que solo contienen valores por defecto son eliminadas. Usando el botón <guibutton
+>Reiniciar</guibutton
+>, puede reiniciar las entradas en el diálogo a sus valores iniciales. Pulsando el botón <guibutton
+>Guardar</guibutton
+> guardará las preferencias personalizadas y se cerrará el diálogo.</para>
       <para
 >Tenga en cuenta que nn BSD, el diálogo contiene menos entradas que las que aparecen si se ejecuta en &Linux;, debido a que varias de las opciones no están soportadas.</para>
     </sect2>
