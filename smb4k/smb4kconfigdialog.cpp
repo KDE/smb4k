@@ -138,10 +138,10 @@ void Smb4KConfigDialog::setupDialog()
     //
     // Connections
     //
-    connect(m_customSettingsPage, &Smb4KConfigPageCustomSettings::customSettingsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
-    connect(m_authenticationPage, &Smb4KConfigPageAuthentication::defaultLoginCredentialsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
-    connect(m_bookmarksPage, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
-    connect(m_profilesPage, &Smb4KConfigPageProfiles::profilesModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
+    connect(m_customSettingsPage, &Smb4KConfigPageCustomSettings::customSettingsModified, this, &Smb4KConfigDialog::updateButtons);
+    connect(m_authenticationPage, &Smb4KConfigPageAuthentication::defaultLoginCredentialsModified, this, &Smb4KConfigDialog::updateButtons);
+    connect(m_bookmarksPage, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigDialog::updateButtons);
+    connect(m_profilesPage, &Smb4KConfigPageProfiles::profilesModified, this, &Smb4KConfigDialog::updateButtons);
     connect(this, &Smb4KConfigDialog::currentPageChanged, this, &Smb4KConfigDialog::slotCheckPage);
 
     //
@@ -180,6 +180,14 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
     return true;
 }
 
+bool Smb4KConfigDialog::hasChanged()
+{
+    bool changed = m_authenticationPage->defaultLoginCredentialsChanged() || m_customSettingsPage->customSettingsChanged()
+        || m_bookmarksPage->bookmarksChanged() || m_profilesPage->profilesChanged();
+
+    return changed;
+}
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
@@ -209,19 +217,6 @@ void Smb4KConfigDialog::updateSettings()
 
     KConfigGroup group(Smb4KSettings::self()->config(), QStringLiteral("ConfigDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), group);
-}
-
-void Smb4KConfigDialog::slotEnableApplyButton()
-{
-    // FIXME: Can this be moved to updateButtons()?
-    bool enable = m_authenticationPage->defaultLoginCredentialsChanged() || m_customSettingsPage->customSettingsChanged() || m_bookmarksPage->bookmarksChanged()
-        || m_profilesPage->profilesChanged();
-
-    QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);
-
-    if (applyButton) {
-        applyButton->setEnabled(enable);
-    }
 }
 
 void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem *current, KPageWidgetItem *before)

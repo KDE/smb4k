@@ -51,18 +51,18 @@ public:
      */
     ~Smb4KConfigDialog();
 
+protected:
+    /**
+     * Reimplemented from KConfigDialog
+     */
+    bool hasChanged() override;
+
 protected Q_SLOTS:
     /**
      * Reimplemented from KConfigDialog. Used to do things that
      * KConfigDialog::updateSettings() does not do.
      */
     void updateSettings() override;
-
-    /**
-     * Enable/disable the "Apply" button if settings that are not managed by
-     * KConfig XT have changed.
-     */
-    void slotEnableApplyButton();
 
     /**
      * This slot is used to check the settings of the different pages.
