@@ -252,12 +252,12 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     QWidget *tab5 = new QWidget(this);
     QGridLayout *tab5Layout = new QGridLayout(tab5);
 
+    tab5->setEnabled(Smb4KSettings::enableWakeOnLAN());
+
     m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab5);
-    m_macAddressLabel->setEnabled(false);
     m_macAddress = new KLineEdit(tab5);
     m_macAddress->setClearButtonEnabled(true);
     m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
-    m_macAddress->setEnabled(false);
     m_macAddressLabel->setBuddy(m_macAddress);
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
@@ -276,7 +276,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab5Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
     tab5Layout->setRowStretch(3, 100);
 
-    addTab(tab5, i18n("Wake-On-LAN Settings"));
+    m_wakeOnLanTabIndex = addTab(tab5, i18n("Wake-On-LAN Settings"));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 void Smb4KCustomSettingsEditorWidget::setupView()
@@ -428,12 +428,12 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     QWidget *tab4 = new QWidget(this);
     QGridLayout *tab4Layout = new QGridLayout(tab4);
 
+    tab4->setEnabled(Smb4KSettings::enableWakeOnLAN());
+
     m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab4);
-    m_macAddressLabel->setEnabled(false);
     m_macAddress = new KLineEdit(tab4);
     m_macAddress->setClearButtonEnabled(true);
     m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
-    m_macAddress->setEnabled(false);
     m_macAddressLabel->setBuddy(m_macAddress);
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
@@ -452,7 +452,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab4Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
     tab4Layout->setRowStretch(3, 100);
 
-    addTab(tab4, i18n("Wake-On-LAN Settings"));
+    m_wakeOnLanTabIndex = addTab(tab4, i18n("Wake-On-LAN Settings"));
 }
 #else
 void Smb4KCustomSettingsEditorWidget::setupView()
@@ -517,12 +517,9 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
 
     m_useKerberos->setChecked(m_customSettings.useKerberos());
 
-    if (m_customSettings.type() == Host) {
-        m_macAddressLabel->setEnabled(Smb4KSettings::enableWakeOnLAN());
-        m_macAddress->setEnabled(Smb4KSettings::enableWakeOnLAN());
-        m_sendPacketBeforeScan->setEnabled(Smb4KSettings::enableWakeOnLAN());
-        m_sendPacketBeforeMount->setEnabled(Smb4KSettings::enableWakeOnLAN());
+    widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
+    if (m_customSettings.type() == Host) {
         m_macAddress->setText(m_customSettings.macAddress());
         m_sendPacketBeforeScan->setChecked(m_customSettings.wakeOnLanSendBeforeNetworkScan());
         m_sendPacketBeforeMount->setChecked(m_customSettings.wakeOnLanSendBeforeMount());
@@ -636,11 +633,10 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_useKerberos->setChecked(false);
 
     m_macAddress->clear();
-    m_macAddress->setEnabled(false);
     m_sendPacketBeforeScan->setChecked(false);
-    m_sendPacketBeforeScan->setEnabled(false);
     m_sendPacketBeforeMount->setChecked(false);
-    m_sendPacketBeforeMount->setChecked(false);
+
+    widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
 }
 
 bool Smb4KCustomSettingsEditorWidget::hasDefaultCustomSettings() const
@@ -1127,10 +1123,6 @@ void Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled(bool checked)
 void Smb4KCustomSettingsEditorWidget::slotMacAddressChanged(const QString &text)
 {
     Q_UNUSED(text);
-
-    if (!m_macAddress->hasAcceptableInput()) {
-        m_macAddress->clear();
-    }
 
     m_sendPacketBeforeScan->setEnabled(!m_macAddress->text().isEmpty() && m_macAddress->hasAcceptableInput());
     m_sendPacketBeforeMount->setEnabled(!m_macAddress->text().isEmpty() && m_macAddress->hasAcceptableInput());

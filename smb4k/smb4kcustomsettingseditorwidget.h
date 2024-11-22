@@ -147,6 +147,7 @@ private:
     KLineEdit *m_macAddress;
     QCheckBox *m_sendPacketBeforeScan;
     QCheckBox *m_sendPacketBeforeMount;
+    int m_wakeOnLanTabIndex;
 };
 
 #endif
