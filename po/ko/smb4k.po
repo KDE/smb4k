@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-12 02:35+0000\n"
+"POT-Creation-Date: 2024-11-23 02:27+0000\n"
 "PO-Revision-Date: 2024-08-21 00:47+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -193,8 +193,8 @@ msgid "Authentication"
 msgstr "인증"
 
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
-#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
-#: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, kde-format
 msgid " (Profile: %1)"
 msgstr " (프로필: %1)"
@@ -219,7 +219,7 @@ msgstr ""
 "잘못된 설정을 발견했습니다. 해당 설정 페이지로 이동하며, 거기에서 수정할 수 "
 "있습니다."
 
-#: smb4k/smb4kconfigdialog.cpp:234
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -623,8 +623,8 @@ msgstr "항상 이 공유 다시 마운트"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "이 서버에서 CIFS 유닉스 확장을 지원합니다"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 주소:"

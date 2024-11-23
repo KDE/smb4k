@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-12 02:35+0000\n"
+"POT-Creation-Date: 2024-11-23 02:27+0000\n"
 "PO-Revision-Date: 2024-06-19 17:33+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -192,8 +192,8 @@ msgid "Authentication"
 msgstr "Authentication"
 
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
-#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
-#: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, kde-format
 msgid " (Profile: %1)"
 msgstr "(Profilo: %1)"
@@ -216,7 +216,7 @@ msgid ""
 "to the corresponding configuration page to fix it."
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:234
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -614,8 +614,8 @@ msgstr "Semre remonta iste partition (share)"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Iste servitor supporta le extensiones de Unix de CIFS"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
 #, kde-format
 msgid "MAC Address:"
 msgstr "Adresse MAC"

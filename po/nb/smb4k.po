@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-12 02:35+0000\n"
+"POT-Creation-Date: 2024-11-23 02:27+0000\n"
 "PO-Revision-Date: 2006-04-12 21:04+0200\n"
 "Last-Translator: Nils Kristian Tomren <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -193,8 +193,8 @@ msgid "Authentication"
 msgstr "Autentisere"
 
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
-#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
-#: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, fuzzy, kde-format
 msgid " (Profile: %1)"
 msgstr "Profiler"
@@ -217,7 +217,7 @@ msgid ""
 "to the corresponding configuration page to fix it."
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:234
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -615,8 +615,8 @@ msgstr ""
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
 #, kde-format
 msgid "MAC Address:"
 msgstr ""

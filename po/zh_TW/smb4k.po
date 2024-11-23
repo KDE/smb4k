@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-12 02:35+0000\n"
+"POT-Creation-Date: 2024-11-23 02:27+0000\n"
 "PO-Revision-Date: 2024-04-19 02:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -199,8 +199,8 @@ msgid "Authentication"
 msgstr "身分驗證"
 
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
-#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
-#: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, fuzzy, kde-format
 msgid " (Profile: %1)"
 msgstr "列印檔案(&P)"
@@ -226,7 +226,7 @@ msgid ""
 "to the corresponding configuration page to fix it."
 msgstr "<qt>發現不正確的設定。將會帶您至對應的設定頁面來修正問題。</qt>"
 
-#: smb4k/smb4kconfigdialog.cpp:234
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -626,8 +626,8 @@ msgstr "總是重新掛載此共享裝置"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "這個伺服器支援 CIFS Unix 擴充功能"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 位址："
