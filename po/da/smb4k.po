@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-11 00:40+0000\n"
+"POT-Creation-Date: 2024-11-23 00:40+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -198,8 +198,8 @@ msgid "Authentication"
 msgstr "Autentificering"
 
 #: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
-#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:247
-#: smb4k/smb4kconfigdialog.cpp:248 smb4k/smb4kconfigdialog.cpp:249
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, fuzzy, kde-format
 #| msgid "Profiles"
 msgid " (Profile: %1)"
@@ -229,7 +229,7 @@ msgstr ""
 "<qt>Der er blevet fundet en forkert indstilling. Du bliver nu ført til den "
 "tilsvarende konfigurationsside for at rette den.</qt>"
 
-#: smb4k/smb4kconfigdialog.cpp:234
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -677,8 +677,8 @@ msgstr "Genmontér altid denne ressource"
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-adresse:"
