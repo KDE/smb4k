@@ -136,6 +136,8 @@ bool Smb4KSynchronizationDialog::setShare(const SharePtr &share)
 
     m_synchronizeButton->setDefault(true);
 
+    adjustSize();
+
     return true;
 }
 

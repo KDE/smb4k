@@ -124,6 +124,8 @@ bool Smb4KPrintDialog::setPrinterShare(SharePtr printer)
 
     m_printer = printer;
 
+    adjustSize();
+
     return true;
 }
 

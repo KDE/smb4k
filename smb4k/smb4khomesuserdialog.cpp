@@ -86,6 +86,8 @@ Smb4KHomesUserDialog::Smb4KHomesUserDialog(QWidget *parent)
 
     layout->addWidget(buttonBox);
 
+    setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+
     create();
 
     KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("HomesUserDialog"));
@@ -121,6 +123,8 @@ bool Smb4KHomesUserDialog::setShare(SharePtr homesShare)
     m_descriptionText->setText(i18n("Please specify a username for share<br><b>%1</b>.", m_share->displayString()));
     m_userNameInput->addItems(Smb4KHomesSharesHandler::self()->homesUsers(m_share));
     m_userNameInput->setCurrentItem(QStringLiteral(""));
+
+    adjustSize();
 
     return true;
 }

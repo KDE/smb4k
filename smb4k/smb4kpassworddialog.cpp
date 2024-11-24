@@ -84,6 +84,8 @@ bool Smb4KPasswordDialog::setNetworkItem(const NetworkItemPtr &networkItem)
         }
     }
 
+    adjustSize();
+
     return success;
 }
 

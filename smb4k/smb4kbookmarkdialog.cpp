@@ -182,6 +182,8 @@ bool Smb4KBookmarkDialog::setShares(const QList<SharePtr> &shares)
         bookmarksSet = true;
     }
 
+    adjustSize();
+
     return bookmarksSet;
 }
 
