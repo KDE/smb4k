@@ -57,27 +57,12 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     m_profilesMenu = new Smb4KProfilesMenu(this);
     m_sharesMenu = new Smb4KSharesMenu(this);
 
-#if KSTATUSNOTIFIERITEM_VERSION < QT_VERSION_CHECK(6, 6, 0)
-    addAction(QStringLiteral("shares_menu"), m_sharesMenu);
-    addAction(QStringLiteral("bookmarks_menu"), m_bookmarkMenu);
-    addAction(QStringLiteral("profiles_menu"), m_profilesMenu);
-    addAction(QStringLiteral("mount_action"), mountAction);
-    addAction(QStringLiteral("config_action"), KStandardAction::preferences(parent, SLOT(slotConfigDialog()), this));
-
-    contextMenu()->addAction(action(QStringLiteral("shares_menu")));
-    contextMenu()->addAction(action(QStringLiteral("bookmarks_menu")));
-    contextMenu()->addAction(action(QStringLiteral("profiles_menu")));
-    contextMenu()->addSeparator();
-    contextMenu()->addAction(action(QStringLiteral("mount_action")));
-    contextMenu()->addAction(action(QStringLiteral("config_action")));
-#else
     contextMenu()->addAction(m_sharesMenu);
     contextMenu()->addAction(m_bookmarkMenu);
     contextMenu()->addAction(m_profilesMenu);
     contextMenu()->addSeparator();
     contextMenu()->addAction(mountAction);
     contextMenu()->addAction(KStandardAction::preferences(parent, SLOT(slotConfigDialog()), this));
-#endif
 
     connect(Smb4KMounter::self(), &Smb4KMounter::mountedSharesListChanged, this, &Smb4KSystemTray::slotSetStatus);
     connect(Smb4KClient::self(), &Smb4KClient::workgroups, this, &Smb4KSystemTray::slotSetStatus);
