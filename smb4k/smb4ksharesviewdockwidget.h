@@ -23,7 +23,6 @@
 // forward declarations
 class Smb4KSharesViewItem;
 class Smb4KSharesView;
-class Smb4KPasswordDialog;
 
 using namespace Smb4KGlobal;
 

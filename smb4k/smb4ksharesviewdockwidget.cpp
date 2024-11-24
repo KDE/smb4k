@@ -14,7 +14,6 @@
 #include "core/smb4ksynchronizer.h"
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
-#include "smb4kpassworddialog.h"
 #include "smb4ksharesview.h"
 #include "smb4ksharesviewitem.h"
 #include "smb4ksynchronizationdialog.h"
