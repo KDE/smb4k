@@ -131,6 +131,8 @@ bool Smb4KPreviewDialog::setShare(SharePtr share)
 
     loadPreview(m_share);
 
+    adjustSize();
+
     return true;
 }
 
