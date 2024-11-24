@@ -1828,27 +1828,22 @@ void Smb4KMounter::slotConfigChanged()
 void Smb4KMounter::slotCredentialsUpdated(const QUrl &url)
 {
     if (!url.isEmpty() && !d->retries.isEmpty()) {
-        QMutableListIterator<SharePtr> it(d->retries);
+        for (int i = 0; i < d->retries.size(); i++) {
+            QUrl parentUrl = d->retries[i]->url().resolved(QUrl(QStringLiteral(".."))).adjusted(QUrl::StripTrailingSlash);
 
-        while (it.hasNext()) {
-            SharePtr share = it.next();
-
-            QUrl parentUrl = share->url().resolved(QUrl(QStringLiteral(".."))).adjusted(QUrl::StripTrailingSlash);
-
-            if (QString::compare(share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+            if (QString::compare(d->retries[i]->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                  url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                  Qt::CaseInsensitive)
-                    == 0
-                || QString::compare(parentUrl.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
-                                    url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
-                                    Qt::CaseInsensitive)
-                    == 0) {
+                        == 0
+                    || QString::compare(parentUrl.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                        url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                        Qt::CaseInsensitive)
+                        == 0) {
+                SharePtr share = d->retries.takeAt(i);
                 share->setUserName(url.userName());
                 share->setPassword(url.password());
 
                 mountShare(share);
-
-                it.remove();
             }
         }
     }
