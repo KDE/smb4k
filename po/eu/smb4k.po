@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-23 02:27+0000\n"
+"POT-Creation-Date: 2024-11-25 02:34+0000\n"
 "PO-Revision-Date: 2024-07-10 20:45+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -162,7 +162,7 @@ msgstr "&Editatu Laster-markak"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Gehitu &laster-marka"
@@ -670,7 +670,7 @@ msgstr "Zehaztu erabiltzailea"
 msgid "Please specify a username."
 msgstr "Mesedez, zehaztu erabiltzaile-izen bat."
 
-#: smb4k/smb4khomesuserdialog.cpp:121
+#: smb4k/smb4khomesuserdialog.cpp:123
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
 msgstr "Mesedez, zehaztu <b>%1</b><br> partekatzerako erabiltzaile-izen bat."
@@ -846,19 +846,19 @@ msgid "&Search"
 msgstr "&Bilatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:216
+#: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ktrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
-#: smb4k/smb4ksharesviewdockwidget.cpp:221
+#: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Gehitu &neurrira ipinitako ezarpenak"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ktrl+C"
@@ -909,7 +909,7 @@ msgid "&Mount"
 msgstr "&Muntatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:183
+#: smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "&Unmount"
 msgstr "&Desmuntatu"
@@ -932,7 +932,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "Miatu la&ntaldea"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:951
-#: smb4k/smb4ksharesviewdockwidget.cpp:188
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ktrl+U"
@@ -1039,7 +1039,7 @@ msgstr "Inprimatu"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Inprimatu fitxategi bat <b>%1</b> inprimagailuan."
 
-#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "De&smuntatu guztiak"
@@ -1069,57 +1069,57 @@ msgstr "Ireki Konsole-rekin"
 msgid "Open with File Manager"
 msgstr "Ireki fitxategi-kudeatzailearekin"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:138
+#: smb4k/smb4ksharesviewdockwidget.cpp:137
 #, kde-format
 msgid "View Modes"
 msgstr "Ikuspegi moduak"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:144
+#: smb4k/smb4ksharesviewdockwidget.cpp:143
 #, kde-format
 msgid "Icon View"
 msgstr "Ikono-ikuspegia"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
 #, kde-format
 msgid "List View"
 msgstr "Zerrenda-ikuspegia"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4ksharesviewdockwidget.cpp:197
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ktrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4ksharesviewdockwidget.cpp:230
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&inkronizatu"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#: smb4k/smb4ksharesviewdockwidget.cpp:235
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ktrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#: smb4k/smb4ksharesviewdockwidget.cpp:248
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Ireki Konso&le-rekin"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:254
+#: smb4k/smb4ksharesviewdockwidget.cpp:253
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ktrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:256
+#: smb4k/smb4ksharesviewdockwidget.cpp:255
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Ireki fit&xategi-kudeatzailearekin"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:261
+#: smb4k/smb4ksharesviewdockwidget.cpp:260
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ktrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:376
+#: smb4k/smb4ksharesviewdockwidget.cpp:375
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
