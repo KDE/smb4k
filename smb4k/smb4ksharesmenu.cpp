@@ -1,7 +1,7 @@
 /*
     smb4ksharesmenu  -  Shares menu
 
-    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -38,14 +38,7 @@ using namespace Smb4KGlobal;
 Smb4KSharesMenu::Smb4KSharesMenu(QObject *parent)
     : KActionMenu(KDE::icon(QStringLiteral("folder-network"), QStringList(QStringLiteral("emblem-mounted"))), i18n("Mounted Shares"), parent)
 {
-    //
-    // Set up action group for the shares menus
-    //
     m_menus = new QActionGroup(menu());
-
-    //
-    // Set up action group for the shares actions
-    //
     m_actions = new QActionGroup(menu());
 
     //
@@ -53,7 +46,7 @@ Smb4KSharesMenu::Smb4KSharesMenu(QObject *parent)
     //
     m_unmountAll = new QAction(KDE::icon(QStringLiteral("system-run")), i18n("U&nmount All"), menu());
     m_unmountAll->setEnabled(false);
-    connect(m_unmountAll, SIGNAL(triggered(bool)), SLOT(slotUnmountAllShares()));
+    connect(m_unmountAll, &QAction::triggered, this, &Smb4KSharesMenu::slotUnmountAllShares);
     addAction(m_unmountAll);
 
     //
@@ -64,11 +57,11 @@ Smb4KSharesMenu::Smb4KSharesMenu(QObject *parent)
     //
     // Connections
     //
-    connect(m_actions, SIGNAL(triggered(QAction *)), SLOT(slotShareAction(QAction *)));
+    connect(m_actions, &QActionGroup::triggered, this, &Smb4KSharesMenu::slotShareAction);
 
-    connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotShareMounted(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotShareUnmounted(SharePtr)));
-    connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), SLOT(slotMountedSharesListChanged()));
+    connect(Smb4KMounter::self(), &Smb4KMounter::mounted, this, &Smb4KSharesMenu::slotShareMounted, Qt::DirectConnection);
+    connect(Smb4KMounter::self(), &Smb4KMounter::unmounted, this, &Smb4KSharesMenu::slotShareUnmounted, Qt::DirectConnection);
+    connect(Smb4KMounter::self(), &Smb4KMounter::mountedSharesListChanged, this, &Smb4KSharesMenu::slotMountedSharesListChanged, Qt::DirectConnection);
 }
 
 Smb4KSharesMenu::~Smb4KSharesMenu()
@@ -90,7 +83,7 @@ void Smb4KSharesMenu::refreshMenu()
     // Add share menus, if necessary
     //
     if (!mountedSharesList().isEmpty()) {
-        for (const SharePtr &share : mountedSharesList()) {
+        for (const SharePtr &share : std::as_const(mountedSharesList())) {
             addShareToMenu(share);
         }
     }
@@ -116,7 +109,6 @@ void Smb4KSharesMenu::refreshMenu()
     // might not be shown (see also BUG 442187)
     //
     menu()->adjustSize();
-    QCoreApplication::processEvents();
 }
 
 void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
@@ -330,7 +322,6 @@ void Smb4KSharesMenu::slotMountedSharesListChanged()
     // might not be shown (see also BUG 442187)
     //
     menu()->adjustSize();
-    QCoreApplication::processEvents();
 }
 
 void Smb4KSharesMenu::slotShareAction(QAction *action)
