@@ -24,7 +24,18 @@ namespace Smb4KGlobal
  * @enum UnmountShare           Unmount a share
  * @enum NoProcess              No process
  */
-enum Process { LookupDomains, LookupDomainMembers, LookupShares, LookupFiles, WakeUp, PrintFile, NetworkSearch, MountShare, UnmountShare, NoProcess };
+enum Process {
+    LookupDomains,
+    LookupDomainMembers,
+    LookupShares,
+    LookupFiles,
+    WakeUp,
+    PrintFile,
+    NetworkSearch,
+    MountShare,
+    UnmountShare,
+    NoProcess
+};
 
 /**
  * The enumeration to determine the type of a network item.
@@ -36,7 +47,14 @@ enum Process { LookupDomains, LookupDomainMembers, LookupShares, LookupFiles, Wa
  * @enum FileOrDirectory        A file or director in a shared folder
  * @enum UnknownNetworkItem     An unknown network item
  */
-enum NetworkItem { Network, Workgroup, Host, Share, FileOrDirectory, UnknownNetworkItem };
+enum NetworkItem {
+    Network,
+    Workgroup,
+    Host,
+    Share,
+    FileOrDirectory,
+    UnknownNetworkItem
+};
 
 /**
  * The enumeration that determines the share type
@@ -45,7 +63,11 @@ enum NetworkItem { Network, Workgroup, Host, Share, FileOrDirectory, UnknownNetw
  * @enum PrinterShare           a printer share
  * @enum IpcShare               an IPC share
  */
-enum ShareType { FileShare, PrinterShare, IpcShare };
+enum ShareType {
+    FileShare,
+    PrinterShare,
+    IpcShare
+};
 };
 
 #endif

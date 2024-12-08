@@ -41,7 +41,12 @@ public:
     /**
      * Enumeration for the columns in the list view.
      */
-    enum Columns { Network = 0, Type = 1, IP = 2, Comment = 3 };
+    enum Columns {
+        Network = 0,
+        Type = 1,
+        IP = 2,
+        Comment = 3
+    };
 
     /**
      * The tooltip

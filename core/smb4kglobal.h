@@ -344,7 +344,10 @@ SMB4KCORE_EXPORT bool onlyForeignMountedShares();
  * This enumeration determines with which application the mount point
  * of the current mounted share is to be opened.
  */
-enum OpenWith { FileManager, Konsole };
+enum OpenWith {
+    FileManager,
+    Konsole
+};
 
 /**
  * Open the mount point of a share. Which application is used is determined by

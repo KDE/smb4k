@@ -153,7 +153,11 @@ public:
      *                          started.
      * @param UndefinedRemount  No remount behavior is undefined.
      */
-    enum Remount { RemountOnce, RemountAlways, UndefinedRemount };
+    enum Remount {
+        RemountOnce,
+        RemountAlways,
+        UndefinedRemount
+    };
 
     /**
      * If the network item is of type Share, set if it should be remounted.

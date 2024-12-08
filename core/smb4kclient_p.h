@@ -96,7 +96,12 @@ public:
      * @enum FileAccessError     The file could not be read
      * @enum PrintFileError      The file could not be printed
      */
-    enum { ClientError = UserDefinedError, AccessDeniedError, FileAccessError, PrintFileError };
+    enum {
+        ClientError = UserDefinedError,
+        AccessDeniedError,
+        FileAccessError,
+        PrintFileError
+    };
 
 protected:
     Smb4KGlobal::Process *pProcess;
