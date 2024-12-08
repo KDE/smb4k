@@ -31,7 +31,10 @@ public:
     /**
      * Enumeration
      */
-    enum Type { MainWindow, SystemTray };
+    enum Type {
+        MainWindow,
+        SystemTray
+    };
 
     /**
      * Constructor
