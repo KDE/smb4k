@@ -230,6 +230,9 @@ protected Q_SLOTS:
 
     /**
      * Called when the credentials were updated
+     *
+     * @param url       The URL of the network item whose credentials were
+     *                  updated
      */
     void slotCredentialsUpdated(const QUrl &url);
 

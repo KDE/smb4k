@@ -857,8 +857,10 @@ void Smb4KMounter::saveSharesForRemount()
     }
 }
 
-void Smb4KMounter::timerEvent(QTimerEvent *)
+void Smb4KMounter::timerEvent(QTimerEvent *event)
 {
+    Q_UNUSED(event);
+
     if (!isRunning() && Smb4KHardwareInterface::self()->isOnline()) {
         //
         // Try to remount shares
@@ -1834,11 +1836,11 @@ void Smb4KMounter::slotCredentialsUpdated(const QUrl &url)
             if (QString::compare(d->retries[i]->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                  url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
                                  Qt::CaseInsensitive)
-                        == 0
-                    || QString::compare(parentUrl.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
-                                        url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
-                                        Qt::CaseInsensitive)
-                        == 0) {
+                    == 0
+                || QString::compare(parentUrl.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                    url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                    Qt::CaseInsensitive)
+                    == 0) {
                 SharePtr share = d->retries.takeAt(i);
                 share->setUserName(url.userName());
                 share->setPassword(url.password());
