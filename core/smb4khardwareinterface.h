@@ -1,7 +1,7 @@
 /*
     Provides an interface to the computer's hardware
 
-    SPDX-FileCopyrightText: 2015-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2015-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -85,6 +85,7 @@ Q_SIGNALS:
 
     /**
      * This signal is emitted when the online state changed.
+     * @param online    TRUE if the system went online and FALSE otherwise
      */
     void onlineStateChanged(bool online);
 
@@ -100,6 +101,15 @@ protected Q_SLOTS:
      * @param udi     the device UDI
      */
     void slotDeviceRemoved(const QString &udi);
+
+    /**
+     * This slot is called when the system prepares for sleep or has
+     * been woken up.
+     *
+     * @param sleep     TRUE if the system is about to enter a sleep
+     *                  state and FALSE otherwise
+     */
+    void slotSystemSleep(bool sleep);
 
 private:
     /**
