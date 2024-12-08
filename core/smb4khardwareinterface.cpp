@@ -1,7 +1,7 @@
 /*
     Provides an interface to the computer's hardware
 
-    SPDX-FileCopyrightText: 2015-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2015-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -12,6 +12,7 @@
 #include <unistd.h>
 
 // Qt includes
+#include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
@@ -40,7 +41,9 @@ public:
     QScopedPointer<QDBusInterface> dbusInterface;
     QDBusUnixFileDescriptor fileDescriptor;
     bool systemOnline;
+    bool systemSleep;
     QStringList udis;
+    int timerId;
 };
 
 class Smb4KHardwareInterfaceStatic
@@ -55,11 +58,10 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     : QObject(parent)
     , d(new Smb4KHardwareInterfacePrivate)
 {
-    //
-    // Initialize some members
-    //
     d->systemOnline = false;
+    d->systemSleep = false;
     d->fileDescriptor.setFileDescriptor(-1);
+    d->timerId = -1;
 
     //
     // Set up the DBUS interface
@@ -77,6 +79,9 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
                                                   QDBusConnection::systemBus(),
                                                   this));
     }
+
+    QDBusConnection::systemBus()
+        .connect(QString(), QString(), QStringLiteral("org.freedesktop.login1.Manager"), QStringLiteral("PrepareForSleep"), this, SLOT(slotSystemSleep(bool)));
 
     //
     // Get the initial list of udis for network shares
@@ -107,7 +112,7 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     // Start the timer to continously check the online state
     // and, under FreeBSD, additionally the mounted shares.
     //
-    startTimer(1000);
+    d->timerId = startTimer(1000);
 }
 
 Smb4KHardwareInterface::~Smb4KHardwareInterface()
@@ -243,4 +248,24 @@ void Smb4KHardwareInterface::slotDeviceRemoved(const QString &udi)
         Q_EMIT networkShareRemoved();
         d->udis.removeOne(udi);
     }
+}
+
+void Smb4KHardwareInterface::slotSystemSleep(bool sleep)
+{
+    inhibit();
+    d->systemSleep = sleep;
+
+    if (d->systemSleep) {
+        killTimer(d->timerId);
+        d->timerId = -1;
+        // The system will recover after a shutdown completely, so
+        // we do not have the trigger any unmounts by emitting a signal
+        // here. However, we will awake from a sleep later, so some
+        // things should be triggered nonetheless.
+        d->systemOnline = false;
+    } else {
+        d->timerId = startTimer(1000);
+    }
+
+    uninhibit();
 }
