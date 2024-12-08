@@ -46,7 +46,11 @@ public:
      * @enum NetworkItem  Tooltip reflecting a remote network item
      * @enum MountedShare Tooltip reflecting a mounted share
      */
-    enum Type { NetworkItem, MountedShare, Unknown };
+    enum Type {
+        NetworkItem,
+        MountedShare,
+        Unknown
+    };
 
     /**
      * Set up the tooltip.

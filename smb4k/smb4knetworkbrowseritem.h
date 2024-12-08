@@ -52,7 +52,12 @@ public:
     /**
      * Columns of the item.
      */
-    enum Columns { Network = 0, Type = 1, IP = 2, Comment = 3 };
+    enum Columns {
+        Network = 0,
+        Type = 1,
+        IP = 2,
+        Comment = 3
+    };
 
     /**
      * This function is provided for convenience. It returns a pointer to
