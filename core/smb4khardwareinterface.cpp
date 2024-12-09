@@ -100,8 +100,8 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     //
     // Connections
     //
-    connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
-    connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
+    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceAdded, this, &Smb4KHardwareInterface::slotDeviceAdded);
+    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceRemoved, this, &Smb4KHardwareInterface::slotDeviceRemoved);
 
     //
     // Check the online state
@@ -258,10 +258,11 @@ void Smb4KHardwareInterface::slotSystemSleep(bool sleep)
     if (d->systemSleep) {
         killTimer(d->timerId);
         d->timerId = -1;
-        // The system will recover after a shutdown completely, so
-        // we do not have the trigger any unmounts by emitting a signal
-        // here. However, we will awake from a sleep later, so some
-        // things should be triggered nonetheless.
+        // The system will recover after a shutdown completely, so we
+        // do not have the trigger any unmounts by emitting a signal
+        // here. However, we will awake from a sleep later, so some things
+        // should be triggered by the emission of the onlineStateChanged
+        // signal.
         d->systemOnline = false;
     } else {
         d->timerId = startTimer(1000);
