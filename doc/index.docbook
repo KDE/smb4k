@@ -34,7 +34,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-11-12</date>
+  <date>2024-12-08</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -783,7 +783,7 @@
     <sect2 id="systemtray_location_usage">
       <title>Location and Usage</title>
 
-      <para>When &smb4k; is started, a status icon appears in the system tray. Its status is set to active if workgroups or domains were discovered in your network neighborhood. Otherwise it is set to inactive.</para>
+      <para>When &smb4k; is started, a status icon appears in the system tray. Its status is set to active if either workgroups or domains were discovered in your network neighborhood or remote shares were mounted. Otherwise it is set to inactive.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the system tray widget</screeninfo>
@@ -858,7 +858,7 @@
             <menuchoice><guimenuitem>Synchronize</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu">Actions and Popup Menu</link> and <link linkend="shares_view_synchronization">Synchronization</link> sections.</para>
+            <para>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu">Actions and Popup Menu</link> and <link linkend="shares_view_synchronization">Synchronization</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -879,7 +879,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also the <link linkend="bookmarks">Bookmarks</link> section).</para>
+      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks (see also the <link linkend="bookmarks">Bookmarks</link> section).</para>
 
       <screenshot>
         <screeninfo>Screenshot of the Bookmarks menu of the system tray widget</screeninfo>
