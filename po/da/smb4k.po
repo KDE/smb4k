@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-25 00:40+0000\n"
+"POT-Creation-Date: 2024-12-09 00:41+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -907,7 +907,7 @@ msgstr "&Søg"
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -1110,32 +1110,32 @@ msgstr "Printer"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Sender fil til printeren %1..."
 
-#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "Afmo&ntér alle"
 
-#: smb4k/smb4ksharesmenu.cpp:160
+#: smb4k/smb4ksharesmenu.cpp:152
 #, kde-format
 msgid "Unmount"
 msgstr "Afmontér"
 
-#: smb4k/smb4ksharesmenu.cpp:179
+#: smb4k/smb4ksharesmenu.cpp:171
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Tilføj bogmærke"
 
-#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:197 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Synkronisér"
 
-#: smb4k/smb4ksharesmenu.cpp:224
+#: smb4k/smb4ksharesmenu.cpp:216
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Åbn med Konsole"
 
-#: smb4k/smb4ksharesmenu.cpp:238
+#: smb4k/smb4ksharesmenu.cpp:230
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Åbn med filhåndtering"

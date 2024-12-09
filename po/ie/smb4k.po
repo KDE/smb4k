@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-25 00:40+0000\n"
+"POT-Creation-Date: 2024-12-09 00:41+0000\n"
 "PO-Revision-Date: 2024-08-04 16:58+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -836,7 +836,7 @@ msgstr "&Serchar"
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, fuzzy, kde-format
 msgid "Add &Custom Settings"
@@ -1025,32 +1025,32 @@ msgstr "&Printar li file"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "%1 invia vos li file %2"
 
-#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, fuzzy, kde-format
 msgid "U&nmount All"
 msgstr "Ne por omni"
 
-#: smb4k/smb4ksharesmenu.cpp:160
+#: smb4k/smb4ksharesmenu.cpp:152
 #, kde-format
 msgid "Unmount"
 msgstr "Demonter"
 
-#: smb4k/smb4ksharesmenu.cpp:179
+#: smb4k/smb4ksharesmenu.cpp:171
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Adjuncter un marca-págine"
 
-#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:197 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Sincronisar"
 
-#: smb4k/smb4ksharesmenu.cpp:224
+#: smb4k/smb4ksharesmenu.cpp:216
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Aperter per Konsole"
 
-#: smb4k/smb4ksharesmenu.cpp:238
+#: smb4k/smb4ksharesmenu.cpp:230
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Aperter per li gerente de files"

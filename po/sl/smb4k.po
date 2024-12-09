@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-25 00:40+0000\n"
+"POT-Creation-Date: 2024-12-09 00:41+0000\n"
 "PO-Revision-Date: 2024-06-21 07:07+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -856,7 +856,7 @@ msgstr "Išči"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
@@ -1042,32 +1042,32 @@ msgstr "Tiskaj"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Natisni datoteko na tiskalniku <b>%1</b>."
 
-#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "Odklopi vse"
 
-#: smb4k/smb4ksharesmenu.cpp:160
+#: smb4k/smb4ksharesmenu.cpp:152
 #, kde-format
 msgid "Unmount"
 msgstr "Odklopi"
 
-#: smb4k/smb4ksharesmenu.cpp:179
+#: smb4k/smb4ksharesmenu.cpp:171
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Dodaj zaznamek"
 
-#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:197 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Uskladi"
 
-#: smb4k/smb4ksharesmenu.cpp:224
+#: smb4k/smb4ksharesmenu.cpp:216
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Odpri v konzoli"
 
-#: smb4k/smb4ksharesmenu.cpp:238
+#: smb4k/smb4ksharesmenu.cpp:230
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Odpri z upravljalnikom datotek"

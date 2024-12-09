@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-25 00:40+0000\n"
+"POT-Creation-Date: 2024-12-09 00:41+0000\n"
 "PO-Revision-Date: 2024-06-21 09:40+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -855,7 +855,7 @@ msgstr "&Zoek"
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
@@ -1045,32 +1045,32 @@ msgstr "Afdrukken"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Een bestand op printer <b>%1</b> afdrukken."
 
-#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "A&lles Afkoppelen"
 
-#: smb4k/smb4ksharesmenu.cpp:160
+#: smb4k/smb4ksharesmenu.cpp:152
 #, kde-format
 msgid "Unmount"
 msgstr "Afkoppelen"
 
-#: smb4k/smb4ksharesmenu.cpp:179
+#: smb4k/smb4ksharesmenu.cpp:171
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Bladwijzer toevoegen"
 
-#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:197 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Synchroniseren"
 
-#: smb4k/smb4ksharesmenu.cpp:224
+#: smb4k/smb4ksharesmenu.cpp:216
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Openen met Konsole"
 
-#: smb4k/smb4ksharesmenu.cpp:238
+#: smb4k/smb4ksharesmenu.cpp:230
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Openen met bestandsbeheerder"
