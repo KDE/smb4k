@@ -95,7 +95,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-11-12</date>
+>2024-12-08</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -738,7 +738,7 @@
 ><para
 >Seleccionar los recursos compartidos remotos y hacer clic en la entrada de menú <guimenuitem
 >Montar</guimenuitem
->. De forma alternativa, puede pulsar el acceso rápido de teclado <keycombo action="simul"
+>. De forma alternativa, puede pulsar el atajo de teclado <keycombo action="simul"
 >&Ctrl; <keycap
 >M</keycap
 ></keycombo
@@ -981,7 +981,7 @@
 >Añadiendo marcadores</title>
 
       <para
->Un marcador se añade seleccionando un recurso compartido (son los únicos que se pueden añadir a marcados) y pulsando el acceso rápido de teclado <keycombo action="simul"
+>Un marcador se añade seleccionando un recurso compartido (son los únicos que se pueden añadir a marcados) y pulsando el atajo de teclado <keycombo action="simul"
 >&Ctrl; <keycap
 >M</keycap
 ></keycombo
@@ -1402,7 +1402,7 @@
 ><guimenuitem
 >Desmontar</guimenuitem
 ></menuchoice
->, o bien pulsando su acceso rápido de teclado. De manera predeterminada, la capacidad para desmontar un recurso compartido está restringida a aquellos recursos que sean de su propiedad. Este comportamiento se puede modificar en el  <link linkend="configuration_page_mounting_basic_settings_behavior"
+>, o bien pulsando su atajo de teclado. De manera predeterminada, la capacidad para desmontar un recurso compartido está restringida a aquellos recursos que sean de su propiedad. Este comportamiento se puede modificar en el  <link linkend="configuration_page_mounting_basic_settings_behavior"
 >diálogo de configuración</link
 >. Si usted activó el desmontaje de recursos compartidos que son propiedad de otros usuarios, se le mostrará un diálogo de advertencia antes de realizar el desmontaje. Si continua, el recurso compartido será desmontado definitivamente. ¡Así que piénselo dos veces antes de hacerlo!</para>
       <para
@@ -1583,7 +1583,7 @@
 >Ubicación y uso</title>
 
       <para
->Cuando se inicia &smb4k; un icono de estado aparece en la bandeja del sistema. Su estado pasará a activo si se encontraron grupos de trabajo o dominios en su entorno de red. Si no pasará a inactivo.</para>
+>When &smb4k; is started, a status icon appears in the system tray. Its status is set to active if either workgroups or domains were discovered in your network neighborhood or remote shares were mounted. Otherwise it is set to inactive.</para>
 
       <screenshot>
         <screeninfo
@@ -1698,10 +1698,10 @@
           </term>
           <listitem>
             <para
->Sincroniza el recurso compartido montado con una copia local o viceversa. Para más información lea las secciones sobre la vista de recursos compartidos en las secciones <link linkend="shares_view_actions_popup_menu"
->Acciones y menú emergente</link
-> y <link linkend="shares_view_synchronization"
->Sincronización</link
+>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu"
+>Actions and Popup Menu</link
+> and <link linkend="shares_view_synchronization"
+>Synchronization</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1732,11 +1732,11 @@
       </variablelist>
 
       <para
->El menú <guimenuitem
->Marcadores</guimenuitem
->contiene todos sus marcadores organizados conforme a la estructura que usted les dio (vea también la sección <link linkend="bookmarks"
->Marcadores</link
->).</para>
+>The <guimenuitem
+>Bookmarks</guimenuitem
+> menu contains all your bookmarks (see also the <link linkend="bookmarks"
+>Bookmarks</link
+> section).</para>
 
       <screenshot>
         <screeninfo
