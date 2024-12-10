@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-25 02:34+0000\n"
+"POT-Creation-Date: 2024-12-10 02:38+0000\n"
 "PO-Revision-Date: 2024-06-22 13:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -848,7 +848,7 @@ msgstr "&Ara"
 msgid "Ctrl+B"
 msgstr "Kontrol+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "Add &Custom Settings"
@@ -1034,32 +1034,32 @@ msgstr "Yazdır"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "<b>%1</b> yazıcısıyla bir dosya yazdırın."
 
-#: smb4k/smb4ksharesmenu.cpp:54 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
 #, kde-format
 msgid "U&nmount All"
 msgstr "&Tümünün Bağlantısını Kes"
 
-#: smb4k/smb4ksharesmenu.cpp:160
+#: smb4k/smb4ksharesmenu.cpp:152
 #, kde-format
 msgid "Unmount"
 msgstr "Bağlantıyı Kes"
 
-#: smb4k/smb4ksharesmenu.cpp:179
+#: smb4k/smb4ksharesmenu.cpp:171
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Yer İmi Koy"
 
-#: smb4k/smb4ksharesmenu.cpp:205 smb4k/smb4ksynchronizationdialog.cpp:92
+#: smb4k/smb4ksharesmenu.cpp:197 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Eşzamanla"
 
-#: smb4k/smb4ksharesmenu.cpp:224
+#: smb4k/smb4ksharesmenu.cpp:216
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Konsole ile Aç"
 
-#: smb4k/smb4ksharesmenu.cpp:238
+#: smb4k/smb4ksharesmenu.cpp:230
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Dosya Yöneticisi ile Aç"
