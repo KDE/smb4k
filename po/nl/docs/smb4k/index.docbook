@@ -53,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-11-12</date>
+>2024-12-08</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1541,7 +1541,7 @@
 >Locatie en gebruik</title>
 
       <para
->Wanneer &smb4k; is gestart verschijnt er een statuspictogram in het systeemvak. Zijn status is op actief gezet als werkgroepen of domeinen ontdekt zijn in uw netwerkomgeving. Anders staat deze op inactief.</para>
+>Wanneer &smb4k; is gestart verschijnt er een statuspictogram in het systeemvak. Zijn status is op actief gezet als ofwel werkgroepen of domeinen ontdekt zijn in uw netwerkomgeving of shares op afstand zijn aangekoppeld. Anders staat deze op inactief.</para>
 
       <screenshot>
         <screeninfo
@@ -1690,9 +1690,9 @@
       </variablelist>
 
       <para
->In het menu <guimenuitem
+>In menu <guimenuitem
 >Bladwijzer</guimenuitem
-> kunt u al uw bladwijzers vinden die georganiseerd zijn volgens de door u opgegeven structuur (zie ook de sectie <link linkend="bookmarks"
+> bevat al uw bladwijzers (zie ook de sectie <link linkend="bookmarks"
 >Bladwijzers</link
 >).</para>
 

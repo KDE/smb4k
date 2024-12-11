@@ -53,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->12 de novembre de 2024</date>
+>8 de desembre de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1547,7 +1547,7 @@
 >Ubicació i ús</title>
 
       <para
->Quan s'inicia el &smb4k;, apareixerà una icona d'estat a la safata del sistema. El seu estat s'establirà com a activa si s'han descobert grups de treball o dominis al vostre veïnatge de xarxa. D'altra manera, s'establirà a inactiva.</para>
+>Quan s'inicia el &smb4k;, apareixerà una icona d'estat a la safata del sistema. El seu estat s'establirà com a activa si s'han descobert grups de treball o dominis al vostre veïnatge de xarxa o s'han muntat comparticions remotes. D'altra manera, s'establirà a inactiva.</para>
 
       <screenshot>
         <screeninfo
@@ -1698,7 +1698,7 @@
       <para
 >El menú <guimenuitem
 >Adreces d'interès</guimenuitem
-> conté totes les adreces d'interès organitzades d'acord amb l'estructura que les vau proporcionar (vegeu també la secció <link linkend="bookmarks"
+> conté totes les adreces d'interès (vegeu també la secció <link linkend="bookmarks"
 >adreces d'interès</link
 >).</para>
 
