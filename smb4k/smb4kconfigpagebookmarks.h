@@ -1,7 +1,7 @@
 /*
     The configuration page for bookmarks
 
-    SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -105,10 +105,11 @@ protected Q_SLOTS:
     void slotIpAddressEdited();
     void slotEnableButtons();
     void slotIconSizeChanged(int group);
-    void sortItems();
+
 
 private:
     void checkValues();
+    void sortItems();
     enum Role {
         TypeRole = Qt::UserRole,
         DataRole = Qt::UserRole + 1
