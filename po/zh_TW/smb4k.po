@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:41+0000\n"
+"POT-Creation-Date: 2024-12-13 09:51+0000\n"
 "PO-Revision-Date: 2024-04-19 02:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -292,7 +292,7 @@ msgstr "移除"
 msgid "Clear List"
 msgstr "清除清單"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:452
+#: smb4k/smb4kconfigpagebookmarks.cpp:455
 #, kde-format
 msgid "New Category"
 msgstr "新分類"

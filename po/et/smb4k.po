@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:41+0000\n"
+"POT-Creation-Date: 2024-12-13 09:51+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -300,7 +300,7 @@ msgstr "Eemalda"
 msgid "Clear List"
 msgstr "Puhasta nimekiri"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:452
+#: smb4k/smb4kconfigpagebookmarks.cpp:455
 #, kde-format
 msgid "New Category"
 msgstr ""

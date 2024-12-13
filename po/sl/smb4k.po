@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:41+0000\n"
+"POT-Creation-Date: 2024-12-13 09:51+0000\n"
 "PO-Revision-Date: 2024-06-21 07:07+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -289,7 +289,7 @@ msgstr "Odstrani"
 msgid "Clear List"
 msgstr "Očisti seznam"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:452
+#: smb4k/smb4kconfigpagebookmarks.cpp:455
 #, kde-format
 msgid "New Category"
 msgstr "Nova kategorija"
