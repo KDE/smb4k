@@ -1,7 +1,7 @@
 /*
     The configuration page for bookmarks
 
-    SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -151,7 +151,6 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     loadBookmarks();
 
     connect(this, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigPageBookmarks::slotEnableButtons);
-    connect(this, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigPageBookmarks::sortItems);
     connect(Smb4KBookmarkHandler::self(), &Smb4KBookmarkHandler::updated, this, &Smb4KConfigPageBookmarks::loadBookmarks);
     connect(KIconLoader::global(), &KIconLoader::iconChanged, this, &Smb4KConfigPageBookmarks::slotIconSizeChanged);
 }
@@ -198,12 +197,15 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
 
                 bookmarkItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
                 bookmarkItem->setText(0, bookmark->displayString());
+                bookmarkItem->setText(1, QStringLiteral("01_")+bookmark->displayString());
                 bookmarkItem->setIcon(0, bookmark->icon());
                 bookmarkItem->setData(0, TypeRole, BookmarkType);
                 bookmarkItem->setData(0, DataRole, variant);
             }
         }
     }
+
+    sortItems();
 
     m_bookmarksChanged = false;
     Q_EMIT bookmarksModified();
@@ -290,6 +292,7 @@ QTreeWidgetItem *Smb4KConfigPageBookmarks::addCategoryItem(const QString &text)
     QTreeWidgetItem *categoryItem = new QTreeWidgetItem(m_treeWidget, QTreeWidgetItem::UserType);
     categoryItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
     categoryItem->setText(0, text);
+    categoryItem->setText(1, QStringLiteral("00_")+text);
     categoryItem->setIcon(0, KDE::icon(QStringLiteral("folder-favorites")));
     categoryItem->setData(0, TypeRole, CategoryType);
     categoryItem->setData(0, DataRole, text);
@@ -513,6 +516,8 @@ void Smb4KConfigPageBookmarks::slotItemSelectionChanged()
         m_userNameEdit->clear();
         m_workgroupEdit->clear();
         m_ipAddressEdit->clear();
+
+        sortItems();
     }
 }
 
@@ -744,27 +749,14 @@ void Smb4KConfigPageBookmarks::slotIconSizeChanged(int group)
 
 void Smb4KConfigPageBookmarks::sortItems()
 {
-    QMap<QString, QTreeWidgetItem *> itemMap;
+    m_treeWidget->sortItems(1, Qt::AscendingOrder);
 
-    while (m_treeWidget->topLevelItemCount() > 0) {
-        QTreeWidgetItem *item = m_treeWidget->takeTopLevelItem(0);
-
-        if (item->data(0, TypeRole).toInt() == CategoryType) {
-            item->sortChildren(0, Qt::AscendingOrder);
-            itemMap[QStringLiteral("00_") + item->data(0, DataRole).toString()] = item;
-        } else {
-            itemMap[QStringLiteral("01_") + item->data(0, DataRole).value<Smb4KBookmark>().displayString()] = item;
-        }
-    }
-
-    QMapIterator<QString, QTreeWidgetItem *> it(itemMap);
-
-    while (it.hasNext()) {
-        it.next();
-        m_treeWidget->addTopLevelItem(it.value());
-
-        if (it.value()->childCount() != 0) {
-            it.value()->setExpanded(true);
+    for (int i = 0; i < m_treeWidget->topLevelItemCount(); i++) {
+        if (m_treeWidget->topLevelItem(i)->data(0, TypeRole).toInt() == CategoryType) {
+            m_treeWidget->topLevelItem(i)->sortChildren(1, Qt::AscendingOrder);
+            m_treeWidget->topLevelItem(i)->setExpanded(true);
+        } else if (m_treeWidget->topLevelItem(i)->data(0, TypeRole).toInt() == BookmarkType) {
+            break;
         }
     }
 }
