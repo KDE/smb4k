@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-24 00:39+0000\n"
-"PO-Revision-Date: 2024-09-14 17:17+0200\n"
+"PO-Revision-Date: 2024-12-12 20:00+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1936,7 +1936,7 @@ msgstr "Non foi posíbel imprimir o ficheiro %1 en %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
-"O servizo Zeroconf non se está a executarse. Non se atopan servidores "
+"O servizo de Zeroconf non está en execución. Non se descubriron servidores "
 "mediante DNS-SD."
 
 #: smb4kclient_p.cpp:1347
