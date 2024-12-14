@@ -1,0 +1,99 @@
+# Sanskrit translations for smb4k package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-07-11 00:38+0000\n"
+"PO-Revision-Date: 2024-12-13 19:10+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Sanskrit\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:58
+#: package/contents/ui/SharesViewItemDelegate.qml:57
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">%1</font> इत्यत्र"
+
+#: package/contents/ui/BookmarksPage.qml:40
+msgid "Go back"
+msgstr "पुनः गच्छतु"
+
+#: package/contents/ui/BookmarksPage.qml:59
+msgid "Edit bookmarks"
+msgstr "पुस्तकचिह्न सम्पादयतु"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr "विन्याससंवादः"
+
+#: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
+msgid "Network Neighborhood"
+msgstr "नेटवर्क नेबरहुड"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:93
+#: package/contents/ui/SharesViewItemDelegate.qml:77
+msgid "Bookmark"
+msgstr "बुकमार्क"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:123
+msgid "Preview"
+msgstr "पूर्वावलोकनम्"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:153
+msgid "Configure"
+msgstr "विन्यस्तं कुर्वन्तु"
+
+#: package/contents/ui/NetworkBrowserPage.qml:40
+msgid "Rescan"
+msgstr "पुनः स्कैन करें"
+
+#: package/contents/ui/NetworkBrowserPage.qml:62
+msgid "Abort"
+msgstr "गर्भपातं कुरुत"
+
+#: package/contents/ui/NetworkBrowserPage.qml:80
+msgid "Go one level up"
+msgstr "एकं स्तरं उपरि गच्छतु"
+
+#: package/contents/ui/NetworkBrowserPage.qml:114
+msgid "Open the mount dialog"
+msgstr "माउण्ट् संवादं उद्घाटयन्तु"
+
+#: package/contents/ui/PopupDialog.qml:38
+msgid "Mounted Shares"
+msgstr "घुड़सवार शेयर"
+
+#: package/contents/ui/PopupDialog.qml:45
+msgid "Bookmarks"
+msgstr "बुकमार्क्स"
+
+#: package/contents/ui/PopupDialog.qml:52
+msgid "Profiles"
+msgstr "प्रोफाइल"
+
+#: package/contents/ui/PopupDialog.qml:59
+msgid "Configuration"
+msgstr "विन्यासः"
+
+#: package/contents/ui/ProfileItemDelegate.qml:53
+msgid "(active)"
+msgstr "(सक्रियं)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:105
+msgid "Synchronize"
+msgstr "समन्वयनम्"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:133
+msgid "Unmount"
+msgstr "अनमाउंट"
+
+#: package/contents/ui/SharesViewPage.qml:41
+msgid "Unmount all shares"
+msgstr "सर्वान् शेयरान् अनमाउण्ट् कुर्वन्तु"

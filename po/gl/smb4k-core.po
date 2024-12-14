@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-24 00:39+0000\n"
-"PO-Revision-Date: 2024-12-12 20:00+0100\n"
+"PO-Revision-Date: 2024-12-13 22:31+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -1041,6 +1041,7 @@ msgstr ""
 msgid "Preserve create times"
 msgstr "Preservar as horas de creación"
 
+# skip-rule: trasno-sound_reverse
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:377
 #, kde-format
