@@ -1824,13 +1824,13 @@ msgstr "प्रोफाइलस्य सूची ।"
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
-msgstr ""
+msgstr "गृहम्‌"
 
 #: smb4k.kcfg:672
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
-msgstr ""
+msgstr "कार्यम्‌"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:673
@@ -2982,7 +2982,7 @@ msgstr "<p><b>%1 इति</b> भागः <b>%2</b> इत्यत्र म�
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
-msgstr ""
+msgstr "उद्घाटित"
 
 #: smb4knotification.cpp:95
 #, kde-format
@@ -2993,15 +2993,15 @@ msgstr "<p><b>%1 इति</b> भागः <b>%2</b> तः अनमाउण�
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "<p>%1 भागः माउण्ट् कृतः अस्ति ।</p>"
+msgstr[1] "<p>%1 भागाः माउण्ट् कृताः सन्ति ।</p>"
 
 #: smb4knotification.cpp:130
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "<p>%1 भागः अनमाउण्ट् कृतः अस्ति ।</p>"
+msgstr[1] "<p>%1 भागाः अनमाउण्ट् कृताः सन्ति ।</p>"
 
 #: smb4knotification.cpp:148
 #, kde-format

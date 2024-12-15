@@ -21,12 +21,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "भवतः नामानि"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "भवतः ईमेलपत्राणि"
 
 #: helpers/smb4kmounthelper.cpp:135
 #, kde-format
@@ -401,7 +401,11 @@ msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
 msgstr[0] ""
+"अतिरिक्तविकल्पेभ्यः निम्नलिखितप्रविष्टिः निष्कासिता भविष्यति ।<br> %2.<br> विस्तरेण "
+"कृपया हस्तपुस्तिका पठन्तु।"
 msgstr[1] ""
+"अतिरिक्तविकल्पेभ्यः निम्नलिखित %1 प्रविष्टयः निष्कासिताः भविष्यन्ति:<br> %2.<br> "
+"विस्तरेण कृपया हस्तपुस्तिका पठन्तु।"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:250
@@ -694,8 +698,8 @@ msgstr "सम्प्रति कोऽपि भागः माउण्ट
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "सम्प्रति %1 भागः माउण्ट् अस्ति ।"
+msgstr[1] "सम्प्रति %1 भागाः माउण्ट् कृताः सन्ति ।"
 
 #: smb4k/smb4kmainwindow.cpp:485
 #, kde-format
@@ -795,7 +799,7 @@ msgstr "एतत् भागं बुकमार्कं कुर्वन
 #, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr ""
+msgstr "बुकमार्क >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
