@@ -49,8 +49,8 @@ To compile Smb4K, you need:
   or clang/LLVM (version >= 3.3, https://clang.llvm.org)
 
 Smb4K build depends on:
-- Qt (version >= 6.6.2, https://www.qt.io): QtCore, QtGui, QtWidgets, QtNetwork, QtPrintSupport, QtQml
-- KDE Frameworks (version >= 6.0.0, https://www.kde.org): ECM, KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem, KCrash, KDNSSD
+- Qt (version >= 6.6.2, https://www.qt.io): QtCore, QtGui, QtNetwork, QtPrintSupport, QtQml, QtWidgets
+- KDE Frameworks (version >= 6.0.0, https://www.kde.org): ECM, KAuth, KCompletion, KConfig, KConfigWidgets, KCoreAddons, KCrash, KDBusAddons, KDNSSD, KDocTools, KI18n, KIconThemes, KJobWidgets, KIO, KNotifications, Solid, KStatusNotifierItem, KWallet, KWidgetsAddons, KWindowSystem, KXmlGui
 - QtKeychain (version >= 0.14.2, https://github.com/frankosterfeld/qtkeychain)
 - libsmbclient (version >= 4.10.0, https://www.samba.org)
 
