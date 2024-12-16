@@ -24,6 +24,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
   <name xml:lang="he">Smb4K</name>
+  <name xml:lang="hi">एसएमबी4के</name>
   <name xml:lang="hu">Smb4K</name>
   <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
@@ -60,6 +61,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="fr">Découvre et monte des partages Windows et SAMBA à travers le réseau</summary>
   <summary xml:lang="gl">Descubrir e montar comparticións de rede de SAMBA e de Windows.</summary>
   <summary xml:lang="he">גילוי ועיגון שיתופי SAMBA ו־Windows דרך הרשת</summary>
+  <summary xml:lang="hi">नेटवर्क पर SAMBA और Windows शेयर खोजें और माउंट करें</summary>
   <summary xml:lang="hu">SAMBA és Windows megosztások felfedezése és csatolása a hálózaton keresztül</summary>
   <summary xml:lang="id">Temukan dan kaitkan SAMBA dan berbagi Windows melalui jaringan</summary>
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
@@ -93,6 +95,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fr">Smb4K est un navigateur avancé de votre voisinage réseau et un utilitaire de montage pour Samba. Il repose sur les environnements de développement de KDE, le module « QtKeyChain », la bibliothèque de client pour Samba (libsmbclient) et, de façon optionnelle, le client « KDSoap WS-Discovery ». Il analyse votre voisinage réseau à la recherche de tous les groupes de travail, les serveurs et les partages disponibles. Il peut monter tous les partages demandés sur votre système de fichiers locaux.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba. Está baseada nas infraestruturas de KDE, QtKeychain, a biblioteca de cliente de Samba (libsmbclient) e, opcionalmente, o cliente KDSoap-WS-Discovery. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="he">Smb4K הוא דפדפן מתקדם לשכנים ברשת וכלי לעיגון שיתופי Samba. הוא מבוסס על תשתיות KDE,‏ QtKeyChain וספריית הלקוח של Samba ‏(libsmbclient) וכרשות, לקוח WS-Discovery בשם KDSoap. הוא סורק את השכנים ברשת לאיתור קבוצות עבודה, שרתים ושיתופים זמינים ויכול לעגן את כל השיתופים הרצויים למערכת הקבצים המקומית שלך.</p>
+    <p xml:lang="hi">Smb4K एक उन्नत नेटवर्क नेबरहुड ब्राउज़र और Samba शेयर माउंटिंग उपयोगिता है। यह KDE फ्रेमवर्क, QtKeychain, Samba की क्लाइंट लाइब्रेरी (libsmbclient) और वैकल्पिक रूप से, KDSoap WS-Discovery क्लाइंट पर आधारित है। यह आपके नेटवर्क नेबरहुड को सभी उपलब्ध कार्यसमूहों, सर्वरों और शेयरों के लिए स्कैन करता है और आपके स्थानीय फ़ाइल सिस्टम पर सभी वांछित शेयरों को माउंट कर सकता है।</p>
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba. È basato su KDE Frameworks, QtKeychain e sulla libreria client di Samba (libsmbclient) e, opzionalmente sul client WS-Discovery KDSoap. Analizza le risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
     <p xml:lang="ka">Smb4k დამატებითი ქსელის სამეზობლოს დასათვალიერებელი და Samba-ის გაზიარებების მიმაგრების პროგრამაა. ის ეყრდნობა KDE Framework-ს და Samba-ის კლიენტის ბიბლიოთეკას (libsmbclient). ის ასკანირებს თქვენი ქსელის სამეზობლოს ყველა ხელმისაწვდომი სამუშაო ჯგუფების, სერვერებისა და გაზიარებების საპოვნელად და შეუძლია, ყველა სასურველი გაზიარება თქვენს ლოკალურ ფაილურ სისტემაზე მიამაგროს.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op het KDE Frameworks, QtKeychain, clientbibliotheek van Samba (libsmbclient) en, optioneel, de KDSoap WS-Discovery-client. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
@@ -125,6 +128,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="he">יכולות:</p>
+    <p xml:lang="hi">विशेषताएँ:</p>
     <p xml:lang="hu">Szolgáltatások:</p>
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
@@ -159,6 +163,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Analyse des groupes de travail (actifs), hôtes et partages à l’aide de la bibliothèque « DNS-SD » (DNS Service Discovery) du client Samba, et, éventuellement, les services Internet  « WS-Discovery » (Web Services Dynamic Discovery)</li>
       <li xml:lang="gl">Buscando grupos de traballo (activos), servidores e comparticións mediante a biblioteca de cliente de Samba, o descubrimento de servizos de DNS (DNS-SD) e, opcionalmente, o descubrimento dinámico de servizos web (WS-Discovery).</li>
       <li xml:lang="he">סריקה לאיתור קבוצות עבודה (פעילות), מארחים ושיתופים באמצעות ספריית הלקוח של Samba, גילוי שירותים עם DNS-SD וכרשות, גילוי שירותי רשת דינמי (WS-Discovery)</li>
+      <li xml:lang="hi">सांबा की क्लाइंट लाइब्रेरी, DNS सेवा डिस्कवरी (DNS-SD) और वैकल्पिक रूप से, वेब सेवा डायनेमिक डिस्कवरी (WS-Discovery) का उपयोग करके (सक्रिय) कार्यसमूहों, होस्टों और शेयरों के लिए स्कैनिंग</li>
       <li xml:lang="it">Ricerca di gruppi di lavoro, host e condivisioni (attivi) usando la libreria client di Samba, il sistema di rilevamento dei servizi via DNS (DNS-SD) e, facoltativamente, il rilevamento dinamico dei servizi Web (WS-Discovery)</li>
       <li xml:lang="ka">(აქტიური) სამუშაო ჯგუფების, ჰოსტების და გაზიარებების სკანირება Samba-ის კლიენტის ბიბლიოთეკის, DNS სერვისის აღმოჩენით (DNS-SD) და არასავალდებულოდ, ვებსერვისების დინამიკური აღმოჩენით (WS-Discovery)</li>
       <li xml:lang="nl">Scannen naar (actieve) werkgroepen, hosts en shares met de client-bibliotheek van Samba, DNS Service Discovery (DNS-SD) en, optioneel, Web Services Dynamic Discovery (WS-Discovery)</li>
@@ -182,6 +187,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge des systèmes de fichiers « CIFS » et « SMB3 » sous Linux, ainsi que le système de fichiers « SMBFS » sous BSD</li>
       <li xml:lang="gl">Compatibilidade cos sistemas de ficheiros CIFS e SMB3 en Linux, así como o sistema de ficheiros SMBFS en BSD.</li>
       <li xml:lang="he">תמיכה במערכות הקבצים CIFS ו־SMB3 תחת לינוקס לרבות מערכת הקבצים SMBFS תחת BSD</li>
+      <li xml:lang="hi">लिनक्स के अंतर्गत CIFS और SMB3 फाइल सिस्टम के साथ-साथ BSD के अंतर्गत SMBFS फाइल सिस्टम का समर्थन</li>
       <li xml:lang="it">Supporto per i file system CIFS e SMB3 nei sistemi Linux, e SMBFS in BSD</li>
       <li xml:lang="ka">CIFS და SMB3 ფაილური სისტემების მხარდაჭერა ლინუქსში და ფაილური სისტემა SMBFS BSD-ში</li>
       <li xml:lang="nl">Ondersteuning van het CIFS en SMB3 bestandssysteem onder Linux evenals het SMBFS bestandssysteem onder BSD</li>
@@ -209,6 +215,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
       <li xml:lang="he">עיגון וניתוק שיתופים</li>
+      <li xml:lang="hi">शेयरों को माउंट करना और उतारना</li>
       <li xml:lang="hu">Megosztások csatolása és leválasztása</li>
       <li xml:lang="id">Pengaitan dan pelepaskaitan berbagi</li>
       <li xml:lang="ie">Montage e demontage de partites</li>
@@ -245,6 +252,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
       <li xml:lang="he">גישה לקבצים של שיתוף מעוגן באמצעות מנהל קבצים או מסוף</li>
+      <li xml:lang="hi">फ़ाइल प्रबंधक या टर्मिनल का उपयोग करके माउंटेड शेयर की फ़ाइलों तक पहुँच</li>
       <li xml:lang="hu">Hozzáférés a csatlakoztatott megosztás fájljaihoz fájlkezelő vagy terminál segítségével</li>
       <li xml:lang="id">Akses ke file pada berbagi yang dikaitkan menggunakan pengelola file atau terminal</li>
       <li xml:lang="it">Accesso ai file di una condivisione montata usando un gestore dei file o un terminale</li>
@@ -280,6 +288,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
       <li xml:lang="he">זיהוי אוטומטי של עיגונים וניתוקים חיצוניים</li>
+      <li xml:lang="hi">बाह्य माउंट और अनमाउंट का स्वतः पता लगाना</li>
       <li xml:lang="hu">Külső csatolások és leválasztások automatikus felismerése</li>
       <li xml:lang="id">Auto deteksi kait dan lepaskait eksternal</li>
       <li xml:lang="it">Rilevazione automatica di montaggi o di smontaggi esterni</li>
@@ -315,6 +324,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
       <li xml:lang="gl">Pode volver a montar comparticións usadas previamente ao iniciar o programa.</li>
       <li xml:lang="he">עיגון מחדש של שיתופים שנעשה בהם שימוש בעבר עם עליית התוכנית</li>
+      <li xml:lang="hi">कार्यक्रम शुरू होने पर पहले से उपयोग किए गए शेयरों को पुनः माउंट करना</li>
       <li xml:lang="hu">Korábban használt megosztások újra csatolása a program indulásakor</li>
       <li xml:lang="id">Mengaitkan-ulang berbagi-berbagi yang digunakan sebelumnya saat memulai program</li>
       <li xml:lang="it">Rimontaggio all'avvio del programma di una condivisione usata in precedenza</li>
@@ -347,6 +357,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Informations diverses sur les éléments distants de réseaux et les partages actifs</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
       <li xml:lang="he">פרטים שונים על פריטי רשת מרוחקים ושיתופים מעוגנים</li>
+      <li xml:lang="hi">दूरस्थ नेटवर्क आइटम और माउंटेड शेयर के बारे में विविध जानकारी</li>
       <li xml:lang="it">Informazioni varie sugli elementi di rete remoti e sulle condivisioni montate</li>
       <li xml:lang="ka">სხვადასხვა ინფორმაცია დაშორებული ქსელური ელემენტებისა და მიმაგრებული გაზიარებების შესახებ</li>
       <li xml:lang="nl">Allerlei informatie over netwerk-items en aangekoppelde shares</li>
@@ -376,6 +387,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
       <li xml:lang="he">חיפוש ברשת</li>
+      <li xml:lang="hi">नेटवर्क खोज</li>
       <li xml:lang="hu">Hálózati keresés</li>
       <li xml:lang="id">Pencarian jaringan</li>
       <li xml:lang="ie">Sercha in li rete</li>
@@ -412,6 +424,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Aperçu des contenus d'un partage distant</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición remota</li>
       <li xml:lang="he">תצוגה מקדימה של התוכן בשיתוף המרוחק</li>
+      <li xml:lang="hi">दूरस्थ शेयर की सामग्री का पूर्वावलोकन</li>
       <li xml:lang="hu">Távoli megosztások tartalmának előnézete</li>
       <li xml:lang="id">Pratinjaunya konten dari berbagi jarak jauh</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione remota</li>
@@ -448,6 +461,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
       <li xml:lang="he">פרטי כניסה כברירת מחדל</li>
+      <li xml:lang="hi">डिफ़ॉल्ट लॉगिन</li>
       <li xml:lang="hu">Alapértelmezett bejelentkezés</li>
       <li xml:lang="ia">Authentication predefinite</li>
       <li xml:lang="id">Login baku</li>
@@ -481,6 +495,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge spéciale des dossiers personnels partagés</li>
       <li xml:lang="gl">Xestiona de forma especial as particións do cartafol persoal.</li>
       <li xml:lang="he">טיפול מיוחד בטיפולי תיקיות בית</li>
+      <li xml:lang="hi">घरेलू शेयरों का विशेष प्रबंधन</li>
       <li xml:lang="hu">Otthoni megosztások speciális kezelése</li>
       <li xml:lang="it">Gestione speciale delle condivisioni della home</li>
       <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
@@ -510,6 +525,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
       <li xml:lang="he">יכולת לסמן שיתופים מועדפים</li>
+      <li xml:lang="hi">पसंदीदा शेयर को बुकमार्क करने की क्षमता</li>
       <li xml:lang="hu">Könyvjelző hozzáadása a kedvenc megosztásokhoz</li>
       <li xml:lang="id">Kemampuan untuk memarkahi berbagi-berbagi favorit</li>
       <li xml:lang="it">Possibilità di aggiungere le condivisioni preferite nei segnalibri</li>
@@ -546,6 +562,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
       <li xml:lang="he">וידג׳ט לשורת המערכת</li>
+      <li xml:lang="hi">सिस्टम ट्रे विजेट</li>
       <li xml:lang="hu">Paneltálca kisalkalmazás</li>
       <li xml:lang="id">Widget system tray</li>
       <li xml:lang="it">Oggetto per il vassoio di sistema</li>
@@ -581,6 +598,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge des options de montage avancées</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de montaxe</li>
       <li xml:lang="he">תמיכה באפשרויות עיגון מתקדמות</li>
+      <li xml:lang="hi">उन्नत माउंट विकल्पों का समर्थन</li>
       <li xml:lang="hu">Speciális csatolási beállítások támogatása</li>
       <li xml:lang="id">Dukungan opsi kait tingkat-lanjut</li>
       <li xml:lang="it">Supporto alle opzioni avanzate di montaggio</li>
@@ -615,6 +633,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
       <li xml:lang="he">תמיכה בשיתופי מדפסות</li>
+      <li xml:lang="hi">प्रिंटर शेयर का समर्थन</li>
       <li xml:lang="hu">Nyomtatómegosztások támogatása</li>
       <li xml:lang="id">Dukungan berbagi printer</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
@@ -646,6 +665,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge de plusieurs solutions d'enregistrement sécurisé pour les identifiants de connexion grâce à QtKeychain</li>
       <li xml:lang="gl">Compatibilidade con varias solucións de almacenamento seguro para as credenciais de acceso mediante QtKeychain.</li>
       <li xml:lang="he">תמיכה במספר פתרונות מאובטחים לפרטי גישה דרך QtKeychain</li>
+      <li xml:lang="hi">QtKeychain के माध्यम से लॉगिन क्रेडेंशियल के लिए कई सुरक्षित भंडारण समाधानों का समर्थन</li>
       <li xml:lang="it">Supporto a molte soluzioni di salvataggio sicuro delle credenziali di accesso con QtKeychain</li>
       <li xml:lang="ka">რამდენიმე დაცული საცავის გადაწყვეტილების მხარდაჭერა ავტორიზაციის დეტალებისთვის QtKeychain-ით</li>
       <li xml:lang="nl">Ondersteuning van verschillende veilige oplossingen voor opslag voor de aanmeldgegevens via QtKeychain</li>
@@ -673,6 +693,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Synchronisation d'un partage distant avec une copie locale et vice-versa</li>
       <li xml:lang="gl">Permite sincronizar comparticións remotas con copias locais en ambos sentidos.</li>
       <li xml:lang="he">סנכרון של שיתוף מרוחק מול עותק מקומי ולהפך</li>
+      <li xml:lang="hi">दूरस्थ शेयर का स्थानीय प्रतिलिपि के साथ समन्वयन और इसके विपरीत</li>
       <li xml:lang="hu">Távoli megosztások szinkronizálása a helyi másolattal és fordítva</li>
       <li xml:lang="id">Sinkronisasi berbagi jarak jauh dengan salinan lokal dan sebaliknya</li>
       <li xml:lang="it">Sincronizzazione di una condivisione remota con una copia locale e viceversa</li>
@@ -705,6 +726,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Possibilité de définir une configuration personnalisée pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
       <li xml:lang="he">היכולת להגדיר תצורה משלך לשרתים ושיתופים באופן פרטני</li>
+      <li xml:lang="hi">व्यक्तिगत सर्वर और शेयर के लिए कस्टम सेटिंग्स परिभाषित करने की क्षमता</li>
       <li xml:lang="it">Capacità di definire impostazioni personalizzate per server individuali e per le condivisioni</li>
       <li xml:lang="ka">საშუალება, აღწეროთ მორგებული პარამეტრები ინდივიდუალური სერვერებისა და გაზიარებებისათვის</li>
       <li xml:lang="nl">Vermogen om eigen instellingen voor individuele servers en shares te definiëren</li>
@@ -729,6 +751,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge matérielle grâce à l'environnement de développement pour l'intégration de périphériques sous Solid, les classes pré-définies « KDBusAddons » et le module « QtNetwork »</li>
       <li xml:lang="gl">Compatibilidade con soporte físico mediante a infraestrutura de integración de dispositivos Solid, as clases de asistencia KDBusAddons e o módulo Network (rede) de Qt.</li>
       <li xml:lang="he">תמיכה בחומרה דרך תשתית שילוב המכשירים Solid, מחלקות הנוחות של KDBusAddons ומודל התקשורת של Qt</li>
+      <li xml:lang="hi">सॉलिड डिवाइस इंटीग्रेशन फ्रेमवर्क, KDBusAddons सुविधा क्लासेस और Qt नेटवर्क मॉड्यूल के माध्यम से हार्डवेयर समर्थन</li>
       <li xml:lang="it">Supporto hardware per mezzo dell'infrastruttura per l'integrazione dei dispositivi Solid, delle classi di supporto KDBusAddons e del modulo Qt Network</li>
       <li xml:lang="ka">აპარატურის მხარდაჭერა Solid device integration framework-ით, KDBusAddons-ის შესაბამისი კლასებით და Qt-ის ქსელური მოდულით</li>
       <li xml:lang="nl">Hardware ondersteuning via het apparaatintegratieframework Solid, de KDBusAddons; gemaksklassen en de Qt-netwerkmodule</li>
@@ -756,6 +779,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Capacités de réveil par le réseau (Wake-on-LAN)</li>
       <li xml:lang="gl">Ofrece funcionalidades de espertar na rede (Wake-On-LAN).</li>
       <li xml:lang="he">יכולות Wake-On-LAN (התעוררות דרך הרשת)</li>
+      <li xml:lang="hi">वेक-ऑन-लैन क्षमताएं</li>
       <li xml:lang="hu">Wake-On-LAN képességek</li>
       <li xml:lang="id">Kemampuan Wake-On-LAN</li>
       <li xml:lang="it">Funzionalità Wake-On-LAN</li>
@@ -791,6 +815,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
       <li xml:lang="gl">Ofrece integración co escritorio mediante un trebello.</li>
       <li xml:lang="he">Plasmoid לשילוב בשולחן העבודה</li>
+      <li xml:lang="hi">डेस्कटॉप एकीकरण के लिए प्लास्मॉइड</li>
       <li xml:lang="hu">Plasmoid az asztali integrációhoz</li>
       <li xml:lang="id">Plasmoid untuk integrasi desktop</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
@@ -825,6 +850,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Profils pour les différentes configurations de voisinage réseau</li>
       <li xml:lang="gl">Perfís para distintas configuracións de veciñanza de rede</li>
       <li xml:lang="he">פרופילים להגדרות שונות של סביבות רשת</li>
+      <li xml:lang="hi">विभिन्न नेटवर्क पड़ोस सेटअप के लिए प्रोफाइल</li>
       <li xml:lang="hu">Profilok különböző hálózati szomszédsági beállításokhoz</li>
       <li xml:lang="id">Memprofilkan bagi persiapan jaringan tetangga yang berbeda</li>
       <li xml:lang="it">Profili per diverse impostazioni delle risorse di rete</li>
@@ -862,6 +888,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, esta aplicación axudará a acceder facilmente aos recursos compartidos desde Windows.</p>
     <p xml:lang="he">אם סביבת העבודה שלך היא בעיקרה Windows, כדאי להתקין את היישום הזה כדי להקל על הגישה לשיתופי Windows נחוצים.</p>
+    <p xml:lang="hi">यदि आप विंडोज-प्रधान नेटवर्क वातावरण में काम कर रहे हैं, तो आप उपलब्ध विंडोज शेयर तक आसानी से पहुंचने के लिए इस एप्लिकेशन को इंस्टॉल करना चाह सकते हैं।</p>
     <p xml:lang="hu">Ha többnyire Windows hálózati környezetben dolgozik, érdemes telepíteni ezt az alkalmazást, hogy könnyedén hozzáférhessen a Windows-megosztásokhoz.</p>
     <p xml:lang="id">Jika kamu bekerja dalam lingkungan jaringan yang didominasi Windows, kamu mungkin ingin menginstal aplikasi ini untuk dapat mengakses secara mudah berbagi-berbagi yang disediakan Windows</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
@@ -901,6 +928,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal.</caption>
       <caption xml:lang="he">החלון הראשי</caption>
+      <caption xml:lang="hi">मुख्य विंडो</caption>
       <caption xml:lang="hu">A főablak</caption>
       <caption xml:lang="id">Jendela utama</caption>
       <caption xml:lang="ie">Li fenestre principal</caption>
@@ -941,6 +969,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O trebello.</caption>
       <caption xml:lang="he">ה־plasmoid</caption>
+      <caption xml:lang="hi">प्लास्मॉइड</caption>
       <caption xml:lang="hu">A plasmoid</caption>
       <caption xml:lang="id">Plasmoid</caption>
       <caption xml:lang="ie">Li plasmoid</caption>
