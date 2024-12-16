@@ -95,7 +95,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-11-12</date>
+>2024-12-08</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1583,7 +1583,7 @@
 >Ubicación y uso</title>
 
       <para
->Cuando se inicia &smb4k; un icono de estado aparece en la bandeja del sistema. Su estado pasará a activo si se encontraron grupos de trabajo o dominios en su entorno de red. Si no pasará a inactivo.</para>
+>Cuando se inicia &smb4k;, un icono de estado aparece en la bandeja del sistema. Su estado pasará a activo si se encontraron grupos de trabajo o dominios en su entorno de red o si se montaron recursos compartidos remotos. En caso contrario, pasará a inactivo.</para>
 
       <screenshot>
         <screeninfo
@@ -1698,7 +1698,7 @@
           </term>
           <listitem>
             <para
->Sincroniza el recurso compartido montado con una copia local o viceversa. Para más información lea las secciones sobre la vista de recursos compartidos en las secciones <link linkend="shares_view_actions_popup_menu"
+>Sincroniza el recurso compartido montado con una copia local o viceversa. Para más información lea las secciones sobre la vista de recursos compartidos en <link linkend="shares_view_actions_popup_menu"
 >Acciones y menú emergente</link
 > y <link linkend="shares_view_synchronization"
 >Sincronización</link
@@ -1734,7 +1734,7 @@
       <para
 >El menú <guimenuitem
 >Marcadores</guimenuitem
->contiene todos sus marcadores organizados conforme a la estructura que usted les dio (vea también la sección <link linkend="bookmarks"
+>contiene todos sus marcadores (vea también la sección <link linkend="bookmarks"
 >Marcadores</link
 >).</para>
 
