@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-24 00:39+0000\n"
-"PO-Revision-Date: 2024-12-14 10:54+0100\n"
+"PO-Revision-Date: 2024-12-15 23:58+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -878,7 +878,7 @@ msgstr ""
 #: smb4k.kcfg:336
 #, kde-format
 msgid "Munge symlinks"
-msgstr "Cifrar as ligazóns simbólicas"
+msgstr "Contextualizar as ligazóns simbólicas"
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
 #: smb4k.kcfg:337
@@ -893,10 +893,10 @@ msgid ""
 msgstr ""
 "Esta opción indica a rsync que (1) modifique todas as ligazóns simbólicas no "
 "lado receptor de xeito que non poidan usarse pero poidan recuperarse, ou (2) "
-"resolver as ligazóns no lado emisor que se almacenasen cifradas (--munge-"
-"links). Útil se non confía de todo en que a orixe dos datos non intente coar "
-"unha ligazóns simbólica a un lugar inesperado. Para máis información, "
-"consulte a páxina de manual de rsync."
+"resolver as ligazóns no lado emisor que se almacenasen contextualizadas (--"
+"munge-links). Útil se non confía de todo en que a orixe dos datos non "
+"intente coar unha ligazóns simbólica a un lugar inesperado. Para máis "
+"información, consulte a páxina de manual de rsync."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:341
@@ -1280,7 +1280,7 @@ msgstr ""
 #: smb4k.kcfg:441
 #, kde-format
 msgid "Force deletion of non-void directories"
-msgstr "Forzar a eliminación dos directorios que non estean baleiros"
+msgstr "Forzar a eliminación dos cartafoles que non estean baleiros"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
 #: smb4k.kcfg:442

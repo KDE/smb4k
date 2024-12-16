@@ -1,4 +1,4 @@
-# Sanskrit translations for smb4k package.
+# Hindi translations for smb4k package.
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 # Kali <EMAIL@ADDRESS>, 2024.
@@ -8,35 +8,34 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-11 00:38+0000\n"
-"PO-Revision-Date: 2024-12-13 19:10+0530\n"
+"PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
-"Language: sa\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>2);\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:58
 #: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
-msgstr "<font size=\"-1\">%1</font> इत्यत्र"
+msgstr "<font size=\"-1\">%1 पर</font>"
 
 #: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
-msgstr "पुनः गच्छतु"
+msgstr "वापस जाओ"
 
 #: package/contents/ui/BookmarksPage.qml:59
 msgid "Edit bookmarks"
-msgstr "पुस्तकचिह्न सम्पादयतु"
+msgstr "बुकमार्क संपादित करें"
 
 #: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
-msgstr "विन्याससंवादः"
+msgstr "कॉन्फ़िगरेशन संवाद"
 
 #: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
-msgstr "नेटवर्क नेबरहुड"
+msgstr "नेटवर्क पड़ोस"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:93
 #: package/contents/ui/SharesViewItemDelegate.qml:77
@@ -45,35 +44,35 @@ msgstr "बुकमार्क"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
-msgstr "पूर्वावलोकनम्"
+msgstr "पूर्व दर्शन"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
-msgstr "विन्यस्तं कुर्वन्तु"
+msgstr "कॉन्फ़िगर"
 
 #: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
-msgstr "पुनः स्कैन करें"
+msgstr "पुन: स्कैन"
 
 #: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
-msgstr "गर्भपातं कुरुत"
+msgstr "बीच में बंद करें"
 
 #: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
-msgstr "एकं स्तरं उपरि गच्छतु"
+msgstr "एक स्तर ऊपर जाएँ"
 
 #: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
-msgstr "माउण्ट् संवादं उद्घाटयन्तु"
+msgstr "माउंट संवाद खोलें"
 
 #: package/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
-msgstr "घुड़सवार शेयर"
+msgstr "माउंटेड शेयर"
 
 #: package/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
-msgstr "बुकमार्क्स"
+msgstr "बुकमार्क"
 
 #: package/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
@@ -81,15 +80,15 @@ msgstr "प्रोफाइल"
 
 #: package/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
-msgstr "विन्यासः"
+msgstr "विन्यास"
 
 #: package/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
-msgstr "(सक्रियं)"
+msgstr "(सक्रिय)"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
-msgstr "समन्वयनम्"
+msgstr "सिंक्रनाइज़"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
@@ -97,4 +96,4 @@ msgstr "अनमाउंट"
 
 #: package/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
-msgstr "सर्वान् शेयरान् अनमाउण्ट् कुर्वन्तु"
+msgstr "सभी शेयर अनमाउंट करें"

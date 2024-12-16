@@ -1583,7 +1583,7 @@
 >Ubicación y uso</title>
 
       <para
->When &smb4k; is started, a status icon appears in the system tray. Its status is set to active if either workgroups or domains were discovered in your network neighborhood or remote shares were mounted. Otherwise it is set to inactive.</para>
+>Cuando se inicia &smb4k; un icono de estado aparece en la bandeja del sistema. Su estado pasará a activo si se encontraron grupos de trabajo o dominios en su entorno de red o si los recursos compartido remotos fueron montados. Si no pasará a inactivo.</para>
 
       <screenshot>
         <screeninfo
@@ -1698,10 +1698,10 @@
           </term>
           <listitem>
             <para
->Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu"
->Actions and Popup Menu</link
-> and <link linkend="shares_view_synchronization"
->Synchronization</link
+>Sincroniza el recurso compartido montado con una copia local o viceversa. Para más información lea las secciones sobre la vista de recursos compartidos en <link linkend="shares_view_actions_popup_menu"
+>Acciones y menú emergente</link
+> y <link linkend="shares_view_synchronization"
+>Sincronización</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1732,11 +1732,11 @@
       </variablelist>
 
       <para
->The <guimenuitem
->Bookmarks</guimenuitem
-> menu contains all your bookmarks (see also the <link linkend="bookmarks"
->Bookmarks</link
-> section).</para>
+>El menú <guimenuitem
+>Marcadores</guimenuitem
+>contiene todos sus marcadores (vea también la sección <link linkend="bookmarks"
+>Marcadores</link
+>).</para>
 
       <screenshot>
         <screeninfo
