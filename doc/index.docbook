@@ -824,7 +824,7 @@
         </varlistentry>
       </variablelist>
     
-      <para>For each mounted share you can open a submenu that contains the following entries. For further information read the shares view's <link linkend="shares_view_actions_popup_menu">Actions and Popup Menu</link> section.</para>
+      <para>For each mounted share you can open a submenu that contains the following entries. Read the shares view's <link linkend="shares_view_actions_popup_menu">Actions and Popup Menu</link> section for further information.</para>
 
       <variablelist>
         <varlistentry>
@@ -850,7 +850,8 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the custom settings editor for the selected share. For further information read the section about <link linkend="custom_settings">Custom Settings</link>.</para>
+            <para>Open the custom settings editor for the selected share.</para>
+            <para>For further information read the section about <link linkend="custom_settings">Custom Settings</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -858,7 +859,8 @@
             <menuchoice><guimenuitem>Synchronize</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu">Actions and Popup Menu</link> and <link linkend="shares_view_synchronization">Synchronization</link>.</para>
+            <para>Synchronize the mounted share with a local copy or vice versa.</para>
+            <para>For further information read the section about <link linkend="shares_view_synchronization">Synchronization</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -879,7 +881,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks (see also the <link linkend="bookmarks">Bookmarks</link> section).</para>
+      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks. Read the <link linkend="bookmarks">Bookmarks</link> section for further information.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the Bookmarks menu of the system tray widget</screeninfo>
@@ -890,7 +892,7 @@
       </screenshot>
 
       <para>Its layout is as described <link linkend="bookmarks_menu">here</link>, except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
-      <para>In the <guimenuitem>Profiles</guimenuitem> menu, all <link linkend="profiles">profiles</link> are listed:</para>
+      <para>In the <guimenuitem>Profiles</guimenuitem> menu, all your <link linkend="profiles">profiles</link> are listed.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the Profiles menu of the system tray widget</screeninfo>
