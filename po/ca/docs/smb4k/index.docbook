@@ -1648,9 +1648,11 @@
           </term>
           <listitem>
             <para
->Obre el diàleg de configuració personalitzada per a la compartició seleccionada. Llegiu la secció quant a l'editor <link linkend="custom_settings"
+>Obre l'editor de configuració personalitzada per a la compartició seleccionada.</para>
+            <para
+>Per a informació addicional llegiu la secció sobre <link linkend="custom_settings"
 >Configuració personalitzada</link
-> per a més informació.</para>
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1662,11 +1664,11 @@
           </term>
           <listitem>
             <para
->Sincronitza la compartició muntada amb una còpia local o viceversa. Per a més informació, llegiu les seccions sobre les <link linkend="shares_view_actions_popup_menu"
->accions i menú emergent</link
-> i la <link linkend="shares_view_synchronization"
->sincronització</link
-> de les vistes de comparticions.</para>
+>Sincronitza la compartició muntada amb una còpia local o viceversa.</para>
+            <para
+>Per a informació addicional llegiu la secció sobre <link linkend="shares_view_synchronization"
+>Sincronització</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1698,9 +1700,9 @@
       <para
 >El menú <guimenuitem
 >Adreces d'interès</guimenuitem
-> conté totes les adreces d'interès (vegeu també la secció <link linkend="bookmarks"
->adreces d'interès</link
->).</para>
+> conté totes les adreces d'interès. Llegiu la secció <link linkend="bookmarks"
+>Adreces d'interès</link
+> per a informació addicional.</para>
 
       <screenshot>
         <screeninfo
@@ -1724,9 +1726,9 @@
       <para
 >Al menú <guimenuitem
 >Perfils</guimenuitem
->, es llisten tots els <link linkend="profiles"
+>, es llisten tots els vostres <link linkend="profiles"
 >perfils</link
->:</para>
+>.</para>
 
       <screenshot>
         <screeninfo
