@@ -1656,9 +1656,11 @@
           </term>
           <listitem>
             <para
->Відкрити вікно нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="custom_settings"
->Нетипові параметри</link
->, щоб дізнатися більше.</para>
+>Відкрити редактор нетипових параметрів для позначеного спільного ресурсу.</para>
+            <para
+>Щоб дізнатися більше про нетипові параметри, зверніться до <link linkend="custom_settings"
+>цього розділу</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1670,11 +1672,11 @@
           </term>
           <listitem>
             <para
->Синхронізувати змонтований спільний ресурс з локальною копією або навпаки. Докладніше про це можна дізнатися з розділів щодо <link linkend="shares_view_actions_popup_menu"
->дій і контекстного меню</link
-> та <link linkend="shares_view_synchronization"
->синхронізації</link
-> панелі спільних ресурсів.</para>
+>Синхронізація змонтованого спільного ресурсу з локальною копією і навпаки.</para>
+            <para
+>Щоб дізнатися більше, зверніться до <link linkend="shares_view_synchronization"
+>цього розділу</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1706,9 +1708,9 @@
       <para
 >У меню <guimenuitem
 >Закладки</guimenuitem
-> буде показано всі ваші закладки (див. також <link linkend="bookmarks"
->цей</link
-> розділ)</para>
+> буде показано всі ваші закладки. Щоб дізнатися більше, зверніться до <link linkend="bookmarks"
+>цього розділу</link
+>.</para>
 
       <screenshot>
         <screeninfo
@@ -1734,7 +1736,7 @@
 >Профілі</guimenuitem
 > буде наведено список усіх <link linkend="profiles"
 >профілів</link
->:</para>
+>.</para>
 
       <screenshot>
         <screeninfo
