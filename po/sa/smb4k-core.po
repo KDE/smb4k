@@ -3,25 +3,27 @@
 # This file is distributed under the same license as the smb4k package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-24 00:39+0000\n"
-"PO-Revision-Date: 2024-12-13 19:10+0530\n"
-"Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
+"PO-Revision-Date: 2024-12-20 21:54+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: English <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
 #, kde-format
 msgid "Tab orientation:"
-msgstr "ट्याब् अभिविन्यासः : १."
+msgstr "ट्याब् अभिविन्यासः :"
 
 #. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -179,7 +181,7 @@ msgstr "टूलटिप् वर्तमानभागस्य विष�
 #: smb4k.kcfg:76
 #, kde-format
 msgid "View mode:"
-msgstr "दृश्यविधिः : १."
+msgstr "दृश्यविधिः :"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
@@ -207,7 +209,7 @@ msgstr "सूचीदृश्यम्"
 #: smb4k.kcfg:89
 #, kde-format
 msgid "Icon size for the icon view:"
-msgstr "चिह्नदृश्यस्य कृते चिह्नस्य आकारः : १."
+msgstr "चिह्नदृश्यस्य कृते चिह्नस्य आकारः :"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
@@ -219,7 +221,7 @@ msgstr "shares view इत्यस्य icon view mode इत्यस्य �
 #: smb4k.kcfg:96
 #, kde-format
 msgid "Icon size for the list view:"
-msgstr "सूचीदृश्यस्य कृते चिह्नस्य आकारः : १."
+msgstr "सूचीदृश्यस्य कृते चिह्नस्य आकारः :"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
@@ -231,7 +233,7 @@ msgstr "shares view इत्यस्य list view mode इत्यस्य �
 #: smb4k.kcfg:103
 #, kde-format
 msgid "Icon size:"
-msgstr "चिह्नस्य आकारः : १."
+msgstr "चिह्नस्य आकारः :"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
@@ -321,7 +323,7 @@ msgstr ""
 #: smb4k.kcfg:130
 #, kde-format
 msgid "Minimal SMB protocol version:"
-msgstr "न्यूनतमं SMB प्रोटोकॉलसंस्करणम् : १."
+msgstr "न्यूनतमं SMB प्रोटोकॉलसंस्करणम् :"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:131
@@ -358,7 +360,7 @@ msgstr "SMB3 (विण्डोज ८ अपि च उपरि)"
 #: smb4k.kcfg:146
 #, kde-format
 msgid "Maximal SMB protocol version:"
-msgstr "अधिकतमं SMB प्रोटोकॉलसंस्करणम् : १."
+msgstr "अधिकतमं SMB प्रोटोकॉलसंस्करणम् :"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:147
@@ -557,7 +559,7 @@ msgstr ""
 #: smb4k.kcfg:233
 #, kde-format
 msgid "Waiting time:"
-msgstr "प्रतीक्षासमयः : १."
+msgstr "प्रतीक्षासमयः :"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:234
@@ -574,7 +576,7 @@ msgstr ""
 #: smb4k.kcfg:248
 #, kde-format
 msgid "Synchronization prefix:"
-msgstr "समन्वयन उपसर्गः : १."
+msgstr "समन्वयन उपसर्गः :"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:249
@@ -730,7 +732,7 @@ msgstr ""
 #: smb4k.kcfg:294
 #, kde-format
 msgid "Set compression level:"
-msgstr "संपीडनस्तरं सेट् कुर्वन्तु : १."
+msgstr "संपीडनस्तरं सेट् कुर्वन्तु :"
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
 #: smb4k.kcfg:295
@@ -1479,7 +1481,7 @@ msgstr "यस्मात् सञ्चिकातः include patterns प�
 #: smb4k.kcfg:539
 #, kde-format
 msgid "Custom filter rules:"
-msgstr "कस्टम् फ़िल्टर नियमाः : १."
+msgstr "कस्टम् फ़िल्टर नियमाः :"
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:540
@@ -1672,7 +1674,7 @@ msgstr ""
 #: smb4k.kcfg:594
 #, kde-format
 msgid "Backup suffix:"
-msgstr "बैकअप प्रत्ययः : १."
+msgstr "बैकअप प्रत्ययः :"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:595
@@ -1690,7 +1692,7 @@ msgstr "बैकअप प्रत्ययः"
 #: smb4k.kcfg:604
 #, kde-format
 msgid "Backup directory:"
-msgstr "बैकअप निर्देशिका : १."
+msgstr "बैकअप निर्देशिका :"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:605
@@ -1774,7 +1776,7 @@ msgstr ""
 #: smb4k.kcfg:641
 #, kde-format
 msgid "Set bandwidth limit:"
-msgstr "बैण्डविड्थसीमा निर्धारयन्तु : १."
+msgstr "बैण्डविड्थसीमा निर्धारयन्तु :"
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
 #: smb4k.kcfg:642
@@ -1900,7 +1902,7 @@ msgstr "विदेशी शेयर"
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "User ID:"
-msgstr "उपयोक्तृपरिचयः : १."
+msgstr "उपयोक्तृपरिचयः :"
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
@@ -1917,7 +1919,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_linux.kcfg:27
 #, kde-format
 msgid "Group ID:"
-msgstr "समूहपरिचयः : १."
+msgstr "समूहपरिचयः :"
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
@@ -1934,7 +1936,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_linux.kcfg:36
 #, kde-format
 msgid "File mode:"
-msgstr "सञ्चिकाविधिः : १."
+msgstr "सञ्चिकाविधिः :"
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
@@ -1950,7 +1952,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_linux.kcfg:45
 #, kde-format
 msgid "Directory mode:"
-msgstr "निर्देशिकाविधिः : १."
+msgstr "निर्देशिकाविधिः :"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -1987,7 +1989,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:65
 #, kde-format
 msgid "Client character set:"
-msgstr "क्लायन्ट् वर्णसमूहः : १."
+msgstr "क्लायन्ट् वर्णसमूहः :"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
@@ -2135,7 +2137,7 @@ msgstr "तिस्-६२०"
 #: smb4kmountsettings_bsd.kcfg:130
 #, kde-format
 msgid "Server character set:"
-msgstr "सर्वर वर्णसमूहः : १."
+msgstr "सर्वर वर्णसमूहः :"
 
 #. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:131
@@ -2338,7 +2340,7 @@ msgstr "यूनिकोड इति"
 #: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
 #, kde-format
 msgid "Mount prefix:"
-msgstr "माउण्ट् उपसर्गः : १."
+msgstr "माउण्ट् उपसर्गः :"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:237 smb4kmountsettings_linux.kcfg:300
@@ -2406,7 +2408,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
 #, kde-format
 msgid "Number of remount attempts:"
-msgstr "पुनः माउण्ट् प्रयत्नानाम् संख्या : १."
+msgstr "पुनः माउण्ट् प्रयत्नानाम् संख्या :"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:320
@@ -2422,7 +2424,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
 #, kde-format
 msgid "Interval between remount attempts:"
-msgstr "पुनः माउण्ट्-प्रयासानां मध्ये अन्तरालः : १."
+msgstr "पुनः माउण्ट्-प्रयासानां मध्ये अन्तरालः :"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:264 smb4kmountsettings_linux.kcfg:327
@@ -2578,7 +2580,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:54
 #, kde-format
 msgid "File system port:"
-msgstr "सञ्चिकातन्त्रस्य पोर्ट् : १."
+msgstr "सञ्चिकातन्त्रस्य पोर्ट् :"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
 #. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
@@ -2611,7 +2613,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:145
 #, kde-format
 msgid "Write access:"
-msgstr "लेखनप्रवेशः : १."
+msgstr "लेखनप्रवेशः :"
 
 #. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
 #. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
@@ -2774,7 +2776,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:197
 #, kde-format
 msgid "SMB protocol version:"
-msgstr "SMB प्रोटोकॉल संस्करणम् : १."
+msgstr "SMB प्रोटोकॉल संस्करणम् :"
 
 #. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
@@ -2787,37 +2789,37 @@ msgstr "SMB प्रोटोकॉलस्य कस्य संस्कर
 #: smb4kmountsettings_linux.kcfg:205
 #, kde-format
 msgid "1.0 (Classic CIFS/SMBv1 protocol)"
-msgstr "१.० (क्लासिक् CIFS/SMBv1 प्रोटोकॉल) २."
+msgstr "१.० (क्लासिक् CIFS/SMBv1 प्रोटोकॉल)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:208
 #, kde-format
 msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
-msgstr "२.० (विण्डोज विस्टा एसपी१/विण्डोज सर्वर २००८) २."
+msgstr "२.० (विण्डोज विस्टा एसपी१/विण्डोज सर्वर २००८)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:211
 #, kde-format
 msgid "2.1 (Windows 7/Windows Server 2008R2)"
-msgstr "२.१ (विण्डोज ७/विण्डोज सर्वर २००८आर२) २."
+msgstr "२.१ (विण्डोज ७/विण्डोज सर्वर २००८आर२)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:214
 #, kde-format
 msgid "3.0 (Windows 8/Windows Server 2012)"
-msgstr "३.० (विण्डोज ८/विण्डोज सर्वर २०१२) २."
+msgstr "३.० (विण्डोज ८/विण्डोज सर्वर २०१२)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:217
 #, kde-format
 msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-msgstr "३.०.२ (विण्डोज ८.१/विण्डोज सर्वर २०१२आर२) २."
+msgstr "३.०.२ (विण्डोज ८.१/विण्डोज सर्वर २०१२आर२)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:220
 #, kde-format
 msgid "3.1.1 (Windows Server 2016)"
-msgstr "३.१.१ (विण्डोज सर्वर २०१६) २."
+msgstr "३.१.१ (विण्डोज सर्वर २०१६)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:223
@@ -2835,7 +2837,7 @@ msgstr "default (उच्चतमसंस्करणस्य वार्�
 #: smb4kmountsettings_linux.kcfg:232
 #, kde-format
 msgid "Cache mode:"
-msgstr "मोड कैश : १."
+msgstr "मोड कैश :"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
@@ -2886,7 +2888,7 @@ msgstr "शिथिलं संग्रहणशब्दार्थं अ�
 #: smb4kmountsettings_linux.kcfg:252
 #, kde-format
 msgid "Security mode:"
-msgstr "सुरक्षाविधिः : १."
+msgstr "सुरक्षाविधिः :"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
@@ -2957,7 +2959,7 @@ msgstr "NTLMSSP प्रोटोकॉल तथा पैकेट हस्�
 #: smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Additional options:"
-msgstr "अतिरिक्तविकल्पाः : १."
+msgstr "अतिरिक्तविकल्पाः :"
 
 #. i18n: ectx: whatsthis, entry (UseCustomCifsOptions), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CustomCIFSOptions), group (Mounting)
