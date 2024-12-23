@@ -1646,9 +1646,9 @@
       </variablelist>
     
       <para
->Para cada recurso compartido montado, se puede abrir un submenú que contiene las siguientes entradas. Para más información, lea la sección de vista de recursos compartidos <link linkend="shares_view_actions_popup_menu"
+>Para cada recurso compartido montado, se puede abrir un submenú que contiene las siguientes entradas. Lea la sección de vista de recursos compartidos <link linkend="shares_view_actions_popup_menu"
 >Acciones y menú emergente</link
->.</para>
+> para más información.</para>
 
       <variablelist>
         <varlistentry>
@@ -1684,8 +1684,10 @@
           </term>
           <listitem>
             <para
->Abre el editor de preferencias personalizadas para el recurso compartido seleccionado. Para más información lea la sección sobre <link linkend="custom_settings"
->Preferencias por omisión</link
+>Abre el editor de preferencias personalizadas para los recursos compartidos seleccionados.</para>
+            <para
+>Para ampliar información lea la sección sobre <link linkend="custom_settings"
+>Preferencias Personalizadas</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1698,9 +1700,9 @@
           </term>
           <listitem>
             <para
->Sincroniza el recurso compartido montado con una copia local o viceversa. Para más información lea las secciones sobre la vista de recursos compartidos en <link linkend="shares_view_actions_popup_menu"
->Acciones y menú emergente</link
-> y <link linkend="shares_view_synchronization"
+>Sincronice el recurso compartido con una copia local o viceversa.</para>
+            <para
+>Para ampliar información lea la sección sobre <link linkend="shares_view_synchronization"
 >Sincronización</link
 >.</para>
           </listitem>
@@ -1734,9 +1736,9 @@
       <para
 >El menú <guimenuitem
 >Marcadores</guimenuitem
->contiene todos sus marcadores (vea también la sección <link linkend="bookmarks"
+>contiene todos sus marcadores. Lea la sección <link linkend="bookmarks"
 >Marcadores</link
->).</para>
+> para más información.</para>
 
       <screenshot>
         <screeninfo
@@ -1760,9 +1762,9 @@
       <para
 >En el menú <guimenuitem
 >Perfiles</guimenuitem
->, se listan todos los <link linkend="profiles"
+>, todos sus <link linkend="profiles"
 >perfiles</link
->:</para>
+> son listados.</para>
 
       <screenshot>
         <screeninfo
