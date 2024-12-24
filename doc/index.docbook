@@ -1079,7 +1079,7 @@
     <sect2 id="bookmarks_adding">
       <title>Adding Bookmarks</title>
 
-      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the main window, this is done by selecting one or more shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category.</para>
+      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the main window, this is done by selecting one or more shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category. Double-click a bookmark to open the input widget.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
@@ -1110,7 +1110,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>There are two static items available in the menu:</para>
+      <para>There are two static items in the menu:</para>
 
       <variablelist>
         <varlistentry>
@@ -1142,13 +1142,13 @@
             <menuchoice><guimenuitem>Mount Bookmarks</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Mount all top level bookmarks at once. This entry is disabled if all bookmarked shares are aready mounted.</para>
+            <para>Mount all top level bookmarks at once. This entry is disabled if all bookmarked shares are already mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para>The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
-      <para>The category submenus contain the assigned bookmarks, and in each case a <guimenuitem>Mount Bookmarks</guimenuitem> menu item is also present. It can be used to mount all bookmarks in that category at once.</para>
+      <para>The category submenus contain the assigned bookmarks as well as a <guimenuitem>Mount Bookmarks</guimenuitem> menu item. It can be used to mount all bookmarks in that category at once.</para>
       <para>In the system tray widget, there is a similar <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> which, however, does not come with the <guilabel>Add Bookmark</guilabel> entry.</para>
       <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar manner as in the bookmark menu. For further details read <link linkend="plasmoid_bookmarks">this section</link>.</para>
     </sect2>
@@ -1160,7 +1160,7 @@
     <sect2 id="bookmarks_editor">
       <title>Editing Bookmarks</title>
 
-      <para>The bookmarks may be edited or removed via the bookmark editor. It can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> entry in the <guilabel>Bookmarks</guilabel> menu or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the &plasmoid;.</para>
+      <para>The bookmarks may be edited or removed via the bookmark editor or the <guilabel>Bookmarks</guilabel> page in the <link linkend="configuration_page_bookmarks">configuration dialog</link>. The bookmark editor can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> entry in the <guilabel>Bookmarks</guilabel> menu or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the &plasmoid;.</para>
     
       <screenshot>
         <screeninfo>Screenshot of the bookmark editor</screeninfo>
