@@ -276,7 +276,7 @@ void Smb4KMainWindow::saveSettings()
 
 bool Smb4KMainWindow::queryClose()
 {
-    if (!m_quitting && !qApp->isSavingSession() && isVisible()) {
+    if (!(m_quitting || QCoreApplication::closingDown()) && !qApp->isSavingSession() && isVisible()) {
         // This part has been copied from JuK application.
         KMessageBox::information(this,
                                  i18n("<qt>Closing the main window will keep Smb4K running in the system tray.<br>"
