@@ -562,6 +562,7 @@ void Smb4KConfigPageBookmarks::slotItemDoubleClicked(QTreeWidgetItem *item, int 
         }
 
         m_editorWidget->setVisible(true);
+        m_treeWidget->scrollToItem(item);
     } else {
         startEditingCategoryItem(item);
     }

@@ -249,6 +249,7 @@ void Smb4KConfigPageCustomSettings::slotEditCustomItem(QListWidgetItem *item)
 {
     m_editorWidget->setCustomSettings(item->data(Qt::UserRole).value<Smb4KCustomSettings>());
     m_editorWidget->setVisible(true);
+    m_listWidget->scrollToItem(item);
     m_itemToEdit = item;
 }
 
