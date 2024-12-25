@@ -1161,7 +1161,6 @@
       <title>Editing Bookmarks</title>
 
       <para>The bookmarks may be edited or removed via the bookmark editor or the <guilabel>Bookmarks</guilabel> page in the <link linkend="configuration_page_bookmarks">configuration dialog</link>. The bookmark editor can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> entry in the <guilabel>Bookmarks</guilabel> menu or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the &plasmoid;.</para>
-    
       <screenshot>
         <screeninfo>Screenshot of the bookmark editor</screeninfo>
         <mediaobject>
@@ -1169,46 +1168,17 @@
           <textobject><phrase>Bookmark editor</phrase></textobject>
         </mediaobject>
       </screenshot>
-
       <para>In the tree view, the bookmarks are arranged according to the categories they belong to. Bookmarks without a category are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so you can move bookmarks around with the mouse.</para>
-      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and category name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stores the correct values at the time you bookmark the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network), or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>. Finally,the category entry helps you to organize your bookmarks. For instance, if you use your notebook at home and also at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups, "Home" and "Work", and categorize the bookmarks accordingly.</para>
-      <para>The tree view also offers a popup menu containing the following three actions. They can be used to add categories or to remove groups and bookmarks.</para>
-
+      <para>If you want to edit a bookmark, you can do so by either double-clicking or selecting it and pressing the <guibutton>Edit</guibutton>button. The input widget will then be shown. Here you can edit the label, category name, login, workgroup or domain name and the IP address.</para>
       <screenshot>
-        <screeninfo>Screenshot of the popup menu of the bookmark editor</screeninfo>
+        <screeninfo>Screenshot of the bookmark editor with opened input widget</screeninfo>
         <mediaobject>
-          <imageobject><imagedata fileref="bookmarks_editor_popup_menu.png" format="PNG" /></imageobject>
-          <textobject><phrase>Popup menu of the bookmark editor</phrase></textobject>
+          <imageobject><imagedata fileref="bookmarks_editor_with_input_widget.png" format="PNG" /></imageobject>
+          <textobject><phrase>Bookmark editor with opened input widget</phrase></textobject>
         </mediaobject>
       </screenshot>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guimenuitem>Add Category</guimenuitem></menuchoice>
-          </term>
-          <listitem>
-            <para>Add a bookmark category. After you create a category, you can move bookmarks to it.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guimenuitem>Remove</guimenuitem></menuchoice>
-          </term>
-          <listitem>
-            <para>Remove a selected bookmark or category. In the case of a category, all the bookmarks stored in that group are also removed.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice>
-          </term>
-          <listitem>
-            <para>Remove all bookmarks and categories from the tree view.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para>After you have finished editing, the changes can be saved by clicking the <guibutton>OK</guibutton> button.</para>
+      <para>In most cases, you do not need to touch the IP address and the login, because &smb4k; stores the correct values at the time you bookmark the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network), or your login changed, these entries should be adjusted. You also should adjust the workgroup or domain name, if its name was discovered by DNS-SD (and is most likely called <emphasis>LOCAL</emphasis>). With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>. Finally,the category entry helps you to organize your bookmarks. For instance, if you use your notebook at home and also at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two categories, "Home" and "Work", and categorize the bookmarks accordingly.</para>
+      <para>With the <guibutton>Add Category</guibutton>, you can add a category. The <guibutton>Remove</guibutton> removes the selected bookmark and the <guibutton>Clear List</guibutton> button removes all bookmarks. As long as you have not saved the changes by clicking the <guibutton>Save</guibutton> button, you can reset all your changes with the <guibutton>Reset</guibutton> button.</para>
     </sect2>
   </sect1>
   
