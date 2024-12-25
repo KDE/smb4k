@@ -214,6 +214,7 @@ void Smb4KBookmarkDialog::slotItemDoubleClicked(QListWidgetItem *item)
     m_categoryEdit->setCurrentText(bookmark.categoryName());
 
     m_editorWidget->setVisible(true);
+    m_listWidget->scrollToItem(item);
 }
 
 void Smb4KBookmarkDialog::slotItemSelectionChanged()
