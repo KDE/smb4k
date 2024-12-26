@@ -2086,7 +2086,7 @@
 ></menuchoice
 >. Al <application
 >plasmoide</application
->, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà un diàleg on podreu afegir una etiqueta i assignar l'adreça d'interès a una categoria.</para>
+>, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà un diàleg on podreu afegir una etiqueta i assignar l'adreça d'interès a una categoria. Feu doble clic en una adreça d'interès per a obrir el giny d'entrada.</para>
 
       <screenshot>
         <screeninfo
@@ -2138,7 +2138,7 @@
       </screenshot>
 
       <para
->Al menú hi ha dos elements estàtics disponibles:</para>
+>Al menú hi ha dos elements estàtics en el menú:</para>
 
       <variablelist>
         <varlistentry>
@@ -2196,7 +2196,7 @@
       <para
 >Les entrades següents són submenús de categoria o adreces d'interès que no pertanyen a cap categoria. Les entrades es llisten alfabèticament i les adreces d'interès poden aparèixer amb la seva ubicació o una etiqueta descriptiva. Si feu clic a una adreça d'interès, es muntarà la compartició respectiva. En cas que hi hagi una compartició marcada com a adreça d'interès muntada al sistema, l'entrada restarà inhabilitada.</para>
       <para
->Els submenús de categoria contenen les adreces d'interès assignades i en cada cas també hi ha present un element de menú <guimenuitem
+>Els submenús de categoria contenen les adreces d'interès assignades així com un element de menú <guimenuitem
 >Munta les adreces d'interès</guimenuitem
 >. Es pot utilitzar per a muntar alhora totes les adreces d'interès que hi ha en aquesta categoria.</para>
       <para
@@ -2226,7 +2226,11 @@
 >Editar les adreces d'interès</title>
 
       <para
->Les adreces d'interès es poden editar o eliminar mitjançant l'editor de les adreces d'interès. Es pot obrir fent clic a l'entrada <guimenuitem
+>Les adreces d'interès es poden editar o eliminar mitjançant l'editor d'adreces d'interès o la pàgina <guilabel
+>Adreces d'interès</guilabel
+> del <link linkend="configuration_page_bookmarks"
+>diàleg de configuració</link
+>. Es pot obrir fent clic a l'entrada <guimenuitem
 >Edita les adreces d'interès</guimenuitem
 > que hi ha al menú <guilabel
 >Adreces d'interès</guilabel
