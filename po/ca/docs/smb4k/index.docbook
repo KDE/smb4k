@@ -2241,7 +2241,6 @@
 > del <application
 >plasmoide</application
 >.</para>
-    
       <screenshot>
         <screeninfo
 >Captura de pantalla de l'editor de les adreces d'interès</screeninfo>
@@ -2254,74 +2253,45 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
       <para
 >A la vista en arbre, les adreces d'interès s'ordenen segons les categories a les quals pertanyen. Les adreces d'interès sense una categoria estan ubicades al nivell superior. Per a tornar a ordenar les adreces d'interès, la vista en arbre ofereix capacitats per a arrossegar i deixar anar, de manera que podreu moure les adreces d'interès emprant el ratolí.</para>
       <para
->Si voleu editar una adreça d'interès, ho podreu fer seleccionant-la. L'etiqueta emmagatzemada, l'inici de la sessió, l'adreça IP i el nom de la categoria apareixeran als ginys d'entrada i es faran editables. En la majoria dels casos, no cal que toqueu l'adreça IP i l'inici de la sessió, ja que el &smb4k; emmagatzema els valors correctes en el moment en què va apuntar com a adreça d'interès la compartició. Tanmateix, si el servidor té una adreça IP diferent (&pex;, perquè el DHCP s'utilitza a la vostra xarxa local) o el vostre nom d'usuari ha canviat, aquestes s'hauran d'ajustar. Amb l'etiqueta podeu donar a cada adreça d'interès una descripció personalitzada. S'utilitzarà per a mostrar-la <emphasis
+>Si voleu editar una adreça d'interès, podeu fer-hi doble clic o bé seleccionant-la i fer clic al botó <guibutton
+>Edita</guibutton
+>. Es mostrarà el giny d'entrada. Aquí podeu editar l'etiqueta, el nom de la categoria, les dades d'inici de sessió, el grup de treball o el domini i l'adreça IP.</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla de l'editor de les adreces d'interès amb el giny d'entrada obert</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_editor_with_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Editor de les adreces d'interès amb el giny d'entrada obert</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+      <para
+>En la majoria dels casos, no cal que toqueu l'adreça IP i l'inici de la sessió, ja que el &smb4k; emmagatzema els valors correctes en el moment en què va apuntar com a adreça d'interès la compartició. Tanmateix, si el servidor té una adreça IP diferent (&pex;, perquè el DHCP s'utilitza a la vostra xarxa local) o el vostre nom d'usuari ha canviat, aquestes s'hauran d'ajustar. També hauríeu d'ajustar el grup de treball o el nom de domini, si el seu nom s'ha descobert per DNS-SD (i és més probable que es digui <emphasis
+>LOCAL</emphasis
+>). Amb l'etiqueta podeu donar a cada adreça d'interès una descripció personalitzada. S'utilitzarà per a mostrar-la <emphasis
 >en lloc</emphasis
 > de la ubicació, però això es pot canviar al <link linkend="configuration_page_user_interface_main_window"
 > diàleg de configuració</link
 >. Per a acabar, l'entrada de la categoria, ajuda a organitzar les vostres adreces d'interès. Sobretot si utilitzeu, &pex;, el bloc de notes a casa i a la feina, i no voleu utilitzar <link linkend="profiles"
 >perfils</link
->, pot ser una bona idea crear dos grups «Casa» i «Feina», i categoritzar les adreces d'interès en conseqüència.</para>
+>, pot ser una bona idea crear dues categories «Casa» i «Feina», i categoritzar les adreces d'interès en conseqüència.</para>
       <para
->La vista en arbre també ofereix un menú emergent que conté les tres accions següents. Es pot utilitzar per a afegir categories o per a eliminar categories i adreces d'interès.</para>
-
-      <screenshot>
-        <screeninfo
->Captura de pantalla del menú emergent de l'editor de les adreces d'interès</screeninfo>
-        <mediaobject>
-          <imageobject
-><imagedata fileref="bookmarks_editor_popup_menu.png" format="PNG"/></imageobject>
-          <textobject
-><phrase
->El menú emergent de l'editor de les adreces d'interès</phrase
-></textobject>
-        </mediaobject>
-      </screenshot>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Afegeix una categoria</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Afegeix una categoria d'adreces d'interès. Després de crear una categoria, podreu moure-hi les adreces d'interès.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Elimina</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Elimina una adreça d'interès o categoria seleccionada. En el cas d'una categoria, també s'eliminaran totes les adreces d'interès emmagatzemades en aquesta categoria.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Neteja</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Elimina totes les adreces d'interès i categories des de la vista en arbre.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para
->Després d'haver finalitzat l'edició, es poden desar els canvis fent clic al botó <guibutton
->D'acord</guibutton
+>Amb el botó <guibutton
+>Afegeix una categoria</guibutton
+>, podeu afegir una categoria. El botó <guibutton
+>Elimina</guibutton
+> elimina l'adreça d'interès seleccionada i el botó <guibutton
+>Neteja la llista</guibutton
+> neteja tota la llista d'adreces d'interès. Mentre no hàgiu desat els canvis fent clic al botó <guibutton
+>Desa</guibutton
+>, podeu restablir tots els canvis amb el botó <guibutton
+>Restableix</guibutton
 >.</para>
     </sect2>
   </sect1>

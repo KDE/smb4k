@@ -1604,9 +1604,9 @@
       </variablelist>
     
       <para
->Bij elke aangekoppeld share heeft u een submenu met de volgende menu-items. Meer informatie daarover kunt u de weergave van de shares sectie <link linkend="shares_view_actions_popup_menu"
+>Bij elke aangekoppeld share heeft u een submenu met de volgende menu-items. Lees de sectie weergave van de shares <link linkend="shares_view_actions_popup_menu"
 >Acties en opkomend menu</link
-> lezen.</para>
+> voor meer informatie.</para>
 
       <variablelist>
         <varlistentry>
@@ -1642,7 +1642,9 @@
           </term>
           <listitem>
             <para
->Open de bewerker voor aangepaste instellingen voor de geselecteerde share. Voor verdere informatie lees de sectie over <link linkend="custom_settings"
+>Open de bewerker voor aangepaste instellingen voor een de geselecteerde share.</para>
+            <para
+>Voor verdere informatie lees de sectie over <link linkend="custom_settings"
 >Aangepaste instellingen</link
 >.</para>
           </listitem>
@@ -1656,9 +1658,9 @@
           </term>
           <listitem>
             <para
->Synchroniseer de aangekoppelde share met een lokale kopie of omgekeerd. Voor meer informatie lees de secties over <link linkend="shares_view_actions_popup_menu"
->Acties en opkomend menu</link
-> en <link linkend="shares_view_synchronization"
+>Synchroniseer de aangekoppelde share met een lokale kopie of vice versa.</para>
+            <para
+>Voor verdere informatie lees de sectie over <link linkend="shares_view_synchronization"
 >Synchronisatie</link
 >.</para>
           </listitem>
@@ -1691,10 +1693,10 @@
 
       <para
 >In menu <guimenuitem
->Bladwijzer</guimenuitem
-> bevat al uw bladwijzers (zie ook de sectie <link linkend="bookmarks"
+>Bladwijzers</guimenuitem
+> bevat al uw bladwijzers. Lees de sectie <link linkend="bookmarks"
 >Bladwijzers</link
->).</para>
+> voor verdere informatie.</para>
 
       <screenshot>
         <screeninfo
@@ -1718,7 +1720,7 @@
       <para
 >In het menu <guimenuitem
 >Profielen</guimenuitem
-> worden alle <link linkend="profiles"
+> worden al uw <link linkend="profiles"
 >profielen</link
 > weergegeven:</para>
 
@@ -2066,7 +2068,7 @@
 ><guimenuitem
 >Bladwijzer toevoegen</guimenuitem
 ></menuchoice
-> te drukken. Er zal een dialoogvenster openen waarin u een naam en een categorie kunt toevoegen.</para>
+> te drukken. Er zal een dialoogvenster openen waarin u een naam en een categorie kunt toevoegen. Dubbelklik op een bladwijzer om het invoerwidget te openen.</para>
 
       <screenshot>
         <screeninfo
@@ -2118,7 +2120,7 @@
       </screenshot>
 
       <para
->Er zijn twee vaste items beschikbaar in het menu:</para>
+>Er zijn twee vaste items in het menu:</para>
 
       <variablelist>
         <varlistentry>
@@ -2176,9 +2178,9 @@
       <para
 >Alle volgende items zijn of submenu's van categorieën en bladwijzers die niet bij een categorie horen. De items staan op alfabetische volgorde waarbij de bladwijzers ofwel zichtbaar zijn met hun locatie of met een beschrijvend label. Als u op een bladwijzer klikt, zal de bijbehorende share aangekoppeld worden. Als een share met een bladwijzer al is aangekoppeld, dan is het item uitgeschakeld.</para>
       <para
->De categorie submenu's bevat de toegekende bladwijzers en in elk geval een menu-item <guimenuitem
+>De categorie submenu's bevat de toegekende bladwijzers en eveneens een menu-item <guimenuitem
 >Bladwijzers aankoppelen</guimenuitem
-> ook aanwezig. Het kan gebruikt worden om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
+>. Het kan gebruikt worden om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
       <para
 >In het systeemvakwidget is er een soortgelijk <link linkend="systemtray_menus"
 >submenu</link
@@ -2206,7 +2208,11 @@
 >Bladwijzers bewerken</title>
 
       <para
->U kunt bladwijzers bewerken of verwijderen in de bladwijzerbewerker. U kunt het openen door op <guimenuitem
+>U kunt bladwijzers bewerken of verwijderen in de bladwijzerbewerker of de pagina <guilabel
+>Bladwijzers</guilabel
+> in de <link linkend="configuration_page_bookmarks"
+>configuratiedialoog</link
+>. U kunt het openen door op <guimenuitem
 >Bladwijzers bewerken</guimenuitem
 > in het <guilabel
 >Bladwijzers</guilabel
@@ -2215,7 +2221,6 @@
 > in de tab <guilabel
 >Bladwijzers</guilabel
 > van de &plasmoid; te klikken.</para>
-    
       <screenshot>
         <screeninfo
 >Schermafdruk van de bladwijzerbewerker</screeninfo>
@@ -2228,75 +2233,46 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
       <para
 >In de boomstructuurweergave, zijn de bladwijzers ingedeeld bij de categorieën waarbij ze bij horen. Bladwijzers die bij een categorie horen vindt u terug op het topniveau. Om de bladwijzers opnieuw in te delen, is het in de boomstructuurweergave mogelijk om te verslepen, u kunt dus de bladwijzers met de muis verslepen.</para>
       <para
->Nadat u een bladwijzer heeft geselecteerd, kunt u het bewerken. De opgeslagen  label, login, IP adres en categorienaam verschijnen in de invoervakken zodat u ze kunt bewerken. In de meeste gevallen hoeft u het IP-adres en de login niet aan te raken, omdat op het moment dat u een bladwijzer voor de share aanmaakte &smb4k; de correcte waarden heeft opgeslagen. Maar als de server een ander IP adres heeft gekregen (&eg; omdat DHCP op uw netwerk in gebruik is) of uw login is gewijzigd, dan moeten deze items worden aangepast. Met het label kunt u voor elke bladwijzer een eigen beschrijving geven. Dit krijgt u te zien <emphasis
+>Als u een bladwijzer wilt bewerken, dan kunt u dat doen door ofwel dubbel te klikken of deze selecteren end drukken op de knop <guibutton
+>Bewerken</guibutton
+>. Het invoerwidget zal dan getoond worden. Hier kunt u het label, de categorienaam, aanmelden, werkgroep of domeinnaam en het IP-adres bewerken.</para>
+      <screenshot>
+        <screeninfo
+>Schermafdruk van de bladwijzerbewerker met geopend invoerwidget</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_editor_with_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Bladwijzerbewerker met geopend invoerwidget</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+      <para
+>In de meeste gevallen hoeft u het IP-adres en de login niet aan te raken, omdat op het moment dat u een bladwijzer voor de share aanmaakte &smb4k; de correcte waarden heeft opgeslagen. Maar als de server een ander IP-adres heeft gekregen (&eg; omdat DHCP op uw netwerk in gebruik is) of uw aanmelden is gewijzigd, dan moeten deze items worden aangepast.  U zou ook de werkgroep- of domeinnaam moeten aanpassen, als zijn naam is verkregen door DNS-SD (en het meest waarschijnlijk <emphasis
+>LOCAL</emphasis
+> als naam heeft). Met het label kunt u voor elke bladwijzer een eigen beschrijving geven. Dit krijgt u te zien <emphasis
 >in plaats</emphasis
 > van het locatie-adres, maar ook dat kan u wijzigen in het <link linkend="configuration_page_user_interface_main_window"
 >configuratievenster</link
 >. De categorie, tenslotte, helpt u bij het organiseren van uw bladwijzers. Bijvoorbeeld, in de situatie dat u uw laptop zowel thuis als op uw werk gebruikt, en u <link linkend="profiles"
 >geen profielen</link
-> wilt gebruiken, dan kan het een goed idee zijn om daarin de twee groepen "thuis" en "werk" aan te maken en overeenkomstig de bladwijzers op te slaan.</para>
+> wilt gebruiken, dan kan het een goed idee zijn om daarin de twee categorieën "thuis" en "werk" aan te maken en overeenkomstig de bladwijzers op te slaan.</para>
       <para
->In de boomstructuurweergave is ook een contextmenu aanwezig met de volgende drie knoppen. U kunt deze gebruiken voor het toevoegen en verwijderen van categorieën en bladwijzers.</para>
-
-      <screenshot>
-        <screeninfo
->Schermafdruk van het pop-up-menu voor de bewerker van bladwijzers</screeninfo>
-        <mediaobject>
-          <imageobject
-><imagedata fileref="bookmarks_editor_popup_menu.png" format="PNG"/></imageobject>
-          <textobject
-><phrase
->Pop-up-menu voor de bewerker van bladwijzers</phrase
-></textobject>
-        </mediaobject>
-      </screenshot>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Categorie toevoegen</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Voegt een bladwijzercategorie toe. Nadat u een categorie hebt aangemaakt, kunt u bladwijzers er naar toe verplaatsen.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Verwijderen</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Verwijdert de geselecteerde bladwijzer of categorie. Bij een categorie zullen ook alle bladwijzers daarin aanwezig worden verwijderd.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Wissen</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Alle bladwijzers en categorieën verwijderen uit de boomstructuurweergave.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para
->Als u klaar bent met bewerken, dan kunt u de wijzigingen opslaan door op de knop <guibutton
->OK</guibutton
-> te klikken.</para>
+>Met d knop <guibutton
+>Categorie toevoegen</guibutton
+> kunt u een categorie toevoegen. De knop <guibutton
+>Verwijderen</guibutton
+> verwijdert de geselecteerde bladwijzer en de knop <guibutton
+>Lijst wissen</guibutton
+> wist de gehele lijst met bladwijzers. Zo lang als u de wijzigingen niet hebt opgeslagen door te klikken op de knop <guibutton
+>Opslaan</guibutton
+> kunt u al uw wijzigingen resetten met de knop <guibutton
+>Resetten</guibutton
+>.</para>
     </sect2>
   </sect1>
   
