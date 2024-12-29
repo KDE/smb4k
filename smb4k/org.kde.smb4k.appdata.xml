@@ -663,6 +663,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca-valencia">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
       <li xml:lang="de">Unterstützung von verschiedenen sicheren Speichermöglichkeiten der Anmeldeinformationen durch QtKeychain</li>
       <li xml:lang="en-GB">Support of several secure storage solutions for the login credentials via QtKeychain</li>
+      <li xml:lang="eo">Subteno por pluraj sekurkonservaj solvoj por la ensalutaj akreditiloj per QtKeychain</li>
       <li xml:lang="es">Soporte de varias soluciones de almacenaje seguro para las credenciales de inicio de sesión via QtKeychain</li>
       <li xml:lang="eu">QtKeyChain bidez saio-hasteko egiaztagirien biltegiratze segururako hainbat soluzioren euskarria</li>
       <li xml:lang="fi">Todennustietojen useiden eri salattujen talletustilaratkaisujen tuki QtKeychainillä</li>
