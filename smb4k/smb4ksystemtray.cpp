@@ -37,13 +37,13 @@ using namespace Smb4KGlobal;
 Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     : KStatusNotifierItem(QStringLiteral("org.kde.smb4k.statusnotifieritem"), parent)
 {
-    QString iconName;
+    QString iconName = QStringLiteral("smb4k");
 
-    if (KIconLoader::global()->hasIcon(QStringLiteral("network-workgroup-symbolic"))) {
-        iconName = QStringLiteral("network-workgroup-symbolic");
-    } else {
-        iconName = QStringLiteral("network-workgroup");
-    }
+    // if (KIconLoader::global()->hasIcon(QStringLiteral("network-workgroup-symbolic"))) {
+    //     iconName = QStringLiteral("network-workgroup-symbolic");
+    // } else {
+    //     iconName = QStringLiteral("network-workgroup");
+    // }
 
     setIconByName(iconName);
     setToolTip(iconName, i18n("Smb4K"), KAboutData::applicationData().shortDescription());
