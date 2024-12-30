@@ -34,7 +34,7 @@
   </copyright>
 
   <legalnotice>&underFDL;</legalnotice>
-  <date>2024-12-08</date>
+  <date>2024-12-30</date>
   <releaseinfo>&smb4k; 4.0.0</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -1079,8 +1079,7 @@
     <sect2 id="bookmarks_adding">
       <title>Adding Bookmarks</title>
 
-      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the main window, this is done by selecting one or more shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category. Double-click a bookmark to open the input widget.</para>
-
+      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the main window, this is done by selecting one or more shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. The <guilabel>Bookmark Shares</guilabel> dialog will pop up, listing all shares that are to be newly bookmarked.</para>
       <screenshot>
         <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
         <mediaobject>
@@ -1088,7 +1087,14 @@
           <textobject><phrase>Bookmarks addition dialog</phrase></textobject>
         </mediaobject>
       </screenshot>
-
+      <para>To add a label or assign a category, double-click a bookmark. The input widget will open and you can edit the corresponding entries.</para>
+      <screenshot>
+        <screeninfo>Screenshot of the bookmarks addition dialog with opened input widget</screeninfo>
+        <mediaobject>
+          <imageobject><imagedata fileref="bookmarks_add_bookmark_dialog_input_widget.png" format="PNG" /></imageobject>
+          <textobject><phrase>Bookmarks addition dialog with opened input widget</phrase></textobject>
+        </mediaobject>
+      </screenshot>
       <para>Defining categories may help you organize the bookmarks. In the <link linkend="bookmarks_menu">bookmark menu</link>, all bookmarks belonging to the same category are arranged in a respective submenu.</para>
       <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>.</para>
     </sect2>
