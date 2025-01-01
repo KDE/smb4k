@@ -53,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-12-08</date>
+>2024-12-30</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2068,8 +2068,9 @@
 ><guimenuitem
 >Bladwijzer toevoegen</guimenuitem
 ></menuchoice
-> te drukken. Er zal een dialoogvenster openen waarin u een naam en een categorie kunt toevoegen. Dubbelklik op een bladwijzer om het invoerwidget te openen.</para>
-
+> te drukken. De dialoog <guilabel
+>Bladwijzer van shares</guilabel
+> zal verschijnen, met alle shares die nieuw een bladwijzer zullen krijgen.</para>
       <screenshot>
         <screeninfo
 >Schermafdruk van de dialoog voor toevoegen van bladwijzers</screeninfo>
@@ -2082,7 +2083,20 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
+      <para
+>Om een label toe te voegen of een categorie toe te kennen, dubbelklik op een bladwijzer. Het invoerwidget zal openen en u kunt de bijbehorende items bewerken.</para>
+      <screenshot>
+        <screeninfo
+>Schermafdruk van de dialoog voor bladwijzer toevoegen met geopend invoerwidget</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_add_bookmark_dialog_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Dialoog voor bladwijzer toevoegen met geopend invoerwidget</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
       <para
 >Definiëren van een categorie kan u helpen bij het georganiseerd houden van bladwijzers. In het <link linkend="bookmarks_menu"
 >menu voor bladwijzers</link

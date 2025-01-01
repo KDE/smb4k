@@ -53,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->8 de desembre de 2024</date>
+>30 de desembre de 2024</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2086,8 +2086,9 @@
 ></menuchoice
 >. Al <application
 >plasmoide</application
->, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà un diàleg on podreu afegir una etiqueta i assignar l'adreça d'interès a una categoria. Feu doble clic en una adreça d'interès per a obrir el giny d'entrada.</para>
-
+>, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà el diàleg de <guilabel
+>Adreces d'interès de les comparticions</guilabel
+>, llistant totes les comparticions que es poden marcar de nou.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diàleg d'addició d'adreces d'interès</screeninfo>
@@ -2100,7 +2101,20 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
+      <para
+>Per a afegir una etiqueta o assignar una categoria, feu doble clic en una adreça d'interès. S'obrirà el giny d'entrada i podreu editar les entrades corresponents.</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del diàleg d'afegir adreces d'interès amb el giny d'entrada obert</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_add_bookmark_dialog_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Diàleg d'afegir adreces d'interès amb el giny d'entrada obert</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
       <para
 >El fet de definir categories pot ajudar a organitzar les adreces d'interès. Al menú <link linkend="bookmarks_menu"
 >Adreces d'interès</link
@@ -2138,7 +2152,7 @@
       </screenshot>
 
       <para
->Al menú hi ha dos elements estàtics en el menú:</para>
+>Hi ha dos elements estàtics al menú:</para>
 
       <variablelist>
         <varlistentry>
