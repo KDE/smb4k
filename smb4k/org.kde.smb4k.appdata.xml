@@ -150,6 +150,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca-valencia">Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de Samba, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery)</li>
       <li xml:lang="de">Suchen nach (aktiven) Arbeitsgruppen, Servern und Freigaben mithilfe von Sambas Klienten-Bibliothek, DNS Service Discovery (DNS-SD) und optional Web Services Dynamic Discovery (WS-Discovery)</li>
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</li>
+      <li xml:lang="eo">Skanado por (aktivaj) laborgrupoj, gastigantoj kaj kundividoj uzante la klientbibliotekon de Samba, DNS Service Discovery (DNS-SD) kaj, laŭvole, Web Services Dynamic Discovery (WS-Discovery)</li>
       <li xml:lang="es">Escaneo de grupos de trabajo (activos), servidores y montajes usando la librería de cliente de Samba, el servicio de descubrimiento DNS (DNS-SD) y, opcionalmente, el servicio de descubrimiento de servicios web (WS-Discovery).</li>
       <li xml:lang="eu">Lantalde (aktiboak), ostalariak eta Samba partekatzeak bila aztertzea, Sambaren bezero liburutegia, DNS zerbitzu aurkikuntza (DNS-SD) eta, aukeran, Web zerbitzuen aurkikuntza dinamikoa (WS-Discovery) erabiliz</li>
       <li xml:lang="fi">(Aktiivisten) työryhmien, palvelinten ja jakojen haku Samban asiakaskirjastolla, DNS-palveluhaku (DNS-SD) ja valinnaisesti dynaaminen verkkopalveluhaku (WS-Discovery)</li>
@@ -173,6 +174,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca-valencia">Implementació dels sistemes de fitxers CIFS i SMB3 a Linux, així com el sistema de fitxers SMBFS a BSD</li>
       <li xml:lang="de">Unterstützung des CIFS- und SMB3-Dateisystems unter Linux sowie des SMBFS-Dateisystems unter FreeBSD</li>
       <li xml:lang="en-GB">Support of the CIFS and SMB3 file system under Linux as well as the SMBFS file system under BSD</li>
+      <li xml:lang="eo">Subteno por la CIFS- kaj SMB3-dosiersistemo sub Linukso samkiel la SMBFS-dosiersistemo sub BSD</li>
       <li xml:lang="es">Soporte de los sistemas de archivos CIFS y SMB3 en Linux como el sistema de archivos SMBFS en BSD</li>
       <li xml:lang="eu">CIFS eta SMB3 fitxategi-sistemaren euskarria Linux-en, eta SMBFS fitxategi-sistemarena BSDn</li>
       <li xml:lang="fi">Linuxin CIFS- ja SMB3-tiedostojärjestelmätuki samoin kuin BSD:n SMBFS-tiedostojärjestelmä</li>
@@ -625,6 +627,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="ca-valencia">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
       <li xml:lang="de">Unterstützung von verschiedenen sicheren Speichermöglichkeiten der Anmeldeinformationen durch QtKeychain</li>
       <li xml:lang="en-GB">Support of several secure storage solutions for the login credentials via QtKeychain</li>
+      <li xml:lang="eo">Subteno por pluraj sekurkonservaj solvoj por la ensalutaj akreditiloj per QtKeychain</li>
       <li xml:lang="es">Soporte de varias soluciones de almacenaje seguro para las credenciales de inicio de sesión via QtKeychain</li>
       <li xml:lang="eu">QtKeyChain bidez saio-hasteko egiaztagirien biltegiratze segururako hainbat soluzioren euskarria</li>
       <li xml:lang="fi">Todennustietojen useiden eri salattujen talletustilaratkaisujen tuki QtKeychainillä</li>
