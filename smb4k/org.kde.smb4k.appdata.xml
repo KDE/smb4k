@@ -8,6 +8,7 @@ SPDX-License-Identifier: CC0-1.0
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.2</project_license>
   <name>Smb4K</name>
+  <name xml:lang="ar">كيدي سامبا4</name>
   <name xml:lang="bs">Smb4K</name>
   <name xml:lang="ca">Smb4K</name>
   <name xml:lang="ca-valencia">Smb4K</name>
@@ -46,6 +47,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="zh-CN">Smb4K</name>
   <name xml:lang="zh-TW">Smb4K</name>
   <summary>Discover and mount SAMBA and Windows shares over the network</summary>
+  <summary xml:lang="ar">اكتشف وقم بتحميل مشاركات سامبا و ويندوز عبر الشبكة</summary>
   <summary xml:lang="ca">Descobreix i munta les comparticions SAMBA i Windows sobre la xarxa</summary>
   <summary xml:lang="ca-valencia">Descobrix i munta les comparticions SAMBA i Windows sobre la xarxa</summary>
   <summary xml:lang="de">Samba- und Windows-Freigaben im Netzwerk suchen und einhängen</summary>
@@ -80,6 +82,7 @@ SPDX-License-Identifier: CC0-1.0
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks, QtKeychain, Samba's client library (libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
+    <p xml:lang="ar">كيدي سامبا4 هو متصفح شبكة متقدم وأداة مساعدة لتركيب مشاركة سامبا. وهو يعتمد على أطر عمل كيدي وQtKeychain ومكتبة عميل سامبا (libsmbclient) وعميل KDSoap WS-Discovery بشكل اختياري. وهو يفحص شبكة الجوار الخاصة بك بحثًا عن جميع مجموعات العمل والخوادم والمشاركات المتاحة ويمكنه تركيب جميع المشاركات المطلوبة على نظام الملفات المحلي لديك.</p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE, QtKeychain i la biblioteca del client Samba (libsmbclient), i opcionalment, el client KDSoap WS-Discovery. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks de KDE, QtKeychain i la biblioteca del client Samba (libsmbclient), i de manera opcional, el client KDSoap WS-Discovery. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben. Es basiert auf den KDE Frameworks, QtKeychain, der Samba-Bibliothek libsmbclient und optional auf dem KDSoap WS-Discovery-Klienten. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Servern und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
@@ -146,6 +149,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="zh-TW">功能：</p>
     <ul>
       <li>Scanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</li>
+      <li xml:lang="ar">البحث عن مجموعات العمل (النشيطة) والمضيفين والمشاركات باستخدام مكتبة عملاءسامبا، واكتشاف خدمة DNS (DNS-SD)، واختياريًا، الاكتشاف الديناميكي لخدمات الويب (WS-Discovery)</li>
       <li xml:lang="ca">Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de Samba, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery)</li>
       <li xml:lang="ca-valencia">Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de Samba, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery)</li>
       <li xml:lang="de">Suchen nach (aktiven) Arbeitsgruppen, Servern und Freigaben mithilfe von Sambas Klienten-Bibliothek, DNS Service Discovery (DNS-SD) und optional Web Services Dynamic Discovery (WS-Discovery)</li>
@@ -170,6 +174,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)xx</li>
       <li xml:lang="zh-CN">使用 SAMBA 的客户端程序库、DNS 服务发现 (DNS-SD) 和 网络服务动态发现 (WS-Discovery) 扫描 (活动的) 工作组、主机和共享</li>
       <li>Support of the CIFS and SMB3 file system under Linux as well as the SMBFS file system under BSD</li>
+      <li xml:lang="ar">دعم نظام الملفات CIFS وSMB3 ضمن Linux بالإضافة إلى نظام الملفات SMBFS ضمن BSD</li>
       <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS i SMB3 al Linux, així com el sistema de fitxers SMBFS al BSD</li>
       <li xml:lang="ca-valencia">Implementació dels sistemes de fitxers CIFS i SMB3 a Linux, així com el sistema de fitxers SMBFS a BSD</li>
       <li xml:lang="de">Unterstützung des CIFS- und SMB3-Dateisystems unter Linux sowie des SMBFS-Dateisystems unter FreeBSD</li>
@@ -194,6 +199,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxSupport of the CIFS and SMB3 file system under Linux as well as the SMBFS file system under BSDxx</li>
       <li xml:lang="zh-CN">支持 Linux 环境下的 CIFS 和 SMB3 文件系统和 BSD 环境下的 SMBFS 文件系统</li>
       <li>Mounting and unmounting of shares</li>
+      <li xml:lang="ar">ضم وفك المشاركات</li>
       <li xml:lang="bs">Namještanje i razmještanje razmjena</li>
       <li xml:lang="ca">El muntatge i desmuntatge de les comparticions</li>
       <li xml:lang="ca-valencia">El muntatge i desmuntatge de les comparticions</li>
@@ -229,6 +235,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">挂载和卸载共享位置</li>
       <li xml:lang="zh-TW">掛載與解除掛載分享</li>
       <li>Access to the files of a mounted share using a file manager or terminal</li>
+      <li xml:lang="ar">الوصول إلى ملفات المشاركة المثبتة باستخدام مدير الملفات أو الطرفية</li>
       <li xml:lang="bs">Pristup datotekama namještene razmjene koristeći upravitelj datotekom ili terminal</li>
       <li xml:lang="ca">Accés als fitxers d'una compartició muntada emprant un gestor de fitxers o terminal</li>
       <li xml:lang="ca-valencia">Accés als fitxers d'una compartició muntada emprant un gestor de fitxers o terminal</li>
@@ -263,6 +270,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">使用文件管理器或终端访问已挂载的共享</li>
       <li xml:lang="zh-TW">使用檔案管理員或終端機存取已掛載分享的檔案</li>
       <li>Auto-detection of external mounts and unmounts</li>
+      <li xml:lang="ar">الكشف التلقائي عن المشاركات المضمومة خارجيًا وفكها</li>
       <li xml:lang="bs">Auto-detekcija vanjskih namještanja i razmještanja</li>
       <li xml:lang="ca">Detecció automàtica de muntatges i desmuntatges externs</li>
       <li xml:lang="ca-valencia">Detecció automàtica de muntatges i desmuntatges externs</li>
@@ -297,6 +305,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">自动检测外部共享的挂载和卸载</li>
       <li xml:lang="zh-TW">自動偵測外部掛載與解除掛載</li>
       <li>Remounting of previously used shares on program start</li>
+      <li xml:lang="ar">إعادة ضم المشاركات المستخدمة سابقًا عند بدء البرنامج</li>
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
       <li xml:lang="ca">Torna a muntar les comparticions emprades anteriorment en iniciar el programa</li>
       <li xml:lang="ca-valencia">Torna a muntar les comparticions emprades anteriorment en iniciar el programa</li>
@@ -331,6 +340,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">启动时重新挂载最近使用的共享</li>
       <li xml:lang="zh-TW">在程式啟動時重新掛載先前使用過的分享</li>
       <li>Miscellaneous information about remote network items and mounted shares</li>
+      <li xml:lang="ar">معلومات متنوعة حول عناصر الشبكة البعيدة والمشاركات المضمومة</li>
       <li xml:lang="ca">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="ca-valencia">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="de">Verschiedene Informationen über entfernte Netzwerkelemente und eingehängte Freigaben</li>
@@ -355,6 +365,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxMiscellaneous information about remote network items and mounted sharesxx</li>
       <li xml:lang="zh-CN">显示远程网络项目和已挂载共享的各种信息</li>
       <li>Network search</li>
+      <li xml:lang="ar">البحث في الشبكة</li>
       <li xml:lang="bs">Pretraga mreže</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
       <li xml:lang="ca-valencia">Busca en la xarxa</li>
@@ -392,6 +403,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">网络搜索</li>
       <li xml:lang="zh-TW">網路搜尋</li>
       <li>Preview of the contents of a remote share</li>
+      <li xml:lang="ar">معاينة محتويات المشاركات البعيدة</li>
       <li xml:lang="ca">Vista prèvia del contingut d'una compartició remota</li>
       <li xml:lang="ca-valencia">Vista prèvia del contingut d'una compartició remota</li>
       <li xml:lang="cs">Náhled obsahu vzdáleného úložiště</li>
@@ -425,6 +437,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">预览远程共享的内容</li>
       <li xml:lang="zh-TW">預覽遠端分享的內容</li>
       <li>Default login</li>
+      <li xml:lang="ar">الولوج المبدئي</li>
       <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió predeterminat</li>
       <li xml:lang="ca-valencia">Inici de sessió predeterminat</li>
@@ -462,6 +475,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">默认登录</li>
       <li xml:lang="zh-TW">預設登入</li>
       <li>Special handling of home shares</li>
+      <li xml:lang="ar">المعاملة الخاصة لمشاركات المنازل</li>
       <li xml:lang="ca">Gestió especial de les comparticions personals</li>
       <li xml:lang="ca-valencia">Gestió especial de les comparticions personals</li>
       <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
@@ -487,6 +501,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxSpecial handling of home sharesxx</li>
       <li xml:lang="zh-CN">针对家庭共享的特殊处理功能</li>
       <li>Ability to bookmark favorite shares</li>
+      <li xml:lang="ar">القدرة على وضع إشارة مرجعية على المشاركات المفضلة</li>
       <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
       <li xml:lang="ca">La capacitat d'apuntar les comparticions com a adreces d'interès</li>
       <li xml:lang="ca-valencia">La capacitat d'apuntar les comparticions com a adreces d'interés</li>
@@ -521,6 +536,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">支持收藏共享</li>
       <li xml:lang="zh-TW">將最愛的分享加入書籤的能力</li>
       <li>System tray widget</li>
+      <li xml:lang="ar">بريمج في صينية النظام</li>
       <li xml:lang="bs">Kontrola za poslužavnik sistema</li>
       <li xml:lang="ca">Un giny de la safata del sistema</li>
       <li xml:lang="ca-valencia">Un giny de la safata del sistema</li>
@@ -556,6 +572,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">系统托盘挂件</li>
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced mount options</li>
+      <li xml:lang="ar">دعم خيارات الضم المتقدمة</li>
       <li xml:lang="ca">Implementació de les opcions avançades de muntatge</li>
       <li xml:lang="ca-valencia">Implementació de les opcions avançades de muntatge</li>
       <li xml:lang="cs">Podpora pokročilých možností připojení</li>
@@ -589,6 +606,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">支持高级挂载选项</li>
       <li xml:lang="zh-TW">支援進階的掛載選項</li>
       <li>Support of printer shares</li>
+      <li xml:lang="ar">دعم مشاركة الطابعة</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
       <li xml:lang="ca">Implementació de les impressores compartides</li>
       <li xml:lang="ca-valencia">Implementació de les impressores compartides</li>
@@ -623,6 +641,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">支持打印机共享</li>
       <li xml:lang="zh-TW">印表機分享的支援</li>
       <li>Support of several secure storage solutions for the login credentials via QtKeychain</li>
+      <li xml:lang="ar">دعم العديد من حلول التخزين الآمنة لبيانات اعتماد تسجيل الدخول عبر QtKeychain</li>
       <li xml:lang="ca">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
       <li xml:lang="ca-valencia">Implementació de diverses solucions d'emmagatzematge segures per a les credencials d'inici de sessió a través de QtKeychain</li>
       <li xml:lang="de">Unterstützung von verschiedenen sicheren Speichermöglichkeiten der Anmeldeinformationen durch QtKeychain</li>
@@ -647,6 +666,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxSupport of several secure storage solutions for the login credentials via QtKeychainxx</li>
       <li xml:lang="zh-CN">通过 QtKeychain 支持多种登录凭据的安全存储方式</li>
       <li>Synchronization of a remote share with a local copy and vice versa</li>
+      <li xml:lang="ar">مزامنة المشاركة عن بعد مع النسخة المحلية والعكس</li>
       <li xml:lang="bs">Sinhronizacija udaljenih razmjena sa lokalnom kopijom i obrnuto</li>
       <li xml:lang="ca">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
       <li xml:lang="ca-valencia">Sincronitzeu una compartició remota amb una còpia local i viceversa</li>
@@ -681,6 +701,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">远程共享与本地副本之间的正向和反向同步</li>
       <li xml:lang="zh-TW">將遠端分享與本機複本同步的能力，反過來也可以</li>
       <li>Ability to define custom settings for individual servers and shares</li>
+      <li xml:lang="ar">القدرة على تحديد الإعدادات المخصصة للخوادم الفردية والمشاركات</li>
       <li xml:lang="ca">La capacitat per a definir una configuració personalitzada individual per a servidors i comparticions</li>
       <li xml:lang="ca-valencia">La capacitat per a definir una configuració personalitzada individual per a servidors i comparticions</li>
       <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben</li>
@@ -705,6 +726,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxAbility to define custom settings for individual servers and sharesxx</li>
       <li xml:lang="zh-CN">支持为独立服务器和共享指定自定义选项</li>
       <li>Hardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network module</li>
+      <li xml:lang="ar">دعم الأجهزة من خلال إطار عمل تكامل الأجهزة الصلبة، وفئات الراحة KDBusAddons ووحدة شبكة Qt</li>
       <li xml:lang="ca">Suport de maquinari mitjançant el framework Solid d'integració de dispositius, les classes d'utilitat de KDBusAddons i el mòdul Qt Network</li>
       <li xml:lang="ca-valencia">Suport de maquinari mitjançant el framework Solid d'integració de dispositius, les classes d'utilitat de KDBusAddons i el mòdul Qt Network</li>
       <li xml:lang="de">Hardware-Unterstützung durch das Solid Geräteintegrations-Framework, die KDBusAddons Komfortklassen und das Netzwerkmodul von Qt</li>
@@ -729,6 +751,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="x-test">xxHardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network modulexx</li>
       <li xml:lang="zh-CN">通过 Solid 设备集成框架、KDBusAddons 方便类和 Qt 网络模块提供硬件支持</li>
       <li>Wake-On-LAN capabilities</li>
+      <li xml:lang="ar">قدرات الاستيقاظ عبر الشبكة المحلية Wake-On-LAN</li>
       <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
       <li xml:lang="ca">Capacitats de l'activació per LAN (Wake-On-LAN)</li>
       <li xml:lang="ca-valencia">Capacitats de l'activació per LAN (Wake-On-LAN)</li>
@@ -763,6 +786,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">局域网唤醒 (Wake-On-LAN) 功能</li>
       <li xml:lang="zh-TW">LAN 喚醒的能力</li>
       <li>Plasmoid for desktop integration</li>
+      <li xml:lang="ar">بلازمويد لتكامل سطح المكتب</li>
       <li xml:lang="bs">Plasmoid za integraciju radne površine</li>
       <li xml:lang="ca">Plasmoide per a la integració amb l'escriptori</li>
       <li xml:lang="ca-valencia">Plasmoide per a la integració amb l'escriptori</li>
@@ -797,6 +821,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">Plasma 小程序桌面集成</li>
       <li xml:lang="zh-TW">以 Plasmoid 提供桌面整合</li>
       <li>Profiles for different network neighborhood setups</li>
+      <li xml:lang="ar">ملفات تعريف لإعدادات أجهزة الشبكة المختلفة</li>
       <li xml:lang="ca">Perfils per a diferents configuracions del veïnatge de xarxa</li>
       <li xml:lang="ca-valencia">Perfils per a diferents configuracions del veïnatge de xarxa</li>
       <li xml:lang="de">Profile für verschiedene Einstellungen der Netzwerkumgebung</li>
@@ -832,6 +857,7 @@ SPDX-License-Identifier: CC0-1.0
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
     </p>
+    <p xml:lang="ar">إذا كنت تعمل في بيئة شبكة يهيمن عليها ويندوز، فقد ترغب في تثبيت هذا التطبيق لتتمكن من الوصول بسهولة إلى مشاركات ويندوز المتوفرة.</p>
     <p xml:lang="bs">Ako radite sa Windows dominiranim mrežnim okruženjem, možda ćete željeti instalirati aplikaciju kako biste lako pristupili omogućenim Windows razmjenama.</p>
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="ca-valencia">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
@@ -869,6 +895,7 @@ SPDX-License-Identifier: CC0-1.0
   <screenshots>
     <screenshot type="default">
       <caption>The main window</caption>
+      <caption xml:lang="ar">النافذة الرئيسة</caption>
       <caption xml:lang="bs">Glavni prozor</caption>
       <caption xml:lang="ca">La finestra principal</caption>
       <caption xml:lang="ca-valencia">La finestra principal</caption>
@@ -908,6 +935,7 @@ SPDX-License-Identifier: CC0-1.0
     </screenshot>
     <screenshot>
       <caption>The plasmoid</caption>
+      <caption xml:lang="ar">البلازمويد</caption>
       <caption xml:lang="bs">Plazmoid</caption>
       <caption xml:lang="ca">El plasmoide</caption>
       <caption xml:lang="ca-valencia">El plasmoide</caption>
