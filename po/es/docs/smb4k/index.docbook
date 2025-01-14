@@ -95,7 +95,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-12-08</date>
+>2024-12-30</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2106,12 +2106,15 @@
 >navegador del entorno de red</link
 >, la <link linkend="shares_view"
 >vista de recursos compartidos</link
->. En la ventana principal, esto se hace seleccionando uno o más recursos compartidos y haciendo clic en la acción <menuchoice
+> y el <link linkend="plasmoid"
+>&plasmoid;</link
+>. En la ventana principal, esto se hace seleccionado uno o más recursos compartidos y pulsando la acción <menuchoice
 ><guimenuitem
 >Añadir marcador</guimenuitem
 ></menuchoice
->. Aparecerá un diálogo en el que puede añadir una etiqueta o asignar un marcador a la categoría.</para>
-
+>. En el &plasmoid;, pulsando la acción de marcadores correspondiente junto al nombre del elemento. El diálogo <guilabel
+>Marcadores de recursos compartidos</guilabel
+> aparecerá, mostrando todos los recursos compartidos que se van a añadir a marcadores.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diálogo de adición de marcadores</screeninfo>
@@ -2124,7 +2127,20 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
+      <para
+>Para añadir una etiqueta o asignar una categoría, haga doble clic en un marcador. El control de entrada se abrirá y podrá editar la entradas correspondientes.</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del diálogo para añadir marcadores con el control de entrada abierto</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_add_bookmark_dialog_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Diálogo para añadir marcadores con el control de entrada abierto</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
       <para
 >La definición de una categoría puede ayudarle a organizar los marcadores. En el <link linkend="bookmarks_menu"
 >menú de marcadores</link
@@ -2162,7 +2178,7 @@
       </screenshot>
 
       <para
->Hay dos elementos estáticos disponibles en el menú:</para>
+>Hay dos elementos estáticos en el menú:</para>
 
       <variablelist>
         <varlistentry>
@@ -2220,9 +2236,9 @@
       <para
 >Las siguientes entradas son submenús de categoría o marcadores que no pertenecen a ninguna categoría. Las entradas se listan alfabéticamente y los marcadores pueden aparecer con su dirección o una etiqueta descriptiva. Si pulsa sobre un marcador, se montará el respectivo recurso compartido. En caso de que un recurso compartido ya esté montado, la entrada de marcadores se desactiva.</para>
       <para
->Los submenús de categorías contienen los marcadores asignados , y en cada caso un elemento de menú <guimenuitem
+>Los submenús de categorías contienen los marcadores asignados y también un elemento de menú <guimenuitem
 >Montar marcadores</guimenuitem
-> también está presente. Se puede utilizar para montar todos los marcadores en esa categoría al mismo tiempo.</para>
+>. Se puede utilizar para montar todos los marcadores en esa categoría al mismo tiempo.</para>
       <para
 >En el complemento de la bandeja del sistema, hay un <link linkend="systemtray_menus"
 >submenu</link
@@ -2250,7 +2266,11 @@
 >Edición de marcadores</title>
 
       <para
->Los marcadores se pueden editar o eliminar a través del editor de marcadores. Este se puede abrir pulsando la opción <guimenuitem
+>Los marcadores se pueden editar o eliminar a través del editor de marcadores o la página <guilabel
+>Marcadores</guilabel
+> en el <link linkend="configuration_page_bookmarks"
+>diálogo de configuración</link
+>. El editor de marcadores se puede abrir pulsando la entrada <guimenuitem
 >Editar marcadores</guimenuitem
 > en el menú <guilabel
 >Marcadores</guilabel
@@ -2259,7 +2279,6 @@
 > en la pestaña <guilabel
 >Marcadores</guilabel
 > del &plasmoid;.</para>
-    
       <screenshot>
         <screeninfo
 >Captura de pantalla del editor de marcadores</screeninfo>
@@ -2272,11 +2291,28 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
       <para
 >En la vista de árbol, los marcadores están organizados de acuerdo con las categorías a las que pertenecen. Los marcadores sin una categoría se ubican en el nivel superior. Para reorganizar los marcadores, la vista de árbol ofrece capacidades de arrastrar y soltar, por lo que usted puede desplazar los marcadores con el ratón.</para>
       <para
->Si usted quiere editar un marcador, puede hacerlo seleccionándolo. La etiqueta almacenada, inicio de sesión, dirección IP y categoría aparecen en los controles de entrada y se convierten en editables. En la mayoría de los casos, usted no necesita tocar la dirección IP y el inicio de sesión, porque &smb4k; almacena los valores correctos en el momento en que usted marcó el recurso compartido. Sin embargo, si el servidor cambió de dirección IP (&eg;, porque se usa DHCP en su red local) o su inicio de sesión cambió, estas entradas deberían ajustarse. Con la etiqueta usted puede proporcionar a cada marcador una descripción personalizada. Se usará para mostrarla <emphasis
+>Si quiere editar un marcador, puede hacerlo también haciendo doble clic o seleccionándolo y pulsando el botón <guibutton
+>Editar</guibutton
+>. El control de entrada aparecerá. En él podrá editar las etiqueta, el nombre de la categoría, acceso, grupo de trabajo o nombre de dominio y la dirección IP.</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del editor de marcadores con el control de entrada abierto</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_editor_with_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Editor de marcadores con el control de entrada abierto</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+      <para
+>En la mayoría de los casos, usted no necesita tocar la dirección IP y el inicio de sesión, porque &smb4k; almacena los valores correctos en el momento en que usted marcó el recurso compartido. Sin embargo, si el servidor cambió de dirección IP (&eg;, porque se usa DHCP en su red local) o su inicio de sesión cambió, estas entradas deberían ajustarse. También debe de ajustar el grupo de trabajo o nombre de dominio, si el nombre se descubrió mediante DNS-SD (y probablemente se llame <emphasis
+>LOCAL</emphasis
+>).Con la etiqueta usted puede proporcionar a cada marcador una descripción personalizada. Se usará para mostrarla <emphasis
 >en lugar de</emphasis
 > la ubicación, pero esto puede cambiarse en el <link linkend="configuration_page_user_interface_main_window"
 >diálogo de configuración</link
@@ -2284,62 +2320,16 @@
 >perfiles</link
 >, sería una buena idea crear dos grupos «Casa» y «Trabajo» y categorizar los marcadores según cada caso.</para>
       <para
->La vista en árbol también ofrece un menú emergente que contiene las siguientes tres acciones. Estas se pueden utilizar para añadir categorías o eliminar grupos o marcadores.</para>
-
-      <screenshot>
-        <screeninfo
->Captura de pantalla del menú emergente del editor de marcadores</screeninfo>
-        <mediaobject>
-          <imageobject
-><imagedata fileref="bookmarks_editor_popup_menu.png" format="PNG"/></imageobject>
-          <textobject
-><phrase
->El menú emergente del editor de marcadores</phrase
-></textobject>
-        </mediaobject>
-      </screenshot>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Añadir categoría</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Añade una categoría de marcadores. Una vez que cree una categoría, podrá mover los marcadores a ella.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Eliminar</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Elimina un marcador seleccionado o una categoría. En el caso de categoría, todos los marcadores almacenados en ese grupo se eliminan también.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Despejar</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Elimina todos los marcadores y las categorías de la vista de árbol.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para
->Después de que haya terminado la edición, los cambios se guardan pulsando el botón <guibutton
->Aceptar</guibutton
+>Con el botón <guibutton
+>Añadir categoría</guibutton
+>, puede añadir una categoría. El botón <guibutton
+>Eliminar</guibutton
+> elimina el marcador seleccionado y el botón <guibutton
+>Limpiar lista</guibutton
+> limpia la lista completa de marcadores. Hasta que no guarde los cambios pulsando el botón <guibutton
+>Guardar</guibutton
+>, puede deshacer todos los cambios con el botón <guibutton
+>Reiniciar</guibutton
 >.</para>
     </sect2>
   </sect1>
