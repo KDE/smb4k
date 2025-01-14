@@ -906,19 +906,14 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool checked)
             } else {
                 if (item->shareItem()->isHomesShare()) {
                     QPointer<Smb4KHomesUserDialog> homesUserDialog = new Smb4KHomesUserDialog(this);
-                    bool proceed = false;
 
                     if (homesUserDialog->setShare(item->shareItem())) {
-                        // We want to get a return value here, so we use exec()
-                        if (homesUserDialog->exec() == QDialog::Accepted) {
-                            proceed = true;
+                        int returnValue = homesUserDialog->exec();
+                        delete homesUserDialog;
+
+                        if (returnValue == QDialog::Rejected) {
+                            continue;
                         }
-                    }
-
-                    delete homesUserDialog;
-
-                    if (!proceed) {
-                        continue;
                     }
                 }
 
@@ -929,7 +924,9 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool checked)
 
     if (!mountedShares.isEmpty()) {
         Smb4KMounter::self()->unmountShares(mountedShares);
-    } else {
+    }
+
+    if (!unmountedShares.isEmpty()) {
         Smb4KMounter::self()->mountShares(unmountedShares);
     }
 }
