@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-13 11:36+0000\n"
+"POT-Creation-Date: 2025-01-15 02:33+0000\n"
 "PO-Revision-Date: 2024-06-26 13:06+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -934,7 +934,7 @@ msgid "&Unmount"
 msgstr "&Libérer"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
 #, kde-format
 msgid "Ctrl+M"
 msgstr "CTRL + M"
@@ -950,7 +950,7 @@ msgstr "Analyser l'o&rdinateur"
 msgid "Scan Wo&rkgroup"
 msgstr "Analyser le grou&pe de travail"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
