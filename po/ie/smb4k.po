@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-13 09:51+0000\n"
+"POT-Creation-Date: 2025-01-15 00:41+0000\n"
 "PO-Revision-Date: 2024-08-04 16:58+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -900,7 +900,7 @@ msgid "&Unmount"
 msgstr "&Demonter"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -916,7 +916,7 @@ msgstr "Examinar li computato&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Examinar li labo&r-gruppe"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+U"
