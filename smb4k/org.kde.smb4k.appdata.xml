@@ -166,7 +166,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="es">Escaneo de grupos de trabajo (activos), servidores y montajes usando la librería de cliente de Samba, el servicio de descubrimiento DNS (DNS-SD) y, opcionalmente, el servicio de descubrimiento de servicios web (WS-Discovery).</li>
       <li xml:lang="eu">Lantalde (aktiboak), ostalariak eta Samba partekatzeak bila aztertzea, Sambaren bezero liburutegia, DNS zerbitzu aurkikuntza (DNS-SD) eta, aukeran, Web zerbitzuen aurkikuntza dinamikoa (WS-Discovery) erabiliz</li>
       <li xml:lang="fi">(Aktiivisten) työryhmien, palvelinten ja jakojen haku Samban asiakaskirjastolla, DNS-palveluhaku (DNS-SD) ja valinnaisesti dynaaminen verkkopalveluhaku (WS-Discovery)</li>
-      <li xml:lang="fr">Analyse des groupes de travail (actifs), hôtes et partages à l’aide de la bibliothèque « DNS-SD » (DNS Service Discovery) du client Samba, et, éventuellement, les services Internet  « WS-Discovery » (Web Services Dynamic Discovery)</li>
+      <li xml:lang="fr">Analyse des groupes de travail (actifs), hôtes et partages à l'aide de la bibliothèque « DNS-SD » (DNS Service Discovery) du client Samba, et, éventuellement, les services Internet « WS-Discovery » (Web Services Dynamic Discovery)</li>
       <li xml:lang="gl">Buscando grupos de traballo (activos), servidores e comparticións mediante a biblioteca de cliente de Samba, o descubrimento de servizos de DNS (DNS-SD) e, opcionalmente, o descubrimento dinámico de servizos web (WS-Discovery).</li>
       <li xml:lang="he">סריקה לאיתור קבוצות עבודה (פעילות), מארחים ושיתופים באמצעות ספריית הלקוח של Samba, גילוי שירותים עם DNS-SD וכרשות, גילוי שירותי רשת דינמי (WS-Discovery)</li>
       <li xml:lang="hi">सांबा की क्लाइंट लाइब्रेरी, DNS सेवा डिस्कवरी (DNS-SD) और वैकल्पिक रूप से, वेब सेवा डायनेमिक डिस्कवरी (WS-Discovery) का उपयोग करके (सक्रिय) कार्यसमूहों, होस्टों और शेयरों के लिए स्कैनिंग</li>
@@ -779,7 +779,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="es">Soporte de hardware a través de la infraestructura de integración de dispositivos Solid, las clases de conveniencia KDBusAddons y el módulo de red Qt</li>
       <li xml:lang="eu">Hardwarearen euskarria gailuak bateratzeko Solid «framework»aren, KDBusAddons egokitasun klaseen eta Qt sare moduluen bidez</li>
       <li xml:lang="fi">Laitteistotuki Solid-laite-eheytyskehyksellä, KDBusAddons-mukavuusluokat ja Qt-verkkomoduuli</li>
-      <li xml:lang="fr">Prise en charge matérielle grâce à l'environnement de développement pour l'intégration de périphériques sous Solid, les classes pré-définies « KDBusAddons » et le module « QtNetwork »</li>
+      <li xml:lang="fr">Prise en charge matérielle grâce à l'environnement de développement pour l'intégration de périphériques sous Solid, les classes prédéfinies « KDBusAddons » et le module « QtNetwork »</li>
       <li xml:lang="gl">Compatibilidade con soporte físico mediante a infraestrutura de integración de dispositivos Solid, as clases de asistencia KDBusAddons e o módulo Network (rede) de Qt.</li>
       <li xml:lang="he">תמיכה בחומרה דרך תשתית שילוב המכשירים Solid, מחלקות הנוחות של KDBusAddons ומודל התקשורת של Qt</li>
       <li xml:lang="hi">सॉलिड डिवाइस इंटीग्रेशन फ्रेमवर्क, KDBusAddons सुविधा क्लासेस और Qt नेटवर्क मॉड्यूल के माध्यम से हार्डवेयर समर्थन</li>
