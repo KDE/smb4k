@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Xosé <xosecalvo@gmail.com>, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016, 2017.
-# SPDX-FileCopyrightText: 2023, 2024 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-24 02:32+0000\n"
-"PO-Revision-Date: 2024-12-19 23:02+0100\n"
+"PO-Revision-Date: 2025-01-26 20:02+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -77,7 +77,7 @@ msgstr ""
 #: smb4k.kcfg:41
 #, kde-format
 msgid "Start docked"
-msgstr "Iniciar ancorado"
+msgstr "Iniciar acoplado"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -88,10 +88,10 @@ msgid ""
 "up by clicking on the system tray widget or by choosing \"Restore\" from its "
 "popup menu."
 msgstr ""
-"Iniciar a aplicación ancorada na área de notificación, ou sexa, só aparece o "
+"Iniciar a aplicación acoplada na área de notificación, ou sexa, só aparece o "
 "trebello da área de notificación e a xanela principal queda agochada. Pódese "
 "abrir a xanela principal premendo o trebello da área de notificación ou "
-"escollendo \"Restaurar\" no seu menú emerxente."
+"escollendo «Restaurar» no seu menú emerxente."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:46
