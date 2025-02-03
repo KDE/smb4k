@@ -1,3 +1,66 @@
+Smb4K 4.0.0 (2025-02-04):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
+
+- Ported Smb4K to Qt6 and KF6. Minimum requirements are Qt version >= 6.6.2
+  and KF6 version >= 6.0.0.
+- Separated all widget based classes from the core classes as far as
+  possible and moved them out of the core library. Improved them along the
+  way where needed. Adjusted the code of the core classes and the rest of
+  the program accordingly.
+- The login credentials are now stored using QtKeychain. This allows the
+  usage of other secure storage solutions apart from KWallet.
+  Since QtKeychain does not provide access to all login credentials Smb4K
+  stored, we lost the capability to edit the login credentials in the
+  configuration dialog. You need to use the respective editor program (i.e.
+  kwalletmanager, KeePassXC, ...) to edit or remove the login credentials.
+- The bookmarks, custom settings and the default login now have become
+  profile-dependent. They are reloaded when the active profile changes.
+- Improved handling of bookmarks and rewrite large parts of the bookmark
+  handler. Introduce a new "Bookmarks" configuration page and a new bookmark
+  editor. Also rename one of the functions from Smb4KBookmarkHandler class
+  and adjust the code accordingly.
+- Rename Smb4KConfigPageCustomOptions to Smb4KConfigPageCustomSettings. Add
+  Smb4KCustomSettingsEditorWidget and implement a new editor for the config
+  page.
+- Improve the handling of custom settings.
+- Rewrote and improved mount dialog.
+- Improved code of Smb4KBookmarkMenu class.
+- Overhauled the way profiles are handled. Removed the profile migration
+  assistant.
+- Improved profiles config page. When enabling profiles, set the first
+  profile in the list active, if no active profile is available.
+- Remove obsolete setting "Force SMB protocol version 1.0 for workgroup and
+  domain lookups". We have DNS-SD and optionally WSD in place, so this is
+  not needed anymore.
+- Save the settings of the main window at the right place in time. Previously,
+  the settings were saved too late when the main window was hidden already.
+  So, isVisible() returned false and the main window was always hidden at
+  program start.
+- Import mounted shares regardless of a running mounter. Otherwise, if e.g.
+  the last remount fails, we end up with no imports. Also, connect to the
+  hardware interface right away.
+- Overhauled the configuration dialog and the configuration pages. Fixed
+  several bugs during that process.
+- Use 'CompletionItems' config group for completion items.
+- Cleaned up and simplified the code where needed.
+- Declared Smb4KBasicNetworkItem, Smb4KBookmark, Smb4KCustomSettings,
+  Smb4KFile, Smb4KHost, Smb4KShare and Smb4KWorkgroup metatypes.
+- Fixed empty tooltip when shown the first time. This was actually caused by
+  the wrong parent assigned to the contents widget. Also, improved the code
+  a bit.
+- Position the first item found by the network search at the center of the
+  network browser.
+- Improve drop functions in the shares view: Only consider dropping if there
+  is an item under the mouse and disallow it if the share is mounted read-only.
+- Replace deprecated qAsConst() with std::as_const().
+- Made the enabling of the "Apply" button in the configuration dialog work
+  properly.
+- Properly mount and unmount the selected shares and also improve the code
+  for showing the homes user dialog.
+- Updated handbook and README to reflect new version.
+
 Smb4K 3.2.5 (2023-11-17):
 
 See the summary of changes below. For a full list of changes, please
