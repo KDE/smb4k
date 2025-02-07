@@ -7,13 +7,13 @@
 # Jack Liu <chuany@chuany.net>, 2005.
 # Wei-Lun Chao <william.chao@ossii.com.tw>, 2006.
 # pan93412 <pan93412@gmail.com>, 2019.
-# SPDX-FileCopyrightText: 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-15 00:41+0000\n"
-"PO-Revision-Date: 2024-04-19 02:42+0900\n"
+"PO-Revision-Date: 2025-02-06 20:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1057,7 +1057,7 @@ msgstr "使用檔案管理員開啟"
 #: smb4k/smb4ksharesviewdockwidget.cpp:137
 #, kde-format
 msgid "View Modes"
-msgstr "顯示模式"
+msgstr "檢視模式"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:143
 #, kde-format
