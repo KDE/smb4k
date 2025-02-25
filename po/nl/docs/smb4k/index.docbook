@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Dutch "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -55,7 +53,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-09-30</date>
+>2024-12-08</date>
   <releaseinfo
 >&smb4k; 4.0.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1034,9 +1032,9 @@
 >Acties en popup-menu</title>
 
       <para
->In de weergave van shares zijn verschillende opties gedefinieerd. U kunt ze zien in de menubalk onder <guimenu
+>In de weergave van shares zijn verschillende acties gedefinieerd. U kunt ze zien in de menubalk onder <guimenu
 >Shares</guimenu
->, de werkbalk en het contextmenu. De volgende opties zijn beschikbaar:</para>
+>, de werkbalk en het contextmenu. De volgende acties zijn beschikbaar:</para>
 
       <variablelist>
         <varlistentry>
@@ -1182,7 +1180,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Synchroniseren</link
-> van een share met een locale kopie of vice versa. Dit menu-item is alleen te selecteren als het programma <ulink url="man:/rsync"
+> van een share met een locale kopie of vice versa. Deze actie is alleen te selecteren als het programma <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1208,7 +1206,7 @@
           </term>
           <listitem>
             <para
->Opent de basismap van een share in &konsole;. Dit menuitem is handig als u shell scripts, &etc; wilt opstarten</para>
+>Opent de basismap van een share in &konsole;. Deze actie is handig als u shell scripts, &etc; wilt opstarten</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1384,7 +1382,9 @@
 ></menuchoice
 >. Afhankelijk van uw instellingen zal deze ook externe en ontoegankelijke shares afkoppelen.</para>
       <para
->Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker een melding daarvan. Als de afkoppeling mislukt krijgt u een foutmelding.</para>
+>Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker daarvan een <link linkend="notifications"
+>melding</link
+>. Als de afkoppeling mislukt krijgt u een foutmelding.</para>
     </sect2>
     
 <!--
@@ -1396,7 +1396,7 @@
 >Aangepaste instellingen definiëren</title>
       
       <para
->Voor de geselecteerde shares kunnen aangepaste instellingen gedefinieerd worden. Klik op het actie <menuchoice
+>Voor geselecteerde shares kunnen aangepaste instellingen gedefinieerd worden. Klik op het actie <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1406,9 +1406,9 @@
 ><guimenuitem
 >Aangepaste instellingen toevoegen</guimenuitem
 ></menuchoice
-> om de bewerker voor aangepaste opties te openen. Voor meer details zie <link linkend="custom_settings"
->deze sectie</link
->.</para>
+> om de bewerker voor aangepaste opties te openen. Lees de sectie <link linkend="custom_settings"
+>Aangepaste instellingen</link
+> voor meer details.</para>
     </sect2>
     
 <!-- 
@@ -1541,7 +1541,7 @@
 >Locatie en gebruik</title>
 
       <para
->Wanneer &smb4k; is gestart verschijnt er een statuspictogram in het systeemvak. Zijn status is op actief gezet als werkgroepen of domeinen ontdekt zijn in uw netwerkomgeving. Anders staat deze op inactief.</para>
+>Wanneer &smb4k; is gestart verschijnt er een statuspictogram in het systeemvak. Zijn status is op actief gezet als ofwel werkgroepen of domeinen ontdekt zijn in uw netwerkomgeving of shares op afstand zijn aangekoppeld. Anders staat deze op inactief.</para>
 
       <screenshot>
         <screeninfo
@@ -1604,9 +1604,9 @@
       </variablelist>
     
       <para
->Bij elk aangekoppeld share heeft u een submenu met de volgende menuitems. Meer informatie daarover kunt u <link linkend="shares_view_actions_popup_menu"
->de sectie pop-up-menu</link
-> lezen.</para>
+>Bij elke aangekoppelde share kunt u een submenu openen die de volgende items bevat. Lees de shares-weergave <link linkend="shares_view_actions_popup_menu"
+>Acties en pop-up-menu</link
+> voor verdere informatie.</para>
 
       <variablelist>
         <varlistentry>
@@ -1642,7 +1642,9 @@
           </term>
           <listitem>
             <para
->Open de bewerker voor aangepaste instellingen voor de geselecteerde share. Voor verdere informatie lees de sectie over de bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Open de bewerker voor aangepaste instellingen voor de geselecteerde share.</para>
+            <para
+>Voor verdere informatie lees de sectie over <link linkend="custom_settings"
 >Aangepaste instellingen</link
 >.</para>
           </listitem>
@@ -1656,10 +1658,10 @@
           </term>
           <listitem>
             <para
->Synchroniseer de aangekoppelde share met een lokale kopie of omgekeerd. Voor meer informatie lees de secties over <link linkend="shares_view_actions_popup_menu"
->de acties in de de weergave van shares</link
-> en de <link linkend="shares_view_synchronization"
->synchronisatie</link
+>Synchroniseer de aangekoppelde share een lokale kopie of vice versa.</para>
+            <para
+>Voor verdere informatie lees de sectie over <link linkend="shares_view_synchronization"
+>Synchronisatie</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1690,13 +1692,11 @@
       </variablelist>
 
       <para
->In het menu <guimenuitem
+>Het menu <guimenuitem
 >Bladwijzer</guimenuitem
-> kunt u al uw bladwijzers vinden die georganiseerd zijn volgens de door u opgegeven structuur (meer informatie daarover kunt u <link linkend="bookmarks_adding"
->bladwijzers toevoegen</link
-> en <link linkend="bookmarks_editor"
->bladwijzers bewerken</link
-> lezen).</para>
+> bevat al uw bladwijzers. Lees de sectie <link linkend="bookmarks"
+>Bladwijzers</link
+> voor verdere informatie.</para>
 
       <screenshot>
         <screeninfo
@@ -1720,7 +1720,7 @@
       <para
 >In het menu <guimenuitem
 >Profielen</guimenuitem
-> worden alle <link linkend="profiles"
+> worden al uw <link linkend="profiles"
 >profielen</link
 > weergegeven:</para>
 
@@ -1744,7 +1744,7 @@
 >instellingendialoog</link
 >.</para>
       <para
->Dit zijn de andere menu-items:</para>
+>Er zijn vier extra menu-items:</para>
 
       <variablelist>
         <varlistentry>
@@ -1757,8 +1757,8 @@
           <listitem>
             <para
 >Open de <link linkend="network_neighborhood_browser_mounting"
->dialoog</link
-> voor "handmatig" aankoppelen van shares met een URL, IP-adres en domein of werkgroep.</para>
+>dialoog aankoppelen</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2064,11 +2064,11 @@
 >gedeelde mappen weergave</link
 > en de <link linkend="plasmoid"
 >&plasmoid;</link
-> bladwijzers voor uw favoriete shares aanmaken. In de widgets Vastzetten van het hoofdvenster doet u dit door een of meer shares te selecteren en daarna op de actie <menuchoice
+> bladwijzers voor uw favoriete shares aanmaken. In het hoofdvenster doet u dit door een of meer shares te selecteren en daarna op de actie <menuchoice
 ><guimenuitem
 >Bladwijzer toevoegen</guimenuitem
 ></menuchoice
-> te drukken. Er zal een dialoogvenster openen waarin u een naam en een categorie kunt toevoegen.</para>
+> te drukken. Er zal een dialoogvenster openen waarin u een naam en een categorie kunt toevoegen. Dubbelklik op een bladwijzer om het invoerwidget te openen.</para>
 
       <screenshot>
         <screeninfo
@@ -2120,7 +2120,7 @@
       </screenshot>
 
       <para
->Er zijn twee vaste items beschikbaar in het menu:</para>
+>Er zijn twee vaste items in het menu:</para>
 
       <variablelist>
         <varlistentry>
@@ -2178,9 +2178,9 @@
       <para
 >Alle volgende items zijn of submenu's van categorieën en bladwijzers die niet bij een categorie horen. De items staan op alfabetische volgorde waarbij de bladwijzers ofwel zichtbaar zijn met hun locatie of met een beschrijvend label. Als u op een bladwijzer klikt, zal de bijbehorende share aangekoppeld worden. Als een share met een bladwijzer al is aangekoppeld, dan is het item uitgeschakeld.</para>
       <para
->De categorie submenu's bevat de toegekende bladwijzers en in elk geval een menu-item <guimenuitem
+>De categorie submenu's bevat de toegekende bladwijzers en eveneens een menu-item <guimenuitem
 >Bladwijzers aankoppelen</guimenuitem
-> ook aanwezig. Het kan gebruikt worden om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
+>. Het kan gebruikt worden om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
       <para
 >In het systeemvakwidget is er een soortgelijk <link linkend="systemtray_menus"
 >submenu</link
@@ -2208,7 +2208,11 @@
 >Bladwijzers bewerken</title>
 
       <para
->U kunt bladwijzers bewerken of verwijderen in de bladwijzerbewerker. U kunt het openen door op <guimenuitem
+>U kunt bladwijzers bewerken of verwijderen in de bladwijzerbewerker of de pagina <guilabel
+>Bladwijzers</guilabel
+> in de <link linkend="configuration_page_bookmarks"
+>configuratiedialoog</link
+>. U kunt het openen door op <guimenuitem
 >Bladwijzers bewerken</guimenuitem
 > in het <guilabel
 >Bladwijzers</guilabel
@@ -2217,7 +2221,6 @@
 > in de tab <guilabel
 >Bladwijzers</guilabel
 > van de &plasmoid; te klikken.</para>
-    
       <screenshot>
         <screeninfo
 >Schermafdruk van de bladwijzerbewerker</screeninfo>
@@ -2230,75 +2233,46 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
       <para
 >In de boomstructuurweergave, zijn de bladwijzers ingedeeld bij de categorieën waarbij ze bij horen. Bladwijzers die bij een categorie horen vindt u terug op het topniveau. Om de bladwijzers opnieuw in te delen, is het in de boomstructuurweergave mogelijk om te verslepen, u kunt dus de bladwijzers met de muis verslepen.</para>
       <para
->Nadat u een bladwijzer heeft geselecteerd, kunt u het bewerken. De opgeslagen  label, login, IP adres en categorienaam verschijnen in de invoervakken zodat u ze kunt bewerken. In de meeste gevallen hoeft u het IP-adres en de login niet aan te raken, omdat op het moment dat u een bladwijzer voor de share aanmaakte &smb4k; de correcte waarden heeft opgeslagen. Maar als de server een ander IP adres heeft gekregen (&eg; omdat DHCP op uw netwerk in gebruik is) of uw login is gewijzigd, dan moeten deze items worden aangepast. Met het label kunt u voor elke bladwijzer een eigen beschrijving geven. Dit krijgt u te zien <emphasis
+>Als u een bladwijzer wilt bewerken, dan kunt u dat doen door ofwel dubbel te klikken of deze selecteren end drukken op de knop <guibutton
+>Bewerken</guibutton
+>. Het invoerwidget zal dan getoond worden. Hier kunt u het label, de categorienaam, aanmelden, werkgroep of domeinnaam en het IP-adres bewerken.</para>
+      <screenshot>
+        <screeninfo
+>Schermafdruk van de bladwijzerbewerker met geopend invoerwidget</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_editor_with_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Bladwijzerbewerker met geopend invoerwidget</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+      <para
+>In de meeste gevallen hoeft u het IP-adres en de login niet aan te raken, omdat op het moment dat u een bladwijzer voor de share aanmaakte &smb4k; de correcte waarden heeft opgeslagen. Maar als de server een ander IP-adres heeft gekregen (&eg; omdat DHCP op uw netwerk in gebruik is) of uw aanmelden is gewijzigd, dan moeten deze items worden aangepast.  U zou ook de werkgroep- of domeinnaam moeten aanpassen, als zijn naam is verkregen door DNS-SD (en het meest waarschijnlijk <emphasis
+>LOCAL</emphasis
+> als naam heeft). Met het label kunt u voor elke bladwijzer een eigen beschrijving geven. Dit krijgt u te zien <emphasis
 >in plaats</emphasis
 > van het locatie-adres, maar ook dat kan u wijzigen in het <link linkend="configuration_page_user_interface_main_window"
 >configuratievenster</link
 >. De categorie, tenslotte, helpt u bij het organiseren van uw bladwijzers. Bijvoorbeeld, in de situatie dat u uw laptop zowel thuis als op uw werk gebruikt, en u <link linkend="profiles"
 >geen profielen</link
-> wilt gebruiken, dan kan het een goed idee zijn om daarin de twee groepen "thuis" en "werk" aan te maken en overeenkomstig de bladwijzers op te slaan.</para>
+> wilt gebruiken, dan kan het een goed idee zijn om daarin de twee categorieën "thuis" en "werk" aan te maken en overeenkomstig de bladwijzers op te slaan.</para>
       <para
->In de boomstructuurweergave is ook een contextmenu aanwezig met de volgende drie knoppen. U kunt deze gebruiken voor het toevoegen en verwijderen van categorieën en bladwijzers.</para>
-
-      <screenshot>
-        <screeninfo
->Schermafdruk van het pop-up-menu voor de bewerker van bladwijzers</screeninfo>
-        <mediaobject>
-          <imageobject
-><imagedata fileref="bookmarks_editor_popup_menu.png" format="PNG"/></imageobject>
-          <textobject
-><phrase
->Pop-up-menu voor de bewerker van bladwijzers</phrase
-></textobject>
-        </mediaobject>
-      </screenshot>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Categorie toevoegen</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Voegt een bladwijzercategorie toe. Nadat u een categorie hebt aangemaakt, kunt u bladwijzers er naar toe verplaatsen.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Verwijderen</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Verwijdert de geselecteerde bladwijzer of categorie. Bij een categorie zullen ook alle bladwijzers daarin aanwezig worden verwijderd.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Wissen</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Alle bladwijzers en categorieën verwijderen uit de boomstructuurweergave.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para
->Als u klaar bent met bewerken, dan kunt u de wijzigingen opslaan door op de knop <guibutton
->OK</guibutton
-> te klikken.</para>
+>Met d knop <guibutton
+>Categorie toevoegen</guibutton
+> kunt u een categorie toevoegen. De knop <guibutton
+>Verwijderen</guibutton
+> verwijdert de geselecteerde bladwijzer en de knop <guibutton
+>Lijst wissen</guibutton
+> wist de gehele lijst met bladwijzers. Zo lang als u de wijzigingen niet hebt opgeslagen door te klikken op de knop <guibutton
+>Opslaan</guibutton
+> kunt u al uw wijzigingen resetten met de knop <guibutton
+>Resetten</guibutton
+>.</para>
     </sect2>
   </sect1>
   
@@ -2321,7 +2295,7 @@
       <itemizedlist>
         <listitem
 ><para
->individuele aankoppelen of bladerinstellingen wilt definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in het configuratievenster,</para
+>individuele blader- of aankoppelinstellingen definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in de configuratiedialoog,</para
 ></listitem>
         <listitem
 ><para
@@ -2341,11 +2315,11 @@
 >Aangepaste instellingen toevoegen</title>
 
       <para
->In het geval dat u aangepaste instellingen voor een share wilt definiëren, in zowel, de <link linkend="network_neighborhood_browser_actions_popup_menu"
+>Om aangepaste instellingen, in zowel, de <link linkend="network_neighborhood_browser_actions_popup_menu"
 >netwerkomgevingsbrowser</link
 > als de <link linkend="shares_view_actions_popup_menu"
 >shares weergave</link
->, dan kunt u de bewerker voor de aangepaste instellingen openen door te klikken op menu-item <menuchoice
+> te definiëren, kunt u de bewerker voor de aangepaste instellingen openen door te klikken op menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -2371,12 +2345,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>Aangepaste instellingen die u definieert voor een server zullen ook toegepast worden op zijn shares.</para>
 
       <para
->Individuele instellingen kunnen gemaakt worden in de volgende secties / tabbladen:</para>
+>De volgende instellingen kunnen gemaakt worden:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Basisinstellingen</guilabel>
+          </term>
+          <listitem>
+            <para
+>U kunt hier het IP-adres en de werkgroep of het domein van de server instellen. Als u en share selecteert, dan kunt u ook de knop <guibutton
+>Deze share altijd opnieuw aankoppelen</guibutton
+> activeren elke keer opnieuw aan te koppelen wanneer u &smb4k; start of het respectievelijke <link linkend="profiles"
+>profile</link
+> laadt.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2384,9 +2373,7 @@
 > (alleen &Linux;) </term>
           <listitem>
             <para
->U kunt hier algemene instellingen definiëren gerelateerd aan aankoppelen. Activeer de knop <guibutton
->Deze share altijd opnieuw aankoppelen</guibutton
-> als u de geselecteerde share opnieuw wilt aankoppelen bij elke start van &smb4k;. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_common_mount_settings"
+>U kunt hier gemeenschappelijke instellingen definiëren gerelateerd aan aankoppelen. Voor gedetailleerde informatie over deze instellingen kijk in <link linkend="configuration_page_mounting_common_mount_settings"
 >deze sectie</link
 >.</para>
           </listitem>
@@ -2435,16 +2422,22 @@
           <listitem>
             <para
 >Om het Wake-On-LAN onderdeel te laten werken, moet u het MAC adres van de gekozen server opgeven. Op dit moment heeft &smb4k; geen methode om het MAC adres vast te stellen, u moet het daarom zelf vast stellen. Daarna kunt u instellen of de server moet ontwaken voordat het de netwerkomgeving gaat scannen of een share gaat aankoppelen, een magisch Wake-On-LAN pakket moet versturen.</para>
+            <para
+>Merk op dat u De Wake-On-LAN mogelijkheden moet inschakelen in de <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>configuratiedialoog</link
+> om voordeel te hebben van deze instellingen.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       
       <para
->De knop <guibutton
+>Met de knop <guibutton
 >Standaarden</guibutton
-> is pas te selecteren als de instellingen die u heeft gedaan afwijken van de ingestelde waarden in het configuratievenster. Door erop te klikken, kunt u de instellingen in het dialoogvenster terugzetten naar hun standaardwaarden. De knop <guibutton
->OK</guibutton
-> is pas selecteerbaar nadat u de waarden in het dialoogvenster heeft gewijzigd. Door erop te klikken slaat u de aangepaste instellingen op en sluit u het dialoogvenster.</para>
+> kunt u alle instellingen in de bewerker resetten naar hun standaard waarden zoals ze gedefinieerd zijn in de configuratiedialoog. Aangepaste instellingen die alleen standaard waarden bevatten worden verwijderd. Met gebruik van de knop <guibutton
+>Reset</guibutton
+> kunt u de items in de dialoog resetten naar hun initiële waarden. Klikken op de knop <guibutton
+>Opslaan</guibutton
+> slaat de aangepaste instellingen op en sluit de dialoog.</para>
       <para
 >Merk op dat bij gebruik van BSD er in het dialoogvenster minder ingangen zijn dan als u &Linux; gebruikt, omdat verschillende opties niet worden ondersteund.</para>
     </sect2>
@@ -8141,13 +8134,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Profielen</title>
 
       <para
->Hier kunt u uw profielen beheren. Standaard zijn er twee voorgedefinieerd (<guilabel
->Thuis</guilabel
+>Hier kunt u uw profielen beheren. Standaard zijn er twee voorgedefinieerde (<guilabel
+>Home</guilabel
 > en <guilabel
 >Werk</guilabel
->). Wanneer u het gebruik van profielen inschakelt zal het eerste item in de lijst het actieve profiel zijn.</para>
-      <para
->Om een nieuw profiel toe te voegen, voer het in in de regelbewerking en klik op de knop <guibutton
+>). Om een nieuw profiel toe te voegen, voer het in in de regelbewerking en klik op de knop <guibutton
 >Toevoegen</guibutton
 >. Items kunnen verwijderd worden door ze te selecteren en te klikken op de knop <guibutton
 >Verwijderen</guibutton
