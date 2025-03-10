@@ -197,7 +197,7 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
 
                 bookmarkItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
                 bookmarkItem->setText(0, bookmark->displayString());
-                bookmarkItem->setText(1, QStringLiteral("01_")+bookmark->displayString());
+                bookmarkItem->setText(1, QStringLiteral("01_") + bookmark->displayString());
                 bookmarkItem->setIcon(0, bookmark->icon());
                 bookmarkItem->setData(0, TypeRole, BookmarkType);
                 bookmarkItem->setData(0, DataRole, variant);
@@ -292,7 +292,7 @@ QTreeWidgetItem *Smb4KConfigPageBookmarks::addCategoryItem(const QString &text)
     QTreeWidgetItem *categoryItem = new QTreeWidgetItem(m_treeWidget, QTreeWidgetItem::UserType);
     categoryItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
     categoryItem->setText(0, text);
-    categoryItem->setText(1, QStringLiteral("00_")+text);
+    categoryItem->setText(1, QStringLiteral("00_") + text);
     categoryItem->setIcon(0, KDE::icon(QStringLiteral("folder-favorites")));
     categoryItem->setData(0, TypeRole, CategoryType);
     categoryItem->setData(0, DataRole, text);

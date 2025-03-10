@@ -106,7 +106,6 @@ protected Q_SLOTS:
     void slotEnableButtons();
     void slotIconSizeChanged(int group);
 
-
 private:
     void checkValues();
     void sortItems();
