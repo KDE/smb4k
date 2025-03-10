@@ -250,17 +250,29 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     addTab(tab4, i18n("Browse Settings"));
 
     QWidget *tab5 = new QWidget(this);
-    QGridLayout *tab5Layout = new QGridLayout(tab5);
+    QVBoxLayout *tab5Layout = new QVBoxLayout(tab5);
 
     tab5->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
-    m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab5);
-    m_macAddress = new KLineEdit(tab5);
+    QWidget *macAddressWidget = new QWidget(tab5);
+    QHBoxLayout *macAddressWidgetLayout = new QHBoxLayout(macAddressWidget);
+    macAddressWidgetLayout->setContentsMargins(0, 0, 0, 0);
+
+    m_macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressWidget);
+    m_macAddress = new KLineEdit(macAddressWidget);
     m_macAddress->setClearButtonEnabled(true);
     m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
     m_macAddressLabel->setBuddy(m_macAddress);
+    m_macAddressSearchButton = new QPushButton(macAddressWidget);
+    m_macAddressSearchButton->setIcon(KDE::icon(QStringLiteral("edit-find")));
+    m_macAddressSearchButton->setToolTip(i18n("Find MAC address"));
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
+    connect(m_macAddressSearchButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditorWidget::slotFindMacAddressClicked);
+
+    macAddressWidgetLayout->addWidget(m_macAddressLabel);
+    macAddressWidgetLayout->addWidget(m_macAddress);
+    macAddressWidgetLayout->addWidget(m_macAddressSearchButton);
 
     m_sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), tab5);
     m_sendPacketBeforeScan->setEnabled(false);
@@ -270,11 +282,10 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_sendPacketBeforeScan, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeScanToggled);
     connect(m_sendPacketBeforeMount, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeMountToggled);
 
-    tab5Layout->addWidget(m_macAddressLabel, 0, 0);
-    tab5Layout->addWidget(m_macAddress, 0, 1);
-    tab5Layout->addWidget(m_sendPacketBeforeScan, 1, 0, 1, 2);
-    tab5Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
-    tab5Layout->setRowStretch(3, 100);
+    tab5Layout->addWidget(macAddressWidget);
+    tab5Layout->addWidget(m_sendPacketBeforeScan);
+    tab5Layout->addWidget(m_sendPacketBeforeMount);
+    tab5Layout->addStretch(100);
 
     m_wakeOnLanTabIndex = addTab(tab5, i18n("Wake-On-LAN Settings"));
 }
@@ -430,13 +441,25 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
     tab4->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
-    m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab4);
-    m_macAddress = new KLineEdit(tab4);
+    QWidget *macAddressWidget = new QWidget(tab4);
+    QHBoxLayout *macAddressWidgetLayout = new QHBoxLayout(macAddressWidget);
+    macAddressWidgetLayout->setContentsMargins(0, 0, 0, 0);
+
+    m_macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressWidget);
+    m_macAddress = new KLineEdit(macAddressWidget);
     m_macAddress->setClearButtonEnabled(true);
     m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
     m_macAddressLabel->setBuddy(m_macAddress);
+    m_macAddressSearchButton = new QPushButton(macAddressWidget);
+    m_macAddressSearchButton->setIcon(KDE::icon(QStringLiteral("edit-find")));
+    m_macAddressSearchButton->setToolTip(i18n("Find MAC address"));
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
+    connect(m_macAddressSearchButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditorWidget::slotFindMacAddressClicked);
+
+    macAddressWidgetLayout->addWidget(m_macAddressLabel);
+    macAddressWidgetLayout->addWidget(m_macAddress);
+    macAddressWidgetLayout->addWidget(m_macAddressSearchButton);
 
     m_sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), tab4);
     m_sendPacketBeforeScan->setEnabled(false);
@@ -446,11 +469,10 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_sendPacketBeforeScan, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeScanToggled);
     connect(m_sendPacketBeforeMount, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeMountToggled);
 
-    tab4Layout->addWidget(m_macAddressLabel, 0, 0);
-    tab4Layout->addWidget(m_macAddress, 0, 1);
-    tab4Layout->addWidget(m_sendPacketBeforeScan, 1, 0, 1, 2);
-    tab4Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
-    tab4Layout->setRowStretch(3, 100);
+    tab4Layout->addWidget(macAddressWidget);
+    tab4Layout->addWidget(m_sendPacketBeforeScan);
+    tab4Layout->addWidget(m_sendPacketBeforeMount);
+    tab4Layout->addStretch(100);
 
     m_wakeOnLanTabIndex = addTab(tab4, i18n("Wake-On-LAN Settings"));
 }
@@ -520,6 +542,7 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
     widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
     if (m_customSettings.type() == Host) {
+        // FIXME: Enable Search button if IP address is not empty
         m_macAddress->setText(m_customSettings.macAddress());
         m_sendPacketBeforeScan->setChecked(m_customSettings.wakeOnLanSendBeforeNetworkScan());
         m_sendPacketBeforeMount->setChecked(m_customSettings.wakeOnLanSendBeforeMount());
@@ -1118,6 +1141,19 @@ void Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled(bool checked)
 {
     Q_UNUSED(checked);
     checkValues();
+}
+
+void Smb4KCustomSettingsEditorWidget::slotFindMacAddressClicked(bool checked)
+{
+    Q_UNUSED(checked);
+
+    if (!m_customSettings.ipAddress().isEmpty()) {
+        QString macAddress = findMacAddress(m_customSettings.ipAddress());
+
+        if (!macAddress.isEmpty()) {
+            m_macAddress->setText(macAddress);
+        }
+    }
 }
 
 void Smb4KCustomSettingsEditorWidget::slotMacAddressChanged(const QString &text)

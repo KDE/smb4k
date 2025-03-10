@@ -420,6 +420,14 @@ SMB4KCORE_EXPORT const QString dataLocation();
  * @param time          The waiting time in msec
  */
 SMB4KCORE_EXPORT void wait(int time);
+
+/**
+ * Query the local arp cache and retrieve the MAC address for the given
+ * IP address if available.
+ *
+ * @param ipAddress     The IP addess of the server
+ */
+SMB4KCORE_EXPORT const QString findMacAddress(const QString &ipAddress);
 };
 
 #endif

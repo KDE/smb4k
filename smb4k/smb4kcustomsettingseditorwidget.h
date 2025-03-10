@@ -14,6 +14,7 @@
 // Qt includes
 #include <QCheckBox>
 #include <QLabel>
+#include <QPushButton>
 #include <QSpinBox>
 #include <QTabWidget>
 
@@ -25,7 +26,7 @@
  * This widget is used to edit custom settings
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
- * @since 3.3.0
+ * @since 4.0.0
  */
 
 class Smb4KCustomSettingsEditorWidget : public QTabWidget
@@ -100,6 +101,7 @@ protected Q_SLOTS:
     void slotUseRemoteSmbPortToggled(bool checked);
     void slotRemoteSmbPortChanged(int port);
     void slotUseKerberosToggled(bool checked);
+    void slotFindMacAddressClicked(bool checked);
     void slotMacAddressChanged(const QString &text);
     void slotSendPacketBeforeScanToggled(bool checked);
     void slotSendPacketBeforeMountToggled(bool checked);
@@ -148,6 +150,7 @@ private:
     QCheckBox *m_sendPacketBeforeScan;
     QCheckBox *m_sendPacketBeforeMount;
     int m_wakeOnLanTabIndex;
+    QPushButton *m_macAddressSearchButton;
 };
 
 #endif

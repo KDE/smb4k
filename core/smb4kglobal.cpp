@@ -26,6 +26,7 @@
 // KDE includes
 #include <KIO/CommandLauncherJob>
 #include <KIO/OpenUrlJob>
+#include <KProcess>
 
 Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
 QRecursiveMutex mutex;
@@ -795,4 +796,41 @@ void Smb4KGlobal::wait(int time)
     QEventLoop loop;
     QTimer::singleShot(time, &loop, SLOT(quit()));
     loop.exec();
+}
+
+const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
+{
+    QString macAddress;
+
+#if defined(Q_OS_LINUX)
+    QString executable = QStandardPaths::findExecutable(QStringLiteral("ip"));
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#endif
+
+    if (!executable.isEmpty()) {
+        QStringList command;
+        command << executable;
+#if defined(Q_OS_LINUX)
+        command << QStringLiteral("neighbor");
+        command << QStringLiteral("show");
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#endif
+
+        KProcess process;
+        process.setProgram(command);
+        process.setOutputChannelMode(KProcess::SeparateChannels);
+
+        if (process.execute(-1) >= 0) {
+            QStringList result = QString::fromLocal8Bit(process.readAllStandardOutput()).split(QStringLiteral("\n"));
+
+            for (const QString &r : result) {
+                if (r.section(QStringLiteral(" "), 0, 0) == ipAddress) {
+                    macAddress = r.section(QStringLiteral(" "), 4, 4);
+                    break;
+                }
+            }
+        }
+    }
+
+    return macAddress;
 }
