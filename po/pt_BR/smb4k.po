@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-15 00:41+0000\n"
+"POT-Creation-Date: 2025-03-11 00:41+0000\n"
 "PO-Revision-Date: 2023-11-08 15:42-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -262,7 +262,7 @@ msgstr "Senha"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:295 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -270,7 +270,7 @@ msgstr "Grupo de trabalho:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:287 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -338,7 +338,7 @@ msgstr " min"
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Basic Settings"
 msgstr "Configurações básicas"
@@ -391,7 +391,7 @@ msgid "Character Sets"
 msgstr "Conjunto de codificações"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:367
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
 #, kde-format
 msgid "Mount Settings"
 msgstr "Configurações de montagem"
@@ -425,7 +425,7 @@ msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:426
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
 #, kde-format
 msgid "Browse Settings"
 msgstr "Configurações de navegação"
@@ -638,7 +638,7 @@ msgstr ""
 "Definir as configurações personalizadas para o compartilhamento <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:302
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "Sempre remontar este compartilhamento"
@@ -648,26 +648,33 @@ msgstr "Sempre remontar este compartilhamento"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Este servidor suporta as extensões CIFS Unix"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
 #, kde-format
 msgid "MAC Address:"
 msgstr "Endereço MAC:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:268
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#, fuzzy, kde-format
+#| msgid "MAC Address"
+msgid "Find MAC address"
+msgstr "Endereço MAC"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:277
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Enviar o 'pacote mágico' antes de verificar a vizinhança da rede"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:443
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Enviar o 'pacote mágico' antes de montar um compartilhamento"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:290
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Configurações da Ativação por LAN (Wake-On-LAN)"
@@ -1384,9 +1391,6 @@ msgstr "Tamanho:"
 
 #~ msgid "Identification"
 #~ msgstr "Identificação"
-
-#~ msgid "MAC Address"
-#~ msgstr "Endereço MAC"
 
 #~ msgid "Actions"
 #~ msgstr "Ações"
