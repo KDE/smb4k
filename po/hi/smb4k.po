@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-15 00:41+0000\n"
+"POT-Creation-Date: 2025-03-11 00:41+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -248,7 +248,7 @@ msgstr "पासवर्ड:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:295 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -256,7 +256,7 @@ msgstr "कार्यसमूह:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:287 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -322,7 +322,7 @@ msgstr "मिनट"
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Basic Settings"
 msgstr "मूल सेटिंग्स"
@@ -375,7 +375,7 @@ msgid "Character Sets"
 msgstr "वर्ण सेट"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:367
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
 #, kde-format
 msgid "Mount Settings"
 msgstr "माउंट सेटिंग्स"
@@ -407,7 +407,7 @@ msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:426
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
 #, kde-format
 msgid "Browse Settings"
 msgstr "सेटिंग्स ब्राउज़ करें"
@@ -616,7 +616,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "शेयर <b>%1</b> के लिए कस्टम सेटिंग्स परिभाषित करें."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:302
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "इस शेयर को हमेशा रीमाउंट करें"
@@ -626,26 +626,33 @@ msgstr "इस शेयर को हमेशा रीमाउंट कर�
 msgid "This server supports the CIFS Unix extensions"
 msgstr "यह सर्वर CIFS Unix एक्सटेंशन का समर्थन करता है"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
 #, kde-format
 msgid "MAC Address:"
 msgstr "मैक पता:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:268
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#, fuzzy, kde-format
+#| msgid "MAC Address:"
+msgid "Find MAC address"
+msgstr "मैक पता:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:277
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "नेटवर्क पड़ोस को स्कैन करने से पहले जादुई पैकेट भेजें"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:443
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "शेयर माउंट करने से पहले मैजिक पैकेट भेजें"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:290
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "वेक-ऑन-लैन सेटिंग्स"

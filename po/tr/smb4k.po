@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-15 00:41+0000\n"
+"POT-Creation-Date: 2025-03-11 00:41+0000\n"
 "PO-Revision-Date: 2025-02-17 19:24+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -255,7 +255,7 @@ msgstr "Parola:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:295 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -263,7 +263,7 @@ msgstr "Çalışma grubu:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:287 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -329,7 +329,7 @@ msgstr " dk"
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Basic Settings"
 msgstr "Temel Ayarlar"
@@ -382,7 +382,7 @@ msgid "Character Sets"
 msgstr "Karakter Kümeleri"
 
 #: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:367
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
 #, kde-format
 msgid "Mount Settings"
 msgstr "Bağlama Ayarları"
@@ -414,7 +414,7 @@ msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:426
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
 #, kde-format
 msgid "Browse Settings"
 msgstr "Ayarlara Göz At"
@@ -622,7 +622,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "<b>%1</b> paylaşımı için özel ayarlar tanımlayın."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:302
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
 #, kde-format
 msgid "Always remount this share"
 msgstr "Bu paylaşımı her zaman yeniden bağla"
@@ -632,26 +632,33 @@ msgstr "Bu paylaşımı her zaman yeniden bağla"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Bu sunucu, CIFS Unix uzantılarını destekler"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC adresi:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:268
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#, fuzzy, kde-format
+#| msgid "MAC Address:"
+msgid "Find MAC address"
+msgstr "MAC adresi:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:277
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Ağ komşularını taramadan önce sihirli paket gönder"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:443
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Bir paylaşımı bağlamadan önce sihirli paket gönder"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:290
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Ağdan Uyan Ayarları"
