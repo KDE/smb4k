@@ -437,7 +437,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     addTab(tab3, i18n("Browse Settings"));
 
     QWidget *tab4 = new QWidget(this);
-    QGridLayout *tab4Layout = new QGridLayout(tab4);
+    QVBoxLayout *tab4Layout = new QVBoxLayout(tab4);
 
     tab4->setEnabled(Smb4KSettings::enableWakeOnLAN());
 

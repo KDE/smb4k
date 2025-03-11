@@ -1,7 +1,7 @@
 /*
     This is the global namespace for Smb4K.
 
-    SPDX-FileCopyrightText: 2005-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -800,11 +800,18 @@ void Smb4KGlobal::wait(int time)
 
 const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
 {
-    QString macAddress;
+    QString macAddress, executable;
 
 #if defined(Q_OS_LINUX)
-    QString executable = QStandardPaths::findExecutable(QStringLiteral("ip"));
+    executable = QStandardPaths::findExecutable(QStringLiteral("ip"));
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+    QHostAddress address(ipAddress);
+
+    if (address.protocol() == QHostAddress::IPv4Protocol) {
+        executable = QStandardPaths::findExecutable(QStringLiteral("arp"));
+    } else if (address.protocol() == QHostAddress::IPv6Protocol) {
+        executable = QStandardPaths::findExecutable(QStringLiteral("ndp"));
+    }
 #endif
 
     if (!executable.isEmpty()) {
@@ -814,6 +821,7 @@ const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
         command << QStringLiteral("neighbor");
         command << QStringLiteral("show");
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+        command << QStringLiteral("-an");
 #endif
 
         KProcess process;
@@ -824,10 +832,22 @@ const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
             QStringList result = QString::fromLocal8Bit(process.readAllStandardOutput()).split(QStringLiteral("\n"));
 
             for (const QString &r : result) {
+#if defined(Q_OS_LINUX)
                 if (r.section(QStringLiteral(" "), 0, 0) == ipAddress) {
                     macAddress = r.section(QStringLiteral(" "), 4, 4);
                     break;
                 }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+                if (address.protocol() == QHostAddress::IPv4Protocol &&
+                    r.section(QStringLiteral(" "), 1, 1).remove(QStringLiteral("(")).remove(QStringLiteral(")")) == ipAddress) {
+                    macAddress = r.simplified().section(QStringLiteral(" "), 3, 3);
+                    break;
+                } else if (address.protocol() == QHostAddress::IPv6Protocol &&
+                           r.section(QStringLiteral(" "), 0, 0).section(QStringLiteral("%"), 0, 0) == ipAddress) {
+                    macAddress = r.simplified().section(QStringLiteral(" "), 1, 1);
+                    break;
+                }
+#endif
             }
         }
     }

@@ -1,7 +1,7 @@
 /*
     This is the global namespace for Smb4K.
 
-    SPDX-FileCopyrightText: 2005-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
