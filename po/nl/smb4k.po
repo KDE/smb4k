@@ -6,27 +6,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Joop Beris <jberis@risse.nl>, 2005, 2006.
-# SPDX-FileCopyrightText: 2010, 2011, 2012, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2010, 2011, 2012, 2023, 2024, 2025 Freek de Kruijf <freekdekruijf@kde.nl>
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:41+0000\n"
-"PO-Revision-Date: 2024-06-21 09:40+0200\n"
+"PO-Revision-Date: 2025-03-11 17:36+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 24.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - t/m 2024"
+msgstr "Freek de Kruijf - t/m 2025"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -647,10 +647,9 @@ msgstr "MAC-adres:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:268
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:455
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC-adres:"
+msgstr "Zoek MAC-adres"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:277
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:464

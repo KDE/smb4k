@@ -1,16 +1,16 @@
 # Translation of smb4k.po to Catalan
-# Copyright (C) 2014-2024 This_file_is_part_of_KDE
+# Copyright (C) 2014-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2014, 2016, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:41+0000\n"
-"PO-Revision-Date: 2024-06-21 10:13+0200\n"
+"PO-Revision-Date: 2025-03-11 09:55+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -646,10 +646,9 @@ msgstr "Adreça MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:268
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:455
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Adreça MAC:"
+msgstr "Troba l'adreça MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:277
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:464
@@ -1247,54 +1246,3 @@ msgstr "%1 lliure de %2 (usat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "The default login is depending on the profile you are using."
-#~ msgstr ""
-#~ "L'inici de la sessió predeterminat depèn del perfil que esteu fent servir."
-
-#~ msgid "Active profile:"
-#~ msgstr "Perfil actiu:"
-
-#~ msgid "Unknown"
-#~ msgstr "Desconegut"
-
-#~ msgid "Default Profile"
-#~ msgstr "Perfil predeterminat"
-
-#~ msgid "Wallet Entries"
-#~ msgstr "Entrades de la cartera"
-
-#~ msgid "Load"
-#~ msgstr "Carrega"
-
-#~ msgid "Save"
-#~ msgstr "Desa"
-
-#~ msgid "Enter the default login information."
-#~ msgstr "Introduïu la informació de connexió predeterminada."
-
-#~ msgid "Set the username and password for wallet entry %1."
-#~ msgstr ""
-#~ "Defineix el nom d'usuari i contrasenya de l'entrada %1 de la cartera."
-
-#~ msgid "Set the username and password for the default login."
-#~ msgstr ""
-#~ "Defineix el nom d'usuari i la contrasenya de la connexió predeterminada."
-
-#~ msgid "The wallet is used."
-#~ msgstr "La cartera es troba en ús."
-
-#~ msgid "The password dialog is used."
-#~ msgstr "S'usa el diàleg de contrasenya."
-
-#~ msgid "Mounting: Common Settings"
-#~ msgstr "Muntatge: Configuració normal"
-
-#~ msgid "Mounting: CIFS Unix Extensions"
-#~ msgstr "Muntatge: Ampliacions Unix del CIFS"
-
-#~ msgid "Mounting: Advanced Settings"
-#~ msgstr "Muntatge: Configuració avançada"
-
-#~ msgid "Browsing"
-#~ msgstr "Exploració"
