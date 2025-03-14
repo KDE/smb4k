@@ -628,10 +628,9 @@ msgstr "MAC 地址："
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:268
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:455
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC 地址："
+msgstr "查找 MAC 地址"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:277
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:464
