@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:41+0000\n"
-"PO-Revision-Date: 2024-06-28 16:51+0200\n"
+"PO-Revision-Date: 2025-03-15 10:38+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -637,10 +637,9 @@ msgstr "MAC-Adreso:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:268
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:455
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC-Adreso:"
+msgstr "Trovi MAC-adreson"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:277
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:464
