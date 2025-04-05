@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:41+0000\n"
+"POT-Creation-Date: 2025-04-05 00:41+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -731,79 +731,79 @@ msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Ekki tókst að útbúa möppuna %1."
 msgstr[1] "Ekki tókst að útbúa möppuna %1."
 
-#: smb4k/smb4kmainwindow.cpp:485
+#: smb4k/smb4kmainwindow.cpp:484
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Leita að vinnuhópum og lénum..."
 
-#: smb4k/smb4kmainwindow.cpp:490
+#: smb4k/smb4kmainwindow.cpp:489
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Leita að miðlurum á léninu %1..."
 
-#: smb4k/smb4kmainwindow.cpp:495
+#: smb4k/smb4kmainwindow.cpp:494
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Leita að sameignum sem boðið er upp á af miðlaranum %1..."
 
-#: smb4k/smb4kmainwindow.cpp:503 smb4k/smb4kmainwindow.cpp:512
+#: smb4k/smb4kmainwindow.cpp:502 smb4k/smb4kmainwindow.cpp:511
 #, fuzzy, kde-format
 #| msgid "Looking for hosts in domain %1..."
 msgid "Looking for files and directories in %1..."
 msgstr "Leita að miðlurum á léninu %1..."
 
-#: smb4k/smb4kmainwindow.cpp:529
+#: smb4k/smb4kmainwindow.cpp:528
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:534
+#: smb4k/smb4kmainwindow.cpp:533
 #, fuzzy, kde-format
 #| msgid "Sending file to printer..."
 msgid "Sending file to printer %1..."
 msgstr "Sendi skrá á prentara..."
 
-#: smb4k/smb4kmainwindow.cpp:538
+#: smb4k/smb4kmainwindow.cpp:537
 #, fuzzy, kde-format
 #| msgid "Searching for host..."
 msgid "Searching..."
 msgstr "Leita eftir miðlara..."
 
-#: smb4k/smb4kmainwindow.cpp:559 smb4k/smb4kmainwindow.cpp:598
-#: smb4k/smb4kmainwindow.cpp:683
+#: smb4k/smb4kmainwindow.cpp:558 smb4k/smb4kmainwindow.cpp:597
+#: smb4k/smb4kmainwindow.cpp:682
 #, kde-format
 msgid "Done."
 msgstr "Lokið."
 
-#: smb4k/smb4kmainwindow.cpp:569
+#: smb4k/smb4kmainwindow.cpp:568
 #, fuzzy, kde-format
 #| msgid "Mounting"
 msgid "Mounting..."
 msgstr "Tengi"
 
-#: smb4k/smb4kmainwindow.cpp:573
+#: smb4k/smb4kmainwindow.cpp:572
 #, fuzzy, kde-format
 #| msgid "Unmounting share %1..."
 msgid "Unmounting..."
 msgstr "Aftengi sameignina %1..."
 
-#: smb4k/smb4kmainwindow.cpp:577
+#: smb4k/smb4kmainwindow.cpp:576
 #, fuzzy, kde-format
 #| msgid "Looking for hosts in domain %1..."
 msgid "Waking up host..."
 msgstr "Leita að miðlurum á léninu %1..."
 
-#: smb4k/smb4kmainwindow.cpp:607
+#: smb4k/smb4kmainwindow.cpp:606
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:629
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:669
+#: smb4k/smb4kmainwindow.cpp:668
 #, fuzzy, kde-format
 #| msgid "Synchronizing data..."
 msgid "Synchronizing %1"
