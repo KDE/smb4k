@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2017-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
@@ -40,7 +40,7 @@ RowLayout {
 
         anchors.verticalCenter: parent.verticalCenter
 
-        source: (object.isCategory ? "folder-bookmark" : "folder-network-symbolic")
+        source: (object.isCategory ? "folder-favorites-symbolic" : "bookmarks-symbolic")
         width: Kirigami.Units.iconSizes.medium
         height: Kirigami.Units.iconSizes.medium
         enabled: delegate.enabled

@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2017-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
@@ -51,7 +51,7 @@ PlasmaComponents.Page {
         id: editButton
 
         hoverEnabled: true
-        icon.name: "bookmarks-organize"
+        icon.name: "bookmark-edit-symbolic"
         flat: true
 
         PlasmaComponents.ToolTip.delay: 1000

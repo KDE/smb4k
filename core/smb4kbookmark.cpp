@@ -1,7 +1,7 @@
 /*
     This is the bookmark container for Smb4K (next generation).
 
-    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -49,7 +49,7 @@ Smb4KBookmark::Smb4KBookmark()
     : d(new Smb4KBookmarkPrivate)
 {
     d->type = FileShare;
-    d->icon = KDE::icon(QStringLiteral("folder-network"));
+    d->icon = KDE::icon(QStringLiteral("bookmarks"));
 }
 
 Smb4KBookmark::~Smb4KBookmark()
@@ -66,7 +66,7 @@ void Smb4KBookmark::setShare(Smb4KShare *share) const
 
     d->workgroup = share->workgroupName();
     d->type = share->shareType();
-    d->icon = KDE::icon(QStringLiteral("folder-network"));
+    d->icon = KDE::icon(QStringLiteral("bookmarks"));
     d->ip.setAddress(share->hostIpAddress());
 }
 

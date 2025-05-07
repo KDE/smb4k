@@ -1,7 +1,7 @@
 /*
     smb4kbookmarkmenu  -  Bookmark menu
 
-    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -33,7 +33,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     m_bookmarks = new QActionGroup(menu());
     m_mountActions = new QActionGroup(menu());
 
-    m_editBookmarks = new QAction(KDE::icon(QStringLiteral("bookmarks-organize")), i18n("&Edit Bookmarks"), menu());
+    m_editBookmarks = new QAction(KDE::icon(QStringLiteral("bookmark-edit")), i18n("&Edit Bookmarks"), menu());
     m_editBookmarks->setEnabled(!Smb4KBookmarkHandler::self()->bookmarkList().isEmpty());
     connect(m_editBookmarks, SIGNAL(triggered(bool)), SLOT(slotEditActionTriggered(bool)));
     addAction(m_editBookmarks);
