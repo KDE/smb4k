@@ -41,7 +41,7 @@ int main(int argc, char **argv)
                          QStringLiteral(SMB4K_VERSION_STRING),
                          i18n("Advanced network neighborhood browser and Samba share mounting utility"),
                          KAboutLicense::GPL_V2,
-                         i18n("\u00A9 2003-2024 Alexander Reinholdt"),
+                         i18n("\u00A9 2003-2025 Alexander Reinholdt"),
                          QString(),
                          QStringLiteral("https://smb4k.sourceforge.io"));
 
