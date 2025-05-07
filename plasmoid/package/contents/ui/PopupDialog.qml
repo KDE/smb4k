@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2017-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
@@ -43,21 +43,21 @@ FocusScope {
       PlasmaComponents.TabButton {
         id: bookmarkTabButton
         text: i18n("Bookmarks")
-        icon.name: "bookmarks"
+        icon.name: "bookmarks-symbolic"
         width: Math.max(implicitWidth, tabBar.width / 5)
       }
 
       PlasmaComponents.TabButton {
         id: profilesTabButton
         text: i18n("Profiles")
-        icon.name: "preferences-system-users"
+        icon.name: "preferences-system-users-symbolic"
         width: Math.max(implicitWidth, tabBar.width / 5)
       }
 
       PlasmaComponents.TabButton {
         id: configurationTabButton
         text: i18n("Configuration")
-        icon.name: "configure"
+        icon.name: "configure-symbolic"
         width: Math.max(implicitWidth, tabBar.width / 5)
       }
     }
