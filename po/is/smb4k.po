@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:41+0000\n"
+"POT-Creation-Date: 2025-05-08 00:42+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -62,7 +62,7 @@ msgstr "KPart netvafri Smb4K"
 #: smb4k/main.cpp:44
 #, fuzzy, kde-format
 #| msgid "\\u00A9 2007-2010, Alexander Reinholdt"
-msgid "© 2003-2024 Alexander Reinholdt"
+msgid "© 2003-2025 Alexander Reinholdt"
 msgstr "\\u00A9 2007-2010, Alexander Reinholdt"
 
 #: smb4k/main.cpp:53

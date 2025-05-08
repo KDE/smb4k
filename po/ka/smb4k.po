@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:41+0000\n"
+"POT-Creation-Date: 2025-05-08 00:42+0000\n"
 "PO-Revision-Date: 2025-03-11 03:02+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -56,8 +56,9 @@ msgstr ""
 "პროგრამა"
 
 #: smb4k/main.cpp:44
-#, kde-format
-msgid "© 2003-2024 Alexander Reinholdt"
+#, fuzzy, kde-format
+#| msgid "© 2003-2024 Alexander Reinholdt"
+msgid "© 2003-2025 Alexander Reinholdt"
 msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53

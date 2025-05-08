@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:41+0000\n"
+"POT-Creation-Date: 2025-05-08 00:42+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -54,7 +54,7 @@ msgstr ""
 
 #: smb4k/main.cpp:44
 #, kde-format
-msgid "© 2003-2024 Alexander Reinholdt"
+msgid "© 2003-2025 Alexander Reinholdt"
 msgstr ""
 
 #: smb4k/main.cpp:53

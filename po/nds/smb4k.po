@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:41+0000\n"
+"POT-Creation-Date: 2025-05-08 00:42+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -60,7 +60,7 @@ msgstr "Verwiedert Nettwarkkieker för KDE"
 #: smb4k/main.cpp:44
 #, fuzzy, kde-format
 #| msgid "\\u00A9 2003-2011 Alexander Reinholdt"
-msgid "© 2003-2024 Alexander Reinholdt"
+msgid "© 2003-2025 Alexander Reinholdt"
 msgstr "\\u00A9 2003-2011: Alexander Reinholdt"
 
 #: smb4k/main.cpp:53

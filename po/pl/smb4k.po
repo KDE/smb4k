@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:41+0000\n"
+"POT-Creation-Date: 2025-05-08 00:42+0000\n"
 "PO-Revision-Date: 2024-07-20 09:28+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -59,8 +59,9 @@ msgstr ""
 "zasobów Samby"
 
 #: smb4k/main.cpp:44
-#, kde-format
-msgid "© 2003-2024 Alexander Reinholdt"
+#, fuzzy, kde-format
+#| msgid "© 2003-2024 Alexander Reinholdt"
+msgid "© 2003-2025 Alexander Reinholdt"
 msgstr "© 2003-2024 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53

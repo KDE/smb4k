@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:41+0000\n"
+"POT-Creation-Date: 2025-05-08 00:42+0000\n"
 "PO-Revision-Date: 2021-12-15 11:16+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail."
 "com>\n"
@@ -58,9 +58,10 @@ msgstr ""
 "Avansert navigering av nettverksnabolag og montering av Samba-ressursar"
 
 #: smb4k/main.cpp:44
-#, kde-format
-msgid "© 2003-2024 Alexander Reinholdt"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Alexander Reinholdt"
+msgid "© 2003-2025 Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format

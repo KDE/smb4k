@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:41+0000\n"
+"POT-Creation-Date: 2025-05-08 00:42+0000\n"
 "PO-Revision-Date: 2025-03-11 19:42+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -59,8 +59,9 @@ msgstr ""
 "монтування спільних ресурсів Samba"
 
 #: smb4k/main.cpp:44
-#, kde-format
-msgid "© 2003-2024 Alexander Reinholdt"
+#, fuzzy, kde-format
+#| msgid "© 2003-2024 Alexander Reinholdt"
+msgid "© 2003-2025 Alexander Reinholdt"
 msgstr "© Alexander Reinholdt, 2003–2024"
 
 #: smb4k/main.cpp:53
