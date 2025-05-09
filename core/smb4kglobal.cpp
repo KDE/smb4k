@@ -15,6 +15,7 @@
 #include "smb4ksynchronizer.h"
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QDebug>
 #include <QDirIterator>
 #include <QEventLoop>
@@ -28,7 +29,7 @@
 #include <KIO/OpenUrlJob>
 #include <KProcess>
 
-Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
+Q_APPLICATION_STATIC(Smb4KGlobalPrivate, p);
 QRecursiveMutex mutex;
 
 const QList<WorkgroupPtr> &Smb4KGlobal::workgroupsList()
@@ -838,12 +839,12 @@ const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
                     break;
                 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-                if (address.protocol() == QHostAddress::IPv4Protocol &&
-                    r.section(QStringLiteral(" "), 1, 1).remove(QStringLiteral("(")).remove(QStringLiteral(")")) == ipAddress) {
+                if (address.protocol() == QHostAddress::IPv4Protocol
+                    && r.section(QStringLiteral(" "), 1, 1).remove(QStringLiteral("(")).remove(QStringLiteral(")")) == ipAddress) {
                     macAddress = r.simplified().section(QStringLiteral(" "), 3, 3);
                     break;
-                } else if (address.protocol() == QHostAddress::IPv6Protocol &&
-                           r.section(QStringLiteral(" "), 0, 0).section(QStringLiteral("%"), 0, 0) == ipAddress) {
+                } else if (address.protocol() == QHostAddress::IPv6Protocol
+                           && r.section(QStringLiteral(" "), 0, 0).section(QStringLiteral("%"), 0, 0) == ipAddress) {
                     macAddress = r.simplified().section(QStringLiteral(" "), 1, 1);
                     break;
                 }

@@ -12,6 +12,7 @@
 #include <unistd.h>
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
@@ -52,7 +53,7 @@ public:
     Smb4KHardwareInterface instance;
 };
 
-Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
+Q_APPLICATION_STATIC(Smb4KHardwareInterfaceStatic, p);
 
 Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     : QObject(parent)

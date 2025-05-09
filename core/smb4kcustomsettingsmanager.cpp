@@ -23,6 +23,7 @@
 #endif
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QDebug>
 #include <QRegularExpression>
 #include <QXmlStreamReader>
@@ -45,7 +46,7 @@ public:
     Smb4KCustomSettingsManager instance;
 };
 
-Q_GLOBAL_STATIC(Smb4KCustomSettingsManagerStatic, p);
+Q_APPLICATION_STATIC(Smb4KCustomSettingsManagerStatic, p);
 
 Smb4KCustomSettingsManager::Smb4KCustomSettingsManager(QObject *parent)
     : QObject(parent)

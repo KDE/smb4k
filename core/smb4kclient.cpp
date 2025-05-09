@@ -19,6 +19,7 @@
 
 // Qt includes
 #include <QApplication>
+#include <QApplicationStatic>
 #include <QHostAddress>
 #include <QPointer>
 #include <QTimer>
@@ -26,7 +27,7 @@
 
 using namespace Smb4KGlobal;
 
-Q_GLOBAL_STATIC(Smb4KClientStatic, p);
+Q_APPLICATION_STATIC(Smb4KClientStatic, p);
 
 Smb4KClient::Smb4KClient(QObject *parent)
     : KCompositeJob(parent)

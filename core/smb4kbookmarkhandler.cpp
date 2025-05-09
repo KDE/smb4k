@@ -15,6 +15,7 @@
 #include "smb4kshare.h"
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QDir>
 #include <QFile>
 #include <QMutableListIterator>
@@ -39,7 +40,7 @@ public:
     Smb4KBookmarkHandler instance;
 };
 
-Q_GLOBAL_STATIC(Smb4KBookmarkHandlerStatic, p);
+Q_APPLICATION_STATIC(Smb4KBookmarkHandlerStatic, p);
 
 Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
     : QObject(parent)

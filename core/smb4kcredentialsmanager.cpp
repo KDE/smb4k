@@ -12,6 +12,7 @@
 #include "smb4ksettings.h"
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QDebug>
 #include <QEventLoop>
 
@@ -34,7 +35,7 @@ class Smb4KCredentialsManagerPrivate
 {
 };
 
-Q_GLOBAL_STATIC(Smb4KCredentialsManagerStatic, p);
+Q_APPLICATION_STATIC(Smb4KCredentialsManagerStatic, p);
 
 Smb4KCredentialsManager::Smb4KCredentialsManager(QObject *parent)
     : QObject(parent)

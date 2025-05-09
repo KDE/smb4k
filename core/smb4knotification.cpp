@@ -14,6 +14,7 @@
 #include "smb4kworkgroup.h"
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QEventLoop>
 
 // KDE includes
@@ -32,7 +33,7 @@ public:
     QString componentName;
 };
 
-Q_GLOBAL_STATIC(Smb4KNotificationPrivate, p);
+Q_APPLICATION_STATIC(Smb4KNotificationPrivate, p);
 
 void Smb4KNotification::setComponentName(const QString &name)
 {
