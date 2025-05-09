@@ -13,13 +13,14 @@
 #include "smb4ksynchronizer_p.h"
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QCoreApplication>
 #include <QDebug>
 #include <QTimer>
 
 using namespace Smb4KGlobal;
 
-Q_GLOBAL_STATIC(Smb4KSynchronizerStatic, p);
+Q_APPLICATION_STATIC(Smb4KSynchronizerStatic, p);
 
 Smb4KSynchronizer::Smb4KSynchronizer(QObject *parent)
     : KCompositeJob(parent)

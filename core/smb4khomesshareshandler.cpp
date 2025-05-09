@@ -13,6 +13,7 @@
 #include "smb4kshare.h"
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QFile>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
@@ -105,7 +106,7 @@ public:
     Smb4KHomesSharesHandler instance;
 };
 
-Q_GLOBAL_STATIC(Smb4KHomesSharesHandlerStatic, p);
+Q_APPLICATION_STATIC(Smb4KHomesSharesHandlerStatic, p);
 
 Smb4KHomesSharesHandler::Smb4KHomesSharesHandler(QObject *parent)
     : QObject(parent)

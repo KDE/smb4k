@@ -11,6 +11,7 @@
 
 // Qt includes
 #include <QApplication>
+#include <QApplicationStatic>
 #include <QPointer>
 
 class Smb4KProfileManagerPrivate
@@ -27,7 +28,7 @@ public:
     Smb4KProfileManager instance;
 };
 
-Q_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);
+Q_APPLICATION_STATIC(Smb4KProfileManagerStatic, p);
 
 Smb4KProfileManager::Smb4KProfileManager(QObject *parent)
     : QObject(parent)

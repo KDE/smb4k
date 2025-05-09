@@ -15,6 +15,7 @@
 #include "smb4ksynchronizer.h"
 
 // Qt includes
+#include <QApplicationStatic>
 #include <QDebug>
 #include <QDirIterator>
 #include <QEventLoop>
@@ -27,7 +28,7 @@
 #include <KIO/CommandLauncherJob>
 #include <KIO/OpenUrlJob>
 
-Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
+Q_APPLICATION_STATIC(Smb4KGlobalPrivate, p);
 QRecursiveMutex mutex;
 
 const QList<WorkgroupPtr> &Smb4KGlobal::workgroupsList()

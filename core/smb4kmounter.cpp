@@ -28,6 +28,7 @@
 
 // Qt includes
 #include <QApplication>
+#include <QApplicationStatic>
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
@@ -74,7 +75,7 @@ public:
     Smb4KMounter instance;
 };
 
-Q_GLOBAL_STATIC(Smb4KMounterStatic, p);
+Q_APPLICATION_STATIC(Smb4KMounterStatic, p);
 
 Smb4KMounter::Smb4KMounter(QObject *parent)
     : KCompositeJob(parent)
