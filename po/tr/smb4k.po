@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-08 00:42+0000\n"
-"PO-Revision-Date: 2025-03-11 12:26+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"PO-Revision-Date: 2025-05-08 13:28+0300\n"
+"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -59,10 +59,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Gelişmiş ağ komşuları tarayıcısı ve Samba paylaşım bağlama aracı"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2024 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2025 Alexander Reinholdt"
-msgstr "© 2003–2024 Alexander Reinholdt"
+msgstr "© 2003–2025 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format

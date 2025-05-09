@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-08 00:42+0000\n"
-"PO-Revision-Date: 2025-03-11 09:55+0100\n"
+"PO-Revision-Date: 2025-05-08 09:12+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -59,10 +59,9 @@ msgstr ""
 "comparticions Samba"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2024 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2025 Alexander Reinholdt"
-msgstr "© 2003-2024 Alexander Reinholdt"
+msgstr "© 2003-2025 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
