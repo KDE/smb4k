@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-24 00:39+0000\n"
+"POT-Creation-Date: 2025-05-10 00:42+0000\n"
 "PO-Revision-Date: 2024-12-20 21:54+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1852,8 +1852,8 @@ msgstr "एतत् सम्प्रति सक्रियरूपरे�
 msgid "%1 on %2"
 msgstr "%2 इत्यत्र %1"
 
-#: smb4kbookmarkhandler.cpp:302 smb4kcustomsettingsmanager.cpp:341
-#: smb4khomesshareshandler.cpp:207
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:342
+#: smb4khomesshareshandler.cpp:208
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 इत्यस्य प्रारूपं समर्थितं नास्ति ।"
@@ -1884,7 +1884,7 @@ msgstr "KDE इत्यस्य अस्मिन् संस्करणे
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf इत्यनेन सह अज्ञातदोषः अभवत् ।"
 
-#: smb4kmounter.cpp:682
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1893,7 +1893,7 @@ msgstr ""
 "<p><b>%1 इति</b> भागः माउण्ट् कृतः अस्ति<br> <b>%2</b> तथा उपयोक्तुः <b>%3</b> "
 "स्वामित्वम् ।</p><p> किं भवन्तः तत् अनमाउण्ट् कर्तुम् इच्छन्ति ?</p>"
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "विदेशी शेयर"
@@ -2975,37 +2975,37 @@ msgstr ""
 "(अधिकं ज्ञातुं mount.cifs इत्यस्य मैनुअल् पृष्ठं पश्यन्तु) । सूची mount.cifs इत्यस्य \"-o\" "
 "तर्के AS IS योजितं भविष्यति । कृपया विन्याससंवादे पूर्वमेव परिभाषितविकल्पान् न प्रविशन्तु ।"
 
-#: smb4knotification.cpp:59
+#: smb4knotification.cpp:60
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p><b>%1 इति</b> भागः <b>%2</b> इत्यत्र माउण्ट् कृतः अस्ति ।</p>"
 
-#: smb4knotification.cpp:73
+#: smb4knotification.cpp:74
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "उद्घाटित"
 
-#: smb4knotification.cpp:95
+#: smb4knotification.cpp:96
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p><b>%1 इति</b> भागः <b>%2</b> तः अनमाउण्ट् कृतः अस्ति ।</p>"
 
-#: smb4knotification.cpp:113
+#: smb4knotification.cpp:114
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "<p>%1 भागः माउण्ट् कृतः अस्ति ।</p>"
 msgstr[1] "<p>%1 भागाः माउण्ट् कृताः सन्ति ।</p>"
 
-#: smb4knotification.cpp:130
+#: smb4knotification.cpp:131
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>%1 भागः अनमाउण्ट् कृतः अस्ति ।</p>"
 msgstr[1] "<p>%1 भागाः अनमाउण्ट् कृताः सन्ति ।</p>"
 
-#: smb4knotification.cpp:148
+#: smb4knotification.cpp:149
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -3014,7 +3014,7 @@ msgstr ""
 "Smb4K इत्यनेन प्रवेशप्रमाणपत्राणि यथा संग्रहीतुं शक्यते तत् परिवर्तितम् अस्ति । ते इदानीं "
 "प्रवासिताः भविष्यन्ति। एषः परिवर्तनः Smb4K इत्यस्य पूर्वसंस्करणैः सह असङ्गतः अस्ति ।"
 
-#: smb4knotification.cpp:167
+#: smb4knotification.cpp:168
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3023,13 +3023,13 @@ msgstr ""
 "<p><b>%1</b> इति अनुकरणप्रकारः मुद्रणार्थं समर्थितः नास्ति । कृपया सञ्चिकां PDF अथवा "
 "Postscript इत्यत्र परिवर्त्य पुनः प्रयासं कुर्वन्तु ।</p>"
 
-#: smb4knotification.cpp:185
+#: smb4knotification.cpp:186
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<p><b>%1 इति</b> भागस्य पुस्तकचिह्नं पूर्वमेव अस्ति, तत् च त्यक्तं भविष्यति ।</p>"
 
-#: smb4knotification.cpp:203
+#: smb4knotification.cpp:204
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3038,17 +3038,17 @@ msgstr ""
 "<p><b>%2</b> भागस्य बुकमार्कस्य <b>%1 इति</b> लेबलं पूर्वमेव उपयुज्यते, स्वयमेव नाम "
 "परिवर्तयिष्यते ।</p>"
 
-#: smb4knotification.cpp:223
+#: smb4knotification.cpp:224
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> भागस्य माउण्ट् करणं विफलम्:</p><p> <tt>%2</tt></p>"
 
-#: smb4knotification.cpp:225
+#: smb4knotification.cpp:226
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> भागस्य माउण्ट् करणं विफलम् ।</p>"
 
-#: smb4knotification.cpp:248
+#: smb4knotification.cpp:249
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3056,12 +3056,12 @@ msgid ""
 msgstr ""
 "<p><b>%1 तः</b> भागस्य <b>%2</b> तः अनमाउण्ट् करणं विफलम्:</p><p> <tt>%3</tt></p>"
 
-#: smb4knotification.cpp:250
+#: smb4knotification.cpp:251
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p><b>%1 तः</b> भागस्य <b>%2</b> तः अनमाउण्ट् करणं विफलम् ।</p>"
 
-#: smb4knotification.cpp:277
+#: smb4knotification.cpp:278
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3070,119 +3070,119 @@ msgstr ""
 "<p><b>%2</b> तः <b>%1</b> इति भागं अनमाउण्ट् कर्तुं भवतः अनुमतिः नास्ति । अस्य "
 "स्वामित्वं <b>%3</b> उपयोक्तुः अस्ति ।</p>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:293
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p><b>%1 इत्यस्य</b> <b>%2</b> इत्यनेन सह समन्वयनं विफलम्:</p><p> <tt>%3</tt></p>"
 
-#: smb4knotification.cpp:294
+#: smb4knotification.cpp:295
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p><b>%1 इत्यस्य</b> <b>%2</b> इत्यनेन सह समन्वयनं विफलम् ।</p>"
 
-#: smb4knotification.cpp:316
+#: smb4knotification.cpp:317
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p><b>%1 इति</b> आदेशः न लब्धः । कृपया स्वस्य संस्थापनं पश्यन्तु।</p>"
 
-#: smb4knotification.cpp:332
+#: smb4knotification.cpp:333
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "<p><b>%1 इति</b> भागः मुद्रकः अस्ति, तस्य बुकमार्कं कर्तुं न शक्यते ।</p>"
 
-#: smb4knotification.cpp:346
+#: smb4knotification.cpp:347
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p><b>%1 इति</b> सञ्चिका न लब्धा ।</p>"
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:357
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> सञ्चिकां उद्घाटयितुं विफलम्:</p><p> <tt>%2</tt></p>"
 
-#: smb4knotification.cpp:358
+#: smb4knotification.cpp:359
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> सञ्चिकां उद्घाटयितुं विफलम् ।</p>"
 
-#: smb4knotification.cpp:377 smb4knotification.cpp:380
+#: smb4knotification.cpp:378 smb4knotification.cpp:381
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p><b>%1</b> सञ्चिकातः पठनं विफलम्:</p><p> <tt>%2</tt></p>"
 
-#: smb4knotification.cpp:382
+#: smb4knotification.cpp:383
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p><b>%1</b> सञ्चिकातः पठनं विफलम् ।</p>"
 
-#: smb4knotification.cpp:405
+#: smb4knotification.cpp:406
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>निम्नलिखितनिर्देशिका निर्मातुं न शक्यते स्म ।</p><p> <tt>%1</tt></p>"
 
-#: smb4knotification.cpp:416
+#: smb4knotification.cpp:417
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>प्रक्रिया आरम्भं कर्तुं असफलतां प्राप्तवती (त्रुटिसङ्केतः: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:420
+#: smb4knotification.cpp:421
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>प्रक्रिया दुर्घटना अभवत् (त्रुटिसङ्केतः: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:424
+#: smb4knotification.cpp:425
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>प्रक्रियायाः समयः समाप्तः (त्रुटिसङ्केतः: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:428
+#: smb4knotification.cpp:429
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>प्रक्रियायां लिखितुं न शक्तम् (त्रुटिसङ्केतः: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:432
+#: smb4knotification.cpp:433
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>प्रक्रियातः पठितुं न शक्तवान् (त्रुटिसङ्केतः: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:437
+#: smb4knotification.cpp:438
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>प्रक्रिया अज्ञातदोषं निवेदितवती ।</p>"
 
-#: smb4knotification.cpp:500
+#: smb4knotification.cpp:501
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 "</p>"
 msgstr "<p>मूलविशेषाधिकारयुक्तं कार्यं निष्पादनं विफलम् (त्रुटिसङ्केतः: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:502
+#: smb4knotification.cpp:503
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>मूलविशेषाधिकारयुक्तं क्रियां निष्पादयितुं विफलम् ।</p>"
 
-#: smb4knotification.cpp:524
+#: smb4knotification.cpp:525
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>यत् URL पारितम् आसीत् तत् अमान्यम् अस्ति ।</p>"
 
-#: smb4knotification.cpp:537
+#: smb4knotification.cpp:538
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr "<p>संजालसञ्चारः निम्नलिखितदोषसन्देशेन विफलः अभवत्: <s>%1</s></p>"
 
-#: smb4knotification.cpp:550
+#: smb4knotification.cpp:551
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>Zeroconf सेवायाः सह त्रुटिः अभवत्: <s>%1</s></p>"
 
-#: smb4knotification.cpp:563
+#: smb4knotification.cpp:564
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "

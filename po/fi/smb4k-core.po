@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-24 00:39+0000\n"
+"POT-Creation-Date: 2025-05-10 00:42+0000\n"
 "PO-Revision-Date: 2024-10-22 13:34+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1904,8 +1904,8 @@ msgstr "Tämä nyt tällä hetkellä aktiivinen profiili."
 msgid "%1 on %2"
 msgstr "%1 koneella %2"
 
-#: smb4kbookmarkhandler.cpp:302 smb4kcustomsettingsmanager.cpp:341
-#: smb4khomesshareshandler.cpp:207
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:342
+#: smb4khomesshareshandler.cpp:208
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Muotoa ei tueta: %1."
@@ -1936,7 +1936,7 @@ msgstr "Zeroconf-tuki ei ole käytettävissä tässä KDE-versiossa."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconfissa tapahtui tuntematon virhe."
 
-#: smb4kmounter.cpp:682
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1945,7 +1945,7 @@ msgstr ""
 "<p>Jako <b>%1</b> on liitetty kansioon<br><b>%2</b>, ja sen omistaa <b>%3</"
 "b>.</p><p>Haluatko varmasti irrottaa sen?</p>"
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Vieras jako"
@@ -3064,37 +3064,37 @@ msgstr ""
 "SELLAISENAAN mount.cifsin -o-valitsimelle. Älä anna tässä valintoja, jotka "
 "olet jo asettanut asetusikkunassa."
 
-#: smb4knotification.cpp:59
+#: smb4knotification.cpp:60
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Jako <b>%1</b> on liitetty kansioon <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:73
+#: smb4knotification.cpp:74
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Avaa"
 
-#: smb4knotification.cpp:95
+#: smb4knotification.cpp:96
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>Jako <b>%1</b> on irrotettu kansiosta <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:113
+#: smb4knotification.cpp:114
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "<p>%1 jako on liitetty.</p>"
 msgstr[1] "<p>%1 jakoa on liitetty.</p>"
 
-#: smb4knotification.cpp:130
+#: smb4knotification.cpp:131
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>%1 jako on irrotettu.</p>"
 msgstr[1] "<p>%1 jakoa on irrotettu.</p>"
 
-#: smb4knotification.cpp:148
+#: smb4knotification.cpp:149
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -3103,7 +3103,7 @@ msgstr ""
 "Smb4K:n tapa tallettaa todennustietoja on muuttunut. Ne siirretään nyt. "
 "Muutos on epäyhteensopiva Smb4K:n aiempien versioiden kanssa."
 
-#: smb4knotification.cpp:167
+#: smb4knotification.cpp:168
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3114,13 +3114,13 @@ msgstr ""
 "tulostamista ei tueta. Muunna tiedosto PDF- tai Postscript-muotoon ja yritä "
 "uudelleen.</p>"
 
-#: smb4knotification.cpp:185
+#: smb4knotification.cpp:186
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<p>Jaolle <b>%1</b> on jo kirjanmerkki: ohitetaan.</p>"
 
-#: smb4knotification.cpp:203
+#: smb4knotification.cpp:204
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3130,18 +3130,18 @@ msgstr ""
 "muutetaan automaattisesti.</p><p>Nimiö <b>%1</b> jaon <b>%2</b> "
 "kirjanmerkille on jo käytössä ja sen nimeä muutetaan automaattisesti.</p>"
 
-#: smb4knotification.cpp:223
+#: smb4knotification.cpp:224
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Jaon <b>%1</b> liittäminen epäonnistui:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:225
+#: smb4knotification.cpp:226
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Jaon <b>%1</b> liittäminen epäonnistui.</p>"
 
 # *** TARKISTA: Tässä ja kahdessa seuraavassa on vain oletus, että %2 olisi kansio (voisi kai olla vaikka konenimi)
-#: smb4knotification.cpp:248
+#: smb4knotification.cpp:249
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3150,12 +3150,12 @@ msgstr ""
 "<p>Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui:</p><p><tt>"
 "%3</tt></p>"
 
-#: smb4knotification.cpp:250
+#: smb4knotification.cpp:251
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui.</p>"
 
-#: smb4knotification.cpp:277
+#: smb4knotification.cpp:278
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3166,91 +3166,91 @@ msgstr ""
 "irrottaa jakoa <b>%1</b> kansiosta <b>%2</b>. Sen omistaa käyttäjä <b>%3</b>."
 "</p>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:293
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>Kansioiden <b>%1</b> ja <b>%2</b> synkronointi epäonnistui:</p><p><tt>%3</"
 "tt></p>"
 
-#: smb4knotification.cpp:294
+#: smb4knotification.cpp:295
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Kansioiden <b>%1</b> ja <b>%2</b> synkronointi epäonnistui.</p>"
 
-#: smb4knotification.cpp:316
+#: smb4knotification.cpp:317
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p>Komentoa <b>%1</b> ei löydy. Tarkista asennuksesi.</p>"
 
-#: smb4knotification.cpp:332
+#: smb4knotification.cpp:333
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "<p>Jako <b>%1</b> on tulostin, eikä sitä voi kirjanmerkitä.</p>"
 
-#: smb4knotification.cpp:346
+#: smb4knotification.cpp:347
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>Tiedostoa <b>%1</b> ei löytynyt.</p>"
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:357
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Tiedoston <b>%1</b> avaaminen epäonnistui:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:358
+#: smb4knotification.cpp:359
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Tiedoston <b>%1</b> avaaminen epäonnistui.</p>"
 
-#: smb4knotification.cpp:377 smb4knotification.cpp:380
+#: smb4knotification.cpp:378 smb4knotification.cpp:381
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Luku tiedostosta <b>%1</b> epäonnistui:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:382
+#: smb4knotification.cpp:383
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Luku tiedostosta <b>%1</b> epäonnistui.</p>"
 
-#: smb4knotification.cpp:405
+#: smb4knotification.cpp:406
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Seuraavaa kansiota ei voitu luoda:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:416
+#: smb4knotification.cpp:417
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prosessin käynnistys epäonnistui (virhekoodi: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:420
+#: smb4knotification.cpp:421
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prosessi kaatui (virhekoodi: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:424
+#: smb4knotification.cpp:425
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prosessin aikakatkaisu (virhekoodi: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:428
+#: smb4knotification.cpp:429
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prosessiin ei voitu kirjoittaa (virhekoodi: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:432
+#: smb4knotification.cpp:433
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Prosessista ei voitu lukea (virhekoodi: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:437
+#: smb4knotification.cpp:438
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>Prosessi ilmoitti tuntemattoman virheen.</p>"
 
-#: smb4knotification.cpp:500
+#: smb4knotification.cpp:501
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3259,17 +3259,17 @@ msgstr ""
 "<p>Toiminnon suoritus pääkäyttäjäoikeuksin epäonnistui (virhekoodi: <tt>%1</"
 "tt>).</p>"
 
-#: smb4knotification.cpp:502
+#: smb4knotification.cpp:503
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Toiminnon suoritus pääkäyttäjäoikeuksin epäonnistui.</p>"
 
-#: smb4knotification.cpp:524
+#: smb4knotification.cpp:525
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>Annettu verkko-osoite on virheellinen.</p>"
 
-#: smb4knotification.cpp:537
+#: smb4knotification.cpp:538
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
@@ -3278,12 +3278,12 @@ msgstr ""
 "<p>Verkkoviestintä epäonnistui ja palautti seuraavan virheilmoituksen: <s>"
 "%1</s></p>"
 
-#: smb4knotification.cpp:550
+#: smb4knotification.cpp:551
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>Zeroconf-palvelussa tapahtui virhe: <s>%1</s></p>"
 
-#: smb4knotification.cpp:563
+#: smb4knotification.cpp:564
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "
