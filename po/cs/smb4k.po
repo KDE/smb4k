@@ -55,10 +55,9 @@ msgstr ""
 "Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť Samba"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2024 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2025 Alexander Reinholdt"
-msgstr "© 2003-2024 Alexander Reinholdt"
+msgstr ""
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -625,10 +624,9 @@ msgstr "MAC adresa:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:268
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:455
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC adresa:"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:277
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:464
