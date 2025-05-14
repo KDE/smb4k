@@ -15,7 +15,11 @@
 #include "smb4ksynchronizer.h"
 
 // Qt includes
+#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
 #include <QApplicationStatic>
+#else
+#include <QGlobalStatic>
+#endif
 #include <QDebug>
 #include <QDirIterator>
 #include <QEventLoop>
