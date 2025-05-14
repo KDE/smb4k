@@ -11,7 +11,11 @@
 
 // Qt includes
 #include <QApplication>
+#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
 #include <QApplicationStatic>
+#else
+#include <QGlobalStatic>
+#endif
 #include <QPointer>
 
 class Smb4KProfileManagerPrivate
