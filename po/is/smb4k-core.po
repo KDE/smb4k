@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-10 02:36+0000\n"
+"POT-Creation-Date: 2025-05-15 02:40+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -1635,8 +1635,8 @@ msgstr "Ekki tókst að útbúa möppuna %1."
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:342
-#: smb4khomesshareshandler.cpp:208
+#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:346
+#: smb4khomesshareshandler.cpp:212
 #, fuzzy, kde-format
 #| msgid "The net command '%1' is not supported by Smb4K."
 msgid "The format of %1 is not supported."
@@ -1668,14 +1668,14 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:683
+#: smb4kmounter.cpp:687
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:688
+#: smb4kmounter.cpp:692
 #, fuzzy, kde-format
 #| msgid "Mount Share"
 msgid "Foreign Share"
@@ -2675,44 +2675,44 @@ msgid ""
 "enter options that have already been defined in the configuration dialog."
 msgstr ""
 
-#: smb4knotification.cpp:60
+#: smb4knotification.cpp:64
 #, fuzzy, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "Ekki tókst að útbúa möppuna %1."
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:78
 #, fuzzy, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Opna"
 
-#: smb4knotification.cpp:96
+#: smb4knotification.cpp:100
 #, fuzzy, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "Ekki tókst að útbúa möppuna %1."
 
-#: smb4knotification.cpp:114
+#: smb4knotification.cpp:118
 #, fuzzy, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "Ekki tókst að útbúa möppuna %1."
 msgstr[1] "Ekki tókst að útbúa möppuna %1."
 
-#: smb4knotification.cpp:131
+#: smb4knotification.cpp:135
 #, fuzzy, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "Ekki tókst að útbúa möppuna %1."
 msgstr[1] "Ekki tókst að útbúa möppuna %1."
 
-#: smb4knotification.cpp:149
+#: smb4knotification.cpp:153
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 
-#: smb4knotification.cpp:168
+#: smb4knotification.cpp:172
 #, fuzzy, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -2721,136 +2721,136 @@ msgstr ""
 "Það er ekki stuðningur við Mime tegundina \"%1\". Vinsamlega umbreyttu "
 "skránni í PostScript eða PDF."
 
-#: smb4knotification.cpp:186
+#: smb4knotification.cpp:190
 #, fuzzy, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "Það er ekki hægt að setja bókamerki á prentara."
 
-#: smb4knotification.cpp:204
+#: smb4knotification.cpp:208
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
 "being used and will automatically be renamed.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:224
+#: smb4knotification.cpp:228
 #, fuzzy, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:226
+#: smb4knotification.cpp:230
 #, fuzzy, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:249
+#: smb4knotification.cpp:253
 #, fuzzy, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
 "p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:251
+#: smb4knotification.cpp:255
 #, fuzzy, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:278
+#: smb4knotification.cpp:282
 #, fuzzy, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>.</p>"
 msgstr "Þú hefur ekki heimildir til að aftengja þessa sameign."
 
-#: smb4knotification.cpp:293
+#: smb4knotification.cpp:297
 #, fuzzy, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:295
+#: smb4knotification.cpp:299
 #, fuzzy, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:321
 #, fuzzy, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "Ekki tókst að finna skipunina %1."
 
-#: smb4knotification.cpp:333
+#: smb4knotification.cpp:337
 #, fuzzy, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "Það er ekki hægt að setja bókamerki á prentara."
 
-#: smb4knotification.cpp:347
+#: smb4knotification.cpp:351
 #, fuzzy, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "Ekki tókst að finna skipunina %1."
 
-#: smb4knotification.cpp:357
+#: smb4knotification.cpp:361
 #, fuzzy, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:363
 #, fuzzy, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:378 smb4knotification.cpp:381
+#: smb4knotification.cpp:382 smb4knotification.cpp:385
 #, fuzzy, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:383
+#: smb4knotification.cpp:387
 #, fuzzy, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "Prenta skrá"
 
-#: smb4knotification.cpp:406
+#: smb4knotification.cpp:410
 #, fuzzy, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "Ekki tókst að finna möppuna %1."
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:421
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "Aðgangi var hafnað. "
 
-#: smb4knotification.cpp:421
+#: smb4knotification.cpp:425
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "Aðgangi var hafnað. "
 
-#: smb4knotification.cpp:425
+#: smb4knotification.cpp:429
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "Aðgangi var hafnað. "
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:433
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "Aðgangi var hafnað. "
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:437
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "Aðgangi var hafnað. "
 
-#: smb4knotification.cpp:438
+#: smb4knotification.cpp:442
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:501
+#: smb4knotification.cpp:505
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid ""
@@ -2858,29 +2858,29 @@ msgid ""
 "</p>"
 msgstr "Aðgangi var hafnað. "
 
-#: smb4knotification.cpp:503
+#: smb4knotification.cpp:507
 #, fuzzy, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "Reyni aftur að opna miðlara..."
 
-#: smb4knotification.cpp:525
+#: smb4knotification.cpp:529
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:538
+#: smb4knotification.cpp:542
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
 
-#: smb4knotification.cpp:551
+#: smb4knotification.cpp:555
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
-#: smb4knotification.cpp:564
+#: smb4knotification.cpp:568
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "
