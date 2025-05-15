@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-10 00:42+0000\n"
-"PO-Revision-Date: 2025-01-06 18:35+0400\n"
+"POT-Creation-Date: 2025-05-15 00:42+0000\n"
+"PO-Revision-Date: 2025-05-14 17:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -544,8 +544,8 @@ msgid ""
 "magic packet send via a UDP socket to wake up remote servers. If you want to "
 "take advantage of the Wake-On-LAN feature, you need to enable this option."
 msgstr ""
-"الاستيقاظ عبر الشبكة Wake-on-LAN (WOL) هو معيار شبكات الكمبيوتر عبر شبكة "
-"إيثرنت يسمح بتشغيل الكمبيوتر أو إيقاظه بواسطة رسالة شبكة. يستخدم كيدي سامبا4 "
+"الاستيقاظ عبر الشبكة Wake-on-LAN (WOL) هو معيار شبكات الحاسوب عبر شبكة "
+"إيثرنت يسمح بتشغيل الحاسوب أو إيقاظه بواسطة رسالة شبكة. يستخدم كيدي سامبا4 "
 "إرسال حزمة سحرية عبر مقبس UDP لإيقاظ الخوادم البعيدة. إذا كنت ترغب في "
 "الاستفادة من ميزة الاستيقاظ عبر الشبكة Wake-On-LAN، فيجب عليك تمكين هذا "
 "الخيار."
@@ -1837,8 +1837,8 @@ msgstr "هذا هي التشكيلة النشطة حاليًا."
 msgid "%1 on %2"
 msgstr "%1 على %2"
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:342
-#: smb4khomesshareshandler.cpp:208
+#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:346
+#: smb4khomesshareshandler.cpp:212
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "تنسيق %1 غير معتمد."
@@ -1869,7 +1869,7 @@ msgstr "دعم Zeroconf غير متوفر في هذا الإصدار من كيد
 msgid "An unknown error with Zeroconf occurred."
 msgstr "حدث خطأ غير معروف في Zeroconf."
 
-#: smb4kmounter.cpp:683
+#: smb4kmounter.cpp:687
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1878,7 +1878,7 @@ msgstr ""
 "<p>ضُمت المشاركة <b>%1</b> على <br><b>%2</b> وهي مملوكة للمستخدم <b>%3</b>.</"
 "p><p>هل تريد حقًا إلغاء تثبيتها؟</p>"
 
-#: smb4kmounter.cpp:688
+#: smb4kmounter.cpp:692
 #, kde-format
 msgid "Foreign Share"
 msgstr "مشاركة أجنبية"
@@ -2963,23 +2963,23 @@ msgstr ""
 "هي إلى وسيطة \"-o\" الخاصة بملف mount.cifs. يُرجى عدم إدخال خيارات معرفة من "
 "قبل في مربع حوار الضبط."
 
-#: smb4knotification.cpp:60
+#: smb4knotification.cpp:64
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>ضُمت المشاركة <b>%1</b> على <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:78
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "افتح"
 
-#: smb4knotification.cpp:96
+#: smb4knotification.cpp:100
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>فُك ضم المشاركة <b>%1</b> من <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:114
+#: smb4knotification.cpp:118
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
@@ -2990,7 +2990,7 @@ msgstr[3] "<p>ضُمت %1 مشاركات.</p>"
 msgstr[4] "<p>ضُمت %1 مشاركة.</p>"
 msgstr[5] "<p>ضُمت %1 مشاركة.</p>"
 
-#: smb4knotification.cpp:131
+#: smb4knotification.cpp:135
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
@@ -3001,7 +3001,7 @@ msgstr[3] "<p>فُك ضم %1 مشاركات.</p>"
 msgstr[4] "<p>فُك ضم %1 مشاركة.</p>"
 msgstr[5] "<p>فُك ضم %1 مشاركة.</p>"
 
-#: smb4knotification.cpp:149
+#: smb4knotification.cpp:153
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -3010,7 +3010,7 @@ msgstr ""
 "لقد تغيرت الطريقة التي يخزن بها كيدي سامبا4 بيانات اعتماد تسجيل الدخول.  هذا "
 "التغيير غير متوافق مع الإصدارات السابقة من كيدي سامبا4."
 
-#: smb4knotification.cpp:168
+#: smb4knotification.cpp:172
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3019,13 +3019,13 @@ msgstr ""
 "<p>لا يتم دعم نوع MIME <b>%1</b> للطباعة. يُرجى تحويل الملف إلى PDF أو "
 "Postscript ثم المحاولة مرة أخرى.</p>"
 
-#: smb4knotification.cpp:186
+#: smb4knotification.cpp:190
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<p>الإشارة المرجعية للمشاركة <b>%1</b> موجودة بالفعل وسيتم تخطيها.</p>"
 
-#: smb4knotification.cpp:204
+#: smb4knotification.cpp:208
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3034,29 +3034,29 @@ msgstr ""
 "<p>التسمية <b>%1</b> للإشارة المرجعية للمشاركة <b>%2</b> قيد الاستخدام "
 "بالفعل وستتم إعادة تسميتها تلقائيًا.</p>"
 
-#: smb4knotification.cpp:224
+#: smb4knotification.cpp:228
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>فشل ضم المشاركة <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:226
+#: smb4knotification.cpp:230
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>فشل ضم المشاركة <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:249
+#: smb4knotification.cpp:253
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
 "p>"
 msgstr "<p>فشل إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:251
+#: smb4knotification.cpp:255
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>فشل إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:278
+#: smb4knotification.cpp:282
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3065,118 +3065,118 @@ msgstr ""
 "<p>لا يجوز لك إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>. فهي مملوكة للمستخدم "
 "<b>%3</b>.</p>"
 
-#: smb4knotification.cpp:293
+#: smb4knotification.cpp:297
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "<p>فشلت مزامنة <b>%1</b> مع <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:295
+#: smb4knotification.cpp:299
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>فشلت مزامنة <b>%1</b> مع <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:321
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p>تعذر العثور على الأمر <b>%1</b>. "
 
-#: smb4knotification.cpp:333
+#: smb4knotification.cpp:337
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "<p>المشاركة <b>%1</b> هي طابعة ولا يمكن وضع إشارة مرجعية عليها.</p>"
 
-#: smb4knotification.cpp:347
+#: smb4knotification.cpp:351
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>تعذّر العثور على الملفّ <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:357
+#: smb4knotification.cpp:361
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>فشل فتح الملف <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:363
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>فشل فتح الملف <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:378 smb4knotification.cpp:381
+#: smb4knotification.cpp:382 smb4knotification.cpp:385
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>فشلت القراءة من الملف <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:383
+#: smb4knotification.cpp:387
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>فشلت القراءة من الملف <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:406
+#: smb4knotification.cpp:410
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>تعذر إنشاء الدليل التالي:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:421
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>فشلت العملية في البدء (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:421
+#: smb4knotification.cpp:425
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>تعطلت العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:425
+#: smb4knotification.cpp:429
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>انتهت مهلة العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:433
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>تعذرت الكتابة إلى العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:437
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>تعذرت القراءة من العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:438
+#: smb4knotification.cpp:442
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>أبلغت العملية عن خطأ غير معروف.</p>"
 
-#: smb4knotification.cpp:501
+#: smb4knotification.cpp:505
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 "</p>"
 msgstr "<p>فشل تنفيذ إجراء بامتيازات الجذر (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:503
+#: smb4knotification.cpp:507
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>فشل تنفيذ الإجراء بامتيازات الجذر.</p>"
 
-#: smb4knotification.cpp:525
+#: smb4knotification.cpp:529
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>عنوان URL الذي تم تمريره غير صالح.</p>"
 
-#: smb4knotification.cpp:538
+#: smb4knotification.cpp:542
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr "<p>فشل الاتصال بالشبكة مع ظهور رسالة الخطأ التالية: <s>%1</s></p>"
 
-#: smb4knotification.cpp:551
+#: smb4knotification.cpp:555
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>حدث خطأ في خدمة Zeroconf: <s>%1</s></p>"
 
-#: smb4knotification.cpp:564
+#: smb4knotification.cpp:568
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "

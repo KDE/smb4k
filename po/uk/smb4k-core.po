@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-10 00:42+0000\n"
+"POT-Creation-Date: 2025-05-15 00:42+0000\n"
 "PO-Revision-Date: 2024-09-09 09:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -1943,8 +1943,8 @@ msgstr "Це поточний активний профіль."
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:342
-#: smb4khomesshareshandler.cpp:208
+#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:346
+#: smb4khomesshareshandler.cpp:212
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Формат %1 не підтримується."
@@ -1977,7 +1977,7 @@ msgstr "У цій версії KDE підтримка Zeroconf є недосту
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Невідома помилка, яку пов'язано із Zeroconf."
 
-#: smb4kmounter.cpp:683
+#: smb4kmounter.cpp:687
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1986,7 +1986,7 @@ msgstr ""
 "<p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
 "користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p>"
 
-#: smb4kmounter.cpp:688
+#: smb4kmounter.cpp:692
 #, kde-format
 msgid "Foreign Share"
 msgstr "Сторонній ресурс"
@@ -3117,23 +3117,23 @@ msgstr ""
 "параметра «-o» mount.cifs. Будь ласка, не вписуйте у це поле параметрів, які "
 "вже було вказано у діалоговому вікні налаштування."
 
-#: smb4knotification.cpp:60
+#: smb4knotification.cpp:64
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Спільний ресурс <b>%1</b> змонтовано у <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:78
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Відкрити"
 
-#: smb4knotification.cpp:96
+#: smb4knotification.cpp:100
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>Спільний ресурс <b>%1</b> демонтовано з <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:114
+#: smb4knotification.cpp:118
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
@@ -3142,7 +3142,7 @@ msgstr[1] "<p>Було змонтовано %1 спільних ресурси.<
 msgstr[2] "<p>Було змонтовано %1 спільних ресурсів.</p>"
 msgstr[3] "<p>Було змонтовано один спільний ресурс.</p>"
 
-#: smb4knotification.cpp:131
+#: smb4knotification.cpp:135
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
@@ -3151,7 +3151,7 @@ msgstr[1] "<p>Було демонтовано %1 спільних ресурси
 msgstr[2] "<p>Було демонтовано %1 спільних ресурсів.</p>"
 msgstr[3] "<p>Було демонтовано один спільний ресурс.</p>"
 
-#: smb4knotification.cpp:149
+#: smb4knotification.cpp:153
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -3161,7 +3161,7 @@ msgstr ""
 "реєстраційні дані буде перенесено у нову версію. Внесені зміни будуть "
 "несумісними із попередніми версіями Smb4K."
 
-#: smb4knotification.cpp:168
+#: smb4knotification.cpp:172
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3170,7 +3170,7 @@ msgstr ""
 "<p>Друк даних з файлів типу MIME <b>%1</b> не підтримується. Будь ласка, "
 "перетворіть дані файла у формат PostScript або PDF.</p>"
 
-#: smb4knotification.cpp:186
+#: smb4knotification.cpp:190
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
@@ -3178,7 +3178,7 @@ msgstr ""
 "<p>Закладку для спільного ресурсу <b>%1</b> вже створено, її буде пропущено."
 "</p>"
 
-#: smb4knotification.cpp:204
+#: smb4knotification.cpp:208
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3187,19 +3187,19 @@ msgstr ""
 "<p>Мітку <b>%1</b> закладки для спільного ресурсу <b>%2</b> вже використано. "
 "Мітку закладки буде змінено автоматично.</p>"
 
-#: smb4knotification.cpp:224
+#: smb4knotification.cpp:228
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>Спроба монтування спільного ресурсу <b>%1</b> зазнала невдачі:</p><p><tt>"
 "%2</tt></p>"
 
-#: smb4knotification.cpp:226
+#: smb4knotification.cpp:230
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Спроба монтування спільного ресурсу <b>%1</b> зазнала невдачі.</p>"
 
-#: smb4knotification.cpp:249
+#: smb4knotification.cpp:253
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3208,14 +3208,14 @@ msgstr ""
 "<p>Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</"
 "b> зазнала невдачі:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:251
+#: smb4knotification.cpp:255
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr ""
 "<p>Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</"
 "b> зазнала невдачі.</p>"
 
-#: smb4knotification.cpp:278
+#: smb4knotification.cpp:282
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3224,19 +3224,19 @@ msgstr ""
 "<p>У вас немає прав доступу до демонтування спільного ресурсу <b>%1</b> з "
 "точки монтування <b>%2</b>. Цей ресурс належить користувачеві <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:293
+#: smb4knotification.cpp:297
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>Спроба синхронізації <b>%1</b> з <b>%2</b> зазнала невдачі:</p><p><tt>%3</"
 "tt></p>"
 
-#: smb4knotification.cpp:295
+#: smb4knotification.cpp:299
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Спроба синхронізації <b>%1</b> з <b>%2</b> зазнала невдачі.</p>"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:321
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -3245,81 +3245,81 @@ msgstr ""
 "<p>Не вдалося знайти програму <b>%1</b>. Будь ласка, перевірте, чи "
 "встановлено всі потрібні компоненти.</p>"
 
-#: smb4knotification.cpp:333
+#: smb4knotification.cpp:337
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>Спільний ресурс <b>%1</b> є принтером, не можна створювати закладки для "
 "принтерів.</p>"
 
-#: smb4knotification.cpp:347
+#: smb4knotification.cpp:351
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>Не вдалося знайти файл <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:357
+#: smb4knotification.cpp:361
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>Спроба відкрити файл <b>%1</b> зазнала невдачі:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:363
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Спроба відкрити файл <b>%1</b> зазнала невдачі.</p>"
 
-#: smb4knotification.cpp:378 smb4knotification.cpp:381
+#: smb4knotification.cpp:382 smb4knotification.cpp:385
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>Спроба читання даних з файла <b>%1</b> зазнала невдачі:</p><p><tt>%2</"
 "tt></p>"
 
-#: smb4knotification.cpp:383
+#: smb4knotification.cpp:387
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Спроба читання даних з файла <b>%1</b> зазнала невдачі.</p>"
 
-#: smb4knotification.cpp:406
+#: smb4knotification.cpp:410
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Не вдалося створити такий каталог:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:421
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Спроба запуску процесу була невдалою (код помилки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:421
+#: smb4knotification.cpp:425
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Процес аварійно завершив роботу (код помилки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:425
+#: smb4knotification.cpp:429
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Перевищено час очікування даних від процесу (код помилки: <tt>%1</tt>).</"
 "p>"
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:433
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Не вдалося виконати запис до процесу (код помилки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:437
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Не вдалося прочитати дані з процесу (код помилки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:438
+#: smb4knotification.cpp:442
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>Процес повідомив про невідому помилку.</p>"
 
-#: smb4knotification.cpp:501
+#: smb4knotification.cpp:505
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3328,17 +3328,17 @@ msgstr ""
 "<p>Спроба виконання дії з правами доступу root зазнала невдачі (код помилки: "
 "<tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:503
+#: smb4knotification.cpp:507
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Спроба виконання дії з правами доступу root зазнала невдачі.</p>"
 
-#: smb4knotification.cpp:525
+#: smb4knotification.cpp:529
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<qt>Вами передано некоректну адресу URL.</qt>"
 
-#: smb4knotification.cpp:538
+#: smb4knotification.cpp:542
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
@@ -3347,12 +3347,12 @@ msgstr ""
 "<p>Спроба обміну даними мережею зазнала невдачі. Повідомлення про помилку: "
 "<s>%1</s></p>"
 
-#: smb4knotification.cpp:551
+#: smb4knotification.cpp:555
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>Сталася помилка, яку пов'язано зі службою Zeroconf: <s>%1</s></p>"
 
-#: smb4knotification.cpp:564
+#: smb4knotification.cpp:568
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "

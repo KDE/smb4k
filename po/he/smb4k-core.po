@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-10 00:42+0000\n"
+"POT-Creation-Date: 2025-05-15 00:42+0000\n"
 "PO-Revision-Date: 2024-09-14 09:57+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1821,8 +1821,8 @@ msgstr "זה הפרופיל הפעיל הנוכחי."
 msgid "%1 on %2"
 msgstr "%1 על גבי %2"
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:342
-#: smb4khomesshareshandler.cpp:208
+#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:346
+#: smb4khomesshareshandler.cpp:212
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "התבנית של %1 אינה נתמכת."
@@ -1853,7 +1853,7 @@ msgstr "התמיכה ב־Zeroconf לא זמינה בגרסה הזאת של KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "אירעה שגיאה בלתי ידועה עם Zeroconf."
 
-#: smb4kmounter.cpp:683
+#: smb4kmounter.cpp:687
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1862,7 +1862,7 @@ msgstr ""
 "<p>השיתוף <b>%1</b> מעוגן אל <br><b>%2</b> ובבעלות המשתמש <b>%3</b>.</"
 "p><p>לנתק אותו?</p>"
 
-#: smb4kmounter.cpp:688
+#: smb4kmounter.cpp:692
 #, kde-format
 msgid "Foreign Share"
 msgstr "שיתוף מרוחק"
@@ -2931,23 +2931,23 @@ msgstr ""
 "לעיין במדריך על mount.cifs למידע נוסף). הרשימה תתווסף כמו שהיא לארגומנט „‎-o” "
 "של mount.cifs. נא לא למלא אפשרויות שהוגדרו בחלונית ההגדרות."
 
-#: smb4knotification.cpp:60
+#: smb4knotification.cpp:64
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>השיתוף <b>%1</b> עוגן אל <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:78
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "פתיחה"
 
-#: smb4knotification.cpp:96
+#: smb4knotification.cpp:100
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>השיתוף <b>%1</b> נותק מ־<b>%2</b>.</p>"
 
-#: smb4knotification.cpp:114
+#: smb4knotification.cpp:118
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
@@ -2956,7 +2956,7 @@ msgstr[1] "<p>שני שיתופים עוגנו.</p>"
 msgstr[2] "<p>%1 שיתופים עוגנו.</p>"
 msgstr[3] "<p>%1 שיתופים עוגנו.</p>"
 
-#: smb4knotification.cpp:131
+#: smb4knotification.cpp:135
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
@@ -2965,7 +2965,7 @@ msgstr[1] "<p>שני שיתופים נותקו.</p>"
 msgstr[2] "<p>%1 שיתופים נותקו.</p>"
 msgstr[3] "<p>%1 שיתופים נותקו.</p>"
 
-#: smb4knotification.cpp:149
+#: smb4knotification.cpp:153
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -2974,7 +2974,7 @@ msgstr ""
 "הדרך שבה Smb4K מאחסן את פרטי הגישה השתנתה. הם יוסבו מעתה. השינוי הזה לא תואם "
 "לגרסאות קודמות של Smb4K."
 
-#: smb4knotification.cpp:168
+#: smb4knotification.cpp:172
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -2983,13 +2983,13 @@ msgstr ""
 "<p>אין תמיכה בהדפסה לסוג התוכן <b>%1</b>. נא להמיר את הקובץ ל־PDF או "
 "Postscript ולנסות שוב.</p>"
 
-#: smb4knotification.cpp:186
+#: smb4knotification.cpp:190
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<p>הסימנייה לשיתוף <b>%1</b> כבר קיימת ולכן נדלג עליה.</p>"
 
-#: smb4knotification.cpp:204
+#: smb4knotification.cpp:208
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -2998,29 +2998,29 @@ msgstr ""
 "<p>התווית <b>%1</b> של הסימנייה לשיתוף <b>%2</b> כבר נמצאת בשימוש והשם שלה "
 "ישתנה אוטומטית.</p>"
 
-#: smb4knotification.cpp:224
+#: smb4knotification.cpp:228
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>עיגון השיתוף <b>%1</b> נכשל:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:226
+#: smb4knotification.cpp:230
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>עיגון השיתוף <b>%1</b> נכשל.</p>"
 
-#: smb4knotification.cpp:249
+#: smb4knotification.cpp:253
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
 "p>"
 msgstr "<p>ניתוק השיתוף <b>%1</b> מ־<b>%2</b> נכשלה:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:251
+#: smb4knotification.cpp:255
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>ניתוק השיתוף <b>%1</b> מ־<b>%2</b> נכשל.</p>"
 
-#: smb4knotification.cpp:278
+#: smb4knotification.cpp:282
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3029,118 +3029,118 @@ msgstr ""
 "<p>אין לך הרשאה לנתק את השיתוף <b>%1</b> from <b>%2</b>. היא בבעלות המשתמש "
 "<b>%3</b>.</p>"
 
-#: smb4knotification.cpp:293
+#: smb4knotification.cpp:297
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "<p>סנכרון <b>%1</b> מול <b>%2</b> נכשל:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:295
+#: smb4knotification.cpp:299
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>סנכרון <b>%1</b> מול <b>%2</b> נכשל.</p>"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:321
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p>לא ניתן למצוא את הפקודה <b>%1</b>. נא לבדוק שההתקנה שלך תקינה.</p>"
 
-#: smb4knotification.cpp:333
+#: smb4knotification.cpp:337
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "<p>השיתוף <b>%1</b> הוא מדפסת ואי אפשר להוסיף אותו לסימניות.</p>"
 
-#: smb4knotification.cpp:347
+#: smb4knotification.cpp:351
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>לא ניתן למצוא את הקובץ <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:357
+#: smb4knotification.cpp:361
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>פתיחת הקובץ <b>%1</b> נכשלה:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:363
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>פתיחת הקובץ <b>%1</b> נכשלה.</p>"
 
-#: smb4knotification.cpp:378 smb4knotification.cpp:381
+#: smb4knotification.cpp:382 smb4knotification.cpp:385
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>הקריאה מהקובץ <b>%1</b> נכשלה:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:383
+#: smb4knotification.cpp:387
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>הקריאה מהקובץ <b>%1</b> נכשלה.</p>"
 
-#: smb4knotification.cpp:406
+#: smb4knotification.cpp:410
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>לא ניתן ליצור את התיקייה הבאה:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:421
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>התחלת התהליך נכשלה (קוד שגיאה: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:421
+#: smb4knotification.cpp:425
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>התהליך קרס (קוד שגיאה: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:425
+#: smb4knotification.cpp:429
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>הזמן שהוקצב לתהליך הסתיים (קוד שגיאה: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:433
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>לא ניתן לכתוב לתהליך (קוד שגיאה: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:437
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>לא ניתן לקרוא מהתהליך (קוד שגיאה: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:438
+#: smb4knotification.cpp:442
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>התהליך דיווח על שגיאה לא ידועה.</p>"
 
-#: smb4knotification.cpp:501
+#: smb4knotification.cpp:505
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 "</p>"
 msgstr "<p>הרצת פעולה עם הרשאות על (קוד שגיאה: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:503
+#: smb4knotification.cpp:507
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>הרצת פעולה עם הרשאות על נכשלה.</p>"
 
-#: smb4knotification.cpp:525
+#: smb4knotification.cpp:529
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>הכתובת שהועברה שגויה.</p>"
 
-#: smb4knotification.cpp:538
+#: smb4knotification.cpp:542
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr "<p>תקשורת הרשת נכשלה עם הודעת השגיאה הבאה: <s>%1</s></p>"
 
-#: smb4knotification.cpp:551
+#: smb4knotification.cpp:555
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>אירעה שגיאה עם שירות Zeroconf: <s>%1</s></p>"
 
-#: smb4knotification.cpp:564
+#: smb4knotification.cpp:568
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "

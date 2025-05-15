@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-10 00:42+0000\n"
+"POT-Creation-Date: 2025-05-15 00:42+0000\n"
 "PO-Revision-Date: 2023-09-18 10:05-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1922,8 +1922,8 @@ msgstr "Este é o perfil ativo no momento."
 msgid "%1 on %2"
 msgstr "%1 em %2"
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:342
-#: smb4khomesshareshandler.cpp:208
+#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:346
+#: smb4khomesshareshandler.cpp:212
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "O formato de %1 não é suportado."
@@ -1956,7 +1956,7 @@ msgstr "O suporte ao Zeroconf não está disponível nesta versão do KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ocorreu um erro desconhecido com o Zeroconf."
 
-#: smb4kmounter.cpp:683
+#: smb4kmounter.cpp:687
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1965,7 +1965,7 @@ msgstr ""
 "<p>O compartilhamento <b>%1</b> está montado para <br><b>%2</b> e tem como "
 "dono o usuário <b>%3</b>.</p><p>Você deseja realmente desmontá-lo?</p>"
 
-#: smb4kmounter.cpp:688
+#: smb4kmounter.cpp:692
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartilhamento estrangeiro"
@@ -3084,44 +3084,44 @@ msgstr ""
 "argumento \"-o\" do 'mount.cifs'. Não insira opções que já tenham sido "
 "definidas na janela de configuração."
 
-#: smb4knotification.cpp:60
+#: smb4knotification.cpp:64
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>O compartilhamento <b>%1</b> foi montando em <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:78
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Abrir"
 
-#: smb4knotification.cpp:96
+#: smb4knotification.cpp:100
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>O compartilhamento <b>%1</b> foi desmontado de <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:114
+#: smb4knotification.cpp:118
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "<p>%1 compartilhamento foi montado.</p>"
 msgstr[1] "<p>%1 compartilhamentos foram montados.</p>"
 
-#: smb4knotification.cpp:131
+#: smb4knotification.cpp:135
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>%1 compartilhamento foi desmontado.</p>"
 msgstr[1] "<p>%1 compartilhamentos foram desmontados.</p>"
 
-#: smb4knotification.cpp:149
+#: smb4knotification.cpp:153
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
 
-#: smb4knotification.cpp:168
+#: smb4knotification.cpp:172
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3130,14 +3130,14 @@ msgstr ""
 "<p>O tipo MIME <b>%1</b> não é suportado para impressão. Converta o arquivo "
 "para PostScript ou PDF e tente novamente.</p>"
 
-#: smb4knotification.cpp:186
+#: smb4knotification.cpp:190
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr ""
 "<p>O favorito para o compartilhamento <b>%1</b> já existe e será pulado.</p>"
 
-#: smb4knotification.cpp:204
+#: smb4knotification.cpp:208
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3146,18 +3146,18 @@ msgstr ""
 "<p>A etiqueta <b>%1</b> do favorito do compartilhamento <b>%2</b> já está "
 "sendo usada e será renomeada automaticamente.</p>"
 
-#: smb4knotification.cpp:224
+#: smb4knotification.cpp:228
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>Falha na montagem do compartilhamento <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:226
+#: smb4knotification.cpp:230
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Falha na montagem do compartilhamento <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:249
+#: smb4knotification.cpp:253
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3166,13 +3166,13 @@ msgstr ""
 "<p>A desmontagem do compartilhamento <b>%1</b> de <b>%2</b> falhou.:</"
 "p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:251
+#: smb4knotification.cpp:255
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr ""
 "<p>A desmontagem do compartilhamento <b>%1</b> de <b>%2</b> falhou.</p>"
 
-#: smb4knotification.cpp:278
+#: smb4knotification.cpp:282
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3181,18 +3181,18 @@ msgstr ""
 "<p>Você não tem permissões para desmontar o compartilhamento <b>%1</b> de <b>"
 "%2</b>. Ele pertence a outro usuário <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:293
+#: smb4knotification.cpp:297
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>Falha na sincronização de <b>%1</b> com <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:295
+#: smb4knotification.cpp:299
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Falha na sincronização de <b>%1</b> com <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:321
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -3200,78 +3200,78 @@ msgid ""
 msgstr ""
 "<p>O comando <b>%1</b> não foi encontrado. Verifique a sua instalação.</p>"
 
-#: smb4knotification.cpp:333
+#: smb4knotification.cpp:337
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>O compartilhamento <b>%1</b> é uma impressora e não pode ser adicionada "
 "como favorito.</p>"
 
-#: smb4knotification.cpp:347
+#: smb4knotification.cpp:351
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>O arquivo <b>%1</b> não foi encontrado.</p>"
 
-#: smb4knotification.cpp:357
+#: smb4knotification.cpp:361
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Não foi possível abrir o arquivo <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:363
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Não foi possível abrir o arquivo <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:378 smb4knotification.cpp:381
+#: smb4knotification.cpp:382 smb4knotification.cpp:385
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Falha na leitura do arquivo <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:383
+#: smb4knotification.cpp:387
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Falha na leitura do o arquivo <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:406
+#: smb4knotification.cpp:410
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Não foi possível criar a seguinte pasta:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:421
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Não foi possível iniciar o processo (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:421
+#: smb4knotification.cpp:425
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>O processo falhou (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:425
+#: smb4knotification.cpp:429
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>O processo expirou o seu tempo limite (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:433
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Não foi possível escrever para o processo (código de erro: <tt>%1</tt>).</"
 "p>"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:437
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Não foi possível ler do processo (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:438
+#: smb4knotification.cpp:442
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>O processo devolveu um erro desconhecido.</p>"
 
-#: smb4knotification.cpp:501
+#: smb4knotification.cpp:505
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3280,17 +3280,17 @@ msgstr ""
 "<p>Falha na execução da ação com privilégios administrativos (código de "
 "erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:503
+#: smb4knotification.cpp:507
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Falha na execução da ação com privilégios administrativos.</p>"
 
-#: smb4knotification.cpp:525
+#: smb4knotification.cpp:529
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>A URL introduzida é inválida.</p>"
 
-#: smb4knotification.cpp:538
+#: smb4knotification.cpp:542
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
@@ -3299,12 +3299,12 @@ msgstr ""
 "<p>A comunicação de rede falhou com a seguinte mensagem de erro: <s>%1</s></"
 "p>"
 
-#: smb4knotification.cpp:551
+#: smb4knotification.cpp:555
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>Ocorreu um erro com o servidor Zeroconf: <s>%1</s></p>"
 
-#: smb4knotification.cpp:564
+#: smb4knotification.cpp:568
 #, kde-format
 msgid ""
 "<p>An error occurred while reading the login credentials from the secure "
