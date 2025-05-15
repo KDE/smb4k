@@ -1,7 +1,7 @@
 /*
     This class manages the profiles that were defined by the user.
 
-    SPDX-FileCopyrightText: 2014-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -14,7 +14,7 @@
 #if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
 #include <QApplicationStatic>
 #else
-#include <QGlobalStatic>
+#include <qapplicationstatic.h>
 #endif
 #include <QPointer>
 

@@ -1,7 +1,7 @@
 /*
     This class provides the credentials manager used by Smb4K
 
-    SPDX-FileCopyrightText: 2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2024-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

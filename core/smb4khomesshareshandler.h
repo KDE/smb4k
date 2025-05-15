@@ -1,7 +1,7 @@
 /*
     This class handles the homes shares
 
-    SPDX-FileCopyrightText: 2006-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
