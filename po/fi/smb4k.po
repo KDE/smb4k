@@ -1,7 +1,7 @@
 # KDE Finnish translation sprint participants:
 # Author: Artnay
 # Author: Lliehu
-# SPDX-FileCopyrightText: 2012, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2012, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015, 2016.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-08 00:42+0000\n"
-"PO-Revision-Date: 2024-10-22 13:39+0300\n"
+"PO-Revision-Date: 2025-04-08 21:07+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -637,10 +637,9 @@ msgstr "MAC-osoite:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:268
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:455
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC-osoite:"
+msgstr "Etsi MAC-osoite"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:277
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:464
