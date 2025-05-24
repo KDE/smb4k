@@ -71,7 +71,7 @@ The full list of changes can be found in the Git log at https://invent.kde.org/n
 
 Configuration, Compilation and Installation
 -------------------------------------------
-To configure, compile and install Smb4K follow the steps below. Make sure, you have read the Requirements section before you start.
+To configure, compile and install Smb4K follow the steps below. Make sure that you have read the Requirements section before you start.
 
 1. Download the version of Smb4K you are interested in and extract the source tarball:
    ``` bash
