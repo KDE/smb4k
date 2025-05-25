@@ -131,8 +131,8 @@ msgid ""
 "click the respective bookmark entry."
 msgstr ""
 "Totes les comparticions llistades s'afegiran a les adreces d'interés. Per a "
-"afegir una etiqueta o categoria, feu doble clic en l'entrada de l'adreça "
-"d'interés respectiva."
+"afegir una etiqueta o categoria, feu un doble clic damunt de l'entrada de "
+"l'adreça d'interés respectiva."
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:117
@@ -1183,7 +1183,7 @@ msgstr "Explorador mestre:"
 #: smb4k/smb4ktooltip.cpp:158
 #, kde-format
 msgid "Host"
-msgstr "Servidor"
+msgstr "Amfitrió"
 
 #: smb4k/smb4ktooltip.cpp:161 smb4k/smb4ktooltip.cpp:177
 #, kde-format
@@ -1213,7 +1213,7 @@ msgstr "no"
 #: smb4k/smb4ktooltip.cpp:190
 #, kde-format
 msgid "Host:"
-msgstr "Servidor:"
+msgstr "Amfitrió:"
 
 #: smb4k/smb4ktooltip.cpp:227
 #, kde-format
