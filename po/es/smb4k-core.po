@@ -1,4 +1,5 @@
-# Translation of smb4k-core to Spanish
+# Spanish translations for smb4k-core.po package.
+# Copyright (C) 2004-2025 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
 # SPDX-FileCopyrightText: 2004 Quique <quique@sindominio.net>
@@ -9,13 +10,13 @@
 # SPDX-FileCopyrightText: 2013 Miguel Navarrete Hernandez <recados.akka@gmail.com>
 # SPDX-FileCopyrightText: 2013, 2014, 2015 Raul Gonzalez <raulgf83@gmail.com>
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-15 00:42+0000\n"
-"PO-Revision-Date: 2024-09-22 16:52+0200\n"
+"PO-Revision-Date: 2025-06-09 02:27+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1557,7 +1558,7 @@ msgstr ""
 "permite agregar reglas para excluir de forma selectiva a determinados "
 "archivos que van a ser transferidos. Estas normas son agregadas a la orden "
 "rsync tal como están. Así, cada regla tiene que empezar con la opción --"
-"filter=... argumento."
+"filter=… argumento."
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:544

@@ -1,16 +1,17 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Spanish translations for plasma_applet_org.kde.smb4kqml.po package.
+# Copyright (C) 2014-2025 This file is copyright:
+# This file is distributed under the same license as the smb4k package.
 #
-# Eloy Cuadra <ecuadra@eloihr.net>, 2014, 2018.
-# Raul Gonzalez <raulgf83@gmail.com>, 2015.
-# Javier Vinal <fjvinal@gmail.com>, 2017, 2018, 2019.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2024.
+# SPDX-FileCopyrightText: 2014, 2018 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2015 Raul Gonzalez <raulgf83@gmail.com>
+# SPDX-FileCopyrightText: 2017, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-11 00:38+0000\n"
-"PO-Revision-Date: 2024-02-24 18:20+0100\n"
+"PO-Revision-Date: 2025-06-09 02:27+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
