@@ -12,7 +12,7 @@
 #include "smb4ksettings.h"
 
 // Qt includes
-#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
 #include <qapplicationstatic.h>
@@ -116,10 +116,12 @@ bool Smb4KCredentialsManager::readLoginCredentials(const NetworkItemPtr &network
         }
         }
 
-        QUrl url = networkItem->url();
-        url.setUserInfo(credentials);
+        if (!credentials.isEmpty()) {
+            QUrl url = networkItem->url();
+            url.setUserInfo(credentials);
 
-        networkItem->setUrl(url);
+            networkItem->setUrl(url);
+        }
     }
 
     return success;
