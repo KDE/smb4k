@@ -1,3 +1,12 @@
+Smb4K 4.0.3 (2025-06-15):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
+
+- Do not copy empty credentials into the URL when reading the password,
+  and, thus, fix the failed mounting of home shares in particular, which
+  have no credentials.
+
 Smb4K 4.0.2 (2025-05-15):
 
 See the summary of changes below. For a full list of changes, please
