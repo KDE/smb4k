@@ -1807,7 +1807,7 @@
           <term>
             <menuchoice
 ><guimenuitem
->Configurar &smb4k;...</guimenuitem
+>Configurar &smb4k;…</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
@@ -2611,7 +2611,7 @@
 ></listitem>
       </itemizedlist>
       <para
->Por lo tanto, no se sorprenda si las cosas cambian después de seleccionar un perfil diferente...</para>
+>Por lo tanto, no se sorprenda si las cosas cambian después de seleccionar un perfil diferente…</para>
     </sect2>
   </sect1>
 
@@ -2853,10 +2853,10 @@ polkit.addRule(function(action, subject) {
       
 <programlisting
 >[global]
-...
+…
 ntlm auth = yes
 server min protocol = NT1
-...
+…
 </programlisting>
       
       <para
@@ -2922,7 +2922,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
   <para
 >Esta sección describe las preferencias que pueden usarse para configurar &smb4k;. Para abrir el diálogo de configuración, usted tiene que pulsar la opción de menú <link linkend="mainwindow_overview"
 ><guimenuitem
->Configurar &smb4k;...</guimenuitem
+>Configurar &smb4k;…</guimenuitem
 ></link
 >.</para>
 
@@ -8909,7 +8909,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar &smb4k;...</guimenuitem
+>Configurar &smb4k;…</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8986,7 +8986,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ><guimenu
 >Ayuda</guimenu
 ><guimenuitem
->Informar de fallo...</guimenuitem
+>Informar de fallo…</guimenuitem
 ></menuchoice
 >. Pero usted también puede ir directamente al <ulink url="https://bugs.kde.org/enter_bug.cgi?product=Smb4k&amp;format=guided"
 >Sistema de control de fallos de KDE</ulink
@@ -9010,8 +9010,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 <para
 >Traducido por Raúl González <email
 >raulgf83@gmail.com</email
-> y Javier Viñal <email
+>, Javier Viñal <email
 >fjvinal@gmail.com</email
+> y Víctor Rodrigo <email
+>vrcordoba@gmail.com</email
 >.</para
 > &underFDL; &underGPL; <simplesect>
     <title
