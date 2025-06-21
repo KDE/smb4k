@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-15 00:42+0000\n"
+"POT-Creation-Date: 2025-06-21 00:42+0000\n"
 "PO-Revision-Date: 2024-09-18 19:03+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -3035,8 +3035,9 @@ msgstr ""
 "enigi eblojn jam difinitajn en la agorda dialogo."
 
 #: smb4knotification.cpp:64
-#, kde-format
-msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<p>La parto <b>%1</b> estis muntita al <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:78
@@ -3046,21 +3047,26 @@ msgid "Open"
 msgstr "Malfermi"
 
 #: smb4knotification.cpp:100
-#, kde-format
-msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
 msgstr "<p>La parto <b>%1</b> estis malmuntita de <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:118
-#, kde-format
-msgid "<p>%1 share has been mounted.</p>"
-msgid_plural "<p>%1 shares have been mounted.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>%1 share has been mounted.</p>"
+#| msgid_plural "<p>%1 shares have been mounted.</p>"
+msgid "%1 share has been mounted."
+msgid_plural "%1 shares have been mounted."
 msgstr[0] "<p>%1 kunhavigaĵo estis muntita.</p>"
 msgstr[1] "<p>%1 kunhavigaĵoj estis muntitaj.</p>"
 
 #: smb4knotification.cpp:135
-#, kde-format
-msgid "<p>%1 share has been unmounted.</p>"
-msgid_plural "<p>%1 shares have been unmounted.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>%1 share has been unmounted.</p>"
+#| msgid_plural "<p>%1 shares have been unmounted.</p>"
+msgid "%1 share has been unmounted."
+msgid_plural "%1 shares have been unmounted."
 msgstr[0] "<p>%1 kunhavigaĵo estis malmuntita.</p>"
 msgstr[1] "<p>%1 kunhavigaĵoj estis malmuntitaj.</p>"
 
@@ -3074,187 +3080,232 @@ msgstr ""
 "nun estos transigitaj. Ĉi tiu ŝanĝo estas nekongrua kun antaŭaj versioj de "
 "Smb4K."
 
-#: smb4knotification.cpp:172
-#, kde-format
+#: smb4knotification.cpp:171
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#| "the file to PDF or Postscript and try again.</p>"
 msgid ""
-"<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
-"file to PDF or Postscript and try again.</p>"
+"The mimetype <b>%1</b> is not supported for printing. Please convert the "
+"file to PDF or Postscript and try again."
 msgstr ""
 "<p>La mimetipo <b>%1</b> ne estas subtenata por presado. Bonvolu konverti la "
 "dosieron al PDF aŭ Postscript kaj provi denove.</p>"
 
-#: smb4knotification.cpp:190
-#, kde-format
-msgid ""
-"<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
+#: smb4knotification.cpp:188
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
+#| "p>"
+msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
 msgstr ""
 "<p>La legosigno por kundivido <b>%1</b> jam ekzistas kaj estos preterlasita."
 "</p>"
 
-#: smb4knotification.cpp:208
-#, kde-format
+#: smb4knotification.cpp:206
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#| "being used and will automatically be renamed.</p>"
 msgid ""
-"<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-"being used and will automatically be renamed.</p>"
+"The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
+"used and will automatically be renamed."
 msgstr ""
 "<p>La etikedo <b>%1</b> de la legosigno por la kundivido <b>%2</b> jam estas "
 "uzata kaj aŭtomate estos renomita.</p>"
 
-#: smb4knotification.cpp:228
-#, kde-format
-msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#: smb4knotification.cpp:225
+#, fuzzy, kde-format
+#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Muntado de la parto <b>%1</b> malsukcesis:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:230
-#, kde-format
-msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#: smb4knotification.cpp:227
+#, fuzzy, kde-format
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Mounting the share <b>%1</b> failed."
 msgstr "<p>Muntado de la parto <b>%1</b> malsukcesis.</p>"
 
-#: smb4knotification.cpp:253
-#, kde-format
-msgid ""
-"<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
-"p>"
+#: smb4knotification.cpp:250
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#| "tt></p>"
+msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
 "<p>Malmuntado de la parto <b>%1</b> de <b>%2</b> malsukcesis:</p><p><tt>%3</"
 "tt></p>"
 
-#: smb4knotification.cpp:255
-#, kde-format
-msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#: smb4knotification.cpp:252
+#, fuzzy, kde-format
+#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "<p>Malmuntado de la parto <b>%1</b> de <b>%2</b> malsukcesis.</p>"
 
-#: smb4knotification.cpp:282
-#, kde-format
+#: smb4knotification.cpp:279
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#| "is owned by the user <b>%3</b>.</p>"
 msgid ""
-"<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>.</p>"
+"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+"owned by the user <b>%3</b>."
 msgstr ""
 "<p>Vi ne rajtas malmunti la kundividon <b>%1</b> de <b>%2</b>. Ĝi estas "
 "posedata de la uzanto <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:297
-#, kde-format
-msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#: smb4knotification.cpp:293
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
 "<p>Sinkronigado de <b>%1</b> kun <b>%2</b> malsukcesis:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:299
-#, kde-format
-msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#: smb4knotification.cpp:295
+#, fuzzy, kde-format
+#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "<p>Sinkronigado de <b>%1</b> kun <b>%2</b> malsukcesis.</p>"
 
-#: smb4knotification.cpp:321
-#, kde-format
+#: smb4knotification.cpp:317
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The command <b>%1</b> could not be found. Please check your "
+#| "installation.</p>"
 msgid ""
-"<p>The command <b>%1</b> could not be found. Please check your installation."
-"</p>"
+"The command <b>%1</b> could not be found. Please check your installation."
 msgstr ""
 "<p>La komando <b>%1</b> ne estis trovita. Bonvolu kontroli vian instaladon.</"
 "p>"
 
-#: smb4knotification.cpp:337
-#, kde-format
-msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#: smb4knotification.cpp:333
+#, fuzzy, kde-format
+#| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr "<p>La parto <b>%1</b> estas presilo kaj ne povas esti legosignita.</p>"
 
-#: smb4knotification.cpp:351
-#, kde-format
-msgid "<p>The file <b>%1</b> could not be found.</p>"
+#: smb4knotification.cpp:347
+#, fuzzy, kde-format
+#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+msgid "The file <b>%1</b> could not be found."
 msgstr "<p>La dosiero <b>%1</b> ne troviĝis.</p>"
 
-#: smb4knotification.cpp:361
-#, kde-format
-msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#: smb4knotification.cpp:357
+#, fuzzy, kde-format
+#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Malfermo de la dosiero <b>%1</b> malsukcesis:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:363
-#, kde-format
-msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#: smb4knotification.cpp:359
+#, fuzzy, kde-format
+#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+msgid "Opening the file <b>%1</b> failed."
 msgstr "<p>Malfermo de la dosiero <b>%1</b> malsukcesis.</p>"
 
-#: smb4knotification.cpp:382 smb4knotification.cpp:385
-#, kde-format
-msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#: smb4knotification.cpp:378 smb4knotification.cpp:381
+#, fuzzy, kde-format
+#| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Legado el dosiero <b>%1</b> malsukcesis:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:387
-#, kde-format
-msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#: smb4knotification.cpp:383
+#, fuzzy, kde-format
+#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+msgid "Reading from file <b>%1</b> failed."
 msgstr "<p>Legado el dosiero <b>%1</b> malsukcesis.</p>"
 
-#: smb4knotification.cpp:410
-#, kde-format
-msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#: smb4knotification.cpp:406
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "<p>Ne eblis krei la sekvan dosierujon:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:421
-#, kde-format
-msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:417
+#, fuzzy, kde-format
+#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr "<p>La procezo malsukcesis komenci (erara kodo: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:425
-#, kde-format
-msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:421
+#, fuzzy, kde-format
+#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr "<p>La procezo paneis (erara kodo: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:429
-#, kde-format
-msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:425
+#, fuzzy, kde-format
+#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr "<p>La procezo finiĝis (erara kodo: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:433
-#, kde-format
-msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:429
+#, fuzzy, kde-format
+#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr "<p>Ne eblis skribi al la procezo (erara kodo: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:437
-#, kde-format
-msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:433
+#, fuzzy, kde-format
+#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr "<p>Ne eblis legi el la procezo (erara kodo: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:442
-#, kde-format
-msgid "<p>The process reported an unknown error.</p>"
+#: smb4knotification.cpp:438
+#, fuzzy, kde-format
+#| msgid "<p>The process reported an unknown error.</p>"
+msgid "The process reported an unknown error."
 msgstr "<p>La procezo raportis nekonatan eraron.</p>"
 
-#: smb4knotification.cpp:505
-#, kde-format
+#: smb4knotification.cpp:501
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Executing an action with root privileges failed (error code: <tt>%1</"
+#| "tt>).</p>"
 msgid ""
-"<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
-"</p>"
+"Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 msgstr ""
 "<p>Efektivigo de ago kun radikprivilegioj malsukcesis (erara kodo: <tt>%1</"
 "tt>).</p>"
 
-#: smb4knotification.cpp:507
-#, kde-format
-msgid "<p>Executing an action with root privileges failed.</p>"
+#: smb4knotification.cpp:503
+#, fuzzy, kde-format
+#| msgid "<p>Executing an action with root privileges failed.</p>"
+msgid "Executing an action with root privileges failed."
 msgstr "<p>Efektivigo de ago kun radika privilegio malsukcesis.</p>"
 
-#: smb4knotification.cpp:529
-#, kde-format
-msgid "<p>The URL that was passed is invalid.</p>"
+#: smb4knotification.cpp:525
+#, fuzzy, kde-format
+#| msgid "<p>The URL that was passed is invalid.</p>"
+msgid "The URL that was passed is invalid."
 msgstr "<p>La URL kiu estis pasigita estas nevalida.</p>"
 
-#: smb4knotification.cpp:542
-#, kde-format
+#: smb4knotification.cpp:538
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The network communication failed with the following error message: <s>"
+#| "%1</s></p>"
 msgid ""
-"<p>The network communication failed with the following error message: <s>%1</"
-"s></p>"
+"The network communication failed with the following error message: <tt>%1</"
+"tt>"
 msgstr "<p>La retkomunikado malsukcesis kun la jena erarmesaĝo: <s>%1</s></p>"
 
-#: smb4knotification.cpp:555
-#, kde-format
-msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+#: smb4knotification.cpp:551
+#, fuzzy, kde-format
+#| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "<p>Okazis eraro kun la servo Zeroconf: <s>%1</s></p>"
 
-#: smb4knotification.cpp:568
-#, kde-format
+#: smb4knotification.cpp:564
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>An error occurred while reading the login credentials from the secure "
+#| "storage:\n"
+#| "<tt>%1</tt></p>"
 msgid ""
-"<p>An error occurred while reading the login credentials from the secure "
-"storage:\n"
-"<tt>%1</tt></p>"
+"An error occurred while reading the login credentials from the secure "
+"storage: <tt>%1</tt>"
 msgstr ""
 "<p>Okazis eraro dum legado de la ensalutaj akreditaĵoj el la sekura "
 "konservejo:\n"
