@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-21 00:42+0000\n"
-"PO-Revision-Date: 2024-09-09 04:48+0200\n"
+"PO-Revision-Date: 2025-06-21 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -3044,10 +3044,9 @@ msgstr ""
 "შეიყვანთ პარამეტრებს, რომლებიც უკვე აღწერილია კონფიგურაციის დიალოგში."
 
 #: smb4knotification.cpp:64
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "<p>ზიარი <b>%1</b> მიმაგრებულია საქაღალდეში <b>%2</b>.</p>"
+msgstr "ზიარი <b>%1</b> მიმაგრებულია საქაღალდეში <b>%2</b>."
 
 #: smb4knotification.cpp:78
 #, kde-format
@@ -3056,28 +3055,23 @@ msgid "Open"
 msgstr "გახსნა"
 
 #: smb4knotification.cpp:100
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr "<p>ზიარი <b>%1</b> მოიხსნა საქაღალდიდან <b>%2</b>.</p>"
+msgstr "ზიარი <b>%1</b> მოიხსნა საქაღალდიდან <b>%2</b>."
 
 #: smb4knotification.cpp:118
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been mounted.</p>"
-#| msgid_plural "<p>%1 shares have been mounted.</p>"
+#, kde-format
 msgid "%1 share has been mounted."
 msgid_plural "%1 shares have been mounted."
-msgstr[0] "<p>%1 ზიარი მიმაგრდა.</p>"
-msgstr[1] "<p>%1 ზიარი მიმაგრდა.</p>"
+msgstr[0] "%1 ზიარი მიმაგრებულია."
+msgstr[1] "%1 ზიარი მიმაგრებულია."
 
 #: smb4knotification.cpp:135
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been unmounted.</p>"
-#| msgid_plural "<p>%1 shares have been unmounted.</p>"
+#, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] "<p>%1 ზიარი მოიხსნა.</p>"
-msgstr[1] "<p>%1 ზიარი მოიხსნა.</p>"
+msgstr[0] "%1 ზიარი მოიხსნა."
+msgstr[1] "%1 ზიარი მოიხსნა."
 
 #: smb4knotification.cpp:153
 #, kde-format
@@ -3089,233 +3083,177 @@ msgstr ""
 "მიგრაცია. ეს ცვლილება შეუთავსებელია Smb4K-ის ძველ ვერსიებთან."
 
 #: smb4knotification.cpp:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
-#| "the file to PDF or Postscript and try again.</p>"
+#, kde-format
 msgid ""
 "The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again."
 msgstr ""
-"<p>mimetype <b>%1</b> დასაბეჭდად მხარდაჭერილი არააა. გადაიყვანეთ ფაილი PDF "
-"ან Postscript ფორმატში და თავიდან სცადეთ.</p>"
+"mimetype <b>%1</b> დასაბეჭდად მხარდაჭერილი არააა. გადაიყვანეთ ფაილი PDF ან "
+"Postscript ფორმატში და თავიდან სცადეთ."
 
 #: smb4knotification.cpp:188
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
-#| "p>"
+#, kde-format
 msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
-msgstr ""
-"<p>სანიშნე ზიარისთვის <b>%1</b> უკვე არსებობს და გამოტოვებული იქნება.</p>"
+msgstr "სანიშნე ზიარისთვის <b>%1</b> უკვე არსებობს და გამოტოვებული იქნება."
 
 #: smb4knotification.cpp:206
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed.</p>"
+#, kde-format
 msgid ""
 "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
 "used and will automatically be renamed."
 msgstr ""
-"<p>სანიშნის ჭდე <b>%1</b> ზიარისთვის <b>%2</b> უკვე გამოიყენება. მისი სახელი "
-"ავტომატურად შეიცვლება.</p>"
+"სანიშნის ჭდე <b>%1</b> ზიარისთვის <b>%2</b> უკვე გამოიყენება. მისი სახელი "
+"ავტომატურად შეიცვლება."
 
 #: smb4knotification.cpp:225
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>ზიარის <b>%1</b> მიმაგრება ჩავარდა:</p><p><tt>%2</tt></p>"
+msgstr "ზიარის <b>%1</b> მიმაგრება ჩავარდა:</p><p><tt>%2</tt>"
 
 #: smb4knotification.cpp:227
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "<p>ზიარის <b>%1</b> მიმაგრება ჩავარდა.</p>"
+msgstr "ზიარის <b>%1</b> მიმაგრება ჩავარდა."
 
 #: smb4knotification.cpp:250
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<p>ზიარის <b>%1</b> <b>%2</b>-დან მოხსნა ჩავარდა:</p><p><tt>%3</tt></p>"
+msgstr "ზიარის <b>%1</b> <b>%2</b>-დან მოხსნა ჩავარდა:</p><p><tt>%3</tt>"
 
 #: smb4knotification.cpp:252
-#, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "<p>ზიარის <b>%1</b> <b>%2</b>-დან მოხსნა ჩავარდა.</p>"
+msgstr "ზიარის <b>%1</b> <b>%2</b>-დან მოხსნა ჩავარდა."
 
 #: smb4knotification.cpp:279
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#| "is owned by the user <b>%3</b>.</p>"
+#, kde-format
 msgid ""
 "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>."
 msgstr ""
-"<p>თქვენ არ გაქვთ უფლება, მოხსნათ ზიარი <b>%1</b> <b>%2</b>-დან. მისი "
-"მფლობელია მომხმარებელი <b>%3</b>.</p>"
+"თქვენ არ გაქვთ უფლება, მოხსნათ ზიარი <b>%1</b> <b>%2</b>-დან. მისი მფლობელია "
+"მომხმარებელი <b>%3</b>."
 
 #: smb4knotification.cpp:293
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<p><b>%1</b>-ის სინქრონიზაცია <b>%2</b>-სთან ჩავარდა:</p><p><tt>%3</tt></p>"
+msgstr "<b>%1</b>-ის სინქრონიზაცია <b>%2</b>-სთან ჩავარდა:</p><p><tt>%3</tt>"
 
 #: smb4knotification.cpp:295
-#, fuzzy, kde-format
-#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
-msgstr "<p><b>%1</b>-ის სინქრონიზაცია <b>%2</b>-სთან ჩავარდა.</p>"
+msgstr "<b>%1</b>-ის სინქრონიზაცია <b>%2</b>-სთან ჩავარდა."
 
 #: smb4knotification.cpp:317
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The command <b>%1</b> could not be found. Please check your "
-#| "installation.</p>"
+#, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
 msgstr ""
-"<p>ბრძანება <b>%1</b> ვერ ვიპოვე. შეამოწმეთ პროგრამის თქვენი ვერსიის ფაილები."
-"</p>"
+"ბრძანება <b>%1</b> აღმოჩენილი არაა. შეამოწმეთ პროგრამის თქვენი ვერსიის "
+"ფაილები."
 
 #: smb4knotification.cpp:333
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
-msgstr "<p>ზიარი <b>%1</b> პრინტერია და მას სანიშნედ ვერ შეინახავთ.</p>"
+msgstr "ზიარი <b>%1</b> პრინტერია და მას სანიშნედ ვერ შეინახავთ."
 
 #: smb4knotification.cpp:347
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file <b>%1</b> could not be found."
-msgstr "<p>ფაილის <b>%1</b> აღმოჩენა შეუძლებელია.</p>"
+msgstr "ფაილის <b>%1</b> აღმოჩენა შეუძლებელია."
 
 #: smb4knotification.cpp:357
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>ფაილის <b>%1</b> გახსნა ჩავარდა:</p><p><tt>%2</tt></p>"
+msgstr "ფაილის <b>%1</b> გახსნა ჩავარდა:</p><p><tt>%2</tt>"
 
 #: smb4knotification.cpp:359
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr "<p>ფაილის <b>%1</b> გახსნა ჩავარდა.</p>"
+msgstr "ფაილის <b>%1</b> გახსნა ჩავარდა."
 
 #: smb4knotification.cpp:378 smb4knotification.cpp:381
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>ფაილიდან <b>%1</b> წაკითხვა ჩავარდა:</p><p><tt>%2</tt></p>"
+msgstr "ფაილიდან <b>%1</b> წაკითხვა ჩავარდა:</p><p><tt>%2</tt>"
 
 #: smb4knotification.cpp:383
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr "<p>ფაილიდან <b>%1</b> წაკითხვა ჩავარდა.</p>"
+msgstr "ფაილიდან <b>%1</b> წაკითხვა ჩავარდა."
 
 #: smb4knotification.cpp:406
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
-msgstr "<p>შემდეგი საქაღალდე ვერ შეიქმნა:</p><p><tt>%1</tt></p>"
+msgstr "შემდეგი საქაღალდე ვერ შეიქმნა: <tt>%1</tt>"
 
 #: smb4knotification.cpp:417
-#, fuzzy, kde-format
-#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
-msgstr "<p>პროცესის გაშვება ჩავარდა (შეცდომის კოდი: <tt>%1</tt>).</p>"
+msgstr "პროცესის გაშვება ჩავარდა (შეცდომის კოდი: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:421
-#, fuzzy, kde-format
-#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
-msgstr "<p>პროცესი ავარიულად დასრულდა (შეცდომის კოდი: <tt>%1</tt>).</p>"
+msgstr "პროცესი ავარიულად დასრულდა (შეცდომის კოდი: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:425
-#, fuzzy, kde-format
-#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
-msgstr "<p>პროცესის მოლოდინის ვადა ამოიწურა (შეცდომის კოდი: <tt>%1</tt>).</p>"
+msgstr "პროცესის მოლოდინის ვადა ამოიწურა (შეცდომის კოდი: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:429
-#, fuzzy, kde-format
-#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
-msgstr "<p>პროცესისთვის მიწერა შეუძლებელია (შეცდომის კოდი: <tt>%1</tt>).</p>"
+msgstr "პროცესში ჩაწერა შეუძლებელია (შეცდომის კოდი: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:433
-#, fuzzy, kde-format
-#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
-msgstr "<p>პროცესიდან წაკითხვა შეუძლებელია(შეცდომის კოდი: <tt>%1</tt>).</p>"
+msgstr "პროცესიდან წაკითხვა შეუძლებელია (შეცდომის კოდი: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:438
-#, fuzzy, kde-format
-#| msgid "<p>The process reported an unknown error.</p>"
+#, kde-format
 msgid "The process reported an unknown error."
-msgstr "<p>პროცესმა უცნობი შეცდომის კოდი დააბრუნა.</p>"
+msgstr "პროცესმა უცნობი შეცდომის კოდი დააბრუნა."
 
 #: smb4knotification.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Executing an action with root privileges failed (error code: <tt>%1</"
-#| "tt>).</p>"
+#, kde-format
 msgid ""
 "Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 msgstr ""
-"<p>ქმედების root მომხმარებლის პრივილეგიებით გაშვება ჩავარდა (შეცდომის კოდი: "
-"<tt>%1</tt>).</p>"
+"ქმედების root მომხმარებლის პრივილეგიებით გაშვება ჩავარდა (შეცდომის კოდი: <tt>"
+"%1</tt>)."
 
 #: smb4knotification.cpp:503
-#, fuzzy, kde-format
-#| msgid "<p>Executing an action with root privileges failed.</p>"
+#, kde-format
 msgid "Executing an action with root privileges failed."
-msgstr "<p>ქმედების root მომხმარებლის პრივილეგიებით გაშვება ჩავარდა.</p>"
+msgstr "ქმედების root მომხმარებლის პრივილეგიებით გაშვება ჩავარდა."
 
 #: smb4knotification.cpp:525
-#, fuzzy, kde-format
-#| msgid "<p>The URL that was passed is invalid.</p>"
+#, kde-format
 msgid "The URL that was passed is invalid."
-msgstr "<p>გადმოცემული ბმული არასწორია.</p>"
+msgstr "გადმოცემული ბმული არასწორია."
 
 #: smb4knotification.cpp:538
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The network communication failed with the following error message: <s>"
-#| "%1</s></p>"
+#, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
-msgstr ""
-"<p>ქსელური კავშირი ჩავარდა შემდეგი შეცდომის შეტყობინებით: <s>%1</s></p>"
+msgstr "ქსელური კავშირი ჩავარდა შემდეგი შეცდომის შეტყობინებით: <tt>%1</tt>"
 
 #: smb4knotification.cpp:551
-#, fuzzy, kde-format
-#| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+#, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
-msgstr "<p>Zeroconf-ის სერვისის შეცდომა: <s>%1</s></p>"
+msgstr "Zeroconf-ის სერვისის შეცდომა: <tt>%1</tt>"
 
 #: smb4knotification.cpp:564
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>An error occurred while reading the login credentials from the secure "
-#| "storage:\n"
-#| "<tt>%1</tt></p>"
+#, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: <tt>%1</tt>"
 msgstr ""
-"<p>შეცდომა ავტორიზაციის დეტალების დაცული საცავიდან წაკითხვისას:\n"
-"<tt>%1</tt></p>"
+"შეცდომა ავტორიზაციის დეტალების დაცული საცავიდან წაკითხვისას: <tt>%1</tt>"
 
 #: smb4kshare.cpp:193
 #, kde-format

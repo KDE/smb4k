@@ -1,16 +1,16 @@
 # Translation of smb4k-core.po to Catalan
-# Copyright (C) 2014-2024 This_file_is_part_of_KDE
+# Copyright (C) 2014-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2014, 2016, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
-# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-21 00:42+0000\n"
-"PO-Revision-Date: 2024-09-09 10:10+0200\n"
+"PO-Revision-Date: 2025-06-21 11:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -3097,10 +3097,9 @@ msgstr ""
 "configuració."
 
 #: smb4knotification.cpp:64
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "<p>La compartició <b>%1</b> s'ha muntat a <b>%2</b>.</p>"
+msgstr "La compartició <b>%1</b> s'ha muntat a <b>%2</b>."
 
 #: smb4knotification.cpp:78
 #, kde-format
@@ -3109,28 +3108,23 @@ msgid "Open"
 msgstr "Obre"
 
 #: smb4knotification.cpp:100
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr "<p>La compartició <b>%1</b> s'ha desmuntat des de <b>%2</b>.</p>"
+msgstr "La compartició <b>%1</b> s'ha desmuntat des de <b>%2</b>."
 
 #: smb4knotification.cpp:118
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been mounted.</p>"
-#| msgid_plural "<p>%1 shares have been mounted.</p>"
+#, kde-format
 msgid "%1 share has been mounted."
 msgid_plural "%1 shares have been mounted."
-msgstr[0] "<p>S'ha muntat %1 compartició.</p>"
-msgstr[1] "<p>S'han muntat %1 comparticions.</p>"
+msgstr[0] "S'ha muntat %1 compartició."
+msgstr[1] "S'han muntat %1 comparticions."
 
 #: smb4knotification.cpp:135
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been unmounted.</p>"
-#| msgid_plural "<p>%1 shares have been unmounted.</p>"
+#, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] "<p>S'ha desmuntat %1 compartició.</p>"
-msgstr[1] "<p>S'han desmuntat %1 comparticions.</p>"
+msgstr[0] "S'ha desmuntat %1 compartició."
+msgstr[1] "S'han desmuntat %1 comparticions."
 
 #: smb4knotification.cpp:153
 #, kde-format
@@ -3143,243 +3137,184 @@ msgstr ""
 "anteriors del Smb4K."
 
 #: smb4knotification.cpp:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
-#| "the file to PDF or Postscript and try again.</p>"
+#, kde-format
 msgid ""
 "The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again."
 msgstr ""
-"<p>El tipus MIME <b>%1</b> no permet la impressió. Si us plau, convertiu el "
-"fitxer a PDF o Postscript i torneu-ho a intentar.</p>"
+"El tipus MIME <b>%1</b> no permet la impressió. Si us plau, convertiu el "
+"fitxer a PDF o Postscript i torneu-ho a intentar."
 
 #: smb4knotification.cpp:188
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
-#| "p>"
+#, kde-format
 msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
 msgstr ""
-"<p>L'adreça d'interès per a la compartició <b>%1</b> ja existeix i serà "
-"omesa.</p>"
+"L'adreça d'interès per a la compartició <b>%1</b> ja existeix i serà omesa."
 
 #: smb4knotification.cpp:206
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed.</p>"
+#, kde-format
 msgid ""
 "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
 "used and will automatically be renamed."
 msgstr ""
-"<p>L'etiqueta <b>%1</b> de l'adreça d'interès per a la compartició <b>%2</b> "
-"ja s'està usant i es canviarà automàticament el seu nom.</p>"
+"L'etiqueta <b>%1</b> de l'adreça d'interès per a la compartició <b>%2</b> ja "
+"s'està usant i es canviarà automàticament el seu nom."
 
 #: smb4knotification.cpp:225
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr ""
-"<p>Ha fallat el muntatge de la compartició <b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Ha fallat el muntatge de la compartició <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:227
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "<p>Ha fallat el muntatge de la compartició <b>%1</b>.</p>"
+msgstr "Ha fallat el muntatge de la compartició <b>%1</b>."
 
 #: smb4knotification.cpp:250
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
-"<p>Ha fallat el desmuntatge de la compartició <b>%1</b> des de <b>%2</b>:</"
-"p><p><tt>%3</tt></p>"
+"Ha fallat el desmuntatge de la compartició <b>%1</b> des de <b>%2</b>:<tt>"
+"%3</tt>"
 
 #: smb4knotification.cpp:252
-#, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr ""
-"<p>Ha fallat el desmuntatge de la compartició <b>%1</b> des de <b>%2</b>.</p>"
+msgstr "Ha fallat el desmuntatge de la compartició <b>%1</b> des de <b>%2</b>."
 
 #: smb4knotification.cpp:279
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#| "is owned by the user <b>%3</b>.</p>"
+#, kde-format
 msgid ""
 "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>."
 msgstr ""
-"<p>No es permet desmuntar la compartició <b>%1</b> des de <b>%2</b>. És "
-"propietat de l'usuari <b>%3</b>.</p>"
+"No es permet desmuntar la compartició <b>%1</b> des de <b>%2</b>. És "
+"propietat de l'usuari <b>%3</b>."
 
 #: smb4knotification.cpp:293
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<p>Ha fallat la sincronització de <b>%1</b> amb <b>%2</b>:</p><p><tt>%3</"
-"tt></p>"
+msgstr "Ha fallat la sincronització de <b>%1</b> amb <b>%2</b>:<tt>%3</tt>"
 
 #: smb4knotification.cpp:295
-#, fuzzy, kde-format
-#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
-msgstr "<p>Ha fallat la sincronització de <b>%1</b> amb <b>%2</b>.</p>"
+msgstr "Ha fallat la sincronització de <b>%1</b> amb <b>%2</b>."
 
 #: smb4knotification.cpp:317
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The command <b>%1</b> could not be found. Please check your "
-#| "installation.</p>"
+#, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
 msgstr ""
-"<p>No s'ha pogut trobar l'ordre <b>%1</b>. Si us plau, comproveu la "
-"instal·lació.</p>"
+"No s'ha pogut trobar l'ordre <b>%1</b>. Si us plau, comproveu la "
+"instal·lació."
 
 #: smb4knotification.cpp:333
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr ""
-"<p>La compartició <b>%1</b> és una impressora i no es pot afegir a les "
-"adreces d'interès.</p>"
+"La compartició <b>%1</b> és una impressora i no es pot afegir a les adreces "
+"d'interès."
 
 #: smb4knotification.cpp:347
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file <b>%1</b> could not be found."
-msgstr "<p>No s'ha pogut trobar el fitxer <b>%1</b>.</p>"
+msgstr "No s'ha pogut trobar el fitxer <b>%1</b>."
 
 #: smb4knotification.cpp:357
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Ha fallat en obrir el fitxer <b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Ha fallat en obrir el fitxer <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:359
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr "<p>Ha fallat en obrir el fitxer <b>%1</b>.</p>"
+msgstr "Ha fallat en obrir el fitxer <b>%1</b>."
 
 #: smb4knotification.cpp:378 smb4knotification.cpp:381
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Ha fallat en llegir des del fitxer <b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Ha fallat en llegir des del fitxer <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:383
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr "<p>Ha fallat en llegir des del fitxer <b>%1</b>.</p>"
+msgstr "Ha fallat en llegir des del fitxer <b>%1</b>."
 
 #: smb4knotification.cpp:406
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
-msgstr "<p>No s'ha pogut crear el directori següent:</p><p><tt>%1</tt></p>"
+msgstr "No s'ha pogut crear el directori següent:<tt>%1</tt>"
 
 #: smb4knotification.cpp:417
-#, fuzzy, kde-format
-#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
-msgstr "<p>Ha fallat en iniciar el procés (codi d'error: <tt>%1</tt>).</p>"
+msgstr "Ha fallat en iniciar el procés (codi d'error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:421
-#, fuzzy, kde-format
-#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
-msgstr "<p>El procés ha fallat (codi d'error: <tt>%1</tt>).</p>"
+msgstr "El procés ha fallat (codi d'error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:425
-#, fuzzy, kde-format
-#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
-msgstr "<p>El procés ha excedit el temps (codi d'error: <tt>%1</tt>).</p>"
+msgstr "El procés ha excedit el temps (codi d'error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:429
-#, fuzzy, kde-format
-#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
-msgstr "<p>No s'ha pogut escriure al procés (codi d'error: <tt>%1</tt>).</p>"
+msgstr "No s'ha pogut escriure al procés (codi d'error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:433
-#, fuzzy, kde-format
-#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
-msgstr ""
-"<p>No s'ha pogut llegir des del procés (codi d'error: <tt>%1</tt>).</p>"
+msgstr "No s'ha pogut llegir des del procés (codi d'error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:438
-#, fuzzy, kde-format
-#| msgid "<p>The process reported an unknown error.</p>"
+#, kde-format
 msgid "The process reported an unknown error."
-msgstr "<p>El procés ha informat d'un error desconegut.</p>"
+msgstr "El procés ha informat d'un error desconegut."
 
 #: smb4knotification.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Executing an action with root privileges failed (error code: <tt>%1</"
-#| "tt>).</p>"
+#, kde-format
 msgid ""
 "Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 msgstr ""
-"<p>Ha fallat en executar una acció amb privilegis de superusuari (codi "
-"d'error:<tt>%1</tt>).</p>"
+"Ha fallat en executar una acció amb privilegis de superusuari (codi d'error:"
+"<tt>%1</tt>)."
 
 #: smb4knotification.cpp:503
-#, fuzzy, kde-format
-#| msgid "<p>Executing an action with root privileges failed.</p>"
+#, kde-format
 msgid "Executing an action with root privileges failed."
-msgstr "<p>Ha fallat en executar una acció amb privilegis de superusuari.</p>"
+msgstr "Ha fallat en executar una acció amb privilegis de superusuari."
 
 #: smb4knotification.cpp:525
-#, fuzzy, kde-format
-#| msgid "<p>The URL that was passed is invalid.</p>"
+#, kde-format
 msgid "The URL that was passed is invalid."
-msgstr "<p>L'URL que s'ha indicat no és vàlid.</p>"
+msgstr "L'URL que s'ha indicat no és vàlid."
 
 #: smb4knotification.cpp:538
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The network communication failed with the following error message: <s>"
-#| "%1</s></p>"
+#, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
 msgstr ""
-"<p>La xarxa de comunicació ha fallat amb el missatge d'error següent:<s>%1</"
-"s></p>"
+"La xarxa de comunicació ha fallat amb el missatge d'error següent:<tt>%1</tt>"
 
 #: smb4knotification.cpp:551
-#, fuzzy, kde-format
-#| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+#, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
-msgstr "<p>S'ha produït un error desconegut amb el Zeroconf: <s>%1</s></p>"
+msgstr "S'ha produït un error desconegut amb el Zeroconf: <tt>%1</tt>"
 
 #: smb4knotification.cpp:564
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>An error occurred while reading the login credentials from the secure "
-#| "storage:\n"
-#| "<tt>%1</tt></p>"
+#, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: <tt>%1</tt>"
 msgstr ""
-"<p>S'ha produït un error en llegir les credencials de l'emmagatzematge "
-"segur:\n"
-"<tt>%1</tt></p>"
+"S'ha produït un error en llegir les credencials de l'emmagatzematge segur:"
+"<tt>%1</tt>"
 
 #: smb4kshare.cpp:193
 #, kde-format
@@ -3410,90 +3345,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid "Migrate Login Credentials"
-#~ msgstr "Migra les credencials d'inici de sessió"
-
-#~ msgid "Migrate"
-#~ msgstr "Migra"
-
-#~ msgid "Don't Migrate"
-#~ msgstr "No migris"
-
-#~ msgid "Save logins in a wallet"
-#~ msgstr "Desa els inicis de sessió en una cartera"
-
-#~ msgid ""
-#~ "Use a wallet to store the login. The username and password are stored "
-#~ "encrypted on your hard drive. If this setting is disabled, the login is "
-#~ "not stored permanently but only temporarily."
-#~ msgstr ""
-#~ "Usa una cartera per a emmagatzemar l'inici de sessió. El nom d'usuari i "
-#~ "la contrasenya s'emmagatzemaran encriptats en el disc dur. Si es "
-#~ "desactiva aquesta opció, l'inici de sessió no es desarà permanentment, "
-#~ "només temporalment."
-
-#~ msgid "Use a default login"
-#~ msgstr "Usa un inici de sessió predeterminat"
-
-#~ msgid ""
-#~ "Enable the usage of a default login. The provided data is used by default "
-#~ "to authenticate to a remote server. This is very useful e.g. if you are "
-#~ "working in an Active Directory environment or an NT domain."
-#~ msgstr ""
-#~ "Activa l'ús d'un inici de sessió predeterminat. Les dades proporcionades "
-#~ "s'usaran de manera predeterminada per a autenticar en un servidor remot. "
-#~ "Això és molt útil, p. ex., si esteu treballant en un entorn de Directori "
-#~ "Actiu o en un domini NT."
-
-#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
-#~ msgstr "<p>Ha fallat l'obertura de la cartera <b>%1</b>.</p>"
-
-#~ msgid ""
-#~ "<p>The credentials stored in the wallet could not be accessed. There is "
-#~ "either no wallet available or it could not be opened.</p>"
-#~ msgstr ""
-#~ "<p>No s'ha pogut accedir a les credencials emmagatzemades a la cartera. "
-#~ "No hi ha cap cartera disponible o no s'ha pogut obrir.</p>"
-
-#~ msgid ""
-#~ "Transfer all relevant data to the first profile when enabling profiles"
-#~ msgstr ""
-#~ "Transfereix totes les dades rellevants al primer perfil quan s'habilitin "
-#~ "els perfils"
-
-#~ msgid ""
-#~ "Transfer all custom settings and bookmarks to the first profile in the "
-#~ "list when enabling profiles."
-#~ msgstr ""
-#~ "Transfereix tots els paràmetres i adreces d'interès personalitzats al "
-#~ "primer perfil de la llista quan s'habilitin els perfils."
-
-#~ msgid "Make all relevant data available when disabling profiles"
-#~ msgstr "Fa disponibles totes les dades rellevants en desactivar els perfils"
-
-#~ msgid ""
-#~ "Make all custom settings and bookmarks available when disabling profiles. "
-#~ "This means that all data previously saved in different profiles is now "
-#~ "available in the standard profile. However, they can no longer be used in "
-#~ "their original profiles afterwards."
-#~ msgstr ""
-#~ "Fa que tots els paràmetres i adreces d'interès personalitzats estiguin "
-#~ "disponibles en desactivar els perfils. Això significa que totes les dades "
-#~ "desades prèviament en diferents perfils ja estan disponibles en el perfil "
-#~ "estàndard. No obstant això, després ja no poden utilitzar-se en els seus "
-#~ "perfils originals."
-
-#~ msgid "Specify User"
-#~ msgstr "Indiqueu l'usuari"
-
-#~ msgid "Please specify a username for share<br><b>%1</b>."
-#~ msgstr ""
-#~ "Si us plau, especifiqueu un nom d'usuari per a la compartició<br><b>%1</"
-#~ "b>."
-
-#~ msgid "User:"
-#~ msgstr "Usuari:"
-
-#~ msgid "Clear List"
-#~ msgstr "Neteja la llista"
