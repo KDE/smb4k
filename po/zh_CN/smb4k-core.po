@@ -2864,10 +2864,9 @@ msgstr ""
 "中。请不要在此输入那些已在配置对话框中指定的选项。"
 
 #: smb4knotification.cpp:64
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "<p>共享 <b>%1</b> 已挂载到 <b>%2</b>。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:78
 #, kde-format
@@ -2876,26 +2875,21 @@ msgid "Open"
 msgstr "打开"
 
 #: smb4knotification.cpp:100
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr "<p>共享 <b>%1</b> 已从 <b>%2</b> 卸载。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:118
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been mounted.</p>"
-#| msgid_plural "<p>%1 shares have been mounted.</p>"
+#, kde-format
 msgid "%1 share has been mounted."
 msgid_plural "%1 shares have been mounted."
-msgstr[0] "<p>已挂载 %1 个共享。</p>"
+msgstr[0] ""
 
 #: smb4knotification.cpp:135
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been unmounted.</p>"
-#| msgid_plural "<p>%1 shares have been unmounted.</p>"
+#, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] "<p>已卸载 %1 个共享。</p>"
+msgstr[0] ""
 
 #: smb4knotification.cpp:153
 #, kde-format
@@ -2907,223 +2901,166 @@ msgstr ""
 "的 Smb4K。"
 
 #: smb4knotification.cpp:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
-#| "the file to PDF or Postscript and try again.</p>"
+#, kde-format
 msgid ""
 "The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again."
 msgstr ""
-"<p>打印功能不支持 MIME 类型 <b>%1</b> 。请将文件转换为 PDF 或者 Postscript，"
-"然后重试。</p>"
 
 #: smb4knotification.cpp:188
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
-#| "p>"
+#, kde-format
 msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
-msgstr "<p>共享 <b>%1</b> 的书签已存在，它将被跳过。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:206
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed.</p>"
+#, kde-format
 msgid ""
 "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
 "used and will automatically be renamed."
-msgstr "<p>共享 <b>%2</b> 的标签 <b>%1</b> 已被使用，它将被自动重命名。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:225
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>挂载共享 <b>%1</b> 失败：</p><p><tt>%2</tt></p>"
+msgstr ""
 
 #: smb4knotification.cpp:227
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "<p>挂载共享 <b>%1</b> 失败。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:250
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr "<p>卸载 <b>%2</b> 上的共享 <b>%1</b> 失败：</p><p><tt>%3</tt></p>"
+msgstr ""
 
 #: smb4knotification.cpp:252
-#, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "<p>卸载 <b>%2</b> 上的共享 <b>%1</b> 失败。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:279
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#| "is owned by the user <b>%3</b>.</p>"
+#, kde-format
 msgid ""
 "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>."
 msgstr ""
-"<p>您不具备从 <b>%2</b> 卸载共享 <b>%1</b> 的权限。它的所有者是用户 <b>%3</"
-"b>。</p>"
 
 #: smb4knotification.cpp:293
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr "<p>同步 <b>%1</b> 和 <b>%2</b> 失败：</p><p><tt>%3</tt></p>"
+msgstr ""
 
 #: smb4knotification.cpp:295
-#, fuzzy, kde-format
-#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
-msgstr "<p>同步 <b>%1</b> 和 <b>%2</b> 失败。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:317
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The command <b>%1</b> could not be found. Please check your "
-#| "installation.</p>"
+#, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
-msgstr "<p>命令 <b>%1</b> 无法找到。请检查本机系统的软件安装情况。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:333
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
-msgstr "<p>共享 <b>%1</b> 是一台打印机，它无法被添加为书签。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:347
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file <b>%1</b> could not be found."
-msgstr "<p>文件 <b>%1</b> 无法找到。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:357
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>打开文件 <b>%1</b> 失败：</p><p><tt>%2</tt></p>"
+msgstr ""
 
 #: smb4knotification.cpp:359
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr "<p>打开文件 <b>%1</b> 失败。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:378 smb4knotification.cpp:381
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>读取文件 <b>%1</b> 失败：</p><p><tt>%2</tt></p>"
+msgstr ""
 
 #: smb4knotification.cpp:383
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr "<p>读取文件 <b>%1</b> 失败。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:406
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
-msgstr "<p>无法创建以下目录：</p><p><tt>%1</tt></p>"
+msgstr ""
 
 #: smb4knotification.cpp:417
-#, fuzzy, kde-format
-#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
-msgstr "<p>进程启动失败 (错误代码：<tt>%1</tt>)。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:421
-#, fuzzy, kde-format
-#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
-msgstr "<p>进程已崩溃 (错误代码：<tt>%1</tt>)。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:425
-#, fuzzy, kde-format
-#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
-msgstr "<p>进程超时 (错误代码：<tt>%1</tt>)。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:429
-#, fuzzy, kde-format
-#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
-msgstr "<p>无法写入进程 (错误代码：<tt>%1</tt>)。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:433
-#, fuzzy, kde-format
-#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
-msgstr "<p>无法读取进程数据 (错误代码：<tt>%1</tt>)。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:438
-#, fuzzy, kde-format
-#| msgid "<p>The process reported an unknown error.</p>"
+#, kde-format
 msgid "The process reported an unknown error."
-msgstr "<p>该进程报告了一个未知错误。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Executing an action with root privileges failed (error code: <tt>%1</"
-#| "tt>).</p>"
+#, kde-format
 msgid ""
 "Executing an action with root privileges failed (error code: <tt>%1</tt>)."
-msgstr "<p>使用 root 权限执行操作失败 (错误代码：<tt>%1</tt>)。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:503
-#, fuzzy, kde-format
-#| msgid "<p>Executing an action with root privileges failed.</p>"
+#, kde-format
 msgid "Executing an action with root privileges failed."
-msgstr "<p>使用 root 权限执行操作失败。</p>"
+msgstr ""
 
 #: smb4knotification.cpp:525
-#, fuzzy, kde-format
-#| msgid "<p>The URL that was passed is invalid.</p>"
+#, kde-format
 msgid "The URL that was passed is invalid."
-msgstr "<p>传递的 URL 无效</p>"
+msgstr ""
 
 #: smb4knotification.cpp:538
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The network communication failed with the following error message: <s>"
-#| "%1</s></p>"
+#, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
-msgstr "<p>网络通信失败，错误消息：<s>%1</s></p>"
+msgstr ""
 
 #: smb4knotification.cpp:551
-#, fuzzy, kde-format
-#| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+#, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
-msgstr "<p>Zeroconf 服务出错：<s>%1</s></p>"
+msgstr ""
 
 #: smb4knotification.cpp:564
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>An error occurred while reading the login credentials from the secure "
-#| "storage:\n"
-#| "<tt>%1</tt></p>"
+#, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: <tt>%1</tt>"
 msgstr ""
-"<p>读取安全存储中的凭据时发生错误：\n"
-"<tt>%1</tt></p>"
 
 #: smb4kshare.cpp:193
 #, kde-format
