@@ -20,17 +20,15 @@
 
 // KDE includes
 #include <KLocalizedString>
+#include <KUiServerV2JobTracker>
 
 using namespace Smb4KGlobal;
 
 Smb4KSyncJob::Smb4KSyncJob(QObject *parent)
     : KJob(parent)
-    , m_process(nullptr)
+    , m_jobTracker(new KUiServerV2JobTracker(this))
 {
     setCapabilities(KJob::Killable);
-
-    m_terminated = false;
-    m_jobTracker = new KUiServerJobTracker(this);
 }
 
 Smb4KSyncJob::~Smb4KSyncJob()
@@ -377,7 +375,7 @@ void Smb4KSyncJob::slotStartSynchronization()
     // The job tracker
     //
     m_jobTracker->registerJob(this);
-    connect(this, &Smb4KSyncJob::result, m_jobTracker, &KUiServerJobTracker::unregisterJob);
+    connect(this, &Smb4KSyncJob::result, m_jobTracker, &KUiServerV2JobTracker::unregisterJob);
 
     //
     // The process
