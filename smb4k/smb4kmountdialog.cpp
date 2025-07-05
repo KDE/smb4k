@@ -1,7 +1,7 @@
 /*
  *  Mount dialog
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -185,17 +185,35 @@ Smb4KMountDialog::~Smb4KMountDialog()
 {
 }
 
-bool Smb4KMountDialog::isValidLocation(const QString &text)
+QUrl Smb4KMountDialog::createUrl(const QString &text) const
 {
-    QString userInput = text;
+    QUrl url;
+    QString userInfo, userInput = text;
 
     if (userInput.startsWith(QStringLiteral("\\"))) {
         userInput.replace(QStringLiteral("\\"), QStringLiteral("/"));
     }
 
-    QUrl url = QUrl::fromUserInput(userInput).adjusted(QUrl::StripTrailingSlash);
+    // If a UNC with user info is passed, QUrl seems to make wrong assuptions,
+    // so just cut out the user info and set it later.
+    if (userInput.startsWith(QStringLiteral("//")) && userInput.contains(QStringLiteral("@"))) {
+        userInfo = userInput.section(QStringLiteral("@"), 0, -2).section(QStringLiteral("/"), 2, -1);
+        userInput.remove(userInfo + QStringLiteral("@"));
+    }
+
+    url = QUrl::fromUserInput(userInput).adjusted(QUrl::StripTrailingSlash);
     url.setScheme(QStringLiteral("smb"));
 
+    if (!userInfo.isEmpty()) {
+        url.setUserInfo(userInfo);
+    }
+
+    return url;
+}
+
+bool Smb4KMountDialog::isValidLocation(const QString &text)
+{
+    QUrl url = createUrl(text);
     return (url.isValid() && !url.host().isEmpty() && !url.path().isEmpty() && url.path().length() != 1);
 }
 
@@ -234,17 +252,8 @@ void Smb4KMountDialog::slotEnableBookmarkInputWidget()
 
 void Smb4KMountDialog::slotLocationEntered()
 {
-    QString userInputUrl = m_locationInput->userText().trimmed();
-
-    if (userInputUrl.startsWith(QStringLiteral("\\"))) {
-        userInputUrl.replace(QStringLiteral("\\"), QStringLiteral("/"));
-    }
-
-    QUrl url = QUrl::fromUserInput(userInputUrl).adjusted(QUrl::StripTrailingSlash);
-    url.setScheme(QStringLiteral("smb"));
-
-    if (isValidLocation(userInputUrl)) {
-        m_locationInput->completionObject()->addItem(userInputUrl);
+    if (isValidLocation(m_locationInput->userText().trimmed())) {
+        m_locationInput->completionObject()->addItem(m_locationInput->userText().trimmed());
     }
 }
 
@@ -286,19 +295,12 @@ void Smb4KMountDialog::slotCategoryEntered()
 
 void Smb4KMountDialog::slotAccepted()
 {
-    QString userInputUrl = m_locationInput->userText().trimmed();
-
-    if (userInputUrl.startsWith(QStringLiteral("\\"))) {
-        userInputUrl.replace(QStringLiteral("\\"), QStringLiteral("/"));
-    }
-
-    QUrl url = QUrl::fromUserInput(userInputUrl).adjusted(QUrl::StripTrailingSlash);
-    url.setScheme(QStringLiteral("smb"));
+    QUrl url = createUrl(m_locationInput->userText().trimmed());
 
     // This case might never happen, because the buttons are only
     // enabled when isValidLocation() returns TRUE, but we leave
     // this here for safety.
-    if (!isValidLocation(userInputUrl)) {
+    if (!isValidLocation(m_locationInput->userText().trimmed())) {
         m_locationInput->setFocus();
         return;
     }
