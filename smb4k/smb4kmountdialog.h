@@ -1,7 +1,7 @@
 /*
  *  Mount dialog
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -17,6 +17,7 @@
 #include <QPushButton>
 #include <QResizeEvent>
 #include <QSize>
+#include <QUrl>
 
 // KDE includes
 #include <KComboBox>
@@ -50,6 +51,7 @@ protected Q_SLOTS:
     void slotRejected();
 
 private:
+    QUrl createUrl(const QString &text) const;
     bool isValidLocation(const QString &text);
     void adjustDialogSize();
     KLineEdit *m_locationInput;
