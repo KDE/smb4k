@@ -236,7 +236,7 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
-msgstr "ნაგულისხმები მომხმარებელი"
+msgstr "ნაგულისხმევი მომხმარებელი"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
@@ -1253,13 +1253,13 @@ msgstr "Size:"
 #~ msgstr "შენახვა"
 
 #~ msgid "Enter the default login information."
-#~ msgstr "შეიყვანეთ შესვლის ნაგულისხმები ინფორმაცია."
+#~ msgstr "შეიყვანეთ შესვლის ნაგულისხმევი ინფორმაცია."
 
 #~ msgid "Set the username and password for wallet entry %1."
 #~ msgstr "დააყენეთ მომხმარებელი და პაროლი საფულის ჩანაწერისთვის %1."
 
 #~ msgid "Set the username and password for the default login."
-#~ msgstr "დააყეენთ მომხმარებელი და პაროლი ნაგულისხმები შესვლისთვის."
+#~ msgstr "დააყეენთ მომხმარებელი და პაროლი ნაგულისხმევი შესვლისთვის."
 
 #~ msgid "The wallet is used."
 #~ msgstr "საფულე გამოყენებულია."
