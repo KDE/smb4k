@@ -15,7 +15,7 @@
 #include "smb4ksynchronizer.h"
 
 // Qt includes
-#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
 #include <qapplicationstatic.h>
@@ -640,7 +640,7 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
     return updated;
 }
 
-bool Smb4KGlobal::removeMountedShare(SharePtr share)
+bool Smb4KGlobal::removeMountedShare(SharePtr share, bool takeOnly)
 {
     Q_ASSERT(share);
 
@@ -649,12 +649,8 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
     if (share) {
         mutex.lock();
 
-        //
-        // Reset the mount data for the network share and the
-        // search result
-        //
+        // Reset the mount data for the _network share_
         if (!share->isForeign()) {
-            // Network share
             SharePtr networkShare = findShare(share->url(), share->workgroupName());
 
             if (networkShare) {
@@ -662,17 +658,12 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
             }
         }
 
-        //
-        // Remove the mounted share
-        //
         int index = p->mountedSharesList.indexOf(share);
 
         if (index != -1) {
-            // The share was found. Remove it.
-            p->mountedSharesList.takeAt(index).clear();
+            p->mountedSharesList.takeAt(index);
             removed = true;
         } else {
-            // Try harder to find the share.
             SharePtr s = findShareByPath(share->isInaccessible() ? share->path() : share->canonicalPath());
 
             if (s) {
@@ -683,7 +674,9 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
                     removed = true;
                 }
             }
+        }
 
+        if (share && !takeOnly) {
             share.clear();
         }
 

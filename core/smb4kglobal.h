@@ -314,23 +314,29 @@ SMB4KCORE_EXPORT bool addMountedShare(SharePtr share);
  * is already present in the internal list.
  *
  * @param share       The share item
+ *
  * @returns TRUE if a share was found and updated. Returns FALSE otherwise.
  */
 SMB4KCORE_EXPORT bool updateMountedShare(SharePtr share);
 
 /**
  * This function removes a mounted share @p share from the list of mounted
- * shares. The pointer that is passed to this function will be deleted.
- * You won't be able to use it afterwards. This function returns TRUE if
- * the share was removed and FALSE otherwise.
+ * shares. If @p takeOnly is FALSE, the pointer that is passed to this function
+ * will be deleted. You won't be able to use it afterwards. If @p takeOnly is
+ * TRUE, the mounted share is only removed, but not deleted.
+ *
+ * This function returns TRUE if the share was removed and FALSE otherwise.
  *
  * Please prefer this function over per class solutions.
  *
  * @param share       The share item
  *
+ * @param takeOnly    TRUE if the share should only be removed from the
+ *                    list, but not deleted, and FALSE otherwise
+ *
  * @returns TRUE if the share was removed and FALSE otherwise.
  */
-SMB4KCORE_EXPORT bool removeMountedShare(SharePtr share);
+SMB4KCORE_EXPORT bool removeMountedShare(SharePtr share, bool takeOnly);
 
 /**
  * This function returns TRUE if only shares are present that are owned by
