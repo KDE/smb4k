@@ -479,6 +479,10 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
 {
     Q_ASSERT(item);
 
+    if (Smb4KClient::self()->isRunning()) {
+        QApplication::setOverrideCursor(Qt::BusyCursor);
+    }
+
     switch (process) {
     case LookupDomains: {
         statusBar()->showMessage(i18n("Looking for workgroups and domains..."), 0);
@@ -557,10 +561,18 @@ void Smb4KMainWindow::slotClientFinished(const NetworkItemPtr &item, int process
         m_progressBar->reset();
         statusBar()->showMessage(i18n("Done."), 2000);
     }
+
+    if (!Smb4KClient::self()->isRunning()) {
+        QApplication::restoreOverrideCursor();
+    }
 }
 
 void Smb4KMainWindow::slotMounterAboutToStart(int process)
 {
+    if (Smb4KMounter::self()->isRunning()) {
+        QApplication::setOverrideCursor(Qt::BusyCursor);
+    }
+
     // Tell the user which action is performed by the mounter:
     // mounting, unmounting or waking up.
     switch (process) {
@@ -597,6 +609,10 @@ void Smb4KMainWindow::slotMounterFinished(int process)
             statusBar()->showMessage(i18n("Done."), 2000);
         }
     });
+
+    if (!Smb4KMounter::self()->isRunning()) {
+        QApplication::restoreOverrideCursor();
+    }
 }
 
 void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)

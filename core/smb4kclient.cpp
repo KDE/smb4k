@@ -19,7 +19,7 @@
 
 // Qt includes
 #include <QApplication>
-#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
 #include <qapplicationstatic.h>
@@ -140,19 +140,12 @@ void Smb4KClient::lookupDomains()
         }
     }
 
+
     //
-    // Emit the aboutToStart() signal
+    // Setup network item
     //
     NetworkItemPtr networkItem = NetworkItemPtr(new Smb4KBasicNetworkItem(Network));
     networkItem->setUrl(QUrl(QStringLiteral("smb://")));
-    Q_EMIT aboutToStart(networkItem, LookupDomains);
-
-    //
-    // Set the busy cursor
-    //
-    if (!hasSubjobs()) {
-        QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
 
     //
     // Create the client job
@@ -201,6 +194,11 @@ void Smb4KClient::lookupDomains()
     }
 
     //
+    // Emit the aboutToStart() signal
+    //
+    Q_EMIT aboutToStart(networkItem, LookupDomains);
+
+    //
     // Start the jobs
     //
     clientJob->start();
@@ -223,18 +221,6 @@ void Smb4KClient::lookupDomains()
 
 void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
 {
-    //
-    // Emit the aboutToStart() signal
-    //
-    Q_EMIT aboutToStart(workgroup, LookupDomainMembers);
-
-    //
-    // Set the busy cursor
-    //
-    if (!hasSubjobs()) {
-        QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-
     //
     // Create the client job
     //
@@ -282,6 +268,11 @@ void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
     }
 
     //
+    // Emit the aboutToStart() signal
+    //
+    Q_EMIT aboutToStart(workgroup, LookupDomainMembers);
+
+    //
     // Start the job
     //
     clientJob->start();
@@ -300,11 +291,6 @@ void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
 void Smb4KClient::lookupShares(const HostPtr &host)
 {
     //
-    // Emit the aboutToStart() signal
-    //
-    Q_EMIT aboutToStart(host, LookupShares);
-
-    //
     // Create the job
     //
     Smb4KClientJob *job = new Smb4KClientJob(this);
@@ -312,16 +298,14 @@ void Smb4KClient::lookupShares(const HostPtr &host)
     job->setProcess(LookupShares);
 
     //
-    // Set the busy cursor
-    //
-    if (!hasSubjobs()) {
-        QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-
-    //
     // Add the job to the subjobs
     //
     addSubjob(job);
+
+    //
+    // Emit the aboutToStart() signal
+    //
+    Q_EMIT aboutToStart(host, LookupShares);
 
     //
     // Start the job
@@ -332,17 +316,13 @@ void Smb4KClient::lookupShares(const HostPtr &host)
 void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
 {
     if (item->type() == Share || (item->type() == FileOrDirectory && item.staticCast<Smb4KFile>()->isDirectory())) {
-        Q_EMIT aboutToStart(item, LookupFiles);
-
         Smb4KClientJob *job = new Smb4KClientJob(this);
         job->setNetworkItem(item);
         job->setProcess(LookupFiles);
 
-        if (!hasSubjobs()) {
-            QApplication::setOverrideCursor(Qt::BusyCursor);
-        }
-
         addSubjob(job);
+
+        Q_EMIT aboutToStart(item, LookupFiles);
 
         job->start();
     }
@@ -358,11 +338,6 @@ void Smb4KClient::printFile(const SharePtr &share, const KFileItem &fileItem, in
     }
 
     //
-    // Emit the aboutToStart() signal
-    //
-    Q_EMIT aboutToStart(share, PrintFile);
-
-    //
     // Create the job
     //
     Smb4KClientJob *job = new Smb4KClientJob(this);
@@ -372,16 +347,14 @@ void Smb4KClient::printFile(const SharePtr &share, const KFileItem &fileItem, in
     job->setProcess(PrintFile);
 
     //
-    // Set the busy cursor
-    //
-    if (!hasSubjobs()) {
-        QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-
-    //
     // Add the job to the subjobs
     //
     addSubjob(job);
+
+    //
+    // Emit the aboutToStart() signal
+    //
+    Q_EMIT aboutToStart(share, PrintFile);
 
     //
     // Start the job
@@ -858,13 +831,6 @@ void Smb4KClient::slotResult(KJob *job)
     // Clear the network item pointer
     //
     networkItem.clear();
-
-    //
-    // Restore the cursor
-    //
-    if (!hasSubjobs()) {
-        QApplication::restoreOverrideCursor();
-    }
 }
 
 void Smb4KClient::slotAboutToQuit()

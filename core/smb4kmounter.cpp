@@ -356,11 +356,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         }
 
         //
-        // Emit the aboutToStart() signal
-        //
-        Q_EMIT aboutToStart(MountShare);
-
-        //
         // Create the mount action
         //
         KAuth::Action mountAction(QStringLiteral("org.kde.smb4k.mounthelper.mount"));
@@ -368,18 +363,12 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         mountAction.setArguments(args);
 
         KAuth::ExecuteJob *job = mountAction.execute();
-
-        //
-        // Modify the cursor, if necessary.
-        //
-        if (!hasSubjobs()) {
-            QApplication::setOverrideCursor(Qt::BusyCursor);
-        }
-
-        //
-        // Add the job
-        //
         addSubjob(job);
+
+        //
+        // Emit the aboutToStart() signal
+        //
+        Q_EMIT aboutToStart(MountShare);
 
         //
         // Start the job and process the returned result.
@@ -538,11 +527,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         }
 
         //
-        // Emit the aboutToStart() signal
-        //
-        Q_EMIT aboutToStart(UnmountShare);
-
-        //
         // Create the unmount action
         //
         KAuth::Action unmountAction(QStringLiteral("org.kde.smb4k.mounthelper.unmount"));
@@ -550,18 +534,12 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         unmountAction.setArguments(args);
 
         KAuth::ExecuteJob *job = unmountAction.execute();
-
-        //
-        // Modify the cursor, if necessary.
-        //
-        if (!hasSubjobs()) {
-            QApplication::setOverrideCursor(Qt::BusyCursor);
-        }
-
-        //
-        // Add the job
-        //
         addSubjob(job);
+
+        //
+        // Emit the aboutToStart() signal
+        //
+        Q_EMIT aboutToStart(UnmountShare);
 
         //
         // Start the job and process the returned result.
