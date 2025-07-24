@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-21 00:42+0000\n"
+"POT-Creation-Date: 2025-07-06 00:42+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -3079,17 +3079,17 @@ msgstr "打印机"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Synchronizing"
 msgstr "正在同步"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Source"
 msgstr "来源"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Destination"
 msgstr "目标"

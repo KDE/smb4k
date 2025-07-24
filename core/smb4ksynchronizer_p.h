@@ -18,7 +18,8 @@
 // KDE includes
 #include <KJob>
 #include <KProcess>
-#include <KUiServerJobTracker>
+
+class KUiServerV2JobTracker;
 
 class Smb4KSyncJob : public KJob
 {
@@ -83,9 +84,9 @@ protected Q_SLOTS:
 private:
     QUrl m_sourceUrl;
     QUrl m_destinationUrl;
-    KProcess *m_process;
-    KUiServerJobTracker *m_jobTracker;
-    bool m_terminated;
+    KProcess *m_process = nullptr;
+    KUiServerV2JobTracker * const m_jobTracker;
+    bool m_terminated = false;
 };
 
 class Smb4KSynchronizerPrivate

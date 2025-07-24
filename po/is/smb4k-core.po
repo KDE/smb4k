@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-21 00:42+0000\n"
+"POT-Creation-Date: 2025-07-06 00:42+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -2897,19 +2897,19 @@ msgstr "Prentari"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, fuzzy, kde-format
 #| msgid "Synchronizing data..."
 msgid "Synchronizing"
 msgstr "Samræmi gögn..."
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, fuzzy, kde-format
 #| msgid "Source:"
 msgid "Source"
 msgstr "Upphaf:"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, fuzzy, kde-format
 #| msgid "Destination:"
 msgid "Destination"

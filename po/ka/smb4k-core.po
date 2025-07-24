@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-21 00:42+0000\n"
+"POT-Creation-Date: 2025-07-06 00:42+0000\n"
 "PO-Revision-Date: 2025-06-21 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -2038,7 +2038,7 @@ msgstr "კლიენტის სიმბოლოების კოდი�
 #: smb4kmountsettings_linux.kcfg:73
 #, kde-format
 msgid "default"
-msgstr "ნაგულისხმები"
+msgstr "ნაგულისხმევი"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:61 smb4kmountsettings_linux.kcfg:76
@@ -3270,17 +3270,17 @@ msgstr "პრინტერი"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Synchronizing"
 msgstr "სინქრონიზაცია"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Source"
 msgstr "წყარო"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Destination"
 msgstr "დანიშნულება"

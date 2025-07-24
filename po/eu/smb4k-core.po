@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-21 00:42+0000\n"
-"PO-Revision-Date: 2025-06-25 22:27+0200\n"
+"POT-Creation-Date: 2025-07-06 00:42+0000\n"
+"PO-Revision-Date: 2025-07-14 14:09+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -3138,7 +3138,7 @@ msgstr ""
 #: smb4knotification.cpp:225
 #, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<b>%1</b> partekatzea muntatzea huts egin du:</p><p><tt>%2</tt>"
+msgstr "<b>%1</b> partekatzea muntatzea huts egin du:<tt>%2</tt>"
 
 #: smb4knotification.cpp:227
 #, kde-format
@@ -3149,8 +3149,7 @@ msgstr "<b>%1</b> partekatzea muntatzea huts egin du."
 #, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
-"<b>%1</b> partekatzea <b>%2</b>(e)tik desmuntatzea huts egin du:</p><p><tt>"
-"%3</tt>"
+"<b>%1</b> partekatzea <b>%2</b>(e)tik desmuntatzea huts egin du:<tt>%3</tt>"
 
 #: smb4knotification.cpp:252
 #, kde-format
@@ -3169,8 +3168,7 @@ msgstr ""
 #: smb4knotification.cpp:293
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<b>%1</b> <b>%2</b>rekin sinkronizatzea huts egin du:</p><p><tt>%3</tt>"
+msgstr "<b>%1</b> <b>%2</b>rekin sinkronizatzea huts egin du:<tt>%3</tt>"
 
 #: smb4knotification.cpp:295
 #, kde-format
@@ -3197,7 +3195,7 @@ msgstr "Ezin izan da <b>%1</b> fitxategia aurkitu."
 #: smb4knotification.cpp:357
 #, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<b>%1</b> fitxategia irekitzea huts egin du:</p><p><tt>%2</tt>"
+msgstr "<b>%1</b> fitxategia irekitzea huts egin du:<tt>%2</tt>"
 
 #: smb4knotification.cpp:359
 #, kde-format
@@ -3207,7 +3205,7 @@ msgstr "<b>%1</b> fitxategia irekitzea huts egin du."
 #: smb4knotification.cpp:378 smb4knotification.cpp:381
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<b>%1</b> fitxategitik irakurtzea huts egin du:</p><p><tt>%2</tt>"
+msgstr "<b>%1</b> fitxategitik irakurtzea huts egin du:<tt>%2</tt>"
 
 #: smb4knotification.cpp:383
 #, kde-format
@@ -3217,7 +3215,7 @@ msgstr "<b>%1</b> fitxategitik irakurtzea huts egin du."
 #: smb4knotification.cpp:406
 #, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
-msgstr "Ondoko direktorioa ezin izan da sortu:</p><p><tt>%1</tt>"
+msgstr "Ondoko direktorioa ezin izan da sortu:<tt>%1</tt>"
 
 #: smb4knotification.cpp:417
 #, kde-format
@@ -3303,17 +3301,17 @@ msgstr "Inprimagailua"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Synchronizing"
 msgstr "Sinkronizatzea"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Source"
 msgstr "Sorburua"
 
-#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
+#: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Destination"
 msgstr "Jomuga"
