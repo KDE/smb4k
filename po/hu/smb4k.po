@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-08 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2024-05-10 14:21+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -742,73 +742,73 @@ msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "%1 csatolt megosztás van."
 msgstr[1] "%1 csatolt megosztás van."
 
-#: smb4k/smb4kmainwindow.cpp:484
+#: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Munkacsoportok és tartományok keresése…"
 
-#: smb4k/smb4kmainwindow.cpp:489
+#: smb4k/smb4kmainwindow.cpp:493
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Gépek keresése a(z) %1 tartományban…"
 
-#: smb4k/smb4kmainwindow.cpp:494
+#: smb4k/smb4kmainwindow.cpp:498
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "A(z) %1 gép által nyújtott megosztások keresése…"
 
-#: smb4k/smb4kmainwindow.cpp:502 smb4k/smb4kmainwindow.cpp:511
+#: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Fájlok és mappák keresése itt: %1…"
 
-#: smb4k/smb4kmainwindow.cpp:528
+#: smb4k/smb4kmainwindow.cpp:532
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Távoli gépek felébresztése…"
 
-#: smb4k/smb4kmainwindow.cpp:533
+#: smb4k/smb4kmainwindow.cpp:537
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Fájl küldése a(z) %1 nyomtatóra…"
 
-#: smb4k/smb4kmainwindow.cpp:537
+#: smb4k/smb4kmainwindow.cpp:541
 #, kde-format
 msgid "Searching..."
 msgstr "Keresés…"
 
-#: smb4k/smb4kmainwindow.cpp:558 smb4k/smb4kmainwindow.cpp:597
-#: smb4k/smb4kmainwindow.cpp:682
+#: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
+#: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "Done."
 msgstr "Kész."
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
 msgid "Mounting..."
 msgstr "Csatolás…"
 
-#: smb4k/smb4kmainwindow.cpp:572
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Unmounting..."
 msgstr "Leválasztás…"
 
-#: smb4k/smb4kmainwindow.cpp:576
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "Waking up host..."
 msgstr "Gép felébresztése…"
 
-#: smb4k/smb4kmainwindow.cpp:606
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 sikeresen csatolva."
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 sikeresen leválasztva."
 
-#: smb4k/smb4kmainwindow.cpp:668
+#: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 szinkronizálása"

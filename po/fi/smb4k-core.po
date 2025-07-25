@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-06 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2025-07-10 19:56+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1936,7 +1936,7 @@ msgstr "Zeroconf-tuki ei ole käytettävissä tässä KDE-versiossa."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconfissa tapahtui tuntematon virhe."
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:485
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1945,7 +1945,7 @@ msgstr ""
 "<p>Jako <b>%1</b> on liitetty kansioon<br><b>%2</b>, ja sen omistaa <b>%3</"
 "b>.</p><p>Haluatko varmasti irrottaa sen?</p>"
 
-#: smb4kmounter.cpp:692
+#: smb4kmounter.cpp:490
 #, kde-format
 msgid "Foreign Share"
 msgstr "Vieras jako"

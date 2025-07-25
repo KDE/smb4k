@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-08 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2025-05-08 09:25+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -722,73 +722,73 @@ msgstr[1] "Trenutno sta priklopljena %1 skupna diska."
 msgstr[2] "Trenutno so priklopljeni %1 skupni diski."
 msgstr[3] "Trenutno je priklopljenih %1 skupnih diskov."
 
-#: smb4k/smb4kmainwindow.cpp:484
+#: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Pregledovanje za delovnimi skupinami in domenami..."
 
-#: smb4k/smb4kmainwindow.cpp:489
+#: smb4k/smb4kmainwindow.cpp:493
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Pregledovanje za gostitelji in domenami %1..."
 
-#: smb4k/smb4kmainwindow.cpp:494
+#: smb4k/smb4kmainwindow.cpp:498
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Pregledovanje za skupnimi diski, ki jih zagotavljajo gostitelji %1..."
 
-#: smb4k/smb4kmainwindow.cpp:502 smb4k/smb4kmainwindow.cpp:511
+#: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Pregledovanje za datotekami in imeniki v %1..."
 
-#: smb4k/smb4kmainwindow.cpp:528
+#: smb4k/smb4kmainwindow.cpp:532
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Zbujanje oddaljenih gostiteljev..."
 
-#: smb4k/smb4kmainwindow.cpp:533
+#: smb4k/smb4kmainwindow.cpp:537
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Pošiljanje datotek na tiskalnik %1..."
 
-#: smb4k/smb4kmainwindow.cpp:537
+#: smb4k/smb4kmainwindow.cpp:541
 #, kde-format
 msgid "Searching..."
 msgstr "Iskanje..."
 
-#: smb4k/smb4kmainwindow.cpp:558 smb4k/smb4kmainwindow.cpp:597
-#: smb4k/smb4kmainwindow.cpp:682
+#: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
+#: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "Done."
 msgstr "Dokončano."
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
 msgid "Mounting..."
 msgstr "Priklapljanje..."
 
-#: smb4k/smb4kmainwindow.cpp:572
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Unmounting..."
 msgstr "Odklapljanje..."
 
-#: smb4k/smb4kmainwindow.cpp:576
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "Waking up host..."
 msgstr "Zbujanje gostitelja..."
 
-#: smb4k/smb4kmainwindow.cpp:606
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 je bil uspešno priklopljen."
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 je bil uspešno odklopljen."
 
-#: smb4k/smb4kmainwindow.cpp:668
+#: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Usklajevanje %1"

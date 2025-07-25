@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-06 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2025-06-21 08:12+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1853,7 +1853,7 @@ msgstr "התמיכה ב־Zeroconf לא זמינה בגרסה הזאת של KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "אירעה שגיאה בלתי ידועה עם Zeroconf."
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:485
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1862,7 +1862,7 @@ msgstr ""
 "<p>השיתוף <b>%1</b> מעוגן אל <br><b>%2</b> ובבעלות המשתמש <b>%3</b>.</"
 "p><p>לנתק אותו?</p>"
 
-#: smb4kmounter.cpp:692
+#: smb4kmounter.cpp:490
 #, kde-format
 msgid "Foreign Share"
 msgstr "שיתוף מרוחק"

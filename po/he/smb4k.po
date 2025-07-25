@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-08 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2025-05-08 21:19+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -714,73 +714,73 @@ msgstr[1] "יש שני שיתופים מעוגנים כרגע."
 msgstr[2] "יש %1 שיתופים מעוגנים כרגע."
 msgstr[3] "יש %1 שיתופים מעוגנים כרגע."
 
-#: smb4k/smb4kmainwindow.cpp:484
+#: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "מתבצע חיפוש אחר קבוצות עבודה ושמות תחום…"
 
-#: smb4k/smb4kmainwindow.cpp:489
+#: smb4k/smb4kmainwindow.cpp:493
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "מתבצע חיפוש אחר מארחים בשם התחום %1…"
 
-#: smb4k/smb4kmainwindow.cpp:494
+#: smb4k/smb4kmainwindow.cpp:498
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "מתבצע חיפוש אחר שיתופים שסופקו על ידי המארח %1…"
 
-#: smb4k/smb4kmainwindow.cpp:502 smb4k/smb4kmainwindow.cpp:511
+#: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "מתבצע חיפוש אחר קבצים ותיקיות תחת %1…"
 
-#: smb4k/smb4kmainwindow.cpp:528
+#: smb4k/smb4kmainwindow.cpp:532
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "מתבצעת השכמה של מארחים מרוחקים…"
 
-#: smb4k/smb4kmainwindow.cpp:533
+#: smb4k/smb4kmainwindow.cpp:537
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "קובץ נשלח למדפסת %1…"
 
-#: smb4k/smb4kmainwindow.cpp:537
+#: smb4k/smb4kmainwindow.cpp:541
 #, kde-format
 msgid "Searching..."
 msgstr "מתבצע חיפוש…"
 
-#: smb4k/smb4kmainwindow.cpp:558 smb4k/smb4kmainwindow.cpp:597
-#: smb4k/smb4kmainwindow.cpp:682
+#: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
+#: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "Done."
 msgstr "הסתיים."
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
 msgid "Mounting..."
 msgstr "מתבצע עיגון…"
 
-#: smb4k/smb4kmainwindow.cpp:572
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Unmounting..."
 msgstr "העיגון מנותק…"
 
-#: smb4k/smb4kmainwindow.cpp:576
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "Waking up host..."
 msgstr "המארח מתעורר…"
 
-#: smb4k/smb4kmainwindow.cpp:606
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 עוגן בהצלחה."
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "העיגון %1 נותק בהצלחה."
 
-#: smb4k/smb4kmainwindow.cpp:668
+#: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 מסונכרן"

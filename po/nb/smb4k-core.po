@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-06 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2014-11-09 21:22+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -1681,14 +1681,14 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:485
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:692
+#: smb4kmounter.cpp:490
 #, kde-format
 msgid "Foreign Share"
 msgstr ""

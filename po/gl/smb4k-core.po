@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-06 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2025-06-22 15:55+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1950,7 +1950,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Produciuse un erro descoñecido con Zeroconf."
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:485
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1959,7 +1959,7 @@ msgstr ""
 "<p>A compartición <b>%1</b> está montada en <br><b>%2</b> e ten como "
 "propietario a <b>%3</b>.</p><p>Está seguro de que quere desmontala?</p>"
 
-#: smb4kmounter.cpp:692
+#: smb4kmounter.cpp:490
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartición externa"

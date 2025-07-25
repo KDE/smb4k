@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-06 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2024-12-15 19:29+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -1888,7 +1888,7 @@ msgstr "KDE के इस संस्करण में Zeroconf समर्�
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf में एक अज्ञात त्रुटि घटित हुई."
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:485
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1897,7 +1897,7 @@ msgstr ""
 "<p>शेयर <b>%1</b> को माउंट किया गया है<br> <b>%2</b> और उपयोगकर्ता <b>%3</b> के "
 "स्वामित्व में है.</p><p> क्या आप सचमुच इसे अनमाउंट करना चाहते हैं?</p>"
 
-#: smb4kmounter.cpp:692
+#: smb4kmounter.cpp:490
 #, kde-format
 msgid "Foreign Share"
 msgstr "विदेशी शेयर"

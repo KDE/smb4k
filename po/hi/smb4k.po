@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-08 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -709,73 +709,73 @@ msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "वर्तमान में %1 शेयर माउंटेड हैं।"
 msgstr[1] "वर्तमान में %1 शेयर माउंटेड हैं।"
 
-#: smb4k/smb4kmainwindow.cpp:484
+#: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "कार्यसमूहों और डोमेन की तलाश में..."
 
-#: smb4k/smb4kmainwindow.cpp:489
+#: smb4k/smb4kmainwindow.cpp:493
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "डोमेन %1 में होस्ट खोज रहे हैं..."
 
-#: smb4k/smb4kmainwindow.cpp:494
+#: smb4k/smb4kmainwindow.cpp:498
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "होस्ट %1 द्वारा प्रदान किये गए शेयर की तलाश है..."
 
-#: smb4k/smb4kmainwindow.cpp:502 smb4k/smb4kmainwindow.cpp:511
+#: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "%1 में फ़ाइलें और निर्देशिकाएँ खोज रहा हूँ..."
 
-#: smb4k/smb4kmainwindow.cpp:528
+#: smb4k/smb4kmainwindow.cpp:532
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "दूरस्थ होस्ट को जागृत किया जा रहा है..."
 
-#: smb4k/smb4kmainwindow.cpp:533
+#: smb4k/smb4kmainwindow.cpp:537
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "फ़ाइल प्रिंटर %1 पर भेजी जा रही है..."
 
-#: smb4k/smb4kmainwindow.cpp:537
+#: smb4k/smb4kmainwindow.cpp:541
 #, kde-format
 msgid "Searching..."
 msgstr "खोज रहा हूँ..."
 
-#: smb4k/smb4kmainwindow.cpp:558 smb4k/smb4kmainwindow.cpp:597
-#: smb4k/smb4kmainwindow.cpp:682
+#: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
+#: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "Done."
 msgstr "हो गया।"
 
-#: smb4k/smb4kmainwindow.cpp:568
+#: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
 msgid "Mounting..."
 msgstr "बढ़ते..."
 
-#: smb4k/smb4kmainwindow.cpp:572
+#: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Unmounting..."
 msgstr "अनमाउंट किया जा रहा है..."
 
-#: smb4k/smb4kmainwindow.cpp:576
+#: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "Waking up host..."
 msgstr "मेजबान जाग रहा है..."
 
-#: smb4k/smb4kmainwindow.cpp:606
+#: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 सफलतापूर्वक माउंट किया गया है."
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 को सफलतापूर्वक अनमाउंट कर दिया गया है."
 
-#: smb4k/smb4kmainwindow.cpp:668
+#: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 को सिंक्रोनाइज़ किया जा रहा है"

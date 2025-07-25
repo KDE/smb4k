@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-06 00:42+0000\n"
+"POT-Creation-Date: 2025-07-25 00:42+0000\n"
 "PO-Revision-Date: 2025-06-26 10:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1869,7 +1869,7 @@ msgstr "دعم Zeroconf غير متوفر في هذا الإصدار من كيد
 msgid "An unknown error with Zeroconf occurred."
 msgstr "حدث خطأ غير معروف في Zeroconf."
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:485
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -1878,7 +1878,7 @@ msgstr ""
 "<p>ضُمت المشاركة <b>%1</b> على <br><b>%2</b> وهي مملوكة للمستخدم <b>%3</b>.</"
 "p><p>هل تريد حقًا إلغاء تثبيتها؟</p>"
 
-#: smb4kmounter.cpp:692
+#: smb4kmounter.cpp:490
 #, kde-format
 msgid "Foreign Share"
 msgstr "مشاركة أجنبية"
