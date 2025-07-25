@@ -147,7 +147,7 @@ You are strongly encouraged to commit a bug report to our [bug tracker](https://
 
 Copyright
 ---------
-Smb4K is released under the terms of the [GNU General Public License (GPL), version 2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html). A copy of the license is available in the file COPYING.
+Smb4K is released under the terms of the [GNU General Public License (GPL), version 2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html). A copy of the license is available in the subdirectory LICENSES.
 
 
 Latest Version
