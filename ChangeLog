@@ -1,9 +1,12 @@
-Smb4K 4.0.4 (2025-07-28):
+Smb4K 4.0.4 (2025-07-31):
 
 See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
 
 - Fix serveral issues with the UNC-to-URL conversion in the mount dialog.
+- Port to KUIServerV2JobTracker. KUIServerJobTracker is in the process of 
+  being deprecated.
+- Update README.md to reflect the right location of the license files.
 
 Smb4K 4.0.3 (2025-06-15):
 
