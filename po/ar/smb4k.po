@@ -284,7 +284,7 @@ msgstr "أزل"
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
 #, kde-format
 msgid "Clear List"
-msgstr "امسح القائمة"
+msgstr "امحُ القائمة"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:455
 #, kde-format
@@ -696,7 +696,7 @@ msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
-"<qt>سيؤدي إغلاق النافذة الرئيسية إلى استمرار تشغيل كيدي سامبا4 في صينية "
+"<qt>سيؤدي إغلاق النافذة الرئيسة إلى استمرار تشغيل كيدي سامبا4 في صينية "
 "النظام.<br>استخدم <i>أنه</i> من القائمة <i>ملف</i> لإنهاء التطبيق.</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:284
@@ -977,7 +977,7 @@ msgstr "العنصر للأسفل"
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
 #, kde-format
 msgid "Clear"
-msgstr "امسح"
+msgstr "امحُ"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
