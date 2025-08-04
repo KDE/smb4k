@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-01 02:44+0000\n"
-"PO-Revision-Date: 2025-05-14 17:03+0400\n"
+"PO-Revision-Date: 2025-08-03 12:16+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -760,7 +760,7 @@ msgid ""
 "this list. For further details, see the manual page of rsync."
 msgstr ""
 "استبدل قائمة لاحقات الملفات التي لن يتم ضغطها (--skip-compress=LIST). يجب أن "
-"تكون القائمة عبارة عن لاحقة ملف واحدة أو أكثر (بدون النقطة) مفصولة بخطوط "
+"تكون القائمة عبارة عن لاحقة ملف واحدة أو أكثر (دون النقطة) مفصولة بخطوط "
 "مائلة. يمكنك تحديد سلسلة فارغة للإشارة إلى أنه لا ينبغي تخطي أي ملف. ستستبدل "
 "القائمة المبدئية لللاحقات بهذه القائمة. لمزيد من التفاصيل، راجع صفحة دليل "
 "rsync."
@@ -1549,7 +1549,7 @@ msgstr ""
 #: smb4k.kcfg:564
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
-msgstr "انسخ الملفات بالكامل (بدون خوارزمية rsync)"
+msgstr "انسخ الملفات بالكامل (بلا خوارزمية rsync)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
 #: smb4k.kcfg:565
@@ -2892,7 +2892,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:260
 #, kde-format
 msgid "Connect as a null user (no name)"
-msgstr "اتصل كمستخدم فارغ (بدون اسم)"
+msgstr "اتصل كمستخدم فارغ (بلا اسم)"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:263
