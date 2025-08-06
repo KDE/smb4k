@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-01 02:44+0000\n"
-"PO-Revision-Date: 2025-08-04 18:30+0400\n"
+"PO-Revision-Date: 2025-08-05 17:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -162,8 +162,8 @@ msgid ""
 "domain or host item will always be expanded when you execute it."
 msgstr ""
 "توسيع النطاق وعناصر المضيف آليًّا عند إضافة أو تحديث قائمة بعناصر الشبكة "
-"المرتبطة (أعضاء النطاق أو المشاركات). يرجى ملاحظة أنه سيتم دائمًا توسيع نطاق "
-"أو عنصر مضيف عند تنفيذه."
+"المرتبطة (أعضاء النطاق أو المشاركات). يرجى ملاحظة أنه سيُوسع نطاق أو عنصر "
+"المضيف عند تنفيذه دائمًا."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
@@ -280,7 +280,7 @@ msgid ""
 "Samba's client library to use the SMB protocol version 1.0 for searching for "
 "workgroups and domains."
 msgstr ""
-"يتم استخدام اكتشاف خدمة DNS (DNS-SD) لتصفح الشبكة المحلية واكتشاف الخوادم "
+"ستستخدم خدمة اكتشاف النطاق (DNS-SD) لتصفح الشبكة المحلية واكتشاف الخوادم "
 "التي توفر موارد SMB مشتركة. تتوافق المجالات المكتشفة مع مجالات DNS المحلية "
 "(على سبيل المثال، LOCAL) وعلى الأرجح ليست المجالات المحددة في جوار الشبكة. "
 "ومع ذلك، لا يؤثر هذا على التصفح. إذا استخدمت هذا الخيار، فلا توجد حاجة "
@@ -759,9 +759,9 @@ msgid ""
 "no file should be skipped. The default list of suffixes will be replaced by "
 "this list. For further details, see the manual page of rsync."
 msgstr ""
-"استبدل قائمة لاحقات الملفات التي لن يتم ضغطها (--skip-compress=LIST). يجب أن "
-"تكون القائمة عبارة عن لاحقة ملف واحدة أو أكثر (دون النقطة) مفصولة بخطوط "
-"مائلة. يمكنك تحديد سلسلة فارغة للإشارة إلى أنه لا ينبغي تخطي أي ملف. ستستبدل "
+"استبدل قائمة لاحقات الملفات التي لن تُضغط (--skip-compress=LIST). يجب أن تكون "
+"القائمة عبارة عن لاحقة ملف واحدة أو أكثر (دون النقطة) مفصولة بخطوط مائلة. "
+"يمكنك تحديد سلسلة فارغة للإشارة إلى أنه لا ينبغي تخطي أي ملف. ستستبدل "
 "القائمة المبدئية لللاحقات بهذه القائمة. لمزيد من التفاصيل، راجع صفحة دليل "
 "rsync."
 
@@ -1060,7 +1060,7 @@ msgstr ""
 "يحافظ على الجهاز والملفات الخاصة (-D، --devices --specials). يتسبب هذا "
 "الخيار في قيام rsync بنقل أجهزة المحارف والكتل بالإضافة إلى الملفات الخاصة "
 "مثل المقابس المسماة وfifos. لا يعمل هذا الخيار إلا جزئيًا إذا لم يشُغل rsync "
-"كمستخدم ذو صلاحيات إدارة ولم يُحديد الخيار --super."
+"كمستخدم ذو صلاحيات إدارة ولم يُحدد الخيار --super."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
 #: smb4k.kcfg:396
@@ -1113,7 +1113,7 @@ msgid ""
 msgstr ""
 "أزل جميع ملفات المصدر التي زُومنت (--remove-source-files). يخبر هذا الأمر "
 "rsync بإزالة العناصر التي لا تكون دليل من جانب الإرسال والتي تعد جزءًا من "
-"عملية النقل وتم نسخها بنجاح على جانب الاستقبال."
+"عملية النقل وقد نُسخت بنجاح على جانب المُستقبل."
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
 #: smb4k.kcfg:411
@@ -1148,8 +1148,8 @@ msgid ""
 "specified without one of the --delete-WHEN options."
 msgstr ""
 "احذف الملفات الموجودة على الجانب المتلقي قبل بدء النقل (--delete-before). "
-"هذا هو السلوك المبدئي إذا تم تحديد --delete أو --delete-excluded دون أحد "
-"خيارات --delete-WHEN."
+"هذا هو السلوك المبدئي إذا حُدد --delete أو --delete-excluded دون أحد خيارات --"
+"delete-WHEN."
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
 #: smb4k.kcfg:421
@@ -1414,7 +1414,7 @@ msgstr ""
 #: smb4k.kcfg:514
 #, kde-format
 msgid "The file from which the exclude patterns are read"
-msgstr "الملف الذي تتم قراءة أنماط الاستبعاد منه"
+msgstr "الملف الذي تُقرأ أنماط الاستبعاد منه"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
 #: smb4k.kcfg:519
@@ -1505,10 +1505,9 @@ msgid ""
 "the files in the transfer. It has no effect, if you also choose to use the --"
 "filter='exclude .rsync-filter' rule."
 msgstr ""
-"تخبر قاعدة الفلترة هذه برنامج rsync بالبحث عن ملفات .rsync-filter لكل دليل "
-"والتي تم توزيعها عبر التسلسل الهرمي واستخدام قواعدها لتصفية الملفات أثناء "
-"النقل. ولا يوجد تأثير لها إذا اخترت أيضًا استخدام قاعدة --filter='exclude ."
-"rsync-filter'."
+"تُخبر قاعدة المرشح هذه برنامج rsync بالبحث عن ملفات .rsync-filter لكل دليل -"
+"والتي  وزعت هرميًا- واستخدام قواعد كل دليل لتصفية الملفات أثناء النقل. لا "
+"يوجد تأثير لها إذا اخترت أيضًا استخدام قاعدة --filter='exclude .rsync-filter'."
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
 #: smb4k.kcfg:554
@@ -1559,7 +1558,7 @@ msgid ""
 "algorithm is not used and the whole file is sent as-is instead."
 msgstr ""
 "انسخ الملفات كاملة (-W، --whole-file). باستخدام هذا الخيار، لا تستخدم "
-"خوارزمية rsync التزايدية ويتم إرسال الملف بالكامل كما هو."
+"خوارزمية rsync التزايدية وسيُرسل الملف بالكامل كما هو."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
 #: smb4k.kcfg:569
@@ -1652,8 +1651,9 @@ msgid ""
 msgstr ""
 "عمل نسخ احتياطية (- b، - النسخ الاحتياطي). باستخدام هذا الخيار، تتم إعادة "
 "تسمية ملفات الوجهة الموجودة مسبقًا عند نقل كل ملف أو حذفه. يمكنك التحكم في "
-"المكان الذي يذهب إليه ملف النسخ الاحتياطي وما هي اللاحقة (إن وجدت) التي يتم "
-"إلحاقها باستخدام خيارات -- backup - DIR =DIR و --suffix =اللاحقة."
+"المكان الذي يذهب إليه ملف النسخة الاحتياطية وما هي اللاحقة (إن وجدت) التي "
+"ستُلحق باسم ملف النسخة الاحتياطيّة باستخدام خيارات -- backup - DIR =DIR و --"
+"suffix =اللاحقة."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:594
@@ -2430,8 +2430,8 @@ msgid ""
 "Allow the unmounting of shares that were mounted by other users. Please "
 "think before you enable this option."
 msgstr ""
-"اسم بفك ضم المشاركات التي المضمومة من قبل مستخدمين آخرين. يرجى التفكير قبل "
-"تمكين هذا الخيار."
+"اسمح بفك ضم المشاركات المضمومة من قبل مستخدمين آخرين. يرجى التفكير قبل تمكين "
+"هذا الخيار."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
@@ -2487,12 +2487,12 @@ msgid ""
 "option and define custom options for the Samba servers."
 msgstr ""
 "تدعم معظم إصدارات سامبا امتدادات CIFS Unix أو POSIX. بالنسبة لهذه الخوادم، "
-"لا تكون هناك حاجة إلى بعض الخيارات، لأن القيم الصحيحة يتم التفاوض عليها "
-"أثناء عملية التثبيت. بالنسبة للخوادم الأخرى، قد ترغب في إلغاء تحديد هذا "
-"الخيار، بحيث يمكن تمرير القيم المحددة مسبقًا إلى الخادم. يرجى ملاحظة أنه إذا "
-"كان حاسوبك موجودًا في أجهزة شبكة تهيمن عليها أنظمة تشغيل ويندوز مع عدد قليل "
-"من خوادم سامبا، فيمكنك إلغاء تحديد هذا الخيار بأمان وتحديد خيارات مخصصة "
-"لخوادم سامبا."
+"لا تكون هناك حاجة إلى بعض الخيارات، لأن القيم الصحيحة يُتفاوض عليها أثناء "
+"عملية التثبيت. بالنسبة للخوادم الأخرى، قد ترغب في إلغاء تحديد هذا الخيار، "
+"بحيث يمكن تمرير القيم المحددة مسبقًا إلى الخادم. يرجى ملاحظة أنه إذا كان "
+"حاسوبك موجودًا في أجهزة شبكة تهيمن عليها أنظمة تشغيل ويندوز مع عدد قليل من "
+"خوادم سامبا، فيمكنك إلغاء تحديد هذا الخيار بأمان وتحديد خيارات مخصصة لخوادم "
+"سامبا."
 
 #. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
@@ -2842,9 +2842,9 @@ msgid ""
 "this, the strict cache mode is recommended."
 msgstr ""
 "حدد كيفية التعامل مع طلبات القراءة والكتابة. في حالة اختيارك عدم تخزين "
-"بيانات الملف على الإطلاق، لا يستخدم العميل ذاكرة التخزين المؤقت مطلقًا "
+"بيانات الملف على الإطلاق فلن يستخدم العميل ذاكرة التخزين المؤقت مطلقًا "
 "للقراءة والكتابة العادية. فهو دائمًا يصل إلى الخادم مباشرةً لتلبية طلب القراءة "
-"أو الكتابة. إذا قررت اتباع بروتوكول CIFS/SMB2 بشكل صارم، فلن يُوثق في ذاكرة "
+"أو الكتابة. إذا قررت اتباع ميفاق CIFS/SMB2 بشكل صارم، فلن يُوثق في ذاكرة "
 "التخزين المؤقت إلا إذا كان العميل يحمل قفل تشغيل. إذا لم يكن العميل يحمل قفل "
 "تشغيل؛ فإن العميل يتجاوز ذاكرة التخزين المؤقت ويصل إلى الخادم مباشرةً لتلبية "
 "طلب القراءة أو الكتابة. قد يؤدي اختيار السماح بدلالات التخزين المؤقت غير "
@@ -3016,14 +3016,14 @@ msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again.</p>"
 msgstr ""
-"<p>لا يتم دعم نوع MIME <b>%1</b> للطباعة. يُرجى تحويل الملف إلى PDF أو "
+"<p>نوع MIME <b>%1</b> غير مدعوم للطباعة. يُرجى تحويل الملف إلى PDF أو "
 "Postscript ثم المحاولة مرة أخرى.</p>"
 
 #: smb4knotification.cpp:190
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
-msgstr "<p>الإشارة المرجعية للمشاركة <b>%1</b> موجودة بالفعل وسيتم تخطيها.</p>"
+msgstr "<p>الإشارة المرجعية للمشاركة <b>%1</b> موجودة فعلا وستتخطى.</p>"
 
 #: smb4knotification.cpp:208
 #, kde-format
@@ -3031,8 +3031,8 @@ msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
 "being used and will automatically be renamed.</p>"
 msgstr ""
-"<p>التسمية <b>%1</b> للإشارة المرجعية للمشاركة <b>%2</b> قيد الاستخدام "
-"بالفعل وستتم إعادة تسميتها آليًّا.</p>"
+"<p>التسمية <b>%1</b> للإشارة المرجعية للمشاركة <b>%2</b>مستخدمة فعلًا وسيعاد "
+"تسميتها آليًّا.</p>"
 
 #: smb4knotification.cpp:228
 #, kde-format
@@ -3162,7 +3162,7 @@ msgstr "<p>فشل تنفيذ الإجراء بامتيازات الجذر.</p>"
 #: smb4knotification.cpp:529
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
-msgstr "<p>عنوان URL الذي تم تمريره غير صالح.</p>"
+msgstr "<p>العنوان الممرر غير صالح.</p>"
 
 #: smb4knotification.cpp:542
 #, kde-format
