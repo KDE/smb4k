@@ -82,7 +82,7 @@ Version=1
 
 [Context/Notification]
 Name=Notification
-Name[ar]=إخطار
+Name[ar]=إشعار
 Name[bs]=Obavještenje
 Name[ca]=Notificació
 Name[ca@valencia]=Notificació
