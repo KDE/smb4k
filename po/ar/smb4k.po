@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-15 02:33+0000\n"
-"PO-Revision-Date: 2025-05-10 13:45+0400\n"
+"PO-Revision-Date: 2025-08-09 22:40+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -216,7 +216,7 @@ msgstr "التّشكيلات"
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
-msgstr "عُثر على إعداد غير صحيح. سيتم نقلك الآن إلى صفحة الضبط المعنية لإصلاحه."
+msgstr "عُثر على إعداد غير صحيح. سينتقل الآن إلى صفحة الضبط المعنية لإصلاحه."
 
 #: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
@@ -227,7 +227,7 @@ msgid ""
 msgstr ""
 "لقد أجريت تغييرات على التشكيلات.\n"
 " يتعين عليك تطبيقها حتى تتمكن من استخدامها \n"
-" في بقية مربع حوار التكوين."
+" في بقية مربع حوار الضبط."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
@@ -795,7 +795,7 @@ msgstr "حواري الضم"
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
-msgstr "أدخل الموقع واختياريًا عنوان الانترنت IP ومجموعة العمل لضم المشاركة."
+msgstr "أدخل الموقع واختياريًا عنوان الإنترنت IP ومجموعة العمل لضم المشاركة."
 
 #: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
