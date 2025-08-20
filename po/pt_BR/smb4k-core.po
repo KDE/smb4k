@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-25 00:42+0000\n"
-"PO-Revision-Date: 2025-08-04 15:44-0300\n"
+"PO-Revision-Date: 2025-08-19 11:26-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -3177,7 +3177,7 @@ msgstr ""
 #: smb4knotification.cpp:293
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr "Falha na sincronização de <b>%1</b> com <b>%2</b>:</p><p><tt>%3</tt>"
+msgstr "Falha na sincronização de <b>%1</b> com <b>%2</b>: <tt>%3</tt>"
 
 #: smb4knotification.cpp:295
 #, kde-format
@@ -3205,7 +3205,7 @@ msgstr "O arquivo <b>%1</b> não foi encontrado."
 #: smb4knotification.cpp:357
 #, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "Não foi possível abrir o arquivo <b>%1</b>:</p><p><tt>%2</tt>"
+msgstr "Não foi possível abrir o arquivo <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:359
 #, kde-format
@@ -3215,7 +3215,7 @@ msgstr "Não foi possível abrir o arquivo <b>%1</b>."
 #: smb4knotification.cpp:378 smb4knotification.cpp:381
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "Falha na leitura do arquivo <b>%1</b>:</p><p><tt>%2</tt>"
+msgstr "Falha na leitura do arquivo <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:383
 #, kde-format
