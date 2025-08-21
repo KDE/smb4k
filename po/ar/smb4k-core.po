@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-25 00:42+0000\n"
-"PO-Revision-Date: 2025-08-14 10:10+0400\n"
+"PO-Revision-Date: 2025-08-20 22:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -413,7 +413,7 @@ msgstr ""
 #: smb4k.kcfg:178
 #, kde-format
 msgid "Master browsers require authentication"
-msgstr "المتصفحات الرئيسة تتطلب المصادقة"
+msgstr "المتصفحات الرئيسة تتطلب الاستيثاق"
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:179
@@ -429,7 +429,7 @@ msgstr ""
 #: smb4k.kcfg:183
 #, kde-format
 msgid "Use Kerberos for authentication"
-msgstr "استخدم Kerberos للمصادقة"
+msgstr "استخدم Kerberos للاستيثاق"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:184
@@ -437,19 +437,19 @@ msgstr "استخدم Kerberos للمصادقة"
 msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
 "environment."
-msgstr "استخدم Kerberos للمصادقة. يُعد هذا مفيدًا فقط في بيئة Active Directory."
+msgstr "استخدم Kerberos للاستيثاق. يُعد هذا مفيدًا فقط في بيئة Active Directory."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:188
 #, kde-format
 msgid "Use Winbind ccache for authentication"
-msgstr "استخدم Winbind ccache للمصادقة"
+msgstr "استخدم Winbind ccache للاستيثاق"
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:189
 #, kde-format
 msgid "Use the Winbind ccache for authentication."
-msgstr "استخدم Winbind ccache للمصادقة."
+msgstr "استخدم Winbind ccache للاستيثاق."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:193
@@ -2842,22 +2842,21 @@ msgid ""
 "this, the strict cache mode is recommended."
 msgstr ""
 "حدد كيفية التعامل مع طلبات القراءة والكتابة. في حالة اختيارك عدم تخزين "
-"بيانات الملف على الإطلاق فلن يستخدم العميل ذاكرة التخزين المؤقت مطلقًا "
-"للقراءة والكتابة العادية. فهو دائمًا يصل إلى الخادم مباشرةً لتلبية طلب القراءة "
-"أو الكتابة. إذا قررت اتباع ميفاق CIFS/SMB2 بشكل صارم، فلن يُوثق في ذاكرة "
-"التخزين المؤقت إلا إذا كان العميل يحمل قفل تشغيل. إذا لم يكن العميل يحمل قفل "
-"تشغيل؛ فإن العميل يتجاوز ذاكرة التخزين المؤقت ويصل إلى الخادم مباشرةً لتلبية "
-"طلب القراءة أو الكتابة. قد يؤدي اختيار السماح بدلالات التخزين المؤقت غير "
-"محكمة في بعض الأحيان إلى توفير أداء أفضل على حساب تماسك ذاكرة التخزين "
-"المؤقت. قد يتسبب هذا الخيار في تلف البيانات إذا وصل العديد من العملاء  إلى "
-"نفس مجموعة الملفات على الخادم في نفس الوقت. ولهذا السبب، يوصى بوضع ذاكرة "
-"التخزين المؤقت الصارم."
+"بيانات الملف على الإطلاق فلن يستخدم العميل الخبيئة مطلقًا للقراءة والكتابة "
+"العادية. فهو دائمًا يصل إلى الخادم مباشرةً لتلبية طلب القراءة أو الكتابة. إذا "
+"قررت اتباع ميفاق CIFS/SMB2 بشكل صارم، فلن يثق في الخبيئة إلا إذا كان العميل "
+"يحمل قفل تشغيل. إذا لم يكن العميل يحمل قفل تشغيل؛ فإن العميل يتجاوز الخبيئة "
+"ويصل إلى الخادم مباشرةً لتلبية طلب القراءة أو الكتابة. قد يؤدي اختيار السماح "
+"الخبيئة غير المحكمة في بعض الأحيان إلى توفير أداء أفضل على حساب تماسك "
+"الخبيئة. قد يتسبب هذا الخيار في تلف البيانات إذا وصل العديد من العملاء  إلى "
+"نفس مجموعة الملفات على الخادم في نفس الوقت. ولهذا السبب، يوصى بوضع الخبيئة "
+"الصارمة."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:240
 #, kde-format
 msgid "Do not cache file data at all"
-msgstr "لا تقم بتخزين بيانات الملف على الإطلاق"
+msgstr "لا تخبئ بيانات الملف على الإطلاق"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:243
@@ -2869,7 +2868,7 @@ msgstr "اتبع ميفاق CIFS/SMB2 بدقة"
 #: smb4kmountsettings_linux.kcfg:246
 #, kde-format
 msgid "Allow loose caching semantics"
-msgstr "اسمح بدلالات التخزين المؤقت الفضفاضة"
+msgstr "اسمح بخبيئة غير متماسكة"
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:252
@@ -2898,13 +2897,13 @@ msgstr "اتصل كمستخدم فارغ (بلا اسم)"
 #: smb4kmountsettings_linux.kcfg:263
 #, kde-format
 msgid "Kerberos 5 authentication"
-msgstr "مصادقة Kerberos 5"
+msgstr "استيثاق Kerberos 5"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:266
 #, kde-format
 msgid "Kerberos 5 authentication and packet signing"
-msgstr "مصادقة Kerberos 5 وتوقيع الحزمة"
+msgstr "استيثاق Kerberos 5 وتوقيع الحزمة"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:269
