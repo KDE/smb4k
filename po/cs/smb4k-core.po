@@ -2745,10 +2745,9 @@ msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr ""
 
 #: smb4knotification.cpp:347
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file <b>%1</b> could not be found."
-msgstr "<p>Nelze najít soubor <b>%1</b>.</p>"
+msgstr ""
 
 #: smb4knotification.cpp:357
 #, kde-format
