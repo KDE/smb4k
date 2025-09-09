@@ -35,7 +35,6 @@
                 "Name[sv]": "Alexander Reinholdt",
                 "Name[tr]": "Alexander Reinholdt",
                 "Name[uk]": "Alexander Reinholdt",
-                "Name[x-test]": "xxAlexander Reinholdtxx",
                 "Name[zh_CN]": "Alexander Reinholdt",
                 "Name[zh_TW]": "Alexander Reinholdt"
             }
@@ -72,7 +71,6 @@
         "Description[sv]": "Bläddrare för nätverksgrannskapet baserad på Smb4K",
         "Description[tr]": "Smb4k tabanlı ağ komşuları tarayıcısı",
         "Description[uk]": "Переглядач мережевого середовища на основі Smb4K",
-        "Description[x-test]": "xxNetwork neighborhood browser based on Smb4Kxx",
         "Description[zh_CN]": "基于 smb4k 的网上邻居浏览器",
         "Description[zh_TW]": "基於 Smb4K 的網路芳鄰瀏覽器",
         "EnabledByDefault": true,
@@ -110,7 +108,6 @@
         "Name[sv]": "Nätverksgrannskap",
         "Name[tr]": "Ağ Komşuları",
         "Name[uk]": "Мережеве оточення",
-        "Name[x-test]": "xxNetwork Neighborhoodxx",
         "Name[zh_CN]": "网上邻居",
         "Name[zh_TW]": "網路芳鄰",
         "Version": "1.0",
