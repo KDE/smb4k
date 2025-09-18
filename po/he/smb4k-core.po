@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-25 00:42+0000\n"
-"PO-Revision-Date: 2025-06-21 08:12+0300\n"
+"PO-Revision-Date: 2025-09-17 10:39+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -658,7 +658,7 @@ msgid ""
 "last parts of the file names."
 msgstr ""
 "להשתמש בנתיבים יחסיים (‎-R,‏ ‎--relative). כלומר ששמות הנתיבים המלאים שצוינו "
-"שצוינו בשורת הפקודה נשלחים לשרת במקום רק החלקים האחרונים של שמות הקבצים."
+"שצוינו בשורת הפקודות נשלחים לשרת במקום רק החלקים האחרונים של שמות הקבצים."
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
 #: smb4k.kcfg:278
@@ -3065,7 +3065,7 @@ msgstr "פתיחת הקובץ <b>%1</b> נכשלה."
 #: smb4knotification.cpp:378 smb4knotification.cpp:381
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "הקריאה מהקובץ <b>%1</b> נכשלה:<<tt>%2</tt>"
+msgstr "הקריאה מהקובץ <b>%1</b> נכשלה: <tt>%2</tt>"
 
 #: smb4knotification.cpp:383
 #, kde-format
