@@ -4024,7 +4024,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                   </term>
                   <listitem>
                     <para
->ISO/IEC 8859-2:1999. Conocido informalmente como «Latin-2». Pensado para los idiomas de centro o Europa del éste que se escriben con los caracteres latinos.</para>
+>ISO/IEC 8859-2:1999. Conocido informalmente como «Latin-2». Pensado para los idiomas de centro o Europa del Este que se escriben con los caracteres latinos.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -5317,7 +5317,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->ISO/IEC 8859-2:1999. Conocido informalmente como «Latin-2». Pensado para los idiomas de centro o Europa del éste que se escriben con los caracteres latinos.</para>
+>ISO/IEC 8859-2:1999. Conocido informalmente como «Latin-2». Pensado para los idiomas de centro o Europa del Este que se escriben con los caracteres latinos.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
