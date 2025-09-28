@@ -299,7 +299,7 @@
 >Configurar &smb4k;</guimenuitem
 > y <guimenuitem
 >Salir</guimenuitem
->. También carga dinámicamente las acciones de la zona de paneles que tiene el foco en ese momento. Si desea más información, consulte las secciones que tratan el <link linkend="network_neighborhood_browser "
+>. También carga dinámicamente las acciones de la zona de paneles que tiene el foco en ese momento. Si desea más información, consulte las secciones que tratan el <link linkend="network_neighborhood_browser"
 >navegador del entorno de red</link
 > y la <link linkend="shares_view"
 >vista de recursos compartidos montados</link
