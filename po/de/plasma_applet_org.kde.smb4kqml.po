@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2019, 2024 Alexander Reinholdt <alexander.reinholdt@t-online.de>
-# Burkhard Lück <lueck@hube-lueck.de>, 2014, 2015, 2017, 2018, 2019.
+# SPDX-FileCopyrightText: 2014, 2015, 2017, 2018, 2019 Burkhard Lück <lueck@hube-lueck.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
