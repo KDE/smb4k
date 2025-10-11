@@ -31,10 +31,21 @@
 
 using namespace KAuth;
 
-class Smb4KNotificationPrivate
+class Smb4KNotificationPrivate : public QObject
 {
+    Q_OBJECT
+
 public:
     QString componentName;
+    QString path;
+    void open() {
+        if (!path.isEmpty()) {
+            KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(path), QStringLiteral("inode/directory"));
+            job->setFollowRedirections(false);
+            job->setAutoDelete(true);
+            job->start();
+        }
+    }
 };
 
 Q_APPLICATION_STATIC(Smb4KNotificationPrivate, p);
@@ -53,8 +64,6 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
     Q_ASSERT(share);
 
     if (share) {
-        QEventLoop loop;
-
         KNotification *notification = new KNotification(QStringLiteral("shareMounted"), KNotification::CloseOnTimeout);
 
         if (!p->componentName.isEmpty()) {
@@ -68,21 +77,12 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
                                                                 KIconLoader::DefaultState,
                                                                 QStringList(QStringLiteral("emblem-mounted"))));
 
-        auto open = [&]() {
-            KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(share->path()), QStringLiteral("inode/directory"));
-            job->setFollowRedirections(false);
-            job->setAutoDelete(true);
-            job->start();
-        };
+        p->path = share->path();
 
         auto *openAction = notification->addAction(i18nc("Open the contents of the share with the file manager", "Open"));
-        QObject::connect(openAction, &KNotificationAction::activated, open);
-
-        QObject::connect(notification, &KNotification::closed, &loop, &QEventLoop::quit);
+        QObject::connect(openAction, &KNotificationAction::activated, p, &Smb4KNotificationPrivate::open);
 
         notification->sendEvent();
-
-        loop.exec();
     }
 }
 
@@ -565,3 +565,5 @@ void Smb4KNotification::keychainError(const QString &errorMessage)
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
+
+#include "smb4knotification.moc"
