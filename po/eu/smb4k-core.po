@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2025-07-14 14:09+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -3072,12 +3072,12 @@ msgstr ""
 "Mesedez, ez sartu konfigurazioko elkarrizketa-koadroan dagoeneko sartu diren "
 "aukerak."
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<b>%1</b> partekatzea <b>%2</b>(e)an muntatu da."
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"

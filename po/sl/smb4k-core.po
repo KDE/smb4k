@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2025-07-06 22:07+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -3015,12 +3015,12 @@ msgstr ""
 "KOT JE argumentu \"-o\" ukaza mount.cifs. Prosim, ne vnašajte možnosti, ki "
 "so že bile določene v pogovornem oknu za nastavitev."
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "Skupni disk <b>%1</b> je bil priklopljen na <b>%2</b>."
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"

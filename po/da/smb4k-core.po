@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -3058,13 +3058,13 @@ msgstr ""
 "tilføjet SOM DEN ER til argumentet \"-o\" for mount.cifs. Angiv ikke tilvalg "
 "der allerede er blevet defineret i konfigurationsdialogen."
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<p>Ressourcen <b>%1</b> er blevet monteret i <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, fuzzy, kde-format
 #| msgid "Open"
 msgctxt "Open the contents of the share with the file manager"

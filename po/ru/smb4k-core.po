@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2024-11-06 17:09+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -3104,13 +3104,13 @@ msgstr ""
 "программе mount.cifs. Не следует указывать параметры, которые уже были "
 "заданы в диалоговом окне настройки."
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<p>Общий ресурс <b>%1</b> подключён к <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"

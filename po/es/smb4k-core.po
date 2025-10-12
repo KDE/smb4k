@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2025-09-20 17:54+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -3094,12 +3094,12 @@ msgstr ""
 "cifs. Por favor, no introduzca opciones que ya han sido definidas en el "
 "cuadro de diálogo de configuración."
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "El recurso compartido <b>%1</b> se ha montado en <b>%2</b>."
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2024-12-20 21:54+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2975,13 +2975,13 @@ msgstr ""
 "(अधिकं ज्ञातुं mount.cifs इत्यस्य मैनुअल् पृष्ठं पश्यन्तु) । सूची mount.cifs इत्यस्य \"-o\" "
 "तर्के AS IS योजितं भविष्यति । कृपया विन्याससंवादे पूर्वमेव परिभाषितविकल्पान् न प्रविशन्तु ।"
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<p><b>%1 इति</b> भागः <b>%2</b> इत्यत्र माउण्ट् कृतः अस्ति ।</p>"
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"

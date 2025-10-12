@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2863,12 +2863,12 @@ msgstr ""
 "mount.cifs 的使用手册页面)。该列表将被按照原样添加到 mount.cifs 的“-o” 参数"
 "中。请不要在此输入那些已在配置对话框中指定的选项。"
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "共享 <b>%1</b> 已挂载到 <b>%2</b>。"
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"

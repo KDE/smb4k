@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -3042,13 +3042,13 @@ msgstr ""
 "cifs の引数「-o」に直接渡されます。設定ダイアログで既に定義されているオプショ"
 "ンを入力しないでください。"
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "%1 を無事にマウント解除しました。"
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, fuzzy, kde-format
 #| msgid "On"
 msgctxt "Open the contents of the share with the file manager"

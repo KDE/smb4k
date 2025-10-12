@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2020-10-25 22:18+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -3065,13 +3065,13 @@ msgstr ""
 "täpselt sellisel kujul mount.cifs argumendile \"-o\". Palun ära sisesta siia "
 "võtmeid, mis on juba määratud mujal seadistustedialoogis."
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<p>Ressurss <b>%1</b> on ühendatud asukohta <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, fuzzy, kde-format
 #| msgid "Open"
 msgctxt "Open the contents of the share with the file manager"

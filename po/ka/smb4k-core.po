@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-12 00:42+0000\n"
 "PO-Revision-Date: 2025-06-21 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -3043,12 +3043,12 @@ msgstr ""
 "სია დაემატება ზუსტად ისე, როგორც არის, mount.cifs-ის პარამეტრს -o. ნუ "
 "შეიყვანთ პარამეტრებს, რომლებიც უკვე აღწერილია კონფიგურაციის დიალოგში."
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:73
 #, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "ზიარი <b>%1</b> მიმაგრებულია საქაღალდეში <b>%2</b>."
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:82
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
