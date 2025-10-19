@@ -140,7 +140,6 @@ void Smb4KClient::lookupDomains()
         }
     }
 
-
     //
     // Setup network item
     //

@@ -85,7 +85,7 @@ private:
     QUrl m_sourceUrl;
     QUrl m_destinationUrl;
     KProcess *m_process = nullptr;
-    KUiServerV2JobTracker * const m_jobTracker;
+    KUiServerV2JobTracker *const m_jobTracker;
     bool m_terminated = false;
 };
 
