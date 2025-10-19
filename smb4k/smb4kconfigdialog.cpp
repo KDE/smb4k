@@ -28,7 +28,6 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KPluginFactory>
-#include <KUrlRequester>
 #include <KWindowConfig>
 
 using namespace Smb4KGlobal;
