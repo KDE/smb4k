@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-25 00:42+0000\n"
+"POT-Creation-Date: 2025-10-20 00:42+0000\n"
 "PO-Revision-Date: 2025-10-05 12:22+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -145,7 +145,7 @@ msgstr "קטגוריה:"
 msgid "Bookmark Editor"
 msgstr "עורך סימניות"
 
-#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
 msgid "Bookmarks"
 msgstr "סימניות"
@@ -167,51 +167,51 @@ msgstr "הו&ספת סימנייה"
 msgid "Mount Bookmarks"
 msgstr "סימניות עגינה"
 
-#: smb4k/smb4kconfigdialog.cpp:126
+#: smb4k/smb4kconfigdialog.cpp:125
 #, kde-format
 msgid "User Interface"
 msgstr "ממשק משתמש"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:126 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "רשת"
 
-#: smb4k/smb4kconfigdialog.cpp:128
+#: smb4k/smb4kconfigdialog.cpp:127
 #, kde-format
 msgid "Mounting"
 msgstr "עיגון"
 
-#: smb4k/smb4kconfigdialog.cpp:129 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "סנכרון"
 
-#: smb4k/smb4kconfigdialog.cpp:130
+#: smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Authentication"
 msgstr "אימות"
 
-#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigdialog.cpp:133
-#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigdialog.cpp:242
-#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
+#: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:241
+#: smb4k/smb4kconfigdialog.cpp:242 smb4k/smb4kconfigdialog.cpp:243
 #, kde-format
 msgid " (Profile: %1)"
 msgstr " (פרופיל: %1)"
 
-#: smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:133
 #, kde-format
 msgid "Custom Settings"
 msgstr "הגדרות מותאמות אישית"
 
-#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "פרופילים"
 
-#: smb4k/smb4kconfigdialog.cpp:161
+#: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
 msgid ""
 "An incorrect setting has been found. You are now taken\n"
@@ -220,7 +220,7 @@ msgstr ""
 "נמצאו הגדרות לא נכונות. תבוצע העברה לעמוד ההגדרות התואם כדי\n"
 "לתקן את זה."
 
-#: smb4k/smb4kconfigdialog.cpp:229
+#: smb4k/smb4kconfigdialog.cpp:228
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
