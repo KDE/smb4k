@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Albert Astals Cid <aacid@kde.org>
-# SPDX-FileCopyrightText: 2010-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2010-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -20,6 +20,8 @@ target_link_libraries(mounthelper
   KF6::CoreAddons
   KF6::I18n
   KF6::KIOCore)
+
+add_definitions(-DTRANSLATION_DOMAIN=\"smb4k-core\")
 
 install(TARGETS mounthelper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 
