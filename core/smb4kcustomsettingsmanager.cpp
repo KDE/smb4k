@@ -250,7 +250,6 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::wakeOnLanEntries() const
 void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPtr> &settingsList)
 {
     QMutableListIterator<CustomSettingsPtr> it(d->customSettings);
-    bool addedSettings = false;
 
     // NOTE: Do not use Smb4KCustomSettingsManager::remove() here to avoid crashes.
     while (it.hasNext()) {
@@ -263,15 +262,11 @@ void Smb4KCustomSettingsManager::saveCustomSettings(const QList<CustomSettingsPt
     }
 
     for (const CustomSettingsPtr &settings : settingsList) {
-        if (add(settings)) {
-            addedSettings = true;
-        }
+        add(settings);
     }
 
-    if (addedSettings) {
-        write();
-        Q_EMIT updated();
-    }
+    write();
+    Q_EMIT updated();
 }
 
 bool Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
