@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-12 00:42+0000\n"
+"POT-Creation-Date: 2025-10-30 00:42+0000\n"
 "PO-Revision-Date: 2024-11-10 20:12+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1625,7 +1625,7 @@ msgstr "запазва частично преместените файлове"
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:346
+#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:341
 #: smb4khomesshareshandler.cpp:212
 #, kde-format
 msgid "The format of %1 is not supported."
