@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-01 02:44+0000\n"
+"POT-Creation-Date: 2025-10-30 02:40+0000\n"
 "PO-Revision-Date: 2024-09-09 04:48+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1889,7 +1889,7 @@ msgstr "ეს ამჟამად აქტიური პროფილი
 msgid "%1 on %2"
 msgstr "%1-ი %2-ზე"
 
-#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:346
+#: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:341
 #: smb4khomesshareshandler.cpp:212
 #, kde-format
 msgid "The format of %1 is not supported."
