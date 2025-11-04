@@ -249,7 +249,7 @@ msgid ""
 "configuration dialog."
 msgstr ""
 "Vous avez apporté des modifications aux profils. Vous devez les appliquer\n"
-"afin de pouvoir les utiliser dans le reste de la boîte de dialogue de\n"
+"afin de pouvoir les utiliser dans le reste de la boite de dialogue de\n"
 "configuration."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
@@ -460,7 +460,7 @@ msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "Définir les hôtes qu'il faudra sortir de leur état de veille grâce à la "
-"boîte de dialogue des options personnalisées."
+"boite de dialogue des options personnalisées."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:228
 #, kde-format
@@ -716,7 +716,7 @@ msgid ""
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
 "<qt>Si vous fermez la fenêtre principale, Smb4K continuera à fonctionner "
-"dans la boîte à miniatures. <br>Utilisez <i>Quitter</i> depuis le menu "
+"dans la boite à miniatures. <br>Utilisez <i>Quitter</i> depuis le menu "
 "<i>Fichier</i> pour quitter l'application.</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:284
@@ -891,7 +891,7 @@ msgstr "CTRL + C"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr "&Ouvrir la boîte de dialogue de montage"
+msgstr "&Ouvrir la boite de dialogue de montage"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format

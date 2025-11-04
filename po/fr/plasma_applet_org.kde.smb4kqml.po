@@ -70,7 +70,7 @@ msgstr "Revenir au niveau supérieur"
 
 #: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
-msgstr "Ouvrir la boîte de dialogue de montage"
+msgstr "Ouvrir la boite de dialogue de montage"
 
 #: package/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
