@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-30 02:40+0000\n"
-"PO-Revision-Date: 2024-09-10 08:42+0200\n"
+"PO-Revision-Date: 2025-06-22 10:36+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -93,7 +93,7 @@ msgstr ""
 #: smb4k.kcfg:41
 #, kde-format
 msgid "Start docked"
-msgstr "Démarrer avec l'application intégrée dans la boîte à miniatures"
+msgstr "Démarrer avec l'application intégrée dans la boite à miniatures"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -104,10 +104,10 @@ msgid ""
 "up by clicking on the system tray widget or by choosing \"Restore\" from its "
 "popup menu."
 msgstr ""
-"Démarre l'application intégrée dans la boîte à miniatures, c'est-à-dire que "
-"seul le composant graphique de la boîte à miniatures est affiché et la "
-"fenêtre principale est cachée. Vous pouvez faire apparaître la fenêtre "
-"principale en cliquant sur l'élément graphique de la boîte à miniatures ou "
+"Démarre l'application intégrée dans la boite à miniatures, c'est-à-dire que "
+"seul le composant graphique de la boite à miniatures est affiché et la "
+"fenêtre principale est cachée. Vous pouvez faire apparaitre la fenêtre "
+"principale en cliquant sur l'élément graphique de la boite à miniatures ou "
 "en choisissant « Restaurer » depuis son menu contextuel."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
@@ -831,7 +831,7 @@ msgstr ""
 "Remplacer la liste des extensions de fichiers qui ne seront pas compressées "
 "(--skip-compress=LISTE). La LISTE doit contenir une ou plusieurs extensions "
 "de fichiers (sans leur point) séparées par des barres obliques. Vous pouvez "
-"spécifier une chaîne de caractères vide pour indiquer qu'aucun fichier ne "
+"spécifier une chaine de caractères vide pour indiquer qu'aucun fichier ne "
 "doit être ignoré. La liste des extensions par défaut sera remplacée par "
 "cette liste. Pour de plus amples informations, consultez la page de manuel "
 "de rsync."
@@ -2595,7 +2595,7 @@ msgid ""
 msgstr ""
 "Force la libération des partages inaccessibles (Linux uniquement). Au cas où "
 "un partage est inaccessible, une libération paresseuse est effectuée. Avant "
-"que la libération proprement dite soit effectuée, une boîte de dialogue "
+"que la libération proprement dite soit effectuée, une boite de dialogue "
 "d'avertissement est affichée, demandant d'approuver la libération."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
@@ -3134,7 +3134,7 @@ msgstr ""
 "dans une liste séparée par une virgule (consultez la page de manuel de "
 "« mount.cifs » pour en savoir plus). La liste sera ajoutée TELLE QUELLE à "
 "l'argument « -o » de « mount.cifs ». Veuillez ne pas saisir des options déjà "
-"définies dans la boîte de dialogue de configuration."
+"définies dans la boite de dialogue de configuration."
 
 #: smb4knotification.cpp:64
 #, kde-format
