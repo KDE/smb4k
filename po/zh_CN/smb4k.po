@@ -1206,7 +1206,7 @@ msgstr "文件系统："
 #: smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
-msgstr "总共 %2，空闲 %1 (已用 %3)"
+msgstr "总共 %2，剩余 %1 (已用 %3)"
 
 #: smb4k/smb4ktooltip.cpp:250
 #, kde-format
