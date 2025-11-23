@@ -27,7 +27,7 @@ msgstr "标签页方向："
 #: smb4k.kcfg:18
 #, kde-format
 msgid "Set the tab orientation for the tabified dock widgets."
-msgstr "设置以标签页形式显示的停靠栏挂件的标签页方向"
+msgstr "设置以标签页形式显示的停靠栏小部件的标签页方向"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:21
@@ -82,8 +82,8 @@ msgid ""
 "up by clicking on the system tray widget or by choosing \"Restore\" from its "
 "popup menu."
 msgstr ""
-"启动时停靠到系统托盘，即只显示系统托盘挂件并隐藏主窗口。 您可以通过点击系统托"
-"盘挂件或从弹出菜单中选择“恢复”来打开主窗口。"
+"启动时停靠到系统托盘，即只显示系统托盘小部件并隐藏主窗口。 您可以通过点击系统"
+"托盘小部件或从弹出菜单中选择“恢复”来打开主窗口。"
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:46

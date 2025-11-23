@@ -662,7 +662,7 @@ msgstr "请为共享 <b>%1</b><br>指定一个用户名。"
 #: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
 msgid "Dock Widgets"
-msgstr "停靠栏挂件"
+msgstr "停靠栏小部件"
 
 #: smb4k/smb4kmainwindow.cpp:180 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
