@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2025-11-28 00:42+0000\n"
 "PO-Revision-Date: 2025-06-21 08:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -21,6 +21,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 25.04.2\n"
+
+#, kde-format
+msgctxt "default profile name for use at home"
+msgid "Home"
+msgstr "Ev"
+
+#, kde-format
+msgctxt "default profile name for use at work"
+msgid "Work"
+msgstr "İş"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1852,18 +1862,6 @@ msgstr "Profiller"
 #, kde-format
 msgid "The list of profiles."
 msgstr "Profillerin listesi."
-
-#: smb4k.kcfg:671
-#, kde-format
-msgctxt "default profile name for use at home"
-msgid "Home"
-msgstr "Ev"
-
-#: smb4k.kcfg:672
-#, kde-format
-msgctxt "default profile name for use at work"
-msgid "Work"
-msgstr "İş"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:673

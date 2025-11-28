@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2025-11-28 00:42+0000\n"
 "PO-Revision-Date: 2025-06-21 11:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -20,6 +20,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 "X-Generator: Lokalize 25.04.2\n"
+
+#, kde-format
+msgctxt "default profile name for use at home"
+msgid "Home"
+msgstr "Casa"
+
+#, kde-format
+msgctxt "default profile name for use at work"
+msgid "Work"
+msgstr "Treball"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1906,18 +1916,6 @@ msgstr "Perfils"
 #, kde-format
 msgid "The list of profiles."
 msgstr "La llista dels perfils."
-
-#: smb4k.kcfg:671
-#, kde-format
-msgctxt "default profile name for use at home"
-msgid "Home"
-msgstr "Casa"
-
-#: smb4k.kcfg:672
-#, kde-format
-msgctxt "default profile name for use at work"
-msgid "Work"
-msgstr "Treball"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:673

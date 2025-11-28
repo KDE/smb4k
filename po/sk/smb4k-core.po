@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2025-11-28 00:42+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -15,6 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "default profile name for use at home"
+msgid "Home"
+msgstr "Domov"
+
+#, kde-format
+msgctxt "default profile name for use at work"
+msgid "Work"
+msgstr "Práca"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1857,18 +1867,6 @@ msgstr "Profily"
 #, kde-format
 msgid "The list of profiles."
 msgstr "Zoznam profilov."
-
-#: smb4k.kcfg:671
-#, kde-format
-msgctxt "default profile name for use at home"
-msgid "Home"
-msgstr "Domov"
-
-#: smb4k.kcfg:672
-#, kde-format
-msgctxt "default profile name for use at work"
-msgid "Work"
-msgstr "Práca"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:673

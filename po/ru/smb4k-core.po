@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2025-11-28 00:42+0000\n"
 "PO-Revision-Date: 2024-11-06 17:09+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -27,6 +27,16 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "default profile name for use at home"
+msgid "Home"
+msgstr "Дом"
+
+#, kde-format
+msgctxt "default profile name for use at work"
+msgid "Work"
+msgstr "Работа"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1908,18 +1918,6 @@ msgstr "Профили"
 #, kde-format
 msgid "The list of profiles."
 msgstr "Список профилей."
-
-#: smb4k.kcfg:671
-#, kde-format
-msgctxt "default profile name for use at home"
-msgid "Home"
-msgstr "Дом"
-
-#: smb4k.kcfg:672
-#, kde-format
-msgctxt "default profile name for use at work"
-msgid "Work"
-msgstr "Работа"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:673

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2025-11-28 00:42+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -16,6 +16,16 @@ msgstr ""
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /kf6-trunk/messages/smb4k/smb4k-core.pot\n"
 "X-Crowdin-File-ID: 53206\n"
+
+#, kde-format
+msgctxt "default profile name for use at home"
+msgid "Home"
+msgstr "Home"
+
+#, kde-format
+msgctxt "default profile name for use at work"
+msgid "Work"
+msgstr "Work"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1740,18 +1750,6 @@ msgstr "配置方案"
 #, kde-format
 msgid "The list of profiles."
 msgstr "配置方案列表。"
-
-#: smb4k.kcfg:671
-#, kde-format
-msgctxt "default profile name for use at home"
-msgid "Home"
-msgstr "Home"
-
-#: smb4k.kcfg:672
-#, kde-format
-msgctxt "default profile name for use at work"
-msgid "Work"
-msgstr "Work"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:673
