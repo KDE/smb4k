@@ -45,8 +45,8 @@ Requirements
 ------------
 To compile Smb4K, you need:
 - CMake (version >= 3.16, https://www.cmake.org)
-- GNU Compiler Collection (version >= 5.0, https://gcc.gnu.org)
-  or clang/LLVM (version >= 3.3, https://clang.llvm.org)
+- GNU Compiler Collection (version >= 11.0, https://gcc.gnu.org)
+  or clang/LLVM (version >= 5.0, https://clang.llvm.org)
 
 Smb4K build depends on:
 - Qt (version >= 6.6.2, https://www.qt.io): QtCore, QtGui, QtNetwork, QtPrintSupport, QtQml, QtWidgets
