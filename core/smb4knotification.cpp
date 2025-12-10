@@ -14,7 +14,7 @@
 #include "smb4kworkgroup.h"
 
 // Qt includes
-#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
 #include <qapplicationstatic.h>
@@ -31,10 +31,22 @@
 
 using namespace KAuth;
 
-class Smb4KNotificationPrivate
+class Smb4KNotificationPrivate : public QObject
 {
+    Q_OBJECT
+
 public:
     QString componentName;
+    QString path;
+    void open()
+    {
+        if (!path.isEmpty()) {
+            KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(path), QStringLiteral("inode/directory"));
+            job->setFollowRedirections(false);
+            job->setAutoDelete(true);
+            job->start();
+        }
+    }
 };
 
 Q_APPLICATION_STATIC(Smb4KNotificationPrivate, p);
@@ -53,36 +65,25 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
     Q_ASSERT(share);
 
     if (share) {
-        QEventLoop loop;
-
         KNotification *notification = new KNotification(QStringLiteral("shareMounted"), KNotification::CloseOnTimeout);
 
         if (!p->componentName.isEmpty()) {
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(i18n("<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", share->displayString(), share->path()));
+        notification->setText(i18n("The share <b>%1</b> has been mounted to <b>%2</b>.", share->displayString(), share->path()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"),
                                                                 KIconLoader::NoGroup,
                                                                 0,
                                                                 KIconLoader::DefaultState,
                                                                 QStringList(QStringLiteral("emblem-mounted"))));
 
-        auto open = [&]() {
-            KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(share->path()), QStringLiteral("inode/directory"));
-            job->setFollowRedirections(false);
-            job->setAutoDelete(true);
-            job->start();
-        };
+        p->path = share->path();
 
         auto *openAction = notification->addAction(i18nc("Open the contents of the share with the file manager", "Open"));
-        QObject::connect(openAction, &KNotificationAction::activated, open);
-
-        QObject::connect(notification, &KNotification::closed, &loop, &QEventLoop::quit);
+        QObject::connect(openAction, &KNotificationAction::activated, p, &Smb4KNotificationPrivate::open);
 
         notification->sendEvent();
-
-        loop.exec();
     }
 }
 
@@ -97,7 +98,7 @@ void Smb4KNotification::shareUnmounted(const SharePtr &share)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(i18n("<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>", share->displayString(), share->path()));
+        notification->setText(i18n("The share <b>%1</b> has been unmounted from <b>%2</b>.", share->displayString(), share->path()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"),
                                                                 KIconLoader::NoGroup,
                                                                 0,
@@ -115,7 +116,7 @@ void Smb4KNotification::sharesMounted(int number)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18np("<p>%1 share has been mounted.</p>", "<p>%1 shares have been mounted.</p>", number));
+    notification->setText(i18np("%1 share has been mounted.", "%1 shares have been mounted.", number));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"),
                                                             KIconLoader::NoGroup,
                                                             0,
@@ -132,7 +133,7 @@ void Smb4KNotification::sharesUnmounted(int number)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18np("<p>%1 share has been unmounted.</p>", "<p>%1 shares have been unmounted.</p>", number));
+    notification->setText(i18np("%1 share has been unmounted.", "%1 shares have been unmounted.", number));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"),
                                                             KIconLoader::NoGroup,
                                                             0,
@@ -150,8 +151,7 @@ void Smb4KNotification::migratingLoginCredentials()
     }
 
     notification->setText(
-        i18n("The way Smb4K stores the login credentials has changed. They will now be migrated. "
-             "This change is incompatible with earlier versions of Smb4K."));
+        i18n("The way Smb4K stores the login credentials has changed. They will now be migrated. This change is incompatible with earlier versions of Smb4K."));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-information"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -168,10 +168,7 @@ void Smb4KNotification::mimetypeNotSupported(const QString &mimetype)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(
-        i18n("<p>The mimetype <b>%1</b> is not supported for printing. "
-             "Please convert the file to PDF or Postscript and try again.</p>",
-             mimetype));
+    notification->setText(i18n("The mimetype <b>%1</b> is not supported for printing. Please convert the file to PDF or Postscript and try again.", mimetype));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -187,7 +184,7 @@ void Smb4KNotification::bookmarkExists(const BookmarkPtr &bookmark)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(i18n("<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>", bookmark->displayString()));
+        notification->setText(i18n("The bookmark for share <b>%1</b> already exists and will be skipped.", bookmark->displayString()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
         notification->sendEvent();
     }
@@ -204,11 +201,9 @@ void Smb4KNotification::bookmarkLabelInUse(const BookmarkPtr &bookmark)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(
-            i18n("<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> "
-                 "is already being used and will automatically be renamed.</p>",
-                 bookmark->label(),
-                 bookmark->displayString()));
+        notification->setText(i18n("The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being used and will automatically be renamed.",
+                                   bookmark->label(),
+                                   bookmark->displayString()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
         notification->sendEvent();
     }
@@ -225,9 +220,9 @@ void Smb4KNotification::mountingFailed(const SharePtr &share, const QString &err
         QString text;
 
         if (!err_msg.isEmpty()) {
-            text = i18n("<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>", share->displayString(), err_msg);
+            text = i18n("Mounting the share <b>%1</b> failed: <tt>%2</tt>", share->displayString(), err_msg);
         } else {
-            text = i18n("<p>Mounting the share <b>%1</b> failed.</p>", share->displayString());
+            text = i18n("Mounting the share <b>%1</b> failed.", share->displayString());
         }
 
         KNotification *notification = new KNotification(QStringLiteral("mountingFailed"), KNotification::CloseOnTimeout);
@@ -250,9 +245,9 @@ void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString &e
         QString text;
 
         if (!err_msg.isEmpty()) {
-            text = i18n("<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></p>", share->displayString(), share->path(), err_msg);
+            text = i18n("Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>", share->displayString(), share->path(), err_msg);
         } else {
-            text = i18n("<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>", share->displayString(), share->path());
+            text = i18n("Unmounting the share <b>%1</b> from <b>%2</b> failed.", share->displayString(), share->path());
         }
 
         KNotification *notification = new KNotification(QStringLiteral("unmountingFailed"), KNotification::CloseOnTimeout);
@@ -278,12 +273,10 @@ void Smb4KNotification::unmountingNotAllowed(const SharePtr &share)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(
-            i18n("<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. "
-                 "It is owned by the user <b>%3</b>.</p>",
-                 share->displayString(),
-                 share->path(),
-                 share->user().loginName()));
+        notification->setText(i18n("You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is owned by the user <b>%3</b>.",
+                                   share->displayString(),
+                                   share->path(),
+                                   share->user().loginName()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
         notification->sendEvent();
     }
@@ -294,9 +287,9 @@ void Smb4KNotification::synchronizationFailed(const QUrl &src, const QUrl &dest,
     QString text;
 
     if (!err_msg.isEmpty()) {
-        text = i18n("<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>", dest.path(), src.path(), err_msg);
+        text = i18n("Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>", dest.path(), src.path(), err_msg);
     } else {
-        text = i18n("<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>", dest.path(), src.path());
+        text = i18n("Synchronizing <b>%1</b> with <b>%2</b> failed.", dest.path(), src.path());
     }
 
     KNotification *notification = new KNotification(QStringLiteral("synchronizationFailed"), KNotification::CloseOnTimeout);
@@ -318,7 +311,7 @@ void Smb4KNotification::commandNotFound(const QString &command)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("<p>The command <b>%1</b> could not be found. Please check your installation.</p>", command));
+    notification->setText(i18n("The command <b>%1</b> could not be found. Please check your installation.", command));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -334,7 +327,7 @@ void Smb4KNotification::cannotBookmarkPrinter(const SharePtr &share)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(i18n("<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>", share->displayString()));
+        notification->setText(i18n("The share <b>%1</b> is a printer and cannot be bookmarked.", share->displayString()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
         notification->sendEvent();
     }
@@ -348,7 +341,7 @@ void Smb4KNotification::fileNotFound(const QString &fileName)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("<p>The file <b>%1</b> could not be found.</p>", fileName));
+    notification->setText(i18n("The file <b>%1</b> could not be found.", fileName));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -358,9 +351,9 @@ void Smb4KNotification::openingFileFailed(const QFile &file)
     QString text;
 
     if (!file.errorString().isEmpty()) {
-        text = i18n("<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>", file.fileName(), file.errorString());
+        text = i18n("Opening the file <b>%1</b> failed: <tt>%2</tt>", file.fileName(), file.errorString());
     } else {
-        text = i18n("<p>Opening the file <b>%1</b> failed.</p>", file.fileName());
+        text = i18n("Opening the file <b>%1</b> failed.", file.fileName());
     }
 
     KNotification *notification = new KNotification(QStringLiteral("openingFileFailed"), KNotification::CloseOnTimeout);
@@ -379,12 +372,12 @@ void Smb4KNotification::readingFileFailed(const QFile &file, const QString &err_
     QString text;
 
     if (!err_msg.isEmpty()) {
-        text = i18n("<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>", file.fileName(), err_msg);
+        text = i18n("Reading from file <b>%1</b> failed: <tt>%2</tt>", file.fileName(), err_msg);
     } else {
         if (!file.errorString().isEmpty()) {
-            text = i18n("<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>", file.fileName(), file.errorString());
+            text = i18n("Reading from file <b>%1</b> failed: <tt>%2</tt>", file.fileName(), file.errorString());
         } else {
-            text = i18n("<p>Reading from file <b>%1</b> failed.</p>", file.fileName());
+            text = i18n("Reading from file <b>%1</b> failed.", file.fileName());
         }
     }
 
@@ -407,7 +400,7 @@ void Smb4KNotification::mkdirFailed(const QDir &dir)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("<p>The following directory could not be created:</p><p><tt>%1</tt></p>", dir.absolutePath()));
+    notification->setText(i18n("The following directory could not be created: <tt>%1</tt>", dir.absolutePath()));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -418,28 +411,28 @@ void Smb4KNotification::processError(QProcess::ProcessError error)
 
     switch (error) {
     case QProcess::FailedToStart: {
-        text = i18n("<p>The process failed to start (error code: <tt>%1</tt>).</p>", error);
+        text = i18n("The process failed to start (error code: <tt>%1</tt>).", error);
         break;
     }
     case QProcess::Crashed: {
-        text = i18n("<p>The process crashed (error code: <tt>%1</tt>).</p>", error);
+        text = i18n("The process crashed (error code: <tt>%1</tt>).", error);
         break;
     }
     case QProcess::Timedout: {
-        text = i18n("<p>The process timed out (error code: <tt>%1</tt>).</p>", error);
+        text = i18n("The process timed out (error code: <tt>%1</tt>).", error);
         break;
     }
     case QProcess::WriteError: {
-        text = i18n("<p>Could not write to the process (error code: <tt>%1</tt>).</p>", error);
+        text = i18n("Could not write to the process (error code: <tt>%1</tt>).", error);
         break;
     }
     case QProcess::ReadError: {
-        text = i18n("<p>Could not read from the process (error code: <tt>%1</tt>).</p>", error);
+        text = i18n("Could not read from the process (error code: <tt>%1</tt>).", error);
         break;
     }
     case QProcess::UnknownError:
     default: {
-        text = i18n("<p>The process reported an unknown error.</p>");
+        text = i18n("The process reported an unknown error.");
         break;
     }
     }
@@ -455,45 +448,45 @@ void Smb4KNotification::processError(QProcess::ProcessError error)
     notification->sendEvent();
 }
 
-void Smb4KNotification::actionFailed(int errorCode)
+void Smb4KNotification::actionFailed(int errorCode, const QString &errorMessage)
 {
-    QString text, errorMessage;
+    QString text, errorCodeString;
 
     switch (errorCode) {
     case ActionReply::NoResponderError: {
-        errorMessage = QStringLiteral("NoResponderError");
+        errorCodeString = QStringLiteral("NoResponderError");
         break;
     }
     case ActionReply::NoSuchActionError: {
-        errorMessage = QStringLiteral("NoSuchActionError");
+        errorCodeString = QStringLiteral("NoSuchActionError");
         break;
     }
     case ActionReply::InvalidActionError: {
-        errorMessage = QStringLiteral("InvalidActionError");
+        errorCodeString = QStringLiteral("InvalidActionError");
         break;
     }
     case ActionReply::AuthorizationDeniedError: {
-        errorMessage = QStringLiteral("AuthorizationDeniedError");
+        errorCodeString = QStringLiteral("AuthorizationDeniedError");
         break;
     }
     case ActionReply::UserCancelledError: {
-        errorMessage = QStringLiteral("UserCancelledError");
+        errorCodeString = QStringLiteral("UserCancelledError");
         break;
     }
     case ActionReply::HelperBusyError: {
-        errorMessage = QStringLiteral("HelperBusyError");
+        errorCodeString = QStringLiteral("HelperBusyError");
         break;
     }
     case ActionReply::AlreadyStartedError: {
-        errorMessage = QStringLiteral("AlreadyStartedError");
+        errorCodeString = QStringLiteral("AlreadyStartedError");
         break;
     }
     case ActionReply::DBusError: {
-        errorMessage = QStringLiteral("DBusError");
+        errorCodeString = QStringLiteral("DBusError");
         break;
     }
     case ActionReply::BackendError: {
-        errorMessage = QStringLiteral("BackendError");
+        errorCodeString = QStringLiteral("BackendError");
         break;
     }
     default: {
@@ -501,11 +494,9 @@ void Smb4KNotification::actionFailed(int errorCode)
     }
     }
 
-    if (!errorMessage.isEmpty()) {
-        text = i18n("<p>Executing an action with root privileges failed (error code: <tt>%1</tt>).</p>", errorMessage);
-    } else {
-        text = i18n("<p>Executing an action with root privileges failed.</p>");
-    }
+    text = i18n("Executing an action with root privileges failed%1%2",
+                !errorCodeString.isEmpty() ? QStringLiteral(" (") + errorCodeString + QStringLiteral(")") : QString(),
+                !errorMessage.isEmpty() ? QStringLiteral(": ") + errorMessage : QStringLiteral("."));
 
     KNotification *notification = new KNotification(QStringLiteral("actionFailed"), KNotification::CloseOnTimeout);
 
@@ -526,7 +517,7 @@ void Smb4KNotification::invalidURLPassed()
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("<p>The URL that was passed is invalid.</p>"));
+    notification->setText(i18n("The URL that was passed is invalid."));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -539,7 +530,7 @@ void Smb4KNotification::networkCommunicationFailed(const QString &errorMessage)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("<p>The network communication failed with the following error message: <s>%1</s></p>", errorMessage));
+    notification->setText(i18n("The network communication failed with the following error message: <tt>%1</tt>", errorMessage));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -552,7 +543,7 @@ void Smb4KNotification::zeroconfError(const QString &errorMessage)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("<p>An error with the Zeroconf service occurred: <s>%1</s></p>", errorMessage));
+    notification->setText(i18n("An error with the Zeroconf service occurred: <tt>%1</tt>", errorMessage));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -565,7 +556,9 @@ void Smb4KNotification::keychainError(const QString &errorMessage)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(i18n("<p>An error occurred while reading the login credentials from the secure storage:\n<tt>%1</tt></p>", errorMessage));
+    notification->setText(i18n("An error occurred while reading the login credentials from the secure storage: <tt>%1</tt>", errorMessage));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
+
+#include "smb4knotification.moc"

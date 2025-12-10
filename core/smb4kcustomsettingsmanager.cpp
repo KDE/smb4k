@@ -1,7 +1,7 @@
 /*
     Manage custom settings
 
-    SPDX-FileCopyrightText: 2011-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -23,7 +23,7 @@
 #endif
 
 // Qt includes
-#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
 #include <qapplicationstatic.h>
@@ -418,41 +418,12 @@ void Smb4KCustomSettingsManager::read()
                                                 if (ok) {
                                                     settings->setRemount(remount);
                                                 }
-                                            } else if (xmlReader.name() == QStringLiteral("use_user")) {
+                                            } else if (xmlReader.name() == QStringLiteral("use_ids")) {
                                                 bool ok = false;
-                                                bool useUser = xmlReader.readElementText().toInt(&ok);
+                                                bool useIds = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
-                                                    settings->setUseUser(useUser);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("uid")) {
-                                                bool ok = false;
-                                                int uid = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    KUser user((K_UID)uid);
-
-                                                    if (user.isValid()) {
-                                                        settings->setUser(user);
-                                                    }
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("use_group")) {
-                                                bool ok = false;
-                                                bool useGroup = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    settings->setUseGroup(useGroup);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("gid")) {
-                                                bool ok = false;
-                                                int gid = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    KUserGroup group((K_GID)gid);
-
-                                                    if (group.isValid()) {
-                                                        settings->setGroup(group);
-                                                    }
+                                                    settings->setUseIds(useIds);
                                                 }
                                             } else if (xmlReader.name() == QStringLiteral("use_file_mode")) {
                                                 bool ok = false;
@@ -501,20 +472,6 @@ void Smb4KCustomSettingsManager::read()
 
                                                 if (ok) {
                                                     settings->setCifsUnixExtensionsSupport(cifsUnixExtensionsSupported);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("use_filesystem_port")) {
-                                                bool ok = false;
-                                                bool useFilesystemPort = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    settings->setUseFileSystemPort(useFilesystemPort);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("filesystem_port")) {
-                                                bool ok = false;
-                                                int portNumber = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    settings->setFileSystemPort(portNumber);
                                                 }
                                             } else if (xmlReader.name() == QStringLiteral("use_smb_mount_protocol_version")) {
                                                 bool ok = false;

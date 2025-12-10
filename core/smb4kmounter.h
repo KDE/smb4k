@@ -217,12 +217,6 @@ protected Q_SLOTS:
     void slotActiveProfileChanged(const QString &newProfile);
 
     /**
-     * This slot is called whenever a network share is mounted or
-     * unmounted.
-     */
-    void slotTriggerImport();
-
-    /**
      * This slot is called whenever the configuration changed. It is used
      * to trigger the importing of shares when certain settings changed.
      */
@@ -236,21 +230,32 @@ protected Q_SLOTS:
      */
     void slotCredentialsUpdated(const QUrl &url);
 
+    /**
+     * This slot is called when a share was mounted. It takes the
+     * @p mountPoint as an argument.
+     *
+     * @param mountPoint    The mountpoint of the share
+     */
+    void slotShareMounted(const QString &mountPoint);
+
+    /**
+     * This slot is called when a share was mounted. It takes the
+     * @p mountPoint as an argument.
+     *
+     * @param mountPoint    The mountpoint of the share
+     */
+    void slotShareUnmounted(const QString &mountPoint);
+
 private:
     /**
-     * Trigger the remounting of shares. If the parameter @p fill_list is
+     * Trigger the remounting of shares. If the parameter @p fillList is
      * set to true, the internal list should be populated with the shares
      * that are scheduled for a remount.
      *
-     * @param fill_list       Fill the internal list with shares that are
+     * @param fillList        Fill the internal list with shares that are
      *                        to be remounted.
      */
-    void triggerRemounts(bool fill_list);
-
-    /**
-     * Imports mounted shares.
-     */
-    void import(bool checkInaccessible);
+    void triggerRemounts(bool fillList);
 
     /**
      * Save all shares that need to be remounted.
@@ -260,7 +265,7 @@ private:
     /**
      * Fill the mount action arguments into a map.
      */
-    bool fillMountActionArgs(const SharePtr &share, QVariantMap &mountArgs);
+    bool fillMountActionArgs(const SharePtr &share, int *fd, QVariantMap &mountArgs);
 
     /**
      * Fill the unmount action arguments into a map.

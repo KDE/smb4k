@@ -186,8 +186,10 @@ SMB4KCORE_EXPORT void processError(QProcess::ProcessError error);
  * this function if available.
  *
  * @param errorCode  The error code
+ *
+ * @param errorMessage  The error message that was passed
  */
-SMB4KCORE_EXPORT void actionFailed(int errorCode = -1);
+SMB4KCORE_EXPORT void actionFailed(int errorCode = -1, const QString &errorMessage = QString());
 
 /**
  * This error message is shown when an invalid URL was passed to some core

@@ -1,7 +1,7 @@
 /*
     This is the global namespace for Smb4K.
 
-    SPDX-FileCopyrightText: 2005-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -314,23 +314,29 @@ SMB4KCORE_EXPORT bool addMountedShare(SharePtr share);
  * is already present in the internal list.
  *
  * @param share       The share item
+ *
  * @returns TRUE if a share was found and updated. Returns FALSE otherwise.
  */
 SMB4KCORE_EXPORT bool updateMountedShare(SharePtr share);
 
 /**
  * This function removes a mounted share @p share from the list of mounted
- * shares. The pointer that is passed to this function will be deleted.
- * You won't be able to use it afterwards. This function returns TRUE if
- * the share was removed and FALSE otherwise.
+ * shares. If @p takeOnly is FALSE, the pointer that is passed to this function
+ * will be deleted. You won't be able to use it afterwards. If @p takeOnly is
+ * TRUE, the mounted share is only removed, but not deleted.
+ *
+ * This function returns TRUE if the share was removed and FALSE otherwise.
  *
  * Please prefer this function over per class solutions.
  *
  * @param share       The share item
  *
+ * @param takeOnly    TRUE if the share should only be removed from the
+ *                    list, but not deleted, and FALSE otherwise
+ *
  * @returns TRUE if the share was removed and FALSE otherwise.
  */
-SMB4KCORE_EXPORT bool removeMountedShare(SharePtr share);
+SMB4KCORE_EXPORT bool removeMountedShare(SharePtr share, bool takeOnly);
 
 /**
  * This function returns TRUE if only shares are present that are owned by
@@ -383,16 +389,6 @@ SMB4KCORE_EXPORT const QString machineWorkgroupName();
  */
 SMB4KCORE_EXPORT bool modifyCursor();
 
-#if defined(Q_OS_LINUX)
-/**
- * This list contains all allowed arguments for the mount.cifs binary and
- * is only present under the Linux operating system.
- *
- * @returns the list of allowed mount arguments
- */
-SMB4KCORE_EXPORT QStringList allowedMountArguments();
-#endif
-
 /**
  * Find the mount executable on the system.
  *
@@ -420,6 +416,14 @@ SMB4KCORE_EXPORT const QString dataLocation();
  * @param time          The waiting time in msec
  */
 SMB4KCORE_EXPORT void wait(int time);
+
+/**
+ * Query the local arp cache and retrieve the MAC address for the given
+ * IP address if available.
+ *
+ * @param ipAddress     The IP addess of the server
+ */
+SMB4KCORE_EXPORT const QString findMacAddress(const QString &ipAddress);
 };
 
 #endif

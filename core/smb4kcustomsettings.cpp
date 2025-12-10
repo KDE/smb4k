@@ -1,7 +1,7 @@
 /*
     This class carries custom settings
 
-    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -36,18 +36,13 @@ public:
     QString profile;
 
     QPair<int, bool> remount;
-    QPair<bool, bool> useUser;
-    QPair<KUser, bool> user;
-    QPair<bool, bool> useGroup;
-    QPair<KUserGroup, bool> group;
+    QPair<bool, bool> useIds;
     QPair<bool, bool> useFileMode;
     QPair<QString, bool> fileMode;
     QPair<bool, bool> useDirectoryMode;
     QPair<QString, bool> directoryMode;
 #if defined(Q_OS_LINUX)
     QPair<bool, bool> cifsUnixExtensionsSupport;
-    QPair<bool, bool> useFileSystemPort;
-    QPair<int, bool> fileSystemPort;
     QPair<bool, bool> useMountProtocolVersion;
     QPair<int, bool> mountProtocolVersion;
     QPair<bool, bool> useSecurityMode;
@@ -96,16 +91,9 @@ Smb4KCustomSettings::Smb4KCustomSettings(Smb4KBasicNetworkItem *networkItem)
         if (host) {
             setWorkgroupName(host->workgroupName());
             setIpAddress(host->ipAddress());
-            setUseUser(Smb4KMountSettings::useUserId());
-            setUser(KUser((K_UID)Smb4KMountSettings::userId().toInt()));
-            setUseGroup(Smb4KMountSettings::useGroupId());
-            setGroup(KUserGroup((K_GID)Smb4KMountSettings::groupId().toInt()));
+            setUseIds(Smb4KMountSettings::useIds());
             setUseSmbPort(Smb4KSettings::useRemoteSmbPort());
             setSmbPort(host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort());
-#if defined(Q_OS_LINUX)
-            setUseFileSystemPort(Smb4KMountSettings::useRemoteFileSystemPort());
-            setFileSystemPort(Smb4KMountSettings::remoteFileSystemPort());
-#endif
         }
         break;
     }
@@ -115,16 +103,9 @@ Smb4KCustomSettings::Smb4KCustomSettings(Smb4KBasicNetworkItem *networkItem)
         if (share) {
             setWorkgroupName(share->workgroupName());
             setIpAddress(share->hostIpAddress());
-            setUseUser(Smb4KMountSettings::useUserId());
-            setUser(share->user());
-            setUseGroup(Smb4KMountSettings::useGroupId());
-            setGroup(share->group());
+            setUseIds(Smb4KMountSettings::useIds());
             setUseSmbPort(Smb4KSettings::useRemoteSmbPort());
             setSmbPort(Smb4KSettings::remoteSmbPort());
-#if defined(Q_OS_LINUX)
-            setUseFileSystemPort(Smb4KMountSettings::useRemoteFileSystemPort());
-            setFileSystemPort(share->port() != -1 ? share->port() : Smb4KMountSettings::remoteFileSystemPort());
-#endif
         }
         break;
     }
@@ -157,18 +138,13 @@ Smb4KCustomSettings::Smb4KCustomSettings()
     setProfile(Smb4KSettings::activeProfile());
 
     setRemount(UndefinedRemount);
-    setUseUser(Smb4KMountSettings::useUserId());
-    setUser(KUser((K_UID)Smb4KMountSettings::userId().toInt()));
-    setUseGroup(Smb4KMountSettings::useGroupId());
-    setGroup(KUserGroup((K_GID)Smb4KMountSettings::groupId().toInt()));
+    setUseIds(Smb4KMountSettings::useIds());
     setUseFileMode(Smb4KMountSettings::useFileMode());
     setFileMode(Smb4KMountSettings::fileMode());
     setUseDirectoryMode(Smb4KMountSettings::useDirectoryMode());
     setDirectoryMode(Smb4KMountSettings::directoryMode());
 #if defined(Q_OS_LINUX)
     setCifsUnixExtensionsSupport(Smb4KMountSettings::cifsUnixExtensionsSupport());
-    setUseFileSystemPort(Smb4KMountSettings::useRemoteFileSystemPort());
-    setFileSystemPort(Smb4KMountSettings::remoteFileSystemPort());
     setUseMountProtocolVersion(Smb4KMountSettings::useSmbProtocolVersion());
     setMountProtocolVersion(Smb4KMountSettings::smbProtocolVersion());
     setUseSecurityMode(Smb4KMountSettings::useSecurityMode());
@@ -214,11 +190,6 @@ void Smb4KCustomSettings::setNetworkItem(Smb4KBasicNetworkItem *networkItem) con
 
             if (share) {
                 setWorkgroupName(share->workgroupName());
-#if defined(Q_OS_LINUX)
-                setFileSystemPort(share->port() != -1 ? share->port() : Smb4KMountSettings::remoteFileSystemPort());
-#endif
-                setUser(share->user());
-                setGroup(share->group());
                 setIpAddress(share->hostIpAddress());
             }
             break;
@@ -334,44 +305,14 @@ int Smb4KCustomSettings::remount() const
     return d->remount.first;
 }
 
-void Smb4KCustomSettings::setUseUser(bool use) const
+void Smb4KCustomSettings::setUseIds(bool set) const
 {
-    d->useUser = {use, (use != Smb4KMountSettings::useUserId())};
+    d->useIds = {set, (set != Smb4KMountSettings::useIds())};
 }
 
-bool Smb4KCustomSettings::useUser() const
+bool Smb4KCustomSettings::useIds() const
 {
-    return d->useUser.first;
-}
-
-void Smb4KCustomSettings::setUser(const KUser &user) const
-{
-    d->user = {user, (user.userId().toString() != Smb4KMountSettings::userId())};
-}
-
-KUser Smb4KCustomSettings::user() const
-{
-    return d->user.first;
-}
-
-void Smb4KCustomSettings::setUseGroup(bool use) const
-{
-    d->useGroup = {use, (use != Smb4KMountSettings::useGroupId())};
-}
-
-bool Smb4KCustomSettings::useGroup() const
-{
-    return d->useGroup.first;
-}
-
-void Smb4KCustomSettings::setGroup(const KUserGroup &group) const
-{
-    d->group = {group, (group.groupId().toString() != Smb4KMountSettings::groupId())};
-}
-
-KUserGroup Smb4KCustomSettings::group() const
-{
-    return d->group.first;
+    return d->useIds.first;
 }
 
 void Smb4KCustomSettings::setUseFileMode(bool use) const
@@ -423,36 +364,6 @@ void Smb4KCustomSettings::setCifsUnixExtensionsSupport(bool support) const
 bool Smb4KCustomSettings::cifsUnixExtensionsSupport() const
 {
     return d->cifsUnixExtensionsSupport.first;
-}
-
-void Smb4KCustomSettings::setUseFileSystemPort(bool use) const
-{
-    d->useFileSystemPort = {use, (use != Smb4KMountSettings::useRemoteFileSystemPort())};
-}
-
-bool Smb4KCustomSettings::useFileSystemPort() const
-{
-    return d->useFileSystemPort.first;
-}
-
-void Smb4KCustomSettings::setFileSystemPort(int port) const
-{
-    d->fileSystemPort = {port, (port != Smb4KMountSettings::remoteFileSystemPort())};
-
-    switch (d->type) {
-    case Share: {
-        d->url.setPort(port);
-        break;
-    }
-    default: {
-        break;
-    }
-    }
-}
-
-int Smb4KCustomSettings::fileSystemPort() const
-{
-    return d->fileSystemPort.first;
 }
 
 void Smb4KCustomSettings::setUseMountProtocolVersion(bool use) const
@@ -629,22 +540,8 @@ QMap<QString, QString> Smb4KCustomSettings::customSettings() const
         entries.insert(QStringLiteral("remount"), QString::number(d->remount.first));
     }
 
-    // User
-    if (d->useUser.second && (d->useUser.first != Smb4KMountSettings::useUserId())) {
-        entries.insert(QStringLiteral("use_user"), QString::number(d->useUser.first));
-    }
-
-    if (d->user.second && (d->user.first.userId().toString() != Smb4KMountSettings::userId())) {
-        entries.insert(QStringLiteral("uid"), d->user.first.userId().toString());
-    }
-
-    // Group
-    if (d->useGroup.second && (d->useGroup.first != Smb4KMountSettings::useGroupId())) {
-        entries.insert(QStringLiteral("use_group"), QString::number(d->useGroup.first));
-    }
-
-    if (d->group.second && (d->group.first.groupId().toString() != Smb4KMountSettings::groupId())) {
-        entries.insert(QStringLiteral("gid"), d->group.first.groupId().toString());
+    if (d->useIds.second && (d->useIds.first != Smb4KMountSettings::useIds())) {
+        entries.insert(QStringLiteral("use_ids"), QString::number(d->useIds.first));
     }
 
     // File mode
@@ -669,15 +566,6 @@ QMap<QString, QString> Smb4KCustomSettings::customSettings() const
     // Unix CIFS extensions supported
     if (d->cifsUnixExtensionsSupport.second && (d->cifsUnixExtensionsSupport.first != Smb4KMountSettings::cifsUnixExtensionsSupport())) {
         entries.insert(QStringLiteral("cifs_unix_extensions_support"), QString::number(d->cifsUnixExtensionsSupport.first));
-    }
-
-    // File system port
-    if (d->useFileSystemPort.second && (d->useFileSystemPort.first != Smb4KMountSettings::useRemoteFileSystemPort())) {
-        entries.insert(QStringLiteral("use_filesystem_port"), QString::number(d->useFileSystemPort.first));
-    }
-
-    if (d->fileSystemPort.second && (d->fileSystemPort.first != Smb4KMountSettings::remoteFileSystemPort())) {
-        entries.insert(QStringLiteral("filesystem_port"), QString::number(d->fileSystemPort.first));
     }
 
     // Mount protocol version
@@ -763,21 +651,8 @@ bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
         return true;
     }
 
-    // User
-    if (d->useUser.second && (d->useUser.first != Smb4KMountSettings::useUserId())) {
-        return true;
-    }
-
-    if (d->user.second && (d->user.first.userId().toString() != Smb4KMountSettings::userId())) {
-        return true;
-    }
-
-    // Group
-    if (d->useGroup.second && (d->useGroup.first != Smb4KMountSettings::useGroupId())) {
-        return true;
-    }
-
-    if (d->group.second && (d->group.first.groupId().toString() != Smb4KMountSettings::groupId())) {
+    // Use IDs
+    if (d->useIds.second && (d->useIds.first != Smb4KMountSettings::useIds())) {
         return true;
     }
 
@@ -802,15 +677,6 @@ bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
 #if defined(Q_OS_LINUX)
     // Unix CIFS extensions supported
     if (d->cifsUnixExtensionsSupport.second && (d->cifsUnixExtensionsSupport.first != Smb4KMountSettings::cifsUnixExtensionsSupport())) {
-        return true;
-    }
-
-    // File system port
-    if (d->useFileSystemPort.second && (d->useFileSystemPort.first != Smb4KMountSettings::useRemoteFileSystemPort())) {
-        return true;
-    }
-
-    if (d->fileSystemPort.second && (d->fileSystemPort.first != Smb4KMountSettings::remoteFileSystemPort())) {
         return true;
     }
 
@@ -895,18 +761,13 @@ void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
     d->profile = customSettings->profile();
 
     setRemount(customSettings->remount());
-    setUseUser(customSettings->useUser());
-    setUser(customSettings->user());
-    setUseGroup(customSettings->useGroup());
-    setGroup(customSettings->group());
+    setUseIds(customSettings->useIds());
     setUseFileMode(customSettings->useFileMode());
     setFileMode(customSettings->fileMode());
     setUseDirectoryMode(customSettings->useDirectoryMode());
     setDirectoryMode(customSettings->directoryMode());
 #if defined(Q_OS_LINUX)
     setCifsUnixExtensionsSupport(customSettings->cifsUnixExtensionsSupport());
-    setUseFileSystemPort(customSettings->useFileSystemPort());
-    setFileSystemPort(customSettings->fileSystemPort());
     setUseMountProtocolVersion(customSettings->useMountProtocolVersion());
     setMountProtocolVersion(customSettings->mountProtocolVersion());
     setUseSecurityMode(customSettings->useSecurityMode());

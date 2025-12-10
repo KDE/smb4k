@@ -9,23 +9,10 @@
   <kcfgfile name="smb4krc" />
   
   <group name="Mounting">
-    <entry name="UseUserId" type="Bool">
-      <label>User ID:</label>
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="UserId" type="String">
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
-      <default code="true">KUserId::currentUserId().toString()</default>
-    </entry>
-    <entry name="UseGroupId" type="Bool">
-      <label>Group ID:</label>
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="GroupId" type="String">
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
-      <default code="true">KGroupId::currentGroupId().toString()</default>
+    <entry name="UseIds" type="Bool">
+      <label>Set the user and group ID</label>
+      <whatsthis>Set the user ID and group ID that the files and directories of the mounted share will have to those of the current user (you).</whatsthis>
+      <default>true</default>
     </entry>
     <entry name="UseFileMode" type="Bool">
       <label>File mode:</label>
@@ -232,16 +219,6 @@
       </choices>
       <default>default_codepage</default>
     </entry>
-    <entry name="MountPrefix" type="Url">
-      <label>Mount prefix:</label>
-      <whatsthis>This is the prefix where Smb4K will create the mount points and mount the remote shares.</whatsthis>
-      <default code="true">QUrl::fromLocalFile(QDir::homePath()+QStringLiteral("/smb4k/"))</default>
-    </entry>
-    <entry name="ForceLowerCaseSubdirs" type="Bool">
-      <label>Force generated subdirectories to be lower case</label>
-      <whatsthis>All names of the subdirectories created by Smb4K below the mount prefix will be lowercase.</whatsthis>
-      <default>false</default>
-    </entry>
     <entry name="UnmountSharesOnExit" type="Bool">
       <label>Unmount all personal shares on exit</label>
       <whatsthis>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</whatsthis>
@@ -265,11 +242,6 @@
       <min>1</min>
       <max>30</max>
       <default>5</default>
-    </entry>
-    <entry name="UnmountForeignShares" type="Bool">
-      <label>Allow the unmounting of shares that are owned by other users</label>
-      <whatsthis>Allow the unmounting of shares that were mounted by other users. Please think before you enable this option.</whatsthis>
-      <default>false</default>
     </entry>
     <entry name="ForceUnmountInaccessible" type="Bool">
       <label>Force the unmounting of inaccessible shares</label>
