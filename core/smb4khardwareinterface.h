@@ -50,6 +50,7 @@ public:
 
     /**
      * This function returns TRUE if the system is online and FALSE otherwise.
+     *
      * @returns TRUE if the system is online.
      */
     bool isOnline() const;
@@ -64,6 +65,22 @@ public:
      */
     void uninhibit();
 
+    /**
+     * This function returns TRUE if the initial list of mountpoints
+     * of all Samba shares is currently being imported.
+     *
+     * @returns TRUE if the the initial import is in progress
+     */
+    bool initialImportDone() const;
+
+    /**
+     * This function returns the list of all Samba shares mounted on
+     * the system.
+     *
+     * @returns the list of all mounted Samba shares.
+     */
+    QStringList allMountPoints() const;
+
 protected:
     /**
      * Reimplemented from QObject to check the online state and to check
@@ -75,13 +92,17 @@ protected:
 Q_SIGNALS:
     /**
      * This signal is emitted when a network share is added to the system
+     *
+     * @param mountpoint    The mountpoint of the share
      */
-    void networkShareAdded();
+    void networkShareAdded(const QString &mountpoint);
 
     /**
      * This signal is emitted when a network share is removed from the system
+     *
+     * @param mountpoint    The mountpoint of the share
      */
-    void networkShareRemoved();
+    void networkShareRemoved(const QString &mountpoint);
 
     /**
      * This signal is emitted when the online state changed.
@@ -90,6 +111,7 @@ Q_SIGNALS:
     void onlineStateChanged(bool online);
 
 protected Q_SLOTS:
+#if defined(Q_OS_LINUX)
     /**
      * This slot is called when a device was added to the system.
      * @param udi     the device UDI
@@ -101,6 +123,7 @@ protected Q_SLOTS:
      * @param udi     the device UDI
      */
     void slotDeviceRemoved(const QString &udi);
+#endif
 
     /**
      * This slot is called when the system prepares for sleep or has

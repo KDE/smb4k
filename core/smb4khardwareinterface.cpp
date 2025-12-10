@@ -12,7 +12,7 @@
 #include <unistd.h>
 
 // Qt includes
-#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
 #include <qapplicationstatic.h>
@@ -47,7 +47,10 @@ public:
     QDBusUnixFileDescriptor fileDescriptor;
     bool systemOnline;
     bool systemSleep;
+    bool initialImportDone;
+#if defined(Q_OS_LINUX)
     QStringList udis;
+#endif
     int timerId;
 };
 
@@ -65,6 +68,7 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
 {
     d->systemOnline = false;
     d->systemSleep = false;
+    d->initialImportDone = false;
     d->fileDescriptor.setFileDescriptor(-1);
     d->timerId = -1;
 
@@ -89,35 +93,46 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
         .connect(QString(), QString(), QStringLiteral("org.freedesktop.login1.Manager"), QStringLiteral("PrepareForSleep"), this, SLOT(slotSystemSleep(bool)));
 
     //
-    // Get the initial list of udis for network shares
-    //
-    QList<Solid::Device> allDevices = Solid::Device::allDevices();
-
-    for (const Solid::Device &device : std::as_const(allDevices)) {
-        const Solid::DeviceInterface *iface = device.asDeviceInterface(Solid::DeviceInterface::NetworkShare);
-        const Solid::NetworkShare *networkShare = qobject_cast<const Solid::NetworkShare *>(iface);
-
-        if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
-            d->udis << device.udi();
-        }
-    }
-
-    //
-    // Connections
-    //
-    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceAdded, this, &Smb4KHardwareInterface::slotDeviceAdded);
-    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceRemoved, this, &Smb4KHardwareInterface::slotDeviceRemoved);
-
-    //
     // Check the online state
     //
     checkOnlineState(false);
 
     //
-    // Start the timer to continously check the online state
-    // and, under FreeBSD, additionally the mounted shares.
+    // Get the initial list of CIFS/SMB3/SMBFS shares mounted
+    // on the system and then start the timer.
     //
-    d->timerId = startTimer(1000);
+    QTimer::singleShot(0, [&]() {
+#if defined(Q_OS_LINUX)
+        QList<Solid::Device> allDevices = Solid::Device::allDevices();
+
+        for (const Solid::Device &device : std::as_const(allDevices)) {
+            const Solid::DeviceInterface *iface = device.asDeviceInterface(Solid::DeviceInterface::NetworkShare);
+            const Solid::NetworkShare *networkShare = qobject_cast<const Solid::NetworkShare *>(iface);
+
+            if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
+                d->udis << device.udi();
+                QString mountpoint = device.udi().section(QStringLiteral(":"), -1, -1).trimmed();
+                Q_EMIT networkShareAdded(mountpoint);
+            }
+        }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+        KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
+
+        for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints) {
+            if (mountPoint->mountType() == QStringLiteral("smbfs")) {
+                d->mountPoints.append(mountPoint->mountPoint());
+                Q_EMIT networkShareAdded(mountPoint->mountPoint());
+            }
+        }
+#endif
+        d->initialImportDone = true;
+        d->timerId = startTimer(1000);
+    });
+
+#if defined(Q_OS_LINUX)
+    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceAdded, this, &Smb4KHardwareInterface::slotDeviceAdded);
+    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceRemoved, this, &Smb4KHardwareInterface::slotDeviceRemoved);
+#endif
 }
 
 Smb4KHardwareInterface::~Smb4KHardwareInterface()
@@ -188,6 +203,24 @@ void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
     }
 }
 
+bool Smb4KHardwareInterface::initialImportDone() const
+{
+    return d->initialImportDone;
+}
+
+QStringList Smb4KHardwareInterface::allMountPoints() const
+{
+    QStringList mountPoints;
+#if defined(Q_OS_LINUX)
+    for (const QString &udi : std::as_const(d->udis)) {
+        mountPoints << udi.section(QStringLiteral(":"), -1, -1).trimmed();
+    }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+    mountPoints = d->mountPoints;
+#endif
+    return mountPoints;
+}
+
 void Smb4KHardwareInterface::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
@@ -210,22 +243,26 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent *event)
     QMutableStringListIterator it(mountPointList);
 
     while (it.hasNext()) {
-        QString mp = it.next();
+        QString mountPoint = it.next();
         int index = -1;
 
-        if ((index = d->mountPoints.indexOf(mp)) != -1) {
+        if ((index = d->mountPoints.indexOf(mountPoint)) != -1) {
             d->mountPoints.removeAt(index);
-            alreadyMounted.append(mp);
+            alreadyMounted.append(mountPoint);
             it.remove();
         }
     }
 
     if (!d->mountPoints.isEmpty()) {
-        Q_EMIT networkShareRemoved();
+        for (const QString &mountPoint : std::as_const(d->mountPoints)) {
+            Q_EMIT networkShareRemoved(mountPoint);
+        }
     }
 
     if (!mountPointList.isEmpty()) {
-        Q_EMIT networkShareAdded();
+        for (const QString &mountPoint : std::as_const(mountPointList)) {
+            Q_EMIT networkShareAdded(mountPoint);
+        }
     }
 
     d->mountPoints.clear();
@@ -234,6 +271,7 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent *event)
 #endif
 }
 
+#if defined(Q_OS_LINUX)
 void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
 {
     Solid::Device device(udi);
@@ -243,17 +281,20 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
 
     if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
         d->udis << udi;
-        Q_EMIT networkShareAdded();
+        QString mountpoint = udi.section(QStringLiteral(":"), -1, -1).trimmed();
+        Q_EMIT networkShareAdded(mountpoint);
     }
 }
 
 void Smb4KHardwareInterface::slotDeviceRemoved(const QString &udi)
 {
     if (d->udis.contains(udi)) {
-        Q_EMIT networkShareRemoved();
+        QString mountpoint = udi.section(QStringLiteral(":"), -1, -1).trimmed();
+        Q_EMIT networkShareRemoved(mountpoint);
         d->udis.removeOne(udi);
     }
 }
+#endif
 
 void Smb4KHardwareInterface::slotSystemSleep(bool sleep)
 {
