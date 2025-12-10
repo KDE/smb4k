@@ -48,6 +48,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
 Additional changes:
 - Fix Smb4KCustomSettingsManager::saveCustomSettings(): Now all settings 
   are indeed removed from the file if an empty list is passed.
+- Merge Smb4KHardwareInterface class from master.
 
 Smb4K 4.0.4 (2025-07-31):
 
