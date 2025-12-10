@@ -94,8 +94,7 @@ void Smb4KSharesViewDockWidget::loadSettings()
 
         if (selectedItems.size() == 1) {
             Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
-            m_actionCollection->action(QStringLiteral("unmount_action"))
-                ->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
+            m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled(!item->shareItem()->isForeign());
         } else if (selectedItems.size() > 1) {
             int foreign = 0;
 
@@ -107,14 +106,11 @@ void Smb4KSharesViewDockWidget::loadSettings()
                 }
             }
 
-            m_actionCollection->action(QStringLiteral("unmount_action"))
-                ->setEnabled(((selectedItems.size() > foreign) || Smb4KMountSettings::unmountForeignShares()));
+            m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled((selectedItems.size() > foreign));
         }
     }
 
-    actionCollection()
-        ->action(QStringLiteral("unmount_all_action"))
-        ->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+    actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
 }
 
 void Smb4KSharesViewDockWidget::saveSettings()
@@ -293,8 +289,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
         bool syncRunning = Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()));
 
-        m_actionCollection->action(QStringLiteral("unmount_action"))
-            ->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
+        m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled(!item->shareItem()->isForeign());
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
         m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
 
@@ -334,8 +329,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
             }
         }
 
-        m_actionCollection->action(QStringLiteral("unmount_action"))
-            ->setEnabled(((selectedItems.size() > foreign) || Smb4KMountSettings::unmountForeignShares()));
+        m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled((selectedItems.size() > foreign));
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
         m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
 
@@ -429,9 +423,7 @@ void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr &share)
         m_sharesView->sortItems(Qt::AscendingOrder);
 
         // Enable/disable the 'Unmount All' action
-        actionCollection()
-            ->action(QStringLiteral("unmount_all_action"))
-            ->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+        actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
     }
 }
 
@@ -458,9 +450,7 @@ void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr &share)
         }
 
         // Enable/disable the 'Unmount All' action
-        actionCollection()
-            ->action(QStringLiteral("unmount_all_action"))
-            ->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+        actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
     }
 }
 

@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -77,14 +77,9 @@ protected Q_SLOTS:
 #ifdef Q_OS_LINUX
     void slotUseWriteAccessToggled(bool checked);
     void slotWriteAccessChanged(int index);
-    void slotUseFileSystemPortToggled(bool checked);
-    void slotFileSystemPortChanged(int port);
     void slotCifsUnixExtensionSupportToggled(bool checked);
 #endif
-    void slotUseUserIdToggled(bool checked);
-    void slotUserIdChanged(int index);
-    void slotUseGroupIdToggled(bool checked);
-    void slotGroupIdChanged(int index);
+    void slotUseIdsToggled(bool checked);
     void slotUseFileModeToggled(bool checked);
     void slotFileModeChanged(const QString &text);
     void slotUseDirectoryModeToggled(bool checked);
@@ -119,14 +114,13 @@ private:
 #ifdef Q_OS_LINUX
     QCheckBox *m_useWriteAccess;
     KComboBox *m_writeAccess;
-    QCheckBox *m_useFileSystemPort;
-    QSpinBox *m_fileSystemPort;
     QCheckBox *m_cifsUnixExtensionSupport;
 #endif
-    QCheckBox *m_useUserId;
-    KComboBox *m_userId;
-    QCheckBox *m_useGroupId;
-    KComboBox *m_groupId;
+    QCheckBox *m_useIds;
+    QLabel *m_userIdLabel;
+    KLineEdit *m_userId;
+    QLabel *m_groupIdLabel;
+    KLineEdit *m_groupId;
     QCheckBox *m_useFileMode;
     KLineEdit *m_fileMode;
     QCheckBox *m_useDirectoryMode;
