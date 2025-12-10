@@ -1,7 +1,7 @@
 /*
     The helper that mounts and unmounts shares.
 
-    SPDX-FileCopyrightText: 2010-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2010-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -9,6 +9,7 @@
 #define SMB4KMOUNTHELPER_H
 
 // Qt includes
+#include <QDBusUnixFileDescriptor>
 #include <QObject>
 
 // KDE includes
@@ -30,6 +31,17 @@ public Q_SLOTS:
      * Unmounts a CIFS/SMBFS share.
      */
     KAuth::ActionReply unmount(const QVariantMap &args);
+
+private:
+    bool isOnline() const;
+    bool checkMountArguments(QStringList *argList) const;
+    bool checkUnmountArguments(QStringList* argList) const;
+    QString mountPrefix() const;
+    ActionReply errorReply(const QString &message) const;
+    std::optional<QString> createMountPoint(const QUrl &url) const;
+    void removeMountPoint(const QString &mountPoint) const;
+    bool isMountPointAllowed(const QString &mountPoint) const;
+    bool checkFileDescriptor(const QDBusUnixFileDescriptor &dbusFd);
 };
 
 #endif
