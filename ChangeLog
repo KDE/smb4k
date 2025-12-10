@@ -1,3 +1,54 @@
+Smb4K 4.0.5 (2025-12-10):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
+
+- Fix the security issues:
+  CVE-2025-66002: local users can perform arbitrary unmounts via 
+  smb4kmounthelper due to lack of input validation
+  CVE-2025-66003: local users can perform a local root exploit via smb4k 
+  mounthelper if they can access and control the contents of a Samba share
+- Only allow mounting and unmounting below the mount prefix
+  /var/run/smb4k/<user ID>/.
+- Only accept sane URLs and especially deny specially crafted ones.
+- Let the mounthelper create the mount points by itself depending on the
+  passed URL.
+- Use the mount and umount binaries returned by the respective functions
+  from Smb4KGlobal.
+- Only allow whitelisted mount and unmount options.
+- Make sure that no comma separated values can be passed with the mount
+  options.
+- Only allow setting the UID and GID to the ones of the calling user.
+- Only accept four-digit octal numbers as file and directory masks that
+  do not carry any special permissions (e.g. a setuid root bit).
+- Only accept the location of the Kerberos ticket being passed as a file
+  descriptor.
+- Remove all settings that are obsolete: mount prefix, unmounting of
+  forein shares, user and group, filesystem port, custom CIFS mount
+  options.
+- Introduce the setting to use the user's UID and GID for mounting.
+- Remove the whitelist of mount options from Smb4KGlobal.
+- Remove the mount point creation and removal from the mounter.
+- Pass the Kerberos ticket as a file descriptor to the mounthelper.
+- Do not allow the unmounting of foreign shares.
+- Do not pass obsolete and rejected settings to the mounthelper.
+- Improve error handling in the mounter.
+- All shares on the system that are not mounted under
+  /var/run/smb4k/<user ID>/ are considered foreign.
+- Improve notifications with regard to failed KAuth actions.
+- Remove obsolete settings from the configuration and custom settings 
+  dialog.
+- Introduce setting to set the UID and GID of a mount to the one of
+  the user to the configuration and the custom settings dialog. The
+  IDs are not editable.
+- Restrict the input of the file and directory mode to 4 digits and
+  validate it.
+- Remove the possibility to unmount foreign shares through the
+  network neighborhood browser, the shares view and the shares menu.
+Additional changes:
+- Fix Smb4KCustomSettingsManager::saveCustomSettings(): Now all settings 
+  are indeed removed from the file if an empty list is passed.
+
 Smb4K 4.0.4 (2025-07-31):
 
 See the summary of changes below. For a full list of changes, please
