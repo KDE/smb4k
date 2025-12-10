@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -14,6 +14,7 @@
 // Qt includes
 #include <QCheckBox>
 #include <QLabel>
+#include <QPushButton>
 #include <QSpinBox>
 #include <QTabWidget>
 
@@ -25,7 +26,7 @@
  * This widget is used to edit custom settings
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
- * @since 3.3.0
+ * @since 4.0.0
  */
 
 class Smb4KCustomSettingsEditorWidget : public QTabWidget
@@ -76,14 +77,9 @@ protected Q_SLOTS:
 #ifdef Q_OS_LINUX
     void slotUseWriteAccessToggled(bool checked);
     void slotWriteAccessChanged(int index);
-    void slotUseFileSystemPortToggled(bool checked);
-    void slotFileSystemPortChanged(int port);
     void slotCifsUnixExtensionSupportToggled(bool checked);
 #endif
-    void slotUseUserIdToggled(bool checked);
-    void slotUserIdChanged(int index);
-    void slotUseGroupIdToggled(bool checked);
-    void slotGroupIdChanged(int index);
+    void slotUseIdsToggled(bool checked);
     void slotUseFileModeToggled(bool checked);
     void slotFileModeChanged(const QString &text);
     void slotUseDirectoryModeToggled(bool checked);
@@ -100,6 +96,7 @@ protected Q_SLOTS:
     void slotUseRemoteSmbPortToggled(bool checked);
     void slotRemoteSmbPortChanged(int port);
     void slotUseKerberosToggled(bool checked);
+    void slotFindMacAddressClicked(bool checked);
     void slotMacAddressChanged(const QString &text);
     void slotSendPacketBeforeScanToggled(bool checked);
     void slotSendPacketBeforeMountToggled(bool checked);
@@ -117,14 +114,13 @@ private:
 #ifdef Q_OS_LINUX
     QCheckBox *m_useWriteAccess;
     KComboBox *m_writeAccess;
-    QCheckBox *m_useFileSystemPort;
-    QSpinBox *m_fileSystemPort;
     QCheckBox *m_cifsUnixExtensionSupport;
 #endif
-    QCheckBox *m_useUserId;
-    KComboBox *m_userId;
-    QCheckBox *m_useGroupId;
-    KComboBox *m_groupId;
+    QCheckBox *m_useIds;
+    QLabel *m_userIdLabel;
+    KLineEdit *m_userId;
+    QLabel *m_groupIdLabel;
+    KLineEdit *m_groupId;
     QCheckBox *m_useFileMode;
     KLineEdit *m_fileMode;
     QCheckBox *m_useDirectoryMode;
@@ -148,6 +144,7 @@ private:
     QCheckBox *m_sendPacketBeforeScan;
     QCheckBox *m_sendPacketBeforeMount;
     int m_wakeOnLanTabIndex;
+    QPushButton *m_macAddressSearchButton;
 };
 
 #endif

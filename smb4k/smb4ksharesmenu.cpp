@@ -97,7 +97,7 @@ void Smb4KSharesMenu::refreshMenu()
     // Enable or disable the Unmount All action, depending on the number of
     // mounted shares present.
     //
-    m_unmountAll->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
+    m_unmountAll->setEnabled((!onlyForeignMountedShares() && !m_menus->actions().isEmpty()));
 
     //
     // Make sure the correct menu entries are shown
@@ -156,7 +156,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     unmountData[QStringLiteral("mountpoint")] = share->path();
 
     unmount->setData(unmountData);
-    unmount->setEnabled(!share->isForeign() || Smb4KMountSettings::unmountForeignShares());
+    unmount->setEnabled(!share->isForeign());
     shareMenu->addAction(unmount);
     m_actions->addAction(unmount);
 
@@ -305,7 +305,7 @@ void Smb4KSharesMenu::slotMountedSharesListChanged()
     //
     // Enable or disable the Unmount All action
     //
-    m_unmountAll->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
+    m_unmountAll->setEnabled((!onlyForeignMountedShares() && !m_menus->actions().isEmpty()));
 
     //
     // Make the separator visible, if necessary

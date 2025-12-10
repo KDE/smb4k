@@ -1,7 +1,7 @@
 /*
     The network search widget dock widget
 
-    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -94,8 +94,7 @@ void Smb4KSharesViewDockWidget::loadSettings()
 
         if (selectedItems.size() == 1) {
             Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
-            m_actionCollection->action(QStringLiteral("unmount_action"))
-                ->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
+            m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled(!item->shareItem()->isForeign());
         } else if (selectedItems.size() > 1) {
             int foreign = 0;
 
@@ -107,14 +106,11 @@ void Smb4KSharesViewDockWidget::loadSettings()
                 }
             }
 
-            m_actionCollection->action(QStringLiteral("unmount_action"))
-                ->setEnabled(((selectedItems.size() > foreign) || Smb4KMountSettings::unmountForeignShares()));
+            m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled((selectedItems.size() > foreign));
         }
     }
 
-    actionCollection()
-        ->action(QStringLiteral("unmount_all_action"))
-        ->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+    actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
 }
 
 void Smb4KSharesViewDockWidget::saveSettings()
@@ -293,8 +289,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
         bool syncRunning = Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()));
 
-        m_actionCollection->action(QStringLiteral("unmount_action"))
-            ->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
+        m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled(!item->shareItem()->isForeign());
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
         m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
 
@@ -334,8 +329,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
             }
         }
 
-        m_actionCollection->action(QStringLiteral("unmount_action"))
-            ->setEnabled(((selectedItems.size() > foreign) || Smb4KMountSettings::unmountForeignShares()));
+        m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled((selectedItems.size() > foreign));
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
         m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
 
@@ -365,11 +359,27 @@ void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem *item, QDropEv
         if (e->mimeData()->hasUrls()) {
             if (Smb4KHardwareInterface::self()->isOnline()) {
                 QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
+
+                // FIXME: Either modify the drop menu that it only shows the allowed
+                // drop actions or implement the following code.
+                //
+                // KIO::CopyJob *job = nullptr;
+                //
+                // if (e->proposedAction() == Qt::CopyAction) {
+                //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+                // } else if (e->proposedAction() == Qt::MoveAction) {
+                //     job = KIO::move(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+                // } else {
+                //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+                // }
+
                 KIO::DropJob *job = KIO::drop(e, dest, KIO::DefaultFlags);
-                KJobWidgets::setWindow(job, m_sharesView->viewport());
+
+                KJobWidgets::setWindow(job, m_sharesView);
                 job->uiDelegate()->setAutoErrorHandlingEnabled(true);
                 job->uiDelegate()->setAutoWarningHandlingEnabled(true);
             } else {
+                // FIXME: Move this to the notifications.
                 KMessageBox::error(
                     m_sharesView,
                     i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop any files here.</qt>", item->shareItem()->displayString()));
@@ -413,9 +423,7 @@ void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr &share)
         m_sharesView->sortItems(Qt::AscendingOrder);
 
         // Enable/disable the 'Unmount All' action
-        actionCollection()
-            ->action(QStringLiteral("unmount_all_action"))
-            ->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+        actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
     }
 }
 
@@ -442,9 +450,7 @@ void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr &share)
         }
 
         // Enable/disable the 'Unmount All' action
-        actionCollection()
-            ->action(QStringLiteral("unmount_all_action"))
-            ->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+        actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
     }
 }
 

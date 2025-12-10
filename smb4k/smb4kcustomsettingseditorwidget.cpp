@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -17,18 +17,44 @@
 // Qt includes
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QValidator>
 
 // KDE includes
 #include <KLocalizedString>
 
 using namespace Smb4KGlobal;
 
+class ModeValidator : public QValidator
+{
+public:
+    ModeValidator(QObject *parent = nullptr)
+        : QValidator(parent)
+    {
+    }
+    ~ModeValidator()
+    {
+    }
+    QValidator::State validate(QString &input, int &pos) const override
+    {
+        Q_UNUSED(pos);
+        if (input.trimmed().size() == 4) {
+            QChar ch = input.trimmed().at(0);
+
+            if (ch.isDigit() && ch.toLatin1() != '0') {
+                return QValidator::Invalid;
+            } else if (ch.isDigit() && ch.toLatin1() == '0') {
+                return QValidator::Acceptable;
+            }
+        }
+        return QValidator::Intermediate;
+    }
+};
+
 Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget *parent)
     : QTabWidget(parent)
 {
     m_hasDefaultCustomSettings = true;
 
-    // FIXME: Implement mount point!?
     // FIXME: Honor disabled widgets and unchecked check boxes!?
 
     setupView();
@@ -88,45 +114,32 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_useWriteAccess, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseWriteAccessToggled);
     connect(m_writeAccess, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotWriteAccessChanged);
 
-    m_useFileSystemPort = new QCheckBox(Smb4KMountSettings::self()->useRemoteFileSystemPortItem()->label(), tab2);
-    m_fileSystemPort = new QSpinBox(tab2);
-    m_fileSystemPort->setMinimum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->minValue().toInt());
-    m_fileSystemPort->setMaximum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->maxValue().toInt());
-
-    connect(m_useFileSystemPort, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseFileSystemPortToggled);
-    connect(m_fileSystemPort, &QSpinBox::valueChanged, this, &Smb4KCustomSettingsEditorWidget::slotFileSystemPortChanged);
-
     m_cifsUnixExtensionSupport = new QCheckBox(i18n("This server supports the CIFS Unix extensions"), tab2);
 
     connect(m_cifsUnixExtensionSupport, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotCifsUnixExtensionSupportToggled);
 
-    m_useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), tab2);
-    m_userId = new KComboBox(tab2);
+    m_useIds = new QCheckBox(Smb4KMountSettings::self()->useIdsItem()->label(), tab2);
 
-    QList<KUser> allUsers = KUser::allUsers();
+    m_userIdLabel = new QLabel(i18n("User ID:"), tab2);
+    m_userIdLabel->setIndent(25);
+    m_userId = new KLineEdit(KUser(KUser::UseRealUserID).userId().toString(), tab2);
+    m_userId->setAlignment(Qt::AlignRight);
+    m_userId->setReadOnly(true);
 
-    for (const KUser &user : std::as_const(allUsers)) {
-        m_userId->addItem(user.loginName() + QStringLiteral(" (") + user.userId().toString() + QStringLiteral(")"), user.userId().toString());
-    }
+    m_groupIdLabel = new QLabel(i18n("Group ID:"), tab2);
+    m_groupIdLabel->setIndent(25);
+    m_groupId = new KLineEdit(KUser(KUser::UseRealUserID).groupId().toString(), tab2);
+    m_groupId->setAlignment(Qt::AlignRight);
+    m_groupId->setReadOnly(true);
 
-    connect(m_useUserId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseUserIdToggled);
-    connect(m_userId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotUserIdChanged);
-
-    m_useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), tab2);
-    m_groupId = new KComboBox(tab2);
-
-    QList<KUserGroup> allGroups = KUserGroup::allGroups();
-
-    for (const KUserGroup &group : std::as_const(allGroups)) {
-        m_groupId->addItem(group.name() + QStringLiteral(" (") + group.groupId().toString() + QStringLiteral(")"), group.groupId().toString());
-    }
-
-    connect(m_useGroupId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseGroupIdToggled);
-    connect(m_groupId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotGroupIdChanged);
+    connect(m_useIds, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseIdsToggled);
 
     m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), tab2);
     m_fileMode = new KLineEdit(tab2);
     m_fileMode->setClearButtonEnabled(true);
+    m_fileMode->setAlignment(Qt::AlignRight);
+    m_fileMode->setInputMask(QStringLiteral("0999"));
+    m_fileMode->setValidator(new ModeValidator(m_fileMode));
 
     connect(m_useFileMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseFileModeToggled);
     connect(m_fileMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotFileModeChanged);
@@ -134,24 +147,26 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), tab2);
     m_directoryMode = new KLineEdit(tab2);
     m_directoryMode->setClearButtonEnabled(true);
+    m_directoryMode->setAlignment(Qt::AlignRight);
+    m_directoryMode->setInputMask(QStringLiteral("0999"));
+    m_directoryMode->setValidator(new ModeValidator(m_directoryMode));
 
     connect(m_useDirectoryMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseDirectoryModeToggled);
     connect(m_directoryMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged);
 
     tab2Layout->addWidget(m_useWriteAccess, 0, 0);
     tab2Layout->addWidget(m_writeAccess, 0, 1);
-    tab2Layout->addWidget(m_useFileSystemPort, 1, 0);
-    tab2Layout->addWidget(m_fileSystemPort, 1, 1);
-    tab2Layout->addWidget(m_cifsUnixExtensionSupport, 2, 0, 1, 2);
-    tab2Layout->addWidget(m_useUserId, 3, 0);
+    tab2Layout->addWidget(m_cifsUnixExtensionSupport, 1, 0, 1, 2);
+    tab2Layout->addWidget(m_useIds, 2, 0, 1, 2);
+    tab2Layout->addWidget(m_userIdLabel, 3, 0);
     tab2Layout->addWidget(m_userId, 3, 1);
-    tab2Layout->addWidget(m_useGroupId, 4, 0);
+    tab2Layout->addWidget(m_groupIdLabel, 4, 0);
     tab2Layout->addWidget(m_groupId, 4, 1);
     tab2Layout->addWidget(m_useFileMode, 5, 0);
     tab2Layout->addWidget(m_fileMode, 5, 1);
     tab2Layout->addWidget(m_useDirectoryMode, 6, 0);
     tab2Layout->addWidget(m_directoryMode, 6, 1);
-    tab2Layout->setRowStretch(7, 100);
+    tab2Layout->setRowStretch(6, 100);
 
     addTab(tab2, i18n("Common Mount Settings"));
 
@@ -250,17 +265,29 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     addTab(tab4, i18n("Browse Settings"));
 
     QWidget *tab5 = new QWidget(this);
-    QGridLayout *tab5Layout = new QGridLayout(tab5);
+    QVBoxLayout *tab5Layout = new QVBoxLayout(tab5);
 
     tab5->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
-    m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab5);
-    m_macAddress = new KLineEdit(tab5);
+    QWidget *macAddressWidget = new QWidget(tab5);
+    QHBoxLayout *macAddressWidgetLayout = new QHBoxLayout(macAddressWidget);
+    macAddressWidgetLayout->setContentsMargins(0, 0, 0, 0);
+
+    m_macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressWidget);
+    m_macAddress = new KLineEdit(macAddressWidget);
     m_macAddress->setClearButtonEnabled(true);
     m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
     m_macAddressLabel->setBuddy(m_macAddress);
+    m_macAddressSearchButton = new QPushButton(macAddressWidget);
+    m_macAddressSearchButton->setIcon(KDE::icon(QStringLiteral("edit-find")));
+    m_macAddressSearchButton->setToolTip(i18n("Find MAC address"));
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
+    connect(m_macAddressSearchButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditorWidget::slotFindMacAddressClicked);
+
+    macAddressWidgetLayout->addWidget(m_macAddressLabel);
+    macAddressWidgetLayout->addWidget(m_macAddress);
+    macAddressWidgetLayout->addWidget(m_macAddressSearchButton);
 
     m_sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), tab5);
     m_sendPacketBeforeScan->setEnabled(false);
@@ -270,11 +297,10 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_sendPacketBeforeScan, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeScanToggled);
     connect(m_sendPacketBeforeMount, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeMountToggled);
 
-    tab5Layout->addWidget(m_macAddressLabel, 0, 0);
-    tab5Layout->addWidget(m_macAddress, 0, 1);
-    tab5Layout->addWidget(m_sendPacketBeforeScan, 1, 0, 1, 2);
-    tab5Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
-    tab5Layout->setRowStretch(3, 100);
+    tab5Layout->addWidget(macAddressWidget);
+    tab5Layout->addWidget(m_sendPacketBeforeScan);
+    tab5Layout->addWidget(m_sendPacketBeforeMount);
+    tab5Layout->addStretch(100);
 
     m_wakeOnLanTabIndex = addTab(tab5, i18n("Wake-On-LAN Settings"));
 }
@@ -316,33 +342,27 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     QWidget *tab2 = new QWidget(this);
     QGridLayout *tab2Layout = new QGridLayout(tab2);
 
-    m_useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), tab2);
-    m_userId = new KComboBox(tab2);
+    m_useIds = new QCheckBox(Smb4KMountSettings::self()->useIdsItem()->label(), tab2);
 
-    QList<KUser> allUsers = KUser::allUsers();
+    m_userIdLabel = new QLabel(i18n("User ID:"), tab2);
+    m_userIdLabel->setIndent(25);
+    m_userId = new KLineEdit(KUser(KUser::UseRealUserID).userId().toString(), tab2);
+    m_userId->setAlignment(Qt::AlignRight);
+    m_userId->setReadOnly(true);
 
-    for (const KUser &user : std::as_const(allUsers)) {
-        m_userId->addItem(user.loginName() + QStringLiteral(" (") + user.userId().toString() + QStringLiteral(")"), user.userId().toString());
-    }
+    m_groupIdLabel = new QLabel(i18n("Group ID:"), tab2);
+    m_groupIdLabel->setIndent(25);
+    m_groupId = new KLineEdit(KUser(KUser::UseRealUserID).groupId().toString(), tab2);
+    m_groupId->setAlignment(Qt::AlignRight);
+    m_groupId->setReadOnly(true);
 
-    connect(m_useUserId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseUserIdToggled);
-    connect(m_userId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotUserIdChanged);
-
-    m_useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), tab2);
-    m_groupId = new KComboBox(tab2);
-
-    QList<KUserGroup> allGroups = KUserGroup::allGroups();
-
-    for (const KUserGroup &group : std::as_const(allGroups)) {
-        m_groupId->addItem(group.name() + QStringLiteral(" (") + group.groupId().toString() + QStringLiteral(")"), group.groupId().toString());
-    }
-
-    connect(m_useGroupId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseGroupIdToggled);
-    connect(m_groupId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotGroupIdChanged);
+    connect(m_useIds, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseIdsToggled);
 
     m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), tab2);
     m_fileMode = new KLineEdit(tab2);
     m_fileMode->setClearButtonEnabled(true);
+    m_fileMode->setInputMask(QStringLiteral("0999"));
+    m_fileMode->setValidator(new ModeValidator(m_fileMode));
 
     connect(m_useFileMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseFileModeToggled);
     connect(m_fileMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotFileModeChanged);
@@ -350,18 +370,21 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), tab2);
     m_directoryMode = new KLineEdit(tab2);
     m_directoryMode->setClearButtonEnabled(true);
+    m_directoryMode->setInputMask(QStringLiteral("0999"));
+    m_directoryMode->setValidator(new ModeValidator(m_directoryMode));
 
     connect(m_useDirectoryMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseDirectoryModeToggled);
     connect(m_directoryMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged);
 
-    tab2Layout->addWidget(m_useUserId, 0, 0);
-    tab2Layout->addWidget(m_userId, 0, 1);
-    tab2Layout->addWidget(m_useGroupId, 1, 0);
-    tab2Layout->addWidget(m_groupId, 1, 1);
-    tab2Layout->addWidget(m_useFileMode, 2, 0);
-    tab2Layout->addWidget(m_fileMode, 2, 1);
-    tab2Layout->addWidget(m_useDirectoryMode, 3, 0);
-    tab2Layout->addWidget(m_directoryMode, 3, 1);
+    tab2Layout->addWidget(m_useIds, 0, 0, 1, 2);
+    tab2Layout->addWidget(m_userIdLabel, 1, 0);
+    tab2Layout->addWidget(m_userId, 1, 1);
+    tab2Layout->addWidget(m_groupIdLabel, 2, 0);
+    tab2Layout->addWidget(m_groupId, 2, 1);
+    tab2Layout->addWidget(m_useFileMode, 3, 0);
+    tab2Layout->addWidget(m_fileMode, 3, 1);
+    tab2Layout->addWidget(m_useDirectoryMode, 4, 0);
+    tab2Layout->addWidget(m_directoryMode, 4, 1);
     tab2Layout->setRowStretch(4, 100);
 
     addTab(tab2, i18n("Mount Settings"));
@@ -426,17 +449,29 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     addTab(tab3, i18n("Browse Settings"));
 
     QWidget *tab4 = new QWidget(this);
-    QGridLayout *tab4Layout = new QGridLayout(tab4);
+    QVBoxLayout *tab4Layout = new QVBoxLayout(tab4);
 
     tab4->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
-    m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab4);
-    m_macAddress = new KLineEdit(tab4);
+    QWidget *macAddressWidget = new QWidget(tab4);
+    QHBoxLayout *macAddressWidgetLayout = new QHBoxLayout(macAddressWidget);
+    macAddressWidgetLayout->setContentsMargins(0, 0, 0, 0);
+
+    m_macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressWidget);
+    m_macAddress = new KLineEdit(macAddressWidget);
     m_macAddress->setClearButtonEnabled(true);
     m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
     m_macAddressLabel->setBuddy(m_macAddress);
+    m_macAddressSearchButton = new QPushButton(macAddressWidget);
+    m_macAddressSearchButton->setIcon(KDE::icon(QStringLiteral("edit-find")));
+    m_macAddressSearchButton->setToolTip(i18n("Find MAC address"));
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
+    connect(m_macAddressSearchButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditorWidget::slotFindMacAddressClicked);
+
+    macAddressWidgetLayout->addWidget(m_macAddressLabel);
+    macAddressWidgetLayout->addWidget(m_macAddress);
+    macAddressWidgetLayout->addWidget(m_macAddressSearchButton);
 
     m_sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), tab4);
     m_sendPacketBeforeScan->setEnabled(false);
@@ -446,11 +481,10 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_sendPacketBeforeScan, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeScanToggled);
     connect(m_sendPacketBeforeMount, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeMountToggled);
 
-    tab4Layout->addWidget(m_macAddressLabel, 0, 0);
-    tab4Layout->addWidget(m_macAddress, 0, 1);
-    tab4Layout->addWidget(m_sendPacketBeforeScan, 1, 0, 1, 2);
-    tab4Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
-    tab4Layout->setRowStretch(3, 100);
+    tab4Layout->addWidget(macAddressWidget);
+    tab4Layout->addWidget(m_sendPacketBeforeScan);
+    tab4Layout->addWidget(m_sendPacketBeforeMount);
+    tab4Layout->addStretch(100);
 
     m_wakeOnLanTabIndex = addTab(tab4, i18n("Wake-On-LAN Settings"));
 }
@@ -476,19 +510,10 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
     m_useWriteAccess->setChecked(m_customSettings.useWriteAccess());
     m_writeAccess->setCurrentIndex(m_customSettings.writeAccess());
 
-    m_useFileSystemPort->setChecked(m_customSettings.useFileSystemPort());
-    m_fileSystemPort->setValue(m_customSettings.fileSystemPort());
-
     m_cifsUnixExtensionSupport->setChecked(m_customSettings.cifsUnixExtensionsSupport());
 #endif
 
-    m_useUserId->setChecked(m_customSettings.useUser());
-    int userIndex = m_userId->findData(m_customSettings.user().userId().toString());
-    m_userId->setCurrentIndex(userIndex);
-
-    m_useGroupId->setChecked(m_customSettings.useGroup());
-    int groupIndex = m_groupId->findData(m_customSettings.group().groupId().toString());
-    m_groupId->setCurrentIndex(groupIndex);
+    m_useIds->setChecked(m_customSettings.useIds());
 
     m_useFileMode->setChecked(m_customSettings.useFileMode());
     m_fileMode->setText(m_customSettings.fileMode());
@@ -520,6 +545,7 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
     widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
     if (m_customSettings.type() == Host) {
+        // FIXME: Enable Search button if IP address is not empty
         m_macAddress->setText(m_customSettings.macAddress());
         m_sendPacketBeforeScan->setChecked(m_customSettings.wakeOnLanSendBeforeNetworkScan());
         m_sendPacketBeforeMount->setChecked(m_customSettings.wakeOnLanSendBeforeMount());
@@ -539,17 +565,10 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
     m_customSettings.setUseWriteAccess(m_useWriteAccess->isChecked());
     m_customSettings.setWriteAccess(m_writeAccess->currentIndex());
 
-    m_customSettings.setUseFileSystemPort(m_useFileSystemPort->isChecked());
-    m_customSettings.setFileSystemPort(m_fileSystemPort->value());
-
     m_customSettings.setCifsUnixExtensionsSupport(m_cifsUnixExtensionSupport->isChecked());
 #endif
 
-    m_customSettings.setUseUser(m_useUserId->isChecked());
-    m_customSettings.setUser(KUser(K_UID(m_userId->currentData().toInt())));
-
-    m_customSettings.setUseGroup(m_useGroupId->isChecked());
-    m_customSettings.setGroup(KUserGroup(K_GID(m_groupId->currentData().toInt())));
+    m_customSettings.setUseIds(m_useIds->isChecked());
 
     m_customSettings.setUseFileMode(m_useFileMode->isChecked());
     m_customSettings.setFileMode(m_fileMode->text());
@@ -597,17 +616,10 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_useWriteAccess->setChecked(false);
     m_writeAccess->setCurrentIndex(0);
 
-    m_useFileSystemPort->setChecked(false);
-    m_fileSystemPort->setValue(445);
-
     m_cifsUnixExtensionSupport->setChecked(false);
 #endif
 
-    m_useUserId->setChecked(false);
-    m_userId->setCurrentIndex(0);
-
-    m_useGroupId->setChecked(false);
-    m_groupId->setCurrentIndex(0);
+    m_useIds->setChecked(false);
 
     m_useFileMode->setChecked(false);
     m_fileMode->clear();
@@ -677,32 +689,12 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         m_hasDefaultCustomSettings = false;
     }
 
-    if (m_useFileSystemPort->isChecked() != defaultCustomSettings.useFileSystemPort()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
-    if (m_fileSystemPort->value() != defaultCustomSettings.fileSystemPort()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
     if (m_cifsUnixExtensionSupport->isChecked() != defaultCustomSettings.cifsUnixExtensionsSupport()) {
         m_hasDefaultCustomSettings = false;
     }
 #endif
 
-    if (m_useUserId->isChecked() != defaultCustomSettings.useUser()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
-    if (m_userId->currentData().toString() != defaultCustomSettings.user().userId().toString()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
-    if (m_useGroupId->isChecked() != defaultCustomSettings.useGroup()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
-    if (m_groupId->currentData().toString() != defaultCustomSettings.group().groupId().toString()) {
+    if (m_useIds->isChecked() != defaultCustomSettings.useIds()) {
         m_hasDefaultCustomSettings = false;
     }
 
@@ -815,38 +807,13 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
-    if (m_useFileSystemPort->isChecked() != m_customSettings.useFileSystemPort()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
-    if (m_fileSystemPort->value() != m_customSettings.fileSystemPort()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
     if (m_cifsUnixExtensionSupport->isChecked() != m_customSettings.cifsUnixExtensionsSupport()) {
         Q_EMIT edited(true);
         return;
     }
 #endif
 
-    if (m_useUserId->isChecked() != m_customSettings.useUser()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
-    if (m_userId->currentData().toString() != m_customSettings.user().userId().toString()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
-    if (m_useGroupId->isChecked() != m_customSettings.useGroup()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
-    if (m_groupId->currentData().toString() != m_customSettings.group().groupId().toString()) {
+    if (m_useIds->isChecked() != m_customSettings.useIds()) {
         Q_EMIT edited(true);
         return;
     }
@@ -975,25 +942,14 @@ void Smb4KCustomSettingsEditorWidget::slotWriteAccessChanged(int index)
     checkValues();
 }
 
-void Smb4KCustomSettingsEditorWidget::slotUseFileSystemPortToggled(bool checked)
-{
-    Q_UNUSED(checked);
-    checkValues();
-}
-
-void Smb4KCustomSettingsEditorWidget::slotFileSystemPortChanged(int port)
-{
-    Q_UNUSED(port);
-    checkValues();
-}
-
 void Smb4KCustomSettingsEditorWidget::slotCifsUnixExtensionSupportToggled(bool checked)
 {
     Q_UNUSED(checked);
 
-    m_useUserId->setEnabled(!checked);
+    m_useIds->setEnabled(!checked);
+    m_userIdLabel->setEnabled(!checked);
     m_userId->setEnabled(!checked);
-    m_useGroupId->setEnabled(!checked);
+    m_groupIdLabel->setEnabled(!checked);
     m_groupId->setEnabled(!checked);
     m_useFileMode->setEnabled(!checked);
     m_fileMode->setEnabled(!checked);
@@ -1004,27 +960,9 @@ void Smb4KCustomSettingsEditorWidget::slotCifsUnixExtensionSupportToggled(bool c
 }
 #endif
 
-void Smb4KCustomSettingsEditorWidget::slotUseUserIdToggled(bool checked)
+void Smb4KCustomSettingsEditorWidget::slotUseIdsToggled(bool checked)
 {
     Q_UNUSED(checked);
-    checkValues();
-}
-
-void Smb4KCustomSettingsEditorWidget::slotUserIdChanged(int index)
-{
-    Q_UNUSED(index);
-    checkValues();
-}
-
-void Smb4KCustomSettingsEditorWidget::slotUseGroupIdToggled(bool checked)
-{
-    Q_UNUSED(checked);
-    checkValues();
-}
-
-void Smb4KCustomSettingsEditorWidget::slotGroupIdChanged(int index)
-{
-    Q_UNUSED(index);
     checkValues();
 }
 
@@ -1118,6 +1056,19 @@ void Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled(bool checked)
 {
     Q_UNUSED(checked);
     checkValues();
+}
+
+void Smb4KCustomSettingsEditorWidget::slotFindMacAddressClicked(bool checked)
+{
+    Q_UNUSED(checked);
+
+    if (!m_customSettings.ipAddress().isEmpty()) {
+        QString macAddress = findMacAddress(m_customSettings.ipAddress());
+
+        if (!macAddress.isEmpty()) {
+            m_macAddress->setText(macAddress);
+        }
+    }
 }
 
 void Smb4KCustomSettingsEditorWidget::slotMacAddressChanged(const QString &text)

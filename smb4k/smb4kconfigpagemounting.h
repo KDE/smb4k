@@ -1,7 +1,7 @@
 /*
     The configuration page for the mount options
 
-    SPDX-FileCopyrightText: 2015-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2015-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -14,7 +14,6 @@
 
 // KDE includes
 #include <KLineEdit>
-#include <KUrlRequester>
 
 /**
  * This configuration page contains the mount options
@@ -47,20 +46,6 @@ public:
     bool checkSettings();
 
 protected Q_SLOTS:
-    /**
-     * Sets the new general user ID.
-     *
-     * @param action              The action that represents the new user.
-     */
-    void slotNewUserTriggered(QAction *action);
-
-    /**
-     * Sets the new general group ID.
-     *
-     * @param action              The action that represents the new group.
-     */
-    void slotNewGroupTriggered(QAction *action);
-
 #if defined(Q_OS_LINUX)
     /**
      * Enable / disable the options that are only necessary when the servers
@@ -70,11 +55,6 @@ protected Q_SLOTS:
      */
     void slotCIFSUnixExtensionsSupport(bool checked);
 
-    /**
-     * This slot is activated when the additional CIFS options are to be
-     * edited (Linux only).
-     */
-    void slotAdditionalCIFSOptions();
 #endif
 
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
@@ -92,7 +72,6 @@ protected Q_SLOTS:
 
 private:
     void setupWidget();
-    KUrlRequester *m_mountPrefix;
     QWidget *m_remountSettingsWidget;
     QCheckBox *m_useFileMode;
     KLineEdit *m_fileMode;
@@ -102,7 +81,6 @@ private:
     KLineEdit *m_groupId;
 #if defined(Q_OS_LINUX)
     QWidget *m_singleCifsExtensionsSettingsWidget;
-    KLineEdit *m_additionalCifsOptions;
 #endif
 
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
