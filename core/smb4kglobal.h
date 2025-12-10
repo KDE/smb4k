@@ -389,16 +389,6 @@ SMB4KCORE_EXPORT const QString machineWorkgroupName();
  */
 SMB4KCORE_EXPORT bool modifyCursor();
 
-#if defined(Q_OS_LINUX)
-/**
- * This list contains all allowed arguments for the mount.cifs binary and
- * is only present under the Linux operating system.
- *
- * @returns the list of allowed mount arguments
- */
-SMB4KCORE_EXPORT QStringList allowedMountArguments();
-#endif
-
 /**
  * Find the mount executable on the system.
  *

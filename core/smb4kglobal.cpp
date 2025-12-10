@@ -745,13 +745,6 @@ const QString Smb4KGlobal::machineWorkgroupName()
     return p->machineWorkgroupName;
 }
 
-#if defined(Q_OS_LINUX)
-QStringList Smb4KGlobal::allowedMountArguments()
-{
-    return p->allowedMountArguments;
-}
-#endif
-
 const QString Smb4KGlobal::findMountExecutable()
 {
     QStringList paths;

@@ -14,7 +14,7 @@
 #include "smb4kworkgroup.h"
 
 // Qt includes
-#if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
 #include <qapplicationstatic.h>
@@ -38,7 +38,8 @@ class Smb4KNotificationPrivate : public QObject
 public:
     QString componentName;
     QString path;
-    void open() {
+    void open()
+    {
         if (!path.isEmpty()) {
             KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(path), QStringLiteral("inode/directory"));
             job->setFollowRedirections(false);
@@ -167,9 +168,7 @@ void Smb4KNotification::mimetypeNotSupported(const QString &mimetype)
         notification->setComponentName(p->componentName);
     }
 
-    notification->setText(
-        i18n("The mimetype <b>%1</b> is not supported for printing. Please convert the file to PDF or Postscript and try again.",
-             mimetype));
+    notification->setText(i18n("The mimetype <b>%1</b> is not supported for printing. Please convert the file to PDF or Postscript and try again.", mimetype));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }
@@ -202,10 +201,9 @@ void Smb4KNotification::bookmarkLabelInUse(const BookmarkPtr &bookmark)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(
-            i18n("The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being used and will automatically be renamed.",
-                 bookmark->label(),
-                 bookmark->displayString()));
+        notification->setText(i18n("The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being used and will automatically be renamed.",
+                                   bookmark->label(),
+                                   bookmark->displayString()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
         notification->sendEvent();
     }
@@ -275,11 +273,10 @@ void Smb4KNotification::unmountingNotAllowed(const SharePtr &share)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(
-            i18n("You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is owned by the user <b>%3</b>.",
-                 share->displayString(),
-                 share->path(),
-                 share->user().loginName()));
+        notification->setText(i18n("You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is owned by the user <b>%3</b>.",
+                                   share->displayString(),
+                                   share->path(),
+                                   share->user().loginName()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
         notification->sendEvent();
     }
@@ -451,45 +448,45 @@ void Smb4KNotification::processError(QProcess::ProcessError error)
     notification->sendEvent();
 }
 
-void Smb4KNotification::actionFailed(int errorCode)
+void Smb4KNotification::actionFailed(int errorCode, const QString &errorMessage)
 {
-    QString text, errorMessage;
+    QString text, errorCodeString;
 
     switch (errorCode) {
     case ActionReply::NoResponderError: {
-        errorMessage = QStringLiteral("NoResponderError");
+        errorCodeString = QStringLiteral("NoResponderError");
         break;
     }
     case ActionReply::NoSuchActionError: {
-        errorMessage = QStringLiteral("NoSuchActionError");
+        errorCodeString = QStringLiteral("NoSuchActionError");
         break;
     }
     case ActionReply::InvalidActionError: {
-        errorMessage = QStringLiteral("InvalidActionError");
+        errorCodeString = QStringLiteral("InvalidActionError");
         break;
     }
     case ActionReply::AuthorizationDeniedError: {
-        errorMessage = QStringLiteral("AuthorizationDeniedError");
+        errorCodeString = QStringLiteral("AuthorizationDeniedError");
         break;
     }
     case ActionReply::UserCancelledError: {
-        errorMessage = QStringLiteral("UserCancelledError");
+        errorCodeString = QStringLiteral("UserCancelledError");
         break;
     }
     case ActionReply::HelperBusyError: {
-        errorMessage = QStringLiteral("HelperBusyError");
+        errorCodeString = QStringLiteral("HelperBusyError");
         break;
     }
     case ActionReply::AlreadyStartedError: {
-        errorMessage = QStringLiteral("AlreadyStartedError");
+        errorCodeString = QStringLiteral("AlreadyStartedError");
         break;
     }
     case ActionReply::DBusError: {
-        errorMessage = QStringLiteral("DBusError");
+        errorCodeString = QStringLiteral("DBusError");
         break;
     }
     case ActionReply::BackendError: {
-        errorMessage = QStringLiteral("BackendError");
+        errorCodeString = QStringLiteral("BackendError");
         break;
     }
     default: {
@@ -497,11 +494,9 @@ void Smb4KNotification::actionFailed(int errorCode)
     }
     }
 
-    if (!errorMessage.isEmpty()) {
-        text = i18n("Executing an action with root privileges failed (error code: <tt>%1</tt>).", errorMessage);
-    } else {
-        text = i18n("Executing an action with root privileges failed.");
-    }
+    text = i18n("Executing an action with root privileges failed%1%2",
+                !errorCodeString.isEmpty() ? QStringLiteral(" (") + errorCodeString + QStringLiteral(")") : QString(),
+                !errorMessage.isEmpty() ? QStringLiteral(": ") + errorMessage : QStringLiteral("."));
 
     KNotification *notification = new KNotification(QStringLiteral("actionFailed"), KNotification::CloseOnTimeout);
 

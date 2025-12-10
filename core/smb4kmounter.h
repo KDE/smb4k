@@ -265,7 +265,7 @@ private:
     /**
      * Fill the mount action arguments into a map.
      */
-    bool fillMountActionArgs(const SharePtr &share, QVariantMap &mountArgs);
+    bool fillMountActionArgs(const SharePtr &share, int *fd, QVariantMap &mountArgs);
 
     /**
      * Fill the unmount action arguments into a map.

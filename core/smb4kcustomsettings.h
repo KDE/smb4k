@@ -1,7 +1,7 @@
 /*
     This class carries custom settings
 
-    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -175,61 +175,19 @@ public:
     int remount() const;
 
     /**
-     * Set if the information about the user that is to be owner of the share
-     * should be used when mounting or not.
+     * Set if the user and group ID should be used when mounting.
      *
-     * @param usage            Boolean that determines whether the uid should be
-     *                          used.
+     * @param set           Boolean that determines whether the ids should be
+     *                      used.
      */
-    void setUseUser(bool use) const;
+    void setUseIds(bool set) const;
 
     /**
-     * Use the information about the user that is to be owner of the share.
+     * The user and group ID are used when mounting.
      *
-     * @returns TRUE if the uid should be used when mounting.
+     * @returns TRUE if the user and group ID should be used when mounting.
      */
-    bool useUser() const;
-
-    /**
-     * Set the user who owns the share.
-     * @param user    The user
-     */
-    void setUser(const KUser &user) const;
-
-    /**
-     * Returns the user who owns the share.
-     * @returns the user
-     */
-    KUser user() const;
-
-    /**
-     * Set if the information about the group that is to be owner of the share
-     * should be used when mounting or not.
-     *
-     * @param use      Boolean that determines whether the gid should be used.
-     */
-    void setUseGroup(bool use) const;
-
-    /**
-     * Use the information about the group that is to be owner of the share.
-     *
-     * @returns TRUE if the gid should be used when mounting.
-     */
-    bool useGroup() const;
-
-    /**
-     * Set the group that owns the share.
-     *
-     * @param group   The group
-     */
-    void setGroup(const KUserGroup &group) const;
-
-    /**
-     * Returns the group that owns the share.
-     *
-     * @returns the group
-     */
-    KUserGroup group() const;
+    bool useIds() const;
 
     /**
      * Set if the file mode should be used.
@@ -303,36 +261,6 @@ public:
      * @returns TRUE if the server supports the CIFS Unix Extensions.
      */
     bool cifsUnixExtensionsSupport() const;
-
-    /**
-     * Set if the filesystem port should be used
-     *
-     * @param use             Boolean that determines if the filesystem port should
-     *                        be used
-     */
-    void setUseFileSystemPort(bool use) const;
-
-    /**
-     * Returns if the filesystem port should be used.
-     *
-     * @returns TRUE if the filesystem port should be used
-     */
-    bool useFileSystemPort() const;
-
-    /**
-     * Set the port that is to be used with mounting for a single share or all
-     * shares of a host.
-     *
-     * @param port            The file system port
-     */
-    void setFileSystemPort(int port) const;
-
-    /**
-     * Returns the file system port. The default value is 445.
-     *
-     * @returns the file system port
-     */
-    int fileSystemPort() const;
 
     /**
      * Set if the SMB protocol version for mounting should be set.

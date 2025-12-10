@@ -14,23 +14,10 @@
       <whatsthis>Most versions of Samba support the CIFS Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</whatsthis>
       <default>true</default>
     </entry>
-    <entry name="UseUserId" type="Bool">
-      <label>User ID:</label>
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
+    <entry name="UseIds" type="Bool">
+      <label>Set the user and group ID</label>
+      <whatsthis>Set the user ID and group ID that the files and directories of the mounted share will have to those of the current user (you).</whatsthis>
       <default>true</default>
-    </entry>
-    <entry name="UserId" type="String">
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
-      <default code="true">KUserId::currentUserId().toString()</default>
-    </entry>
-    <entry name="UseGroupId" type="Bool">
-      <label>Group ID:</label>
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="GroupId" type="String">
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
-      <default code="true">KGroupId::currentGroupId().toString()</default>
     </entry>
     <entry name="UseFileMode" type="Bool">
       <label>File mode:</label>
@@ -49,17 +36,6 @@
     <entry name="DirectoryMode" type="String">
       <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
       <default>0755</default>
-    </entry>
-    <entry name="UseRemoteFileSystemPort" type="Bool">
-      <label>File system port:</label>
-      <whatsthis>This is the port that is exclusively used to mount shares from remote servers. The default value is 445 (CIFS file system).</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="RemoteFileSystemPort" type="Int">
-      <whatsthis>This is the port that is exclusively used to mount shares from remote servers. The default value is 445 (CIFS file system).</whatsthis>
-      <min>1</min>
-      <max>65535</max>
-      <default>445</default>
     </entry>
     <entry name="UseClientCharset" type="Bool">
       <label>Client character set:</label>
@@ -286,25 +262,6 @@
       </choices>
       <default>Ntlmssp</default>
     </entry>
-    <entry name="UseCustomCifsOptions" type="Bool">
-      <label>Additional options:</label>
-      <whatsthis>Here you can enter advanced options for the CIFS file system in a comma-separated list (refer to the manual page of mount.cifs to learn more). The list will be added AS IS to the "-o" argument of mount.cifs. Please do not enter options that have already been defined in the configuration dialog.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="CustomCIFSOptions" type="String">
-      <whatsthis>Here you can enter advanced options for the CIFS file system in a comma-separated list (refer to the manual page of mount.cifs to learn more). The list will be added AS IS to the "-o" argument of mount.cifs. Please do not enter options that have already been defined in the configuration dialog.</whatsthis>
-      <default></default>
-    </entry>
-    <entry name="MountPrefix" type="Url">
-      <label>Mount prefix:</label>
-      <whatsthis>This is the prefix where Smb4K will create the mount points and mount the remote shares.</whatsthis>
-      <default code="true">QUrl::fromLocalFile(QDir::homePath()+QStringLiteral("/smb4k/"))</default>
-    </entry>
-    <entry name="ForceLowerCaseSubdirs" type="Bool">
-      <label>Force generated subdirectories to be lower case</label>
-      <whatsthis>All names of the subdirectories created by Smb4K below the mount prefix will be lowercase.</whatsthis>
-      <default>false</default>
-    </entry>
     <entry name="UnmountSharesOnExit" type="Bool">
       <label>Unmount all personal shares on exit</label>
       <whatsthis>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</whatsthis>
@@ -328,11 +285,6 @@
       <min>1</min>
       <max>30</max>
       <default>5</default>
-    </entry>
-    <entry name="UnmountForeignShares" type="Bool">
-      <label>Allow the unmounting of shares that are owned by other users</label>
-      <whatsthis>Allow the unmounting of shares that were mounted by other users. Please think before you enable this option.</whatsthis>
-      <default>false</default>
     </entry>
     <entry name="ForceUnmountInaccessible" type="Bool">
       <label>Force the unmounting of inaccessible shares</label>
