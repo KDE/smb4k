@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 14:40+0000\n"
+"POT-Creation-Date: 2025-12-11 02:37+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -27,17 +27,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kscanne@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:135
+#: helpers/smb4kmounthelper.cpp:97
+#, kde-format
+msgid "The computer is not online."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:106
+#, kde-format
+msgid "Could not create mount point for share %1."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:112
+#, kde-format
+msgid "The mount command could not be found."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:118
+#, kde-format
+msgid "Forbidden mount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:168
+#, kde-format
+msgid "There is something wrong with the provided Kerberos ticket."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:212
 #, kde-format
 msgid "The mount process could not be started."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:179
+#: helpers/smb4kmounthelper.cpp:225
 #, kde-format
-msgid "The mountpoint %1 is invalid."
+msgid "The mountpoint %1 is illegal."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:241
+#: helpers/smb4kmounthelper.cpp:231
+#, kde-format
+msgid "The umount command could not be found."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:237
+#, kde-format
+msgid "Forbidden unmount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:279
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr ""
@@ -156,7 +191,7 @@ msgstr "Cuir Leabharmharcanna in &Eagar"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:206
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Cuir &Leabharmharc Leis"
@@ -247,16 +282,16 @@ msgid "Password:"
 msgstr "Focal Faire"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:295 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "Grúpa Oibrithe:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:287 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -301,118 +336,87 @@ msgstr ""
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
-#, kde-format
-msgid "Directories"
-msgstr "Comhadlanna"
-
-#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Oibriú"
 
-#: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
 #, kde-format
 msgid " min"
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgid "Basic Settings"
 msgstr "&Socruithe"
 
-#: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
+#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
 #, kde-format
 msgid "Common Options"
 msgstr "Roghanna Coitianta"
 
-#: smb4k/smb4kconfigpagemounting.cpp:218
+#: smb4k/smb4kconfigpagemounting.cpp:203
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
+#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
-msgid "Choose a different user"
-msgstr ""
+msgid "User ID:"
+msgstr "Aitheantas an Úsáideora:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:630
-#, kde-format
-msgid "Choose a different group"
-msgstr ""
+#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
+#, fuzzy, kde-format
+#| msgid "Group:"
+msgid "Group ID:"
+msgstr "Grúpa:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:156
+#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Common Mount Settings"
 msgstr "Roghanna Coitianta"
 
-#: smb4k/smb4kconfigpagemounting.cpp:341
+#: smb4k/smb4kconfigpagemounting.cpp:280
 #, kde-format
 msgid "Advanced Options"
 msgstr "Ardroghanna"
 
-#: smb4k/smb4kconfigpagemounting.cpp:454
-#, fuzzy, kde-format
-#| msgid "Additional options:"
-msgid "Edit the additional CIFS options."
-msgstr "Roghanna breise:"
-
-#: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:191
+#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, fuzzy, kde-format
 #| msgid "Advanced Settings"
 msgid "Advanced Mount Settings"
 msgstr "Ardsocruithe"
 
-#: smb4k/smb4kconfigpagemounting.cpp:676
+#: smb4k/smb4kconfigpagemounting.cpp:517
 #, kde-format
 msgid "Character Sets"
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:367
+#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Mount Settings"
 msgstr "Roghanna Coitianta"
 
-#: smb4k/smb4kconfigpagemounting.cpp:768
-#, fuzzy, kde-format
-#| msgid "Additional options:"
-msgid "Additional CIFS Options"
-msgstr "Roghanna breise:"
-
-#: smb4k/smb4kconfigpagemounting.cpp:769
-#, kde-format
-msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr ""
-
-#: smb4k/smb4kconfigpagemounting.cpp:797
-#, kde-format
-msgid ""
-"The following entry is going to be removed from the additional options:<br>"
-"%2.<br>Please read the handbook for details."
-msgid_plural ""
-"The following %1 entries are going to be removed from the additional options:"
-"<br>%2.<br>Please read the handbook for details."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:426
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgid "Browse Settings"
@@ -636,38 +640,45 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:302
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Always remount this share"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:99
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, fuzzy, kde-format
 #| msgid "IP address:"
 msgid "MAC Address:"
 msgstr "Seoladh IP:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#, fuzzy, kde-format
+#| msgid "IP address:"
+msgid "Find MAC address"
+msgstr "Seoladh IP:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:443
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Wake-On-LAN Settings"
@@ -865,20 +876,20 @@ msgid "&Search"
 msgstr "&Cuardach"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:215
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:220
+#: smb4k/smb4ksharesviewdockwidget.cpp:216
 #, fuzzy, kde-format
 #| msgid "Custom Options"
 msgid "Add &Custom Settings"
 msgstr "Roghanna Saincheaptha"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#: smb4k/smb4ksharesviewdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
@@ -929,7 +940,7 @@ msgid "&Mount"
 msgstr "&Feistigh"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:182
+#: smb4k/smb4ksharesviewdockwidget.cpp:178
 #, kde-format
 msgid "&Unmount"
 msgstr "&Dífheistigh"
@@ -952,7 +963,7 @@ msgid "Scan Wo&rkgroup"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:183
 #, kde-format
 msgid "Ctrl+U"
 msgstr ""
@@ -1066,7 +1077,7 @@ msgstr "Printéir"
 msgid "Print a file to printer <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
 #, kde-format
 msgid "U&nmount All"
 msgstr ""
@@ -1096,57 +1107,57 @@ msgstr ""
 msgid "Open with File Manager"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:137
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "View Modes"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:143
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "Icon View"
 msgstr "Amharc le Deilbhíní"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#: smb4k/smb4ksharesviewdockwidget.cpp:145
 #, kde-format
 msgid "List View"
 msgstr "Amharc Liosta"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:197
+#: smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+N"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:230
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "S&ynchronize"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:235
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+Y"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:248
+#: smb4k/smb4ksharesviewdockwidget.cpp:244
 #, kde-format
 msgid "Open with Konso&le"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:253
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
 msgid "Ctrl+L"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:255
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:260
+#: smb4k/smb4ksharesviewdockwidget.cpp:256
 #, kde-format
 msgid "Ctrl+I"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:375
+#: smb4k/smb4ksharesviewdockwidget.cpp:385
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1266,6 +1277,19 @@ msgstr ""
 #| msgid "Size"
 msgid "Size:"
 msgstr "Méid"
+
+#~ msgid "Directories"
+#~ msgstr "Comhadlanna"
+
+#, fuzzy
+#~| msgid "Additional options:"
+#~ msgid "Edit the additional CIFS options."
+#~ msgstr "Roghanna breise:"
+
+#, fuzzy
+#~| msgid "Additional options:"
+#~ msgid "Additional CIFS Options"
+#~ msgstr "Roghanna breise:"
 
 #, fuzzy
 #~| msgid "unknown"
@@ -1462,22 +1486,11 @@ msgstr "Méid"
 #~ msgid "Security Mode:"
 #~ msgstr "Slándáil"
 
-#~ msgid "User ID:"
-#~ msgstr "Aitheantas an Úsáideora:"
-
-#, fuzzy
-#~| msgid "IP address:"
-#~ msgid "MAC address:"
-#~ msgstr "Seoladh IP:"
-
 #~ msgid "General Options"
 #~ msgstr "Roghanna Ginearálta"
 
 #~ msgid "Add Group"
 #~ msgstr "Cuir Grúpa Leis"
-
-#~ msgid "Group:"
-#~ msgstr "Grúpa:"
 
 #~ msgid "Group name:"
 #~ msgstr "Ainm grúpa:"

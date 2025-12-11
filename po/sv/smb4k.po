@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 14:40+0000\n"
+"POT-Creation-Date: 2025-12-11 02:37+0000\n"
 "PO-Revision-Date: 2024-06-21 08:19+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -30,17 +30,58 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:135
+#: helpers/smb4kmounthelper.cpp:97
+#, fuzzy, kde-format
+#| msgid "The wallet is not in use."
+msgid "The computer is not online."
+msgstr "Plånboken används inte."
+
+#: helpers/smb4kmounthelper.cpp:106
+#, fuzzy, kde-format
+#| msgid "Could not find umount binary."
+msgid "Could not create mount point for share %1."
+msgstr "Kunde inte hitta binärfil för umount."
+
+#: helpers/smb4kmounthelper.cpp:112
+#, fuzzy, kde-format
+#| msgid "The mount process could not be started."
+msgid "The mount command could not be found."
+msgstr "Monteringsprocessen kunde inte startas."
+
+#: helpers/smb4kmounthelper.cpp:118
+#, kde-format
+msgid "Forbidden mount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:168
+#, kde-format
+msgid "There is something wrong with the provided Kerberos ticket."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:212
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Monteringsprocessen kunde inte startas."
 
-#: helpers/smb4kmounthelper.cpp:179
-#, kde-format
-msgid "The mountpoint %1 is invalid."
+#: helpers/smb4kmounthelper.cpp:225
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is invalid."
+msgid "The mountpoint %1 is illegal."
 msgstr "Monteringsplatsen %1 är ogiltig."
 
-#: helpers/smb4kmounthelper.cpp:241
+#: helpers/smb4kmounthelper.cpp:231
+#, fuzzy, kde-format
+#| msgid "The unmount process could not be started."
+msgid "The umount command could not be found."
+msgstr "Avmonteringsprocessen kunde inte startas."
+
+#: helpers/smb4kmounthelper.cpp:237
+#, fuzzy, kde-format
+#| msgid "The unmount process crashed."
+msgid "Forbidden unmount options were passed."
+msgstr "Avmonteringsprocessen kraschade."
+
+#: helpers/smb4kmounthelper.cpp:279
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Avmonteringsprocessen kunde inte startas."
@@ -161,7 +202,7 @@ msgstr "&Ordna bokmärken"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:206
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Lägg till &bokmärke"
@@ -253,16 +294,16 @@ msgid "Password:"
 msgstr "Lösenord:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:295 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "Arbetsgrupp:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:287 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -308,114 +349,82 @@ msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
 "Objektet <b>%1</b> togs bort, eftersom alla egna inställningar återställdes."
 
-#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
-#, kde-format
-msgid "Directories"
-msgstr "Kataloger"
-
-#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Beteende"
 
-#: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
 #, kde-format
 msgid "Basic Settings"
 msgstr "Grundinställningar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
+#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
 #, kde-format
 msgid "Common Options"
 msgstr "Vanliga alternativ"
 
-#: smb4k/smb4kconfigpagemounting.cpp:218
+#: smb4k/smb4kconfigpagemounting.cpp:203
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Stöd för CIFS Unix-utökning"
 
-#: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
+#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
-msgid "Choose a different user"
-msgstr "Välj en annan användare"
+msgid "User ID:"
+msgstr "Användar ID:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:630
+#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
-msgid "Choose a different group"
-msgstr "Välj en annan grupp"
+msgid "Group ID:"
+msgstr "Grupp ID:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:156
+#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Vanliga monteringsinställningar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:341
+#: smb4k/smb4kconfigpagemounting.cpp:280
 #, kde-format
 msgid "Advanced Options"
 msgstr "Avancerade alternativ"
 
-#: smb4k/smb4kconfigpagemounting.cpp:454
-#, kde-format
-msgid "Edit the additional CIFS options."
-msgstr "Redigera ytterligare CIFS-alternativ."
-
-#: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:191
+#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Avancerade monteringsinställningar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:676
+#: smb4k/smb4kconfigpagemounting.cpp:517
 #, kde-format
 msgid "Character Sets"
 msgstr "Teckenuppsättningar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:367
+#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, kde-format
 msgid "Mount Settings"
 msgstr "Monteringsinställningar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:768
-#, kde-format
-msgid "Additional CIFS Options"
-msgstr "Ytterligare CIFS-alternativ"
-
-#: smb4k/smb4kconfigpagemounting.cpp:769
-#, kde-format
-msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr ""
-"<qt>Skriv in önskade alternativ som en lista åtskild med kommatecken:</qt>"
-
-#: smb4k/smb4kconfigpagemounting.cpp:797
-#, kde-format
-msgid ""
-"The following entry is going to be removed from the additional options:<br>"
-"%2.<br>Please read the handbook for details."
-msgid_plural ""
-"The following %1 entries are going to be removed from the additional options:"
-"<br>%2.<br>Please read the handbook for details."
-msgstr[0] ""
-"Följande post kommer att tas bort från de ytterligare alternativen:<br>%2."
-"<br>Läs handboken för detaljerad information."
-msgstr[1] ""
-"Följande %1 poster kommer att tas bort från de ytterligare alternativen:<br>"
-"%2.<br>Läs handboken för detaljerad information."
-
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:426
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, kde-format
 msgid "Browse Settings"
 msgstr "Bläddringsinställningar"
@@ -624,37 +633,44 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definiera egna inställningar för den delade katalogen <b>%1</b>."
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:302
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Always remount this share"
 msgstr "Återmontera alltid resursen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:99
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Servern stöder CIFS Unix-utökningar"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-adress:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#, fuzzy, kde-format
+#| msgid "MAC address:"
+msgid "Find MAC address"
+msgstr "MAC-adress:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Skicka magiskt paket innan sökning av nätverksgrannskapet"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:443
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Skicka magiskt paket innan en delad resurs monteras"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Inställningar av väckning av lokalt nätverk"
@@ -846,19 +862,19 @@ msgid "&Search"
 msgstr "&Sök"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:215
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:220
+#: smb4k/smb4ksharesviewdockwidget.cpp:216
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Lägg till &egna inställningar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#: smb4k/smb4ksharesviewdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
@@ -909,7 +925,7 @@ msgid "&Mount"
 msgstr "&Montera"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:182
+#: smb4k/smb4ksharesviewdockwidget.cpp:178
 #, kde-format
 msgid "&Unmount"
 msgstr "&Avmontera"
@@ -932,7 +948,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "Läs av arbets&grupp"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:183
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -1039,7 +1055,7 @@ msgstr "Skriv ut"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Skriv ut en fil på skrivaren <b>%1</b>."
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
 #, kde-format
 msgid "U&nmount All"
 msgstr "A&vmontera alla"
@@ -1069,57 +1085,57 @@ msgstr "Öppna i Konsole"
 msgid "Open with File Manager"
 msgstr "Öppna i filhanterare"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:137
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "View Modes"
 msgstr "Visningslägen"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:143
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "Icon View"
 msgstr "Ikonvy"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#: smb4k/smb4ksharesviewdockwidget.cpp:145
 #, kde-format
 msgid "List View"
 msgstr "Listvy"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:197
+#: smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:230
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynkronisera"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:235
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:248
+#: smb4k/smb4ksharesviewdockwidget.cpp:244
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Öppna i Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:253
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:255
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Öppna i f&ilhanterare"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:260
+#: smb4k/smb4ksharesviewdockwidget.cpp:256
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:375
+#: smb4k/smb4ksharesviewdockwidget.cpp:385
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1235,6 +1251,38 @@ msgstr "%1 ledigt av %2 (%3 använt)"
 #, kde-format
 msgid "Size:"
 msgstr "Storlek:"
+
+#~ msgid "Directories"
+#~ msgstr "Kataloger"
+
+#~ msgid "Choose a different user"
+#~ msgstr "Välj en annan användare"
+
+#~ msgid "Choose a different group"
+#~ msgstr "Välj en annan grupp"
+
+#~ msgid "Edit the additional CIFS options."
+#~ msgstr "Redigera ytterligare CIFS-alternativ."
+
+#~ msgid "Additional CIFS Options"
+#~ msgstr "Ytterligare CIFS-alternativ"
+
+#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+#~ msgstr ""
+#~ "<qt>Skriv in önskade alternativ som en lista åtskild med kommatecken:</qt>"
+
+#~ msgid ""
+#~ "The following entry is going to be removed from the additional options:"
+#~ "<br>%2.<br>Please read the handbook for details."
+#~ msgid_plural ""
+#~ "The following %1 entries are going to be removed from the additional "
+#~ "options:<br>%2.<br>Please read the handbook for details."
+#~ msgstr[0] ""
+#~ "Följande post kommer att tas bort från de ytterligare alternativen:<br>%2."
+#~ "<br>Läs handboken för detaljerad information."
+#~ msgstr[1] ""
+#~ "Följande %1 poster kommer att tas bort från de ytterligare alternativen:"
+#~ "<br>%2.<br>Läs handboken för detaljerad information."
 
 #, fuzzy
 #~| msgid "unknown"
@@ -1364,9 +1412,6 @@ msgstr "Storlek:"
 #~ msgid "The mount process crashed."
 #~ msgstr "Monteringsprocessen kraschade."
 
-#~ msgid "The unmount process crashed."
-#~ msgstr "Avmonteringsprocessen kraschade."
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 av %2 ledigt (%3 använt)"
 
@@ -1482,15 +1527,6 @@ msgstr "Storlek:"
 #~ msgid "Security Mode:"
 #~ msgstr "Säkerhetsläge:"
 
-#~ msgid "User ID:"
-#~ msgstr "Användar ID:"
-
-#~ msgid "Group ID:"
-#~ msgstr "Grupp ID:"
-
-#~ msgid "MAC address:"
-#~ msgstr "MAC-adress:"
-
 #~ msgid "General Options"
 #~ msgstr "Allmänna inställningar"
 
@@ -1574,9 +1610,6 @@ msgstr "Storlek:"
 
 #~ msgid "Operating system"
 #~ msgstr "Operativsystem"
-
-#~ msgid "The wallet is not in use."
-#~ msgstr "Plånboken används inte."
 
 #~ msgid "Mounting %1 failed."
 #~ msgstr "Montering av %1 misslyckades."
@@ -4373,9 +4406,6 @@ msgstr "Storlek:"
 
 #~ msgid "Aborting."
 #~ msgstr "Avbryter."
-
-#~ msgid "Could not find umount binary."
-#~ msgstr "Kunde inte hitta binärfil för umount."
 
 #~ msgid "The internal process crashed with exit code "
 #~ msgstr "Den interna processen kraschade med avslutningskod "

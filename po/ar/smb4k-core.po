@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 14:40+0000\n"
+"POT-Creation-Date: 2025-12-11 02:37+0000\n"
 "PO-Revision-Date: 2025-08-20 22:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1831,7 +1831,7 @@ msgstr "التشكيلة النشِطة"
 msgid "This is the currently active profile."
 msgstr "هذا هي التشكيلة النشطة حاليًا."
 
-#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:307 smb4kshare.cpp:160
+#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:278 smb4kshare.cpp:160
 #: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
@@ -1869,63 +1869,39 @@ msgstr "دعم Zeroconf غير متوفر في هذا الإصدار من كيد
 msgid "An unknown error with Zeroconf occurred."
 msgstr "حدث خطأ غير معروف في Zeroconf."
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:433
 #, kde-format
-msgid ""
-"<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
-"b>.</p><p>Do you really want to unmount it?</p>"
+msgid "The mountpoint %1 is illegal."
 msgstr ""
-"<p>ضُمت المشاركة <b>%1</b> على <br><b>%2</b> وهي مملوكة للمستخدم <b>%3</b>.</"
-"p><p>هل تريد حقًا إلغاء تثبيتها؟</p>"
 
-#: smb4kmounter.cpp:692
-#, kde-format
-msgid "Foreign Share"
-msgstr "مشاركة أجنبية"
-
-#. i18n: ectx: label, entry (UseUserId), group (Mounting)
+#. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
-msgid "User ID:"
-msgstr "معرف المستخدم:"
+msgid "Set the user and group ID"
+msgstr ""
 
-#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_bsd.kcfg:18
-#, kde-format
+#. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the user ID (a number) that the files and directories of the "
+#| "mounted share will have."
 msgid ""
-"This is the user ID (a number) that the files and directories of the mounted "
-"share will have."
+"Set the user ID and group ID that the files and directories of the mounted "
+"share will have to those of the current user (you)."
 msgstr ""
 "هذا هو معرف المستخدم (الرقم) الذي ستحتوي عليه الملفات والأدلة الخاصة "
 "بالمشاركة المضمومة."
 
-#. i18n: ectx: label, entry (UseGroupId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_linux.kcfg:27
-#, kde-format
-msgid "Group ID:"
-msgstr "معرف المجموعة:"
-
-#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:23 smb4kmountsettings_bsd.kcfg:27
-#, kde-format
-msgid ""
-"This is the group ID (a number) that the files and directories of the "
-"mounted share will have."
-msgstr ""
-"هذا هو معرف المجموعة (رقم) الذي ستحمله الملفات والأدلة الخاصة بالمشاركة "
-"المضمومة."
-
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_linux.kcfg:36
+#: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
 #, kde-format
 msgid "File mode:"
 msgstr "وضع الملف:"
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:32 smb4kmountsettings_bsd.kcfg:36
+#: smb4kmountsettings_bsd.kcfg:19 smb4kmountsettings_bsd.kcfg:23
 #, kde-format
 msgid ""
 "This is the file mode that will be used for creating files. It must be "
@@ -1934,14 +1910,14 @@ msgstr ""
 "هذا هو وضع الملف الذي سيستخدم لإنشاء الملفات. يجب أن يعرف بالنظام الثماني."
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_linux.kcfg:45
+#: smb4kmountsettings_bsd.kcfg:27 smb4kmountsettings_linux.kcfg:32
 #, kde-format
 msgid "Directory mode:"
 msgstr "وضع الدليل:"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:41 smb4kmountsettings_bsd.kcfg:45
+#: smb4kmountsettings_bsd.kcfg:28 smb4kmountsettings_bsd.kcfg:32
 #, kde-format
 msgid ""
 "This is the directory mode that will be used for creating directories. It "
@@ -1950,14 +1926,14 @@ msgstr ""
 "هذا هو وضع الدليل الذي سيستخدم لإنشاء الأدلة. يجب تعريفه بنظام الثمانية."
 
 #. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:49
+#: smb4kmountsettings_bsd.kcfg:36
 #, kde-format
 msgid "Use character sets"
 msgstr "استخدام مجموعات المحارف"
 
 #. i18n: ectx: whatsthis, entry (UseCharacterSets), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:50 smb4kmountsettings_bsd.kcfg:55
+#: smb4kmountsettings_bsd.kcfg:37 smb4kmountsettings_bsd.kcfg:42
 #, kde-format
 msgid ""
 "This is the character set that is used by the client side (i.e. your side) "
@@ -1971,161 +1947,161 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (UseClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:65
+#: smb4kmountsettings_bsd.kcfg:41 smb4kmountsettings_linux.kcfg:41
 #, kde-format
 msgid "Client character set:"
 msgstr "طقم المحارف العميل:"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:58 smb4kmountsettings_bsd.kcfg:134
-#: smb4kmountsettings_linux.kcfg:73
+#: smb4kmountsettings_bsd.kcfg:45 smb4kmountsettings_bsd.kcfg:121
+#: smb4kmountsettings_linux.kcfg:49
 #, kde-format
 msgid "default"
 msgstr "مبدئي"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:61 smb4kmountsettings_linux.kcfg:76
+#: smb4kmountsettings_bsd.kcfg:48 smb4kmountsettings_linux.kcfg:52
 #, kde-format
 msgid "iso8859-1"
 msgstr "آيزو8859-1"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:64 smb4kmountsettings_linux.kcfg:79
+#: smb4kmountsettings_bsd.kcfg:51 smb4kmountsettings_linux.kcfg:55
 #, kde-format
 msgid "iso8859-2"
 msgstr " آيزو8859-2"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:67 smb4kmountsettings_linux.kcfg:82
+#: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:58
 #, kde-format
 msgid "iso8859-3"
 msgstr " آيزو8859-3"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:70 smb4kmountsettings_linux.kcfg:85
+#: smb4kmountsettings_bsd.kcfg:57 smb4kmountsettings_linux.kcfg:61
 #, kde-format
 msgid "iso8859-4"
 msgstr " آيزو8859-4"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:73 smb4kmountsettings_linux.kcfg:88
+#: smb4kmountsettings_bsd.kcfg:60 smb4kmountsettings_linux.kcfg:64
 #, kde-format
 msgid "iso8859-5"
 msgstr " آيزو8859-5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:76 smb4kmountsettings_linux.kcfg:91
+#: smb4kmountsettings_bsd.kcfg:63 smb4kmountsettings_linux.kcfg:67
 #, kde-format
 msgid "iso8859-6"
 msgstr " آيزو8859-6"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:79 smb4kmountsettings_linux.kcfg:94
+#: smb4kmountsettings_bsd.kcfg:66 smb4kmountsettings_linux.kcfg:70
 #, kde-format
 msgid "iso8859-7"
 msgstr " آيزو8859-7"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:82 smb4kmountsettings_linux.kcfg:97
+#: smb4kmountsettings_bsd.kcfg:69 smb4kmountsettings_linux.kcfg:73
 #, kde-format
 msgid "iso8859-8"
 msgstr " آيزو8859-8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:85 smb4kmountsettings_linux.kcfg:100
+#: smb4kmountsettings_bsd.kcfg:72 smb4kmountsettings_linux.kcfg:76
 #, kde-format
 msgid "iso8859-9"
 msgstr " آيزو8859-9"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:88 smb4kmountsettings_linux.kcfg:103
+#: smb4kmountsettings_bsd.kcfg:75 smb4kmountsettings_linux.kcfg:79
 #, kde-format
 msgid "iso8859-13"
 msgstr " آيزو8859-13"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:91 smb4kmountsettings_linux.kcfg:106
+#: smb4kmountsettings_bsd.kcfg:78 smb4kmountsettings_linux.kcfg:82
 #, kde-format
 msgid "iso8859-14"
 msgstr " آيزو8859-14"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:94 smb4kmountsettings_linux.kcfg:109
+#: smb4kmountsettings_bsd.kcfg:81 smb4kmountsettings_linux.kcfg:85
 #, kde-format
 msgid "iso8859-15"
 msgstr " آيزو8859-15"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:97 smb4kmountsettings_linux.kcfg:112
+#: smb4kmountsettings_bsd.kcfg:84 smb4kmountsettings_linux.kcfg:88
 #, kde-format
 msgid "utf8"
 msgstr "يو تي اف8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:100 smb4kmountsettings_linux.kcfg:115
+#: smb4kmountsettings_bsd.kcfg:87 smb4kmountsettings_linux.kcfg:91
 #, kde-format
 msgid "koi8-r"
 msgstr "koi8-r"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:103 smb4kmountsettings_linux.kcfg:118
+#: smb4kmountsettings_bsd.kcfg:90 smb4kmountsettings_linux.kcfg:94
 #, kde-format
 msgid "koi8-u"
 msgstr "koi8-u"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:106 smb4kmountsettings_linux.kcfg:121
+#: smb4kmountsettings_bsd.kcfg:93 smb4kmountsettings_linux.kcfg:97
 #, kde-format
 msgid "koi8-ru"
 msgstr "koi8-ru"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:109 smb4kmountsettings_bsd.kcfg:206
-#: smb4kmountsettings_linux.kcfg:124
+#: smb4kmountsettings_bsd.kcfg:96 smb4kmountsettings_bsd.kcfg:193
+#: smb4kmountsettings_linux.kcfg:100
 #, kde-format
 msgid "cp1251"
 msgstr "سي بي1251"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:112 smb4kmountsettings_linux.kcfg:127
+#: smb4kmountsettings_bsd.kcfg:99 smb4kmountsettings_linux.kcfg:103
 #, kde-format
 msgid "gb2312"
 msgstr "gb2312"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:115 smb4kmountsettings_linux.kcfg:130
+#: smb4kmountsettings_bsd.kcfg:102 smb4kmountsettings_linux.kcfg:106
 #, kde-format
 msgid "big5"
 msgstr "big5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:118 smb4kmountsettings_linux.kcfg:133
+#: smb4kmountsettings_bsd.kcfg:105 smb4kmountsettings_linux.kcfg:109
 #, kde-format
 msgid "euc-jp"
 msgstr "euc-jp"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:121 smb4kmountsettings_linux.kcfg:136
+#: smb4kmountsettings_bsd.kcfg:108 smb4kmountsettings_linux.kcfg:112
 #, kde-format
 msgid "euc-kr"
 msgstr "euc-kr"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:124 smb4kmountsettings_linux.kcfg:139
+#: smb4kmountsettings_bsd.kcfg:111 smb4kmountsettings_linux.kcfg:115
 #, kde-format
 msgid "tis-620"
 msgstr "tis-620"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:130
+#: smb4kmountsettings_bsd.kcfg:117
 #, kde-format
 msgid "Server character set:"
 msgstr "طقم المحارف الخادم:"
 
 #. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:131
+#: smb4kmountsettings_bsd.kcfg:118
 #, kde-format
 msgid ""
 "This is the character set that is used by the server. If you keep the "
@@ -2137,230 +2113,199 @@ msgstr ""
 "charset\" في ملف smb.conf."
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:137
+#: smb4kmountsettings_bsd.kcfg:124
 #, kde-format
 msgid "cp437"
 msgstr "سي بي437"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:140
+#: smb4kmountsettings_bsd.kcfg:127
 #, kde-format
 msgid "cp720"
 msgstr "سي بي720"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:143
+#: smb4kmountsettings_bsd.kcfg:130
 #, kde-format
 msgid "cp737"
 msgstr "سي بي737"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:146
+#: smb4kmountsettings_bsd.kcfg:133
 #, kde-format
 msgid "cp775"
 msgstr "سي بي775"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:149
+#: smb4kmountsettings_bsd.kcfg:136
 #, kde-format
 msgid "cp850"
 msgstr "سي بي850"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:152
+#: smb4kmountsettings_bsd.kcfg:139
 #, kde-format
 msgid "cp852"
 msgstr "سي بي852"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:155
+#: smb4kmountsettings_bsd.kcfg:142
 #, kde-format
 msgid "cp855"
 msgstr "سي بي855"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:158
+#: smb4kmountsettings_bsd.kcfg:145
 #, kde-format
 msgid "cp857"
 msgstr "سي بي857"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:161
+#: smb4kmountsettings_bsd.kcfg:148
 #, kde-format
 msgid "cp858"
 msgstr "سي بي858"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:164
+#: smb4kmountsettings_bsd.kcfg:151
 #, kde-format
 msgid "cp860"
 msgstr "سي بي860"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:167
+#: smb4kmountsettings_bsd.kcfg:154
 #, kde-format
 msgid "cp861"
 msgstr "سي بي861"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:170
+#: smb4kmountsettings_bsd.kcfg:157
 #, kde-format
 msgid "cp862"
 msgstr "سي بي862"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:173
+#: smb4kmountsettings_bsd.kcfg:160
 #, kde-format
 msgid "cp863"
 msgstr "سي بي863"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:176
+#: smb4kmountsettings_bsd.kcfg:163
 #, kde-format
 msgid "cp864"
 msgstr "سي بي864"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:179
+#: smb4kmountsettings_bsd.kcfg:166
 #, kde-format
 msgid "cp865"
 msgstr "سي بي865"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:182
+#: smb4kmountsettings_bsd.kcfg:169
 #, kde-format
 msgid "cp866"
 msgstr "سي بي866"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:185
+#: smb4kmountsettings_bsd.kcfg:172
 #, kde-format
 msgid "cp869"
 msgstr "سي بي869"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:188
+#: smb4kmountsettings_bsd.kcfg:175
 #, kde-format
 msgid "cp874"
 msgstr "سي بي874"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:191
+#: smb4kmountsettings_bsd.kcfg:178
 #, kde-format
 msgid "cp932"
 msgstr "سي بي932"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:194
+#: smb4kmountsettings_bsd.kcfg:181
 #, kde-format
 msgid "cp936"
 msgstr "سي بي936"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:197
+#: smb4kmountsettings_bsd.kcfg:184
 #, kde-format
 msgid "cp949"
 msgstr "سي بي949"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:200
+#: smb4kmountsettings_bsd.kcfg:187
 #, kde-format
 msgid "cp950"
 msgstr "سي بي950"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:203
+#: smb4kmountsettings_bsd.kcfg:190
 #, kde-format
 msgid "cp1250"
 msgstr "سي بي1250"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:209
+#: smb4kmountsettings_bsd.kcfg:196
 #, kde-format
 msgid "cp1252"
 msgstr "سي بي1252"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:212
+#: smb4kmountsettings_bsd.kcfg:199
 #, kde-format
 msgid "cp1253"
 msgstr "سي بي1253"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:215
+#: smb4kmountsettings_bsd.kcfg:202
 #, kde-format
 msgid "cp1254"
 msgstr "سي بي1254"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:218
+#: smb4kmountsettings_bsd.kcfg:205
 #, kde-format
 msgid "cp1255"
 msgstr "سي بي1255"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:221
+#: smb4kmountsettings_bsd.kcfg:208
 #, kde-format
 msgid "cp1256"
 msgstr "سي بي1256"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:224
+#: smb4kmountsettings_bsd.kcfg:211
 #, kde-format
 msgid "cp1257"
 msgstr "سي بي1257"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:227
+#: smb4kmountsettings_bsd.kcfg:214
 #, kde-format
 msgid "cp1258"
 msgstr "سي بي1258"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:230
+#: smb4kmountsettings_bsd.kcfg:217
 #, kde-format
 msgid "unicode"
 msgstr "يونيكود"
 
-#. i18n: ectx: label, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
-#, kde-format
-msgid "Mount prefix:"
-msgstr "بادئة الضم:"
-
-#. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:237 smb4kmountsettings_linux.kcfg:300
-#, kde-format
-msgid ""
-"This is the prefix where Smb4K will create the mount points and mount the "
-"remote shares."
-msgstr ""
-"هذه هي البادئة حيث ستقوم كيدي سامبا4 بإنشاء نقاط الضم وضم المشاركات البعيدة."
-
-#. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:304
-#, kde-format
-msgid "Force generated subdirectories to be lower case"
-msgstr "افرض أن تكون الدلائل الفرعية أن تنشئ بأحرف صغيرة"
-
-#. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:242 smb4kmountsettings_linux.kcfg:305
-#, kde-format
-msgid ""
-"All names of the subdirectories created by Smb4K below the mount prefix will "
-"be lowercase."
-msgstr ""
-"جميع أسماء الدلائل الفرعية التي ينشئها كيدي سامبا4 أسفل بادئة الضم ستكون "
-"بأحرف صغيرة."
-
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:309
+#: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:266
 #, kde-format
 msgid "Unmount all personal shares on exit"
 msgstr "إلغاء ضم كافة المشاركات الشخصية عند الخروج"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:310
+#: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:267
 #, kde-format
 msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
@@ -2370,13 +2315,13 @@ msgstr ""
 "مستخدمون آخرون."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
+#: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:271
 #, kde-format
 msgid "Remount shares"
 msgstr "أعد ضم المشاركات"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:315
+#: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:272
 #, kde-format
 msgid ""
 "Remount all your shares that were mounted when you exited the program or "
@@ -2392,13 +2337,13 @@ msgstr ""
 "حاسوبك من حالة التعليق."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
+#: smb4kmountsettings_bsd.kcfg:233 smb4kmountsettings_linux.kcfg:276
 #, kde-format
 msgid "Number of remount attempts:"
 msgstr "عدد محاولات إعادة الضم:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:320
+#: smb4kmountsettings_bsd.kcfg:234 smb4kmountsettings_linux.kcfg:277
 #, kde-format
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
@@ -2406,41 +2351,25 @@ msgid ""
 msgstr "عيّن عدد محاولات إعادة ضم المشاركات قبل استسلام كيدي سامبا4."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
+#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:283
 #, kde-format
 msgid "Interval between remount attempts:"
 msgstr "الفاصل الزمني بين محاولات إعادة الضم:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:264 smb4kmountsettings_linux.kcfg:327
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:284
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr "عين الوقت المنقضي بين محاولات إعادة ضم المشاركات."
 
-#. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
-#, kde-format
-msgid "Allow the unmounting of shares that are owned by other users"
-msgstr "اسمح بفك ضم المشاركات التي يملكها مستخدمون آخرون"
-
-#. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:271 smb4kmountsettings_linux.kcfg:334
-#, kde-format
-msgid ""
-"Allow the unmounting of shares that were mounted by other users. Please "
-"think before you enable this option."
-msgstr ""
-"اسمح بفك ضم المشاركات المضمومة من قبل مستخدمين آخرين. يرجى التفكير قبل تمكين "
-"هذا الخيار."
-
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
+#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr "افرض إلغاء ضم المشاركات التي لا يمكن الوصول إليها"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:276 smb4kmountsettings_linux.kcfg:339
+#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2452,13 +2381,13 @@ msgstr ""
 "الفعلي، سيعرض مربع حوار تحذيري يطلب الموافقة على إلغاء الضم."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
+#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
 msgstr "اكشف جميع المشاركات المضمومة في النظام"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:281 smb4kmountsettings_linux.kcfg:344
+#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -2494,35 +2423,8 @@ msgstr ""
 "خوادم سامبا، فيمكنك إلغاء تحديد هذا الخيار بأمان وتحديد خيارات مخصصة لخوادم "
 "سامبا."
 
-#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:19 smb4kmountsettings_linux.kcfg:23
-#, kde-format
-msgid ""
-"This is the user ID (a number) that the files and directories of the mounted "
-"share will have. If you are using the CIFS filesystem under Linux and the "
-"remote server supports the CIFS Unix Extensions, this setting will be "
-"ignored unless the assignment of the user ID is forced."
-msgstr ""
-"هذا هو معرف المستخدم (رقم) الذي ستحمله الملفات والأدلة الموجودة في المشاركة "
-"المضمومة. إذا كنت تستخدم نظام ملفات CIFS ضمن لينكس وكان الخادم البعيد يدعم "
-"امتدادات CIFS Unix، فسيتجاهل هذا الإعداد ما لم يفرض تعيين معرف المستخدم."
-
-#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:28 smb4kmountsettings_linux.kcfg:32
-#, kde-format
-msgid ""
-"This is the group ID (a number) that the files and directories of the "
-"mounted share will have. If you are using the CIFS filesystem under Linux "
-"and the remote server supports the CIFS Unix Extensions, this setting will "
-"be ignored unless the assignment of the group ID is forced."
-msgstr ""
-"هذا هو معرف المجموعة (الرقم) الذي ستحتوي عليه الملفات والأدلة الخاصة "
-"بالمشاركة المحملة."
-
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:37
+#: smb4kmountsettings_linux.kcfg:24
 #, kde-format
 msgid ""
 "This is the file mode that will be used for creating files. It must be "
@@ -2534,7 +2436,7 @@ msgstr ""
 "ملحقات CIFS Unix."
 
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:41
+#: smb4kmountsettings_linux.kcfg:28
 #, kde-format
 msgid ""
 "This is the filemode that will be used for creating files. It must be "
@@ -2547,7 +2449,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:46 smb4kmountsettings_linux.kcfg:50
+#: smb4kmountsettings_linux.kcfg:33 smb4kmountsettings_linux.kcfg:37
 #, kde-format
 msgid ""
 "This is the directory mode that will be used for creating directories. It "
@@ -2558,26 +2460,9 @@ msgstr ""
 "في حالة استخدام نظام الملفات CIFS، لا يسري هذا الإعداد إلا إذا كان الخادم لا "
 "يدعم ملحقات CIFS Unix."
 
-#. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:54
-#, kde-format
-msgid "File system port:"
-msgstr "منفذ نظام الملفات:"
-
-#. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
-#. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:55 smb4kmountsettings_linux.kcfg:59
-#, kde-format
-msgid ""
-"This is the port that is exclusively used to mount shares from remote "
-"servers. The default value is 445 (CIFS file system)."
-msgstr ""
-"هذا هو المنفذ المستخدم حصريًا لضم المشاركات من الخوادم البعيدة. القيمة "
-"المبدئية هي 445 (نظام ملفات CIFS)."
-
 #. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:66 smb4kmountsettings_linux.kcfg:70
+#: smb4kmountsettings_linux.kcfg:42 smb4kmountsettings_linux.kcfg:46
 #, kde-format
 msgid ""
 "This is the character set that is used by the client side (i.e. your side) "
@@ -2593,14 +2478,14 @@ msgstr ""
 "charset\" في smb.conf."
 
 #. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:145
+#: smb4kmountsettings_linux.kcfg:121
 #, kde-format
 msgid "Write access:"
 msgstr "صلاحية الكتابة:"
 
 #. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
 #. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:146 smb4kmountsettings_linux.kcfg:150
+#: smb4kmountsettings_linux.kcfg:122 smb4kmountsettings_linux.kcfg:126
 #, kde-format
 msgid ""
 "Here you can choose if the shares should be mounted in read-write or read-"
@@ -2610,25 +2495,25 @@ msgstr ""
 "وضع القراءة فقط."
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:153
+#: smb4kmountsettings_linux.kcfg:129
 #, kde-format
 msgid "read-write"
 msgstr "القراءة والكتابة"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:156
+#: smb4kmountsettings_linux.kcfg:132
 #, kde-format
 msgid "read-only"
 msgstr "للقراءة فقط"
 
 #. i18n: ectx: label, entry (ForceUID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:162
+#: smb4kmountsettings_linux.kcfg:138
 #, kde-format
 msgid "Definitely assign the UID"
 msgstr "تأكد من تعيين UID"
 
 #. i18n: ectx: whatsthis, entry (ForceUID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:163
+#: smb4kmountsettings_linux.kcfg:139
 #, kde-format
 msgid ""
 "Instruct the client (i.e. your side) to ignore any user ID (UID) provided by "
@@ -2639,13 +2524,13 @@ msgstr ""
 "للملفات والأدلة، عيّن المالك دائمًا ليكون قيمة معرف المستخدم المنقول."
 
 #. i18n: ectx: label, entry (ForceGID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:167
+#: smb4kmountsettings_linux.kcfg:143
 #, kde-format
 msgid "Definitely assign the GID"
 msgstr "تأكد من تعيين GID"
 
 #. i18n: ectx: whatsthis, entry (ForceGID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:168
+#: smb4kmountsettings_linux.kcfg:144
 #, kde-format
 msgid ""
 "Instruct the client (i.e. your side) to ignore any group ID (GID) provided "
@@ -2656,13 +2541,13 @@ msgstr ""
 "للملفات والأدلة، وعيّن المالك دائمًا ليكون قيمة معرف مجموعة GID المرسلة."
 
 #. i18n: ectx: label, entry (PermissionChecks), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:172
+#: smb4kmountsettings_linux.kcfg:148
 #, kde-format
 msgid "Do permission checks"
 msgstr "تحقق من الأذونات"
 
 #. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:173
+#: smb4kmountsettings_linux.kcfg:149
 #, kde-format
 msgid ""
 "The client side (i.e. your side) will check if you have the right UID/GID to "
@@ -2677,13 +2562,13 @@ msgstr ""
 "والأدلة. لا يؤثر هذا الإعداد على فحص قائمة التحكم في الوصول (ACL) العادي."
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:177
+#: smb4kmountsettings_linux.kcfg:153
 #, kde-format
 msgid "Attempt to set UID and GID"
 msgstr "محاولة تعيين UID وGID"
 
 #. i18n: ectx: whatsthis, entry (ClientControlsIDs), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:178
+#: smb4kmountsettings_linux.kcfg:154
 #, kde-format
 msgid ""
 "In case the server supports the CIFS Unix Extensions, the client side (i.e. "
@@ -2700,13 +2585,13 @@ msgstr ""
 "الدليل لـ mount.cifs قبل تغيير هذا الإعداد."
 
 #. i18n: ectx: label, entry (ServerInodeNumbers), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:182
+#: smb4kmountsettings_linux.kcfg:158
 #, kde-format
 msgid "Use server inode numbers"
 msgstr "استخدم أرقام معرفات الفريدة للخادم"
 
 #. i18n: ectx: whatsthis, entry (ServerInodeNumbers), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:183
+#: smb4kmountsettings_linux.kcfg:159
 #, kde-format
 msgid ""
 "Use inode numbers (unique persistent file identifiers) returned by the "
@@ -2717,13 +2602,13 @@ msgstr ""
 "بدلاً من إنشاء أرقام inode مؤقتة آليًّا على جانب العميل."
 
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:187
+#: smb4kmountsettings_linux.kcfg:163
 #, kde-format
 msgid "Do not send byte range lock requests"
 msgstr "لا ترسل طلبات قفل نطاق البايت"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:188
+#: smb4kmountsettings_linux.kcfg:164
 #, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
@@ -2736,13 +2621,13 @@ msgstr ""
 "أقفال نطاق البايت الاستشارية)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:192
+#: smb4kmountsettings_linux.kcfg:168
 #, kde-format
 msgid "Translate reserved characters"
 msgstr "ترجم المحارف المحجوزة"
 
 #. i18n: ectx: whatsthis, entry (TranslateReservedChars), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:193
+#: smb4kmountsettings_linux.kcfg:169
 #, kde-format
 msgid ""
 "Translate six of the seven reserved characters (including the colon, "
@@ -2758,75 +2643,75 @@ msgstr ""
 "الخادم لا يدعم يونيكود."
 
 #. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:197
+#: smb4kmountsettings_linux.kcfg:173
 #, kde-format
 msgid "SMB protocol version:"
 msgstr "إصدار ميفاق SMB:"
 
 #. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:198 smb4kmountsettings_linux.kcfg:202
+#: smb4kmountsettings_linux.kcfg:174 smb4kmountsettings_linux.kcfg:178
 #, kde-format
 msgid "Define which version of the SMB protocol is to be used."
 msgstr "تحديد إصدار بروتوكول SMB الذي سيستخدم."
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:205
+#: smb4kmountsettings_linux.kcfg:181
 #, kde-format
 msgid "1.0 (Classic CIFS/SMBv1 protocol)"
 msgstr "1.0 (ميفاق CIFS/SMBv1 الكلاسيكي)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:208
+#: smb4kmountsettings_linux.kcfg:184
 #, kde-format
 msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
 msgstr "2.0 (ويندوز فيستا SP1/ويندوز سيرفر 2008)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:211
+#: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "2.1 (Windows 7/Windows Server 2008R2)"
 msgstr "2.1 (ويندوز 7/ويندوز سيرفر 2008R2)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:214
+#: smb4kmountsettings_linux.kcfg:190
 #, kde-format
 msgid "3.0 (Windows 8/Windows Server 2012)"
 msgstr "3.0 (ويندوز 8/ويندوز سيرفر 2012)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:217
+#: smb4kmountsettings_linux.kcfg:193
 #, kde-format
 msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
 msgstr "3.0.2 (ويندوز 8.1/ويندوز سيرفر 2012R2)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:220
+#: smb4kmountsettings_linux.kcfg:196
 #, kde-format
 msgid "3.1.1 (Windows Server 2016)"
 msgstr "3.1.1 (ويندوز سيرفر 20016)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:223
+#: smb4kmountsettings_linux.kcfg:199
 #, kde-format
 msgid "3 (Version 3.0 and above)"
 msgstr "3 (الإصدار 3.0 وما فوق)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:226
+#: smb4kmountsettings_linux.kcfg:202
 #, kde-format
 msgid "default (Negotiate the highest version)"
 msgstr "المبدئي (التفاوض على الإصدار الأعلى)"
 
 #. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:232
+#: smb4kmountsettings_linux.kcfg:208
 #, kde-format
 msgid "Cache mode:"
 msgstr "وضع الخبيئة:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:233 smb4kmountsettings_linux.kcfg:237
+#: smb4kmountsettings_linux.kcfg:209 smb4kmountsettings_linux.kcfg:213
 #, kde-format
 msgid ""
 "Define how read and write requests are handled. In case you choose to not "
@@ -2853,32 +2738,32 @@ msgstr ""
 "الصارمة."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:240
+#: smb4kmountsettings_linux.kcfg:216
 #, kde-format
 msgid "Do not cache file data at all"
 msgstr "لا تخبئ بيانات الملف على الإطلاق"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:243
+#: smb4kmountsettings_linux.kcfg:219
 #, kde-format
 msgid "Follow the CIFS/SMB2 protocol strictly"
 msgstr "اتبع ميفاق CIFS/SMB2 بدقة"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:246
+#: smb4kmountsettings_linux.kcfg:222
 #, kde-format
 msgid "Allow loose caching semantics"
 msgstr "اسمح بخبيئة غير متماسكة"
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:252
+#: smb4kmountsettings_linux.kcfg:228
 #, kde-format
 msgid "Security mode:"
 msgstr "وضع الأمن:"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:253 smb4kmountsettings_linux.kcfg:257
+#: smb4kmountsettings_linux.kcfg:229 smb4kmountsettings_linux.kcfg:233
 #, kde-format
 msgid ""
 "Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
@@ -2888,100 +2773,83 @@ msgstr ""
 "CIFS 1.40 أو أحدث."
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:260
+#: smb4kmountsettings_linux.kcfg:236
 #, kde-format
 msgid "Connect as a null user (no name)"
 msgstr "اتصل كمستخدم فارغ (بلا اسم)"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:263
+#: smb4kmountsettings_linux.kcfg:239
 #, kde-format
 msgid "Kerberos 5 authentication"
 msgstr "استيثاق Kerberos 5"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:266
+#: smb4kmountsettings_linux.kcfg:242
 #, kde-format
 msgid "Kerberos 5 authentication and packet signing"
 msgstr "استيثاق Kerberos 5 وتوقيع الحزمة"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:269
+#: smb4kmountsettings_linux.kcfg:245
 #, kde-format
 msgid "NTLM protocol"
 msgstr "ميفاق NTLM"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:272
+#: smb4kmountsettings_linux.kcfg:248
 #, kde-format
 msgid "NTLM protocol and packet signing"
 msgstr "ميفاق NTLM وتوقيع الحزمة"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:275
+#: smb4kmountsettings_linux.kcfg:251
 #, kde-format
 msgid "NTLMv2 protocol"
 msgstr "ميفاق NTLMv2"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:278
+#: smb4kmountsettings_linux.kcfg:254
 #, kde-format
 msgid "NTLMv2 protocol and packet signing"
 msgstr "ميفاق NTLMv2 وتوقيع الحزمة"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:281
+#: smb4kmountsettings_linux.kcfg:257
 #, kde-format
 msgid "NTLMSSP protocol"
 msgstr "ميفاق NTLMSSP"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:284
+#: smb4kmountsettings_linux.kcfg:260
 #, kde-format
 msgid "NTLMSSP protocol and packet signing"
 msgstr "ميفاق NTLMSSP وتوقيع الحزمة"
 
-#. i18n: ectx: label, entry (UseCustomCifsOptions), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:290
-#, kde-format
-msgid "Additional options:"
-msgstr "خيارات إضافيّة:"
-
-#. i18n: ectx: whatsthis, entry (UseCustomCifsOptions), group (Mounting)
-#. i18n: ectx: whatsthis, entry (CustomCIFSOptions), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:291 smb4kmountsettings_linux.kcfg:295
-#, kde-format
-msgid ""
-"Here you can enter advanced options for the CIFS file system in a comma-"
-"separated list (refer to the manual page of mount.cifs to learn more). The "
-"list will be added AS IS to the \"-o\" argument of mount.cifs. Please do not "
-"enter options that have already been defined in the configuration dialog."
-msgstr ""
-"هنا يمكنك إدخال خيارات متقدمة لنظام الملفات CIFS في قائمة مفصولة بفواصل "
-"(راجع صفحة الدليل الخاصة بملف mount.cifs لمعرفة المزيد). ستضاف القائمة كما "
-"هي إلى وسيطة \"-o\" الخاصة بملف mount.cifs. يُرجى عدم إدخال خيارات معرفة من "
-"قبل في مربع حوار الضبط."
-
-#: smb4knotification.cpp:64
-#, kde-format
-msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#: smb4knotification.cpp:74
+#, fuzzy, kde-format
+#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<p>ضُمت المشاركة <b>%1</b> على <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:78
+#: smb4knotification.cpp:83
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "افتح"
 
-#: smb4knotification.cpp:100
-#, kde-format
-msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#: smb4knotification.cpp:101
+#, fuzzy, kde-format
+#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
 msgstr "<p>فُك ضم المشاركة <b>%1</b> من <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:118
-#, kde-format
-msgid "<p>%1 share has been mounted.</p>"
-msgid_plural "<p>%1 shares have been mounted.</p>"
+#: smb4knotification.cpp:119
+#, fuzzy, kde-format
+#| msgid "<p>%1 share has been mounted.</p>"
+#| msgid_plural "<p>%1 shares have been mounted.</p>"
+msgid "%1 share has been mounted."
+msgid_plural "%1 shares have been mounted."
 msgstr[0] "<p>لم تضم أي مشاركة.</p>"
 msgstr[1] "<p>ضُمت مشاركة واحدة.</p>"
 msgstr[2] "<p>ضُمت مشاركتان.</p>"
@@ -2989,10 +2857,12 @@ msgstr[3] "<p>ضُمت %1 مشاركات.</p>"
 msgstr[4] "<p>ضُمت %1 مشاركة.</p>"
 msgstr[5] "<p>ضُمت %1 مشاركة.</p>"
 
-#: smb4knotification.cpp:135
-#, kde-format
-msgid "<p>%1 share has been unmounted.</p>"
-msgid_plural "<p>%1 shares have been unmounted.</p>"
+#: smb4knotification.cpp:136
+#, fuzzy, kde-format
+#| msgid "<p>%1 share has been unmounted.</p>"
+#| msgid_plural "<p>%1 shares have been unmounted.</p>"
+msgid "%1 share has been unmounted."
+msgid_plural "%1 shares have been unmounted."
 msgstr[0] "<p>لم يُفك ضم أي مشاركة.</p>"
 msgstr[1] "<p>فُك ضم مشاركة واحدة.</p>"
 msgstr[2] "<p>فُك ضم مشاركتين.</p>"
@@ -3000,7 +2870,7 @@ msgstr[3] "<p>فُك ضم %1 مشاركات.</p>"
 msgstr[4] "<p>فُك ضم %1 مشاركة.</p>"
 msgstr[5] "<p>فُك ضم %1 مشاركة.</p>"
 
-#: smb4knotification.cpp:153
+#: smb4knotification.cpp:154
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -3009,178 +2879,214 @@ msgstr ""
 "لقد تغيرت الطريقة التي يخزن بها كيدي سامبا4 بيانات اعتماد تسجيل الدخول.  هذا "
 "التغيير غير متوافق مع الإصدارات السابقة من كيدي سامبا4."
 
-#: smb4knotification.cpp:172
-#, kde-format
+#: smb4knotification.cpp:171
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#| "the file to PDF or Postscript and try again.</p>"
 msgid ""
-"<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
-"file to PDF or Postscript and try again.</p>"
+"The mimetype <b>%1</b> is not supported for printing. Please convert the "
+"file to PDF or Postscript and try again."
 msgstr ""
 "<p>نوع MIME <b>%1</b> غير مدعوم للطباعة. يُرجى تحويل الملف إلى PDF أو "
 "Postscript ثم المحاولة مرة أخرى.</p>"
 
-#: smb4knotification.cpp:190
-#, kde-format
-msgid ""
-"<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
+#: smb4knotification.cpp:187
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
+#| "p>"
+msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
 msgstr "<p>الإشارة المرجعية للمشاركة <b>%1</b> موجودة فعلا وستتخطى.</p>"
 
-#: smb4knotification.cpp:208
-#, kde-format
+#: smb4knotification.cpp:204
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#| "being used and will automatically be renamed.</p>"
 msgid ""
-"<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-"being used and will automatically be renamed.</p>"
+"The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
+"used and will automatically be renamed."
 msgstr ""
 "<p>التسمية <b>%1</b> للإشارة المرجعية للمشاركة <b>%2</b>مستخدمة فعلًا وسيعاد "
 "تسميتها آليًّا.</p>"
 
-#: smb4knotification.cpp:228
-#, kde-format
-msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#: smb4knotification.cpp:223
+#, fuzzy, kde-format
+#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>فشل ضم المشاركة <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:230
-#, kde-format
-msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#: smb4knotification.cpp:225
+#, fuzzy, kde-format
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Mounting the share <b>%1</b> failed."
 msgstr "<p>فشل ضم المشاركة <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:253
-#, kde-format
-msgid ""
-"<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
-"p>"
+#: smb4knotification.cpp:248
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#| "tt></p>"
+msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
 msgstr "<p>فشل إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:255
-#, kde-format
-msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#: smb4knotification.cpp:250
+#, fuzzy, kde-format
+#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "<p>فشل إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:282
-#, kde-format
+#: smb4knotification.cpp:276
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#| "is owned by the user <b>%3</b>.</p>"
 msgid ""
-"<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>.</p>"
+"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+"owned by the user <b>%3</b>."
 msgstr ""
 "<p>لا يجوز لك إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>. فهي مملوكة للمستخدم "
 "<b>%3</b>.</p>"
 
-#: smb4knotification.cpp:297
-#, kde-format
-msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#: smb4knotification.cpp:290
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
 msgstr "<p>فشلت مزامنة <b>%1</b> مع <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:299
-#, kde-format
-msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#: smb4knotification.cpp:292
+#, fuzzy, kde-format
+#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "<p>فشلت مزامنة <b>%1</b> مع <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:321
-#, kde-format
+#: smb4knotification.cpp:314
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The command <b>%1</b> could not be found. Please check your "
+#| "installation.</p>"
 msgid ""
-"<p>The command <b>%1</b> could not be found. Please check your installation."
-"</p>"
+"The command <b>%1</b> could not be found. Please check your installation."
 msgstr "<p>تعذر العثور على الأمر <b>%1</b>. "
 
-#: smb4knotification.cpp:337
-#, kde-format
-msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#: smb4knotification.cpp:330
+#, fuzzy, kde-format
+#| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr "<p>المشاركة <b>%1</b> هي طابعة ولا يمكن وضع إشارة مرجعية عليها.</p>"
 
-#: smb4knotification.cpp:351
-#, kde-format
-msgid "<p>The file <b>%1</b> could not be found.</p>"
+#: smb4knotification.cpp:344
+#, fuzzy, kde-format
+#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+msgid "The file <b>%1</b> could not be found."
 msgstr "<p>تعذّر العثور على الملفّ <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:361
-#, kde-format
-msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#: smb4knotification.cpp:354
+#, fuzzy, kde-format
+#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>فشل فتح الملف <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:363
-#, kde-format
-msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#: smb4knotification.cpp:356
+#, fuzzy, kde-format
+#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+msgid "Opening the file <b>%1</b> failed."
 msgstr "<p>فشل فتح الملف <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:382 smb4knotification.cpp:385
-#, kde-format
-msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#: smb4knotification.cpp:375 smb4knotification.cpp:378
+#, fuzzy, kde-format
+#| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>فشلت القراءة من الملف <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:387
-#, kde-format
-msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#: smb4knotification.cpp:380
+#, fuzzy, kde-format
+#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+msgid "Reading from file <b>%1</b> failed."
 msgstr "<p>فشلت القراءة من الملف <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:410
-#, kde-format
-msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#: smb4knotification.cpp:403
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "<p>تعذر إنشاء الدليل التالي:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:421
-#, kde-format
-msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:414
+#, fuzzy, kde-format
+#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr "<p>فشلت العملية في البدء (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:425
-#, kde-format
-msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:418
+#, fuzzy, kde-format
+#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr "<p>تعطلت العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:429
-#, kde-format
-msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:422
+#, fuzzy, kde-format
+#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr "<p>انتهت مهلة العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:433
-#, kde-format
-msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:426
+#, fuzzy, kde-format
+#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr "<p>تعذرت الكتابة إلى العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:437
-#, kde-format
-msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#: smb4knotification.cpp:430
+#, fuzzy, kde-format
+#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr "<p>تعذرت القراءة من العملية (رمز الخطأ: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:442
-#, kde-format
-msgid "<p>The process reported an unknown error.</p>"
+#: smb4knotification.cpp:435
+#, fuzzy, kde-format
+#| msgid "<p>The process reported an unknown error.</p>"
+msgid "The process reported an unknown error."
 msgstr "<p>أبلغت العملية عن خطأ غير معروف.</p>"
 
-#: smb4knotification.cpp:505
-#, kde-format
-msgid ""
-"<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
-"</p>"
-msgstr "<p>فشل تنفيذ إجراء بامتيازات الجذر (رمز الخطأ: <tt>%1</tt>).</p>"
-
-#: smb4knotification.cpp:507
-#, kde-format
-msgid "<p>Executing an action with root privileges failed.</p>"
+#: smb4knotification.cpp:497
+#, fuzzy, kde-format
+#| msgid "<p>Executing an action with root privileges failed.</p>"
+msgid "Executing an action with root privileges failed%1%2"
 msgstr "<p>فشل تنفيذ الإجراء بامتيازات الجذر.</p>"
 
-#: smb4knotification.cpp:529
-#, kde-format
-msgid "<p>The URL that was passed is invalid.</p>"
+#: smb4knotification.cpp:520
+#, fuzzy, kde-format
+#| msgid "<p>The URL that was passed is invalid.</p>"
+msgid "The URL that was passed is invalid."
 msgstr "<p>العنوان الممرر غير صالح.</p>"
 
-#: smb4knotification.cpp:542
-#, kde-format
+#: smb4knotification.cpp:533
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The network communication failed with the following error message: <s>"
+#| "%1</s></p>"
 msgid ""
-"<p>The network communication failed with the following error message: <s>%1</"
-"s></p>"
+"The network communication failed with the following error message: <tt>%1</"
+"tt>"
 msgstr "<p>فشل الاتصال بالشبكة مع ظهور رسالة الخطأ التالية: <s>%1</s></p>"
 
-#: smb4knotification.cpp:555
-#, kde-format
-msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+#: smb4knotification.cpp:546
+#, fuzzy, kde-format
+#| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "<p>حدث خطأ في خدمة Zeroconf: <s>%1</s></p>"
 
-#: smb4knotification.cpp:568
-#, kde-format
+#: smb4knotification.cpp:559
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>An error occurred while reading the login credentials from the secure "
+#| "storage:\n"
+#| "<tt>%1</tt></p>"
 msgid ""
-"<p>An error occurred while reading the login credentials from the secure "
-"storage:\n"
-"<tt>%1</tt></p>"
+"An error occurred while reading the login credentials from the secure "
+"storage: <tt>%1</tt>"
 msgstr ""
 "<p>حدث خطأ أثناء قراءة بيانات اعتماد تسجيل الدخول من المخزن الآمن:\n"
 "<tt>%1</tt></p>"
@@ -3214,6 +3120,109 @@ msgstr "المصدر"
 #, kde-format
 msgid "Destination"
 msgstr "المقصد"
+
+#~ msgid ""
+#~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
+#~ "%3</b>.</p><p>Do you really want to unmount it?</p>"
+#~ msgstr ""
+#~ "<p>ضُمت المشاركة <b>%1</b> على <br><b>%2</b> وهي مملوكة للمستخدم <b>%3</b>."
+#~ "</p><p>هل تريد حقًا إلغاء تثبيتها؟</p>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "مشاركة أجنبية"
+
+#~ msgid "User ID:"
+#~ msgstr "معرف المستخدم:"
+
+#~ msgid "Group ID:"
+#~ msgstr "معرف المجموعة:"
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have."
+#~ msgstr ""
+#~ "هذا هو معرف المجموعة (رقم) الذي ستحمله الملفات والأدلة الخاصة بالمشاركة "
+#~ "المضمومة."
+
+#~ msgid "Mount prefix:"
+#~ msgstr "بادئة الضم:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr ""
+#~ "هذه هي البادئة حيث ستقوم كيدي سامبا4 بإنشاء نقاط الضم وضم المشاركات "
+#~ "البعيدة."
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "افرض أن تكون الدلائل الفرعية أن تنشئ بأحرف صغيرة"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "جميع أسماء الدلائل الفرعية التي ينشئها كيدي سامبا4 أسفل بادئة الضم ستكون "
+#~ "بأحرف صغيرة."
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "اسمح بفك ضم المشاركات التي يملكها مستخدمون آخرون"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "اسمح بفك ضم المشاركات المضمومة من قبل مستخدمين آخرين. يرجى التفكير قبل "
+#~ "تمكين هذا الخيار."
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
+#~ "and the remote server supports the CIFS Unix Extensions, this setting "
+#~ "will be ignored unless the assignment of the user ID is forced."
+#~ msgstr ""
+#~ "هذا هو معرف المستخدم (رقم) الذي ستحمله الملفات والأدلة الموجودة في "
+#~ "المشاركة المضمومة. إذا كنت تستخدم نظام ملفات CIFS ضمن لينكس وكان الخادم "
+#~ "البعيد يدعم امتدادات CIFS Unix، فسيتجاهل هذا الإعداد ما لم يفرض تعيين "
+#~ "معرف المستخدم."
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
+#~ "and the remote server supports the CIFS Unix Extensions, this setting "
+#~ "will be ignored unless the assignment of the group ID is forced."
+#~ msgstr ""
+#~ "هذا هو معرف المجموعة (الرقم) الذي ستحتوي عليه الملفات والأدلة الخاصة "
+#~ "بالمشاركة المحملة."
+
+#~ msgid "File system port:"
+#~ msgstr "منفذ نظام الملفات:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "هذا هو المنفذ المستخدم حصريًا لضم المشاركات من الخوادم البعيدة. القيمة "
+#~ "المبدئية هي 445 (نظام ملفات CIFS)."
+
+#~ msgid "Additional options:"
+#~ msgstr "خيارات إضافيّة:"
+
+#~ msgid ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialog."
+#~ msgstr ""
+#~ "هنا يمكنك إدخال خيارات متقدمة لنظام الملفات CIFS في قائمة مفصولة بفواصل "
+#~ "(راجع صفحة الدليل الخاصة بملف mount.cifs لمعرفة المزيد). ستضاف القائمة "
+#~ "كما هي إلى وسيطة \"-o\" الخاصة بملف mount.cifs. يُرجى عدم إدخال خيارات "
+#~ "معرفة من قبل في مربع حوار الضبط."
+
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code: <tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr "<p>فشل تنفيذ إجراء بامتيازات الجذر (رمز الخطأ: <tt>%1</tt>).</p>"
 
 #~ msgid "User:"
 #~ msgstr "المستخدم:"

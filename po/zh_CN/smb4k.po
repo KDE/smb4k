@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 14:40+0000\n"
+"POT-Creation-Date: 2025-12-11 02:37+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -28,17 +28,55 @@ msgid "Your emails"
 msgstr ""
 "kde-china@kde.org, i@guoyunhe.me, magsom@kde.org, slkde@kde.org, tds00@qq.com"
 
-#: helpers/smb4kmounthelper.cpp:135
+#: helpers/smb4kmounthelper.cpp:97
+#, kde-format
+msgid "The computer is not online."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:106
+#, kde-format
+msgid "Could not create mount point for share %1."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:112
+#, fuzzy, kde-format
+#| msgid "The mount process could not be started."
+msgid "The mount command could not be found."
+msgstr "无法启动挂载进程。"
+
+#: helpers/smb4kmounthelper.cpp:118
+#, kde-format
+msgid "Forbidden mount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:168
+#, kde-format
+msgid "There is something wrong with the provided Kerberos ticket."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:212
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "无法启动挂载进程。"
 
-#: helpers/smb4kmounthelper.cpp:179
-#, kde-format
-msgid "The mountpoint %1 is invalid."
+#: helpers/smb4kmounthelper.cpp:225
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is invalid."
+msgid "The mountpoint %1 is illegal."
 msgstr "挂载点 %1 无效。"
 
-#: helpers/smb4kmounthelper.cpp:241
+#: helpers/smb4kmounthelper.cpp:231
+#, fuzzy, kde-format
+#| msgid "The unmount process could not be started."
+msgid "The umount command could not be found."
+msgstr "无法启动卸载进程。"
+
+#: helpers/smb4kmounthelper.cpp:237
+#, kde-format
+msgid "Forbidden unmount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:279
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "无法启动卸载进程。"
@@ -157,7 +195,7 @@ msgstr "编辑书签(&E)"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:206
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "添加书签(&B)"
@@ -249,16 +287,16 @@ msgid "Password:"
 msgstr "密码："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:295 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "工作组："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:287 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -303,108 +341,82 @@ msgstr "全部正常。"
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr "项目 <b>%1</b> 已被移除，因为自定义选项已被全部重置。"
 
-#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
-#, kde-format
-msgid "Directories"
-msgstr "目录"
-
-#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "行为"
 
-#: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
 #, kde-format
 msgid " min"
 msgstr " 分钟"
 
-#: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
 #, kde-format
 msgid "Basic Settings"
 msgstr "基本设置"
 
-#: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
+#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
 #, kde-format
 msgid "Common Options"
 msgstr "通用选项"
 
-#: smb4k/smb4kconfigpagemounting.cpp:218
+#: smb4k/smb4kconfigpagemounting.cpp:203
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS Unix 扩展支持"
 
-#: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
+#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
-msgid "Choose a different user"
-msgstr "选择其他用户"
+msgid "User ID:"
+msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:630
+#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
-msgid "Choose a different group"
-msgstr "选择其他用户组"
+msgid "Group ID:"
+msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:156
+#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "通用挂载设置"
 
-#: smb4k/smb4kconfigpagemounting.cpp:341
+#: smb4k/smb4kconfigpagemounting.cpp:280
 #, kde-format
 msgid "Advanced Options"
 msgstr "高级选项"
 
-#: smb4k/smb4kconfigpagemounting.cpp:454
-#, kde-format
-msgid "Edit the additional CIFS options."
-msgstr "编辑 CIFS 附加选项。"
-
-#: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:191
+#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "高级挂载设置"
 
-#: smb4k/smb4kconfigpagemounting.cpp:676
+#: smb4k/smb4kconfigpagemounting.cpp:517
 #, kde-format
 msgid "Character Sets"
 msgstr "字符集"
 
-#: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:367
+#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, kde-format
 msgid "Mount Settings"
 msgstr "挂载设置"
 
-#: smb4k/smb4kconfigpagemounting.cpp:768
-#, kde-format
-msgid "Additional CIFS Options"
-msgstr "CIFS 附加选项"
-
-#: smb4k/smb4kconfigpagemounting.cpp:769
-#, kde-format
-msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr "<qt>输入所需选项的列表，以半角逗号区分列表项：</qt>"
-
-#: smb4k/smb4kconfigpagemounting.cpp:797
-#, kde-format
-msgid ""
-"The following entry is going to be removed from the additional options:<br>"
-"%2.<br>Please read the handbook for details."
-msgid_plural ""
-"The following %1 entries are going to be removed from the additional options:"
-"<br>%2.<br>Please read the handbook for details."
-msgstr[0] "以下 %1 个条目将从附加选项中删除：<br>%2。<br>详情请见使用手册。"
-
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:426
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, kde-format
 msgid "Browse Settings"
 msgstr "浏览设置"
@@ -609,37 +621,44 @@ msgstr "指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。"
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "指定共享 <b>%1</b> 的自定义选项。"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:302
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Always remount this share"
 msgstr "总是重新挂载此共享"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:99
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "此服务器支持 CIFS Unix 扩展"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:257
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:433
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 地址："
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:441
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#, fuzzy, kde-format
+#| msgid "MAC Address:"
+msgid "Find MAC address"
+msgstr "MAC 地址："
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:443
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "挂载共享前发送局域网唤醒魔术封包"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "局域网唤醒设置"
@@ -827,19 +846,19 @@ msgid "&Search"
 msgstr "搜索(&S)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:215
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:220
+#: smb4k/smb4ksharesviewdockwidget.cpp:216
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "添加自定义设置(&C)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#: smb4k/smb4ksharesviewdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
@@ -890,7 +909,7 @@ msgid "&Mount"
 msgstr "挂载(&M)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:182
+#: smb4k/smb4ksharesviewdockwidget.cpp:178
 #, kde-format
 msgid "&Unmount"
 msgstr "卸载(&U)"
@@ -913,7 +932,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "扫描工作组(&R)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:183
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -1018,7 +1037,7 @@ msgstr "打印"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "打印文件到打印机 <b>%1</b>。"
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
 #, kde-format
 msgid "U&nmount All"
 msgstr "全部卸载(&N)"
@@ -1048,57 +1067,57 @@ msgstr "使用 Konsole 打开"
 msgid "Open with File Manager"
 msgstr "用文件管理器打开"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:137
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "View Modes"
 msgstr "视图模式"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:143
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "Icon View"
 msgstr "图标视图"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#: smb4k/smb4ksharesviewdockwidget.cpp:145
 #, kde-format
 msgid "List View"
 msgstr "列表视图"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:197
+#: smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:230
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "S&ynchronize"
 msgstr "同步(&Y)"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:235
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:248
+#: smb4k/smb4ksharesviewdockwidget.cpp:244
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "使用 Konso&le 打开"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:253
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:255
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "用文件管理器打开(&I)"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:260
+#: smb4k/smb4ksharesviewdockwidget.cpp:256
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:375
+#: smb4k/smb4ksharesviewdockwidget.cpp:385
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1212,3 +1231,29 @@ msgstr "总共 %2，剩余 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
+
+#~ msgid "Directories"
+#~ msgstr "目录"
+
+#~ msgid "Choose a different user"
+#~ msgstr "选择其他用户"
+
+#~ msgid "Choose a different group"
+#~ msgstr "选择其他用户组"
+
+#~ msgid "Edit the additional CIFS options."
+#~ msgstr "编辑 CIFS 附加选项。"
+
+#~ msgid "Additional CIFS Options"
+#~ msgstr "CIFS 附加选项"
+
+#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+#~ msgstr "<qt>输入所需选项的列表，以半角逗号区分列表项：</qt>"
+
+#~ msgid ""
+#~ "The following entry is going to be removed from the additional options:"
+#~ "<br>%2.<br>Please read the handbook for details."
+#~ msgid_plural ""
+#~ "The following %1 entries are going to be removed from the additional "
+#~ "options:<br>%2.<br>Please read the handbook for details."
+#~ msgstr[0] "以下 %1 个条目将从附加选项中删除：<br>%2。<br>详情请见使用手册。"
