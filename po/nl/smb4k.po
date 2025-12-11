@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2025-12-11 00:44+0000\n"
 "PO-Revision-Date: 2025-05-08 13:33+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -33,17 +33,57 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: helpers/smb4kmounthelper.cpp:135
+#: helpers/smb4kmounthelper.cpp:97
+#, fuzzy, kde-format
+#| msgid "The wallet is not in use."
+msgid "The computer is not online."
+msgstr "De portefeuille is niet in gebruik."
+
+#: helpers/smb4kmounthelper.cpp:106
+#, kde-format
+msgid "Could not create mount point for share %1."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:112
+#, fuzzy, kde-format
+#| msgid "The mount process could not be started."
+msgid "The mount command could not be found."
+msgstr "Het aankoppelproces kon niet gestart worden."
+
+#: helpers/smb4kmounthelper.cpp:118
+#, kde-format
+msgid "Forbidden mount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:168
+#, kde-format
+msgid "There is something wrong with the provided Kerberos ticket."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:212
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Het aankoppelproces kon niet gestart worden."
 
-#: helpers/smb4kmounthelper.cpp:179
-#, kde-format
-msgid "The mountpoint %1 is invalid."
+#: helpers/smb4kmounthelper.cpp:225
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is invalid."
+msgid "The mountpoint %1 is illegal."
 msgstr "Het aankoppelpunt %1 is ongeldig."
 
-#: helpers/smb4kmounthelper.cpp:241
+#: helpers/smb4kmounthelper.cpp:231
+#, fuzzy, kde-format
+#| msgid "The unmount process could not be started."
+msgid "The umount command could not be found."
+msgstr "Het afkoppelproces kon niet worden gestart."
+
+#: helpers/smb4kmounthelper.cpp:237
+#, fuzzy, kde-format
+#| msgid "The unmount process crashed."
+msgid "Forbidden unmount options were passed."
+msgstr "Het afkoppelproces is gecrasht."
+
+#: helpers/smb4kmounthelper.cpp:279
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Het afkoppelproces kon niet worden gestart."
@@ -165,7 +205,7 @@ msgstr "&Bladwijzers bewerken"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:206
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Bladwijzer toevoegen"
@@ -257,16 +297,16 @@ msgid "Password:"
 msgstr "Wachtwoord:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "Werkgroep:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -313,113 +353,82 @@ msgstr ""
 "Het item <b>%1</b> is verwijderd, omdat alle aangepaste instellingen zijn "
 "gereset."
 
-#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
-#, kde-format
-msgid "Directories"
-msgstr "Directories"
-
-#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Gedrag"
 
-#: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
 #, kde-format
 msgid "Basic Settings"
 msgstr "Basisinstellingen"
 
-#: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
+#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
 #, kde-format
 msgid "Common Options"
 msgstr "Algemene opties"
 
-#: smb4k/smb4kconfigpagemounting.cpp:218
+#: smb4k/smb4kconfigpagemounting.cpp:203
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS ondersteuning van Unix-extensies"
 
-#: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
+#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
-msgid "Choose a different user"
-msgstr "Een andere gebruiker kiezen"
+msgid "User ID:"
+msgstr "Gebruiker ID:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:630
+#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
-msgid "Choose a different group"
-msgstr "Een andere groep kiezen"
+msgid "Group ID:"
+msgstr "Groep ID:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:156
+#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Algemene instellingen voor aankoppelen"
 
-#: smb4k/smb4kconfigpagemounting.cpp:341
+#: smb4k/smb4kconfigpagemounting.cpp:280
 #, kde-format
 msgid "Advanced Options"
 msgstr "Geavanceerde opties"
 
-#: smb4k/smb4kconfigpagemounting.cpp:454
-#, kde-format
-msgid "Edit the additional CIFS options."
-msgstr "De extra CIFS-opties bewerken."
-
-#: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:191
+#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Geavanceerde instellingen voor aankoppelen"
 
-#: smb4k/smb4kconfigpagemounting.cpp:676
+#: smb4k/smb4kconfigpagemounting.cpp:517
 #, kde-format
 msgid "Character Sets"
 msgstr "Tekensets"
 
-#: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
+#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, kde-format
 msgid "Mount Settings"
 msgstr "Instellingen voor aankoppelen"
 
-#: smb4k/smb4kconfigpagemounting.cpp:768
-#, kde-format
-msgid "Additional CIFS Options"
-msgstr "Extra CIFS-opties"
-
-#: smb4k/smb4kconfigpagemounting.cpp:769
-#, kde-format
-msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr "<qt>Voer de gewenste opties in als een kommagescheiden lijst:</qt>"
-
-#: smb4k/smb4kconfigpagemounting.cpp:797
-#, kde-format
-msgid ""
-"The following entry is going to be removed from the additional options:<br>"
-"%2.<br>Please read the handbook for details."
-msgid_plural ""
-"The following %1 entries are going to be removed from the additional options:"
-"<br>%2.<br>Please read the handbook for details."
-msgstr[0] ""
-"Het volgende item zal verwijderd worden uit de extra opties:<br>%2.<br>Lees "
-"het handboek voor details."
-msgstr[1] ""
-"<qt>De volgende %1 items zullen verwijderd worden uit de extra opties: %2. "
-"Lees het handboek voor details.</qt>"
-
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, kde-format
 msgid "Browse Settings"
 msgstr "Browse-instellingen"
@@ -628,43 +637,43 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definieer aangepaste instellingen voor gedeelde map <b>%1</b>."
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Always remount this share"
 msgstr "Deze share (gedeelde mappen) altijd opnieuw aankoppelen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:99
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Deze server ondersteunt CIFS Unix-extensies"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-adres:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:268
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
 #, kde-format
 msgid "Find MAC address"
 msgstr "Zoek MAC-adres"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:277
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Stuur magic-pakket alvorens de netwerkomgeving te scannen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Stuur magic-pakket alvorens een share aan te koppelen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:290
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Instellingen Wake-On-LAN"
@@ -856,19 +865,19 @@ msgid "&Search"
 msgstr "&Zoek"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:215
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:220
+#: smb4k/smb4ksharesviewdockwidget.cpp:216
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "&Aangepaste instellingen toevoegen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#: smb4k/smb4ksharesviewdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
@@ -919,7 +928,7 @@ msgid "&Mount"
 msgstr "&Koppelen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:182
+#: smb4k/smb4ksharesviewdockwidget.cpp:178
 #, kde-format
 msgid "&Unmount"
 msgstr "&Afkoppelen"
@@ -942,7 +951,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "Scan We&rkgroep"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:183
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -1051,7 +1060,7 @@ msgstr "Afdrukken"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Een bestand op printer <b>%1</b> afdrukken."
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
 #, kde-format
 msgid "U&nmount All"
 msgstr "A&lles Afkoppelen"
@@ -1081,57 +1090,57 @@ msgstr "Openen met Konsole"
 msgid "Open with File Manager"
 msgstr "Openen met bestandsbeheerder"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:137
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "View Modes"
 msgstr "Weergavemodi"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:143
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "Icon View"
 msgstr "Pictogramweergave"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#: smb4k/smb4ksharesviewdockwidget.cpp:145
 #, kde-format
 msgid "List View"
 msgstr "Lijstweergave"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:197
+#: smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:230
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynchronizeren"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:235
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:248
+#: smb4k/smb4ksharesviewdockwidget.cpp:244
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Openen met Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:253
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:255
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Openen met b&estandsbeheerder"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:260
+#: smb4k/smb4ksharesviewdockwidget.cpp:256
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:391
+#: smb4k/smb4ksharesviewdockwidget.cpp:385
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1248,6 +1257,37 @@ msgstr "%1 vrij uit %2 (%3 gebruikt)"
 #, kde-format
 msgid "Size:"
 msgstr "Grootte:"
+
+#~ msgid "Directories"
+#~ msgstr "Directories"
+
+#~ msgid "Choose a different user"
+#~ msgstr "Een andere gebruiker kiezen"
+
+#~ msgid "Choose a different group"
+#~ msgstr "Een andere groep kiezen"
+
+#~ msgid "Edit the additional CIFS options."
+#~ msgstr "De extra CIFS-opties bewerken."
+
+#~ msgid "Additional CIFS Options"
+#~ msgstr "Extra CIFS-opties"
+
+#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+#~ msgstr "<qt>Voer de gewenste opties in als een kommagescheiden lijst:</qt>"
+
+#~ msgid ""
+#~ "The following entry is going to be removed from the additional options:"
+#~ "<br>%2.<br>Please read the handbook for details."
+#~ msgid_plural ""
+#~ "The following %1 entries are going to be removed from the additional "
+#~ "options:<br>%2.<br>Please read the handbook for details."
+#~ msgstr[0] ""
+#~ "Het volgende item zal verwijderd worden uit de extra opties:<br>%2."
+#~ "<br>Lees het handboek voor details."
+#~ msgstr[1] ""
+#~ "<qt>De volgende %1 items zullen verwijderd worden uit de extra opties: "
+#~ "%2. Lees het handboek voor details.</qt>"
 
 #~ msgid "The default login is depending on the profile you are using."
 #~ msgstr "De standaard aanmelding hangt af van het profiel dat u gebruikt."
@@ -1413,9 +1453,6 @@ msgstr "Grootte:"
 #~ msgid "The mount process crashed."
 #~ msgstr "Het aankoppelproces is gecrasht."
 
-#~ msgid "The unmount process crashed."
-#~ msgstr "Het afkoppelproces is gecrasht."
-
 #~ msgid "Protocols"
 #~ msgstr "Protocollen"
 
@@ -1537,12 +1574,6 @@ msgstr "Grootte:"
 #~ msgid "Security Mode:"
 #~ msgstr "Beveiligingsmodus:"
 
-#~ msgid "User ID:"
-#~ msgstr "Gebruiker ID:"
-
-#~ msgid "Group ID:"
-#~ msgstr "Groep ID:"
-
 #~ msgid "General Options"
 #~ msgstr "Algemene Opties"
 
@@ -1626,9 +1657,6 @@ msgstr "Grootte:"
 
 #~ msgid "Operating system"
 #~ msgstr "Besturingssysteem"
-
-#~ msgid "The wallet is not in use."
-#~ msgstr "De portefeuille is niet in gebruik."
 
 #~ msgid "Mounting %1 failed."
 #~ msgstr "Aankoppelen van %1 is mislukt."

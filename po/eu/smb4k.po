@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:52+0000\n"
+"POT-Creation-Date: 2025-12-11 00:44+0000\n"
 "PO-Revision-Date: 2025-05-15 20:58+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -30,17 +30,56 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
 
-#: helpers/smb4kmounthelper.cpp:135
+#: helpers/smb4kmounthelper.cpp:97
+#, kde-format
+msgid "The computer is not online."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:106
+#, kde-format
+msgid "Could not create mount point for share %1."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:112
+#, fuzzy, kde-format
+#| msgid "The mount process could not be started."
+msgid "The mount command could not be found."
+msgstr "Muntatzeko prozesua ezin izan da abiarazi."
+
+#: helpers/smb4kmounthelper.cpp:118
+#, kde-format
+msgid "Forbidden mount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:168
+#, kde-format
+msgid "There is something wrong with the provided Kerberos ticket."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:212
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Muntatzeko prozesua ezin izan da abiarazi."
 
-#: helpers/smb4kmounthelper.cpp:179
-#, kde-format
-msgid "The mountpoint %1 is invalid."
+#: helpers/smb4kmounthelper.cpp:225
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is invalid."
+msgid "The mountpoint %1 is illegal."
 msgstr "%1 muntaia-puntua ez da baliozkoa."
 
-#: helpers/smb4kmounthelper.cpp:241
+#: helpers/smb4kmounthelper.cpp:231
+#, fuzzy, kde-format
+#| msgid "The unmount process could not be started."
+msgid "The umount command could not be found."
+msgstr "Desmuntatzeko prozesua ezin izan da abiarazi."
+
+#: helpers/smb4kmounthelper.cpp:237
+#, fuzzy, kde-format
+#| msgid "The unmount process crashed."
+msgid "Forbidden unmount options were passed."
+msgstr "Desmuntatzeko prozesua kraskatu egin da."
+
+#: helpers/smb4kmounthelper.cpp:279
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Desmuntatzeko prozesua ezin izan da abiarazi."
@@ -162,7 +201,7 @@ msgstr "&Editatu Laster-markak"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:206
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Gehitu &laster-marka"
@@ -254,16 +293,16 @@ msgid "Password:"
 msgstr "Pasahitza:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:55
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:306 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "Lantaldea:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:47
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:298 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -310,113 +349,82 @@ msgstr ""
 "<b>%1</b> elementua ezabatu da, neurrira ipinitako aukera guztiak berrezarri "
 "direlako."
 
-#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:490
-#, kde-format
-msgid "Directories"
-msgstr "Direktorioak"
-
-#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:512
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Jokabidea"
 
-#: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:537
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
 #, kde-format
 msgid "Basic Settings"
 msgstr "Oinarrizko ezarpenak"
 
-#: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:574
+#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
 #, kde-format
 msgid "Common Options"
 msgstr "Ezarpen arruntak"
 
-#: smb4k/smb4kconfigpagemounting.cpp:218
+#: smb4k/smb4kconfigpagemounting.cpp:203
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Unix-eko CIFS hedapenen euskarria"
 
-#: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:594
+#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
-msgid "Choose a different user"
-msgstr "Aukeratu beste erabiltzaile bat"
+msgid "User ID:"
+msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:630
+#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
-msgid "Choose a different group"
-msgstr "Aukeratu beste talde bat"
+msgid "Group ID:"
+msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:333
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:156
+#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Muntatzeko ezarpen arruntak"
 
-#: smb4k/smb4kconfigpagemounting.cpp:341
+#: smb4k/smb4kconfigpagemounting.cpp:280
 #, kde-format
 msgid "Advanced Options"
 msgstr "Aukera aurreratuak"
 
-#: smb4k/smb4kconfigpagemounting.cpp:454
-#, kde-format
-msgid "Edit the additional CIFS options."
-msgstr "Editatu gainerako CIFS aukerak."
-
-#: smb4k/smb4kconfigpagemounting.cpp:467
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:191
+#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Muntatzeko ezarpen aurreratuak"
 
-#: smb4k/smb4kconfigpagemounting.cpp:676
+#: smb4k/smb4kconfigpagemounting.cpp:517
 #, kde-format
 msgid "Character Sets"
 msgstr "Karaktere-multzoa"
 
-#: smb4k/smb4kconfigpagemounting.cpp:730
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
+#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, kde-format
 msgid "Mount Settings"
 msgstr "Muntatze-ezarpenak"
 
-#: smb4k/smb4kconfigpagemounting.cpp:768
-#, kde-format
-msgid "Additional CIFS Options"
-msgstr "Gainerako CIFS aukerak"
-
-#: smb4k/smb4kconfigpagemounting.cpp:769
-#, kde-format
-msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr "<qt>Sartu nahi dituzun aukerak komaz bereizitako zerrenda gisa:</qt>"
-
-#: smb4k/smb4kconfigpagemounting.cpp:797
-#, kde-format
-msgid ""
-"The following entry is going to be removed from the additional options:<br>"
-"%2.<br>Please read the handbook for details."
-msgid_plural ""
-"The following %1 entries are going to be removed from the additional options:"
-"<br>%2.<br>Please read the handbook for details."
-msgstr[0] ""
-"Ondorengo sarrera aukera osagarrietatik kendu behar da: <br>%2.<br>Mesedez, "
-"irakurri eskuliburua zehaztasun bila."
-msgstr[1] ""
-"Ondorengo %1 sarrerak aukera osagarrietatik kendu behar dira: <br>%2.<br> "
-"Mesedez, irakurri eskuliburua zehaztasun bila."
-
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:250
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, kde-format
 msgid "Browse Settings"
 msgstr "Arakatze ezarpenak"
@@ -625,43 +633,43 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definitu <b>%1</b> partekatzeari neurrira ipintzeko ezarpenak."
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:62
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Always remount this share"
 msgstr "Birmuntatu beti partekatze hau"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:99
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Zerbitzari honek Unix-eko CIFS hedapenak onartzen ditu"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC helbidea:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:268
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
 #, kde-format
 msgid "Find MAC address"
 msgstr "Aurkitu MAC helbidea"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:277
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Bidali pakete magikoa sareko auzoa miatu aurretik"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:279
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:290
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Sare bidez esnatzeko (Wake-On-LAN) ezarpenak"
@@ -852,19 +860,19 @@ msgid "&Search"
 msgstr "&Bilatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:215
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ktrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:220
+#: smb4k/smb4ksharesviewdockwidget.cpp:216
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Gehitu &neurrira ipinitako ezarpenak"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#: smb4k/smb4ksharesviewdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ktrl+C"
@@ -915,7 +923,7 @@ msgid "&Mount"
 msgstr "&Muntatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:182
+#: smb4k/smb4ksharesviewdockwidget.cpp:178
 #, kde-format
 msgid "&Unmount"
 msgstr "&Desmuntatu"
@@ -938,7 +946,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "Miatu la&ntaldea"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:183
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ktrl+U"
@@ -1045,7 +1053,7 @@ msgstr "Inprimatu"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Inprimatu fitxategi bat <b>%1</b> inprimagailuan."
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
 #, kde-format
 msgid "U&nmount All"
 msgstr "De&smuntatu guztiak"
@@ -1075,57 +1083,57 @@ msgstr "Ireki Konsole-rekin"
 msgid "Open with File Manager"
 msgstr "Ireki fitxategi-kudeatzailearekin"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:137
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "View Modes"
 msgstr "Ikuspegi moduak"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:143
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "Icon View"
 msgstr "Ikono-ikuspegia"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#: smb4k/smb4ksharesviewdockwidget.cpp:145
 #, kde-format
 msgid "List View"
 msgstr "Zerrenda-ikuspegia"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:197
+#: smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ktrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:230
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&inkronizatu"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:235
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ktrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:248
+#: smb4k/smb4ksharesviewdockwidget.cpp:244
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Ireki Konso&le-rekin"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:253
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ktrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:255
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Ireki fit&xategi-kudeatzailearekin"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:260
+#: smb4k/smb4ksharesviewdockwidget.cpp:256
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ktrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:391
+#: smb4k/smb4ksharesviewdockwidget.cpp:385
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1243,6 +1251,38 @@ msgstr "%1/%2 hutsik (%3 erabilita)"
 #, kde-format
 msgid "Size:"
 msgstr "Neurria:"
+
+#~ msgid "Directories"
+#~ msgstr "Direktorioak"
+
+#~ msgid "Choose a different user"
+#~ msgstr "Aukeratu beste erabiltzaile bat"
+
+#~ msgid "Choose a different group"
+#~ msgstr "Aukeratu beste talde bat"
+
+#~ msgid "Edit the additional CIFS options."
+#~ msgstr "Editatu gainerako CIFS aukerak."
+
+#~ msgid "Additional CIFS Options"
+#~ msgstr "Gainerako CIFS aukerak"
+
+#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+#~ msgstr ""
+#~ "<qt>Sartu nahi dituzun aukerak komaz bereizitako zerrenda gisa:</qt>"
+
+#~ msgid ""
+#~ "The following entry is going to be removed from the additional options:"
+#~ "<br>%2.<br>Please read the handbook for details."
+#~ msgid_plural ""
+#~ "The following %1 entries are going to be removed from the additional "
+#~ "options:<br>%2.<br>Please read the handbook for details."
+#~ msgstr[0] ""
+#~ "Ondorengo sarrera aukera osagarrietatik kendu behar da: <br>%2."
+#~ "<br>Mesedez, irakurri eskuliburua zehaztasun bila."
+#~ msgstr[1] ""
+#~ "Ondorengo %1 sarrerak aukera osagarrietatik kendu behar dira: <br>%2.<br> "
+#~ "Mesedez, irakurri eskuliburua zehaztasun bila."
 
 #, fuzzy
 #~| msgid "unknown"
@@ -1390,9 +1430,6 @@ msgstr "Neurria:"
 
 #~ msgid "The mount process crashed."
 #~ msgstr "Muntatzeko prozesua kraskatu egin da."
-
-#~ msgid "The unmount process crashed."
-#~ msgstr "Desmuntatzeko prozesua kraskatu egin da."
 
 #~ msgid "Protocols"
 #~ msgstr "Protokoloak"

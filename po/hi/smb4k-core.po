@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-28 00:42+0000\n"
+"POT-Creation-Date: 2025-12-11 00:44+0000\n"
 "PO-Revision-Date: 2024-12-15 19:29+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -1847,7 +1847,7 @@ msgstr "सक्रिय प्रोफ़ाइल"
 msgid "This is the currently active profile."
 msgstr "यह वर्तमान में सक्रिय प्रोफ़ाइल है."
 
-#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:307 smb4kshare.cpp:160
+#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:278 smb4kshare.cpp:160
 #: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
@@ -1886,60 +1886,38 @@ msgstr "KDE के इस संस्करण में Zeroconf समर्�
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf में एक अज्ञात त्रुटि घटित हुई."
 
-#: smb4kmounter.cpp:485
+#: smb4kmounter.cpp:433
 #, kde-format
-msgid ""
-"<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
-"b>.</p><p>Do you really want to unmount it?</p>"
+msgid "The mountpoint %1 is illegal."
 msgstr ""
-"<p>शेयर <b>%1</b> को माउंट किया गया है<br> <b>%2</b> और उपयोगकर्ता <b>%3</b> के "
-"स्वामित्व में है.</p><p> क्या आप सचमुच इसे अनमाउंट करना चाहते हैं?</p>"
 
-#: smb4kmounter.cpp:490
-#, kde-format
-msgid "Foreign Share"
-msgstr "विदेशी शेयर"
-
-#. i18n: ectx: label, entry (UseUserId), group (Mounting)
+#. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
-msgid "User ID:"
-msgstr "उपयोगकर्ता पहचान:"
+msgid "Set the user and group ID"
+msgstr ""
 
-#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_bsd.kcfg:18
-#, kde-format
+#. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the user ID (a number) that the files and directories of the "
+#| "mounted share will have."
 msgid ""
-"This is the user ID (a number) that the files and directories of the mounted "
-"share will have."
+"Set the user ID and group ID that the files and directories of the mounted "
+"share will have to those of the current user (you)."
 msgstr ""
 "यह उपयोगकर्ता आईडी (एक संख्या) है जो माउंटेड शेयर की फ़ाइलों और निर्देशिकाओं में होगी।"
 
-#. i18n: ectx: label, entry (UseGroupId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_linux.kcfg:27
-#, kde-format
-msgid "Group ID:"
-msgstr "समूह आईडी:"
-
-#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:23 smb4kmountsettings_bsd.kcfg:27
-#, kde-format
-msgid ""
-"This is the group ID (a number) that the files and directories of the "
-"mounted share will have."
-msgstr "यह समूह आईडी (एक संख्या) है जो माउंटेड शेयर की फ़ाइलों और निर्देशिकाओं में होगी।"
-
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_linux.kcfg:36
+#: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
 #, kde-format
 msgid "File mode:"
 msgstr "फ़ाइल मोड:"
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:32 smb4kmountsettings_bsd.kcfg:36
+#: smb4kmountsettings_bsd.kcfg:19 smb4kmountsettings_bsd.kcfg:23
 #, kde-format
 msgid ""
 "This is the file mode that will be used for creating files. It must be "
@@ -1949,14 +1927,14 @@ msgstr ""
 "किया जाना चाहिए।"
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_linux.kcfg:45
+#: smb4kmountsettings_bsd.kcfg:27 smb4kmountsettings_linux.kcfg:32
 #, kde-format
 msgid "Directory mode:"
 msgstr "निर्देशिका मोड:"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:41 smb4kmountsettings_bsd.kcfg:45
+#: smb4kmountsettings_bsd.kcfg:28 smb4kmountsettings_bsd.kcfg:32
 #, kde-format
 msgid ""
 "This is the directory mode that will be used for creating directories. It "
@@ -1966,14 +1944,14 @@ msgstr ""
 "परिभाषित किया जाना चाहिए।"
 
 #. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:49
+#: smb4kmountsettings_bsd.kcfg:36
 #, kde-format
 msgid "Use character sets"
 msgstr "वर्ण सेट का उपयोग करें"
 
 #. i18n: ectx: whatsthis, entry (UseCharacterSets), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:50 smb4kmountsettings_bsd.kcfg:55
+#: smb4kmountsettings_bsd.kcfg:37 smb4kmountsettings_bsd.kcfg:42
 #, kde-format
 msgid ""
 "This is the character set that is used by the client side (i.e. your side) "
@@ -1987,161 +1965,161 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (UseClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:65
+#: smb4kmountsettings_bsd.kcfg:41 smb4kmountsettings_linux.kcfg:41
 #, kde-format
 msgid "Client character set:"
 msgstr "क्लाइंट वर्ण सेट:"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:58 smb4kmountsettings_bsd.kcfg:134
-#: smb4kmountsettings_linux.kcfg:73
+#: smb4kmountsettings_bsd.kcfg:45 smb4kmountsettings_bsd.kcfg:121
+#: smb4kmountsettings_linux.kcfg:49
 #, kde-format
 msgid "default"
 msgstr "गलती करना"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:61 smb4kmountsettings_linux.kcfg:76
+#: smb4kmountsettings_bsd.kcfg:48 smb4kmountsettings_linux.kcfg:52
 #, kde-format
 msgid "iso8859-1"
 msgstr "आईएसओ8859-1"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:64 smb4kmountsettings_linux.kcfg:79
+#: smb4kmountsettings_bsd.kcfg:51 smb4kmountsettings_linux.kcfg:55
 #, kde-format
 msgid "iso8859-2"
 msgstr "आईएसओ8859-2"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:67 smb4kmountsettings_linux.kcfg:82
+#: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:58
 #, kde-format
 msgid "iso8859-3"
 msgstr "आईएसओ8859-3"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:70 smb4kmountsettings_linux.kcfg:85
+#: smb4kmountsettings_bsd.kcfg:57 smb4kmountsettings_linux.kcfg:61
 #, kde-format
 msgid "iso8859-4"
 msgstr "आईएसओ8859-4"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:73 smb4kmountsettings_linux.kcfg:88
+#: smb4kmountsettings_bsd.kcfg:60 smb4kmountsettings_linux.kcfg:64
 #, kde-format
 msgid "iso8859-5"
 msgstr "आईएसओ8859-5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:76 smb4kmountsettings_linux.kcfg:91
+#: smb4kmountsettings_bsd.kcfg:63 smb4kmountsettings_linux.kcfg:67
 #, kde-format
 msgid "iso8859-6"
 msgstr "आईएसओ8859-6"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:79 smb4kmountsettings_linux.kcfg:94
+#: smb4kmountsettings_bsd.kcfg:66 smb4kmountsettings_linux.kcfg:70
 #, kde-format
 msgid "iso8859-7"
 msgstr "आईएसओ8859-7"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:82 smb4kmountsettings_linux.kcfg:97
+#: smb4kmountsettings_bsd.kcfg:69 smb4kmountsettings_linux.kcfg:73
 #, kde-format
 msgid "iso8859-8"
 msgstr "आईएसओ8859-8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:85 smb4kmountsettings_linux.kcfg:100
+#: smb4kmountsettings_bsd.kcfg:72 smb4kmountsettings_linux.kcfg:76
 #, kde-format
 msgid "iso8859-9"
 msgstr "आईएसओ8859-9"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:88 smb4kmountsettings_linux.kcfg:103
+#: smb4kmountsettings_bsd.kcfg:75 smb4kmountsettings_linux.kcfg:79
 #, kde-format
 msgid "iso8859-13"
 msgstr "आईएसओ8859-13"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:91 smb4kmountsettings_linux.kcfg:106
+#: smb4kmountsettings_bsd.kcfg:78 smb4kmountsettings_linux.kcfg:82
 #, kde-format
 msgid "iso8859-14"
 msgstr "आईएसओ8859-14"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:94 smb4kmountsettings_linux.kcfg:109
+#: smb4kmountsettings_bsd.kcfg:81 smb4kmountsettings_linux.kcfg:85
 #, kde-format
 msgid "iso8859-15"
 msgstr "आईएसओ8859-15"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:97 smb4kmountsettings_linux.kcfg:112
+#: smb4kmountsettings_bsd.kcfg:84 smb4kmountsettings_linux.kcfg:88
 #, kde-format
 msgid "utf8"
 msgstr "utf8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:100 smb4kmountsettings_linux.kcfg:115
+#: smb4kmountsettings_bsd.kcfg:87 smb4kmountsettings_linux.kcfg:91
 #, kde-format
 msgid "koi8-r"
 msgstr "koi8-आर"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:103 smb4kmountsettings_linux.kcfg:118
+#: smb4kmountsettings_bsd.kcfg:90 smb4kmountsettings_linux.kcfg:94
 #, kde-format
 msgid "koi8-u"
 msgstr "koi8-यू"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:106 smb4kmountsettings_linux.kcfg:121
+#: smb4kmountsettings_bsd.kcfg:93 smb4kmountsettings_linux.kcfg:97
 #, kde-format
 msgid "koi8-ru"
 msgstr "koi8-ru"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:109 smb4kmountsettings_bsd.kcfg:206
-#: smb4kmountsettings_linux.kcfg:124
+#: smb4kmountsettings_bsd.kcfg:96 smb4kmountsettings_bsd.kcfg:193
+#: smb4kmountsettings_linux.kcfg:100
 #, kde-format
 msgid "cp1251"
 msgstr "सीपी1251"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:112 smb4kmountsettings_linux.kcfg:127
+#: smb4kmountsettings_bsd.kcfg:99 smb4kmountsettings_linux.kcfg:103
 #, kde-format
 msgid "gb2312"
 msgstr "जीबी 2312"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:115 smb4kmountsettings_linux.kcfg:130
+#: smb4kmountsettings_bsd.kcfg:102 smb4kmountsettings_linux.kcfg:106
 #, kde-format
 msgid "big5"
 msgstr "बिग 5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:118 smb4kmountsettings_linux.kcfg:133
+#: smb4kmountsettings_bsd.kcfg:105 smb4kmountsettings_linux.kcfg:109
 #, kde-format
 msgid "euc-jp"
 msgstr "ईयूसी-जेपी"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:121 smb4kmountsettings_linux.kcfg:136
+#: smb4kmountsettings_bsd.kcfg:108 smb4kmountsettings_linux.kcfg:112
 #, kde-format
 msgid "euc-kr"
 msgstr "ईयूसी-केआर"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:124 smb4kmountsettings_linux.kcfg:139
+#: smb4kmountsettings_bsd.kcfg:111 smb4kmountsettings_linux.kcfg:115
 #, kde-format
 msgid "tis-620"
 msgstr "टिस-620"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:130
+#: smb4kmountsettings_bsd.kcfg:117
 #, kde-format
 msgid "Server character set:"
 msgstr "सर्वर वर्ण सेट:"
 
 #. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:131
+#: smb4kmountsettings_bsd.kcfg:118
 #, kde-format
 msgid ""
 "This is the character set that is used by the server. If you keep the "
@@ -2153,228 +2131,199 @@ msgstr ""
 "निर्धारित करने का प्रयास करेगा।"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:137
+#: smb4kmountsettings_bsd.kcfg:124
 #, kde-format
 msgid "cp437"
 msgstr "सीपी437"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:140
+#: smb4kmountsettings_bsd.kcfg:127
 #, kde-format
 msgid "cp720"
 msgstr "सीपी720"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:143
+#: smb4kmountsettings_bsd.kcfg:130
 #, kde-format
 msgid "cp737"
 msgstr "सीपी737"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:146
+#: smb4kmountsettings_bsd.kcfg:133
 #, kde-format
 msgid "cp775"
 msgstr "सीपी775"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:149
+#: smb4kmountsettings_bsd.kcfg:136
 #, kde-format
 msgid "cp850"
 msgstr "सीपी850"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:152
+#: smb4kmountsettings_bsd.kcfg:139
 #, kde-format
 msgid "cp852"
 msgstr "सीपी852"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:155
+#: smb4kmountsettings_bsd.kcfg:142
 #, kde-format
 msgid "cp855"
 msgstr "सीपी855"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:158
+#: smb4kmountsettings_bsd.kcfg:145
 #, kde-format
 msgid "cp857"
 msgstr "सीपी857"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:161
+#: smb4kmountsettings_bsd.kcfg:148
 #, kde-format
 msgid "cp858"
 msgstr "सीपी858"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:164
+#: smb4kmountsettings_bsd.kcfg:151
 #, kde-format
 msgid "cp860"
 msgstr "सीपी860"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:167
+#: smb4kmountsettings_bsd.kcfg:154
 #, kde-format
 msgid "cp861"
 msgstr "सीपी861"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:170
+#: smb4kmountsettings_bsd.kcfg:157
 #, kde-format
 msgid "cp862"
 msgstr "सीपी862"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:173
+#: smb4kmountsettings_bsd.kcfg:160
 #, kde-format
 msgid "cp863"
 msgstr "सीपी863"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:176
+#: smb4kmountsettings_bsd.kcfg:163
 #, kde-format
 msgid "cp864"
 msgstr "सीपी864"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:179
+#: smb4kmountsettings_bsd.kcfg:166
 #, kde-format
 msgid "cp865"
 msgstr "सीपी865"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:182
+#: smb4kmountsettings_bsd.kcfg:169
 #, kde-format
 msgid "cp866"
 msgstr "सीपी866"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:185
+#: smb4kmountsettings_bsd.kcfg:172
 #, kde-format
 msgid "cp869"
 msgstr "सीपी869"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:188
+#: smb4kmountsettings_bsd.kcfg:175
 #, kde-format
 msgid "cp874"
 msgstr "सीपी874"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:191
+#: smb4kmountsettings_bsd.kcfg:178
 #, kde-format
 msgid "cp932"
 msgstr "सीपी932"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:194
+#: smb4kmountsettings_bsd.kcfg:181
 #, kde-format
 msgid "cp936"
 msgstr "सीपी936"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:197
+#: smb4kmountsettings_bsd.kcfg:184
 #, kde-format
 msgid "cp949"
 msgstr "सीपी949"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:200
+#: smb4kmountsettings_bsd.kcfg:187
 #, kde-format
 msgid "cp950"
 msgstr "सीपी950"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:203
+#: smb4kmountsettings_bsd.kcfg:190
 #, kde-format
 msgid "cp1250"
 msgstr "सीपी1250"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:209
+#: smb4kmountsettings_bsd.kcfg:196
 #, kde-format
 msgid "cp1252"
 msgstr "सीपी1252"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:212
+#: smb4kmountsettings_bsd.kcfg:199
 #, kde-format
 msgid "cp1253"
 msgstr "सीपी1253"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:215
+#: smb4kmountsettings_bsd.kcfg:202
 #, kde-format
 msgid "cp1254"
 msgstr "सीपी1254"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:218
+#: smb4kmountsettings_bsd.kcfg:205
 #, kde-format
 msgid "cp1255"
 msgstr "सीपी1255"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:221
+#: smb4kmountsettings_bsd.kcfg:208
 #, kde-format
 msgid "cp1256"
 msgstr "सीपी1256"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:224
+#: smb4kmountsettings_bsd.kcfg:211
 #, kde-format
 msgid "cp1257"
 msgstr "सीपी1257"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:227
+#: smb4kmountsettings_bsd.kcfg:214
 #, kde-format
 msgid "cp1258"
 msgstr "सीपी1258"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:230
+#: smb4kmountsettings_bsd.kcfg:217
 #, kde-format
 msgid "unicode"
 msgstr "यूनिकोड"
 
-#. i18n: ectx: label, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
-#, kde-format
-msgid "Mount prefix:"
-msgstr "माउंट उपसर्ग:"
-
-#. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:237 smb4kmountsettings_linux.kcfg:300
-#, kde-format
-msgid ""
-"This is the prefix where Smb4K will create the mount points and mount the "
-"remote shares."
-msgstr "यह वह उपसर्ग है जहां Smb4K माउंट पॉइंट बनाएगा और दूरस्थ शेयर्स को माउंट करेगा।"
-
-#. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:304
-#, kde-format
-msgid "Force generated subdirectories to be lower case"
-msgstr "जनरेट की गई उपनिर्देशिकाओं को लोअर केस में लिखने के लिए बाध्य करें"
-
-#. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:242 smb4kmountsettings_linux.kcfg:305
-#, kde-format
-msgid ""
-"All names of the subdirectories created by Smb4K below the mount prefix will "
-"be lowercase."
-msgstr ""
-"माउंट उपसर्ग के नीचे Smb4K द्वारा बनाई गई सभी उपनिर्देशिकाओं के नाम लोअरकेस में होंगे।"
-
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:309
+#: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:266
 #, kde-format
 msgid "Unmount all personal shares on exit"
 msgstr "बाहर निकलते समय सभी व्यक्तिगत शेयर अनमाउंट करें"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:310
+#: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:267
 #, kde-format
 msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
@@ -2384,13 +2333,13 @@ msgstr ""
 "शेयर अनदेखा कर दिए जाते हैं।"
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
+#: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:271
 #, kde-format
 msgid "Remount shares"
 msgstr "रीमाउंट शेयर"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:315
+#: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:272
 #, kde-format
 msgid ""
 "Remount all your shares that were mounted when you exited the program or "
@@ -2406,13 +2355,13 @@ msgstr ""
 "स्वचालित रीमाउंटिंग को प्रभावित नहीं करती है।"
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
+#: smb4kmountsettings_bsd.kcfg:233 smb4kmountsettings_linux.kcfg:276
 #, kde-format
 msgid "Number of remount attempts:"
 msgstr "पुनः चढ़ने के प्रयासों की संख्या:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:320
+#: smb4kmountsettings_bsd.kcfg:234 smb4kmountsettings_linux.kcfg:277
 #, kde-format
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
@@ -2422,41 +2371,25 @@ msgstr ""
 "निर्धारित करें।"
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
+#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:283
 #, kde-format
 msgid "Interval between remount attempts:"
 msgstr "पुनः चढ़ने के प्रयासों के बीच अंतराल:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:264 smb4kmountsettings_linux.kcfg:327
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:284
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr "शेयरों को पुनः माउंट करने के प्रयासों के बीच व्यतीत होने वाला समय निर्धारित करें।"
 
-#. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
-#, kde-format
-msgid "Allow the unmounting of shares that are owned by other users"
-msgstr "अन्य उपयोगकर्ताओं के स्वामित्व वाले शेयरों को अनमाउंट करने की अनुमति दें"
-
-#. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:271 smb4kmountsettings_linux.kcfg:334
-#, kde-format
-msgid ""
-"Allow the unmounting of shares that were mounted by other users. Please "
-"think before you enable this option."
-msgstr ""
-"अन्य उपयोगकर्ताओं द्वारा माउंट किए गए शेयरों को अनमाउंट करने की अनुमति दें। कृपया इस "
-"विकल्प को सक्षम करने से पहले सोचें।"
-
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
+#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr "अप्राप्य शेयरों को अनमाउंट करने के लिए बाध्य करें"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:276 smb4kmountsettings_linux.kcfg:339
+#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2468,13 +2401,13 @@ msgstr ""
 "दिखाया जाता है जो अनमाउंट को स्वीकृत करने के लिए कहता है।"
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
+#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
 msgstr "सिस्टम पर माउंट किए गए सभी शेयरों का पता लगाएं"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:281 smb4kmountsettings_linux.kcfg:344
+#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -2509,38 +2442,8 @@ msgstr ""
 "सांबा सर्वरों वाले विंडोज वर्चस्व वाले नेटवर्क पड़ोस में स्थित है, तो आप सुरक्षित रूप से इस "
 "विकल्प को अनचेक कर सकते हैं और सांबा सर्वरों के लिए कस्टम विकल्प परिभाषित कर सकते हैं।"
 
-#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:19 smb4kmountsettings_linux.kcfg:23
-#, kde-format
-msgid ""
-"This is the user ID (a number) that the files and directories of the mounted "
-"share will have. If you are using the CIFS filesystem under Linux and the "
-"remote server supports the CIFS Unix Extensions, this setting will be "
-"ignored unless the assignment of the user ID is forced."
-msgstr ""
-"यह वह उपयोगकर्ता आईडी (एक संख्या) है जो माउंटेड शेयर की फ़ाइलों और निर्देशिकाओं में होगी। "
-"यदि आप Linux के तहत CIFS फ़ाइल सिस्टम का उपयोग कर रहे हैं और रिमोट सर्वर CIFS Unix "
-"एक्सटेंशन का समर्थन करता है, तो यह सेटिंग तब तक अनदेखा की जाएगी जब तक कि उपयोगकर्ता "
-"आईडी का असाइनमेंट मजबूर न हो।"
-
-#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
-#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:28 smb4kmountsettings_linux.kcfg:32
-#, kde-format
-msgid ""
-"This is the group ID (a number) that the files and directories of the "
-"mounted share will have. If you are using the CIFS filesystem under Linux "
-"and the remote server supports the CIFS Unix Extensions, this setting will "
-"be ignored unless the assignment of the group ID is forced."
-msgstr ""
-"यह समूह आईडी (एक संख्या) है जो माउंटेड शेयर की फ़ाइलों और निर्देशिकाओं में होगी। यदि आप "
-"लिनक्स के तहत CIFS फ़ाइल सिस्टम का उपयोग कर रहे हैं और रिमोट सर्वर CIFS यूनिक्स एक्सटेंशन "
-"का समर्थन करता है, तो इस सेटिंग को तब तक अनदेखा किया जाएगा जब तक कि समूह आईडी का "
-"असाइनमेंट मजबूर न हो।"
-
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:37
+#: smb4kmountsettings_linux.kcfg:24
 #, kde-format
 msgid ""
 "This is the file mode that will be used for creating files. It must be "
@@ -2552,7 +2455,7 @@ msgstr ""
 "तभी प्रभावी होती है जब सर्वर CIFS Unix एक्सटेंशन का समर्थन नहीं करता है।"
 
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:41
+#: smb4kmountsettings_linux.kcfg:28
 #, kde-format
 msgid ""
 "This is the filemode that will be used for creating files. It must be "
@@ -2565,7 +2468,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:46 smb4kmountsettings_linux.kcfg:50
+#: smb4kmountsettings_linux.kcfg:33 smb4kmountsettings_linux.kcfg:37
 #, kde-format
 msgid ""
 "This is the directory mode that will be used for creating directories. It "
@@ -2576,26 +2479,9 @@ msgstr ""
 "परिभाषित किया जाना चाहिए। यदि CIFS फ़ाइल सिस्टम का उपयोग किया जाता है, तो यह "
 "सेटिंग केवल तभी प्रभावी होती है जब सर्वर CIFS Unix एक्सटेंशन का समर्थन नहीं करता है।"
 
-#. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:54
-#, kde-format
-msgid "File system port:"
-msgstr "फ़ाइल सिस्टम पोर्ट:"
-
-#. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
-#. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:55 smb4kmountsettings_linux.kcfg:59
-#, kde-format
-msgid ""
-"This is the port that is exclusively used to mount shares from remote "
-"servers. The default value is 445 (CIFS file system)."
-msgstr ""
-"यह वह पोर्ट है जिसका उपयोग विशेष रूप से रिमोट सर्वर से शेयर माउंट करने के लिए किया जाता "
-"है। डिफ़ॉल्ट मान 445 (CIFS फ़ाइल सिस्टम) है।"
-
 #. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:66 smb4kmountsettings_linux.kcfg:70
+#: smb4kmountsettings_linux.kcfg:42 smb4kmountsettings_linux.kcfg:46
 #, kde-format
 msgid ""
 "This is the character set that is used by the client side (i.e. your side) "
@@ -2610,14 +2496,14 @@ msgstr ""
 "\"unix charset\" विकल्प को देखकर स्वचालित रूप से वर्णसेट निर्धारित करने का प्रयास करेगा।"
 
 #. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:145
+#: smb4kmountsettings_linux.kcfg:121
 #, kde-format
 msgid "Write access:"
 msgstr "लेखन पहुँच:"
 
 #. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
 #. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:146 smb4kmountsettings_linux.kcfg:150
+#: smb4kmountsettings_linux.kcfg:122 smb4kmountsettings_linux.kcfg:126
 #, kde-format
 msgid ""
 "Here you can choose if the shares should be mounted in read-write or read-"
@@ -2627,25 +2513,25 @@ msgstr ""
 "चाहिए।"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:153
+#: smb4kmountsettings_linux.kcfg:129
 #, kde-format
 msgid "read-write"
 msgstr "पढ़ना-लिखना"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:156
+#: smb4kmountsettings_linux.kcfg:132
 #, kde-format
 msgid "read-only"
 msgstr "केवल पढ़ने के लिए"
 
 #. i18n: ectx: label, entry (ForceUID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:162
+#: smb4kmountsettings_linux.kcfg:138
 #, kde-format
 msgid "Definitely assign the UID"
 msgstr "निश्चित रूप से UID निर्दिष्ट करें"
 
 #. i18n: ectx: whatsthis, entry (ForceUID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:163
+#: smb4kmountsettings_linux.kcfg:139
 #, kde-format
 msgid ""
 "Instruct the client (i.e. your side) to ignore any user ID (UID) provided by "
@@ -2657,13 +2543,13 @@ msgstr ""
 "UID का मान ही निर्दिष्ट करे।"
 
 #. i18n: ectx: label, entry (ForceGID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:167
+#: smb4kmountsettings_linux.kcfg:143
 #, kde-format
 msgid "Definitely assign the GID"
 msgstr "निश्चित रूप से GID असाइन करें"
 
 #. i18n: ectx: whatsthis, entry (ForceGID), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:168
+#: smb4kmountsettings_linux.kcfg:144
 #, kde-format
 msgid ""
 "Instruct the client (i.e. your side) to ignore any group ID (GID) provided "
@@ -2675,13 +2561,13 @@ msgstr ""
 "का मान ही निर्दिष्ट करे।"
 
 #. i18n: ectx: label, entry (PermissionChecks), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:172
+#: smb4kmountsettings_linux.kcfg:148
 #, kde-format
 msgid "Do permission checks"
 msgstr "अनुमति जाँच करें"
 
 #. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:173
+#: smb4kmountsettings_linux.kcfg:149
 #, kde-format
 msgid ""
 "The client side (i.e. your side) will check if you have the right UID/GID to "
@@ -2696,13 +2582,13 @@ msgstr ""
 "चाह सकते हैं। यह सेटिंग सामान्य ACL जाँच को प्रभावित नहीं करती है।"
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:177
+#: smb4kmountsettings_linux.kcfg:153
 #, kde-format
 msgid "Attempt to set UID and GID"
 msgstr "UID और GID सेट करने का प्रयास करें"
 
 #. i18n: ectx: whatsthis, entry (ClientControlsIDs), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:178
+#: smb4kmountsettings_linux.kcfg:154
 #, kde-format
 msgid ""
 "In case the server supports the CIFS Unix Extensions, the client side (i.e. "
@@ -2719,13 +2605,13 @@ msgstr ""
 "cifs का मैन्युअल पेज पढ़ें।"
 
 #. i18n: ectx: label, entry (ServerInodeNumbers), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:182
+#: smb4kmountsettings_linux.kcfg:158
 #, kde-format
 msgid "Use server inode numbers"
 msgstr "सर्वर इनोड संख्या का उपयोग करें"
 
 #. i18n: ectx: whatsthis, entry (ServerInodeNumbers), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:183
+#: smb4kmountsettings_linux.kcfg:159
 #, kde-format
 msgid ""
 "Use inode numbers (unique persistent file identifiers) returned by the "
@@ -2736,13 +2622,13 @@ msgstr ""
 "लौटाए गए इनोड संख्या (अद्वितीय स्थायी फ़ाइल पहचानकर्ता) का उपयोग करें।"
 
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:187
+#: smb4kmountsettings_linux.kcfg:163
 #, kde-format
 msgid "Do not send byte range lock requests"
 msgstr "बाइट रेंज लॉक अनुरोध न भेजें"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:188
+#: smb4kmountsettings_linux.kcfg:164
 #, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
@@ -2755,13 +2641,13 @@ msgstr ""
 "लॉक का अनुरोध करने का समर्थन नहीं करते हैं)।"
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:192
+#: smb4kmountsettings_linux.kcfg:168
 #, kde-format
 msgid "Translate reserved characters"
 msgstr "आरक्षित वर्णों का अनुवाद करें"
 
 #. i18n: ectx: whatsthis, entry (TranslateReservedChars), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:193
+#: smb4kmountsettings_linux.kcfg:169
 #, kde-format
 msgid ""
 "Translate six of the seven reserved characters (including the colon, "
@@ -2776,75 +2662,75 @@ msgstr ""
 "यूनिकोड का समर्थन नहीं करता है तो इसका कोई प्रभाव नहीं पड़ता है।"
 
 #. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:197
+#: smb4kmountsettings_linux.kcfg:173
 #, kde-format
 msgid "SMB protocol version:"
 msgstr "एसएमबी प्रोटोकॉल संस्करण:"
 
 #. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:198 smb4kmountsettings_linux.kcfg:202
+#: smb4kmountsettings_linux.kcfg:174 smb4kmountsettings_linux.kcfg:178
 #, kde-format
 msgid "Define which version of the SMB protocol is to be used."
 msgstr "परिभाषित करें कि SMB प्रोटोकॉल का कौन सा संस्करण उपयोग किया जाना है।"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:205
+#: smb4kmountsettings_linux.kcfg:181
 #, kde-format
 msgid "1.0 (Classic CIFS/SMBv1 protocol)"
 msgstr "1.0 (क्लासिक CIFS/SMBv1 प्रोटोकॉल)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:208
+#: smb4kmountsettings_linux.kcfg:184
 #, kde-format
 msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
 msgstr "2.0 (विंडोज विस्टा SP1/विंडोज सर्वर 2008)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:211
+#: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "2.1 (Windows 7/Windows Server 2008R2)"
 msgstr "2.1 (विंडोज 7/विंडोज सर्वर 2008R2)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:214
+#: smb4kmountsettings_linux.kcfg:190
 #, kde-format
 msgid "3.0 (Windows 8/Windows Server 2012)"
 msgstr "3.0 (विंडोज 8/विंडोज सर्वर 2012)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:217
+#: smb4kmountsettings_linux.kcfg:193
 #, kde-format
 msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
 msgstr "3.0.2 (विंडोज 8.1/विंडोज सर्वर 2012R2)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:220
+#: smb4kmountsettings_linux.kcfg:196
 #, kde-format
 msgid "3.1.1 (Windows Server 2016)"
 msgstr "3.1.1 (विंडोज सर्वर 2016)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:223
+#: smb4kmountsettings_linux.kcfg:199
 #, kde-format
 msgid "3 (Version 3.0 and above)"
 msgstr "3 (संस्करण 3.0 और ऊपर)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:226
+#: smb4kmountsettings_linux.kcfg:202
 #, kde-format
 msgid "default (Negotiate the highest version)"
 msgstr "डिफ़ॉल्ट (उच्चतम संस्करण पर बातचीत करें)"
 
 #. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:232
+#: smb4kmountsettings_linux.kcfg:208
 #, kde-format
 msgid "Cache mode:"
 msgstr "मोड कैश:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:233 smb4kmountsettings_linux.kcfg:237
+#: smb4kmountsettings_linux.kcfg:209 smb4kmountsettings_linux.kcfg:213
 #, kde-format
 msgid ""
 "Define how read and write requests are handled. In case you choose to not "
@@ -2871,32 +2757,32 @@ msgstr ""
 "मोड की सिफारिश की जाती है।"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:240
+#: smb4kmountsettings_linux.kcfg:216
 #, kde-format
 msgid "Do not cache file data at all"
 msgstr "फ़ाइल डेटा को बिल्कुल भी कैश न करें"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:243
+#: smb4kmountsettings_linux.kcfg:219
 #, kde-format
 msgid "Follow the CIFS/SMB2 protocol strictly"
 msgstr "CIFS/SMB2 प्रोटोकॉल का सख्ती से पालन करें"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:246
+#: smb4kmountsettings_linux.kcfg:222
 #, kde-format
 msgid "Allow loose caching semantics"
 msgstr "ढीले कैशिंग सिमेंटिक्स की अनुमति दें"
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:252
+#: smb4kmountsettings_linux.kcfg:228
 #, kde-format
 msgid "Security mode:"
 msgstr "सुरक्षा मोड:"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:253 smb4kmountsettings_linux.kcfg:257
+#: smb4kmountsettings_linux.kcfg:229 smb4kmountsettings_linux.kcfg:233
 #, kde-format
 msgid ""
 "Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
@@ -2906,99 +2792,78 @@ msgstr ""
 "मॉड्यूल 1.40 या बाद के संस्करण की आवश्यकता है।"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:260
+#: smb4kmountsettings_linux.kcfg:236
 #, kde-format
 msgid "Connect as a null user (no name)"
 msgstr "शून्य उपयोगकर्ता (बिना नाम) के रूप में कनेक्ट करें"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:263
+#: smb4kmountsettings_linux.kcfg:239
 #, kde-format
 msgid "Kerberos 5 authentication"
 msgstr "केर्बेरोस 5 प्रमाणीकरण"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:266
+#: smb4kmountsettings_linux.kcfg:242
 #, kde-format
 msgid "Kerberos 5 authentication and packet signing"
 msgstr "केर्बेरोस 5 प्रमाणीकरण और पैकेट हस्ताक्षर"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:269
+#: smb4kmountsettings_linux.kcfg:245
 #, kde-format
 msgid "NTLM protocol"
 msgstr "एनटीएलएम प्रोटोकॉल"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:272
+#: smb4kmountsettings_linux.kcfg:248
 #, kde-format
 msgid "NTLM protocol and packet signing"
 msgstr "एनटीएलएम प्रोटोकॉल और पैकेट हस्ताक्षर"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:275
+#: smb4kmountsettings_linux.kcfg:251
 #, kde-format
 msgid "NTLMv2 protocol"
 msgstr "एनटीएलएमवी2 प्रोटोकॉल"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:278
+#: smb4kmountsettings_linux.kcfg:254
 #, kde-format
 msgid "NTLMv2 protocol and packet signing"
 msgstr "NTLMv2 प्रोटोकॉल और पैकेट हस्ताक्षर"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:281
+#: smb4kmountsettings_linux.kcfg:257
 #, kde-format
 msgid "NTLMSSP protocol"
 msgstr "एनटीएलएमएसएसपी प्रोटोकॉल"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:284
+#: smb4kmountsettings_linux.kcfg:260
 #, kde-format
 msgid "NTLMSSP protocol and packet signing"
 msgstr "NTLMSSP प्रोटोकॉल और पैकेट हस्ताक्षर"
 
-#. i18n: ectx: label, entry (UseCustomCifsOptions), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:290
-#, kde-format
-msgid "Additional options:"
-msgstr "अतिरिक्त विकल्प:"
-
-#. i18n: ectx: whatsthis, entry (UseCustomCifsOptions), group (Mounting)
-#. i18n: ectx: whatsthis, entry (CustomCIFSOptions), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:291 smb4kmountsettings_linux.kcfg:295
-#, kde-format
-msgid ""
-"Here you can enter advanced options for the CIFS file system in a comma-"
-"separated list (refer to the manual page of mount.cifs to learn more). The "
-"list will be added AS IS to the \"-o\" argument of mount.cifs. Please do not "
-"enter options that have already been defined in the configuration dialog."
-msgstr ""
-"यहाँ आप CIFS फ़ाइल सिस्टम के लिए कॉमा से अलग की गई सूची में उन्नत विकल्प दर्ज कर सकते हैं "
-"(अधिक जानने के लिए mount.cifs के मैनुअल पेज को देखें)। सूची को mount.cifs के \"-o\" तर्क "
-"में AS IS जोड़ा जाएगा। कृपया कॉन्फ़िगरेशन डायलॉग में पहले से परिभाषित किए गए विकल्प दर्ज "
-"न करें।"
-
-#: smb4knotification.cpp:73
+#: smb4knotification.cpp:74
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr "<p>शेयर <b>%1 को</b> <b>%2</b> पर माउंट किया गया है।</p>"
 
-#: smb4knotification.cpp:82
+#: smb4knotification.cpp:83
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "खुला"
 
-#: smb4knotification.cpp:100
+#: smb4knotification.cpp:101
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
 msgstr "<p>शेयर <b>%1 को</b> <b>%2</b> से अनमाउंट कर दिया गया है।</p>"
 
-#: smb4knotification.cpp:118
+#: smb4knotification.cpp:119
 #, fuzzy, kde-format
 #| msgid "<p>%1 share has been mounted.</p>"
 #| msgid_plural "<p>%1 shares have been mounted.</p>"
@@ -3007,7 +2872,7 @@ msgid_plural "%1 shares have been mounted."
 msgstr[0] "<p>%1 शेयर माउंट किये गये हैं।</p>"
 msgstr[1] "<p>%1 शेयर माउंट किये गये हैं।</p>"
 
-#: smb4knotification.cpp:135
+#: smb4knotification.cpp:136
 #, fuzzy, kde-format
 #| msgid "<p>%1 share has been unmounted.</p>"
 #| msgid_plural "<p>%1 shares have been unmounted.</p>"
@@ -3016,7 +2881,7 @@ msgid_plural "%1 shares have been unmounted."
 msgstr[0] "<p>%1 शेयर अनमाउंट कर दिए गए हैं.</p>"
 msgstr[1] "<p>%1 शेयर अनमाउंट कर दिए गए हैं.</p>"
 
-#: smb4knotification.cpp:153
+#: smb4knotification.cpp:154
 #, kde-format
 msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
@@ -3037,7 +2902,7 @@ msgstr ""
 "<p>माइमटाइप <b>%1</b> मुद्रण के लिए समर्थित नहीं है। कृपया फ़ाइल को PDF या "
 "पोस्टस्क्रिप्ट में बदलें और पुनः प्रयास करें।</p>"
 
-#: smb4knotification.cpp:188
+#: smb4knotification.cpp:187
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
@@ -3045,7 +2910,7 @@ msgstr ""
 msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
 msgstr "<p>शेयर <b>%1</b> के लिए बुकमार्क पहले से मौजूद है और उसे छोड़ दिया जाएगा।</p>"
 
-#: smb4knotification.cpp:206
+#: smb4knotification.cpp:204
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3057,19 +2922,19 @@ msgstr ""
 "<p>शेयर <b>%2</b> के लिए बुकमार्क का लेबल <b>%1</b> पहले से ही उपयोग में लाया जा रहा "
 "है और इसका नाम स्वचालित रूप से बदल दिया जाएगा।</p>"
 
-#: smb4knotification.cpp:225
+#: smb4knotification.cpp:223
 #, fuzzy, kde-format
 #| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>शेयर <b>%1</b> को माउंट करना विफल:</p><p> <tt>%2</tt></p>"
 
-#: smb4knotification.cpp:227
+#: smb4knotification.cpp:225
 #, fuzzy, kde-format
 #| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgid "Mounting the share <b>%1</b> failed."
 msgstr "<p>शेयर <b>%1</b> को माउंट करना असफल रहा.</p>"
 
-#: smb4knotification.cpp:250
+#: smb4knotification.cpp:248
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
@@ -3078,13 +2943,13 @@ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
 "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना विफल हुआ:</p><p> <tt>%3</tt></p>"
 
-#: smb4knotification.cpp:252
+#: smb4knotification.cpp:250
 #, fuzzy, kde-format
 #| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना असफल रहा.</p>"
 
-#: smb4knotification.cpp:279
+#: smb4knotification.cpp:276
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
@@ -3096,7 +2961,7 @@ msgstr ""
 "<p>आपको <b>%2</b> से शेयर <b>%1 को</b> अनमाउंट करने की अनुमति नहीं है। इसका स्वामित्व "
 "उपयोगकर्ता <b>%3</b> के पास है।</p>"
 
-#: smb4knotification.cpp:293
+#: smb4knotification.cpp:290
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
@@ -3104,13 +2969,13 @@ msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
 "<p><b>%1 को</b> <b>%2</b> के साथ समन्वयित करना विफल:</p><p> <tt>%3</tt></p>"
 
-#: smb4knotification.cpp:295
+#: smb4knotification.cpp:292
 #, fuzzy, kde-format
 #| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "<p><b>%1 को</b> <b>%2</b> के साथ समन्वयित करना असफल रहा.</p>"
 
-#: smb4knotification.cpp:317
+#: smb4knotification.cpp:314
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The command <b>%1</b> could not be found. Please check your "
@@ -3119,109 +2984,98 @@ msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
 msgstr "<p>कमांड <b>%1</b> नहीं मिला। कृपया अपनी स्थापना जांचें।</p>"
 
-#: smb4knotification.cpp:333
+#: smb4knotification.cpp:330
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr "<p>शेयर <b>%1</b> एक प्रिंटर है और उसे बुकमार्क नहीं किया जा सकता.</p>"
 
-#: smb4knotification.cpp:347
+#: smb4knotification.cpp:344
 #, fuzzy, kde-format
 #| msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgid "The file <b>%1</b> could not be found."
 msgstr "<p>फ़ाइल <b>%1</b> नहीं मिल सकी.</p>"
 
-#: smb4knotification.cpp:357
+#: smb4knotification.cpp:354
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>फ़ाइल <b>%1</b> खोलने में असफल:</p><p> <tt>%2</tt></p>"
 
-#: smb4knotification.cpp:359
+#: smb4knotification.cpp:356
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgid "Opening the file <b>%1</b> failed."
 msgstr "<p>फ़ाइल <b>%1</b> खोलना असफल रहा.</p>"
 
-#: smb4knotification.cpp:378 smb4knotification.cpp:381
+#: smb4knotification.cpp:375 smb4knotification.cpp:378
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>फ़ाइल <b>%1</b> से पढ़ना विफल:</p><p> <tt>%2</tt></p>"
 
-#: smb4knotification.cpp:383
+#: smb4knotification.cpp:380
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgid "Reading from file <b>%1</b> failed."
 msgstr "<p>फ़ाइल <b>%1</b> से पढ़ना विफल.</p>"
 
-#: smb4knotification.cpp:406
+#: smb4knotification.cpp:403
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "<p>निम्नलिखित निर्देशिका नहीं बनाई जा सकी:</p><p> <tt>%1</tt></p>"
 
-#: smb4knotification.cpp:417
+#: smb4knotification.cpp:414
 #, fuzzy, kde-format
 #| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr "<p>प्रक्रिया प्रारंभ करने में विफल (त्रुटि कोड: <tt>%1</tt> )।</p>"
 
-#: smb4knotification.cpp:421
+#: smb4knotification.cpp:418
 #, fuzzy, kde-format
 #| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr "<p>प्रक्रिया क्रैश हो गई (त्रुटि कोड: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:425
+#: smb4knotification.cpp:422
 #, fuzzy, kde-format
 #| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr "<p>प्रक्रिया समय समाप्त हो गई (त्रुटि कोड: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:429
+#: smb4knotification.cpp:426
 #, fuzzy, kde-format
 #| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr "<p>प्रक्रिया में लिखा नहीं जा सका (त्रुटि कोड: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:433
+#: smb4knotification.cpp:430
 #, fuzzy, kde-format
 #| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr "<p>प्रक्रिया से पढ़ा नहीं जा सका (त्रुटि कोड: <tt>%1</tt> ).</p>"
 
-#: smb4knotification.cpp:438
+#: smb4knotification.cpp:435
 #, fuzzy, kde-format
 #| msgid "<p>The process reported an unknown error.</p>"
 msgid "The process reported an unknown error."
 msgstr "<p>प्रक्रिया ने एक अज्ञात त्रुटि की सूचना दी.</p>"
 
-#: smb4knotification.cpp:501
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Executing an action with root privileges failed (error code: <tt>%1</"
-#| "tt>).</p>"
-msgid ""
-"Executing an action with root privileges failed (error code: <tt>%1</tt>)."
-msgstr ""
-"<p>रूट विशेषाधिकारों के साथ कार्रवाई निष्पादित करना विफल हुआ (त्रुटि कोड: <tt>%1</"
-"tt> )।</p>"
-
-#: smb4knotification.cpp:503
+#: smb4knotification.cpp:497
 #, fuzzy, kde-format
 #| msgid "<p>Executing an action with root privileges failed.</p>"
-msgid "Executing an action with root privileges failed."
+msgid "Executing an action with root privileges failed%1%2"
 msgstr "<p>रूट विशेषाधिकारों के साथ कार्रवाई निष्पादित करना विफल रहा.</p>"
 
-#: smb4knotification.cpp:525
+#: smb4knotification.cpp:520
 #, fuzzy, kde-format
 #| msgid "<p>The URL that was passed is invalid.</p>"
 msgid "The URL that was passed is invalid."
 msgstr "<p>जो URL भेजा गया वह अमान्य है.</p>"
 
-#: smb4knotification.cpp:538
+#: smb4knotification.cpp:533
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The network communication failed with the following error message: <s>"
@@ -3231,13 +3085,13 @@ msgid ""
 "tt>"
 msgstr "<p>नेटवर्क संचार निम्न त्रुटि संदेश के साथ विफल हुआ: <s>%1</s></p>"
 
-#: smb4knotification.cpp:551
+#: smb4knotification.cpp:546
 #, fuzzy, kde-format
 #| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "<p>Zeroconf सेवा में त्रुटि हुई: <s>%1</s></p>"
 
-#: smb4knotification.cpp:564
+#: smb4knotification.cpp:559
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>An error occurred while reading the login credentials from the secure "
@@ -3277,3 +3131,108 @@ msgstr "स्रोत"
 #, kde-format
 msgid "Destination"
 msgstr "गंतव्य"
+
+#~ msgid ""
+#~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
+#~ "%3</b>.</p><p>Do you really want to unmount it?</p>"
+#~ msgstr ""
+#~ "<p>शेयर <b>%1</b> को माउंट किया गया है<br> <b>%2</b> और उपयोगकर्ता <b>%3</b> "
+#~ "के स्वामित्व में है.</p><p> क्या आप सचमुच इसे अनमाउंट करना चाहते हैं?</p>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "विदेशी शेयर"
+
+#~ msgid "User ID:"
+#~ msgstr "उपयोगकर्ता पहचान:"
+
+#~ msgid "Group ID:"
+#~ msgstr "समूह आईडी:"
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have."
+#~ msgstr "यह समूह आईडी (एक संख्या) है जो माउंटेड शेयर की फ़ाइलों और निर्देशिकाओं में होगी।"
+
+#~ msgid "Mount prefix:"
+#~ msgstr "माउंट उपसर्ग:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr "यह वह उपसर्ग है जहां Smb4K माउंट पॉइंट बनाएगा और दूरस्थ शेयर्स को माउंट करेगा।"
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "जनरेट की गई उपनिर्देशिकाओं को लोअर केस में लिखने के लिए बाध्य करें"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "माउंट उपसर्ग के नीचे Smb4K द्वारा बनाई गई सभी उपनिर्देशिकाओं के नाम लोअरकेस में होंगे।"
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "अन्य उपयोगकर्ताओं के स्वामित्व वाले शेयरों को अनमाउंट करने की अनुमति दें"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "अन्य उपयोगकर्ताओं द्वारा माउंट किए गए शेयरों को अनमाउंट करने की अनुमति दें। कृपया इस "
+#~ "विकल्प को सक्षम करने से पहले सोचें।"
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
+#~ "and the remote server supports the CIFS Unix Extensions, this setting "
+#~ "will be ignored unless the assignment of the user ID is forced."
+#~ msgstr ""
+#~ "यह वह उपयोगकर्ता आईडी (एक संख्या) है जो माउंटेड शेयर की फ़ाइलों और निर्देशिकाओं में "
+#~ "होगी। यदि आप Linux के तहत CIFS फ़ाइल सिस्टम का उपयोग कर रहे हैं और रिमोट सर्वर "
+#~ "CIFS Unix एक्सटेंशन का समर्थन करता है, तो यह सेटिंग तब तक अनदेखा की जाएगी जब तक "
+#~ "कि उपयोगकर्ता आईडी का असाइनमेंट मजबूर न हो।"
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
+#~ "and the remote server supports the CIFS Unix Extensions, this setting "
+#~ "will be ignored unless the assignment of the group ID is forced."
+#~ msgstr ""
+#~ "यह समूह आईडी (एक संख्या) है जो माउंटेड शेयर की फ़ाइलों और निर्देशिकाओं में होगी। यदि आप "
+#~ "लिनक्स के तहत CIFS फ़ाइल सिस्टम का उपयोग कर रहे हैं और रिमोट सर्वर CIFS यूनिक्स "
+#~ "एक्सटेंशन का समर्थन करता है, तो इस सेटिंग को तब तक अनदेखा किया जाएगा जब तक कि समूह "
+#~ "आईडी का असाइनमेंट मजबूर न हो।"
+
+#~ msgid "File system port:"
+#~ msgstr "फ़ाइल सिस्टम पोर्ट:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "यह वह पोर्ट है जिसका उपयोग विशेष रूप से रिमोट सर्वर से शेयर माउंट करने के लिए किया "
+#~ "जाता है। डिफ़ॉल्ट मान 445 (CIFS फ़ाइल सिस्टम) है।"
+
+#~ msgid "Additional options:"
+#~ msgstr "अतिरिक्त विकल्प:"
+
+#~ msgid ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialog."
+#~ msgstr ""
+#~ "यहाँ आप CIFS फ़ाइल सिस्टम के लिए कॉमा से अलग की गई सूची में उन्नत विकल्प दर्ज कर सकते "
+#~ "हैं (अधिक जानने के लिए mount.cifs के मैनुअल पेज को देखें)। सूची को mount.cifs के \"-o"
+#~ "\" तर्क में AS IS जोड़ा जाएगा। कृपया कॉन्फ़िगरेशन डायलॉग में पहले से परिभाषित किए गए "
+#~ "विकल्प दर्ज न करें।"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Executing an action with root privileges failed (error code: <tt>%1</"
+#~| "tt>).</p>"
+#~ msgid ""
+#~ "Executing an action with root privileges failed (error code: <tt>%1</tt>)."
+#~ msgstr ""
+#~ "<p>रूट विशेषाधिकारों के साथ कार्रवाई निष्पादित करना विफल हुआ (त्रुटि कोड: <tt>%1</"
+#~ "tt> )।</p>"
