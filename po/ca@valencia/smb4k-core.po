@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-06-21 11:27+0200\n"
+"PO-Revision-Date: 2025-12-11 11:16+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1973,26 +1973,23 @@ msgstr "S'ha produït un error desconegut amb Zeroconf."
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "El punt de muntatge %1 és il·legal."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "Establix l'ID d'usuari i de grup"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Este és l'ID d'usuari (un número) que tindran els fitxers i directoris de la "
-"compartició muntada."
+"Establix l'ID d'usuari i l'ID de grup que tindran els fitxers i directoris "
+"de la compartició muntada amb l'usuari actual (vós)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3079,22 +3076,22 @@ msgstr "No s'ha pogut trobar el fitxer <b>%1</b>."
 #: smb4knotification.cpp:354
 #, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "No s'ha pogut obrir el fitxer <b>%1</b>:<tt>%2</tt>"
+msgstr "Ha fallat mentre s'obria el fitxer <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:356
 #, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr "No s'ha pogut obrir el fitxer <b>%1</b>."
+msgstr "Ha fallat mentre s'obria el fitxer <b>%1</b>."
 
 #: smb4knotification.cpp:375 smb4knotification.cpp:378
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "No s'ha pogut llegir des del fitxer <b>%1</b>:<tt>%2</tt>"
+msgstr "Ha fallat mentre es llegia des del fitxer <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:380
 #, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr "No s'ha pogut llegir des del fitxer <b>%1</b>."
+msgstr "Ha fallat mentre es llegia des del fitxer <b>%1</b>."
 
 #: smb4knotification.cpp:403
 #, kde-format
@@ -3104,7 +3101,7 @@ msgstr "No s'ha pogut crear el directori següent:<tt>%1</tt>"
 #: smb4knotification.cpp:414
 #, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
-msgstr "No s'ha pogut iniciar el procés (codi d'error: <tt>%1</tt>)."
+msgstr "Ha fallat mentre s'iniciava el procés (codi d'error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:418
 #, kde-format
@@ -3132,10 +3129,10 @@ msgid "The process reported an unknown error."
 msgstr "El procés ha informat d'un error desconegut."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "No s'ha pogut executar una acció amb privilegis de superusuari."
+msgstr ""
+"Ha fallat mentre s'executava una acció amb privilegis de superusuari%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format
@@ -3161,8 +3158,8 @@ msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: <tt>%1</tt>"
 msgstr ""
-"S'ha produït un error en llegir les credencials de l'emmagatzematge segur:"
-"<tt>%1</tt>"
+"S'ha produït un error mentre es llegien les credencials de l'emmagatzematge "
+"segur:<tt>%1</tt>"
 
 #: smb4kshare.cpp:193
 #, kde-format
@@ -3193,113 +3190,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid ""
-#~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
-#~ "%3</b>.</p><p>Do you really want to unmount it?</p>"
-#~ msgstr ""
-#~ "<p>La compartició <b>%1</b> està muntada a <br><b>%2</b> i és propietat "
-#~ "de l'usuari <b>%3</b>.</p<p>Segur que la voleu desmuntar?</p>"
-
-#~ msgid "Foreign Share"
-#~ msgstr "Compartiu els aliens"
-
-#~ msgid "User ID:"
-#~ msgstr "ID d'usuari:"
-
-#~ msgid "Group ID:"
-#~ msgstr "ID del grup:"
-
-#~ msgid ""
-#~ "This is the group ID (a number) that the files and directories of the "
-#~ "mounted share will have."
-#~ msgstr ""
-#~ "Este és l'ID de grup (un número) que tindran els fitxers i directoris de "
-#~ "la compartició muntada."
-
-#~ msgid "Mount prefix:"
-#~ msgstr "Prefix de muntatge:"
-
-#~ msgid ""
-#~ "This is the prefix where Smb4K will create the mount points and mount the "
-#~ "remote shares."
-#~ msgstr ""
-#~ "Este és el prefix amb el qual Smb4K crearà els punts de muntatge i "
-#~ "muntarà les comparticions remotes."
-
-#~ msgid "Force generated subdirectories to be lower case"
-#~ msgstr "Força que els subdirectoris generats estiguen en minúscules"
-
-#~ msgid ""
-#~ "All names of the subdirectories created by Smb4K below the mount prefix "
-#~ "will be lowercase."
-#~ msgstr ""
-#~ "Tots els noms dels subdirectoris creats per Smb4K davall el prefix de "
-#~ "muntatge estaran en minúscules."
-
-#~ msgid "Allow the unmounting of shares that are owned by other users"
-#~ msgstr ""
-#~ "Permet el desmuntatge de les comparticions que són propietat d'altres "
-#~ "usuaris"
-
-#~ msgid ""
-#~ "Allow the unmounting of shares that were mounted by other users. Please "
-#~ "think before you enable this option."
-#~ msgstr ""
-#~ "Permet el desmuntatge de les comparticions que van ser muntades per "
-#~ "altres usuaris. Penseu-ho bé abans de marcar esta opció."
-
-#~ msgid ""
-#~ "This is the user ID (a number) that the files and directories of the "
-#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
-#~ "and the remote server supports the CIFS Unix Extensions, this setting "
-#~ "will be ignored unless the assignment of the user ID is forced."
-#~ msgstr ""
-#~ "Este és l'ID d'usuari (un número) que tindran els fitxers i directoris de "
-#~ "la compartició muntada. Si esteu utilitzant el sistema de fitxers CIFS "
-#~ "davall Linux i el servidor remot permet les ampliacions Unix de CIFS, "
-#~ "esta opció s'ignorarà a menys que es force l'assignació de l'ID d'usuari."
-
-#~ msgid ""
-#~ "This is the group ID (a number) that the files and directories of the "
-#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
-#~ "and the remote server supports the CIFS Unix Extensions, this setting "
-#~ "will be ignored unless the assignment of the group ID is forced."
-#~ msgstr ""
-#~ "Este és l'ID de grup (un número) que tindran els fitxers i directoris de "
-#~ "la compartició muntada. Si esteu utilitzant el sistema de fitxers CIFS "
-#~ "davall Linux i el servidor remot permet les ampliacions Unix de CIFS, "
-#~ "esta opció s'ignorarà a menys que es force l'assignació de l'ID de grup."
-
-#~ msgid "File system port:"
-#~ msgstr "Port del sistema de fitxers:"
-
-#~ msgid ""
-#~ "This is the port that is exclusively used to mount shares from remote "
-#~ "servers. The default value is 445 (CIFS file system)."
-#~ msgstr ""
-#~ "Este és el port que s'utilitzarà exclusivament per a muntar les "
-#~ "comparticions des dels servidors remots. El valor predeterminat és 445 "
-#~ "(sistema de fitxers CIFS)."
-
-#~ msgid "Additional options:"
-#~ msgstr "Opcions addicionals:"
-
-#~ msgid ""
-#~ "Here you can enter advanced options for the CIFS file system in a comma-"
-#~ "separated list (refer to the manual page of mount.cifs to learn more). "
-#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
-#~ "do not enter options that have already been defined in the configuration "
-#~ "dialog."
-#~ msgstr ""
-#~ "Ací podeu introduir les opcions avançades per al sistema de fitxers CIFS "
-#~ "en una llista separada per comes (consulteu la pàgina del manual del "
-#~ "mount.cifs per a conéixer més). La llista s'afegirà tal qual a l'argument "
-#~ "«-o» del mount.cifs. No introduïu opcions que ja s'han definit en el "
-#~ "diàleg de configuració."
-
-#~ msgid ""
-#~ "Executing an action with root privileges failed (error code: <tt>%1</tt>)."
-#~ msgstr ""
-#~ "No s'ha pogut executar una acció amb privilegis de superusuari (codi "
-#~ "d'error:<tt>%1</tt>)."

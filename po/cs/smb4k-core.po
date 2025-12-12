@@ -2739,28 +2739,3 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cíl"
-
-#~ msgid "User ID:"
-#~ msgstr "ID uživatele:"
-
-#~ msgid "Group ID:"
-#~ msgstr "ID skupiny:"
-
-#~ msgid "Force generated subdirectories to be lower case"
-#~ msgstr "Vynutit zobrazení podadresářů malými písmeny"
-
-#~ msgid "Allow the unmounting of shares that are owned by other users"
-#~ msgstr "Povolit odpojení sdílení, které vlastní jiní uživatelé"
-
-#~ msgid ""
-#~ "Allow the unmounting of shares that were mounted by other users. Please "
-#~ "think before you enable this option."
-#~ msgstr ""
-#~ "Povolit odpojení sdílení, která byla připojena jinými uživateli. Prosím, "
-#~ "zapřemýšlejte než tuto volbu zapnete."
-
-#~ msgid "File system port:"
-#~ msgstr "Port souborového systému:"
-
-#~ msgid "Additional options:"
-#~ msgstr "Další volby:"

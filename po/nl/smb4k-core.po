@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-06-21 18:29+0200\n"
+"PO-Revision-Date: 2025-12-11 13:07+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1948,27 +1948,23 @@ msgstr "Er is een onbekende fout opgetreden met Zeroconf."
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "Het aankoppelpunt %1 is ongeldig."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Show the owner and group"
+#, kde-format
 msgid "Set the user and group ID"
-msgstr "De gebruiker en groep tonen"
+msgstr "De gebruiker en groep instellen"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Dit is de user-id (een getal) die de bestanden en mappen van de "
-"aangekoppelde share zal hebben."
+"De gebruikers-id en groeps-id instellen, die de bestanden en mappen van de "
+"aangekoppelde share zal hebben naar die van de huidige gebruiker (u)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3108,10 +3104,9 @@ msgid "The process reported an unknown error."
 msgstr "Het proces rapporteerde een onbekend fout."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "Een actie met root-privileges uitvoeren is mislukt."
+msgstr "Een actie met root-rechten uitvoeren is mislukt%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format

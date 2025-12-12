@@ -59,10 +59,9 @@ msgid "The mount process could not be started."
 msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "Přípojný bod '%1' není platný."
+msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:231
 #, kde-format
@@ -369,14 +368,14 @@ msgstr ""
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "ID uživatele:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "ID skupiny:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
@@ -1224,12 +1223,3 @@ msgstr "%1 volné z %2 (%3 použito)"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
-
-#~ msgid "Directories"
-#~ msgstr "Adresáře"
-
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Upravit další možnosti CIFS."
-
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Další volby CIFS"

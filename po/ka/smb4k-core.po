@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-06-21 06:15+0200\n"
+"PO-Revision-Date: 2025-12-11 05:19+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1923,26 +1923,23 @@ msgstr "აღმოჩენილია Zeroconf-ის უცნობი შ
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "მიმაგრების წერტილი %1 დაუშვებელია."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "მომხმარებლისა და ჯგუფის ID-ის დაყენება"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"ეს მოხხმარებლის ID-ია (რიცხვი), რომელიც მიმაგრებულ ზიარზე არსებულ ფაილებსა "
-"და საქაღალდეებს ექნებათ."
+"დააყენეთ მომხმარებლისა და ჯგუფის ID, რომლითაც გამოჩნდება მიმაგრებული "
+"გაზიარებულის ფაილები და საქაღალდეები."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3076,10 +3073,9 @@ msgid "The process reported an unknown error."
 msgstr "პროცესმა უცნობი შეცდომის კოდი დააბრუნა."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "ქმედების root მომხმარებლის პრივილეგიებით გაშვება ჩავარდა."
+msgstr "ქმედების root მომხმარებლის პრივილეგიებით გაშვება ჩავარდა%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format

@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-08-19 11:26-0300\n"
+"PO-Revision-Date: 2025-12-11 16:26-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1954,26 +1954,23 @@ msgstr "Ocorreu um erro desconhecido com o Zeroconf."
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "O ponto de montagem %1 é ilegal."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "Define o ID do usuário e do grupo."
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Este é o ID do usuário (um número) que será atribuído aos arquivos e pastas "
-"do compartilhamento montado."
+"Define o ID do usuário e do grupo que será atribuído aos arquivos e pastas "
+"do compartilhamento montado terão para os do usuário atual (você)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3114,10 +3111,9 @@ msgid "The process reported an unknown error."
 msgstr "O processo devolveu um erro desconhecido."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "Falha na execução da ação com privilégios administrativos."
+msgstr "Falha na execução da ação com privilégios administrativos%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-06-21 11:27+0200\n"
+"PO-Revision-Date: 2025-12-11 11:16+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1973,26 +1973,23 @@ msgstr "S'ha produït un error desconegut amb el Zeroconf."
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "El punt de muntatge %1 és il·legal."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "Estableix l'ID d'usuari i de grup"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Aquest és l'ID d'usuari (un número) que tindran els fitxers i directoris de "
-"la compartició muntada."
+"Estableix l'ID d'usuari i l'ID de grup que tindran els fitxers i directoris "
+"de la compartició muntada amb l'usuari actual (vós)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3132,10 +3129,9 @@ msgid "The process reported an unknown error."
 msgstr "El procés ha informat d'un error desconegut."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "Ha fallat en executar una acció amb privilegis de superusuari."
+msgstr "Ha fallat en executar una acció amb privilegis de superusuari%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format
