@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Matjaž Jeran <matjaz.jeran@amis.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 02:37+0000\n"
-"PO-Revision-Date: 2024-06-21 07:07+0200\n"
+"PO-Revision-Date: 2025-12-11 07:10+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,28 +31,27 @@ msgstr "matjaz.jeran@amis.net"
 #: helpers/smb4kmounthelper.cpp:97
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "Računalnik ni povezan z omrežjem."
 
 #: helpers/smb4kmounthelper.cpp:106
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Ni bilo mogoče ustvariti točke priklopa za skupno rabo %1."
 
 #: helpers/smb4kmounthelper.cpp:112
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Postopka priklopa ni bilo mogoče začeti."
+msgstr "Ukaza za priklop ni bilo mogoče najti."
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Prepovedane možnosti priklopa so bile sprejete."
 
 #: helpers/smb4kmounthelper.cpp:168
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Nekaj je narobe z vneseno vstopnico Kerberos."
 
 #: helpers/smb4kmounthelper.cpp:212
 #, kde-format
@@ -60,22 +59,19 @@ msgid "The mount process could not be started."
 msgstr "Postopka priklopa ni bilo mogoče začeti."
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "Točka priklopa %1 je neveljavna."
 
 #: helpers/smb4kmounthelper.cpp:231
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Postopka odklopa ni bilo mogoče začeti."
+msgstr "Ukaza umount ni bilo mogoče najti."
 
 #: helpers/smb4kmounthelper.cpp:237
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "Postopek odklopa se je sesul."
+msgstr "Sprejete so bile prepovedane možnosti odklopa."
 
 #: helpers/smb4kmounthelper.cpp:279
 #, kde-format
@@ -381,14 +377,14 @@ msgstr "Podpora razširitev CIFS Unix"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "Določilnik uporabnika:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "Določilnik skupine:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
@@ -648,10 +644,9 @@ msgstr "MAC naslov:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC naslov"
+msgstr "Najdi MAC naslov"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476

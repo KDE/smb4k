@@ -16,14 +16,14 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 02:37+0000\n"
-"PO-Revision-Date: 2025-06-18 02:00+0100\n"
+"PO-Revision-Date: 2025-12-11 11:37+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -661,10 +661,9 @@ msgstr "Dirección MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Dirección MAC:"
+msgstr "Encontrar dirección MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
@@ -1264,36 +1263,3 @@ msgstr "%1 libres de %2 (%3 utilizado)"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgid "Directories"
-#~ msgstr "Directorios"
-
-#~ msgid "Choose a different user"
-#~ msgstr "Escoja un usuario diferente"
-
-#~ msgid "Choose a different group"
-#~ msgstr "Escoja un grupo diferente"
-
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Editar las opciones adicionales de CIFS."
-
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Opciones adicionales de CIFS"
-
-#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-#~ msgstr ""
-#~ "<qt>Introduzca las opciones deseadas como una lista separada por comas:</"
-#~ "qt>"
-
-#~ msgid ""
-#~ "The following entry is going to be removed from the additional options:"
-#~ "<br>%2.<br>Please read the handbook for details."
-#~ msgid_plural ""
-#~ "The following %1 entries are going to be removed from the additional "
-#~ "options:<br>%2.<br>Please read the handbook for details."
-#~ msgstr[0] ""
-#~ "La siguiente entrada va a ser eliminada de las opciones adicionales:<br> "
-#~ "%2.<br>Consulte el manual para más detalles."
-#~ msgstr[1] ""
-#~ "Las siguientes %1 entradas va a ser eliminada de las opciones "
-#~ "adicionales: <br>%2.<br>Consulte el manual para más detalles."

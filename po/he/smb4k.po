@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 02:37+0000\n"
-"PO-Revision-Date: 2025-10-05 12:22+0300\n"
+"PO-Revision-Date: 2025-12-11 09:29+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,28 +31,27 @@ msgstr "kde-l10n-he@kde.org"
 #: helpers/smb4kmounthelper.cpp:97
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "המחשב אינו מחובר."
 
 #: helpers/smb4kmounthelper.cpp:106
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "לא ניתן ליצור נקודת עגינה לשיתוף %1."
 
 #: helpers/smb4kmounthelper.cpp:112
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "לא ניתן להפעיל את תהליך העיגון."
+msgstr "לא ניתן למצוא את פקודת העיגון (mount)."
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "הועברו אפשרויות עיגון אסורות."
 
 #: helpers/smb4kmounthelper.cpp:168
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "משהו השתבש עם כרטיס ה־Kerberos שסופק."
 
 #: helpers/smb4kmounthelper.cpp:212
 #, kde-format
@@ -60,21 +59,19 @@ msgid "The mount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך העיגון."
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "נקודת העיגון %1 שגויה."
+msgstr "נקודת העיגון %1 אינה חוקית."
 
 #: helpers/smb4kmounthelper.cpp:231
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "לא ניתן להפעיל את תהליך ניתוק העיגון."
+msgstr "לא ניתן להפעיל את פקודת ניתוק העיגון (umount)."
 
 #: helpers/smb4kmounthelper.cpp:237
 #, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr ""
+msgstr "הועברו אפשרויות ניתוק עיגון אסורות."
 
 #: helpers/smb4kmounthelper.cpp:279
 #, kde-format
@@ -376,14 +373,14 @@ msgstr "תמיכה בהרחבות יוניקס ל־CIFS"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "מזהה משתמש:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "מזהה קבוצה:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171

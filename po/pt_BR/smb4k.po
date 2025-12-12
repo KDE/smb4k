@@ -16,15 +16,15 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 02:37+0000\n"
-"PO-Revision-Date: 2025-08-20 20:12-0300\n"
-"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
+"PO-Revision-Date: 2025-12-11 16:15-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -39,28 +39,27 @@ msgstr "alvarenga@kde.org"
 #: helpers/smb4kmounthelper.cpp:97
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "O computador não está conectado."
 
 #: helpers/smb4kmounthelper.cpp:106
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Não foi possível criar o ponto de montagem para o compartilhamento %1."
 
 #: helpers/smb4kmounthelper.cpp:112
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "O processo de montagem não pôde ser iniciado."
+msgstr "O comando de montagem não pôde ser encontrado."
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Foram passadas opções de montagem proibidas."
 
 #: helpers/smb4kmounthelper.cpp:168
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Há algo errado com o ticket Kerberos fornecido."
 
 #: helpers/smb4kmounthelper.cpp:212
 #, kde-format
@@ -68,22 +67,19 @@ msgid "The mount process could not be started."
 msgstr "O processo de montagem não pôde ser iniciado."
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "O ponto de montagem %1 é inválido."
+msgstr "O ponto de montagem %1 é ilegal."
 
 #: helpers/smb4kmounthelper.cpp:231
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "O processo de desmontagem não pôde ser iniciado."
+msgstr "O comando de desmontagem não pôde ser encontrado."
 
 #: helpers/smb4kmounthelper.cpp:237
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "O processo de desmontagem falhou."
+msgstr "Foram passadas opções de desmontagem proibidas."
 
 #: helpers/smb4kmounthelper.cpp:279
 #, kde-format
@@ -390,14 +386,14 @@ msgstr "Suporte às extensões CIFS Unix"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "ID do usuário:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "ID do grupo:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
@@ -658,10 +654,9 @@ msgstr "Endereço MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Endereço MAC"
+msgstr "Encontrar endereço MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476

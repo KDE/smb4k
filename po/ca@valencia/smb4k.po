@@ -1,16 +1,16 @@
 # Translation of smb4k.po to Catalan (Valencian)
-# Copyright (C) 2014-2024 This_file_is_part_of_KDE
+# Copyright (C) 2014-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2014, 2016, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
-# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 02:37+0000\n"
-"PO-Revision-Date: 2024-06-21 10:13+0200\n"
+"PO-Revision-Date: 2025-12-11 11:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -34,28 +34,27 @@ msgstr "txemaq@gmail.com,antonibella5@yahoo.com"
 #: helpers/smb4kmounthelper.cpp:97
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "L'ordinador no està en línia."
 
 #: helpers/smb4kmounthelper.cpp:106
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "No s'ha pogut crear el punt de muntatge de la compartició %1."
 
 #: helpers/smb4kmounthelper.cpp:112
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "No s'ha pogut iniciar el procés de muntatge."
+msgstr "No s'ha pogut trobar l'ordre «mount»."
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "S'han passat opcions prohibides de muntatge."
 
 #: helpers/smb4kmounthelper.cpp:168
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Hi ha alguna cosa incorrecta amb el tiquet de Kerberos."
 
 #: helpers/smb4kmounthelper.cpp:212
 #, kde-format
@@ -63,21 +62,19 @@ msgid "The mount process could not be started."
 msgstr "No s'ha pogut iniciar el procés de muntatge."
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "El punt de muntatge %1 no és vàlid."
+msgstr "El punt de muntatge %1 és il·legal."
 
 #: helpers/smb4kmounthelper.cpp:231
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "No s'ha pogut iniciar el procés de desmuntatge."
+msgstr "No s'ha pogut trobar l'ordre «umount»."
 
 #: helpers/smb4kmounthelper.cpp:237
 #, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr ""
+msgstr "S'han passat opcions prohibides de desmuntatge."
 
 #: helpers/smb4kmounthelper.cpp:279
 #, kde-format
@@ -384,14 +381,14 @@ msgstr "Admet les ampliacions Unix de CIFS"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "ID d'usuari:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "ID de grup:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
@@ -651,10 +648,9 @@ msgstr "Adreça MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Adreça MAC:"
+msgstr "Busca l'adreça MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
@@ -1252,36 +1248,3 @@ msgstr "%1 lliure de %2 (utilitzat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "Directories"
-#~ msgstr "Directoris"
-
-#~ msgid "Choose a different user"
-#~ msgstr "Trieu un usuari diferent"
-
-#~ msgid "Choose a different group"
-#~ msgstr "Trieu un grup diferent"
-
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Edita les opcions addicionals de CIFS."
-
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Opcions addicionals de CIFS"
-
-#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-#~ msgstr ""
-#~ "<qt>Introduïu les opcions desitjades com una llista separada per comes:</"
-#~ "qt>"
-
-#~ msgid ""
-#~ "The following entry is going to be removed from the additional options:"
-#~ "<br>%2.<br>Please read the handbook for details."
-#~ msgid_plural ""
-#~ "The following %1 entries are going to be removed from the additional "
-#~ "options:<br>%2.<br>Please read the handbook for details."
-#~ msgstr[0] ""
-#~ "L'entrada següent s'eliminarà de les opcions addicionals:<br>%2.<br> "
-#~ "Llegiu-ne els detalls en el manual."
-#~ msgstr[1] ""
-#~ "Les %1 entrades següents s'eliminaran de les opcions addicionals:<br>%2."
-#~ "<br>Llegiu-ne els detalls en el manual."

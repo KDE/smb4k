@@ -6,21 +6,21 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Joop Beris <jberis@risse.nl>, 2005, 2006.
-# SPDX-FileCopyrightText: 2010, 2011, 2012, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2010, 2011, 2012, 2023, 2024, 2025 Freek de Kruijf <freekdekruijf@kde.nl>
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 02:37+0000\n"
-"PO-Revision-Date: 2024-06-21 09:40+0200\n"
+"PO-Revision-Date: 2025-12-11 13:13+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -34,31 +34,29 @@ msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
 #: helpers/smb4kmounthelper.cpp:97
-#, fuzzy, kde-format
-#| msgid "The wallet is not in use."
+#, kde-format
 msgid "The computer is not online."
-msgstr "De portefeuille is niet in gebruik."
+msgstr "De computer is niet online."
 
 #: helpers/smb4kmounthelper.cpp:106
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Kon geen aankoppelpunt aanmaken voor share %1."
 
 #: helpers/smb4kmounthelper.cpp:112
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Het aankoppelproces kon niet gestart worden."
+msgstr "De aankoppelopdracht kon niet gevonden worden."
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Verboden aankoppelopties zijn doorgegeven."
 
 #: helpers/smb4kmounthelper.cpp:168
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Er is iets verkeerd met het geleverde Kerberos-ticket."
 
 #: helpers/smb4kmounthelper.cpp:212
 #, kde-format
@@ -66,22 +64,19 @@ msgid "The mount process could not be started."
 msgstr "Het aankoppelproces kon niet gestart worden."
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "Het aankoppelpunt %1 is ongeldig."
 
 #: helpers/smb4kmounthelper.cpp:231
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Het afkoppelproces kon niet worden gestart."
+msgstr "De afkoppelopdracht kon niet gevonden worden."
 
 #: helpers/smb4kmounthelper.cpp:237
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "Het afkoppelproces is gecrasht."
+msgstr "Verboden afkoppelopties zijn doorgegeven."
 
 #: helpers/smb4kmounthelper.cpp:279
 #, kde-format
@@ -656,10 +651,9 @@ msgstr "MAC-adres:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC-adres:"
+msgstr "Zoek MAC-adres"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476

@@ -16,14 +16,14 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 02:37+0000\n"
-"PO-Revision-Date: 2025-09-20 17:53+0100\n"
+"PO-Revision-Date: 2025-12-11 11:36+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
@@ -2949,10 +2949,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "Protocolo NTLMSSP y firma de paquetes"
 
 #: smb4knotification.cpp:74
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "<p>El recurso compartido <b>%1</b> se ha montado en <b>%2</b>.</p>"
+msgstr "El recurso compartido <b>%1</b> se ha montado en <b>%2</b>."
 
 #: smb4knotification.cpp:83
 #, kde-format
@@ -2961,29 +2960,23 @@ msgid "Open"
 msgstr "Abrir"
 
 #: smb4knotification.cpp:101
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr ""
-"<p>El recurso compartido <b>%1</b> se ha desmontado desde <b>%2</b>.</p>"
+msgstr "El recurso compartido <b>%1</b> se ha desmontado desde <b>%2</b>."
 
 #: smb4knotification.cpp:119
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been mounted.</p>"
-#| msgid_plural "<p>%1 shares have been mounted.</p>"
+#, kde-format
 msgid "%1 share has been mounted."
 msgid_plural "%1 shares have been mounted."
-msgstr[0] "<p>Se han montado %1 recurso compartido.</p>"
-msgstr[1] "<p>Se han montado %1 recursos compartidos.</p>"
+msgstr[0] "Se han montado %1 recurso compartido."
+msgstr[1] "Se han montado %1 recursos compartidos."
 
 #: smb4knotification.cpp:136
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been unmounted.</p>"
-#| msgid_plural "<p>%1 shares have been unmounted.</p>"
+#, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] "<p>%1 recurso compartido ha sido desmontado.</p>"
-msgstr[1] "<p>%1 recursos compartidos han sido desmontados.</p>"
+msgstr[0] "%1 recurso compartido ha sido desmontado."
+msgstr[1] "%1 recursos compartidos han sido desmontados."
 
 #: smb4knotification.cpp:154
 #, kde-format
@@ -2995,190 +2988,143 @@ msgstr ""
 "migradas ahora. Este cambio es incompatible con versiones previas de Smb4K."
 
 #: smb4knotification.cpp:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
-#| "the file to PDF or Postscript and try again.</p>"
+#, kde-format
 msgid ""
 "The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again."
 msgstr ""
-"<p>El tipo MIME <b>%1</b> no está permitido. Por favor, convierta este "
-"archivo a PostScript o PDF y vuelva a intentarlo.</p>"
+"El tipo MIME <b>%1</b> no está permitido. Por favor, convierta este archivo "
+"a PostScript o PDF y vuelva a intentarlo."
 
 #: smb4knotification.cpp:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
-#| "p>"
+#, kde-format
 msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
-msgstr ""
-"<p>El marcador del recurso compartido <b>%1</b> ya existe y se omitirá.</p>"
+msgstr "El marcador del recurso compartido <b>%1</b> ya existe y se omitirá."
 
 #: smb4knotification.cpp:204
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed.</p>"
+#, kde-format
 msgid ""
 "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
 "used and will automatically be renamed."
 msgstr ""
-"<p>La etiqueta <b>%1</b> del marcador del recurso compartido <b>%2</b> está "
-"en uso y se cambiará de nombre automáticamente.</p>"
+"La etiqueta <b>%1</b> del marcador del recurso compartido <b>%2</b> está en "
+"uso y se cambiará de nombre automáticamente."
 
 #: smb4knotification.cpp:223
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr ""
-"<p>Ha fallado al montar el recurso compartido <b>%1</b>:</p><p><tt>%2</tt></"
-"p>"
+msgstr "Ha fallado al montar el recurso compartido <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:225
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "<p>Ha fallado al montar el recurso compartido <b>%1</b>.</p>"
+msgstr "Ha fallado al montar el recurso compartido <b>%1</b>."
 
 #: smb4knotification.cpp:248
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
-"<p>Ha fallado al desmontar el recurso compartido <b>%1</b> de <b>%2</b>:</p> "
-"<p><tt>%3</tt></p>"
+"Ha fallado al desmontar el recurso compartido <b>%1</b> de <b>%2</b>: <tt>"
+"%3</tt>"
 
 #: smb4knotification.cpp:250
-#, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr ""
-"<p>Ha fallado al desmontar el recurso compartido <b>%1</b> de <b>%2</b>.</p>"
+msgstr "Ha fallado al desmontar el recurso compartido <b>%1</b> de <b>%2</b>."
 
 #: smb4knotification.cpp:276
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#| "is owned by the user <b>%3</b>.</p>"
+#, kde-format
 msgid ""
 "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>."
 msgstr ""
-"<p>No tiene permisos para desmontar el recurso compartido <b>%1</b> de <b>"
-"%2</b>, porque es propiedad del usuario <b>%3</b>.</p>"
+"No tiene permisos para desmontar el recurso compartido <b>%1</b> de <b>%2</"
+"b>, porque es propiedad del usuario <b>%3</b>."
 
 #: smb4knotification.cpp:290
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<p>Ha fallado la sincronización <b>%1</b> con <b>%2</b>:</p><p><tt>%3</tt></"
-"p>"
+msgstr "Ha fallado la sincronización <b>%1</b> con <b>%2</b>: <tt>%3</tt>"
 
 #: smb4knotification.cpp:292
-#, fuzzy, kde-format
-#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
-msgstr "<p>Ha fallado la sincronización <b>%1</b> con <b>%2</b>.</p>"
+msgstr "Ha fallado la sincronización <b>%1</b> con <b>%2</b>."
 
 #: smb4knotification.cpp:314
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The command <b>%1</b> could not be found. Please check your "
-#| "installation.</p>"
+#, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
 msgstr ""
-"<p>No se puede encontrar la orden <b>%1</b>. Por favor, compruebe su "
-"instalación.</p>"
+"No se puede encontrar la orden <b>%1</b>. Por favor, compruebe su "
+"instalación."
 
 #: smb4knotification.cpp:330
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr ""
-"<p>El recurso compartido <b>%1</b> es una impresora y no se puede añadir a "
-"los marcadores.</p>"
+"El recurso compartido <b>%1</b> es una impresora y no se puede añadir a los "
+"marcadores."
 
 #: smb4knotification.cpp:344
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file <b>%1</b> could not be found."
-msgstr "<p>No se ha encontrado el archivo <b>%1</b>.</p>"
+msgstr "No se ha encontrado el archivo <b>%1</b>."
 
 #: smb4knotification.cpp:354
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Ha fallado la apertura del archivo <b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Ha fallado la apertura del archivo <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:356
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr "<p>Ha fallado la apertura del archivo <b>%1</b>.</p>"
+msgstr "Ha fallado la apertura del archivo <b>%1</b>."
 
 #: smb4knotification.cpp:375 smb4knotification.cpp:378
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Ha fallado la lectura del archivo <b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Ha fallado la lectura del archivo <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:380
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr "<p>Ha fallado la lectura del archivo <b>%1</b>.</p>"
+msgstr "Ha fallado la lectura del archivo <b>%1</b>."
 
 #: smb4knotification.cpp:403
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
-msgstr "<p>El directorio <b>%1</b> no pudo ser creado:</p><p><tt>%1</tt></p>"
+msgstr "El directorio <b>%1</b> no pudo ser creado: <tt>%1</tt>"
 
 #: smb4knotification.cpp:414
-#, fuzzy, kde-format
-#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
-msgstr ""
-"<p>El proceso ha fallado al iniciarse (código de error: <tt>%1</tt>).</p>"
+msgstr "El proceso ha fallado al iniciarse (código de error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:418
-#, fuzzy, kde-format
-#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
-msgstr "<p>El proceso falló (código de error: <tt>%1</tt>).</p>"
+msgstr "El proceso falló (código de error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:422
-#, fuzzy, kde-format
-#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
-msgstr "<p>Expiró el tiempo del proceso (código de error: <tt>%1</tt>).</p>"
+msgstr "Expiró el tiempo del proceso (código de error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:426
-#, fuzzy, kde-format
-#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
-msgstr ""
-"<p>No se ha podido escribir en el proceso (código de error: <tt>%1</tt>).</p>"
+msgstr "No se ha podido escribir en el proceso (código de error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:430
-#, fuzzy, kde-format
-#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
-msgstr ""
-"<p>No se ha podido leer en el proceso (código de error: <tt>%1</tt>).</p>"
+msgstr "No se ha podido leer en el proceso (código de error: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:435
-#, fuzzy, kde-format
-#| msgid "<p>The process reported an unknown error.</p>"
+#, kde-format
 msgid "The process reported an unknown error."
-msgstr "<p>El proceso ha informado de un error desconocido.</p>"
+msgstr "El proceso ha informado de un error desconocido."
 
 #: smb4knotification.cpp:497
 #, fuzzy, kde-format
@@ -3187,42 +3133,32 @@ msgid "Executing an action with root privileges failed%1%2"
 msgstr "<p>Ha fallado la ejecución de una acción con privilegios de root.</p>"
 
 #: smb4knotification.cpp:520
-#, fuzzy, kde-format
-#| msgid "<p>The URL that was passed is invalid.</p>"
+#, kde-format
 msgid "The URL that was passed is invalid."
-msgstr "<p>El URL pasado no es válido.</p>"
+msgstr "El URL pasado no es válido."
 
 #: smb4knotification.cpp:533
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The network communication failed with the following error message: <s>"
-#| "%1</s></p>"
+#, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
 msgstr ""
-"<p>La comunicación de red ha fallado con el siguiente mensaje de error: <s>"
-"%1</s></p>"
+"La comunicación de red ha fallado con el siguiente mensaje de error: <tt>%1</"
+"tt>"
 
 #: smb4knotification.cpp:546
-#, fuzzy, kde-format
-#| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+#, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
-msgstr "<p>Ha ocurrido un error con el servicio Zeroconf: <s>%1</s></p>"
+msgstr "Ha ocurrido un error con el servicio Zeroconf: <tt>%1</tt>"
 
 #: smb4knotification.cpp:559
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>An error occurred while reading the login credentials from the secure "
-#| "storage:\n"
-#| "<tt>%1</tt></p>"
+#, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: <tt>%1</tt>"
 msgstr ""
-"<p>Ocurrió un error al leer las credenciales de acceso desde el almacenaje "
-"seguro:\n"
-"<tt>%1</tt></p>"
+"Ocurrió un error al leer las credenciales de acceso desde el almacenaje "
+"seguro: <tt>%1</tt>"
 
 #: smb4kshare.cpp:193
 #, kde-format
@@ -3253,116 +3189,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
-
-#~ msgid ""
-#~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
-#~ "%3</b>.</p><p>Do you really want to unmount it?</p>"
-#~ msgstr ""
-#~ "<p>El recurso <b>%1</b> está montado en <br><b>%2</b> y es propiedad del "
-#~ "usuario <b>%3</b>.</p><p>¿Realmente desea desmontarlo?</p>"
-
-#~ msgid "Foreign Share"
-#~ msgstr "Recurso compartido externo"
-
-#~ msgid "User ID:"
-#~ msgstr "ID de usuario:"
-
-#~ msgid "Group ID:"
-#~ msgstr "ID de grupo:"
-
-#~ msgid ""
-#~ "This is the group ID (a number) that the files and directories of the "
-#~ "mounted share will have."
-#~ msgstr ""
-#~ "Este es el ID de grupo (un número) que tendrán los archivos y directorios "
-#~ "de los recursos compartidos montados."
-
-#~ msgid "Mount prefix:"
-#~ msgstr "Prefijo de montaje:"
-
-#~ msgid ""
-#~ "This is the prefix where Smb4K will create the mount points and mount the "
-#~ "remote shares."
-#~ msgstr ""
-#~ "Este es el prefijo que Smb4K creará los puntos de montaje y los puntos de "
-#~ "montaje de recursos compartidos remotos."
-
-#~ msgid "Force generated subdirectories to be lower case"
-#~ msgstr "Forzar subdirectorios generados en minúsculas"
-
-#~ msgid ""
-#~ "All names of the subdirectories created by Smb4K below the mount prefix "
-#~ "will be lowercase."
-#~ msgstr ""
-#~ "Todos los nombres de los subdirectorios creados bajo el prefijo de punto "
-#~ "de montaje serán en minúsculas."
-
-#~ msgid "Allow the unmounting of shares that are owned by other users"
-#~ msgstr ""
-#~ "Permitir el desmontaje de recursos compartidos pertenecientes a otros "
-#~ "usuarios"
-
-#~ msgid ""
-#~ "Allow the unmounting of shares that were mounted by other users. Please "
-#~ "think before you enable this option."
-#~ msgstr ""
-#~ "Permitir el desmontaje de recursos compartidos que fueron montados por "
-#~ "otros usuarios. Por favor, esté seguro antes de habilitar esta opción."
-
-#~ msgid ""
-#~ "This is the user ID (a number) that the files and directories of the "
-#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
-#~ "and the remote server supports the CIFS Unix Extensions, this setting "
-#~ "will be ignored unless the assignment of the user ID is forced."
-#~ msgstr ""
-#~ "Este es el identificador de usuario (un número) que tendrán los archivos "
-#~ "y directorios de los recursos compartidos montados. Si está utilizando el "
-#~ "sistema de archivos CIFS en Linux y el servidor remoto es compatible con "
-#~ "las extensiones Unix de CIFS, este ajuste será ignorado a menos que se "
-#~ "fuerce la asignación del identificador de usuario."
-
-#~ msgid ""
-#~ "This is the group ID (a number) that the files and directories of the "
-#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
-#~ "and the remote server supports the CIFS Unix Extensions, this setting "
-#~ "will be ignored unless the assignment of the group ID is forced."
-#~ msgstr ""
-#~ "Este es el identificador del grupo (un número) que tendrán los archivos y "
-#~ "directorios de los recursos compartidos montados. Si está utilizando el "
-#~ "sistema de archivos CIFS en Linux y el servidor remoto es compatible con "
-#~ "las extensiones Unix de CIFS, este ajuste será ignorado a menos que se "
-#~ "fuerce la asignación del identificador de grupo."
-
-#~ msgid "File system port:"
-#~ msgstr "Puerto del sistema de archivos:"
-
-#~ msgid ""
-#~ "This is the port that is exclusively used to mount shares from remote "
-#~ "servers. The default value is 445 (CIFS file system)."
-#~ msgstr ""
-#~ "Este es el puerto que se usa exclusivamente para montar los recursos "
-#~ "compartidos de los servidores remotos. El valor por defecto es 445 "
-#~ "(sistema de archivos CIFS)."
-
-#~ msgid "Additional options:"
-#~ msgstr "Opciones adicionales:"
-
-#~ msgid ""
-#~ "Here you can enter advanced options for the CIFS file system in a comma-"
-#~ "separated list (refer to the manual page of mount.cifs to learn more). "
-#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
-#~ "do not enter options that have already been defined in the configuration "
-#~ "dialog."
-#~ msgstr ""
-#~ "Aquí puede entrar en las opciones avanzadas para el sistema de archivos "
-#~ "CIFS en una lista separada por comas (consulte la página del manual de "
-#~ "mount.cifs para más información). A la lista se le añadirá el argumento «-"
-#~ "o» de mount.cifs. Por favor, no introduzca opciones que ya han sido "
-#~ "definidas en el cuadro de diálogo de configuración."
-
-#~ msgid ""
-#~ "<p>Executing an action with root privileges failed (error code: <tt>%1</"
-#~ "tt>).</p>"
-#~ msgstr ""
-#~ "<p>Ha fallado la ejecución de una acción con privilegios de root (código "
-#~ "de error: <tt>%1</tt>).</p>"
