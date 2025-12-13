@@ -39,10 +39,9 @@ msgid "Could not create mount point for share %1."
 msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:112
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "无法启动挂载进程。"
+msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
@@ -60,16 +59,14 @@ msgid "The mount process could not be started."
 msgstr "无法启动挂载进程。"
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "挂载点 %1 无效。"
+msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:231
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "无法启动卸载进程。"
+msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:237
 #, kde-format
@@ -640,10 +637,9 @@ msgstr "MAC 地址："
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC 地址："
+msgstr "查找 MAC 地址"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
@@ -1231,29 +1227,3 @@ msgstr "总共 %2，剩余 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "Directories"
-#~ msgstr "目录"
-
-#~ msgid "Choose a different user"
-#~ msgstr "选择其他用户"
-
-#~ msgid "Choose a different group"
-#~ msgstr "选择其他用户组"
-
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "编辑 CIFS 附加选项。"
-
-#~ msgid "Additional CIFS Options"
-#~ msgstr "CIFS 附加选项"
-
-#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-#~ msgstr "<qt>输入所需选项的列表，以半角逗号区分列表项：</qt>"
-
-#~ msgid ""
-#~ "The following entry is going to be removed from the additional options:"
-#~ "<br>%2.<br>Please read the handbook for details."
-#~ msgid_plural ""
-#~ "The following %1 entries are going to be removed from the additional "
-#~ "options:<br>%2.<br>Please read the handbook for details."
-#~ msgstr[0] "以下 %1 个条目将从附加选项中删除：<br>%2。<br>详情请见使用手册。"
