@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-06-21 19:06+0300\n"
+"PO-Revision-Date: 2025-12-12 13:14+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1978,26 +1978,24 @@ msgstr "Невідома помилка, яку пов'язано із Zeroconf.
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "Точка монтування %1 є неприпустимою."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "Встановити ідентифікатор користувача і групи"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Це ідентифікатор (номер) користувача, який використовуватиметься для доступу "
-"до файлів та каталогів спільного ресурсу."
+"Встановити ідентифікатор користувача і ідентифікатор групи, який матимуть "
+"файли і каталоги змонтованого спільного ресурсу за даними поточного "
+"користувача (вашими даними)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3160,10 +3158,9 @@ msgid "The process reported an unknown error."
 msgstr "Процес повідомив про невідому помилку."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "Спроба виконання дії з правами доступу root зазнала невдачі."
+msgstr "Спроба виконання дії з правами доступу root зазнала невдачі%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format

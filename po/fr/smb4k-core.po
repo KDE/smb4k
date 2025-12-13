@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-06-22 10:36+0200\n"
+"PO-Revision-Date: 2025-12-11 09:50+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.11.90\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -2005,27 +2005,24 @@ msgstr "Une erreur inconnue est survenue avec Zeroconf."
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "Le point de montage %1 est illégal."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Show the owner and group"
+#, kde-format
 msgid "Set the user and group ID"
-msgstr "Afficher le propriétaire et le groupe"
+msgstr "Définir l'identifiant du propriétaire et du groupe"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"C'est l'identifiant d'utilisateur (un nombre) qui sera porté par les "
-"fichiers et dossiers de ce partage monté."
+"Définir l'identifiant du propriétaire et du groupe qui sera appliqué aux "
+"fichiers et aux dossiers de ce partage monté avec vos identifiants  "
+"d'utilisateur courant (vous)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3170,12 +3167,11 @@ msgid "The process reported an unknown error."
 msgstr "Le processus a signalé une erreur inconnue."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
 msgstr ""
-"L'exécution d'une action avec les privilèges du compte administrateur a "
-"échoué."
+"L'exécution d'une action avec les privilèges de compte administrateur a "
+"échoué %1 %2"
 
 #: smb4knotification.cpp:520
 #, kde-format
