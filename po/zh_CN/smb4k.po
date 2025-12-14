@@ -31,27 +31,27 @@ msgstr ""
 #: helpers/smb4kmounthelper.cpp:97
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "该计算机不在线。"
 
 #: helpers/smb4kmounthelper.cpp:106
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "无法为共享 %1 创建挂载点。"
 
 #: helpers/smb4kmounthelper.cpp:112
 #, kde-format
 msgid "The mount command could not be found."
-msgstr ""
+msgstr "找不到 mount 命令。"
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "传递了被禁止的 mount 选项。"
 
 #: helpers/smb4kmounthelper.cpp:168
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "提供的 Kerberos 票证存在问题。"
 
 #: helpers/smb4kmounthelper.cpp:212
 #, kde-format
@@ -61,17 +61,17 @@ msgstr "无法启动挂载进程。"
 #: helpers/smb4kmounthelper.cpp:225
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "挂载点 %1 无效。"
 
 #: helpers/smb4kmounthelper.cpp:231
 #, kde-format
 msgid "The umount command could not be found."
-msgstr ""
+msgstr "找不到 umount 命令。"
 
 #: helpers/smb4kmounthelper.cpp:237
 #, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr ""
+msgstr "传递了被禁止的 umount 选项。"
 
 #: helpers/smb4kmounthelper.cpp:279
 #, kde-format
@@ -374,14 +374,14 @@ msgstr "CIFS Unix 扩展支持"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "用户 ID："
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "用户组 ID："
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171

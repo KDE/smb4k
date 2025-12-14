@@ -1806,13 +1806,13 @@ msgstr "Zeroconf 发生未知错误。"
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "挂载点 %1 无效。"
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "设置用户和用户组 ID"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
@@ -1821,6 +1821,8 @@ msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
+"将挂载共享的文件和目录的用户 ID 和用户组 ID 设置为当前用户 (即您) 的用户 ID "
+"和用户组 ID。"
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -2901,7 +2903,7 @@ msgstr "该进程报告了一个未知错误。"
 #: smb4knotification.cpp:497
 #, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr ""
+msgstr "使用 root 权限执行操作失败%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format
