@@ -16,14 +16,14 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-09-20 17:54+0100\n"
+"PO-Revision-Date: 2025-12-13 20:32+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -1962,26 +1962,23 @@ msgstr "Ha ocurrido un error desconocido en Zeroconf."
 #: smb4kmounter.cpp:433
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "El punto de montaje %1 es ilegal."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "Establezca los identificadores de usuario y grupo."
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Este es el ID de usuario (un número) que tendrán los archivos y directorios "
-"de los recursos compartidos montados."
+"Establezca los identificadores de usuario y grupo del usuario actual (usted) "
+"en los archivos y directorios de los recursos compartidos montados."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3125,11 +3122,10 @@ msgid "The process reported an unknown error."
 msgstr "El proceso ha informado de un error desconocido."
 
 #: smb4knotification.cpp:497
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
 msgstr ""
-"Ha fallado la ejecución de una acción con privilegios de administrador."
+"Ha fallado la ejecución de una acción con privilegios de administrador%1%2"
 
 #: smb4knotification.cpp:520
 #, kde-format
@@ -3188,115 +3184,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
-
-#~ msgid ""
-#~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
-#~ "%3</b>.</p><p>Do you really want to unmount it?</p>"
-#~ msgstr ""
-#~ "<p>El recurso <b>%1</b> está montado en <br><b>%2</b> y es propiedad del "
-#~ "usuario <b>%3</b>.</p><p>¿Realmente desea desmontarlo?</p>"
-
-#~ msgid "Foreign Share"
-#~ msgstr "Recurso compartido externo"
-
-#~ msgid "User ID:"
-#~ msgstr "ID de usuario:"
-
-#~ msgid "Group ID:"
-#~ msgstr "ID de grupo:"
-
-#~ msgid ""
-#~ "This is the group ID (a number) that the files and directories of the "
-#~ "mounted share will have."
-#~ msgstr ""
-#~ "Este es el ID de grupo (un número) que tendrán los archivos y directorios "
-#~ "de los recursos compartidos montados."
-
-#~ msgid "Mount prefix:"
-#~ msgstr "Prefijo de montaje:"
-
-#~ msgid ""
-#~ "This is the prefix where Smb4K will create the mount points and mount the "
-#~ "remote shares."
-#~ msgstr ""
-#~ "Este es el prefijo que Smb4K creará los puntos de montaje y los puntos de "
-#~ "montaje de recursos compartidos remotos."
-
-#~ msgid "Force generated subdirectories to be lower case"
-#~ msgstr "Forzar subdirectorios generados en minúsculas"
-
-#~ msgid ""
-#~ "All names of the subdirectories created by Smb4K below the mount prefix "
-#~ "will be lowercase."
-#~ msgstr ""
-#~ "Todos los nombres de los subdirectorios creados bajo el prefijo de punto "
-#~ "de montaje serán en minúsculas."
-
-#~ msgid "Allow the unmounting of shares that are owned by other users"
-#~ msgstr ""
-#~ "Permitir el desmontaje de recursos compartidos pertenecientes a otros "
-#~ "usuarios"
-
-#~ msgid ""
-#~ "Allow the unmounting of shares that were mounted by other users. Please "
-#~ "think before you enable this option."
-#~ msgstr ""
-#~ "Permitir el desmontaje de recursos compartidos que fueron montados por "
-#~ "otros usuarios. Por favor, esté seguro antes de habilitar esta opción."
-
-#~ msgid ""
-#~ "This is the user ID (a number) that the files and directories of the "
-#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
-#~ "and the remote server supports the CIFS Unix Extensions, this setting "
-#~ "will be ignored unless the assignment of the user ID is forced."
-#~ msgstr ""
-#~ "Este es el identificador de usuario (un número) que tendrán los archivos "
-#~ "y directorios de los recursos compartidos montados. Si está utilizando el "
-#~ "sistema de archivos CIFS en Linux y el servidor remoto es compatible con "
-#~ "las extensiones Unix de CIFS, este ajuste será ignorado a menos que se "
-#~ "fuerce la asignación del identificador de usuario."
-
-#~ msgid ""
-#~ "This is the group ID (a number) that the files and directories of the "
-#~ "mounted share will have. If you are using the CIFS filesystem under Linux "
-#~ "and the remote server supports the CIFS Unix Extensions, this setting "
-#~ "will be ignored unless the assignment of the group ID is forced."
-#~ msgstr ""
-#~ "Este es el identificador del grupo (un número) que tendrán los archivos y "
-#~ "directorios de los recursos compartidos montados. Si está utilizando el "
-#~ "sistema de archivos CIFS en Linux y el servidor remoto es compatible con "
-#~ "las extensiones Unix de CIFS, este ajuste será ignorado a menos que se "
-#~ "fuerce la asignación del identificador de grupo."
-
-#~ msgid "File system port:"
-#~ msgstr "Puerto del sistema de archivos:"
-
-#~ msgid ""
-#~ "This is the port that is exclusively used to mount shares from remote "
-#~ "servers. The default value is 445 (CIFS file system)."
-#~ msgstr ""
-#~ "Este es el puerto que se usa exclusivamente para montar los recursos "
-#~ "compartidos de los servidores remotos. El valor por defecto es 445 "
-#~ "(sistema de archivos CIFS)."
-
-#~ msgid "Additional options:"
-#~ msgstr "Opciones adicionales:"
-
-#~ msgid ""
-#~ "Here you can enter advanced options for the CIFS file system in a comma-"
-#~ "separated list (refer to the manual page of mount.cifs to learn more). "
-#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
-#~ "do not enter options that have already been defined in the configuration "
-#~ "dialog."
-#~ msgstr ""
-#~ "Aquí puede entrar en las opciones avanzadas para el sistema de archivos "
-#~ "CIFS en una lista separada por comas (consulte la página del manual de "
-#~ "mount.cifs para más información). A la lista se le añadirá el argumento «-"
-#~ "o» de mount.cifs. Por favor, no introduzca opciones que ya han sido "
-#~ "definidas en el cuadro de diálogo de configuración."
-
-#~ msgid ""
-#~ "Executing an action with root privileges failed (error code: <tt>%1</tt>)."
-#~ msgstr ""
-#~ "Ha fallado la ejecución de una acción con privilegios de root (código de "
-#~ "error: <tt>%1</tt>)."
