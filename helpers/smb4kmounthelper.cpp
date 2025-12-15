@@ -10,13 +10,11 @@
 #include "../core/smb4kglobal.h"
 
 // Qt includes
-#include <QDBusUnixFileDescriptor>
 #include <QDebug>
-#include <QFileInfo>
 #include <QNetworkInterface>
 #include <QProcessEnvironment>
-#include <QStorageInfo>
 #include <QUrl>
+#include <QDir>
 
 // KDE includes
 #include <KAuth/HelperSupport>
@@ -27,11 +25,6 @@
 // system includes
 #include <fcntl.h>
 #include <sys/stat.h>
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-#include <sys/mount.h>
-#include <sys/param.h>
-#include <sys/ucred.h>
-#endif
 
 using namespace Smb4KGlobal;
 
@@ -181,7 +174,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
         while (proc.state() != KProcess::NotRunning) {
             // We want to be able to terminate the process from outside.
             // Thus, we implement a loop that checks periodically, if we
-            // need to kill the process.
+            // need to kill the process. It is non-blocking.
             if (HelperSupport::isStopped() || timeout == 30000) {
                 proc.kill();
                 break;
@@ -258,7 +251,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
         if (proc.waitForStarted(-1)) {
             // We want to be able to terminate the process from outside.
             // Thus, we implement a loop that checks periodically, if we
-            // need to kill the process.
+            // need to kill the process. It is non-blocking.
             int timeout = 0;
 
             while (proc.state() != KProcess::NotRunning) {
@@ -305,11 +298,11 @@ bool Smb4KMountHelper::isOnline() const
 
 bool Smb4KMountHelper::checkMountArguments(QStringList *argList) const
 {
-#if defined(Q_OS_LINUX)
     QStringListIterator it(*argList);
 
     while (it.hasNext()) {
         QString entry = it.next();
+#if defined(Q_OS_LINUX)
         QString arg;
 
         // Do not allow commata in an entry. We do not want a
@@ -348,13 +341,7 @@ bool Smb4KMountHelper::checkMountArguments(QStringList *argList) const
                 return false;
             }
         }
-    }
 #elif defined(Q_OS_FREEBSD) | defined(Q_OS_NETBSD)
-    QStringListIterator it(*argList);
-
-    while (it.hasNext()) {
-        QString entry = it.next();
-
         if (!entry.startsWith(QStringLiteral("-"))) {
             // These can only be arguments of the options
             continue;
@@ -387,8 +374,8 @@ bool Smb4KMountHelper::checkMountArguments(QStringList *argList) const
                 return false;
             }
         }
-    }
 #endif
+    }
 
     return true;
 }
@@ -505,42 +492,7 @@ bool Smb4KMountHelper::isMountPointAllowed(const QString &mountPoint) const
         return false;
     }
 
-    bool mountPointOk = false;
-
-#if defined(Q_OS_LINUX)
-    QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
-
-    for (const QStorageInfo &volume : std::as_const(mountedVolumes)) {
-        if (volume.fileSystemType() != "cifs" && volume.fileSystemType() != "smb3") {
-            continue;
-        }
-
-        if (canonicalMountPoint == QDir(volume.rootPath()).canonicalPath()) {
-            mountPointOk = true;
-            break;
-        }
-    }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    // Under FreeBSD, QStorageInfo does not return 'smbfs' filesystems, so
-    // we need to use the getmntinfo() approach.
-    struct statfs *filesystems = nullptr;
-    int number = getmntinfo(&filesystems, MNT_NOWAIT);
-
-    if (number > 0) {
-        for (int i = 0; i < number; i++) {
-            if (QString::fromUtf8(filesystems[i].f_fstypename) != QStringLiteral("smbfs")) {
-                continue;
-            }
-
-            if (canonicalMountPoint == QDir(QString::fromUtf8(filesystems[i].f_mntonname)).canonicalPath()) {
-                mountPointOk = true;
-                break;
-            }
-        }
-    }
-#endif
-
-    return mountPointOk;
+    return true;
 }
 
 bool Smb4KMountHelper::checkFileDescriptor(const QDBusUnixFileDescriptor &dbusFd)
