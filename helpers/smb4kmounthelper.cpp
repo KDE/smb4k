@@ -460,26 +460,9 @@ std::optional<QString> Smb4KMountHelper::createMountPoint(const QUrl &url) const
 
 void Smb4KMountHelper::removeMountPoint(const QString &mountPoint) const
 {
-    QDir dir;
-    QString prefix = mountPrefix();
-
-    // Try to remove everything up to the mount root directory.
-    if (mountPoint.startsWith(prefix) && dir.cd(mountPoint)) {
-        dir.rmdir(dir.canonicalPath());
-
-        while (true) {
-            if (dir.cdUp()) {
-                if (dir.canonicalPath() != prefix) {
-                    if (!dir.rmdir(dir.canonicalPath())) {
-                        break;
-                    }
-                } else {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
+    if (isMountPointAllowed(mountPoint)) {
+        QDir dir;
+        dir.rmpath(mountPoint);
     }
 }
 
