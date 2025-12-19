@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-11 00:44+0000\n"
-"PO-Revision-Date: 2025-05-08 13:28+0300\n"
+"PO-Revision-Date: 2025-12-18 15:41+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -36,28 +36,27 @@ msgstr "emir_sari@icloud.com"
 #: helpers/smb4kmounthelper.cpp:97
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "Bilgisayar çevrimiçi değil."
 
 #: helpers/smb4kmounthelper.cpp:106
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "%1 paylaşımı için bağlama noktası oluşturulamadı."
 
 #: helpers/smb4kmounthelper.cpp:112
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Bağlama süreci başlatılamadı."
+msgstr "mount komutu bulunamadı."
 
 #: helpers/smb4kmounthelper.cpp:118
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Yasaklı mount seçenekleri geçirildi."
 
 #: helpers/smb4kmounthelper.cpp:168
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Sağlanan Kerberos bileti ile ilgili yanlış bir şeyler var."
 
 #: helpers/smb4kmounthelper.cpp:212
 #, kde-format
@@ -65,21 +64,19 @@ msgid "The mount process could not be started."
 msgstr "Bağlama süreci başlatılamadı."
 
 #: helpers/smb4kmounthelper.cpp:225
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "“%1” bağlama noktası geçersiz."
+msgstr "“%1” bağlama noktasına izin verilmiyor."
 
 #: helpers/smb4kmounthelper.cpp:231
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Bağlantı kesme süreci başlatılamadı."
+msgstr "umount komutu bulunamadı."
 
 #: helpers/smb4kmounthelper.cpp:237
 #, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr ""
+msgstr "Yasaklı unmount seçenekleri geçirildi."
 
 #: helpers/smb4kmounthelper.cpp:279
 #, kde-format
@@ -382,14 +379,14 @@ msgstr "CIFS Unix Eklenti Desteği"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "Kullanıcı kimliği:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "Grup kimliği:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
