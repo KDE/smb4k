@@ -377,14 +377,14 @@ msgstr "Støtte for Unix-utvidingar for CIFS"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "Brukar-ID:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "Gruppe-ID:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
@@ -1231,21 +1231,3 @@ msgstr "%1 ledig av %2 (%3 brukt)"
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#~ msgid "Directories"
-#~ msgstr "Katalogar"
-
-#~ msgid "Choose a different user"
-#~ msgstr "Vel ein annan brukar"
-
-#~ msgid "Choose a different group"
-#~ msgstr "Vel ei anna gruppe"
-
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Rediger ekstra CIFS-val."
-
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Fleire CIFS-val"
-
-#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-#~ msgstr "<qt>Skriv inn vala, skilde med komma::</qt>"
