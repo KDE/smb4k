@@ -1221,6 +1221,3 @@ msgstr ""
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#~ msgid "Directories"
-#~ msgstr "Mapper"
