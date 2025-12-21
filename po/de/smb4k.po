@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 02:37+0000\n"
+"POT-Creation-Date: 2025-12-21 02:39+0000\n"
 "PO-Revision-Date: 2024-09-08 11:33+0200\n"
 "Last-Translator: Alexander Reinholdt <alexander.reinholdt@t-online.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -28,58 +28,58 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
 
-#: helpers/smb4kmounthelper.cpp:97
+#: helpers/smb4kmounthelper.cpp:90
 #, fuzzy, kde-format
 #| msgid "The wallet is not in use."
 msgid "The computer is not online."
 msgstr "Der Passwortspeicher wird nicht benutzt."
 
-#: helpers/smb4kmounthelper.cpp:106
+#: helpers/smb4kmounthelper.cpp:99
 #, fuzzy, kde-format
 #| msgid "Could not find umount binary."
 msgid "Could not create mount point for share %1."
 msgstr "Die „umount“-Programmdatei kann nicht gefunden werden."
 
-#: helpers/smb4kmounthelper.cpp:112
+#: helpers/smb4kmounthelper.cpp:105
 #, fuzzy, kde-format
 #| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "Der Einhängevorgang kann nicht gestartet werden."
 
-#: helpers/smb4kmounthelper.cpp:118
+#: helpers/smb4kmounthelper.cpp:111
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:168
+#: helpers/smb4kmounthelper.cpp:161
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:212
+#: helpers/smb4kmounthelper.cpp:205
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Der Einhängevorgang kann nicht gestartet werden."
 
-#: helpers/smb4kmounthelper.cpp:225
+#: helpers/smb4kmounthelper.cpp:218
 #, fuzzy, kde-format
 #| msgid "The mountpoint %1 is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "Der Einhängepunkt %1 ist ungültig."
 
-#: helpers/smb4kmounthelper.cpp:231
+#: helpers/smb4kmounthelper.cpp:224
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Der Aushängevorgang kann nicht gestartet werden."
 
-#: helpers/smb4kmounthelper.cpp:237
+#: helpers/smb4kmounthelper.cpp:230
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "Der Aushängevorgang ist abgestürzt."
 
-#: helpers/smb4kmounthelper.cpp:279
+#: helpers/smb4kmounthelper.cpp:272
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Der Aushängevorgang kann nicht gestartet werden."

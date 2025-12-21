@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 02:37+0000\n"
+"POT-Creation-Date: 2025-12-21 02:39+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -27,52 +27,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:97
+#: helpers/smb4kmounthelper.cpp:90
 #, kde-format
 msgid "The computer is not online."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:106
+#: helpers/smb4kmounthelper.cpp:99
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:112
+#: helpers/smb4kmounthelper.cpp:105
 #, kde-format
 msgid "The mount command could not be found."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:118
+#: helpers/smb4kmounthelper.cpp:111
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:168
+#: helpers/smb4kmounthelper.cpp:161
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:212
+#: helpers/smb4kmounthelper.cpp:205
 #, kde-format
 msgid "The mount process could not be started."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:225
+#: helpers/smb4kmounthelper.cpp:218
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:231
+#: helpers/smb4kmounthelper.cpp:224
 #, kde-format
 msgid "The umount command could not be found."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:237
+#: helpers/smb4kmounthelper.cpp:230
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:279
+#: helpers/smb4kmounthelper.cpp:272
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr ""

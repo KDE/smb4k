@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 02:37+0000\n"
+"POT-Creation-Date: 2025-12-21 02:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -28,52 +28,52 @@ msgid "Your emails"
 msgstr ""
 "kde-china@kde.org, i@guoyunhe.me, magsom@kde.org, slkde@kde.org, tds00@qq.com"
 
-#: helpers/smb4kmounthelper.cpp:97
+#: helpers/smb4kmounthelper.cpp:90
 #, kde-format
 msgid "The computer is not online."
 msgstr "该计算机不在线。"
 
-#: helpers/smb4kmounthelper.cpp:106
+#: helpers/smb4kmounthelper.cpp:99
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "无法为共享 %1 创建挂载点。"
 
-#: helpers/smb4kmounthelper.cpp:112
+#: helpers/smb4kmounthelper.cpp:105
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "找不到 mount 命令。"
 
-#: helpers/smb4kmounthelper.cpp:118
+#: helpers/smb4kmounthelper.cpp:111
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "传递了被禁止的 mount 选项。"
 
-#: helpers/smb4kmounthelper.cpp:168
+#: helpers/smb4kmounthelper.cpp:161
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "提供的 Kerberos 票证存在问题。"
 
-#: helpers/smb4kmounthelper.cpp:212
+#: helpers/smb4kmounthelper.cpp:205
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "无法启动挂载进程。"
 
-#: helpers/smb4kmounthelper.cpp:225
+#: helpers/smb4kmounthelper.cpp:218
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "挂载点 %1 无效。"
 
-#: helpers/smb4kmounthelper.cpp:231
+#: helpers/smb4kmounthelper.cpp:224
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "找不到 umount 命令。"
 
-#: helpers/smb4kmounthelper.cpp:237
+#: helpers/smb4kmounthelper.cpp:230
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "传递了被禁止的 umount 选项。"
 
-#: helpers/smb4kmounthelper.cpp:279
+#: helpers/smb4kmounthelper.cpp:272
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "无法启动卸载进程。"
