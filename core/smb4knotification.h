@@ -109,14 +109,6 @@ SMB4KCORE_EXPORT void mountingFailed(const SharePtr &share, const QString &error
 SMB4KCORE_EXPORT void unmountingFailed(const SharePtr &share, const QString &errorMessage);
 
 /**
- * This error message is shown if the unmounting of a certain share
- * is not allowed for the user.
- *
- * @param share     The share that was to be unmounted
- */
-SMB4KCORE_EXPORT void unmountingNotAllowed(const SharePtr &share);
-
-/**
  * This error message is shown if the synchronization failed.
  *
  * @param src       The source URL
