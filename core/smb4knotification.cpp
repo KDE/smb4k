@@ -262,26 +262,6 @@ void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString &e
     }
 }
 
-void Smb4KNotification::unmountingNotAllowed(const SharePtr &share)
-{
-    Q_ASSERT(share);
-
-    if (share) {
-        KNotification *notification = new KNotification(QStringLiteral("unmountingNotAllowed"), KNotification::CloseOnTimeout);
-
-        if (!p->componentName.isEmpty()) {
-            notification->setComponentName(p->componentName);
-        }
-
-        notification->setText(i18n("You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is owned by the user <b>%3</b>.",
-                                   share->displayString(),
-                                   share->path(),
-                                   share->user().loginName()));
-        notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
-        notification->sendEvent();
-    }
-}
-
 void Smb4KNotification::synchronizationFailed(const QUrl &src, const QUrl &dest, const QString &err_msg)
 {
     QString text;
