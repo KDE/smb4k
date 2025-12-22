@@ -414,18 +414,18 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     Q_ASSERT(share);
 
     if (share) {
-        //
-        // Check that the URL is valid.
-        //
         if (!share->url().isValid()) {
             Smb4KNotification::invalidURLPassed();
             return;
         }
 
-        //
+        // Foreign shares cannot be unmounted
+        if (share->isForeign()) {
+            return;
+        }
+
         // Check the mountpoint
         // Use Smb4KShare::path() here, otherwise the check will always return true.
-        //
         QFileInfo info(share->path());
         info.setCaching(false);
 
@@ -434,21 +434,8 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
             return;
         }
 
-        //
-        // Foreign shares cannot be unmounted
-        //
-        if (share->isForeign()) {
-            if (!silent) {
-                Smb4KNotification::unmountingNotAllowed(share);
-            }
-
-            return;
-        }
-
-        //
         // Force the unmounting of the share either if the system went offline
         // or if the user chose to forcibly unmount inaccessible shares (Linux only).
-        //
         bool force = false;
 
         if (Smb4KHardwareInterface::self()->isOnline()) {
@@ -461,18 +448,12 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
             force = true;
         }
 
-        //
-        // Unmount arguments
-        //
         QVariantMap args;
 
         if (!fillUnmountActionArgs(share, force, silent, args)) {
             return;
         }
 
-        //
-        // Create the unmount action
-        //
         KAuth::Action unmountAction(QStringLiteral("org.kde.smb4k.mounthelper.unmount"));
         unmountAction.setHelperId(QStringLiteral("org.kde.smb4k.mounthelper"));
         unmountAction.setArguments(args);
@@ -480,14 +461,8 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         KAuth::ExecuteJob *job = unmountAction.execute();
         addSubjob(job);
 
-        //
-        // Emit the aboutToStart() signal
-        //
         Q_EMIT aboutToStart(UnmountShare);
 
-        //
-        // Start the job and process the returned result.
-        //
         if (job->exec()) {
             // Get the error message
             QString errorMsg = job->data().value(QStringLiteral("mh_error_message")).toString();
@@ -500,21 +475,12 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
             Smb4KNotification::actionFailed(job->error(), job->errorString());
         }
 
-        //
-        // Remove the job from the job list
-        //
         removeSubjob(job);
 
-        //
-        // Reset the busy cursor
-        //
         if (!hasSubjobs()) {
             QApplication::restoreOverrideCursor();
         }
 
-        //
-        // Emit the finished() signal
-        //
         Q_EMIT finished(UnmountShare);
     }
 }
