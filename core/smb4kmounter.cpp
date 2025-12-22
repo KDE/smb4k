@@ -41,7 +41,6 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
-#include <QHostInfo>
 #include <QPointer>
 #include <QStorageInfo>
 #include <QTimer>
@@ -80,6 +79,7 @@ class Smb4KMounterStatic
 {
 public:
     Smb4KMounter instance;
+    const QString userMountPrefix{QStringLiteral("/var/run/smb4k/") + KUser(KUser::UseRealUserID).loginName()};
 };
 
 Q_APPLICATION_STATIC(Smb4KMounterStatic, p);
@@ -965,17 +965,12 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, int *fd, QVariantM
         map.insert(QStringLiteral("mh_homes_url"), share->url());
     }
 
-    //
-    // Kerberos ticket and process id
+    // Kerberos ticket
     //
     // The path to the Kerberos ticket is stored - if it exists - in the
     // KRB5CCNAME environment variable. By default, the ticket is located
     // at /tmp/krb5cc_[uid]. So, if the environment variable does not exist,
     // but the cache file is there, try to use it.
-    //
-    // Also, the id of the current process is needed, so that the mount helper
-    // can use the correct file descriptor.
-    //
     if (QProcessEnvironment::systemEnvironment().contains(QStringLiteral("KRB5CCNAME"))) {
         QString krb5ccFile = QProcessEnvironment::systemEnvironment().value(QStringLiteral("KRB5CCNAME")).section(QStringLiteral(":"), 1, -1);
         *fd = open(krb5ccFile.toLocal8Bit().data(), O_RDONLY);
@@ -1433,23 +1428,9 @@ void Smb4KMounter::slotConfigChanged()
 
                 check(share);
 
-                QFileInfo info(QDir::cleanPath(QStringLiteral("/var/run")));
-                info.setCaching(false);
+                QDir dir(p->userMountPrefix);
 
-                if (info.isSymLink()) {
-                    if (info.canonicalFilePath() == QDir::cleanPath(QStringLiteral("/run"))) {
-                        info.setFile(info.canonicalFilePath());
-                    } else {
-                        info.setFile(QDir::cleanPath(QStringLiteral("/run")));
-                    }
-                }
-
-                QString rootPath = info.canonicalFilePath() + QDir::separator() + QStringLiteral("smb4k");
-
-                if (share->path().startsWith(rootPath)) {
-                    share->setForeign(false);
-                } else if (share->path().startsWith(QDir::homePath())
-                           || (!share->isInaccessible() && share->canonicalPath().startsWith(QDir::home().canonicalPath()))) {
+                if (share->path().startsWith(dir.canonicalPath())) {
                     share->setForeign(false);
                 } else {
                     share->setForeign(true);
@@ -1522,22 +1503,9 @@ void Smb4KMounter::slotShareMounted(const QString &mountPoint)
 
     check(share);
 
-    QFileInfo info(QDir::cleanPath(QStringLiteral("/var/run")));
-    info.setCaching(false);
+    QDir dir(p->userMountPrefix);
 
-    if (info.isSymLink()) {
-        if (info.canonicalFilePath() == QDir::cleanPath(QStringLiteral("/run"))) {
-            info.setFile(info.canonicalFilePath());
-        } else {
-            info.setFile(QDir::cleanPath(QStringLiteral("/run")));
-        }
-    }
-
-    QString rootPath = info.canonicalFilePath() + QDir::separator() + QStringLiteral("smb4k");
-
-    if (share->path().startsWith(rootPath)) {
-        share->setForeign(false);
-    } else if (share->path().startsWith(QDir::homePath()) || (!share->isInaccessible() && share->canonicalPath().startsWith(QDir::home().canonicalPath()))) {
+    if (share->path().startsWith(dir.canonicalPath())) {
         share->setForeign(false);
     } else {
         share->setForeign(true);
