@@ -73,6 +73,7 @@ public:
     bool detectAllShares;
     bool longActionRunning;
     QStorageInfo storageInfo;
+    QUdpSocket udpSocket;
 };
 
 class Smb4KMounterStatic
@@ -166,37 +167,28 @@ void Smb4KMounter::triggerRemounts(bool fillList)
                 continue;
             }
 
-            QList<SharePtr> mountedShares = findShareByUrl(option->url());
-            bool remountShare = true;
+            QString mountPoint = p->userMountPrefix;
+            mountPoint += QDir::separator();
+            // Host name must not be capitalized.
+            mountPoint += option->url().host();
+            mountPoint += QDir::separator();
+            mountPoint += option->url().path();
 
-            for (const SharePtr &share : std::as_const(mountedShares)) {
-                if (!share->isForeign()) {
-                    remountShare = false;
-                    break;
-                }
+            SharePtr share;
+            QDir dir(QDir::cleanPath(mountPoint));
+
+            if (!dir.canonicalPath().isEmpty()) {
+                share = findShareByPath(dir.canonicalPath());
             }
 
-            if (remountShare) {
-                bool insertShare = true;
+            if (!share) {
+                share = SharePtr(new Smb4KShare());
+                share->setUrl(option->url());
+                share->setWorkgroupName(option->workgroupName());
+                share->setHostIpAddress(option->ipAddress());
 
-                for (const SharePtr &share : std::as_const(d->remounts)) {
-                    if (QString::compare(share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
-                                         option->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort))
-                        == 0) {
-                        insertShare = false;
-                        break;
-                    }
-                }
-
-                if (insertShare) {
-                    SharePtr share = SharePtr(new Smb4KShare());
-                    share->setUrl(option->url());
-                    share->setWorkgroupName(option->workgroupName());
-                    share->setHostIpAddress(option->ipAddress());
-
-                    if (share->url().isValid() && !share->url().isEmpty()) {
-                        d->remounts << share;
-                    }
+                if (share->url().isValid() && !share->url().isEmpty()) {
+                    d->remounts << share;
                 }
             }
         }
@@ -252,7 +244,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
             if (customSettings && customSettings->wakeOnLanSendBeforeMount()) {
                 Q_EMIT aboutToStart(WakeUp);
 
-                QUdpSocket *socket = new QUdpSocket(this);
                 QHostAddress addr;
 
                 // Use the host's IP address directly from the share object.
@@ -280,9 +271,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
                     }
                 }
 
-                socket->writeDatagram(sequence, addr, 9);
-
-                delete socket;
+                d->udpSocket.writeDatagram(sequence, addr, 9);
 
                 // Wait the defined time
                 int stop = 1000 * Smb4KSettings::wakeOnLANWaitingTime() / 250;
