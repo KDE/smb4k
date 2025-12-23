@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 00:44+0000\n"
+"POT-Creation-Date: 2025-12-23 00:41+0000\n"
 "PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2817,19 +2817,7 @@ msgstr ""
 "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
 "helyről.</p>"
 
-#: smb4knotification.cpp:276
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#| "is owned by the user <b>%3</b>.</p>"
-msgid ""
-"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>."
-msgstr ""
-"<p>Nincs engedélye a(z) <b>%1</b> megosztás leválasztására a(z) <b>%2</b> "
-"helyről, a megosztás tulajdonosa: <b>%3</b>.</p>"
-
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:270
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
@@ -2838,13 +2826,13 @@ msgstr ""
 "<p>Nem sikerült <b>%1</b> és <b>%2</b> szinkronizációja:</p><p><tt>%3</tt></"
 "p>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:272
 #, fuzzy, kde-format
 #| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "<p>Nem sikerült <b>%1</b> és <b>%2</b> szinkronizációja.</p>"
 
-#: smb4knotification.cpp:314
+#: smb4knotification.cpp:294
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The command <b>%1</b> could not be found. Please check your "
@@ -2854,100 +2842,100 @@ msgid ""
 msgstr ""
 "<p>A(z) <b>%1</b> parancs nem található. Kérjük ellenőrizze a telepítést.</p>"
 
-#: smb4knotification.cpp:330
+#: smb4knotification.cpp:310
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr ""
 "<p>A(z) <b>%1</b> megosztás egy nyomtató, nem adható a könyvjelzőkhöz.</p>"
 
-#: smb4knotification.cpp:344
+#: smb4knotification.cpp:324
 #, fuzzy, kde-format
 #| msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgid "The file <b>%1</b> could not be found."
 msgstr "<p>A(z) <b>%1</b> fájl nem található.</p>"
 
-#: smb4knotification.cpp:354
+#: smb4knotification.cpp:334
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Nem sikerült megnyitni a(z) <b>%1</b> fájlt:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:336
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgid "Opening the file <b>%1</b> failed."
 msgstr "<p>Nem sikerült megnyitni a(z) <b>%1</b> fájlt.</p>"
 
-#: smb4knotification.cpp:375 smb4knotification.cpp:378
+#: smb4knotification.cpp:355 smb4knotification.cpp:358
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Nem sikerült olvasni a(z) <b>%1</b> fájlból:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:380
+#: smb4knotification.cpp:360
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgid "Reading from file <b>%1</b> failed."
 msgstr "<p>Nem sikerült olvasni a(z) <b>%1</b> fájlból.</p>"
 
-#: smb4knotification.cpp:403
+#: smb4knotification.cpp:383
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "<p>A következő mappa nem hozható létre:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:414
+#: smb4knotification.cpp:394
 #, fuzzy, kde-format
 #| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr "<p>Nem sikerült elindítani a folyamatot (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:398
 #, fuzzy, kde-format
 #| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr "<p>A folyamat összeomlott (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:402
 #, fuzzy, kde-format
 #| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr "<p>A folyamat túllépte az időkorlátot (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:406
 #, fuzzy, kde-format
 #| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr "<p>Nem lehet írni a folyamatba (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:410
 #, fuzzy, kde-format
 #| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr "<p>Nem lehet olvasni a folyamatból (hibakód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:435
+#: smb4knotification.cpp:415
 #, fuzzy, kde-format
 #| msgid "<p>The process reported an unknown error.</p>"
 msgid "The process reported an unknown error."
 msgstr "<p>A folyamat ismeretlen hibát jelentett.</p>"
 
-#: smb4knotification.cpp:497
+#: smb4knotification.cpp:477
 #, fuzzy, kde-format
 #| msgid "<p>Executing an action with root privileges failed.</p>"
 msgid "Executing an action with root privileges failed%1%2"
 msgstr ""
 "<p>Egy művelet rendszergazdai jogokkal való végrehajtása nem sikerült.</p>"
 
-#: smb4knotification.cpp:520
+#: smb4knotification.cpp:500
 #, fuzzy, kde-format
 #| msgid "<p>The URL that was passed is invalid.</p>"
 msgid "The URL that was passed is invalid."
 msgstr "<p>Az átadott URL érvénytelen.</p>"
 
-#: smb4knotification.cpp:533
+#: smb4knotification.cpp:513
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid ""
@@ -2955,13 +2943,13 @@ msgid ""
 "tt>"
 msgstr "A hozzáférés megtagadva."
 
-#: smb4knotification.cpp:546
+#: smb4knotification.cpp:526
 #, fuzzy, kde-format
 #| msgid "An authentication error occurred. "
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "Ismeretlen hiba történt a hitelesítéskor"
 
-#: smb4knotification.cpp:559
+#: smb4knotification.cpp:539
 #, fuzzy, kde-format
 #| msgid "An error occurred while trying to create a temporary file."
 msgid ""
@@ -2998,6 +2986,17 @@ msgstr "Forrás"
 #, kde-format
 msgid "Destination"
 msgstr "Cél"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~| "is owned by the user <b>%3</b>.</p>"
+#~ msgid ""
+#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+#~ "owned by the user <b>%3</b>."
+#~ msgstr ""
+#~ "<p>Nincs engedélye a(z) <b>%1</b> megosztás leválasztására a(z) <b>%2</b> "
+#~ "helyről, a megosztás tulajdonosa: <b>%3</b>.</p>"
 
 #, fuzzy
 #~| msgid ""

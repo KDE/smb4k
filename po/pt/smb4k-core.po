@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 00:44+0000\n"
+"POT-Creation-Date: 2025-12-23 00:41+0000\n"
 "PO-Revision-Date: 2023-03-06 15:55+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -3050,19 +3050,7 @@ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr ""
 "<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida.</p>"
 
-#: smb4knotification.cpp:276
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#| "is owned by the user <b>%3</b>.</p>"
-msgid ""
-"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>."
-msgstr ""
-"<p>Não tem permissões para desmontar a partilha <b>%1</b> de <b>%2</b>. Ela "
-"pertence ao utilizador <b>%3</b>.</p>"
-
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:270
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
@@ -3071,13 +3059,13 @@ msgstr ""
 "<p>A sincronização de <b>%1</b> com <b>%2</b> foi mal-sucedida.</p><p><tt>"
 "%3</tt></p>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:272
 #, fuzzy, kde-format
 #| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "<p>A sincronização de <b>%1</b> com <b>%2</b> foi mal-sucedida.</p>"
 
-#: smb4knotification.cpp:314
+#: smb4knotification.cpp:294
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The command <b>%1</b> could not be found. Please check your "
@@ -3088,7 +3076,7 @@ msgstr ""
 "<p>Não foi possível encontrar o comando <b>%1</b>. Por favor, verifique a "
 "sua instalação.</p>"
 
-#: smb4knotification.cpp:330
+#: smb4knotification.cpp:310
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
@@ -3096,64 +3084,64 @@ msgstr ""
 "<p>A partilha <b>%1</b> é uma impressora, pelo que não pode ser adicionada "
 "aos favoritos.</p>"
 
-#: smb4knotification.cpp:344
+#: smb4knotification.cpp:324
 #, fuzzy, kde-format
 #| msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgid "The file <b>%1</b> could not be found."
 msgstr "<p>Não foi possível encontrar o ficheiro <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:354
+#: smb4knotification.cpp:334
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Não foi possível abrir o ficheiro <b>%1</b>.</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:336
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgid "Opening the file <b>%1</b> failed."
 msgstr "<p>Não foi possível abrir o ficheiro <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:375 smb4knotification.cpp:378
+#: smb4knotification.cpp:355 smb4knotification.cpp:358
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Não foi possível ler do ficheiro <b>%1</b>.</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:380
+#: smb4knotification.cpp:360
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgid "Reading from file <b>%1</b> failed."
 msgstr "<p>Não foi possível ler do ficheiro <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:403
+#: smb4knotification.cpp:383
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "<p>Não foi possível criar a seguinte pasta:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:414
+#: smb4knotification.cpp:394
 #, fuzzy, kde-format
 #| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr ""
 "<p>Não foi possível iniciar o processo (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:398
 #, fuzzy, kde-format
 #| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr "<p>O processo estoirou (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:402
 #, fuzzy, kde-format
 #| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr ""
 "<p>O processo expirou o seu tempo-limite (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:406
 #, fuzzy, kde-format
 #| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
@@ -3161,31 +3149,31 @@ msgstr ""
 "<p>Não foi possível escrever para o processo (código de erro: <tt>%1</tt>).</"
 "p>"
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:410
 #, fuzzy, kde-format
 #| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr "<p>Não foi possível ler do processo (código de erro: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:435
+#: smb4knotification.cpp:415
 #, fuzzy, kde-format
 #| msgid "<p>The process reported an unknown error.</p>"
 msgid "The process reported an unknown error."
 msgstr "<p>O processo devolveu um erro desconhecido.</p>"
 
-#: smb4knotification.cpp:497
+#: smb4knotification.cpp:477
 #, fuzzy, kde-format
 #| msgid "<p>Executing an action with root privileges failed.</p>"
 msgid "Executing an action with root privileges failed%1%2"
 msgstr "<p>Não foi possível executar a acção com privilégios de 'root'.</p>"
 
-#: smb4knotification.cpp:520
+#: smb4knotification.cpp:500
 #, fuzzy, kde-format
 #| msgid "<p>The URL that was passed is invalid.</p>"
 msgid "The URL that was passed is invalid."
 msgstr "<qt>O URL que introduziu é inválido.</qt>"
 
-#: smb4knotification.cpp:533
+#: smb4knotification.cpp:513
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The network communication failed with the following error message: <s>"
@@ -3197,13 +3185,13 @@ msgstr ""
 "<p>A comunicação de rede falhou com a seguinte mensagem de erro: <s>%1</s></"
 "p>"
 
-#: smb4knotification.cpp:546
+#: smb4knotification.cpp:526
 #, fuzzy, kde-format
 #| msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "<p>Ocorreu um erro com o serviço de Zeroconf: <s>%1</s></p>"
 
-#: smb4knotification.cpp:559
+#: smb4knotification.cpp:539
 #, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
@@ -3239,6 +3227,17 @@ msgstr "Origem"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~| "is owned by the user <b>%3</b>.</p>"
+#~ msgid ""
+#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+#~ "owned by the user <b>%3</b>."
+#~ msgstr ""
+#~ "<p>Não tem permissões para desmontar a partilha <b>%1</b> de <b>%2</b>. "
+#~ "Ela pertence ao utilizador <b>%3</b>.</p>"
 
 #~ msgid ""
 #~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
