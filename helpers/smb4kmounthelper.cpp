@@ -11,10 +11,10 @@
 
 // Qt includes
 #include <QDebug>
+#include <QDir>
 #include <QNetworkInterface>
 #include <QProcessEnvironment>
 #include <QUrl>
-#include <QDir>
 
 // KDE includes
 #include <KAuth/HelperSupport>
@@ -30,57 +30,35 @@ using namespace Smb4KGlobal;
 
 KAUTH_HELPER_MAIN("org.kde.smb4k.mounthelper", Smb4KMountHelper);
 
-static const QStringList MOUNT_ARG_WHITELIST {
-    QStringList {
+static const QStringList MOUNT_ARG_WHITELIST{QStringList{
 #if defined(Q_OS_LINUX)
-        QStringLiteral("domain"),
-        QStringLiteral("ip"),
-        QStringLiteral("username"),
-        QStringLiteral("guest"),
-        QStringLiteral("netbiosname"),
-        QStringLiteral("servern"),
-        QStringLiteral("file_mode"),
-        QStringLiteral("dir_mode"),
-        QStringLiteral("forceuid"),
-        QStringLiteral("forcegid"),
-        QStringLiteral("iocharset"),
-        QStringLiteral("rw"),
-        QStringLiteral("ro"),
-        QStringLiteral("perm"),
-        QStringLiteral("noperm"),
-        QStringLiteral("setuids"),
-        QStringLiteral("nosetuids"),
-        QStringLiteral("serverino"),
-        QStringLiteral("noserverino"),
-        QStringLiteral("cache"),
-        QStringLiteral("mapchars"),
-        QStringLiteral("nomapchars"),
-        QStringLiteral("nobrl"),
-        QStringLiteral("sec"),
-        QStringLiteral("vers")
+    QStringLiteral("domain"),      QStringLiteral("ip"),         QStringLiteral("username"),    QStringLiteral("guest"),
+    QStringLiteral("netbiosname"), QStringLiteral("servern"),    QStringLiteral("file_mode"),   QStringLiteral("dir_mode"),
+    QStringLiteral("forceuid"),    QStringLiteral("forcegid"),   QStringLiteral("iocharset"),   QStringLiteral("rw"),
+    QStringLiteral("ro"),          QStringLiteral("perm"),       QStringLiteral("noperm"),      QStringLiteral("setuids"),
+    QStringLiteral("nosetuids"),   QStringLiteral("serverino"),  QStringLiteral("noserverino"), QStringLiteral("cache"),
+    QStringLiteral("mapchars"),    QStringLiteral("nomapchars"), QStringLiteral("nobrl"),       QStringLiteral("sec"),
+    QStringLiteral("vers")
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-        QStringLiteral("-E"),
-        QStringLiteral("-I"),
-        QStringLiteral("-L"),
-        QStringLiteral("-N"),
-        QStringLiteral("-U"),
-        QStringLiteral("-W"),
-        QStringLiteral("-f"),
-        QStringLiteral("-d")
+    QStringLiteral("-E"),
+    QStringLiteral("-I"),
+    QStringLiteral("-L"),
+    QStringLiteral("-N"),
+    QStringLiteral("-U"),
+    QStringLiteral("-W"),
+    QStringLiteral("-f"),
+    QStringLiteral("-d")
 #endif
-    }
-};
+}};
 
-static const QStringList UNMOUNT_ARG_WHITELIST {
-    QStringList {
+static const QStringList UNMOUNT_ARG_WHITELIST{QStringList{
 #if defined(Q_OS_LINUX)
-        QStringLiteral("-l"),
-        QStringLiteral("--lazy")
+    QStringLiteral("-l"),
+    QStringLiteral("--lazy")
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-        QStringLiteral("-f")
+    QStringLiteral("-f")
 #endif
-    }
-};
+}};
 
 KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
 {
