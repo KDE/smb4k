@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 00:44+0000\n"
+"POT-Creation-Date: 2025-12-23 00:41+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2808,119 +2808,110 @@ msgstr "卸载位于 <b>%2</b> 的共享 <b>%1</b> 失败：<tt>%3</tt>"
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "卸载位于 <b>%2</b> 的共享 <b>%1</b> 失败。"
 
-#: smb4knotification.cpp:276
-#, kde-format
-msgid ""
-"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>."
-msgstr ""
-"您没有卸载位于 <b>%2</b> 的共享 <b>%1</b> 的权限。它的所有者用户是 <b>%3</"
-"b>。"
-
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:270
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
 msgstr "同步 <b>%1</b> 与 <b>%2</b> 失败：<tt>%3</tt>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:272
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "同步 <b>%1</b> 与 <b>%2</b> 失败。"
 
-#: smb4knotification.cpp:314
+#: smb4knotification.cpp:294
 #, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
 msgstr "无法找到 <b>%1</b> 命令。请检查本机系统的软件安装情况。"
 
-#: smb4knotification.cpp:330
+#: smb4knotification.cpp:310
 #, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr "共享 <b>%1</b> 是一台打印机，它无法被添加为书签。"
 
-#: smb4knotification.cpp:344
+#: smb4knotification.cpp:324
 #, kde-format
 msgid "The file <b>%1</b> could not be found."
 msgstr "文件 <b>%1</b> 无法找到。"
 
-#: smb4knotification.cpp:354
+#: smb4knotification.cpp:334
 #, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "打开文件 <b>%1</b> 失败：<tt>%2</tt>"
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:336
 #, kde-format
 msgid "Opening the file <b>%1</b> failed."
 msgstr "打开文件 <b>%1</b> 失败。"
 
-#: smb4knotification.cpp:375 smb4knotification.cpp:378
+#: smb4knotification.cpp:355 smb4knotification.cpp:358
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "读取文件 <b>%1</b> 失败：<tt>%2</tt>"
 
-#: smb4knotification.cpp:380
+#: smb4knotification.cpp:360
 #, kde-format
 msgid "Reading from file <b>%1</b> failed."
 msgstr "读取文件 <b>%1</b> 失败。"
 
-#: smb4knotification.cpp:403
+#: smb4knotification.cpp:383
 #, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "无法创建以下目录：<tt>%1</tt>"
 
-#: smb4knotification.cpp:414
+#: smb4knotification.cpp:394
 #, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr "进程启动失败 (错误代码：<tt>%1</tt>)。"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:398
 #, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr "进程已崩溃 (错误代码：<tt>%1</tt>)。"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:402
 #, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr "进程超时 (错误代码：<tt>%1</tt>)。"
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:406
 #, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr "无法写入进程 (错误代码：<tt>%1</tt>)。"
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:410
 #, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr "无法读取进程 (错误代码：<tt>%1</tt>)。"
 
-#: smb4knotification.cpp:435
+#: smb4knotification.cpp:415
 #, kde-format
 msgid "The process reported an unknown error."
 msgstr "该进程报告了一个未知错误。"
 
-#: smb4knotification.cpp:497
+#: smb4knotification.cpp:477
 #, kde-format
 msgid "Executing an action with root privileges failed%1%2"
 msgstr "使用 root 权限执行操作失败%1%2"
 
-#: smb4knotification.cpp:520
+#: smb4knotification.cpp:500
 #, kde-format
 msgid "The URL that was passed is invalid."
 msgstr "传递的 URL 无效。"
 
-#: smb4knotification.cpp:533
+#: smb4knotification.cpp:513
 #, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
 msgstr "网络通信失败，错误消息：<tt>%1</tt>"
 
-#: smb4knotification.cpp:546
+#: smb4knotification.cpp:526
 #, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "Zeroconf 服务发生错误：<tt>%1</tt>"
 
-#: smb4knotification.cpp:559
+#: smb4knotification.cpp:539
 #, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
@@ -2956,3 +2947,10 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
+
+#~ msgid ""
+#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+#~ "owned by the user <b>%3</b>."
+#~ msgstr ""
+#~ "您没有卸载位于 <b>%2</b> 的共享 <b>%1</b> 的权限。它的所有者用户是 <b>%3</"
+#~ "b>。"
