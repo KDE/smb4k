@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-20 00:42+0000\n"
+"POT-Creation-Date: 2025-12-24 00:43+0000\n"
 "PO-Revision-Date: 2025-05-30 21:14+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -30,58 +30,58 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:90
+#: helpers/smb4kmounthelper.cpp:68
 #, fuzzy, kde-format
 #| msgid "The wallet is not in use."
 msgid "The computer is not online."
 msgstr "Plånboken används inte."
 
-#: helpers/smb4kmounthelper.cpp:99
+#: helpers/smb4kmounthelper.cpp:77
 #, fuzzy, kde-format
 #| msgid "Could not find umount binary."
 msgid "Could not create mount point for share %1."
 msgstr "Kunde inte hitta binärfil för umount."
 
-#: helpers/smb4kmounthelper.cpp:105
+#: helpers/smb4kmounthelper.cpp:83
 #, fuzzy, kde-format
 #| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "Monteringsprocessen kunde inte startas."
 
-#: helpers/smb4kmounthelper.cpp:111
+#: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:161
+#: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:205
+#: helpers/smb4kmounthelper.cpp:183
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Monteringsprocessen kunde inte startas."
 
-#: helpers/smb4kmounthelper.cpp:218
+#: helpers/smb4kmounthelper.cpp:196
 #, fuzzy, kde-format
 #| msgid "The mountpoint %1 is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "Monteringsplatsen %1 är ogiltig."
 
-#: helpers/smb4kmounthelper.cpp:224
+#: helpers/smb4kmounthelper.cpp:202
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Avmonteringsprocessen kunde inte startas."
 
-#: helpers/smb4kmounthelper.cpp:230
+#: helpers/smb4kmounthelper.cpp:208
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "Avmonteringsprocessen kraschade."
 
-#: helpers/smb4kmounthelper.cpp:272
+#: helpers/smb4kmounthelper.cpp:250
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Avmonteringsprocessen kunde inte startas."

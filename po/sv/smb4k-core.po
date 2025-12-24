@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-23 00:41+0000\n"
+"POT-Creation-Date: 2025-12-24 00:43+0000\n"
 "PO-Revision-Date: 2025-06-28 22:16+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1910,7 +1910,7 @@ msgstr "Zeroconf-stöd är inte tillgängligt i den här versionen av KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ett okänt fel uppstod med Zeroconf."
 
-#: smb4kmounter.cpp:433
+#: smb4kmounter.cpp:422
 #, fuzzy, kde-format
 #| msgid "The mountpoint is invalid."
 msgid "The mountpoint %1 is illegal."

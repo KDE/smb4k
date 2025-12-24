@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-23 00:41+0000\n"
+"POT-Creation-Date: 2025-12-24 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1801,7 +1801,7 @@ msgstr "此版本的 KDE 软件不提供 Zeroconf 支持。"
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf 发生未知错误。"
 
-#: smb4kmounter.cpp:433
+#: smb4kmounter.cpp:422
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "挂载点 %1 无效。"
@@ -2947,10 +2947,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid ""
-#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-#~ "owned by the user <b>%3</b>."
-#~ msgstr ""
-#~ "您没有卸载位于 <b>%2</b> 的共享 <b>%1</b> 的权限。它的所有者用户是 <b>%3</"
-#~ "b>。"
