@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 02:37+0000\n"
+"POT-Creation-Date: 2025-12-24 02:51+0000\n"
 "PO-Revision-Date: 2025-12-11 13:13+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1947,7 +1947,7 @@ msgstr "Ondersteuning van Zeroconf is niet beschikbaar in deze versie van KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Er is een onbekende fout opgetreden met Zeroconf."
 
-#: smb4kmounter.cpp:433
+#: smb4kmounter.cpp:422
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "Het aankoppelpunt %1 is ongeldig."
@@ -3013,109 +3013,100 @@ msgstr ""
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt."
 
-#: smb4knotification.cpp:276
-#, kde-format
-msgid ""
-"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>."
-msgstr ""
-"U heeft geen toestemming om deze gedeelde map <b>%1</b> af te koppelen van "
-"<b>%2</b>. De eigenaar hiervan is <b>%3</b>."
-
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:270
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
 msgstr "Synchroniseren van <b>%1</b> met <b>%2</b> is mislukt: <tt>%3</tt>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:272
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "Synchroniseren van <b>%1</b> met <b>%2</b> is mislukt."
 
-#: smb4knotification.cpp:314
+#: smb4knotification.cpp:294
 #, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
 msgstr "Het commando<b>%1</b> is niet gevonden. Controleer uw installatie."
 
-#: smb4knotification.cpp:330
+#: smb4knotification.cpp:310
 #, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr ""
 "De gedeelde map <b>%1</b> is een printer en er kan geen bladwijzer van "
 "worden gemaakt."
 
-#: smb4knotification.cpp:344
+#: smb4knotification.cpp:324
 #, kde-format
 msgid "The file <b>%1</b> could not be found."
 msgstr "Het bestand <b>%1</b> is niet gevonden."
 
-#: smb4knotification.cpp:354
+#: smb4knotification.cpp:334
 #, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "Het bestand <b>%1</b> openen is mislukt: <tt>%2</tt>"
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:336
 #, kde-format
 msgid "Opening the file <b>%1</b> failed."
 msgstr "Het bestand <b>%1</b> openen is mislukt."
 
-#: smb4knotification.cpp:375 smb4knotification.cpp:378
+#: smb4knotification.cpp:355 smb4knotification.cpp:358
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "Lezen van bestand <b>%1</b> is mislukt: <tt>%2</tt>"
 
-#: smb4knotification.cpp:380
+#: smb4knotification.cpp:360
 #, kde-format
 msgid "Reading from file <b>%1</b> failed."
 msgstr "Lezen van bestand <b>%1</b> is mislukt."
 
-#: smb4knotification.cpp:403
+#: smb4knotification.cpp:383
 #, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "De volgende map kon niet worden aangemaakt: <tt>%1</tt>"
 
-#: smb4knotification.cpp:414
+#: smb4knotification.cpp:394
 #, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr "Het starten van het proces is mislukt (foutcode: <tt>%1</tt>)."
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:398
 #, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr "Het proces is gecrasht (foutcode: <tt>%1</tt>)."
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:402
 #, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr "De tijdslimiet van het process liep af (foutcode: <tt>%1</tt>)."
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:406
 #, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr "Kon niet schrijven naar het proces (foutcode: <tt>%1</tt>)."
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:410
 #, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr "Kon niet lezen van het proces (foutcode: <tt>%1</tt>)."
 
-#: smb4knotification.cpp:435
+#: smb4knotification.cpp:415
 #, kde-format
 msgid "The process reported an unknown error."
 msgstr "Het proces rapporteerde een onbekend fout."
 
-#: smb4knotification.cpp:497
+#: smb4knotification.cpp:477
 #, kde-format
 msgid "Executing an action with root privileges failed%1%2"
 msgstr "Een actie met root-rechten uitvoeren is mislukt%1%2"
 
-#: smb4knotification.cpp:520
+#: smb4knotification.cpp:500
 #, kde-format
 msgid "The URL that was passed is invalid."
 msgstr "Het doorgegeven URL-adres is ongeldig."
 
-#: smb4knotification.cpp:533
+#: smb4knotification.cpp:513
 #, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
@@ -3123,12 +3114,12 @@ msgid ""
 msgstr ""
 "De netwerkcommunicatie is mislukt met de volgende foutmelding: <tt>%1</tt>"
 
-#: smb4knotification.cpp:546
+#: smb4knotification.cpp:526
 #, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "Er is een fout opgetreden met de service Zeroconf: <tt>%1</tt>"
 
-#: smb4knotification.cpp:559
+#: smb4knotification.cpp:539
 #, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
@@ -3166,6 +3157,13 @@ msgstr "Bron"
 #, kde-format
 msgid "Destination"
 msgstr "Bestemming"
+
+#~ msgid ""
+#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+#~ "owned by the user <b>%3</b>."
+#~ msgstr ""
+#~ "U heeft geen toestemming om deze gedeelde map <b>%1</b> af te koppelen "
+#~ "van <b>%2</b>. De eigenaar hiervan is <b>%3</b>."
 
 #~ msgid ""
 #~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"

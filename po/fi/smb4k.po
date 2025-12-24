@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-21 02:39+0000\n"
+"POT-Creation-Date: 2025-12-24 02:51+0000\n"
 "PO-Revision-Date: 2024-10-22 13:39+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -29,56 +29,56 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "translator@legisign.org,jiri.gronroos+kde@iki.fi,lasse.liehu@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:90
+#: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:99
+#: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:105
+#: helpers/smb4kmounthelper.cpp:83
 #, fuzzy, kde-format
 #| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "Liittämisprosessia ei voitu käynnistää."
 
-#: helpers/smb4kmounthelper.cpp:111
+#: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:161
+#: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:205
+#: helpers/smb4kmounthelper.cpp:183
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Liittämisprosessia ei voitu käynnistää."
 
-#: helpers/smb4kmounthelper.cpp:218
+#: helpers/smb4kmounthelper.cpp:196
 #, fuzzy, kde-format
 #| msgid "The mountpoint %1 is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "Liitoskohta %1 on virheellinen."
 
-#: helpers/smb4kmounthelper.cpp:224
+#: helpers/smb4kmounthelper.cpp:202
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Irrottamisprosessia ei voitu käynnistää"
 
-#: helpers/smb4kmounthelper.cpp:230
+#: helpers/smb4kmounthelper.cpp:208
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "Irrottamisprosessi kaatui."
 
-#: helpers/smb4kmounthelper.cpp:272
+#: helpers/smb4kmounthelper.cpp:250
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Irrottamisprosessia ei voitu käynnistää"

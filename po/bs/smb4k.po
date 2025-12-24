@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-21 02:39+0000\n"
+"POT-Creation-Date: 2025-12-24 02:51+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -30,57 +30,57 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Samir.ribic@etf.unsa.ba,fruit.10@hotmail.com"
 
-#: helpers/smb4kmounthelper.cpp:90
+#: helpers/smb4kmounthelper.cpp:68
 #, fuzzy, kde-format
 #| msgid "The wallet is not in use."
 msgid "The computer is not online."
 msgstr "Novčanik nije u upotrebi."
 
-#: helpers/smb4kmounthelper.cpp:99
+#: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:105
+#: helpers/smb4kmounthelper.cpp:83
 #, fuzzy, kde-format
 #| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "Montirni  proces nije mogao početi."
 
-#: helpers/smb4kmounthelper.cpp:111
+#: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:161
+#: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:205
+#: helpers/smb4kmounthelper.cpp:183
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Montirni  proces nije mogao početi."
 
-#: helpers/smb4kmounthelper.cpp:218
+#: helpers/smb4kmounthelper.cpp:196
 #, fuzzy, kde-format
 #| msgid "The mountpoint is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "Montirna tačka je nevažeća."
 
-#: helpers/smb4kmounthelper.cpp:224
+#: helpers/smb4kmounthelper.cpp:202
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Ne montirajući proces nije mogao početi."
 
-#: helpers/smb4kmounthelper.cpp:230
+#: helpers/smb4kmounthelper.cpp:208
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "Ne montirajući proces se srušio."
 
-#: helpers/smb4kmounthelper.cpp:272
+#: helpers/smb4kmounthelper.cpp:250
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Ne montirajući proces nije mogao početi."

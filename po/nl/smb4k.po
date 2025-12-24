@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-21 02:39+0000\n"
+"POT-Creation-Date: 2025-12-24 02:51+0000\n"
 "PO-Revision-Date: 2025-12-11 13:13+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -33,52 +33,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: helpers/smb4kmounthelper.cpp:90
+#: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
 msgstr "De computer is niet online."
 
-#: helpers/smb4kmounthelper.cpp:99
+#: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "Kon geen aankoppelpunt aanmaken voor share %1."
 
-#: helpers/smb4kmounthelper.cpp:105
+#: helpers/smb4kmounthelper.cpp:83
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "De aankoppelopdracht kon niet gevonden worden."
 
-#: helpers/smb4kmounthelper.cpp:111
+#: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "Verboden aankoppelopties zijn doorgegeven."
 
-#: helpers/smb4kmounthelper.cpp:161
+#: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Er is iets verkeerd met het geleverde Kerberos-ticket."
 
-#: helpers/smb4kmounthelper.cpp:205
+#: helpers/smb4kmounthelper.cpp:183
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Het aankoppelproces kon niet gestart worden."
 
-#: helpers/smb4kmounthelper.cpp:218
+#: helpers/smb4kmounthelper.cpp:196
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "Het aankoppelpunt %1 is ongeldig."
 
-#: helpers/smb4kmounthelper.cpp:224
+#: helpers/smb4kmounthelper.cpp:202
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "De afkoppelopdracht kon niet gevonden worden."
 
-#: helpers/smb4kmounthelper.cpp:230
+#: helpers/smb4kmounthelper.cpp:208
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Verboden afkoppelopties zijn doorgegeven."
 
-#: helpers/smb4kmounthelper.cpp:272
+#: helpers/smb4kmounthelper.cpp:250
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Het afkoppelproces kon niet worden gestart."

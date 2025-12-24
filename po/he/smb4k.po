@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-21 02:39+0000\n"
+"POT-Creation-Date: 2025-12-24 02:51+0000\n"
 "PO-Revision-Date: 2025-12-14 20:52+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -28,52 +28,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org"
 
-#: helpers/smb4kmounthelper.cpp:90
+#: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
 msgstr "המחשב אינו מחובר."
 
-#: helpers/smb4kmounthelper.cpp:99
+#: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "לא ניתן ליצור נקודת עגינה לשיתוף %1."
 
-#: helpers/smb4kmounthelper.cpp:105
+#: helpers/smb4kmounthelper.cpp:83
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "לא ניתן למצוא את פקודת העיגון (mount)."
 
-#: helpers/smb4kmounthelper.cpp:111
+#: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "הועברו אפשרויות עיגון אסורות."
 
-#: helpers/smb4kmounthelper.cpp:161
+#: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "משהו השתבש עם כרטיס ה־Kerberos שסופק."
 
-#: helpers/smb4kmounthelper.cpp:205
+#: helpers/smb4kmounthelper.cpp:183
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך העיגון."
 
-#: helpers/smb4kmounthelper.cpp:218
+#: helpers/smb4kmounthelper.cpp:196
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "נקודת העיגון %1 אינה חוקית."
 
-#: helpers/smb4kmounthelper.cpp:224
+#: helpers/smb4kmounthelper.cpp:202
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "לא ניתן להפעיל את פקודת ניתוק העיגון (umount)."
 
-#: helpers/smb4kmounthelper.cpp:230
+#: helpers/smb4kmounthelper.cpp:208
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "הועברו אפשרויות ניתוק עיגון אסורות."
 
-#: helpers/smb4kmounthelper.cpp:272
+#: helpers/smb4kmounthelper.cpp:250
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך ניתוק העיגון."

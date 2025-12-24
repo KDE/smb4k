@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 02:37+0000\n"
+"POT-Creation-Date: 2025-12-24 02:51+0000\n"
 "PO-Revision-Date: 2024-09-19 16:32+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1985,7 +1985,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:433
+#: smb4kmounter.cpp:422
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr ""
@@ -3078,19 +3078,7 @@ msgstr ""
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "<p>Αποτυχία απομάκρυνσης του κοινού πόρου <b>%1</b> από <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:276
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#| "is owned by the user <b>%3</b>.</p>"
-msgid ""
-"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>."
-msgstr ""
-"<p>Δεν σας επιτρέπεται να απομακρύνετε τον κοινό πόρο <b>%1</b> από το <b>"
-"%2</b>. Κάτοχος είναι ο χρήστης <b>%3</b>.</p>"
-
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:270
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
@@ -3098,13 +3086,13 @@ msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
 "<p>Αποτυχία συγχρονισμού του <b>%1</b> με το <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:272
 #, fuzzy, kde-format
 #| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "<p>Αποτυχία συγχρονισμού του <b>%1</b> με το <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:314
+#: smb4knotification.cpp:294
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The command <b>%1</b> could not be found. Please check your "
@@ -3114,7 +3102,7 @@ msgid ""
 msgstr ""
 "<p>Αδυναμία εύρεσης της εντολής <b>%1</b>. Ελέγξτε την εγκατάστασή σας.</p>"
 
-#: smb4knotification.cpp:330
+#: smb4knotification.cpp:310
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
@@ -3122,96 +3110,96 @@ msgstr ""
 "<p>Αδυναμία αντιγραφής σε σελιδοδείκτη του κοινού πόρου <b>%1</b> επειδή "
 "πρόκειται για εκτυπωτή.</p>"
 
-#: smb4knotification.cpp:344
+#: smb4knotification.cpp:324
 #, fuzzy, kde-format
 #| msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgid "The file <b>%1</b> could not be found."
 msgstr "<p>Αδυναμία εύρεσης του αρχείου <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:354
+#: smb4knotification.cpp:334
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Αποτυχία ανοίγματος του αρχείου <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:336
 #, fuzzy, kde-format
 #| msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgid "Opening the file <b>%1</b> failed."
 msgstr "<p>Αποτυχία ανοίγματος του αρχείου <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:375 smb4knotification.cpp:378
+#: smb4knotification.cpp:355 smb4knotification.cpp:358
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr "<p>Αποτυχία ανάγνωσης από το αρχείο <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:380
+#: smb4knotification.cpp:360
 #, fuzzy, kde-format
 #| msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgid "Reading from file <b>%1</b> failed."
 msgstr "<p>Αποτυχία ανάγνωσης από το αρχείο <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:403
+#: smb4knotification.cpp:383
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "<p>Αδυναμία δημιουργίας του ακόλουθου καταλόγου:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:414
+#: smb4knotification.cpp:394
 #, fuzzy, kde-format
 #| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr ""
 "<p>Αποτυχία έναρξης της διεργασίας (κωδικός σφάλματος: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:398
 #, fuzzy, kde-format
 #| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr ""
 "<p>Προκλήθηκε κατάρρευση της διεργασίας (κωδικός σφάλματος: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:402
 #, fuzzy, kde-format
 #| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr "<p>Τέλος χρόνου της διεργασίας (κωδικός σφάλματος: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:406
 #, fuzzy, kde-format
 #| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr ""
 "<p>Αποτυχία εγγραφής στη διεργασία (κωδικός σφάλματος: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:410
 #, fuzzy, kde-format
 #| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr ""
 "<p>Αποτυχία ανάγνωσης από τη διεργασία (κωδικός σφάλματος: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:435
+#: smb4knotification.cpp:415
 #, fuzzy, kde-format
 #| msgid "<p>The process reported an unknown error.</p>"
 msgid "The process reported an unknown error."
 msgstr "<p>Η διεργασία ανέφερε ένα άγνωστο σφάλμα.</p>"
 
-#: smb4knotification.cpp:497
+#: smb4knotification.cpp:477
 #, fuzzy, kde-format
 #| msgid "<p>Executing an action with root privileges failed.</p>"
 msgid "Executing an action with root privileges failed%1%2"
 msgstr "<p>Αποτυχία εκτέλεσης ενέργειας με δικαιώματα διαχειριστή (root).</p>"
 
-#: smb4knotification.cpp:520
+#: smb4knotification.cpp:500
 #, fuzzy, kde-format
 #| msgid "<p>The URL that was passed is invalid.</p>"
 msgid "The URL that was passed is invalid."
 msgstr "<p>Το URL ως παράμετρος δεν είναι έγκυρο.</p>"
 
-#: smb4knotification.cpp:533
+#: smb4knotification.cpp:513
 #, fuzzy, kde-format
 #| msgid ""
 #| "The network communication failed with the following error message: <s>%1</"
@@ -3222,12 +3210,12 @@ msgid ""
 msgstr ""
 "Αποτυχία δικτυακής επικοινωνίας με το ακόλουθο μήνυμα σφάλματος: <s>%1</s>"
 
-#: smb4knotification.cpp:546
+#: smb4knotification.cpp:526
 #, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr ""
 
-#: smb4knotification.cpp:559
+#: smb4knotification.cpp:539
 #, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
@@ -3263,6 +3251,17 @@ msgstr "Πηγή"
 #, kde-format
 msgid "Destination"
 msgstr "Προορισμός"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~| "is owned by the user <b>%3</b>.</p>"
+#~ msgid ""
+#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+#~ "owned by the user <b>%3</b>."
+#~ msgstr ""
+#~ "<p>Δεν σας επιτρέπεται να απομακρύνετε τον κοινό πόρο <b>%1</b> από το <b>"
+#~ "%2</b>. Κάτοχος είναι ο χρήστης <b>%3</b>.</p>"
 
 #, fuzzy
 #~| msgid ""

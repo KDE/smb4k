@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-11 02:37+0000\n"
+"POT-Creation-Date: 2025-12-24 02:51+0000\n"
 "PO-Revision-Date: 2014-11-09 21:22+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -1681,7 +1681,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:433
+#: smb4kmounter.cpp:422
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr ""
@@ -2683,117 +2683,110 @@ msgstr ""
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr ""
 
-#: smb4knotification.cpp:276
-#, kde-format
-msgid ""
-"You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-"owned by the user <b>%3</b>."
-msgstr ""
-
-#: smb4knotification.cpp:290
+#: smb4knotification.cpp:270
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
 msgstr ""
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:272
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr ""
 
-#: smb4knotification.cpp:314
+#: smb4knotification.cpp:294
 #, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
 msgstr ""
 
-#: smb4knotification.cpp:330
+#: smb4knotification.cpp:310
 #, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr ""
 
-#: smb4knotification.cpp:344
+#: smb4knotification.cpp:324
 #, kde-format
 msgid "The file <b>%1</b> could not be found."
 msgstr ""
 
-#: smb4knotification.cpp:354
+#: smb4knotification.cpp:334
 #, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
 msgstr ""
 
-#: smb4knotification.cpp:356
+#: smb4knotification.cpp:336
 #, kde-format
 msgid "Opening the file <b>%1</b> failed."
 msgstr ""
 
-#: smb4knotification.cpp:375 smb4knotification.cpp:378
+#: smb4knotification.cpp:355 smb4knotification.cpp:358
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
 msgstr ""
 
-#: smb4knotification.cpp:380
+#: smb4knotification.cpp:360
 #, kde-format
 msgid "Reading from file <b>%1</b> failed."
 msgstr ""
 
-#: smb4knotification.cpp:403
+#: smb4knotification.cpp:383
 #, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr ""
 
-#: smb4knotification.cpp:414
+#: smb4knotification.cpp:394
 #, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
 msgstr ""
 
-#: smb4knotification.cpp:418
+#: smb4knotification.cpp:398
 #, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
 msgstr ""
 
-#: smb4knotification.cpp:422
+#: smb4knotification.cpp:402
 #, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
 msgstr ""
 
-#: smb4knotification.cpp:426
+#: smb4knotification.cpp:406
 #, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
 msgstr ""
 
-#: smb4knotification.cpp:430
+#: smb4knotification.cpp:410
 #, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
 msgstr ""
 
-#: smb4knotification.cpp:435
+#: smb4knotification.cpp:415
 #, kde-format
 msgid "The process reported an unknown error."
 msgstr ""
 
-#: smb4knotification.cpp:497
+#: smb4knotification.cpp:477
 #, kde-format
 msgid "Executing an action with root privileges failed%1%2"
 msgstr ""
 
-#: smb4knotification.cpp:520
+#: smb4knotification.cpp:500
 #, kde-format
 msgid "The URL that was passed is invalid."
 msgstr ""
 
-#: smb4knotification.cpp:533
+#: smb4knotification.cpp:513
 #, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
 msgstr ""
 
-#: smb4knotification.cpp:546
+#: smb4knotification.cpp:526
 #, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr ""
 
-#: smb4knotification.cpp:559
+#: smb4knotification.cpp:539
 #, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
