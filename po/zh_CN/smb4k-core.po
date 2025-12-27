@@ -2949,10 +2949,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid ""
-#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-#~ "owned by the user <b>%3</b>."
-#~ msgstr ""
-#~ "您没有卸载位于 <b>%2</b> 的共享 <b>%1</b> 的权限。它的所有者用户是 <b>%3</"
-#~ "b>。"
