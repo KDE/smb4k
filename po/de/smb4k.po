@@ -3,20 +3,21 @@
 # SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2010 Panagiotis Papadopoulos <pano_90@gmx.net>
 # SPDX-FileCopyrightText: 2022 Frank Steinmetzger <dev-kde@felsenfleischer.de>
+# SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 00:43+0000\n"
-"PO-Revision-Date: 2024-09-08 11:33+0200\n"
-"Last-Translator: Alexander Reinholdt <alexander.reinholdt@t-online.de>\n"
+"PO-Revision-Date: 2025-12-14 15:05+0100\n"
+"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -655,10 +656,9 @@ msgstr "MAC-Adresse:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC-Adresse:"
+msgstr "MAC-Adresse suchen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
@@ -733,37 +733,37 @@ msgstr[1] "Zurzeit sind %1 Freigaben eingehängt."
 #: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr "Es wird nach Arbeitsgruppen und Domänen gesucht ..."
+msgstr "Es wird nach Arbeitsgruppen und Domänen gesucht …"
 
 #: smb4k/smb4kmainwindow.cpp:493
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "Es wird nach nach Rechnern in der Domäne %1 gesucht ..."
+msgstr "Es wird nach nach Rechnern in der Domäne %1 gesucht …"
 
 #: smb4k/smb4kmainwindow.cpp:498
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr "Es wird nach Freigaben auf dem Rechner %1 gesucht ..."
+msgstr "Es wird nach Freigaben auf dem Rechner %1 gesucht …"
 
 #: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "Es wird nach nach Rechnern und Ordnern in der %1 gesucht ..."
+msgstr "Es wird nach nach Rechnern und Ordnern in der %1 gesucht …"
 
 #: smb4k/smb4kmainwindow.cpp:532
 #, kde-format
 msgid "Waking up remote hosts..."
-msgstr "Entfernte Rechner aufwecken ..."
+msgstr "Entfernte Rechner werden aufgeweckt …"
 
 #: smb4k/smb4kmainwindow.cpp:537
 #, kde-format
 msgid "Sending file to printer %1..."
-msgstr "Datei wird zum Drucker %1 gesendet ..."
+msgstr "Datei wird zum Drucker %1 gesendet …"
 
 #: smb4k/smb4kmainwindow.cpp:541
 #, kde-format
 msgid "Searching..."
-msgstr "Suchen ..."
+msgstr "Suchen …"
 
 #: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
 #: smb4k/smb4kmainwindow.cpp:698
@@ -774,17 +774,17 @@ msgstr "Fertig."
 #: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
 msgid "Mounting..."
-msgstr "Einhängen ..."
+msgstr "Einhängen …"
 
 #: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Unmounting..."
-msgstr "Aushängen ..."
+msgstr "Aushängen …"
 
 #: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
 msgid "Waking up host..."
-msgstr "Rechner wird aufgeweckt ..."
+msgstr "Rechner wird aufgeweckt …"
 
 #: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
@@ -799,7 +799,7 @@ msgstr "%1 ist erfolgreich ausgehängt worden."
 #: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
 msgid "Synchronizing %1"
-msgstr "%1 wird abgeglichen ..."
+msgstr "%1 wird abgeglichen …"
 
 #: smb4k/smb4kmountdialog.cpp:34
 #, kde-format
