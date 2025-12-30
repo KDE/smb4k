@@ -377,14 +377,16 @@ msgstr "CIFSin UNIX-laajennustuki"
 #: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User ID:"
 msgid "User ID:"
 msgstr "Käyttäjätunnus:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Group ID:"
 msgid "Group ID:"
 msgstr "Ryhmätunniste:"
 
