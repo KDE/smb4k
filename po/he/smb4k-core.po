@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-23 00:41+0000\n"
+"POT-Creation-Date: 2025-12-24 00:43+0000\n"
 "PO-Revision-Date: 2025-12-14 20:52+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1851,7 +1851,7 @@ msgstr "התמיכה ב־Zeroconf לא זמינה בגרסה הזאת של KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "אירעה שגיאה בלתי ידועה עם Zeroconf."
 
-#: smb4kmounter.cpp:433
+#: smb4kmounter.cpp:422
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "נקודת העיגון %1 אינה חוקית."

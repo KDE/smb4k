@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-23 00:41+0000\n"
+"POT-Creation-Date: 2025-12-24 00:43+0000\n"
 "PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1756,7 +1756,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ismeretlen hiba történt a hitelesítéskor"
 
-#: smb4kmounter.cpp:433
+#: smb4kmounter.cpp:422
 #, fuzzy, kde-format
 #| msgid "The mountpoint is invalid."
 msgid "The mountpoint %1 is illegal."
