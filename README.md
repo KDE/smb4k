@@ -20,7 +20,7 @@ Features
 - Special handling of home shares
 - Ability to bookmark favorite shares
 - System tray widget
-- Support of advanced mount options
+- Support of selected mount options
 - Support of printer shares
 - Support of several secure storage solutions for the login credentials via QtKeychain
 - Synchronization of a remote share with a local copy and vice versa
