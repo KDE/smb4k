@@ -131,6 +131,9 @@ void Smb4KConfigPageMounting::setupWidget()
     remountSettingsWidgetLayout->addWidget(remountIntervalLabel, 1, 0);
     remountSettingsWidgetLayout->addWidget(remountInterval, 1, 1);
 
+    QCheckBox *checkServerOnlineState = new QCheckBox(Smb4KMountSettings::self()->checkServerOnlineStateItem()->label(), behaviorBox);
+    checkServerOnlineState->setObjectName(QStringLiteral("kcfg_CheckServerOnlineState"));
+
     QCheckBox *unmountAllShares = new QCheckBox(Smb4KMountSettings::self()->unmountSharesOnExitItem()->label(), behaviorBox);
     unmountAllShares->setObjectName(QStringLiteral("kcfg_UnmountSharesOnExit"));
 
@@ -142,6 +145,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     behaviorBoxLayout->addWidget(remountShares);
     behaviorBoxLayout->addWidget(m_remountSettingsWidget);
+    behaviorBoxLayout->addWidget(checkServerOnlineState);
     behaviorBoxLayout->addWidget(unmountAllShares);
     behaviorBoxLayout->addWidget(unmountInaccessibleShares);
     behaviorBoxLayout->addWidget(detectAllShares);
@@ -433,6 +437,9 @@ void Smb4KConfigPageMounting::setupWidget()
     remountSettingsWidgetLayout->addWidget(remountIntervalLabel, 1, 0);
     remountSettingsWidgetLayout->addWidget(remountInterval, 1, 1);
 
+    QCheckBox *checkServerOnlineState = new QCheckBox(Smb4KMountSettings::self()->checkServerOnlineStateItem()->label(), behaviorBox);
+    checkServerOnlineState->setObjectName(QStringLiteral("kcfg_CheckServerOnlineState"));
+
     QCheckBox *unmountAllShares = new QCheckBox(Smb4KMountSettings::self()->unmountSharesOnExitItem()->label(), behaviorBox);
     unmountAllShares->setObjectName(QStringLiteral("kcfg_UnmountSharesOnExit"));
 
@@ -441,6 +448,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     behaviorBoxLayout->addWidget(remountShares);
     behaviorBoxLayout->addWidget(m_remountSettingsWidget);
+    behaviorBoxLayout->addWidget(checkServerOnlineState);
     behaviorBoxLayout->addWidget(unmountAllShares);
     behaviorBoxLayout->addWidget(detectAllShares);
 

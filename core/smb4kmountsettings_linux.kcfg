@@ -286,6 +286,11 @@
       <max>30</max>
       <default>5</default>
     </entry>
+    <entry name="CheckServerOnlineState" type="Bool">
+      <label>Check the online state of the server before remounting a share</label>
+      <whatsthis>Check the online state of the server on which the share to be mounted is located. Smb4K attempts to connect to port 445 of the server. If that fails, no remouting will be done, because the server is most likely down. Switch this option off, if e.g. the server uses non-default ports.</whatsthis>
+      <default>true</default>
+    </entry>
     <entry name="ForceUnmountInaccessible" type="Bool">
       <label>Force the unmounting of inaccessible shares</label>
       <whatsthis>Force the unmounting of inaccessible shares (Linux only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmount is performed, a warning dialog is shown asking to approve the unmount.</whatsthis>
