@@ -174,10 +174,6 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
         if (proc.exitStatus() == KProcess::NormalExit) {
             QString stdErr = QString::fromUtf8(proc.readAllStandardError());
             reply.addData(QStringLiteral("mh_error_message"), stdErr.trimmed());
-
-            if (stdErr.isEmpty()) {
-                reply.addData(QStringLiteral("mh_mountpoint"), mountPoint);
-            }
         }
     } else {
         return errorReply(i18n("The mount process could not be started."));
