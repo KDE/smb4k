@@ -785,7 +785,7 @@ const QString Smb4KGlobal::dataLocation()
 void Smb4KGlobal::wait(int time)
 {
     QEventLoop loop;
-    QTimer::singleShot(time, &loop, SLOT(quit()));
+    QTimer::singleShot(time, &loop, &QEventLoop::quit);
     loop.exec();
 }
 
