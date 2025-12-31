@@ -7,8 +7,6 @@
 
 // Application specific includes
 #include "smb4kmounter.h"
-#include "smb4kbookmark.h"
-#include "smb4kbookmarkhandler.h"
 #include "smb4kcredentialsmanager.h"
 #include "smb4kcustomsettings.h"
 #include "smb4kcustomsettingsmanager.h"
@@ -41,15 +39,14 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
-#include <QPointer>
 #include <QStorageInfo>
+#include <QTcpSocket>
 #include <QTimer>
 #include <QUdpSocket>
 
 // KDE includes
 #include <KAuth/ExecuteJob>
 #include <KLocalizedString>
-#include <KMessageBox>
 #include <KMountPoint>
 #include <KShell>
 #include <KUser>
@@ -74,6 +71,7 @@ public:
     bool longActionRunning;
     QStorageInfo storageInfo;
     QUdpSocket udpSocket;
+    QTcpSocket tcpSocket;
 };
 
 class Smb4KMounterStatic
@@ -98,9 +96,6 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     d->longActionRunning = false;
     d->detectAllShares = Smb4KMountSettings::detectAllShares();
 
-    //
-    // Connections
-    //
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::aboutToChangeProfile, this, &Smb4KMounter::slotAboutToChangeProfile);
     connect(Smb4KProfileManager::self(), &Smb4KProfileManager::activeProfileChanged, this, &Smb4KMounter::slotActiveProfileChanged);
     connect(Smb4KCredentialsManager::self(), &Smb4KCredentialsManager::credentialsUpdated, this, &Smb4KMounter::slotCredentialsUpdated);
@@ -167,28 +162,34 @@ void Smb4KMounter::triggerRemounts(bool fillList)
                 continue;
             }
 
-            QString mountPoint = p->userMountPrefix;
-            mountPoint += QDir::separator();
-            // Host name must not be capitalized.
-            mountPoint += option->url().host();
-            mountPoint += QDir::separator();
-            mountPoint += option->url().path();
-
             SharePtr share;
-            QDir dir(QDir::cleanPath(mountPoint));
+            QDir dir(generateMountPoint(option->url()));
 
             if (!dir.canonicalPath().isEmpty()) {
                 share = findShareByPath(dir.canonicalPath());
             }
 
             if (!share) {
-                share = SharePtr(new Smb4KShare());
-                share->setUrl(option->url());
-                share->setWorkgroupName(option->workgroupName());
-                share->setHostIpAddress(option->ipAddress());
+                bool createAndAddShare = true;
 
-                if (share->url().isValid() && !share->url().isEmpty()) {
-                    d->remounts << share;
+                if (Smb4KMountSettings::checkServerOnlineState()) {
+                    // Check if the server is online. We try to connect on default
+                    // port 445. Prefer the IP address over the host name.
+                    QString hostName = !option->ipAddress().isEmpty() ? option->ipAddress() : option->hostName();
+                    d->tcpSocket.connectToHost(hostName, 445);
+                    createAndAddShare = d->tcpSocket.waitForConnected(3000);
+                    d->tcpSocket.abort();
+                }
+
+                if (createAndAddShare) {
+                    share = SharePtr(new Smb4KShare());
+                    share->setUrl(option->url());
+                    share->setWorkgroupName(option->workgroupName());
+                    share->setHostIpAddress(option->ipAddress());
+
+                    if (share->url().isValid() && !share->url().isEmpty()) {
+                        d->remounts << share;
+                    }
                 }
             }
         }
@@ -200,177 +201,135 @@ void Smb4KMounter::triggerRemounts(bool fillList)
 
 void Smb4KMounter::mountShare(const SharePtr &share)
 {
-    if (share) {
-        //
-        // Check that the URL is valid
-        //
-        if (!share->url().isValid()) {
-            Smb4KNotification::invalidURLPassed();
-            return;
-        }
+    Q_ASSERT(share);
 
-        //
-        // Check if the share has already been mounted. If it is already present,
-        // do not process it and return.
-        //
-        QUrl url;
-
-        if (share->isHomesShare()) {
-            url = share->homeUrl();
-        } else {
-            url = share->url();
-        }
-
-        QList<SharePtr> mountedShares = findShareByUrl(url);
-        bool isMounted = false;
-
-        for (const SharePtr &s : std::as_const(mountedShares)) {
-            if (!s->isForeign()) {
-                isMounted = true;
-                break;
-            }
-        }
-
-        if (isMounted) {
-            return;
-        }
-
-        //
-        // Wake-On-LAN: Wake up the host before mounting
-        //
-        if (Smb4KSettings::enableWakeOnLAN()) {
-            CustomSettingsPtr customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(share->url().resolved(QUrl(QStringLiteral(".."))));
-
-            if (customSettings && customSettings->wakeOnLanSendBeforeMount()) {
-                Q_EMIT aboutToStart(WakeUp);
-
-                QHostAddress addr;
-
-                // Use the host's IP address directly from the share object.
-                if (share->hasHostIpAddress()) {
-                    addr.setAddress(share->hostIpAddress());
-                } else {
-                    addr.setAddress(QStringLiteral("255.255.255.255"));
-                }
-
-                // Construct magic sequence
-                QByteArray sequence;
-
-                // 6 times 0xFF
-                for (int j = 0; j < 6; ++j) {
-                    sequence.append(QChar(0xFF).toLatin1());
-                }
-
-                // 16 times the MAC address
-                QStringList parts = customSettings->macAddress().split(QStringLiteral(":"), Qt::SkipEmptyParts);
-
-                for (int j = 0; j < 16; ++j) {
-                    for (int k = 0; k < parts.size(); ++k) {
-                        QString item = QStringLiteral("0x") + parts.at(k);
-                        sequence.append(QChar(item.toInt(nullptr, 16)).toLatin1());
-                    }
-                }
-
-                d->udpSocket.writeDatagram(sequence, addr, 9);
-
-                // Wait the defined time
-                int stop = 1000 * Smb4KSettings::wakeOnLANWaitingTime() / 250;
-                int i = 0;
-
-                while (i++ < stop) {
-                    wait(250);
-                }
-
-                Q_EMIT finished(WakeUp);
-            }
-        }
-
-        //
-        // Get the authentication information
-        //
-        Smb4KCredentialsManager::self()->readLoginCredentials(share);
-
-        //
-        // Mount arguments
-        //
-        QVariantMap args;
-        int fd = -1;
-
-        if (!fillMountActionArgs(share, &fd, args)) {
-            if (fd >= 0) {
-                close(fd);
-            }
-            return;
-        }
-
-        //
-        // Create the mount action
-        //
-        KAuth::Action mountAction(QStringLiteral("org.kde.smb4k.mounthelper.mount"));
-        mountAction.setHelperId(QStringLiteral("org.kde.smb4k.mounthelper"));
-        mountAction.setArguments(args);
-
-        KAuth::ExecuteJob *job = mountAction.execute();
-        addSubjob(job);
-
-        //
-        // Emit the aboutToStart() signal
-        //
-        Q_EMIT aboutToStart(MountShare);
-
-        //
-        // Start the job and process the returned result.
-        //
-        if (job->exec()) {
-            QString errorMsg = job->data().value(QStringLiteral("mh_error_message")).toString();
-
-            if (!errorMsg.isEmpty()) {
-#if defined(Q_OS_LINUX)
-                if (errorMsg.contains(QStringLiteral("mount error 13")) || errorMsg.contains(QStringLiteral("mount error(13)")) /* authentication error */) {
-                    d->retries << share;
-                    Q_EMIT requestCredentials(share);
-                } else if (errorMsg.contains(QStringLiteral("Unable to find suitable address."))) {
-                    // Swallow this
-                } else {
-                    Smb4KNotification::mountingFailed(share, errorMsg);
-                }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-                if (errorMsg.contains(QStringLiteral("Authentication error")) || errorMsg.contains(QStringLiteral("Permission denied"))) {
-                    d->retries << share;
-                    Q_EMIT requestCredentials(share);
-                } else {
-                    Smb4KNotification::mountingFailed(share, errorMsg);
-                }
-#else
-                qWarning() << "Smb4KMounter::slotMountJobFinished(): Error handling not implemented!";
-                Smb4KNotification::mountingFailed(share, errorMsg);
-#endif
-            }
-        } else {
-            Smb4KNotification::actionFailed(job->error(), job->errorString());
-        }
-
-        if (fd >= 0) {
-            close(fd);
-        }
-
-        //
-        // Remove the job from the job list
-        //
-        removeSubjob(job);
-
-        //
-        // Reset the busy cursor
-        //
-        if (!hasSubjobs()) {
-            QApplication::restoreOverrideCursor();
-        }
-
-        //
-        // Emit the finished() signal
-        //
-        Q_EMIT finished(MountShare);
+    if (!share) {
+        return;
     }
+
+    if (!share->url().isValid()) {
+        Smb4KNotification::invalidURLPassed();
+        return;
+    }
+
+    // Check if the share has already been mounted. If it is, return. Since
+    // mounts are only allowed under the user mount prefix, we can directly
+    // check if the share is mounted under the possible mount point.
+    QUrl shareUrl = share->isHomesShare() ? share->homeUrl() : share->url();
+    QDir dir(generateMountPoint(shareUrl));
+
+    if (!dir.canonicalPath().isEmpty() && findShareByPath(dir.canonicalPath())) {
+        return;
+    }
+
+    // Wake-On-LAN: Wake the host up before mounting any shares
+    if (Smb4KSettings::enableWakeOnLAN()) {
+        CustomSettingsPtr customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(share->url().resolved(QUrl(QStringLiteral(".."))));
+
+        if (customSettings && customSettings->wakeOnLanSendBeforeMount()) {
+            Q_EMIT aboutToStart(WakeUp);
+
+            QHostAddress address;
+
+            // Use the host's IP address directly from the share object.
+            if (share->hasHostIpAddress()) {
+                address.setAddress(share->hostIpAddress());
+            } else {
+                address.setAddress(QStringLiteral("255.255.255.255"));
+            }
+
+            // Construct the magic sequence
+            QByteArray sequence;
+
+            // 6 times 0xFF
+            sequence.append(QByteArray(6, char(0xFF)));
+
+            // 16 times the MAC address
+            const QStringList macAddressParts = customSettings->macAddress().split(QStringLiteral(":"), Qt::SkipEmptyParts);
+
+            QByteArray macAddressBytes;
+
+            for (const QString &part : std::as_const(macAddressParts)) {
+                bool ok = false;
+                const int value = part.toInt(&ok, 16);
+
+                if (ok) {
+                    macAddressBytes.append(char(value));
+                }
+            }
+
+            sequence.append(macAddressBytes.repeated(16));
+
+            d->udpSocket.writeDatagram(sequence, address, 9);
+
+            // Wait the defined time
+            wait(1000 * Smb4KSettings::wakeOnLANWaitingTime());
+
+            Q_EMIT finished(WakeUp);
+        }
+    }
+
+    Smb4KCredentialsManager::self()->readLoginCredentials(share);
+
+    QVariantMap mountArguments;
+    int fileDescriptor = -1;
+
+    if (!fillMountActionArgs(share, &fileDescriptor, mountArguments)) {
+        if (fileDescriptor >= 0) {
+            close(fileDescriptor);
+        }
+        return;
+    }
+
+    KAuth::Action mountAction(QStringLiteral("org.kde.smb4k.mounthelper.mount"));
+    mountAction.setHelperId(QStringLiteral("org.kde.smb4k.mounthelper"));
+    mountAction.setArguments(mountArguments);
+
+    KAuth::ExecuteJob *job = mountAction.execute();
+    addSubjob(job);
+
+    Q_EMIT aboutToStart(MountShare);
+
+    if (job->exec()) {
+        QString errorMsg = job->data().value(QStringLiteral("mh_error_message")).toString();
+
+        if (!errorMsg.isEmpty()) {
+#if defined(Q_OS_LINUX)
+            if (errorMsg.contains(QStringLiteral("mount error 13")) || errorMsg.contains(QStringLiteral("mount error(13)")) /* authentication error */) {
+                d->retries << share;
+                Q_EMIT requestCredentials(share);
+            } else if (errorMsg.contains(QStringLiteral("Unable to find suitable address."))) {
+                // Swallow this
+            } else {
+                Smb4KNotification::mountingFailed(share, errorMsg);
+            }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+            if (errorMsg.contains(QStringLiteral("Authentication error")) || errorMsg.contains(QStringLiteral("Permission denied"))) {
+                d->retries << share;
+                Q_EMIT requestCredentials(share);
+            } else {
+                Smb4KNotification::mountingFailed(share, errorMsg);
+            }
+#else
+            qWarning() << "Smb4KMounter::slotMountJobFinished(): Error handling not implemented!";
+            Smb4KNotification::mountingFailed(share, errorMsg);
+#endif
+        }
+    } else {
+        Smb4KNotification::actionFailed(job->error(), job->errorString());
+    }
+
+    if (fileDescriptor >= 0) {
+        close(fileDescriptor);
+    }
+
+    removeSubjob(job);
+
+    if (!hasSubjobs()) {
+        QApplication::restoreOverrideCursor();
+    }
+
+    Q_EMIT finished(MountShare);
 }
 
 void Smb4KMounter::mountShares(const QList<SharePtr> &shares)
@@ -556,7 +515,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *event)
         //
         if (d->checkTimeout >= 2500) {
             for (const SharePtr &share : mountedSharesList()) {
-                check(share);
+                checkMountedShare(share);
                 Q_EMIT updated(share);
             }
 
@@ -1210,7 +1169,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &, bool, bool, QVariantM
 }
 #endif
 
-void Smb4KMounter::check(const SharePtr &share)
+void Smb4KMounter::checkMountedShare(const SharePtr &share)
 {
     d->storageInfo.setPath(share->path());
 
@@ -1240,6 +1199,18 @@ void Smb4KMounter::check(const SharePtr &share)
         share->setUser(KUser(KUser::UseRealUserID));
         share->setGroup(KUserGroup(KUser::UseRealUserID));
     }
+}
+
+const QString Smb4KMounter::generateMountPoint(const QUrl &url)
+{
+    QString mountPoint = p->userMountPrefix;
+    mountPoint += QDir::separator();
+    // Host name must not be capitalized.
+    mountPoint += url.host();
+    mountPoint += QDir::separator();
+    mountPoint += url.path();
+
+    return QDir::cleanPath(mountPoint);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1381,7 +1352,7 @@ void Smb4KMounter::slotConfigChanged()
                     share->setUserName(QStringLiteral("guest"));
                 }
 
-                check(share);
+                checkMountedShare(share);
 
                 QDir dir(p->userMountPrefix);
 
@@ -1456,7 +1427,7 @@ void Smb4KMounter::slotShareMounted(const QString &mountPoint)
         share->setUserName(QStringLiteral("guest"));
     }
 
-    check(share);
+    checkMountedShare(share);
 
     QDir dir(p->userMountPrefix);
 
