@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-24 00:43+0000\n"
+"POT-Creation-Date: 2026-01-01 00:42+0000\n"
 "PO-Revision-Date: 2025-07-20 01:16+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1855,7 +1855,7 @@ msgstr "이 KDE 버전에서는 Zeroconf 지원을 사용할 수 없습니다."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "알 수 없는 Zeroconf 오류가 발생했습니다."
 
-#: smb4kmounter.cpp:422
+#: smb4kmounter.cpp:381
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr ""
@@ -2344,14 +2344,31 @@ msgstr "마운트 재시도 시간 간격:"
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr "공유 마운트를 재시도할 때 사용할 시간 간격을 설정합니다."
 
-#. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
+#. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
+#, fuzzy, kde-format
+#| msgid "Send magic packet before mounting a share"
+msgid "Check the online state of the server before remounting a share"
+msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
+
+#. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
+#, kde-format
+msgid ""
+"Check the online state of the server on which the share to be mounted is "
+"located. Smb4K attempts to connect to port 445 of the server. If that fails, "
+"no remouting will be done, because the server is most likely down. Switch "
+"this option off, if e.g. the server uses non-default ports."
+msgstr ""
+
+#. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr "접근할 수 없는 공유 마운트 해제 강제"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
+#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2363,13 +2380,13 @@ msgstr ""
 "고 대화 상자를 표시하여 마운트 해제를 확인합니다."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
+#: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:300
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
 msgstr "시스템에 있는 모든 마운트된 공유 감지"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
+#: smb4kmountsettings_bsd.kcfg:258 smb4kmountsettings_linux.kcfg:301
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -3408,9 +3425,6 @@ msgstr "대상"
 
 #~ msgid "Send magic packet before scanning the network neighborhood"
 #~ msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
-
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
 
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "Wake-On-LAN 설정"

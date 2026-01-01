@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-24 00:43+0000\n"
+"POT-Creation-Date: 2026-01-01 00:42+0000\n"
 "PO-Revision-Date: 2025-05-16 11:22+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -56,30 +56,30 @@ msgstr ""
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:183
+#: helpers/smb4kmounthelper.cpp:179
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Non foi posíbel comezar o proceso de montar."
 
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:192
 #, fuzzy, kde-format
 #| msgid "The mountpoint %1 is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "O punto de montaxe %1 é incorrecto."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:198
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Non foi posíbel comezar o proceso de desmontar."
 
-#: helpers/smb4kmounthelper.cpp:208
+#: helpers/smb4kmounthelper.cpp:204
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "O proceso de desmontar quebrou."
 
-#: helpers/smb4kmounthelper.cpp:250
+#: helpers/smb4kmounthelper.cpp:246
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Non foi posíbel comezar o proceso de desmontar."
@@ -347,19 +347,19 @@ msgstr ""
 "Eliminouse o elemento <b>%1</b> porque se restabeleceron todas as opcións "
 "personalizadas."
 
-#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Comportamento"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:432
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
+#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
@@ -368,53 +368,53 @@ msgstr " min"
 msgid "Basic Settings"
 msgstr "Configuración básica"
 
-#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
 #, kde-format
 msgid "Common Options"
 msgstr "Opcións comúns"
 
-#: smb4k/smb4kconfigpagemounting.cpp:203
+#: smb4k/smb4kconfigpagemounting.cpp:207
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Compatibilidade con extensións CIFS de Unix"
 
-#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
 msgstr "Identificador do usuario:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
 msgstr "Identificador do grupo:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kconfigpagemounting.cpp:276
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Configuración de montaxe común"
 
-#: smb4k/smb4kconfigpagemounting.cpp:280
+#: smb4k/smb4kconfigpagemounting.cpp:284
 #, kde-format
 msgid "Advanced Options"
 msgstr "Opcións avanzadas"
 
-#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Configuración de montaxe avanzada"
 
-#: smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
 msgid "Character Sets"
 msgstr "Conxuntos de caracteres"
 
-#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kconfigpagemounting.cpp:579
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, kde-format
 msgid "Mount Settings"
