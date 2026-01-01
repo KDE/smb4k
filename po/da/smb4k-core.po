@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-24 00:43+0000\n"
+"POT-Creation-Date: 2026-01-01 00:42+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1926,7 +1926,7 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Der skete en godkendelses fejl."
 
-#: smb4kmounter.cpp:422
+#: smb4kmounter.cpp:381
 #, fuzzy, kde-format
 #| msgid "The mountpoint is invalid."
 msgid "The mountpoint %1 is illegal."
@@ -2442,14 +2442,31 @@ msgstr "Interval mellem forsøg på genmontering:"
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr "Angiv den tid der skal gå mellem forsøg på at genmontere ressourcer."
 
-#. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
+#. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
+#, fuzzy, kde-format
+#| msgid "Show the file system that was used for mounting the share."
+msgid "Check the online state of the server before remounting a share"
+msgstr "Vis filsystemet som blev brugt til montering af ressourcen."
+
+#. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
+#, kde-format
+msgid ""
+"Check the online state of the server on which the share to be mounted is "
+"located. Smb4K attempts to connect to port 445 of the server. If that fails, "
+"no remouting will be done, because the server is most likely down. Switch "
+"this option off, if e.g. the server uses non-default ports."
+msgstr ""
+
+#. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr "Gennemtving afmontering af utilgængelige ressourcer"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
+#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2462,13 +2479,13 @@ msgstr ""
 "afmonteringen."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
+#: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:300
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
 msgstr "Detektér alle ressourcer der er monteret på systemet"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
+#: smb4kmountsettings_bsd.kcfg:258 smb4kmountsettings_linux.kcfg:301
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -4260,9 +4277,6 @@ msgstr "Destination"
 
 #~ msgid "Show the file system"
 #~ msgstr "Vis filsystem"
-
-#~ msgid "Show the file system that was used for mounting the share."
-#~ msgstr "Vis filsystemet som blev brugt til montering af ressourcen."
 
 #~ msgid "Show the free disk space"
 #~ msgstr "Vis ledig diskplads"

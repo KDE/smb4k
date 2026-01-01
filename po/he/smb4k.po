@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-24 00:43+0000\n"
+"POT-Creation-Date: 2026-01-01 00:42+0000\n"
 "PO-Revision-Date: 2025-12-11 09:29+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -53,27 +53,27 @@ msgstr "הועברו אפשרויות עיגון אסורות."
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "משהו השתבש עם כרטיס ה־Kerberos שסופק."
 
-#: helpers/smb4kmounthelper.cpp:183
+#: helpers/smb4kmounthelper.cpp:179
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך העיגון."
 
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:192
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "נקודת העיגון %1 אינה חוקית."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:198
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "לא ניתן להפעיל את פקודת ניתוק העיגון (umount)."
 
-#: helpers/smb4kmounthelper.cpp:208
+#: helpers/smb4kmounthelper.cpp:204
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "הועברו אפשרויות ניתוק עיגון אסורות."
 
-#: helpers/smb4kmounthelper.cpp:250
+#: helpers/smb4kmounthelper.cpp:246
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך ניתוק העיגון."
@@ -337,19 +337,19 @@ msgstr "הכול בסדר."
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr "הפריט <b>%1</b> הוסר, כיוון שכל ההגדרות הייחודיות שלו אופסו."
 
-#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "התנהגות"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:432
 #, kde-format
 msgid " min"
 msgstr " דק׳"
 
-#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
+#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
@@ -358,53 +358,53 @@ msgstr " דק׳"
 msgid "Basic Settings"
 msgstr "הגדרות בסיסיות"
 
-#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
 #, kde-format
 msgid "Common Options"
 msgstr "אפשרויות משותפות"
 
-#: smb4k/smb4kconfigpagemounting.cpp:203
+#: smb4k/smb4kconfigpagemounting.cpp:207
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "תמיכה בהרחבות יוניקס ל־CIFS"
 
-#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
 msgstr "מזהה משתמש:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
 msgstr "מזהה קבוצה:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kconfigpagemounting.cpp:276
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "הגדרות עיגון משותפות"
 
-#: smb4k/smb4kconfigpagemounting.cpp:280
+#: smb4k/smb4kconfigpagemounting.cpp:284
 #, kde-format
 msgid "Advanced Options"
 msgstr "הגדרות מתקדמות"
 
-#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "הגדרות עיגון מתקדמות"
 
-#: smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
 msgid "Character Sets"
 msgstr "ערכות תווים"
 
-#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kconfigpagemounting.cpp:579
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, kde-format
 msgid "Mount Settings"

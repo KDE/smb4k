@@ -288,7 +288,7 @@
     </entry>
     <entry name="CheckServerOnlineState" type="Bool">
       <label>Check the online state of the server before remounting a share</label>
-      <whatsthis>Check the online state of the server on which the share to be mounted is located. Smb4K attempts to connect to port 445 of the server. If that fails, no remouting will be done, because the server is most likely down. Switch this option off, if e.g. the server uses non-default ports.</whatsthis>
+      <whatsthis>Check the online state of the server on which the share to be mounted is located. Smb4K attempts to connect to port 445 of the server. If that fails, no remounting will be done, because the server is most likely down. Switch this option off, if e.g. the server uses non-default ports.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="ForceUnmountInaccessible" type="Bool">

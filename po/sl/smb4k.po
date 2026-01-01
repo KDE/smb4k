@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-24 00:43+0000\n"
+"POT-Creation-Date: 2026-01-01 00:42+0000\n"
 "PO-Revision-Date: 2025-12-11 07:05+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -53,27 +53,27 @@ msgstr "Prepovedane možnosti priklopa so bile sprejete."
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Nekaj je narobe z vneseno vstopnico Kerberos."
 
-#: helpers/smb4kmounthelper.cpp:183
+#: helpers/smb4kmounthelper.cpp:179
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Postopka priklopa ni bilo mogoče začeti."
 
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:192
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "Točka priklopa %1 je neveljavna."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:198
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "Ukaza umount ni bilo mogoče najti."
 
-#: helpers/smb4kmounthelper.cpp:208
+#: helpers/smb4kmounthelper.cpp:204
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Sprejete so bile prepovedane možnosti odklopa."
 
-#: helpers/smb4kmounthelper.cpp:250
+#: helpers/smb4kmounthelper.cpp:246
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Postopka odklopa ni bilo mogoče začeti."
@@ -341,19 +341,19 @@ msgstr ""
 "Postavka <b>%1</b> je bila odstranjena, ker so bile ponovno nastavljene vse "
 "nastavitve po meri."
 
-#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Obnašanje"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:432
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
+#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
@@ -362,53 +362,53 @@ msgstr " min"
 msgid "Basic Settings"
 msgstr "Osnovne nastavitve"
 
-#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
 #, kde-format
 msgid "Common Options"
 msgstr "Skupne možnosti"
 
-#: smb4k/smb4kconfigpagemounting.cpp:203
+#: smb4k/smb4kconfigpagemounting.cpp:207
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "Podpora razširitev CIFS Unix"
 
-#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
 msgstr "Določilnik uporabnika:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
 msgstr "Določilnik skupine:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:272
+#: smb4k/smb4kconfigpagemounting.cpp:276
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Skupne nastavitve priklopa"
 
-#: smb4k/smb4kconfigpagemounting.cpp:280
+#: smb4k/smb4kconfigpagemounting.cpp:284
 #, kde-format
 msgid "Advanced Options"
 msgstr "Napredne možnosti"
 
-#: smb4k/smb4kconfigpagemounting.cpp:383
+#: smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Napredne nastavitve priklopa"
 
-#: smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
 msgid "Character Sets"
 msgstr "Nabor znakov"
 
-#: smb4k/smb4kconfigpagemounting.cpp:571
+#: smb4k/smb4kconfigpagemounting.cpp:579
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:390
 #, kde-format
 msgid "Mount Settings"
