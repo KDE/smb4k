@@ -1,7 +1,7 @@
 /*
     The core class that mounts the shares.
 
-    SPDX-FileCopyrightText: 2003-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -361,76 +361,65 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
 {
     Q_ASSERT(share);
 
-    if (share) {
-        if (!share->url().isValid()) {
-            Smb4KNotification::invalidURLPassed();
-            return;
-        }
-
-        // Foreign shares cannot be unmounted
-        if (share->isForeign()) {
-            return;
-        }
-
-        // Check the mountpoint
-        // Use Smb4KShare::path() here, otherwise the check will always return true.
-        QFileInfo info(share->path());
-        info.setCaching(false);
-
-        if (!info.isDir() || info.isSymLink()) {
-            Smb4KNotification::mountingFailed(share, i18n("The mountpoint %1 is illegal.", share->path()));
-            return;
-        }
-
-        // Force the unmounting of the share either if the system went offline
-        // or if the user chose to forcibly unmount inaccessible shares (Linux only).
-        bool force = false;
-
-        if (Smb4KHardwareInterface::self()->isOnline()) {
-#if defined(Q_OS_LINUX)
-            if (share->isInaccessible()) {
-                force = Smb4KMountSettings::forceUnmountInaccessible();
-            }
-#endif
-        } else {
-            force = true;
-        }
-
-        QVariantMap args;
-
-        if (!fillUnmountActionArgs(share, force, silent, args)) {
-            return;
-        }
-
-        KAuth::Action unmountAction(QStringLiteral("org.kde.smb4k.mounthelper.unmount"));
-        unmountAction.setHelperId(QStringLiteral("org.kde.smb4k.mounthelper"));
-        unmountAction.setArguments(args);
-
-        KAuth::ExecuteJob *job = unmountAction.execute();
-        addSubjob(job);
-
-        Q_EMIT aboutToStart(UnmountShare);
-
-        if (job->exec()) {
-            // Get the error message
-            QString errorMsg = job->data().value(QStringLiteral("mh_error_message")).toString();
-
-            if (!errorMsg.isEmpty()) {
-                // No error handling needed, just report the error message.
-                Smb4KNotification::unmountingFailed(share, errorMsg);
-            }
-        } else {
-            Smb4KNotification::actionFailed(job->error(), job->errorString());
-        }
-
-        removeSubjob(job);
-
-        if (!hasSubjobs()) {
-            QApplication::restoreOverrideCursor();
-        }
-
-        Q_EMIT finished(UnmountShare);
+    if (!share || share->isForeign()) {
+        return;
     }
+
+    if (!share->url().isValid()) {
+        Smb4KNotification::invalidURLPassed();
+        return;
+    }
+
+    // NOTE: We do not need to check the mount point for sanity here, because only
+    // unmounts from within /var/run/smb4k/<user> (= not foreign) are allowed and
+    // that is always okay.
+
+    // Force the unmounting of the share either if the system went offline
+    // or if the user chose to forcibly unmount inaccessible shares (Linux only).
+    bool force = false;
+
+    if (!Smb4KHardwareInterface::self()->isOnline()) {
+        force = true;
+    }
+
+#if defined(Q_OS_LINUX)
+    if (share->isInaccessible()) {
+        force = Smb4KMountSettings::forceUnmountInaccessible();
+    }
+#endif
+
+    QVariantMap unmountArguments;
+
+    if (!fillUnmountActionArgs(share, force, silent, unmountArguments)) {
+        return;
+    }
+
+    KAuth::Action unmountAction(QStringLiteral("org.kde.smb4k.mounthelper.unmount"));
+    unmountAction.setHelperId(QStringLiteral("org.kde.smb4k.mounthelper"));
+    unmountAction.setArguments(unmountArguments);
+
+    KAuth::ExecuteJob *job = unmountAction.execute();
+    addSubjob(job);
+
+    Q_EMIT aboutToStart(UnmountShare);
+
+    if (job->exec()) {
+        QString errorMsg = job->data().value(QStringLiteral("mh_error_message")).toString();
+
+        if (!errorMsg.isEmpty()) {
+            Smb4KNotification::unmountingFailed(share, errorMsg);
+        }
+    } else {
+        Smb4KNotification::actionFailed(job->error(), job->errorString());
+    }
+
+    removeSubjob(job);
+
+    if (!hasSubjobs()) {
+        QApplication::restoreOverrideCursor();
+    }
+
+    Q_EMIT finished(UnmountShare);
 }
 
 void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
@@ -494,9 +483,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *event)
     Q_UNUSED(event);
 
     if (!isRunning() && Smb4KHardwareInterface::self()->isOnline()) {
-        //
         // Try to remount shares
-        //
         if (d->remountAttempts < Smb4KMountSettings::remountAttempts() && Smb4KHardwareInterface::self()->initialImportDone()) {
             if (d->remountAttempts == 0) {
                 triggerRemounts(true);
@@ -510,9 +497,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *event)
             d->remountTimeout += TIMEOUT;
         }
 
-        //
         // Check the size, accessibility, etc. of the shares
-        //
         if (d->checkTimeout >= 2500) {
             for (const SharePtr &share : mountedSharesList()) {
                 checkMountedShare(share);
@@ -1356,7 +1341,7 @@ void Smb4KMounter::slotConfigChanged()
 
                 QDir dir(p->userMountPrefix);
 
-                if (share->path().startsWith(dir.canonicalPath())) {
+                if (share->canonicalPath().startsWith(dir.canonicalPath())) {
                     share->setForeign(false);
                 } else {
                     share->setForeign(true);
@@ -1431,7 +1416,7 @@ void Smb4KMounter::slotShareMounted(const QString &mountPoint)
 
     QDir dir(p->userMountPrefix);
 
-    if (share->path().startsWith(dir.canonicalPath())) {
+    if (share->canonicalPath().startsWith(dir.canonicalPath())) {
         share->setForeign(false);
     } else {
         share->setForeign(true);
