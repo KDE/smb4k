@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1801,11 +1801,6 @@ msgstr "此版本的 KDE 软件不提供 Zeroconf 支持。"
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf 发生未知错误。"
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "挂载点 %1 无效。"
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2296,7 +2291,7 @@ msgstr ""
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
 
@@ -2963,3 +2958,6 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "挂载点 %1 无效。"

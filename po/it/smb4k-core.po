@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
 "PO-Revision-Date: 2025-12-12 14:46+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1960,11 +1960,6 @@ msgstr "Il supporto per Zeroconf non è disponibile in questa versione di KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Si è verificato un errore sconosciuto con Zeroconf."
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "Il punto di mount %1 non è consentito."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2471,7 +2466,7 @@ msgstr "Mostra il file system usato per montare le condivisioni."
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
 
@@ -3186,6 +3181,9 @@ msgstr "Sorgente"
 #, kde-format
 msgid "Destination"
 msgstr "Destinazione"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Il punto di mount %1 non è consentito."
 
 #~ msgid ""
 #~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "

@@ -1,16 +1,16 @@
 # Translation of smb4k-core.po to Catalan (Valencian)
-# Copyright (C) 2014-2025 This_file_is_part_of_KDE
+# Copyright (C) 2014-2026 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2014, 2016, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
-# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
-"PO-Revision-Date: 2025-12-11 11:16+0100\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
+"PO-Revision-Date: 2026-01-01 11:11+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1970,11 +1970,6 @@ msgstr "La implementació de Zeroconf no està disponible en esta versió de KDE
 msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb Zeroconf."
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "El punt de muntatge %1 és il·legal."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2474,16 +2469,28 @@ msgstr ""
 #, kde-format
 msgid "Check the online state of the server before remounting a share"
 msgstr ""
+"Comprova l'estat en línia del servidor abans de tornar a muntar una "
+"compartició"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check the online state of the server on which the share to be mounted is "
+#| "located. Smb4K attempts to connect to port 445 of the server. If that "
+#| "fails, no remouting will be done, because the server is most likely down. "
+#| "Switch this option off, if e.g. the server uses non-default ports."
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Comprova l'estat en línia del servidor on es troba la compartició que es "
+"muntarà. Smb4K intenta connectar-se al port 445 del servidor. Si açò falla, "
+"no es tornarà a muntar, ja que és probable que el servidor estiga inactiu. "
+"Desmarqueu esta opció, per exemple, si el servidor utilitza ports no "
+"predeterminats."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -3198,9 +3205,5 @@ msgstr "Origen"
 msgid "Destination"
 msgstr "Destinació"
 
-#~ msgid ""
-#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-#~ "owned by the user <b>%3</b>."
-#~ msgstr ""
-#~ "No es permet desmuntar la compartició <b>%1</b> des de <b>%2</b>. És "
-#~ "propietat de l'usuari <b>%3</b>."
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "El punt de muntatge %1 és il·legal."

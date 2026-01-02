@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
-"PO-Revision-Date: 2025-12-11 07:07+0100\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
+"PO-Revision-Date: 2026-01-01 08:34+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1905,11 +1905,6 @@ msgstr "Podpora Zeroconf ni na voljo v tej različici KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Nastala je neznana napaka z Zeroconf."
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "Točka priklopa %1 je neveljavna."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2404,20 +2399,30 @@ msgstr "Nastavi čas, ki preteče med poskusi ponovnega priklopa skupnih diskov.
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Send magic packet before mounting a share"
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr "Pošlji čarobni paket pred priklopom skupnega diska"
+msgstr ""
+"Preden ponovno priključite skupni disk, preverite stanje strežnika v omrežju"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check the online state of the server on which the share to be mounted is "
+#| "located. Smb4K attempts to connect to port 445 of the server. If that "
+#| "fails, no remouting will be done, because the server is most likely down. "
+#| "Switch this option off, if e.g. the server uses non-default ports."
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Preveri stanje povezave strežnika, na katerem se nahaja skupni disk, ki ga "
+"želite priklopiti. Smb4K poskuša vzpostaviti povezavo z vrati 445 strežnika. "
+"Če to ne uspe, se priklop oddaljenega diska ne bo izvedel, ker strežnik "
+"najverjetneje ne deluje. To možnost izklopite, npr. če strežnik uporablja "
+"neprivzeta vrata."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -3117,6 +3122,9 @@ msgstr "Vir"
 #, kde-format
 msgid "Destination"
 msgstr "Cilj"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Točka priklopa %1 je neveljavna."
 
 #~ msgid ""
 #~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
