@@ -5,7 +5,7 @@
 # Giovanni Degani <tiefox@terra.com.br>, 2004.
 # Alexander Reinholdt <alexander.reinholdt@web.de>, 2004.
 # Lamarque Vieira Souza <lamarque@syst.com.br>, 2006.
-# SPDX-FileCopyrightText: 2010, 2025 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2010, 2025, 2026 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2010, 2013, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019.
 # Aracele Torres <araceletorres@gmail.com>, 2010, 2011.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2025-12-31 22:32-0300\n"
+"PO-Revision-Date: 2026-01-02 06:16-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -2451,25 +2451,20 @@ msgstr ""
 #, kde-format
 msgid "Check the online state of the server before remounting a share"
 msgstr ""
-"Verifique o estado online do servidor antes de remontar um compartilhamento"
+"Verificar o estado online do servidor antes de remontar um compartilhamento"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check the online state of the server on which the share to be mounted is "
-#| "located. Smb4K attempts to connect to port 445 of the server. If that "
-#| "fails, no remouting will be done, because the server is most likely down. "
-#| "Switch this option off, if e.g. the server uses non-default ports."
+#, kde-format
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
-"Verifique o estado online do servidor onde o compartilhamento a ser montado "
+"Verifica o estado online do servidor onde o compartilhamento a ser montado "
 "está localizado. O Smb4K tenta se conectar à porta 445 do servidor. Se isso "
-"falhar, nenhuma reconexão será feita, pois o servidor provavelmente está "
+"falhar, nenhuma remontagem será feita, pois o servidor provavelmente está "
 "inativo. Desative esta opção, por exemplo, se o servidor usar portas não "
 "padrão."
 

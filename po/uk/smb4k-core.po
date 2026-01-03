@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>, 2004, 2005, 2006, 2007.
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2025-12-12 13:14+0200\n"
+"PO-Revision-Date: 2026-01-01 11:53+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2474,10 +2474,11 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Send magic packet before mounting a share"
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
+msgstr ""
+"Перевірити стан зв'язку для сервера до повторного монтування спільного "
+"ресурсу"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2488,6 +2489,12 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Перевірити, чи перебуває сервер, на якому розташований спільний ресурс який "
+"слід змонтувати, у стані з'єднання. Smb4K спробує з'єднатися з портом 445 "
+"сервера. Якщо не вдасться встановити з'єднання, повторне монтування не буде "
+"виконано, оскільки сервер, найімовірніше, не працює. Зніміть позначення з "
+"цього пункту, якщо, наприклад, сервер використовує порти, відмінні від "
+"стандартних."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295

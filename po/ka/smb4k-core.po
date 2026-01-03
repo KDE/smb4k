@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2026-01-01 06:46+0100\n"
+"PO-Revision-Date: 2026-01-02 04:55+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2421,12 +2421,7 @@ msgstr "გაზიარებულის თავიდან მიმა�
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check the online state of the server on which the share to be mounted is "
-#| "located. Smb4K attempts to connect to port 445 of the server. If that "
-#| "fails, no remouting will be done, because the server is most likely down. "
-#| "Switch this option off, if e.g. the server uses non-default ports."
+#, kde-format
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
@@ -2435,8 +2430,8 @@ msgid ""
 msgstr ""
 "შეამოწმეთ ქსელის მდგომარეობა სერვერზე, რომელზეც განთავსებულია ზიარი, რომლის "
 "მიმაგრებასაც ცდილობთ. Smb4K ცდილობს, სერვერს 445-ე პორტზე დაუკავშირდეს. თუ "
-"ეს ვერ მოხერხდება, რადგან დიდი შანსით სერვერი გამორთულია, გამორთეთ ეს "
-"პარამეტრი, რადგან დიდი შანსით სერვერი არანაგულისხმევ პორტებს იყენებს."
+"ეს ვერ მოხერხდება, თავიდან მიმაგრება არ მოხდება, რადგან დიდი შანსით სერვერი "
+"გამორთულია, გამორთეთ ეს პარამეტრი, თუ სერვერი არანაგულისხმევ პორტებს იყენებს."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295

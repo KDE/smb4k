@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2025-12-14 20:52+0200\n"
+"PO-Revision-Date: 2026-01-01 09:15+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2337,7 +2337,7 @@ msgstr "אפשר להגדיר כאן את הזמן להמתנה בין ניסי�
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr ""
+msgstr "לבדוק את מצב החיבור של השרת לפני עיגון שיתוף מחדש"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2348,6 +2348,9 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"לבדוק את מצב החיבור של השרת שבו נמצא השיתוף שמיועד לעיגון. Smb4K מנסה להתחבר "
+"לפתחה 445 בשרת. אם זה לא מצליח, לא יבוצע עיגון מחדש, כיוון שסביר להניח שהשרת "
+"לא פעיל. יש להשבית את האפשרות הזאת אם השרת משתמש לדוגמה בפתחות לא שגרתיות."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
