@@ -1,5 +1,5 @@
 # Spanish translations for smb4k-core.po package.
-# Copyright (C) 2004-2025 This file is copyright:
+# Copyright (C) 2004-2026 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
 # SPDX-FileCopyrightText: 2004 Quique <quique@sindominio.net>
@@ -10,13 +10,13 @@
 # SPDX-FileCopyrightText: 2013 Miguel Navarrete Hernandez <recados.akka@gmail.com>
 # SPDX-FileCopyrightText: 2013, 2014, 2015 Raul Gonzalez <raulgf83@gmail.com>
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2025-12-13 20:32+0100\n"
+"PO-Revision-Date: 2026-01-03 19:50+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2459,6 +2459,8 @@ msgstr "Ajuste el tiempo entre intentos de remontaje de recursos compartidos."
 #, kde-format
 msgid "Check the online state of the server before remounting a share"
 msgstr ""
+"Comprobar el estado en línea del servidor antes de remontar un recurso "
+"compartido"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2469,6 +2471,11 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Comprobar el estado en línea del servidor en el que el recurso compartido "
+"reside. Smb4K se intenta conectar al puerto 445 del servidor. Si falla, no "
+"se realizará ningún montaje, porque probablemente el servidor no esté "
+"disponible. Desactive esta opción si, por ejemplo, el servidor no usa "
+"puertos por defecto."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -3186,13 +3193,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
-
-#~ msgid "The mountpoint %1 is illegal."
-#~ msgstr "El punto de montaje %1 es ilegal."
-
-#~ msgid ""
-#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-#~ "owned by the user <b>%3</b>."
-#~ msgstr ""
-#~ "No tiene permisos para desmontar el recurso compartido <b>%1</b> de <b>"
-#~ "%2</b>, porque es propiedad del usuario <b>%3</b>."
