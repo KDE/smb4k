@@ -2958,6 +2958,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid "The mountpoint %1 is illegal."
-#~ msgstr "挂载点 %1 无效。"
