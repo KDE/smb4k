@@ -383,7 +383,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     }
 
 #if defined(Q_OS_LINUX)
-    if (share->isInaccessible()) {
+    if (!force && share->isInaccessible()) {
         force = Smb4KMountSettings::forceUnmountInaccessible();
     }
 #endif
