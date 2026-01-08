@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
-"PO-Revision-Date: 2025-12-11 05:19+0100\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
+"PO-Revision-Date: 2026-01-02 04:55+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1920,11 +1920,6 @@ msgstr "Zeroconf-ის მხარდაჭერა KDE-ის ამ ვე�
 msgid "An unknown error with Zeroconf occurred."
 msgstr "აღმოჩენილია Zeroconf-ის უცნობი შეცდომა."
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "მიმაგრების წერტილი %1 დაუშვებელია."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2420,10 +2415,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Send magic packet before mounting a share"
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr "გაზიარებულის მიმაგრებამდე ჯადოსნური პაკეტის გაგზავნა"
+msgstr "გაზიარებულის თავიდან მიმაგრების ცდამდე შეამოწმეთ სერვერის ჩართულობა"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2431,9 +2425,13 @@ msgstr "გაზიარებულის მიმაგრებამდ�
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"შეამოწმეთ ქსელის მდგომარეობა სერვერზე, რომელზეც განთავსებულია ზიარი, რომლის "
+"მიმაგრებასაც ცდილობთ. Smb4K ცდილობს, სერვერს 445-ე პორტზე დაუკავშირდეს. თუ "
+"ეს ვერ მოხერხდება, თავიდან მიმაგრება არ მოხდება, რადგან დიდი შანსით სერვერი "
+"გამორთულია, გამორთეთ ეს პარამეტრი, თუ სერვერი არანაგულისხმევ პორტებს იყენებს."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -3139,6 +3137,9 @@ msgstr "წყარო"
 #, kde-format
 msgid "Destination"
 msgstr "დანიშნულება"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "მიმაგრების წერტილი %1 დაუშვებელია."
 
 #~ msgid ""
 #~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "

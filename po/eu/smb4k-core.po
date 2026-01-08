@@ -1,16 +1,16 @@
 # Translation for smb4k-core.po to Euskara/Basque (eu).
-# Copyright (C) 2020-2025 This file is copyright:
+# Copyright (C) 2020-2026 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# SPDX-FileCopyrightText: 2023, 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022, 2023, 2024, 2025.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
-"PO-Revision-Date: 2025-12-11 18:06+0100\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
+"PO-Revision-Date: 2026-01-04 10:55+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1945,11 +1945,6 @@ msgstr "«Zeroconf» euskarria ez dago erabilgarri KDEren bertsio honetan."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "«Zeroconf»ekin errore ezezagun bat gertatu da."
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "%1 muntaia-puntua ilegala da."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2446,10 +2441,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Send magic packet before mounting a share"
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
+msgstr ""
+"Egiaztatu zerbitzariaren lerroko egoera partekatzea birmuntatu aurretik"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2457,9 +2452,14 @@ msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Egiaztatu muntatu beharreko partekatzea dagoen zerbitzariaren lerroko "
+"egoera. Smb4K zerbitzariaren 445 atakara konektatzen saiatzen da. Horrek "
+"huts egiten badu, ez da birmuntatzerik egingo, zerbitzaria ziurrenik erorita "
+"dagoelako. Itzali aukera hau, adibidez, zerbitzariak lehenetsitakoak ez "
+"diren atakak erabiltzen baditu."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -3166,6 +3166,9 @@ msgstr "Sorburua"
 #, kde-format
 msgid "Destination"
 msgstr "Jomuga"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "%1 muntaia-puntua ilegala da."
 
 #~ msgid ""
 #~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "

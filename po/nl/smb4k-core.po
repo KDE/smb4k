@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Freek de Kruijf <freekdekruijf@kde.nl>
 # Ronald Stroethoff <stroet43@zonnet.nl>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
-"PO-Revision-Date: 2025-12-11 13:07+0100\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
+"PO-Revision-Date: 2026-01-02 15:21+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1945,11 +1945,6 @@ msgstr "Ondersteuning van Zeroconf is niet beschikbaar in deze versie van KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Er is een onbekende fout opgetreden met Zeroconf."
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "Het aankoppelpunt %1 is ongeldig."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2445,11 +2440,11 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Show the file system that was used for mounting the share."
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
 msgstr ""
-"Het bestandssysteem tonen dat is gebruikt voor het aankoppelen van de share."
+"Controleer de online status van de server voor het opnieuw aankoppelen van "
+"een share."
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2457,9 +2452,14 @@ msgstr ""
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Controleer de online status van de server waarop de aan te koppelen share "
+"zich bevindt. Smb4K probeert verbinding te maken met poort 445 van de "
+"server. Als dat mislukt, wordt er niet opnieuw koppelen uitgevoerd, omdat de "
+"server hoogstwaarschijnlijk offline is. Schakel deze optie uit als de server "
+"bijvoorbeeld niet-standaardpoorten gebruikt."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -3173,6 +3173,9 @@ msgstr "Bron"
 #, kde-format
 msgid "Destination"
 msgstr "Bestemming"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Het aankoppelpunt %1 is ongeldig."
 
 #~ msgid ""
 #~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "

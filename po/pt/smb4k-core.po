@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
 "PO-Revision-Date: 2023-03-06 15:55+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -1967,11 +1967,6 @@ msgstr "O suporte para Zeroconf não está disponível nesta versão do KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ocorreu um erro desconhecido com o Zeroconf."
 
-#: smb4kmounter.cpp:381
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr ""
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2481,7 +2476,7 @@ msgstr "Enviar o 'pacote mágico' antes de montar uma partilha"
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
+"POT-Creation-Date: 2026-01-02 00:44+0000\n"
 "PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1756,12 +1756,6 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Ismeretlen hiba történt a hitelesítéskor"
 
-#: smb4kmounter.cpp:381
-#, fuzzy, kde-format
-#| msgid "The mountpoint is invalid."
-msgid "The mountpoint %1 is illegal."
-msgstr "A csatolási pont érvénytelen."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, fuzzy, kde-format
@@ -2281,7 +2275,7 @@ msgstr "A megosztás csatolásához használt fájlrendszer megjelenítése."
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
 "located. Smb4K attempts to connect to port 445 of the server. If that fails, "
-"no remouting will be done, because the server is most likely down. Switch "
+"no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
 
@@ -3003,6 +2997,11 @@ msgstr "Forrás"
 #, kde-format
 msgid "Destination"
 msgstr "Cél"
+
+#, fuzzy
+#~| msgid "The mountpoint is invalid."
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "A csatolási pont érvénytelen."
 
 #, fuzzy
 #~| msgid ""
