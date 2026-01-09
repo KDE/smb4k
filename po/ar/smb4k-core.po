@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# SPDX-FileCopyrightText: 2021, 2022, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2025-12-11 10:28+0400\n"
+"PO-Revision-Date: 2026-01-07 19:07+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2356,7 +2356,7 @@ msgstr "عين الوقت المنقضي بين محاولات إعادة ضم �
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr ""
+msgstr "تحقق من حالة الخادم عبر الإنترنت قبل إعادة ضم المشاركة"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2367,6 +2367,10 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"تحقق من حالة الخادم عبر الإنترنت الذي يوجد عليه المشاركة المراد ضمها. يحاول "
+"Smb4K الاتصال بالمنفذ 445 للخادم. إذا فشل ذلك، فلن يُعاد ضم المشاركة، لأن "
+"الخادم على الأرجح معطل. أوقف تشغيل هذا الخيار، إذا كان الخادم يستخدم منافذ "
+"غير القياسية على سبيل المثال."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295

@@ -2283,7 +2283,7 @@ msgstr "设置尝试重新挂载的间隔时间。"
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr ""
+msgstr "重新挂在共享前检查服务器的在线状态"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2294,6 +2294,9 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"检查要挂载的共享所在的服务器的在线状态。Smb4K 将尝试连接到服务器的 445 端口。"
+"如果连接失败，则意味着服务器很可能离线，因此不会重新挂载该共享。如果服务器使"
+"用了非默认的端口，请关闭此选项。"
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
