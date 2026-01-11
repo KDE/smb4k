@@ -1249,36 +1249,3 @@ msgstr "%1 lliure de %2 (usat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "Directories"
-#~ msgstr "Directoris"
-
-#~ msgid "Choose a different user"
-#~ msgstr "Trieu un usuari diferent"
-
-#~ msgid "Choose a different group"
-#~ msgstr "Trieu un grup diferent"
-
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Edita les opcions addicionals del CIFS."
-
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Opcions addicionals del CIFS"
-
-#~ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-#~ msgstr ""
-#~ "<qt>Introduïu les opcions desitjades com una llista separada per comes:</"
-#~ "qt>"
-
-#~ msgid ""
-#~ "The following entry is going to be removed from the additional options:"
-#~ "<br>%2.<br>Please read the handbook for details."
-#~ msgid_plural ""
-#~ "The following %1 entries are going to be removed from the additional "
-#~ "options:<br>%2.<br>Please read the handbook for details."
-#~ msgstr[0] ""
-#~ "L'entrada següent s'eliminarà de les opcions addicionals:<br>%2.<br> "
-#~ "Llegiu-ne els detalls al manual."
-#~ msgstr[1] ""
-#~ "Les %1 entrades següents s'eliminaran de les opcions addicionals:<br>%2."
-#~ "<br>Llegiu-ne els detalls al manual."
