@@ -3185,10 +3185,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid ""
-#~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
-#~ "owned by the user <b>%3</b>."
-#~ msgstr ""
-#~ "No es permet desmuntar la compartició <b>%1</b> des de <b>%2</b>. És "
-#~ "propietat de l'usuari <b>%3</b>."
