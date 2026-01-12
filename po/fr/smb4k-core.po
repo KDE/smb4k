@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2026-01-03 13:35+0100\n"
+"PO-Revision-Date: 2026-01-10 20:44+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -2016,7 +2016,7 @@ msgid ""
 "share will have to those of the current user (you)."
 msgstr ""
 "Définir l'identifiant du propriétaire et du groupe qui sera appliqué aux "
-"fichiers et aux dossiers de ce partage monté avec vos identifiants  "
+"fichiers et aux dossiers de ce partage monté avec vos identifiants "
 "d'utilisateur courant (vous)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
@@ -3032,8 +3032,8 @@ msgstr[1] "%1 partages ont été montés."
 #, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] "%1 partage a été démonté."
-msgstr[1] "%1 partages ont été démontés."
+msgstr[0] "%1 partage a été libéré."
+msgstr[1] "%1 partages ont été libérés."
 
 #: smb4knotification.cpp:154
 #, kde-format
