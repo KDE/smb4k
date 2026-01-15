@@ -1,5 +1,5 @@
 # translation of smb4k.po to Italian
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Paolo Zamponi <feus73@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Paolo Zamponi <feus73@gmail.com>
 # Isidoro Russo <risidoro@despammed.com>, 2004.
 # Innocenzo Ventre <innocenzo.ventre@gmail.com>, 2012.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2012.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-01 00:42+0000\n"
-"PO-Revision-Date: 2025-05-10 08:11+0200\n"
+"PO-Revision-Date: 2026-01-10 15:47+0100\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,31 +30,29 @@ msgid "Your emails"
 msgstr "feus73@gmail.com,"
 
 #: helpers/smb4kmounthelper.cpp:68
-#, fuzzy, kde-format
-#| msgid "The wallet is not in use."
+#, kde-format
 msgid "The computer is not online."
-msgstr "Il portafoglio non è in uso."
+msgstr "Il computer non è in linea."
 
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Impossibile creare punto di montaggio per la condivisione %1."
 
 #: helpers/smb4kmounthelper.cpp:83
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Il processo di montaggio non può essere avviato."
+msgstr "Impossibile trovare il comando di montaggio."
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Sono state passate delle opzioni di montaggio proibite."
 
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Qualcosa non ha funzionato col ticket di Kerberos fornito."
 
 #: helpers/smb4kmounthelper.cpp:179
 #, kde-format
@@ -62,22 +60,19 @@ msgid "The mount process could not be started."
 msgstr "Il processo di montaggio non può essere avviato."
 
 #: helpers/smb4kmounthelper.cpp:192
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "Il punto di montaggio %1 non è valido."
+msgstr "Il punto di montaggio %1 non è illegale."
 
 #: helpers/smb4kmounthelper.cpp:198
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Il processo di smontaggio non può essere avviato."
+msgstr "Impossibile trovare il comando di smontaggio."
 
 #: helpers/smb4kmounthelper.cpp:204
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "Il processo di smontaggio è andato in crash."
+msgstr "Sono state passate delle opzioni di smontaggio proibite."
 
 #: helpers/smb4kmounthelper.cpp:246
 #, kde-format
