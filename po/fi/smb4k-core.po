@@ -1,7 +1,7 @@
 # KDE Finnish translation sprint participants:
 # Author: Artnay
 # Author: Lliehu
-# SPDX-FileCopyrightText: 2012, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2012, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2025-07-10 19:56+0300\n"
+"PO-Revision-Date: 2026-01-05 20:43+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1937,30 +1937,25 @@ msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconfissa tapahtui tuntematon virhe."
 
 #: smb4kmounter.cpp:422
-#, fuzzy, kde-format
-#| msgid "Unmounting %1 failed."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "Irrottaminen epäonnistui: %1."
+msgstr "Liitospiste %1 on virheellinen."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Show the owner and group"
+#, kde-format
 msgid "Set the user and group ID"
-msgstr "Näytä omistaja ja ryhmä"
+msgstr "Aseta käyttäjä- ja ryhmätunnisteet"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Tämä on sen käyttäjän numeerinen tunniste, jolle liitetyn jaon tiedostot ja "
-"kansiot tulevat kuulumaan."
+"Aseta liitetyn jaon tiedostojen ja kansioiden käyttäjä- ja ryhmätunnisteet "
+"nykyiseksi käyttäjäksi (sinä)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -3094,10 +3089,9 @@ msgid "The process reported an unknown error."
 msgstr "Prosessi ilmoitti tuntemattoman virheen."
 
 #: smb4knotification.cpp:477
-#, fuzzy, kde-format
-#| msgid "<p>Executing an action with root privileges failed.</p>"
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "<p>Toiminnon suoritus pääkäyttäjäoikeuksin epäonnistui.</p>"
+msgstr "Toiminnon suoritus pääkäyttäjäoikeuksin epäonnistui%1%2"
 
 #: smb4knotification.cpp:500
 #, kde-format
