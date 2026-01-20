@@ -1,7 +1,7 @@
 # KDE Finnish translation sprint participants:
 # Author: Artnay
 # Author: Lliehu
-# SPDX-FileCopyrightText: 2012, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2012, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015, 2016.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-01 00:42+0000\n"
-"PO-Revision-Date: 2025-05-25 11:19+0300\n"
+"PO-Revision-Date: 2026-01-10 21:06+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -32,28 +32,27 @@ msgstr "translator@legisign.org,jiri.gronroos+kde@iki.fi,lasse.liehu@gmail.com"
 #: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "Tietokone ei ole verkossa."
 
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Jaolle %1 ei voitu luoda liitospistettä."
 
 #: helpers/smb4kmounthelper.cpp:83
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Liittämisprosessia ei voitu käynnistää."
+msgstr "mount-komentoa ei löytynyt."
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Välitettiin virheellisiä liitosvalintoja."
 
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Tarjotussa Kerberos-lipussa on jotakin vikaa."
 
 #: helpers/smb4kmounthelper.cpp:179
 #, kde-format
@@ -61,22 +60,19 @@ msgid "The mount process could not be started."
 msgstr "Liittämisprosessia ei voitu käynnistää."
 
 #: helpers/smb4kmounthelper.cpp:192
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "Liitoskohta %1 on virheellinen."
+msgstr "Liitospiste %1 on virheellinen."
 
 #: helpers/smb4kmounthelper.cpp:198
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Irrottamisprosessia ei voitu käynnistää"
+msgstr "umount-komentoa ei löytynyt."
 
 #: helpers/smb4kmounthelper.cpp:204
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "Irrottamisprosessi kaatui."
+msgstr "Välitettiin virheellisiä irrotusvalintoja."
 
 #: helpers/smb4kmounthelper.cpp:246
 #, kde-format
@@ -377,16 +373,14 @@ msgstr "CIFSin UNIX-laajennustuki"
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
-#, fuzzy, kde-format
-#| msgid "User ID:"
+#, kde-format
 msgid "User ID:"
-msgstr "Käyttäjätunnus:"
+msgstr "Käyttäjätunniste:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
-#, fuzzy, kde-format
-#| msgid "Group ID:"
+#, kde-format
 msgid "Group ID:"
 msgstr "Ryhmätunniste:"
 
