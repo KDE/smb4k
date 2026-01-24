@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:52+0000\n"
-"PO-Revision-Date: 2017-09-04 09:41+0200\n"
+"PO-Revision-Date: 2026-01-23 14:41+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -19,49 +19,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 3.8\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:58
 #: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
-msgstr ""
+msgstr "<font size=\"-1\">ties %1</font>"
 
 #: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
-msgstr ""
+msgstr "Grįžti"
 
 #: package/contents/ui/BookmarksPage.qml:59
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Edit bookmarks"
-msgstr "Žymelės"
+msgstr "Taisyti žymeles"
 
 #: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
-msgstr ""
+msgstr "Konfigūracijos dialogas"
 
 #: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
-msgstr ""
+msgstr "Tinklo aplinka"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:93
 #: package/contents/ui/SharesViewItemDelegate.qml:77
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Bookmark"
-msgstr "Žymelės"
+msgstr "Žymelė"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
-msgstr ""
+msgstr "Peržiūra"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
-msgstr ""
+msgstr "Konfigūruoti"
 
 #: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
-msgstr "Nuskaityti dar kartą"
+msgstr "Peržiūrėti dar kartą"
 
 #: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
@@ -69,17 +65,15 @@ msgstr "Nutraukti"
 
 #: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
-msgstr ""
+msgstr "Eiti vienu lygmeniu aukštyn"
 
 #: package/contents/ui/NetworkBrowserPage.qml:114
-#, fuzzy
-#| msgid "Mount Dialog"
 msgid "Open the mount dialog"
-msgstr "Prijungimo dialogas"
+msgstr "Atverti prijungimo dialogą"
 
 #: package/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
-msgstr ""
+msgstr "Prijungti viešiniai"
 
 #: package/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
@@ -87,19 +81,19 @@ msgstr "Žymelės"
 
 #: package/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
-msgstr ""
+msgstr "Profiliai"
 
 #: package/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
-msgstr ""
+msgstr "Konfigūracija"
 
 #: package/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
-msgstr ""
+msgstr "(aktyvus)"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
-msgstr ""
+msgstr "Sinchronizuoti"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
@@ -107,7 +101,7 @@ msgstr "Atjungti"
 
 #: package/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
-msgstr ""
+msgstr "Atjungti visus viešinius"
 
 #, fuzzy
 #~| msgid "Bookmarks"
