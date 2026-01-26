@@ -3,21 +3,21 @@
 # Marc Hansen <marcgie@mail.berlios.de>, 2003, 2004, 2005.
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
-# SPDX-FileCopyrightText: 2009, 2010, 2023, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2009, 2010, 2023, 2024, 2025, 2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
 # Stefan Asserhall <stefan.asserhall@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-02 00:44+0000\n"
-"PO-Revision-Date: 2025-06-28 22:16+0200\n"
+"PO-Revision-Date: 2026-01-23 20:34+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -1912,23 +1912,19 @@ msgstr "Ett okänt fel uppstod med Zeroconf."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Show the owner and group"
+#, kde-format
 msgid "Set the user and group ID"
-msgstr "Visa användare och grupp"
+msgstr "Ange användar- och grupp-id"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Detta är användar-id (ett tal) som filerna och katalogerna på den monterade "
-"delade resursen kommer att ha."
+"Ange användar-id och grupp-id som filerna och katalogerna på den monterade "
+"delade resursen kommer att ha till de för nuvarande användare (du)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -2407,10 +2403,9 @@ msgstr "Ange tiden som ska gå mellan försök att montera delade resurser."
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Show the file system that was used for mounting the share."
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr "Visa det filsystem som användes för att montera den delade resursen."
+msgstr "Kontrollera serverns nätstatus innan en delad resurs monteras igen"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2421,6 +2416,11 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Kontrollera nätstatus för den server där den delade resursen som ska "
+"monteras finns. Smb4K försöker ansluta till port 445 på servern. Om det "
+"misslyckas sker ingen återmontering, eftersom servern troligtvis är nere. "
+"Stäng av alternativet om servern t.ex. använder portar som inte är "
+"standardportar."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -3066,10 +3066,10 @@ msgid "The process reported an unknown error."
 msgstr "Processen rapporterade ett okänt fel."
 
 #: smb4knotification.cpp:477
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "Misslyckades utföra en åtgärd med rättigheter som systemadministratör."
+msgstr ""
+"Misslyckades utföra en åtgärd med rättigheter som systemadministratör%1%2"
 
 #: smb4knotification.cpp:500
 #, kde-format

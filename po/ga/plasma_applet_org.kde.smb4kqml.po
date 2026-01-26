@@ -1,128 +1,101 @@
-# Lithuanian translations for l package.
-# Copyright (C) 2014 This_file_is_part_of_KDE
-# This file is distributed under the same license as the l package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Automatically generated, 2014.
-# Liudas Ališauskas <liudas@aksioma.lt>, 2014.
-# Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>, 2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: l 10n\n"
+"Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:52+0000\n"
-"PO-Revision-Date: 2026-01-23 14:41+0200\n"
-"Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
-"Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
-"Language: lt\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Irish Gaelic <kde-i18n-doc@kde.org>\n"
+"Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
-"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.8\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
+"3 : 4\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:58
 #: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
-msgstr "<font size=\"-1\">ties %1</font>"
+msgstr ""
 
 #: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
-msgstr "Grįžti"
+msgstr ""
 
 #: package/contents/ui/BookmarksPage.qml:59
 msgid "Edit bookmarks"
-msgstr "Taisyti žymeles"
+msgstr ""
 
 #: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
-msgstr "Konfigūracijos dialogas"
+msgstr ""
 
 #: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
-msgstr "Tinklo aplinka"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:93
 #: package/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
-msgstr "Žymelė"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
-msgstr "Peržiūra"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
-msgstr "Konfigūruoti"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
-msgstr "Peržiūrėti dar kartą"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
-msgstr "Nutraukti"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
-msgstr "Eiti vienu lygmeniu aukštyn"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
-msgstr "Atverti prijungimo dialogą"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
-msgstr "Prijungti viešiniai"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
-msgstr "Žymelės"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
-msgstr "Profiliai"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
-msgstr "Konfigūracija"
+msgstr ""
 
 #: package/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
-msgstr "(aktyvus)"
+msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
-msgstr "Sinchronizuoti"
+msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
-msgstr "Atjungti"
+msgstr ""
 
 #: package/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
-msgstr "Atjungti visus viešinius"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Žymelės"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Žymelės"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Delete Bookmark"
-#~ msgstr "Žymelės"
-
-#~ msgid "Back"
-#~ msgstr "Atgal"
-
-#~ msgid "Edit"
-#~ msgstr "Keisti"
-
-#~ msgid "Up"
-#~ msgstr "Aukštyn"
+msgstr ""
