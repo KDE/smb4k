@@ -45,7 +45,7 @@
 
   <copyright>
     <year
->2005-2024</year>
+>2005-2026</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -53,9 +53,9 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2024-12-30</date>
+>2026-01-26</date>
   <releaseinfo
->&smb4k; 4.0.0</releaseinfo
+>&smb4k; 4.0.5</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -82,11 +82,22 @@
 >Inleiding</title>
 
   <para
->Dit handboek beschrijft &smb4k; 4.0 en in een bepaalde mate eerdere versies.</para>
-  <para
 >&smb4k; is een geavanceerd bladerprogramma voor het nabije netwerk en een hulpprogramma voor aankoppelen van <ulink url="http://www.samba.org"
 >Samba</ulink
 >-shares. Het biedt vele handige functies om uw leven aangenamer te maken in een door &Windows; gedomineerde omgeving:</para>
+
+  <para
+>Dit handboek beschrijft &smb4k; 4.0.5 en later. In een bepaalde mate, is het ook juist voor eerdere versies.</para>
+
+  <note>
+    <para
+>In 2025 werden verschillende beveiligingslekken gevonden in het KAuth-mount-helperprogramma (zie het <ulink url="https://security.opensuse.org/2025/12/10/smb4k-major-issues-in-kauth-helper.html"
+>rapport</ulink
+> van het SUSE-beveiligingsteam) en deze werden verholpen in versie 4.0.5. Omdat de functionaliteit voor het aan- en afkoppelen beperkt is hebben deze beveiligingsverbeteringen een merkbare impact op het hele programma.</para>
+  </note>
+
+  <para
+>&smb4k; heeft de volgende mogelijkheden:</para>
 
   <itemizedlist>
     <listitem
@@ -143,7 +154,7 @@
 ></listitem>
     <listitem
 ><para
->Ondersteuning van geavanceerde aankoppelopties</para
+>Ondersteuning van geselecteerde opties voor aankoppelen</para
 ></listitem>
     <listitem
 ><para
@@ -635,7 +646,7 @@
           </term>
           <listitem>
             <para
->Afkoppelen van de geselecteerde shares. Deze knop is standaard onzichtbaar en komt pas in de plaats van de actie <guimenuitem
+>Afkoppelen van de geselecteerde shares. door het systeem aangekoppelde shares of die door andere gebruikers kunnen niet afgekoppeld worden. Deze actie is standaard onzichtbaar en zal alleen zichtbaar in plaats van de actie <guimenuitem
 >Aankoppelen</guimenuitem
 > als minstens één aangekoppelde share is geselecteerd.</para>
           </listitem>
@@ -1090,7 +1101,7 @@
           </term>
           <listitem>
             <para
->Koppelt de geselecteerde gedeelde mappen af. Als u in het venster geen gedeelde mappen hebt geselecteerd dan is deze knop niet te selecteren.</para>
+>De geselecteerde shares afkoppelen. Deze actie is beperkt tot de shares die u hebt aangekoppeld. Dus, door het systeem aangekoppelde of die behoren tot andere gebruikers kunnen niet afgekoppeld worden. Als geen share geselecteerd is in de weergave van shares, dan is deze knop uitgeschakeld.</para>
             <para
 >Lees de sectie <link linkend="shares_view_unmounting"
 >Shares afkoppelen</link
@@ -1112,7 +1123,7 @@
           </term>
           <listitem>
             <para
->Koppelt alle shares tegelijk af. Als u geen shares heeft aangekoppeld dan is deze knop niet te selecteren.</para>
+>Koppelt al uw shares tegelijk af. Shares aangekoppeld door het systeem of die behoren aan andere gebruikers kunnen niet afgekoppeld worden door deze actie. Als u geen shares heeft aangekoppeld dan is deze knop uitgeschakeld.</para>
             <para
 >Lees de sectie <link linkend="shares_view_unmounting"
 >Shares afkoppelen</link
@@ -1293,9 +1304,7 @@
       <para
 >Shares die eigendom zijn van een andere gebruiker worden alleen getoond als u de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
-> wijzigt. In de standaard configuratie, is het u niet toegestaan om deze shares af te koppelen, maar u kunt ook <link linkend="configuration_page_mounting_basic_settings_behavior"
->dit gedrag wijzigen</link
->.</para>
+> wijzigt om ze te tonen. Het is u niet toegestaan om deze shares af te koppelen.</para>
     </sect2>
 
 <!-- 
@@ -1350,7 +1359,7 @@
 >Shares afkoppelen</title>
 
       <para
->U kunt een of meerdere shares afkoppelen door naar keuze de sneltoets of het menu-item <menuchoice
+>U kunt een selectie van uw shares afkoppelen door de actie <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1360,17 +1369,7 @@
 ><guimenuitem
 >Afkoppelen</guimenuitem
 ></menuchoice
-> in te drukken. Standaard is de mogelijkheid tot het afkoppelen van shares beperkt tot diegene waarvan u de eigenaar bent. Maar, u kunt dit wijzigen door de <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
-> in het configuratievenster te wijzigen. Als u de mogelijkheid tot het afkoppelen van shares waarvan anderen gebruikers de eigenaar zijn, heeft ingeschakeld, dan krijgt u een waarschuwing te zien voor het eigenlijke afkoppelen. Als u door gaat zal de share definitief afgekoppeld worden. Denk dus twee keer na alvorens u beslist om deze shares af te koppelen!</para>
-      <para
->&smb4k; biedt de mogelijkheid om shares geforceerd af te koppelen (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
-> in het configuratievenster wijzigen. &smb4k; zal daarna een <ulink url="man:/umount"
->langzame afkoppeling</ulink
-> uitvoeren op niet-toegankelijke shares.</para>
-      <para
->Alle shares kunnen in één keer afgekoppeld worden door te klikken op de actie <menuchoice
+> te gebruiken of allen met de actie <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1380,7 +1379,17 @@
 ><guimenuitem
 >Alles afkoppelen</guimenuitem
 ></menuchoice
->. Afhankelijk van uw instellingen zal deze ook externe en ontoegankelijke shares afkoppelen.</para>
+>.</para>
+      <note
+><para
+>Houd er rekening mee dat u alleen de shares kunt afkoppelen die u zelf hebt aangekoppeld. Systeem-shares of shares die door andere gebruikers zijn aangekoppeld, kunnen niet worden afgekoppeld.</para
+></note>
+      <para
+>&smb4k; biedt de mogelijkheid om shares geforceerd af te koppelen (alleen in &Linux;). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>instellingen</link
+> in het configuratievenster wijzigen. &smb4k; zal daarna een <ulink url="man:/umount"
+>langzame afkoppeling</ulink
+> uitvoeren op niet-toegankelijke shares.</para>
       <para
 >Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker daarvan een <link linkend="notifications"
 >melding</link
@@ -1596,9 +1605,7 @@
           </term>
           <listitem>
             <para
->Koppelt alle shares tegelijk af. Afhankelijk van uw <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
->, zal &smb4k; proberen om of alleen de shares die uw eigendom zijn of alle getoonde shares af te koppelen.</para>
+>Koppelt al uw shares tegelijk af. Shares aangekoppeld door het systeem of die behoren aan andere gebruikers kunnen niet afgekoppeld worden door deze actie. Als u geen shares heeft aangekoppeld dan is deze knop uitgeschakeld.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1618,7 +1625,7 @@
           </term>
           <listitem>
             <para
->De share afkoppelen.</para>
+>De share afkoppelen. Deze actie is uitgeschakeld voor shares die niet uw eigendom zijn.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1930,7 +1937,7 @@
     <para
 >De werkbalk bevat de actie <guibutton
 >Alles afkoppelen</guibutton
-> die alle shares in één keer laat afkoppelen.</para>
+> die al uw shares in één keer laat afkoppelen.</para>
   </sect2>
 
 <!-- 
@@ -3691,46 +3698,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       <para
 >De instellingen in dit tabblad zijn hetzelfde voor alle ondersteunde besturingssystemen.</para>
       
-      <sect3 id="configuration_page_mounting_basic_settings_directories">
-        <title
->Mappen</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Aankoppelvoorvoegsel</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Dit de basismap (aankoppelpunt) waar &smb4k; de externe shares zal aankoppelen. U kunt dit wijzigen door op de knop met de map-pictogram te klikken of door direct een nieuw pad in het tekstvak in te voeren. Pad-variabelen zoals <envar
->$HOME</envar
-> worden herkent.</para>
-              <para
->Standaard: <filename class="directory"
->$HOME/smb4k/</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Maak gegenereerde subdirectories altijd lower case</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->De namen van alle submappen aangemaakt door &smb4k; onder het aankoppelpunt zullen met kleine letters worden getoond.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
       <sect3 id="configuration_page_mounting_basic_settings_behavior">
         <title
 >Gedrag</title>
@@ -3805,22 +3772,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <listitem>
               <para
 >Forceert het afkoppelen van ontoegankelijke shares (alleen &Linux;). In het geval dat een share ontoegankelijk is, zal een langzame afkoppeling worden gedaan. Voordat de echte afkoppeling wordt gedaan, zal een waarschuwingsdialoog getoond worden waarin wordt gevraagd om het afkoppelen goed te keuren.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Sta het ontkoppelen van gedeelde mappen van andere gebruikers toe</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Deze optie staat het afkoppelen van gedeelde mappen toe die door andere gebruikers zijn aangekoppeld</para>
-              <para
->WEES VOORZICHTIG MET HET GEBRUIK HIERVAN!</para>
               <para
 >Standaard: niet geselecteerd</para>
             </listitem>
@@ -4230,34 +4181,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Poort voor bestandssysteem</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Optie: <option
->port=POORT</option
-></para>
-              <para
->Hier stelt u het poort-nummer in dat wordt gebruikt door <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> voor het aankoppelen van een externe share. De standaard poort-nummer (445) zou bij alle moderne besturingssystemen moeten werken. Als u problemen heeft, probeer dan het poort-nummer 139. Als de problemen alleen bij enkele hosts optreden, dan raden wij aan om dit niet te wijzigen en de bewerker voor <link linkend="custom_settings"
->Aangepaste instellingen</link
-> te gebruiken om individuele poort-nummers voor de problematische hosts in te stellen.</para>
-              <para
->Standaard: niet geselecteerd; POORT: 445</para>
-            </listitem>
-          </varlistentry>
         </variablelist>
       </sect3>
 
@@ -4289,40 +4212,22 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Gebruikers-id</guibutton
+>De gebruiker- en groep-ID tonen</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Optie: <option
+>Opties: <option
 >uid=UID</option
+> en <option
+>gid=GID</option
 ></para>
             <para
->Stelt in wie de eigenaar van de bestanden en mappen in het bestandssysteem is. Standaard wordt uw UID gebruikt. Om de UID te wijzigen, drukt u zoekknop in en kiest in de keuzelijst er een uit.</para>
+>&smb4k; gebruikt uw gebruiker- en groep-ID voor het aankoppelen als deze instelling is ingeschakeld. Deze worden hier alleen ter informatie weergegeven en kunnen niet worden gewijzigd.</para>
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd; UID: uw UID</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Groep-ID</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Optie: <option
->uid=GID</option
-></para>
-            <para
->Stelt de groep in die eigenaar is van de bestanden en mappen In het bestandssysteem. Standaard wordt uw GID gebruikt. Om de GID te wijzigen druk op de zoekknop en kies er een uit het afrolmenu.</para>
-            <para
->In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
-            <para
->Standaard: geselecteerd; GID: uw GID</para>
+>Standaard: geselecteerd; UID: uw UID, GID: uw GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4335,10 +4240,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Optie: <option
->file_mode=ARG</option
+>file_mode=MODUS</option
 ></para>
             <para
->Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus (file_mode), moet u de manpagina's <ulink url="man:/mount(8)"
+>Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 3 of 4 cijfers bevatten. De SUID, SGID en sticky-bit zijn niet toegestaan. Om meer te weten te komen over de bestandsmodus (file_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4371,10 +4276,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Optie: <option
->dir_mode=ARG</option
+>dir_mode=MODUS</option
 ></para>
             <para
->Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over het mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount(8)"
+>Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 3 of 4 cijfers bevatten. De SUID, SGID en sticky-bit zijn niet toegestaan. Om meer te weten te komen over het mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -5071,30 +4976,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Extra opties</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Hier kunt u extra opties instellen voor het gebruik van <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
->. Door te klikken op de bewerk-knop rechts van het invoervak opent u een invoerdialoog waar u de opties door komma' s gescheiden kunt invoeren. Nadat u heeft geklikt op <guibutton
->OK</guibutton
-> in het invoerdialoog, zullen de opties worden gecontroleerd tegen een lijst met toegestane waarden (witte lijst). Alle geldige items worden geaccepteerd en ingevoerd in de regelbewerking.</para>
-            <para
->Standaard: niet geselecteerd; leeg</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
     
@@ -5124,30 +5005,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <term>
               <menuchoice
 ><guibutton
->Gebruikers-id</guibutton
+>De gebruiker- en groep-ID tonen</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Stelt in wie de eigenaar van de bestanden en mappen in het bestandssysteem is. Standaard wordt uw UID gebruikt. Om de UID te wijzigen, drukt u zoekknop in en kiest in de keuzelijst er een uit.</para>
+>Opties: <option
+>-u UID</option
+> en <option
+>-g GID</option
+></para>
               <para
->Standaard: uw UID</para>
+>&smb4k; gebruikt uw gebruiker- en groep-ID voor het aankoppelen als deze instelling is ingeschakeld. Deze worden hier alleen ter informatie weergegeven en kunnen niet worden gewijzigd.</para>
+              <para
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
+              <para
+>Standaard: geselecteerd; UID: uw UID, GID: uw GID</para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Groep-ID</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Stelt de groep in die eigenaar is van de bestanden en mappen In het bestandssysteem. Standaard wordt uw GID gebruikt. Om de GID te wijzigen druk op de zoekknop en kies er een uit het afrolmenu.</para>
-              <para
->Standaard: uw GID</para>
-            </listitem>
-          </varlistentry>
+
+<!-- CONTINUE HERE -->
+
           <varlistentry>
             <term>
               <menuchoice
@@ -5157,7 +5035,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus, moet u de manpagina's <ulink url="man:/mount_smbfs"
+>Optie: <option
+>-f MODUS</option
+></para>
+              <para
+>Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 3 of 4 cijfers bevatten. De SUID, SGID en sticky-bit zijn niet toegestaan. Om meer te weten te komen over de bestandsmodus, moet u de manpagina's <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5187,7 +5069,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount_smbfs"
+>Optie: <option
+>-d MODUS</option
+></para>
+              <para
+>Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 3 of 4 cijfers bevatten. De SUID, SGID en sticky-bit zijn niet toegestaan. Om meer te weten te komen over de mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5224,6 +5110,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></menuchoice>
             </term>
             <listitem>
+              <para
+>Optie: <option
+>-E cs1:cs2</option
+></para>
               <para
 >De gespecificeerde lokale tekenset en die van de server gebruiken.</para>
               <para
@@ -8504,9 +8394,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Afkoppelen van de geselecteerde share. Deze knop is standaard onzichtbaar en komt pas in de plaats van de knop <guimenuitem
+>Afkoppelen van de geselecteerde shares. door het systeem aangekoppelde shares of die door andere gebruikers kunnen niet afgekoppeld worden. Deze actie is standaard onzichtbaar en zal alleen zichtbaar in plaats van de actie <guimenuitem
 >Aankoppelen</guimenuitem
-> als de share aangekoppeld is.</para>
+> als minstens één aangekoppelde share is geselecteerd.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8586,9 +8476,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Koppelt een of meerdere geselecteerde shares af. Standaard is de mogelijkheid tot het afkoppelen van shares beperkt tot die waarvan de gebruiker eigenaar is. Maar, u kunt dit wijzigen door de <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
-> in het configuratievenster te wijzigen. Als u in het venster geen shares heeft geselecteerd dan is deze knop niet te selecteren.</para>
+>De geselecteerde shares afkoppelen. Deze actie is beperkt tot de shares die u hebt aangekoppeld. Dus, door het systeem aangekoppelde of die behoren tot andere gebruikers kunnen niet afgekoppeld worden. Als geen share geselecteerd is in de weergave van shares, dan is deze knop uitgeschakeld.</para>
           <para
 >In &smb4k; biedt de mogelijkheid voor het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
