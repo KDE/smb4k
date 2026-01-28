@@ -20,7 +20,7 @@ Features
 - Special handling of home shares
 - Ability to bookmark favorite shares
 - System tray widget
-- Support of advanced mount options
+- Support of selected mount options
 - Support of printer shares
 - Support of several secure storage solutions for the login credentials via QtKeychain
 - Synchronization of a remote share with a local copy and vice versa
@@ -45,8 +45,8 @@ Requirements
 ------------
 To compile Smb4K, you need:
 - CMake (version >= 3.16, https://www.cmake.org)
-- GNU Compiler Collection (version >= 5.0, https://gcc.gnu.org)
-  or clang/LLVM (version >= 3.3, https://clang.llvm.org)
+- GNU Compiler Collection (version >= 11.0, https://gcc.gnu.org)
+  or clang/LLVM (version >= 5.0, https://clang.llvm.org)
 
 Smb4K build depends on:
 - Qt (version >= 6.6.2, https://www.qt.io): QtCore, QtGui, QtNetwork, QtPrintSupport, QtQml, QtWidgets
@@ -71,7 +71,7 @@ The full list of changes can be found in the Git log at https://invent.kde.org/n
 
 Configuration, Compilation and Installation
 -------------------------------------------
-To configure, compile and install Smb4K follow the steps below. Make sure, you have read the Requirements section before you start.
+To configure, compile and install Smb4K follow the steps below. Make sure that you have read the Requirements section before you start.
 
 1. Download the version of Smb4K you are interested in and extract the source tarball:
    ``` bash
