@@ -73,7 +73,7 @@
 
   <copyright>
     <year
->2005-2024</year>
+>2005-2026</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -81,9 +81,9 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->08/12/2024</date>
+>26/01/2026</date>
   <releaseinfo
->&smb4k; 4.0.0</releaseinfo
+>&smb4k; 4.0.5</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -110,11 +110,22 @@
 >Introdução</title>
 
   <para
->Este manual descreve o &smb4k; 4.0 e, em alguns aspectos, as versões anteriores.</para>
-  <para
 >O &smb4k; é um navegador avançado da vizinhança da rede e um utilitário de montagem de compartilhamentos <ulink url="http://www.samba.org"
 >Samba</ulink
->. Oferece muitas funcionalidades úteis que facilitam sua vida em um ambiente de rede dominado pelo &Windows;:</para>
+>. Oferece muitas funcionalidades úteis que facilitam sua vida em um ambiente de rede dominado pelo &Windows;.</para>
+
+  <para
+>Este manual descreve o &smb4k; 4.0.5 e versões posteriores. Em certa medida, também é válido para versões anteriores.</para>
+
+  <note>
+    <para
+>Em 2025, várias vulnerabilidades de segurança foram encontradas no programa auxiliar de montagem KAuth (consulte o <ulink url="https://security.opensuse.org/2025/12/10/smb4k-major-issues-in-kauth-helper.html"
+>relatório</ulink
+> da Equipe de Segurança da SUSE) e foram corrigidas na versão 4.0.5. Como o conjunto de recursos para montagens e desmontagens foi restringido, essas melhorias de segurança têm um impacto notável em todo o programa.</para>
+  </note>
+
+  <para
+>O &smb4k; possui as seguintes funcionalidades:</para>
 
   <itemizedlist>
     <listitem
@@ -171,7 +182,7 @@
 ></listitem>
     <listitem
 ><para
->Suporte para opções de montagem avançadas</para
+>Suporte para opções de montagem selecionadas</para
 ></listitem>
     <listitem
 ><para
@@ -663,7 +674,7 @@
           </term>
           <listitem>
             <para
->Desmonta os compartilhamentos selecionados. Este botão não aparece por padrão e só ficará visível, em vez da ação <guimenuitem
+>Desmonta os compartilhamentos selecionados. Montagens do sistema, ou compartilhamentos que foram montados por outros usuários não podem ser desmontados. Esta ação não aparece por padrão e só ficará visível, em vez da ação <guimenuitem
 >Montar</guimenuitem
 >, se pelo menos um compartilhamento montado estiver selecionado.</para>
           </listitem>
@@ -782,7 +793,7 @@
       <para
 >Neste caso, um determinado compartilhamento está protegida com uma senha. Nesse caso, irá aparecer uma <link linkend="network_neighborhood_browser_authentication"
 >janela de senha</link
-> e, nesse caso, você terá que inserir o nome de usuário (caso já não esteja presente) e a senha corretos. O &smb4k; irá continuar com a montagem do compartilhamento, a menos que seja inserido um usuário e senha inválidos. Se o processo de montagem for bem-sucedido, o usuário será notificado e o compartilhamento irá aparecer na área de <link linkend="shares_view"
+> e, nesse caso, você terá que inserir o nome de usuário (caso já não esteja presente) e a senha corretos. O &smb4k; irá continuar com a montagem do compartilhamento, a menos que seja inserido um usuário e senha inválidos. Se o processo de montagem for bem-sucedido, você será notificado e o compartilhamento irá aparecer na área de <link linkend="shares_view"
 >Compartilhamentos montados</link
 >. Se a montagem falhar, uma notificação com a mensagem de erro retornada pelo <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -1117,7 +1128,7 @@
           </term>
           <listitem>
             <para
->Desmonta os compartilhamentos selecionados. Se nenhum compartilhamento estiver selecionado na visualização de compartilhamentos, este botão estará desativado.</para>
+>Desmonta os compartilhamentos selecionados. Esta ação está restrita aos compartilhamentos que você montou. Portanto, compartilhamentos do sistema ou que pertencem a outros usuários não podem ser desmontados. Se nenhum compartilhamento estiver selecionado na visualização de compartilhamentos, este botão estará desativado.</para>
             <para
 >Leia a seção <link linkend="shares_view_unmounting"
 >Desmontar compartilhamentos</link
@@ -1139,7 +1150,7 @@
           </term>
           <listitem>
             <para
->Desmonta todos os compartilhamentos de uma vez. Se não tiver nenhum compartilhamento montado, este botão aparece desativado.</para>
+>Desmonta todos os seus compartilhamentos de uma só vez. Compartilhamentos do sistema ou pertencentes a outros usuários não podem ser desmontados com esta ação. Se você não tiver montado nenhum compartilhamento, este botão estará desativado.</para>
             <para
 >Leia a seção <link linkend="shares_view_unmounting"
 >Desmontar compartilhamentos</link
@@ -1320,9 +1331,7 @@
       <para
 >Os compartilhamentos pertencentes a outros usuários só são exibidos se você ajustou as <link linkend="configuration_page_mounting_basic_settings_behavior"
 >configurações</link
-> para exibi-los. Na configuração padrão, você não tem permissão para desmontar esses compartilhamentos, mas também pode <link linkend="configuration_page_mounting_basic_settings_behavior"
-> alterar esse comportamento</link
->.</para>
+> para mostrá-los. Você não tem permissão para desmontar esses compartilhamentos.</para>
     </sect2>
 
 <!-- 
@@ -1377,7 +1386,7 @@
 >Desmontar compartilhamentos</title>
 
       <para
->Um ou vários compartilhamentos selecionados podem ser desmontados clicando na ação <menuchoice
+>Você pode desmontar uma seleção de seus compartilhamentos usando a ação <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1387,27 +1396,27 @@
 ><guimenuitem
 >Desmontar</guimenuitem
 ></menuchoice
-> ou pressionando a combinação de teclas respectiva. Por padrão, a habilidade de desmontar um compartilhamento está restrita a aqueles que lhe pertencem. Este comportamento pode ser alterado na <link linkend="configuration_page_mounting_basic_settings_behavior"
->janela de configuração</link
->. Se você ativar a desmontagem de compartilhamentos que pertencem a outros usuários, você receberá uma janela de aviso antes da desmontagem de fato. Se você prosseguir, o compartilhamento será definitivamente desmontado. Portanto, por favor, pense duas vezes antes de decidir desmontar esses compartilhamentos!</para>
-      <para
->O &smb4k; também oferece a capacidade de forçar a desmontagem de compartilhamentos (apenas no &Linux;). Isto pode ser útil com compartilhamentos inacessíveis, que não podem ser desmontados da forma normal. Para ativar esta funcionalidade, você precisa modificar as <link linkend="configuration_page_mounting_basic_settings_behavior"
->configurações</link
-> na janela de configuração. O &smb4k; então executará um <ulink url="man:/umount(8)"
->desmontagem preguiçosa</ulink
-> em compartilhamentos inacessíveis.</para>
-      <para
->Todos os compartilhamentos poderão ser desmontadas de uma vez se clicar na ação <menuchoice
+> ou todos eles com a ação <menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl; <keycap
+>&Ctrl;<keycap
 >N</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
 >Desmontar tudo</guimenuitem
 ></menuchoice
->. Dependendo da sua configuração, esta ação irá também desmontar os compartilhamentos de outros usuários e inacessíveis.</para>
+>.</para>
+      <note
+><para
+>Observe que você só pode desmontar os compartilhamentos que você mesmo montou. Compartilhamentos do sistema ou compartilhamentos montados por outros usuários não podem ser desmontados.</para
+></note>
+      <para
+>O &smb4k; também oferece a capacidade de forçar a desmontagem de compartilhamentos (apenas no &Linux;). Isto pode ser útil com compartilhamentos inacessíveis, que não podem ser desmontados da forma normal. Para ativar esta funcionalidade, você precisa modificar as <link linkend="configuration_page_mounting_basic_settings_behavior"
+>configurações</link
+> na janela de configuração. O &smb4k; então executará um <ulink url="man:/umount(8)"
+>desmontagem preguiçosa</ulink
+> em compartilhamentos inacessíveis.</para>
       <para
 >Após o processo de desmontagem ocorrer, o usuário é <link linkend="notifications"
 >notificado</link
@@ -1623,9 +1632,7 @@
           </term>
           <listitem>
             <para
->Desmonta todos os compartilhamentos de uma vez. Dependendo da sua <link linkend="configuration_page_mounting_basic_settings_behavior"
->configuração</link
->, o &smb4k; irá tentar desmontar os compartilhamentos que lhe pertencem ou então todos os visíveis.</para>
+>Desmonta todos os seus compartilhamentos de uma só vez. Compartilhamentos do sistema ou pertencentes a outros usuários não podem ser desmontados com esta ação. Se você não tiver montado nenhum compartilhamento, este botão estará desativado.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1645,7 +1652,7 @@
           </term>
           <listitem>
             <para
->Desmonta o compartilhamento.</para>
+>Desmonta o compartilhamento. Esta ação está desativada para compartilhamentos que não pertencem a você.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1959,7 +1966,7 @@
     <para
 >A barra de ferramentas contém a ação <guibutton
 >Desmontar tudo</guibutton
->, que permite-lhe desmontar todos os compartilhamentos ao mesmo tempo.</para>
+>, que permite-lhe desmontar todos os seus compartilhamentos ao mesmo tempo.</para>
   </sect2>
 
 <!-- 
@@ -2097,8 +2104,9 @@
 ><guimenuitem
 >Adicionar favorito</guimenuitem
 ></menuchoice
->. No &plasmoid;, você clica na ação respectiva ao lado do nome do item. Uma janela aparecerá onde você poderá adicionar uma legenda e atribuir o favorito a uma categoria. Faça um clique-duplo em um favorito para abrir o widget de entrada.</para>
-
+>. No &plasmoid;, você clica na ação respectiva ao lado do nome do item. A janela <guilabel
+>Adicionar aos favoritos</guilabel
+> será exibida, listando todos os compartilhamentos que serão adicionados aos favoritos.</para>
       <screenshot>
         <screeninfo
 >Captura de tela da janela de adição de favoritos</screeninfo>
@@ -2111,7 +2119,20 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
+      <para
+>Para adicionar um rótulo ou atribuir uma categoria, clique duas vezes em um marcador. O widget de entrada será aberto e você poderá editar as entradas correspondentes.</para>
+      <screenshot>
+        <screeninfo
+>Captura de tela da janela de adição de favoritos com o widget de entrada aberto</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_add_bookmark_dialog_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Janela de adição de favoritos com o widget de entrada aberto</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
       <para
 >Definir categorias pode ajudar você a organizar os favoritos. No <link linkend="bookmarks_menu"
 >menu de favoritos</link
@@ -3710,46 +3731,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       <para
 >As configurações nesta aba são as mesmas para todos os sistemas operacionais suportados.</para>
       
-      <sect3 id="configuration_page_mounting_basic_settings_directories">
-        <title
->Pastas</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Prefixo de montagem</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Esta é a pasta de base (prefixo de montagem) onde o &smb4k; irá montar os compartilhamentos remotos. Ele poderá ser alterado se usar o pedido de &URL; (Clique no botão com o ícone de pastas) ou indicando diretamente a localização nova no campo de texto. As variáveis de ambiente, como a <envar
->$HOME</envar
->, são reconhecidas.</para>
-              <para
->Por padrão: <filename class="directory"
->$HOME/smb4k/</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Forçar as subpastas geradas para estar em minúsculas</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Todas as subpastas criadas pelo &smb4k;, abaixo do prefixo de montagem, aparecerão em minúsculas.</para>
-              <para
->Por padrão: não selecionada</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
       <sect3 id="configuration_page_mounting_basic_settings_behavior">
         <title
 >Comportamento</title>
@@ -3824,22 +3805,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <listitem>
               <para
 >Força a desmontagem dos compartilhamentos inacessíveis (somente no &Linux;). Caso um compartilhamento esteja inacessível, uma desmontagem preguiçosa é realizada. Antes da desmontagem ser de fato realizada, uma janela de alerta é mostrada solicitando que se aprove a desmontagem.</para>
-              <para
->Por padrão: não selecionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Permitir a desmontagem de compartilhamentos que pertençam a outros usuários</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Esta opção permitirá a desmontagem de compartilhamentos que foram montados por outros usuários.</para>
-              <para
->USE COM MUITO CUIDADO!</para>
               <para
 >Por padrão: não selecionada</para>
             </listitem>
@@ -4249,34 +4214,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Porta do sistema de arquivos</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opção: <option
->port=PORTA</option
-></para>
-              <para
->Define o número da porta que é usado pelo <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> ao montar um compartilhamento remoto. O número da porta padrão (445) deverá funcionar para todos os sistemas operacionais recentes. Se você tiver algum problema, tente mudar o número da porta para 139. Se os problemas só ocorrerem com algumas máquinas, recomendamos não alterar esta opção e usar a janela <link linkend="custom_settings"
->Configurações personalizadas</link
-> para definir individualmente o número das portas para as máquinas problemáticas.</para>
-              <para
->Padrão: não selecionado; PORTA: 445</para>
-            </listitem>
-          </varlistentry>
         </variablelist>
       </sect3>
 
@@ -4308,40 +4245,22 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->ID do Usuário</guibutton
+>Define o ID do usuário e do grupo.</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Opção: <option
+>Opções: <option
 >uid=UID</option
+> e <option
+>gid=GID</option
 ></para>
             <para
->Define o dono dos arquivos e pastas no sistema de arquivos. Por padrão, o seu UID é usado. Para mudar o UID, clique no botão de pesquisa e escolha um na lista respectiva.</para>
+>O &smb4k; usa seu ID de usuário e grupo para montagem se essa configuração estiver ativada. Eles são exibidos aqui apenas para fins informativos e não podem ser alterados.</para>
             <para
 >Caso o suporte para as extensões Unix &CIFS; esteja selecionado, esta configuração é desativada.</para>
             <para
->Padrão: selecionado; UID: seu UID</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->ID do Grupo</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Opção: <option
->uid=GID</option
-></para>
-            <para
->Define o grupo dos arquivos e pastas no sistema de arquivos. Por padrão, o seu GID é usado. Para mudar o GID, clique no botão de pesquisa e escolha um na lista respectiva.</para>
-            <para
->Caso o suporte para as extensões Unix &CIFS; esteja selecionado, esta configuração é desativada.</para>
-            <para
->Padrão: selecionada; GID: seu GID</para>
+>Padrão: selecionado; UID: seu UID, GID: seu GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4354,10 +4273,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Opção: <option
->file_mode=ARGUMENTOS</option
+>file_mode=MODO</option
 ></para>
             <para
->Define as permissões que são aplicadas aos arquivos. O valor é indicado em octal e deverá ter 4 algarismos. Para aprender mais sobre o modo dos arquivos (file_mode), você deverá ler a página de manual do <ulink url="man:/mount(8)"
+>Define as permissões que são aplicadas aos arquivos. O valor é indicado em octal e deverá ter 3 ou 4 dígitos. SUID, SGID e sticky bit não são permitidos. Para aprender mais sobre o modo dos arquivos (file_mode), você deverá ler a página de manual do <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4390,10 +4309,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Opção: <option
->dir_mode=ARGUMENTOS</option
+>dir_mode=MODO</option
 ></para>
             <para
->Define as permissões que são aplicadas às pastas. O valor é indicado em octal e deverá ter 4 algarismos. Para aprender mais sobre o modo das pastas (dir_mode), você deverá ler a página de manual do <ulink url="man:/mount(8)"
+>Define as permissões que são aplicadas às pastas. O valor é indicado em octal e deverá ter 3 ou 4 dígitos. SUID, SGID e sticky bit não são permitidos. Para aprender mais sobre o modo das pastas (dir_mode), você deverá ler a página de manual do <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -5090,30 +5009,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Opções adicionais</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Define opções adicionais para usar com o <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
->. Se clicar no botão de edição, à direita do campo de texto, abre uma janela onde poderá indicar as opções a serem fornecidas em uma lista separadas por vírgulas. Depois de clicar em <guibutton
->OK</guibutton
-> nessa janela, as opções serão comparadas com uma lista de opções permitidas. Todas as inscrições válidas são aceitas e inseridas na edição de linha.</para>
-            <para
->Padrão: não selecionado; vazio</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
     
@@ -5143,30 +5038,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <term>
               <menuchoice
 ><guibutton
->ID do Usuário</guibutton
+>Define o ID do usuário e do grupo.</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Define o dono dos arquivos e pastas no sistema de arquivos. Por padrão, o seu UID é usado. Para mudar o UID, clique no botão de pesquisa e escolha um na lista respectiva.</para>
+>Opções: <option
+>-u UID</option
+> e <option
+>-g GID</option
+></para>
               <para
->Por padrão: o seu UID</para>
+>O &smb4k; usa seu ID de usuário e grupo para montagem se essa configuração estiver ativada. Eles são exibidos aqui apenas para fins informativos e não podem ser alterados.</para>
+              <para
+>Caso o suporte para as extensões Unix &CIFS; esteja selecionado, esta configuração é desativada.</para>
+              <para
+>Padrão: selecionado; UID: seu UID, GID: seu GID</para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->ID do Grupo</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Define o grupo dos arquivos e pastas no sistema de arquivos. Por padrão, o seu GID é usado. Para mudar o GID, clique no botão de pesquisa e escolha um na lista respectiva.</para>
-              <para
->Por padrão: o seu GID</para>
-            </listitem>
-          </varlistentry>
+
+<!-- CONTINUE HERE -->
+
           <varlistentry>
             <term>
               <menuchoice
@@ -5176,7 +5068,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Define as permissões que são aplicadas aos arquivos. O valor é indicado em octal e deverá ter 4 algarismos. Para aprender mais sobre o modo dos arquivos, você deverá ler a página de manual do <ulink url="man:/mount_smbfs"
+>Opção: <option
+>-f MODO</option
+></para>
+              <para
+>Define as permissões que são aplicadas aos arquivos. O valor é indicado em octal e deverá ter 3 ou 4 dígitos. SUID, SGID e sticky bit não são permitidos. Para aprender mais sobre o modo dos arquivos, você deverá ler a página de manual do <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5206,7 +5102,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Define as permissões que são aplicadas às pastas. O valor é indicado em octal e deverá ter 4 algarismos. Para aprender mais sobre o modo das pastas, você deverá ler a página de manual do <ulink url="man:/mount_smbfs"
+>Opção: <option
+>-d MODO</option
+></para>
+              <para
+>Define as permissões que são aplicadas às pastas. O valor é indicado em octal e deverá ter 3 ou 4 dígitos. SUID, SGID e sticky bit não são permitidos. Para aprender mais sobre o modo das pastas, você deverá ler a página de manual do <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5243,6 +5143,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></menuchoice>
             </term>
             <listitem>
+              <para
+>Opção: <option
+>-E cs1:cs2</option
+></para>
               <para
 >Usa os conjuntos de caracteres locais e do servidor especificados.</para>
               <para
@@ -8515,9 +8419,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Desmonta o compartilhamento selecionado. Este botão não aparece por padrão e só ficará visível, em vez da ação <guimenuitem
+>Desmonta os compartilhamentos selecionados. Montagens do sistema, ou compartilhamentos que foram montados por outros usuários não podem ser desmontados. Esta ação não aparece por padrão e só ficará visível, em vez da ação <guimenuitem
 >Montar</guimenuitem
->, se o compartilhamento respectivo estiver montado.</para>
+>, se pelo menos um compartilhamento montado estiver selecionado.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8597,9 +8501,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Desmonta um ou vários compartilhamentos selecionados. A capacidade de desmontar os compartilhamentos está restrita por padrão às que pertencem ao usuário. Contudo, você poderá alterar esse comportamento se mudar as <link linkend="configuration_page_mounting_basic_settings_behavior"
->configurações</link
-> na janela de configuração. Se nenhum compartilhamento estiver selecionado na área de compartilhamento, este botão fica desativado.</para>
+>Desmonta os compartilhamentos selecionados. Esta ação está restrita aos compartilhamentos que você montou. Portanto, compartilhamentos do sistema ou que pertencem a outros usuários não podem ser desmontados. Se nenhum compartilhamento estiver selecionado na visualização de compartilhamentos, este botão estará desativado.</para>
           <para
 >O &smb4k; também oferece a capacidade de forçar a desmontagem de compartilhamentos (apenas no &Linux;). Isto pode ser útil com compartilhamentos inacessíveis, que não podem ser desmontados da forma normal. Para ativar esta funcionalidade, você precisa modificar as <link linkend="configuration_page_mounting_basic_settings_behavior"
 >configurações</link

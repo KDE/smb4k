@@ -45,7 +45,7 @@
 
   <copyright>
     <year
->2005-2024</year>
+>2005-2026</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -53,9 +53,9 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->8 de desembre de 2024</date>
+>26 de gener de 2026</date>
   <releaseinfo
->&smb4k; 4.0.0</releaseinfo
+>&smb4k; 4.0.5</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -82,11 +82,22 @@
 >Introducció</title>
 
   <para
->Aquest manual descriu el &smb4k; 4.0 i, en alguns aspectes, algunes de les versions anteriors.</para>
-  <para
 >El &smb4k; és un explorador avançat del veïnatge de xarxa i utilitat de muntatge de les comparticions <ulink url="http://www.samba.org"
 >Samba</ulink
->. Proporciona moltes característiques útils que faciliten la vostra vida en un entorn de xarxa dominat per &Windows;:</para>
+>. Proporciona moltes característiques útils que faciliten la vostra vida en un entorn de xarxa dominat per &Windows;.</para>
+
+  <para
+>Aquest manual descriu el &smb4k; 4.0.5 i posteriors. En alguns aspectes, també és correcte per a versions anteriors.</para>
+
+  <note>
+    <para
+>El 2025 es van trobar diverses vulnerabilitats de seguretat al programa d'ajuda de muntatge KAuth (vegeu l'informe <ulink url="https://security.opensuse.org/2025/12/10/smb4k-major-issues-in-kauth-helper.html"
+></ulink
+> de l'equip de seguretat de SUSE) i es van corregir a la versió 4.0.5. Atès que s'ha restringit el conjunt de característiques de muntatges i desmuntatges, aquestes millores de seguretat tenen un impacte notable en tot el programa.</para>
+  </note>
+
+  <para
+>El &smb4k; té les característiques següents:</para>
 
   <itemizedlist>
     <listitem
@@ -143,7 +154,7 @@
 ></listitem>
     <listitem
 ><para
->Implementació de les opcions avançades de muntatge</para
+>Implementació d'opcions seleccionades de muntatge</para
 ></listitem>
     <listitem
 ><para
@@ -639,7 +650,7 @@
           </term>
           <listitem>
             <para
->Desmunta les comparticions seleccionades. De manera predeterminada, aquesta acció és invisible, i només serà visible en lloc de l'acció <guimenuitem
+>Desmunta les comparticions seleccionades. Els muntatges del sistema o les comparticions que han estat muntades per altres usuaris no es poden desmuntar. De manera predeterminada, aquesta acció és invisible, i només serà visible en lloc de l'acció <guimenuitem
 >Munta</guimenuitem
 > quan almenys estigui seleccionada una compartició muntada.</para>
           </listitem>
@@ -759,7 +770,7 @@
       <para
 >En cas que una compartició estigui protegida amb contrasenya, apareixerà el <link linkend="network_neighborhood_browser_authentication"
 >diàleg de contrasenya</link
-> i caldrà introduir el nom d'usuari (si no n'hi ha cap) i la contrasenya correcta. El &smb4k; procedirà al muntatge de la compartició a menys que s'hagi introduït un nom d'usuari o contrasenya incorrectes. En aquest cas, el diàleg d'autenticació tornarà a aparèixer. Si el procés de muntatge s'ha realitzat correctament, es mostrarà una notificació a l'usuari i la compartició apareixerà a la vista de les <link linkend="shares_view"
+> i caldrà introduir el nom d'usuari (si no n'hi ha cap) i la contrasenya correcta. El &smb4k; procedirà al muntatge de la compartició a menys que s'hagi introduït un nom d'usuari o contrasenya incorrectes. En aquest cas, el diàleg d'autenticació tornarà a aparèixer. Si el procés de muntatge s'ha realitzat correctament, es mostrarà una notificació i la compartició apareixerà a la vista de les <link linkend="shares_view"
 >comparticions muntades</link
 >. Si el muntatge falla, una notificació amb el missatge d'error serà retornada per <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -1094,7 +1105,7 @@
           </term>
           <listitem>
             <para
->Desmunta les comparticions seleccionades. Si no hi ha seleccionada cap compartició a la vista de comparticions, aquest botó estarà inhabilitat.</para>
+>Desmunta les comparticions seleccionades. Aquesta acció està restringida a les comparticions que heu muntat. Per tant, els muntatges del sistema o les comparticions que pertanyen a altres usuaris no es poden desmuntar. Si no hi ha cap compartició seleccionada a la vista de comparticions, aquest botó està desactivat.</para>
             <para
 >Per a més detalls, llegiu la secció <link linkend="shares_view_unmounting"
 >Desmuntar les comparticions</link
@@ -1116,7 +1127,7 @@
           </term>
           <listitem>
             <para
->Desmunta totes les comparticions alhora. Si no teniu cap compartició muntada, aquest botó restarà inhabilitat.</para>
+>Desmunta totes les comparticions alhora. Els muntatges del sistema o les comparticions que pertanyen a altres usuaris no es poden desmuntar. Si no teniu cap compartició muntada, aquest botó estarà desactivat.</para>
             <para
 >Per a més detalls, llegiu la secció <link linkend="shares_view_unmounting"
 >Desmuntar les comparticions</link
@@ -1297,9 +1308,7 @@
       <para
 >Només es mostraran les comparticions que són propietat d'un altre usuari si heu ajustat les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
-> per a mostrar-les. A la configuració predeterminada, no tindreu permís per a desmuntar aquestes comparticions, però també podeu <link linkend="configuration_page_mounting_basic_settings_behavior"
->canviar aquest comportament</link
->.</para>
+> per a mostrar-les. No teniu permís per a desmuntar aquestes accions.</para>
     </sect2>
 
 <!-- 
@@ -1354,27 +1363,17 @@
 >Desmuntar les comparticions</title>
 
       <para
->Es poden desmuntar una o múltiples comparticions seleccionades fent clic a l'acció <menuchoice
+>Podeu desmuntar una selecció de les vostres comparticions utilitzant l'acció <menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl;<keycap
+>&Ctrl; <keycap
 >U</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
 >Desmunta</guimenuitem
 ></menuchoice
-> o prement la seva drecera de teclat. De manera predeterminada, la possibilitat de desmuntar una compartició està restringida a les que són propietat vostra. Aquest comportament es pot modificar al <link linkend="configuration_page_mounting_basic_settings_behavior"
->diàleg de configuració</link
->. Si heu habilitat el desmuntatge de les comparticions que són propietat d'altres usuaris, se us mostrarà un diàleg d'avís abans del desmuntatge real. Si continueu, la compartició es desmuntarà definitivament. Per tant, penseu-ho dues vegades abans de decidir desmuntar aquestes comparticions!</para>
-      <para
->El &smb4k; també proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
->opcions de configuració</link
-> al diàleg de configuració. El &smb4k; realitzarà un <ulink url="man:/umount(8)"
->desmuntatge fluix</ulink
-> de les comparticions inaccessibles.</para>
-      <para
->Es poden desmuntar totes les comparticions alhora fent clic al botó de l'acció <menuchoice
+> o totes amb l'acció <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1384,7 +1383,17 @@
 ><guimenuitem
 >Desmunta-ho tot</guimenuitem
 ></menuchoice
->. Depenent de les opcions de configuració, també es desmuntaran les comparticions alienes i inaccessibles.</para>
+>.</para>
+      <note
+><para
+>Tingueu en compte que només podeu desmuntar les comparticions que heu muntat. No es poden desmuntar les comparticions del sistema o les comparticions que han estat muntades per altres usuaris.</para
+></note>
+      <para
+>El &smb4k; també proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
+>opcions de configuració</link
+> al diàleg de configuració. El &smb4k; realitzarà un <ulink url="man:/umount(8)"
+>desmuntatge fluix</ulink
+> de les comparticions inaccessibles.</para>
       <para
 >Després d'un procés de desmuntatge amb èxit, se li <link linkend="notifications"
 >notificarà</link
@@ -1602,9 +1611,7 @@
           </term>
           <listitem>
             <para
->Desmunta totes les comparticions alhora. Depenent de les <link linkend="configuration_page_mounting_basic_settings_behavior"
->opcions de configuració</link
->, el &smb4k; només intentarà desmuntar les comparticions que us pertanyin o totes les que es mostren.</para>
+>Desmunta totes les comparticions alhora. Els muntatges del sistema o les comparticions que pertanyen a altres usuaris no es poden desmuntar. Si no teniu cap compartició muntada, aquest botó estarà desactivat.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1624,7 +1631,7 @@
           </term>
           <listitem>
             <para
->Desmunta la compartició.</para>
+>Desmunta la compartició. Aquesta acció està desactivada per a les comparticions que no us pertanyen.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1942,7 +1949,7 @@
     <para
 >La barra d'eines conté l'acció <guibutton
 >Desmunta-ho tot</guibutton
->, la qual permet desmuntar totes les comparticions alhora.</para>
+>, la qual permet desmuntar totes les vostres comparticions alhora.</para>
   </sect2>
 
 <!-- 
@@ -2086,8 +2093,9 @@
 ></menuchoice
 >. Al <application
 >plasmoide</application
->, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà un diàleg on podreu afegir una etiqueta i assignar l'adreça d'interès a una categoria. Feu doble clic en una adreça d'interès per a obrir el giny d'entrada.</para>
-
+>, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà el diàleg de <guilabel
+>Adreces d'interès de les comparticions</guilabel
+>, llistant totes les comparticions que es poden marcar de nou.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diàleg d'addició d'adreces d'interès</screeninfo>
@@ -2100,7 +2108,20 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
+      <para
+>Per a afegir una etiqueta o assignar una categoria, feu doble clic en una adreça d'interès. S'obrirà el giny d'entrada i podreu editar les entrades corresponents.</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del diàleg d'afegir adreces d'interès amb el giny d'entrada obert</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_add_bookmark_dialog_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Diàleg d'afegir adreces d'interès amb el giny d'entrada obert</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
       <para
 >El fet de definir categories pot ajudar a organitzar les adreces d'interès. Al menú <link linkend="bookmarks_menu"
 >Adreces d'interès</link
@@ -3697,46 +3718,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       <para
 >Les opcions de configuració en aquesta pestanya són les mateixes per a tots els sistemes operatius admesos.</para>
       
-      <sect3 id="configuration_page_mounting_basic_settings_directories">
-        <title
->Directoris</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Prefix de muntatge</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Aquesta és la carpeta base (prefix de muntatge) on el &smb4k; muntarà les comparticions remotes. Es pot canviar utilitzant l'&URL; sol·licitant (feu clic al botó amb la icona de carpeta) o introduint directament el camí nou al quadre de text. Es reconeixen les variables de camí com <envar
->$HOME</envar
->.</para>
-              <para
->Omissió: <filename class="directory"
->$HOME/smb4k/</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Obliga que els subdirectoris generats estiguin en minúscules</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Tots els subdirectoris creats pel &smb4k; per sota del prefix de muntatge estaran en lletra minúscula.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
       <sect3 id="configuration_page_mounting_basic_settings_behavior">
         <title
 >Comportament</title>
@@ -3811,22 +3792,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <listitem>
               <para
 >Força el desmuntatge de comparticions inaccessibles (només al &Linux;). En cas d'una compartició inaccessible, es porta a terme un desmuntatge fluix. Abans de portar a terme el desmuntatge real, es mostrarà un diàleg d'avís sol·licitant l'aprovació del desmuntatge.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Permet el desmuntatge de les comparticions que són propietat d'altres usuaris</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Aquesta opció permet desmuntar les comparticions que hagin estat muntades pels altres usuaris.</para>
-              <para
->UTILITZAR AMB EXTREMA PRECAUCIÓ!</para>
               <para
 >Omissió: no seleccionada</para>
             </listitem>
@@ -4236,34 +4201,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Port del sistema de fitxers</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->port=PORT</option
-></para>
-              <para
->Estableix el número de port que utilitza <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> quan es munta una compartició remota. El número de port predeterminat (445) hauria de funcionar per a tots els sistemes operatius moderns. Si experimenteu problemes, proveu establint el número de port a 139. Si els problemes només es produeixen amb alguns servidors, es recomana deixar aquesta opció intacta i utilitzar el diàleg <link linkend="custom_settings"
->Configuració personalitzada</link
-> per a definir individualment els números de port per als servidors problemàtics.</para>
-              <para
->Omissió: no seleccionat; PORT: 445</para>
-            </listitem>
-          </varlistentry>
         </variablelist>
       </sect3>
 
@@ -4295,40 +4232,22 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->ID de l'usuari</guibutton
+>Estableix l'ID d'usuari i de grup</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Opció: <option
+>Opcions: <option
 >uid=UID</option
+> i <option
+>gid=GID</option
 ></para>
             <para
->Estableix el propietari dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre UID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
+>El &smb4k; utilitza l'ID d'usuari i de grup per al muntatge si aquesta opció està activada. Es mostren aquí només amb finalitats informatives i no es poden canviar.</para>
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat; UID: el vostre UID</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->ID del grup</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Opció: <option
->uid=GID</option
-></para>
-            <para
->Estableix el grup dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre GID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
-            <para
->En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
-            <para
->Omissió: seleccionat; GID: el vostre GID</para>
+>Omissió: seleccionat; UID: el vostre UID, GID: el vostre GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4341,10 +4260,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Opció: <option
->file_mode=ARG</option
+>file_mode=MODE</option
 ></para>
             <para
->Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer (file_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
+>Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 3 o 4 dígits. No es permeten SUID, SGID ni el bit apegalós. Per a obtenir més informació sobre el mode de fitxer (file_mode), cal llegir les pàgines de manual <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4377,10 +4296,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Opció: <option
->dir_mode=ARG</option
+>dir_mode=MODE</option
 ></para>
             <para
->Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
+>Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 3 o 4 dígits. No es permeten SUID, SGID ni el bit apegalós. Per a obtenir més informació sobre el mode de directori (dir_mode), cal llegir les pàgines de manual <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -5077,30 +4996,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Opcions addicionals</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Definiu opcions addicionals per a utilitzar-les amb <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
->. En fer clic al botó d'edició a la dreta de la línia d'edició, s'obrirà un diàleg d'entrada on les opcions s'hauran de proporcionar en una llista separada per comes. Després, feu clic a <guibutton
->D'acord</guibutton
-> al diàleg d'entrada, les opcions seran comprovades contra una llista blanca. Totes les entrades vàlides seran acceptades i introduïdes a la línia d'edició.</para>
-            <para
->Omissió: no seleccionada; buida</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
     
@@ -5130,30 +5025,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <term>
               <menuchoice
 ><guibutton
->ID de l'usuari</guibutton
+>Estableix l'ID d'usuari i de grup</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Estableix el propietari dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre UID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
+>Opcions: <option
+>-u UID</option
+> i <option
+>-g GID</option
+></para>
               <para
->Omissió: el vostre UID</para>
+>El &smb4k; utilitza l'ID d'usuari i de grup per al muntatge si aquesta opció està activada. Es mostren aquí només amb finalitats informatives i no es poden canviar.</para>
+              <para
+>En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
+              <para
+>Omissió: seleccionat; UID: el vostre UID, GID: el vostre GID</para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->ID del grup</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Estableix el grup dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre GID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
-              <para
->Omissió: el vostre GID</para>
-            </listitem>
-          </varlistentry>
+
+<!-- CONTINUE HERE -->
+
           <varlistentry>
             <term>
               <menuchoice
@@ -5163,7 +5055,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer, haureu de llegir les pàgines de manual <ulink url="man:/mount_smbfs"
+>Opció: <option
+>-f MODE</option
+></para>
+              <para
+>Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 3 o 4 dígits. No es permeten SUID, SGID ni el bit apegalós. Per a obtenir més informació sobre el mode de fitxer, cal llegir les pàgines de manual <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5193,7 +5089,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount_smbfs"
+>Opció: <option
+>-d MODE</option
+></para>
+              <para
+>Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 3 o 4 dígits. No es permeten SUID, SGID ni el bit apegalós. Per a obtenir més informació sobre el mode de directori, cal llegir les pàgines de manual <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5230,6 +5130,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></menuchoice>
             </term>
             <listitem>
+              <para
+>Opció: <option
+>-E cs1:cs2</option
+></para>
               <para
 >Utilitza el joc de caràcters local i del servidor.</para>
               <para
@@ -8502,9 +8406,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Desmunta la compartició seleccionada. De manera predeterminada, aquesta acció és invisible i només serà visible en lloc de l'acció <guimenuitem
+>Desmunta les comparticions seleccionades. Els muntatges del sistema o les comparticions que han estat muntades per altres usuaris no es poden desmuntar. De manera predeterminada, aquesta acció és invisible, i només serà visible en lloc de l'acció <guimenuitem
 >Munta</guimenuitem
-> quan la compartició ja es trobi muntada.</para>
+> quan almenys estigui seleccionada una compartició muntada.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8584,9 +8488,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Desmunteu una o múltiples comparticions seleccionades. La possibilitat de desmuntar les comparticions està restringida de manera predeterminada a les que són propietat de l'usuari. Tanmateix, podreu canviar aquest comportament canviant les <link linkend="configuration_page_mounting_basic_settings_behavior"
->opcions de configuració</link
-> al diàleg de configuració. Si no hi ha cap compartició seleccionada a la vista de les comparticions, aquest botó restarà inhabilitat.</para>
+>Desmunta les comparticions seleccionades. Aquesta acció està restringida a les comparticions que heu muntat. Per tant, els muntatges del sistema o les comparticions que pertanyen a altres usuaris no es poden desmuntar. Si no hi ha cap compartició seleccionada a la vista de comparticions, aquest botó està desactivat.</para>
           <para
 >El &smb4k; proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
