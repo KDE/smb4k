@@ -1154,7 +1154,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &, bool, bool, QVariantM
 }
 #endif
 
-void Smb4KMounter::checkMountedShare(const SharePtr &share)
+void Smb4KMounter::checkMountedShare(const SharePtr &share) const
 {
     d->storageInfo.setPath(share->path());
 
@@ -1186,7 +1186,7 @@ void Smb4KMounter::checkMountedShare(const SharePtr &share)
     }
 }
 
-const QString Smb4KMounter::generateMountPoint(const QUrl &url)
+const QString Smb4KMounter::generateMountPoint(const QUrl &url) const
 {
     QString mountPoint = p->userMountPrefix;
     mountPoint += QDir::separator();
@@ -1196,6 +1196,44 @@ const QString Smb4KMounter::generateMountPoint(const QUrl &url)
     mountPoint += url.path();
 
     return QDir::cleanPath(mountPoint);
+}
+
+SharePtr Smb4KMounter::createShare(const QString &mountPoint) const
+{
+    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
+    KMountPoint::Ptr mp = mountPoints.findByPath(mountPoint);
+
+    SharePtr share = SharePtr(new Smb4KShare());
+    share->setUrl(QUrl(mp->mountedFrom()));
+    share->setPath(mp->mountPoint());
+    share->setMounted(true);
+
+    QStringList mountOptions = mp->mountOptions();
+
+    for (const QString &option : std::as_const(mountOptions)) {
+        if (option.startsWith(QStringLiteral("domain=")) || option.startsWith(QStringLiteral("workgroup="))) {
+            share->setWorkgroupName(option.section(QStringLiteral("="), 1, 1).trimmed());
+        } else if (option.startsWith(QStringLiteral("addr="))) {
+            share->setHostIpAddress(option.section(QStringLiteral("="), 1, 1).trimmed());
+        } else if (option.startsWith(QStringLiteral("username=")) || option.startsWith(QStringLiteral("user="))) {
+            share->setUserName(option.section(QStringLiteral("="), 1, 1).trimmed());
+        }
+    }
+
+    // Work around empty usernames
+    if (share->userName().isEmpty()) {
+        share->setUserName(QStringLiteral("guest"));
+    }
+
+    QDir dir(p->userMountPrefix);
+
+    if (share->path().startsWith(dir.canonicalPath())) {
+        share->setForeign(false);
+    } else {
+        share->setForeign(true);
+    }
+
+    return share;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1211,22 +1249,12 @@ void Smb4KMounter::slotStartJobs()
 
 void Smb4KMounter::slotAboutToQuit()
 {
-    //
-    // Abort any actions
-    //
     abort();
 
-    //
-    // Check if the user wants to remount shares and save the
-    // shares for remount if so.
-    //
     if (Smb4KMountSettings::remountShares()) {
         saveSharesForRemount();
     }
 
-    //
-    // Unmount the shares if the user chose to do so.
-    //
     if (Smb4KMountSettings::unmountSharesOnExit()) {
         unmountAllShares(true);
     }
@@ -1312,40 +1340,8 @@ void Smb4KMounter::slotConfigChanged()
 
         for (const QString &mountPoint : std::as_const(mountPoints)) {
             if (!findShareByPath(mountPoint)) {
-                KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
-                KMountPoint::Ptr mp = mountPoints.findByPath(mountPoint);
-
-                SharePtr share = SharePtr(new Smb4KShare());
-                share->setUrl(QUrl(mp->mountedFrom()));
-                share->setPath(mp->mountPoint());
-                share->setMounted(true);
-
-                QStringList mountOptions = mp->mountOptions();
-
-                for (const QString &option : std::as_const(mountOptions)) {
-                    if (option.startsWith(QStringLiteral("domain=")) || option.startsWith(QStringLiteral("workgroup="))) {
-                        share->setWorkgroupName(option.section(QStringLiteral("="), 1, 1).trimmed());
-                    } else if (option.startsWith(QStringLiteral("addr="))) {
-                        share->setHostIpAddress(option.section(QStringLiteral("="), 1, 1).trimmed());
-                    } else if (option.startsWith(QStringLiteral("username=")) || option.startsWith(QStringLiteral("user="))) {
-                        share->setUserName(option.section(QStringLiteral("="), 1, 1).trimmed());
-                    }
-                }
-
-                // Work around empty usernames
-                if (share->userName().isEmpty()) {
-                    share->setUserName(QStringLiteral("guest"));
-                }
-
+                SharePtr share = createShare(mountPoint);
                 checkMountedShare(share);
-
-                QDir dir(p->userMountPrefix);
-
-                if (share->canonicalPath().startsWith(dir.canonicalPath())) {
-                    share->setForeign(false);
-                } else {
-                    share->setForeign(true);
-                }
 
                 if (!share->isForeign() || Smb4KMountSettings::detectAllShares()) {
                     if (addMountedShare(share)) {
@@ -1390,37 +1386,8 @@ void Smb4KMounter::slotShareMounted(const QString &mountPoint)
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
     KMountPoint::Ptr mp = mountPoints.findByPath(mountPoint);
 
-    SharePtr share = SharePtr(new Smb4KShare());
-    share->setUrl(QUrl(mp->mountedFrom()));
-    share->setPath(mp->mountPoint());
-    share->setMounted(true);
-
-    QStringList mountOptions = mp->mountOptions();
-
-    for (const QString &option : std::as_const(mountOptions)) {
-        if (option.startsWith(QStringLiteral("domain=")) || option.startsWith(QStringLiteral("workgroup="))) {
-            share->setWorkgroupName(option.section(QStringLiteral("="), 1, 1).trimmed());
-        } else if (option.startsWith(QStringLiteral("addr="))) {
-            share->setHostIpAddress(option.section(QStringLiteral("="), 1, 1).trimmed());
-        } else if (option.startsWith(QStringLiteral("username=")) || option.startsWith(QStringLiteral("user="))) {
-            share->setUserName(option.section(QStringLiteral("="), 1, 1).trimmed());
-        }
-    }
-
-    // Work around empty usernames
-    if (share->userName().isEmpty()) {
-        share->setUserName(QStringLiteral("guest"));
-    }
-
+    SharePtr share = createShare(mountPoint);
     checkMountedShare(share);
-
-    QDir dir(p->userMountPrefix);
-
-    if (share->canonicalPath().startsWith(dir.canonicalPath())) {
-        share->setForeign(false);
-    } else {
-        share->setForeign(true);
-    }
 
     if (!share->isForeign() || Smb4KMountSettings::detectAllShares()) {
         if (addMountedShare(share)) {

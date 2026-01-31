@@ -275,12 +275,17 @@ private:
     /**
      * Check the size, accessibility, ids, etc. of the share(s)
      */
-    void checkMountedShare(const SharePtr &share);
+    void checkMountedShare(const SharePtr &share) const;
 
     /**
      * Create mount point
      */
-    const QString generateMountPoint(const QUrl &url);
+    const QString generateMountPoint(const QUrl &url) const;
+
+    /**
+     * Create a share using the mount point as search item.
+     */
+    SharePtr createShare(const QString &mountPoint) const;
 
     /**
      * Pointer to the Smb4KMounterPrivate class.
