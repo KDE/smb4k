@@ -1,7 +1,7 @@
 /*
     This class carries custom settings
 
-    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -53,8 +53,6 @@ public:
     QPair<bool, bool> useClientProtocolVersions;
     QPair<int, bool> minimalClientProtocolVersion;
     QPair<int, bool> maximalClientProtocolVersion;
-    QPair<bool, bool> useSmbPort;
-    QPair<int, bool> smbPort;
     QPair<bool, bool> useKerberos;
     QPair<QString, bool> macAddress;
     QPair<bool, bool> wakeOnLanBeforeFirstScan;
@@ -92,8 +90,6 @@ Smb4KCustomSettings::Smb4KCustomSettings(Smb4KBasicNetworkItem *networkItem)
             setWorkgroupName(host->workgroupName());
             setIpAddress(host->ipAddress());
             setUseIds(Smb4KMountSettings::useIds());
-            setUseSmbPort(Smb4KSettings::useRemoteSmbPort());
-            setSmbPort(host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort());
         }
         break;
     }
@@ -104,8 +100,6 @@ Smb4KCustomSettings::Smb4KCustomSettings(Smb4KBasicNetworkItem *networkItem)
             setWorkgroupName(share->workgroupName());
             setIpAddress(share->hostIpAddress());
             setUseIds(Smb4KMountSettings::useIds());
-            setUseSmbPort(Smb4KSettings::useRemoteSmbPort());
-            setSmbPort(Smb4KSettings::remoteSmbPort());
         }
         break;
     }
@@ -155,8 +149,6 @@ Smb4KCustomSettings::Smb4KCustomSettings()
     setUseClientProtocolVersions(Smb4KSettings::useClientProtocolVersions());
     setMinimalClientProtocolVersion(Smb4KSettings::minimalClientProtocolVersion());
     setMaximalClientProtocolVersion(Smb4KSettings::maximalClientProtocolVersion());
-    setUseSmbPort(Smb4KSettings::useRemoteSmbPort());
-    setSmbPort(Smb4KSettings::remoteSmbPort());
     setUseKerberos(Smb4KSettings::useKerberos());
     setMacAddress(QString());
     setWakeOnLanSendBeforeNetworkScan(false);
@@ -180,7 +172,6 @@ void Smb4KCustomSettings::setNetworkItem(Smb4KBasicNetworkItem *networkItem) con
 
             if (host) {
                 setWorkgroupName(host->workgroupName());
-                setSmbPort(host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort());
                 setIpAddress(host->ipAddress());
             }
             break;
@@ -457,36 +448,6 @@ int Smb4KCustomSettings::maximalClientProtocolVersion() const
     return d->maximalClientProtocolVersion.first;
 }
 
-void Smb4KCustomSettings::setUseSmbPort(bool use) const
-{
-    d->useSmbPort = {use, (use != Smb4KSettings::useRemoteSmbPort())};
-}
-
-bool Smb4KCustomSettings::useSmbPort() const
-{
-    return d->useSmbPort.first;
-}
-
-void Smb4KCustomSettings::setSmbPort(int port) const
-{
-    d->smbPort = {port, (port != Smb4KSettings::remoteSmbPort())};
-
-    switch (d->type) {
-    case Host: {
-        d->url.setPort(port);
-        break;
-    }
-    default: {
-        break;
-    }
-    }
-}
-
-int Smb4KCustomSettings::smbPort() const
-{
-    return d->smbPort.first;
-}
-
 void Smb4KCustomSettings::setUseKerberos(bool use) const
 {
     d->useKerberos = {use, (use != Smb4KSettings::useKerberos())};
@@ -609,15 +570,6 @@ QMap<QString, QString> Smb4KCustomSettings::customSettings() const
         entries.insert(QStringLiteral("maximal_client_protocol_version"), QString::number(d->maximalClientProtocolVersion.first));
     }
 
-    // SMB port used by the client
-    if (d->useSmbPort.second && (d->useSmbPort.first != Smb4KSettings::useRemoteSmbPort())) {
-        entries.insert(QStringLiteral("use_smb_port"), QString::number(d->useSmbPort.first));
-    }
-
-    if (d->smbPort.second && (d->smbPort.first != Smb4KSettings::remoteSmbPort())) {
-        entries.insert(QStringLiteral("smb_port"), QString::number(d->smbPort.first));
-    }
-
     // Usage of Kerberos
     if (d->useKerberos.second && (d->useKerberos.first != Smb4KSettings::useKerberos())) {
         entries.insert(QStringLiteral("kerberos"), QString::number(d->useKerberos.first));
@@ -721,15 +673,6 @@ bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
         return true;
     }
 
-    // SMB port used by the client
-    if (d->useSmbPort.second && (d->useSmbPort.first != Smb4KSettings::useRemoteSmbPort())) {
-        return true;
-    }
-
-    if (d->smbPort.second && (d->smbPort.first != Smb4KSettings::remoteSmbPort())) {
-        return true;
-    }
-
     // Usage of Kerberos
     if (d->useKerberos.second && (d->useKerberos.first != Smb4KSettings::useKerberos())) {
         return true;
@@ -778,8 +721,6 @@ void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
     setUseClientProtocolVersions(customSettings->useClientProtocolVersions());
     setMinimalClientProtocolVersion(customSettings->minimalClientProtocolVersion());
     setMaximalClientProtocolVersion(customSettings->maximalClientProtocolVersion());
-    setUseSmbPort(customSettings->useSmbPort());
-    setSmbPort(customSettings->smbPort());
     setUseKerberos(customSettings->useKerberos());
     setMacAddress(customSettings->macAddress());
     setWakeOnLanSendBeforeNetworkScan(customSettings->wakeOnLanSendBeforeNetworkScan());

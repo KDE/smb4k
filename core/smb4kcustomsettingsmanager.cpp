@@ -1,7 +1,7 @@
 /*
     Manage custom settings
 
-    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -368,21 +368,7 @@ void Smb4KCustomSettingsManager::read()
                                         xmlReader.readNext();
 
                                         if (xmlReader.isStartElement()) {
-                                            if (xmlReader.name() == QStringLiteral("smb_port")) {
-                                                bool ok = false;
-                                                int portNumber = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    settings->setSmbPort(portNumber);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("use_smb_port")) {
-                                                bool ok = false;
-                                                bool useSmbPort = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    settings->setUseSmbPort(useSmbPort);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("kerberos")) {
+                                            if (xmlReader.name() == QStringLiteral("kerberos")) {
                                                 bool ok = false;
                                                 bool useKerberos = xmlReader.readElementText().toInt(&ok);
 

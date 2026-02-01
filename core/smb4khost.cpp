@@ -131,16 +131,6 @@ QString Smb4KHost::password() const
     return pUrl->password();
 }
 
-void Smb4KHost::setPort(int port)
-{
-    pUrl->setPort(port);
-}
-
-int Smb4KHost::port() const
-{
-    return pUrl->port();
-}
-
 void Smb4KHost::update(Smb4KHost *host)
 {
     if (QString::compare(workgroupName(), host->workgroupName()) == 0 && QString::compare(hostName(), host->hostName()) == 0) {

@@ -1,7 +1,7 @@
 /*
     This class carries custom settings
 
-    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -409,34 +409,6 @@ public:
      * @returns the maximal client protocol version to use.
      */
     int maximalClientProtocolVersion() const;
-
-    /**
-     * Set whether the SMB port should be used.
-     *
-     * @param use             True, if the SMB port should be used
-     */
-    void setUseSmbPort(bool use) const;
-
-    /**
-     * Returns whether the SMB port should be used.
-     *
-     * @returns TRUE if the SMB port should be used.
-     */
-    bool useSmbPort() const;
-
-    /**
-     * Set the SMB port to use with this host or share.
-     *
-     * @param port            The SMB port
-     */
-    void setSmbPort(int port) const;
-
-    /**
-     * Returns the SMB port. The default value is 139.
-     *
-     * @returns the SMB port
-     */
-    int smbPort() const;
 
     /**
      * Sets the useage of Kerberos for this network item.

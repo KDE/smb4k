@@ -1,7 +1,7 @@
 /*
     Private classes for the SMB client
 
-    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -517,23 +517,6 @@ void Smb4KClientJob::initClientLibrary()
         smbc_setUser(m_context, (*pNetworkItem)->url().userName().toUtf8().data());
     } else {
         smbc_setUser(m_context, "guest");
-    }
-
-    //
-    // Set the port
-    //
-    if (options) {
-        if (options->useSmbPort()) {
-            smbc_setPort(m_context, options->smbPort());
-        } else {
-            smbc_setPort(m_context, 0 /* use the default */);
-        }
-    } else {
-        if (Smb4KSettings::useRemoteSmbPort()) {
-            smbc_setPort(m_context, Smb4KSettings::remoteSmbPort());
-        } else {
-            smbc_setPort(m_context, 0 /* use the default */);
-        }
     }
 
     //

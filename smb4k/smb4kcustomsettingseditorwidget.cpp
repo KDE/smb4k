@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -240,14 +240,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_minimalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMinimalClientProtocolVersionChanged);
     connect(m_maximalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMaximalClientProtocolVersionChanged);
 
-    m_useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), tab4);
-    m_remoteSmbPort = new QSpinBox(tab4);
-    m_remoteSmbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
-    m_remoteSmbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
-
-    connect(m_useRemoteSmbPort, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseClientProtocolVersionsToggled);
-    connect(m_remoteSmbPort, &QSpinBox::valueChanged, this, &Smb4KCustomSettingsEditorWidget::slotRemoteSmbPortChanged);
-
     m_useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), tab4);
 
     connect(m_useKerberos, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled);
@@ -257,10 +249,8 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab4Layout->addWidget(m_minimalClientProtocolVersion, 1, 1);
     tab4Layout->addWidget(m_maximalClientProtocolVersionLabel, 2, 0);
     tab4Layout->addWidget(m_maximalClientProtocolVersion, 2, 1);
-    tab4Layout->addWidget(m_useRemoteSmbPort, 3, 0);
-    tab4Layout->addWidget(m_remoteSmbPort, 3, 1);
-    tab4Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
-    tab4Layout->setRowStretch(5, 100);
+    tab4Layout->addWidget(m_useKerberos, 3, 0, 1, 2);
+    tab4Layout->setRowStretch(4, 100);
 
     addTab(tab4, i18n("Browse Settings"));
 
@@ -424,14 +414,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_minimalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMinimalClientProtocolVersionChanged);
     connect(m_maximalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMaximalClientProtocolVersionChanged);
 
-    m_useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), tab3);
-    m_remoteSmbPort = new QSpinBox(tab3);
-    m_remoteSmbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
-    m_remoteSmbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
-
-    connect(m_useRemoteSmbPort, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseClientProtocolVersionsToggled);
-    connect(m_remoteSmbPort, &QSpinBox::valueChanged, this, &Smb4KCustomSettingsEditorWidget::slotRemoteSmbPortChanged);
-
     m_useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), tab3);
 
     connect(m_useKerberos, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled);
@@ -441,10 +423,8 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab3Layout->addWidget(m_minimalClientProtocolVersion, 1, 1);
     tab3Layout->addWidget(m_maximalClientProtocolVersionLabel, 2, 0);
     tab3Layout->addWidget(m_maximalClientProtocolVersion, 2, 1);
-    tab3Layout->addWidget(m_useRemoteSmbPort, 3, 0);
-    tab3Layout->addWidget(m_remoteSmbPort, 3, 1);
-    tab3Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
-    tab3Layout->setRowStretch(5, 100);
+    tab3Layout->addWidget(m_useKerberos, 3, 0, 1, 2);
+    tab3Layout->setRowStretch(4, 100);
 
     addTab(tab3, i18n("Browse Settings"));
 
@@ -537,9 +517,6 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
     int maximalClientProtocolVersionIndex = m_maximalClientProtocolVersion->findData(m_customSettings.maximalClientProtocolVersion());
     m_maximalClientProtocolVersion->setCurrentIndex(maximalClientProtocolVersionIndex);
 
-    m_useRemoteSmbPort->setChecked(m_customSettings.useSmbPort());
-    m_remoteSmbPort->setValue(m_customSettings.smbPort());
-
     m_useKerberos->setChecked(m_customSettings.useKerberos());
 
     widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
@@ -588,9 +565,6 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
     m_customSettings.setMinimalClientProtocolVersion(m_minimalClientProtocolVersion->currentData().toInt());
     m_customSettings.setMaximalClientProtocolVersion(m_maximalClientProtocolVersion->currentData().toInt());
 
-    m_customSettings.setUseSmbPort(m_useRemoteSmbPort->isChecked());
-    m_customSettings.setSmbPort(m_remoteSmbPort->value());
-
     m_customSettings.setUseKerberos(m_useKerberos->isChecked());
 
     if (m_macAddress->hasAcceptableInput()) {
@@ -638,9 +612,6 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_useClientProtocolVersions->setChecked(false);
     m_minimalClientProtocolVersion->setCurrentIndex(0);
     m_maximalClientProtocolVersion->setCurrentIndex(0);
-
-    m_useRemoteSmbPort->setChecked(false);
-    m_remoteSmbPort->setValue(139);
 
     m_useKerberos->setChecked(false);
 
@@ -741,14 +712,6 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
     }
 
     if (m_maximalClientProtocolVersion->currentData().toInt() != defaultCustomSettings.maximalClientProtocolVersion()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
-    if (m_useRemoteSmbPort->isChecked() != defaultCustomSettings.useSmbPort()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
-    if (m_remoteSmbPort->value() != defaultCustomSettings.smbPort()) {
         m_hasDefaultCustomSettings = false;
     }
 
@@ -871,16 +834,6 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
     }
 
     if (m_maximalClientProtocolVersion->currentData().toInt() != m_customSettings.maximalClientProtocolVersion()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
-    if (m_useRemoteSmbPort->isChecked() != m_customSettings.useSmbPort()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
-    if (m_remoteSmbPort->value() != m_customSettings.smbPort()) {
         Q_EMIT edited(true);
         return;
     }
@@ -1037,18 +990,6 @@ void Smb4KCustomSettingsEditorWidget::slotMinimalClientProtocolVersionChanged(in
 void Smb4KCustomSettingsEditorWidget::slotMaximalClientProtocolVersionChanged(int index)
 {
     Q_UNUSED(index);
-    checkValues();
-}
-
-void Smb4KCustomSettingsEditorWidget::slotUseRemoteSmbPortToggled(bool checked)
-{
-    Q_UNUSED(checked);
-    checkValues();
-}
-
-void Smb4KCustomSettingsEditorWidget::slotRemoteSmbPortChanged(int port)
-{
-    Q_UNUSED(port);
     checkValues();
 }
 

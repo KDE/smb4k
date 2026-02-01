@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -93,8 +93,6 @@ protected Q_SLOTS:
     void slotUseClientProtocolVersionsToggled(bool checked);
     void slotMinimalClientProtocolVersionChanged(int index);
     void slotMaximalClientProtocolVersionChanged(int index);
-    void slotUseRemoteSmbPortToggled(bool checked);
-    void slotRemoteSmbPortChanged(int port);
     void slotUseKerberosToggled(bool checked);
     void slotFindMacAddressClicked(bool checked);
     void slotMacAddressChanged(const QString &text);
@@ -136,8 +134,6 @@ private:
     KComboBox *m_minimalClientProtocolVersion;
     QLabel *m_maximalClientProtocolVersionLabel;
     KComboBox *m_maximalClientProtocolVersion;
-    QCheckBox *m_useRemoteSmbPort;
-    QSpinBox *m_remoteSmbPort;
     QCheckBox *m_useKerberos;
     QLabel *m_macAddressLabel;
     KLineEdit *m_macAddress;

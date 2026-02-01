@@ -133,20 +133,6 @@ public:
     bool isMasterBrowser() const;
 
     /**
-     * Set the port for the use in the URL.
-     *
-     * @param port            The port
-     */
-    void setPort(int port);
-
-    /**
-     * Returns the port that is used in the URL.
-     *
-     * @returns the port.
-     */
-    int port() const;
-
-    /**
      * Set the user name for the host.
      *
      * @param name          The login name

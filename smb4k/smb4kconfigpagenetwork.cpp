@@ -137,17 +137,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     QGroupBox *sambaBox = new QGroupBox(i18n("Samba"), advancedTab);
     QGridLayout *sambaBoxLayout = new QGridLayout(sambaBox);
 
-    QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), sambaBox);
-    useRemoteSmbPort->setObjectName(QStringLiteral("kcfg_UseRemoteSmbPort"));
-
-    sambaBoxLayout->addWidget(useRemoteSmbPort, 0, 0);
-
-    QSpinBox *remoteSmbPort = new QSpinBox(sambaBox);
-    remoteSmbPort->setObjectName(QStringLiteral("kcfg_RemoteSmbPort"));
-    //   remoteSmbPort->setSliderEnabled(true);
-
-    sambaBoxLayout->addWidget(remoteSmbPort, 0, 1);
-
     QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), sambaBox);
     useEncryptionLevel->setObjectName(QStringLiteral("kcfg_UseEncryptionLevel"));
 
