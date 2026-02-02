@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
+"POT-Creation-Date: 2026-02-02 00:43+0000\n"
 "PO-Revision-Date: 2025-12-11 18:10+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -290,7 +290,7 @@ msgstr "Pasahitza:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:311 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -298,7 +298,7 @@ msgstr "Lantaldea:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:303 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -361,7 +361,7 @@ msgstr " min"
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:330
 #, kde-format
 msgid "Basic Settings"
 msgstr "Oinarrizko ezarpenak"
@@ -378,14 +378,14 @@ msgstr "Unix-eko CIFS hedapenen euskarria"
 
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:337
 #, kde-format
 msgid "User ID:"
 msgstr "Erabiltzaile IDa:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:343
 #, kde-format
 msgid "Group ID:"
 msgstr "Talde IDa:"
@@ -413,14 +413,14 @@ msgid "Character Sets"
 msgstr "Karaktere-multzoa"
 
 #: smb4k/smb4kconfigpagemounting.cpp:579
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, kde-format
 msgid "Mount Settings"
 msgstr "Muntatze-ezarpenak"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:429
 #, kde-format
 msgid "Browse Settings"
 msgstr "Arakatze ezarpenak"
@@ -430,17 +430,17 @@ msgstr "Arakatze ezarpenak"
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kconfigpagenetwork.cpp:178
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Esnatu sare bidez (Wake-On-LAN)"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:209
+#: smb4k/smb4kconfigpagenetwork.cpp:198
 #, kde-format
 msgid " s"
 msgstr " s"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:218
+#: smb4k/smb4kconfigpagenetwork.cpp:207
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
@@ -448,7 +448,7 @@ msgstr ""
 "Definitu neurrira egokitutako ezarpen editorearen bidez esnatu beharko "
 "liratekeen ostalariak."
 
-#: smb4k/smb4kconfigpagenetwork.cpp:228
+#: smb4k/smb4kconfigpagenetwork.cpp:217
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Ezarpen aurreratuak"
@@ -630,7 +630,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definitu <b>%1</b> partekatzeari neurrira ipintzeko ezarpenak."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:318
 #, kde-format
 msgid "Always remount this share"
 msgstr "Birmuntatu beti partekatze hau"
@@ -640,32 +640,32 @@ msgstr "Birmuntatu beti partekatze hau"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Zerbitzari honek Unix-eko CIFS hedapenak onartzen ditu"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC helbidea:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:447
 #, kde-format
 msgid "Find MAC address"
 msgstr "Aurkitu MAC helbidea"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:282
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Bidali pakete magikoa sareko auzoa miatu aurretik"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:284
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:458
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:295
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:469
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Sare bidez esnatzeko (Wake-On-LAN) ezarpenak"
