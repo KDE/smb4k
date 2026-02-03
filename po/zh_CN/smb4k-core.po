@@ -2943,14 +2943,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid "Set the SMB port to:"
-#~ msgstr "SMB 端口："
-
-#~ msgid ""
-#~ "This is the port that is used for connecting to remote servers. The "
-#~ "default value is 139 (NetBIOS). Under FreeBSD, this setting is also used "
-#~ "for mounting."
-#~ msgstr ""
-#~ "这是用于连接到远程服务器的端口。默认值是 139 (NetBIOS)。在 FreeBSD 环境"
-#~ "下，此设置也被用于挂载。"
