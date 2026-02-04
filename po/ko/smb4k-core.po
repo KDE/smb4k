@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-02 00:43+0000\n"
-"PO-Revision-Date: 2025-07-20 01:16+0200\n"
+"PO-Revision-Date: 2026-02-03 22:51+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1841,18 +1841,17 @@ msgstr "알 수 없는 Zeroconf 오류가 발생했습니다."
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
 msgid "Set the user and group ID"
-msgstr ""
+msgstr "사용자와 그룹 ID 설정"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
-msgstr "마운트된 공유의 파일과 디렉터리에 사용할 사용자 ID(숫자)입니다."
+msgstr ""
+"마운트된 공유의 파일과 디렉터리에 사용할 사용자 ID와 그룹 ID를 설정할 수 있습"
+"니다. 현재 사용자의 ID와 동일하게 설정하십시오."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -2323,10 +2322,9 @@ msgstr "공유 마운트를 재시도할 때 사용할 시간 간격을 설정�
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Send magic packet before mounting a share"
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
+msgstr "공유를 다시 마운트하기 전에 서버의 온라인 상태 확인"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2337,6 +2335,10 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"마운트할 공유가 있는 서버의 온라인 상태를 확인합니다. Smb4K에서 해당 서버의 "
+"445번 포트에 연결을 시도합니다. 해당 시도가 실패하면 서버를 사용할 수 없는 것"
+"으로 판단하여 다시 마운트하지 않습니다. 서버에서 기본값이 아닌 포트를 사용한"
+"다면 이 옵션을 비활성화하십시오."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
@@ -2958,10 +2960,9 @@ msgid "The process reported an unknown error."
 msgstr "프로세스에서 알 수 없는 오류를 반환했습니다."
 
 #: smb4knotification.cpp:477
-#, fuzzy, kde-format
-#| msgid "Executing an action with root privileges failed."
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "루트 권한으로 동작을 실행할 수 없습니다."
+msgstr "루트 권한으로 동작을 실행할 수 없습니다.%1%2"
 
 #: smb4knotification.cpp:500
 #, kde-format
