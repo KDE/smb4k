@@ -1385,7 +1385,7 @@ void Smb4KMounter::slotConfigChanged()
 
                 QDir dir(p->userMountPrefix);
 
-                if (share->path().startsWith(dir.canonicalPath())) {
+                if (!dir.canonicalPath().isEmpty() && share->canonicalPath().startsWith(dir.canonicalPath())) {
                     share->setForeign(false);
                 } else {
                     share->setForeign(true);
@@ -1460,7 +1460,7 @@ void Smb4KMounter::slotShareMounted(const QString &mountPoint)
 
     QDir dir(p->userMountPrefix);
 
-    if (share->path().startsWith(dir.canonicalPath())) {
+    if (!dir.canonicalPath().isEmpty() && share->canonicalPath().startsWith(dir.canonicalPath())) {
         share->setForeign(false);
     } else {
         share->setForeign(true);
