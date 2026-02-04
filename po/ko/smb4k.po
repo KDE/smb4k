@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2024-08-21 00:47+0200\n"
+"PO-Revision-Date: 2026-02-03 22:52+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,28 +30,27 @@ msgstr "kde@peremen.name"
 #: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "컴퓨터가 온라인이 아닙니다."
 
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "%1 공유의 마운트 지점을 만들 수 없습니다."
 
 #: helpers/smb4kmounthelper.cpp:83
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "마운트 프로세스를 시작할 수 없습니다."
+msgstr "mount 명령을 찾을 수 없습니다."
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "사용할 수 없는 mount 옵션을 지정했습니다."
 
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "전달된 Kerberos 티켓에 문제가 있습니다."
 
 #: helpers/smb4kmounthelper.cpp:183
 #, kde-format
@@ -59,22 +58,19 @@ msgid "The mount process could not be started."
 msgstr "마운트 프로세스를 시작할 수 없습니다."
 
 #: helpers/smb4kmounthelper.cpp:196
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "마운트 지점 %1이(가) 잘못되었습니다."
 
 #: helpers/smb4kmounthelper.cpp:202
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "마운트 해제 프로세스를 시작할 수 없습니다."
+msgstr "umount 명령을 찾을 수 없습니다."
 
 #: helpers/smb4kmounthelper.cpp:208
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "마운트 해제 프로세스가 충돌했습니다."
+msgstr "사용할 수 없는 unmount 옵션을 지정했습니다."
 
 #: helpers/smb4kmounthelper.cpp:250
 #, kde-format
@@ -378,14 +374,14 @@ msgstr "CIFS 유닉스 확장 지원"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "사용자 ID:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "그룹 ID:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
@@ -642,10 +638,9 @@ msgstr "MAC 주소:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC 주소"
+msgstr "MAC 주소 찾기"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
