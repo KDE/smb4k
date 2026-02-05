@@ -1227,7 +1227,7 @@ SharePtr Smb4KMounter::createShare(const QString &mountPoint) const
 
     QDir dir(p->userMountPrefix);
 
-    if (share->path().startsWith(dir.canonicalPath())) {
+    if (!dir.canonicalPath().isEmpty() && share->canonicalPath().startsWith(dir.canonicalPath())) {
         share->setForeign(false);
     } else {
         share->setForeign(true);
@@ -1382,9 +1382,6 @@ void Smb4KMounter::slotCredentialsUpdated(const QUrl &url)
 void Smb4KMounter::slotShareMounted(const QString &mountPoint)
 {
     Q_ASSERT(!mountPoint.isEmpty());
-
-    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
-    KMountPoint::Ptr mp = mountPoints.findByPath(mountPoint);
 
     SharePtr share = createShare(mountPoint);
     checkMountedShare(share);
