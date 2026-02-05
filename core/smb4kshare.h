@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a share.
 
-    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -235,8 +235,6 @@ public:
 
     /**
      * If the share was mounted by another user, @p foreign should be set to TRUE.
-     * By default it is assumed that the share is not foreign but owned by the
-     * user.
      *
      * @param foreign         TRUE if the share is foreign and FALSE otherwise.
      */
@@ -406,20 +404,6 @@ public:
      * @returns TRUE if this is or *was* a 'homes' share and FALSE otherwise.
      */
     bool isHomesShare() const;
-
-    /**
-     * Set the port for the use in the UNC.
-     *
-     * @param port            The port
-     */
-    void setPort(int port);
-
-    /**
-     * Returns the port that is used in the UNC.
-     *
-     * @returns the port.
-     */
-    int port() const;
 
     /**
      * Set the user name for the share.

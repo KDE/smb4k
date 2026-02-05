@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a share.
 
-    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -422,16 +422,6 @@ bool Smb4KShare::isHomesShare() const
     return pUrl->path().endsWith(QStringLiteral("homes"));
 }
 
-void Smb4KShare::setPort(int port)
-{
-    pUrl->setPort(port);
-}
-
-int Smb4KShare::port() const
-{
-    return pUrl->port();
-}
-
 void Smb4KShare::setUserName(const QString &name)
 {
     // Avoid that the login is overwritten with an empty
@@ -462,22 +452,22 @@ QString Smb4KShare::password() const
 
 void Smb4KShare::setShareIcon()
 {
-    if (!isPrinter()) {
-        // Overlays
-        QStringList overlays;
-
-        if (isInaccessible()) {
-            overlays << QStringLiteral("emblem-locked");
-        } else if (isForeign()) {
-            overlays << QStringLiteral("emblem-warning");
-        } else if (isMounted()) {
-            overlays << QStringLiteral("emblem-mounted");
-        }
-
-        *pIcon = KDE::icon(QStringLiteral("folder-network"), overlays);
-    } else {
+    if (isPrinter()) {
         *pIcon = KDE::icon(QStringLiteral("printer"));
+        return;
     }
+
+    QStringList overlays;
+
+    if (isInaccessible()) {
+        overlays << QStringLiteral("emblem-locked");
+    } else if (isForeign()) {
+        overlays << QStringLiteral("emblem-warning");
+    } else if (isMounted()) {
+        overlays << QStringLiteral("emblem-mounted");
+    }
+
+    *pIcon = KDE::icon(QStringLiteral("folder-network"), overlays);
 }
 
 void Smb4KShare::update(Smb4KShare *share)
