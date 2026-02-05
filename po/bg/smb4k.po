@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
+"POT-Creation-Date: 2026-02-02 00:43+0000\n"
 "PO-Revision-Date: 2023-01-20 23:26+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -282,7 +282,7 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:311 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -290,7 +290,7 @@ msgstr "Работна група:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:303 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -351,7 +351,7 @@ msgstr ""
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:330
 #, fuzzy, kde-format
 msgid "Basic Settings"
 msgstr "&Настройки"
@@ -368,14 +368,14 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:337
 #, kde-format
 msgid "User ID:"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:343
 #, kde-format
 msgid "Group ID:"
 msgstr ""
@@ -403,14 +403,14 @@ msgid "Character Sets"
 msgstr "Клиентски символи:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:579
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, fuzzy, kde-format
 msgid "Mount Settings"
 msgstr "Потребителски настройки"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:429
 #, fuzzy, kde-format
 msgid "Browse Settings"
 msgstr "&Настройки"
@@ -420,23 +420,23 @@ msgstr "&Настройки"
 msgid "Samba"
 msgstr "Самба"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kconfigpagenetwork.cpp:178
 #, fuzzy, kde-format
 msgid "Wake-On-LAN"
 msgstr "Общи настройки"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:209
+#: smb4k/smb4kconfigpagenetwork.cpp:198
 #, kde-format
 msgid " s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:218
+#: smb4k/smb4kconfigpagenetwork.cpp:207
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:228
+#: smb4k/smb4kconfigpagenetwork.cpp:217
 #, fuzzy, kde-format
 msgid "Advanced Settings"
 msgstr "Разширени CIFS настройки"
@@ -616,7 +616,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:318
 #, kde-format
 msgid "Always remount this share"
 msgstr ""
@@ -626,34 +626,34 @@ msgstr ""
 msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
 #, fuzzy, kde-format
 #| msgid "IP Address:"
 msgid "MAC Address:"
 msgstr "IP-адрес:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:447
 #, fuzzy, kde-format
 #| msgid "IP Address:"
 msgid "Find MAC address"
 msgstr "IP-адрес:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:282
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:284
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:458
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:295
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:469
 #, fuzzy, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Общи настройки"

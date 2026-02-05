@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-01 00:42+0000\n"
+"POT-Creation-Date: 2026-02-02 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -285,7 +285,7 @@ msgstr "密码："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:311 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -293,7 +293,7 @@ msgstr "工作组："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:303 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -354,7 +354,7 @@ msgstr " 分钟"
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:330
 #, kde-format
 msgid "Basic Settings"
 msgstr "基本设置"
@@ -371,14 +371,14 @@ msgstr "CIFS Unix 扩展支持"
 
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:337
 #, kde-format
 msgid "User ID:"
 msgstr "用户 ID："
 
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:343
 #, kde-format
 msgid "Group ID:"
 msgstr "用户组 ID："
@@ -406,14 +406,14 @@ msgid "Character Sets"
 msgstr "字符集"
 
 #: smb4k/smb4kconfigpagemounting.cpp:579
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, kde-format
 msgid "Mount Settings"
 msgstr "挂载设置"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:429
 #, kde-format
 msgid "Browse Settings"
 msgstr "浏览设置"
@@ -423,23 +423,23 @@ msgstr "浏览设置"
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:189
+#: smb4k/smb4kconfigpagenetwork.cpp:178
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "局域网唤醒"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:209
+#: smb4k/smb4kconfigpagenetwork.cpp:198
 #, kde-format
 msgid " s"
 msgstr " 秒"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:218
+#: smb4k/smb4kconfigpagenetwork.cpp:207
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr "指定要通过自定义设置编辑器唤醒的主机。"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:228
+#: smb4k/smb4kconfigpagenetwork.cpp:217
 #, kde-format
 msgid "Advanced Settings"
 msgstr "高级设置"
@@ -619,7 +619,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "指定共享 <b>%1</b> 的自定义选项。"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:318
 #, kde-format
 msgid "Always remount this share"
 msgstr "总是重新挂载此共享"
@@ -629,32 +629,32 @@ msgstr "总是重新挂载此共享"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "此服务器支持 CIFS Unix 扩展"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 地址："
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:447
 #, kde-format
 msgid "Find MAC address"
 msgstr "查找 MAC 地址"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:282
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:284
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:458
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "挂载共享前发送局域网唤醒魔术封包"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:295
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:469
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "局域网唤醒设置"
