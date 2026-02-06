@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2026 giovanni <g.sora@tiscali.it>
 # giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2024-06-19 17:33+0200\n"
+"PO-Revision-Date: 2026-02-05 18:26+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -39,10 +39,9 @@ msgid "Could not create mount point for share %1."
 msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:83
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Le processo de montar non poteva esser initiate"
+msgstr "Le commando de montar non poteva esser trovate."
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
@@ -60,27 +59,24 @@ msgid "The mount process could not be started."
 msgstr "Le processo de montar non poteva esser initiate"
 
 #: helpers/smb4kmounthelper.cpp:196
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "Le puncto de montage %1 es invalide"
+msgstr "Le puncto de montage %1 es illegal."
 
 #: helpers/smb4kmounthelper.cpp:202
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Le processo de dismontar non poteva esser iinitiate."
+msgstr "Le commando de dismontar non poteva esser trovate."
 
 #: helpers/smb4kmounthelper.cpp:208
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "Le processo de dismontar fracassava."
+msgstr "Le optiones prohibite de dismontar esseva passate."
 
 #: helpers/smb4kmounthelper.cpp:250
 #, kde-format
 msgid "The unmount process could not be started."
-msgstr "Le processo de dismontar non poteva esser iinitiate."
+msgstr "Le processo de dismontar non poteva esser initiate."
 
 #: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -371,14 +367,14 @@ msgstr "CIFS Unix Extensions Support (Supporte de extension de Unix de CIFS)"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:347
 #, kde-format
 msgid "User ID:"
-msgstr ""
+msgstr "ID de usator: "
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:353
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "ID de Gruppo:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
@@ -634,10 +630,9 @@ msgstr "Adresse MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Adresse MAC"
+msgstr "Trova Adresse MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
