@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# giovanni <g.sora@tiscali.it>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-02 00:43+0000\n"
-"PO-Revision-Date: 2023-02-28 16:17+0100\n"
+"PO-Revision-Date: 2026-02-05 14:36+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -2565,22 +2565,19 @@ msgid ""
 msgstr ""
 
 #: smb4knotification.cpp:223
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Falleva a aperir file<b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "<p>Falleva a montar le share <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:225
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "<p>Falleva a aperir le file <b>%1 </b>.</p>"
+msgstr "<p>Falleva a montar le share <b>%1</b>."
 
 #: smb4knotification.cpp:248
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr "<p>Falleva a aperir file<b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Falleva a dismontar le share <b>%1</b> ex<b>%2</b> : <tt>%3</tt>"
 
 #: smb4knotification.cpp:250
 #, kde-format
@@ -2609,34 +2606,29 @@ msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
 msgstr ""
 
 #: smb4knotification.cpp:324
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file <b>%1</b> could not be found."
-msgstr "<p>Le file <b>%1</b> non pote esser trovate.</p>"
+msgstr "Le file  <b>%1</b> non pote esser trovate."
 
 #: smb4knotification.cpp:334
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Falleva a aperir file<b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Falleva a aperir file <b>%1</b> : <tt>%2</tt>"
 
 #: smb4knotification.cpp:336
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr "<p>Falleva a aperir le file <b>%1 </b>.</p>"
+msgstr "Falleva a aperir file <b>%1</b> ."
 
 #: smb4knotification.cpp:355 smb4knotification.cpp:358
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Falleva a aperir file<b>%1</b>:</p><p><tt>%2</tt></p>"
+msgstr "Falleva a leger ab file<b>%1</b>:</p><p><tt>%2</tt>"
 
 #: smb4knotification.cpp:360
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr "<p>Falleva a aperir le file <b>%1 </b>.</p>"
+msgstr "Falleva a leger ab file<b>%1</b>."
 
 #: smb4knotification.cpp:383
 #, kde-format
@@ -2684,16 +2676,13 @@ msgid "The URL that was passed is invalid."
 msgstr ""
 
 #: smb4knotification.cpp:513
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The network communication failed with the following error message: <s>"
-#| "%1</s></p>"
+#, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
 msgstr ""
-"<p>Le communication de rete falleva con le sequente message de error: <s>%1</"
-"s></p>"
+"Le communication de rete falleva con le sequente message de error: <tt>%1</"
+"tt>"
 
 #: smb4knotification.cpp:526
 #, kde-format
