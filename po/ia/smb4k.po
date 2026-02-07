@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-02 00:43+0000\n"
-"PO-Revision-Date: 2026-02-05 15:27+0100\n"
+"PO-Revision-Date: 2026-02-06 16:43+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -76,7 +76,7 @@ msgstr "Le optiones prohibite de dismontar esseva passate."
 #: helpers/smb4kmounthelper.cpp:246
 #, kde-format
 msgid "The unmount process could not be started."
-msgstr "Le processo de dismontar non poteva esser iinitiate."
+msgstr "Le processo de dismontar non poteva esser initiate."
 
 #: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
