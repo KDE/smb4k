@@ -2574,12 +2574,12 @@ msgstr ""
 #: smb4knotification.cpp:223
 #, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Falleva a montar le share <b>%1</b>: <tt>%2</tt>"
+msgstr "Falleva a montar le share <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:225
 #, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "<p>Falleva a montar le share <b>%1</b>."
+msgstr "Falleva a montar le share <b>%1</b>."
 
 #: smb4knotification.cpp:248
 #, kde-format
@@ -2630,7 +2630,7 @@ msgstr "Falleva a aperir file <b>%1</b> ."
 #: smb4knotification.cpp:355 smb4knotification.cpp:358
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "Falleva a leger ab file<b>%1</b>:</p><p><tt>%2</tt>"
+msgstr "Falleva a leger ab file <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:360
 #, kde-format

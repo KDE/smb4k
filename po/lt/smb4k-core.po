@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2009-12-20 00:51+0200\n"
+"PO-Revision-Date: 2026-02-09 17:56+0200\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -1727,97 +1728,97 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:48 smb4kmountsettings_linux.kcfg:52
 #, kde-format
 msgid "iso8859-1"
-msgstr ""
+msgstr "iso8859-1"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:51 smb4kmountsettings_linux.kcfg:55
 #, kde-format
 msgid "iso8859-2"
-msgstr ""
+msgstr "iso8859-2"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:54 smb4kmountsettings_linux.kcfg:58
 #, kde-format
 msgid "iso8859-3"
-msgstr ""
+msgstr "iso8859-3"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:57 smb4kmountsettings_linux.kcfg:61
 #, kde-format
 msgid "iso8859-4"
-msgstr ""
+msgstr "iso8859-4"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:60 smb4kmountsettings_linux.kcfg:64
 #, kde-format
 msgid "iso8859-5"
-msgstr ""
+msgstr "iso8859-5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:63 smb4kmountsettings_linux.kcfg:67
 #, kde-format
 msgid "iso8859-6"
-msgstr ""
+msgstr "iso8859-6"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:66 smb4kmountsettings_linux.kcfg:70
 #, kde-format
 msgid "iso8859-7"
-msgstr ""
+msgstr "iso8859-7"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:69 smb4kmountsettings_linux.kcfg:73
 #, kde-format
 msgid "iso8859-8"
-msgstr ""
+msgstr "iso8859-8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:72 smb4kmountsettings_linux.kcfg:76
 #, kde-format
 msgid "iso8859-9"
-msgstr ""
+msgstr "iso8859-9"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:75 smb4kmountsettings_linux.kcfg:79
 #, kde-format
 msgid "iso8859-13"
-msgstr ""
+msgstr "iso8859-13"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:78 smb4kmountsettings_linux.kcfg:82
 #, kde-format
 msgid "iso8859-14"
-msgstr ""
+msgstr "iso8859-14"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:81 smb4kmountsettings_linux.kcfg:85
 #, kde-format
 msgid "iso8859-15"
-msgstr ""
+msgstr "iso8859-15"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:84 smb4kmountsettings_linux.kcfg:88
 #, kde-format
 msgid "utf8"
-msgstr ""
+msgstr "utf8"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:87 smb4kmountsettings_linux.kcfg:91
 #, kde-format
 msgid "koi8-r"
-msgstr ""
+msgstr "koi8-r"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:90 smb4kmountsettings_linux.kcfg:94
 #, kde-format
 msgid "koi8-u"
-msgstr ""
+msgstr "koi8-u"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:93 smb4kmountsettings_linux.kcfg:97
 #, kde-format
 msgid "koi8-ru"
-msgstr ""
+msgstr "koi8-ru"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
@@ -1825,37 +1826,37 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:100
 #, kde-format
 msgid "cp1251"
-msgstr ""
+msgstr "cp1251"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:99 smb4kmountsettings_linux.kcfg:103
 #, kde-format
 msgid "gb2312"
-msgstr ""
+msgstr "gb2312"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:102 smb4kmountsettings_linux.kcfg:106
 #, kde-format
 msgid "big5"
-msgstr ""
+msgstr "big5"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:105 smb4kmountsettings_linux.kcfg:109
 #, kde-format
 msgid "euc-jp"
-msgstr ""
+msgstr "euc-jp"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:108 smb4kmountsettings_linux.kcfg:112
 #, kde-format
 msgid "euc-kr"
-msgstr ""
+msgstr "euc-kr"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:111 smb4kmountsettings_linux.kcfg:115
 #, kde-format
 msgid "tis-620"
-msgstr ""
+msgstr "tis-620"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:117
@@ -1876,181 +1877,181 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:124
 #, kde-format
 msgid "cp437"
-msgstr ""
+msgstr "cp437"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:127
 #, kde-format
 msgid "cp720"
-msgstr ""
+msgstr "cp720"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:130
 #, kde-format
 msgid "cp737"
-msgstr ""
+msgstr "cp737"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:133
 #, kde-format
 msgid "cp775"
-msgstr ""
+msgstr "cp775"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:136
 #, kde-format
 msgid "cp850"
-msgstr ""
+msgstr "cp850"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:139
 #, kde-format
 msgid "cp852"
-msgstr ""
+msgstr "cp852"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:142
 #, kde-format
 msgid "cp855"
-msgstr ""
+msgstr "cp855"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:145
 #, kde-format
 msgid "cp857"
-msgstr ""
+msgstr "cp857"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:148
 #, kde-format
 msgid "cp858"
-msgstr ""
+msgstr "cp858"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:151
 #, kde-format
 msgid "cp860"
-msgstr ""
+msgstr "cp860"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:154
 #, kde-format
 msgid "cp861"
-msgstr ""
+msgstr "cp861"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:157
 #, kde-format
 msgid "cp862"
-msgstr ""
+msgstr "cp862"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:160
 #, kde-format
 msgid "cp863"
-msgstr ""
+msgstr "cp863"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:163
 #, kde-format
 msgid "cp864"
-msgstr ""
+msgstr "cp864"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:166
 #, kde-format
 msgid "cp865"
-msgstr ""
+msgstr "cp865"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:169
 #, kde-format
 msgid "cp866"
-msgstr ""
+msgstr "cp866"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:172
 #, kde-format
 msgid "cp869"
-msgstr ""
+msgstr "cp869"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:175
 #, kde-format
 msgid "cp874"
-msgstr ""
+msgstr "cp874"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:178
 #, kde-format
 msgid "cp932"
-msgstr ""
+msgstr "cp932"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:181
 #, kde-format
 msgid "cp936"
-msgstr ""
+msgstr "cp936"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:184
 #, kde-format
 msgid "cp949"
-msgstr ""
+msgstr "cp949"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:187
 #, kde-format
 msgid "cp950"
-msgstr ""
+msgstr "cp950"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:190
 #, kde-format
 msgid "cp1250"
-msgstr ""
+msgstr "cp1250"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:196
 #, kde-format
 msgid "cp1252"
-msgstr ""
+msgstr "cp1252"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:199
 #, kde-format
 msgid "cp1253"
-msgstr ""
+msgstr "cp1253"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:202
 #, kde-format
 msgid "cp1254"
-msgstr ""
+msgstr "cp1254"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:205
 #, kde-format
 msgid "cp1255"
-msgstr ""
+msgstr "cp1255"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:208
 #, kde-format
 msgid "cp1256"
-msgstr ""
+msgstr "cp1256"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:211
 #, kde-format
 msgid "cp1257"
-msgstr ""
+msgstr "cp1257"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:214
 #, kde-format
 msgid "cp1258"
-msgstr ""
+msgstr "cp1258"
 
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:217
