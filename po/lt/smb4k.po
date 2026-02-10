@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-02 00:43+0000\n"
-"PO-Revision-Date: 2017-09-04 09:51+0200\n"
+"PO-Revision-Date: 2026-02-09 17:53+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -19,17 +19,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Liudas Ališauskas"
+msgstr "Liudas Ališauskas, Moo"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "liudas@akmc.lt"
+msgstr "liudas@akmc.lt, <>"
 
 #: helpers/smb4kmounthelper.cpp:68
 #, kde-format
@@ -39,18 +39,17 @@ msgstr ""
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Nepavyko sukurti prijungimo taško, skirto viešiniui %1."
 
 #: helpers/smb4kmounthelper.cpp:83
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Prijungimo procesas negalėjo būti paleistas."
+msgstr "Nepavyko rasti prijungimo (mount) komandos."
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Buvo perduotos draudžiamos prijungimo parinktys."
 
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
@@ -60,29 +59,27 @@ msgstr ""
 #: helpers/smb4kmounthelper.cpp:179
 #, kde-format
 msgid "The mount process could not be started."
-msgstr "Prijungimo procesas negalėjo būti paleistas."
+msgstr "Nepavyko paleisti prijungimo proceso."
 
 #: helpers/smb4kmounthelper.cpp:192
-#, fuzzy, kde-format
-#| msgid "The mountpoint is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "Neteisingas prijungimo taškas."
+msgstr "Prijungimo taškas %1 yra neleistinas."
 
 #: helpers/smb4kmounthelper.cpp:198
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Prijungimo procesas negalėjo būti paleistas."
+msgstr "Nepavyko rasti atjungimo (umount) komandos."
 
 #: helpers/smb4kmounthelper.cpp:204
 #, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr ""
+msgstr "Buvo perduotos draudžiamos atjungimo parinktys."
 
 #: helpers/smb4kmounthelper.cpp:246
 #, kde-format
 msgid "The unmount process could not be started."
-msgstr ""
+msgstr "Nepavyko paleisti atjungimo proceso."
 
 #: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -93,31 +90,33 @@ msgstr "Smb4K"
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
+"Išplėstinė tinklo aplinkos naršyklė ir Samba viešinių prijungimo paslaugų "
+"programa"
 
 #: smb4k/main.cpp:44
 #, kde-format
 msgid "© 2003-2025 Alexander Reinholdt"
-msgstr ""
+msgstr "© 2003–2025 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
 msgid "Alexander Reinholdt"
-msgstr ""
+msgstr "Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
 msgid "Developer"
-msgstr "Programuotojas"
+msgstr "Plėtotojas"
 
 #: smb4k/main.cpp:58
 #, kde-format
 msgid "Wolfgang Geisendörfer"
-msgstr ""
+msgstr "Wolfgang Geisendörfer"
 
 #: smb4k/main.cpp:58
 #, kde-format
 msgid "Donator"
-msgstr ""
+msgstr "Aukotojas"
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -147,13 +146,13 @@ msgstr "Ž&ymelės"
 #: smb4k/smb4k_shell.rc:17
 #, kde-format
 msgid "&Settings"
-msgstr "&Nuostatos"
+msgstr "Nuo&statos"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: smb4k/smb4k_shell.rc:29
 #, kde-format
 msgid "Main Toolbar"
-msgstr "Pagrindinė įrankinė"
+msgstr "Pagrindinė įrankių juosta"
 
 #: smb4k/smb4kbookmarkdialog.cpp:32
 #, fuzzy, kde-format
@@ -172,13 +171,13 @@ msgstr ""
 #: smb4k/smb4kmountdialog.cpp:117
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "Etiketė:"
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
 #: smb4k/smb4kmountdialog.cpp:124
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Kategorija:"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, fuzzy, kde-format
@@ -194,7 +193,7 @@ msgstr "Žymelės"
 #: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
 msgid "&Edit Bookmarks"
-msgstr "&Keisti žymeles"
+msgstr "&Taisyti žymeles"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
@@ -222,7 +221,7 @@ msgstr "Tinklas"
 #: smb4k/smb4kconfigdialog.cpp:127
 #, kde-format
 msgid "Mounting"
-msgstr "Prijungiama"
+msgstr "Prijungimas"
 
 #: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
@@ -233,26 +232,25 @@ msgstr "Sinchronizavimas"
 #: smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Authentication"
-msgstr "Autentikacija"
+msgstr "Tapatybės nustatymas"
 
 #: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
 #: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:241
 #: smb4k/smb4kconfigdialog.cpp:242 smb4k/smb4kconfigdialog.cpp:243
 #, kde-format
 msgid " (Profile: %1)"
-msgstr ""
+msgstr " (Profilis: %1)"
 
 #: smb4k/smb4kconfigdialog.cpp:133
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Bendros parinktys"
+msgstr "Tinkintos nuostatos"
 
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
-msgstr ""
+msgstr "Profiliai"
 
 #: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
@@ -260,6 +258,8 @@ msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
+"Rasta neteisinga nuostata. Dabar, būsite nukreipti į\n"
+"atitinkamą konfigūracijos puslapį, kad ją pataisytumėte."
 
 #: smb4k/smb4kconfigdialog.cpp:228
 #, kde-format
@@ -272,30 +272,27 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
-msgstr ""
+msgstr "Numatytasis prisijungimas"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:230
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Username:"
-msgstr "Naudotojo sąsaja"
+msgstr "Naudotojo vardas:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Slaptažodis"
+msgstr "Slaptažodis:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:81
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:311 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
-#, fuzzy, kde-format
-#| msgid "Workgroup"
+#, kde-format
 msgid "Workgroup:"
-msgstr "Darbo grupė"
+msgstr "Darbo grupė:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:73
@@ -309,19 +306,19 @@ msgstr "IP adresas:"
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
-msgstr "Keisti"
+msgstr "Taisyti"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Pridėti kategoriją"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #: smb4k/smb4kconfigpageprofiles.cpp:78
 #, kde-format
 msgid "Remove"
-msgstr "Pašalinti"
+msgstr "Šalinti"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -332,17 +329,19 @@ msgstr "Išvalyti sąrašą"
 #: smb4k/smb4kconfigpagebookmarks.cpp:455
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Nauja kategorija"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Viskas gerai."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:195
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
+"Elementas <b>%1</b> buvo pašalintas, nes visos tinkintos nuostatos buvo "
+"atstatytos."
 
 #: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
@@ -354,17 +353,16 @@ msgstr "Elgsena"
 #: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:432
 #, kde-format
 msgid " min"
-msgstr ""
+msgstr " min."
 
 #: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:330
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Basic Settings"
-msgstr "&Nuostatos"
+msgstr "Pagrindinės nuostatos"
 
 #: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
 #, kde-format
@@ -374,7 +372,7 @@ msgstr "Bendros parinktys"
 #: smb4k/smb4kconfigpagemounting.cpp:207
 #, kde-format
 msgid "CIFS Unix Extensions Support"
-msgstr ""
+msgstr "CIFS Unix plėtinių palaikymas"
 
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
@@ -386,30 +384,26 @@ msgstr "Naudotojo ID:"
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:343
-#, fuzzy, kde-format
-#| msgctxt "NAME OF TRANSLATORS"
-#| msgid "Your names"
+#, kde-format
 msgid "Group ID:"
-msgstr "Liudas Ališauskas"
+msgstr "Grupės ID:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:276
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Common Mount Settings"
-msgstr "Bendros parinktys"
+msgstr "Bendros prijungimo nuostatos"
 
 #: smb4k/smb4kconfigpagemounting.cpp:284
 #, kde-format
 msgid "Advanced Options"
-msgstr "Išsamios nuostatos"
+msgstr "Išplėstinės parinktys"
 
 #: smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:206
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Mount Settings"
-msgstr "Išsamesnės nuostatos"
+msgstr "Išplėstinės prijungimo nuostatos"
 
 #: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
@@ -432,8 +426,7 @@ msgid "Browse Settings"
 msgstr "&Nuostatos"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:137
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
@@ -461,15 +454,14 @@ msgid "Advanced Settings"
 msgstr "Išsamesnės nuostatos"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:44
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Settings"
-msgstr "&Nuostatos"
+msgstr "Nuostatos"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:75
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Pridėti"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
@@ -479,19 +471,17 @@ msgstr ""
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Pakelti"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Move Down"
-msgstr "Elementas"
+msgstr "Nuleisti"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Rename"
-msgstr "Naudotojo sąsaja"
+msgstr "Pervadinti"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, fuzzy, kde-format
@@ -508,96 +498,90 @@ msgstr "Atsarginė kopija"
 #: smb4k/smb4kconfigpagesynchronization.cpp:127
 #, kde-format
 msgid "General"
-msgstr "Bendri"
+msgstr "Bendra"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:163
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
-msgstr "Saitai"
+msgstr "Nuorodos"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:210
 #, kde-format
 msgid "File Handling"
-msgstr ""
+msgstr "Failų apdorojimas"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:218
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "Failų atributai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:263
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Ownership"
-msgstr "Savininkas"
+msgstr "Nuosavybė"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Failų atributai ir nuosavybė"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, kde-format
 msgid "Compression"
-msgstr ""
+msgstr "Glaudinimas"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:327
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "Files"
-msgstr "&Failas"
+msgstr "Failai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:337
 #: smb4k/smb4kconfigpagesynchronization.cpp:348
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:373
 #: smb4k/smb4kconfigpagesynchronization.cpp:592
 #: smb4k/smb4kconfigpagesynchronization.cpp:608
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Miscellaneous"
-msgstr "Bendrosios nuostatos"
+msgstr "Įvairūs"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:383
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, kde-format
 msgid "File Transfer"
-msgstr "Failų siuntimai"
+msgstr "Failų persiuntimas"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:399
-#, fuzzy, kde-format
-#| msgid "Directories"
+#, kde-format
 msgid "Files && Directories"
-msgstr "Aplankai"
+msgstr "Failai ir katalogai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:445
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Restrictions"
-msgstr "Autentikacija"
+msgstr "Apribojimai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:461
 #, kde-format
 msgid "File Deletion"
-msgstr ""
+msgstr "Failų ištrynimas"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:470
 #, kde-format
 msgid "General Filtering Settings"
-msgstr ""
+msgstr "Bendros filtravimo nuostatos"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:525
 #, kde-format
 msgid "Filter Rules"
-msgstr ""
+msgstr "Filtravimo taisyklės"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:552
 #, kde-format
@@ -607,29 +591,27 @@ msgstr "Filtravimas"
 #: smb4k/smb4kconfigpagesynchronization.cpp:561
 #, kde-format
 msgid "Checksums"
-msgstr ""
+msgstr "Kontrolinės sumos"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
 msgid "Main Window"
-msgstr ""
+msgstr "Pagrindinis langas"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
-msgstr ""
+msgstr "Tinklo aplinka"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:106
-#, fuzzy, kde-format
-#| msgid "Shares"
+#, kde-format
 msgid "Shares View"
-msgstr "Akcijos"
+msgstr "Viešinių rodinys"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Bendros parinktys"
+msgstr "Tinkintų nuostatų redaktorius"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:52
 #, fuzzy, kde-format
@@ -657,21 +639,19 @@ msgstr ""
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "Šis serveris palaiko CIFS Unix plėtinius"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:440
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "MAC Address:"
 msgstr "MAC adresas:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:273
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:447
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC adresas:"
+msgstr "Rasti MAC adresą"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:282
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:456
@@ -700,7 +680,7 @@ msgstr ""
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr ""
+msgstr "Nurodykite naudotojo vardą."
 
 #: smb4k/smb4khomesuserdialog.cpp:123
 #, kde-format
@@ -710,12 +690,12 @@ msgstr ""
 #: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
 msgid "Dock Widgets"
-msgstr ""
+msgstr "Įstatyti valdiklius"
 
 #: smb4k/smb4kmainwindow.cpp:180 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
-msgstr ""
+msgstr "Prijungti viešiniai"
 
 #: smb4k/smb4kmainwindow.cpp:282
 #, kde-format
@@ -732,16 +712,16 @@ msgstr ""
 #: smb4k/smb4kmainwindow.cpp:339
 #, kde-format
 msgid "There are currently no shares mounted."
-msgstr ""
+msgstr "Šiuo metu nėra prijungtų viešinių."
 
 #: smb4k/smb4kmainwindow.cpp:342
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Šiuo metu yra %1 prijungtas viešinys."
+msgstr[1] "Šiuo metu yra %1 prijungti viešiniai."
+msgstr[2] "Šiuo metu yra %1 prijungtų viešinių."
+msgstr[3] "Šiuo metu yra %1 prijungtas viešinys."
 
 #: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
@@ -771,19 +751,18 @@ msgstr ""
 #: smb4k/smb4kmainwindow.cpp:537
 #, kde-format
 msgid "Sending file to printer %1..."
-msgstr ""
+msgstr "Siunčiamas failas į spausdintuvą %1..."
 
 #: smb4k/smb4kmainwindow.cpp:541
-#, fuzzy, kde-format
-#| msgid "Searching for \"%1\"..."
+#, kde-format
 msgid "Searching..."
-msgstr "Ieškoma „%1“..."
+msgstr "Ieškoma..."
 
 #: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
 #: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "Done."
-msgstr "Baigta."
+msgstr "Atlikta."
 
 #: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
@@ -803,12 +782,12 @@ msgstr ""
 #: smb4k/smb4kmainwindow.cpp:622
 #, kde-format
 msgid "%1 has been mounted successfully."
-msgstr ""
+msgstr "%1 sėkmingai prijungtas."
 
 #: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "%1 has been unmounted successfully."
-msgstr ""
+msgstr "%1 sėkmingai atjungtas."
 
 #: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
@@ -816,10 +795,9 @@ msgid "Synchronizing %1"
 msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "Prijungiama"
+msgstr "Prijungimo dialogas"
 
 #: smb4k/smb4kmountdialog.cpp:51
 #, kde-format
@@ -830,10 +808,9 @@ msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
+#, kde-format
 msgid "Location:"
-msgstr "Išsamios nuostatos"
+msgstr "Vieta:"
 
 #: smb4k/smb4kmountdialog.cpp:107
 #, fuzzy, kde-format
@@ -888,10 +865,9 @@ msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:216
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Bendros parinktys"
+msgstr "Pridėti tin&kintas nuostatas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:221
@@ -912,7 +888,7 @@ msgstr ""
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:175
 #, kde-format
 msgid "Au&thentication"
-msgstr "Autentikacija"
+msgstr "&Tapatybės nustatymas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
@@ -932,7 +908,7 @@ msgstr ""
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:197
 #, kde-format
 msgid "&Print File"
-msgstr ""
+msgstr "S&pausdinti failą"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -976,7 +952,7 @@ msgstr ""
 #: smb4k/smb4knetworksearchtoolbar.cpp:34
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "Užverti"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, fuzzy, kde-format
@@ -992,7 +968,7 @@ msgstr "Ieškoti"
 #: smb4k/smb4knetworksearchtoolbar.cpp:54
 #, kde-format
 msgid "Stop"
-msgstr ""
+msgstr "Stabdyti"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:63
 #, fuzzy, kde-format
@@ -1007,10 +983,9 @@ msgid "Item Up"
 msgstr "Elementas"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Clear"
+#, kde-format
 msgid "Clear"
-msgstr "&Valyti"
+msgstr "Išvalyti"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
@@ -1031,7 +1006,7 @@ msgstr "Prijungiama"
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Įkelti iš naujo"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
 #, kde-format
@@ -1044,10 +1019,9 @@ msgid "Up"
 msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Perž&iūra"
+msgstr "%1 peržiūra"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1056,16 +1030,14 @@ msgid "Print Dialog"
 msgstr "Prijungiama"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Print a file."
-msgstr "Prijungiama"
+msgstr "Spausdinti failą."
 
 #: smb4k/smb4kprintdialog.cpp:61
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&Failas"
+msgstr "Failas:"
 
 #: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
@@ -1075,7 +1047,7 @@ msgstr ""
 #: smb4k/smb4kprintdialog.cpp:87
 #, kde-format
 msgid "Print"
-msgstr ""
+msgstr "Spausdinti"
 
 #: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
@@ -1105,27 +1077,27 @@ msgstr "Sinchronizuoti"
 #: smb4k/smb4ksharesmenu.cpp:216
 #, kde-format
 msgid "Open with Konsole"
-msgstr ""
+msgstr "Atverti naudojant Konsole"
 
 #: smb4k/smb4ksharesmenu.cpp:230
 #, kde-format
 msgid "Open with File Manager"
-msgstr "Atverti su failų tvarkykle"
+msgstr "Atverti naudojant failų tvarkytuvę"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "View Modes"
-msgstr ""
+msgstr "Rodinio veiksenos"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "Icon View"
-msgstr "Ženkliukų vaizdas"
+msgstr "Piktogramų rodinys"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:145
 #, kde-format
 msgid "List View"
-msgstr "Sąrašo vaizdas"
+msgstr "Sąrašo rodinys"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
@@ -1135,7 +1107,7 @@ msgstr ""
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "S&ynchronize"
-msgstr "Sinchronizuoti"
+msgstr "Sin&chronizuoti"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
@@ -1145,7 +1117,7 @@ msgstr ""
 #: smb4k/smb4ksharesviewdockwidget.cpp:244
 #, kde-format
 msgid "Open with Konso&le"
-msgstr ""
+msgstr "Atverti naudojant Konso&le"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
@@ -1155,7 +1127,7 @@ msgstr ""
 #: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Open with F&ile Manager"
-msgstr "Atverti su failų tvarkykle"
+msgstr "Atverti naudojant f&ailų tvarkytuvę"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:256
 #, kde-format
@@ -1175,15 +1147,14 @@ msgid "Source:"
 msgstr ""
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Destination:"
-msgstr "Autentikacija"
+msgstr "Paskirtis:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Apkeisti kelius"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
@@ -1193,10 +1164,9 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:128
-#, fuzzy, kde-format
-#| msgid "Type"
+#, kde-format
 msgid "Type:"
-msgstr "Tipas"
+msgstr "Tipas:"
 
 #: smb4k/smb4ktooltip.cpp:137
 #, kde-format
@@ -1219,21 +1189,19 @@ msgid "Host"
 msgstr "Mazgas"
 
 #: smb4k/smb4ktooltip.cpp:161 smb4k/smb4ktooltip.cpp:177
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgid "Comment:"
-msgstr "Komentaras"
+msgstr "Komentaras:"
 
 #: smb4k/smb4ktooltip.cpp:174
 #, kde-format
 msgid "Share (%1)"
-msgstr "Dalintis (%1)"
+msgstr "Bendrinti (%1)"
 
 #: smb4k/smb4ktooltip.cpp:181
-#, fuzzy, kde-format
-#| msgid "Mounted"
+#, kde-format
 msgid "Mounted:"
-msgstr "Prijungtas"
+msgstr "Prijungtas:"
 
 #: smb4k/smb4ktooltip.cpp:184
 #, kde-format
@@ -1246,16 +1214,14 @@ msgid "no"
 msgstr "ne"
 
 #: smb4k/smb4ktooltip.cpp:190
-#, fuzzy, kde-format
-#| msgid "Host"
+#, kde-format
 msgid "Host:"
-msgstr "Mazgas"
+msgstr "Mazgas:"
 
 #: smb4k/smb4ktooltip.cpp:227
-#, fuzzy, kde-format
-#| msgid "Mountpoint"
+#, kde-format
 msgid "Mountpoint:"
-msgstr "Prijungimo vieta"
+msgstr "Prijungimo taškas:"
 
 #: smb4k/smb4ktooltip.cpp:229 smb4k/smb4ktooltip.cpp:232
 #: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:246
@@ -1264,16 +1230,14 @@ msgid "unknown"
 msgstr "nežinoma"
 
 #: smb4k/smb4ktooltip.cpp:236
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Owner:"
-msgstr "Savininkas"
+msgstr "Savininkas:"
 
 #: smb4k/smb4ktooltip.cpp:239
-#, fuzzy, kde-format
-#| msgid "File system"
+#, kde-format
 msgid "File system:"
-msgstr "Failų sistema"
+msgstr "Failų sistema:"
 
 #: smb4k/smb4ktooltip.cpp:244
 #, kde-format
@@ -1281,10 +1245,9 @@ msgid "%1 free of %2 (%3 used)"
 msgstr "%1 laisva iš %2 (%3 panaudota)"
 
 #: smb4k/smb4ktooltip.cpp:250
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "Dydis"
+msgstr "Dydis:"
 
 #~ msgid "Directories"
 #~ msgstr "Aplankai"
