@@ -1,7 +1,7 @@
 /*
     The network search widget dock widget
 
-    SPDX-FileCopyrightText: 2018-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -69,9 +69,6 @@ Smb4KSharesViewDockWidget::~Smb4KSharesViewDockWidget()
 
 void Smb4KSharesViewDockWidget::loadSettings()
 {
-    //
-    // Adjust the view according to the setting chosen
-    //
     switch (Smb4KSettings::sharesViewMode()) {
     case Smb4KSettings::EnumSharesViewMode::IconView: {
         m_sharesView->setViewMode(Smb4KSharesView::IconMode, Smb4KSettings::sharesViewIconSizeIconView());
@@ -86,12 +83,9 @@ void Smb4KSharesViewDockWidget::loadSettings()
     }
     }
 
-    //
-    // Adjust the unmount actions if needed
-    //
-    if (!m_sharesView->selectedItems().isEmpty()) {
-        QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
+    QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
+    if (!selectedItems.isEmpty()) {
         if (selectedItems.size() == 1) {
             Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
             m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled(!item->shareItem()->isForeign());
@@ -355,37 +349,42 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
 
 void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem *item, QDropEvent *e)
 {
-    if (item && e) {
-        if (e->mimeData()->hasUrls()) {
-            if (Smb4KHardwareInterface::self()->isOnline()) {
-                QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
-
-                // FIXME: Either modify the drop menu that it only shows the allowed
-                // drop actions or implement the following code.
-                //
-                // KIO::CopyJob *job = nullptr;
-                //
-                // if (e->proposedAction() == Qt::CopyAction) {
-                //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
-                // } else if (e->proposedAction() == Qt::MoveAction) {
-                //     job = KIO::move(e->mimeData()->urls(), dest, KIO::DefaultFlags);
-                // } else {
-                //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
-                // }
-
-                KIO::DropJob *job = KIO::drop(e, dest, KIO::DefaultFlags);
-
-                KJobWidgets::setWindow(job, m_sharesView);
-                job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-                job->uiDelegate()->setAutoWarningHandlingEnabled(true);
-            } else {
-                // FIXME: Move this to the notifications.
-                KMessageBox::error(
-                    m_sharesView,
-                    i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop any files here.</qt>", item->shareItem()->displayString()));
-            }
-        }
+    if (!item || !e) {
+        return;
     }
+
+    if (!e->mimeData()->hasUrls()) {
+        return;
+    }
+
+    if (!Smb4KHardwareInterface::self()->isOnline()) {
+        // FIXME: Move this to the notifications.
+        KMessageBox::error(
+            m_sharesView,
+            i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop any files here.</qt>", item->shareItem()->displayString()));
+        return;
+    }
+
+    QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
+
+    // FIXME: Either modify the drop menu that it only shows the allowed
+    // drop actions or implement the following code.
+    //
+    // KIO::CopyJob *job = nullptr;
+    //
+    // if (e->proposedAction() == Qt::CopyAction) {
+    //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+    // } else if (e->proposedAction() == Qt::MoveAction) {
+    //     job = KIO::move(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+    // } else {
+    //     job = KIO::copy(e->mimeData()->urls(), dest, KIO::DefaultFlags);
+    // }
+
+    KIO::DropJob *job = KIO::drop(e, dest, KIO::DefaultFlags);
+
+    KJobWidgets::setWindow(job, m_sharesView);
+    job->uiDelegate()->setAutoErrorHandlingEnabled(true);
+    job->uiDelegate()->setAutoWarningHandlingEnabled(true);
 }
 
 void Smb4KSharesViewDockWidget::slotViewModeChanged(QAction *action)
@@ -412,62 +411,60 @@ void Smb4KSharesViewDockWidget::slotViewModeChanged(QAction *action)
 
 void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr &share)
 {
-    //
-    // Add the share to the shares view
-    //
-    if (share) {
-        // Add the item
-        (void)new Smb4KSharesViewItem(m_sharesView, share);
-
-        // Sort the view
-        m_sharesView->sortItems(Qt::AscendingOrder);
-
-        // Enable/disable the 'Unmount All' action
-        actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
+    if (!share) {
+        return;
     }
+
+    // Add the item
+    (void)new Smb4KSharesViewItem(m_sharesView, share);
+
+
+
+    // Sort the view
+    m_sharesView->sortItems(Qt::AscendingOrder);
+
+    // Enable/disable the 'Unmount All' action
+    actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
 }
 
 void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr &share)
 {
-    //
-    // Remove the share from the shares view
-    //
-    if (share) {
-        // Get the item and delete it. Take care of the current item, if necessary.
-        for (int i = 0; i < m_sharesView->count(); ++i) {
-            Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(m_sharesView->item(i));
-
-            if (item && (item->shareItem()->path() == share->path() || item->shareItem()->canonicalPath() == share->canonicalPath())) {
-                if (item == m_sharesView->currentItem()) {
-                    m_sharesView->setCurrentItem(nullptr);
-                }
-
-                delete m_sharesView->takeItem(i);
-                break;
-            } else {
-                continue;
-            }
-        }
-
-        // Enable/disable the 'Unmount All' action
-        actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
+    if (!share) {
+        return;
     }
+
+    // Get the item and delete it. Take care of the current item, if necessary.
+    for (int i = 0; i < m_sharesView->count(); ++i) {
+        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(m_sharesView->item(i));
+
+        if (item && (item->shareItem()->path() == share->path() || item->shareItem()->canonicalPath() == share->canonicalPath())) {
+            if (item == m_sharesView->currentItem()) {
+                m_sharesView->setCurrentItem(nullptr);
+            }
+
+            delete m_sharesView->takeItem(i);
+            break;
+        }
+    }
+
+    // Enable/disable the 'Unmount All' action
+    actionCollection()->action(QStringLiteral("unmount_all_action"))->setEnabled((!onlyForeignMountedShares() && m_sharesView->count() != 0));
 }
 
 void Smb4KSharesViewDockWidget::slotShareUpdated(const SharePtr &share)
 {
-    if (share) {
-        m_sharesView->toolTip()->update();
+    if (!share) {
+        return;
+    }
 
-        for (int i = 0; i < m_sharesView->count(); ++i) {
-            Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(m_sharesView->item(i));
+    m_sharesView->toolTip()->update();
 
-            if (item && (item->shareItem()->path() == share->path() || item->shareItem()->canonicalPath() == share->canonicalPath())) {
-                item->update();
-                break;
-            } else {
-                continue;
-            }
+    for (int i = 0; i < m_sharesView->count(); ++i) {
+        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(m_sharesView->item(i));
+
+        if (item && (item->shareItem()->path() == share->path() || item->shareItem()->canonicalPath() == share->canonicalPath())) {
+            item->update();
+            break;
         }
     }
 }

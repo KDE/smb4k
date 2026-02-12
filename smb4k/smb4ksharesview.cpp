@@ -1,7 +1,7 @@
 /*
     This is the shares view of Smb4K.
 
-    SPDX-FileCopyrightText: 2006-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -47,14 +47,8 @@ Smb4KSharesView::~Smb4KSharesView()
 
 void Smb4KSharesView::setViewMode(QListView::ViewMode mode, int iconSize)
 {
-    //
-    // Set the view mode
-    //
     QListWidget::setViewMode(mode);
 
-    //
-    // Make adjustments
-    //
     switch (mode) {
     case IconMode: {
         setUniformItemSizes(true);
@@ -73,9 +67,6 @@ void Smb4KSharesView::setViewMode(QListView::ViewMode mode, int iconSize)
     }
     }
 
-    //
-    // Align the items
-    //
     for (int i = 0; i < count(); ++i) {
         Smb4KSharesViewItem *viewItem = static_cast<Smb4KSharesViewItem *>(item(i));
         viewItem->setItemAlignment(mode);
@@ -97,14 +88,7 @@ bool Smb4KSharesView::event(QEvent *e)
 
         if (item) {
             if (Smb4KSettings::showShareToolTip()) {
-                //
-                // Set up the tooltip
-                //
                 m_toolTip->setupToolTip(Smb4KToolTip::MountedShare, item->shareItem());
-
-                //
-                // Show the tooltip
-                //
                 m_toolTip->show(cursor().pos(), nativeParentWidget()->windowHandle());
             }
         }
@@ -121,17 +105,10 @@ bool Smb4KSharesView::event(QEvent *e)
 
 void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
 {
-    //
-    // Hide the tooltip
-    //
     if (m_toolTip->isVisible()) {
         m_toolTip->hide();
     }
 
-    //
-    // Get the item that is under the mouse. If there is no
-    // item, unselect the current item.
-    //
     QListWidgetItem *item = itemAt(e->position().toPoint());
 
     if (!item && !selectedItems().isEmpty()) {
@@ -145,9 +122,6 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
 
 void Smb4KSharesView::mouseMoveEvent(QMouseEvent *e)
 {
-    //
-    // Hide the tooltip
-    //
     if (m_toolTip->isVisible()) {
         m_toolTip->hide();
     }
@@ -157,70 +131,79 @@ void Smb4KSharesView::mouseMoveEvent(QMouseEvent *e)
 
 void Smb4KSharesView::dragEnterEvent(QDragEnterEvent *e)
 {
-    if (e->mimeData()->hasUrls()) {
-        e->accept();
-    } else {
+    if (!e->mimeData()->hasUrls()) {
         e->ignore();
+        return;
     }
+
+    e->accept();
 }
 
 void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
 {
-    QAbstractItemView::dragMoveEvent(e);
+    // We need this for highlighting of the share icons
+   QListWidget::dragMoveEvent(e);
 
-    if (e->proposedAction() == Qt::CopyAction || e->proposedAction() == Qt::MoveAction) {
-        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
-
-        if (item) {
-            QStorageInfo storageInfo(item->shareItem()->canonicalPath());
-
-            if (!storageInfo.isReadOnly() && !item->shareItem()->isInaccessible() && (item->flags() & Qt::ItemIsDropEnabled)) {
-                QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
-
-                if (e->source() == this && e->mimeData()->urls().first() == url) {
-                    e->ignore();
-                } else {
-                    e->accept();
-                }
-            } else {
-                e->ignore();
-            }
-        } else {
-            e->ignore();
-        }
-    } else {
+    if (e->proposedAction() != Qt::CopyAction && e->proposedAction() != Qt::MoveAction) {
         e->ignore();
+        return;
     }
+
+    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
+
+    if (!item || item->shareItem()->isInaccessible() || !(item->flags() & Qt::ItemIsDropEnabled)) {
+        e->ignore();
+        return;
+    }
+
+    QStorageInfo storageInfo(item->shareItem()->canonicalPath());
+
+    if (storageInfo.isReadOnly()) {
+        e->ignore();
+        return;
+    }
+
+    QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+
+    if (e->source() == this && e->mimeData()->urls().first() == url) {
+        e->ignore();
+        return;
+    }
+
+    e->accept();
 }
 
 void Smb4KSharesView::dropEvent(QDropEvent *e)
 {
-    if (e->proposedAction() == Qt::CopyAction || e->proposedAction() == Qt::MoveAction) {
-        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
-
-        if (item) {
-            QStorageInfo storageInfo(item->shareItem()->canonicalPath());
-
-            if (!storageInfo.isReadOnly() && !item->shareItem()->isInaccessible() && (item->flags() & Qt::ItemIsDropEnabled)
-                && (e->proposedAction() == Qt::CopyAction || e->proposedAction() == Qt::MoveAction)) {
-                QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
-
-                if (e->source() == this && e->mimeData()->urls().first() == url) {
-                    e->ignore();
-                } else {
-                    e->acceptProposedAction();
-                    Q_EMIT acceptedDropEvent(item, e);
-                    // e->accept();
-                }
-            } else {
-                e->ignore();
-            }
-        } else {
-            e->ignore();
-        }
-    } else {
+    if (e->proposedAction() != Qt::CopyAction && e->proposedAction() != Qt::MoveAction) {
         e->ignore();
+        return;
     }
+
+    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
+
+    if (!item || item->shareItem()->isInaccessible() || !(item->flags() & Qt::ItemIsDropEnabled)) {
+        e->ignore();
+        return;
+    }
+
+    QStorageInfo storageInfo(item->shareItem()->canonicalPath());
+
+    if (storageInfo.isReadOnly()) {
+        e->ignore();
+        return;
+    }
+
+    QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+
+    if (e->source() == this && e->mimeData()->urls().first() == url) {
+        e->ignore();
+        return;
+    }
+
+    e->acceptProposedAction();
+    Q_EMIT acceptedDropEvent(item, e);
+    e->accept();
 }
 
 Qt::DropActions Smb4KSharesView::supportedDropActions() const
@@ -247,27 +230,28 @@ void Smb4KSharesView::startDrag(Qt::DropActions supported)
 {
     QList<QListWidgetItem *> list = selectedItems();
 
-    if (!list.isEmpty()) {
-        QMimeData *data = mimeData(list);
-
-        if (!data) {
-            return;
-        }
-
-        QDrag *drag = new QDrag(this);
-
-        QPixmap pixmap;
-
-        if (list.count() == 1) {
-            Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(list.first());
-            pixmap = item->icon().pixmap(KIconLoader::SizeMedium);
-        } else {
-            pixmap = KDE::icon(QStringLiteral("document-multiple")).pixmap(KIconLoader::SizeMedium);
-        }
-
-        drag->setPixmap(pixmap);
-        drag->setMimeData(data);
-
-        drag->exec(supported, Qt::IgnoreAction);
+    if (list.isEmpty()) {
+        return;
     }
+
+    QMimeData *data = mimeData(list);
+
+    if (!data) {
+        return;
+    }
+
+    QDrag *drag = new QDrag(this);
+
+    QPixmap pixmap;
+
+    if (list.count() == 1) {
+        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(list.first());
+        pixmap = item->icon().pixmap(KIconLoader::SizeMedium);
+    } else {
+        pixmap = KDE::icon(QStringLiteral("document-multiple")).pixmap(KIconLoader::SizeMedium);
+    }
+
+    drag->setPixmap(pixmap);
+    drag->setMimeData(data);
+    drag->exec(supported, Qt::IgnoreAction);
 }
