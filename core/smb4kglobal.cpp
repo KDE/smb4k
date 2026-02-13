@@ -845,3 +845,30 @@ const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
 
     return macAddress;
 }
+
+const QByteArray Smb4KGlobal::wakeOnLanMagicSequence(const QString &macAddress)
+{
+    // Construct the magic sequence
+    QByteArray sequence;
+
+    // 6 times 0xFF
+    sequence.append(QByteArray(6, char(0xFF)));
+
+    // 16 times the MAC address
+    const QStringList macAddressParts = macAddress.split(QStringLiteral(":"), Qt::SkipEmptyParts);
+
+    QByteArray macAddressBytes;
+
+    for (const QString &part : std::as_const(macAddressParts)) {
+        bool ok = false;
+        const int value = part.toInt(&ok, 16);
+
+        if (ok) {
+            macAddressBytes.append(char(value));
+        }
+    }
+
+    sequence.append(macAddressBytes.repeated(16));
+
+    return sequence;
+}

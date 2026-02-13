@@ -424,6 +424,13 @@ SMB4KCORE_EXPORT void wait(int time);
  * @param ipAddress     The IP addess of the server
  */
 SMB4KCORE_EXPORT const QString findMacAddress(const QString &ipAddress);
+
+/**
+ * Construct the Wake-On-LAN magic sequence from the host's MAC address.
+ *
+ * @param macAddress    The MAC address of the host
+ */
+SMB4KCORE_EXPORT const QByteArray wakeOnLanMagicSequence(const QString &macAddress);
 };
 
 #endif
