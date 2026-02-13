@@ -23,6 +23,7 @@
 #include <QHostAddress>
 #include <QTimer>
 #include <QUrl>
+#include <QUdpSocket>
 
 // KDE includes
 #include <KDNSSD/RemoteService>
@@ -260,6 +261,8 @@ public:
     QList<WorkgroupPtr> tempWorkgroupList;
     QList<HostPtr> tempHostList;
     QList<QueueContainer> queue;
+    QUdpSocket udpSocket;
+
 };
 
 class Smb4KClientStatic

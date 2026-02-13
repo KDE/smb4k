@@ -1,7 +1,7 @@
 /*
     This class provides the interface to the libsmbclient library.
 
-    SPDX-FileCopyrightText: 2018-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -91,8 +91,6 @@ void Smb4KClient::lookupDomains()
             NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
             Q_EMIT aboutToStart(item, WakeUp);
 
-            QUdpSocket *socket = new QUdpSocket(this);
-
             for (int i = 0; i < wakeOnLanEntries.size(); ++i) {
                 if (wakeOnLanEntries.at(i)->wakeOnLanSendBeforeNetworkScan()) {
                     QHostAddress addr;
@@ -103,29 +101,12 @@ void Smb4KClient::lookupDomains()
                         addr.setAddress(QStringLiteral("255.255.255.255"));
                     }
 
-                    // Construct magic sequence
-                    QByteArray sequence;
+                    // Magic Wake-On-LAN sequence
+                    QByteArray sequence = wakeOnLanMagicSequence(wakeOnLanEntries.at(i)->macAddress());
 
-                    // 6 times 0xFF
-                    for (int j = 0; j < 6; ++j) {
-                        sequence.append(QChar(0xFF).toLatin1());
-                    }
-
-                    // 16 times the MAC address
-                    QStringList parts = wakeOnLanEntries.at(i)->macAddress().split(QStringLiteral(":"), Qt::SkipEmptyParts);
-
-                    for (int j = 0; j < 16; ++j) {
-                        for (int k = 0; k < parts.size(); ++k) {
-                            QString item = QStringLiteral("0x") + parts.at(k);
-                            sequence.append(QChar(item.toInt(nullptr, 16)).toLatin1());
-                        }
-                    }
-
-                    socket->writeDatagram(sequence, addr, 9);
+                    d->udpSocket.writeDatagram(sequence, addr, 9);
                 }
             }
-
-            delete socket;
 
             // Wait the defined time
             int stop = 1000 * Smb4KSettings::wakeOnLANWaitingTime() / 250;
