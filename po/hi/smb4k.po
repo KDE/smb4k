@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-02 00:43+0000\n"
+"POT-Creation-Date: 2026-02-13 00:43+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -195,7 +195,7 @@ msgstr "बुकमार्क संपादित करें"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:206
+#: smb4k/smb4ksharesviewdockwidget.cpp:200
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "बुकमार्क जोड़ें"
@@ -849,19 +849,19 @@ msgid "&Search"
 msgstr "&खोज"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+बी"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:216
+#: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "कस्टम सेटिंग्स जोड़ें"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:221
+#: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+सी"
@@ -912,7 +912,7 @@ msgid "&Mount"
 msgstr "&माउंट"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:178
+#: smb4k/smb4ksharesviewdockwidget.cpp:172
 #, kde-format
 msgid "&Unmount"
 msgstr "&अनमाउंट"
@@ -935,7 +935,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "कार्य समूह को स्कैन करें"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:183
+#: smb4k/smb4ksharesviewdockwidget.cpp:177
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+यू"
@@ -1040,7 +1040,7 @@ msgstr "छाप"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "प्रिंटर <b>%1</b> पर फ़ाइल प्रिंट करें."
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "U&nmount All"
 msgstr "सभी को अन&नमाउंट करें"
@@ -1070,57 +1070,57 @@ msgstr "कंसोल के साथ खोलें"
 msgid "Open with File Manager"
 msgstr "फ़ाइल प्रबंधक के साथ खोलें"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:133
+#: smb4k/smb4ksharesviewdockwidget.cpp:127
 #, kde-format
 msgid "View Modes"
 msgstr "दृश्य मोड"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:139
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "Icon View"
 msgstr "आइकन दृश्य"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:145
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "List View"
 msgstr "लिस्ट व्यू"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+एन"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "S&ynchronize"
 msgstr "सिंक्रनाइज़ करें"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:244
+#: smb4k/smb4ksharesviewdockwidget.cpp:238
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "कंसोल&ले के साथ खोलें"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#: smb4k/smb4ksharesviewdockwidget.cpp:243
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+एल"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#: smb4k/smb4ksharesviewdockwidget.cpp:245
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "फ़ाइल प्रबंधक के साथ खोलें"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:256
+#: smb4k/smb4ksharesviewdockwidget.cpp:250
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+आई"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:385
+#: smb4k/smb4ksharesviewdockwidget.cpp:364
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

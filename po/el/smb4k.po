@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-02 00:43+0000\n"
+"POT-Creation-Date: 2026-02-13 00:43+0000\n"
 "PO-Revision-Date: 2024-09-19 16:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -200,7 +200,7 @@ msgstr "&Επεξεργασία σελιδοδεικτών"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:206
+#: smb4k/smb4ksharesviewdockwidget.cpp:200
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Προσθήκη &σελιδοδείκτη"
@@ -875,20 +875,20 @@ msgid "&Search"
 msgstr "Αναζήτη&ση"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:216
+#: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
 msgid "Add &Custom Settings"
 msgstr "Προσαρ&μοσμένες επιλογές"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:221
+#: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
@@ -939,7 +939,7 @@ msgid "&Mount"
 msgstr "&Προσάρτηση"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:178
+#: smb4k/smb4ksharesviewdockwidget.cpp:172
 #, kde-format
 msgid "&Unmount"
 msgstr "Αποπ&ροσάρτηση"
@@ -962,7 +962,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "Σάρωση ομάδας ε&ργασίας"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:183
+#: smb4k/smb4ksharesviewdockwidget.cpp:177
 #, kde-format
 msgid "Ctrl+U"
 msgstr ""
@@ -1073,7 +1073,7 @@ msgstr "&Εκτύπωση αρχείου"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Αποστολή αρχείου στον εκτυπωτή %1.."
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "U&nmount All"
 msgstr "Αποπ&ροσάρτηση όλων"
@@ -1103,57 +1103,57 @@ msgstr "Άνοιγμα με την κονσόλα"
 msgid "Open with File Manager"
 msgstr "Άνοιγμα με το διαχειριστή αρχείων"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:133
+#: smb4k/smb4ksharesviewdockwidget.cpp:127
 #, kde-format
 msgid "View Modes"
 msgstr "Τρόποι προβολής"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:139
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "Icon View"
 msgstr "Εικονίδια"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:145
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "List View"
 msgstr "Λίστες"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+N"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "S&ynchronize"
 msgstr "Σ&υγχρονισμός"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+Y"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:244
+#: smb4k/smb4ksharesviewdockwidget.cpp:238
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Άνοιγμα με την κονσό&λα"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#: smb4k/smb4ksharesviewdockwidget.cpp:243
 #, kde-format
 msgid "Ctrl+L"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#: smb4k/smb4ksharesviewdockwidget.cpp:245
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Άνοιγμα με το διαχειρ&ιστή αρχείων"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:256
+#: smb4k/smb4ksharesviewdockwidget.cpp:250
 #, kde-format
 msgid "Ctrl+I"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:385
+#: smb4k/smb4ksharesviewdockwidget.cpp:364
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

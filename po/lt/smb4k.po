@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-02 00:43+0000\n"
+"POT-Creation-Date: 2026-02-13 00:43+0000\n"
 "PO-Revision-Date: 2026-02-09 17:53+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -197,7 +197,7 @@ msgstr "&Taisyti žymeles"
 
 #: smb4k/smb4kbookmarkmenu.cpp:42 smb4k/smb4kmainwindow.cpp:111
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:133
-#: smb4k/smb4ksharesviewdockwidget.cpp:206
+#: smb4k/smb4ksharesviewdockwidget.cpp:200
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Pridėti žymelę"
@@ -858,19 +858,19 @@ msgid "&Search"
 msgstr "&Ieškoti"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:139
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
-#: smb4k/smb4ksharesviewdockwidget.cpp:216
+#: smb4k/smb4ksharesviewdockwidget.cpp:210
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Pridėti tin&kintas nuostatas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:221
+#: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
@@ -921,7 +921,7 @@ msgid "&Mount"
 msgstr "&Prijungti"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
-#: smb4k/smb4ksharesviewdockwidget.cpp:178
+#: smb4k/smb4ksharesviewdockwidget.cpp:172
 #, kde-format
 msgid "&Unmount"
 msgstr "&Atjungti"
@@ -944,7 +944,7 @@ msgid "Scan Wo&rkgroup"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
-#: smb4k/smb4ksharesviewdockwidget.cpp:183
+#: smb4k/smb4ksharesviewdockwidget.cpp:177
 #, kde-format
 msgid "Ctrl+U"
 msgstr ""
@@ -1054,7 +1054,7 @@ msgstr "Spausdinti"
 msgid "Print a file to printer <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:188
+#: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "U&nmount All"
 msgstr "Atju&ngti viską"
@@ -1084,57 +1084,57 @@ msgstr "Atverti naudojant Konsole"
 msgid "Open with File Manager"
 msgstr "Atverti naudojant failų tvarkytuvę"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:133
+#: smb4k/smb4ksharesviewdockwidget.cpp:127
 #, kde-format
 msgid "View Modes"
 msgstr "Rodinio veiksenos"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:139
+#: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "Icon View"
 msgstr "Piktogramų rodinys"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:145
+#: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "List View"
 msgstr "Sąrašo rodinys"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+N"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "S&ynchronize"
 msgstr "Sin&chronizuoti"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+Y"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:244
+#: smb4k/smb4ksharesviewdockwidget.cpp:238
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Atverti naudojant Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#: smb4k/smb4ksharesviewdockwidget.cpp:243
 #, kde-format
 msgid "Ctrl+L"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#: smb4k/smb4ksharesviewdockwidget.cpp:245
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Atverti naudojant f&ailų tvarkytuvę"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:256
+#: smb4k/smb4ksharesviewdockwidget.cpp:250
 #, kde-format
 msgid "Ctrl+I"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:385
+#: smb4k/smb4ksharesviewdockwidget.cpp:364
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
