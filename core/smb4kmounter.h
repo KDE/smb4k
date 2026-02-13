@@ -285,7 +285,7 @@ private:
     /**
      * Create a share using the mount point as search item.
      */
-    SharePtr createShare(const QString &mountPoint) const;
+    SharePtr createMountedShare(const QString &mountPoint) const;
 
     /**
      * Pointer to the Smb4KMounterPrivate class.

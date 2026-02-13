@@ -134,12 +134,14 @@ Smb4KMounter *Smb4KMounter::self()
 
 void Smb4KMounter::abort()
 {
-    if (!QCoreApplication::closingDown()) {
-        QListIterator<KJob *> it(subjobs());
+    if (QCoreApplication::closingDown()) {
+        return;
+    }
 
-        while (it.hasNext()) {
-            it.next()->kill(KJob::EmitResult);
-        }
+    QListIterator<KJob *> it(subjobs());
+
+    while (it.hasNext()) {
+        it.next()->kill(KJob::EmitResult);
     }
 }
 
@@ -169,27 +171,29 @@ void Smb4KMounter::triggerRemounts(bool fillList)
                 share = findShareByPath(dir.canonicalPath());
             }
 
-            if (!share) {
-                bool createAndAddShare = true;
+            if (share) {
+                continue;
+            }
 
-                if (Smb4KMountSettings::checkServerOnlineState()) {
-                    // Check if the server is online. We try to connect on default
-                    // port 445. Prefer the IP address over the host name.
-                    QString hostName = !option->ipAddress().isEmpty() ? option->ipAddress() : option->hostName();
-                    d->tcpSocket.connectToHost(hostName, 445);
-                    createAndAddShare = d->tcpSocket.waitForConnected(3000);
-                    d->tcpSocket.abort();
-                }
+            bool createAndAddShare = true;
 
-                if (createAndAddShare) {
-                    share = SharePtr(new Smb4KShare());
-                    share->setUrl(option->url());
-                    share->setWorkgroupName(option->workgroupName());
-                    share->setHostIpAddress(option->ipAddress());
+            if (Smb4KMountSettings::checkServerOnlineState()) {
+                // Check if the server is online. We try to connect on default
+                // port 445. Prefer the IP address over the host name.
+                QString hostName = !option->ipAddress().isEmpty() ? option->ipAddress() : option->hostName();
+                d->tcpSocket.connectToHost(hostName, 445);
+                createAndAddShare = d->tcpSocket.waitForConnected(3000);
+                d->tcpSocket.abort();
+            }
 
-                    if (share->url().isValid() && !share->url().isEmpty()) {
-                        d->remounts << share;
-                    }
+            if (createAndAddShare) {
+                share = SharePtr(new Smb4KShare());
+                share->setUrl(option->url());
+                share->setWorkgroupName(option->workgroupName());
+                share->setHostIpAddress(option->ipAddress());
+
+                if (share->url().isValid() && !share->url().isEmpty()) {
+                    d->remounts << share;
                 }
             }
         }
@@ -238,27 +242,8 @@ void Smb4KMounter::mountShare(const SharePtr &share)
                 address.setAddress(QStringLiteral("255.255.255.255"));
             }
 
-            // Construct the magic sequence
-            QByteArray sequence;
-
-            // 6 times 0xFF
-            sequence.append(QByteArray(6, char(0xFF)));
-
-            // 16 times the MAC address
-            const QStringList macAddressParts = customSettings->macAddress().split(QStringLiteral(":"), Qt::SkipEmptyParts);
-
-            QByteArray macAddressBytes;
-
-            for (const QString &part : std::as_const(macAddressParts)) {
-                bool ok = false;
-                const int value = part.toInt(&ok, 16);
-
-                if (ok) {
-                    macAddressBytes.append(char(value));
-                }
-            }
-
-            sequence.append(macAddressBytes.repeated(16));
+            // Magic Wake-On-LAN sequence
+            QByteArray sequence = wakeOnLanMagicSequence(customSettings->macAddress());
 
             d->udpSocket.writeDatagram(sequence, address, 9);
 
@@ -1198,7 +1183,7 @@ const QString Smb4KMounter::generateMountPoint(const QUrl &url) const
     return QDir::cleanPath(mountPoint);
 }
 
-SharePtr Smb4KMounter::createShare(const QString &mountPoint) const
+SharePtr Smb4KMounter::createMountedShare(const QString &mountPoint) const
 {
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
     KMountPoint::Ptr mp = mountPoints.findByPath(mountPoint);
@@ -1340,7 +1325,7 @@ void Smb4KMounter::slotConfigChanged()
 
         for (const QString &mountPoint : std::as_const(mountPoints)) {
             if (!findShareByPath(mountPoint)) {
-                SharePtr share = createShare(mountPoint);
+                SharePtr share = createMountedShare(mountPoint);
                 checkMountedShare(share);
 
                 if (!share->isForeign() || Smb4KMountSettings::detectAllShares()) {
@@ -1383,7 +1368,7 @@ void Smb4KMounter::slotShareMounted(const QString &mountPoint)
 {
     Q_ASSERT(!mountPoint.isEmpty());
 
-    SharePtr share = createShare(mountPoint);
+    SharePtr share = createMountedShare(mountPoint);
     checkMountedShare(share);
 
     if (!share->isForeign() || Smb4KMountSettings::detectAllShares()) {
