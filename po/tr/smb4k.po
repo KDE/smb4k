@@ -94,9 +94,10 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Gelişmiş ağ komşuları tarayıcısı ve Samba paylaşım bağlama aracı"
 
 #: smb4k/main.cpp:44
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2025 Alexander Reinholdt"
 msgid "© 2003-2024 Alexander Reinholdt"
-msgstr "© 2003–2024 Alexander Reinholdt"
+msgstr "© 2003–2025 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -640,14 +641,13 @@ msgstr "Bu sunucu, CIFS Unix uzantılarını destekler"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, kde-format
 msgid "MAC Address:"
-msgstr "MAC Adresi:"
+msgstr "MAC adresi:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC Adresi:"
+msgstr "MAC adresini bul"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
@@ -819,7 +819,7 @@ msgstr "Bu paylaşıma yer imi koy"
 #, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Yer İmi Koy >>"
+msgstr "Yer İmi Koy ≫"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -1273,100 +1273,3 @@ msgstr "Boyut:"
 #~ msgstr[1] ""
 #~ "Aşağıdaki %1 girdi ek seçeneklerden çıkarılacaktır:<br>%2.<br>Ayrıntılar "
 #~ "için lütfen el kitabını okuyun."
-
-#~ msgid "The default login is depending on the profile you are using."
-#~ msgstr "Öntanımlı oturum açma, kullandığınız profile bağlıdır."
-
-#~ msgid "Active profile:"
-#~ msgstr "Etkin profil:"
-
-#~ msgid "Unknown"
-#~ msgstr "Bilinmiyor"
-
-#~ msgid "Default Profile"
-#~ msgstr "Öntanımlı Profil"
-
-#~ msgid "Wallet Entries"
-#~ msgstr "Cüzdan Girdileri"
-
-#~ msgid "Load"
-#~ msgstr "Yükle"
-
-#~ msgid "Save"
-#~ msgstr "Kaydet"
-
-#~ msgid "Enter the default login information."
-#~ msgstr "Öntanımlı oturum bilgisini girin."
-
-#~ msgid "Set the username and password for wallet entry %1."
-#~ msgstr "%1 cüzdan girdisi için kullanıcı adı ve parolayı ayarlayın."
-
-#~ msgid "Set the username and password for the default login."
-#~ msgstr ""
-#~ "Öntanımlı oturum açma verisi için kullanıcı adını ve parolayı ayarlayın."
-
-#~ msgid "The wallet is used."
-#~ msgstr "Cüzdan kullanıldı."
-
-#~ msgid "The password dialog is used."
-#~ msgstr "Parola iletişim kutusu kullanıldı."
-
-#~ msgid "Mounting: Common Settings"
-#~ msgstr "Bağlama: Temel Ayarlar"
-
-#~ msgid "Mounting: CIFS Unix Extensions"
-#~ msgstr "Bağlama: CIFS Unix Eklentileri"
-
-#~ msgid "Mounting: Advanced Settings"
-#~ msgstr "Bağlama: Gelişmiş Ayarlar"
-
-#~ msgid "Browsing"
-#~ msgstr "Göz Atma"
-
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Sayfa 1: Bağlama"
-
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Sayfa 2: Bağlama"
-
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Sayfa 3: Bağlama"
-
-#~ msgid "Page 4: Browsing"
-#~ msgstr "Sayfa 4: Tarama"
-
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Sayfa 5: Ağdan Uyan"
-
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Sayfa 2: Tarama"
-
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Sayfa 3: Ağdan Uyan"
-
-#~ msgid "Page 1"
-#~ msgstr "Sayfa 1"
-
-#~ msgid "Page 2"
-#~ msgstr "Sayfa 2"
-
-#~ msgid "Page 3"
-#~ msgstr "Sayfa 3"
-
-#~ msgid "Page 4"
-#~ msgstr "Sayfa 4"
-
-#~ msgid "Page 5"
-#~ msgstr "Sayfa 5"
-
-#~ msgid "Custom Options"
-#~ msgstr "Özel Seçenekler"
-
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Tüm Yer İmlerini Bağla"
-
-#~ msgid " KiB"
-#~ msgstr " KB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KB/sn"
