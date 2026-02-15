@@ -35,7 +35,7 @@
 
   <legalnotice>&underFDL;</legalnotice>
   <date>2026-01-26</date>
-  <releaseinfo>&smb4k; 4.0.5</releaseinfo><!--FIXME change releaseinfo number-->
+  <releaseinfo>&smb4k; 4.0.6</releaseinfo><!--FIXME change releaseinfo number-->
 
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
@@ -57,7 +57,7 @@
 
   <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a &Windows;-dominated network environment.</para>
 
-  <para>This handbook describes &smb4k; 4.0.5 and later. To some extent, it is also correct for earlier versions.</para>
+  <para>This handbook describes &smb4k; 4.0.6 and later. To some extent, it is also correct for earlier versions.</para>
 
   <note>
     <para>In 2025, several security vulnerabilities were found in the KAuth mount helper program (see the <ulink url="https://security.opensuse.org/2025/12/10/smb4k-major-issues-in-kauth-helper.html">report</ulink> by the SUSE Security Team) and were fixed in version 4.0.5. Since the feature set for mounts and unmounts has been restricted, these security improvements have a noticeable impact on the entire program.</para>
