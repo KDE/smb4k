@@ -166,7 +166,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab2Layout->addWidget(m_fileMode, 5, 1);
     tab2Layout->addWidget(m_useDirectoryMode, 6, 0);
     tab2Layout->addWidget(m_directoryMode, 6, 1);
-    tab2Layout->setRowStretch(6, 100);
+    tab2Layout->setRowStretch(7, 100);
 
     addTab(tab2, i18n("Common Mount Settings"));
 
