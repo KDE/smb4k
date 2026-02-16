@@ -776,28 +776,31 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool checked)
     Q_UNUSED(checked);
 
     QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
-    QList<SharePtr> shares;
 
-    if (!selectedItems.isEmpty()) {
-        for (QTreeWidgetItem *selectedItem : selectedItems) {
-            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
-
-            if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
-                shares << item->shareItem();
-            }
-        }
-    } else {
+    if (selectedItems.isEmpty()) {
         return;
     }
 
-    if (!shares.isEmpty()) {
-        QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog(this);
+    QList<SharePtr> shares;
 
-        if (bookmarkDialog->setShares(shares)) {
-            bookmarkDialog->open();
-        } else {
-            delete bookmarkDialog;
+    for (QTreeWidgetItem *selectedItem : std::as_const(selectedItems)) {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
+
+        if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
+            shares << item->shareItem();
         }
+    }
+
+    if (shares.isEmpty()) {
+        return;
+    }
+
+    QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog(this);
+
+    if (bookmarkDialog->setShares(shares)) {
+        bookmarkDialog->open();
+    } else {
+        delete bookmarkDialog;
     }
 }
 
