@@ -805,42 +805,46 @@ const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
     }
 #endif
 
-    if (!executable.isEmpty()) {
-        QStringList command;
-        command << executable;
+    if (executable.isEmpty()) {
+        return macAddress;
+    }
+
+    QStringList command;
+    command << executable;
 #if defined(Q_OS_LINUX)
-        command << QStringLiteral("neighbor");
-        command << QStringLiteral("show");
+    command << QStringLiteral("neighbor");
+    command << QStringLiteral("show");
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-        command << QStringLiteral("-an");
+    command << QStringLiteral("-an");
 #endif
 
-        KProcess process;
-        process.setProgram(command);
-        process.setOutputChannelMode(KProcess::SeparateChannels);
+    KProcess process;
+    process.setProgram(command);
+    process.setOutputChannelMode(KProcess::SeparateChannels);
 
-        if (process.execute(-1) >= 0) {
-            QStringList result = QString::fromLocal8Bit(process.readAllStandardOutput()).split(QStringLiteral("\n"));
+    if (process.execute((-1)) < 0) {
+        return macAddress;
+    }
 
-            for (const QString &r : result) {
+    QStringList result = QString::fromLocal8Bit(process.readAllStandardOutput()).split(QStringLiteral("\n"));
+
+    for (const QString &r : std::as_const(result)) {
 #if defined(Q_OS_LINUX)
-                if (r.section(QStringLiteral(" "), 0, 0) == ipAddress) {
-                    macAddress = r.section(QStringLiteral(" "), 4, 4);
-                    break;
-                }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-                if (address.protocol() == QHostAddress::IPv4Protocol
-                    && r.section(QStringLiteral(" "), 1, 1).remove(QStringLiteral("(")).remove(QStringLiteral(")")) == ipAddress) {
-                    macAddress = r.simplified().section(QStringLiteral(" "), 3, 3);
-                    break;
-                } else if (address.protocol() == QHostAddress::IPv6Protocol
-                           && r.section(QStringLiteral(" "), 0, 0).section(QStringLiteral("%"), 0, 0) == ipAddress) {
-                    macAddress = r.simplified().section(QStringLiteral(" "), 1, 1);
-                    break;
-                }
-#endif
-            }
+        if (r.section(QStringLiteral(" "), 0, 0) == ipAddress) {
+            macAddress = r.section(QStringLiteral(" "), 4, 4);
+            break;
         }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+        if (address.protocol() == QHostAddress::IPv4Protocol
+            && r.section(QStringLiteral(" "), 1, 1).remove(QStringLiteral("(")).remove(QStringLiteral(")")) == ipAddress) {
+            macAddress = r.simplified().section(QStringLiteral(" "), 3, 3);
+            break;
+        } else if (address.protocol() == QHostAddress::IPv6Protocol
+                    && r.section(QStringLiteral(" "), 0, 0).section(QStringLiteral("%"), 0, 0) == ipAddress) {
+            macAddress = r.simplified().section(QStringLiteral(" "), 1, 1);
+            break;
+        }
+#endif
     }
 
     return macAddress;
