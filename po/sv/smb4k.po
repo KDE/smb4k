@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-13 00:43+0000\n"
+"POT-Creation-Date: 2026-02-17 00:44+0000\n"
 "PO-Revision-Date: 2026-01-23 20:31+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -924,7 +924,7 @@ msgid "&Unmount"
 msgstr "&Avmontera"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -940,7 +940,7 @@ msgstr "Läs av &datorn"
 msgid "Scan Wo&rkgroup"
 msgstr "Läs av arbets&grupp"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
 #: smb4k/smb4ksharesviewdockwidget.cpp:177
 #, kde-format
 msgid "Ctrl+U"
