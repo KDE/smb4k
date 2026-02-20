@@ -126,10 +126,9 @@ msgstr "&Líonra"
 
 #. i18n: ectx: Menu (shares)
 #: smb4k/smb4k_shell.rc:12
-#, fuzzy, kde-format
-#| msgid "&Shares"
+#, kde-format
 msgid "Sh&ares"
-msgstr "&Comhranna"
+msgstr ""
 
 #. i18n: ectx: Menu (bookmarks)
 #: smb4k/smb4k_shell.rc:15
@@ -150,10 +149,9 @@ msgid "Main Toolbar"
 msgstr "Príomhbharra Uirlisí"
 
 #: smb4k/smb4kbookmarkdialog.cpp:32
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Eagarthóir Leabharmharcanna"
+msgstr ""
 
 #: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
@@ -197,10 +195,9 @@ msgid "Add &Bookmark"
 msgstr "Cuir &Leabharmharc Leis"
 
 #: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
-#, fuzzy, kde-format
-#| msgid "Edit Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Cuir Leabharmharcanna in Eagar"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:125
 #, kde-format
@@ -236,10 +233,9 @@ msgid " (Profile: %1)"
 msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:133
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -270,16 +266,14 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:230
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Úsáideoir:"
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "Focal Faire"
+msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:81
@@ -353,10 +347,9 @@ msgstr ""
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:330
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Basic Settings"
-msgstr "&Socruithe"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
 #, kde-format
@@ -378,17 +371,15 @@ msgstr "Aitheantas an Úsáideora:"
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:343
-#, fuzzy, kde-format
-#| msgid "Group:"
+#, kde-format
 msgid "Group ID:"
-msgstr "Grúpa:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:276
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Common Mount Settings"
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:284
 #, kde-format
@@ -397,10 +388,9 @@ msgstr "Ardroghanna"
 
 #: smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:206
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Mount Settings"
-msgstr "Ardsocruithe"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
@@ -409,30 +399,26 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:579
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:380
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Mount Settings"
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:255
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:429
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Browse Settings"
-msgstr "&Socruithe"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:137
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:178
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "Socruithe Ginearálta"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:198
 #, kde-format
@@ -446,22 +432,19 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:217
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Ardsocruithe"
+msgstr ""
 
 #: smb4k/smb4kconfigpageprofiles.cpp:44
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Settings"
-msgstr "&Socruithe"
+msgstr ""
 
 #: smb4k/smb4kconfigpageprofiles.cpp:75
-#, fuzzy, kde-format
-#| msgid "A&dd"
+#, kde-format
 msgid "Add"
-msgstr "C&uir Leis"
+msgstr ""
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
@@ -474,28 +457,24 @@ msgid "Move Up"
 msgstr ""
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Move Down"
-msgstr "Mír"
+msgstr ""
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Rename"
-msgstr "Comhéadan Úsáideora"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Sioncrónú"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:82
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Déan cúltaca"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:127
 #, kde-format
@@ -503,10 +482,9 @@ msgid "General"
 msgstr "Ginearálta"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:163
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
-msgstr "Naisc"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:210
 #, kde-format
@@ -519,10 +497,9 @@ msgid "File Attributes"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:263
-#, fuzzy, kde-format
-#| msgid "Owner:"
+#, kde-format
 msgid "Ownership"
-msgstr "Úinéir:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
@@ -535,10 +512,9 @@ msgid "Compression"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:327
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgid "Files"
-msgstr "Comhad"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:337
 #: smb4k/smb4kconfigpagesynchronization.cpp:348
@@ -549,10 +525,9 @@ msgstr ""
 #: smb4k/smb4kconfigpagesynchronization.cpp:373
 #: smb4k/smb4kconfigpagesynchronization.cpp:592
 #: smb4k/smb4kconfigpagesynchronization.cpp:608
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Miscellaneous"
-msgstr "Socruithe Ginearálta"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:383
 #, kde-format
@@ -565,16 +540,14 @@ msgid "File Transfer"
 msgstr "Aistriú Comhad"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:399
-#, fuzzy, kde-format
-#| msgid "Directories"
+#, kde-format
 msgid "Files && Directories"
-msgstr "Comhadlanna"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:445
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgid "Restrictions"
-msgstr "Sprioc:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:461
 #, kde-format
@@ -612,22 +585,19 @@ msgid "Network Neighborhood"
 msgstr ""
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:106
-#, fuzzy, kde-format
-#| msgid "&Shares"
+#, kde-format
 msgid "Shares View"
-msgstr "&Comhranna"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:52
-#, fuzzy, kde-format
-#| msgid "Network"
+#, kde-format
 msgid "No network item was set."
-msgstr "Líonra"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
@@ -653,17 +623,15 @@ msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:440
-#, fuzzy, kde-format
-#| msgid "IP address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "Seoladh IP:"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:273
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:447
-#, fuzzy, kde-format
-#| msgid "IP address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Seoladh IP:"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:282
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:456
@@ -679,10 +647,9 @@ msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:295
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:469
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Socruithe Ginearálta"
+msgstr ""
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -732,9 +699,6 @@ msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
@@ -767,10 +731,9 @@ msgid "Sending file to printer %1..."
 msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:541
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgid "Searching..."
-msgstr "Cuardaigh"
+msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
 #: smb4k/smb4kmainwindow.cpp:698
@@ -779,16 +742,14 @@ msgid "Done."
 msgstr "Críochnaithe."
 
 #: smb4k/smb4kmainwindow.cpp:580
-#, fuzzy, kde-format
-#| msgid "Mountpoint"
+#, kde-format
 msgid "Mounting..."
-msgstr "Pointe feistithe"
+msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:584
-#, fuzzy, kde-format
-#| msgid "Unmount"
+#, kde-format
 msgid "Unmounting..."
-msgstr "Dífheistigh"
+msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
@@ -811,10 +772,9 @@ msgid "Synchronizing %1"
 msgstr "%1 á sioncrónú"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:51
 #, kde-format
@@ -825,23 +785,20 @@ msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgid "Location:"
-msgstr "Roghanna"
+msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:107
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Eagarthóir Leabharmharcanna"
+msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:146
-#, fuzzy, kde-format
-#| msgid "Bookmark"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Leabharmharc"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -883,10 +840,9 @@ msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
-#, fuzzy, kde-format
-#| msgid "Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Roghanna Saincheaptha"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
@@ -974,10 +930,9 @@ msgid "Close"
 msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
-#, fuzzy, kde-format
-#| msgid "Search Results"
+#, kde-format
 msgid "Search string"
-msgstr "Torthaí an Chuardaigh"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:52
 #, kde-format
@@ -990,22 +945,19 @@ msgid "Stop"
 msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:63
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Down"
-msgstr "Mír"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:72
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Up"
-msgstr "Mír"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Clear"
+#, kde-format
 msgid "Clear"
-msgstr "&Glan"
+msgstr ""
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
@@ -1018,10 +970,9 @@ msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Preview Dialog"
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
@@ -1039,22 +990,19 @@ msgid "Up"
 msgstr "Suas"
 
 #: smb4k/smb4kpreviewdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Preview"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Réamhamharc"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Print a file."
-msgstr "Roghanna Coitianta"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:61
 #, kde-format
@@ -1067,10 +1015,9 @@ msgid "Copies:"
 msgstr "Líon na gCóipeanna:"
 
 #: smb4k/smb4kprintdialog.cpp:87
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "Printéir"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
@@ -1170,10 +1117,9 @@ msgid "Source:"
 msgstr "Foinse:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Destination"
+#, kde-format
 msgid "Destination:"
-msgstr "Sprioc"
+msgstr ""
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
@@ -1223,10 +1169,9 @@ msgid "Share (%1)"
 msgstr "Comhroinn (%1)"
 
 #: smb4k/smb4ktooltip.cpp:181
-#, fuzzy, kde-format
-#| msgid "Mounted"
+#, kde-format
 msgid "Mounted:"
-msgstr "Feistithe"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:184
 #, kde-format
@@ -1239,16 +1184,14 @@ msgid "no"
 msgstr "níl"
 
 #: smb4k/smb4ktooltip.cpp:190
-#, fuzzy, kde-format
-#| msgid "Host"
+#, kde-format
 msgid "Host:"
-msgstr "Óstríomhaire"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:227
-#, fuzzy, kde-format
-#| msgid "Mountpoint"
+#, kde-format
 msgid "Mountpoint:"
-msgstr "Pointe feistithe"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:229 smb4k/smb4ktooltip.cpp:232
 #: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:246
@@ -1262,10 +1205,9 @@ msgid "Owner:"
 msgstr "Úinéir:"
 
 #: smb4k/smb4ktooltip.cpp:239
-#, fuzzy, kde-format
-#| msgid "File system"
+#, kde-format
 msgid "File system:"
-msgstr "Córas comhaid"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:244
 #, kde-format
@@ -1273,519 +1215,6 @@ msgid "%1 free of %2 (%3 used)"
 msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:250
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "Méid"
-
-#~ msgid "Directories"
-#~ msgstr "Comhadlanna"
-
-#, fuzzy
-#~| msgid "Additional options:"
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Roghanna breise:"
-
-#, fuzzy
-#~| msgid "Additional options:"
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Roghanna breise:"
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown"
-#~ msgstr "anaithnid"
-
-#~ msgid "Load"
-#~ msgstr "Luchtaigh"
-
-#~ msgid "Save"
-#~ msgstr "Sábháil"
-
-#, fuzzy
-#~| msgid "Common Options"
-#~ msgid "Mounting: Common Settings"
-#~ msgstr "Roghanna Coitianta"
-
-#, fuzzy
-#~| msgid "Advanced Settings"
-#~ msgid "Mounting: Advanced Settings"
-#~ msgstr "Ardsocruithe"
-
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Browsing"
-#~ msgstr "&Socruithe"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Page 1: Mounting"
-#~ msgstr "Dífheistigh"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Page 2: Mounting"
-#~ msgstr "Dífheistigh"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Page 3: Mounting"
-#~ msgstr "Dífheistigh"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Page 5: Wake-On-LAN"
-#~ msgstr "Socruithe Ginearálta"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Page 2: Browsing"
-#~ msgstr "Dífheistigh"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Page 3: Wake-On-LAN"
-#~ msgstr "Socruithe Ginearálta"
-
-#~ msgid "Custom Options"
-#~ msgstr "Roghanna Saincheaptha"
-
-#, fuzzy
-#~| msgid "Show details"
-#~ msgid "Details"
-#~ msgstr "Taispeáin mionshonraí"
-
-#~ msgid "Entry"
-#~ msgstr "Iontráil"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Oibriú"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Ginearálta"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Socruithe Ginearálta"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Identification"
-#~ msgstr "Fíordheimhniú"
-
-#, fuzzy
-#~| msgid "IP address:"
-#~ msgid "MAC Address"
-#~ msgstr "Seoladh IP:"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Actions"
-#~ msgstr "Roghanna"
-
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "&Socruithe"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Fíordheimhniú"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
-#~ msgstr "Slándáil"
-
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Samba Settings"
-#~ msgstr "&Socruithe"
-
-#, fuzzy
-#~| msgid "Preserve permissions"
-#~ msgid "Permissions, etc."
-#~ msgstr "Caomhnaigh ceadanna"
-
-#~ msgid "Login"
-#~ msgstr "Logáil isteach"
-
-#~ msgid "Login:"
-#~ msgstr "Logáil Isteach:"
-
-#, fuzzy
-#~| msgid "Protocol"
-#~ msgid "Protocols"
-#~ msgstr "Prótacal"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Location"
-#~ msgstr "Roghanna"
-
-#~ msgid "Owner"
-#~ msgstr "Úinéir"
-
-#~ msgid "Undo"
-#~ msgstr "Cealaigh"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Colúin"
-
-#~ msgid "Tooltips"
-#~ msgstr "Leideanna Uirlisí"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "Amharc"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Socruithe Ginearálta"
-
-#, fuzzy
-#~| msgid "Search Toolbar"
-#~ msgid "Network Toolbar"
-#~ msgstr "Barra Uirlisí Cuardaigh"
-
-#~ msgid "Search Toolbar"
-#~ msgstr "Barra Uirlisí Cuardaigh"
-
-#, fuzzy
-#~| msgid "Search Toolbar"
-#~ msgid "Shares Toolbar"
-#~ msgstr "Barra Uirlisí Cuardaigh"
-
-#, fuzzy
-#~| msgid "Main Toolbar"
-#~ msgid "Alternative Main Toolbar"
-#~ msgstr "Príomhbharra Uirlisí"
-
-#~ msgid "&Clear"
-#~ msgstr "&Glan"
-
-#~ msgid " Bytes"
-#~ msgstr " Beart"
-
-#~ msgid "UNC Address:"
-#~ msgstr "Seoladh UNC:"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security Mode:"
-#~ msgstr "Slándáil"
-
-#~ msgid "General Options"
-#~ msgstr "Roghanna Ginearálta"
-
-#~ msgid "Add Group"
-#~ msgstr "Cuir Grúpa Leis"
-
-#~ msgid "Group name:"
-#~ msgstr "Ainm grúpa:"
-
-#~ msgid "Copying"
-#~ msgstr "Á Chóipeáil"
-
-#~ msgid "File Deletion && Transfer"
-#~ msgstr "Scriosadh agus Aistriú Comhad"
-
-#, fuzzy
-#~| msgid "Open"
-#~ msgid "Open With"
-#~ msgstr "Oscail"
-
-#~ msgid "Server"
-#~ msgstr "Freastalaí"
-
-#~ msgid "File System"
-#~ msgstr "Córas Comhad"
-
-#~ msgid "Free"
-#~ msgstr "Saor"
-
-#~ msgid "Used"
-#~ msgstr "Úsáidte"
-
-#~ msgid "Total"
-#~ msgstr "Iomlán"
-
-#~ msgid "Usage"
-#~ msgstr "Úsáid"
-
-#~ msgid "net"
-#~ msgstr "líonra"
-
-#~ msgid "Hardware"
-#~ msgstr "Crua-Earraí"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Show notifications"
-#~ msgstr "Fíordheimhniú"
-
-#, fuzzy
-#~| msgid "Show details"
-#~ msgid "Show hidden shares"
-#~ msgstr "Taispeáin mionshonraí"
-
-#, fuzzy
-#~| msgid "File system"
-#~ msgid "Show the file system"
-#~ msgstr "Córas comhaid"
-
-#, fuzzy
-#~| msgid "Broadcast address:"
-#~ msgid "Scan these broadcast areas:"
-#~ msgstr "Seoladh craolacháin:"
-
-#, fuzzy
-#~| msgid "Mountpoint"
-#~ msgid "Mount prefix:"
-#~ msgstr "Pointe feistithe"
-
-#~ msgid "NetBIOS name:"
-#~ msgstr "Ainm NetBIOS:"
-
-#~ msgid "Domain:"
-#~ msgstr "Fearann:"
-
-#, fuzzy
-#~| msgid "NetBIOS name:"
-#~ msgid "NetBIOS scope:"
-#~ msgstr "Ainm NetBIOS:"
-
-#, fuzzy
-#~| msgid "SMB Port:"
-#~ msgid "SMB port:"
-#~ msgstr "Port SMB:"
-
-#, fuzzy
-#~| msgid "File system"
-#~ msgid "File system port:"
-#~ msgstr "Córas comhaid"
-
-#, fuzzy
-#~| msgid "Use Kerberos authentication"
-#~ msgid "Use Winbind ccache for authentication"
-#~ msgstr "Úsáid fíordheimhniú Kerberos"
-
-#~ msgid "None"
-#~ msgstr "Neamhní"
-
-#~ msgid "On"
-#~ msgstr "Ann"
-
-#~ msgid "Off"
-#~ msgstr "As"
-
-#~ msgid "Required"
-#~ msgstr "Riachtanach"
-
-#~ msgid "default"
-#~ msgstr "réamhshocraithe"
-
-#~ msgid "utf8"
-#~ msgstr "utf8"
-
-#~ msgid "koi8-r"
-#~ msgstr "koi8-r"
-
-#~ msgid "koi8-u"
-#~ msgstr "koi8-u"
-
-#, fuzzy
-#~| msgid "koi8-r"
-#~ msgid "koi8-ru"
-#~ msgstr "koi8-r"
-
-#~ msgid "cp437"
-#~ msgstr "cp437"
-
-#, fuzzy
-#~| msgid "File:"
-#~ msgid "File mask:"
-#~ msgstr "Comhad:"
-
-#, fuzzy
-#~| msgid "Directories"
-#~ msgid "Directory mask:"
-#~ msgstr "Comhadlanna"
-
-#~ msgid "read-only"
-#~ msgstr "inléite amháin"
-
-#~ msgid "Automatic detection"
-#~ msgstr "Aimsiú uathoibríoch"
-
-#~ msgid "Broadcast address:"
-#~ msgstr "Seoladh craolacháin:"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security mode:"
-#~ msgstr "Slándáil"
-
-#, fuzzy
-#~| msgid "Use Kerberos authentication"
-#~ msgid "Kerberos 5 authentication"
-#~ msgstr "Úsáid fíordheimhniú Kerberos"
-
-#, fuzzy
-#~| msgid "Use Kerberos authentication"
-#~ msgid "Kerberos 5 authentication and packet signing"
-#~ msgstr "Úsáid fíordheimhniú Kerberos"
-
-#, fuzzy
-#~| msgid "Use Kerberos authentication"
-#~ msgid "NTLM protocol and packet signing"
-#~ msgstr "Úsáid fíordheimhniú Kerberos"
-
-#, fuzzy
-#~| msgid "Use Kerberos authentication"
-#~ msgid "NTLMv2 protocol and packet signing"
-#~ msgstr "Úsáid fíordheimhniú Kerberos"
-
-#, fuzzy
-#~| msgid "Use Kerberos authentication"
-#~ msgid "NTLMSSP protocol and packet signing"
-#~ msgstr "Úsáid fíordheimhniú Kerberos"
-
-#~ msgid "Recurse into subdirectories"
-#~ msgstr "Athchúrsáil i bhfochomhadlanna"
-
-#, fuzzy
-#~| msgid "Recurse into subdirectories"
-#~ msgid "Recurse into directories (-r, --recursive)."
-#~ msgstr "Athchúrsáil i bhfochomhadlanna"
-
-#, fuzzy
-#~| msgid "Preserve permissions"
-#~ msgid "Preserve symlinks"
-#~ msgstr "Caomhnaigh ceadanna"
-
-#, fuzzy
-#~| msgid "Preserve permissions"
-#~ msgid "Preserve hard links"
-#~ msgstr "Caomhnaigh ceadanna"
-
-#~ msgid "Preserve permissions"
-#~ msgstr "Caomhnaigh ceadanna"
-
-#, fuzzy
-#~| msgid "Preserve permissions"
-#~ msgid "Preserve group"
-#~ msgstr "Caomhnaigh ceadanna"
-
-#, fuzzy
-#~| msgid "Preserve permissions"
-#~ msgid "Preserve owner"
-#~ msgstr "Caomhnaigh ceadanna"
-
-#, fuzzy
-#~| msgid "Preserve permissions"
-#~ msgid "Preserve times"
-#~ msgstr "Caomhnaigh ceadanna"
-
-#, fuzzy
-#~| msgid "Filter Rules"
-#~ msgid "Custom filter rules:"
-#~ msgstr "Rialacha Scagtha"
-
-#, fuzzy
-#~| msgid "Backup"
-#~ msgid "Backup suffix:"
-#~ msgstr "Déan cúltaca"
-
-#, fuzzy
-#~| msgid "Backup"
-#~ msgid "Backup suffix"
-#~ msgstr "Déan cúltaca"
-
-#~ msgid "Add Bookmarks"
-#~ msgstr "Cruthaigh Leabharmharcanna"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Bánaigh Leabharmharcanna"
-
-#~ msgid "SMB Port:"
-#~ msgstr "Port SMB:"
-
-#~ msgid "Open"
-#~ msgstr "Oscail"
-
-#~ msgid "Back"
-#~ msgstr "Siar"
-
-#~ msgid "Forward"
-#~ msgstr "Ar Aghaidh"
-
-#~ msgid "Disk"
-#~ msgstr "Diosca"
-
-#~ msgid "Synchronizing"
-#~ msgstr "Sioncrónú"
-
-#~ msgid "Source"
-#~ msgstr "Foinse"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Unmount All"
-#~ msgstr "Dífheistigh"
-
-#~ msgid "IP address:"
-#~ msgstr "Seoladh IP:"
-
-#~ msgid "Mount"
-#~ msgstr "Feistigh"
-
-#~ msgid "Advanced"
-#~ msgstr "Casta"
-
-#~ msgid "automatic"
-#~ msgstr "uathoibríoch"
-
-#~ msgid "Share"
-#~ msgstr "Comhroinn"
-
-#~ msgid "Transfer rate:"
-#~ msgstr "Ráta traschurtha:"
-
-#~ msgid "Used:"
-#~ msgstr "Úsáidte:"
-
-#~ msgid "Total:"
-#~ msgstr "Iomlán:"
-
-#~ msgid "Usage:"
-#~ msgstr "Úsáid:"
-
-#~ msgid "System Tray"
-#~ msgstr "Tráidire an Chórais"
-
-#~ msgid "on"
-#~ msgstr "ar siúl"
-
-#~ msgid "Name:"
-#~ msgstr "Ainm:"
-
-#~ msgid "UID"
-#~ msgstr "Aitheantas Úsáideora"
-
-#~ msgid "GID"
-#~ msgstr "Aitheantas Grúpa"
-
-#~ msgid "Delete"
-#~ msgstr "Scrios"
+msgstr ""
