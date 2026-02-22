@@ -97,7 +97,7 @@
   <date
 >2026-01-26</date>
   <releaseinfo
->&smb4k; 4.0.5</releaseinfo
+>&smb4k; 4.0.6</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -129,7 +129,7 @@
 >. Proporciona muchas características prácticas que facilitarán su vida en un entorno de red dominado por &Windows;.</para>
 
   <para
->Este manual describe &smb4k; 4.0.5 y versiones posteriores. En alguna medida, también se ha corregido para versiones anteriores.</para>
+>Este manual describe &smb4k; 4.0.6 y versiones posteriores. En alguna medida, también se ha corregido para versiones anteriores.</para>
 
   <note>
     <para
