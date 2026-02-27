@@ -88,8 +88,6 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("CustomSettingsDialog"));
     QSize dialogSize;
 
-    // FIXME: Insert completion objects?
-
     if (dialogGroup.exists()) {
         KWindowConfig::restoreWindowSize(windowHandle(), dialogGroup);
         dialogSize = windowHandle()->size();
@@ -98,6 +96,8 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     }
 
     resize(dialogSize); // workaround for QTBUG-40584
+
+    m_editorWidget->loadCompletionItems();
 }
 
 Smb4KCustomSettingsEditor::~Smb4KCustomSettingsEditor()
@@ -208,7 +208,7 @@ void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
     KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("CustomSettingsDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
-    // FIXME: Save completion objects?
+    m_editorWidget->saveCompletionItems();
 
     accept();
 }
