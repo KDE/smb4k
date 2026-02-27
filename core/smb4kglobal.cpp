@@ -839,8 +839,7 @@ const QString Smb4KGlobal::findMacAddress(const QString &ipAddress)
             && r.section(QStringLiteral(" "), 1, 1).remove(QStringLiteral("(")).remove(QStringLiteral(")")) == ipAddress) {
             macAddress = r.simplified().section(QStringLiteral(" "), 3, 3);
             break;
-        } else if (address.protocol() == QHostAddress::IPv6Protocol
-                    && r.section(QStringLiteral(" "), 0, 0).section(QStringLiteral("%"), 0, 0) == ipAddress) {
+        } else if (address.protocol() == QHostAddress::IPv6Protocol && r.section(QStringLiteral(" "), 0, 0).section(QStringLiteral("%"), 0, 0) == ipAddress) {
             macAddress = r.simplified().section(QStringLiteral(" "), 1, 1);
             break;
         }

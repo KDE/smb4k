@@ -35,7 +35,7 @@ public Q_SLOTS:
 private:
     bool isOnline() const;
     bool checkMountArguments(QStringList *argList) const;
-    bool checkUnmountArguments(QStringList* argList) const;
+    bool checkUnmountArguments(QStringList *argList) const;
     QString mountPrefix() const;
     ActionReply errorReply(const QString &message) const;
     std::optional<QString> createMountPoint(const QUrl &url) const;

@@ -142,7 +142,7 @@ void Smb4KSharesView::dragEnterEvent(QDragEnterEvent *e)
 void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
 {
     // We need this for highlighting of the share icons
-   QListWidget::dragMoveEvent(e);
+    QListWidget::dragMoveEvent(e);
 
     if (e->proposedAction() != Qt::CopyAction && e->proposedAction() != Qt::MoveAction) {
         e->ignore();

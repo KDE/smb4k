@@ -418,8 +418,6 @@ void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr &share)
     // Add the item
     (void)new Smb4KSharesViewItem(m_sharesView, share);
 
-
-
     // Sort the view
     m_sharesView->sortItems(Qt::AscendingOrder);
 
