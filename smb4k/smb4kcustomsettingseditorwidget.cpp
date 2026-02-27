@@ -53,6 +53,7 @@ public:
 Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget *parent)
     : QTabWidget(parent)
 {
+    m_settingCustomSettings = false;
     m_hasDefaultCustomSettings = true;
 
     // FIXME: Honor disabled widgets and unchecked check boxes!?
@@ -76,14 +77,14 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     // m_ipAddress->setInputMask(QStringLiteral("000.000.000.000"));
     m_ipAddressLabel->setBuddy(m_ipAddress);
 
-    connect(m_ipAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
+    connect(m_ipAddress, &KLineEdit::editingFinished, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
 
     m_workgroupLabel = new QLabel(i18n("Workgroup:"), tab1);
     m_workgroup = new KLineEdit(tab1);
     m_workgroup->setClearButtonEnabled(true);
     m_workgroupLabel->setBuddy(m_workgroup);
 
-    connect(m_workgroup, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
+    connect(m_workgroup, &KLineEdit::editingFinished, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
 
     m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
     m_alwaysRemountShare->setEnabled(false);
@@ -166,7 +167,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab2Layout->addWidget(m_fileMode, 5, 1);
     tab2Layout->addWidget(m_useDirectoryMode, 6, 0);
     tab2Layout->addWidget(m_directoryMode, 6, 1);
-    tab2Layout->setRowStretch(6, 100);
+    tab2Layout->setRowStretch(7, 100);
 
     addTab(tab2, i18n("Common Mount Settings"));
 
@@ -271,6 +272,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     m_macAddressSearchButton = new QPushButton(macAddressWidget);
     m_macAddressSearchButton->setIcon(KDE::icon(QStringLiteral("edit-find")));
     m_macAddressSearchButton->setToolTip(i18n("Find MAC address"));
+    m_macAddressSearchButton->setEnabled(false);
 
     connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
     connect(m_macAddressSearchButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditorWidget::slotFindMacAddressClicked);
@@ -306,14 +308,14 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     // m_ipAddress->setInputMask(QStringLiteral("000.000.000.000"));
     m_ipAddressLabel->setBuddy(m_ipAddress);
 
-    connect(m_ipAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
+    connect(m_ipAddress, &KLineEdit::editingFinished, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
 
     m_workgroupLabel = new QLabel(i18n("Workgroup:"), tab1);
     m_workgroup = new KLineEdit(tab1);
     m_workgroup->setClearButtonEnabled(true);
     m_workgroupLabel->setBuddy(m_workgroup);
 
-    connect(m_workgroup, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
+    connect(m_workgroup, &KLineEdit::editingFinished, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
 
     m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
     m_alwaysRemountShare->setEnabled(false);
@@ -476,6 +478,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 
 void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSettings &settings)
 {
+    m_settingCustomSettings = true;
     m_customSettings = settings;
 
     m_ipAddress->setText(m_customSettings.ipAddress());
@@ -522,11 +525,15 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
     widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
     if (m_customSettings.type() == Host) {
-        // FIXME: Enable Search button if IP address is not empty
+        m_macAddressSearchButton->setEnabled(m_customSettings.hasIpAddress());
         m_macAddress->setText(m_customSettings.macAddress());
         m_sendPacketBeforeScan->setChecked(m_customSettings.wakeOnLanSendBeforeNetworkScan());
         m_sendPacketBeforeMount->setChecked(m_customSettings.wakeOnLanSendBeforeMount());
     }
+
+    m_settingCustomSettings = false;
+
+    checkValues();
 }
 
 Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
@@ -615,7 +622,10 @@ void Smb4KCustomSettingsEditorWidget::clear()
 
     m_useKerberos->setChecked(false);
 
+    // Disabling of MAC address line edit and search button are done
+    // in Smb4KCustomSettingsEditorWidget::slotIpAddressChanged().
     m_macAddress->clear();
+
     m_sendPacketBeforeScan->setChecked(false);
     m_sendPacketBeforeMount->setChecked(false);
 
@@ -627,8 +637,29 @@ bool Smb4KCustomSettingsEditorWidget::hasDefaultCustomSettings() const
     return m_hasDefaultCustomSettings;
 }
 
+void Smb4KCustomSettingsEditorWidget::loadCompletionItems()
+{
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
+
+    if (completionGroup.exists()) {
+        m_ipAddress->completionObject()->setItems(completionGroup.readEntry("IpAddressCompletion", QStringList()));
+        m_workgroup->completionObject()->setItems(completionGroup.readEntry("WorkgroupCompletion", QStringList()));
+    }
+}
+
+void Smb4KCustomSettingsEditorWidget::saveCompletionItems()
+{
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), QStringLiteral("CompletionItems"));
+    completionGroup.writeEntry("IpAddressCompletion", m_ipAddress->completionObject()->items());
+    completionGroup.writeEntry("WorkgroupCompletion", m_workgroup->completionObject()->items());
+}
+
 void Smb4KCustomSettingsEditorWidget::checkValues()
 {
+    if (m_settingCustomSettings) {
+        return;
+    }
+
     // Reset m_hasDefaultCustomSettings for this check.
     m_hasDefaultCustomSettings = true;
 
@@ -861,18 +892,30 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
     Q_EMIT edited(false);
 }
 
-void Smb4KCustomSettingsEditorWidget::slotIpAddressChanged(const QString &text)
+void Smb4KCustomSettingsEditorWidget::slotIpAddressChanged()
 {
-    Q_UNUSED(text);
+    QString userInputIpAddress = m_ipAddress->userText().trimmed();
 
-    // FIXME: Check if this is indeed a valid IP address!?
+    QHostAddress ipAddress(userInputIpAddress);
+
+    if (ipAddress.protocol() != QHostAddress::UnknownNetworkLayerProtocol) {
+        m_macAddressSearchButton->setEnabled(true);
+        m_ipAddress->completionObject()->addItem(ipAddress.toString());
+    } else {
+        m_macAddressSearchButton->setEnabled(false);
+    }
 
     checkValues();
 }
 
-void Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged(const QString &text)
+void Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged()
 {
-    Q_UNUSED(text);
+    QString userInputWorkgroupName = m_workgroup->userText().trimmed();
+
+    if (!userInputWorkgroupName.isEmpty()) {
+        m_workgroup->completionObject()->addItem(userInputWorkgroupName);
+    }
+
     checkValues();
 }
 
