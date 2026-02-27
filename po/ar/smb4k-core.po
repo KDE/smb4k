@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2025-12-11 10:28+0400\n"
+"PO-Revision-Date: 2026-02-26 12:07+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -385,7 +385,7 @@ msgid ""
 "mounting."
 msgstr ""
 "هذا هو المنفذ المستخدم للاتصال بالخوادم البعيدة. القيمة المبدئية هي 139 "
-"(NetBIOS). في FreeBSD، يستخدم هذا الإعداد أيضًا للضم."
+"(NetBIOS). في FreeBSD، يستخدم هذا الإعداد أيضًا للوصل."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:173
@@ -1872,7 +1872,7 @@ msgstr "حدث خطأ غير معروف في Zeroconf."
 #: smb4kmounter.cpp:422
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "نقط الضم %1 غير قانونية."
+msgstr "نقط الوصل %1 غير قانونية."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
@@ -1888,7 +1888,7 @@ msgid ""
 "share will have to those of the current user (you)."
 msgstr ""
 "عيّن معرف المستخدم ومعرف المجموعة اللذين ستحملهما الملفات والدلائل الخاصة "
-"بالمشاركة المضمومة إلى معرف المستخدم الحالي (أنت)."
+"بالمشاركة الموصولة إلى معرف المستخدم الحالي (أنت)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -2299,7 +2299,7 @@ msgstr "يونيكود"
 #: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:266
 #, kde-format
 msgid "Unmount all personal shares on exit"
-msgstr "إلغاء ضم كافة المشاركات الشخصية عند الخروج"
+msgstr "إلغاء وصل كافة المشاركات الشخصية عند الخروج"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:267
@@ -2308,14 +2308,14 @@ msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
 "are owned by other users are ignored."
 msgstr ""
-"ألغ ضم جميع مشاركاتك عند خروج البرنامج. ستتجاهل المشاركات التي يملكها "
+"ألغ وصل جميع مشاركاتك عند خروج البرنامج. ستتجاهل المشاركات التي يملكها "
 "مستخدمون آخرون."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:271
 #, kde-format
 msgid "Remount shares"
-msgstr "أعد ضم المشاركات"
+msgstr "أعد وصل المشاركات"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:272
@@ -2327,17 +2327,17 @@ msgid ""
 "ignored. Please note that this setting does not affect the automatic "
 "remounting of shares when your computer woke up from a sleep state."
 msgstr ""
-"أعد ضم جميع مشاركاتك المحملة عند الخروج من البرنامج أو تغيير التشكيلة. إذا "
-"فشلت إعادة ضم المشاركة، فستعيد كيدي سامبا4 المحاولة في المرة التالية التي "
-"تبدأ فيها. سيجاهل التطبيق المشاركات التي ضُمت من قبل مستخدمين آخرين. يرجى "
-"ملاحظة أن هذا الإعداد لا يؤثر على إعادة الضم الآليّ للمشاركات عندما يستيقظ "
+"أعد وصل جميع مشاركاتك المحملة عند الخروج من البرنامج أو تغيير التشكيلة. إذا "
+"فشلت إعادة وصل المشاركة، فستعيد كيدي سامبا4 المحاولة في المرة التالية التي "
+"تبدأ فيها. سيجاهل التطبيق المشاركات التي وُصلت من قبل مستخدمين آخرين. يرجى "
+"ملاحظة أن هذا الإعداد لا يؤثر على إعادة الوصل الآليّ للمشاركات عندما يستيقظ "
 "حاسوبك من حالة التعليق."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:233 smb4kmountsettings_linux.kcfg:276
 #, kde-format
 msgid "Number of remount attempts:"
-msgstr "عدد محاولات إعادة الضم:"
+msgstr "عدد محاولات إعادة الوصل:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:234 smb4kmountsettings_linux.kcfg:277
@@ -2345,25 +2345,25 @@ msgstr "عدد محاولات إعادة الضم:"
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
 "gives up."
-msgstr "عيّن عدد محاولات إعادة ضم المشاركات قبل استسلام كيدي سامبا4."
+msgstr "عيّن عدد محاولات إعادة وصل المشاركات قبل استسلام كيدي سامبا4."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:283
 #, kde-format
 msgid "Interval between remount attempts:"
-msgstr "الفاصل الزمني بين محاولات إعادة الضم:"
+msgstr "الفاصل الزمني بين محاولات إعادة الوصل:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:284
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
-msgstr "عين الوقت المنقضي بين محاولات إعادة ضم المشاركات."
+msgstr "عين الوقت المنقضي بين محاولات إعادة وصل المشاركات."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
-msgstr "افرض إلغاء ضم المشاركات التي لا يمكن الوصول إليها"
+msgstr "افرض إلغاء وصل المشاركات التي لا يمكن الوصول إليها"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2373,15 +2373,15 @@ msgid ""
 "inaccessible, a lazy unmount is performed. Before the actual unmount is "
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
-"افرض إلغاء ضم المشاركات التي لا يمكن الوصول إليها (لينكس فقط). في حالة عدم "
-"إمكانية الوصول إلى المشاركة، يُنفذ إلغاء ضم كسول. قبل تنفيذ إلغاء الضم "
-"الفعلي، سيعرض مربع حوار تحذيري يطلب الموافقة على إلغاء الضم."
+"افرض إلغاء وصل المشاركات التي لا يمكن الوصول إليها (لينكس فقط). في حالة عدم "
+"إمكانية الوصول إلى المشاركة، يُنفذ إلغاء وصل كسول. قبل تنفيذ إلغاء الوصل "
+"الفعلي، سيعرض مربع حوار تحذيري يطلب الموافقة على إلغاء الوصل."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
-msgstr "اكشف جميع المشاركات المضمومة في النظام"
+msgstr "اكشف جميع المشاركات الموصولة في النظام"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
@@ -2391,7 +2391,7 @@ msgid ""
 "also all other mounts using the SMBFS and CIFS file system that are present "
 "on the system."
 msgstr ""
-"إضافة إلى رؤية المشاركات المضمومة والمملوكة لك؛ ستتمكن من رؤية جميع "
+"إضافة إلى رؤية المشاركات الموصولة والمملوكة لك؛ ستتمكن من رؤية جميع "
 "المشاركات الأخرى التي تستخدم نظام الملفات SMBFS وCIFS والموجودة على النظام."
 
 #. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
@@ -2826,7 +2826,7 @@ msgstr "ميفاق NTLMSSP وتوقيع الحزمة"
 #: smb4knotification.cpp:74
 #, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "ضُمت المشاركة <b>%1</b> على <b>%2</b>."
+msgstr "وُصلت المشاركة <b>%1</b> على <b>%2</b>."
 
 #: smb4knotification.cpp:83
 #, kde-format
@@ -2837,29 +2837,29 @@ msgstr "افتح"
 #: smb4knotification.cpp:101
 #, kde-format
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr "فُك ضم المشاركة <b>%1</b> من <b>%2</b>."
+msgstr "فك وصل المشاركة <b>%1</b> من <b>%2</b>."
 
 #: smb4knotification.cpp:119
 #, kde-format
 msgid "%1 share has been mounted."
 msgid_plural "%1 shares have been mounted."
-msgstr[0] "لم تضم أي مشاركة."
-msgstr[1] "ضُمت مشاركة واحدة."
-msgstr[2] "ضُمت مشاركتان."
-msgstr[3] "ضُمت %1 مشاركات."
-msgstr[4] "ضُمت %1 مشاركة."
-msgstr[5] "ضُمت %1 مشاركة."
+msgstr[0] "لم توصل أي مشاركة."
+msgstr[1] "وُصلت مشاركة واحدة."
+msgstr[2] "وُصلت مشاركتان."
+msgstr[3] "وُصلت %1 مشاركات."
+msgstr[4] "وُصلت %1 مشاركة."
+msgstr[5] "وُصلت %1 مشاركة."
 
 #: smb4knotification.cpp:136
 #, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] "لم يُفك ضم أي مشاركة."
-msgstr[1] "فُك ضم مشاركة واحدة."
-msgstr[2] "فُك ضم مشاركتين."
-msgstr[3] "فُك ضم %1 مشاركات."
-msgstr[4] "فُك ضم %1 مشاركة."
-msgstr[5] "فُك ضم %1 مشاركة."
+msgstr[0] "لم يُفك وصل أي مشاركة."
+msgstr[1] "فك وصل مشاركة واحدة."
+msgstr[2] "فك وصل مشاركتين."
+msgstr[3] "فك وصل %1 مشاركات."
+msgstr[4] "فك وصل %1 مشاركة."
+msgstr[5] "فك وصل %1 مشاركة."
 
 #: smb4knotification.cpp:154
 #, kde-format
@@ -2896,22 +2896,22 @@ msgstr ""
 #: smb4knotification.cpp:223
 #, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "فشل ضم المشاركة <b>%1</b>:<tt>%2</tt>"
+msgstr "فشل وصل المشاركة <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:225
 #, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "فشل ضم المشاركة <b>%1</b>."
+msgstr "فشل وصل المشاركة <b>%1</b>."
 
 #: smb4knotification.cpp:248
 #, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr "فشل إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>:<tt>%3</tt>"
+msgstr "فشل إلغاء وصل المشاركة <b>%1</b> من <b>%2</b>:<tt>%3</tt>"
 
 #: smb4knotification.cpp:250
 #, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "فشل إلغاء ضم المشاركة <b>%1</b> من <b>%2</b>:"
+msgstr "فشل إلغاء وصل المشاركة <b>%1</b> من <b>%2</b>:"
 
 #: smb4knotification.cpp:270
 #, kde-format
