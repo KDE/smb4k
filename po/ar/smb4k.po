@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-17 00:44+0000\n"
-"PO-Revision-Date: 2025-12-11 10:31+0400\n"
+"PO-Revision-Date: 2026-02-26 12:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -36,17 +36,17 @@ msgstr "الحاسوب غير متصل"
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr "لا يُمكِن إنشاء نقطة ضم للمشاركة  %1"
+msgstr "لا يُمكِن إنشاء نقطة وصل للمشاركة  %1"
 
 #: helpers/smb4kmounthelper.cpp:83
 #, kde-format
 msgid "The mount command could not be found."
-msgstr "تعذّر العثور على أمر الضم"
+msgstr "تعذّر العثور على أمر الوصل"
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr "مُررت خيارات ضم محظورة."
+msgstr "مُررت خيارات وصل محظورة."
 
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
@@ -56,22 +56,22 @@ msgstr "هناك خطأ في تذكرة Kerberos المقدمة."
 #: helpers/smb4kmounthelper.cpp:179
 #, kde-format
 msgid "The mount process could not be started."
-msgstr "لم يتمكن من بدء عملية الضم."
+msgstr "لم يتمكن من بدء عملية الوصل."
 
 #: helpers/smb4kmounthelper.cpp:192
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "نقط الضم %1 غير قانونية."
+msgstr "نقط الوصل %1 غير قانونية."
 
 #: helpers/smb4kmounthelper.cpp:198
 #, kde-format
 msgid "The umount command could not be found."
-msgstr "تعذّر العثور على أمر فك الضم"
+msgstr "تعذّر العثور على أمر فك الوصل"
 
 #: helpers/smb4kmounthelper.cpp:204
 #, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "مُررت خيارات فك ضم محظورة."
+msgstr "مُررت خيارات فك وصل محظورة."
 
 #: helpers/smb4kmounthelper.cpp:246
 #, kde-format
@@ -200,7 +200,7 @@ msgstr "أضف علامة"
 #: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
 #, kde-format
 msgid "Mount Bookmarks"
-msgstr "علامات الضم"
+msgstr "علامات الوصل"
 
 #: smb4k/smb4kconfigdialog.cpp:125
 #, kde-format
@@ -215,7 +215,7 @@ msgstr "الشبكة"
 #: smb4k/smb4kconfigdialog.cpp:127
 #, kde-format
 msgid "Mounting"
-msgstr "يضمّ"
+msgstr "يوصل"
 
 #: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
@@ -385,7 +385,7 @@ msgstr "مُعرّف المجموعة:"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:171
 #, kde-format
 msgid "Common Mount Settings"
-msgstr "إعدادات الضم العامة"
+msgstr "إعدادات الوصل العامة"
 
 #: smb4k/smb4kconfigpagemounting.cpp:284
 #, kde-format
@@ -396,7 +396,7 @@ msgstr "خيارات متقدّمة"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:206
 #, kde-format
 msgid "Advanced Mount Settings"
-msgstr "إعدادات الضم المتقدّمة"
+msgstr "إعدادات الوصل المتقدّمة"
 
 #: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
@@ -407,7 +407,7 @@ msgstr "مجموعات المحارف"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:380
 #, kde-format
 msgid "Mount Settings"
-msgstr "إعدادات الضم"
+msgstr "إعدادات الوصل"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:255
@@ -620,7 +620,7 @@ msgstr "حدد الإعدادات المخصصة للمشاركة <b>%1</b>."
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:318
 #, kde-format
 msgid "Always remount this share"
-msgstr "أعد ضم هذه المشاركة دائما"
+msgstr "أعد وصل هذه المشاركة دائما"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
@@ -649,7 +649,7 @@ msgstr "أرسل حزمة سحرية قبل مسح منطقة الشبكة"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:458
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr "أرسل حزمة سحرية قبل ضم مشاركة"
+msgstr "أرسل حزمة سحرية قبل وصل مشاركة"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:295
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:469
@@ -680,7 +680,7 @@ msgstr "أرسي الودجات"
 #: smb4k/smb4kmainwindow.cpp:180 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
 msgid "Mounted Shares"
-msgstr "المشاركة المضمومة"
+msgstr "المشاركة الموصولة"
 
 #: smb4k/smb4kmainwindow.cpp:282
 #, kde-format
@@ -699,18 +699,18 @@ msgstr "الإرساء"
 #: smb4k/smb4kmainwindow.cpp:339
 #, kde-format
 msgid "There are currently no shares mounted."
-msgstr "لا يوجد حاليا أي مشاركات مضمومة."
+msgstr "لا يوجد حاليا أي مشاركات موصولة."
 
 #: smb4k/smb4kmainwindow.cpp:342
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
-msgstr[0] "يوجد مشاركة واحدة مضمومة"
-msgstr[1] "يوجد حاليا مشاركة واحدة مضمومة"
-msgstr[2] "يوجد حاليا مشاركتين مضمومين"
-msgstr[3] "هناك حاليًا %1 مشاركات."
-msgstr[4] "هناك حاليًا %1 مشاركة."
-msgstr[5] "هناك حاليًا %1 مشاركة."
+msgstr[0] "يوجد مشاركة واحدة موصولة"
+msgstr[1] "يوجد حاليا مشاركة واحدة موصولة"
+msgstr[2] "يوجد حاليا مشاركتان موصولتان"
+msgstr[3] "هناك حاليًا %1 مشاركات موصولة."
+msgstr[4] "هناك حاليًا %1 مشاركة موصولة."
+msgstr[5] "هناك حاليًا %1 مشاركة موصولة."
 
 #: smb4k/smb4kmainwindow.cpp:488
 #, kde-format
@@ -756,12 +756,12 @@ msgstr "تمّ."
 #: smb4k/smb4kmainwindow.cpp:580
 #, kde-format
 msgid "Mounting..."
-msgstr "يضمّ…"
+msgstr "يوصل..."
 
 #: smb4k/smb4kmainwindow.cpp:584
 #, kde-format
 msgid "Unmounting..."
-msgstr "يفك الضم…"
+msgstr "يفك الوصل…"
 
 #: smb4k/smb4kmainwindow.cpp:588
 #, kde-format
@@ -776,7 +776,7 @@ msgstr "ضُمت %1 بنجاح."
 #: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "%1 has been unmounted successfully."
-msgstr "فك ضم %1 بنجاح."
+msgstr "فُك وصل %1 بنجاح."
 
 #: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
@@ -786,14 +786,14 @@ msgstr "يزامن %1"
 #: smb4k/smb4kmountdialog.cpp:34
 #, kde-format
 msgid "Mount Dialog"
-msgstr "حواري الضم"
+msgstr "حواري الوصل"
 
 #: smb4k/smb4kmountdialog.cpp:51
 #, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
-msgstr "أدخل الموقع واختياريًا عنوان الإنترنت IP ومجموعة العمل لضم المشاركة."
+msgstr "أدخل الموقع واختياريًا عنوان الإنترنت IP ومجموعة العمل لوصل المشاركة."
 
 #: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
@@ -865,7 +865,7 @@ msgstr "Ctrl+C"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr "افتح &حواري الضم"
+msgstr "افتح &حواري الوصل"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
@@ -905,13 +905,13 @@ msgstr "Ctrl+P"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "&Mount"
-msgstr "&ضمّ"
+msgstr "&صِل"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #: smb4k/smb4ksharesviewdockwidget.cpp:172
 #, kde-format
 msgid "&Unmount"
-msgstr "أزل ال&ضمّ"
+msgstr "&فك التوصل"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:949
@@ -1039,12 +1039,12 @@ msgstr "اطبع ملفًا إلى الطابعة <b>%1</b>."
 #: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
 msgid "U&nmount All"
-msgstr "فك ضم ال&جميع"
+msgstr "فك توصيل ال&جميع"
 
 #: smb4k/smb4ksharesmenu.cpp:152
 #, kde-format
 msgid "Unmount"
-msgstr "فك الضم"
+msgstr "فك الوصل"
 
 #: smb4k/smb4ksharesmenu.cpp:171
 #, kde-format
@@ -1184,7 +1184,7 @@ msgstr "شارك (%1)"
 #: smb4k/smb4ktooltip.cpp:181
 #, kde-format
 msgid "Mounted:"
-msgstr "المضموم:"
+msgstr "الموصول:"
 
 #: smb4k/smb4ktooltip.cpp:184
 #, kde-format
@@ -1204,7 +1204,7 @@ msgstr "المضيف:"
 #: smb4k/smb4ktooltip.cpp:227
 #, kde-format
 msgid "Mountpoint:"
-msgstr "نقطة الضمّ:"
+msgstr "نقطة الوصلّ:"
 
 #: smb4k/smb4ktooltip.cpp:229 smb4k/smb4ktooltip.cpp:232
 #: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:246
