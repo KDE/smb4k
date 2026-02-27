@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-13 00:43+0000\n"
+"POT-Creation-Date: 2026-02-17 00:44+0000\n"
 "PO-Revision-Date: 2024-09-19 16:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -945,7 +945,7 @@ msgid "&Unmount"
 msgstr "Αποπ&ροσάρτηση"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -961,7 +961,7 @@ msgstr "Σά&ρωση υπολογιστή"
 msgid "Scan Wo&rkgroup"
 msgstr "Σάρωση ομάδας ε&ργασίας"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
 #: smb4k/smb4ksharesviewdockwidget.cpp:177
 #, kde-format
 msgid "Ctrl+U"

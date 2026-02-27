@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-13 00:43+0000\n"
+"POT-Creation-Date: 2026-02-17 00:44+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -928,7 +928,7 @@ msgid "&Unmount"
 msgstr "अनमाऊंट करा"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:946
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:949
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -944,7 +944,7 @@ msgstr ""
 msgid "Scan Wo&rkgroup"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:948
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:951
 #: smb4k/smb4ksharesviewdockwidget.cpp:177
 #, kde-format
 msgid "Ctrl+U"
