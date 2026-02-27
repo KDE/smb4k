@@ -315,7 +315,7 @@ Comment[zh_TW]=錯誤訊息已顯示給使用者
 
 [Event/shareMounted]
 Name=Share mounted
-Name[ar]=المشاركة ضمت
+Name[ar]=المشاركة وصلت
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Compartició muntada
 Name[ca@valencia]=Compartició muntada
@@ -351,7 +351,7 @@ Name[uk]=Змонтовано ресурс
 Name[zh_CN]=共享已挂载
 Name[zh_TW]=分享資料夾已掛載
 Comment=A share has been mounted
-Comment[ar]=المشاركة ضمت
+Comment[ar]=المشاركة وصلت
 Comment[bs]=Dijeljeni disk je bio montiran
 Comment[ca]=S'ha muntat una compartició
 Comment[ca@valencia]=S'ha muntat una compartició
@@ -391,7 +391,7 @@ Action=Popup
 
 [Event/shareUnmounted]
 Name=Share unmounted
-Name[ar]=فك ضم مشاركة
+Name[ar]=فك وصل مشاركة
 Name[bs]=Dijeljeni disk je demontiran
 Name[ca]=Compartició desmuntada
 Name[ca@valencia]=Compartició desmuntada
@@ -427,7 +427,7 @@ Name[uk]=Демонтовано ресурс
 Name[zh_CN]=共享已卸载
 Name[zh_TW]=分享資料夾已卸載
 Comment=A share has been unmounted
-Comment[ar]=مشاركة فك ضمها
+Comment[ar]=مشاركة فك وصلها
 Comment[bs]=Dijeljeni disk je bio demontiran
 Comment[ca]=S'ha desmuntat una compartició
 Comment[ca@valencia]=S'ha desmuntat una compartició
@@ -467,7 +467,7 @@ Action=Popup
 
 [Event/sharesMounted]
 Name=Shares mounted
-Name[ar]=المشاركة ضمت
+Name[ar]=المشاركة وصلت
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Comparticions muntades
 Name[ca@valencia]=Comparticions muntades
@@ -503,7 +503,7 @@ Name[uk]=Змонтовано ресурси
 Name[zh_CN]=多个共享已挂载
 Name[zh_TW]=分享資料夾已掛載
 Comment=Multiple shares have been mounted
-Comment[ar]=مشاركات متعددة ضمت
+Comment[ar]=مشاركات متعددة وصلت
 Comment[bs]=Višestruka dijeljenja diska su bila montirana
 Comment[ca]=S'han muntat múltiples comparticions
 Comment[ca@valencia]=S'han muntat múltiples comparticions
@@ -543,7 +543,7 @@ Action=Popup
 
 [Event/sharesUnmounted]
 Name=Shares unmounted
-Name[ar]=فُك ضم المشاركات
+Name[ar]=فك وصل المشاركات
 Name[bs]=Dijeljenja diska su demontirana
 Name[ca]=Comparticions desmuntades
 Name[ca@valencia]=Comparticions desmuntades
@@ -579,7 +579,7 @@ Name[uk]=Демонтовано ресурси
 Name[zh_CN]=多个共享已卸载
 Name[zh_TW]=分享資料夾已卸載
 Comment=Multiple shares have been unmounted
-Comment[ar]=مشاركات متعددة فكت ضمها
+Comment[ar]=مشاركات متعددة فك وصلها
 Comment[bs]=Višestruka dijeljenja su bila demontirana
 Comment[ca]=S'han desmuntat múltiples comparticions
 Comment[ca@valencia]=S'han desmuntat múltiples comparticions
@@ -906,7 +906,7 @@ Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
-Name[ar]=فشل الضم
+Name[ar]=فشل الوصل
 Name[bs]=Montiranje neuspješno
 Name[ca]=Ha fallat el muntatge
 Name[ca@valencia]=No s'ha pogut muntar
@@ -943,7 +943,7 @@ Name[uk]=Невдала спроба монтування
 Name[zh_CN]=挂载失败
 Name[zh_TW]=掛載失敗
 Comment=Mounting a share failed
-Comment[ar]=فشل ضم مشاركة
+Comment[ar]=فشل وصل مشاركة
 Comment[bs]=Montiranje dijela neuspješno
 Comment[ca]=Ha fallat el muntatge d'una compartició
 Comment[ca@valencia]=No s'ha pogut muntar una compartició
@@ -1021,7 +1021,7 @@ Name[uk]=Помилка демонтування
 Name[zh_CN]=卸载失败
 Name[zh_TW]=卸載失敗
 Comment=Unmounting a share failed
-Comment[ar]=فشل في فك ضم مشاركة
+Comment[ar]=فشل في فك وصل مشاركة
 Comment[bs]=Demontiranje dijela neuspješno
 Comment[ca]=Ha fallat el desmuntatge d'una compartició
 Comment[ca@valencia]=No s'ha pogut desmuntar una compartició
@@ -1062,7 +1062,7 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
-Name[ar]=فك الضم غير مسموح
+Name[ar]=فك الوصل غير مسموح
 Name[bs]=Demontiranje nije dozvoljeno
 Name[ca]=No s'ha permès el desmuntatge
 Name[ca@valencia]=No s'ha permés el desmuntatge
@@ -1098,7 +1098,7 @@ Name[uk]=Демонтування заборонено
 Name[zh_CN]=不允许卸载
 Name[zh_TW]=不允許卸載
 Comment=The unmounting of a certain share is not allowed
-Comment[ar]=فك الضم غير مسموح لبعض المشاركات
+Comment[ar]=فك الوصل غير مسموح لبعض المشاركات
 Comment[bs]=Demontiranje određenog dijela nije dozvoljeno
 Comment[ca]=No s'ha permès el desmuntatge d'una compartició concreta
 Comment[ca@valencia]=No s'ha permés el desmuntatge d'una compartició concreta
