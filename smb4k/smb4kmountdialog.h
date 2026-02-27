@@ -1,7 +1,7 @@
 /*
  *  Mount dialog
  *
- *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -9,6 +9,8 @@
 #define SMB4KMOUNTDIALOG_H
 
 // application specific includes
+#include "core/smb4kcustomsettings.h"
+#include "smb4kcustomsettingseditorwidget.h"
 #include "smb4kdialogs_export.h"
 
 // Qt includes
@@ -17,6 +19,7 @@
 #include <QPushButton>
 #include <QResizeEvent>
 #include <QSize>
+#include <QTabWidget>
 #include <QUrl>
 
 // KDE includes
@@ -40,27 +43,28 @@ public:
 
 protected Q_SLOTS:
     void slotEnableButtons(const QString &text);
-    void slotBookmarkButtonClicked();
     void slotEnableBookmarkInputWidget();
     void slotLocationEntered();
     void slotIpAddressEntered();
     void slotWorkgroupEntered();
     void slotLabelEntered();
     void slotCategoryEntered();
+    void slotCustomSettingsEdited(bool changed);
+    void slotCustomSettingsUpdated();
     void slotAccepted();
     void slotRejected();
 
 private:
     QUrl createUrl(const QString &text) const;
     bool isValidLocation(const QString &text);
-    void adjustDialogSize();
+    QTabWidget *m_tabWidget;
+    QWidget *m_bookmarkWidget;
+    Smb4KCustomSettingsEditorWidget *m_customSettingsWidget;
     KLineEdit *m_locationInput;
     KLineEdit *m_ipAddressInput;
     KLineEdit *m_workgroupInput;
     QPushButton *m_okButton;
     QPushButton *m_cancelButton;
-    QPushButton *m_bookmarkButton;
-    QWidget *m_bookmarkWidget;
     QCheckBox *m_bookmarkShare;
     QWidget *m_bookmarkInputWidget;
     KLineEdit *m_bookmarkLabelInput;

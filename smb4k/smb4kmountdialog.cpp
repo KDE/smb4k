@@ -1,16 +1,18 @@
 /*
  *  Mount dialog
  *
- *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 // application specific includes
 #include "smb4kmountdialog.h"
 #include "core/smb4kbookmarkhandler.h"
+#include "core/smb4kcustomsettingsmanager.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4knotification.h"
+#include "core/smb4kprofilemanager.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -31,12 +33,24 @@
 Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     : QDialog(parent)
 {
+    // FIXME: Implement reload of custom settings if they were
+    // changed externally (custon settings dialog or config dialog).
+
     setWindowTitle(i18n("Mount Dialog"));
     setAttribute(Qt::WA_DeleteOnClose);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    QWidget *descriptionWidget = new QWidget(this);
+    m_tabWidget = new QTabWidget(this);
+    m_tabWidget->setTabPosition(QTabWidget::South);
+
+    //
+    // 'Mounting' tab
+    //
+    QWidget *mountingWidget = new QWidget(m_tabWidget);
+    QVBoxLayout *mountingWidgetLayout = new QVBoxLayout(mountingWidget);
+
+    QWidget *descriptionWidget = new QWidget(mountingWidget);
 
     QHBoxLayout *descriptionWidgetLayout = new QHBoxLayout(descriptionWidget);
 
@@ -47,7 +61,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
 
     descriptionWidgetLayout->addWidget(descriptionPixmap);
 
-    QLabel *descriptionText = new QLabel(this);
+    QLabel *descriptionText = new QLabel(mountingWidget);
     descriptionText->setText(i18n("Enter the location and optionally the IP address and workgroup to mount a share."));
     descriptionText->setWordWrap(true);
     descriptionText->setAlignment(Qt::AlignVCenter);
@@ -55,10 +69,10 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
 
     descriptionWidgetLayout->addWidget(descriptionText);
 
-    layout->addWidget(descriptionWidget);
-    layout->addSpacing(layout->spacing());
+    mountingWidgetLayout->addWidget(descriptionWidget);
+    mountingWidgetLayout->addSpacing(mountingWidgetLayout->spacing());
 
-    QWidget *inputWidget = new QWidget(this);
+    QWidget *inputWidget = new QWidget(mountingWidget);
 
     QGridLayout *inputWidgetLayout = new QGridLayout(inputWidget);
     inputWidgetLayout->setContentsMargins(0, 0, 0, 0);
@@ -67,7 +81,6 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     m_locationInput = new KLineEdit(inputWidget);
     m_locationInput->setCompletionMode(KCompletion::CompletionPopupAuto);
     m_locationInput->setClearButtonEnabled(true);
-    m_locationInput->setFocus();
 
     connect(m_locationInput, &KLineEdit::textChanged, this, &Smb4KMountDialog::slotEnableButtons);
     connect(m_locationInput, &KLineEdit::editingFinished, this, &Smb4KMountDialog::slotLocationEntered);
@@ -93,16 +106,18 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     inputWidgetLayout->addWidget(workgroupLabel, 2, 0);
     inputWidgetLayout->addWidget(m_workgroupInput, 2, 1);
 
-    layout->addWidget(inputWidget);
+    mountingWidgetLayout->addWidget(inputWidget);
+    mountingWidgetLayout->addStretch(100);
 
-    m_bookmarkWidget = new QWidget(this);
+    m_tabWidget->addTab(mountingWidget, i18n("Mounting"));
+
+    //
+    // 'Bookmark' tab
+    //
+    m_bookmarkWidget = new QWidget(m_tabWidget);
     m_bookmarkWidget->setVisible(false);
 
     QVBoxLayout *bookmarkWidgetLayout = new QVBoxLayout(m_bookmarkWidget);
-    bookmarkWidgetLayout->setContentsMargins(0, 0, 0, 0);
-
-    QFrame *horizontalLine = new QFrame(m_bookmarkWidget);
-    horizontalLine->setFrameShape(QFrame::HLine);
 
     m_bookmarkShare = new QCheckBox(i18n("Bookmark this share"), m_bookmarkWidget);
 
@@ -134,29 +149,46 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     bookmarkInputWidgetLayout->addWidget(bookmarkCategoryLabel, 1, 0);
     bookmarkInputWidgetLayout->addWidget(m_bookmarkCategoryInput, 1, 1);
 
-    bookmarkWidgetLayout->addWidget(horizontalLine);
     bookmarkWidgetLayout->addWidget(m_bookmarkShare);
     bookmarkWidgetLayout->addWidget(m_bookmarkInputWidget);
+    bookmarkWidgetLayout->addStretch(100);
 
-    layout->addWidget(m_bookmarkWidget);
+    int tabIndex = m_tabWidget->addTab(m_bookmarkWidget, i18n("Bookmark"));
+    m_tabWidget->setTabEnabled(tabIndex, false);
 
+    //
+    // 'Custom Settings' tab
+    //
+    m_customSettingsWidget = new Smb4KCustomSettingsEditorWidget(m_tabWidget);
+
+    tabIndex = m_tabWidget->addTab(m_customSettingsWidget, i18n("Custom Settings"));
+    m_tabWidget->setTabEnabled(tabIndex, false);
+
+    connect(m_customSettingsWidget, &Smb4KCustomSettingsEditorWidget::edited, this, &Smb4KMountDialog::slotCustomSettingsEdited);
+
+    layout->addWidget(m_tabWidget);
+
+    //
+    // Button box
+    //
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     m_okButton = buttonBox->addButton(QDialogButtonBox::Ok);
     m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
-    m_bookmarkButton = buttonBox->addButton(i18nc("Bookmark a share in the mount dialog.", "Bookmark >>"), QDialogButtonBox::ActionRole);
 
     m_okButton->setEnabled(false);
-    m_bookmarkButton->setEnabled(false);
 
     connect(m_okButton, &QPushButton::clicked, this, &Smb4KMountDialog::slotAccepted);
     connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KMountDialog::slotRejected);
-    connect(m_bookmarkButton, &QPushButton::clicked, this, &Smb4KMountDialog::slotBookmarkButtonClicked);
 
     layout->addWidget(buttonBox);
+
+    connect(Smb4KCustomSettingsManager::self(), &Smb4KCustomSettingsManager::updated, this, &Smb4KMountDialog::slotCustomSettingsUpdated);
 
     setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
 
     create();
+
+    m_locationInput->setFocus();
 
     KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("MountDialog"));
     QSize dialogSize;
@@ -178,6 +210,8 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
         m_workgroupInput->completionObject()->setItems(completionGroup.readEntry("WorkgroupCompletion", QStringList()));
         m_bookmarkLabelInput->completionObject()->setItems(completionGroup.readEntry("LabelCompletion", QStringList()));
         m_bookmarkCategoryInput->completionObject()->setItems(completionGroup.readEntry("CategoryCompletion", Smb4KBookmarkHandler::self()->categoryList()));
+
+        m_customSettingsWidget->loadCompletionItems();
     }
 }
 
@@ -217,32 +251,18 @@ bool Smb4KMountDialog::isValidLocation(const QString &text)
     return (url.isValid() && !url.host().isEmpty() && !url.path().isEmpty() && url.path().length() != 1);
 }
 
-void Smb4KMountDialog::adjustDialogSize()
-{
-    ensurePolished();
-    layout()->activate();
-
-    QSize dialogSize;
-    dialogSize.setWidth(width());
-    dialogSize.setHeight(height() - m_bookmarkWidget->height() - layout()->contentsMargins().bottom() - layout()->contentsMargins().top());
-
-    resize(dialogSize);
-}
-
 void Smb4KMountDialog::slotEnableButtons(const QString &text)
 {
-    bool enable = isValidLocation(text);
+    Q_UNUSED(text);
+
+    bool enable = isValidLocation(m_locationInput->userText());
     m_okButton->setEnabled(enable);
-    m_bookmarkButton->setEnabled(enable);
-}
 
-void Smb4KMountDialog::slotBookmarkButtonClicked()
-{
-    m_bookmarkWidget->setVisible(!m_bookmarkWidget->isVisible());
+    int tabIndex = m_tabWidget->indexOf(m_bookmarkWidget);
+    m_tabWidget->setTabEnabled(tabIndex, enable);
 
-    if (!m_bookmarkWidget->isVisible()) {
-        adjustDialogSize();
-    }
+    tabIndex = m_tabWidget->indexOf(m_customSettingsWidget);
+    m_tabWidget->setTabEnabled(tabIndex, enable);
 }
 
 void Smb4KMountDialog::slotEnableBookmarkInputWidget()
@@ -252,27 +272,64 @@ void Smb4KMountDialog::slotEnableBookmarkInputWidget()
 
 void Smb4KMountDialog::slotLocationEntered()
 {
-    if (isValidLocation(m_locationInput->userText().trimmed())) {
-        m_locationInput->completionObject()->addItem(m_locationInput->userText().trimmed());
+    if (!isValidLocation(m_locationInput->userText().trimmed())) {
+        m_customSettingsWidget->clear();
+        return;
     }
+
+    m_locationInput->completionObject()->addItem(m_locationInput->userText().trimmed());
+
+    QUrl url = createUrl(m_locationInput->userText());
+
+    CustomSettingsPtr savedCustomSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(url);
+    Smb4KCustomSettings customSettings;
+
+    if (!savedCustomSettings) {
+        Smb4KShare share;
+        share.setUrl(url);
+        customSettings = Smb4KCustomSettings(&share);
+        customSettings.setProfile(Smb4KProfileManager::self()->activeProfile());
+    } else {
+        customSettings = *savedCustomSettings.data();
+
+        m_ipAddressInput->setText(customSettings.ipAddress());
+        m_ipAddressInput->completionObject()->addItem(customSettings.ipAddress());
+
+        m_workgroupInput->setText(customSettings.workgroupName());
+        m_workgroupInput->completionObject()->addItem(customSettings.workgroupName());
+    }
+
+    m_customSettingsWidget->setCustomSettings(customSettings);
 }
 
 void Smb4KMountDialog::slotIpAddressEntered()
 {
-    QString userInputIpAddress = m_ipAddressInput->userText().trimmed();
+    QHostAddress userInputIpAddress(m_ipAddressInput->userText().trimmed());
 
-    if (!userInputIpAddress.isEmpty()) {
-        m_ipAddressInput->completionObject()->addItem(userInputIpAddress);
+    if (userInputIpAddress.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol) {
+        return;
     }
+
+    m_ipAddressInput->completionObject()->addItem(userInputIpAddress.toString());
+
+    Smb4KCustomSettings customSettings = m_customSettingsWidget->getCustomSettings();
+    customSettings.setIpAddress(userInputIpAddress.toString());
+    m_customSettingsWidget->setCustomSettings(customSettings);
 }
 
 void Smb4KMountDialog::slotWorkgroupEntered()
 {
-    QString userInputWorkgroup = m_workgroupInput->userText().trimmed();
+    QString userInputWorkgroupName = m_workgroupInput->userText().trimmed();
 
-    if (!userInputWorkgroup.isEmpty()) {
-        m_workgroupInput->completionObject()->addItem(userInputWorkgroup);
+    if (userInputWorkgroupName.isEmpty()) {
+        return;
     }
+
+    m_workgroupInput->completionObject()->addItem(userInputWorkgroupName);
+
+    Smb4KCustomSettings customSettings = m_customSettingsWidget->getCustomSettings();
+    customSettings.setWorkgroupName(userInputWorkgroupName);
+    m_customSettingsWidget->setCustomSettings(customSettings);
 }
 
 void Smb4KMountDialog::slotLabelEntered()
@@ -293,17 +350,52 @@ void Smb4KMountDialog::slotCategoryEntered()
     }
 }
 
-void Smb4KMountDialog::slotAccepted()
+void Smb4KMountDialog::slotCustomSettingsEdited(bool changed)
 {
-    QUrl url = createUrl(m_locationInput->userText().trimmed());
+    Q_UNUSED(changed);
 
-    // This case might never happen, because the buttons are only
-    // enabled when isValidLocation() returns TRUE, but we leave
-    // this here for safety.
-    if (!isValidLocation(m_locationInput->userText().trimmed())) {
-        m_locationInput->setFocus();
+    Smb4KCustomSettings customSettings = m_customSettingsWidget->getCustomSettings();
+
+    // We do not need to take special care here for unwanted infinite
+    // looping, because the QLineEdit::editingFinished signal is only
+    // emitted after user input and not if the IP address or workgroup
+    // name are changed programmatically.
+
+    if (customSettings.ipAddress() != m_ipAddressInput->userText().trimmed()) {
+        m_ipAddressInput->setText(customSettings.ipAddress());
+    }
+
+    if (customSettings.workgroupName() != m_workgroupInput->userText().trimmed()) {
+        m_workgroupInput->setText(customSettings.workgroupName());
+    }
+}
+
+void Smb4KMountDialog::slotCustomSettingsUpdated()
+{
+    if (!isValidLocation(m_locationInput->userText())) {
         return;
     }
+
+    QUrl url = createUrl(m_locationInput->userText());
+    CustomSettingsPtr savedCustomSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(url);
+
+    if (savedCustomSettings) {
+        Smb4KCustomSettings customSettings = m_customSettingsWidget->getCustomSettings();
+        customSettings.update(savedCustomSettings.data());
+        m_customSettingsWidget->setCustomSettings(customSettings);
+    }
+}
+
+void Smb4KMountDialog::slotAccepted()
+{
+    // First, save the custom settings so they can be used for mounting.
+    if (!m_customSettingsWidget->hasDefaultCustomSettings()) {
+        Smb4KCustomSettings tempCustomSettings = m_customSettingsWidget->getCustomSettings();
+        CustomSettingsPtr customSettings = CustomSettingsPtr(new Smb4KCustomSettings(tempCustomSettings));
+        Smb4KCustomSettingsManager::self()->addCustomSettings(customSettings);
+    }
+
+    QUrl url = createUrl(m_locationInput->userText().trimmed());
 
     SharePtr share = SharePtr(new Smb4KShare());
     share->setUrl(url);
@@ -311,18 +403,18 @@ void Smb4KMountDialog::slotAccepted()
     BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
     bookmark->setUrl(url);
 
-    QHostAddress userIpAddressInput(m_ipAddressInput->userText().trimmed());
+    QHostAddress userInputIpAddress(m_ipAddressInput->userText().trimmed());
 
-    if (userIpAddressInput.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) {
-        share->setHostIpAddress(userIpAddressInput.toString());
-        bookmark->setHostIpAddress(userIpAddressInput.toString());
+    if (userInputIpAddress.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) {
+        share->setHostIpAddress(userInputIpAddress.toString());
+        bookmark->setHostIpAddress(userInputIpAddress.toString());
     }
 
-    QString userInputWorkgroup = m_workgroupInput->userText().trimmed();
+    QString userInputWorkgroupName = m_workgroupInput->userText().trimmed();
 
-    if (!userInputWorkgroup.isEmpty()) {
-        share->setWorkgroupName(userInputWorkgroup);
-        bookmark->setWorkgroupName(userInputWorkgroup);
+    if (!userInputWorkgroupName.isEmpty()) {
+        share->setWorkgroupName(userInputWorkgroupName);
+        bookmark->setWorkgroupName(userInputWorkgroupName);
     }
 
     if (m_bookmarkShare->isChecked()) {
@@ -337,11 +429,6 @@ void Smb4KMountDialog::slotAccepted()
     share.clear();
     bookmark.clear();
 
-    if (m_bookmarkWidget->isVisible()) {
-        m_bookmarkInputWidget->setVisible(false);
-        adjustDialogSize();
-    }
-
     KConfigGroup dialogGroup(Smb4KSettings::self()->config(), QStringLiteral("MountDialog"));
     KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
@@ -351,6 +438,8 @@ void Smb4KMountDialog::slotAccepted()
     completionGroup.writeEntry("WorkgroupCompletion", m_workgroupInput->completionObject()->items());
     completionGroup.writeEntry("LabelCompletion", m_bookmarkLabelInput->completionObject()->items());
     completionGroup.writeEntry("CategoryCompletion", m_bookmarkCategoryInput->completionObject()->items());
+
+    m_customSettingsWidget->saveCompletionItems();
 
     accept();
 }
