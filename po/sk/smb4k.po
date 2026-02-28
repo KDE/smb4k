@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-17 00:44+0000\n"
+"POT-Creation-Date: 2026-02-28 00:44+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -170,13 +170,13 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:117
+#: smb4k/smb4kmountdialog.cpp:132
 #, kde-format
 msgid "Label:"
 msgstr ""
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:124
+#: smb4k/smb4kmountdialog.cpp:139
 #, kde-format
 msgid "Category:"
 msgstr ""
@@ -220,7 +220,7 @@ msgstr "Užívateľské rozhranie"
 msgid "Network"
 msgstr "Sieť"
 
-#: smb4k/smb4kconfigdialog.cpp:127
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4kmountdialog.cpp:112
 #, kde-format
 msgid "Mounting"
 msgstr "Pripájanie"
@@ -244,7 +244,7 @@ msgstr "Autentifikácia"
 msgid " (Profile: %1)"
 msgstr "Profily:"
 
-#: smb4k/smb4kconfigdialog.cpp:133
+#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:164
 #, fuzzy, kde-format
 #| msgid "Common Settings:"
 msgid "Custom Settings"
@@ -295,16 +295,16 @@ msgid "Password:"
 msgstr "Heslo"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:311 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:95
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "Pracovná skupina:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:303 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:88
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -364,8 +364,8 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:330
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:101
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:332
 #, kde-format
 msgid "Basic Settings"
 msgstr "Základné nastavenie"
@@ -381,21 +381,21 @@ msgid "CIFS Unix Extensions Support"
 msgstr "Podpora unixových rozšírení CIFS"
 
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:337
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:124
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:339
 #, kde-format
 msgid "User ID:"
 msgstr "ID užívateľa:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:343
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:130
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:345
 #, kde-format
 msgid "Group ID:"
 msgstr "ID skupiny:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:276
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:172
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Obvyklé možnosti pripojenia"
@@ -406,7 +406,7 @@ msgid "Advanced Options"
 msgstr "Pokročilé voľby"
 
 #: smb4k/smb4kconfigpagemounting.cpp:387
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:207
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Pokročilé nastavenia pripojenia"
@@ -417,14 +417,14 @@ msgid "Character Sets"
 msgstr "Znakové sady"
 
 #: smb4k/smb4kconfigpagemounting.cpp:579
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:380
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:382
 #, kde-format
 msgid "Mount Settings"
 msgstr "Voľby pripojenia"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:255
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:429
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
 #, kde-format
 msgid "Browse Settings"
 msgstr "Prehliadať nastavenia"
@@ -651,46 +651,46 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:318
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:89
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:320
 #, kde-format
 msgid "Always remount this share"
 msgstr "Vždy znovu pripojiť toto zdieľanie"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:118
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Tento server podporuje unixové rozšírenia CIFS"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:440
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:442
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC adresa:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:273
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:447
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:274
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, fuzzy, kde-format
 #| msgid "MAC Address"
 msgid "Find MAC address"
 msgstr "MAC adresa"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:282
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:284
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:458
 #, fuzzy, kde-format
 #| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Poslať magický balík pred prehľadaním sieťového okolia"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:284
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:458
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:286
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, fuzzy, kde-format
 #| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Poslať magický balík pred pripojeným zdieľania"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:295
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:469
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:297
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:471
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Nastavenia Wake-On-LAN"
@@ -819,36 +819,35 @@ msgstr "%1 bol úspešne odpojený."
 msgid "Synchronizing %1"
 msgstr "Synchronizujem %1"
 
-#: smb4k/smb4kmountdialog.cpp:34
+#: smb4k/smb4kmountdialog.cpp:39
 #, fuzzy, kde-format
 #| msgid "&Open Mount Dialog"
 msgid "Mount Dialog"
 msgstr "Otvoriť dialóg pripojenia"
 
-#: smb4k/smb4kmountdialog.cpp:51
+#: smb4k/smb4kmountdialog.cpp:65
 #, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
 
-#: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:196
+#: smb4k/smb4kmountdialog.cpp:80 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
 #, kde-format
 msgid "Location:"
 msgstr "Umiestnenie:"
 
-#: smb4k/smb4kmountdialog.cpp:107
+#: smb4k/smb4kmountdialog.cpp:122
 #, fuzzy, kde-format
 #| msgid "Bookmarks"
 msgid "Bookmark this share"
 msgstr "Záložky"
 
-#: smb4k/smb4kmountdialog.cpp:146
+#: smb4k/smb4kmountdialog.cpp:156
 #, fuzzy, kde-format
 #| msgid "Bookmarks"
-msgctxt "Bookmark a share in the mount dialog."
-msgid "Bookmark >>"
+msgid "Bookmark"
 msgstr "Záložky"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
@@ -1280,6 +1279,12 @@ msgstr "%1 voľných z %2 (%3 použitých)"
 #, kde-format
 msgid "Size:"
 msgstr "Veľkosť:"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgctxt "Bookmark a share in the mount dialog."
+#~ msgid "Bookmark >>"
+#~ msgstr "Záložky"
 
 #~ msgid "Directories"
 #~ msgstr "Priečinky"
