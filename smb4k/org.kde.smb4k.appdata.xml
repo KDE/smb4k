@@ -196,7 +196,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="uk">Підтримка файлових систем CIFS і SMB3 у Linux, а також файлової системи SMBFS у BSD</li>
       <li xml:lang="zh-CN">支持 Linux 环境下的 CIFS 和 SMB3 文件系统和 BSD 环境下的 SMBFS 文件系统</li>
       <li>Mounting and unmounting of shares</li>
-      <li xml:lang="ar">ضم وفك المشاركات</li>
+      <li xml:lang="ar">وصل وفك المشاركات</li>
       <li xml:lang="bs">Namještanje i razmještanje razmjena</li>
       <li xml:lang="ca">El muntatge i desmuntatge de les comparticions</li>
       <li xml:lang="ca-valencia">El muntatge i desmuntatge de les comparticions</li>
@@ -265,7 +265,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">使用文件管理器或终端访问已挂载的共享</li>
       <li xml:lang="zh-TW">使用檔案管理員或終端機存取已掛載分享的檔案</li>
       <li>Auto-detection of external mounts and unmounts</li>
-      <li xml:lang="ar">الكشف الآليّ عن المشاركات المضمومة خارجيًا وفكها</li>
+      <li xml:lang="ar">الكشف الآليّ عن المشاركات الموصولة خارجيًا وفكها</li>
       <li xml:lang="bs">Auto-detekcija vanjskih namještanja i razmještanja</li>
       <li xml:lang="ca">Detecció automàtica de muntatges i desmuntatges externs</li>
       <li xml:lang="ca-valencia">Detecció automàtica de muntatges i desmuntatges externs</li>
@@ -299,7 +299,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">自动检测外部共享的挂载和卸载</li>
       <li xml:lang="zh-TW">自動偵測外部掛載與解除掛載</li>
       <li>Remounting of previously used shares on program start</li>
-      <li xml:lang="ar">إعادة ضم المشاركات المستخدمة سابقًا عند بدء البرنامج</li>
+      <li xml:lang="ar">إعادة وصل المشاركات المستخدمة سابقًا عند بدء البرنامج</li>
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
       <li xml:lang="ca">Torna a muntar les comparticions emprades anteriorment en iniciar el programa</li>
       <li xml:lang="ca-valencia">Torna a muntar les comparticions emprades anteriorment en iniciar el programa</li>
@@ -333,7 +333,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">启动时重新挂载最近使用的共享</li>
       <li xml:lang="zh-TW">在程式啟動時重新掛載先前使用過的分享</li>
       <li>Miscellaneous information about remote network items and mounted shares</li>
-      <li xml:lang="ar">معلومات متنوعة حول عناصر الشبكة البعيدة والمشاركات المضمومة</li>
+      <li xml:lang="ar">معلومات متنوعة حول عناصر الشبكة البعيدة والمشاركات الموصولة</li>
       <li xml:lang="ca">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="ca-valencia">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="de">Verschiedene Informationen über entfernte Netzwerkelemente und eingehängte Freigaben</li>
@@ -560,7 +560,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-CN">系统托盘小部件</li>
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced mount options</li>
-      <li xml:lang="ar">دعم خيارات الضم المتقدمة</li>
+      <li xml:lang="ar">دعم خيارات الوصل المتقدمة</li>
       <li xml:lang="ca">Implementació de les opcions avançades de muntatge</li>
       <li xml:lang="ca-valencia">Implementació de les opcions avançades de muntatge</li>
       <li xml:lang="cs">Podpora pokročilých možností připojení</li>
