@@ -91,18 +91,18 @@ void Smb4KClient::lookupDomains()
             NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
             Q_EMIT aboutToStart(item, WakeUp);
 
-            for (int i = 0; i < wakeOnLanEntries.size(); ++i) {
-                if (wakeOnLanEntries.at(i)->wakeOnLanSendBeforeNetworkScan()) {
+            for (auto entry : std::as_const(wakeOnLanEntries)) {
+                if (entry->wakeOnLanSendBeforeNetworkScan()) {
                     QHostAddress addr;
 
-                    if (wakeOnLanEntries.at(i)->hasIpAddress()) {
-                        addr.setAddress(wakeOnLanEntries.at(i)->ipAddress());
+                    if (entry->hasIpAddress()) {
+                        addr.setAddress(entry->ipAddress());
                     } else {
                         addr.setAddress(QStringLiteral("255.255.255.255"));
                     }
 
                     // Magic Wake-On-LAN sequence
-                    QByteArray sequence = wakeOnLanMagicSequence(wakeOnLanEntries.at(i)->macAddress());
+                    QByteArray sequence = wakeOnLanMagicSequence(entry->macAddress());
 
                     d->udpSocket.writeDatagram(sequence, addr, 9);
                 }
