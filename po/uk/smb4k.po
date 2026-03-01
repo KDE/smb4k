@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>, 2004, 2005, 2006, 2007.
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-28 00:44+0000\n"
-"PO-Revision-Date: 2025-12-12 13:17+0200\n"
+"PO-Revision-Date: 2026-02-28 15:33+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -821,10 +821,9 @@ msgid "Bookmark this share"
 msgstr "Створити закладку для цього ресурсу"
 
 #: smb4k/smb4kmountdialog.cpp:156
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark"
-msgstr "Закладки"
+msgstr "Додати до закладок"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

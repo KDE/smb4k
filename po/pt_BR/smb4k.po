@@ -5,7 +5,7 @@
 # Giovanni Degani <tiefox@terra.com.br>, 2004.
 # Alexander Reinholdt <alexander.reinholdt@web.de>, 2004.
 # Lamarque Vieira Souza <lamarque@syst.com.br>, 2006.
-# SPDX-FileCopyrightText: 2010, 2025 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2010, 2025, 2026 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2010, 2013, 2018, 2019, 2020, 2021, 2022, 2023.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019.
 # Aracele Torres <araceletorres@gmail.com>, 2010, 2011.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-28 00:44+0000\n"
-"PO-Revision-Date: 2025-12-11 16:26-0300\n"
+"PO-Revision-Date: 2026-02-28 06:40-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -825,10 +825,9 @@ msgid "Bookmark this share"
 msgstr "Favoritar este compartilhamento"
 
 #: smb4k/smb4kmountdialog.cpp:156
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark"
-msgstr "Favoritos"
+msgstr "Favorito"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
