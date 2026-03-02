@@ -1,7 +1,7 @@
 /*
     Configuration page for the custom settings
 
-    SPDX-FileCopyrightText: 2013-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -172,7 +172,7 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
         QList<CustomSettingsPtr> customSettingsList;
 
         for (int i = 0; i < m_listWidget->count(); ++i) {
-            CustomSettingsPtr settings = CustomSettingsPtr(new Smb4KCustomSettings(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomSettings>()));
+            CustomSettingsPtr settings = CustomSettingsPtr::create(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomSettings>());
 
             // NOTE: We do not test if the object carries custom settings. This
             // is done in the custom settings manager.

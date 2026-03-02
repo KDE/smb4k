@@ -187,7 +187,7 @@ void Smb4KMounter::triggerRemounts(bool fillList)
             }
 
             if (createAndAddShare) {
-                share = SharePtr(new Smb4KShare());
+                share = SharePtr::create();
                 share->setUrl(option->url());
                 share->setWorkgroupName(option->workgroupName());
                 share->setHostIpAddress(option->ipAddress());
@@ -1188,7 +1188,7 @@ SharePtr Smb4KMounter::createMountedShare(const QString &mountPoint) const
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
     KMountPoint::Ptr mp = mountPoints.findByPath(mountPoint);
 
-    SharePtr share = SharePtr(new Smb4KShare());
+    SharePtr share = SharePtr::create();
     share->setUrl(QUrl(mp->mountedFrom()));
     share->setPath(mp->mountPoint());
     share->setMounted(true);

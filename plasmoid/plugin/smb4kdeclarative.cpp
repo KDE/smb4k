@@ -1,7 +1,7 @@
 /*
     This class provides the interface for Plasma and QtQuick
 
-    SPDX-FileCopyrightText: 2013-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -282,7 +282,7 @@ void Smb4KDeclarative::mountBookmark(Smb4KBookmarkObject *object)
     if (object) {
         BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(object->url());
 
-        SharePtr share = SharePtr(new Smb4KShare());
+        SharePtr share = SharePtr::create();
         share->setUrl(object->url());
         share->setWorkgroupName(object->workgroupName());
         share->setHostIpAddress(object->hostIpAddress());

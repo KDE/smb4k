@@ -1,7 +1,7 @@
 /*
  *  Preview dialog
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -165,7 +165,7 @@ void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
     Smb4KFile file = item->data(Qt::UserRole).value<Smb4KFile>();
 
     if (file.isDirectory()) {
-        FilePtr fileItem = FilePtr(new Smb4KFile(file));
+        FilePtr fileItem = FilePtr::create(file);
         loadPreview(fileItem);
     } else {
         // KIO::OpenUrlJob *job = new KIO::OpenUrlJob(file.url());
@@ -217,7 +217,7 @@ void Smb4KPreviewDialog::slotReloadActionTriggered(bool checked)
     Q_UNUSED(checked);
 
     if (!m_reloadAction->isActive()) {
-        FilePtr file = FilePtr(new Smb4KFile(QUrl(m_urlComboBox->currentText())));
+        FilePtr file = FilePtr::create(QUrl(m_urlComboBox->currentText()));
         file->setUserName(m_share->userName());
         file->setPassword(m_share->password());
         file->setDirectory(true);
@@ -234,7 +234,7 @@ void Smb4KPreviewDialog::slotUpActionTriggered()
         QUrl url = m_currentItem->url().adjusted(QUrl::StripTrailingSlash); // Do not merge with the line below (See code for KIO::upUrl())
         url = url.adjusted(QUrl::RemoveFilename);
 
-        FilePtr file = FilePtr(new Smb4KFile(url));
+        FilePtr file = FilePtr::create(url);
         file->setUserName(m_share->userName());
         file->setPassword(m_share->password());
         file->setDirectory(true);
@@ -252,7 +252,7 @@ void Smb4KPreviewDialog::slotUrlActivated(const QUrl &url)
     if (url.matches(m_share->url(), QUrl::RemoveUserInfo | QUrl::StripTrailingSlash)) {
         networkItem = m_share;
     } else {
-        FilePtr file = FilePtr(new Smb4KFile(url));
+        FilePtr file = FilePtr::create(url);
         file->setUserName(m_share->userName());
         file->setPassword(m_share->password());
         file->setDirectory(true);

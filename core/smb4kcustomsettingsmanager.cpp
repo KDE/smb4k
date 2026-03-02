@@ -88,7 +88,7 @@ void Smb4KCustomSettingsManager::addRemount(const SharePtr &share, bool always)
         CustomSettingsPtr settings = findCustomSettings(share, true);
 
         if (!settings) {
-            settings = CustomSettingsPtr(new Smb4KCustomSettings(share.data()));
+            settings = CustomSettingsPtr::create(share.data());
             // add() takes care of the profile, we do not need to set it here.
             addedSettings = add(settings);
         }
@@ -173,7 +173,7 @@ CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const NetworkIt
         CustomSettingsPtr hostSettings = findCustomSettings(networkItem->url().adjusted(QUrl::RemovePath | QUrl::StripTrailingSlash));
 
         if (hostSettings) {
-            settings = CustomSettingsPtr(new Smb4KCustomSettings(networkItem.data()));
+            settings = CustomSettingsPtr::create(networkItem.data());
             settings->update(hostSettings.data());
         }
     }
@@ -342,7 +342,7 @@ void Smb4KCustomSettingsManager::read()
                     break;
                 } else {
                     if (xmlReader.name() == QStringLiteral("options")) {
-                        CustomSettingsPtr settings = CustomSettingsPtr(new Smb4KCustomSettings());
+                        CustomSettingsPtr settings = CustomSettingsPtr::create();
                         settings->setProfile(xmlReader.attributes().value(QStringLiteral("profile")).toString());
 
                         if (QString::compare(xmlReader.attributes().value(QStringLiteral("type")).toString(), QStringLiteral("host"), Qt::CaseInsensitive)

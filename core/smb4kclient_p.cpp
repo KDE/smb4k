@@ -266,7 +266,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
                 //
                 // This is the master browser. Create a host object for it.
                 //
-                HostPtr masterBrowser = HostPtr(new Smb4KHost());
+                HostPtr masterBrowser = HostPtr::create();
                 masterBrowser->setWorkgroupName(QString::fromUtf8(workgroup, -1));
                 masterBrowser->setHostName(QString::fromUtf8(server, -1));
 
@@ -336,7 +336,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         FilePtr file = (*pNetworkItem).staticCast<Smb4KFile>();
 
         if (file->isDirectory()) {
-            SharePtr share = SharePtr(new Smb4KShare());
+            SharePtr share = SharePtr::create();
             share->setWorkgroupName(file->workgroupName());
             share->setHostName(file->hostName());
             share->setShareName(file->shareName());
@@ -728,7 +728,7 @@ void Smb4KClientJob::doLookups()
             //
             // Create a workgroup pointer
             //
-            WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
+            WorkgroupPtr workgroup = WorkgroupPtr::create();
 
             //
             // Set the workgroup name
@@ -765,7 +765,7 @@ void Smb4KClientJob::doLookups()
             //
             // Create a host pointer
             //
-            HostPtr host = HostPtr(new Smb4KHost());
+            HostPtr host = HostPtr::create();
 
             //
             // Set the workgroup name
@@ -807,7 +807,7 @@ void Smb4KClientJob::doLookups()
             //
             // Create a share pointer
             //
-            SharePtr share = SharePtr(new Smb4KShare());
+            SharePtr share = SharePtr::create();
 
             //
             // Set the workgroup name
@@ -863,7 +863,7 @@ void Smb4KClientJob::doLookups()
             //
             // Create a share pointer
             //
-            SharePtr share = SharePtr(new Smb4KShare());
+            SharePtr share = SharePtr::create();
 
             //
             // Set the workgroup name
@@ -919,7 +919,7 @@ void Smb4KClientJob::doLookups()
             //
             // Create a share pointer
             //
-            SharePtr share = SharePtr(new Smb4KShare());
+            SharePtr share = SharePtr::create();
 
             //
             // Set the workgroup name
@@ -987,7 +987,7 @@ void Smb4KClientJob::doLookups()
                 //
                 // We do not stat directories. Directly create the directory object
                 //
-                FilePtr dir = FilePtr(new Smb4KFile(u));
+                FilePtr dir = FilePtr::create(u);
                 dir->setDirectory(true);
 
                 //
@@ -1031,7 +1031,7 @@ void Smb4KClientJob::doLookups()
             //
             // Create the file object
             //
-            FilePtr file = FilePtr(new Smb4KFile(u));
+            FilePtr file = FilePtr::create(u);
 
             //
             // Set the workgroup name
@@ -1367,7 +1367,7 @@ void Smb4KDnsDiscoveryJob::slotServiceAdded(KDNSSD::RemoteService::Ptr service)
             //
             // Create the workgroup item
             //
-            WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
+            WorkgroupPtr workgroup = WorkgroupPtr::create();
 
             //
             // Set the _DNS-SD_ domain name
@@ -1411,7 +1411,7 @@ void Smb4KDnsDiscoveryJob::slotServiceAdded(KDNSSD::RemoteService::Ptr service)
             //
             // Create the host item
             //
-            HostPtr host = HostPtr(new Smb4KHost());
+            HostPtr host = HostPtr::create();
 
             //
             // Set the _DNS-SD_ host name
@@ -1590,7 +1590,7 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                                 //
                                 // Create the workgroup object
                                 //
-                                WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
+                                WorkgroupPtr workgroup = WorkgroupPtr::create();
 
                                 //
                                 // Set the workgroup/domain name
@@ -1656,7 +1656,7 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                                     //
                                     // Create the host object
                                     //
-                                    HostPtr host = HostPtr(new Smb4KHost());
+                                    HostPtr host = HostPtr::create();
 
                                     //
                                     // Set the workgroup/domain name
@@ -1784,7 +1784,7 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
                             //
                             // Create the workgroup object
                             //
-                            WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
+                            WorkgroupPtr workgroup = WorkgroupPtr::create();
 
                             //
                             // Set the workgroup/domain name
@@ -1850,7 +1850,7 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
                                 //
                                 // Create the host object
                                 //
-                                HostPtr host = HostPtr(new Smb4KHost());
+                                HostPtr host = HostPtr::create();
 
                                 //
                                 // Set the workgroup/domain name

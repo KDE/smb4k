@@ -88,7 +88,7 @@ void Smb4KClient::lookupDomains()
         QList<CustomSettingsPtr> wakeOnLanEntries = Smb4KCustomSettingsManager::self()->wakeOnLanEntries();
 
         if (!wakeOnLanEntries.isEmpty()) {
-            NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
+            NetworkItemPtr item = NetworkItemPtr::create();
             Q_EMIT aboutToStart(item, WakeUp);
 
             for (auto entry : std::as_const(wakeOnLanEntries)) {
@@ -124,7 +124,7 @@ void Smb4KClient::lookupDomains()
     //
     // Setup network item
     //
-    NetworkItemPtr networkItem = NetworkItemPtr(new Smb4KBasicNetworkItem(Network));
+    NetworkItemPtr networkItem = NetworkItemPtr::create(Network);
     networkItem->setUrl(QUrl(QStringLiteral("smb://")));
 
     //
@@ -347,7 +347,7 @@ void Smb4KClient::search(const QString &item)
     //
     // Create empty basic network item
     //
-    NetworkItemPtr networkItem = NetworkItemPtr(new Smb4KBasicNetworkItem());
+    NetworkItemPtr networkItem = NetworkItemPtr::create();
 
     //
     // Emit the aboutToStart() signal
@@ -439,7 +439,7 @@ void Smb4KClient::processErrors(Smb4KClientBaseJob *job)
             d->queue.append(container);
 
             FilePtr file = job->networkItem().staticCast<Smb4KFile>();
-            SharePtr share = SharePtr(new Smb4KShare());
+            SharePtr share = SharePtr::create();
             share->setWorkgroupName(file->workgroupName());
             share->setHostName(file->hostName());
             share->setShareName(file->shareName());
@@ -522,7 +522,7 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
                 addWorkgroup(workgroup);
 
                 // Since this is a new workgroup, no master browser is present.
-                HostPtr masterBrowser = HostPtr(new Smb4KHost());
+                HostPtr masterBrowser = HostPtr::create();
                 masterBrowser->setWorkgroupName(workgroup->workgroupName());
                 masterBrowser->setHostName(workgroup->masterBrowserName());
                 masterBrowser->setIpAddress(workgroup->masterBrowserIpAddress());

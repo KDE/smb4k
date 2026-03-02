@@ -1,7 +1,7 @@
 /*
     This class handles the bookmarks.
 
-    SPDX-FileCopyrightText: 2004-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -308,7 +308,7 @@ void Smb4KBookmarkHandler::read()
                     break;
                 } else {
                     if (xmlReader.name() == QStringLiteral("bookmark")) {
-                        BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
+                        BookmarkPtr bookmark = BookmarkPtr::create();
                         bookmark->setProfile(xmlReader.attributes().value(QStringLiteral("profile")).toString());
                         bookmark->setCategoryName(xmlReader.attributes().value(QStringLiteral("category")).toString());
 

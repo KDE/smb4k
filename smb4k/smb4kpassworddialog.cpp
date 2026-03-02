@@ -1,7 +1,7 @@
 /*
  *  Password dialog
  *
- *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -56,7 +56,7 @@ bool Smb4KPasswordDialog::setNetworkItem(const NetworkItemPtr &networkItem)
                     QMap<QString, QString> knownLogins;
 
                     for (const QString &user : homesUsers) {
-                        SharePtr tempShare = SharePtr(new Smb4KShare(*share.data()));
+                        SharePtr tempShare = SharePtr::create(*share.data());
                         tempShare->setUserName(user);
 
                         Smb4KCredentialsManager::self()->readLoginCredentials(tempShare);

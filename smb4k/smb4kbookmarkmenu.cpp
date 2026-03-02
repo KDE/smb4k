@@ -1,7 +1,7 @@
 /*
     smb4kbookmarkmenu  -  Bookmark menu
 
-    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -270,7 +270,7 @@ void Smb4KBookmarkMenu::slotMountActionTriggered(QAction *action)
     QList<SharePtr> mounts;
 
     for (const BookmarkPtr &bookmark : std::as_const(bookmarks)) {
-        SharePtr share = SharePtr(new Smb4KShare());
+        SharePtr share = SharePtr::create();
         share->setUrl(bookmark->url());
         share->setWorkgroupName(bookmark->workgroupName());
         share->setHostIpAddress(bookmark->hostIpAddress());
@@ -288,7 +288,7 @@ void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
 {
     Smb4KBookmark bookmark = action->data().value<Smb4KBookmark>();
 
-    SharePtr share = SharePtr(new Smb4KShare());
+    SharePtr share = SharePtr::create();
     share->setUrl(bookmark.url());
     share->setWorkgroupName(bookmark.workgroupName());
     share->setHostIpAddress(bookmark.hostIpAddress());

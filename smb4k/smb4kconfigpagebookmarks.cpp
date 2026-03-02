@@ -1,7 +1,7 @@
 /*
     The configuration page for bookmarks
 
-    SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -219,7 +219,7 @@ void Smb4KConfigPageBookmarks::saveBookmarks()
 
         while (*it) {
             if ((*it)->data(0, TypeRole).toInt() == BookmarkType) {
-                BookmarkPtr bookmarkPtr = BookmarkPtr(new Smb4KBookmark((*it)->data(0, DataRole).value<Smb4KBookmark>()));
+                BookmarkPtr bookmarkPtr = BookmarkPtr::create((*it)->data(0, DataRole).value<Smb4KBookmark>());
 
                 if (bookmarkPtr) {
                     bookmarksList << bookmarkPtr;

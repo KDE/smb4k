@@ -1,7 +1,7 @@
 /*
  *  Editor dialog for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -117,7 +117,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
             m_customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(host);
 
             if (!m_customSettings) {
-                m_customSettings = CustomSettingsPtr(new Smb4KCustomSettings(host.data()));
+                m_customSettings = CustomSettingsPtr::create(host.data());
                 m_customSettings->setProfile(Smb4KProfileManager::self()->activeProfile());
             }
 
@@ -150,7 +150,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
                 m_customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(share);
 
                 if (!m_customSettings) {
-                    m_customSettings = CustomSettingsPtr(new Smb4KCustomSettings(share.data()));
+                    m_customSettings = CustomSettingsPtr::create(share.data());
                     m_customSettings->setProfile(Smb4KProfileManager::self()->activeProfile());
 
                     // Get rid of the 'homes' share
@@ -198,7 +198,7 @@ void Smb4KCustomSettingsEditor::slotResetCustomSettings()
 
 void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
 {
-    CustomSettingsPtr tempCustomSettings = CustomSettingsPtr(new Smb4KCustomSettings(m_editorWidget->getCustomSettings()));
+    CustomSettingsPtr tempCustomSettings = CustomSettingsPtr::create(m_editorWidget->getCustomSettings());
     m_customSettings.swap(tempCustomSettings);
 
     m_savingCustomSettings = true;

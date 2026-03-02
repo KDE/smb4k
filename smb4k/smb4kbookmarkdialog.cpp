@@ -1,7 +1,7 @@
 /*
  *  Bookmark dialog
  *
- *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -269,7 +269,7 @@ void Smb4KBookmarkDialog::slotSaveBookmarks()
 
     for (int i = 0; i < m_listWidget->count(); ++i) {
         Smb4KBookmark bookmark = m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KBookmark>();
-        bookmarks << BookmarkPtr(new Smb4KBookmark(bookmark));
+        bookmarks << BookmarkPtr::create(bookmark);
     }
 
     Smb4KBookmarkHandler::self()->addBookmarks(bookmarks);

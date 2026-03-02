@@ -33,8 +33,7 @@
 Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     : QDialog(parent)
 {
-    // FIXME: Implement reload of custom settings if they were
-    // changed externally (custon settings dialog or config dialog).
+    // FIXME: Set default settings, if none are defined.
 
     setWindowTitle(i18n("Mount Dialog"));
     setAttribute(Qt::WA_DeleteOnClose);
@@ -391,16 +390,16 @@ void Smb4KMountDialog::slotAccepted()
     // First, save the custom settings so they can be used for mounting.
     if (!m_customSettingsWidget->hasDefaultCustomSettings()) {
         Smb4KCustomSettings tempCustomSettings = m_customSettingsWidget->getCustomSettings();
-        CustomSettingsPtr customSettings = CustomSettingsPtr(new Smb4KCustomSettings(tempCustomSettings));
+        CustomSettingsPtr customSettings = CustomSettingsPtr::create(tempCustomSettings);
         Smb4KCustomSettingsManager::self()->addCustomSettings(customSettings);
     }
 
     QUrl url = createUrl(m_locationInput->userText().trimmed());
 
-    SharePtr share = SharePtr(new Smb4KShare());
+    SharePtr share = SharePtr::create();
     share->setUrl(url);
 
-    BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
+    BookmarkPtr bookmark = BookmarkPtr::create();
     bookmark->setUrl(url);
 
     QHostAddress userInputIpAddress(m_ipAddressInput->userText().trimmed());
