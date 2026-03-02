@@ -806,7 +806,7 @@ msgstr "添加此共享到书签"
 #: smb4k/smb4kmountdialog.cpp:156
 #, kde-format
 msgid "Bookmark"
-msgstr ""
+msgstr "书签"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
