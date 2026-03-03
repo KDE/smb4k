@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-28 00:44+0000\n"
+"POT-Creation-Date: 2026-03-03 00:46+0000\n"
 "PO-Revision-Date: 2023-07-02 02:26+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -194,13 +194,13 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:132
+#: smb4k/smb4kmountdialog.cpp:131
 #, kde-format
 msgid "Label:"
 msgstr "Nome:"
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:139
+#: smb4k/smb4kmountdialog.cpp:138
 #, kde-format
 msgid "Category:"
 msgstr "Categoria:"
@@ -242,7 +242,7 @@ msgstr "Interface do Utilizador"
 msgid "Network"
 msgstr "Rede"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4kmountdialog.cpp:112
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4kmountdialog.cpp:111
 #, kde-format
 msgid "Mounting"
 msgstr "Montagem"
@@ -266,7 +266,7 @@ msgstr "Autenticação"
 msgid " (Profile: %1)"
 msgstr "Perfis"
 
-#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:164
+#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:163
 #, kde-format
 msgid "Custom Settings"
 msgstr "Configuração Personalizada"
@@ -316,7 +316,7 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:95
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:94
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -324,7 +324,7 @@ msgstr "Grupo de trabalho:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:87
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -824,12 +824,12 @@ msgstr "A pasta %1 foi desmontada com sucesso."
 msgid "Synchronizing %1"
 msgstr "A sincronizar o %1"
 
-#: smb4k/smb4kmountdialog.cpp:39
+#: smb4k/smb4kmountdialog.cpp:38
 #, kde-format
 msgid "Mount Dialog"
 msgstr "Janela de Montagem"
 
-#: smb4k/smb4kmountdialog.cpp:65
+#: smb4k/smb4kmountdialog.cpp:64
 #, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
@@ -838,18 +838,18 @@ msgstr ""
 "Indique a localização e, a título opcional, o endereço IP e o grupo de "
 "trabalho onde montar uma partilha."
 
-#: smb4k/smb4kmountdialog.cpp:80 smb4k/smb4ktooltip.cpp:196
+#: smb4k/smb4kmountdialog.cpp:79 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
 #, kde-format
 msgid "Location:"
 msgstr "Localização:"
 
-#: smb4k/smb4kmountdialog.cpp:122
+#: smb4k/smb4kmountdialog.cpp:121
 #, kde-format
 msgid "Bookmark this share"
 msgstr "Adicionar esta partilha aos favoritos"
 
-#: smb4k/smb4kmountdialog.cpp:156
+#: smb4k/smb4kmountdialog.cpp:155
 #, fuzzy, kde-format
 #| msgid "Bookmarks"
 msgid "Bookmark"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-28 00:44+0000\n"
+"POT-Creation-Date: 2026-03-03 00:46+0000\n"
 "PO-Revision-Date: 2026-02-28 07:59+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -170,13 +170,13 @@ msgstr ""
 "l'adreça d'interés respectiva."
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:132
+#: smb4k/smb4kmountdialog.cpp:131
 #, kde-format
 msgid "Label:"
 msgstr "Etiqueta:"
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:139
+#: smb4k/smb4kmountdialog.cpp:138
 #, kde-format
 msgid "Category:"
 msgstr "Categoria:"
@@ -218,7 +218,7 @@ msgstr "Interfície d'usuari"
 msgid "Network"
 msgstr "Xarxa"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4kmountdialog.cpp:112
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4kmountdialog.cpp:111
 #, kde-format
 msgid "Mounting"
 msgstr "Muntatge"
@@ -241,7 +241,7 @@ msgstr "Autenticació"
 msgid " (Profile: %1)"
 msgstr " (Perfil: %1)"
 
-#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:164
+#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:163
 #, kde-format
 msgid "Custom Settings"
 msgstr "Configuració personalitzada"
@@ -290,7 +290,7 @@ msgstr "Contrasenya:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:95
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:94
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -298,7 +298,7 @@ msgstr "Grup de treball:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:87
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -793,12 +793,12 @@ msgstr "%1 s'ha desmuntat correctament."
 msgid "Synchronizing %1"
 msgstr "S'està sincronitzant «%1»"
 
-#: smb4k/smb4kmountdialog.cpp:39
+#: smb4k/smb4kmountdialog.cpp:38
 #, kde-format
 msgid "Mount Dialog"
 msgstr "Diàleg de muntatge"
 
-#: smb4k/smb4kmountdialog.cpp:65
+#: smb4k/smb4kmountdialog.cpp:64
 #, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
@@ -807,18 +807,18 @@ msgstr ""
 "Introduïu la ubicació i de manera opcional l'adreça IP i grup de treball per "
 "a muntar una compartició."
 
-#: smb4k/smb4kmountdialog.cpp:80 smb4k/smb4ktooltip.cpp:196
+#: smb4k/smb4kmountdialog.cpp:79 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
 #, kde-format
 msgid "Location:"
 msgstr "Ubicació:"
 
-#: smb4k/smb4kmountdialog.cpp:122
+#: smb4k/smb4kmountdialog.cpp:121
 #, kde-format
 msgid "Bookmark this share"
 msgstr "Afig esta compartició a les adreces d'interés"
 
-#: smb4k/smb4kmountdialog.cpp:156
+#: smb4k/smb4kmountdialog.cpp:155
 #, kde-format
 msgid "Bookmark"
 msgstr "Adreça d'interés"
