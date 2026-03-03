@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-28 00:44+0000\n"
+"POT-Creation-Date: 2026-03-03 00:46+0000\n"
 "PO-Revision-Date: 2026-02-28 22:55+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -169,13 +169,13 @@ msgstr ""
 "sarreran."
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
-#: smb4k/smb4kmountdialog.cpp:132
+#: smb4k/smb4kmountdialog.cpp:131
 #, kde-format
 msgid "Label:"
 msgstr "Etiketa:"
 
 #: smb4k/smb4kbookmarkdialog.cpp:81 smb4k/smb4kconfigpagebookmarks.cpp:66
-#: smb4k/smb4kmountdialog.cpp:139
+#: smb4k/smb4kmountdialog.cpp:138
 #, kde-format
 msgid "Category:"
 msgstr "Kategoria:"
@@ -217,7 +217,7 @@ msgstr "Erabiltzailearen interfazea"
 msgid "Network"
 msgstr "Sarea"
 
-#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4kmountdialog.cpp:112
+#: smb4k/smb4kconfigdialog.cpp:127 smb4k/smb4kmountdialog.cpp:111
 #, kde-format
 msgid "Mounting"
 msgstr "Muntatzea"
@@ -240,7 +240,7 @@ msgstr "Autentifikatzea"
 msgid " (Profile: %1)"
 msgstr "(Profila: %1)"
 
-#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:164
+#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:163
 #, kde-format
 msgid "Custom Settings"
 msgstr "Neurrira ipintzeko ezarpenak"
@@ -290,7 +290,7 @@ msgstr "Pasahitza:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:95
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:94
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -298,7 +298,7 @@ msgstr "Lantaldea:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:88
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:87
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -792,12 +792,12 @@ msgstr "%1 ondo desmuntatu da."
 msgid "Synchronizing %1"
 msgstr "%1 sinkronizatzea"
 
-#: smb4k/smb4kmountdialog.cpp:39
+#: smb4k/smb4kmountdialog.cpp:38
 #, kde-format
 msgid "Mount Dialog"
 msgstr "Muntatzeko elkarrizketa-koadroa"
 
-#: smb4k/smb4kmountdialog.cpp:65
+#: smb4k/smb4kmountdialog.cpp:64
 #, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
@@ -806,18 +806,18 @@ msgstr ""
 "Sartu partekatze bat muntatzeko kokalekua eta, aukeran, IP helbidea eta "
 "lantaldea."
 
-#: smb4k/smb4kmountdialog.cpp:80 smb4k/smb4ktooltip.cpp:196
+#: smb4k/smb4kmountdialog.cpp:79 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
 #, kde-format
 msgid "Location:"
 msgstr "Kokalekua:"
 
-#: smb4k/smb4kmountdialog.cpp:122
+#: smb4k/smb4kmountdialog.cpp:121
 #, kde-format
 msgid "Bookmark this share"
 msgstr "Laster-marka partekatze honi"
 
-#: smb4k/smb4kmountdialog.cpp:156
+#: smb4k/smb4kmountdialog.cpp:155
 #, kde-format
 msgid "Bookmark"
 msgstr "Laster-marka"
