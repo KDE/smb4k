@@ -117,6 +117,11 @@ void Smb4KConfigPageCustomSettings::loadCustomSettings()
         return;
     }
 
+    if (m_editorWidget->isVisible()) {
+        m_editorWidget->setVisible(false);
+        m_editorWidget->clear();
+    }
+
     if (m_listWidget->count() != 0) {
         m_listWidget->clear();
     }
@@ -144,50 +149,52 @@ void Smb4KConfigPageCustomSettings::loadCustomSettings()
 
 void Smb4KConfigPageCustomSettings::saveCustomSettings()
 {
-    if (m_customSettingsChanged) {
-        if (m_itemToEdit) {
-            Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
-
-            if (customSettings.hasCustomSettings()) {
-                Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
-                currentCustomSettings.update(&customSettings);
-
-                QVariant variant = QVariant::fromValue(currentCustomSettings);
-                m_itemToEdit->setData(Qt::UserRole, variant);
-            } else {
-                m_editorWidget->setVisible(false);
-                m_editorWidget->clear();
-
-                delete m_itemToEdit;
-                m_itemToEdit = nullptr;
-
-                setRemovalMessage(customSettings);
-
-                if (!m_messageWidget->isVisible()) {
-                    m_messageWidget->setVisible(true);
-                }
-            }
-        }
-
-        QList<CustomSettingsPtr> customSettingsList;
-
-        for (int i = 0; i < m_listWidget->count(); ++i) {
-            CustomSettingsPtr settings = CustomSettingsPtr::create(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomSettings>());
-
-            // NOTE: We do not test if the object carries custom settings. This
-            // is done in the custom settings manager.
-            if (settings) {
-                customSettingsList << settings;
-            }
-        }
-
-        m_savingCustomSettings = true;
-        Smb4KCustomSettingsManager::self()->saveCustomSettings(customSettingsList);
-        m_savingCustomSettings = false;
-
-        m_customSettingsChanged = false;
-        Q_EMIT customSettingsModified();
+    if (!m_customSettingsChanged) {
+        return;
     }
+
+    if (m_itemToEdit) {
+        Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
+
+        if (customSettings.hasCustomSettings()) {
+            Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
+            currentCustomSettings.update(&customSettings);
+
+            QVariant variant = QVariant::fromValue(currentCustomSettings);
+            m_itemToEdit->setData(Qt::UserRole, variant);
+        } else {
+            m_editorWidget->setVisible(false);
+            m_editorWidget->clear();
+
+            delete m_itemToEdit;
+            m_itemToEdit = nullptr;
+
+            setRemovalMessage(customSettings);
+
+            if (!m_messageWidget->isVisible()) {
+                m_messageWidget->setVisible(true);
+            }
+        }
+    }
+
+    QList<CustomSettingsPtr> customSettingsList;
+
+    for (int i = 0; i < m_listWidget->count(); ++i) {
+        CustomSettingsPtr settings = CustomSettingsPtr::create(m_listWidget->item(i)->data(Qt::UserRole).value<Smb4KCustomSettings>());
+
+        // NOTE: We do not test if the object carries custom settings. This
+        // is done in the custom settings manager.
+        if (settings) {
+            customSettingsList << settings;
+        }
+    }
+
+    m_savingCustomSettings = true;
+    Smb4KCustomSettingsManager::self()->saveCustomSettings(customSettingsList);
+    m_savingCustomSettings = false;
+
+    m_customSettingsChanged = false;
+    Q_EMIT customSettingsModified();
 }
 
 void Smb4KConfigPageCustomSettings::setRemovalMessage(const Smb4KCustomSettings &settings)
@@ -217,32 +224,34 @@ bool Smb4KConfigPageCustomSettings::eventFilter(QObject *obj, QEvent *e)
 
 void Smb4KConfigPageCustomSettings::slotItemSelectionChanged()
 {
-    if (m_editorWidget->isVisible()) {
-        m_editorWidget->setVisible(false);
-
-        Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
-
-        if (customSettings.hasCustomSettings()) {
-            Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
-            currentCustomSettings.update(&customSettings);
-
-            QVariant variant = QVariant::fromValue(currentCustomSettings);
-            m_itemToEdit->setData(Qt::UserRole, variant);
-
-            m_itemToEdit = nullptr;
-        } else {
-            delete m_itemToEdit;
-            m_itemToEdit = nullptr;
-
-            setRemovalMessage(customSettings);
-
-            if (!m_messageWidget->isVisible()) {
-                m_messageWidget->setVisible(true);
-            }
-        }
-
-        m_editorWidget->clear();
+    if (!m_editorWidget->isVisible()) {
+        return;
     }
+
+    m_editorWidget->setVisible(false);
+
+    Smb4KCustomSettings customSettings = m_editorWidget->getCustomSettings();
+
+    if (customSettings.hasCustomSettings()) {
+        Smb4KCustomSettings currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomSettings>();
+        currentCustomSettings.update(&customSettings);
+
+        QVariant variant = QVariant::fromValue(currentCustomSettings);
+        m_itemToEdit->setData(Qt::UserRole, variant);
+
+        m_itemToEdit = nullptr;
+    } else {
+        delete m_itemToEdit;
+        m_itemToEdit = nullptr;
+
+        setRemovalMessage(customSettings);
+
+        if (!m_messageWidget->isVisible()) {
+            m_messageWidget->setVisible(true);
+        }
+    }
+
+    m_editorWidget->clear();
 }
 
 void Smb4KConfigPageCustomSettings::slotEditCustomItem(QListWidgetItem *item)
@@ -263,12 +272,14 @@ void Smb4KConfigPageCustomSettings::slotRemoveButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    if (m_listWidget->currentItem()) {
-        delete m_listWidget->currentItem();
-        m_listWidget->setCurrentItem(nullptr);
-        m_customSettingsChanged = true;
-        Q_EMIT customSettingsModified();
+    if (!m_listWidget->currentItem()) {
+        return;
     }
+
+    delete m_listWidget->currentItem();
+    m_listWidget->setCurrentItem(nullptr);
+    m_customSettingsChanged = true;
+    Q_EMIT customSettingsModified();
 }
 
 void Smb4KConfigPageCustomSettings::slotClearButtonClicked(bool checked)
