@@ -1,3 +1,85 @@
+Smb4K 4.0.6 (2026-02-15):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
+
+- Fix the apparance of the second tab of the custom settings editor widget.
+- Simplify check in Smb4KMounter::triggerRemounts(). This is feasible,
+  because only mounts under /var/run/smb4k/<user name> are allowed.
+- Remove obsolete Smb4KNotification::unmountingNotAllowed() error
+  notification.
+- Do not report an error, if a foreign share is passed to the unmount
+  function, but just return silently.
+- Improve check, if a share is foreign (i.e. it can be unmounted by the
+  user) or not. Also, clean up the includes and correct the comment for
+  the Kerberos ticket.
+- Simplify Smb4KMountHelper::removeMountPoint() function.
+- Remove the filesystem check from the mounthelper, because that is not
+  needed when only unmounts from /var/run/smb4k/<user ID> are allowed.
+- Updated handbook and REAME.md.
+
+Smb4K 4.0.5 (2025-12-10):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
+
+- Fix the security issues:
+  CVE-2025-66002: local users can perform arbitrary unmounts via 
+  smb4kmounthelper due to lack of input validation
+  CVE-2025-66003: local users can perform a local root exploit via smb4k 
+  mounthelper if they can access and control the contents of a Samba share
+- Only allow mounting and unmounting below the mount prefix
+  /var/run/smb4k/<user ID>/.
+- Only accept sane URLs and especially deny specially crafted ones.
+- Let the mounthelper create the mount points by itself depending on the
+  passed URL.
+- Use the mount and umount binaries returned by the respective functions
+  from Smb4KGlobal.
+- Only allow whitelisted mount and unmount options.
+- Make sure that no comma separated values can be passed with the mount
+  options.
+- Only allow setting the UID and GID to the ones of the calling user.
+- Only accept four-digit octal numbers as file and directory masks that
+  do not carry any special permissions (e.g. a setuid root bit).
+- Only accept the location of the Kerberos ticket being passed as a file
+  descriptor.
+- Remove all settings that are obsolete: mount prefix, unmounting of
+  forein shares, user and group, filesystem port, custom CIFS mount
+  options.
+- Introduce the setting to use the user's UID and GID for mounting.
+- Remove the whitelist of mount options from Smb4KGlobal.
+- Remove the mount point creation and removal from the mounter.
+- Pass the Kerberos ticket as a file descriptor to the mounthelper.
+- Do not allow the unmounting of foreign shares.
+- Do not pass obsolete and rejected settings to the mounthelper.
+- Improve error handling in the mounter.
+- All shares on the system that are not mounted under
+  /var/run/smb4k/<user ID>/ are considered foreign.
+- Improve notifications with regard to failed KAuth actions.
+- Remove obsolete settings from the configuration and custom settings 
+  dialog.
+- Introduce setting to set the UID and GID of a mount to the one of
+  the user to the configuration and the custom settings dialog. The
+  IDs are not editable.
+- Restrict the input of the file and directory mode to 4 digits and
+  validate it.
+- Remove the possibility to unmount foreign shares through the
+  network neighborhood browser, the shares view and the shares menu.
+Additional changes:
+- Fix Smb4KCustomSettingsManager::saveCustomSettings(): Now all settings 
+  are indeed removed from the file if an empty list is passed.
+- Merge Smb4KHardwareInterface class from master.
+
+Smb4K 4.0.4 (2025-07-31):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
+
+- Fix serveral issues with the UNC-to-URL conversion in the mount dialog.
+- Port to KUIServerV2JobTracker. KUIServerJobTracker is in the process of 
+  being deprecated.
+- Update README.md to reflect the right location of the license files.
+
 Smb4K 4.0.3 (2025-06-15):
 
 See the summary of changes below. For a full list of changes, please
