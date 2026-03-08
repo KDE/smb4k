@@ -1,5 +1,5 @@
 # Spanish translations for smb4k.po package.
-# Copyright (C) 2004-2025 This file is copyright:
+# Copyright (C) 2004-2026 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
 # SPDX-FileCopyrightText: 2004 Quique <quique@sindominio.net>
@@ -10,13 +10,13 @@
 # SPDX-FileCopyrightText: 2013 Miguel Navarrete Hernandez <recados.akka@gmail.com>
 # SPDX-FileCopyrightText: 2013, 2014 Raul Gonzalez <raulgf83@gmail.com>
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:46+0000\n"
-"PO-Revision-Date: 2025-12-13 20:32+0100\n"
+"POT-Creation-Date: 2026-03-04 00:45+0000\n"
+"PO-Revision-Date: 2026-03-08 00:07+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -347,7 +347,7 @@ msgstr "Nueva categoría"
 msgid "All fine."
 msgstr "Todo bien."
 
-#: smb4k/smb4kconfigpagecustomsettings.cpp:195
+#: smb4k/smb4kconfigpagecustomsettings.cpp:202
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
@@ -830,10 +830,9 @@ msgid "Bookmark this share"
 msgstr "Añadir este recurso compartido a favoritos"
 
 #: smb4k/smb4kmountdialog.cpp:155
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark"
-msgstr "Marcadores"
+msgstr "Marcador"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -1260,7 +1259,3 @@ msgstr "%1 libres de %2 (%3 utilizado)"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgctxt "Bookmark a share in the mount dialog."
-#~ msgid "Bookmark >>"
-#~ msgstr "Marcador >>"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:46+0000\n"
+"POT-Creation-Date: 2026-03-04 00:45+0000\n"
 "PO-Revision-Date: 2025-02-06 20:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -341,7 +341,7 @@ msgstr "新分類"
 msgid "All fine."
 msgstr "都沒問題。"
 
-#: smb4k/smb4kconfigpagecustomsettings.cpp:195
+#: smb4k/smb4kconfigpagecustomsettings.cpp:202
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr "項目 <b>%1</b> 已移除，因為所有自訂設定都已被重設。"

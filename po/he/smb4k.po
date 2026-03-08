@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:46+0000\n"
+"POT-Creation-Date: 2026-03-04 00:45+0000\n"
 "PO-Revision-Date: 2026-03-01 18:52+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -332,7 +332,7 @@ msgstr "קטגוריה חדשה"
 msgid "All fine."
 msgstr "הכול בסדר."
 
-#: smb4k/smb4kconfigpagecustomsettings.cpp:195
+#: smb4k/smb4kconfigpagecustomsettings.cpp:202
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr "הפריט <b>%1</b> הוסר, כיוון שכל ההגדרות הייחודיות שלו אופסו."
