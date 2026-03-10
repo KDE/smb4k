@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-04 00:45+0000\n"
-"PO-Revision-Date: 2026-02-28 10:46+0300\n"
+"PO-Revision-Date: 2026-03-09 21:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -36,7 +36,7 @@ msgstr "emir_sari@icloud.com"
 #: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
-msgstr "Bilgisayar çevrimiçi değil."
+msgstr "Bilgisayar çevrim içi değil."
 
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
