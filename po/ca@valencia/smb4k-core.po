@@ -3179,16 +3179,3 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#~ msgid "Set the SMB port to:"
-#~ msgstr "Establix el port SMB a:"
-
-# skip-rule: ff-net
-#~ msgid ""
-#~ "This is the port that is used for connecting to remote servers. The "
-#~ "default value is 139 (NetBIOS). Under FreeBSD, this setting is also used "
-#~ "for mounting."
-#~ msgstr ""
-#~ "Este és el port que s'utilitza per a connectar amb els servidors remots. "
-#~ "El valor predeterminat és 139 (NetBIOS). Amb la FreeBSD, esta opció també "
-#~ "s'utilitza per al muntatge."
