@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2026-02-09 17:53+0200\n"
+"PO-Revision-Date: 2026-03-24 21:59+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -34,7 +34,7 @@ msgstr "liudas@akmc.lt, <>"
 #: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "Kompiuteris nėra prisijungęs prie interneto."
 
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
@@ -268,6 +268,8 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Atlikote pakeitimus profiliams. Turite pritaikyti pakeitimus,\n"
+"jei norite juos naudoti likusioje konfigūracijos dialogo dalyje."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format

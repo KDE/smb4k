@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-08 02:52+0000\n"
-"PO-Revision-Date: 2026-02-09 17:56+0200\n"
+"PO-Revision-Date: 2026-03-24 21:51+0200\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -22,54 +22,56 @@ msgstr ""
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
-msgstr ""
+msgstr "Namai"
 
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
-msgstr ""
+msgstr "Darbas"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
 #, kde-format
 msgid "Tab orientation:"
-msgstr ""
+msgstr "Kortelių orientacija:"
 
 #. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
 #, kde-format
 msgid "Set the tab orientation for the tabified dock widgets."
 msgstr ""
+"Nustatyti, kokia bus kortelių orientacija kortelių pavidalo doko "
+"valdikliuose."
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:21
 #, kde-format
 msgid "Top"
-msgstr ""
+msgstr "Viršuje"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:24
 #, kde-format
 msgid "Bottom"
-msgstr ""
+msgstr "Apačioje"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:27
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "Kairėje"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:30
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "Dešinėje"
 
 #. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
 #, kde-format
 msgid "Show custom bookmark label if available"
-msgstr ""
+msgstr "Rodyti tinkintą žymelės etiketę, jei prieinama"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:37
@@ -78,12 +80,14 @@ msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
+"Nerodyti į žymeles pridėto viešinio pavadinimo, bet rodyti tinkintą etiketę, "
+"kuri buvo apibrėžta žymelių redaktoriuje."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
 msgid "Start docked"
-msgstr ""
+msgstr "Paleisti įstatytą"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -94,12 +98,16 @@ msgid ""
 "up by clicking on the system tray widget or by choosing \"Restore\" from its "
 "popup menu."
 msgstr ""
+"Paleisti programą įstatytą į sistemos dėklą, t. y. bus rodomas tik sistemos "
+"dėklo valdiklis, o pagrindinis langas bus paslėptas. Galite atverti "
+"pagrindinį langą spusteldami ant sistemos dėklo valdiklio arba jo "
+"iškylančiajame meniu pasirinkdami „Atkurti“."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:46
 #, kde-format
 msgid "Show the type of the share"
-msgstr ""
+msgstr "Rodyti viešinio tipą"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
@@ -108,12 +116,14 @@ msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
+"Viešinio tipas bus rodomas atskirame tinklo aplinkos naršyklės stulpelyje. "
+"Jis gali būti „Diskas“, „Spausdintuvas“ arba „IPC“."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
 #, kde-format
 msgid "Show the IP address of the server"
-msgstr ""
+msgstr "Rodyti serverio IP adresą"
 
 #. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:52
@@ -122,12 +132,14 @@ msgid ""
 "The IP address of the server will be displayed in a separate column in the "
 "network neighborhood browser."
 msgstr ""
+"Serverio IP adresas bus rodomas atskirame tinklo aplinkos naršyklės "
+"stulpelyje."
 
 #. i18n: ectx: label, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:56
 #, kde-format
 msgid "Show the comment"
-msgstr ""
+msgstr "Rodyti komentarą"
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:57
@@ -136,18 +148,20 @@ msgid ""
 "The comment describing the server or share will be displayed in a separate "
 "column in the network neighborhood browser."
 msgstr ""
+"Komentaras, aprašantis serverį ar viešinį, bus rodomas atskirame tinklo "
+"aplinkos naršyklės stulpelyje."
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:61
 #, kde-format
 msgid "Show tooltips for network items"
-msgstr ""
+msgstr "Rodyti tinklo elementų paaiškinimus"
 
 #. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:62
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
-msgstr ""
+msgstr "Paaiškinimas rodo įvarią informaciją apie esamą tinklo elementą."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:66
@@ -168,19 +182,19 @@ msgstr ""
 #: smb4k.kcfg:71
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr ""
+msgstr "Rodyti prijungtų viešinių paaiškinimus"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:72
 #, kde-format
 msgid "The tooltip shows various information about the current share."
-msgstr ""
+msgstr "Paaiškinimas rodo įvarią informaciją apie esamą viešinį."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:76
 #, kde-format
 msgid "View mode:"
-msgstr ""
+msgstr "Rodinio veiksena:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
@@ -189,54 +203,56 @@ msgid ""
 "This setting determines the view mode of the shares view. There are two "
 "modes: the icon view and the list view."
 msgstr ""
+"Ši nuostata nustato, kokia bus rodinio veiksena viešinių rodinyje. Yra dvi "
+"veiksenos: piktogramų rodinys ir sąrašo rodinys."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:80
 #, kde-format
 msgid "Icon View"
-msgstr ""
+msgstr "Piktogramų rodinys"
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:83
 #, kde-format
 msgid "List View"
-msgstr ""
+msgstr "Sąrašo rodinys"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:89
 #, kde-format
 msgid "Icon size for the icon view:"
-msgstr ""
+msgstr "Piktogramų dydis piktogramų rodinyje:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
 #, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr ""
+msgstr "Nustatyti, koks bus piktogramų dydis piktogramų rodinio veiksenoje."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:96
 #, kde-format
 msgid "Icon size for the list view:"
-msgstr ""
+msgstr "Piktogramų dydis sąrašo rodinyje:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
 #, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr ""
+msgstr "Nustatyti, koks bus piktogramų dydis sąrašo rodinio veiksenoje."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:103
 #, kde-format
 msgid "Icon size:"
-msgstr ""
+msgstr "Piktogramų dydis:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
 #, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr ""
+msgstr "Nustatyti, koks bus piktogramų dydis tinklo aplinkos naršyklėje."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:115
@@ -315,7 +331,7 @@ msgstr ""
 #: smb4k.kcfg:134 smb4k.kcfg:150
 #, kde-format
 msgid "NT1 (Classic CIFS/SMBv1 protocol)"
-msgstr ""
+msgstr "NT1 (Klasikinis CIFS/SMBv1 protokolas)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
@@ -422,32 +438,32 @@ msgstr ""
 #: smb4k.kcfg:193
 #, kde-format
 msgid "Set the encryption level to:"
-msgstr ""
+msgstr "Nustatyti šifravimo lygį į:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:194 smb4k.kcfg:198
 #, kde-format
 msgid "Set the level of encryption that is used for making connections."
-msgstr ""
+msgstr "Nustatyti šifravimo lygį, kuris bus naudojamas ryšių užmezgimui."
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:201
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "Nėra"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:204
 #, kde-format
 msgid "Request"
-msgstr ""
+msgstr "Prašyti"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:207
 #, kde-format
 msgid "Require"
-msgstr ""
+msgstr "Reikalauti"
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
 #: smb4k.kcfg:213
@@ -2471,65 +2487,65 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:239
 #, kde-format
 msgid "Kerberos 5 authentication"
-msgstr ""
+msgstr "Kerberos 5 tapatybės nustatymas"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:242
 #, kde-format
 msgid "Kerberos 5 authentication and packet signing"
-msgstr ""
+msgstr "Kerberos 5 tapatybės nustatymas ir paketų pasirašymas"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:245
 #, kde-format
 msgid "NTLM protocol"
-msgstr ""
+msgstr "NTLM protokolas"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:248
 #, kde-format
 msgid "NTLM protocol and packet signing"
-msgstr ""
+msgstr "NTLM protokolas ir paketų pasirašymas"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:251
 #, kde-format
 msgid "NTLMv2 protocol"
-msgstr ""
+msgstr "NTLMv2 protokolas"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:254
 #, kde-format
 msgid "NTLMv2 protocol and packet signing"
-msgstr ""
+msgstr "NTLMv2 protokolas ir paketų pasirašymas"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:257
 #, kde-format
 msgid "NTLMSSP protocol"
-msgstr ""
+msgstr "NTLMSSP protokolas"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:260
 #, kde-format
 msgid "NTLMSSP protocol and packet signing"
-msgstr ""
+msgstr "NTLMSSP protokolas ir paketų pasirašymas"
 
 #: smb4knotification.cpp:74
 #, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr ""
+msgstr "Viešinys <b>%1</b> prijungtas prie <b>%2</b>."
 
 #: smb4knotification.cpp:83
 #, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
-msgstr ""
+msgstr "Atverti"
 
 #: smb4knotification.cpp:101
 #, kde-format
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr ""
+msgstr "Viešinys <b>%1</b> atjungtas nuo <b>%2</b>."
 
 #: smb4knotification.cpp:119
 #, kde-format
@@ -2654,27 +2670,27 @@ msgstr ""
 #: smb4knotification.cpp:398
 #, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
-msgstr ""
+msgstr "Procesas užstrigo (klaidos kodas: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:402
 #, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
-msgstr ""
+msgstr "Pasibaigė procesui skirtas laikas (klaidos kodas: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:406
 #, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
-msgstr ""
+msgstr "Nepavyko rašyti į procesą (klaidos kodas: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:410
 #, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
-msgstr ""
+msgstr "Nepavyko skaityti iš proceso (klaidos kodas: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:415
 #, kde-format
 msgid "The process reported an unknown error."
-msgstr ""
+msgstr "Procesas pranešė apie nežinomą klaidą."
 
 #: smb4knotification.cpp:477
 #, kde-format
@@ -2708,17 +2724,17 @@ msgstr ""
 #: smb4kshare.cpp:193
 #, kde-format
 msgid "Disk"
-msgstr ""
+msgstr "Diskas"
 
 #: smb4kshare.cpp:197
 #, kde-format
 msgid "Printer"
-msgstr ""
+msgstr "Spausdintuvas"
 
 #: smb4kshare.cpp:201
 #, kde-format
 msgid "IPC"
-msgstr ""
+msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
