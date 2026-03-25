@@ -13,8 +13,6 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QFile>
-#include <QMap>
 #include <QObject>
 #include <QScopedPointer>
 #include <QString>
@@ -87,8 +85,8 @@ public:
      *
      * @param share       The share object that should be unmounted.
      *
-     * @param silent      Determines whether this function should emit an error code in
-     *                    case of an error. The default value is FALSE.
+     * @param silent      Determines whether this function should not emit an error
+     *                    code in case of an error. The default value is FALSE.
      */
     void unmountShare(const SharePtr &share, bool silent = false);
 
@@ -98,14 +96,14 @@ public:
      *
      * @param shares      The list of shares that is to be unmounted
      *
-     * @param silent      Determines whether this function should emit an error code in
-     *                    case of an error. The default value is FALSE.
+     * @param silent      Determines whether this function should not emit an error
+     *                    code in case of an error. The default value is FALSE.
      */
     void unmountShares(const QList<SharePtr> &shares, bool silent = false);
 
     /**
-     * Unmounts all shares at once. This is a convenience function. It calls
-     * unmountShares() to unmount all currently mounted shares.
+     * Unmounts all shares owned by the user at once. This is a convenience function.
+     * It calls unmountShares() to unmount all shares currently mounted by the user.
      *
      * @param silent      Determines whether this function should emit an error code in
      *                    case of an error. The default value is FALSE.

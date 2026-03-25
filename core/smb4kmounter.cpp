@@ -16,7 +16,6 @@
 #include "smb4kprofilemanager.h"
 #include "smb4ksettings.h"
 #include "smb4kshare.h"
-#include "smb4kworkgroup.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -38,6 +37,7 @@
 #include <QDBusUnixFileDescriptor>
 #include <QDebug>
 #include <QDir>
+#include <QFile>
 #include <QFileInfo>
 #include <QStorageInfo>
 #include <QTcpSocket>
@@ -186,15 +186,17 @@ void Smb4KMounter::triggerRemounts(bool fillList)
                 d->tcpSocket.abort();
             }
 
-            if (createAndAddShare) {
-                share = SharePtr::create();
-                share->setUrl(option->url());
-                share->setWorkgroupName(option->workgroupName());
-                share->setHostIpAddress(option->ipAddress());
+            if (!createAndAddShare) {
+                continue;
+            }
 
-                if (share->url().isValid() && !share->url().isEmpty()) {
-                    d->remounts << share;
-                }
+            share = SharePtr::create();
+            share->setUrl(option->url());
+            share->setWorkgroupName(option->workgroupName());
+            share->setHostIpAddress(option->ipAddress());
+
+            if (share->url().isValid() && !share->url().isEmpty()) {
+                d->remounts << share;
             }
         }
     }
@@ -211,7 +213,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         return;
     }
 
-    if (!share->url().isValid()) {
+    if (!share->url().isValid() || share->url().host().isEmpty() || share->url().path().isEmpty() || share->url().path().length() == 1) {
         Smb4KNotification::invalidURLPassed();
         return;
     }
@@ -310,10 +312,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
 
     removeSubjob(job);
 
-    if (!hasSubjobs()) {
-        QApplication::restoreOverrideCursor();
-    }
-
     Q_EMIT finished(MountShare);
 }
 
@@ -399,10 +397,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     }
 
     removeSubjob(job);
-
-    if (!hasSubjobs()) {
-        QApplication::restoreOverrideCursor();
-    }
 
     Q_EMIT finished(UnmountShare);
 }
