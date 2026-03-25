@@ -1,7 +1,7 @@
 /*
     This class provides notifications for Smb4K
 
-    SPDX-FileCopyrightText: 2010-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2010-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -19,7 +19,7 @@
 #include <QUrl>
 
 /**
- * This namespace provides notifications used thoughout Smb4K.
+ * This namespace provides notifications used throughout Smb4K.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  * @since 1.0.0
