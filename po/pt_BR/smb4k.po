@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-04 00:45+0000\n"
+"POT-Creation-Date: 2026-03-26 00:44+0000\n"
 "PO-Revision-Date: 2026-02-28 06:40-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -86,42 +86,90 @@ msgstr "Foram passadas opções de desmontagem proibidas."
 msgid "The unmount process could not be started."
 msgstr "O processo de desmontagem não pôde ser iniciado."
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:46
+#, kde-format
+msgid "The argument is invalid. Please use either 'on' or 'off'."
+msgstr ""
+
+#: smb4k/main.cpp:58 smb4k/main.cpp:78
+#, kde-format
+msgid "Profiles are disabled."
+msgstr ""
+
+#: smb4k/main.cpp:66
+#, kde-format
+msgid "The profile name is invalid."
+msgstr ""
+
+#: smb4k/main.cpp:86
+#, fuzzy, kde-format
+#| msgid "Set Active"
+msgid " (active)"
+msgstr "Definir como ativo"
+
+#: smb4k/main.cpp:144 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:42
+#: smb4k/main.cpp:146
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 "Navegador avançado da vizinhança na rede e utilitário de montagem de "
 "compartilhamentos Samba"
 
-#: smb4k/main.cpp:44
-#, kde-format
-msgid "© 2003-2025 Alexander Reinholdt"
+#: smb4k/main.cpp:148
+#, fuzzy, kde-format
+#| msgid "© 2003-2025 Alexander Reinholdt"
+msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2025 Alexander Reinholdt"
 
-#: smb4k/main.cpp:53
+#: smb4k/main.cpp:153
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:53
+#: smb4k/main.cpp:153
 #, kde-format
 msgid "Developer"
 msgstr "Desenvolvedor"
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:154
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:154
 #, kde-format
 msgid "Donator"
 msgstr "Doador"
+
+#: smb4k/main.cpp:164
+#, kde-format
+msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
+msgstr ""
+
+#: smb4k/main.cpp:168
+#, kde-format
+msgid "Set the active profile to <profile>."
+msgstr ""
+
+#: smb4k/main.cpp:171
+#, fuzzy, kde-format
+#| msgid "Print a file."
+msgid "List all profiles."
+msgstr "Imprimir um arquivo."
+
+#: smb4k/main.cpp:174
+#, kde-format
+msgid "Remount all shares that were previously used."
+msgstr ""
+
+#: smb4k/main.cpp:177
+#, kde-format
+msgid "Mount the share pointed to by <url>."
+msgstr ""
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
