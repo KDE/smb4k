@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-04 00:45+0000\n"
+"POT-Creation-Date: 2026-03-26 00:44+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -84,41 +84,88 @@ msgstr ""
 msgid "The unmount process could not be started."
 msgstr "Slottdatei lett sik nich opstellen."
 
-#: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:46
+#, kde-format
+msgid "The argument is invalid. Please use either 'on' or 'off'."
+msgstr ""
+
+#: smb4k/main.cpp:58 smb4k/main.cpp:78
+#, kde-format
+msgid "Profiles are disabled."
+msgstr ""
+
+#: smb4k/main.cpp:66
+#, fuzzy, kde-format
+#| msgid "The file is invalid."
+msgid "The profile name is invalid."
+msgstr "De Datei is leeg."
+
+#: smb4k/main.cpp:86
+#, kde-format
+msgid " (active)"
+msgstr ""
+
+#: smb4k/main.cpp:144 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:42
+#: smb4k/main.cpp:146
 #, fuzzy, kde-format
 #| msgid "The advanced network neighborhood browser for KDE."
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Verwiedert Nettwarkkieker för KDE"
 
-#: smb4k/main.cpp:44
+#: smb4k/main.cpp:148
 #, fuzzy, kde-format
 #| msgid "\\u00A9 2003-2011 Alexander Reinholdt"
-msgid "© 2003-2025 Alexander Reinholdt"
+msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "\\u00A9 2003-2011: Alexander Reinholdt"
 
-#: smb4k/main.cpp:53
+#: smb4k/main.cpp:153
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:53
+#: smb4k/main.cpp:153
 #, kde-format
 msgid "Developer"
 msgstr "Schriever"
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:154
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr ""
 
-#: smb4k/main.cpp:58
+#: smb4k/main.cpp:154
 #, kde-format
 msgid "Donator"
+msgstr ""
+
+#: smb4k/main.cpp:164
+#, kde-format
+msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
+msgstr ""
+
+#: smb4k/main.cpp:168
+#, kde-format
+msgid "Set the active profile to <profile>."
+msgstr ""
+
+#: smb4k/main.cpp:171
+#, fuzzy, kde-format
+#| msgid "Print File"
+msgid "List all profiles."
+msgstr "Datei drucken"
+
+#: smb4k/main.cpp:174
+#, kde-format
+msgid "Remount all shares that were previously used."
+msgstr ""
+
+#: smb4k/main.cpp:177
+#, kde-format
+msgid "Mount the share pointed to by <url>."
 msgstr ""
 
 #. i18n: ectx: Menu (file)
@@ -2678,9 +2725,6 @@ msgstr "Grött"
 #~| msgid "Print File"
 #~ msgid "Input File"
 #~ msgstr "Datei drucken"
-
-#~ msgid "The file is invalid."
-#~ msgstr "De Datei is leeg."
 
 #~ msgid "Files transferred:"
 #~ msgstr "Överdragen Dateien:"
