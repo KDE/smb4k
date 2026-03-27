@@ -608,11 +608,11 @@ void Smb4KMainWindow::slotMounterFinished(int process)
             m_progressBar->reset();
             statusBar()->showMessage(i18n("Done."), 2000);
         }
-    });
 
-    if (!Smb4KMounter::self()->isRunning()) {
-        QApplication::restoreOverrideCursor();
-    }
+        if (!Smb4KMounter::self()->isRunning()) {
+            QApplication::restoreOverrideCursor();
+        }
+    });
 }
 
 void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)
