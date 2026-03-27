@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-02-05 14:36+0100\n"
+"PO-Revision-Date: 2026-03-26 10:18+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -2604,16 +2604,14 @@ msgid "Mounting the share <b>%1</b> failed."
 msgstr "Falleva a montar le share <b>%1</b>."
 
 #: smb4knotification.cpp:287
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed: %2"
-msgstr "Falleva a montar le share <b>%1</b>."
+msgstr "Falleva a montar le share %1: %2"
 
 #: smb4knotification.cpp:289
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed."
-msgstr "Falleva a montar le share <b>%1</b>."
+msgstr "Falleva a montar le share %1."
 
 #: smb4knotification.cpp:308
 #, kde-format
@@ -2623,19 +2621,17 @@ msgstr "Falleva a dismontar le share <b>%1</b> ex<b>%2</b> : <tt>%3</tt>"
 #: smb4knotification.cpp:310
 #, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr ""
+msgstr "Falleva a dismontar le share <b>%1</b> ex<b>%2</b>."
 
 #: smb4knotification.cpp:326
-#, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "Falleva a dismontar le share <b>%1</b> ex<b>%2</b> : <tt>%3</tt>"
+msgstr "Falleva a dismontar le share %1 ex%2 : %3"
 
 #: smb4knotification.cpp:328
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed."
-msgstr "Falleva a montar le share <b>%1</b>."
+msgstr "Falleva a dismontar le share %1 ex%2."
 
 #: smb4knotification.cpp:341
 #, kde-format
@@ -2679,10 +2675,9 @@ msgid "The file <b>%1</b> could not be found."
 msgstr "Le file  <b>%1</b> non pote esser trovate."
 
 #: smb4knotification.cpp:421
-#, fuzzy, kde-format
-#| msgid "The file <b>%1</b> could not be found."
+#, kde-format
 msgid "The file %1 could not be found."
-msgstr "Le file  <b>%1</b> non pote esser trovate."
+msgstr "Le file  %1 non pote esser trovate."
 
 #: smb4knotification.cpp:431
 #, kde-format
@@ -2695,16 +2690,14 @@ msgid "Opening the file <b>%1</b> failed."
 msgstr "Falleva a aperir file <b>%1</b> ."
 
 #: smb4knotification.cpp:449
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed: %2"
-msgstr "Falleva a aperir file <b>%1</b> ."
+msgstr "Falleva a aperir file %1 : %2"
 
 #: smb4knotification.cpp:451
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed."
-msgstr "Falleva a aperir file <b>%1</b> ."
+msgstr "Falleva a aperir file %1 ."
 
 #: smb4knotification.cpp:464 smb4knotification.cpp:467
 #, kde-format
@@ -2717,16 +2710,14 @@ msgid "Reading from file <b>%1</b> failed."
 msgstr "Falleva a leger ab file<b>%1</b>."
 
 #: smb4knotification.cpp:486 smb4knotification.cpp:489
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed: %2"
-msgstr "Falleva a leger ab file<b>%1</b>."
+msgstr "Falleva a leger ab file%1: %2"
 
 #: smb4knotification.cpp:491
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed."
-msgstr "Falleva a leger ab file<b>%1</b>."
+msgstr "Falleva a leger ab file%1."
 
 #: smb4knotification.cpp:508
 #, kde-format
@@ -2734,10 +2725,9 @@ msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr ""
 
 #: smb4knotification.cpp:512
-#, fuzzy, kde-format
-#| msgid "The file %1 could not be read"
+#, kde-format
 msgid "The following directory could not be created: %1"
-msgstr "Le file %1non pote esser legite"
+msgstr "Le directorio sequente non poteva esser create: %1"
 
 #: smb4knotification.cpp:523
 #, kde-format
@@ -2814,14 +2804,9 @@ msgstr ""
 "tt>"
 
 #: smb4knotification.cpp:736
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <tt>"
-#| "%1</tt>"
+#, kde-format
 msgid "The network communication failed with the following error message: %1"
-msgstr ""
-"Le communication de rete falleva con le sequente message de error: <tt>%1</"
-"tt>"
+msgstr "Le communication de rete falleva con le sequente message de error: %1"
 
 #: smb4knotification.cpp:749
 #, kde-format

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-03-09 21:29+0300\n"
+"PO-Revision-Date: 2026-03-27 01:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2897,10 +2897,9 @@ msgid "Open"
 msgstr "Aç"
 
 #: smb4knotification.cpp:87
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, kde-format
 msgid "The share %1 has been mounted to %2."
-msgstr "<b>%1</b> paylaşımı <b>%2</b> olarak bağlandı."
+msgstr "%1 paylaşımı %2 konumuna bağlandı."
 
 #: smb4knotification.cpp:106
 #, kde-format
@@ -2908,10 +2907,9 @@ msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
 msgstr "<b>%1</b> paylaşımının <b>%2</b> konumundan bağlantısı kesilmiş."
 
 #: smb4knotification.cpp:114
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, kde-format
 msgid "The share %1 has been unmounted from %2."
-msgstr "<b>%1</b> paylaşımının <b>%2</b> konumundan bağlantısı kesilmiş."
+msgstr "%1 paylaşımının bağlantısı <b>%2</b> konumundan kesildi."
 
 #: smb4knotification.cpp:127 smb4knotification.cpp:135
 #, kde-format
@@ -2948,15 +2946,12 @@ msgstr ""
 "Postscript biçimine dönüştürün ve yeniden deneyin."
 
 #: smb4knotification.cpp:198
-#, fuzzy, kde-format
-#| msgid ""
-#| "The mimetype <b>%1</b> is not supported for printing. Please convert the "
-#| "file to PDF or Postscript and try again."
+#, kde-format
 msgid ""
 "The mimetype %1 is not supported for printing. Please convert the file to "
 "PDF or Postscript and try again."
 msgstr ""
-"MIME türü <b>%1</b> yazdırma için desteklenmez. Lütfen dosyaları PDF veya "
+"MIME türü %1 yazdırma için desteklenmez. Lütfen dosyaları PDF veya "
 "Postscript biçimine dönüştürün ve yeniden deneyin."
 
 #: smb4knotification.cpp:217
@@ -2965,10 +2960,9 @@ msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
 msgstr "<b>%1</b> paylaşımı için yer imi halihazırda var ve atlanacak."
 
 #: smb4knotification.cpp:221
-#, fuzzy, kde-format
-#| msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
+#, kde-format
 msgid "The bookmark for share %1 already exists and will be skipped."
-msgstr "<b>%1</b> paylaşımı için yer imi halihazırda var ve atlanacak."
+msgstr "%1 paylaşımı için yer imi halihazırda var ve atlanacak."
 
 #: smb4knotification.cpp:240
 #, kde-format
@@ -2980,16 +2974,13 @@ msgstr ""
 "kullanılıyor ve kendiliğinden yeniden adlandırılacak."
 
 #: smb4knotification.cpp:246
-#, fuzzy, kde-format
-#| msgid ""
-#| "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed."
+#, kde-format
 msgid ""
 "The label %1 of the bookmark for the share %2 is already being used and will "
 "automatically be renamed."
 msgstr ""
-"<b>%2</b> paylaşımı için olan yer iminin <b>%1</b> etiketi halihazırda "
-"kullanılıyor ve kendiliğinden yeniden adlandırılacak."
+"%2 paylaşımı için olan yer iminin <b>%1</b> etiketi halihazırda kullanılıyor "
+"ve kendiliğinden yeniden adlandırılacak."
 
 #: smb4knotification.cpp:269
 #, kde-format
@@ -3002,16 +2993,14 @@ msgid "Mounting the share <b>%1</b> failed."
 msgstr "<b>%1</b> paylaşımını bağlama işlemi başarısız oldu."
 
 #: smb4knotification.cpp:287
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed: %2"
-msgstr "<b>%1</b> paylaşımını bağlama işlemi başarısız oldu."
+msgstr "%1 paylaşımını bağlama işlemi başarısız oldu: %2"
 
 #: smb4knotification.cpp:289
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed."
-msgstr "<b>%1</b> paylaşımını bağlama işlemi başarısız oldu."
+msgstr "%1 paylaşımını bağlama işlemi başarısız oldu."
 
 #: smb4knotification.cpp:308
 #, kde-format
@@ -3028,20 +3017,16 @@ msgstr ""
 "başarısız oldu."
 
 #: smb4knotification.cpp:326
-#, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed: %3"
 msgstr ""
-"<b>%2</b> ortamından <b>%1</b> paylaşımının bağlantısını kesme işlemi "
-"başarısız oldu."
+"%2 konumundan %1 paylaşımının bağlantısını kesme işlemi başarısız oldu: %3"
 
 #: smb4knotification.cpp:328
-#, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed."
 msgstr ""
-"<b>%2</b> ortamından <b>%1</b> paylaşımının bağlantısını kesme işlemi "
-"başarısız oldu."
+"%2 konumundan %1 paylaşımının bağlantısını kesme işlemi başarısız oldu."
 
 #: smb4knotification.cpp:341
 #, kde-format
@@ -3054,16 +3039,14 @@ msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "<b>%1</b> ile <b>%2</b> eşzamanlaması başarısız oldu."
 
 #: smb4knotification.cpp:359
-#, fuzzy, kde-format
-#| msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
+#, kde-format
 msgid "Synchronizing %1 with %2 failed: %3"
-msgstr "<b>%1</b> ile <b>%2</b> eşzamanlaması başarısız oldu."
+msgstr "%1 ile %2 eşzamanlaması başarısız oldu: %3"
 
 #: smb4knotification.cpp:361
-#, fuzzy, kde-format
-#| msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
+#, kde-format
 msgid "Synchronizing %1 with %2 failed."
-msgstr "<b>%1</b> ile <b>%2</b> eşzamanlaması başarısız oldu."
+msgstr "%1 ile %2 eşzamanlaması başarısız oldu."
 
 #: smb4knotification.cpp:377
 #, kde-format
@@ -3072,11 +3055,9 @@ msgid ""
 msgstr "<b>%1</b> komutu bulunamadı. Lütfen kurulumunuzu denetleyin."
 
 #: smb4knotification.cpp:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "The command <b>%1</b> could not be found. Please check your installation."
+#, kde-format
 msgid "The command %1 could not be found. Please check your installation."
-msgstr "<b>%1</b> komutu bulunamadı. Lütfen kurulumunuzu denetleyin."
+msgstr "%1 komutu bulunamadı. Lütfen kurulumunuzu denetleyin."
 
 #: smb4knotification.cpp:400 smb4knotification.cpp:404
 #, kde-format
@@ -3089,10 +3070,9 @@ msgid "The file <b>%1</b> could not be found."
 msgstr "<b>%1</b> dosyası bulunamadı."
 
 #: smb4knotification.cpp:421
-#, fuzzy, kde-format
-#| msgid "The file <b>%1</b> could not be found."
+#, kde-format
 msgid "The file %1 could not be found."
-msgstr "<b>%1</b> dosyası bulunamadı."
+msgstr "%1 dosyası bulunamadı."
 
 #: smb4knotification.cpp:431
 #, kde-format
@@ -3105,16 +3085,14 @@ msgid "Opening the file <b>%1</b> failed."
 msgstr "<b>%1</b> dosyası açılamadı."
 
 #: smb4knotification.cpp:449
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed: %2"
-msgstr "<b>%1</b> dosyası açılamadı."
+msgstr "%1 dosyası açılamadı: %2"
 
 #: smb4knotification.cpp:451
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed."
-msgstr "<b>%1</b> dosyası açılamadı."
+msgstr "%1 dosyası açılamadı."
 
 #: smb4knotification.cpp:464 smb4knotification.cpp:467
 #, kde-format
@@ -3127,16 +3105,14 @@ msgid "Reading from file <b>%1</b> failed."
 msgstr "<b>%1</b> dosyasından okunamadı."
 
 #: smb4knotification.cpp:486 smb4knotification.cpp:489
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed: %2"
-msgstr "<b>%1</b> dosyasından okunamadı."
+msgstr "%1 dosyasından okunamadı: %2"
 
 #: smb4knotification.cpp:491
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed."
-msgstr "<b>%1</b> dosyasından okunamadı."
+msgstr "%1 dosyasından okunamadı."
 
 #: smb4knotification.cpp:508
 #, kde-format
@@ -3144,10 +3120,9 @@ msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "Şu dizin oluşturulamadı: <tt>%1</tt>"
 
 #: smb4knotification.cpp:512
-#, fuzzy, kde-format
-#| msgid "The following directory could not be created: <tt>%1</tt>"
+#, kde-format
 msgid "The following directory could not be created: %1"
-msgstr "Şu dizin oluşturulamadı: <tt>%1</tt>"
+msgstr "Şu dizin oluşturulamadı: %1"
 
 #: smb4knotification.cpp:523
 #, kde-format
@@ -3180,34 +3155,29 @@ msgid "The process reported an unknown error."
 msgstr "Süreç bilinmeyen bir hata bildirdi."
 
 #: smb4knotification.cpp:563
-#, fuzzy, kde-format
-#| msgid "The process failed to start (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process failed to start (error code: %1)."
-msgstr "Süreç başlatılamadı (hata kodu: <tt>%1</tt>)."
+msgstr "Süreç başlatılamadı (hata kodu: %1)."
 
 #: smb4knotification.cpp:567
-#, fuzzy, kde-format
-#| msgid "The process crashed (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process crashed (error code: %1)."
-msgstr "Süreç çöktü (hata kodu: <tt>%1</tt>)."
+msgstr "Süreç çöktü (hata kodu: %1)."
 
 #: smb4knotification.cpp:571
-#, fuzzy, kde-format
-#| msgid "The process timed out (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process timed out (error code: %1)."
-msgstr "Süreç zaman aşımına uğradı (hata kodu: <tt>%1</tt>)."
+msgstr "Süreç zaman aşımına uğradı (hata kodu: %1)."
 
 #: smb4knotification.cpp:575
-#, fuzzy, kde-format
-#| msgid "Could not write to the process (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "Could not write to the process (error code: %1)."
-msgstr "Süreç yazılamadı (hata kodu:<tt>%1</tt>)."
+msgstr "Sürece yazılamadı (hata kodu: %1)."
 
 #: smb4knotification.cpp:579
-#, fuzzy, kde-format
-#| msgid "Could not read from the process (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "Could not read from the process (error code: %1)."
-msgstr "Süreçten okunamadı (hata kodu: <tt>%1</tt>)."
+msgstr "Süreçten okunamadı (hata kodu: %1)."
 
 #: smb4knotification.cpp:640 smb4knotification.cpp:698
 #, kde-format
@@ -3227,12 +3197,9 @@ msgid ""
 msgstr "Ağ iletişimi, aşağıdaki hata iletisiyle başarısız oldu: <s>%1</s>"
 
 #: smb4knotification.cpp:736
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <tt>"
-#| "%1</tt>"
+#, kde-format
 msgid "The network communication failed with the following error message: %1"
-msgstr "Ağ iletişimi, aşağıdaki hata iletisiyle başarısız oldu: <s>%1</s>"
+msgstr "Ağ iletişimi, aşağıdaki hata iletisiyle başarısız oldu: %1"
 
 #: smb4knotification.cpp:749
 #, kde-format
@@ -3240,10 +3207,9 @@ msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "Zeroconf hizmetiyle ilgili bilinmeyen bir hata oluştu: <s>%1</s>"
 
 #: smb4knotification.cpp:753
-#, fuzzy, kde-format
-#| msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
+#, kde-format
 msgid "An error with the Zeroconf service occurred: %1"
-msgstr "Zeroconf hizmetiyle ilgili bilinmeyen bir hata oluştu: <s>%1</s>"
+msgstr "Zeroconf hizmetiyle ilgili bilinmeyen bir hata oluştu: %1"
 
 #: smb4knotification.cpp:766
 #, kde-format
@@ -3256,17 +3222,13 @@ msgstr ""
 "<tt>%1</tt>"
 
 #: smb4knotification.cpp:770
-#, fuzzy, kde-format
-#| msgid ""
-#| "An error occurred while reading the login credentials from the secure "
-#| "storage: <tt>%1</tt>"
+#, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: %1"
 msgstr ""
-"Oturum açma bilgileri güvenli depolama aygıtından okunurken bir hata "
-"oluştu:\n"
-"<tt>%1</tt>"
+"Oturum açma bilgileri güvenli depolama aygıtından okunurken bir hata oluştu: "
+"%1"
 
 #: smb4kshare.cpp:193
 #, kde-format
