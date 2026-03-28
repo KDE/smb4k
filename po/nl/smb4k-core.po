@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-01-02 15:21+0100\n"
+"PO-Revision-Date: 2026-03-26 13:43+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -2935,10 +2935,9 @@ msgid "Open"
 msgstr "Openen"
 
 #: smb4knotification.cpp:87
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, kde-format
 msgid "The share %1 has been mounted to %2."
-msgstr "De gedeelde map <b>%1</b> is aangekoppeld op <b>%2</b>."
+msgstr "De gedeelde map %1 is aangekoppeld op %2."
 
 #: smb4knotification.cpp:106
 #, kde-format
@@ -2946,10 +2945,9 @@ msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
 msgstr "De gedeelde map <b>%1</b> is afgekoppeld van <b>%2</b>."
 
 #: smb4knotification.cpp:114
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, kde-format
 msgid "The share %1 has been unmounted from %2."
-msgstr "De gedeelde map <b>%1</b> is afgekoppeld van <b>%2</b>."
+msgstr "De gedeelde map %1 is afgekoppeld van %2."
 
 #: smb4knotification.cpp:127 smb4knotification.cpp:135
 #, kde-format
@@ -2985,16 +2983,13 @@ msgstr ""
 "bestand a.u.b. naar PDF of Postscript en probeer het opnieuw."
 
 #: smb4knotification.cpp:198
-#, fuzzy, kde-format
-#| msgid ""
-#| "The mimetype <b>%1</b> is not supported for printing. Please convert the "
-#| "file to PDF or Postscript and try again."
+#, kde-format
 msgid ""
 "The mimetype %1 is not supported for printing. Please convert the file to "
 "PDF or Postscript and try again."
 msgstr ""
-"Het mimetype <b>%1</b> wordt niet ondersteund voor printen. Converteer het "
-"bestand a.u.b. naar PDF of Postscript en probeer het opnieuw."
+"Het mimetype %1 wordt niet ondersteund voor printen. Converteer het bestand "
+"a.u.b. naar PDF of Postscript en probeer het opnieuw."
 
 #: smb4knotification.cpp:217
 #, kde-format
@@ -3004,12 +2999,10 @@ msgstr ""
 "overgeslagen."
 
 #: smb4knotification.cpp:221
-#, fuzzy, kde-format
-#| msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
+#, kde-format
 msgid "The bookmark for share %1 already exists and will be skipped."
 msgstr ""
-"De bladwijzer voor de gedeelde map <b>%1</b> bestaat al en zal worden "
-"overgeslagen."
+"De bladwijzer voor de gedeelde map %1 bestaat al en zal worden overgeslagen."
 
 #: smb4knotification.cpp:240
 #, kde-format
@@ -3021,16 +3014,13 @@ msgstr ""
 "al gebruikt en zal automatisch een andere naam krijgen."
 
 #: smb4knotification.cpp:246
-#, fuzzy, kde-format
-#| msgid ""
-#| "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed."
+#, kde-format
 msgid ""
 "The label %1 of the bookmark for the share %2 is already being used and will "
 "automatically be renamed."
 msgstr ""
-"Het label <b>%1</b> van de bladwijzer voor de gedeelde map <b>%2</b> wordt "
-"al gebruikt en zal automatisch een andere naam krijgen."
+"Het label %1 van de bladwijzer voor de gedeelde map %2 wordt al gebruikt en "
+"zal automatisch een andere naam krijgen."
 
 #: smb4knotification.cpp:269
 #, kde-format
@@ -3043,16 +3033,14 @@ msgid "Mounting the share <b>%1</b> failed."
 msgstr "Aankoppelen van de gedeelde map <b>%1</b> is mislukt."
 
 #: smb4knotification.cpp:287
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed: %2"
-msgstr "Aankoppelen van de gedeelde map <b>%1</b> is mislukt."
+msgstr "Aankoppelen van de gedeelde map %1 is mislukt: %2"
 
 #: smb4knotification.cpp:289
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed."
-msgstr "Aankoppelen van de gedeelde map <b>%1</b> is mislukt."
+msgstr "Aankoppelen van de gedeelde map %1 is mislukt."
 
 #: smb4knotification.cpp:308
 #, kde-format
@@ -3067,16 +3055,14 @@ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt."
 
 #: smb4knotification.cpp:326
-#, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt."
+msgstr "Afkoppelen van de gedeelde map %1 van %2 is mislukt: %3"
 
 #: smb4knotification.cpp:328
-#, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed."
-msgstr "Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt."
+msgstr "Afkoppelen van de gedeelde map %1 van %2 is mislukt."
 
 #: smb4knotification.cpp:341
 #, kde-format
@@ -3089,16 +3075,14 @@ msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "Synchroniseren van <b>%1</b> met <b>%2</b> is mislukt."
 
 #: smb4knotification.cpp:359
-#, fuzzy, kde-format
-#| msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
+#, kde-format
 msgid "Synchronizing %1 with %2 failed: %3"
-msgstr "Synchroniseren van <b>%1</b> met <b>%2</b> is mislukt."
+msgstr "Synchroniseren van %1 met %2 is mislukt: %3"
 
 #: smb4knotification.cpp:361
-#, fuzzy, kde-format
-#| msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
+#, kde-format
 msgid "Synchronizing %1 with %2 failed."
-msgstr "Synchroniseren van <b>%1</b> met <b>%2</b> is mislukt."
+msgstr "Synchroniseren van %1 met %2 is mislukt."
 
 #: smb4knotification.cpp:377
 #, kde-format
@@ -3107,11 +3091,9 @@ msgid ""
 msgstr "Het commando<b>%1</b> is niet gevonden. Controleer uw installatie."
 
 #: smb4knotification.cpp:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "The command <b>%1</b> could not be found. Please check your installation."
+#, kde-format
 msgid "The command %1 could not be found. Please check your installation."
-msgstr "Het commando<b>%1</b> is niet gevonden. Controleer uw installatie."
+msgstr "Het commando %1 is niet gevonden. Controleer uw installatie."
 
 #: smb4knotification.cpp:400 smb4knotification.cpp:404
 #, kde-format
@@ -3126,10 +3108,9 @@ msgid "The file <b>%1</b> could not be found."
 msgstr "Het bestand <b>%1</b> is niet gevonden."
 
 #: smb4knotification.cpp:421
-#, fuzzy, kde-format
-#| msgid "The file <b>%1</b> could not be found."
+#, kde-format
 msgid "The file %1 could not be found."
-msgstr "Het bestand <b>%1</b> is niet gevonden."
+msgstr "Het bestand %1 is niet gevonden."
 
 #: smb4knotification.cpp:431
 #, kde-format
@@ -3142,16 +3123,14 @@ msgid "Opening the file <b>%1</b> failed."
 msgstr "Het bestand <b>%1</b> openen is mislukt."
 
 #: smb4knotification.cpp:449
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed: %2"
-msgstr "Het bestand <b>%1</b> openen is mislukt."
+msgstr "Het bestand %1 openen is mislukt: %2"
 
 #: smb4knotification.cpp:451
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed."
-msgstr "Het bestand <b>%1</b> openen is mislukt."
+msgstr "Het bestand %1 openen is mislukt."
 
 #: smb4knotification.cpp:464 smb4knotification.cpp:467
 #, kde-format
@@ -3164,16 +3143,14 @@ msgid "Reading from file <b>%1</b> failed."
 msgstr "Lezen van bestand <b>%1</b> is mislukt."
 
 #: smb4knotification.cpp:486 smb4knotification.cpp:489
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed: %2"
-msgstr "Lezen van bestand <b>%1</b> is mislukt."
+msgstr "Lezen uit bestand %1 is mislukt: %2"
 
 #: smb4knotification.cpp:491
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed."
-msgstr "Lezen van bestand <b>%1</b> is mislukt."
+msgstr "Lezen uit bestand %1 is mislukt."
 
 #: smb4knotification.cpp:508
 #, kde-format
@@ -3181,10 +3158,9 @@ msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "De volgende map kon niet worden aangemaakt: <tt>%1</tt>"
 
 #: smb4knotification.cpp:512
-#, fuzzy, kde-format
-#| msgid "The following directory could not be created: <tt>%1</tt>"
+#, kde-format
 msgid "The following directory could not be created: %1"
-msgstr "De volgende map kon niet worden aangemaakt: <tt>%1</tt>"
+msgstr "De volgende map kon niet worden aangemaakt: %1"
 
 #: smb4knotification.cpp:523
 #, kde-format
@@ -3217,34 +3193,29 @@ msgid "The process reported an unknown error."
 msgstr "Het proces rapporteerde een onbekend fout."
 
 #: smb4knotification.cpp:563
-#, fuzzy, kde-format
-#| msgid "The process failed to start (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process failed to start (error code: %1)."
-msgstr "Het starten van het proces is mislukt (foutcode: <tt>%1</tt>)."
+msgstr "Het starten van het proces is mislukt (foutcode: %1)."
 
 #: smb4knotification.cpp:567
-#, fuzzy, kde-format
-#| msgid "The process crashed (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process crashed (error code: %1)."
-msgstr "Het proces is gecrasht (foutcode: <tt>%1</tt>)."
+msgstr "Het proces is gecrasht (foutcode: %1)."
 
 #: smb4knotification.cpp:571
-#, fuzzy, kde-format
-#| msgid "The process timed out (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process timed out (error code: %1)."
-msgstr "De tijdslimiet van het process liep af (foutcode: <tt>%1</tt>)."
+msgstr "De tijdslimiet van het process liep af (foutcode: %1)."
 
 #: smb4knotification.cpp:575
-#, fuzzy, kde-format
-#| msgid "Could not write to the process (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "Could not write to the process (error code: %1)."
-msgstr "Kon niet schrijven naar het proces (foutcode: <tt>%1</tt>)."
+msgstr "Kon niet schrijven naar het proces (foutcode: %1)."
 
 #: smb4knotification.cpp:579
-#, fuzzy, kde-format
-#| msgid "Could not read from the process (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "Could not read from the process (error code: %1)."
-msgstr "Kon niet lezen van het proces (foutcode: <tt>%1</tt>)."
+msgstr "Kon niet lezen van het proces (foutcode: %1)."
 
 #: smb4knotification.cpp:640 smb4knotification.cpp:698
 #, kde-format
@@ -3265,13 +3236,9 @@ msgstr ""
 "De netwerkcommunicatie is mislukt met de volgende foutmelding: <tt>%1</tt>"
 
 #: smb4knotification.cpp:736
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <tt>"
-#| "%1</tt>"
+#, kde-format
 msgid "The network communication failed with the following error message: %1"
-msgstr ""
-"De netwerkcommunicatie is mislukt met de volgende foutmelding: <tt>%1</tt>"
+msgstr "De netwerkcommunicatie is mislukt met de volgende foutmelding: %1"
 
 #: smb4knotification.cpp:749
 #, kde-format
@@ -3279,10 +3246,9 @@ msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "Er is een fout opgetreden met de service Zeroconf: <tt>%1</tt>"
 
 #: smb4knotification.cpp:753
-#, fuzzy, kde-format
-#| msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
+#, kde-format
 msgid "An error with the Zeroconf service occurred: %1"
-msgstr "Er is een fout opgetreden met de service Zeroconf: <tt>%1</tt>"
+msgstr "Er is een fout opgetreden met de service Zeroconf: %1"
 
 #: smb4knotification.cpp:766
 #, kde-format
@@ -3294,16 +3260,12 @@ msgstr ""
 "<tt>%1</tt>"
 
 #: smb4knotification.cpp:770
-#, fuzzy, kde-format
-#| msgid ""
-#| "An error occurred while reading the login credentials from the secure "
-#| "storage: <tt>%1</tt>"
+#, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: %1"
 msgstr ""
-"Er was een fout bij lezen van de aanmeldgegevens uit de beveiligde opslag: "
-"<tt>%1</tt>"
+"Er was een fout bij lezen van de aanmeldgegevens uit de beveiligde opslag: %1"
 
 #: smb4kshare.cpp:193
 #, kde-format
