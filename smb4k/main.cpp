@@ -42,8 +42,7 @@ static void handleEnableProfiles(const QString &on)
     } else if (value == QStringLiteral("off")) {
         enable = false;
     } else {
-        QTextStream stream(stderr);
-        stream << i18n("The argument is invalid. Please use either 'on' or 'off'.") << Qt::endl;
+        QTextStream(stderr) << i18n("The argument is invalid. Please use either 'on' or 'off'.") << Qt::endl;
         return;
     }
 
@@ -54,16 +53,14 @@ static void handleEnableProfiles(const QString &on)
 static void handleSetProfileOption(const QString &profileName)
 {
     if (!Smb4KSettings::useProfiles()) {
-        QTextStream stream(stderr);
-        stream << i18n("Profiles are disabled.") << Qt::endl;
+        QTextStream(stderr) << i18n("Profiles are disabled.") << Qt::endl;
         return;
     }
 
     QStringList profiles = Smb4KProfileManager::self()->profilesList();
 
     if (!profiles.contains(profileName)) {
-        QTextStream stream(stderr);
-        stream << i18n("The profile name is invalid.") << Qt::endl;
+        QTextStream(stderr) << i18n("The profile name is invalid.") << Qt::endl;
         return;
     }
 
@@ -74,8 +71,7 @@ static void handleSetProfileOption(const QString &profileName)
 static void handleListProfiles()
 {
     if (!Smb4KSettings::useProfiles()) {
-        QTextStream stream(stderr);
-        stream << i18n("Profiles are disabled.") << Qt::endl;
+        QTextStream(stderr) << i18n("Profiles are disabled.") << Qt::endl;
         return;
     }
 
@@ -92,8 +88,7 @@ static void handleRemountShares()
     QList<CustomSettingsPtr> remounts = Smb4KCustomSettingsManager::self()->sharesToRemount();
 
     for (const CustomSettingsPtr &settings : std::as_const(remounts)) {
-        SharePtr share = SharePtr::create();
-        share->setUrl(settings->url());
+        SharePtr share = SharePtr::create(settings->url());
         share->setHostIpAddress(settings->ipAddress());
         share->setWorkgroupName(settings->workgroupName());
         Smb4KMounter::self()->mountShare(share);
@@ -171,10 +166,10 @@ int main(int argc, char **argv)
     QCommandLineOption listProfilesOption(QStringLiteral("list-profiles"), i18n("List all profiles."));
     parser.addOption(listProfilesOption);
 
-    QCommandLineOption remountSharesOption(QStringLiteral("remount-shares"), i18n("Remount all shares that were previously used."));
+    QCommandLineOption remountSharesOption(QStringLiteral("remount"), i18n("Remount all shares that were previously used."));
     parser.addOption(remountSharesOption);
 
-    QCommandLineOption mountShareOption(QStringLiteral("mount"), i18n("Mount the share pointed to by <url>."), QStringLiteral("url"));
+    QCommandLineOption mountShareOption(QStringLiteral("mount"), i18n("Mount the share pointed to by <url>. Make sure, you previously set the credentials for that share."), QStringLiteral("url"));
     parser.addOption(mountShareOption);
 
     parser.process(*app);
