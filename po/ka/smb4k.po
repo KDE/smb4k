@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-03-30 00:43+0000\n"
 "PO-Revision-Date: 2026-03-26 07:58+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -78,89 +78,91 @@ msgstr "გადაცემულია აკრძალული მოხ�
 msgid "The unmount process could not be started."
 msgstr "მოხსნის პროცესის გაშვების შეცდომა."
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:45
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "არგუმენტი არასწორია. გამოიყენეთ ან 'ჩართ', ან 'გამორთ'."
 
-#: smb4k/main.cpp:58 smb4k/main.cpp:78
+#: smb4k/main.cpp:56 smb4k/main.cpp:74
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "პროფილები გამორთულია."
 
-#: smb4k/main.cpp:66
+#: smb4k/main.cpp:63
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "პროფილის სახელი არასწორია."
 
-#: smb4k/main.cpp:86
+#: smb4k/main.cpp:82
 #, kde-format
 msgid " (active)"
 msgstr " (აქტიურია)"
 
-#: smb4k/main.cpp:144 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:146
+#: smb4k/main.cpp:141
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 "საუკეთესო ქსელური მეზობლების ბრაუზერი და Samba-ის გაზიარებულების მიმაგრების "
 "პროგრამა"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2026 Alexander Reinholdt"
 
-#: smb4k/main.cpp:153
+#: smb4k/main.cpp:148
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:153
+#: smb4k/main.cpp:148
 #, kde-format
 msgid "Developer"
 msgstr "პროგრამისტი"
 
-#: smb4k/main.cpp:154
+#: smb4k/main.cpp:149
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:154
+#: smb4k/main.cpp:149
 #, kde-format
 msgid "Donator"
 msgstr "შემომწირავი"
 
-#: smb4k/main.cpp:164
+#: smb4k/main.cpp:159
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
 "პროფილების გამოყენების ჩართვა ან გამორთვა. <arg> შეიძლება იყოს \"ჩართ\" ან "
 "\"გამორთ\"."
 
-#: smb4k/main.cpp:168
+#: smb4k/main.cpp:163
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr "აქტიური პროფილის დაყენება <პროფილზე>."
 
-#: smb4k/main.cpp:171
+#: smb4k/main.cpp:166
 #, kde-format
 msgid "List all profiles."
 msgstr "ყველა პროფილის ჩამონათვალი."
 
-#: smb4k/main.cpp:174
+#: smb4k/main.cpp:169
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr "ადრე გამოყენებული გაზიარებულების თავიდან მიმაგრება."
 
-#: smb4k/main.cpp:177
+#: smb4k/main.cpp:172
 #, kde-format
-msgid "Mount the share pointed to by <url>."
-msgstr "<url>-ის მოწოდებული გაზიარებულების მიმაგრება."
+msgid ""
+"Mount the share pointed to by <url>. Make sure, you previously set the "
+"credentials for that share."
+msgstr ""
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1286,6 +1288,9 @@ msgstr "%2-დან %1 (%3 დაკავებულია)"
 #, kde-format
 msgid "Size:"
 msgstr "Size:"
+
+#~ msgid "Mount the share pointed to by <url>."
+#~ msgstr "<url>-ის მოწოდებული გაზიარებულების მიმაგრება."
 
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-03-30 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -78,85 +78,87 @@ msgstr "传递了被禁止的 umount 选项。"
 msgid "The unmount process could not be started."
 msgstr "无法启动卸载进程。"
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:45
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "参数无效。请使用 on 或 off。"
 
-#: smb4k/main.cpp:58 smb4k/main.cpp:78
+#: smb4k/main.cpp:56 smb4k/main.cpp:74
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "已禁用配置方案。"
 
-#: smb4k/main.cpp:66
+#: smb4k/main.cpp:63
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "配置方案名称无效。"
 
-#: smb4k/main.cpp:86
+#: smb4k/main.cpp:82
 #, kde-format
 msgid " (active)"
 msgstr " (活动)"
 
-#: smb4k/main.cpp:144 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:146
+#: smb4k/main.cpp:141
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "多功能网上邻居浏览器和 Samba 共享挂载工具"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2026 Alexander Reinholdt"
 
-#: smb4k/main.cpp:153
+#: smb4k/main.cpp:148
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:153
+#: smb4k/main.cpp:148
 #, kde-format
 msgid "Developer"
 msgstr "开发者"
 
-#: smb4k/main.cpp:154
+#: smb4k/main.cpp:149
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:154
+#: smb4k/main.cpp:149
 #, kde-format
 msgid "Donator"
 msgstr "捐款者"
 
-#: smb4k/main.cpp:164
+#: smb4k/main.cpp:159
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr "启用或禁用配置方案的使用。<arg> 可以是 on 或 off。"
 
-#: smb4k/main.cpp:168
+#: smb4k/main.cpp:163
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr "将活动配置方案设为 <profile>。"
 
-#: smb4k/main.cpp:171
+#: smb4k/main.cpp:166
 #, kde-format
 msgid "List all profiles."
 msgstr "列出所有配置方案。"
 
-#: smb4k/main.cpp:174
+#: smb4k/main.cpp:169
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr "重新挂载之前用过的所有共享。"
 
-#: smb4k/main.cpp:177
+#: smb4k/main.cpp:172
 #, kde-format
-msgid "Mount the share pointed to by <url>."
-msgstr "挂载 <url> 指向的共享。"
+msgid ""
+"Mount the share pointed to by <url>. Make sure, you previously set the "
+"credentials for that share."
+msgstr ""
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1271,3 +1273,6 @@ msgstr "总共 %2，剩余 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
+
+#~ msgid "Mount the share pointed to by <url>."
+#~ msgstr "挂载 <url> 指向的共享。"

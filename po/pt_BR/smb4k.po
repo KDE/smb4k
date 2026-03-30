@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-03-30 00:43+0000\n"
 "PO-Revision-Date: 2026-03-26 07:59-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -86,87 +86,89 @@ msgstr "Foram passadas opções de desmontagem proibidas."
 msgid "The unmount process could not be started."
 msgstr "O processo de desmontagem não pôde ser iniciado."
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:45
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "O argumento é inválido. Por favor, use 'on' ou 'off'."
 
-#: smb4k/main.cpp:58 smb4k/main.cpp:78
+#: smb4k/main.cpp:56 smb4k/main.cpp:74
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Os perfis estão desabilitados."
 
-#: smb4k/main.cpp:66
+#: smb4k/main.cpp:63
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "O nome do perfil é inválido."
 
-#: smb4k/main.cpp:86
+#: smb4k/main.cpp:82
 #, kde-format
 msgid " (active)"
 msgstr " (ativo)"
 
-#: smb4k/main.cpp:144 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:146
+#: smb4k/main.cpp:141
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 "Navegador avançado da vizinhança na rede e utilitário de montagem de "
 "compartilhamentos Samba"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2026 Alexander Reinholdt"
 
-#: smb4k/main.cpp:153
+#: smb4k/main.cpp:148
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:153
+#: smb4k/main.cpp:148
 #, kde-format
 msgid "Developer"
 msgstr "Desenvolvedor"
 
-#: smb4k/main.cpp:154
+#: smb4k/main.cpp:149
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:154
+#: smb4k/main.cpp:149
 #, kde-format
 msgid "Donator"
 msgstr "Doador"
 
-#: smb4k/main.cpp:164
+#: smb4k/main.cpp:159
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr "Ativa ou desativa o uso de perfis. <arg> pode ser 'on' ou 'off'."
 
-#: smb4k/main.cpp:168
+#: smb4k/main.cpp:163
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr "Define o perfil ativo como <profile>."
 
-#: smb4k/main.cpp:171
+#: smb4k/main.cpp:166
 #, kde-format
 msgid "List all profiles."
 msgstr "Lista todos os perfis."
 
-#: smb4k/main.cpp:174
+#: smb4k/main.cpp:169
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr "Remonta todos os compartilhamentos que foram usados anteriormente."
 
-#: smb4k/main.cpp:177
+#: smb4k/main.cpp:172
 #, kde-format
-msgid "Mount the share pointed to by <url>."
-msgstr "Monta o compartilhamento apontado por <url>."
+msgid ""
+"Mount the share pointed to by <url>. Make sure, you previously set the "
+"credentials for that share."
+msgstr ""
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1294,6 +1296,9 @@ msgstr "%1 livres de %2 (%3 usado)"
 #, kde-format
 msgid "Size:"
 msgstr "Tamanho:"
+
+#~ msgid "Mount the share pointed to by <url>."
+#~ msgstr "Monta o compartilhamento apontado por <url>."
 
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"
