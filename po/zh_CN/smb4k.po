@@ -1273,6 +1273,3 @@ msgstr "总共 %2，剩余 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "Mount the share pointed to by <url>."
-#~ msgstr "挂载 <url> 指向的共享。"

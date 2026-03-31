@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-30 00:43+0000\n"
-"PO-Revision-Date: 2026-03-26 07:59-0300\n"
+"PO-Revision-Date: 2026-03-30 08:56-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -169,6 +169,8 @@ msgid ""
 "Mount the share pointed to by <url>. Make sure, you previously set the "
 "credentials for that share."
 msgstr ""
+"Montar o compartilhamento apontado por <url>. Certifique-se de ter "
+"configurado as credenciais para esse compartilhamento previamente."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4

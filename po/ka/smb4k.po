@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-30 00:43+0000\n"
-"PO-Revision-Date: 2026-03-26 07:58+0100\n"
+"PO-Revision-Date: 2026-03-30 07:19+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -163,6 +163,8 @@ msgid ""
 "Mount the share pointed to by <url>. Make sure, you previously set the "
 "credentials for that share."
 msgstr ""
+"<url>-ის მიერ მითითებული გაზიარებულის მიმაგრება. დარწმუნდით, რომ ამ "
+"გაზიარებულისთვის ავტორიზაციის დეტალები უკვე დაყენებულია."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-30 00:43+0000\n"
-"PO-Revision-Date: 2026-03-26 06:59+0100\n"
+"PO-Revision-Date: 2026-03-30 07:14+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -161,6 +161,8 @@ msgid ""
 "Mount the share pointed to by <url>. Make sure, you previously set the "
 "credentials for that share."
 msgstr ""
+"Priklopi skupni disk kamor kaže <url>. Prepričajte se, da ste predhodno "
+"nastavili poverilnice za ta skupni disk."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
