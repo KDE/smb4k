@@ -158,7 +158,7 @@ msgstr "重新挂载之前用过的所有共享。"
 msgid ""
 "Mount the share pointed to by <url>. Make sure, you previously set the "
 "credentials for that share."
-msgstr ""
+msgstr "挂载由 <url> 指向的共享。请在挂载前确保您已为该共享设置了身份凭证。"
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
