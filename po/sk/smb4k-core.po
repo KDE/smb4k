@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -70,10 +70,7 @@ msgstr "Zobraziť vlastný popis záložky, ak je dostupný"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:37
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
@@ -109,16 +106,13 @@ msgstr "Zobraziť typ zdieľania"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid ""
-#| "The type of a share will be displayed in a separate column in the network "
-#| "neighborhood browser. It can either be Disk, Print or IPC."
+#, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Printer or IPC."
 msgstr ""
-"Typ zdieľania sa zobrazí v samostatnom stĺpci v sieťovom prehliadač. Môže to "
-"byť buď Disk, Tlač alebo IPC."
+"Typ zdieľania sa zobrazí v samostatnom stĺpci v prehliadači sieťového "
+"okolia. Môže to byť buď Disk, Tlačiareň alebo IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
@@ -225,27 +219,25 @@ msgstr "Pohľad zoznamu"
 #: smb4k.kcfg:89
 #, kde-format
 msgid "Icon size for the icon view:"
-msgstr ""
+msgstr "Veľkosť ikon pre zobrazenie ikon:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Režim pohľadu pre zdieľania:"
+msgstr "Nastavte veľkosť ikon pre režim zobrazenia ikon v pohľade zdieľaní."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:96
 #, kde-format
 msgid "Icon size for the list view:"
-msgstr ""
+msgstr "Veľkosť ikon pre zobrazenie zoznamu:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Režim pohľadu pre zdieľania:"
+msgstr "Nastavte veľkosť ikon pre režim zobrazenia zoznamu v pohľade zdieľaní."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:103
@@ -255,16 +247,15 @@ msgstr "Veľkosť ikon:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "Scan the network neighborhood periodically"
+#, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Prehľadať pravidelne sieťové okolie "
+msgstr "Nastavte veľkosť ikon pre prehliadač sieťového okolia."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:115
 #, kde-format
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
-msgstr ""
+msgstr "Použiť Web Services Dynamic Discovery (WS-Discovery) na prehľadávanie"
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -277,12 +268,18 @@ msgid ""
 "client library to use the SMB protocol version 1.0 for searching for "
 "workgroups and domains."
 msgstr ""
+"Web Services Dynamic Discovery (WS-Discovery) sa používa na prehľadávanie "
+"lokálnej siete a objavovanie pracovných skupín, domén a hostiteľov. Toto je "
+"užitočné, ak vo vašom sieťovom okolí prevládajú servery s modernými verziami "
+"systému Windows. Ak použijete túto voľbu, nemalo by byť potrebné vynútiť, "
+"aby klientska knižnica Samby používala protokol SMB verzie 1.0 na "
+"vyhľadávanie pracovných skupín a domén."
 
 #. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
 #: smb4k.kcfg:120
 #, kde-format
 msgid "Use DNS Service Discovery (DNS-SD) for browsing"
-msgstr ""
+msgstr "Použiť DNS Service Discovery (DNS-SD) na prehľadávanie"
 
 #. i18n: ectx: whatsthis, entry (UseDnsServiceDiscovery), group (Network)
 #: smb4k.kcfg:121
@@ -296,13 +293,19 @@ msgid ""
 "Samba's client library to use the SMB protocol version 1.0 for searching for "
 "workgroups and domains."
 msgstr ""
+"DNS Service Discovery (DNS-SD) sa používa na prehľadávanie lokálnej siete a "
+"objavovanie serverov, ktoré poskytujú zdieľané zdroje SMB. Objavené domény "
+"zodpovedajú lokálnym doménam DNS (napr. s názvom LOCAL) a s najväčšou "
+"pravdepodobnosťou nie tým, ktoré sú definované v sieťovom okolí. Toto však "
+"neovplyvňuje prehľadávanie. Ak použijete túto voľbu, nie je potrebné "
+"vynútiť, aby klientska knižnica Samby používala protokol SMB verzie 1.0 na "
+"vyhľadávanie pracovných skupín a domén."
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:125
-#, fuzzy, kde-format
-#| msgid "SMB protocol version:"
+#, kde-format
 msgid "Set minimal and maximal SMB protocol version"
-msgstr "Verzia protokolu SMB:"
+msgstr "Nastaviť minimálnu a maximálnu verziu protokolu SMB"
 
 #. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:126
@@ -318,13 +321,21 @@ msgid ""
 "servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic "
 "Discovery (WS-Discovery) for domain and workgroup lookups instead."
 msgstr ""
+"Smb4K nastaví minimálnu a maximálnu verziu protokolu SMB, ktorú používa "
+"klientska knižnica Samby na prehľadávanie sieťového okolia. Toto prepíše "
+"nastavenia v súbore smb.conf. Zvyčajne túto voľbu nepotrebujete, pretože "
+"správne verzie protokolu by mali byť dohodnuté medzi klientom a serverom pri "
+"nadväzovaní spojenia. Upozorňujeme, že toto nastavenie nemusí byť vhodné na "
+"to, aby objavovanie pracovných skupín a domén fungovalo a zároveň sa "
+"zachovalo nerušené pripojenie k serverom. Namiesto toho použite DNS Service "
+"Discovery (DNS-SD) alebo Web Services Dynamic Discovery (WS-Discovery) na "
+"vyhľadávanie domén a pracovných skupín."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:130
-#, fuzzy, kde-format
-#| msgid "SMB protocol version:"
+#, kde-format
 msgid "Minimal SMB protocol version:"
-msgstr "Verzia protokolu SMB:"
+msgstr "Minimálna verzia protokolu SMB:"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:131
@@ -333,36 +344,35 @@ msgid ""
 "This setting controls the minimum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
+"Toto nastavenie určuje minimálnu verziu protokolu, ktorú sa klientska "
+"knižnica Samby pokúsi použiť."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:134 smb4k.kcfg:150
-#, fuzzy, kde-format
-#| msgid "1.0 (Classic CIFS/SMBv1 protocol)"
+#, kde-format
 msgid "NT1 (Classic CIFS/SMBv1 protocol)"
-msgstr "1.0 (Klasický CIFS/SMBv1 protokol)"
+msgstr "NT1 (Klasický protokol CIFS/SMBv1)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:137 smb4k.kcfg:153
-#, fuzzy, kde-format
-#| msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
+#, kde-format
 msgid "SMB2 (Windows Vista and above)"
-msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
+msgstr "SMB2 (Windows Vista a novšie)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:140 smb4k.kcfg:156
 #, kde-format
 msgid "SMB3 (Windows 8 and above)"
-msgstr ""
+msgstr "SMB3 (Windows 8 a vyššie)"
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:146
-#, fuzzy, kde-format
-#| msgid "SMB protocol version:"
+#, kde-format
 msgid "Maximal SMB protocol version:"
-msgstr "Verzia protokolu SMB:"
+msgstr "Maximálna verzia protokolu SMB:"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:147
@@ -371,6 +381,8 @@ msgid ""
 "This setting controls the maximum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
+"Toto nastavenie určuje maximálnu verziu protokolu, ktorú sa klientska "
+"knižnica Samby pokúsi použiť."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:162
@@ -440,10 +452,9 @@ msgstr "Použiť Winbind ccache pre overovanie."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:182
-#, fuzzy, kde-format
-#| msgid "Encryption level:"
+#, kde-format
 msgid "Set the encryption level to:"
-msgstr "Úroveň šifrovania:"
+msgstr "Nastaviť úroveň šifrovania na:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -527,13 +538,7 @@ msgstr "Povoliť funkcie Wake-On-LAN"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:218
-#, fuzzy, kde-format
-#| msgid ""
-#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
-#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
-#| "magic package send via a UDP socket to wake up remote servers. If you "
-#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
-#| "this option."
+#, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -553,11 +558,7 @@ msgstr "Čas čakana:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:223
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the waiting time in seconds between the sending of the magic Wake-"
-#| "On-LAN packages and the scanning of the network neighborhood or the "
-#| "mounting of a share."
+#, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -952,7 +953,7 @@ msgstr ""
 #: smb4k.kcfg:350
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Zachovať zoznamy riadenia prístupu (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:351
@@ -963,66 +964,59 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Zachovať zoznamy riadenia prístupu. Táto voľba spôsobí, že rsync aktualizuje "
+"cieľové ACL tak, aby boli rovnaké ako zdrojové ACL. Táto voľba tiež "
+"implikuje --perms. Zdrojový a cieľový systém musia mať kompatibilné záznamy "
+"ACL, aby táto voľba správne fungovala."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:355
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Zachovať časy"
+msgstr "Zachovať rozšírené atribúty"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:356
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Zachovať skupinu (-g, --group). Skupina cieľového súboru bude nastavená na "
-"rovnakú hodnotu ako zdrojový súbor."
+"Zachovať rozšírené atribúty. Táto voľba spôsobí, že rsync aktualizuje "
+"rozšírené atribúty cieľa tak, aby boli rovnaké ako zdrojové."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:360
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Zachovať časy"
+msgstr "Zachovať časy prístupu"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:361
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Zachovať skupinu (-g, --group). Skupina cieľového súboru bude nastavená na "
-"rovnakú hodnotu ako zdrojový súbor."
+"Zachovať časy prístupu. Toto povie programu rsync, aby nastavil časy "
+"prístupu (použitia) cieľových súborov na rovnakú hodnotu ako majú zdrojové "
+"súbory."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:365
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Zachovať časy"
+msgstr "Zachovať časy vytvorenia"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:366
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Zachovať skupinu (-g, --group). Skupina cieľového súboru bude nastavená na "
-"rovnakú hodnotu ako zdrojový súbor."
+"Zachovať časy vytvorenia. Toto povie rsync, aby nastavil časy vytvorenia "
+"(novosť) cieľových súborov na rovnakú hodnotu ako zdrojové súbory."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:370
@@ -1516,10 +1510,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:533
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Pravidlá vlastného filtra:"
+msgstr "Pravidlá vlastného filtra"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:538
@@ -1883,36 +1876,34 @@ msgstr "Súbor %1 nie je možné vytlačiť do %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"Démon Zeroconf nie je spustený. Pomocou DNS-SD nie sú objavené žiadne "
+"servery."
 
 #: smb4kclient_p.cpp:1330
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "Podpora Zeroconf nie je v tejto verzii KDE dostupná."
 
 #: smb4kclient_p.cpp:1334
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Vyskytla sa neznáma chyba so Zeroconf."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Show the owner and group"
+#, kde-format
 msgid "Set the user and group ID"
-msgstr "Zobraziť vlastníka a skupinu"
+msgstr "Nastaviť ID používateľa a skupiny"
 
 #. i18n: ectx: whatsthis, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:14 smb4kmountsettings_linux.kcfg:19
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the user ID (a number) that the files and directories of the "
-#| "mounted share will have."
+#, kde-format
 msgid ""
 "Set the user ID and group ID that the files and directories of the mounted "
 "share will have to those of the current user (you)."
 msgstr ""
-"Toto je ID používateľa (číslo), ktoré budú mať pripojené súbory a adresáre "
-"zdieľania."
+"Nastaviť ID používateľa a ID skupiny, ktoré budú mať súbory a adresáre "
+"pripojeného zdieľania, na hodnoty aktuálneho používateľa (vás)."
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
@@ -2389,8 +2380,7 @@ msgstr "Nastaviť čas, ktorý prejde medzi pokusmi o nové pripojenie zdieľan�
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Show the file system that was used for mounting the share."
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
 msgstr "Zobraziť súborový systém, ktorý bol použitý na pripojenie zdieľania."
 
@@ -2654,7 +2644,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:163
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "Neposielať požiadavky na uzamknutie rozsahu bajtov"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:164
@@ -2665,6 +2655,10 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"Neposielať serveru požiadavky na uzamknutie rozsahu bajtov. Toto je potrebné "
+"pre niektoré aplikácie, ktoré nefungujú s povinnými uzamknutiami rozsahu "
+"bajtov v štýle CIFS (a väčšina serverov CIFS zatiaľ nepodporuje požiadavky "
+"na poradné uzamknutia rozsahu bajtov)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:168
@@ -2727,10 +2721,9 @@ msgstr "3.0 (Windows 8/Windows Server 2012)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:193
-#, fuzzy, kde-format
-#| msgid "3.0 (Windows 8/Windows Server 2012)"
+#, kde-format
 msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-msgstr "2.1 (Windows 7/Windows Server 2008R2)"
+msgstr "3.0.2 (Windows 8.1/Windows Server 2012R2)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:196
@@ -2742,13 +2735,13 @@ msgstr "3.1.1 (Windows Server 2016)"
 #: smb4kmountsettings_linux.kcfg:199
 #, kde-format
 msgid "3 (Version 3.0 and above)"
-msgstr ""
+msgstr "3 (verzia 3.0 a vyššie)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:202
 #, kde-format
 msgid "default (Negotiate the highest version)"
-msgstr ""
+msgstr "predvolené (Vyjednať najvyššiu verziu)"
 
 #. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:208
@@ -2875,55 +2868,46 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "Protokol NTLMSSP a paketové podpisovanie"
 
 #: smb4knotification.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "<p>Zdieľanie <b>%1</b> bolo pripojené k <b>%2</b>.</p>"
+msgstr "Zdieľanie <b>%1</b> bolo pripojené k <b>%2</b>."
 
 #: smb4knotification.cpp:82
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Otvoriť"
 
 #: smb4knotification.cpp:87
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#, kde-format
 msgid "The share %1 has been mounted to %2."
 msgstr "<p>Zdieľanie <b>%1</b> bolo pripojené k <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:106
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#, kde-format
 msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr "<p>Zdieľanie <b>%1</b> bolo odpojené z <b>%2</b>.</p>"
+msgstr "Zdieľanie <b>%1</b> bolo odpojené z <b>%2</b>."
 
 #: smb4knotification.cpp:114
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#, kde-format
 msgid "The share %1 has been unmounted from %2."
 msgstr "<p>Zdieľanie <b>%1</b> bolo odpojené z <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:127 smb4knotification.cpp:135
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been mounted.</p>"
-#| msgid_plural "<p>%1 shares have been mounted.</p>"
+#, kde-format
 msgid "%1 share has been mounted."
 msgid_plural "%1 shares have been mounted."
-msgstr[0] "<p>%1 zdieľanie bolo pripojené.</p>"
-msgstr[1] "<p>%1 zdieľania boli pripojené.</p>"
-msgstr[2] "<p>%1 zdieľaní bolo pripojených.</p>"
+msgstr[0] "%1 zdieľanie bolo pripojené."
+msgstr[1] "%1 zdieľania boli pripojené."
+msgstr[2] "%1 zdieľaní bolo pripojených."
 
 #: smb4knotification.cpp:148 smb4knotification.cpp:156
-#, fuzzy, kde-format
-#| msgid "<p>%1 share has been unmounted.</p>"
-#| msgid_plural "<p>%1 shares have been unmounted.</p>"
+#, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] "<p>%1 zdieľanie bolo odpojené.</p>"
-msgstr[1] "<p>%1 zdieľaní bolo odpojených.</p>"
-msgstr[2] "<p>%1 zdieľaní bolo odpojených.</p>"
+msgstr[0] "%1 zdieľanie bolo odpojené."
+msgstr[1] "%1 zdieľania boli odpojené."
+msgstr[2] "%1 zdieľaní bolo odpojených."
 
 #: smb4knotification.cpp:170 smb4knotification.cpp:175
 #, kde-format
@@ -2931,24 +2915,20 @@ msgid ""
 "The way Smb4K stores the login credentials has changed. They will now be "
 "migrated. This change is incompatible with earlier versions of Smb4K."
 msgstr ""
+"Spôsob, akým Smb4K ukladá prihlasovacie údaje, sa zmenil. Teraz budú "
+"migrované. Táto zmena nie je kompatibilná so staršími verziami Smb4K."
 
 #: smb4knotification.cpp:194
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
-#| "the file to PDF or Postscript and try again.</p>"
+#, kde-format
 msgid ""
 "The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again."
 msgstr ""
-"<p>Typ MIME <b>%1</b> nie je pre tlač podporovaný. Prosím konvertujte súbor "
-"do PDF alebo Postscript a skúste znovu.</p>"
+"Typ MIME <b>%1</b> nie je pre tlač podporovaný. Prosím, konvertujte súbor do "
+"PDF alebo Postscript a skúste znovu."
 
 #: smb4knotification.cpp:198
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
-#| "the file to PDF or Postscript and try again.</p>"
+#, kde-format
 msgid ""
 "The mimetype %1 is not supported for printing. Please convert the file to "
 "PDF or Postscript and try again."
@@ -2957,38 +2937,26 @@ msgstr ""
 "do PDF alebo Postscript a skúste znovu.</p>"
 
 #: smb4knotification.cpp:217
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
-#| "p>"
+#, kde-format
 msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
-msgstr "<p>Záložka pre zdieľanie <b>%1</b> už existuje a bude preskočená.</p>"
+msgstr "Záložka pre zdieľanie <b>%1</b> už existuje a bude preskočená."
 
 #: smb4knotification.cpp:221
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</"
-#| "p>"
+#, kde-format
 msgid "The bookmark for share %1 already exists and will be skipped."
 msgstr "<p>Záložka pre zdieľanie <b>%1</b> už existuje a bude preskočená.</p>"
 
 #: smb4knotification.cpp:240
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed.</p>"
+#, kde-format
 msgid ""
 "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
 "used and will automatically be renamed."
 msgstr ""
-"<p>Popis <b>%1</b> záložky pre zdieľanie <b>%2</b> sa už používa a bude "
-"automaticky premenovaný.</p>"
+"Popis <b>%1</b> záložky pre zdieľanie <b>%2</b> sa už používa a bude "
+"automaticky premenovaný."
 
 #: smb4knotification.cpp:246
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed.</p>"
+#, kde-format
 msgid ""
 "The label %1 of the bookmark for the share %2 is already being used and will "
 "automatically be renamed."
@@ -2997,279 +2965,223 @@ msgstr ""
 "automaticky premenovaný.</p>"
 
 #: smb4knotification.cpp:269
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Pripojenie zdieľania <b>%1</b> zlyhalo:</p><p><tt>%2</tt></p>"
+msgstr "Pripojenie zdieľania <b>%1</b> zlyhalo: <tt>%2</tt>"
 
 #: smb4knotification.cpp:271
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr "<p>Pripojenie zdieľania <b>%1</b> zlyhalo.</p>"
+msgstr "Pripojenie zdieľania <b>%1</b> zlyhalo."
 
 #: smb4knotification.cpp:287
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share %1 failed: %2"
-msgstr "<p>Pripojenie zdieľania <b>%1</b> zlyhalo.</p>"
+msgstr ""
 
 #: smb4knotification.cpp:289
-#, fuzzy, kde-format
-#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Mounting the share %1 failed."
 msgstr "<p>Pripojenie zdieľania <b>%1</b> zlyhalo.</p>"
 
 #: smb4knotification.cpp:308
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<p>Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo:</p><p><tt>%3</tt></p>"
+msgstr "Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo: <tt>%3</tt>"
 
 #: smb4knotification.cpp:310
-#, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "<p>Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo.</p>"
+msgstr "Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo."
 
 #: smb4knotification.cpp:326
-#, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "<p>Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo.</p>"
+msgstr ""
 
 #: smb4knotification.cpp:328
-#, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed."
 msgstr "<p>Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo.</p>"
 
 #: smb4knotification.cpp:341
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr "<p>Synchronizácia <b>%1</b> s <b>%2</b> zlyhala:</p><p><tt>%3</tt></p>"
+msgstr "Synchronizácia <b>%1</b> s <b>%2</b> zlyhala: <tt>%3</tt>"
 
 #: smb4knotification.cpp:343
-#, fuzzy, kde-format
-#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
-msgstr "<p>Synchronizácia <b>%1</b> s <b>%2</b> zlyhala.</p>"
+msgstr "Synchronizácia <b>%1</b> s <b>%2</b> zlyhala."
 
 #: smb4knotification.cpp:359
-#, fuzzy, kde-format
-#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Synchronizing %1 with %2 failed: %3"
-msgstr "<p>Synchronizácia <b>%1</b> s <b>%2</b> zlyhala.</p>"
+msgstr ""
 
 #: smb4knotification.cpp:361
-#, fuzzy, kde-format
-#| msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#, kde-format
 msgid "Synchronizing %1 with %2 failed."
 msgstr "<p>Synchronizácia <b>%1</b> s <b>%2</b> zlyhala.</p>"
 
 #: smb4knotification.cpp:377
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The command <b>%1</b> could not be found. Please check your "
-#| "installation.</p>"
+#, kde-format
 msgid ""
 "The command <b>%1</b> could not be found. Please check your installation."
-msgstr "<p>Príkaz <b>%1</b> nebol nájdený. Prosím, overte inštaláciu.</p>"
+msgstr "Príkaz <b>%1</b> nebol nájdený. Prosím, overte inštaláciu."
 
 #: smb4knotification.cpp:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The command <b>%1</b> could not be found. Please check your "
-#| "installation.</p>"
+#, kde-format
 msgid "The command %1 could not be found. Please check your installation."
 msgstr "<p>Príkaz <b>%1</b> nebol nájdený. Prosím, overte inštaláciu.</p>"
 
 #: smb4knotification.cpp:400 smb4knotification.cpp:404
-#, fuzzy, kde-format
-#| msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#, kde-format
 msgid "The share <b>%1</b> is a printer and cannot be bookmarked."
-msgstr ""
-"<p>Zdieľanie <b>%1</b> je tlačiareň a nie je možné ju pridať ako záložku.</p>"
+msgstr "Zdieľanie <b>%1</b> je tlačiareň a nie je možné ju pridať ako záložku."
 
 #: smb4knotification.cpp:417
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file <b>%1</b> could not be found."
-msgstr "<p>Súbor <b>%1</b> nie je možné nájsť.</p>"
+msgstr "Súbor <b>%1</b> nie je možné nájsť."
 
 #: smb4knotification.cpp:421
-#, fuzzy, kde-format
-#| msgid "<p>The file <b>%1</b> could not be found.</p>"
+#, kde-format
 msgid "The file %1 could not be found."
 msgstr "<p>Súbor <b>%1</b> nie je možné nájsť.</p>"
 
 #: smb4knotification.cpp:431
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Otvorenie súboru <b>%1</b> zlyhalo.</p><p><tt>%2</tt></p>"
+msgstr "Otvorenie súboru <b>%1</b> zlyhalo: <tt>%2</tt>"
 
 #: smb4knotification.cpp:433
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr "<p>Otvorenie súboru <b>%1</b> zlyhalo.</p>"
+msgstr "Otvorenie súboru <b>%1</b> zlyhalo."
 
 #: smb4knotification.cpp:449
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file %1 failed: %2"
-msgstr "<p>Otvorenie súboru <b>%1</b> zlyhalo.</p>"
+msgstr ""
 
 #: smb4knotification.cpp:451
-#, fuzzy, kde-format
-#| msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Opening the file %1 failed."
 msgstr "<p>Otvorenie súboru <b>%1</b> zlyhalo.</p>"
 
 #: smb4knotification.cpp:464 smb4knotification.cpp:467
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr "<p>Čítanie zo súboru <b>%1</b> zlyhalo:</p><p><tt>%2</tt></p>"
+msgstr "Čítanie zo súboru <b>%1</b> zlyhalo: <tt>%2</tt>"
 
 #: smb4knotification.cpp:469
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr "<p>Čítanie zo súboru <b>%1</b> zlyhalo.</p>"
+msgstr "Čítanie zo súboru <b>%1</b> zlyhalo."
 
 #: smb4knotification.cpp:486 smb4knotification.cpp:489
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file %1 failed: %2"
-msgstr "<p>Čítanie zo súboru <b>%1</b> zlyhalo.</p>"
+msgstr ""
 
 #: smb4knotification.cpp:491
-#, fuzzy, kde-format
-#| msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#, kde-format
 msgid "Reading from file %1 failed."
 msgstr "<p>Čítanie zo súboru <b>%1</b> zlyhalo.</p>"
 
 #: smb4knotification.cpp:508
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
-msgstr "<p>Nasledovný adresár nie je možné vytvoriť:</p><p><tt>%1</tt></p>"
+msgstr "Nasledovný adresár nie je možné vytvoriť: <tt>%1</tt>"
 
 #: smb4knotification.cpp:512
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#, kde-format
 msgid "The following directory could not be created: %1"
 msgstr "<p>Nasledovný adresár nie je možné vytvoriť:</p><p><tt>%1</tt></p>"
 
 #: smb4knotification.cpp:523
-#, fuzzy, kde-format
-#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process failed to start (error code: <tt>%1</tt>)."
-msgstr "<p>Zlyhalo spustenie procesu (chybový kód: <tt>%1</tt>).</p>"
+msgstr "Zlyhalo spustenie procesu (chybový kód: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:527
-#, fuzzy, kde-format
-#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process crashed (error code: <tt>%1</tt>)."
-msgstr "<p>Proces spadol (chybový kód: <tt>%1</tt>).</p>"
+msgstr "Proces spadol (chybový kód: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:531
-#, fuzzy, kde-format
-#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process timed out (error code: <tt>%1</tt>)."
-msgstr "<p>Vypršal čas procesu (chybový kód: <tt>%1</tt>).</p>"
+msgstr "Vypršal čas procesu (chybový kód: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:535
-#, fuzzy, kde-format
-#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not write to the process (error code: <tt>%1</tt>)."
-msgstr "<p>Nie je možné zapisovať do procesu (chybový kód: <tt>%1</tt>).</p>"
+msgstr "Nie je možné zapisovať do procesu (chybový kód: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:539
-#, fuzzy, kde-format
-#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not read from the process (error code: <tt>%1</tt>)."
-msgstr "<p>Nie je možné čítať z procesu (chybový kód: <tt>%1</tt>).</p>"
+msgstr "Nie je možné čítať z procesu (chybový kód: <tt>%1</tt>)."
 
 #: smb4knotification.cpp:544 smb4knotification.cpp:584
-#, fuzzy, kde-format
-#| msgid "<p>The process reported an unknown error.</p>"
+#, kde-format
 msgid "The process reported an unknown error."
-msgstr "<p>Proces oznámil neznámu chybu.</p>"
+msgstr "Proces oznámil neznámu chybu."
 
 #: smb4knotification.cpp:563
-#, fuzzy, kde-format
-#| msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process failed to start (error code: %1)."
 msgstr "<p>Zlyhalo spustenie procesu (chybový kód: <tt>%1</tt>).</p>"
 
 #: smb4knotification.cpp:567
-#, fuzzy, kde-format
-#| msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process crashed (error code: %1)."
 msgstr "<p>Proces spadol (chybový kód: <tt>%1</tt>).</p>"
 
 #: smb4knotification.cpp:571
-#, fuzzy, kde-format
-#| msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "The process timed out (error code: %1)."
 msgstr "<p>Vypršal čas procesu (chybový kód: <tt>%1</tt>).</p>"
 
 #: smb4knotification.cpp:575
-#, fuzzy, kde-format
-#| msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not write to the process (error code: %1)."
 msgstr "<p>Nie je možné zapisovať do procesu (chybový kód: <tt>%1</tt>).</p>"
 
 #: smb4knotification.cpp:579
-#, fuzzy, kde-format
-#| msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#, kde-format
 msgid "Could not read from the process (error code: %1)."
 msgstr "<p>Nie je možné čítať z procesu (chybový kód: <tt>%1</tt>).</p>"
 
 #: smb4knotification.cpp:640 smb4knotification.cpp:698
-#, fuzzy, kde-format
-#| msgid "<p>Executing an action with root privileges failed.</p>"
+#, kde-format
 msgid "Executing an action with root privileges failed%1%2"
-msgstr "<p>Spustenia akcie s oprávneniami roota zlyhalo.</p>"
+msgstr "Spustenie akcie s oprávneniami roota zlyhalo%1%2"
 
 #: smb4knotification.cpp:715 smb4knotification.cpp:719
-#, fuzzy, kde-format
-#| msgid "<p>The URL that was passed is invalid.</p>"
+#, kde-format
 msgid "The URL that was passed is invalid."
-msgstr "<p> URL, ktorý bol odovzdaný, je neplatný.</p>"
+msgstr "URL, ktorý bol odovzdaný, je neplatný."
 
 #: smb4knotification.cpp:732
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "The network communication failed with the following error message: <tt>%1</"
 "tt>"
-msgstr "Sieťová komunikácia zlyhala s nasledovnou chybovou správou: <s>%1</s>"
+msgstr ""
+"Sieťová komunikácia zlyhala s nasledovnou chybovou správou: <tt>%1</tt>"
 
 #: smb4knotification.cpp:736
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid "The network communication failed with the following error message: %1"
 msgstr "Sieťová komunikácia zlyhala s nasledovnou chybovou správou: <s>%1</s>"
 
 #: smb4knotification.cpp:749
 #, kde-format
 msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
-msgstr ""
+msgstr "Vyskytla sa chyba so službou Zeroconf: <tt>%1</tt>"
 
 #: smb4knotification.cpp:753
 #, kde-format
@@ -3282,6 +3194,8 @@ msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: <tt>%1</tt>"
 msgstr ""
+"Vyskytla sa chyba pri čítaní prihlasovacích údajov z bezpečného úložiska: "
+"<tt>%1</tt>"
 
 #: smb4knotification.cpp:770
 #, kde-format
@@ -3321,15 +3235,10 @@ msgid "Destination"
 msgstr "Cieľ"
 
 #, fuzzy
-#~| msgid "SMB port:"
 #~ msgid "Set the SMB port to:"
 #~ msgstr "SMB port:"
 
 #, fuzzy
-#~| msgid ""
-#~| "This is the port that is used for connecting to remote servers with the "
-#~| "client programs net, smbclient and smbtree. The default value is 139 "
-#~| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
 #~ msgid ""
 #~ "This is the port that is used for connecting to remote servers. The "
 #~ "default value is 139 (NetBIOS). Under FreeBSD, this setting is also used "
@@ -3340,9 +3249,6 @@ msgstr "Cieľ"
 #~ "139 (NetBIOS). Pod FreeBSD sa toto nastavenie používa aj na pripojenie."
 
 #, fuzzy
-#~| msgid ""
-#~| "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
-#~| "is owned by the user <b>%3</b>.</p>"
 #~ msgid ""
 #~ "You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 #~ "owned by the user <b>%3</b>."
@@ -3351,9 +3257,6 @@ msgstr "Cieľ"
 #~ "iným používateľom <b>%3</b>.</p>"
 
 #, fuzzy
-#~| msgid ""
-#~| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#~| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
 #~ msgid ""
 #~ "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
 #~ "%3</b>.</p><p>Do you really want to unmount it?</p>"
@@ -3455,9 +3358,6 @@ msgstr "Cieľ"
 #~ "nezadávajte voľby, ktoré už boli definované v konfiguračnom dialógu."
 
 #, fuzzy
-#~| msgid ""
-#~| "<p>Executing an action with root privileges failed (error code: <tt>%1</"
-#~| "tt>).</p>"
 #~ msgid ""
 #~ "Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 #~ msgstr ""
@@ -3648,14 +3548,10 @@ msgstr "Cieľ"
 #~ msgstr "Tlačiť"
 
 #, fuzzy
-#~| msgid "Mount Settings"
 #~ msgid "Custom Settings"
 #~ msgstr "Voľby pripojenia"
 
 #, fuzzy
-#~| msgid ""
-#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#~| "provides.</p>"
 #~ msgid ""
 #~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
 #~ "provides.</p>"
@@ -3664,7 +3560,6 @@ msgstr "Cieľ"
 #~ "ktoré poskytuje</p>"
 
 #, fuzzy
-#~| msgid "<p>Define custom options for share <b>%1</b>.</p>"
 #~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 #~ msgstr "<p>Definovať vlastné voľby pre zdieľanie <b>%1</b>.</p>"
 
@@ -3705,12 +3600,10 @@ msgstr "Cieľ"
 #~ msgstr "Akcie"
 
 #, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
 #~ msgid "Send magic packet before scanning the network neighborhood"
 #~ msgstr "Poslať magický balík pred prehľadaním sieťového okolia"
 
 #, fuzzy
-#~| msgid "Send magic package before mounting a share"
 #~ msgid "Send magic packet before mounting a share"
 #~ msgstr "Poslať magický balík pred pripojeným zdieľania"
 
@@ -3756,12 +3649,6 @@ msgstr "Cieľ"
 #~ msgstr "Umiestnenie:"
 
 #, fuzzy
-#~| msgid ""
-#~| "The location of the share is provided by the Uniform Resource Locator "
-#~| "(URL). It generally has the following syntax: [smb:]//[USER:"
-#~| "PASSWORD@]HOST:PORT/SHARE. The username, password and port are optional. "
-#~| "You should omit to enter the password here, because it is shown in "
-#~| "cleartext."
 #~ msgid ""
 #~ "The location of the share is provided by the Uniform Resource Locator "
 #~ "(URL). It generally has the following syntax: [smb:]//[USER:"
@@ -3807,7 +3694,6 @@ msgstr "Cieľ"
 #~ "okne."
 
 #, fuzzy
-#~| msgid "Add Bookmarks"
 #~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
 #~ msgid "Bookmark >>"
 #~ msgstr "Záložka"
@@ -3825,7 +3711,6 @@ msgstr "Cieľ"
 #~ msgstr "Vyčistiť"
 
 #, fuzzy
-#~| msgid "User:"
 #~ msgid "Username:"
 #~ msgstr "Užívateľské meno:"
 
@@ -3888,17 +3773,14 @@ msgstr "Cieľ"
 #~ "</qt>"
 
 #, fuzzy
-#~| msgid "unknown"
 #~ msgid "Unknown error"
 #~ msgstr "neznámy"
 
 #, fuzzy
-#~| msgid "<p>The file <b>%1</b> could not be found.</p>"
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "<p>Súbor <b>%1</b> nie je možné nájsť.</p>"
 
 #, fuzzy
-#~| msgid "<p>The file <b>%1</b> could not be found.</p>"
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "<p>Súbor <b>%1</b> nie je možné nájsť.</p>"
 
@@ -4083,12 +3965,10 @@ msgstr "Cieľ"
 #~ msgstr "Voľby"
 
 #, fuzzy
-#~| msgid "Options"
 #~ msgid "Options >>"
 #~ msgstr "Voľby"
 
 #, fuzzy
-#~| msgid "Options"
 #~ msgid "Options <<"
 #~ msgstr "Voľby"
 

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-30 00:43+0000\n"
-"PO-Revision-Date: 2026-03-01 11:03+0100\n"
+"PO-Revision-Date: 2026-04-07 15:38+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -82,23 +82,22 @@ msgstr "Il processo di smontaggio non può essere avviato."
 #: smb4k/main.cpp:45
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
-msgstr ""
+msgstr "L'argomento  non è valido. Utilizza «attivo» o «disattivo»."
 
 #: smb4k/main.cpp:56 smb4k/main.cpp:74
 #, kde-format
 msgid "Profiles are disabled."
-msgstr ""
+msgstr "I profili sono disabilitati."
 
 #: smb4k/main.cpp:63
 #, kde-format
 msgid "The profile name is invalid."
-msgstr ""
+msgstr "Il nome del profilo non è valido."
 
 #: smb4k/main.cpp:82
-#, fuzzy, kde-format
-#| msgid "Set Active"
+#, kde-format
 msgid " (active)"
-msgstr "Imposta attivo"
+msgstr " (attivo)"
 
 #: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -113,10 +112,9 @@ msgstr ""
 "condivisioni Samba"
 
 #: smb4k/main.cpp:143
-#, fuzzy, kde-format
-#| msgid "© 2003-2025 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© 2003-2025 Alexander Reinholdt"
+msgstr "© 2003-2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:148
 #, kde-format
@@ -142,24 +140,23 @@ msgstr "Contributore"
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
+"Abilita o disabilita l'utilizzo dei profili. <arg> può essere «attivo» o "
+"«disattivo»."
 
 #: smb4k/main.cpp:163
 #, kde-format
 msgid "Set the active profile to <profile>."
-msgstr ""
+msgstr "Imposta il profili attivo a <profile>."
 
 #: smb4k/main.cpp:166
-#, fuzzy, kde-format
-#| msgid "Print a file."
+#, kde-format
 msgid "List all profiles."
-msgstr "Stampa un file."
+msgstr "Elenca tutti i profili."
 
 #: smb4k/main.cpp:169
-#, fuzzy, kde-format
-#| msgid "Unmount all shares when the power button is pressed"
+#, kde-format
 msgid "Remount all shares that were previously used."
-msgstr ""
-"Smonta tutte le condivisioni quando viene premuto il pulsante dell'accensione"
+msgstr "Rimonta le condivisioni che sono già state utilizzate."
 
 #: smb4k/main.cpp:172
 #, kde-format
@@ -167,6 +164,8 @@ msgid ""
 "Mount the share pointed to by <url>. Make sure, you previously set the "
 "credentials for that share."
 msgstr ""
+"Monta la condivisione a cui punta <url>. Assicurati di aver già impostato le "
+"credenziali per questa condivisione."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
