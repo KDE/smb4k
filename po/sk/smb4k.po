@@ -81,22 +81,22 @@ msgstr "Proces odpojenia nie je možné spustiť."
 #: smb4k/main.cpp:45
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
-msgstr ""
+msgstr "Argument je neplatný. Použite prosím 'on' alebo 'off'."
 
 #: smb4k/main.cpp:56 smb4k/main.cpp:74
 #, kde-format
 msgid "Profiles are disabled."
-msgstr ""
+msgstr "Profily sú zakázané."
 
 #: smb4k/main.cpp:63
 #, kde-format
 msgid "The profile name is invalid."
-msgstr ""
+msgstr "Názov profilu je neplatný."
 
 #: smb4k/main.cpp:82
 #, kde-format
 msgid " (active)"
-msgstr ""
+msgstr " (aktívny)"
 
 #: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -138,11 +138,12 @@ msgstr "Donátor"
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
+"Povoliť alebo zakázať používanie profilov. <arg> môže byť 'on' alebo 'off'."
 
 #: smb4k/main.cpp:163
 #, kde-format
 msgid "Set the active profile to <profile>."
-msgstr ""
+msgstr "Nastaviť aktívny profil na <profile>."
 
 #: smb4k/main.cpp:166
 #, kde-format
@@ -152,7 +153,7 @@ msgstr "Vytlačiť súbor"
 #: smb4k/main.cpp:169
 #, kde-format
 msgid "Remount all shares that were previously used."
-msgstr ""
+msgstr "Znovu pripojiť všetky zdieľania, ktoré sa predtým používali."
 
 #: smb4k/main.cpp:172
 #, kde-format
@@ -160,6 +161,8 @@ msgid ""
 "Mount the share pointed to by <url>. Make sure, you previously set the "
 "credentials for that share."
 msgstr ""
+"Pripojiť zdieľanie na ktoré ukazuje <url>. Uistite sa, že ste predtým "
+"nastavili prihlasovacie údaje pre toto zdieľanie."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
