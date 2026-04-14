@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-08 02:52+0000\n"
-"PO-Revision-Date: 2026-03-24 21:51+0200\n"
+"PO-Revision-Date: 2026-04-13 23:24+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -316,7 +316,7 @@ msgstr ""
 #: smb4k.kcfg:130
 #, kde-format
 msgid "Minimal SMB protocol version:"
-msgstr ""
+msgstr "Mažiausia SMB protokolo versija:"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:131
@@ -325,6 +325,8 @@ msgid ""
 "This setting controls the minimum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
+"Ši nuostata valdo, kokią mažiausią protokolo versiją Samba kliento programos "
+"biblioteka mėgins naudoti."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
@@ -338,20 +340,20 @@ msgstr "NT1 (Klasikinis CIFS/SMBv1 protokolas)"
 #: smb4k.kcfg:137 smb4k.kcfg:153
 #, kde-format
 msgid "SMB2 (Windows Vista and above)"
-msgstr ""
+msgstr "SMB2 („Windows Vista“ ir naujesnė)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:140 smb4k.kcfg:156
 #, kde-format
 msgid "SMB3 (Windows 8 and above)"
-msgstr ""
+msgstr "SMB3 („Windows 8“ ir naujesnė)"
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:146
 #, kde-format
 msgid "Maximal SMB protocol version:"
-msgstr ""
+msgstr "Didžiausia SMB protokolo versija:"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:147
@@ -360,6 +362,8 @@ msgid ""
 "This setting controls the maximum protocol version that Samba's client "
 "library will attempt to use."
 msgstr ""
+"Ši nuostata valdo, kokią didžiausią protokolo versiją Samba kliento "
+"programos biblioteka mėgins naudoti."
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:162
@@ -469,7 +473,7 @@ msgstr "Reikalauti"
 #: smb4k.kcfg:213
 #, kde-format
 msgid "Preview hidden files and directories"
-msgstr ""
+msgstr "Rodyti paslėptus failus ir katalogus"
 
 #. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
 #: smb4k.kcfg:214
@@ -481,6 +485,11 @@ msgid ""
 "etc.). Since they are not of any importance for your regular work, you "
 "normally do not need to enable this feature."
 msgstr ""
+"Rodyti paslėptus failus ir katalogus. Paslėpti failai ir katalogai yra tie, "
+"kurių pavadinimai prasideda tašku. Jie įprastai yra reikalingi labai "
+"konkretiems tikslams (informacijos apie programos konfigūraciją saugojimui "
+"ir t.t.). Kadangi jie nėra svarbūs jūsų įprastam darbui, dažniausiai, jums "
+"nebūtina įjungti šią ypatybę."
 
 #. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
 #: smb4k.kcfg:218
@@ -498,7 +507,7 @@ msgstr ""
 #: smb4k.kcfg:223
 #, kde-format
 msgid "Detect hidden shares"
-msgstr ""
+msgstr "Aptikti paslėptus viešinius"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:224
@@ -507,6 +516,8 @@ msgid ""
 "Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
 "Musik$ or IPC$."
 msgstr ""
+"Aptikti paslėpti viešiniai. Paslėpti viešiniai pasibaigia „$“ ženklu, pvz., "
+"Muzika$ arba IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:228
@@ -583,7 +594,7 @@ msgstr ""
 #: smb4k.kcfg:263
 #, kde-format
 msgid "Update files"
-msgstr ""
+msgstr "Atnaujinti failus"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
 #: smb4k.kcfg:264
@@ -592,6 +603,8 @@ msgid ""
 "Update files in the destination directory that are older than in the source "
 "directory (-u, --update)."
 msgstr ""
+"Atnaujinti paskirties kataloge failus, kurie yra senesni nei šaltinio "
+"kataloge (-u, --update)."
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
 #: smb4k.kcfg:268
@@ -2363,56 +2376,56 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:173
 #, kde-format
 msgid "SMB protocol version:"
-msgstr ""
+msgstr "SMB protokolo versija:"
 
 #. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:174 smb4kmountsettings_linux.kcfg:178
 #, kde-format
 msgid "Define which version of the SMB protocol is to be used."
-msgstr ""
+msgstr "Apibrėžkite, kuri SMB protokolo versija turėtų būti naudojama."
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:181
 #, kde-format
 msgid "1.0 (Classic CIFS/SMBv1 protocol)"
-msgstr ""
+msgstr "1.0 (Klasikinis CIFS/SMBv1 protokolas)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:184
 #, kde-format
 msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
-msgstr ""
+msgstr "2.0 („Windows Vista SP1“/„Windows Server 2008“)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "2.1 (Windows 7/Windows Server 2008R2)"
-msgstr ""
+msgstr "2.1 („Windows 7“/„Windows Server 2008R2“)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:190
 #, kde-format
 msgid "3.0 (Windows 8/Windows Server 2012)"
-msgstr ""
+msgstr "3.0 („Windows 8“/„Windows Server 2012“)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:193
 #, kde-format
 msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-msgstr ""
+msgstr "3.0.2 („Windows 8.1“/„Windows Server 2012R2“)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:196
 #, kde-format
 msgid "3.1.1 (Windows Server 2016)"
-msgstr ""
+msgstr "3.1.1 („Windows Server 2016“)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:199
 #, kde-format
 msgid "3 (Version 3.0 and above)"
-msgstr ""
+msgstr "3 (Versija 3.0 ir naujesnė)"
 
 #. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:202

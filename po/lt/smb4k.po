@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2026-03-24 21:59+0200\n"
+"PO-Revision-Date: 2026-04-13 22:59+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -132,9 +132,9 @@ msgstr "&Tinklas"
 
 #. i18n: ectx: Menu (shares)
 #: smb4k/smb4k_shell.rc:12
-#, fuzzy, kde-format
+#, kde-format
 msgid "Sh&ares"
-msgstr "Akcijos"
+msgstr "&Viešiniai"
 
 #. i18n: ectx: Menu (bookmarks)
 #: smb4k/smb4k_shell.rc:15
@@ -414,18 +414,16 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:571
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:390
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Mount Settings"
-msgstr "Bendros parinktys"
+msgstr "Prijungimo nuostatos"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:265
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:449
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Browse Settings"
-msgstr "&Nuostatos"
+msgstr "Naršymo nuostatos"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:137
 #, kde-format
@@ -485,16 +483,14 @@ msgid "Rename"
 msgstr "Pervadinti"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Sinchronizavimas"
+msgstr "Sinchronizavimo katalogas"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:82
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Atsarginė kopija"
+msgstr "Atsarginės kopijos"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:127
 #, kde-format
@@ -615,10 +611,9 @@ msgid "Custom Settings Editor"
 msgstr "Tinkintų nuostatų redaktorius"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:52
-#, fuzzy, kde-format
-#| msgid "Network"
+#, kde-format
 msgid "No network item was set."
-msgstr "Tinklas"
+msgstr "Nebuvo nustatytas joks tinklo elementas."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
@@ -635,7 +630,7 @@ msgstr ""
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "Visada iš naujo prijungti šį viešinį"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:117
 #, kde-format
@@ -686,7 +681,7 @@ msgstr "Nurodykite naudotojo vardą."
 #: smb4k/smb4khomesuserdialog.cpp:123
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
+msgstr "Nurodykite naudotojo vardą, skirtą viešiniui<br><b>%1</b>."
 
 #: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
@@ -704,6 +699,9 @@ msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
+"<qt>Užvėrus pagrindinį langą, Smb4K ir toliau veiks sistemos dėkle."
+"<br>Norėdami išjungti programą, spustelėkite <i>Failo</i> meniu ir "
+"pasirinkite <i>Išjungti</i>.</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:284
 #, kde-format
@@ -727,7 +725,7 @@ msgstr[3] "Šiuo metu yra %1 prijungtas viešinys."
 #: smb4k/smb4kmainwindow.cpp:485
 #, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr ""
+msgstr "Ieškoma darbo grupių ir domenų..."
 
 #: smb4k/smb4kmainwindow.cpp:490
 #, kde-format
@@ -806,6 +804,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Norėdami prijungti viešinį įveskite vietą ir, pasirinktinai, IP adresą bei "
+"darbo grupę."
 
 #: smb4k/smb4kmountdialog.cpp:66 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
@@ -820,11 +820,10 @@ msgid "Bookmark this share"
 msgstr "Žymelės"
 
 #: smb4k/smb4kmountdialog.cpp:146
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Žymelės"
+msgstr "Žymelė >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -846,7 +845,7 @@ msgstr "Komentaras"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:446
 #, kde-format
 msgid "Scan Netwo&rk"
-msgstr ""
+msgstr "Pe&ržiūrėti tinklą"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:103
 #, kde-format
@@ -879,7 +878,7 @@ msgstr ""
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr ""
+msgstr "&Atverti prijungimo dialogą"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
@@ -937,12 +936,12 @@ msgstr ""
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:408
 #, kde-format
 msgid "Scan Compute&r"
-msgstr ""
+msgstr "Pe&ržiūrėti kompiuterį"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Wo&rkgroup"
-msgstr ""
+msgstr "Pe&ržiūrėti darbo grupę"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:948
 #: smb4k/smb4ksharesviewdockwidget.cpp:183
@@ -999,10 +998,9 @@ msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Preview Dialog"
-msgstr "Prijungiama"
+msgstr "Peržiūros dialogas"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
@@ -1025,10 +1023,9 @@ msgid "Preview of %1"
 msgstr "%1 peržiūra"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Prijungiama"
+msgstr "Spausdinimo dialogas"
 
 #: smb4k/smb4kprintdialog.cpp:46
 #, kde-format
@@ -1141,6 +1138,8 @@ msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
 "any files here.</qt>"
 msgstr ""
+"<qt>Nėra aktyvaus ryšio su viešiniu <b>%1</b>! Jūs negalite čia tempti jokių "
+"failų.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
