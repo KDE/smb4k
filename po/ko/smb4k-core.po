@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-08 02:52+0000\n"
-"PO-Revision-Date: 2026-02-03 22:51+0100\n"
+"PO-Revision-Date: 2026-04-26 20:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -2884,12 +2884,13 @@ msgstr "<b>%1</b> 공유를 <b>%2</b>에서 마운트 해제할 수 없습니다
 #: smb4knotification.cpp:270
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr "<b>%1</b>에서 <b>%2</b>(으)로 동기화할 수 없습니다:</p><p><tt>%3</tt>"
+msgstr ""
+"<b>%1</b>와(과) <b>%2</b>을(를) 동기화할 수 없습니다:</p><p><tt>%3</tt>"
 
 #: smb4knotification.cpp:272
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
-msgstr "<b>%1</b>에서 <b>%2</b>(으)로 동기화할 수 없습니다."
+msgstr "<b>%1</b>와(과) <b>%2</b>을(를) 동기화할 수 없습니다."
 
 #: smb4knotification.cpp:294
 #, kde-format
