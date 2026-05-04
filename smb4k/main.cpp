@@ -19,6 +19,7 @@
 #include <QCommandLineParser>
 #include <QString>
 #include <QTimer>
+#include <QSessionManager>
 
 // KDE includes
 #include <KAboutData>
@@ -75,11 +76,10 @@ static void handleListProfiles()
         return;
     }
 
-    QTextStream stream(stdout);
     QStringList profiles = Smb4KProfileManager::self()->profilesList();
 
     for (const QString &profile : std::as_const(profiles)) {
-        stream << profile << (profile == Smb4KProfileManager::self()->activeProfile() ? i18n(" (active)") : QString()) << Qt::endl;
+        QTextStream(stdout) << profile << (profile == Smb4KProfileManager::self()->activeProfile() ? i18n(" (active)") : QString()) << Qt::endl;
     }
 }
 
@@ -169,7 +169,7 @@ int main(int argc, char **argv)
     QCommandLineOption remountSharesOption(QStringLiteral("remount"), i18n("Remount all shares that were previously used."));
     parser.addOption(remountSharesOption);
 
-    QCommandLineOption mountShareOption(QStringLiteral("mount"), i18n("Mount the share pointed to by <url>. Make sure, you previously set the credentials for that share."), QStringLiteral("url"));
+    QCommandLineOption mountShareOption(QStringLiteral("mount"), i18n("Mount the share pointed to by <url>."), QStringLiteral("url"));
     parser.addOption(mountShareOption);
 
     parser.process(*app);
@@ -218,7 +218,10 @@ int main(int argc, char **argv)
     });
 
     Smb4KClient::self()->start();
-    Smb4KMounter::self()->start();
+
+    QObject::connect(Smb4KClient::self(), &Smb4KClient::finished, [&]() {
+        Smb4KMounter::self()->start();
+    });
 
     return app->exec();
 }
