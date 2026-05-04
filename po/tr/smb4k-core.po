@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-03-27 01:04+0300\n"
+"PO-Revision-Date: 2026-05-02 18:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1639,7 +1639,7 @@ msgstr ""
 #: smb4k.kcfg:568
 #, kde-format
 msgid "Ignore files that already exist"
-msgstr "Halihazırda var olan dosyaları yok say"
+msgstr "Hâlihazırda var olan dosyaları yok say"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
 #: smb4k.kcfg:569
@@ -1648,7 +1648,7 @@ msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
 "existing). Existing directories are not ignored."
 msgstr ""
-"Alıcı tarafta halihazırda var olan dosyaları güncellemeyi atlayın (--ignore-"
+"Alıcı tarafta hâlihazırda var olan dosyaları güncellemeyi atlayın (--ignore-"
 "existing). Var olan dizinler yok sayılmaz."
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
@@ -2957,12 +2957,12 @@ msgstr ""
 #: smb4knotification.cpp:217
 #, kde-format
 msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
-msgstr "<b>%1</b> paylaşımı için yer imi halihazırda var ve atlanacak."
+msgstr "<b>%1</b> paylaşımı için yer imi hâlihazırda var ve atlanacak."
 
 #: smb4knotification.cpp:221
 #, kde-format
 msgid "The bookmark for share %1 already exists and will be skipped."
-msgstr "%1 paylaşımı için yer imi halihazırda var ve atlanacak."
+msgstr "%1 paylaşımı için yer imi hâlihazırda var ve atlanacak."
 
 #: smb4knotification.cpp:240
 #, kde-format
@@ -2970,7 +2970,7 @@ msgid ""
 "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already being "
 "used and will automatically be renamed."
 msgstr ""
-"<b>%2</b> paylaşımı için olan yer iminin <b>%1</b> etiketi halihazırda "
+"<b>%2</b> paylaşımı için olan yer iminin <b>%1</b> etiketi hâlihazırda "
 "kullanılıyor ve kendiliğinden yeniden adlandırılacak."
 
 #: smb4knotification.cpp:246
@@ -2979,7 +2979,7 @@ msgid ""
 "The label %1 of the bookmark for the share %2 is already being used and will "
 "automatically be renamed."
 msgstr ""
-"%2 paylaşımı için olan yer iminin <b>%1</b> etiketi halihazırda kullanılıyor "
+"%2 paylaşımı için olan yer iminin <b>%1</b> etiketi hâlihazırda kullanılıyor "
 "ve kendiliğinden yeniden adlandırılacak."
 
 #: smb4knotification.cpp:269
