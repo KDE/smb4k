@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2026-03-30 07:14+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -78,17 +78,17 @@ msgstr "Sprejete so bile prepovedane možnosti odklopa."
 msgid "The unmount process could not be started."
 msgstr "Postopka odklopa ni bilo mogoče začeti."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "Argument ni veljaven. Uporabite bodisi 'on' ali 'off'."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Profili so onemogočeni."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Ime profila je neveljavno."
@@ -157,12 +157,8 @@ msgstr "Ponovno priklopi vse skupne diske, ki so bili prej uporabljeni."
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"Priklopi skupni disk kamor kaže <url>. Prepričajte se, da ste predhodno "
-"nastavili poverilnice za ta skupni disk."
+msgid "Mount the share pointed to by <url>."
+msgstr "Priklopi skupni disk, na katerega kaže <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1292,8 +1288,12 @@ msgstr "%1 prosto od %2 (%3 porabljeno)"
 msgid "Size:"
 msgstr "Velikost:"
 
-#~ msgid "Mount the share pointed to by <url>."
-#~ msgstr "Priklopi skupni disk, na katerega kaže <url>."
+#~ msgid ""
+#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
+#~ "credentials for that share."
+#~ msgstr ""
+#~ "Priklopi skupni disk kamor kaže <url>. Prepričajte se, da ste predhodno "
+#~ "nastavili poverilnice za ta skupni disk."
 
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"

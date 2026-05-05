@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2026-03-30 11:11+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -81,17 +81,17 @@ msgstr "S'han passat opcions prohibides de desmuntatge."
 msgid "The unmount process could not be started."
 msgstr "No s'ha pogut iniciar el procés de desmuntatge."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "L'argument no és vàlid. Utilitzeu «on» o «off»."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Els perfils estan desactivats."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "El nom del perfil no és vàlid."
@@ -160,13 +160,10 @@ msgstr ""
 "Torna a muntar totes les comparticions que s'han utilitzat anteriorment."
 
 #: smb4k/main.cpp:172
-#, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"Munta la compartició apuntada per <url>. Assegureu-vos que prèviament heu "
-"establit les credencials d'esta compartició."
+#, fuzzy, kde-format
+#| msgid "Set the active profile to <profile>."
+msgid "Mount the share pointed to by <url>."
+msgstr "Establix el perfil actiu a <perfil>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1297,3 +1294,10 @@ msgstr "%1 lliure de %2 (utilitzat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
+
+#~ msgid ""
+#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
+#~ "credentials for that share."
+#~ msgstr ""
+#~ "Munta la compartició apuntada per <url>. Assegureu-vos que prèviament heu "
+#~ "establit les credencials d'esta compartició."

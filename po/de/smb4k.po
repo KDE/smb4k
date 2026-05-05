@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2025-12-14 15:05+0100\n"
 "Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -85,17 +85,17 @@ msgstr "Der Aushängevorgang ist abgestürzt."
 msgid "The unmount process could not be started."
 msgstr "Der Aushängevorgang kann nicht gestartet werden."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr ""
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr ""
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, fuzzy, kde-format
 #| msgid "The file is invalid."
 msgid "The profile name is invalid."
@@ -171,9 +171,7 @@ msgstr ""
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
+msgid "Mount the share pointed to by <url>."
 msgstr ""
 
 #. i18n: ectx: Menu (file)

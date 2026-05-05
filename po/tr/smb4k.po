@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2026-03-30 19:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -83,17 +83,17 @@ msgstr "Yasaklı unmount seçenekleri geçirildi."
 msgid "The unmount process could not be started."
 msgstr "Bağlantı kesme süreci başlatılamadı."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "Argüman geçersiz. Lütfen “on” veya “off” kullanın."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Profiller devre dışı."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Profil adı geçersiz."
@@ -162,12 +162,8 @@ msgstr "Daha önceden kullanılmış tüm paylaşımları yeniden bağlayın."
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"<url> tarafından işaret edilen paylaşımı bağlayın. Daha önceden bu paylaşım "
-"için olan kimlik bilgilerini girdiğinizden emin olun."
+msgid "Mount the share pointed to by <url>."
+msgstr "<url> ile işaret edilen paylaşımı bağlayın."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1292,8 +1288,12 @@ msgstr "%1/%2 boş (%3 kullanılıyor)"
 msgid "Size:"
 msgstr "Boyut:"
 
-#~ msgid "Mount the share pointed to by <url>."
-#~ msgstr "<url> ile işaret edilen paylaşımı bağlayın."
+#~ msgid ""
+#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
+#~ "credentials for that share."
+#~ msgstr ""
+#~ "<url> tarafından işaret edilen paylaşımı bağlayın. Daha önceden bu "
+#~ "paylaşım için olan kimlik bilgilerini girdiğinizden emin olun."
 
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"
