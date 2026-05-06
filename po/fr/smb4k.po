@@ -177,7 +177,8 @@ msgid "Remount all shares that were previously used."
 msgstr "Monter à nouveau tous les partages précédemment utilisés."
 
 #: smb4k/main.cpp:172
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount the share pointed to by <url>."
 msgid "Mount the share pointed to by <url>."
 msgstr "Monter le partage indiqué par <url>."
 

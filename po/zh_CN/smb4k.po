@@ -154,10 +154,9 @@ msgid "Remount all shares that were previously used."
 msgstr "重新挂载之前用过的所有共享。"
 
 #: smb4k/main.cpp:172
-#, fuzzy, kde-format
-#| msgid "Set the active profile to <profile>."
+#, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr "将活动配置方案设为 <profile>。"
+msgstr ""
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1272,8 +1271,3 @@ msgstr "总共 %2，剩余 %1 (已用 %3)"
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid ""
-#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
-#~ "credentials for that share."
-#~ msgstr "挂载由 <url> 指向的共享。请在挂载前确保您已为该共享设置了身份凭证。"
