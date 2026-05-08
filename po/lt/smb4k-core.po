@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-04-13 23:24+0300\n"
+"PO-Revision-Date: 2026-05-07 20:55+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -1581,7 +1581,7 @@ msgstr ""
 #: smb4k.kcfg:647
 #, kde-format
 msgid "Use profiles"
-msgstr ""
+msgstr "Naudoti profilius"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
 #: smb4k.kcfg:648
@@ -1591,30 +1591,34 @@ msgid ""
 "custom options for each profile. This is especially useful if you are using "
 "a laptop in different network neighborhoods, e. g. at home and at work."
 msgstr ""
+"Padaryti taip, kad Smb4K naudotų profilius. Tai jums leidžia kiekvienam "
+"profiliui apibrėžti skirtingas žymeles ir tinkintas parinktis. Tai ypatingai "
+"naudinga tuo atveju, jei naudojatės nešiojamuoju kompiuteriu įvairiose "
+"tinklo aplinkose, pvz., namuose ir darbe."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:652
 #, kde-format
 msgid "Profiles"
-msgstr ""
+msgstr "Profiliai"
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:653
 #, kde-format
 msgid "The list of profiles."
-msgstr ""
+msgstr "Profilių sąrašas."
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:662
 #, kde-format
 msgid "Active profile"
-msgstr ""
+msgstr "Aktyvus profilis"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:663
 #, kde-format
 msgid "This is the currently active profile."
-msgstr ""
+msgstr "Tai yra šiuo metu aktyvus profilis."
 
 #: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:269 smb4kshare.cpp:160
 #: smb4kshare.cpp:163
@@ -1647,12 +1651,12 @@ msgstr ""
 #: smb4kclient_p.cpp:1330
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "Šioje KDE versijoje Zeroconf palaikymas yra neprieinamas."
 
 #: smb4kclient_p.cpp:1334
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Įvyko nežinoma su Zeroconf susijusi klaida."
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
@@ -2231,7 +2235,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:121
 #, kde-format
 msgid "Write access:"
-msgstr ""
+msgstr "Rašymo prieiga:"
 
 #. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
 #. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
@@ -2241,18 +2245,20 @@ msgid ""
 "Here you can choose if the shares should be mounted in read-write or read-"
 "only mode."
 msgstr ""
+"Čia galite pasirinkti, ar viešiniai turėtų būti prijungti skaitymo-rašymo ar "
+"tik skaitymo veiksenoje."
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:129
 #, kde-format
 msgid "read-write"
-msgstr ""
+msgstr "skaitymas-rašymas"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:132
 #, kde-format
 msgid "read-only"
-msgstr ""
+msgstr "tik skaitymas"
 
 #. i18n: ectx: label, entry (ForceUID), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:138
@@ -2462,7 +2468,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:219
 #, kde-format
 msgid "Follow the CIFS/SMB2 protocol strictly"
-msgstr ""
+msgstr "Griežtai laikytis CIFS/SMB2 protokolo"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:222
@@ -2633,22 +2639,22 @@ msgstr ""
 #: smb4knotification.cpp:269
 #, kde-format
 msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr ""
+msgstr "Nepavyko prijungti viešinį <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:271
 #, kde-format
 msgid "Mounting the share <b>%1</b> failed."
-msgstr ""
+msgstr "Nepavyko prijungti viešinį <b>%1</b>."
 
 #: smb4knotification.cpp:287
 #, kde-format
 msgid "Mounting the share %1 failed: %2"
-msgstr ""
+msgstr "Nepavyko prijungti viešinį %1: %2"
 
 #: smb4knotification.cpp:289
 #, kde-format
 msgid "Mounting the share %1 failed."
-msgstr ""
+msgstr "Nepavyko prijungti viešinį %1."
 
 #: smb4knotification.cpp:308
 #, kde-format
@@ -2673,22 +2679,22 @@ msgstr ""
 #: smb4knotification.cpp:341
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
+msgstr "Nepavyko sinchronizuoti <b>%1</b> su <b>%2</b>: <tt>%3</tt>"
 
 #: smb4knotification.cpp:343
 #, kde-format
 msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
-msgstr ""
+msgstr "Nepavyko sinchronizuoti <b>%1</b> su <b>%2</b>."
 
 #: smb4knotification.cpp:359
 #, kde-format
 msgid "Synchronizing %1 with %2 failed: %3"
-msgstr ""
+msgstr "Nepavyko sinchronizuoti %1 su %2: %3"
 
 #: smb4knotification.cpp:361
 #, kde-format
 msgid "Synchronizing %1 with %2 failed."
-msgstr ""
+msgstr "Nepavyko sinchronizuoti %1 su %2."
 
 #: smb4knotification.cpp:377
 #, kde-format
@@ -2714,57 +2720,57 @@ msgstr ""
 #: smb4knotification.cpp:421
 #, kde-format
 msgid "The file %1 could not be found."
-msgstr ""
+msgstr "Nepavyko rasti failą %1."
 
 #: smb4knotification.cpp:431
 #, kde-format
 msgid "Opening the file <b>%1</b> failed: <tt>%2</tt>"
-msgstr ""
+msgstr "Nepavyko atverti failą <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:433
 #, kde-format
 msgid "Opening the file <b>%1</b> failed."
-msgstr ""
+msgstr "Nepavyko atverti failą <b>%1</b>."
 
 #: smb4knotification.cpp:449
 #, kde-format
 msgid "Opening the file %1 failed: %2"
-msgstr ""
+msgstr "Nepavyko atverti failą %1: %2"
 
 #: smb4knotification.cpp:451
 #, kde-format
 msgid "Opening the file %1 failed."
-msgstr ""
+msgstr "Nepavyko atverti failą %1."
 
 #: smb4knotification.cpp:464 smb4knotification.cpp:467
 #, kde-format
 msgid "Reading from file <b>%1</b> failed: <tt>%2</tt>"
-msgstr ""
+msgstr "Nepavyko skaityti iš failo <b>%1</b>: <tt>%2</tt>"
 
 #: smb4knotification.cpp:469
 #, kde-format
 msgid "Reading from file <b>%1</b> failed."
-msgstr ""
+msgstr "Nepavyko skaityti iš failo <b>%1</b>."
 
 #: smb4knotification.cpp:486 smb4knotification.cpp:489
 #, kde-format
 msgid "Reading from file %1 failed: %2"
-msgstr ""
+msgstr "Nepavyko skaityti iš failo %1: %2"
 
 #: smb4knotification.cpp:491
 #, kde-format
 msgid "Reading from file %1 failed."
-msgstr ""
+msgstr "Nepavyko skaityti iš failo %1."
 
 #: smb4knotification.cpp:508
 #, kde-format
 msgid "The following directory could not be created: <tt>%1</tt>"
-msgstr ""
+msgstr "Nepavyko sukurti šį katalogą: <tt>%1</tt>"
 
 #: smb4knotification.cpp:512
 #, kde-format
 msgid "The following directory could not be created: %1"
-msgstr ""
+msgstr "Nepavyko sukurti šį katalogą: %1"
 
 #: smb4knotification.cpp:523
 #, kde-format
