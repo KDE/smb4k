@@ -156,7 +156,7 @@ msgstr "重新挂载之前用过的所有共享。"
 #: smb4k/main.cpp:172
 #, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr ""
+msgstr "挂载 <url> 指向的共享。"
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4

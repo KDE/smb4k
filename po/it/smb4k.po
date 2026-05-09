@@ -159,10 +159,9 @@ msgid "Remount all shares that were previously used."
 msgstr "Rimonta le condivisioni che sono già state utilizzate."
 
 #: smb4k/main.cpp:172
-#, fuzzy, kde-format
-#| msgid "Set the active profile to <profile>."
+#, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr "Imposta il profili attivo a <profile>."
+msgstr "Monta la condivisione indicata da <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
