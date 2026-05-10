@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-05 00:44+0000\n"
-"PO-Revision-Date: 2026-04-05 12:31+0100\n"
+"PO-Revision-Date: 2026-05-09 21:13+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -168,10 +168,9 @@ msgid "Remount all shares that were previously used."
 msgstr "Remontar todos los recursos compartidos que se han usado previamente."
 
 #: smb4k/main.cpp:172
-#, fuzzy, kde-format
-#| msgid "Set the active profile to <profile>."
+#, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr "Establece el perfil activo a <profile>."
+msgstr "Montar el recurso compartido apuntado por <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1305,10 +1304,3 @@ msgstr "%1 libres de %2 (%3 utilizado)"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgid ""
-#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
-#~ "credentials for that share."
-#~ msgstr ""
-#~ "Montar el recurso compartido apuntado por <url>. Asegúrese de haber "
-#~ "establecido las credenciales para ese recursos previamente."
