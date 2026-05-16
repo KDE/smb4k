@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2026-03-30 09:35+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -81,17 +81,17 @@ msgstr "Було передано заборонені параметри дем
 msgid "The unmount process could not be started."
 msgstr "Не вдалося запустити процес демонтування."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "Некоректний аргумент. Будь ласка, скористайтеся «on» або «off»."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Профілі вимкнено."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Некоректна назва профілю."
@@ -161,12 +161,8 @@ msgstr "Повторно змонтувати усі спільні ресурс
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"Змонтувати спільний ресурс, на який вказує <адреса>. Переконайтеся, що перед "
-"цим було встановлено реєстраційні дані для цього спільного ресурсу."
+msgid "Mount the share pointed to by <url>."
+msgstr "Змонтувати спільний ресурс, на який вказує <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1301,8 +1297,12 @@ msgstr "Вільно %1 з %2 (використано %3)"
 msgid "Size:"
 msgstr "Розмір:"
 
-#~ msgid "Mount the share pointed to by <url>."
-#~ msgstr "Змонтувати спільний ресурс, на який вказує <url>."
+#~ msgid ""
+#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
+#~ "credentials for that share."
+#~ msgstr ""
+#~ "Змонтувати спільний ресурс, на який вказує <адреса>. Переконайтеся, що "
+#~ "перед цим було встановлено реєстраційні дані для цього спільного ресурсу."
 
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"

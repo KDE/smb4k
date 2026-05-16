@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2026-03-30 08:56-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -86,17 +86,17 @@ msgstr "Foram passadas opções de desmontagem proibidas."
 msgid "The unmount process could not be started."
 msgstr "O processo de desmontagem não pôde ser iniciado."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "O argumento é inválido. Por favor, use 'on' ou 'off'."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Os perfis estão desabilitados."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "O nome do perfil é inválido."
@@ -165,12 +165,8 @@ msgstr "Remonta todos os compartilhamentos que foram usados anteriormente."
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"Montar o compartilhamento apontado por <url>. Certifique-se de ter "
-"configurado as credenciais para esse compartilhamento previamente."
+msgid "Mount the share pointed to by <url>."
+msgstr "Monta o compartilhamento apontado por <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1299,8 +1295,12 @@ msgstr "%1 livres de %2 (%3 usado)"
 msgid "Size:"
 msgstr "Tamanho:"
 
-#~ msgid "Mount the share pointed to by <url>."
-#~ msgstr "Monta o compartilhamento apontado por <url>."
+#~ msgid ""
+#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
+#~ "credentials for that share."
+#~ msgstr ""
+#~ "Montar o compartilhamento apontado por <url>. Certifique-se de ter "
+#~ "configurado as credenciais para esse compartilhamento previamente."
 
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"

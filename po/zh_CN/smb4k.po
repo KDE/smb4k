@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -78,17 +78,17 @@ msgstr "传递了被禁止的 umount 选项。"
 msgid "The unmount process could not be started."
 msgstr "无法启动卸载进程。"
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "参数无效。请使用 on 或 off。"
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "已禁用配置方案。"
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "配置方案名称无效。"
@@ -155,10 +155,8 @@ msgstr "重新挂载之前用过的所有共享。"
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr "挂载由 <url> 指向的共享。请在挂载前确保您已为该共享设置了身份凭证。"
+msgid "Mount the share pointed to by <url>."
+msgstr "挂载 <url> 指向的共享。"
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4

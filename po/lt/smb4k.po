@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
-"PO-Revision-Date: 2026-04-13 22:59+0300\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
+"PO-Revision-Date: 2026-05-07 20:38+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -81,17 +81,17 @@ msgstr "Buvo perduotos draudžiamos atjungimo parinktys."
 msgid "The unmount process could not be started."
 msgstr "Nepavyko paleisti atjungimo proceso."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr ""
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Profiliai yra išjungti."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Netinkamas profilio pavadinimas."
@@ -156,13 +156,11 @@ msgstr "Išvardyti visus profilius."
 #: smb4k/main.cpp:169
 #, kde-format
 msgid "Remount all shares that were previously used."
-msgstr ""
+msgstr "Iš naujo prijungti visus anksčiau naudotus viešinius."
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
+msgid "Mount the share pointed to by <url>."
 msgstr ""
 
 #. i18n: ectx: Menu (file)
@@ -227,10 +225,9 @@ msgid "Category:"
 msgstr "Kategorija:"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Žymelės"
+msgstr "Žymelių redaktorius"
 
 #: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
@@ -250,10 +247,9 @@ msgid "Add &Bookmark"
 msgstr "&Pridėti žymelę"
 
 #: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
-#, fuzzy, kde-format
-#| msgid "&Edit Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "&Keisti žymeles"
+msgstr "Prijungti žymeles"
 
 #: smb4k/smb4kconfigdialog.cpp:125
 #, kde-format
@@ -777,17 +773,17 @@ msgstr "Ieškoma darbo grupių ir domenų..."
 #: smb4k/smb4kmainwindow.cpp:493
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr ""
+msgstr "Ieškoma mazgų, esančių domene %1..."
 
 #: smb4k/smb4kmainwindow.cpp:498
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr ""
+msgstr "Ieškoma %1 mazgo pateiktų viešinių..."
 
 #: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr ""
+msgstr "Ieškoma failų ir katalogų, esančių %1..."
 
 #: smb4k/smb4kmainwindow.cpp:532
 #, kde-format
@@ -838,7 +834,7 @@ msgstr "%1 sėkmingai atjungtas."
 #: smb4k/smb4kmainwindow.cpp:684
 #, kde-format
 msgid "Synchronizing %1"
-msgstr ""
+msgstr "Sinchronizuojamas %1"
 
 #: smb4k/smb4kmountdialog.cpp:38
 #, kde-format
@@ -907,7 +903,7 @@ msgstr "&Ieškoti"
 #: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Vald+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
@@ -919,7 +915,7 @@ msgstr "Pridėti tin&kintas nuostatas"
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Vald+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
@@ -929,7 +925,7 @@ msgstr "&Atverti prijungimo dialogą"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Vald+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:175
 #, kde-format
@@ -939,7 +935,7 @@ msgstr "&Tapatybės nustatymas"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Vald+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:186
 #, kde-format
@@ -949,7 +945,7 @@ msgstr "Perž&iūra"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Vald+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:197
 #, kde-format
@@ -959,7 +955,7 @@ msgstr "S&pausdinti failą"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Vald+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
@@ -976,7 +972,7 @@ msgstr "&Atjungti"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:949
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Vald+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:397
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:408
@@ -993,7 +989,7 @@ msgstr "Pe&ržiūrėti darbo grupę"
 #: smb4k/smb4ksharesviewdockwidget.cpp:177
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Vald+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:34
 #, kde-format
@@ -1017,16 +1013,14 @@ msgid "Stop"
 msgstr "Stabdyti"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:63
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Down"
-msgstr "Elementas"
+msgstr "Nuleisti elementą"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:72
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Up"
-msgstr "Elementas"
+msgstr "Pakelti elementą"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
 #, kde-format
@@ -1146,7 +1140,7 @@ msgstr "Sąrašo rodinys"
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Vald+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
@@ -1156,7 +1150,7 @@ msgstr "Sin&chronizuoti"
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Vald+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:238
 #, kde-format
@@ -1166,7 +1160,7 @@ msgstr "Atverti naudojant Konso&le"
 #: smb4k/smb4ksharesviewdockwidget.cpp:243
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Vald+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:245
 #, kde-format
@@ -1176,7 +1170,7 @@ msgstr "Atverti naudojant f&ailų tvarkytuvę"
 #: smb4k/smb4ksharesviewdockwidget.cpp:250
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Vald+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:364
 #, kde-format

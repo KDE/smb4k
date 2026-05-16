@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2026-04-07 15:38+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -79,17 +79,17 @@ msgstr "Sono state passate delle opzioni di smontaggio proibite."
 msgid "The unmount process could not be started."
 msgstr "Il processo di smontaggio non può essere avviato."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "L'argomento  non è valido. Utilizza «attivo» o «disattivo»."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "I profili sono disabilitati."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Il nome del profilo non è valido."
@@ -160,12 +160,8 @@ msgstr "Rimonta le condivisioni che sono già state utilizzate."
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"Monta la condivisione a cui punta <url>. Assicurati di aver già impostato le "
-"credenziali per questa condivisione."
+msgid "Mount the share pointed to by <url>."
+msgstr "Monta la condivisione indicata da <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1296,6 +1292,13 @@ msgstr "%1 liberi di %2 (usato %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Dimensione:"
+
+#~ msgid ""
+#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
+#~ "credentials for that share."
+#~ msgstr ""
+#~ "Monta la condivisione a cui punta <url>. Assicurati di aver già impostato "
+#~ "le credenziali per questa condivisione."
 
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"

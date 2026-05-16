@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
-"PO-Revision-Date: 2026-04-05 12:31+0100\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
+"PO-Revision-Date: 2026-05-09 21:13+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -90,17 +90,17 @@ msgstr "Se especificaron opciones de desmontaje prohibidas."
 msgid "The unmount process could not be started."
 msgstr "El proceso de desmontaje no se pudo iniciar."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "El argumento no es válido. Use «on» u «off»."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Los perfiles no están activos."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "El nombre del perfil no es válido."
@@ -169,12 +169,8 @@ msgstr "Remontar todos los recursos compartidos que se han usado previamente."
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"Montar el recurso compartido apuntado por <url>. Asegúrese de haber "
-"establecido las credenciales para ese recursos previamente."
+msgid "Mount the share pointed to by <url>."
+msgstr "Montar el recurso compartido apuntado por <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4

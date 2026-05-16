@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-30 00:43+0000\n"
+"POT-Creation-Date: 2026-05-05 00:44+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -78,17 +78,17 @@ msgstr "Boli zadané zakázané voľby odpojenia."
 msgid "The unmount process could not be started."
 msgstr "Proces odpojenia nie je možné spustiť."
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "Argument je neplatný. Použite prosím 'on' alebo 'off'."
 
-#: smb4k/main.cpp:56 smb4k/main.cpp:74
+#: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Profily sú zakázané."
 
-#: smb4k/main.cpp:63
+#: smb4k/main.cpp:64
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Názov profilu je neplatný."
@@ -157,12 +157,8 @@ msgstr "Znovu pripojiť všetky zdieľania, ktoré sa predtým používali."
 
 #: smb4k/main.cpp:172
 #, kde-format
-msgid ""
-"Mount the share pointed to by <url>. Make sure, you previously set the "
-"credentials for that share."
-msgstr ""
-"Pripojiť zdieľanie na ktoré ukazuje <url>. Uistite sa, že ste predtým "
-"nastavili prihlasovacie údaje pre toto zdieľanie."
+msgid "Mount the share pointed to by <url>."
+msgstr "Pripojiť zdieľanú položku určenú pomocou <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1290,6 +1286,13 @@ msgstr "%1 voľných z %2 (%3 použitých)"
 #, kde-format
 msgid "Size:"
 msgstr "Veľkosť:"
+
+#~ msgid ""
+#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
+#~ "credentials for that share."
+#~ msgstr ""
+#~ "Pripojiť zdieľanie na ktoré ukazuje <url>. Uistite sa, že ste predtým "
+#~ "nastavili prihlasovacie údaje pre toto zdieľanie."
 
 #, fuzzy
 #~ msgctxt "Bookmark a share in the mount dialog."
