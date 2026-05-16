@@ -438,7 +438,8 @@ void Smb4KMountDialog::slotAccepted()
     completionGroup.writeEntry("LabelCompletion", m_bookmarkLabelInput->completionObject()->items());
     completionGroup.writeEntry("CategoryCompletion", m_bookmarkCategoryInput->completionObject()->items());
 
-    m_customSettingsWidget->saveCompletionItems();
+    // We do not need to call Smb4KCustomSettingsEditorWidget::saveCompletionItems() here, because
+    // this is already covered by the code above.
 
     accept();
 }
