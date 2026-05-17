@@ -1,7 +1,7 @@
 # translation of smb4k.po to Polish
 # This file is put in the public domain.
 #
-# SPDX-FileCopyrightText: 2011, 2012, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2011-2012, 2014-2019, 2021-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Jerzy Trzeciak <artusek@wp.pl>, 2007, 2008, 2010.
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2007.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-24 02:51+0000\n"
-"PO-Revision-Date: 2024-07-20 09:28+0200\n"
+"PO-Revision-Date: 2026-05-16 13:03+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -32,59 +32,54 @@ msgid "Your emails"
 msgstr "artusek@wp.pl, lukasz.wojnilowicz@gmail.com"
 
 #: helpers/smb4kmounthelper.cpp:68
-#, fuzzy, kde-format
-#| msgid "The wallet is not in use."
+#, kde-format
 msgid "The computer is not online."
-msgstr "Portfel nie jest używany."
+msgstr "Komputer jest odłączony od sieci."
 
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Nie można utworzyć punktu podpięcia dla zasobu %1."
 
 #: helpers/smb4kmounthelper.cpp:83
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Nie można uruchomić procesu podpinania."
+msgstr "Nie udało się znaleźć polecenia podpinającego."
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Podano zabronione ustawienia do polecenia podpinającego."
 
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Jest coś nie tak z dostarczonym zgłoszeniem Kerberos."
 
 #: helpers/smb4kmounthelper.cpp:183
 #, kde-format
 msgid "The mount process could not be started."
-msgstr "Nie można uruchomić procesu podpinania."
+msgstr "Nie udało się uruchomić polecenia podpinającego."
 
 #: helpers/smb4kmounthelper.cpp:196
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr "Punkt podpięcia %1 jest nieprawidłowy."
+msgstr "Punkt podpięcia %1 jest nielegalny."
 
 #: helpers/smb4kmounthelper.cpp:202
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Nie można uruchomić procesu odpinania."
+msgstr "Nie udało się znaleźć polecenia odpinającego."
 
 #: helpers/smb4kmounthelper.cpp:208
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "Proces odpinania zakończył się usterką."
+msgstr "Podano zabronione ustawienia do polecenia odpinającego."
 
 #: helpers/smb4kmounthelper.cpp:250
 #, kde-format
 msgid "The unmount process could not be started."
-msgstr "Nie można uruchomić procesu odpinania."
+msgstr "Nie udało się uruchomić polecenia odpinającego."
 
 #: smb4k/main.cpp:40 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -652,10 +647,9 @@ msgstr "Adres MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:283
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:467
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Adres MAC:"
+msgstr "Znajdź adres MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:292
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:476
@@ -772,7 +766,7 @@ msgstr "Gotowe."
 #: smb4k/smb4kmainwindow.cpp:569
 #, kde-format
 msgid "Mounting..."
-msgstr "Podpinanie..."
+msgstr "Podpinanie…"
 
 #: smb4k/smb4kmainwindow.cpp:573
 #, kde-format
@@ -1233,7 +1227,7 @@ msgstr "nieznany"
 #: smb4k/smb4ktooltip.cpp:236
 #, kde-format
 msgid "Owner:"
-msgstr "Właścicel:"
+msgstr "Właściciel:"
 
 #: smb4k/smb4ktooltip.cpp:239
 #, kde-format
