@@ -160,10 +160,9 @@ msgstr ""
 "Torna a muntar totes les comparticions que s'han utilitzat anteriorment."
 
 #: smb4k/main.cpp:172
-#, fuzzy, kde-format
-#| msgid "Set the active profile to <profile>."
+#, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr "Establix el perfil actiu a <perfil>."
+msgstr "Munta la compartició apuntada per <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -1294,10 +1293,3 @@ msgstr "%1 lliure de %2 (utilitzat %3)"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid ""
-#~ "Mount the share pointed to by <url>. Make sure, you previously set the "
-#~ "credentials for that share."
-#~ msgstr ""
-#~ "Munta la compartició apuntada per <url>. Assegureu-vos que prèviament heu "
-#~ "establit les credencials d'esta compartició."
