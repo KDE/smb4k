@@ -76,33 +76,27 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     //
     // Set up the DBUS interface
     //
-    if (QDBusConnection::systemBus().interface()->isServiceRegistered(QStringLiteral("org.freedesktop.login1"))) {
-        // Systemd
-        d->dbusInterface.reset(new QDBusInterface(QStringLiteral("org.freedesktop.login1"),
-                                                  QStringLiteral("/org/freedesktop/login1"),
-                                                  QStringLiteral("org.freedesktop.login1.Manager"),
-                                                  QDBusConnection::systemBus(),
-                                                  this));
+    auto systemBus = QDBusConnection::systemBus();
 
-        QDBusConnection::systemBus().connect(QString(),
-                                             QString(),
-                                             QStringLiteral("org.freedesktop.login1.Manager"),
-                                             QStringLiteral("PrepareForSleep"),
-                                             this,
-                                             SLOT(slotSystemSleep(bool)));
-    } else if (QDBusConnection::systemBus().interface()->isServiceRegistered(QStringLiteral("org.freedesktop.ConsoleKit"))) {
+    if (systemBus.interface()->isServiceRegistered(QStringLiteral("org.freedesktop.login1"))) {
+        // Systemd
+        const QString service = QStringLiteral("org.freedesktop.login1");
+        const QString path = QStringLiteral("/org/freedesktop/login1");
+        const QString interface = QStringLiteral("org.freedesktop.login1.Manager");
+
+        d->dbusInterface.reset(new QDBusInterface(service, path, interface, systemBus, this));
+
+        systemBus.connect(service, path, interface, QStringLiteral("PrepareForSleep"), this, SLOT(slotSystemSleep(bool)));
+
+    } else if (systemBus.interface()->isServiceRegistered(QStringLiteral("org.freedesktop.ConsoleKit"))) {
         // ConsoleKit
-        d->dbusInterface.reset(new QDBusInterface(QStringLiteral("org.freedesktop.ConsoleKit"),
-                                                  QStringLiteral("/org/freedesktop/ConsoleKit/Manager"),
-                                                  QStringLiteral("org.freedesktop.ConsoleKit.Manager"),
-                                                  QDBusConnection::systemBus(),
-                                                  this));
-        QDBusConnection::systemBus().connect(QString(),
-                                             QString(),
-                                             QStringLiteral("org.freedesktop.ConsoleKit.Manager"),
-                                             QStringLiteral("PrepareForSleep"),
-                                             this,
-                                             SLOT(slotSystemSleep(bool)));
+        const QString service = QStringLiteral("org.freedesktop.ConsoleKit");
+        const QString path = QStringLiteral("/org/freedesktop/ConsoleKit");
+        const QString interface = QStringLiteral("org.freedesktop.ConsoleKit.Manager");
+
+        d->dbusInterface.reset(new QDBusInterface(service, path, interface, systemBus, this));
+
+        systemBus.connect(service, path, interface, QStringLiteral("PrepareForSleep"), this, SLOT(slotSystemSleep(bool)));
     }
 
     //
