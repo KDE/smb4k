@@ -270,7 +270,6 @@ void Smb4KMainWindow::saveSettings()
     m_networkBrowserDockWidget->saveSettings();
     m_sharesViewDockWidget->saveSettings();
 
-    Smb4KSettings::setStartMainWindowDocked(!isVisible());
     Smb4KSettings::self()->save();
 }
 

@@ -57,6 +57,11 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
     layout->addWidget(mainWindowBox);
 
+    QCheckBox *startMainWindowDocked = new QCheckBox(Smb4KSettings::self()->startMainWindowDockedItem()->label(), this);
+    startMainWindowDocked->setObjectName(QStringLiteral("kcfg_StartMainWindowDocked"));
+
+    mainWindowBoxLayout->addWidget(startMainWindowDocked, 2, 0, 2, 2);
+
     //
     // Network Neighborhood settings
     //
