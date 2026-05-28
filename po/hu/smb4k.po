@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:44+0000\n"
+"POT-Creation-Date: 2026-05-28 00:43+0000\n"
 "PO-Revision-Date: 2024-05-10 14:21+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -655,12 +655,12 @@ msgstr "Ellenőrzőösszegek"
 msgid "Main Window"
 msgstr "Főablak"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:169
+#: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Hálózati mappa"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#: smb4k/smb4kconfigpageuserinterface.cpp:111
 #, kde-format
 msgid "Shares View"
 msgstr "Megosztások nézet"
@@ -770,7 +770,7 @@ msgstr "Widgetek dokkolása"
 msgid "Mounted Shares"
 msgstr "Csatolt megosztások"
 
-#: smb4k/smb4kmainwindow.cpp:282
+#: smb4k/smb4kmainwindow.cpp:281
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Closing the main window will keep Smb4K running in the system tray. "
@@ -782,90 +782,90 @@ msgstr ""
 "<p>A főablak bezárása után az Smb4K tovább fut a paneltálcán. Használja a "
 "„Fájl” menü „Kilépés” pontját az alkalmazás bezáráshoz.</p>"
 
-#: smb4k/smb4kmainwindow.cpp:284
+#: smb4k/smb4kmainwindow.cpp:283
 #, kde-format
 msgid "Docking"
 msgstr "Dokkolás"
 
-#: smb4k/smb4kmainwindow.cpp:339
+#: smb4k/smb4kmainwindow.cpp:338
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Nincsenek csatolt megosztások."
 
-#: smb4k/smb4kmainwindow.cpp:342
+#: smb4k/smb4kmainwindow.cpp:341
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "%1 csatolt megosztás van."
 msgstr[1] "%1 csatolt megosztás van."
 
-#: smb4k/smb4kmainwindow.cpp:488
+#: smb4k/smb4kmainwindow.cpp:487
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Munkacsoportok és tartományok keresése…"
 
-#: smb4k/smb4kmainwindow.cpp:493
+#: smb4k/smb4kmainwindow.cpp:492
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Gépek keresése a(z) %1 tartományban…"
 
-#: smb4k/smb4kmainwindow.cpp:498
+#: smb4k/smb4kmainwindow.cpp:497
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "A(z) %1 gép által nyújtott megosztások keresése…"
 
-#: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
+#: smb4k/smb4kmainwindow.cpp:505 smb4k/smb4kmainwindow.cpp:514
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Fájlok és mappák keresése itt: %1…"
 
-#: smb4k/smb4kmainwindow.cpp:532
+#: smb4k/smb4kmainwindow.cpp:531
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Távoli gépek felébresztése…"
 
-#: smb4k/smb4kmainwindow.cpp:537
+#: smb4k/smb4kmainwindow.cpp:536
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Fájl küldése a(z) %1 nyomtatóra…"
 
-#: smb4k/smb4kmainwindow.cpp:541
+#: smb4k/smb4kmainwindow.cpp:540
 #, kde-format
 msgid "Searching..."
 msgstr "Keresés…"
 
-#: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:561 smb4k/smb4kmainwindow.cpp:608
+#: smb4k/smb4kmainwindow.cpp:697
 #, kde-format
 msgid "Done."
 msgstr "Kész."
 
-#: smb4k/smb4kmainwindow.cpp:580
+#: smb4k/smb4kmainwindow.cpp:579
 #, kde-format
 msgid "Mounting..."
 msgstr "Csatolás…"
 
-#: smb4k/smb4kmainwindow.cpp:584
+#: smb4k/smb4kmainwindow.cpp:583
 #, kde-format
 msgid "Unmounting..."
 msgstr "Leválasztás…"
 
-#: smb4k/smb4kmainwindow.cpp:588
+#: smb4k/smb4kmainwindow.cpp:587
 #, kde-format
 msgid "Waking up host..."
 msgstr "Gép felébresztése…"
 
-#: smb4k/smb4kmainwindow.cpp:622
+#: smb4k/smb4kmainwindow.cpp:621
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 sikeresen csatolva."
 
-#: smb4k/smb4kmainwindow.cpp:645
+#: smb4k/smb4kmainwindow.cpp:644
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 sikeresen leválasztva."
 
-#: smb4k/smb4kmainwindow.cpp:684
+#: smb4k/smb4kmainwindow.cpp:683
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 szinkronizálása"

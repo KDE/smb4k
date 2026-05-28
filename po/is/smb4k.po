@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:44+0000\n"
+"POT-Creation-Date: 2026-05-28 00:43+0000\n"
 "PO-Revision-Date: 2026-03-17 10:54+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -643,12 +643,12 @@ msgstr "Gátsummur"
 msgid "Main Window"
 msgstr "Aðalgluggi"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:169
+#: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Netumhverfi"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#: smb4k/smb4kconfigpageuserinterface.cpp:111
 #, kde-format
 msgid "Shares View"
 msgstr "Sameignasýn"
@@ -742,7 +742,7 @@ msgstr "Festa viðmótshluta"
 msgid "Mounted Shares"
 msgstr "Tengdar sameignir"
 
-#: smb4k/smb4kmainwindow.cpp:282
+#: smb4k/smb4kmainwindow.cpp:281
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -752,90 +752,90 @@ msgstr ""
 "<br>Notaðu <i>Hætta</i> úr <i>Skrá</i>-valmyndinni til að hætta í forritinu."
 "</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:284
+#: smb4k/smb4kmainwindow.cpp:283
 #, kde-format
 msgid "Docking"
 msgstr "Festing"
 
-#: smb4k/smb4kmainwindow.cpp:339
+#: smb4k/smb4kmainwindow.cpp:338
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Núna eru engar sameignir tengdar við kerfið."
 
-#: smb4k/smb4kmainwindow.cpp:342
+#: smb4k/smb4kmainwindow.cpp:341
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Núna er %1 sameign tengd við kerfið."
 msgstr[1] "Núna eru %1 sameignir tengdar við kerfið."
 
-#: smb4k/smb4kmainwindow.cpp:488
+#: smb4k/smb4kmainwindow.cpp:487
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Leita að vinnuhópum og lénum..."
 
-#: smb4k/smb4kmainwindow.cpp:493
+#: smb4k/smb4kmainwindow.cpp:492
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Leita að miðlurum á léninu %1..."
 
-#: smb4k/smb4kmainwindow.cpp:498
+#: smb4k/smb4kmainwindow.cpp:497
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Leita að sameignum sem boðið er upp á af miðlaranum %1..."
 
-#: smb4k/smb4kmainwindow.cpp:506 smb4k/smb4kmainwindow.cpp:515
+#: smb4k/smb4kmainwindow.cpp:505 smb4k/smb4kmainwindow.cpp:514
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Leita að skrám og möppum á %1..."
 
-#: smb4k/smb4kmainwindow.cpp:532
+#: smb4k/smb4kmainwindow.cpp:531
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Vek upp fjartengdar vélar..."
 
-#: smb4k/smb4kmainwindow.cpp:537
+#: smb4k/smb4kmainwindow.cpp:536
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Sendi skrá á prentarann %1..."
 
-#: smb4k/smb4kmainwindow.cpp:541
+#: smb4k/smb4kmainwindow.cpp:540
 #, kde-format
 msgid "Searching..."
 msgstr "Leita..."
 
-#: smb4k/smb4kmainwindow.cpp:562 smb4k/smb4kmainwindow.cpp:609
-#: smb4k/smb4kmainwindow.cpp:698
+#: smb4k/smb4kmainwindow.cpp:561 smb4k/smb4kmainwindow.cpp:608
+#: smb4k/smb4kmainwindow.cpp:697
 #, kde-format
 msgid "Done."
 msgstr "Lokið."
 
-#: smb4k/smb4kmainwindow.cpp:580
+#: smb4k/smb4kmainwindow.cpp:579
 #, kde-format
 msgid "Mounting..."
 msgstr "Tengi í skráakerfi"
 
-#: smb4k/smb4kmainwindow.cpp:584
+#: smb4k/smb4kmainwindow.cpp:583
 #, kde-format
 msgid "Unmounting..."
 msgstr "Aftengi..."
 
-#: smb4k/smb4kmainwindow.cpp:588
+#: smb4k/smb4kmainwindow.cpp:587
 #, kde-format
 msgid "Waking up host..."
 msgstr "Vek upp hýsivél..."
 
-#: smb4k/smb4kmainwindow.cpp:622
+#: smb4k/smb4kmainwindow.cpp:621
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 hefur verið tengt eðlilega."
 
-#: smb4k/smb4kmainwindow.cpp:645
+#: smb4k/smb4kmainwindow.cpp:644
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 hefur verið aftengt eðlilega."
 
-#: smb4k/smb4kmainwindow.cpp:684
+#: smb4k/smb4kmainwindow.cpp:683
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Samstilli %1"
