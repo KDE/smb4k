@@ -1231,14 +1231,3 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"
-
-#~ msgid "Directories"
-#~ msgstr "Директории"
-
-#, fuzzy
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Допълнителни настройки:"
-
-#, fuzzy
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Допълнителни настройки:"
