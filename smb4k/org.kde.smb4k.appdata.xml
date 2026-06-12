@@ -151,6 +151,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="sl">Zmožnosti:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="tr">Özellikler:</p>
+    <p xml:lang="ug">ئىقتىدار:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="zh-CN">程序功能：</p>
     <p xml:lang="zh-TW">功能：</p>
@@ -494,6 +495,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sl">Privzeta prijava</li>
       <li xml:lang="sv">Standardinloggning</li>
       <li xml:lang="tr">Öntanımlı oturum açma</li>
+      <li xml:lang="ug">كۆڭۈلدىكى تىزىمغا كىرىش</li>
       <li xml:lang="uk">Типова реєстрація.</li>
       <li xml:lang="zh-CN">默认登录</li>
       <li xml:lang="zh-TW">預設登入</li>
@@ -973,6 +975,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="sl">Glavno okno</caption>
       <caption xml:lang="sv">Huvudfönstret</caption>
       <caption xml:lang="tr">Ana pencere</caption>
+      <caption xml:lang="ug">ئاساسى كۆزنەك</caption>
       <caption xml:lang="uk">Головне вікно.</caption>
       <caption xml:lang="zh-CN">主窗口</caption>
       <caption xml:lang="zh-TW">主視窗</caption>

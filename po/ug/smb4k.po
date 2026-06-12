@@ -8,24 +8,25 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:43+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-06-01 18:47-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #: helpers/smb4kmounthelper.cpp:68
 #, kde-format
@@ -100,13 +101,12 @@ msgstr ""
 #: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
-msgstr "Smb4K"
+msgstr ""
 
 #: smb4k/main.cpp:141
-#, fuzzy, kde-format
-#| msgid "Advanced Network Neighborhood Browser"
+#, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
-msgstr "ئالىي تور قوشنا كۆرگۈ"
+msgstr ""
 
 #: smb4k/main.cpp:143
 #, kde-format
@@ -116,12 +116,12 @@ msgstr ""
 #: smb4k/main.cpp:148
 #, kde-format
 msgid "Alexander Reinholdt"
-msgstr ""
+msgstr "Alexander Reinholdt"
 
 #: smb4k/main.cpp:148
 #, kde-format
 msgid "Developer"
-msgstr "ئىجادىيەتچى"
+msgstr "ئىجادكار"
 
 #: smb4k/main.cpp:149
 #, kde-format
@@ -144,10 +144,9 @@ msgid "Set the active profile to <profile>."
 msgstr ""
 
 #: smb4k/main.cpp:166
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "List all profiles."
-msgstr "ئېگەرلەۋاتىدۇ"
+msgstr ""
 
 #: smb4k/main.cpp:169
 #, kde-format
@@ -181,7 +180,7 @@ msgstr ""
 #: smb4k/smb4k_shell.rc:15
 #, kde-format
 msgid "&Bookmarks"
-msgstr "خەتكۈچلەر(&B)"
+msgstr "خەتكۈچ(&B)"
 
 #. i18n: ectx: Menu (settings)
 #: smb4k/smb4k_shell.rc:17
@@ -196,10 +195,9 @@ msgid "Main Toolbar"
 msgstr "ئاساسىي قورال بالداق"
 
 #: smb4k/smb4kbookmarkdialog.cpp:32
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "خەتكۈشلەر"
+msgstr ""
 
 #: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
@@ -218,18 +216,17 @@ msgstr "ئەن:"
 #: smb4k/smb4kmountdialog.cpp:138
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "سەھىپە:"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "خەتكۈشلەر"
+msgstr "خەتكۈش تەھرىرلىگۈچ"
 
 #: smb4k/smb4kbookmarkmenu.cpp:30 smb4k/smb4kconfigdialog.cpp:131
 #, kde-format
 msgid "Bookmarks"
-msgstr "خەتكۈشلەر"
+msgstr "خەتكۈش"
 
 #: smb4k/smb4kbookmarkmenu.cpp:36
 #, kde-format
@@ -244,10 +241,9 @@ msgid "Add &Bookmark"
 msgstr "خەتكۈش قوش(&B)"
 
 #: smb4k/smb4kbookmarkmenu.cpp:50 smb4k/smb4kbookmarkmenu.cpp:106
-#, fuzzy, kde-format
-#| msgid "Edit Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "خەتكۈش تەھرىر"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:125
 #, kde-format
@@ -283,16 +279,15 @@ msgid " (Profile: %1)"
 msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4kmountdialog.cpp:163
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "تەڭشەك(&S)"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:135 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
-msgstr ""
+msgstr "سەپلىمە ھۆججەت"
 
 #: smb4k/smb4kconfigdialog.cpp:160
 #, kde-format
@@ -317,16 +312,14 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63
 #: smb4k/smb4ktooltip.cpp:230
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "ئىشلەتكۈچى:"
+msgstr "ئىشلەتكۈچى ئاتى:"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#, fuzzy, kde-format
-#| msgid "Password"
+#, kde-format
 msgid "Password:"
-msgstr "ئىم"
+msgstr "ئىم:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
@@ -334,7 +327,7 @@ msgstr "ئىم"
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
-msgstr "خىزمەت گۇرۇپپىسى"
+msgstr "خىزمەت گۇرۇپپىسى:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
@@ -348,7 +341,7 @@ msgstr "IP ئادرېسى:"
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
-msgstr "تەھرىرلەش"
+msgstr "تەھرىر"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
@@ -388,22 +381,21 @@ msgstr ""
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
-msgstr "ھەرىكەت"
+msgstr "قىلمىش"
 
 #: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:432
 #, kde-format
 msgid " min"
-msgstr ""
+msgstr " مىنۇت"
 
 #: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:101
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:332
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Basic Settings"
-msgstr "تەڭشەك(&S)"
+msgstr "ئاساسىي تەڭشەك"
 
 #: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
 #, kde-format
@@ -425,17 +417,15 @@ msgstr "ئىشلەتكۈچى ID:"
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:345
-#, fuzzy, kde-format
-#| msgid "Group:"
+#, kde-format
 msgid "Group ID:"
-msgstr "گۇرۇپپا:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:276
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:172
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Common Mount Settings"
-msgstr "تەڭشەك(&S)"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:284
 #, kde-format
@@ -444,10 +434,9 @@ msgstr "ئالىي تاللانما"
 
 #: smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:207
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Mount Settings"
-msgstr "ئالىي تەڭشەك"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
@@ -456,35 +445,31 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:579
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:382
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Mount Settings"
-msgstr "تەڭشەك(&S)"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:256
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:431
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Browse Settings"
-msgstr "تەڭشەك(&S)"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:137
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:178
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "ئادەتتىكى تەڭشەك"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:198
 #, kde-format
 msgid " s"
-msgstr ""
+msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:207
 #, kde-format
@@ -493,22 +478,19 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:217
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
+#, kde-format
 msgid "Advanced Settings"
 msgstr "ئالىي تەڭشەك"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:44
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Settings"
-msgstr "تەڭشەك(&S)"
+msgstr "تەڭشەك"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:75
-#, fuzzy, kde-format
-#| msgid "A&dd"
+#, kde-format
 msgid "Add"
-msgstr "قوش(&D)"
+msgstr "قوش"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:82
 #, kde-format
@@ -518,31 +500,27 @@ msgstr ""
 #: smb4k/smb4kconfigpageprofiles.cpp:86
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "ئۈستىگە"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:90
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Move Down"
-msgstr "تۈرلەر"
+msgstr "ئاستىغا"
 
 #: smb4k/smb4kconfigpageprofiles.cpp:94
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Rename"
-msgstr "كۆرۈنمەيۈز"
+msgstr "ئات ئۆزگەرت"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "قەدەمداشلاش"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:82
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "زاپاسلاش"
+msgstr "زاپاسلا"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:127
 #, kde-format
@@ -550,10 +528,9 @@ msgid "General"
 msgstr "ئادەتتىكى"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:163
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
-msgstr "ئۇلانمىلار"
+msgstr "ئۇلانما"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:210
 #, kde-format
@@ -566,10 +543,9 @@ msgid "File Attributes"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:263
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Ownership"
-msgstr "ئىگىسى"
+msgstr "ئىگىدارلىق"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
@@ -579,11 +555,10 @@ msgstr ""
 #: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, kde-format
 msgid "Compression"
-msgstr ""
+msgstr "قىسىش"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:327
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgid "Files"
 msgstr "ھۆججەت"
 
@@ -591,20 +566,19 @@ msgstr "ھۆججەت"
 #: smb4k/smb4kconfigpagesynchronization.cpp:348
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:373
 #: smb4k/smb4kconfigpagesynchronization.cpp:592
 #: smb4k/smb4kconfigpagesynchronization.cpp:608
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Miscellaneous"
-msgstr "ئادەتتىكى تەڭشەك"
+msgstr "باشقا"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:383
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, kde-format
@@ -612,16 +586,14 @@ msgid "File Transfer"
 msgstr "ھۆججەت يوللاش"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:399
-#, fuzzy, kde-format
-#| msgid "Directories"
+#, kde-format
 msgid "Files && Directories"
-msgstr "مۇندەرىجىلەر"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:445
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
-msgstr "چەكلىمە"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:461
 #, kde-format
@@ -651,30 +623,27 @@ msgstr ""
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
 msgid "Main Window"
-msgstr ""
+msgstr "ئاساسىي كۆزنەك"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
-msgstr ""
+msgstr "تور قوشنا"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:111
-#, fuzzy, kde-format
-#| msgid "Shares"
+#, kde-format
 msgid "Shares View"
-msgstr "ھەمبەھىرلەر"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "تەڭشەك(&S)"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:52
-#, fuzzy, kde-format
-#| msgid "Network"
+#, kde-format
 msgid "No network item was set."
-msgstr "تور"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
@@ -706,10 +675,9 @@ msgstr "MAC ئادرېسى:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:274
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:449
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "MAC ئادرېسى:"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:284
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:458
@@ -725,10 +693,9 @@ msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:297
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:471
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "ئادەتتىكى تەڭشەك"
+msgstr ""
 
 #: smb4k/smb4khomesuserdialog.cpp:31
 #, kde-format
@@ -809,10 +776,9 @@ msgid "Sending file to printer %1..."
 msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:540
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgid "Searching..."
-msgstr "ئىزدە"
+msgstr "ئىزدەۋاتىدۇ…"
 
 #: smb4k/smb4kmainwindow.cpp:561 smb4k/smb4kmainwindow.cpp:608
 #: smb4k/smb4kmainwindow.cpp:697
@@ -821,16 +787,14 @@ msgid "Done."
 msgstr "تامام."
 
 #: smb4k/smb4kmainwindow.cpp:579
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Mounting..."
-msgstr "ئېگەرلەۋاتىدۇ"
+msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:583
-#, fuzzy, kde-format
-#| msgid "Unmount"
+#, kde-format
 msgid "Unmounting..."
-msgstr "ئېگەرسىزلەش"
+msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:587
 #, kde-format
@@ -853,10 +817,9 @@ msgid "Synchronizing %1"
 msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:38
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "ئېگەرلەۋاتىدۇ"
+msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:64
 #, kde-format
@@ -867,32 +830,29 @@ msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:79 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgid "Location:"
-msgstr "تاللانما"
+msgstr "ئورنى:"
 
 #: smb4k/smb4kmountdialog.cpp:121
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "خەتكۈشلەر"
+msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:155
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark"
-msgstr "خەتكۈشلەر"
+msgstr "خەتكۈش"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
 msgid "Type"
-msgstr "تىپى"
+msgstr "تۈرى"
 
 #: smb4k/smb4knetworkbrowser.cpp:44
 #, kde-format
 msgid "IP Address"
-msgstr "‍IP ئادرېس:"
+msgstr "‍IP ئادرېس"
 
 #: smb4k/smb4knetworkbrowser.cpp:45
 #, kde-format
@@ -924,10 +884,9 @@ msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:144 smb4k/smb4ksharesmenu.cpp:184
 #: smb4k/smb4ksharesviewdockwidget.cpp:210
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "ئالىي تاللانما"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:215
@@ -1012,13 +971,12 @@ msgstr ""
 #: smb4k/smb4knetworksearchtoolbar.cpp:34
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "ياپ"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
-#, fuzzy, kde-format
-#| msgid "Search Results"
+#, kde-format
 msgid "Search string"
-msgstr "ئىزدەش نەتىجىسى"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:52
 #, kde-format
@@ -1028,25 +986,22 @@ msgstr "ئىزدە"
 #: smb4k/smb4knetworksearchtoolbar.cpp:54
 #, kde-format
 msgid "Stop"
-msgstr ""
+msgstr "توختا"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:63
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Down"
-msgstr "تۈرلەر"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:72
-#, fuzzy, kde-format
-#| msgid "Item"
+#, kde-format
 msgid "Item Up"
-msgstr "تۈرلەر"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
-#, fuzzy, kde-format
-#| msgid "&Clear"
+#, kde-format
 msgid "Clear"
-msgstr "تازىلا(&C)"
+msgstr "تازىلا"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
@@ -1059,10 +1014,9 @@ msgid "Please enter a username and a password for the share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Preview Dialog"
-msgstr "ئېگەرلەۋاتىدۇ"
+msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
@@ -1080,22 +1034,19 @@ msgid "Up"
 msgstr "ئۈستى"
 
 #: smb4k/smb4kpreviewdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid "Preview"
+#, kde-format
 msgid "Preview of %1"
-msgstr "ئالدىن كۆزەت"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Print Dialog"
-msgstr "ئېگەرلەۋاتىدۇ"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Print a file."
-msgstr "ئېگەرلەۋاتىدۇ"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:61
 #, kde-format
@@ -1108,10 +1059,9 @@ msgid "Copies:"
 msgstr "كۆچۈرۈلمە سانى:"
 
 #: smb4k/smb4kprintdialog.cpp:87
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "پرىنتېر"
+msgstr "باس"
 
 #: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
@@ -1126,7 +1076,7 @@ msgstr ""
 #: smb4k/smb4ksharesmenu.cpp:152
 #, kde-format
 msgid "Unmount"
-msgstr "ئېگەرسىزلەش"
+msgstr "ئېگەرسىزلە"
 
 #: smb4k/smb4ksharesmenu.cpp:171
 #, kde-format
@@ -1146,12 +1096,12 @@ msgstr ""
 #: smb4k/smb4ksharesmenu.cpp:230
 #, kde-format
 msgid "Open with File Manager"
-msgstr "ھۆججەت باشقۇرغۇدا ئاچ"
+msgstr "ھۆججەت باشقۇرغۇچتا ئاچ"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:127
 #, kde-format
 msgid "View Modes"
-msgstr ""
+msgstr "كۆرۈنۈش ھالىتى"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
@@ -1228,10 +1178,9 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:128
-#, fuzzy, kde-format
-#| msgid "Type"
+#, kde-format
 msgid "Type:"
-msgstr "تىپى"
+msgstr "تۈرى:"
 
 #: smb4k/smb4ktooltip.cpp:137
 #, kde-format
@@ -1251,13 +1200,12 @@ msgstr ""
 #: smb4k/smb4ktooltip.cpp:158
 #, kde-format
 msgid "Host"
-msgstr "ماشىنا"
+msgstr "مۇلازىمېتىر"
 
 #: smb4k/smb4ktooltip.cpp:161 smb4k/smb4ktooltip.cpp:177
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgid "Comment:"
-msgstr "ئىزاھات"
+msgstr "ئىزاھات:"
 
 #: smb4k/smb4ktooltip.cpp:174
 #, kde-format
@@ -1265,10 +1213,9 @@ msgid "Share (%1)"
 msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:181
-#, fuzzy, kde-format
-#| msgid "Mount"
+#, kde-format
 msgid "Mounted:"
-msgstr "ئېگەرلەش"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:184
 #, kde-format
@@ -1281,34 +1228,30 @@ msgid "no"
 msgstr "ياق"
 
 #: smb4k/smb4ktooltip.cpp:190
-#, fuzzy, kde-format
-#| msgid "Host"
+#, kde-format
 msgid "Host:"
-msgstr "ماشىنا"
+msgstr "مۇلازىمېتىر:"
 
 #: smb4k/smb4ktooltip.cpp:227
-#, fuzzy, kde-format
-#| msgid "Mountpoint"
+#, kde-format
 msgid "Mountpoint:"
-msgstr "ئېگەرلەش نۇقتىسى"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:229 smb4k/smb4ktooltip.cpp:232
 #: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:246
 #, kde-format
 msgid "unknown"
-msgstr "نامەلۇم"
+msgstr "يوچۇن"
 
 #: smb4k/smb4ktooltip.cpp:236
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Owner:"
-msgstr "ئىگىسى"
+msgstr "ئىگىدار:"
 
 #: smb4k/smb4ktooltip.cpp:239
-#, fuzzy, kde-format
-#| msgid "File System"
+#, kde-format
 msgid "File system:"
-msgstr "ھۆججەت سىستېمىسى"
+msgstr "ھۆججەت سىستېمىسى:"
 
 #: smb4k/smb4ktooltip.cpp:244
 #, kde-format
@@ -1316,12 +1259,10 @@ msgid "%1 free of %2 (%3 used)"
 msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:250
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "چوڭلۇقى"
+msgstr "چوڭلۇقى:"
 
-#, fuzzy
 #~| msgid "Bookmarks"
 #~ msgctxt "Bookmark a share in the mount dialog."
 #~ msgid "Bookmark >>"
@@ -1330,17 +1271,14 @@ msgstr "چوڭلۇقى"
 #~ msgid "Directories"
 #~ msgstr "مۇندەرىجىلەر"
 
-#, fuzzy
 #~| msgid "Additional options:"
 #~ msgid "Edit the additional CIFS options."
 #~ msgstr "قوشۇمچە تاللانمىلار:"
 
-#, fuzzy
 #~| msgid "Additional options:"
 #~ msgid "Additional CIFS Options"
 #~ msgstr "قوشۇمچە تاللانمىلار:"
 
-#, fuzzy
 #~| msgid "unknown"
 #~ msgid "Unknown"
 #~ msgstr "نامەلۇم"
@@ -1351,52 +1289,42 @@ msgstr "چوڭلۇقى"
 #~ msgid "Save"
 #~ msgstr "ساقلا"
 
-#, fuzzy
 #~| msgid "&Settings"
 #~ msgid "Mounting: Common Settings"
 #~ msgstr "تەڭشەك(&S)"
 
-#, fuzzy
 #~| msgid "Advanced Settings"
 #~ msgid "Mounting: Advanced Settings"
 #~ msgstr "ئالىي تەڭشەك"
 
-#, fuzzy
 #~| msgid "&Settings"
 #~ msgid "Browsing"
 #~ msgstr "تەڭشەك(&S)"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 1: Mounting"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 2: Mounting"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 3: Mounting"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
 
-#, fuzzy
 #~| msgid "General Settings"
 #~ msgid "Page 5: Wake-On-LAN"
 #~ msgstr "ئادەتتىكى تەڭشەك"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Page 2: Browsing"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
 
-#, fuzzy
 #~| msgid "General Settings"
 #~ msgid "Page 3: Wake-On-LAN"
 #~ msgstr "ئادەتتىكى تەڭشەك"
 
-#, fuzzy
 #~| msgid "Show details"
 #~ msgid "Details"
 #~ msgstr "تەپسىلاتىنى كۆرسەت"
@@ -1404,47 +1332,38 @@ msgstr "چوڭلۇقى"
 #~ msgid "Entry"
 #~ msgstr "تۈر"
 
-#, fuzzy
 #~| msgid "Behavior"
 #~ msgid "Behavior:"
 #~ msgstr "ھەرىكەت"
 
-#, fuzzy
 #~| msgid "General"
 #~ msgid "General:"
 #~ msgstr "ئادەتتىكى"
 
-#, fuzzy
 #~| msgid "General Settings"
 #~ msgid "Miscellaneous:"
 #~ msgstr "ئادەتتىكى تەڭشەك"
 
-#, fuzzy
 #~| msgid "Notifications"
 #~ msgid "Identification"
 #~ msgstr "ئۇقتۇرۇشلار"
 
-#, fuzzy
 #~| msgid "Options"
 #~ msgid "Actions"
 #~ msgstr "تاللانما"
 
-#, fuzzy
 #~| msgid "&Settings"
 #~ msgid "Browse Settings:"
 #~ msgstr "تەڭشەك(&S)"
 
-#, fuzzy
 #~| msgid "Authentication"
 #~ msgid "Authentication:"
 #~ msgstr "كىملىك دەلىللەش"
 
-#, fuzzy
 #~| msgid "Security"
 #~ msgid "Security:"
 #~ msgstr "بىخەتەرلىك"
 
-#, fuzzy
 #~| msgid "&Settings"
 #~ msgid "Samba Settings"
 #~ msgstr "تەڭشەك(&S)"
@@ -1455,7 +1374,6 @@ msgstr "چوڭلۇقى"
 #~ msgid "Login:"
 #~ msgstr "تىزىمغا كىر:"
 
-#, fuzzy
 #~| msgid "Options"
 #~ msgid "Location"
 #~ msgstr "تاللانما"
@@ -1463,7 +1381,6 @@ msgstr "چوڭلۇقى"
 #~ msgid "Undo"
 #~ msgstr "يېنىۋال"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Remounting"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
@@ -1474,17 +1391,14 @@ msgstr "چوڭلۇقى"
 #~ msgid "Tooltips"
 #~ msgstr "كۆرسەتمىلەر"
 
-#, fuzzy
 #~| msgid "View"
 #~ msgid "View Mode"
 #~ msgstr "كۆرۈنۈش"
 
-#, fuzzy
 #~| msgid "General Settings"
 #~ msgid "Miscellaneous Settings"
 #~ msgstr "ئادەتتىكى تەڭشەك"
 
-#, fuzzy
 #~| msgid "Search Toolbar"
 #~ msgid "Network Toolbar"
 #~ msgstr "ئىزدەش قورال بالدىقى"
@@ -1492,12 +1406,10 @@ msgstr "چوڭلۇقى"
 #~ msgid "Search Toolbar"
 #~ msgstr "ئىزدەش قورال بالدىقى"
 
-#, fuzzy
 #~| msgid "Search Toolbar"
 #~ msgid "Shares Toolbar"
 #~ msgstr "ئىزدەش قورال بالدىقى"
 
-#, fuzzy
 #~| msgid "Main Toolbar"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "ئاساسىي قورال بالداق"
@@ -1520,7 +1432,6 @@ msgstr "چوڭلۇقى"
 #~ msgid "Copying"
 #~ msgstr "كۆچۈرۈۋاتىدۇ"
 
-#, fuzzy
 #~| msgid "Advanced Network Neighborhood Browser"
 #~ msgid "The network neighborhood browser KPart of Smb4K"
 #~ msgstr "ئالىي تور قوشنا كۆرگۈ"
@@ -1531,7 +1442,6 @@ msgstr "چوڭلۇقى"
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "ئالىي تور قوشنا كۆرگۈ"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Mounting share..."
 #~ msgstr "ئېگەرلەۋاتىدۇ"
@@ -1587,7 +1497,6 @@ msgstr "چوڭلۇقى"
 #~ msgid "Automatic detection"
 #~ msgstr "ئۆزلۈكىدىن تەكشۈر"
 
-#, fuzzy
 #~| msgid "Authentication"
 #~ msgid "Kerberos 5 authentication"
 #~ msgstr "كىملىك دەلىللەش"
@@ -1616,7 +1525,6 @@ msgstr "چوڭلۇقى"
 #~ msgid "Destination"
 #~ msgstr "نىشان"
 
-#, fuzzy
 #~| msgid "Unmount"
 #~ msgid "Unmount All"
 #~ msgstr "ئېگەرسىزلەش"

@@ -8,25 +8,25 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-06-01 18:47-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
-msgstr ""
+msgstr "باش بەت"
 
-#, fuzzy, kde-format
-#| msgid "Workgroup"
+#, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
-msgstr "خىزمەت گۇرۇپپىسى"
+msgstr "ئىش"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -44,25 +44,25 @@ msgstr ""
 #: smb4k.kcfg:21
 #, kde-format
 msgid "Top"
-msgstr ""
+msgstr "ئۈستى"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:24
 #, kde-format
 msgid "Bottom"
-msgstr ""
+msgstr "ئاستى"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:27
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "سول"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:30
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "ئوڭ"
 
 #. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
@@ -177,10 +177,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:76
-#, fuzzy, kde-format
-#| msgid "File:"
+#, kde-format
 msgid "View mode:"
-msgstr "ھۆججەت:"
+msgstr "كۆرۈنۈش ھالىتى:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
@@ -228,17 +227,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Icon View"
+#, kde-format
 msgid "Icon size:"
-msgstr "سىنبەلگە كۆرۈنۈش"
+msgstr "سىنبەلگە چوڭلۇقى:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "Advanced Network Neighborhood Browser"
+#, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "ئالىي تور قوشنا كۆرگۈ"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:115
@@ -366,10 +363,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:167
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Master browsers require authentication"
-msgstr "كىملىك دەلىللەش"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:168
@@ -381,10 +377,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:172
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Use Kerberos for authentication"
-msgstr "كىملىك دەلىللەش"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:173
@@ -396,17 +391,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:177
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Use Winbind ccache for authentication"
-msgstr "كىملىك دەلىللەش"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:178
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Use the Winbind ccache for authentication."
-msgstr "كىملىك دەلىللەش"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:182
@@ -429,17 +422,15 @@ msgstr "يوق"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:193
-#, fuzzy, kde-format
-#| msgid "Required"
+#, kde-format
 msgid "Request"
-msgstr "تەلەپ"
+msgstr ""
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:196
-#, fuzzy, kde-format
-#| msgid "Required"
+#, kde-format
 msgid "Require"
-msgstr "تەلەپ"
+msgstr ""
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
 #: smb4k.kcfg:202
@@ -472,10 +463,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:212
-#, fuzzy, kde-format
-#| msgid "Show details"
+#, kde-format
 msgid "Detect hidden shares"
-msgstr "تەپسىلاتىنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:213
@@ -518,10 +508,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:237
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization prefix:"
-msgstr "قەدەمداشلاش"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:238
@@ -1448,10 +1437,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:583
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backup suffix:"
-msgstr "زاپاسلاش"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:584
@@ -1461,10 +1449,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
 #: smb4k.kcfg:588
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backup suffix"
-msgstr "زاپاسلاش"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:593
@@ -1579,7 +1566,7 @@ msgstr ""
 #: smb4k.kcfg:652
 #, kde-format
 msgid "Profiles"
-msgstr ""
+msgstr "سەپلىمە ھۆججەت"
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:653
@@ -1603,7 +1590,7 @@ msgstr ""
 #: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
-msgstr ""
+msgstr "%2 دىكى %1"
 
 #: smb4kbookmarkhandler.cpp:307 smb4kcustomsettingsmanager.cpp:341
 #: smb4khomesshareshandler.cpp:212
@@ -1653,10 +1640,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
-#, fuzzy, kde-format
-#| msgid "File:"
+#, kde-format
 msgid "File mode:"
-msgstr "ھۆججەت:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
@@ -1669,10 +1655,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:27 smb4kmountsettings_linux.kcfg:32
-#, fuzzy, kde-format
-#| msgid "Directories"
+#, kde-format
 msgid "Directory mode:"
-msgstr "مۇندەرىجىلەر"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -2066,10 +2051,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:271
-#, fuzzy, kde-format
-#| msgid "Mount"
+#, kde-format
 msgid "Remount shares"
-msgstr "ئېگەرلەش"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:272
@@ -2458,10 +2442,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Security"
+#, kde-format
 msgid "Security mode:"
-msgstr "بىخەتەرلىك"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
@@ -2480,17 +2463,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Kerberos 5 authentication"
-msgstr "كىملىك دەلىللەش"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:242
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Kerberos 5 authentication and packet signing"
-msgstr "كىملىك دەلىللەش"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:245
@@ -2534,8 +2515,7 @@ msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
 msgstr ""
 
 #: smb4knotification.cpp:82
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "ئاچ"
@@ -2857,7 +2837,7 @@ msgstr "دىسكا"
 #: smb4kshare.cpp:197
 #, kde-format
 msgid "Printer"
-msgstr "پرىنتېر"
+msgstr "باسقۇ"
 
 #: smb4kshare.cpp:201
 #, kde-format
@@ -2882,12 +2862,10 @@ msgstr "نىشان"
 #~ msgid "User ID:"
 #~ msgstr "ئىشلەتكۈچى ID:"
 
-#, fuzzy
 #~| msgid "Mountpoint"
 #~ msgid "Mount prefix:"
 #~ msgstr "ئېگەرلەش نۇقتىسى"
 
-#, fuzzy
 #~| msgid "File System"
 #~ msgid "File system port:"
 #~ msgstr "ھۆججەت سىستېمىسى"
@@ -2916,7 +2894,6 @@ msgstr "نىشان"
 #~ msgid "Destination:"
 #~ msgstr "نىشان:"
 
-#, fuzzy
 #~| msgid "Preview"
 #~ msgid "Preview of %1"
 #~ msgstr "ئالدىن كۆزەت"
@@ -2930,12 +2907,10 @@ msgstr "نىشان"
 #~ msgid "Up"
 #~ msgstr "ئۈستى"
 
-#, fuzzy
 #~| msgid "Printer"
 #~ msgid "Print File"
 #~ msgstr "پرىنتېر"
 
-#, fuzzy
 #~| msgid "Printer"
 #~ msgid "Printer:"
 #~ msgstr "پرىنتېر"
@@ -2946,7 +2921,6 @@ msgstr "نىشان"
 #~ msgid "Domain:"
 #~ msgstr "دائىرە:"
 
-#, fuzzy
 #~| msgid "Advanced Settings"
 #~ msgid "File and Settings"
 #~ msgstr "ئالىي تەڭشەك"
@@ -2957,22 +2931,18 @@ msgstr "نىشان"
 #~ msgid "Copies:"
 #~ msgstr "كۆچۈرۈلمە سانى:"
 
-#, fuzzy
 #~| msgid "Printer"
 #~ msgid "Print"
 #~ msgstr "پرىنتېر"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Custom Settings"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
 
-#, fuzzy
 #~| msgid "Options"
 #~ msgid "Common Options"
 #~ msgstr "تاللانما"
 
-#, fuzzy
 #~| msgid "Options"
 #~ msgid "Common Mount Settings"
 #~ msgstr "تاللانما"
@@ -2980,7 +2950,6 @@ msgstr "نىشان"
 #~ msgid "Advanced Options"
 #~ msgstr "ئالىي تاللانما"
 
-#, fuzzy
 #~| msgid "Advanced Options"
 #~ msgid "Advanced Mount Settings"
 #~ msgstr "ئالىي تاللانما"
@@ -2988,12 +2957,10 @@ msgstr "نىشان"
 #~ msgid "Authentication"
 #~ msgstr "كىملىك دەلىللەش"
 
-#, fuzzy
 #~| msgid "&Settings"
 #~ msgid "Browse Settings"
 #~ msgstr "تەڭشەك(&S)"
 
-#, fuzzy
 #~| msgid "MAC Address:"
 #~ msgid "MAC Address"
 #~ msgstr "MAC ئادرېسى:"
@@ -3001,22 +2968,18 @@ msgstr "نىشان"
 #~ msgid "MAC Address:"
 #~ msgstr "MAC ئادرېسى:"
 
-#, fuzzy
 #~| msgid "Options"
 #~ msgid "Actions"
 #~ msgstr "تاللانما"
 
-#, fuzzy
 #~| msgid "Advanced Network Neighborhood Browser"
 #~ msgid "Send magic packet before scanning the network neighborhood"
 #~ msgstr "ئالىي تور قوشنا كۆرگۈ"
 
-#, fuzzy
 #~| msgid "General Settings"
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "ئادەتتىكى تەڭشەك"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Mount Settings"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
@@ -3030,12 +2993,10 @@ msgstr "نىشان"
 #~ msgid "Label:"
 #~ msgstr "ئەن:"
 
-#, fuzzy
 #~| msgid "Mount"
 #~ msgid "Mount Share"
 #~ msgstr "ئېگەرلەش"
 
-#, fuzzy
 #~| msgid "Notifications"
 #~ msgid "Location:"
 #~ msgstr "ئۇقتۇرۇشلار"
@@ -3043,7 +3004,6 @@ msgstr "نىشان"
 #~ msgid "Workgroup:"
 #~ msgstr "خىزمەت گۇرۇپپىسى"
 
-#, fuzzy
 #~| msgid "&Bookmarks"
 #~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
 #~ msgid "Bookmark >>"
@@ -3055,12 +3015,10 @@ msgstr "نىشان"
 #~ msgid "Remove"
 #~ msgstr "چىقىرىۋەت"
 
-#, fuzzy
 #~| msgid "&Clear"
 #~ msgid "Clear"
 #~ msgstr "تازىلا(&C)"
 
-#, fuzzy
 #~| msgid "User:"
 #~ msgid "Username:"
 #~ msgstr "ئىشلەتكۈچى:"
@@ -3077,12 +3035,10 @@ msgstr "نىشان"
 #~ msgid "Group name:"
 #~ msgstr "گۇرۇپپا ئاتى:"
 
-#, fuzzy
 #~| msgid "unknown"
 #~ msgid "Unknown error"
 #~ msgstr "نامەلۇم"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Remounting"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
@@ -3096,7 +3052,6 @@ msgstr "نىشان"
 #~ msgid "Required"
 #~ msgstr "تەلەپ"
 
-#, fuzzy
 #~| msgid "Directories"
 #~ msgid "Directory mask:"
 #~ msgstr "مۇندەرىجىلەر"
@@ -3110,12 +3065,10 @@ msgstr "نىشان"
 #~ msgid "Options"
 #~ msgstr "تاللانما"
 
-#, fuzzy
 #~| msgid "Options"
 #~ msgid "Options >>"
 #~ msgstr "تاللانما"
 
-#, fuzzy
 #~| msgid "Options"
 #~ msgid "Options <<"
 #~ msgstr "تاللانما"
@@ -3129,7 +3082,6 @@ msgstr "نىشان"
 #~ msgid "General"
 #~ msgstr "ئادەتتىكى"
 
-#, fuzzy
 #~| msgid "Bookmarks"
 #~ msgid "Clear Bookmarks"
 #~ msgstr "خەتكۈشلەر"
@@ -3137,12 +3089,10 @@ msgstr "نىشان"
 #~ msgid "Automatic detection"
 #~ msgstr "ئۆزلۈكىدىن تەكشۈر"
 
-#, fuzzy
 #~| msgid "Operating system"
 #~ msgid "RPC: Modern operating systems"
 #~ msgstr "مەشغۇلات سىستېمىسى"
 
-#, fuzzy
 #~| msgid "Operating system"
 #~ msgid "RAP: Older operating systems"
 #~ msgstr "مەشغۇلات سىستېمىسى"
@@ -3323,12 +3273,10 @@ msgstr "نىشان"
 #~ msgid "Size"
 #~ msgstr "چوڭلۇقى"
 
-#, fuzzy
 #~| msgid "Mounting"
 #~ msgid "Mount Dialog"
 #~ msgstr "ئېگەرلەۋاتىدۇ"
 
-#, fuzzy
 #~| msgid "Unmount"
 #~ msgid "Unmount All"
 #~ msgstr "ئېگەرسىزلەش"

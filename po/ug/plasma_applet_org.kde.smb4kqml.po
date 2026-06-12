@@ -1,101 +1,101 @@
-# Translation of plasma_applet_org.kde.smb4kqml to Norwegian Nynorsk
+# Uyghur translation for plasma_applet_org.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+# Abduqadir Abliz <sahranbay@gmail.com>, 2026., YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:52+0000\n"
-"PO-Revision-Date: 2024-07-06 14:59+0200\n"
-"Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
-"Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
-"Language: nn\n"
+"PO-Revision-Date: 2026-06-01 18:47-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
+"Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.1\n"
-"X-Environment: kde\n"
-"X-Accelerator-Marker: &\n"
-"X-Text-Markup: kde4\n"
+"X-Generator: Poedit 3.9\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:58
 #: package/contents/ui/SharesViewItemDelegate.qml:57
 msgid "<font size=\"-1\">on %1</font>"
-msgstr "<font size=\"-1\">på %1</font>"
+msgstr ""
 
 #: package/contents/ui/BookmarksPage.qml:40
 msgid "Go back"
-msgstr "Gå tilbake"
+msgstr "كەينىگە"
 
 #: package/contents/ui/BookmarksPage.qml:59
 msgid "Edit bookmarks"
-msgstr "Rediger bokmerke"
+msgstr ""
 
 #: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
-msgstr "Oppsettvindauge"
+msgstr ""
 
 #: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
-msgstr "Nettverksnabolag"
+msgstr "تور قوشنا"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:93
 #: package/contents/ui/SharesViewItemDelegate.qml:77
 msgid "Bookmark"
-msgstr "Bokmerke"
+msgstr "خەتكۈش"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:123
 msgid "Preview"
-msgstr "Førehandsvising"
+msgstr "ئالدىن كۆزەت"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:153
 msgid "Configure"
-msgstr "Set opp"
+msgstr "سەپلە"
 
 #: package/contents/ui/NetworkBrowserPage.qml:40
 msgid "Rescan"
-msgstr "Skann på nytt"
+msgstr "قايتا تەكشۈر"
 
 #: package/contents/ui/NetworkBrowserPage.qml:62
 msgid "Abort"
-msgstr "Avbryt"
+msgstr "توختات"
 
 #: package/contents/ui/NetworkBrowserPage.qml:80
 msgid "Go one level up"
-msgstr "Gå eitt nivå opp"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:114
 msgid "Open the mount dialog"
-msgstr "Opna monteringsvindauget"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:38
 msgid "Mounted Shares"
-msgstr "Monterte ressursar"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:45
 msgid "Bookmarks"
-msgstr "Bokmerke"
+msgstr "خەتكۈش"
 
 #: package/contents/ui/PopupDialog.qml:52
 msgid "Profiles"
-msgstr "Profilar"
+msgstr "سەپلىمە ھۆججەت"
 
 #: package/contents/ui/PopupDialog.qml:59
 msgid "Configuration"
-msgstr "Oppsett"
+msgstr "سەپلىمە"
 
 #: package/contents/ui/ProfileItemDelegate.qml:53
 msgid "(active)"
-msgstr "(verksam)"
+msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:105
 msgid "Synchronize"
-msgstr "Synkroniser"
+msgstr "قەدەمداش"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:133
 msgid "Unmount"
-msgstr "Avmonter"
+msgstr "ئېگەرسىزلە"
 
 #: package/contents/ui/SharesViewPage.qml:41
 msgid "Unmount all shares"
-msgstr "Avmonter alle ressursane"
+msgstr ""
