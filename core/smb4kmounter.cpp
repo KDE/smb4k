@@ -54,7 +54,7 @@
 
 using namespace Smb4KGlobal;
 
-#define TIMEOUT 50
+const static int timeoutIncrement = 50;
 
 class Smb4KMounterPrivate
 {
@@ -461,32 +461,34 @@ void Smb4KMounter::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
 
-    if (!isRunning() && Smb4KHardwareInterface::self()->isOnline()) {
-        // Try to remount shares
-        if (d->remountAttempts < Smb4KMountSettings::remountAttempts() && Smb4KHardwareInterface::self()->initialImportDone()) {
-            if (d->remountAttempts == 0) {
-                triggerRemounts(true);
-            }
+    d->remountTimeout += timeoutIncrement;
+    d->checkTimeout += timeoutIncrement;
 
-            if ((60000 * Smb4KMountSettings::remountInterval()) < d->remountTimeout) {
-                triggerRemounts(false);
-                d->remountTimeout = -TIMEOUT;
-            }
+    if (isRunning() || !Smb4KHardwareInterface::self()->isOnline()) {
+        return;
+    }
 
-            d->remountTimeout += TIMEOUT;
+    // Try to remount shares
+    if (Smb4KMountSettings::remountShares() && d->remountAttempts < Smb4KMountSettings::remountAttempts()
+        && Smb4KHardwareInterface::self()->initialImportDone()) {
+        if (d->remountAttempts == 0) {
+            triggerRemounts(true);
         }
 
-        // Check the size, accessibility, etc. of the shares
-        if (d->checkTimeout >= 2500) {
-            for (const SharePtr &share : mountedSharesList()) {
-                checkMountedShare(share);
-                Q_EMIT updated(share);
-            }
-
-            d->checkTimeout = 0;
-        } else {
-            d->checkTimeout += TIMEOUT;
+        if ((60000 * Smb4KMountSettings::remountInterval()) < d->remountTimeout) {
+            triggerRemounts(false);
+            d->remountTimeout = 0;
         }
+    }
+
+    // Check the size, accessibility, etc. of the shares
+    if (d->checkTimeout >= 2500) {
+        for (const SharePtr &share : mountedSharesList()) {
+            checkMountedShare(share);
+            Q_EMIT updated(share);
+        }
+
+        d->checkTimeout = 0;
     }
 }
 
@@ -1222,7 +1224,7 @@ SharePtr Smb4KMounter::createMountedShare(const QString &mountPoint) const
 void Smb4KMounter::slotStartJobs()
 {
     if (d->timerId == -1) {
-        d->timerId = startTimer(TIMEOUT);
+        d->timerId = startTimer(timeoutIncrement);
     }
 }
 
@@ -1293,7 +1295,7 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
     d->remountAttempts = 0;
 
     // Restart the timer
-    d->timerId = startTimer(TIMEOUT);
+    d->timerId = startTimer(timeoutIncrement);
 }
 
 void Smb4KMounter::slotConfigChanged()
