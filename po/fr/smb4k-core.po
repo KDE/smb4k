@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
 "PO-Revision-Date: 2026-04-03 21:27+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -102,8 +102,8 @@ msgstr ""
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
-msgid "Start docked"
-msgstr "Démarrer avec l'application intégrée dans la boite à miniatures"
+msgid "Start the application docked to the system tray"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3363,6 +3363,9 @@ msgstr "Source"
 #, kde-format
 msgid "Destination"
 msgstr "Destination"
+
+#~ msgid "Start docked"
+#~ msgstr "Démarrer avec l'application intégrée dans la boite à miniatures"
 
 #~ msgid "Set the SMB port to:"
 #~ msgstr "Définir le port « SMB » à :"

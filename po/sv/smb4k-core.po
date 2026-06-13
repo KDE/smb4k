@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
 "PO-Revision-Date: 2026-01-23 20:34+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -84,9 +84,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
-#, kde-format
-msgid "Start docked"
-msgstr "Starta inbäddad"
+#, fuzzy, kde-format
+#| msgid "Embed application into the system tray"
+msgid "Start the application docked to the system tray"
+msgstr "Lägg till programet i systembrickan"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3291,6 +3292,9 @@ msgstr "Källa"
 msgid "Destination"
 msgstr "Mål"
 
+#~ msgid "Start docked"
+#~ msgstr "Starta inbäddad"
+
 #~ msgid "Set the SMB port to:"
 #~ msgstr "Ställ in SMB-port till:"
 
@@ -6224,9 +6228,6 @@ msgstr "Mål"
 
 #~ msgid "Main Window && System Tray"
 #~ msgstr "Huvudfönster och systembricka"
-
-#~ msgid "Embed application into the system tray"
-#~ msgstr "Lägg till programet i systembrickan"
 
 #~ msgid ""
 #~ "Embed the application into the system tray. The system tray widget "

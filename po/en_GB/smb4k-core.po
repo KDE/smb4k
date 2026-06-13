@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
 "PO-Revision-Date: 2024-09-15 10:44+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -82,9 +82,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
-#, kde-format
-msgid "Start docked"
-msgstr "Start docked"
+#, fuzzy, kde-format
+#| msgid "Embed application into the system tray"
+msgid "Start the application docked to the system tray"
+msgstr "Embed application into the system tray"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3338,6 +3339,9 @@ msgstr "Source"
 msgid "Destination"
 msgstr "Destination"
 
+#~ msgid "Start docked"
+#~ msgstr "Start docked"
+
 #~ msgid "Set the SMB port to:"
 #~ msgstr "Set the SMB port to:"
 
@@ -6070,9 +6074,6 @@ msgstr "Destination"
 #~| msgid "Main Window & System Tray"
 #~ msgid "Main Window && System Tray"
 #~ msgstr "Main Window & System Tray"
-
-#~ msgid "Embed application into the system tray"
-#~ msgstr "Embed application into the system tray"
 
 #~ msgid ""
 #~ "Embed the application into the system tray. The system tray widget "
