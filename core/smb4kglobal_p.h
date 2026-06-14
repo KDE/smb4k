@@ -1,7 +1,7 @@
 /*
     These are the private helper classes of the Smb4KGlobal namespace.
 
-    SPDX-FileCopyrightText: 2007-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -14,9 +14,7 @@
 #include "smb4kworkgroup.h"
 
 // Qt includes
-#include <QFileSystemWatcher>
 #include <QList>
-#include <QMap>
 #include <QObject>
 #include <QSharedPointer>
 
@@ -66,14 +64,6 @@ public:
      * are in the list of mounted shares
      */
     bool onlyForeignShares;
-
-#ifdef Q_OS_LINUX
-    /**
-     * This list contains all allowed arguments for the mount.cifs binary and
-     * is only present under the Linux operating system.
-     */
-    QStringList allowedMountArguments;
-#endif
 
     /**
      * The machine's NetBIOS name

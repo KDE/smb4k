@@ -1,26 +1,20 @@
 /*
     These are the private helper classes of the Smb4KGlobal namespace.
 
-    SPDX-FileCopyrightText: 2007-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
 #include "smb4kglobal_p.h"
-#include "smb4knotification.h"
 #include "smb4ksettings.h"
 
 // Samba includes
 #include <libsmbclient.h>
 
 // Qt includes
-#include <QAbstractSocket>
 #include <QCoreApplication>
-#include <QDir>
-#include <QDirIterator>
-#include <QFile>
-#include <QHostAddress>
-#include <QHostInfo>
+
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
