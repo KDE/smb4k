@@ -5,7 +5,7 @@
 # Giovanni Degani <tiefox@terra.com.br>, 2004.
 # Alexander Reinholdt <alexander.reinholdt@web.de>, 2004.
 # Lamarque Vieira Souza <lamarque@syst.com.br>, 2006.
-# SPDX-FileCopyrightText: 2010, 2025, 2026 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2010, 2025-2026 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2010, 2013, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019.
 # Aracele Torres <araceletorres@gmail.com>, 2010, 2011.
@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-03-26 07:57-0300\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
+"PO-Revision-Date: 2026-06-13 05:21-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -91,8 +91,8 @@ msgstr ""
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
-msgid "Start docked"
-msgstr "Iniciar acoplado"
+msgid "Start the application docked to the system tray"
+msgstr "Iniciar o aplicativo acoplado à bandeja do sistema"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3301,6 +3301,9 @@ msgstr "Origem"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#~ msgid "Start docked"
+#~ msgstr "Iniciar acoplado"
 
 #~ msgid "Set the SMB port to:"
 #~ msgstr "Definir a porta do SMB para:"

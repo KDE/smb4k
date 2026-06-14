@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-03-28 17:59+0400\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
+"PO-Revision-Date: 2026-06-13 19:50+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -83,8 +83,8 @@ msgstr ""
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
-msgid "Start docked"
-msgstr "ابدأ مُرسى"
+msgid "Start the application docked to the system tray"
+msgstr "ابدأ التطبيق مصغر إلى صينية النظام"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3187,6 +3187,9 @@ msgstr "المصدر"
 #, kde-format
 msgid "Destination"
 msgstr "المقصد"
+
+#~ msgid "Start docked"
+#~ msgstr "ابدأ مُرسى"
 
 #~ msgid "Set the SMB port to:"
 #~ msgstr "اضبط منفذ SMB على:"

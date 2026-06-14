@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
 "PO-Revision-Date: 2026-01-04 10:55+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -85,8 +85,8 @@ msgstr ""
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
-msgid "Start docked"
-msgstr "Abiatu ainguratuta"
+msgid "Start the application docked to the system tray"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3325,6 +3325,9 @@ msgstr "Sorburua"
 #, kde-format
 msgid "Destination"
 msgstr "Jomuga"
+
+#~ msgid "Start docked"
+#~ msgstr "Abiatu ainguratuta"
 
 #~ msgid "Set the SMB port to:"
 #~ msgstr "Ezarri SMB ataka honela:"

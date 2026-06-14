@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the smb4k package.
 #
 # SPDX-FileCopyrightText: 2004 Quique <quique@sindominio.net>
-# SPDX-FileCopyrightText: 2005, 2006, 2007, 2008 Martín Carr <tincarr@gmail.com>
+# SPDX-FileCopyrightText: 2005-2008 Martín Carr <tincarr@gmail.com>
 # SPDX-FileCopyrightText: 2010 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
-# SPDX-FileCopyrightText: 2010, 2011, 2012 Xavier Corredor Llano <xavier.corredor.llano@gmail.com>
-# SPDX-FileCopyrightText: 2011, 2014, 2015, 2019, 2020 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2010-2012 Xavier Corredor Llano <xavier.corredor.llano@gmail.com>
+# SPDX-FileCopyrightText: 2011, 2014-2015, 2019-2020 Eloy Cuadra <ecuadra@eloihr.net>
 # SPDX-FileCopyrightText: 2013 Miguel Navarrete Hernandez <recados.akka@gmail.com>
-# SPDX-FileCopyrightText: 2013, 2014, 2015 Raul Gonzalez <raulgf83@gmail.com>
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
+# SPDX-FileCopyrightText: 2013-2015 Raul Gonzalez <raulgf83@gmail.com>
+# SPDX-FileCopyrightText: 2015-2019 Javier Vinal <fjvinal@gmail.com>
+# SPDX-FileCopyrightText: 2019-2026 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-03-29 01:47+0100\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
+"PO-Revision-Date: 2026-06-13 19:32+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -93,8 +93,8 @@ msgstr ""
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
-msgid "Start docked"
-msgstr "Iniciar en la bandeja del sistema"
+msgid "Start the application docked to the system tray"
+msgstr "Iniciar la aplicación anclada en la bandeja del sistema"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42

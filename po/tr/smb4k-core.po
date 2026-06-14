@@ -6,13 +6,13 @@
 # Serdar Soytetir <sendirom@gmail.com>, 2006.
 # obsoleteman <tulliana@gmail.com>, 2006-2007,2009,2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2017, 2020.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
-"PO-Revision-Date: 2026-05-02 18:56+0300\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
+"PO-Revision-Date: 2026-06-13 19:37+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -87,8 +87,8 @@ msgstr ""
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
-msgid "Start docked"
-msgstr "Sistem tepsisinde başlat"
+msgid "Start the application docked to the system tray"
+msgstr "Uygulamayı sistem tepsisine gömülü olarak başlat"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3259,6 +3259,9 @@ msgstr "Kaynak"
 #, kde-format
 msgid "Destination"
 msgstr "Hedef"
+
+#~ msgid "Start docked"
+#~ msgstr "Sistem tepsisinde başlat"
 
 #~ msgid "Set the SMB port to:"
 #~ msgstr "SMB kapısını şuna ayarla:"

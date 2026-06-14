@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -82,9 +82,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
-#, kde-format
-msgid "Start docked"
-msgstr "Start dokket"
+#, fuzzy, kde-format
+#| msgid "Embed application into the system tray"
+msgid "Start the application docked to the system tray"
+msgstr "Indlejr programmet i statusområdet"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3358,6 +3359,9 @@ msgstr "Kilde"
 msgid "Destination"
 msgstr "Destination"
 
+#~ msgid "Start docked"
+#~ msgstr "Start dokket"
+
 #, fuzzy
 #~| msgid "Set the UID to:"
 #~ msgid "Set the SMB port to:"
@@ -6211,9 +6215,6 @@ msgstr "Destination"
 
 #~ msgid "Main Window && System Tray"
 #~ msgstr "Hovedvindue og statusområde"
-
-#~ msgid "Embed application into the system tray"
-#~ msgstr "Indlejr programmet i statusområdet"
 
 #~ msgid ""
 #~ "Embed the application into the system tray. The system tray widget "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
 "PO-Revision-Date: 2026-05-16 12:55+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -85,9 +85,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
-#, kde-format
-msgid "Start docked"
-msgstr "Uruchom zadokowany"
+#, fuzzy, kde-format
+#| msgid "Embed application into the system tray"
+msgid "Start the application docked to the system tray"
+msgstr "Umieść ikonę aplikacji w tacce systemowej"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3262,6 +3263,9 @@ msgstr "Źródło"
 msgid "Destination"
 msgstr "Cel"
 
+#~ msgid "Start docked"
+#~ msgstr "Uruchom zadokowany"
+
 #~ msgid "Set the SMB port to:"
 #~ msgstr "Ustaw port SMB na:"
 
@@ -5953,9 +5957,6 @@ msgstr "Cel"
 #~| msgid "Main Window & System Tray"
 #~ msgid "Main Window && System Tray"
 #~ msgstr "Główne okno i tacka systemowa"
-
-#~ msgid "Embed application into the system tray"
-#~ msgstr "Umieść ikonę aplikacji w tacce systemowej"
 
 #, fuzzy
 #~| msgid ""

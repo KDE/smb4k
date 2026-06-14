@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-26 00:44+0000\n"
+"POT-Creation-Date: 2026-06-13 00:44+0000\n"
 "PO-Revision-Date: 2024-04-17 05:19+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -90,8 +90,8 @@ msgstr "不要顯示書籤展示的分享名稱，而是顯示在書籤編輯器
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:41
 #, kde-format
-msgid "Start docked"
-msgstr "直接在系統匣啟動"
+msgid "Start the application docked to the system tray"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -3008,6 +3008,9 @@ msgstr "來源"
 #, kde-format
 msgid "Destination"
 msgstr "目的地"
+
+#~ msgid "Start docked"
+#~ msgstr "直接在系統匣啟動"
 
 #~ msgid "Set the SMB port to:"
 #~ msgstr "將 SMB 連接埠設為："
