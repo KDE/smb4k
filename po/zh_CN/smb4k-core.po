@@ -3081,6 +3081,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid "Start docked"
-#~ msgstr "启动为停靠状态"

@@ -2951,6 +2951,3 @@ msgstr "Kilde"
 #, kde-format
 msgid "Destination"
 msgstr "Mål"
-
-#~ msgid "Start docked"
-#~ msgstr "Start dokket"
