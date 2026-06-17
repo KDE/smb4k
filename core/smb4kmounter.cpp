@@ -1147,7 +1147,7 @@ void Smb4KMounter::checkMountedShare(const SharePtr &share) const
         share->setFreeDiskSpace(d->storageInfo.bytesAvailable()); // Bytes available to the user, might be less than bytesFree()
         share->setTotalDiskSpace(d->storageInfo.bytesTotal());
 
-        // Get the owner an group, if possible.
+        // Get the owner and group, if possible.
         QFileInfo fileInfo(share->path());
         fileInfo.setCaching(false);
 
