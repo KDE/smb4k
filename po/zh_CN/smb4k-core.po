@@ -81,7 +81,7 @@ msgstr "不显示已添加为书签的共享，而是显示书签编辑器中指
 #: smb4k.kcfg:41
 #, kde-format
 msgid "Start the application docked to the system tray"
-msgstr ""
+msgstr "启动应用程序时最小化到系统托盘"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42

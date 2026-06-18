@@ -1275,20 +1275,3 @@ msgstr ""
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgctxt "Bookmark a share in the mount dialog."
-#~ msgid "Bookmark >>"
-#~ msgstr "Отметки"
-
-#~ msgid "Directories"
-#~ msgstr "Директории"
-
-#, fuzzy
-#~ msgid "Edit the additional CIFS options."
-#~ msgstr "Допълнителни настройки:"
-
-#, fuzzy
-#~ msgid "Additional CIFS Options"
-#~ msgstr "Допълнителни настройки:"
