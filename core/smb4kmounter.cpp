@@ -28,7 +28,6 @@
 #include <unistd.h>
 
 // Qt includes
-#include <QApplication>
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
 #else
@@ -78,10 +77,11 @@ class Smb4KMounterStatic
 {
 public:
     Smb4KMounter instance;
-    const QString userMountPrefix{QStringLiteral("/var/run/smb4k/") + KUser(KUser::UseRealUserID).loginName()};
 };
 
 Q_APPLICATION_STATIC(Smb4KMounterStatic, p);
+
+static const QString userMountPrefix = QStringLiteral("/var/run/smb4k/") + KUser(KUser::UseRealUserID).loginName();
 
 Smb4KMounter::Smb4KMounter(QObject *parent)
     : KCompositeJob(parent)
@@ -1169,7 +1169,7 @@ void Smb4KMounter::checkMountedShare(const SharePtr &share) const
 
 const QString Smb4KMounter::generateMountPoint(const QUrl &url) const
 {
-    QString mountPoint = p->userMountPrefix;
+    QString mountPoint = userMountPrefix;
     mountPoint += QDir::separator();
     // Host name must not be capitalized.
     mountPoint += url.host();
@@ -1206,7 +1206,7 @@ SharePtr Smb4KMounter::createMountedShare(const QString &mountPoint) const
         share->setUserName(QStringLiteral("guest"));
     }
 
-    QDir dir(p->userMountPrefix);
+    QDir dir(userMountPrefix);
 
     if (!dir.canonicalPath().isEmpty() && share->canonicalPath().startsWith(dir.canonicalPath())) {
         share->setForeign(false);
