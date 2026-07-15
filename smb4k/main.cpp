@@ -6,6 +6,7 @@
 */
 
 // application specific includes
+#include "core/smb4kautostartmanager.h"
 #include "core/smb4kclient.h"
 #include "core/smb4kcustomsettingsmanager.h"
 #include "core/smb4kmounter.h"
@@ -17,9 +18,9 @@
 #include <QApplication>
 #include <QCommandLineOption>
 #include <QCommandLineParser>
+#include <QSessionManager>
 #include <QString>
 #include <QTimer>
-#include <QSessionManager>
 
 // KDE includes
 #include <KAboutData>
@@ -95,7 +96,8 @@ static void handleRemountShares()
     }
 }
 
-static void handleMountShare(const QStringList &urls) {
+static void handleMountShare(const QStringList &urls)
+{
     for (const QString &u : std::as_const(urls)) {
         QUrl url;
         QString userInfo, userInput = u;
@@ -202,21 +204,27 @@ int main(int argc, char **argv)
     fullApp->setQuitOnLastWindowClosed(false);
     fullApp->setWindowIcon(QIcon::fromTheme(QStringLiteral("smb4k")));
 
-    Smb4KMainWindow *mainWindow = new Smb4KMainWindow();
-    mainWindow->setVisible(!Smb4KSettings::startMainWindowDocked());
+    if (fullApp->isSessionRestored() && KMainWindow::canBeRestored(1)) {
+        kRestoreMainWindows<Smb4KMainWindow>();
+    } else {
+        Smb4KMainWindow *mainWindow = new Smb4KMainWindow();
+        mainWindow->setObjectName("MainWindow#");
+        mainWindow->setVisible(!Smb4KSettings::startMainWindowDocked());
 
-    // Unique application
-    const KDBusService service(KDBusService::Unique);
+        // Unique application
+        const KDBusService service(KDBusService::Unique);
 
-    QObject::connect(&service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList & /*args*/, const QString & /*workingDir*/) {
-        if (mainWindow->isVisible()) {
-            KWindowSystem::updateStartupId(mainWindow->windowHandle());
-            KWindowSystem::activateWindow(mainWindow->windowHandle());
-        } else {
-            mainWindow->setVisible(true);
-        }
-    });
+        QObject::connect(&service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList & /*args*/, const QString & /*workingDir*/) {
+            if (mainWindow->isVisible()) {
+                KWindowSystem::updateStartupId(mainWindow->windowHandle());
+                KWindowSystem::activateWindow(mainWindow->windowHandle());
+            } else {
+                mainWindow->setVisible(true);
+            }
+        });
+    }
 
+    Smb4KAutoStartManager::self()->init();
     Smb4KClient::self()->start();
 
     QObject::connect(Smb4KClient::self(), &Smb4KClient::finished, [&]() {
