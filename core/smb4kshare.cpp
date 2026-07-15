@@ -11,13 +11,13 @@
 // Qt include
 #include <QDir>
 #include <QUrl>
+#include <QStorageInfo>
 
 // KDE includes
 #include "kiconthemes_version.h"
 #include <KIO/Global>
 #include <KIconLoader>
 #include <KLocalizedString>
-#include <KMountPoint>
 
 using namespace Smb4KGlobal;
 
@@ -281,10 +281,10 @@ bool Smb4KShare::isForeign() const
 QString Smb4KShare::fileSystemString() const
 {
     if (!path().isEmpty() && d->filesystem.isEmpty()) {
-        KMountPoint::Ptr mp = KMountPoint::currentMountPoints().findByPath(path());
+        QStorageInfo storageInfo(path());
 
-        if (mp) {
-            d->filesystem = mp->mountType().toUpper();
+        if (storageInfo.isValid() && storageInfo.isReady()) {
+            d->filesystem = QString::fromUtf8(storageInfo.fileSystemType()).toUpper();
         }
     }
 
