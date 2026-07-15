@@ -2,12 +2,13 @@
     This configuration page takes care of all settings concerning the
     user interface
 
-    SPDX-FileCopyrightText: 2006-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
 #include "smb4kconfigpageuserinterface.h"
+#include "core/smb4kautostartmanager.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -23,17 +24,12 @@
 #include <KLocalizedString>
 
 Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
-    : QWidget(parent)
+    : QTabWidget(parent)
 {
-    //
-    // Layout
-    //
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    QWidget *userInterfaceTab = new QWidget(this);
+    QVBoxLayout *userInterfaceTabLayout = new QVBoxLayout(userInterfaceTab);
 
-    //
-    // Main Window settings
-    //
-    QGroupBox *mainWindowBox = new QGroupBox(i18n("Main Window"), this);
+    QGroupBox *mainWindowBox = new QGroupBox(i18n("Main Window"), userInterfaceTab);
     QGridLayout *mainWindowBoxLayout = new QGridLayout(mainWindowBox);
 
     QLabel *tabOrientationLabel = new QLabel(Smb4KSettings::self()->mainWindowTabOrientationItem()->label(), mainWindowBox);
@@ -55,17 +51,9 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
     mainWindowBoxLayout->addWidget(showBookmarkLabel, 1, 0, 1, 2);
 
-    layout->addWidget(mainWindowBox);
+    userInterfaceTabLayout->addWidget(mainWindowBox);
 
-    QCheckBox *startMainWindowDocked = new QCheckBox(Smb4KSettings::self()->startMainWindowDockedItem()->label(), this);
-    startMainWindowDocked->setObjectName(QStringLiteral("kcfg_StartMainWindowDocked"));
-
-    mainWindowBoxLayout->addWidget(startMainWindowDocked, 2, 0, 2, 2);
-
-    //
-    // Network Neighborhood settings
-    //
-    QGroupBox *networkNeighborhoodBox = new QGroupBox(i18n("Network Neighborhood"), this);
+    QGroupBox *networkNeighborhoodBox = new QGroupBox(i18n("Network Neighborhood"), userInterfaceTab);
     QGridLayout *networkNeighborhoodBoxLayout = new QGridLayout(networkNeighborhoodBox);
 
     QLabel *iconSizeNetworkNeighborhoodLabel = new QLabel(Smb4KSettings::self()->networkBrowserIconSizeItem()->label(), networkNeighborhoodBox);
@@ -103,12 +91,9 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
     networkNeighborhoodBoxLayout->addWidget(showNetworkTooltip, 3, 0);
 
-    layout->addWidget(networkNeighborhoodBox);
+    userInterfaceTabLayout->addWidget(networkNeighborhoodBox);
 
-    //
-    // Shares View settings
-    //
-    QGroupBox *sharesViewBox = new QGroupBox(i18n("Shares View"), this);
+    QGroupBox *sharesViewBox = new QGroupBox(i18n("Shares View"), userInterfaceTab);
     QGridLayout *sharesViewBoxLayout = new QGridLayout(sharesViewBox);
 
     QLabel *viewModeLabel = new QLabel(Smb4KSettings::self()->sharesViewModeItem()->label(), sharesViewBox);
@@ -150,12 +135,41 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
     sharesViewBoxLayout->addWidget(showShareTooltip, 3, 0, 1, 2);
 
-    layout->addWidget(sharesViewBox);
-    layout->addStretch(100);
+    userInterfaceTabLayout->addWidget(sharesViewBox);
+    userInterfaceTabLayout->addStretch(100);
+
+    addTab(userInterfaceTab, i18n("User Interface"));
+
+    QWidget *launchTab = new QWidget(this);
+    QVBoxLayout *launchTabLayout = new QVBoxLayout(launchTab);
+
+    QGroupBox *programLaunchBox = new QGroupBox(i18n("Behavior"), launchTab);
+    QVBoxLayout *programLaunchBoxLayout = new QVBoxLayout(programLaunchBox);
+
+    QCheckBox *startAutomatically = new QCheckBox(Smb4KSettings::self()->autostartApplicationItem()->label(), programLaunchBox);
+    startAutomatically->setObjectName(QStringLiteral("kcfg_AutostartApplication"));
+
+    programLaunchBoxLayout->addWidget(startAutomatically);
+
+    QCheckBox *startMainWindowDocked = new QCheckBox(Smb4KSettings::self()->startMainWindowDockedItem()->label(), programLaunchBox);
+    startMainWindowDocked->setObjectName(QStringLiteral("kcfg_StartMainWindowDocked"));
+
+    programLaunchBoxLayout->addWidget(startMainWindowDocked);
+
+    launchTabLayout->addWidget(programLaunchBox);
+    launchTabLayout->addStretch(100);
+
+    addTab(launchTab, i18n("Program Launch"));
 }
 
 Smb4KConfigPageUserInterface::~Smb4KConfigPageUserInterface()
 {
+}
+
+void Smb4KConfigPageUserInterface::saveAutostartSetting()
+{
+    QCheckBox *startAutomatically = findChild<QCheckBox *>(QStringLiteral("kcfg_AutostartApplication"));
+    Smb4KAutoStartManager::self()->enableAutoStart(startAutomatically->isChecked());
 }
 
 /////////////////////////////////////////////////////////////////////////////

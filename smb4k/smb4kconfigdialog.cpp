@@ -197,6 +197,7 @@ void Smb4KConfigDialog::updateSettings()
 
     (void)checkSettings();
 
+    m_userInterfacePage->saveAutostartSetting();
     m_authenticationPage->saveDefaultLoginCredentials();
     m_customSettingsPage->saveCustomSettings();
     m_bookmarksPage->saveBookmarks();

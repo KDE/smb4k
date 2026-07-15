@@ -42,6 +42,11 @@
             <whatsthis>Start the application docked to the system tray, i.e. only the system tray widget is shown and the main window is hidden. You can bring the main window up by clicking on the system tray widget or by choosing "Restore" from its popup menu.</whatsthis>
             <default>false</default>
         </entry>
+        <entry name="AutostartApplication" type="Bool">
+            <label>Start the application automatically at session start</label>
+            <whatsthis>Start the application automatically at session start. For this, it is added to the autostart list by creating a desktop file in the autostart folder.</whatsthis>
+            <default>false</default>
+        </entry>
         <entry name="ShowType" type="Bool">
             <label>Show the type of the share</label>
             <whatsthis>The type of a share will be displayed in a separate column in the network neighborhood browser. It can either be Disk, Printer or IPC.</whatsthis>

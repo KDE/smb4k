@@ -11,6 +11,7 @@ include_directories(
 add_library(smb4kcore SHARED)
 
 target_sources(smb4kcore PRIVATE
+  smb4kautostartmanager.cpp
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
   smb4kbookmarkhandler.cpp
