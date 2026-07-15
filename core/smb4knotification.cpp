@@ -195,7 +195,8 @@ void Smb4KNotification::mimetypeNotSupported(const QString &mimetype)
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-warning"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
         notification->sendEvent();
     } else {
-        QTextStream(stderr) << i18n("The mimetype %1 is not supported for printing. Please convert the file to PDF or Postscript and try again.", mimetype) << Qt::endl;
+        QTextStream(stderr) << i18n("The mimetype %1 is not supported for printing. Please convert the file to PDF or Postscript and try again.", mimetype)
+                            << Qt::endl;
     }
 }
 
@@ -244,9 +245,9 @@ void Smb4KNotification::bookmarkLabelInUse(const BookmarkPtr &bookmark)
         notification->sendEvent();
     } else {
         QTextStream(stderr) << i18n("The label %1 of the bookmark for the share %2 is already being used and will automatically be renamed.",
-                       bookmark->label(),
-                       bookmark->displayString())
-               << Qt::endl;
+                                    bookmark->label(),
+                                    bookmark->displayString())
+                            << Qt::endl;
     }
 }
 

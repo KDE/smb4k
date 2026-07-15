@@ -15,7 +15,6 @@
 // Qt includes
 #include <QCoreApplication>
 
-
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
     onlyForeignShares = false;

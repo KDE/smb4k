@@ -10,8 +10,8 @@
 
 // Qt include
 #include <QDir>
-#include <QUrl>
 #include <QStorageInfo>
+#include <QUrl>
 
 // KDE includes
 #include "kiconthemes_version.h"
