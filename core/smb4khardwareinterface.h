@@ -15,7 +15,7 @@
 // Qt includes
 #include <QObject>
 #include <QScopedPointer>
-#include <QUrl>
+#include <QSessionManager>
 
 class Smb4KHardwareInterfacePrivate;
 
@@ -111,7 +111,6 @@ Q_SIGNALS:
     void onlineStateChanged(bool online);
 
 protected Q_SLOTS:
-#if defined(Q_OS_LINUX)
     /**
      * This slot is called when a device was added to the system.
      * @param udi     the device UDI
@@ -123,7 +122,6 @@ protected Q_SLOTS:
      * @param udi     the device UDI
      */
     void slotDeviceRemoved(const QString &udi);
-#endif
 
     /**
      * This slot is called when the system prepares for sleep or has

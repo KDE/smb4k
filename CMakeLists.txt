@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Pino Toscano <pino@kde.org>
-# SPDX-FileCopyrightText: 2009-2024 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2009-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 #
 # Minimum required CMake version
@@ -31,10 +31,10 @@ if (POLICY CMP0071)
 endif()
 
 #
-# Minimum required versions of Qt and Frameworks
+# Minimum required versions of Qt and KDE Frameworks
 #
-set(QT_MIN_VERSION "6.6.2")
-set(KF_MIN_VERSION "6.0.0")
+set(QT_MIN_VERSION "6.9.0")
+set(KF_MIN_VERSION "6.28.0")
 
 #
 # Options for building Smb4K

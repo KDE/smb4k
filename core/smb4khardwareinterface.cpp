@@ -34,24 +34,16 @@
 #include <Solid/DeviceNotifier>
 #include <Solid/NetworkShare>
 #include <solid_version.h>
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-#include <KMountPoint>
-#endif
 
 class Smb4KHardwareInterfacePrivate
 {
 public:
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    QStringList mountPoints;
-#endif
     QScopedPointer<QDBusInterface> dbusInterface;
     QDBusUnixFileDescriptor fileDescriptor;
     bool systemOnline;
     bool systemSleep;
     bool initialImportDone;
-#if defined(Q_OS_LINUX)
     QStringList udis;
-#endif
     int timerId;
 };
 
@@ -109,7 +101,6 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     // on the system and then start the timer.
     //
     QTimer::singleShot(0, [&]() {
-#if defined(Q_OS_LINUX)
         QList<Solid::Device> allDevices = Solid::Device::allDevices();
 
         for (const Solid::Device &device : std::as_const(allDevices)) {
@@ -122,24 +113,13 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
                 Q_EMIT networkShareAdded(mountpoint);
             }
         }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-        KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
 
-        for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints) {
-            if (mountPoint->mountType() == QStringLiteral("smbfs")) {
-                d->mountPoints.append(mountPoint->mountPoint());
-                Q_EMIT networkShareAdded(mountPoint->mountPoint());
-            }
-        }
-#endif
         d->initialImportDone = true;
         d->timerId = startTimer(1000);
     });
 
-#if defined(Q_OS_LINUX)
     connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceAdded, this, &Smb4KHardwareInterface::slotDeviceAdded);
     connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceRemoved, this, &Smb4KHardwareInterface::slotDeviceRemoved);
-#endif
 }
 
 Smb4KHardwareInterface::~Smb4KHardwareInterface()
@@ -218,67 +198,20 @@ bool Smb4KHardwareInterface::initialImportDone() const
 QStringList Smb4KHardwareInterface::allMountPoints() const
 {
     QStringList mountPoints;
-#if defined(Q_OS_LINUX)
+
     for (const QString &udi : std::as_const(d->udis)) {
         mountPoints << udi.section(QStringLiteral(":"), -1, -1).trimmed();
     }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    mountPoints = d->mountPoints;
-#endif
+
     return mountPoints;
 }
 
 void Smb4KHardwareInterface::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
-
     checkOnlineState();
-
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    // NOTE: Using FreeBSD 11 with KF 5.27, Solid is not able to detect mounted shares.
-    // Thus, we check here whether shares have been mounted or unmounted.
-    // This is a hack and should be removed as soon as possible.
-    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
-    QStringList mountPointList, alreadyMounted;
-
-    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints) {
-        if (mountPoint->mountType() == QStringLiteral("smbfs")) {
-            mountPointList.append(mountPoint->mountPoint());
-        }
-    }
-
-    QMutableStringListIterator it(mountPointList);
-
-    while (it.hasNext()) {
-        QString mountPoint = it.next();
-        int index = -1;
-
-        if ((index = d->mountPoints.indexOf(mountPoint)) != -1) {
-            d->mountPoints.removeAt(index);
-            alreadyMounted.append(mountPoint);
-            it.remove();
-        }
-    }
-
-    if (!d->mountPoints.isEmpty()) {
-        for (const QString &mountPoint : std::as_const(d->mountPoints)) {
-            Q_EMIT networkShareRemoved(mountPoint);
-        }
-    }
-
-    if (!mountPointList.isEmpty()) {
-        for (const QString &mountPoint : std::as_const(mountPointList)) {
-            Q_EMIT networkShareAdded(mountPoint);
-        }
-    }
-
-    d->mountPoints.clear();
-    d->mountPoints.append(alreadyMounted);
-    d->mountPoints.append(mountPointList);
-#endif
 }
 
-#if defined(Q_OS_LINUX)
 void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
 {
     Solid::Device device(udi);
@@ -301,7 +234,6 @@ void Smb4KHardwareInterface::slotDeviceRemoved(const QString &udi)
         d->udis.removeOne(udi);
     }
 }
-#endif
 
 void Smb4KHardwareInterface::slotSystemSleep(bool sleep)
 {
