@@ -3,21 +3,21 @@
 # Marc Hansen <marcgie@mail.berlios.de>, 2003, 2004, 2005.
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
-# SPDX-FileCopyrightText: 2009, 2010, 2023, 2024, 2025, 2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2009-2010, 2023-2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
 # Stefan Asserhall <stefan.asserhall@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:43+0000\n"
-"PO-Revision-Date: 2026-01-23 20:31+0100\n"
+"PO-Revision-Date: 2026-07-05 20:46+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -83,24 +83,22 @@ msgstr "Avmonteringsprocessen kunde inte startas."
 #: smb4k/main.cpp:46
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
-msgstr ""
+msgstr "Argumentet är ogiltigt. Använd antingen 'on' eller 'off'."
 
 #: smb4k/main.cpp:57 smb4k/main.cpp:75
 #, kde-format
 msgid "Profiles are disabled."
-msgstr ""
+msgstr "Profiler är inaktiverade."
 
 #: smb4k/main.cpp:64
-#, fuzzy, kde-format
-#| msgid "The file is invalid."
+#, kde-format
 msgid "The profile name is invalid."
-msgstr "Filen är ogiltig."
+msgstr "Profilnamnet är ogiltigt."
 
 #: smb4k/main.cpp:82
-#, fuzzy, kde-format
-#| msgid "Set Active"
+#, kde-format
 msgid " (active)"
-msgstr "Gör aktiv"
+msgstr " (aktiv)"
 
 #: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -115,10 +113,9 @@ msgstr ""
 "Samba-resurser"
 
 #: smb4k/main.cpp:143
-#, fuzzy, kde-format
-#| msgid "© 2003-2025 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© 2003-2025 Alexander Reinholdt"
+msgstr "© 2003-2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:148
 #, kde-format
@@ -144,28 +141,28 @@ msgstr "Bidragsgivare"
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
+"Aktivera eller inaktivera användningen av profiler. <arg> kan vara 'on' "
+"eller 'off'."
 
 #: smb4k/main.cpp:163
 #, kde-format
 msgid "Set the active profile to <profile>."
-msgstr ""
+msgstr "Ställ in den aktiv profilen till <profil>."
 
 #: smb4k/main.cpp:166
-#, fuzzy, kde-format
-#| msgid "Print a file."
+#, kde-format
 msgid "List all profiles."
-msgstr "Skriv ut till en fil."
+msgstr "Lista alla profiler."
 
 #: smb4k/main.cpp:169
-#, fuzzy, kde-format
-#| msgid "Unmount all shares when the power button is pressed"
+#, kde-format
 msgid "Remount all shares that were previously used."
-msgstr "Avmontera alla delade resurser när strömknappen trycks ner"
+msgstr "Avmontera alla delade resurser som tidigare användes."
 
 #: smb4k/main.cpp:172
 #, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr ""
+msgstr "Montera de delade resurserna som pekas på av <webbadress>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -867,10 +864,9 @@ msgid "Bookmark this share"
 msgstr "Lägg till bokmärke för den delade katalogen"
 
 #: smb4k/smb4kmountdialog.cpp:155
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark"
-msgstr "Bokmärken"
+msgstr "Bokmärke"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
