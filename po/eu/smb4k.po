@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-28 00:43+0000\n"
+"POT-Creation-Date: 2026-07-16 00:44+0000\n"
 "PO-Revision-Date: 2026-02-28 22:55+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -80,87 +80,87 @@ msgstr "Desmuntatzeko debekatutako aukerak pasatu dira."
 msgid "The unmount process could not be started."
 msgstr "Desmuntatzeko prozesua ezin izan da abiarazi."
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:47
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr ""
 
-#: smb4k/main.cpp:57 smb4k/main.cpp:75
+#: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
 msgstr ""
 
-#: smb4k/main.cpp:64
+#: smb4k/main.cpp:65
 #, kde-format
 msgid "The profile name is invalid."
 msgstr ""
 
-#: smb4k/main.cpp:82
+#: smb4k/main.cpp:83
 #, fuzzy, kde-format
 #| msgid "Set Active"
 msgid " (active)"
 msgstr "Ezarri aktibo"
 
-#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:141
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 "Sareko auzo-arakatzaile aurreratua eta Samba partekatzeak muntatzeko "
 "baliagarritasuna"
 
-#: smb4k/main.cpp:143
+#: smb4k/main.cpp:145
 #, fuzzy, kde-format
 #| msgid "© 2003-2025 Alexander Reinholdt"
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2025 Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Developer"
 msgstr "Garatzailea"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Donator"
 msgstr "Dohaintza emailea"
 
-#: smb4k/main.cpp:159
+#: smb4k/main.cpp:161
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
 
-#: smb4k/main.cpp:163
+#: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr ""
 
-#: smb4k/main.cpp:166
+#: smb4k/main.cpp:168
 #, fuzzy, kde-format
 #| msgid "Print a file."
 msgid "List all profiles."
 msgstr "Inprimatu fitxategi bat."
 
-#: smb4k/main.cpp:169
+#: smb4k/main.cpp:171
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr ""
 
-#: smb4k/main.cpp:172
+#: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
 msgstr ""
@@ -255,7 +255,7 @@ msgstr "Gehitu &laster-marka"
 msgid "Mount Bookmarks"
 msgstr "Muntatu laster-markak"
 
-#: smb4k/smb4kconfigdialog.cpp:125
+#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4kconfigpageuserinterface.cpp:141
 #, kde-format
 msgid "User Interface"
 msgstr "Erabiltzailearen interfazea"
@@ -282,8 +282,8 @@ msgid "Authentication"
 msgstr "Autentifikatzea"
 
 #: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
-#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:241
-#: smb4k/smb4kconfigdialog.cpp:242 smb4k/smb4kconfigdialog.cpp:243
+#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, kde-format
 msgid " (Profile: %1)"
 msgstr "(Profila: %1)"
@@ -308,7 +308,7 @@ msgstr ""
 "Ezarpen akastun bat aurkitu da. Hura konpontzeko, orain, konfiguratzeko "
 "dagokion orrira eramango zaitu."
 
-#: smb4k/smb4kconfigdialog.cpp:228
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -396,6 +396,7 @@ msgstr ""
 #: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
+#: smb4k/smb4kconfigpageuserinterface.cpp:146
 #, kde-format
 msgid "Behavior"
 msgstr "Jokabidea"
@@ -639,20 +640,25 @@ msgstr "Iragaztea"
 msgid "Checksums"
 msgstr "Egiaztapen-baturak"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#: smb4k/smb4kconfigpageuserinterface.cpp:32
 #, kde-format
 msgid "Main Window"
 msgstr "Leiho nagusia"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
+#: smb4k/smb4kconfigpageuserinterface.cpp:56 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Sareko auzoa"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:111
+#: smb4k/smb4kconfigpageuserinterface.cpp:96
 #, kde-format
 msgid "Shares View"
 msgstr "Partekatze ikuspegia"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:162
+#, kde-format
+msgid "Program Launch"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format

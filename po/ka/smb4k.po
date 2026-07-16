@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-28 00:43+0000\n"
+"POT-Creation-Date: 2026-07-16 00:44+0000\n"
 "PO-Revision-Date: 2026-03-30 07:19+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -78,86 +78,86 @@ msgstr "გადაცემულია აკრძალული მოხ�
 msgid "The unmount process could not be started."
 msgstr "მოხსნის პროცესის გაშვების შეცდომა."
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:47
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "არგუმენტი არასწორია. გამოიყენეთ ან 'ჩართ', ან 'გამორთ'."
 
-#: smb4k/main.cpp:57 smb4k/main.cpp:75
+#: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "პროფილები გამორთულია."
 
-#: smb4k/main.cpp:64
+#: smb4k/main.cpp:65
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "პროფილის სახელი არასწორია."
 
-#: smb4k/main.cpp:82
+#: smb4k/main.cpp:83
 #, kde-format
 msgid " (active)"
 msgstr " (აქტიურია)"
 
-#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:141
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 "საუკეთესო ქსელური მეზობლების ბრაუზერი და Samba-ის გაზიარებულების მიმაგრების "
 "პროგრამა"
 
-#: smb4k/main.cpp:143
+#: smb4k/main.cpp:145
 #, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2026 Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Developer"
 msgstr "პროგრამისტი"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Donator"
 msgstr "შემომწირავი"
 
-#: smb4k/main.cpp:159
+#: smb4k/main.cpp:161
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
 "პროფილების გამოყენების ჩართვა ან გამორთვა. <arg> შეიძლება იყოს \"ჩართ\" ან "
 "\"გამორთ\"."
 
-#: smb4k/main.cpp:163
+#: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr "აქტიური პროფილის დაყენება <პროფილზე>."
 
-#: smb4k/main.cpp:166
+#: smb4k/main.cpp:168
 #, kde-format
 msgid "List all profiles."
 msgstr "ყველა პროფილის ჩამონათვალი."
 
-#: smb4k/main.cpp:169
+#: smb4k/main.cpp:171
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr "ადრე გამოყენებული გაზიარებულების თავიდან მიმაგრება."
 
-#: smb4k/main.cpp:172
+#: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
 msgstr "<url>-ის მოწოდებული გაზიარებულების მიმაგრება."
@@ -251,7 +251,7 @@ msgstr "&სანიშნის დამატება"
 msgid "Mount Bookmarks"
 msgstr "სანიშნების მიმაგრება"
 
-#: smb4k/smb4kconfigdialog.cpp:125
+#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4kconfigpageuserinterface.cpp:141
 #, kde-format
 msgid "User Interface"
 msgstr "სამომხმარებლო ინტერფეისი"
@@ -278,8 +278,8 @@ msgid "Authentication"
 msgstr "ავთენტიკაცია"
 
 #: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
-#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:241
-#: smb4k/smb4kconfigdialog.cpp:242 smb4k/smb4kconfigdialog.cpp:243
+#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, kde-format
 msgid " (Profile: %1)"
 msgstr " (პროფილი: %1)"
@@ -304,7 +304,7 @@ msgstr ""
 "აღმოჩენილია არასწორი პარამეტრი. ახლა შესაბამის\n"
 "გვერდზე გადაგიყვანთ, რათა ჩაასწოროთ ის."
 
-#: smb4k/smb4kconfigdialog.cpp:228
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -391,6 +391,7 @@ msgstr ""
 #: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
+#: smb4k/smb4kconfigpageuserinterface.cpp:146
 #, kde-format
 msgid "Behavior"
 msgstr "ქცევა"
@@ -634,20 +635,25 @@ msgstr "გაფილტვრა"
 msgid "Checksums"
 msgstr "საკონტროლო ჯამები"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#: smb4k/smb4kconfigpageuserinterface.cpp:32
 #, kde-format
 msgid "Main Window"
 msgstr "მთავარი ფანჯარა"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
+#: smb4k/smb4kconfigpageuserinterface.cpp:56 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "ქსელური მეზობლები"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:111
+#: smb4k/smb4kconfigpageuserinterface.cpp:96
 #, kde-format
 msgid "Shares View"
 msgstr "გაზიარებების ხედი"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:162
+#, kde-format
+msgid "Program Launch"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format

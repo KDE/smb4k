@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-28 00:43+0000\n"
+"POT-Creation-Date: 2026-07-16 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -78,82 +78,82 @@ msgstr "传递了被禁止的 umount 选项。"
 msgid "The unmount process could not be started."
 msgstr "无法启动卸载进程。"
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:47
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "参数无效。请使用 on 或 off。"
 
-#: smb4k/main.cpp:57 smb4k/main.cpp:75
+#: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "已禁用配置方案。"
 
-#: smb4k/main.cpp:64
+#: smb4k/main.cpp:65
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "配置方案名称无效。"
 
-#: smb4k/main.cpp:82
+#: smb4k/main.cpp:83
 #, kde-format
 msgid " (active)"
 msgstr " (活动)"
 
-#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:141
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "多功能网上邻居浏览器和 Samba 共享挂载工具"
 
-#: smb4k/main.cpp:143
+#: smb4k/main.cpp:145
 #, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2026 Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Developer"
 msgstr "开发者"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Donator"
 msgstr "捐款者"
 
-#: smb4k/main.cpp:159
+#: smb4k/main.cpp:161
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr "启用或禁用配置方案的使用。<arg> 可以是 on 或 off。"
 
-#: smb4k/main.cpp:163
+#: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr "将活动配置方案设为 <profile>。"
 
-#: smb4k/main.cpp:166
+#: smb4k/main.cpp:168
 #, kde-format
 msgid "List all profiles."
 msgstr "列出所有配置方案。"
 
-#: smb4k/main.cpp:169
+#: smb4k/main.cpp:171
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr "重新挂载之前用过的所有共享。"
 
-#: smb4k/main.cpp:172
+#: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
 msgstr "挂载 <url> 指向的共享。"
@@ -247,7 +247,7 @@ msgstr "添加书签(&B)"
 msgid "Mount Bookmarks"
 msgstr "挂载书签"
 
-#: smb4k/smb4kconfigdialog.cpp:125
+#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4kconfigpageuserinterface.cpp:141
 #, kde-format
 msgid "User Interface"
 msgstr "用户界面"
@@ -274,8 +274,8 @@ msgid "Authentication"
 msgstr "身份验证"
 
 #: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
-#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:241
-#: smb4k/smb4kconfigdialog.cpp:242 smb4k/smb4kconfigdialog.cpp:243
+#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, kde-format
 msgid " (Profile: %1)"
 msgstr " (配置方案：%1)"
@@ -300,7 +300,7 @@ msgstr ""
 "发现了错误的设置。\n"
 "程序将跳转到相关的配置页面以便您手动修复。"
 
-#: smb4k/smb4kconfigdialog.cpp:228
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -386,6 +386,7 @@ msgstr "项目 <b>%1</b> 已被移除，因为自定义选项已被全部重置�
 #: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
+#: smb4k/smb4kconfigpageuserinterface.cpp:146
 #, kde-format
 msgid "Behavior"
 msgstr "行为"
@@ -627,20 +628,25 @@ msgstr "过滤"
 msgid "Checksums"
 msgstr "校验和"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#: smb4k/smb4kconfigpageuserinterface.cpp:32
 #, kde-format
 msgid "Main Window"
 msgstr "主窗口"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
+#: smb4k/smb4kconfigpageuserinterface.cpp:56 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "网上邻居"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:111
+#: smb4k/smb4kconfigpageuserinterface.cpp:96
 #, kde-format
 msgid "Shares View"
 msgstr "共享视图"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:162
+#, kde-format
+msgid "Program Launch"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format

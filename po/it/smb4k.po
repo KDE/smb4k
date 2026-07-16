@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-28 00:43+0000\n"
+"POT-Creation-Date: 2026-07-16 00:44+0000\n"
 "PO-Revision-Date: 2026-04-07 15:38+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -79,86 +79,86 @@ msgstr "Sono state passate delle opzioni di smontaggio proibite."
 msgid "The unmount process could not be started."
 msgstr "Il processo di smontaggio non può essere avviato."
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:47
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "L'argomento  non è valido. Utilizza «attivo» o «disattivo»."
 
-#: smb4k/main.cpp:57 smb4k/main.cpp:75
+#: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "I profili sono disabilitati."
 
-#: smb4k/main.cpp:64
+#: smb4k/main.cpp:65
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Il nome del profilo non è valido."
 
-#: smb4k/main.cpp:82
+#: smb4k/main.cpp:83
 #, kde-format
 msgid " (active)"
 msgstr " (attivo)"
 
-#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:141
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 "Navigatore avanzato delle risorse di rete e programma per montare le "
 "condivisioni Samba"
 
-#: smb4k/main.cpp:143
+#: smb4k/main.cpp:145
 #, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2026 Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Developer"
 msgstr "Sviluppatore"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Donator"
 msgstr "Contributore"
 
-#: smb4k/main.cpp:159
+#: smb4k/main.cpp:161
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
 "Abilita o disabilita l'utilizzo dei profili. <arg> può essere «attivo» o "
 "«disattivo»."
 
-#: smb4k/main.cpp:163
+#: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr "Imposta il profili attivo a <profile>."
 
-#: smb4k/main.cpp:166
+#: smb4k/main.cpp:168
 #, kde-format
 msgid "List all profiles."
 msgstr "Elenca tutti i profili."
 
-#: smb4k/main.cpp:169
+#: smb4k/main.cpp:171
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr "Rimonta le condivisioni che sono già state utilizzate."
 
-#: smb4k/main.cpp:172
+#: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
 msgstr "Monta la condivisione indicata da <url>."
@@ -253,7 +253,7 @@ msgstr "Aggiungi segnali&bro"
 msgid "Mount Bookmarks"
 msgstr "Monta segnalibri"
 
-#: smb4k/smb4kconfigdialog.cpp:125
+#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4kconfigpageuserinterface.cpp:141
 #, kde-format
 msgid "User Interface"
 msgstr "Interfaccia utente"
@@ -280,8 +280,8 @@ msgid "Authentication"
 msgstr "Autenticazione"
 
 #: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
-#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:241
-#: smb4k/smb4kconfigdialog.cpp:242 smb4k/smb4kconfigdialog.cpp:243
+#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, kde-format
 msgid " (Profile: %1)"
 msgstr " (Profilo: %1)"
@@ -306,7 +306,7 @@ msgstr ""
 "È stato trovata un'impostazione non corretta; sarai ora portato\n"
 "alla pagina di configurazione appropriata per correggerla."
 
-#: smb4k/smb4kconfigdialog.cpp:228
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -394,6 +394,7 @@ msgstr ""
 #: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
+#: smb4k/smb4kconfigpageuserinterface.cpp:146
 #, kde-format
 msgid "Behavior"
 msgstr "Comportamento"
@@ -637,20 +638,26 @@ msgstr "Filtraggio"
 msgid "Checksums"
 msgstr "Codici di controllo"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#: smb4k/smb4kconfigpageuserinterface.cpp:32
 #, kde-format
 msgid "Main Window"
 msgstr "Finestra principale"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
+#: smb4k/smb4kconfigpageuserinterface.cpp:56 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Risorse di rete"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:111
+#: smb4k/smb4kconfigpageuserinterface.cpp:96
 #, kde-format
 msgid "Shares View"
 msgstr "Visualizzazione delle condivisioni"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:162
+#, fuzzy, kde-format
+#| msgid "Programs"
+msgid "Program Launch"
+msgstr "Programmi"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format
@@ -5162,9 +5169,6 @@ msgstr "Dimensione:"
 #, fuzzy
 #~ msgid "super"
 #~ msgstr "Utente:"
-
-#~ msgid "Programs"
-#~ msgstr "Programmi"
 
 #~ msgid "Network Browser"
 #~ msgstr "Browser di rete"

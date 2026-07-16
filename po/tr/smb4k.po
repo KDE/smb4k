@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-28 00:43+0000\n"
+"POT-Creation-Date: 2026-07-16 00:44+0000\n"
 "PO-Revision-Date: 2026-03-30 19:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -83,84 +83,84 @@ msgstr "Yasaklı unmount seçenekleri geçirildi."
 msgid "The unmount process could not be started."
 msgstr "Bağlantı kesme süreci başlatılamadı."
 
-#: smb4k/main.cpp:46
+#: smb4k/main.cpp:47
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr "Argüman geçersiz. Lütfen “on” veya “off” kullanın."
 
-#: smb4k/main.cpp:57 smb4k/main.cpp:75
+#: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
 msgstr "Profiller devre dışı."
 
-#: smb4k/main.cpp:64
+#: smb4k/main.cpp:65
 #, kde-format
 msgid "The profile name is invalid."
 msgstr "Profil adı geçersiz."
 
-#: smb4k/main.cpp:82
+#: smb4k/main.cpp:83
 #, kde-format
 msgid " (active)"
 msgstr " (etkin)"
 
-#: smb4k/main.cpp:139 smb4k/smb4ksystemtray.cpp:49
+#: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:141
+#: smb4k/main.cpp:143
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Gelişmiş ağ komşuları tarayıcısı ve Samba paylaşım bağlama aracı"
 
-#: smb4k/main.cpp:143
+#: smb4k/main.cpp:145
 #, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003–2026 Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:148
+#: smb4k/main.cpp:150
 #, kde-format
 msgid "Developer"
 msgstr "Geliştirici"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:149
+#: smb4k/main.cpp:151
 #, kde-format
 msgid "Donator"
 msgstr "Bağışçı"
 
-#: smb4k/main.cpp:159
+#: smb4k/main.cpp:161
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
 "Profil kullanımını etkinleştirin veya devre dışı bırakın. <arg>, “on” veya "
 "“off” olabilir."
 
-#: smb4k/main.cpp:163
+#: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
 msgstr "Etkin <profil>’i ayarlayın."
 
-#: smb4k/main.cpp:166
+#: smb4k/main.cpp:168
 #, kde-format
 msgid "List all profiles."
 msgstr "Tüm profilleri listeleyin."
 
-#: smb4k/main.cpp:169
+#: smb4k/main.cpp:171
 #, kde-format
 msgid "Remount all shares that were previously used."
 msgstr "Daha önceden kullanılmış tüm paylaşımları yeniden bağlayın."
 
-#: smb4k/main.cpp:172
+#: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
 msgstr "<url> ile işaret edilen paylaşımı bağlayın."
@@ -254,7 +254,7 @@ msgstr "Yer İmi &Koy"
 msgid "Mount Bookmarks"
 msgstr "Yer İmlerini Bağla"
 
-#: smb4k/smb4kconfigdialog.cpp:125
+#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4kconfigpageuserinterface.cpp:141
 #, kde-format
 msgid "User Interface"
 msgstr "Kullanıcı Arayüzü"
@@ -281,8 +281,8 @@ msgid "Authentication"
 msgstr "Kimlik Denetimi"
 
 #: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
-#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:241
-#: smb4k/smb4kconfigdialog.cpp:242 smb4k/smb4kconfigdialog.cpp:243
+#: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:242
+#: smb4k/smb4kconfigdialog.cpp:243 smb4k/smb4kconfigdialog.cpp:244
 #, kde-format
 msgid " (Profile: %1)"
 msgstr " (Profil: %1)"
@@ -307,7 +307,7 @@ msgstr ""
 "Hatalı bir ayar bulundu. Bunu düzeltebilmeniz için\n"
 "ilgili yapılandırma sayfası açılacaktır."
 
-#: smb4k/smb4kconfigdialog.cpp:228
+#: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
 msgid ""
 "You have made changes to the profiles. You have to apply\n"
@@ -393,6 +393,7 @@ msgstr "<b>%1</b> ögesi kaldırıldı; çünkü tüm özel ayarlar sıfırlanm�
 #: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
+#: smb4k/smb4kconfigpageuserinterface.cpp:146
 #, kde-format
 msgid "Behavior"
 msgstr "Davranış"
@@ -635,20 +636,25 @@ msgstr "Süzme"
 msgid "Checksums"
 msgstr "Sağlama Toplamları"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#: smb4k/smb4kconfigpageuserinterface.cpp:32
 #, kde-format
 msgid "Main Window"
 msgstr "Ana Pencere"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:68 smb4k/smb4kmainwindow.cpp:169
+#: smb4k/smb4kconfigpageuserinterface.cpp:56 smb4k/smb4kmainwindow.cpp:169
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Ağ Komşuları"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:111
+#: smb4k/smb4kconfigpageuserinterface.cpp:96
 #, kde-format
 msgid "Shares View"
 msgstr "Paylaşım Görünümü"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:162
+#, kde-format
+msgid "Program Launch"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format
