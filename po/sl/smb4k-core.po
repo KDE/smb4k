@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-06-13 06:35+0200\n"
+"PO-Revision-Date: 2026-07-16 06:32+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -104,10 +104,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:46
-#, fuzzy, kde-format
-#| msgid "Start the application docked to the system tray"
+#, kde-format
 msgid "Start the application automatically at session start"
-msgstr "Zaženi aplikacijo privezano na sistemski pladenj"
+msgstr "Samodejni zagon aplikacije ob začetku seje"
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47
@@ -116,6 +115,9 @@ msgid ""
 "Start the application automatically at session start. For this, it is added "
 "to the autostart list by creating a desktop file in the autostart folder."
 msgstr ""
+"Samodejni zagon aplikacije ob začetku seje. Za to se doda na seznam "
+"samodejnega zagona tako, da se v mapi samodejnega zagona ustvari datoteka "
+"namizja."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:51

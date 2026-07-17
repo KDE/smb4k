@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-06-13 03:37+0200\n"
+"PO-Revision-Date: 2026-07-16 06:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -102,10 +102,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:46
-#, fuzzy, kde-format
-#| msgid "Start the application docked to the system tray"
+#, kde-format
 msgid "Start the application automatically at session start"
-msgstr "აპლიკაციის გაშვება სისტემურ კუთხეში ჩაკეცილი სახით"
+msgstr "აპლიკაციის ავტომატური გაშვება სესიის დაწყებისას"
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47
@@ -114,6 +113,8 @@ msgid ""
 "Start the application automatically at session start. For this, it is added "
 "to the autostart list by creating a desktop file in the autostart folder."
 msgstr ""
+"პროგრამის ავტომატური გაშვებს სესიის დაწყებისას. ამისთვის ის დაემატება "
+"ავტოგაშვების სიაში სამუშაო მაგიდის ფაილის შექმნით ავტოგაშვების საქაღალდეში."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:51
