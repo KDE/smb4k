@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-06-13 16:25+0300\n"
+"PO-Revision-Date: 2026-07-17 12:17+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -101,10 +101,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:46
-#, fuzzy, kde-format
-#| msgid "Start the application docked to the system tray"
+#, kde-format
 msgid "Start the application automatically at session start"
-msgstr "להפעיל את היישום במצב ממוזער בשורת המערכת"
+msgstr "להפעיל את היישום אוטומטית עם עליית ההפעלה"
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47
@@ -113,6 +112,8 @@ msgid ""
 "Start the application automatically at session start. For this, it is added "
 "to the autostart list by creating a desktop file in the autostart folder."
 msgstr ""
+"להפעיל את היישום אוטומטית עם עליית ההפעלה. לשם כך, הוא נוסף לרשימת ההפעלה "
+"האוטומטית על ידי יצירת קובץ שולחן עבודה בתיקיית ההפעלה האוטומטית."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:51

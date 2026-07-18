@@ -97,10 +97,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:46
-#, fuzzy, kde-format
-#| msgid "Start the application docked to the system tray"
+#, kde-format
 msgid "Start the application automatically at session start"
-msgstr "启动应用程序时最小化到系统托盘"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-06-13 19:50+0400\n"
+"PO-Revision-Date: 2026-07-17 15:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -101,10 +101,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:46
-#, fuzzy, kde-format
-#| msgid "Start the application docked to the system tray"
+#, kde-format
 msgid "Start the application automatically at session start"
-msgstr "ابدأ التطبيق مصغر إلى صينية النظام"
+msgstr "ابدأ التطبيق آليًا عند بدء الجلسة"
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47
@@ -113,6 +112,8 @@ msgid ""
 "Start the application automatically at session start. For this, it is added "
 "to the autostart list by creating a desktop file in the autostart folder."
 msgstr ""
+"تشغيل التطبيق الآلي عند بدء الجلسة. ولتحقيق ذلك، أضيف إلى قائمة التشغيل "
+"الآلي عن طريق إنشاء ملف على سطح المكتب في مجلد التشغيل الآلي."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:51
