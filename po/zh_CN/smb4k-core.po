@@ -99,7 +99,7 @@ msgstr ""
 #: smb4k.kcfg:46
 #, kde-format
 msgid "Start the application automatically at session start"
-msgstr ""
+msgstr "会话开始时自动启动应用程序"
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47
@@ -108,6 +108,8 @@ msgid ""
 "Start the application automatically at session start. For this, it is added "
 "to the autostart list by creating a desktop file in the autostart folder."
 msgstr ""
+"会话开始时自动启动应用程序。为了将自身添加到自动启动列表中，它将在 autostart "
+"文件夹中创建一个 desktop 文件。"
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:51

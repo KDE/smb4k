@@ -646,7 +646,7 @@ msgstr "共享视图"
 #: smb4k/smb4kconfigpageuserinterface.cpp:162
 #, kde-format
 msgid "Program Launch"
-msgstr ""
+msgstr "程序启动"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format
