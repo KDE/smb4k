@@ -710,7 +710,7 @@ msgid ""
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
 "<qt>Wenn Sie das Hauptfenster schließen, wird Smb4K im Systemabschnitt der "
-"Kontrollleiste weiterlaufen.<br>Benutzen Sie <i>Beenden</i> im Menü "
+"Kontrollleiste weiterlaufen.<br>Verwenden Sie <i>Beenden</i> im Menü "
 "<i>Datei</i>, um die Anwendung vollständig zu beenden.</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:284
