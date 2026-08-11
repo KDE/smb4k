@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-07-17 15:09+0400\n"
+"PO-Revision-Date: 2026-08-10 18:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -934,7 +934,7 @@ msgstr ""
 #: smb4k.kcfg:350
 #, kde-format
 msgid "Preserve permissions"
-msgstr "احفظ الأذونات"
+msgstr "احفظ الأذون"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
 #: smb4k.kcfg:351
@@ -944,8 +944,8 @@ msgid ""
 "will be same as the source file. For what happens if this option is switched "
 "off, please read rsync's manual page."
 msgstr ""
-"يحافظ على الأذونات (-p، --perms). ستكون أذونات ملف المقصد مماثلة لملف "
-"المصدر. لمعرفة ما يحدث إذا عُطل هذا الخيار؛ يرجى قراءة صفحة دليل rsync."
+"يحافظ على الأذون (-p، --perms). ستكون أذون ملف المقصد مماثلة لملف المصدر. "
+"لمعرفة ما يحدث إذا عُطل هذا الخيار؛ يرجى قراءة صفحة دليل rsync."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:355
@@ -2553,7 +2553,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:148
 #, kde-format
 msgid "Do permission checks"
-msgstr "تحقق من الأذونات"
+msgstr "تحقق من الأذون"
 
 #. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:149
