@@ -469,8 +469,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *event)
     }
 
     // Try to remount shares
-    if (Smb4KMountSettings::remountShares() && d->remountAttempts < Smb4KMountSettings::remountAttempts()
-        && Smb4KHardwareInterface::self()->initialImportDone()) {
+    if (d->remountAttempts < Smb4KMountSettings::remountAttempts() && Smb4KHardwareInterface::self()->initialImportDone()) {
         if (d->remountAttempts == 0) {
             triggerRemounts(true);
         }
