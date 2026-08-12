@@ -6,8 +6,6 @@
 >">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Italian "INCLUDE">
-  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
-  <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
@@ -16,9 +14,6 @@
 >">
   <!ENTITY Samba "<application
 >Samba</application
->">
-  <!ENTITY solid "<application
->Solid</application
 >">
   <!ENTITY kdbusaddons "<application
 >KDBusAddons</application
@@ -78,7 +73,7 @@
 
   <copyright>
     <year
->2005-2024</year>
+>2005-2026</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -86,9 +81,9 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->31/07/2024</date>
+>26/01/2026</date>
   <releaseinfo
->&smb4k; 4.0.0</releaseinfo
+>&smb4k; 4.0.5</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -115,11 +110,22 @@
 >Introduzione</title>
 
   <para
->Questo manuale descrive &smb4k; 4.0 e, in una certa misura, alcune versioni precedenti.</para>
-  <para
 >&smb4k; è un navigatore avanzato delle risorse di rete e uno strumento per il montaggio delle condivisioni <ulink url="http://www.samba.org"
 >Samba</ulink
 >. Fornisce numerose caratteristiche utili che facilitano la vita in un ambiente di rete dominato da &Windows;:</para>
+
+  <para
+>Questo manuale descrive &smb4k; 4.0.5 e successivo. In una certa misura è corretto anche per alcune versioni precedenti.</para>
+
+  <note>
+    <para
+>Nel 2025 sono state individuate diverse vulnerabilità di sicurezza nel programma di supporto al montaggio KAuth (vedi il <ulink url="https://security.opensuse.org/2025/12/10/smb4k-major-issues-in-kauth-helper.html"
+>rapporto</ulink
+> della squadra di sicurezza di SUSE), che sono state risolte nella versione 4.0.5. Poiché le funzionalità relative al montaggio e allo smontaggio sono state limitate, questi miglioramenti alla sicurezza hanno un impatto notevole sull'intero programma.</para>
+  </note>
+
+  <para
+>&smb4k; ha le seguenti funzionalità:</para>
 
   <itemizedlist>
     <listitem
@@ -176,7 +182,7 @@
 ></listitem>
     <listitem
 ><para
->Supporto alle opzioni avanzate di montaggio</para
+>Supporto delle opzioni di montaggio selezionate</para
 ></listitem>
     <listitem
 ><para
@@ -184,7 +190,7 @@
 ></listitem>
     <listitem
 ><para
->Supporto a &kwallet5;</para
+>Supporto a molte soluzioni di salvataggio sicuro delle credenziali di accesso con QtKeychain</para
 ></listitem>
     <listitem
 ><para
@@ -249,7 +255,7 @@
 ></userinput
 >. &smb4k; viene fornito di un <link linkend="plasmoid"
 >&plasmoid;</link
-> per una migliore integrazione con il desktop: può essere aggiunto come oggetto al desktop o al pannello.</para>
+> per una migliore integrazione con il desktop, che può essere aggiunto come oggetto al desktop o al pannello.</para>
 
     <para
 >Se &smb4k; si imbatte in un problema all'avvio oppure mentre è in esecuzione, verrà inviata una notifica all'utente. Per la risoluzione di alcuni problemi comuni, vedi la sezione <link linkend="trouble_shooting"
@@ -296,29 +302,29 @@
 >vista delle condivisioni montate</link
 >.</para>
     <para
->La barra di stato fornisce alcune informazioni sullo stato corrente di &smb4k;. Se l'applicazione sta elaborando una richiesta dell'utente (&eg; sta montando una condivisione), viene visualizzato un messaggio descrittivo nella sezione più a sinistra, inoltre viene mostrata una barra di avanzamento con un indicatore di occupato. Le due icone sul lato destro indicano se ci sono condivisioni montate (icona di una cartella di rete) e lo stato del sistema di autenticazione (icona a portafoglio o a chiave).</para>
+>La barra di stato fornisce alcune informazioni sullo stato corrente di &smb4k;. Se l'applicazione sta elaborando una richiesta dell'utente, &eg; sta montando una condivisione, allora viene visualizzato un messaggio descrittivo nella sezione più a sinistra, inoltre viene mostrata una barra di avanzamento con un indicatore di occupato. L'icona sulla parte destra indica se le condivisioni sono montate.</para>
     <para
 >Se gli oggetti agganciabili sono disposti come schede, l'utente ottiene un ulteriore riscontro visivo: ogni volta che una condivisione è montata o smontata, la scheda <guilabel
 >Condivisioni montate</guilabel
 > viene evidenziata per alcuni secondi.</para>
     <para
->La finestra principale è ampiamente configurabile: puoi nascondere o mostrare tutti gli oggetti a schede da <menuchoice
+>La finestra principale è altamente configurabile: puoi nascondere o mostrare tutti gli oggetti a schede da <menuchoice
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
 >Oggetti agganciabili</guimenuitem
 ></menuchoice
->; questi possono essere anche trascinati col mouse e agganciati in diverse aree della finestra principale, e anche essere staccati dalla finestra principale. La barra di stato e le barre degli strumenti possono essere nascoste o visualizzate commutando rispettivamente le voce di menu <menuchoice
+>; questi possono essere anche trascinati col mouse e agganciati in diverse aree della finestra principale, e persino essere staccati dalla finestra principale. La barra di stato e quella degli strumenti possono essere nascoste o mostrate, attivando la rispettiva voce di menu: <menuchoice
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
 >Mostra la barra di stato</guimenuitem
 ></menuchoice
-> e quella in <menuchoice
+>, oppure <menuchoice
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Barre degli strumenti mostrate</guimenuitem
+>Mostra la barra degli strumenti</guimenuitem
 ></menuchoice
 >.</para>
   </sect1>
@@ -334,7 +340,7 @@
     <para
 >Il navigatore delle <guilabel
 >Risorse di rete</guilabel
-> contiene tutti gli elementi della rete &#8212; &ie; i gruppi di lavoro, i server e le condivisioni &#8212; che &smb4k; è in grado di rilevare. Sono organizzati in un albero di rete, e puoi visitarli facendo clic sul controllo accanto al nome dell'elemento o eseguendo l'elemento stesso.</para>
+> contiene tutti gli elementi della rete &#8212; &ie; i domini e i gruppi di lavoro, i server e le condivisioni &#8212; che &smb4k; è in grado di rilevare. Sono organizzati in un albero di rete, che puoi navigare sia facendo clic sul controllo accanto al nome dell'elemento, sia eseguendo l'elemento stesso.</para>
     <para
 >Nell'albero di rete, il master browser di ciascun gruppo di lavoro o dominio viene evidenziato da un carattere blu, se è stato rilevato (&eg; quando si usa DNS-SD il master browser di un dominio &Windows; non viene riconosciuto). Le condivisioni montate sono contrassegnate con la loro icona della cartella e con un carattere in corsivo.</para>
 
@@ -377,19 +383,19 @@
 >LOCAL</emphasis
 >. Questo è il dominio DNS locale predefinito usato da servizi come <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)"
 >Avahi</ulink
->, e non un vero e proprio dominio di &Windows;. L'apertura di un dominio o di un elemento del gruppo di lavoro ne mostra i server che ne fanno parte. Se vuoi accedere alle condivisioni di uno dei server lo devi aprire.</para>
-      <para
->C'è anche la possibilità di risvegliare i server dormienti prima di analizzare le risorse di rete (Wake-On-LAN). Se questa funzionalità è abilitata, &smb4k; invia un pacchetto magico a ciascun server da risvegliare, e aspetta il tempo definito prima di cercare i gruppi di lavoro e i domini. Le impostazioni del Wake-On-LAN possono essere attivate nella <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->finestra di configurazione</link
->, mentre i server da risvegliare devono essere definiti nell'editor delle <link linkend="network_neighborhood_browser_defining_custom_settings"
->Impostazioni personalizzate</link
->.</para>
+>, e non un vero e proprio dominio di &Windows;. L'apertura di un dominio o di un elemento del gruppo di lavoro ne mostra i server che ne fanno parte. Se vuoi accedere alle condivisioni di uno dei server, lo devi aprire.</para>
       <note>
         <para
 >Se stai usando il sistema di rilevamento dei servizi via DNS (DNS-SD) e il demone Zeroconf (Avahi) non è in esecuzione, &smb4k; mostra una notifica di errore. Per i dettagli vedi la sezione <link linkend="trouble_shooting_zeroconf"
 >Risoluzione dei problemi</link
 >.</para>
       </note>
+      <para
+>C'è anche la possibilità di risvegliare i server dormienti prima di analizzare le risorse di rete (Wake-On-LAN). Se questa funzionalità è abilitata, &smb4k; invia un pacchetto magico a ciascun server da risvegliare, e aspetta il tempo definito prima di cercare i gruppi di lavoro e i domini. Le impostazioni del Wake-On-LAN possono essere attivate nella <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>finestra di configurazione</link
+>, mentre i server da risvegliare devono essere definiti nell'editor delle <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Impostazioni personalizzate</link
+>.</para>
     </sect2>
     
 <!--
@@ -572,7 +578,7 @@
             <para
 >Apri la <link linkend="network_neighborhood_browser_mounting"
 >finestra</link
-> per montare «manualmente» le condivisioni. Questa funzionalità può essere necessaria se &smb4k; non riesce a trovare il server sul quale montare una certa risorsa condivisa.</para>
+> per montare le condivisioni usando il loro indirizzo (URL or UNC). Questa funzionalità può essere necessaria se &smb4k; non riesce a trovare il server sul quale vuoi montare una certa risorsa condivisa.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -591,7 +597,7 @@
           <listitem>
             <para
 >Apri la <link linkend="network_neighborhood_browser_authentication"
->finestra di autenticazione</link
+>finestra della password</link
 >, da dove puoi fornire nome utente e password per ciascun server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa azione è disabilitata.</para>
           </listitem>
         </varlistentry>
@@ -650,7 +656,7 @@
           </term>
           <listitem>
             <para
->Monta le condivisioni remote selezionate. Questa azione è visibile solo se sono selezionate condivisioni che non sono già montate. Per impostazione predefinita, e se selezioni qualcosa di diverso da una condivisione di tipo «Disco» o «IPC», questa azione è disabilitata.</para>
+>Monta le condivisioni remote selezionate. Questa azione è visibile per impostazione predefinita finché non selezioni delle condivisioni montate (vedi sotto). Se selezioni qualcosa di diverso da una condivisione di tipo «Disco» o «IPC», questa azione è disabilitata.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -668,7 +674,7 @@
           </term>
           <listitem>
             <para
->Smonta le condivisioni selezionate. Questa azione è invisibile per impostazione predefinita; sarà invece visibile l'azione <guimenuitem
+>Smonta le condivisioni selezionate. I montaggi di sistema, oppure le condivisioni montate da altri utenti, non possono essere smontati. Questa azione è invisibile per impostazione predefinita: sarà invece visibile l'azione <guimenuitem
 >Monta</guimenuitem
 > se è selezionata almeno una condivisione montata.</para>
           </listitem>
@@ -737,7 +743,7 @@
 ></listitem>
         <listitem
 ><para
->Premi la voce di menu <menuchoice
+>Fai clic sulla voce di menu <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -747,7 +753,7 @@
 ><guimenuitem
 >Apri la finestra di montaggio</guimenuitem
 ></menuchoice
-> del menu, e verrà aperta una finestra di montaggio:</para>
+> per aprire la finestra di montaggio:</para>
         <screenshot>
           <screeninfo
 >Schermata della finestra «Monta condivisione»</screeninfo>
@@ -767,7 +773,9 @@
 >//[USER@]SERVER/SHARE</programlisting
 > o <programlisting
 >\\[USER@]SERVER\SHARE</programlisting
->, oppure come URL nella forma <programlisting
+>, oppure come <ulink url="https://it.wikipedia.org/wiki/Uniform_Resource_Locator"
+>URL</ulink
+> nella forma <programlisting
 >[smb:]//[user@]server[:port]/share</programlisting
 > Il pulsante <guibutton
 >OK</guibutton
@@ -777,14 +785,16 @@
 ></guibutton
 >: la finestra si estenderà, e potrai spuntare la casella <guibutton
 >Aggiungi questa condivisione ai segnalibri</guibutton
-> ed inserire un'etichetta ed una categoria per il segnalibro. </para
+> ed inserire un'etichetta ed una categoria per il segnalibro. Per maggiori dettagli, vedi la sezione <link linkend="bookmarks"
+>Segnalibri</link
+></para
 ></listitem>
       </orderedlist>
 
       <para
->Una condivisione è spesso protetta da password. In questo caso apparirà una <link linkend="network_neighborhood_browser_authentication"
->finestra di autenticazione</link
->: dovrai quindi inserire nome utente e password (se non lo hai già fatto prima). &smb4k; procederà montando la condivisione, a meno che non siano stati forniti nome utente o password errati; in questo caso la finestra di autenticazione riapparirà. Se il processo di montaggio ha esito positivo ti verrà visualizzata una notifica e la condivisione apparirà nella <link linkend="shares_view"
+>In questo caso una condivisione è protetta da password: apparirà una <link linkend="network_neighborhood_browser_authentication"
+>finestra per la password</link
+>, e dovrai quindi inserire nome utente e password (se non lo hai già fatto prima). &smb4k; procederà montando la condivisione, a meno che non siano stati forniti nome utente o password errati; in questo caso la finestra di autenticazione riapparirà. Se il processo di montaggio ha esito positivo ti verrà visualizzata una notifica, e la condivisione apparirà nella <link linkend="shares_view"
 >vista delle condivisioni montate</link
 >, viceversa ti verrà visualizzata una notifica con il messaggio di errore restituito da <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -888,7 +898,7 @@
 >Ricarica</guibutton
 >. La posizione attuale viene visualizzata nella casella combinata nella parte destra; con questa puoi anche accedere alle cartelle già visitate.</para>
       <para
->Per impostazione predefinita, la finestra di anteprima mostra solo le cartelle ed i file che non sono nascosti. Puoi modificare questo comportamento nella <link linkend="configuration_page_network_basic_settings_behavior"
+>Per impostazione predefinita, la finestra di anteprima non mostra le cartelle e i file nascosti. Puoi modificare questo comportamento nella <link linkend="configuration_page_network_basic_settings_behavior"
 >finestra di configurazione</link
 >. I trasferimenti di file o simili non sono possibili.</para>
     </sect2>
@@ -902,7 +912,7 @@
 >Fornire le informazioni di autenticazione</title>
 
       <para
->Molti server e condivisioni remote sono protetti da password; in tal caso apparirà una finestra in cui ti viene richiesto il nome utente e la password. Lo stesso accade se fai clic sulla voce di menu <menuchoice
+>Nel casso in cui il server o la condivisione siano protetti da password, apparirà una finestra in cui ti viene richiesto il nome utente e la password. Lo stesso accade se fai clic sulla voce di menu <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -926,13 +936,13 @@
         </mediaobject>
       </screenshot>
       <para
->Se un nome utente è già stato fornito, esso sarà mostrato nel rispettivo campo. Se è sbagliato o non è stato fornito alcun nome utente, devi inserirne uno, tuttavia la password può essere lasciata vuota; facendo clic sul pulsante <guibutton
+>Se un nome utente è già stato fornito, questo sarà mostrato nel rispettivo campo. Se è sbagliato, o se non è stato fornito alcun nome utente, ne dovrai inserirne uno. La password può tuttavia essere lasciata vuota; facendo clic sul pulsante <guibutton
 >OK</guibutton
-> invii i dati. In base alla tua scelta nella <link linkend="configuration_page_authentication"
+> invii i dati.</para>
+      <para
+>Nota che nella <link linkend="configuration_page_authentication"
 >finestra di configurazione</link
->, il nome utente e la password vengono memorizzati oppure no. In quest'ultimo caso dovrai fornirli <emphasis
->tutte le volte</emphasis
-> che sono necessari.</para>
+> è possibile definire delle informazioni di accesso predefinite.</para>
     </sect2>
     
 <!-- 
@@ -944,7 +954,7 @@
 >Definire le impostazioni personalizzate</title>
       
       <para
->Per server o condivisioni individuali puoi definire delle impostazioni personalizzate che deviano da quelle globali. Per farlo puoi accedere all'editor delle impostazioni personalizzate facendo clic sulla voce di menu<menuchoice
+>Per server o condivisioni individuali puoi definire delle impostazioni personalizzate che deviano da quelle globali. Per farlo, accedi all'editor delle impostazioni personalizzate facendo clic sulla voce di menu<menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1047,9 +1057,9 @@
 >menu a comparsa</link
 > della vista delle condivisioni.</para>
       <para
->Per impostazione predefinita vedrai solo le tue condivisioni. Puoi comunque regolare &smb4k; per mostrartele tutte con le <link linkend="configuration_page_mounting_basic_settings_behavior"
->rispettive impostazioni</link
->.</para>
+>Per impostazione predefinita verranno visualizzate solo le tue condivisioni. Nella <link linkend="configuration_page_mounting_basic_settings_behavior"
+>finestra di configurazione</link
+> puoi comunque fare in modo che &smb4k; le mostri tutte.</para>
     </sect2>
 
 <!-- 
@@ -1061,9 +1071,9 @@
 >Azioni e menu a comparsa</title>
 
       <para
->Sono definite numerose opzioni nella vista delle condivisioni. Sono presenti nella barra del menu sotto <guimenu
+>Nella vista delle condivisioni sono definite numerose azioni. Sono presenti nella barra del menu sotto <guimenu
 >Condivisioni</guimenu
->, nella barra degli strumenti e nel menu a comparsa. Sono disponibili le seguenti opzioni:</para>
+>, nella barra degli strumenti e nel menu a comparsa. Sono disponibili le seguenti azioni:</para>
 
       <variablelist>
         <varlistentry>
@@ -1119,7 +1129,7 @@
           </term>
           <listitem>
             <para
->Smonta le condivisioni selezionate. Se nella vista non è selezionata nessuna condivisione, questo pulsante è disabilitato.</para>
+>Smonta le condivisioni selezionate. Questa azione è tuttavia ristretta a quelle che hai montato, quindi i montaggi di sistema o le condivisioni che appartengono ad altri non possono essere smontati. Se nessuna condivisione è selezionata nella vista delle condivisioni, questo pulsante è disattivato.</para>
             <para
 >Consulta la sezione <link linkend="shares_view_unmounting"
 >smontare le condivisioni</link
@@ -1141,7 +1151,7 @@
           </term>
           <listitem>
             <para
->Smonta tutte le condivisioni contemporaneamente. Questo pulsante è disabilitato se non ci sono delle condivisioni montate.</para>
+>Smonta tutte le condivisioni contemporaneamente. I montature di sistema o le condivisioni che appartengono ad altri non possono essere smontati con questa azione. Se non hai montato delle condivisioni, questo pulsante è disattivato.</para>
             <para
 >Consulta la sezione <link linkend="shares_view_unmounting"
 >smontare le condivisioni</link
@@ -1185,8 +1195,10 @@
           </term>
           <listitem>
             <para
->Apri l'editor delle impostazioni personalizzate per le condivisioni selezionate. Per maggiori dettagli, leggi la sezione sulle <link linkend="network_neighborhood_browser_defining_custom_settings"
->impostazioni personalizzate</link
+>Apri l'editor delle impostazioni personalizzate per le condivisioni selezionate.</para>
+            <para
+>Per maggiori dettagli, leggi la sezione <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Impostazioni personalizzate</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1206,8 +1218,8 @@
           <listitem>
             <para
 ><link linkend="shares_view_synchronization"
->Synchronize</link
-> una condivisione con una copia locale, o viceversa. Questa voce di menu è abilitata solo se il programma <ulink url="man:/rsync"
+>Sincronizza</link
+> una condivisione con una copia locale, o viceversa. Questa azione è abilitata solo se il programma <ulink url="man:/rsync"
 > <citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1215,7 +1227,7 @@
 >1</manvolnum
 ></citerefentry
 ></ulink
-> è installato ed è stata selezionata una condivisione.</para>
+> è installato, ed è stata selezionata una condivisione.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1233,7 +1245,7 @@
           </term>
           <listitem>
             <para
->Apri la cartella base di una condivisione in &konsole;. Questa voce di menu è utile se hai bisogno di eseguire script di shell, &etc;</para>
+>Apri la cartella base di una condivisione in &konsole;. Questa azione è utile se hai bisogno di eseguire script di shell, &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1320,9 +1332,7 @@
       <para
 >Le condivisioni di proprietà di altri utenti vengono visualizzate solo se hai modificato le <link linkend="configuration_page_mounting_basic_settings_behavior"
 >impostazioni</link
-> per visualizzarle. Con la configurazione predefinita non puoi smontare queste condivisioni, tuttavia puoi <link linkend="configuration_page_mounting_basic_settings_behavior"
->modificare questo comportamento</link
->.</para>
+> per visualizzarle. Non puoi smontare queste condivisioni.</para>
     </sect2>
 
 <!-- 
@@ -1377,27 +1387,17 @@
 >Smontare le condivisioni</title>
 
       <para
->Una o più condivisioni possono essere smontate sia facendo clic sull'azione <menuchoice
+>Puoi smontare sia una selezione delle tue condivisioni usando l'azione <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
->U </keycap
+>U</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
 >Smonta</guimenuitem
 ></menuchoice
->, sia usando la sua scorciatoia da tastiera. Per impostazione predefinita la possibilità di smontare una condivisione è limitata a quelle che ti appartengono; puoi però cambiare questo comportamento nella <link linkend="configuration_page_mounting_basic_settings_behavior"
->finestra di configurazione</link
->. Se hai attivato lo smontaggio delle condivisioni appartenenti ad altri utenti, ti verrà mostrata una finestra di avviso prima dello smontaggio reale: se procedi, la condivisione verrà smontata definitivamente. Quindi, pensaci due volte prima di decidere di smontare queste condivisioni!</para>
-      <para
->&smb4k; fornisce la possibilità di forzare lo smontaggio delle condivisioni (solo in &Linux;). Questo può essere utile in caso di condivisioni inaccessibili che non possono essere smontate in maniera normale. Per abilitare questa funzionalità devi modificare le <link linkend="configuration_page_mounting_basic_settings_behavior"
->impostazioni</link
-> nella finestra di configurazione. &smb4k; eseguirà un <ulink url="man:/umount(8)"
->smontaggio «lazy»</ulink
-> sulle condivisioni inaccessibili.</para>
-      <para
->Tutte le condivisioni possono essere smontate contemporaneamente facendo clic sull'azione <menuchoice
+>, sia tutte insieme con <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1407,9 +1407,21 @@
 ><guimenuitem
 >Smonta tutto</guimenuitem
 ></menuchoice
->. In base alle tue impostazioni, questa azione smonterà anche le condivisioni estranee e quelle inaccessibili.</para>
+>.</para>
+      <note
+><para
+>Nota che puoi smontare solo le condivisioni che hai montato, non quelle di sistema o quelle montate da altri utenti.</para
+></note>
       <para
->Verrai avvisato se un processo di smontaggio ha successo. Se invece non dovesse riuscire, ti verrà mostrata una notifica con il messaggio di errore restituito.</para>
+>&smb4k; fornisce la possibilità di forzare lo smontaggio delle condivisioni (solo in &Linux;). Questo può essere utile in caso di condivisioni inaccessibili che non possono essere smontate in maniera normale. Per abilitare questa funzionalità devi modificare le <link linkend="configuration_page_mounting_basic_settings_behavior"
+>impostazioni</link
+> nella finestra di configurazione. &smb4k; eseguirà un <ulink url="man:/umount(8)"
+>smontaggio «lazy»</ulink
+> sulle condivisioni inaccessibili.</para>
+      <para
+>Dopo un processo di smontaggio terminato con successo, l'utente riceve una <link linkend="notifications"
+>notifica</link
+>. Se invece non dovesse riuscire, si avrà una notifica con un messaggio di errore.</para>
     </sect2>
     
 <!--
@@ -1421,7 +1433,7 @@
 >Definire le impostazioni personalizzate</title>
       
       <para
->Per le condivisioni selezionate possono essere definite delle impostazioni personalizzate. Fai clic sull'azione <menuchoice
+>Per le condivisioni selezionate possono essere definite delle impostazioni personalizzate: fai clic sull'azione <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1431,9 +1443,9 @@
 ><guimenuitem
 >Aggiungi impostazioni personalizzate</guimenuitem
 ></menuchoice
-> per aprire la finestra relativa. Per maggiori dettagli, vedi <link linkend="custom_settings"
->questa sezione</link
->.</para>
+> per aprire la finestra relativa. Leggi la sezione <link linkend="custom_settings"
+>impostazioni personalizzate</link
+> per maggiori dettagli.</para>
     </sect2>
     
 <!-- 
@@ -1445,7 +1457,7 @@
 >Sincronizzazione</title>
 
       <para
->La voce di menu <menuchoice
+>L'azione <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1566,7 +1578,7 @@
 >Posizione e uso</title>
 
       <para
->Quando viene avviato &smb4k;, nel vassoio di sistema appare un'icona di stato. Il suo stato viene impostato ad attivo se vengono trovati dei gruppi di lavoro o dei domini, diversamente è inattivo.</para>
+>Quando viene avviato &smb4k;, nel vassoio di sistema appare un'icona di stato. Il suo stato viene impostato ad attivo se vengono trovati dei gruppi di lavoro o dei domini, oppure se erano state montate delle condivisioni remote, diversamente il suo stato viene impostato a inattivo.</para>
 
       <screenshot>
         <screeninfo
@@ -1621,17 +1633,15 @@
           </term>
           <listitem>
             <para
->Smonta tutte le condivisioni contemporaneamente. A seconda delle <link linkend="configuration_page_mounting_basic_settings_behavior"
->impostazioni</link
->, &smb4k; tenta di smontare solo le condivisioni che ti appartengono oppure tutte quelle che sono elencate.</para>
+>Smonta tutte le condivisioni contemporaneamente. I montature di sistema o le condivisioni che appartengono ad altri non possono essere smontati con questa azione. Se non hai montato delle condivisioni, questo pulsante è disattivato.</para>
           </listitem>
         </varlistentry>
       </variablelist>
     
       <para
->Per ogni condivisione montata puoi aprire un sotto-menu che contiene le seguenti voci. Per maggiori informazioni, leggi <link linkend="shares_view_actions_popup_menu"
->la sezione sul menu a comparsa</link
->.</para>
+>Per ogni condivisione montata puoi aprire un sotto-menu che contiene le seguenti voci. Per maggiori informazioni leggi la sezione sulle <link linkend="shares_view_actions_popup_menu"
+>Azioni e sul menu a comparsa</link
+> della vista delle condivisioni.</para>
 
       <variablelist>
         <varlistentry>
@@ -1643,7 +1653,7 @@
           </term>
           <listitem>
             <para
->Smonta la condivisione.</para>
+>Smonta la condivisione. Questa azione è disabilitata per le condivisioni che non ti appartengono.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1667,8 +1677,10 @@
           </term>
           <listitem>
             <para
->Apri l'editor delle impostazioni personalizzate per le condivisioni selezionate. Per ulteriori informazioni leggi la sezione sull'editor delle <link linkend="network_neighborhood_browser_defining_custom_settings"
->impostazioni personalizzate</link
+>Apri l'editor delle impostazioni personalizzate per la condivisione selezionata.</para>
+            <para
+>Per maggiori informazioni, leggi la sezione sulle <link linkend="custom_settings"
+>Impostazioni personalizzate</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1681,11 +1693,11 @@
           </term>
           <listitem>
             <para
->Sincronizza la condivisione montata con una copia locale, o viceversa. Per maggiori informazioni, leggi le sezioni sulle <link linkend="shares_view_actions_popup_menu"
->azioni e sul menu a comparsa</link
-> e sulla <link linkend="shares_view_synchronization"
->sincronizzazione</link
-> della vista delle condivisioni.</para>
+>Sincronizza la condivisione montata con una copia locale, o viceversa.</para>
+            <para
+>Per maggiori informazioni, leggi la sezione sulla <link linkend="shares_view_synchronization"
+>Sincronizzazione</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1717,11 +1729,9 @@
       <para
 >Il menu <guimenuitem
 >Segnalibri</guimenuitem
-> contiene tutti i segnalibri organizzati in base alla struttura che hai scelto (vedi anche <link linkend="bookmarks_adding"
->aggiungere i segnalibri</link
-> e <link linkend="bookmarks_editor"
->modificare i segnalibri</link
->).</para>
+> contiene tutti i segnalibri. Per maggiori informazioni, leggi la sezione sui <link linkend="bookmarks"
+>Segnalibri</link
+>.</para>
 
       <screenshot>
         <screeninfo
@@ -1747,7 +1757,7 @@
 >Profili</guimenuitem
 > sono elencati tutti i <link linkend="profiles"
 >profili</link
->:</para>
+>.</para>
 
       <screenshot>
         <screeninfo
@@ -1769,7 +1779,7 @@
 >finestra di configurazione</link
 >.</para>
       <para
->Queste sono le altre voci del menu:</para>
+>Queste sono quattro voci d menu aggiuntive:</para>
 
       <variablelist>
         <varlistentry>
@@ -1782,8 +1792,8 @@
           <listitem>
             <para
 >Apri la <link linkend="network_neighborhood_browser_mounting"
->finestra</link
-> per il montaggio manuale della condivisione dopo aver fornito l'URL, l'indirizzo IP e il dominio o il gruppo di lavoro.</para>
+>finestra per il montaggio</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1957,7 +1967,7 @@
     <para
 >La barra degli strumenti contiene l'azione <guibutton
 >Smonta tutto</guibutton
->, che ti permette di smontare contemporaneamente tutte le condivisioni.</para>
+>, che ti permette di smontare contemporaneamente tutte le tue condivisioni.</para>
   </sect2>
 
 <!-- 
@@ -2091,12 +2101,13 @@
 >vista delle condivisioni</link
 > e nel <link linkend= "plasmoid"
 >&plasmoid;</link
->. Negli oggetti agganciabili della finestra principale questo viene fatto selezionando una o più condivisioni, e facendo quindi clic sull'azione <menuchoice
+>. Nella finestra principale questo viene fatto selezionando una o più condivisioni, e facendo quindi clic sull'azione <menuchoice
 ><guimenuitem
 >Aggiungi segnalibro</guimenuitem
 ></menuchoice
->, mentre nel &plasmoid; devi fare clic sulla rispettiva azione segnalibro vicino al nome dell'oggetto. Comparirà una finestra nella quale potrai aggiungere un'etichetta ed assegnare un segnalibro ad una categoria.</para>
-
+>, mentre nel &plasmoid; devi fare clic sulla rispettiva azione segnalibro vicino al nome dell'oggetto. Comparirà la finestra <guilabel
+>Aggiungi le condivisioni nei segnalibri</guilabel
+>, che elenca tutte le condivisioni aggiunte di recente nei segnalibri.</para>
       <screenshot>
         <screeninfo
 >Schermata della finestra di aggiunta dei segnalibri</screeninfo>
@@ -2109,7 +2120,20 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
+      <para
+>Per aggiungere un'etichetta o per assegnare una categoria, doppio clic su un segnalibro: si aprirà l'oggetto per l'inserimento, così potrai modificare le voci corrispondenti.</para>
+      <screenshot>
+        <screeninfo
+>Schermata della finestra per l'aggiunta dei segnalibri con l'oggetto di immissione aperto</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_add_bookmark_dialog_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Finestra per l'aggiunta di segnalibri con l'oggetto di immissione aperto</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
       <para
 >La definizione di categorie può aiutarti ad organizzare i segnalibri. Nel <link linkend="bookmarks_menu"
 >menu dei segnalibri </link
@@ -2147,7 +2171,7 @@
       </screenshot>
 
       <para
->Nel menu ci sono due elementi statici disponibili:</para>
+>Nel menu sono presenti due voci statiche:</para>
 
       <variablelist>
         <varlistentry>
@@ -2205,7 +2229,7 @@
       <para
 >Le seguenti voci sono sotto-menu di categorie e segnalibri che non appartengono a nessuna categoria. Le voci sono elencate in ordine alfabetico, ed i segnalibri possono comparire sia con la loro posizione che con un'etichetta descrittiva. Se fai clic su un segnalibro, la rispettiva condivisione viene montata. Se una condivisione nei segnalibri è già montata, la voce è disabilitata.</para>
       <para
->Il sotto-menu della categoria contiene tutti i segnalibri assegnati, e in ciascun caso è presente anche una voce di menu <guimenuitem
+>Il sotto-menu della categoria contiene tutti i segnalibri assegnati, oltre alla voce di menu <guimenuitem
 >Monta segnalibri</guimenuitem
 >: può essere usata per montare contemporaneamente tutti i segnalibri in quella categoria.</para>
       <para
@@ -2235,16 +2259,19 @@
 >Modificare i segnalibri</title>
 
       <para
->I segnalibri possono essere modificati o rimossi con l'editor dei segnalibri. Può essere aperto facendo clic sulla voce di menu <guimenuitem
+>I segnalibri possono essere modificati o rimossi con l'editor dei segnalibri, oppure dalla pagina<guilabel
+>Segnalibri</guilabel
+> nella <link linkend="configuration_page_bookmarks"
+>finestra di configurazione</link
+>. L'editor dei segnalibri può essere aperto facendo clic sulla voce di menu <guimenuitem
 >Modifica i segnalibri</guimenuitem
 > nel menu <guilabel
 >Segnalibri</guilabel
-> o nell'azione <guimenuitem
+>, oppure nell'azione <guimenuitem
 >Modifica</guimenuitem
 > della scheda <guilabel
 >Segnalibri</guilabel
 > del &plasmoid;.</para>
-    
       <screenshot>
         <screeninfo
 >Schermata dell'editor dei segnalibri</screeninfo>
@@ -2257,74 +2284,45 @@
 ></textobject>
         </mediaobject>
       </screenshot>
-
       <para
 >Nella vista ad albero i segnalibri sono disposti a seconda della categoria di appartenenza; quelli senza categoria si trovano invece nel livello principale. Per riorganizzare i segnalibri la visualizzazione ad albero offre delle funzionalità di trascinamento, in modo che puoi spostare i segnalibri con il mouse.</para>
       <para
->Se vuoi modificare un segnalibro, puoi farlo selezionandolo. L'etichetta memorizzata, il nome utente, l'indirizzo IP e il nome della categoria vengono visualizzati negli oggetti di input e diventano modificabili. Nella maggior parte dei casi non è necessario cambiare l'indirizzo IP e il nome utente, perché &smb4k; memorizza i valori corretti al momento dell'inserimento della condivisione nei segnalibri. Tuttavia queste voci devono essere modificate se il server ha un indirizzo IP diverso (&eg; perché nella rete locale viene utilizzato il DHCP) o se il tuo nome utente è cambiato. Tramite l'etichetta puoi dare ad ogni segnalibro una descrizione personalizzata: sarà usata <emphasis
+>Se vuoi modificare un segnalibro, puoi farlo sia facendo doppio clic, sia selezionalo e facendo clic sul pulsante <guibutton
+>Modifica</guibutton
+>: verrà mostrato l'oggetto per l'inserimento. Qui puoi modificare l'etichetta, il nome della categoria, il login, il nome del gruppo di lavoro o del dominio, e l'indirizzo IP.</para>
+      <screenshot>
+        <screeninfo
+>Schermata dell'editor dei segnalibri con l'oggetto di immissione aperto</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="bookmarks_editor_with_input_widget.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>L'editor dei segnalibri con l'oggetto di immissione aperto</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+      <para
+>Nella maggior parte dei casi non è necessario cambiare l'indirizzo IP e il nome utente, perché &smb4k; memorizza i valori corretti al momento dell'inserimento della condivisione nei segnalibri. Tuttavia queste voci devono essere modificate se il server ha un indirizzo IP diverso (&eg; perché nella rete locale viene utilizzato il DHCP) o se il tuo nome utente è cambiato. Dovresti anche regolare il nome del gruppo di lavoro o del dominio se il nome è stato rilevato da DNS-SD (dato che generalmente è indicato come <emphasis
+>LOCAL</emphasis
+>). Tramite l'etichetta puoi dare ad ogni segnalibro una descrizione personalizzata: sarà usata <emphasis
 >al posto</emphasis
 > della posizione, e può essere modificata nella <link linkend="configuration_page_user_interface_main_window"
 >finestra di configurazione</link
 >. La voce della categoria, infine, aiuta ad organizzare i segnalibri. Per esempio, se si utilizza il notebook a casa e al lavoro e non si vogliono utilizzare i <link linkend="profiles"
 >profili</link
->, potrebbe essere una buona idea creare due gruppi, «Casa» e «Lavoro», e categorizzare i segnalibri di conseguenza.</para>
+>, potrebbe essere una buona idea creare due categorie, «Casa» e «Lavoro», e categorizzare i segnalibri di conseguenza.</para>
       <para
->La visualizzazione ad albero offre anche un menu a comparsa contenente le seguenti tre azioni. Possono essere utilizzate per aggiungere le categorie, oppure per rimuovere i gruppi o i segnalibri.</para>
-
-      <screenshot>
-        <screeninfo
->Schermata del menu a comparsa dell'editor dei segnalibri</screeninfo>
-        <mediaobject>
-          <imageobject
-><imagedata fileref="bookmarks_editor_popup_menu.png" format="PNG"/></imageobject>
-          <textobject
-><phrase
->Menu a comparsa dell'editor dei segnalibri</phrase
-></textobject>
-        </mediaobject>
-      </screenshot>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Aggiungi categoria</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Aggiunge una categoria di segnalibri; dopo che hai creato una categoria puoi spostare i segnalibri al suo interno.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
+>Per aggiungere una categoria, usa il pulsante <guibutton
+>Aggiungi categoria</guibutton
+>. Invece, il pulsante <guimenuitem
 >Rimuovi</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Rimuove un segnalibro o una categoria selezionata. Nell'ultimo caso vengono rimossi anche tutti i segnalibri salvati nel gruppo.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guimenuitem
->Pulisci</guimenuitem
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Rimuove tutti i segnalibri e le categorie dalla vista ad albero.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para
->Una volta terminata la modifica puoi salvare le modifiche facendo clic sul pulsante <guibutton
->OK</guibutton
+> elimina il segnalibro, mentre<guibutton
+>Pulisci l'elenco</guibutton
+> svuota l'elenco dei segnalibri. Finché le modifiche non vengono salvate col pulsante <guibutton
+>Salva</guibutton
+>, puoi sempre annullarle con <guibutton
+>Azzera</guibutton
 >.</para>
     </sect2>
   </sect1>
@@ -2348,7 +2346,7 @@
       <itemizedlist>
         <listitem
 ><para
->definire un montaggio individuale oppure sfogliare le impostazioni di un singolo server o di una condivisione che si discosta dai valori definiti nella finestra di configurazione,</para
+>definire impostazioni personalizzate di navigazione o di montaggio per un singolo server o una singola condivisione che differiscano dai valori definiti nella finestra di configurazione,</para
 ></listitem>
         <listitem
 ><para
@@ -2368,11 +2366,11 @@
 >Aggiungere impostazioni personalizzate</title>
 
       <para
->Nel caso tu voglia definire delle impostazioni personalizzate per una condivisione sia nel <link linkend="network_neighborhood_browser_actions_popup_menu"
+>Per definire delle impostazioni personalizzate, per entrambi, sia il <link linkend="network_neighborhood_browser_actions_popup_menu"
 >navigatore delle risorse di rete</link
-> che nella <link linkend="shares_view_actions_popup_menu"
+> che la <link linkend="shares_view_actions_popup_menu"
 >vista delle condivisioni</link
-> puoi aprire l'editor delle impostazioni personalizzate facendo clic sulla voce di menu <menuchoice
+>, puoi aprire l'editor delle impostazioni personalizzate facendo poi clic sulla voce di menu <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -2398,12 +2396,27 @@
         </mediaobject>
       </screenshot>
 
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+      <para
+>Le impostazioni personalizzate che hai definito per un server saranno applicate anche alle sue condivisioni.</para>
 
       <para
->Le impostazioni individuali possono essere fatte nelle seguenti sezioni o schede:</para>
+>È possibile effettuare le seguenti impostazioni:</para>
       
       <variablelist>
+        <varlistentry>
+          <term>
+            <guilabel
+>Impostazioni di base</guilabel>
+          </term>
+          <listitem>
+            <para
+>Qui puoi impostare l'indirizzo IP, oltre al gruppo di lavoro e al dominio. Selezionando una condivisione puoi spuntare e <guibutton
+>Rimonta sempre questa condivisione</guibutton
+> per montarla ad ogni avvio di &smb4k;, oppure puoi caricare il suo <link linkend="profiles"
+>profilo</link
+>.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term
 ><guilabel
@@ -2411,9 +2424,7 @@
 > (solo in &Linux;) </term>
           <listitem>
             <para
->Qui puoi definire le impostazioni comuni relative al montaggio. Controlla il pulsante <guibutton
->Rimonta sempre questa condivisione</guibutton
-> se vuoi rimontare la condivisione selezionata ogni volta che avvii &smb4k;. Per informazioni su queste impostazioni, dai un'occhiata a <link linkend="configuration_page_mounting_common_mount_settings"
+>Qui puoi definire le impostazioni comuni relative al montaggio. Per delle informazioni dettagliate su queste impostazioni, dai un'occhiata a <link linkend="configuration_page_mounting_common_mount_settings"
 >questa sezione</link
 >.</para>
           </listitem>
@@ -2462,6 +2473,10 @@
           <listitem>
             <para
 >Per non avere problemi con la funzionalità Wake-On-LAN, devi fornire l'indirizzo MAC del server che hai selezionato. Infatti, al momento, &smb4k; non ha modo di determinarlo: devi quindi scoprirlo tu stesso. Successivamente puoi definire se il server dovrebbe essere risvegliato con l'invio di un pacchetto magico Wake-On-LAN prima che vengano analizzate le risorse di rete, oppure prima che una delle sue condivisioni venga montata.</para>
+            <para
+>Nota che è necessario abilitare le funzionalità Wake-On-LAN nella <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>finestra di configurazione</link
+> per sfruttare queste impostazioni.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2469,9 +2484,11 @@
       <para
 >Il pulsante <guibutton
 >Impostazioni predefinite</guibutton
-> è attivo se le voci nella finestra differiscono dalle impostazioni definite nella finestra di configurazione. Facendo clic su di esso puoi reimpostare le voci nella finestra ai loro valori di predefiniti. Il pulsante <guibutton
->OK</guibutton
-> è attivo se hai modificato le impostazioni nella finestra di dialogo: facendo clic su di esso salverai le impostazioni personalizzate e chiuderai la finestra.</para>
+> ripristina tutte le impostazioni nell'editor al loro valore predefinito, a quello cioè che è stato impostato nella finestra di configurazione. Le impostazioni personalizzate che contengono solo valori predefiniti sono rimosse. Usando il pulsante <guibutton
+>Azzera</guibutton
+> puoi reimpostare le voci nella finestra al loro valore iniziale, mentre facendo clic su <guibutton
+>Salva</guibutton
+> le impostazioni personalizzate vengono salvate la finestra e viene chiusa.</para>
       <para
 >Nota che in BSD la finestra contiene meno voci che in &Linux;; questo perché molte delle opzioni non sono supportate.</para>
     </sect2>
@@ -2510,19 +2527,37 @@
       <title
 >Abilitare e gestire i profili</title>
       <para
->L'uso di profili diversi può messere abilitato nella <link linkend="configuration_page_profiles"
+>L'uso di profili diversi può essere abilitato nella <link linkend="configuration_page_profiles"
 >finestra di configurazione</link
->. Il primo profilo nell'elenco, probabilmente quello per <guilabel
->Casa</guilabel
->, viene scelto per essere quello attivo. Puoi anche abilitare l'assistente di migrazione dei profili.</para>
+>, spuntando la casella <guibutton
+>Usa i profili</guibutton
+>: il profilo inizialmente attivo viene quindi configurato, ed è indicato da un segno di spunta nella vista a elenco. Il nome del profilo attivo viene anche mostrato tra parentesi nel titolo delle pagine di configurazione <guilabel
+>Autenticazione</guilabel
+>, <guilabel
+>Segnalibri</guilabel
+> e <guilabel
+>Impostazioni personalizzate</guilabel
+>.</para>
+      <screenshot>
+        <screeninfo
+>Schermata della sezione titolo della pagina di configurazione dell'Autenticazione col profilo indicato</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="configuration_page_authentication_profile_indicator.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Schermata della sezione titolo della pagina di configurazione dell'Autenticazione col profilo indicato</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
       <para
 >Ci sono già due profili definiti, <guilabel
 >Casa</guilabel
 > e <guilabel
 >Lavoro</guilabel
->, ma puoi definirne quanti ne vuoi. Un nuovo profilo viene aggiunto inserendo il suo nome nella riga di ingresso che si trova nella pagina di configurazione <guibutton
->Profili</guibutton
->, e facendo quindi clic su <guibutton
+>, ma puoi averne quanti ne vuoi. Un nuovo profilo viene aggiunto inserendo il suo nome nella riga di immissione, e facendo quindi clic sul pulsante <guibutton
 >Aggiungi</guibutton
 >.</para>
       <screenshot>
@@ -2539,48 +2574,17 @@
         </mediaobject>
       </screenshot>
       <para
->Se vuoi rinominare un profilo, facci semplicemente clic sopra e modifica il nome nella riga di inserimento. Premendo <guibutton
->Aggiungi</guibutton
-> aggiornerai il nome nella vista ad elenco. Tutte le informazioni immagazzinate saranno migrate senza problemi (senza l'uso dell'assistente di migrazione). Un profilo può essere rimosso selezionandolo nella vista ad elenco e facendo clic su <guibutton
+>Per impostare il profilo attivo puoi fare un doppio clic sul suo nome, oppure puoi spuntare il nome del profilo e quindi premere il pulsante <guibutton
+>Imposta attivo</guibutton
+>. Per rinominare un profilo, selezionalo, fai clic su <guibutton
+>Rinomina</guibutton
+>, poi modifica il nome nella vista a elenco: tutte le impostazioni personalizzate, i segnalibri, e le impostazioni di accesso predefinite vengono migrate al nuovo nome. Invece, per rimuovere un profilo, selezionalo e poi fai clic su <guibutton
 >Rimuovi</guibutton
 >. Puoi anche modificare l'ordine dei profili con i pulsanti <guibutton
 >Sposta in alto</guibutton
 > e <guibutton
 >Sposta in basso</guibutton
 >.</para>
-      <para
->Nel caso tu abbia abilitato l'assistente di migrazione, questo verrà sempre lanciato quando rimuovi un profilo, oppure quando abiliti o disabiliti l'uso dei profili. Si prende cura della migrazione di tutte le impostazioni rilevanti.</para>
-      <para
->La seguente schermata mostra l'assistente di migrazione dei profili dopo che hai abilitato l'uso dei profili:</para>
-      <screenshot>
-        <screeninfo
->Schermata dell'assistente di migrazione dei profili</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="configuration_page_profiles_migration_assistant.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Assistente di migrazione dei profili</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <para
->Il vecchio profilo (<guilabel
->&lt;Profilo predefinito&gt;</guilabel
->, in questo caso) viene elencato sotto al <guilabel
->Vecchio profilo</guilabel
->. Sotto al <guilabel
->Nuovo profilo</guilabel
-> puoi scegliere un profilo dal menu a discesa verso al quale dovrebbero essere migrate le impostazioni. Il primo nell'elenco è preselezionato. Facendo clic sul pulsante <guibutton
->OK</guibutton
-> vengono migrate le impostazioni, mentre facendo clic su <guibutton
->Annulla</guibutton
-> l'azione viene annullata.</para>
-      <note
-><para
->Abilitando per la prima volta l'uso dei profili devi abilitare l'uso dell'assistente di migrazione, se vuoi usarlo.</para
-></note>
     </sect2>
   
 <!-- 
@@ -2590,14 +2594,17 @@
     <sect2 id="profiles_activate_profile">
       <title
 >Attivare un Profilo</title>
+
       <para
->Se abiliti l'uso dei profili, come comportamento predefinito viene impostato come attivo il primo dell'elenco. Il profilo attivo può essere modificato dal menu <guimenu
+>Il profilo attivo può sia essere modificato dalla finestra di configurazione, come menzionato <link linkend="profiles_enable"
+>sopra</link
+>, oppure dal menu <guimenu
 >Profili</guimenu
-> della finestra principale, dall'oggetto per il vassoio di sistema o dalla pagina <guilabel
+> della finestra principale, dall'oggetto per il vassoio di sistema, o dalla pagina <guilabel
 >Profili</guilabel
 > del plasmoide.</para>
       <para
->Quando viene attivato un profilo, accadono diverse cose:</para>
+>Quando viene attivato un profilo, accadono questo cose:</para>
       <itemizedlist>
         <listitem
 ><para
@@ -2609,7 +2616,7 @@
 ></listitem>
         <listitem
 ><para
->Vengono caricati i segnalibri e le impostazioni personalizzate dal nuovo profilo.</para
+>Vengono caricate le credenziali di accesso predefinite (se definite), i segnalibri, e le impostazioni personalizzate dal nuovo profilo.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -3161,7 +3168,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Modalità di visualizzazione della vista delle condivisioni</guibutton
+>Modalità di visualizzazione</guibutton
 ></menuchoice>
           </term>
           <listitem>
@@ -3256,7 +3263,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Rete</title>
 
     <para
->Le opzioni posizionate qui influenzano la comunicazione di rete. Puoi modificare il comportamento di navigazione e di visualizzazione nella scheda <guibutton
+>Le impostazioni posizionate qui influenzano la comunicazione di rete. Puoi modificare le impostazioni di navigazione e il comportamento nella scheda <guibutton
 >Impostazioni di base</guibutton
 >, mentre le opzioni più avanzate di Samba e delle capacità di the Wake-On-LAN sono nella scheda <guibutton
 >Impostazioni avanzate</guibutton
@@ -3357,7 +3364,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Questa è la versione aggiornata del protocollo. Viene usata da &Windows; NT ed è nota come CIFS. Viene considerata non sicura ed è stata disabilitata nelle ultime versioni di &Samba; e di &Windows;.</para>
+>Questa è la versione classica del protocollo. Viene usata da &Windows; NT ed è nota come CIFS o SMBv1. Viene considerata non sicura, ed è stata disabilitata nelle ultime versioni di &Samba; e di &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3381,7 +3388,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->È la stessa di SMB2. Questo protocollo viene usato da &Windows; e successivo.</para>
+>Questa è la versione del protocollo SMBv3. Presenta diversi miglioramenti in termini di funzionalità e prestazioni rispetto a SMBv2, oltre a numerosi potenziamenti della sicurezza. Questa versione del protocollo è utilizzata da Windows 8 e dalle versioni successive.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -3411,7 +3418,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Questa è la versione aggiornata del protocollo. Viene usata da &Windows; NT ed è nota come CIFS. Viene considerata non sicura ed è stata disabilitata nelle ultime versioni di &Samba; e di &Windows;.</para>
+>Questa è la versione classica del protocollo. Viene usata da &Windows; NT ed è nota come CIFS o SMBv1. Viene considerata non sicura, ed è stata disabilitata nelle ultime versioni di &Samba; e di &Windows;.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3435,7 +3442,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->È la stessa di SMB2. Questo protocollo viene usato da &Windows; e successivo.</para>
+>Questa è la versione del protocollo SMBv3. Presenta diversi miglioramenti in termini di funzionalità e prestazioni rispetto a SMBv2, oltre a numerosi potenziamenti della sicurezza. Questa versione del protocollo è utilizzata da Windows 8 e dalle versioni successive.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -3725,46 +3732,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       <para
 >Le impostazioni in questa scheda sono uguali in tutti i sistemi operativi supportati.</para>
       
-      <sect3 id="configuration_page_mounting_basic_settings_directories">
-        <title
->Cartelle</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Prefisso di montaggio</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Questa è la cartella base (prefisso di montaggio) in cui si &smb4k; monterà le condivisioni remote. Puoi modificarla utilizzando il campo &URL; del richiedente (fai clic sul pulsante con l'icona della cartella), oppure inserendo direttamente il nuovo percorso nella casella di testo. Sono riconosciute le variabili di percorso come <envar
->$HOME</envar
->.</para>
-              <para
->Predefinito: <filename class="directory"
->$HOME/smb4k/</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Forza l'uso di caratteri minuscoli nei nomi delle sottocartelle</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Tutte le sottocartelle create da &smb4k; sotto il prefisso di montaggio saranno in minuscolo.</para>
-              <para
->Predefinito: non selezionato</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
       <sect3 id="configuration_page_mounting_basic_settings_behavior">
         <title
 >Comportamento</title>
@@ -3839,22 +3806,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <listitem>
               <para
 >Forza lo smontaggio delle condivisioni inaccessibili (solo in &Linux;). Nel caso che una condivisione sia inaccessibile, viene eseguito uno smontaggio «alla buona». Prima che il vero smontaggio venga eseguito, viene mostrata una finestra di avviso: ti viene chiesto di approvare lo smontaggio.</para>
-              <para
->Predefinito: non selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Consenti lo smontaggio di condivisioni che sono controllate da altri utenti</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Questa opzione ti permetterà di smontare le condivisioni che sono state montate da altri utenti.</para>
-              <para
->DA USARE CON ESTREMA CAUTELA!</para>
               <para
 >Predefinito: non selezionato</para>
             </listitem>
@@ -4264,34 +4215,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Porta del file system</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opzione: <option
->port=PORT</option
-></para>
-              <para
->Imposta il valore della porta usata da <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> al montaggio di una condivisione remota. Il valore predefinito della porta (445) dovrebbe funzionare con tutti i sistemi operativi moderni. Se riscontri problemi, prova a impostarlo a 139. Se riscontri problemi solo con alcuni host, ti raccomandiamo di non modificare questa opzione e di usare la finestra delle <link linkend="custom_settings"
->opzioni personalizzate</link
-> per definire individualmente il numero di porta con gli host problematici.</para>
-              <para
->Predefinito: non selezionato; PORT: 445</para>
-            </listitem>
-          </varlistentry>
         </variablelist>
       </sect3>
 
@@ -4323,40 +4246,22 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->ID utente</guibutton
+>Imposta l'ID utente e il gruppo</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Opzione: <option
+>Opzioni: <option
 >uid=UID</option
+> e <option
+>gid=GID</option
 ></para>
             <para
->Consente di impostare il proprietario dei file e delle cartelle nel file system. Per impostazione predefinita viene utilizzato il tuo UID. Per modificare l'UID, usa il pulsante di ricerca e scegline uno dal menu a discesa.</para>
+>&smb4k; utilizza l'ID utente e l'ID gruppo per il montaggio, se questa impostazione è abilitata. Questi ID vengono visualizzati qui solo a scopo informativo, e non possono essere modificati.</para>
             <para
 >Nel caso sia selezionato il supporto alle estensioni &CIFS; per unix, questa impostazione è disabilitata.</para>
             <para
->Predefinito: selezionato; UID: il tuo UID</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->ID di gruppo</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Opzione: <option
->uid=GID</option
-></para>
-            <para
->Imposta il gruppo che possiede i file e le cartelle del file system. Per impostazione predefinita, viene utilizzato il tuo GID. Per modificare il GID, usa il pulsante di ricerca e scegline uno dal menu a discesa.</para>
-            <para
->Nel caso sia selezionato il supporto alle estensioni &CIFS; per unix, questa impostazione è disabilitata.</para>
-            <para
->Predefinito: selezionato; GID: il tuo GID</para>
+>Predefinito: selezionato; UID: il tuo UID, GID: il tuo GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4369,10 +4274,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Opzione: <option
->file_mode=ARG</option
+>file_mode=MODE</option
 ></para>
             <para
->Imposta i permessi che vengono applicati ai file. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla modalità del file (file_mode), leggi le pagine di manuale <ulink url="man:/mount(8)"
+>Imposta i permessi che vengono applicati ai file. Il valore è espresso in ottale, e può avere 3 o 4 cifre. Non sono consentiti SUID, SGID e lo sticky bit. Per ulteriori informazioni sulla modalità del file (file_mode), leggi le pagine di manuale <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4405,10 +4310,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Opzione: <option
->dir_mode=ARG</option
+>dir_mode=MODE</option
 ></para>
             <para
->Imposta i permessi che vengono applicati alle cartelle. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla modalità della cartella (dir_mode), leggi le pagine di manuale <ulink url="man:/mount(8)"
+>Imposta i permessi che vengono applicati alle cartelle. Il valore è espresso in ottale, e può avere 3 o 4 cifre. Non sono consentiti SUID, SGID e lo sticky bit. Per ulteriori informazioni sulla modalità della cartella (dir_mode), leggi le pagine di manuale <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -5105,30 +5010,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Opzioni aggiuntive</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Definisce delle opzioni aggiuntive da usarle <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
->. Facendo clic sul pulsante di modifica alla destra della riga di modifica si apre una finestra di inserimento in cui devi fornire le opzioni come un elenco separato da virgole. Dopo aver fatto clic sull'<guibutton
->OK</guibutton
-> nella finestra di inserimento, le opzioni saranno verificate rispetto a una lista bianca: tutte le voci valide saranno inserite nella riga di modifica.</para>
-            <para
->Predefinito: non selezionato; vuoto</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
     
@@ -5158,30 +5039,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <term>
               <menuchoice
 ><guibutton
->ID utente</guibutton
+>Imposta l'ID utente e il gruppo</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Consente di impostare il proprietario dei file e delle cartelle nel file system. Per impostazione predefinita viene utilizzato il tuo UID. Per modificare l'UID, usa il pulsante di ricerca e scegline uno dal menu a discesa.</para>
+>Opzioni: <option
+>-u UID</option
+> and <option
+>-g GID</option
+></para>
               <para
->Predefinito: il tuo UID</para>
+>&smb4k; utilizza l'ID utente e l'ID gruppo per il montaggio, se questa impostazione è abilitata. Questi ID vengono visualizzati qui solo a scopo informativo, e non possono essere modificati.</para>
+              <para
+>Nel caso sia selezionato il supporto alle estensioni &CIFS; per unix, questa impostazione è disabilitata.</para>
+              <para
+>Predefinito: selezionato; UID: il tuo UID, GID: il tuo GID</para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->ID di gruppo</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Imposta il gruppo che possiede i file e le cartelle del file system. Per impostazione predefinita, viene utilizzato il tuo GID. Per modificare il GID, usa il pulsante di ricerca e scegline uno dal menu a discesa.</para>
-              <para
->Predefinito: il tuo GID</para>
-            </listitem>
-          </varlistentry>
+
+<!-- CONTINUE HERE -->
+
           <varlistentry>
             <term>
               <menuchoice
@@ -5191,7 +5069,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Imposta i permessi che vengono applicati ai file. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla maschera del file (file_mode), leggi le pagine di manuale <ulink url="man:/mount_smbfs"
+>Opzione: <option
+>-f MODE</option
+></para>
+              <para
+>Imposta i permessi che vengono applicati ai file. Il valore è espresso in ottale, e può avere 3 o 4 cifre. Non sono consentiti SUID, SGID e lo sticky bit. Per ulteriori informazioni sulla maschera del file (file_mode), leggi le pagine di manuale <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5221,7 +5103,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Imposta i permessi che vengono applicati alle cartelle. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla modalità della cartella (dir_mode), leggi le pagine di manuale <ulink url="man:/mount_smbfs"
+>Opzione: <option
+>-d MODE</option
+></para>
+              <para
+>Imposta i permessi che vengono applicati alle cartelle. Il valore è espresso in ottale, e può avere 3 o 4 cifre. Non sono consentiti SUID, SGID e lo sticky bit. Per ulteriori informazioni sulla modalità della cartella, leggi le pagine di manuale <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5258,6 +5144,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></menuchoice>
             </term>
             <listitem>
+              <para
+>Opzione: <option
+>-E cs1:cs2</option
+></para>
               <para
 >Usa gli insiemi di caratteri specifici locali e del server.</para>
               <para
@@ -7993,9 +7883,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
     </screenshot>
 
     <para
->Tutti le credenziali di accesso sono salvate nel gestore delle password (&eg; KeePassXC, &kwallet; o il portachiavi di GNOME). Per modificarle puoi usare la <link linkend="network_neighborhood_browser_authentication"
+>Tutti le credenziali di accesso sono salvate nel gestore delle password (&eg; &kwallet;, il portachiavi di GNOME, o KeePassXC). Per modificarle puoi usare la <link linkend="network_neighborhood_browser_authentication"
 >finestra delle password</link
->, mentre per eliminare le voci puoi usare il gestore delle password.</para>
+> o il gestore delle password. Per eliminare le voci devi usare il gestore delle password.</para>
   </sect1>
 
 <!--
@@ -8174,13 +8064,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Profili</title>
 
       <para
->Qui puoi gestire i tuoi profili. Come impostazione predefinita ce ne sono due già definiti (<guilabel
+>Qui puoi gestire i profili; per impostazione predefinita ce ne sono due già definiti (<guilabel
 >Casa</guilabel
 > e <guilabel
 >Lavoro</guilabel
->). Quando abiliti l'uso dei profili, la prima voce nell'elenco diventerà quello attivo.</para>
-      <para
->Per aggiungere un nuovo profilo, entra nella casella di testo e fai clic sul pulsante <guibutton
+>). Per aggiungere un nuovo profilo, entra nella casella di testo e fai clic sul pulsante <guibutton
 >Aggiungi</guibutton
 >. Puoi eliminare gli elementi selezionandoli e poi facendo clic sul pulsante <guibutton
 >Rimuovi</guibutton
@@ -8532,9 +8420,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Smonta la condivisione selezionata. Questa azione è invisibile come impostazione predefinita; sarà invece visibile l'azione <guimenuitem
+>Smonta le condivisioni selezionate. I montaggi di sistema, oppure le condivisioni montate da altri utenti, non possono essere smontati. Questa azione è invisibile per impostazione predefinita: sarà invece visibile l'azione <guimenuitem
 >Monta</guimenuitem
-> quando la condivisione è attualmente montata.</para>
+> se è selezionata almeno una condivisione montata.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8614,9 +8502,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Smonta una o più condivisioni selezionate. La capacità di smontare le condivisioni è limitata per impostazione predefinita a quelle che appartengono all'utente, tuttavia puoi modificare questo comportamento modificando le <link linkend= "configuration_page_mounting_basic_settings_behavior"
->impostazioni</link
-> nella finestra di configurazione. Se nessuna condivisione è selezionata nella vista delle condivisioni, questo pulsante è disattivato.</para>
+>Smonta le condivisioni selezionate. Questa azione è tuttavia ristretta a quelle che hai montato, quindi i montaggi di sistema o le condivisioni che appartengono ad altri non possono essere smontati. Se nessuna condivisione è selezionata nella vista delle condivisioni, questo pulsante è disattivato.</para>
           <para
 >&smb4k; riesce a forzare lo smontaggio delle condivisioni (solo in &Linux;). Questo può essere utile in caso di condivisioni inaccessibili che non possono essere smontate in maniera normale. Per abilitare questa funzionalità devi modificare le <link linkend="configuration_page_mounting_basic_settings_behavior"
 >impostazioni</link
