@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-07-17 15:09+0400\n"
+"PO-Revision-Date: 2026-08-10 18:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -340,7 +340,7 @@ msgstr ""
 "يرجى ملاحظة أن هذا الإعداد قد لا يكون مناسبًا لجعل اكتشاف مجموعات العمل "
 "والمجالات يعمل مع الحفاظ على اتصال غير مضطرب بالخوادم. استخدم DNS Service "
 "Discovery (DNS-SD) أو Web Services Dynamic Discovery (WS-Discovery) للبحث عن "
-"المجال ومجموعات العمل بدلاً من ذلك."
+"المجال ومجموعات العمل بدلًا من ذلك."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:135
@@ -412,7 +412,7 @@ msgid ""
 "the time consumption on large network neighborhoods considerably."
 msgstr ""
 "في حالة وجود حاسوبك في أجهزة شبكة كبيرة، فإن اكتشاف جميع مجموعات العمل "
-"والمضيفين والمشاركات قد يستغرق وقتًا طويلاً، حيث أنه في الضبط المبدئي يستعلم "
+"والمضيفين والمشاركات قد يستغرق وقتًا طويلًا، حيث أنه في الضبط المبدئي يستعلم "
 "عن جميع المتصفحات الرئيسة المحلية. يؤدي تمكين هذا الإعداد إلى الحد من عدد "
 "متصفحات الرئيسة المحلية المستخدمة إلى ثلاثة متصفحات. ويمكن أن يؤدي هذا إلى "
 "تقليل استهلاك الوقت على شبكات كبيرة بشكل كبير."
@@ -650,7 +650,7 @@ msgid ""
 "destination file will immediately be overwritten instead. An exception to "
 "this is if you combine this option with --backup."
 msgstr ""
-"تحديث ملفات المقصد في مكانها (--inplace). بشكل مبدئي ينشئ rsync أولاً نسخة "
+"تحديث ملفات المقصد في مكانها (--inplace). بشكل مبدئي ينشئ rsync أولًا نسخة "
 "جديدة من الملف ونقلها إلى مكانها بعد انتهاء عملة النقل. إذا مكنت هذه الميزة، "
 "فلن تنشئ نسخة ولكن سيستبدل ملف المقصد على الفور. الاستثناء الوحيد هو إذا "
 "أدمجت هذا الخيار مع --backup."
@@ -670,7 +670,7 @@ msgid ""
 "last parts of the file names."
 msgstr ""
 "استخدم المسارات النسبية (-R، --relative). وهذا يعني أن أسماء المسارات "
-"الكاملة المحددة في سطر الأوامر ترسل إلى الخادم بدلاً من الأجزاء الأخيرة فقط "
+"الكاملة المحددة في سطر الأوامر ترسل إلى الخادم بدلًا من الأجزاء الأخيرة فقط "
 "من أسماء الملفات."
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
@@ -905,7 +905,7 @@ msgstr ""
 "تعامل مع الروابط الرمزية إلى أدلة على الجانب المرسل كما لو كانت حقيقية (-k، "
 "--copy-dirlinks). وهذا مفيد إذا كنت لا تريد أن تتأثر الروابط الرمزية "
 "المربوطة إلى غير أدلة، حيث ستستخدم --copy-links. في حالة عدم توفر هذا "
-"الخيار، إذا استبدل الجانب المرسل دليلاً برابط رمزي إلى دليل، فسيحذف الجانب "
+"الخيار، إذا استبدل الجانب المرسل دليلًا برابط رمزي إلى دليل، فسيحذف الجانب "
 "المستقبل أي شيء يعيق الارتباط الرمزي الجديد، بما في ذلك التسلسل الهرمي "
 "للدليل (طالما أن --force أو --delete ساري المفعول). لمزيد من التفاصيل، راجع "
 "صفحة دليل rsync."
@@ -934,7 +934,7 @@ msgstr ""
 #: smb4k.kcfg:350
 #, kde-format
 msgid "Preserve permissions"
-msgstr "احفظ الأذونات"
+msgstr "احفظ الأذون"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
 #: smb4k.kcfg:351
@@ -944,8 +944,8 @@ msgid ""
 "will be same as the source file. For what happens if this option is switched "
 "off, please read rsync's manual page."
 msgstr ""
-"يحافظ على الأذونات (-p، --perms). ستكون أذونات ملف المقصد مماثلة لملف "
-"المصدر. لمعرفة ما يحدث إذا عُطل هذا الخيار؛ يرجى قراءة صفحة دليل rsync."
+"يحافظ على الأذون (-p، --perms). ستكون أذون ملف المقصد مماثلة لملف المصدر. "
+"لمعرفة ما يحدث إذا عُطل هذا الخيار؛ يرجى قراءة صفحة دليل rsync."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:355
@@ -1646,7 +1646,7 @@ msgstr ""
 #: smb4k.kcfg:583
 #, kde-format
 msgid "Make backups"
-msgstr "أنشئ نسخاً احتياطية"
+msgstr "أنشئ نسخًا احتياطية"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
 #: smb4k.kcfg:584
@@ -1800,7 +1800,7 @@ msgid ""
 "a laptop in different network neighborhoods, e. g. at home and at work."
 msgstr ""
 "اجعل كيدي سامبا4 يستخدم التشكيلات. يتيح لك هذا تحديد إشارات مرجعية مختلفة "
-"وخيارات مخصصة لكل تشكيلة. وهذا مفيد بشكل خاص إذا كنت تستخدم حاسوبًا محمولاً في "
+"وخيارات مخصصة لكل تشكيلة. وهذا مفيد بشكل خاص إذا كنت تستخدم حاسوبًا محمولًا في "
 "أجهزة شبكات مختلفة، على سبيل المثال في المنزل وفي العمل."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
@@ -2553,7 +2553,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:148
 #, kde-format
 msgid "Do permission checks"
-msgstr "تحقق من الأذونات"
+msgstr "تحقق من الأذون"
 
 #. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:149
@@ -2608,7 +2608,7 @@ msgid ""
 "client side."
 msgstr ""
 "استخدم أرقام inode (معرفات الملفات الثابتة الفريدة) التي تُرجع بواسطة الخادم "
-"بدلاً من إنشاء أرقام inode مؤقتة آليًّا على جانب العميل."
+"بدلًا من إنشاء أرقام inode مؤقتة آليًّا على جانب العميل."
 
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:163
