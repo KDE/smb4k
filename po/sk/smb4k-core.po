@@ -82,7 +82,7 @@ msgstr ""
 #: smb4k.kcfg:41
 #, kde-format
 msgid "Start the application docked to the system tray"
-msgstr ""
+msgstr "Spustiť aplikáciu ukotvenú v systémovej lište"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -102,7 +102,7 @@ msgstr ""
 #: smb4k.kcfg:46
 #, kde-format
 msgid "Start the application automatically at session start"
-msgstr ""
+msgstr "Spustiť aplikáciu automaticky pri štarte sedenia"
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47
@@ -111,6 +111,9 @@ msgid ""
 "Start the application automatically at session start. For this, it is added "
 "to the autostart list by creating a desktop file in the autostart folder."
 msgstr ""
+"Spustiť aplikáciu automaticky pri štarte sedenia. Aplikácia sa na to pridá "
+"do zoznamu automatického spúšťania vytvorením súboru .desktop v priečinku "
+"automatického spúšťania."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:51
