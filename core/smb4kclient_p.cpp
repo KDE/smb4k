@@ -1398,7 +1398,7 @@ void Smb4KDnsDiscoveryJob::slotServiceAdded(KDNSSD::RemoteService::Ptr service)
             // identical name, thus, to avoid duplicates, only test the hostname
             // here.
             //
-            if (QString::compare(h->hostName(), service->serviceName(), Qt::CaseInsensitive) == 0) {
+            if (QString::compare(h->hostName(), service->serviceName() + QLatin1Char('.') + service->domain(), Qt::CaseInsensitive) == 0) {
                 foundServer = true;
                 break;
             }
@@ -1416,7 +1416,7 @@ void Smb4KDnsDiscoveryJob::slotServiceAdded(KDNSSD::RemoteService::Ptr service)
             //
             // Set the _DNS-SD_ host name
             //
-            host->setHostName(service->serviceName());
+            host->setHostName(service->serviceName() + QLatin1Char('.') + service->domain());
 
             //
             // Set the _DNS-SD_ domain name
@@ -1431,7 +1431,7 @@ void Smb4KDnsDiscoveryJob::slotServiceAdded(KDNSSD::RemoteService::Ptr service)
             //
             // Lookup IP address
             //
-            QHostAddress address = lookupIpAddress(service->serviceName());
+            QHostAddress address = lookupIpAddress(service->serviceName() + QLatin1Char('.') + service->domain());
 
             //
             // Process the IP address.
