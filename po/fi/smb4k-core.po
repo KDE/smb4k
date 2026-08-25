@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-01-05 20:43+0200\n"
+"PO-Revision-Date: 2026-02-25 19:18+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -2421,10 +2421,9 @@ msgstr "Aseta aikaväli jakojen uudelleenliittämisyrityksille."
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
-#, fuzzy, kde-format
-#| msgid "Show the free disk space"
+#, kde-format
 msgid "Check the online state of the server before remounting a share"
-msgstr "Näytä vapaa levytila"
+msgstr "Tarkista palvelimen yhteyden tila ennen jaon liittämistä uudelleen"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
@@ -2435,6 +2434,11 @@ msgid ""
 "no remounting will be done, because the server is most likely down. Switch "
 "this option off, if e.g. the server uses non-default ports."
 msgstr ""
+"Tarkista sen palvelimen yhteyden tila, jossa liitettävä jako sijaitsee. "
+"Smb4K yrittää yhteyttä palvelimen porttiin 445. Jos se epäonnistuu, "
+"liittämistä ei  yritetään uudelleen, koska palvelin on todennäköisimmin "
+"poissa käytöstä. Poista tämä valinta, jos palvelin esim. käyttää muita kuin "
+"oletusportteja."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
