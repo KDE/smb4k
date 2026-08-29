@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2026-05-07 20:38+0300\n"
+"PO-Revision-Date: 2026-08-28 13:07+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -54,7 +54,7 @@ msgstr "Buvo perduotos draudžiamos prijungimo parinktys."
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Kažkas ne taip su pateiktu Kerberos bilietu."
 
 #: helpers/smb4kmounthelper.cpp:179
 #, kde-format
@@ -454,7 +454,7 @@ msgstr "Išplėstinės prijungimo nuostatos"
 #: smb4k/smb4kconfigpagemounting.cpp:525
 #, kde-format
 msgid "Character Sets"
-msgstr ""
+msgstr "Ženklų rinkiniai"
 
 #: smb4k/smb4kconfigpagemounting.cpp:579
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:382
@@ -669,6 +669,8 @@ msgstr "Nebuvo nustatytas joks tinklo elementas."
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
+"Apibrėžti tinkintas nuostatas, skirtas mazgui <b>%1</b> ir visiems jo "
+"teikiamiems viešiniams."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:149
 #, kde-format
@@ -794,7 +796,7 @@ msgstr "Ieškoma failų ir katalogų, esančių %1..."
 #: smb4k/smb4kmainwindow.cpp:531
 #, kde-format
 msgid "Waking up remote hosts..."
-msgstr ""
+msgstr "Pažadinami nuotoliniai mazgai..."
 
 #: smb4k/smb4kmainwindow.cpp:536
 #, kde-format
@@ -825,7 +827,7 @@ msgstr "Atjungiama..."
 #: smb4k/smb4kmainwindow.cpp:587
 #, kde-format
 msgid "Waking up host..."
-msgstr ""
+msgstr "Pažadinamas mazgas..."
 
 #: smb4k/smb4kmainwindow.cpp:621
 #, kde-format
@@ -1086,7 +1088,7 @@ msgstr "Failas:"
 #: smb4k/smb4kprintdialog.cpp:69
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Kopijos:"
 
 #: smb4k/smb4kprintdialog.cpp:87
 #, kde-format
@@ -1096,7 +1098,7 @@ msgstr "Spausdinti"
 #: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr ""
+msgstr "Spausdinti failą į spausdintuvą <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
@@ -1190,7 +1192,7 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Šaltinis:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
 #, kde-format
@@ -1217,7 +1219,7 @@ msgstr "Tipas:"
 #: smb4k/smb4ktooltip.cpp:137
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "DNS-SD naršymo domenas"
 
 #: smb4k/smb4ktooltip.cpp:139
 #, kde-format
@@ -1227,7 +1229,7 @@ msgstr "Darbo grupė"
 #: smb4k/smb4ktooltip.cpp:144
 #, kde-format
 msgid "Master Browser:"
-msgstr ""
+msgstr "Pagrindinė naršyklė:"
 
 #: smb4k/smb4ktooltip.cpp:158
 #, kde-format
