@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-08 02:52+0000\n"
-"PO-Revision-Date: 2026-05-07 20:55+0300\n"
+"PO-Revision-Date: 2026-08-28 13:42+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -167,7 +167,7 @@ msgstr "Paaiškinimas rodo įvarią informaciją apie esamą tinklo elementą."
 #: smb4k.kcfg:66
 #, kde-format
 msgid "Automatically expand domains and hosts"
-msgstr ""
+msgstr "Automatiškai išskleisti domenus ir mazgus"
 
 #. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:67
@@ -177,6 +177,10 @@ msgid ""
 "items (domain members or shares) is added or updated. Please note that a "
 "domain or host item will always be expanded when you execute it."
 msgstr ""
+"Automatiškai išskleisti domenų ir mazgų elementus, kai pridedamas ar "
+"atnaujinamas susietų tinklo elementų (domeno narių ar viešinių) sąrašas. "
+"Turėkite omenyje, kad domeno ar mazgo elementas visada bus išskleistas, kai "
+"jį įvykdysite."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
@@ -402,7 +406,7 @@ msgstr ""
 #: smb4k.kcfg:178
 #, kde-format
 msgid "Master browsers require authentication"
-msgstr ""
+msgstr "Pagrindinės naršyklės reikalauja tapatybės nustatymo"
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:179
@@ -411,12 +415,14 @@ msgid ""
 "The master browsers in your network neighborhood require a login to return "
 "the browse list. This setting is rarely needed."
 msgstr ""
+"Pagrindinės naršyklės jūsų tinklo aplinkoje reikalauja prisijungimo, kad "
+"grąžintų naršymo sąrašą. Šios nuostatos prireikia retai."
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:183
 #, kde-format
 msgid "Use Kerberos for authentication"
-msgstr ""
+msgstr "Tapatybės nustatymui naudoti Kerberos"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:184
@@ -425,18 +431,20 @@ msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
 "environment."
 msgstr ""
+"Naudoti Kerberos tapatybės nustatymui. Tai naudinga tik aktyvaus katalogo "
+"aplinkoje."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:188
 #, kde-format
 msgid "Use Winbind ccache for authentication"
-msgstr ""
+msgstr "Tapatybės nustatymui naudoti Winbind ccache"
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:189
 #, kde-format
 msgid "Use the Winbind ccache for authentication."
-msgstr ""
+msgstr "Nustatant tapatybę naudoti Winbind ccache."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:193
@@ -495,13 +503,13 @@ msgstr ""
 #: smb4k.kcfg:218
 #, kde-format
 msgid "Detect printer shares"
-msgstr ""
+msgstr "Aptikti spausdintuvo viešinius"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
 #: smb4k.kcfg:219
 #, kde-format
 msgid "Printer shares are detected."
-msgstr ""
+msgstr "Yra aptinkami spausdintuvo viešiniai."
 
 #. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:223
@@ -523,7 +531,7 @@ msgstr ""
 #: smb4k.kcfg:228
 #, kde-format
 msgid "Enable Wake-On-LAN features"
-msgstr ""
+msgstr "Įjungti Wake-On-LAN ypatybes"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:229
@@ -1697,7 +1705,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:18 smb4kmountsettings_linux.kcfg:23
 #, kde-format
 msgid "File mode:"
-msgstr ""
+msgstr "Failo veiksena:"
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
@@ -1707,12 +1715,14 @@ msgid ""
 "This is the file mode that will be used for creating files. It must be "
 "defined in octal."
 msgstr ""
+"Tai yra failo veiksena, kuri bus naudojama failų kūrimui. Ji privalo būti "
+"apibrėžta aštuonetainiais."
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:27 smb4kmountsettings_linux.kcfg:32
 #, kde-format
 msgid "Directory mode:"
-msgstr ""
+msgstr "Katalogo veiksena:"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -1722,6 +1732,8 @@ msgid ""
 "This is the directory mode that will be used for creating directories. It "
 "must be defined in octal."
 msgstr ""
+"Tai yra katalogo veiksena, kuri bus naudojama katalogų kūrimui. Ji privalo "
+"būti apibrėžta aštuonetainiais."
 
 #. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:36
@@ -2094,7 +2106,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:266
 #, kde-format
 msgid "Unmount all personal shares on exit"
-msgstr ""
+msgstr "Išeinant atjungti visus asmeninius viešinius"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:267
@@ -2103,6 +2115,8 @@ msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
 "are owned by other users are ignored."
 msgstr ""
+"Išeinant iš programos atjungti visus jums priklausančius viešinius. "
+"Viešinių, kurie priklauso kitiems naudotojams, yra nepaisoma."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:271
@@ -2485,7 +2499,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:228
 #, kde-format
 msgid "Security mode:"
-msgstr ""
+msgstr "Saugumo veiksena:"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
@@ -2495,6 +2509,8 @@ msgid ""
 "Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
 "module 1.40 or later is required."
 msgstr ""
+"Saugumo veiksena, skirta mount.cifs. Norint turėti galimybę naudoti šią "
+"veikseną, reikalingas CIFS branduolio modulis 1.40 arba naujesnis."
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:236
@@ -2570,19 +2586,19 @@ msgstr "Viešinys <b>%1</b> atjungtas nuo <b>%2</b>."
 #, kde-format
 msgid "%1 share has been mounted."
 msgid_plural "%1 shares have been mounted."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Prijungtas %1 viešinys."
+msgstr[1] "Prijungti %1 viešiniai."
+msgstr[2] "Prijungta %1 viešinių."
+msgstr[3] "Prijungtas %1 viešinys."
 
 #: smb4knotification.cpp:136
 #, kde-format
 msgid "%1 share has been unmounted."
 msgid_plural "%1 shares have been unmounted."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Atjungtas %1 viešinys."
+msgstr[1] "Atjungti %1 viešiniai."
+msgstr[2] "Atjungta %1 viešinių."
+msgstr[3] "Atjungtas %1 viešinys."
 
 #: smb4knotification.cpp:154
 #, kde-format
@@ -2763,9 +2779,9 @@ msgstr ""
 #: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Source"
-msgstr ""
+msgstr "Šaltinis"
 
 #: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
 msgid "Destination"
-msgstr ""
+msgstr "Paskirtis"
