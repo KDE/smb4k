@@ -1,7 +1,7 @@
 /*
     The helper that mounts and unmounts shares.
 
-    SPDX-FileCopyrightText: 2010-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2010-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -32,13 +32,11 @@ KAUTH_HELPER_MAIN("org.kde.smb4k.mounthelper", Smb4KMountHelper);
 
 static const QStringList MOUNT_ARG_WHITELIST{QStringList{
 #if defined(Q_OS_LINUX)
-    QStringLiteral("domain"),      QStringLiteral("ip"),         QStringLiteral("username"),    QStringLiteral("guest"),
-    QStringLiteral("netbiosname"), QStringLiteral("servern"),    QStringLiteral("file_mode"),   QStringLiteral("dir_mode"),
-    QStringLiteral("forceuid"),    QStringLiteral("forcegid"),   QStringLiteral("iocharset"),   QStringLiteral("rw"),
-    QStringLiteral("ro"),          QStringLiteral("perm"),       QStringLiteral("noperm"),      QStringLiteral("setuids"),
-    QStringLiteral("nosetuids"),   QStringLiteral("serverino"),  QStringLiteral("noserverino"), QStringLiteral("cache"),
-    QStringLiteral("mapchars"),    QStringLiteral("nomapchars"), QStringLiteral("nobrl"),       QStringLiteral("sec"),
-    QStringLiteral("vers")
+    QStringLiteral("domain"),    QStringLiteral("ip"),          QStringLiteral("username"), QStringLiteral("guest"),     QStringLiteral("file_mode"),
+    QStringLiteral("dir_mode"),  QStringLiteral("forceuid"),    QStringLiteral("forcegid"), QStringLiteral("iocharset"), QStringLiteral("rw"),
+    QStringLiteral("ro"),        QStringLiteral("perm"),        QStringLiteral("noperm"),   QStringLiteral("setuids"),   QStringLiteral("nosetuids"),
+    QStringLiteral("serverino"), QStringLiteral("noserverino"), QStringLiteral("cache"),    QStringLiteral("mapchars"),  QStringLiteral("nomapchars"),
+    QStringLiteral("nobrl"),     QStringLiteral("sec")
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
     QStringLiteral("-E"),
     QStringLiteral("-I"),
@@ -371,7 +369,7 @@ bool Smb4KMountHelper::checkUnmountArguments(QStringList *argList) const
 
 QString Smb4KMountHelper::mountPrefix() const
 {
-    return (QDir::cleanPath(QStringLiteral("/var/run")) + QDir::separator() + QStringLiteral("smb4k"));
+    return (QDir::cleanPath(QStringLiteral("/var/run/smb4k")));
 }
 
 ActionReply Smb4KMountHelper::errorReply(const QString &message) const
