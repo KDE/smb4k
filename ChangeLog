@@ -1,3 +1,17 @@
+Smb4K 4.0.7 (2026-09-04):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
+
+- Remove unused (servern, netbiosname) and unnecessary (vers) mount options
+  from the mount helper. The former two are not used by the mounter anymore
+  and the latter is not needed, because the correct SMB protocol version
+  (>= 2.1) is negotiated during connection.
+- Adjust the rest of the programm to the changes made to the mount helper:
+  Remove the SMB protocol version mount option, since it is not accepted
+  by the mount helper anymore (it is actually not needed).
+- Updated handbook and translations.
+
 Smb4K 4.0.6 (2026-02-15):
 
 See the summary of changes below. For a full list of changes, please
