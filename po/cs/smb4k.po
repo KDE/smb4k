@@ -2,102 +2,102 @@
 # This file is distributed under the same license as the PACKAGE package.
 # SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2023 Vít Pelčák <vit@pelcak.org>
 # SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filipek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-16 00:44+0000\n"
-"PO-Revision-Date: 2024-06-19 16:25+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-08-30 23:34+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.05.1\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Vít Pelčák"
+msgstr "Vít Pelčák,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "vit@pelcak.org"
+msgstr "vit@pelcak.org,libor.filipek@gmail.com"
 
 #: helpers/smb4kmounthelper.cpp:68
 #, kde-format
 msgid "The computer is not online."
-msgstr ""
+msgstr "Počítač není připojen k internetu."
 
 #: helpers/smb4kmounthelper.cpp:77
 #, kde-format
 msgid "Could not create mount point for share %1."
-msgstr ""
+msgstr "Nepodařilo se vytvořit připojovací bod pro sdílenou složku %1."
 
 #: helpers/smb4kmounthelper.cpp:83
 #, kde-format
 msgid "The mount command could not be found."
-msgstr ""
+msgstr "Příkaz mount nebyl nalezen."
 
 #: helpers/smb4kmounthelper.cpp:89
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Byly předány nepovolené parametry připojení."
 
 #: helpers/smb4kmounthelper.cpp:139
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "S poskytnutým protokolem Kerberos je něco v nepořádku."
 
 #: helpers/smb4kmounthelper.cpp:179
 #, kde-format
 msgid "The mount process could not be started."
-msgstr ""
+msgstr "Proces připojení se nepodařilo spustit."
 
 #: helpers/smb4kmounthelper.cpp:192
 #, kde-format
 msgid "The mountpoint %1 is illegal."
-msgstr ""
+msgstr "Připojovací bod %1 je neplatný."
 
 #: helpers/smb4kmounthelper.cpp:198
 #, kde-format
 msgid "The umount command could not be found."
-msgstr ""
+msgstr "Příkaz umount nebyl nalezen."
 
 #: helpers/smb4kmounthelper.cpp:204
 #, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr ""
+msgstr "Byly předány nepovolené parametry pro odpojení."
 
 #: helpers/smb4kmounthelper.cpp:246
 #, kde-format
 msgid "The unmount process could not be started."
-msgstr ""
+msgstr "Proces odpojení se nepodařilo spustit."
 
 #: smb4k/main.cpp:47
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
-msgstr ""
+msgstr "Tento argument je neplatný. Použijte prosím buď 'on', nebo 'off'."
 
 #: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
-msgstr ""
+msgstr "Profily jsou deaktivovány."
 
 #: smb4k/main.cpp:65
 #, kde-format
 msgid "The profile name is invalid."
-msgstr ""
+msgstr "Název profilu je neplatný."
 
 #: smb4k/main.cpp:83
-#, fuzzy, kde-format
-#| msgid "Set Active"
+#, kde-format
 msgid " (active)"
-msgstr "Nastavit aktivní"
+msgstr " (aktivní)"
 
 #: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -111,10 +111,9 @@ msgstr ""
 "Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť Samba"
 
 #: smb4k/main.cpp:145
-#, fuzzy, kde-format
-#| msgid "Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "Alexander Reinholdt"
+msgstr "© 2003-2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:150
 #, kde-format
@@ -134,33 +133,34 @@ msgstr "Wolfgang Geisendörfer"
 #: smb4k/main.cpp:151
 #, kde-format
 msgid "Donator"
-msgstr ""
+msgstr "Dárce"
 
 #: smb4k/main.cpp:161
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
+"Zapnout nebo vypnout používání profilů. <arg> může mít hodnotu 'on' nebo "
+"'off'."
 
 #: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
-msgstr ""
+msgstr "Nastavit aktivní profil na <profile>."
 
 #: smb4k/main.cpp:168
-#, fuzzy, kde-format
-#| msgid "Print a file."
+#, kde-format
 msgid "List all profiles."
-msgstr "Vytisknout soubor."
+msgstr "Zobrazit všechny profily."
 
 #: smb4k/main.cpp:171
 #, kde-format
 msgid "Remount all shares that were previously used."
-msgstr ""
+msgstr "Znovu připojit všechny sdílené složky, které byly dříve používány."
 
 #: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr ""
+msgstr "Připojit sdílený adresář, na který odkazuje <url>."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -201,7 +201,7 @@ msgstr "Hlavní panel nástrojů"
 #: smb4k/smb4kbookmarkdialog.cpp:32
 #, kde-format
 msgid "Bookmark Shares"
-msgstr ""
+msgstr "Záložky sdílení"
 
 #: smb4k/smb4kbookmarkdialog.cpp:49
 #, kde-format
@@ -209,6 +209,8 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"Všechna zobrazená sdílení budou zařazena do záložek. Chcete-li přidat štítek "
+"nebo kategorii, dvakrát klikněte na příslušnou položku v záložkách."
 
 #: smb4k/smb4kbookmarkdialog.cpp:74 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:131
@@ -273,7 +275,7 @@ msgstr "Synchronizace"
 #: smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Authentication"
-msgstr "Ověření "
+msgstr "Ověření"
 
 #: smb4k/smb4kconfigdialog.cpp:130 smb4k/smb4kconfigdialog.cpp:132
 #: smb4k/smb4kconfigdialog.cpp:134 smb4k/smb4kconfigdialog.cpp:242
@@ -299,6 +301,8 @@ msgid ""
 "An incorrect setting has been found. You are now taken\n"
 "to the corresponding configuration page to fix it."
 msgstr ""
+"Bylo zjištěno nesprávné nastavení. Nyní budete přesměrováni\n"
+"na příslušnou stránku nastavení, kde můžete chybu opravit."
 
 #: smb4k/smb4kconfigdialog.cpp:229
 #, kde-format
@@ -307,6 +311,8 @@ msgid ""
 "them in order to be able to use them in the rest of the\n"
 "configuration dialog."
 msgstr ""
+"Provedli jste změny v profilech. Abyste je mohli použít v dalším průběhu\n"
+"dialogového okna nastavení, musíte je nejprve potvrdit."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
@@ -379,6 +385,8 @@ msgstr "Všechno v pořádku."
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
+"Položka <b>%1</b> byla odstraněna, protože došlo k obnovení všech "
+"uživatelských nastavení."
 
 #: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
 #: smb4k/smb4kconfigpagenetwork.cpp:105
@@ -410,7 +418,7 @@ msgstr "Obvyklé možnosti"
 #: smb4k/smb4kconfigpagemounting.cpp:207
 #, kde-format
 msgid "CIFS Unix Extensions Support"
-msgstr ""
+msgstr "Podpora rozšíření CIFS pro Unix"
 
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
@@ -481,6 +489,8 @@ msgstr " s"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
+"Pomocí editoru vlastních nastavení určete hostitele, kteří mají být "
+"probuzeni."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:217
 #, kde-format
@@ -638,33 +648,35 @@ msgstr "Síťové okolí"
 #: smb4k/smb4kconfigpageuserinterface.cpp:96
 #, kde-format
 msgid "Shares View"
-msgstr "Sdílí pohled"
+msgstr "Zobrazení sdílení"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:162
 #, kde-format
 msgid "Program Launch"
-msgstr ""
+msgstr "Spuštění programu"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format
 msgid "Custom Settings Editor"
-msgstr ""
+msgstr "Editor vlastních nastavení"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:52
 #, kde-format
 msgid "No network item was set."
-msgstr ""
+msgstr "Nebyla nastavena žádná síťová položka."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
+"Definovat vlastní nastavení pro hostitele <b>%1</b> a všechny sdílené "
+"složky, které poskytuje."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:149
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "Nastavit vlastní parametry pro sdílení <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:89
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:320
@@ -675,7 +687,7 @@ msgstr "Vždy znovu připojit toto sdílení"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:118
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "Tento server podporuje rozšíření CIFS pro Unix"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:267
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:442
@@ -687,7 +699,7 @@ msgstr "MAC adresa:"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, kde-format
 msgid "Find MAC address"
-msgstr ""
+msgstr "Najít MAC adresu"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:284
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:458
@@ -699,7 +711,7 @@ msgstr "Odeslat magický paket před skenováním síťového okolí"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:460
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "Odeslat magický paket před připojením sdíleného adresáře"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:297
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:471
@@ -715,17 +727,17 @@ msgstr "Zadat uživatele"
 #: smb4k/smb4khomesuserdialog.cpp:47
 #, kde-format
 msgid "Please specify a username."
-msgstr "Prosím, zadejte uživatelské jméno."
+msgstr "Zadejte prosím uživatelské jméno."
 
 #: smb4k/smb4khomesuserdialog.cpp:123
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr ""
+msgstr "Zadejte prosím uživatelské jméno pro sdílení <br><b>%1</b>."
 
 #: smb4k/smb4kmainwindow.cpp:107
 #, kde-format
 msgid "Dock Widgets"
-msgstr ""
+msgstr "Widgety doku"
 
 #: smb4k/smb4kmainwindow.cpp:180 smb4k/smb4ksharesmenu.cpp:39
 #, kde-format
@@ -749,50 +761,50 @@ msgstr "Dokování"
 #: smb4k/smb4kmainwindow.cpp:338
 #, kde-format
 msgid "There are currently no shares mounted."
-msgstr ""
+msgstr "V současné době nejsou připojena žádná sdílení."
 
 #: smb4k/smb4kmainwindow.cpp:341
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "V současné době je připojeno %1 sdílení."
+msgstr[1] "V současné době jsou připojeny %1 sdílení."
+msgstr[2] "V současné době je připojeno %1 sdílení."
 
 #: smb4k/smb4kmainwindow.cpp:487
 #, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr ""
+msgstr "Vyhledávání pracovních skupin a domén..."
 
 #: smb4k/smb4kmainwindow.cpp:492
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr ""
+msgstr "Vyhledávání hostitelů v doméně %1..."
 
 #: smb4k/smb4kmainwindow.cpp:497
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr ""
+msgstr "Vyhledávání sdílení poskytovaných hostitelem %1..."
 
 #: smb4k/smb4kmainwindow.cpp:505 smb4k/smb4kmainwindow.cpp:514
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "Hledám soubory a adresáře v %1..."
+msgstr "Vyhledávání souborů a adresářů v %1..."
 
 #: smb4k/smb4kmainwindow.cpp:531
 #, kde-format
 msgid "Waking up remote hosts..."
-msgstr ""
+msgstr "Probouzení vzdálených hostitelů..."
 
 #: smb4k/smb4kmainwindow.cpp:536
 #, kde-format
 msgid "Sending file to printer %1..."
-msgstr "Odesílám soubor do tiskárny %1..."
+msgstr "Odesílání souboru do tiskárny %1..."
 
 #: smb4k/smb4kmainwindow.cpp:540
 #, kde-format
 msgid "Searching..."
-msgstr "Vyhledávám..."
+msgstr "Vyhledávání..."
 
 #: smb4k/smb4kmainwindow.cpp:561 smb4k/smb4kmainwindow.cpp:608
 #: smb4k/smb4kmainwindow.cpp:697
@@ -813,27 +825,27 @@ msgstr "Odpojování..."
 #: smb4k/smb4kmainwindow.cpp:587
 #, kde-format
 msgid "Waking up host..."
-msgstr ""
+msgstr "Probouzení hostitele..."
 
 #: smb4k/smb4kmainwindow.cpp:621
 #, kde-format
 msgid "%1 has been mounted successfully."
-msgstr ""
+msgstr "%1 byl úspěšně připojen."
 
 #: smb4k/smb4kmainwindow.cpp:644
 #, kde-format
 msgid "%1 has been unmounted successfully."
-msgstr ""
+msgstr "%1 byl úspěšně odpojen."
 
 #: smb4k/smb4kmainwindow.cpp:683
 #, kde-format
 msgid "Synchronizing %1"
-msgstr "Synchronizuji %1"
+msgstr "Synchronizace %1"
 
 #: smb4k/smb4kmountdialog.cpp:38
 #, kde-format
 msgid "Mount Dialog"
-msgstr "Připojovací dialog"
+msgstr "Dialog připojení"
 
 #: smb4k/smb4kmountdialog.cpp:64
 #, kde-format
@@ -841,6 +853,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Zadat umístění a případně IP adresu a pracovní skupinu, abyste připojili "
+"sdílenou složku."
 
 #: smb4k/smb4kmountdialog.cpp:79 smb4k/smb4ktooltip.cpp:196
 #: smb4k/smb4ktooltip.cpp:224
@@ -911,7 +925,7 @@ msgstr "Ctrl+C"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:156 smb4k/smb4ksystemtray.cpp:53
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr ""
+msgstr "&Otevřít dialog připojení"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:162
 #, kde-format
@@ -1015,22 +1029,22 @@ msgstr "Položku nahoru"
 #: smb4k/smb4knetworksearchtoolbar.cpp:81
 #, kde-format
 msgid "Clear"
-msgstr "Vyprázdnit"
+msgstr "Vymazat"
 
 #: smb4k/smb4kpassworddialog.cpp:39
 #, kde-format
 msgid "Please enter a username and a password for the host <b>%1</b>."
-msgstr ""
+msgstr "Zadejte prosím uživatelské jméno a heslo pro hostitele <b>%1</b>."
 
 #: smb4k/smb4kpassworddialog.cpp:52
 #, kde-format
 msgid "Please enter a username and a password for the share <b>%1</b>."
-msgstr ""
+msgstr "Zadejte prosím uživatelské jméno a heslo pro sdílení <b>%1</b>."
 
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
 msgid "Preview Dialog"
-msgstr "Dialog náhledu."
+msgstr "Dialog náhledu"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
@@ -1055,7 +1069,7 @@ msgstr "Náhled %1"
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format
 msgid "Print Dialog"
-msgstr "Tiskový dialog"
+msgstr "Dialog tisku"
 
 #: smb4k/smb4kprintdialog.cpp:46
 #, kde-format
@@ -1080,7 +1094,7 @@ msgstr "Tisk"
 #: smb4k/smb4kprintdialog.cpp:123
 #, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr ""
+msgstr "Vytisknout soubor na tiskárně <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:47 smb4k/smb4ksharesviewdockwidget.cpp:182
 #, kde-format
@@ -1115,17 +1129,17 @@ msgstr "Otevřít ve správci souborů"
 #: smb4k/smb4ksharesviewdockwidget.cpp:127
 #, kde-format
 msgid "View Modes"
-msgstr "Režimy pohledu"
+msgstr "Režimy zobrazení"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:133
 #, kde-format
 msgid "Icon View"
-msgstr "Pohled s ikonami"
+msgstr "Zobrazení s ikonami"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:139
 #, kde-format
 msgid "List View"
-msgstr "Pohled se seznamem"
+msgstr "Zobrazení se seznamem"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
@@ -1168,6 +1182,8 @@ msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
 "any files here.</qt>"
 msgstr ""
+"<qt>Ke sdílené složce <b>%1</b> není navázáno žádné aktivní připojení! Nelze "
+"sem umístit žádné soubory.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
@@ -1189,7 +1205,7 @@ msgstr "Cesty pro odkládací prostor (swap)"
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr ""
+msgstr "Uveďte prosím zdrojový a cílový adresář pro synchronizaci <b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:128
 #, kde-format
@@ -1199,7 +1215,7 @@ msgstr "Typ:"
 #: smb4k/smb4ktooltip.cpp:137
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "Procházení domény DNS-SD"
 
 #: smb4k/smb4ktooltip.cpp:139
 #, kde-format
