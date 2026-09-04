@@ -158,7 +158,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     //
     // 'Custom Settings' tab
     //
-    m_customSettingsWidget = new Smb4KCustomSettingsEditorWidget(m_tabWidget);
+    m_customSettingsWidget = new Smb4KCustomSettingsEditorWidget(m_tabWidget, false);
 
     tabIndex = m_tabWidget->addTab(m_customSettingsWidget, i18n("Custom Settings"));
     m_tabWidget->setTabEnabled(tabIndex, false);

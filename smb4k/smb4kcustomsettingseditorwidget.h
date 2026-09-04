@@ -37,7 +37,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KCustomSettingsEditorWidget(QWidget *parent = nullptr);
+    explicit Smb4KCustomSettingsEditorWidget(QWidget *parent = nullptr, bool showBrowseTab = true);
 
     /**
      * Destructor
@@ -97,8 +97,6 @@ protected Q_SLOTS:
     void slotUseDirectoryModeToggled(bool checked);
     void slotDirectoryModeChanged(const QString &text);
 #ifdef Q_OS_LINUX
-    void slotUseSmbMountProtocolVersionToggled(bool checked);
-    void slotSmbMountProtocolVersionChanged(int index);
     void slotUseSecurityModeToggled(bool checked);
     void slotSecurityModeChanged(int index);
 #endif
@@ -112,7 +110,7 @@ protected Q_SLOTS:
     void slotSendPacketBeforeMountToggled(bool checked);
 
 private:
-    void setupView();
+    void setupView(bool showBrowseTab);
     void checkValues();
     bool m_settingCustomSettings;
     bool m_hasDefaultCustomSettings;
@@ -137,8 +135,6 @@ private:
     QCheckBox *m_useDirectoryMode;
     KLineEdit *m_directoryMode;
 #ifdef Q_OS_LINUX
-    QCheckBox *m_useSmbMountProtocolVersion;
-    KComboBox *m_smbMountProtocolVersion;
     QCheckBox *m_useSecurityMode;
     KComboBox *m_securityMode;
 #endif

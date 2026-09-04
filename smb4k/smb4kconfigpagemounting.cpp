@@ -1,7 +1,7 @@
 /*
     The configuration page for the mount options
 
-    SPDX-FileCopyrightText: 2015-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2015-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -331,22 +331,6 @@ void Smb4KConfigPageMounting::setupWidget()
     QGridLayout *advancedOptionsExtraWidgetLayout = new QGridLayout(advancedOptionsExtraWidget);
     advancedOptionsExtraWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-    // SMB protocol version
-    QCheckBox *useSmbProtocol = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), advancedOptionsExtraWidget);
-    useSmbProtocol->setObjectName(QStringLiteral("kcfg_UseSmbProtocolVersion"));
-
-    KComboBox *smbProtocol = new KComboBox(advancedOptionsExtraWidget);
-    smbProtocol->setObjectName(QStringLiteral("kcfg_SmbProtocolVersion"));
-
-    QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
-
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : std::as_const(smbProtocolChoices)) {
-        smbProtocol->addItem(c.label);
-    }
-
-    advancedOptionsExtraWidgetLayout->addWidget(useSmbProtocol, 0, 0);
-    advancedOptionsExtraWidgetLayout->addWidget(smbProtocol, 0, 1);
-
     // Cache mode
     QCheckBox *useCacheMode = new QCheckBox(Smb4KMountSettings::self()->useCacheModeItem()->label(), advancedOptionsExtraWidget);
     useCacheMode->setObjectName(QStringLiteral("kcfg_UseCacheMode"));
@@ -360,8 +344,8 @@ void Smb4KConfigPageMounting::setupWidget()
         cacheMode->addItem(c.label);
     }
 
-    advancedOptionsExtraWidgetLayout->addWidget(useCacheMode, 1, 0);
-    advancedOptionsExtraWidgetLayout->addWidget(cacheMode, 1, 1);
+    advancedOptionsExtraWidgetLayout->addWidget(useCacheMode, 0, 0);
+    advancedOptionsExtraWidgetLayout->addWidget(cacheMode, 0, 1);
 
     // Security mode
     QCheckBox *useSecurityMode = new QCheckBox(Smb4KMountSettings::self()->useSecurityModeItem()->label(), advancedOptionsExtraWidget);
@@ -376,8 +360,8 @@ void Smb4KConfigPageMounting::setupWidget()
         securityMode->addItem(c.label);
     }
 
-    advancedOptionsExtraWidgetLayout->addWidget(useSecurityMode, 2, 0);
-    advancedOptionsExtraWidgetLayout->addWidget(securityMode, 2, 1);
+    advancedOptionsExtraWidgetLayout->addWidget(useSecurityMode, 1, 0);
+    advancedOptionsExtraWidgetLayout->addWidget(securityMode, 1, 1);
 
     advancedOptionsLayout->addWidget(advancedOptionsExtraWidget, 4, 0, 1, 2);
 
