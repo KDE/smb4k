@@ -776,60 +776,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, int *fd, QVariantM
     }
 
     //
-    // SMB protocol version
-    //
-    bool useMountProtocolVersion = false;
-    int mountProtocolVersion = -1;
-
-    if (options) {
-        useMountProtocolVersion = options->useMountProtocolVersion();
-        mountProtocolVersion = options->mountProtocolVersion();
-    } else {
-        useMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
-        mountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
-    }
-
-    if (useMountProtocolVersion) {
-        switch (mountProtocolVersion) {
-        case Smb4KMountSettings::EnumSmbProtocolVersion::OnePointZero: {
-            argumentsList << QStringLiteral("vers=1.0");
-            break;
-        }
-        case Smb4KMountSettings::EnumSmbProtocolVersion::TwoPointZero: {
-            argumentsList << QStringLiteral("vers=2.0");
-            break;
-        }
-        case Smb4KMountSettings::EnumSmbProtocolVersion::TwoPointOne: {
-            argumentsList << QStringLiteral("vers=2.1");
-            break;
-        }
-        case Smb4KMountSettings::EnumSmbProtocolVersion::ThreePointZero: {
-            argumentsList << QStringLiteral("vers=3.0");
-            break;
-        }
-        case Smb4KMountSettings::EnumSmbProtocolVersion::ThreePointZeroPointTwo: {
-            argumentsList << QStringLiteral("vers=3.0.2");
-            break;
-        }
-        case Smb4KMountSettings::EnumSmbProtocolVersion::ThreePointOnePointOne: {
-            argumentsList << QStringLiteral("vers=3.1.1");
-            break;
-        }
-        case Smb4KMountSettings::EnumSmbProtocolVersion::ThreeAndAbove: {
-            argumentsList << QStringLiteral("vers=3");
-            break;
-        }
-        case Smb4KMountSettings::EnumSmbProtocolVersion::Default: {
-            argumentsList << QStringLiteral("vers=default");
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-    }
-
-    //
     // Insert the mount options into the map
     //
     map.insert(QStringLiteral("mh_options"), argumentsList);
