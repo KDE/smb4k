@@ -1,7 +1,7 @@
 /*
     This class carries custom settings
 
-    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -261,35 +261,6 @@ public:
      * @returns TRUE if the server supports the CIFS Unix Extensions.
      */
     bool cifsUnixExtensionsSupport() const;
-
-    /**
-     * Set if the SMB protocol version for mounting should be set.
-     *
-     * @param use             Boolean that determines if the SMB protocol version
-     *                        for mounting should be set
-     */
-    void setUseMountProtocolVersion(bool use) const;
-
-    /**
-     * Returns if the SMB protocol version for mounting should be set.
-     *
-     * @returns TRUE if the SMB protocol version for mounting should be set.
-     */
-    bool useMountProtocolVersion() const;
-
-    /**
-     * Set the SMB protocol version for mounting.
-     *
-     * @param version         The protocol version used for mounting
-     */
-    void setMountProtocolVersion(int version) const;
-
-    /**
-     * Returns the SMB protocol version for mounting.
-     *
-     * @returns the SMB protocol version
-     */
-    int mountProtocolVersion() const;
 
     /**
      * Set if the security mode should be used.

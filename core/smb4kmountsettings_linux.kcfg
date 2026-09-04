@@ -169,41 +169,6 @@
       <whatsthis>Translate six of the seven reserved characters (including the colon, question mark, pipe, asterisk, greater than and less than characters but not the backslash) to remap range (above 0xF000). This allows you to open files that were created with such characters. This has no effect if the server does not support Unicode.</whatsthis>
       <default>false</default>
     </entry>
-    <entry name="UseSmbProtocolVersion" type="Bool">
-      <label>SMB protocol version:</label>
-      <whatsthis>Define which version of the SMB protocol is to be used.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="SmbProtocolVersion" type="Enum">
-      <whatsthis>Define which version of the SMB protocol is to be used.</whatsthis>
-      <choices>
-        <choice name="OnePointZero">
-          <label>1.0 (Classic CIFS/SMBv1 protocol)</label>
-        </choice>
-        <choice name="TwoPointZero">
-          <label>2.0 (Windows Vista SP1/Windows Server 2008)</label>
-        </choice>
-        <choice name="TwoPointOne">
-          <label>2.1 (Windows 7/Windows Server 2008R2)</label> 
-        </choice>
-        <choice name="ThreePointZero">
-          <label>3.0 (Windows 8/Windows Server 2012)</label>
-        </choice>
-        <choice name="ThreePointZeroPointTwo">
-          <label>3.0.2 (Windows 8.1/Windows Server 2012R2)</label>
-        </choice>
-        <choice name="ThreePointOnePointOne">
-          <label>3.1.1 (Windows Server 2016)</label>
-        </choice>
-        <choice name="ThreeAndAbove">
-          <label>3 (Version 3.0 and above)</label>
-        </choice>
-        <choice name="Default">
-          <label>default (Negotiate the highest version)</label>
-        </choice>
-      </choices>
-      <default>Default</default>
-    </entry>
     <entry name="UseCacheMode" type="Bool">
       <label>Cache mode:</label>
       <whatsthis>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the CIFS/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</whatsthis>

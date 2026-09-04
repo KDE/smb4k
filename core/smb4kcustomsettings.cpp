@@ -1,7 +1,7 @@
 /*
     This class carries custom settings
 
-    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -43,8 +43,6 @@ public:
     QPair<QString, bool> directoryMode;
 #if defined(Q_OS_LINUX)
     QPair<bool, bool> cifsUnixExtensionsSupport;
-    QPair<bool, bool> useMountProtocolVersion;
-    QPair<int, bool> mountProtocolVersion;
     QPair<bool, bool> useSecurityMode;
     QPair<int, bool> securityMode;
     QPair<bool, bool> useWriteAccess;
@@ -76,8 +74,6 @@ Smb4KCustomSettings::Smb4KCustomSettings(Smb4KBasicNetworkItem *networkItem)
     setDirectoryMode(Smb4KMountSettings::directoryMode());
 #if defined(Q_OS_LINUX)
     setCifsUnixExtensionsSupport(Smb4KMountSettings::cifsUnixExtensionsSupport());
-    setUseMountProtocolVersion(Smb4KMountSettings::useSmbProtocolVersion());
-    setMountProtocolVersion(Smb4KMountSettings::smbProtocolVersion());
     setUseSecurityMode(Smb4KMountSettings::useSecurityMode());
     setSecurityMode(Smb4KMountSettings::securityMode());
     setUseWriteAccess(Smb4KMountSettings::useWriteAccess());
@@ -145,8 +141,6 @@ Smb4KCustomSettings::Smb4KCustomSettings()
     setDirectoryMode(Smb4KMountSettings::directoryMode());
 #if defined(Q_OS_LINUX)
     setCifsUnixExtensionsSupport(Smb4KMountSettings::cifsUnixExtensionsSupport());
-    setUseMountProtocolVersion(Smb4KMountSettings::useSmbProtocolVersion());
-    setMountProtocolVersion(Smb4KMountSettings::smbProtocolVersion());
     setUseSecurityMode(Smb4KMountSettings::useSecurityMode());
     setSecurityMode(Smb4KMountSettings::securityMode());
     setUseWriteAccess(Smb4KMountSettings::useWriteAccess());
@@ -366,26 +360,6 @@ bool Smb4KCustomSettings::cifsUnixExtensionsSupport() const
     return d->cifsUnixExtensionsSupport.first;
 }
 
-void Smb4KCustomSettings::setUseMountProtocolVersion(bool use) const
-{
-    d->useMountProtocolVersion = {use, (use != Smb4KMountSettings::useSmbProtocolVersion())};
-}
-
-bool Smb4KCustomSettings::useMountProtocolVersion() const
-{
-    return d->useMountProtocolVersion.first;
-}
-
-void Smb4KCustomSettings::setMountProtocolVersion(int version) const
-{
-    d->mountProtocolVersion = {version, (version != Smb4KMountSettings::smbProtocolVersion())};
-}
-
-int Smb4KCustomSettings::mountProtocolVersion() const
-{
-    return d->mountProtocolVersion.first;
-}
-
 void Smb4KCustomSettings::setUseSecurityMode(bool use) const
 {
     d->useSecurityMode = {use, (use != Smb4KMountSettings::useSecurityMode())};
@@ -568,15 +542,6 @@ QMap<QString, QString> Smb4KCustomSettings::customSettings() const
         entries.insert(QStringLiteral("cifs_unix_extensions_support"), QString::number(d->cifsUnixExtensionsSupport.first));
     }
 
-    // Mount protocol version
-    if (d->useMountProtocolVersion.second && (d->useMountProtocolVersion.first != Smb4KMountSettings::useSmbProtocolVersion())) {
-        entries.insert(QStringLiteral("use_smb_mount_protocol_version"), QString::number(d->useMountProtocolVersion.first));
-    }
-
-    if (d->mountProtocolVersion.second && (d->mountProtocolVersion.first != Smb4KMountSettings::smbProtocolVersion())) {
-        entries.insert(QStringLiteral("smb_mount_protocol_version"), QString::number(d->mountProtocolVersion.first));
-    }
-
     // Security mode
     if (d->useSecurityMode.second && (d->useSecurityMode.first != Smb4KMountSettings::useSecurityMode())) {
         entries.insert(QStringLiteral("use_security_mode"), QString::number(d->useSecurityMode.first));
@@ -680,15 +645,6 @@ bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
         return true;
     }
 
-    // Mount protocol version
-    if (d->useMountProtocolVersion.second && (d->useMountProtocolVersion.first != Smb4KMountSettings::useSmbProtocolVersion())) {
-        return true;
-    }
-
-    if (d->mountProtocolVersion.second && (d->mountProtocolVersion.first != Smb4KMountSettings::smbProtocolVersion())) {
-        return true;
-    }
-
     // Security mode
     if (d->useSecurityMode.second && (d->useSecurityMode.first != Smb4KMountSettings::useSecurityMode())) {
         return true;
@@ -768,8 +724,6 @@ void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
     setDirectoryMode(customSettings->directoryMode());
 #if defined(Q_OS_LINUX)
     setCifsUnixExtensionsSupport(customSettings->cifsUnixExtensionsSupport());
-    setUseMountProtocolVersion(customSettings->useMountProtocolVersion());
-    setMountProtocolVersion(customSettings->mountProtocolVersion());
     setUseSecurityMode(customSettings->useSecurityMode());
     setSecurityMode(customSettings->securityMode());
     setUseWriteAccess(customSettings->useWriteAccess());

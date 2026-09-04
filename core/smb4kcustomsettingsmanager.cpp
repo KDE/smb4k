@@ -1,7 +1,7 @@
 /*
     Manage custom settings
 
-    SPDX-FileCopyrightText: 2011-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -472,20 +472,6 @@ void Smb4KCustomSettingsManager::read()
 
                                                 if (ok) {
                                                     settings->setCifsUnixExtensionsSupport(cifsUnixExtensionsSupported);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("use_smb_mount_protocol_version")) {
-                                                bool ok = false;
-                                                bool useMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    settings->setUseMountProtocolVersion(useMountProtocolVersion);
-                                                }
-                                            } else if (xmlReader.name() == QStringLiteral("smb_mount_protocol_version")) {
-                                                bool ok = false;
-                                                int mountProtocolVersion = xmlReader.readElementText().toInt(&ok);
-
-                                                if (ok) {
-                                                    settings->setMountProtocolVersion(mountProtocolVersion);
                                                 }
                                             } else if (xmlReader.name() == QStringLiteral("use_security_mode")) {
                                                 bool ok = false;
