@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -85,8 +85,6 @@ protected Q_SLOTS:
     void slotUseDirectoryModeToggled(bool checked);
     void slotDirectoryModeChanged(const QString &text);
 #ifdef Q_OS_LINUX
-    void slotUseSmbMountProtocolVersionToggled(bool checked);
-    void slotSmbMountProtocolVersionChanged(int index);
     void slotUseSecurityModeToggled(bool checked);
     void slotSecurityModeChanged(int index);
 #endif
@@ -126,8 +124,6 @@ private:
     QCheckBox *m_useDirectoryMode;
     KLineEdit *m_directoryMode;
 #ifdef Q_OS_LINUX
-    QCheckBox *m_useSmbMountProtocolVersion;
-    KComboBox *m_smbMountProtocolVersion;
     QCheckBox *m_useSecurityMode;
     KComboBox *m_securityMode;
 #endif

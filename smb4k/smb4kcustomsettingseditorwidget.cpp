@@ -1,7 +1,7 @@
 /*
  *  Editor widget for the custom settings
  *
- *  SPDX-FileCopyrightText: 2023-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ *  SPDX-FileCopyrightText: 2023-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -173,18 +173,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     QWidget *tab3 = new QWidget(this);
     QGridLayout *tab3Layout = new QGridLayout(tab3);
 
-    m_useSmbMountProtocolVersion = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), tab3);
-    m_smbMountProtocolVersion = new KComboBox(tab3);
-
-    QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
-
-    for (int i = 0; i < smbProtocolChoices.size(); ++i) {
-        m_smbMountProtocolVersion->addItem(smbProtocolChoices.at(i).label, i);
-    }
-
-    connect(m_useSmbMountProtocolVersion, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseSmbMountProtocolVersionToggled);
-    connect(m_smbMountProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotSmbMountProtocolVersionChanged);
-
     m_useSecurityMode = new QCheckBox(Smb4KMountSettings::self()->useSecurityModeItem()->label(), tab3);
     m_securityMode = new KComboBox(tab3);
 
@@ -197,10 +185,8 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     connect(m_useSecurityMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseSecurityModeToggled);
     connect(m_securityMode, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotSecurityModeChanged);
 
-    tab3Layout->addWidget(m_useSmbMountProtocolVersion, 0, 0);
-    tab3Layout->addWidget(m_smbMountProtocolVersion, 0, 1);
-    tab3Layout->addWidget(m_useSecurityMode, 1, 0);
-    tab3Layout->addWidget(m_securityMode, 1, 1);
+    tab3Layout->addWidget(m_useSecurityMode, 0, 0);
+    tab3Layout->addWidget(m_securityMode, 0, 1);
     tab3Layout->setRowStretch(2, 100);
 
     addTab(tab3, i18n("Advanced Mount Settings"));
@@ -522,10 +508,6 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
     m_directoryMode->setText(m_customSettings.directoryMode());
 
 #ifdef Q_OS_LINUX
-    m_useSmbMountProtocolVersion->setChecked(m_customSettings.useMountProtocolVersion());
-    int mountProtocolVersionIndex = m_smbMountProtocolVersion->findData(m_customSettings.mountProtocolVersion());
-    m_smbMountProtocolVersion->setCurrentIndex(mountProtocolVersionIndex);
-
     m_useSecurityMode->setChecked(m_customSettings.useSecurityMode());
     int securityModeIndex = m_securityMode->findData(m_customSettings.securityMode());
     m_securityMode->setCurrentIndex(securityModeIndex);
@@ -577,9 +559,6 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
     m_customSettings.setDirectoryMode(m_directoryMode->text());
 
 #ifdef Q_OS_LINUX
-    m_customSettings.setUseMountProtocolVersion(m_useSmbMountProtocolVersion->isChecked());
-    m_customSettings.setMountProtocolVersion(m_smbMountProtocolVersion->currentData().toInt());
-
     m_customSettings.setUseSecurityMode(m_useSecurityMode->isChecked());
     m_customSettings.setSecurityMode(m_securityMode->currentData().toInt());
 #endif
@@ -628,9 +607,6 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_directoryMode->clear();
 
 #ifdef Q_OS_LINUX
-    m_useSmbMountProtocolVersion->setChecked(false);
-    m_smbMountProtocolVersion->setCurrentIndex(0);
-
     m_useSecurityMode->setChecked(false);
     m_securityMode->setCurrentIndex(0);
 #endif
@@ -715,14 +691,6 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
     }
 
 #ifdef Q_OS_LINUX
-    if (m_useSmbMountProtocolVersion->isChecked() != defaultCustomSettings.useMountProtocolVersion()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
-    if (m_smbMountProtocolVersion->currentData().toInt() != defaultCustomSettings.mountProtocolVersion()) {
-        m_hasDefaultCustomSettings = false;
-    }
-
     if (m_useSecurityMode->isChecked() != defaultCustomSettings.useSecurityMode()) {
         m_hasDefaultCustomSettings = false;
     }
@@ -839,16 +807,6 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
     }
 
 #ifdef Q_OS_LINUX
-    if (m_useSmbMountProtocolVersion->isChecked() != m_customSettings.useMountProtocolVersion()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
-    if (m_smbMountProtocolVersion->currentData().toInt() != m_customSettings.mountProtocolVersion()) {
-        Q_EMIT edited(true);
-        return;
-    }
-
     if (m_useSecurityMode->isChecked() != m_customSettings.useSecurityMode()) {
         Q_EMIT edited(true);
         return;
@@ -991,18 +949,6 @@ void Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged(const QString &te
 }
 
 #ifdef Q_OS_LINUX
-void Smb4KCustomSettingsEditorWidget::slotUseSmbMountProtocolVersionToggled(bool checked)
-{
-    Q_UNUSED(checked);
-    checkValues();
-}
-
-void Smb4KCustomSettingsEditorWidget::slotSmbMountProtocolVersionChanged(int index)
-{
-    Q_UNUSED(index);
-    checkValues();
-}
-
 void Smb4KCustomSettingsEditorWidget::slotUseSecurityModeToggled(bool checked)
 {
     Q_UNUSED(checked);
