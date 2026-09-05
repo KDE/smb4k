@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 00:44+0000\n"
+"POT-Creation-Date: 2026-09-05 00:45+0000\n"
 "PO-Revision-Date: 2026-08-08 17:23+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -1917,7 +1917,7 @@ msgstr "Perfil activo"
 msgid "This is the currently active profile."
 msgstr "Este es el perfil actualmente activo."
 
-#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:269 smb4kshare.cpp:160
+#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:262 smb4kshare.cpp:160
 #: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
@@ -2384,13 +2384,13 @@ msgid "unicode"
 msgstr "unicode"
 
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:266
+#: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:231
 #, kde-format
 msgid "Unmount all personal shares on exit"
 msgstr "Desmontar todos los recursos compartidos al salir"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:267
+#: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:232
 #, kde-format
 msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
@@ -2401,13 +2401,13 @@ msgstr ""
 "pasarán por alto."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:271
+#: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:236
 #, kde-format
 msgid "Remount shares"
 msgstr "Volver a montar los recursos compartidos"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:272
+#: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:237
 #, kde-format
 msgid ""
 "Remount all your shares that were mounted when you exited the program or "
@@ -2425,13 +2425,13 @@ msgstr ""
 "estado dormido."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:233 smb4kmountsettings_linux.kcfg:276
+#: smb4kmountsettings_bsd.kcfg:233 smb4kmountsettings_linux.kcfg:241
 #, kde-format
 msgid "Number of remount attempts:"
 msgstr "Número de intentos de remontaje:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:234 smb4kmountsettings_linux.kcfg:277
+#: smb4kmountsettings_bsd.kcfg:234 smb4kmountsettings_linux.kcfg:242
 #, kde-format
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
@@ -2441,19 +2441,19 @@ msgstr ""
 "compartidos antes de que Smb4K deje de intentarlo."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:283
+#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:248
 #, kde-format
 msgid "Interval between remount attempts:"
 msgstr "Intervalo entre intentos de remontaje:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:284
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:249
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr "Ajuste el tiempo entre intentos de remontaje de recursos compartidos."
 
 #. i18n: ectx: label, entry (CheckServerOnlineState), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
+#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:255
 #, kde-format
 msgid "Check the online state of the server before remounting a share"
 msgstr ""
@@ -2461,7 +2461,7 @@ msgstr ""
 "compartido"
 
 #. i18n: ectx: whatsthis, entry (CheckServerOnlineState), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
+#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:256
 #, kde-format
 msgid ""
 "Check the online state of the server on which the share to be mounted is "
@@ -2476,13 +2476,13 @@ msgstr ""
 "puertos por defecto."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
+#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:260
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr "Forzar el desmontaje de recursos compartidos no accesibles"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
+#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:261
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2495,14 +2495,14 @@ msgstr ""
 "diálogo de advertencia pidiendo aprobar el desmontaje."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:300
+#: smb4kmountsettings_bsd.kcfg:257 smb4kmountsettings_linux.kcfg:265
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
 msgstr ""
 "Detectar todos los recursos compartidos que están montados en el sistema"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:258 smb4kmountsettings_linux.kcfg:301
+#: smb4kmountsettings_bsd.kcfg:258 smb4kmountsettings_linux.kcfg:266
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -2772,76 +2772,15 @@ msgstr ""
 "de 0xF000). Esto le permite abrir archivos creados con tales caracteres. "
 "Esto no tiene efecto si el servidor no es compatible con Unicode."
 
-#. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:173
-#, kde-format
-msgid "SMB protocol version:"
-msgstr "Versión del protocolo SMB:"
-
-#. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
-#. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:174 smb4kmountsettings_linux.kcfg:178
-#, kde-format
-msgid "Define which version of the SMB protocol is to be used."
-msgstr "Define que versión del protocolo SMB se va a utilizar."
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:181
-#, kde-format
-msgid "1.0 (Classic CIFS/SMBv1 protocol)"
-msgstr "1.0 (protocolo CIFS/SMBv1 clásico)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:184
-#, kde-format
-msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
-msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:187
-#, kde-format
-msgid "2.1 (Windows 7/Windows Server 2008R2)"
-msgstr "2.1 (Windows 7/Windows Server 2008R2)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:190
-#, kde-format
-msgid "3.0 (Windows 8/Windows Server 2012)"
-msgstr "3.0 (Windows 8/Windows Server 2012)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:193
-#, kde-format
-msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-msgstr "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:196
-#, kde-format
-msgid "3.1.1 (Windows Server 2016)"
-msgstr "3.1.1 (Windows Server 2016)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:199
-#, kde-format
-msgid "3 (Version 3.0 and above)"
-msgstr "3 (Versión 3.0 and superiores)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:202
-#, kde-format
-msgid "default (Negotiate the highest version)"
-msgstr "Por omisión (Negociar la versión más alta)"
-
 #. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:208
+#: smb4kmountsettings_linux.kcfg:173
 #, kde-format
 msgid "Cache mode:"
 msgstr "Modo de caché:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:209 smb4kmountsettings_linux.kcfg:213
+#: smb4kmountsettings_linux.kcfg:174 smb4kmountsettings_linux.kcfg:178
 #, kde-format
 msgid ""
 "Define how read and write requests are handled. In case you choose to not "
@@ -2871,32 +2810,32 @@ msgstr ""
 "mismo tiempo. Debido a esto, se recomienda el modo de caché estricto."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:216
+#: smb4kmountsettings_linux.kcfg:181
 #, kde-format
 msgid "Do not cache file data at all"
 msgstr "No almacenar en cache los datos del archivo"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:219
+#: smb4kmountsettings_linux.kcfg:184
 #, kde-format
 msgid "Follow the CIFS/SMB2 protocol strictly"
 msgstr "Seguir el protocolo CIFS/SMB2 estrictamente"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:222
+#: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "Allow loose caching semantics"
 msgstr "Permitir una semántica de caché ligera"
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:228
+#: smb4kmountsettings_linux.kcfg:193
 #, kde-format
 msgid "Security mode:"
 msgstr "Modo de seguridad:"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:229 smb4kmountsettings_linux.kcfg:233
+#: smb4kmountsettings_linux.kcfg:194 smb4kmountsettings_linux.kcfg:198
 #, kde-format
 msgid ""
 "Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
@@ -2906,55 +2845,55 @@ msgstr ""
 "necesario el modulo del kernel CIFS v1.40 o posterior."
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:236
+#: smb4kmountsettings_linux.kcfg:201
 #, kde-format
 msgid "Connect as a null user (no name)"
 msgstr "Conectar como un usuario nulo (sin nombre)"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:239
+#: smb4kmountsettings_linux.kcfg:204
 #, kde-format
 msgid "Kerberos 5 authentication"
 msgstr "Autenticación Kerberos 5"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:242
+#: smb4kmountsettings_linux.kcfg:207
 #, kde-format
 msgid "Kerberos 5 authentication and packet signing"
 msgstr "Autenticación Kerberos 5 y firma de paquetes"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:245
+#: smb4kmountsettings_linux.kcfg:210
 #, kde-format
 msgid "NTLM protocol"
 msgstr "Protocolo NTLM"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:248
+#: smb4kmountsettings_linux.kcfg:213
 #, kde-format
 msgid "NTLM protocol and packet signing"
 msgstr "Protocolo NTLM y firma de paquetes"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:251
+#: smb4kmountsettings_linux.kcfg:216
 #, kde-format
 msgid "NTLMv2 protocol"
 msgstr "Protocolo NTLMv2"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:254
+#: smb4kmountsettings_linux.kcfg:219
 #, kde-format
 msgid "NTLMv2 protocol and packet signing"
 msgstr "Protocolo NTLMv2 y firma de paquetes"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:257
+#: smb4kmountsettings_linux.kcfg:222
 #, kde-format
 msgid "NTLMSSP protocol"
 msgstr "Protocolo NTLMSSP"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:260
+#: smb4kmountsettings_linux.kcfg:225
 #, kde-format
 msgid "NTLMSSP protocol and packet signing"
 msgstr "Protocolo NTLMSSP y firma de paquetes"
@@ -3335,3 +3274,33 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#~ msgid "SMB protocol version:"
+#~ msgstr "Versión del protocolo SMB:"
+
+#~ msgid "Define which version of the SMB protocol is to be used."
+#~ msgstr "Define que versión del protocolo SMB se va a utilizar."
+
+#~ msgid "1.0 (Classic CIFS/SMBv1 protocol)"
+#~ msgstr "1.0 (protocolo CIFS/SMBv1 clásico)"
+
+#~ msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
+#~ msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
+
+#~ msgid "2.1 (Windows 7/Windows Server 2008R2)"
+#~ msgstr "2.1 (Windows 7/Windows Server 2008R2)"
+
+#~ msgid "3.0 (Windows 8/Windows Server 2012)"
+#~ msgstr "3.0 (Windows 8/Windows Server 2012)"
+
+#~ msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
+#~ msgstr "3.0.2 (Windows 8.1/Windows Server 2012R2)"
+
+#~ msgid "3.1.1 (Windows Server 2016)"
+#~ msgstr "3.1.1 (Windows Server 2016)"
+
+#~ msgid "3 (Version 3.0 and above)"
+#~ msgstr "3 (Versión 3.0 and superiores)"
+
+#~ msgid "default (Negotiate the highest version)"
+#~ msgstr "Por omisión (Negociar la versión más alta)"

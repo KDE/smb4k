@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 00:44+0000\n"
+"POT-Creation-Date: 2026-09-05 00:45+0000\n"
 "PO-Revision-Date: 2024-09-19 16:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -28,57 +28,57 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sstavra@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:68
+#: helpers/smb4kmounthelper.cpp:66
 #, fuzzy, kde-format
 #| msgid "The wallet is not in use."
 msgid "The computer is not online."
 msgstr "Το πορτοφόλι δεν χρησιμοποιείται."
 
-#: helpers/smb4kmounthelper.cpp:77
+#: helpers/smb4kmounthelper.cpp:75
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:83
+#: helpers/smb4kmounthelper.cpp:81
 #, fuzzy, kde-format
 #| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "Αδυναμία έναρξης της διαδικασίας προσάρτησης."
 
-#: helpers/smb4kmounthelper.cpp:89
+#: helpers/smb4kmounthelper.cpp:87
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:139
+#: helpers/smb4kmounthelper.cpp:137
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:179
+#: helpers/smb4kmounthelper.cpp:177
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Αδυναμία έναρξης της διαδικασίας προσάρτησης."
 
-#: helpers/smb4kmounthelper.cpp:192
+#: helpers/smb4kmounthelper.cpp:190
 #, fuzzy, kde-format
 #| msgid "The mountpoint %1 is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "Το σημείο προσάρτησης %1 δεν είναι έγκυρο."
 
-#: helpers/smb4kmounthelper.cpp:198
+#: helpers/smb4kmounthelper.cpp:196
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Αδυναμία έναρξης της διαδικασίας αποπροσάρτησης."
 
-#: helpers/smb4kmounthelper.cpp:204
+#: helpers/smb4kmounthelper.cpp:202
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "Η διαδικασία αποπροσάρτησης κατέρρευσε."
 
-#: helpers/smb4kmounthelper.cpp:246
+#: helpers/smb4kmounthelper.cpp:244
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Αδυναμία έναρξης της διαδικασίας αποπροσάρτησης."
@@ -343,7 +343,7 @@ msgstr "Κωδικός πρόσβασης:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:94
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:299 smb4k/smb4kmountdialog.cpp:94
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -351,7 +351,7 @@ msgstr "Ομάδα εργασίας:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:87
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:291 smb4k/smb4kmountdialog.cpp:87
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -396,7 +396,7 @@ msgstr ""
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
 
-#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:391
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #: smb4k/smb4kconfigpageuserinterface.cpp:146
@@ -404,21 +404,21 @@ msgstr ""
 msgid "Behavior"
 msgstr "Συμπεριφορά"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:432
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:416
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
+#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:442
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:101
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:332
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:318
 #, kde-format
 msgid "Basic Settings"
 msgstr "Βασικές ρυθμίσεις"
 
-#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:453
 #, kde-format
 msgid "Common Options"
 msgstr "Κοινές επιλογές"
@@ -428,16 +428,16 @@ msgstr "Κοινές επιλογές"
 msgid "CIFS Unix Extensions Support"
 msgstr "Υποστήριξη επεκτάσεων CIFS Unix"
 
-#: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
+#: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:460
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:339
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "User ID:"
 msgstr "Ταυτότητα χρήστη:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
+#: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:466
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:345
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:331
 #, kde-format
 msgid "Group ID:"
 msgstr "Ταυτότητα ομάδας:"
@@ -453,26 +453,26 @@ msgstr "Κοινές επιλογές προσάρτησης"
 msgid "Advanced Options"
 msgstr "Προχωρημένες επιλογές"
 
-#: smb4k/smb4kconfigpagemounting.cpp:387
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:207
+#: smb4k/smb4kconfigpagemounting.cpp:371
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:193
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Προηγμένες ρυθμίσεις προσάρτησης"
 
-#: smb4k/smb4kconfigpagemounting.cpp:525
+#: smb4k/smb4kconfigpagemounting.cpp:509
 #, kde-format
 msgid "Character Sets"
 msgstr "Σύνολα χαρακτήρων"
 
-#: smb4k/smb4kconfigpagemounting.cpp:579
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:382
+#: smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:368
 #, kde-format
 msgid "Mount Settings"
 msgstr "Ρυθμίσεις προσάρτησης"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:242
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:417
 #, kde-format
 msgid "Browse Settings"
 msgstr "Ρυθμίσεις περιήγησης"
@@ -696,7 +696,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:89
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:320
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306
 #, kde-format
 msgid "Always remount this share"
 msgstr "Πάντα να αναπροσαρτάται αυτός ο κοινός πόρος"
@@ -706,35 +706,35 @@ msgstr "Πάντα να αναπροσαρτάται αυτός ο κοινός 
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Αυτός ο εξυπηρετητής υποστηρίζει επεκτάσεις CIFS Unix"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:442
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:253
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:428
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC διεύθυνση:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:274
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:260
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:435
 #, fuzzy, kde-format
 #| msgid "MAC Address"
 msgid "Find MAC address"
 msgstr "MAC διεύθυνση"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:284
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:458
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:270
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, fuzzy, kde-format
 #| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Αποστολή μαγικού πακέτου πριν τη σάρωση του τοπικού δικτύου"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:286
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:272
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:446
 #, fuzzy, kde-format
 #| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Αποστολή μαγικού πακέτου πριν την προσάρτηση κοινού πόρου"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:297
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:471
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:457
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Ρυθμίσεις απομακρυσμένης αφύπνισης"

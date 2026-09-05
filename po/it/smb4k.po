@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 00:44+0000\n"
+"POT-Creation-Date: 2026-09-05 00:45+0000\n"
 "PO-Revision-Date: 2026-07-20 16:08+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -29,52 +29,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "feus73@gmail.com,"
 
-#: helpers/smb4kmounthelper.cpp:68
+#: helpers/smb4kmounthelper.cpp:66
 #, kde-format
 msgid "The computer is not online."
 msgstr "Il computer non è in linea."
 
-#: helpers/smb4kmounthelper.cpp:77
+#: helpers/smb4kmounthelper.cpp:75
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "Impossibile creare punto di montaggio per la condivisione %1."
 
-#: helpers/smb4kmounthelper.cpp:83
+#: helpers/smb4kmounthelper.cpp:81
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "Impossibile trovare il comando di montaggio."
 
-#: helpers/smb4kmounthelper.cpp:89
+#: helpers/smb4kmounthelper.cpp:87
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "Sono state passate delle opzioni di montaggio proibite."
 
-#: helpers/smb4kmounthelper.cpp:139
+#: helpers/smb4kmounthelper.cpp:137
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Qualcosa non ha funzionato col ticket di Kerberos fornito."
 
-#: helpers/smb4kmounthelper.cpp:179
+#: helpers/smb4kmounthelper.cpp:177
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Il processo di montaggio non può essere avviato."
 
-#: helpers/smb4kmounthelper.cpp:192
+#: helpers/smb4kmounthelper.cpp:190
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "Il punto di montaggio %1 non è illegale."
 
-#: helpers/smb4kmounthelper.cpp:198
+#: helpers/smb4kmounthelper.cpp:196
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "Impossibile trovare il comando di smontaggio."
 
-#: helpers/smb4kmounthelper.cpp:204
+#: helpers/smb4kmounthelper.cpp:202
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Sono state passate delle opzioni di smontaggio proibite."
 
-#: helpers/smb4kmounthelper.cpp:246
+#: helpers/smb4kmounthelper.cpp:244
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Il processo di smontaggio non può essere avviato."
@@ -336,7 +336,7 @@ msgstr "Password:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:94
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:299 smb4k/smb4kmountdialog.cpp:94
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -344,7 +344,7 @@ msgstr "Gruppo di lavoro:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305 smb4k/smb4kmountdialog.cpp:87
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:291 smb4k/smb4kmountdialog.cpp:87
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -391,7 +391,7 @@ msgstr ""
 "L'elemento <b>%1</b> è stato rimosso perché sono state azzerate tutte le "
 "impostazioni personalizzate."
 
-#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:407
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:391
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #: smb4k/smb4kconfigpageuserinterface.cpp:146
@@ -399,21 +399,21 @@ msgstr ""
 msgid "Behavior"
 msgstr "Comportamento"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:432
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:416
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:458
+#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:442
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:101
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:332
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:318
 #, kde-format
 msgid "Basic Settings"
 msgstr "Impostazioni di base"
 
-#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:469
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:453
 #, kde-format
 msgid "Common Options"
 msgstr "Opzioni condivise"
@@ -423,16 +423,16 @@ msgstr "Opzioni condivise"
 msgid "CIFS Unix Extensions Support"
 msgstr "Supporto alle estensioni CIFS per Unix"
 
-#: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:476
+#: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:460
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:339
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "User ID:"
 msgstr "ID utente:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:482
+#: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:466
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:345
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:331
 #, kde-format
 msgid "Group ID:"
 msgstr "ID gruppo:"
@@ -448,26 +448,26 @@ msgstr "Impostazioni condivise di montaggio"
 msgid "Advanced Options"
 msgstr "Opzioni avanzate"
 
-#: smb4k/smb4kconfigpagemounting.cpp:387
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:207
+#: smb4k/smb4kconfigpagemounting.cpp:371
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:193
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Impostazioni di montaggio avanzate"
 
-#: smb4k/smb4kconfigpagemounting.cpp:525
+#: smb4k/smb4kconfigpagemounting.cpp:509
 #, kde-format
 msgid "Character Sets"
 msgstr "Insiemi di caratteri"
 
-#: smb4k/smb4kconfigpagemounting.cpp:579
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:382
+#: smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:368
 #, kde-format
 msgid "Mount Settings"
 msgstr "Impostazioni di montaggio"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:256
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:431
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:242
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:417
 #, kde-format
 msgid "Browse Settings"
 msgstr "Impostazioni di navigazione"
@@ -683,7 +683,7 @@ msgstr ""
 "Definisci le impostazioni personalizzate per la condivisione <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:89
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:320
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:306
 #, kde-format
 msgid "Always remount this share"
 msgstr "Rimonta sempre questa condivisione"
@@ -693,32 +693,32 @@ msgstr "Rimonta sempre questa condivisione"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Questo server supporta le estensioni CIFS per Unix"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:267
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:442
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:253
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:428
 #, kde-format
 msgid "MAC Address:"
 msgstr "Indirizzo MAC:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:274
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:260
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:435
 #, kde-format
 msgid "Find MAC address"
 msgstr "Trova indirizzo MAC"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:284
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:458
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:270
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:444
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Invia un pacchetto magico prima della scansione delle risorse di rete"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:286
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:272
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:446
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Invia un pacchetto magico prima di montare una condivisione"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:297
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:471
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:457
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Impostazioni Wake-On-LAN"
