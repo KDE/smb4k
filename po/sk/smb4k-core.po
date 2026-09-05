@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 02:52+0000\n"
+"POT-Creation-Date: 2026-09-05 02:44+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1868,7 +1868,7 @@ msgstr "Aktívny profil"
 msgid "This is the currently active profile."
 msgstr "Toto je aktuálny aktívny profil."
 
-#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:278 smb4kshare.cpp:160
+#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:272 smb4kshare.cpp:160
 #: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
@@ -2339,13 +2339,13 @@ msgid "unicode"
 msgstr "unicode"
 
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:266
+#: smb4kmountsettings_bsd.kcfg:223 smb4kmountsettings_linux.kcfg:231
 #, kde-format
 msgid "Unmount all personal shares on exit"
 msgstr "Pri ukončení odpojiť všetky osobné zdieľania"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:267
+#: smb4kmountsettings_bsd.kcfg:224 smb4kmountsettings_linux.kcfg:232
 #, kde-format
 msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
@@ -2355,13 +2355,13 @@ msgstr ""
 "Zdieľania, ktoré vlastnia iný používatelia sú ignorované."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:271
+#: smb4kmountsettings_bsd.kcfg:228 smb4kmountsettings_linux.kcfg:236
 #, kde-format
 msgid "Remount shares"
 msgstr "Znovu pripojiť zdieľania"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:272
+#: smb4kmountsettings_bsd.kcfg:229 smb4kmountsettings_linux.kcfg:237
 #, kde-format
 msgid ""
 "Remount all your shares that were mounted when you exited the program or "
@@ -2377,13 +2377,13 @@ msgstr ""
 "znovupripojenie zdieľaní pri prebudení počítača zo stavu spánku."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:233 smb4kmountsettings_linux.kcfg:276
+#: smb4kmountsettings_bsd.kcfg:233 smb4kmountsettings_linux.kcfg:241
 #, kde-format
 msgid "Number of remount attempts:"
 msgstr "Počet pokusov o znovupripojenie:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:234 smb4kmountsettings_linux.kcfg:277
+#: smb4kmountsettings_bsd.kcfg:234 smb4kmountsettings_linux.kcfg:242
 #, kde-format
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
@@ -2391,25 +2391,25 @@ msgid ""
 msgstr "Nastaviť počet pokusov, ktoré sa vykonajú na nové pripojenie zdieľaní."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:283
+#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:248
 #, kde-format
 msgid "Interval between remount attempts:"
 msgstr "Interval medzi pokusmi o opätovné pripojenie:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:284
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:249
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr "Nastaviť čas, ktorý prejde medzi pokusmi o nové pripojenie zdieľaní."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:290
+#: smb4kmountsettings_bsd.kcfg:247 smb4kmountsettings_linux.kcfg:255
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr "Vynútiť odpojenie neprístupných zdieľaní"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:291
+#: smb4kmountsettings_bsd.kcfg:248 smb4kmountsettings_linux.kcfg:256
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2422,13 +2422,13 @@ msgstr ""
 "odpojenia."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:295
+#: smb4kmountsettings_bsd.kcfg:252 smb4kmountsettings_linux.kcfg:260
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
 msgstr "Zistiť všetky zdieľania pripojené v systéme"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:296
+#: smb4kmountsettings_bsd.kcfg:253 smb4kmountsettings_linux.kcfg:261
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -2690,76 +2690,15 @@ msgstr ""
 "ktoré boli vytvorené s takýmito znakmi. Toto nemá žiadny vplyv, pokiaľ "
 "server nepodporuje Unicode."
 
-#. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:173
-#, kde-format
-msgid "SMB protocol version:"
-msgstr "Verzia protokolu SMB:"
-
-#. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
-#. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:174 smb4kmountsettings_linux.kcfg:178
-#, kde-format
-msgid "Define which version of the SMB protocol is to be used."
-msgstr "Definovať, ktorú verziu SMB protokolu použiť."
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:181
-#, kde-format
-msgid "1.0 (Classic CIFS/SMBv1 protocol)"
-msgstr "1.0 (Klasický CIFS/SMBv1 protokol)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:184
-#, kde-format
-msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
-msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:187
-#, kde-format
-msgid "2.1 (Windows 7/Windows Server 2008R2)"
-msgstr "2.1 (Windows 7/Windows Server 2008R2)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:190
-#, kde-format
-msgid "3.0 (Windows 8/Windows Server 2012)"
-msgstr "3.0 (Windows 8/Windows Server 2012)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:193
-#, kde-format
-msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-msgstr "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:196
-#, kde-format
-msgid "3.1.1 (Windows Server 2016)"
-msgstr "3.1.1 (Windows Server 2016)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:199
-#, kde-format
-msgid "3 (Version 3.0 and above)"
-msgstr "3 (verzia 3.0 a vyššie)"
-
-#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:202
-#, kde-format
-msgid "default (Negotiate the highest version)"
-msgstr "predvolené (Vyjednať najvyššiu verziu)"
-
 #. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:208
+#: smb4kmountsettings_linux.kcfg:173
 #, kde-format
 msgid "Cache mode:"
 msgstr "Režim cachovania:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:209 smb4kmountsettings_linux.kcfg:213
+#: smb4kmountsettings_linux.kcfg:174 smb4kmountsettings_linux.kcfg:178
 #, kde-format
 msgid ""
 "Define how read and write requests are handled. In case you choose to not "
@@ -2787,32 +2726,32 @@ msgstr ""
 "režim cache."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:216
+#: smb4kmountsettings_linux.kcfg:181
 #, kde-format
 msgid "Do not cache file data at all"
 msgstr "Vôbec necachovať údaje súborov"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:219
+#: smb4kmountsettings_linux.kcfg:184
 #, kde-format
 msgid "Follow the CIFS/SMB2 protocol strictly"
 msgstr "Sledovať protokol CIFS/SMB2 prísne"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:222
+#: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "Allow loose caching semantics"
 msgstr "Povoliť voľnú sémantiku cachovania"
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:228
+#: smb4kmountsettings_linux.kcfg:193
 #, kde-format
 msgid "Security mode:"
 msgstr "Bezpečnostný režim:"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:229 smb4kmountsettings_linux.kcfg:233
+#: smb4kmountsettings_linux.kcfg:194 smb4kmountsettings_linux.kcfg:198
 #, kde-format
 msgid ""
 "Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
@@ -2822,55 +2761,55 @@ msgstr ""
 "potrebný modul jadra CIFS 1.40 alebo novší."
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:236
+#: smb4kmountsettings_linux.kcfg:201
 #, kde-format
 msgid "Connect as a null user (no name)"
 msgstr "Pripojiť ako nulový používateľ (bez mena)"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:239
+#: smb4kmountsettings_linux.kcfg:204
 #, kde-format
 msgid "Kerberos 5 authentication"
 msgstr "Overenie Kerberos 5"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:242
+#: smb4kmountsettings_linux.kcfg:207
 #, kde-format
 msgid "Kerberos 5 authentication and packet signing"
 msgstr "Overovanie Kerberos 5 a paketové podpisovanie"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:245
+#: smb4kmountsettings_linux.kcfg:210
 #, kde-format
 msgid "NTLM protocol"
 msgstr "Protokol NTLM"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:248
+#: smb4kmountsettings_linux.kcfg:213
 #, kde-format
 msgid "NTLM protocol and packet signing"
 msgstr "Protokol NTLM a paketové podpisovanie"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:251
+#: smb4kmountsettings_linux.kcfg:216
 #, kde-format
 msgid "NTLMv2 protocol"
 msgstr "Protokol NTLMv2"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:254
+#: smb4kmountsettings_linux.kcfg:219
 #, kde-format
 msgid "NTLMv2 protocol and packet signing"
 msgstr "Protokol NTLMv2 a paketové podpisovanie"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:257
+#: smb4kmountsettings_linux.kcfg:222
 #, kde-format
 msgid "NTLMSSP protocol"
 msgstr "Protokol NTLMSSP"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:260
+#: smb4kmountsettings_linux.kcfg:225
 #, kde-format
 msgid "NTLMSSP protocol and packet signing"
 msgstr "Protokol NTLMSSP a paketové podpisovanie"
@@ -3101,6 +3040,36 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cieľ"
+
+#~ msgid "SMB protocol version:"
+#~ msgstr "Verzia protokolu SMB:"
+
+#~ msgid "Define which version of the SMB protocol is to be used."
+#~ msgstr "Definovať, ktorú verziu SMB protokolu použiť."
+
+#~ msgid "1.0 (Classic CIFS/SMBv1 protocol)"
+#~ msgstr "1.0 (Klasický CIFS/SMBv1 protokol)"
+
+#~ msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
+#~ msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
+
+#~ msgid "2.1 (Windows 7/Windows Server 2008R2)"
+#~ msgstr "2.1 (Windows 7/Windows Server 2008R2)"
+
+#~ msgid "3.0 (Windows 8/Windows Server 2012)"
+#~ msgstr "3.0 (Windows 8/Windows Server 2012)"
+
+#~ msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
+#~ msgstr "3.0.2 (Windows 8.1/Windows Server 2012R2)"
+
+#~ msgid "3.1.1 (Windows Server 2016)"
+#~ msgstr "3.1.1 (Windows Server 2016)"
+
+#~ msgid "3 (Version 3.0 and above)"
+#~ msgstr "3 (verzia 3.0 a vyššie)"
+
+#~ msgid "default (Negotiate the highest version)"
+#~ msgstr "predvolené (Vyjednať najvyššiu verziu)"
 
 #, fuzzy
 #~ msgid ""

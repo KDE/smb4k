@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-24 02:51+0000\n"
+"POT-Creation-Date: 2026-09-05 02:44+0000\n"
 "PO-Revision-Date: 2026-05-07 00:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -33,52 +33,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "emir_sari@icloud.com"
 
-#: helpers/smb4kmounthelper.cpp:68
+#: helpers/smb4kmounthelper.cpp:67
 #, kde-format
 msgid "The computer is not online."
 msgstr "Bilgisayar çevrimiçi değil."
 
-#: helpers/smb4kmounthelper.cpp:77
+#: helpers/smb4kmounthelper.cpp:76
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "%1 paylaşımı için bağlama noktası oluşturulamadı."
 
-#: helpers/smb4kmounthelper.cpp:83
+#: helpers/smb4kmounthelper.cpp:82
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "mount komutu bulunamadı."
 
-#: helpers/smb4kmounthelper.cpp:89
+#: helpers/smb4kmounthelper.cpp:88
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "Yasaklı mount seçenekleri geçirildi."
 
-#: helpers/smb4kmounthelper.cpp:139
+#: helpers/smb4kmounthelper.cpp:138
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Sağlanan Kerberos bileti ile ilgili yanlış bir şeyler var."
 
-#: helpers/smb4kmounthelper.cpp:183
+#: helpers/smb4kmounthelper.cpp:182
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Bağlama süreci başlatılamadı."
 
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:195
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "“%1” bağlama noktasına izin verilmiyor."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:201
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "umount komutu bulunamadı."
 
-#: helpers/smb4kmounthelper.cpp:208
+#: helpers/smb4kmounthelper.cpp:207
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Yasaklı unmount seçenekleri geçirildi."
 
-#: helpers/smb4kmounthelper.cpp:250
+#: helpers/smb4kmounthelper.cpp:249
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Bağlantı kesme süreci başlatılamadı."
@@ -290,7 +290,7 @@ msgstr "Parola:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:307 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -298,7 +298,7 @@ msgstr "Çalışma grubu:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:299 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -343,28 +343,28 @@ msgstr "Her şey yolunda."
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr "<b>%1</b> ögesi kaldırıldı; çünkü tüm özel ayarlar sıfırlanmıştı."
 
-#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "Davranış"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:412
 #, kde-format
 msgid " min"
 msgstr " dk"
 
-#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
+#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:434
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:326
 #, kde-format
 msgid "Basic Settings"
 msgstr "Temel Ayarlar"
 
-#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
+#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:445
 #, kde-format
 msgid "Common Options"
 msgstr "Genel Seçenekler"
@@ -374,16 +374,16 @@ msgstr "Genel Seçenekler"
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS Unix Eklenti Desteği"
 
-#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:452
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:333
 #, kde-format
 msgid "User ID:"
 msgstr "Kullanıcı kimliği:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:339
 #, kde-format
 msgid "Group ID:"
 msgstr "Grup kimliği:"
@@ -399,26 +399,26 @@ msgstr "Ortak Bağlama Ayarları"
 msgid "Advanced Options"
 msgstr "Gelişmiş Seçenekler"
 
-#: smb4k/smb4kconfigpagemounting.cpp:383
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
+#: smb4k/smb4kconfigpagemounting.cpp:367
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:192
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Gelişmiş Bağlama Ayarları"
 
-#: smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagemounting.cpp:501
 #, kde-format
 msgid "Character Sets"
 msgstr "Karakter Kümeleri"
 
-#: smb4k/smb4kconfigpagemounting.cpp:571
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
+#: smb4k/smb4kconfigpagemounting.cpp:555
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:376
 #, kde-format
 msgid "Mount Settings"
 msgstr "Bağlama Ayarları"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:435
 #, kde-format
 msgid "Browse Settings"
 msgstr "Ayarlara Göz At"
@@ -626,7 +626,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "<b>%1</b> paylaşımı için özel ayarlar tanımlayın."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
 #, kde-format
 msgid "Always remount this share"
 msgstr "Bu paylaşımı her zaman yeniden bağla"
@@ -636,32 +636,32 @@ msgstr "Bu paylaşımı her zaman yeniden bağla"
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Bu sunucu, CIFS Unix uzantılarını destekler"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:262
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:446
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC adresi:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:453
 #, kde-format
 msgid "Find MAC address"
 msgstr "MAC adresini bul"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:462
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Ağ komşularını taramadan önce sihirli paket gönder"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:280
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Bir paylaşımı bağlamadan önce sihirli paket gönder"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:291
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:475
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Ağdan Uyan Ayarları"

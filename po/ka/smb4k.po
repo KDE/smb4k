@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-24 02:51+0000\n"
+"POT-Creation-Date: 2026-09-05 02:44+0000\n"
 "PO-Revision-Date: 2025-12-16 06:37+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -28,52 +28,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:68
+#: helpers/smb4kmounthelper.cpp:67
 #, kde-format
 msgid "The computer is not online."
 msgstr "კომპიუტერს ინტერნეტი არ აქვს."
 
-#: helpers/smb4kmounthelper.cpp:77
+#: helpers/smb4kmounthelper.cpp:76
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "გაზიარებულისთვის %1 მიმაგრების წერტილის შექმნა შეუძლებელია."
 
-#: helpers/smb4kmounthelper.cpp:83
+#: helpers/smb4kmounthelper.cpp:82
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "ბრძანება mount აღმოჩენილი არაა."
 
-#: helpers/smb4kmounthelper.cpp:89
+#: helpers/smb4kmounthelper.cpp:88
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "გადაცემულია აკრძალული მიმაგრების პარამეტრები."
 
-#: helpers/smb4kmounthelper.cpp:139
+#: helpers/smb4kmounthelper.cpp:138
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "მიწოდებულ Kerberos-ის ბილეთს რაღაც სჭირს."
 
-#: helpers/smb4kmounthelper.cpp:183
+#: helpers/smb4kmounthelper.cpp:182
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "მიმაგრების პროცესის გაშვების შეცდომა."
 
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:195
 #, kde-format
 msgid "The mountpoint %1 is illegal."
 msgstr "მიმაგრების წერტილი %1 დაუშვებელია."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:201
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "ბრძანება umount აღმოჩენილი არაა."
 
-#: helpers/smb4kmounthelper.cpp:208
+#: helpers/smb4kmounthelper.cpp:207
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "გადაცემულია აკრძალული მოხსნის პარამეტრები."
 
-#: helpers/smb4kmounthelper.cpp:250
+#: helpers/smb4kmounthelper.cpp:249
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "მოხსნის პროცესის გაშვების შეცდომა."
@@ -287,7 +287,7 @@ msgstr "პაროლი:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:321 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:307 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -295,7 +295,7 @@ msgstr "სამუშაო ჯგუფი:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:313 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:299 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -341,28 +341,28 @@ msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
 "ჩანაწერი %1 წაიშალა, რადგან ყველა ხელით მითითებული პარამეტრი გასუფთავდა."
 
-#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:403
+#: smb4k/smb4kconfigpagemounting.cpp:101 smb4k/smb4kconfigpagemounting.cpp:387
 #: smb4k/smb4kconfigpagenetwork.cpp:105
 #: smb4k/smb4kconfigpagesynchronization.cpp:51
 #, kde-format
 msgid "Behavior"
 msgstr "ქცევა"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:428
+#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:412
 #, kde-format
 msgid " min"
 msgstr " წთ"
 
-#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:450
+#: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:434
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:340
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:326
 #, kde-format
 msgid "Basic Settings"
 msgstr "ძირითადი პარამეტრები"
 
-#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:461
+#: smb4k/smb4kconfigpagemounting.cpp:163 smb4k/smb4kconfigpagemounting.cpp:445
 #, kde-format
 msgid "Common Options"
 msgstr "საერთო პარამეტრები"
@@ -372,16 +372,16 @@ msgstr "საერთო პარამეტრები"
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS-ის Unix-ის გაფართოებების მხარდაჭერა"
 
-#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:468
+#: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:452
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:347
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:333
 #, kde-format
 msgid "User ID:"
 msgstr "მომხმარებლის ID:"
 
-#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:474
+#: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:353
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:339
 #, kde-format
 msgid "Group ID:"
 msgstr "ჯგუფის ID:"
@@ -397,26 +397,26 @@ msgstr "საერთო მიმაგრების პარამეტ�
 msgid "Advanced Options"
 msgstr "დამატებითი პარამეტრები"
 
-#: smb4k/smb4kconfigpagemounting.cpp:383
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:206
+#: smb4k/smb4kconfigpagemounting.cpp:367
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:192
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "მიმაგრების დამატებითი პარამეტრები"
 
-#: smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagemounting.cpp:501
 #, kde-format
 msgid "Character Sets"
 msgstr "სიმბოლოების სეტები"
 
-#: smb4k/smb4kconfigpagemounting.cpp:571
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:390
+#: smb4k/smb4kconfigpagemounting.cpp:555
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:376
 #, kde-format
 msgid "Mount Settings"
 msgstr "მიმაგრების პარამეტრები"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:265
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:435
 #, kde-format
 msgid "Browse Settings"
 msgstr "პარამეტრების დათვალიერება"
@@ -626,7 +626,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "აღწერეთ მომხმარებლის პარამეტრები გაზიარებულისთვის <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
 #, kde-format
 msgid "Always remount this share"
 msgstr "ამ გაზიარებულის ყოველთვის მიმაგრება"
@@ -636,32 +636,32 @@ msgstr "ამ გაზიარებულის ყოველთვის 
 msgid "This server supports the CIFS Unix extensions"
 msgstr "ამ სერვერს CIFS-ის Unix-ის გაფართოებების მხარდაჭერა გააჩნია"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:276
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:460
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:262
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:446
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC მისამართი:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:283
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:453
 #, kde-format
 msgid "Find MAC address"
 msgstr "MAC მისამართის ძებნა"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:292
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:476
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:462
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "ქსელურ მეზობლების სკანირებამდე ჯადოსნური პაკეტის გაგზავნა"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:294
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:280
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "გაზიარებულის მიმაგრებამდე ჯადოსნური პაკეტის გაგზავნა"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:305
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:489
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:291
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:475
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "ქსელით-გაღვიძების მორგება"
