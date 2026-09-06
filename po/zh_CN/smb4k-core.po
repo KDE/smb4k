@@ -2886,33 +2886,3 @@ msgstr "来源"
 #, kde-format
 msgid "Destination"
 msgstr "目标"
-
-#~ msgid "SMB protocol version:"
-#~ msgstr "SMB 协议版本："
-
-#~ msgid "Define which version of the SMB protocol is to be used."
-#~ msgstr "指定要使用的 SMB 协议版本。"
-
-#~ msgid "1.0 (Classic CIFS/SMBv1 protocol)"
-#~ msgstr "1.0 (经典 CIFS/SMBv1 协议)"
-
-#~ msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
-#~ msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
-
-#~ msgid "2.1 (Windows 7/Windows Server 2008R2)"
-#~ msgstr "2.1 (Windows 7/Windows Server 2008R2)"
-
-#~ msgid "3.0 (Windows 8/Windows Server 2012)"
-#~ msgstr "3.0 (Windows 8/Windows Server 2012)"
-
-#~ msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-#~ msgstr "3.0.2 (Windows 8.1/Windows Server 2012R2)"
-
-#~ msgid "3.1.1 (Windows Server 2016)"
-#~ msgstr "3.1.1 (Windows Server 2016)"
-
-#~ msgid "3 (Version 3.0 and above)"
-#~ msgstr "3 (3.0 版和更高版本)"
-
-#~ msgid "default (Negotiate the highest version)"
-#~ msgstr "默认 (程序自动协商最高版本)"
