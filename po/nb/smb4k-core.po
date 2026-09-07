@@ -2904,21 +2904,3 @@ msgstr "Kilde"
 #, kde-format
 msgid "Destination"
 msgstr "Mål"
-
-#~ msgid "SMB protocol version:"
-#~ msgstr "SMB protokollversjon:"
-
-#~ msgid "Define which version of the SMB protocol is to be used."
-#~ msgstr "Bestem hvilken versjon av SMB-protokollen som skal brukes."
-
-#~ msgid "1.0 (Classic CIFS/SMBv1 protocol)"
-#~ msgstr "1.0 (Klassisk CIFS/SMBv1 protokoll)"
-
-#~ msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
-#~ msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
-
-#~ msgid "2.1 (Windows 7/Windows Server 2008R2)"
-#~ msgstr "2.1 (Windows 7/Windows Server 2008R2)"
-
-#~ msgid "3.0 (Windows 8/Windows Server 2012)"
-#~ msgstr "3.0 (Windows 8/Windows Server 2012)"
