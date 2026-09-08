@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-05 02:44+0000\n"
-"PO-Revision-Date: 2025-12-11 09:52+0100\n"
+"PO-Revision-Date: 2026-07-17 09:04+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -812,7 +812,7 @@ msgstr "Synchronisation de %1"
 #: smb4k/smb4kmountdialog.cpp:34
 #, kde-format
 msgid "Mount Dialog"
-msgstr "Boîte de dialogue de montage"
+msgstr "Boite de dialogue de montage"
 
 #: smb4k/smb4kmountdialog.cpp:51
 #, kde-format
@@ -1016,7 +1016,7 @@ msgstr ""
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
 msgid "Preview Dialog"
-msgstr "Boîte de dialogue d'aperçu"
+msgstr "Boite de dialogue d'aperçu"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
@@ -1041,7 +1041,7 @@ msgstr "Aperçu de %1"
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format
 msgid "Print Dialog"
-msgstr "Boîte de dialogue d'impression"
+msgstr "Boite de dialogue d'impression"
 
 #: smb4k/smb4kprintdialog.cpp:46
 #, kde-format
