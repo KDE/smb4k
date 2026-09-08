@@ -103,7 +103,7 @@ msgstr ""
 #: smb4k.kcfg:41
 #, kde-format
 msgid "Start the application docked to the system tray"
-msgstr "Démarrer l'application rangée dans la boîte à miniatures"
+msgstr "Démarrer l'application rangée dans la boite à miniatures"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42

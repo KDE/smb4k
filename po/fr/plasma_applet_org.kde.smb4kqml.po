@@ -37,7 +37,7 @@ msgstr "Modifier les signets"
 
 #: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
-msgstr "Boîte de dialogue de configuration"
+msgstr "Boite de dialogue de configuration"
 
 #: package/contents/ui/main.qml:18 package/contents/ui/PopupDialog.qml:31
 msgid "Network Neighborhood"
