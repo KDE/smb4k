@@ -67,9 +67,9 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->26 січня 2026 року</date>
+>28 серпня 2026 року</date>
   <releaseinfo
->&smb4k; 4.0.5</releaseinfo
+>&smb4k; 4.0.7</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -101,13 +101,11 @@
 >. У програмі передбачено багато зручних засобів для полегшення вашої роботи у мережевому середовищі, де домінують комп’ютери під керуванням операційних систем &Windows;.</para>
 
   <para
->У цьому підручнику розглянуто можливості &smb4k; 4.0.5 та пізніших версій. До певної міри, він також є дійсним для деяких попередніх версій програми.</para>
+>У цьому підручнику розглянуто можливості &smb4k; 4.0.7 та пізніших версій. До певної міри, він також є дійсним для деяких попередніх версій програми.</para>
 
   <note>
     <para
->У 2025 році у допоміжній програмі для монтування, KAuth, було виявлено декілька вразливостей (див. <ulink url="https://security.opensuse.org/2025/12/10/smb4k-major-issues-in-kauth-helper.html"
->звіт</ulink
-> від SUSE Security Team). Їх було виправлено у версії 4.0.5. Оскільки при цьому було обмежено набір можливостей для монтування і демонтування, удосконалення захисту суттєво позначилися на нашій програмі.</para>
+>У 2025 і 2026 роках у допоміжній програмі для монтування, KAuth, було виявлено декілька вразливостей. Їх було виправлено у версіях 4.0.5 і 4.0.7, відповідно. Оскільки при цьому було обмежено набір можливостей для монтування і демонтування, удосконалення захисту суттєво позначилися на нашій програмі.</para>
   </note>
 
   <para
@@ -4501,193 +4499,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >Не надсилати на сервер запитів щодо блокування діапазону байтів. Скасування блокування потрібне для деяких програм, які не можуть працювати із обов'язковим блокування діапазону байтів у стилі cifs (а на більшості серверів cifs ще не передбачено підтримки запитів рекомендованих блокувань діапазону байтів).</para>
             <para
 >Типове значення: не позначено</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Версія протоколу SMB</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Параметр: <option
->vers=ВЕРСІЯ</option
-></para>
-            <para
->Визначити версію протоколу SMB, яку слід використати. Зазвичай, у використанні цього параметра немає потреби, оскільки версію протоколу автоматично узгоджують клієнт і сервер.</para>
-            <para
->Можна використовувати такі значення:</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->1.0 (класичний протокол CIFS/SMBv1)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mountcifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано використовувати класичний протокол CIFS/SMBv1.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->2.0 (Windows Vista SP1/Windows Server 2008)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mountcifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано використовувати протокол SMBv2.002. Цей протокол було вперше впроваджено у &Microsoft; &Windows; Vista Service Pack 1 та &Windows; Server 2008.</para>
-                  <para
->Будь ласка, зауважте, що у початковій версії випуску &Microsoft; &Windows; Vista використовується трохи інший діалект (2.000), підтримки якого не передбачено.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->2.1 (Windows 7/Windows Server 2008R2)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mountcifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано використовувати протокол SMBv2.1, який було впроваджено у &Microsoft; &Windows; 7 та &Windows; Server 2008R2.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.0 (Windows 8/Windows Server 2012)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано використовувати протокол SMBv3.0, який було впроваджено у &Microsoft; &Windows; 8 та &Windows; Server 2012.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mountcifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано використовувати протокол SMBv3.0.2, який було впроваджено у &Microsoft; &Windows; 8.1 та &Windows; Server 2012R2.</para>
-                </listitem>
-              </varlistentry>
-              
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.1.1 (Windows Server 2016)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано використовувати протокол SMBv3.1.1, який було впроваджено у &Microsoft; &Windows; Server 2016.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3 (версія 3.0 і новіші)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано використовувати версію протоколу SMBv3.0 або новішу.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->типовий (узгодити найновішу версію)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Таким чином, <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> буде наказано узгодити найбільшу підтримувану версію SMBv2+ на боці клієнта і сервера.</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-            <para
->Типове значення: не вибрано; ВЕРСІЯ: <guibutton
->типова (узгодити найновішу версію)</guibutton
-></para>
           </listitem>
         </varlistentry>
         <varlistentry>
