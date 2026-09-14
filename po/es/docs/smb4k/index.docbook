@@ -95,9 +95,9 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2026-01-26</date>
+>2026-08-28</date>
   <releaseinfo
->&smb4k; 4.0.6</releaseinfo
+>&smb4k; 4.0.7</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -129,13 +129,11 @@
 >. Proporciona muchas características prácticas que facilitarán su vida en un entorno de red dominado por &Windows;.</para>
 
   <para
->Este manual describe &smb4k; 4.0.6 y versiones posteriores. En alguna medida, también se ha corregido para versiones anteriores.</para>
+>Este manual describe &smb4k; 4.0.7 y versiones posteriores. En alguna medida, también se ha corregido para versiones anteriores.</para>
 
   <note>
     <para
->En 2025, se encontraron múltiples vulnerabilidades en el programa de ayuda de montaje KAuth (vea el <ulink url="https://security.opensuse.org/2025/12/10/smb4k-major-issues-in-kauth-helper.html"
->informe</ulink
-> del equipo de seguridad de SUSE) y se han arreglado en la versión 4.0.5. Dado que la funcionalidad para montar y desmontar se ha reducido, estas mejoras de seguridad han tenido un impacto significativo en el programa.</para>
+>En 2025 y 2026, se encontraron múltiples vulnerabilidades en el programa de ayuda de montaje KAuth y se han arreglado en la versión 4.0.5 y 4.0.7 respectivamente. Dado que las funcionalidades para montar y desmontar se ha reducido, estas mejoras de seguridad han tenido un impacto significativo en el programa.</para>
   </note>
 
   <para
@@ -4527,193 +4525,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >No enviar peticiones de bloqueo de rango de bytes al servidor. Es necesario para ciertas aplicaciones que no siguen el estilo obligatorio de cifs de bloqueo de rango de bytes (y la mayoría de servidores cifs no soportan de momento los bloqueos de rango de bytes recomendados).</para>
             <para
 >Predeterminado: no seleccionado</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Versión del protocolo SMB</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Opción: <option
->vers=VERSIÓN</option
-></para>
-            <para
->Define la versión del protocolo SMB a usar. Normalmente, esta opción no necesita ser activada porque la versión del protocolo es negociada entre el cliente y el servidor.</para>
-            <para
->Se permiten los siguientes valores:</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->1.0 (protocolo clásico &CIFS;/SMBv1)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilice el protocolo &CIFS;/SMBv1 clásico.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->2.0 (Windows Vista SP1/Windows Server 2008)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilice el protocolo SMBv2.002. Esto se introdujo inicialmente en &Microsoft; &Windows; Vista Service Pack 1, y &Windows; Server 2008.</para>
-                  <para
->Por favor, tenga en cuenta que la versión inicial de &Microsoft; &Windows; Vista habla una dialecto ligeramente diferente (2.000) que no está implementado.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->2.1 (Windows 7/Windows Server 2008R2)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilice el protocolo SMBv2.1 que se introdujo en &Microsoft; &Windows; 7 y &Windows; Server 2008R2.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.0 (Windows 8/Windows Server 2012)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilice el protocolo SMBv3.0 que se introdujo en &Microsoft; &Windows; 8 y &Windows; Server 2012.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilice el protocolo SMBv3.0.2 que se introdujo en &Microsoft; &Windows; 8.1 y &Windows; Server 2012R2.</para>
-                </listitem>
-              </varlistentry>
-              
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.1.1 (Windows Server 2016)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilice el protocolo SMBv3.1.1 que se introdujo en &Microsoft; &Windows; Server 2016.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3 (Versión 3.0 y superiores)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilice la versión del protocolo SMBv3.0 y superiores.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->por omisión (Negociar la versión más reciente)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Esto provoca que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> intente negociar la versión más actual SMBv2+ soportada por ambos, cliente y servidor.</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-            <para
->Por omisión: no seleccionado; VERS: <guibutton
->por omisión (Negociar la versión más actual)</guibutton
-></para>
           </listitem>
         </varlistentry>
         <varlistentry>
