@@ -87,7 +87,7 @@
 
   <copyright>
     <year
->2005-2024</year>
+>2005-2026</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -95,9 +95,9 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->30 декабря 2024 г.</date>
+>28 августа 2026 года</date>
   <releaseinfo
->&smb4k; 4.0.0</releaseinfo
+>&smb4k; 4.0.7</releaseinfo
 ><!--FIXME change releaseinfo number-->
 
   <abstract>
@@ -124,11 +124,20 @@
 >Введение</title>
 
   <para
->Это руководство описывает &smb4k; 4.0 и, частично, более старые версии.</para>
-  <para
 >&smb4k; — это многофункциональный диспетчер сетевого окружения и инструмент для подключения общих ресурсов с использованием протокола <ulink url="http://www.samba.org"
 >Samba</ulink
 >. Он предоставляет множество полезных функций, облегчающих работу с сетевым окружением на базе &Windows;:</para>
+
+  <para
+>В данном руководстве описывается &smb4k; версии 4.0.7 и новее. В некоторой степени оно также верно для более ранних версий.</para>
+
+  <note>
+    <para
+>В 2025 и 2026 годах в программе-помощнике монтирования KAuth было обнаружено несколько уязвимостей, которые были исправлены в версиях 4.0.5 и 4.0.7 соответственно. Поскольку набор функций для монтирования и размонтирования был ограничен, эти улучшения безопасности оказали заметное влияние на всю программу.</para>
+  </note>
+
+  <para
+>В &smb4k; реализованы следующие возможности:</para>
 
   <itemizedlist>
     <listitem
@@ -185,7 +194,7 @@
 ></listitem>
     <listitem
 ><para
->Поддержка расширенных параметров подключения</para
+>Поддержка выбранных параметров подключения</para
 ></listitem>
     <listitem
 ><para
@@ -224,9 +233,9 @@
   <para
 >Если при использовании &smb4k; возникнут проблемы, опубликуйте сообщение об этом на форуме <ulink url="https://sourceforge.net/p/smb4k/discussion/help/"
 >Помощь</ulink
->.  При обнаружении ошибки сообщите о ней в <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k"
+>. При обнаружении ошибки сообщите о ней в <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k"
 >систему отслеживания ошибок</ulink
->. Для обсуждения тем, связанных с  &smb4k;, воспользуйтесь форумом <ulink url="https://sourceforge.net/p/smb4k/discussion/general/"
+>. Для обсуждения тем, связанных с &smb4k;, воспользуйтесь форумом <ulink url="https://sourceforge.net/p/smb4k/discussion/general/"
 >Общего обсуждения</ulink
 >, куда приглашаются все пользователи.</para>
 </chapter>
@@ -299,7 +308,7 @@
 >Настроить &smb4k;</guimenuitem
 > и <guimenuitem
 >Выход</guimenuitem
->.  Она также динамически загружает действия виджета, который в данный момент находится в фокусе. Для получения дополнительной информации ознакомьтесь с разделами, посвящёнными, соответственно, <link linkend="network_neighborhood_browser"
+>. Она также динамически загружает действия виджета, который в данный момент находится в фокусе. Для получения дополнительной информации ознакомьтесь с разделами, посвящёнными, соответственно, <link linkend="network_neighborhood_browser"
 >диспетчеру сетевого окружения</link
 > и <link linkend="shares_view"
 >представлению подключённых общих ресурсов</link
@@ -420,7 +429,7 @@
 ><guimenuitem
 >Поиск</guimenuitem
 ></menuchoice
->  (рекомендуется также ознакомиться с разделом <link linkend="network_neighborhood_browser_actions_popup_menu"
+> (рекомендуется также ознакомиться с разделом <link linkend="network_neighborhood_browser_actions_popup_menu"
 >Действия и контекстное меню</link
 > ниже). В нижней части диспетчера сетевого окружения откроется панель поиска.</para>
       
@@ -677,9 +686,9 @@
           </term>
           <listitem>
             <para
->Отключает выбранные общие ресурсы. По умолчанию это действие невидимо; оно появится вместо действия <guimenuitem
+>Отключает выбранные общие ресурсы. Системные подключения или ресурсы, подключённые другими пользователями, отключить невозможно. Это действие по умолчанию скрыто и станет видимым вместо действия <guimenuitem
 >Подключить</guimenuitem
->, когда будет выбран хотя бы один подключённый общий ресурс.</para>
+>, только если выбран хотя бы один подключённый ресурс.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -943,7 +952,7 @@
 >OK</guibutton
 >.</para>
       <para
->Обратите внимание, что используемые по умолчанию данные для входа также возможно указать в  <link linkend="configuration_page_authentication"
+>Обратите внимание, что используемые по умолчанию данные для входа также возможно указать в <link linkend="configuration_page_authentication"
 >диалоге настройки</link
 >.</para>
     </sect2>
@@ -1132,7 +1141,7 @@
           </term>
           <listitem>
             <para
->Отключить выделенные ресурсы. Эта функция неактивна, если ресурсы не выбраны.</para>
+>Отключить выбранные общие ресурсы. Однако это действие ограничено ресурсами, подключёнными вами. Системные подключения или ресурсы других пользователей отключить невозможно. Если в списке ресурсов ничего не выбрано, эта кнопка будет неактивна.</para>
             <para
 >Дополнительные сведения доступны в разделе справки <link linkend="shares_view_unmounting"
 >Отключение ресурсов</link
@@ -1154,7 +1163,7 @@
           </term>
           <listitem>
             <para
->Отключает все подключённые ресурсы одновременно. Если ресурсы не подключены, эта функция не будет активна.</para>
+>Отключает все общие папки одновременно. Системные подключения или общие папки других пользователей этим действием отключить невозможно. Если общих папок не подключено, эта кнопка будет неактивна.</para>
             <para
 >Дополнительные сведения доступны в разделе справки <link linkend="shares_view_unmounting"
 >Отключение ресурсов</link
@@ -1222,7 +1231,7 @@
             <para
 ><link linkend="shares_view_synchronization"
 >Синхронизирует</link
->  ресурс с локальной копией и наоборот. Это действие активно, только если установлена программа <ulink url="man:/rsync"
+> ресурс с локальной копией и наоборот. Это действие активно, только если установлена программа <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1248,7 +1257,7 @@
           </term>
           <listitem>
             <para
->Открывает основную папку ресурса в &konsole;.  Это действие полезно, если требуется запускать сценарии оболочки и так далее.</para>
+>Открывает основную папку ресурса в &konsole;. Это действие полезно, если требуется запускать сценарии оболочки и так далее.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1333,11 +1342,9 @@
 >Ресурсы, принадлежащие другим пользователям</title>
       
       <para
->Ресурсы, принадлежащие другому пользователю, показываются, только если их отображение было <link linkend="configuration_page_mounting_basic_settings_behavior"
->настроено</link
->. В стандартной конфигурации эти ресурсы отключить нельзя, но это тоже <link linkend="configuration_page_mounting_basic_settings_behavior"
->возможно изменить</link
->.</para>
+>Общие ресурсы других пользователей отображаются только при соответствующей настройке в <link linkend="configuration_page_mounting_basic_settings_behavior"
+>параметрах</link
+>. Их отключение не разрешено.</para>
     </sect2>
 
 <!-- 
@@ -1392,7 +1399,7 @@
 >Отключение ресурсов</title>
 
       <para
->Один или несколько ресурсов возможно отключить с помощью действия <menuchoice
+>Выбранные сетевые ресурсы возможно отключить с помощью действия <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1402,17 +1409,7 @@
 ><guimenuitem
 >Отключить</guimenuitem
 ></menuchoice
->, либо с помощью соответствующей комбинации клавиш. По умолчанию отключать разрешено только ресурсы, принадлежащие пользователю. Это поведение возможно изменить в <link linkend="configuration_page_mounting_basic_settings_behavior"
->диалоге настройки</link
->. Если включена возможность отключения ресурсов, принадлежащих другим пользователям, перед фактическим отключением появится диалог с предупреждением. Если продолжить действия, ресурс будет отключён, поэтому будьте осторожны при использовании этой функции.</para>
-      <para
->&smb4k; предоставляет возможность принудительно отключать общие ресурсы (только для &Linux;). Это может быть полезным в том случае, когда недоступный ресурс нельзя отключить обычным способом. Чтобы включить эту возможность, внесите изменения в соответствующую <link linkend="configuration_page_mounting_basic_settings_behavior"
->настройку</link
-> в диалоге настройки. &smb4k; затем выполнит <ulink url="man:/umount(8)"
->«ленивое» отключение</ulink
-> недоступных общих ресурсов.</para>
-      <para
->Все общие ресурсы возможно отключить одновременно с помощью пункта меню <menuchoice
+> или все сразу с помощью <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1422,7 +1419,17 @@
 ><guimenuitem
 >Отключить все</guimenuitem
 ></menuchoice
->. В зависимости от параметров это действие также может отключить чужие и недоступные ресурсы.</para>
+>.</para>
+      <note
+><para
+>Учтите, что возможно отключить только те общие ресурсы, которые вы подключили. Системные ресурсы или ресурсы, подключённые другими пользователями, отключить нельзя.</para
+></note>
+      <para
+>&smb4k; предоставляет возможность принудительно отключать общие ресурсы (только для &Linux;). Это может быть полезным в том случае, когда недоступный ресурс нельзя отключить обычным способом. Чтобы включить эту возможность, внесите изменения в соответствующую <link linkend="configuration_page_mounting_basic_settings_behavior"
+>настройку</link
+> в диалоге настройки. &smb4k; затем выполнит <ulink url="man:/umount(8)"
+>«ленивое» отключение</ulink
+> недоступных общих ресурсов.</para>
       <para
 >В случае успешного отключения пользователь получит соответствующее <link linkend="notifications"
 >уведомление</link
@@ -1638,9 +1645,7 @@
           </term>
           <listitem>
             <para
->Отключает все ресурсы. В зависимости от <link linkend="configuration_page_mounting_basic_settings_behavior"
->параметров</link
->, &smb4k; попытается отключить либо те ресурсы, которые принадлежат пользователю, либо все, которые представлены в списке.</para>
+>Отключает все общие папки одновременно. Системные подключения или общие папки других пользователей этим действием отключить невозможно. Если общих папок не подключено, эта кнопка будет неактивна.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1660,7 +1665,7 @@
           </term>
           <listitem>
             <para
->Отключает ресурс.</para>
+>Отключает общий ресурс. Это действие недоступно для общих ресурсов, которые вам не принадлежат.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1974,7 +1979,7 @@
     <para
 >Панель инструментов содержит действие <guibutton
 >Отключить все</guibutton
->, позволяющее отключить сразу все общие ресурсы.</para>
+>, позволяющее отключить сразу все ваши общие ресурсы.</para>
   </sect2>
 
 <!-- 
@@ -3735,46 +3740,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
       <para
 >Параметры на этой вкладке одинаковые для всех поддерживаемых операционных систем.</para>
       
-      <sect3 id="configuration_page_mounting_basic_settings_directories">
-        <title
->Каталоги</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Префикс путей подключения</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Это основная папка (префикс подключения), куда &smb4k; подключает удалённые общие ресурсы. Её возможно изменить с помощью запроса &URL; (нажмите на кнопку с изображением папки) или введя вручную новый путь в текстовое окно. Распознаются переменные пути, такие как <envar
->$HOME</envar
->.</para>
-              <para
->Значение по умолчанию: <filename class="directory"
->$HOME/smb4k/</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Приводить созданные подкаталоги к нижнему регистру</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Все вложенные каталоги, созданные &smb4k; с использованием префикса подключения, будут приведены к нижнему регистру.</para>
-              <para
->Значение по умолчанию: выключено</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
       <sect3 id="configuration_page_mounting_basic_settings_behavior">
         <title
 >Поведение</title>
@@ -3849,22 +3814,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <listitem>
               <para
 >Принудительно отключает недоступные ресурсы (только в &Linux;). В случае, если ресурс недоступен, выполняется «ленивое» отключение. Перед фактическим отключением будет показан диалог подтверждения.</para>
-              <para
->Значение по умолчанию: выключено</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Разрешить отключение ресурсов, владеемых другими пользователями</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Эта функция позволяет отключить все подключённые другими пользователями ресурсы.</para>
-              <para
->ИСПОЛЬЗУЙТЕ С ОСТОРОЖНОСТЬЮ!</para>
               <para
 >Значение по умолчанию: выключено</para>
             </listitem>
@@ -4096,7 +4045,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                   </term>
                   <listitem>
                     <para
->ISO/IEC 8859-8:1999.  Эту схему кодировки неофициально называют Latin/Hebrew. ISO/IEC 8859-8 содержит все буквы иврита, кроме знаков гласных.</para>
+>ISO/IEC 8859-8:1999. Эту схему кодировки неофициально называют Latin/Hebrew. ISO/IEC 8859-8 содержит все буквы иврита, кроме знаков гласных.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4108,7 +4057,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                   </term>
                   <listitem>
                     <para
->ISO/IEC 8859-9:1999.  Эту схему кодировки неофициально называют Latin-5 или турецкой кодировкой. Она была разработана для турецкого языка, поскольку она более эффективна, чем кодировка ISO/IEC 8859-3.</para>
+>ISO/IEC 8859-9:1999. Эту схему кодировки неофициально называют Latin-5 или турецкой кодировкой. Она была разработана для турецкого языка, поскольку она более эффективна, чем кодировка ISO/IEC 8859-3.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4274,34 +4223,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Порт файловой системы</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Параметр: <option
->port=PORT</option
-></para>
-              <para
->Устанавливает номер порта, используемый программой <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> при подключении удалённого общего ресурса. Используемый по умолчанию порт 445 будет работать на большинстве операционных систем. При возникновении проблем попробуйте поменять номер порта на 139. Если проблема возникает только при подключении к некоторым хостам, рекомендуется сменить номер порта не здесь, а отдельно для каждого проблемного хоста, воспользовавшись редактором <link linkend="custom_settings"
->Пользовательские параметры</link
->.</para>
-              <para
->Значение по умолчанию: не выбрано; PORT: 445</para>
-            </listitem>
-          </varlistentry>
         </variablelist>
       </sect3>
 
@@ -4333,40 +4254,22 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Идентификатор пользователя</guibutton
+>Указать ID пользователя и ID группы</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Параметр: <option
+>Параметры: <option
 >uid=UID</option
+> и <option
+>gid=GID</option
 ></para>
             <para
->Позволяет указать владельца файлов и каталогов в файловой системе. По умолчанию используется идентификатор пользователя. Чтобы изменить его, нажмите кнопку поиска и выберите необходимый вариант в раскрывающемся списке.</para>
+>При включении этой настройки &smb4k; использует ваш идентификатор пользователя и группы для подключения.Они отображаются здесь только в информационных целях и не могут быть изменены.</para>
             <para
 >Если выбрана поддержка расширений &CIFS; Unix, этот параметр будет отключён.</para>
             <para
->Значение по умолчанию: выбрано; UID: ваш UID</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Идентификатор группы</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Параметр: <option
->uid=GID</option
-></para>
-            <para
->Позволяет указать группу, которой принадлежат файлы и каталоги в файловой системе. По умолчанию указан пользовательский идентификатор группы. Чтобы изменить его, нажмите кнопку поиска и выберите необходимый вариант в раскрывающемся списке.</para>
-            <para
->Если выбрана поддержка расширений &CIFS; Unix, этот параметр будет отключён.</para>
-            <para
->Значение по умолчанию: выбрано; GID: ваш GID</para>
+>По умолчанию: выбрано; UID: ваш UID, GID: ваш GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4379,10 +4282,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Параметр: <option
->file_mode=ARG</option
+>file_mode=MODE</option
 ></para>
             <para
->Устанавливает разрешения, которые будут применены к файлам. Значение должно быть указано в восьмеричном формате и состоять из 4 цифр. Чтобы узнать больше о режиме файлов (file_mode), обратитесь к страницам руководства <ulink url="man:/mount(8)"
+>Задаёт права доступа, применяемые к файлам. Значение указывается в восьмеричной системе и может содержать 3 или 4 цифры. Биты SUID, SGID и sticky не допускаются. Подробнее о режиме файла (file_mode) можно узнать из справочных страниц <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4415,10 +4318,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <listitem>
             <para
 >Параметр: <option
->dir_mode=ARG</option
+>dir_mode=MODE</option
 ></para>
             <para
->Устанавливает разрешения, которые будут применены ко всем каталогам. Значение должно быть указано в восьмеричном формате и состоять из 4 цифр.и Чтобы узнать больше о режиме каталогов (dir_mode), обратитесь к страницам руководства <ulink url="man:/mount(8)"
+>Задаёт права доступа для каталогов. Значение указывается в восьмеричной системе и может содержать 3 или 4 цифры. Биты SUID, SGID и sticky не допускаются. Подробнее о режиме каталога (dir_mode) можно узнать из справочных страниц <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4630,193 +4533,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
           <term>
             <menuchoice
 ><guibutton
->Версия протокола SMB</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Параметр: <option
->vers=VERS</option
-></para>
-            <para
->Определение версии протокола SMB, которую следует использовать. Обычно в использовании этой функции нет необходимости, так как версия протокола согласовывается между клиентом и сервером.</para>
-            <para
->Допустимы следующие значения:</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->1.0 (Классический протокол &CIFS;/SMBv1)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> будет использовать классический протокол &CIFS;/SMBv1.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->2.0 (Windows Vista SP1/Windows Server 2008)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> будет использовать протокол SMBv2.002. Изначально он был представлен в &Microsoft; &Windows; Vista с пакетом обновления 1 и в &Windows; Server 2008.</para>
-                  <para
->Обратите внимание, что первая версия выпуска &Microsoft; &Windows; Vista использовала немного другие аргументы (2.000), которые не поддерживаются.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->2.1 (Windows 7/Windows Server 2008R2)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> будет использовать протокол SMBv2.1, который был представлен в &Microsoft; &Windows; 7 и &Windows; Server 2008R2.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.0 (Windows 8/Windows Server 2012)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> будет использовать протокол SMBv3.0, который был представлен в &Microsoft; &Windows; 8 и &Windows; Server 2012.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> будет использовать протокол SMBv3.0.2, который был представлен в &Microsoft; &Windows; 8.1 и &Windows; Server 2012R2.</para>
-                </listitem>
-              </varlistentry>
-              
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3.1.1 (Windows Server 2016)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> будет использовать протокол SMBv3.1.1, который был представлен в &Microsoft; &Windows; Server 2016.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3 (Версия 3.0 или старше)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> будет использовать протокол SMBv3.0 и более новые версии.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->По умолчанию (максимальная согласованная)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->В таком случае <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> выполнит попытку согласовать максимальную версию SMBv2+, поддерживаемую как клиентом, так и сервером.</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-            <para
->Значение по умолчанию: не выбрано; VERS: <guibutton
->По умолчанию (максимальная согласованная)</guibutton
-></para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
 >Решим кэширования</guibutton
 ></menuchoice>
           </term>
@@ -4859,7 +4575,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                 </term>
                 <listitem>
                   <para
->В таком случае  <ulink url="man:/mount.cifs"
+>В таком случае <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4995,7 +4711,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 >8</manvolnum
 ></citerefentry
 ></ulink
-> будет использовать хэширование паролей NTLM. Это настройка по умолчанию в  &Linux; с версией ядра до 3.8.</para>
+> будет использовать хэширование паролей NTLM. Это настройка по умолчанию в &Linux; с версией ядра до 3.8.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -5115,30 +4831,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></para>
           </listitem>
         </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Дополнительные параметры</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Определение дополнительных параметров для использования с <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
->. При нажатии кнопки редактирования справа от строки редактирования открывается окно ввода, в котором параметры должны быть указаны в списке, разделённом запятыми. После нажатия кнопки <guibutton
->OK</guibutton
-> в диалоге ввода параметры будут проверены по белому списку. Все допустимые записи будут приняты и введены в строку редактирования.</para>
-            <para
->Значение по умолчанию: не выбрано; пусто</para>
-          </listitem>
-        </varlistentry>
       </variablelist>
     </sect2>
     
@@ -5168,30 +4860,27 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <term>
               <menuchoice
 ><guibutton
->Идентификатор пользователя</guibutton
+>Указать ID пользователя и ID группы</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Позволяет указать владельца файлов и каталогов в файловой системе. По умолчанию используется идентификатор пользователя. Чтобы изменить его, нажмите кнопку поиска и выберите необходимый вариант в раскрывающемся списке.</para>
+>Параметры: <option
+>-u UID</option
+> и <option
+>-g GID</option
+></para>
               <para
->Значение по умолчанию: пользовательский идентификатор</para>
+>При включении этой настройки &smb4k; использует ваш идентификатор пользователя и группы для подключения.Они отображаются здесь только в информационных целях и не могут быть изменены.</para>
+              <para
+>Если выбрана поддержка расширений &CIFS; Unix, этот параметр будет отключён.</para>
+              <para
+>По умолчанию: выбрано; UID: ваш UID, GID: ваш GID</para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Идентификатор группы</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Позволяет указать группу, которой принадлежат файлы и каталоги в файловой системе. По умолчанию указан пользовательский идентификатор группы. Чтобы изменить его, нажмите кнопку поиска и выберите необходимый вариант в раскрывающемся списке.</para>
-              <para
->Значение по умолчанию: пользовательский идентификатор группы</para>
-            </listitem>
-          </varlistentry>
+
+<!-- CONTINUE HERE -->
+
           <varlistentry>
             <term>
               <menuchoice
@@ -5201,7 +4890,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Устанавливает разрешения, которые будут применены к файлам. Значение должно быть указано в восьмеричном формате и состоять из 4 цифр. Чтобы узнать больше о режиме файлов, обратитесь к страницам руководства <ulink url="man:/mount_smbfs"
+>Параметр: <option
+>-f РЕЖИМ</option
+></para>
+              <para
+>Задаёт права доступа, применяемые к файлам. Значение указывается в восьмеричной системе и может содержать 3 или 4 цифры. Биты SUID, SGID и sticky не допускаются. Подробнее о режиме файла можно узнать из справочных страниц <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5231,7 +4924,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             </term>
             <listitem>
               <para
->Устанавливает разрешения, которые будут применены к каталогам. Значение должно быть указано в восьмеричном формате и состоять из 4 цифр. Чтобы узнать больше о режиме каталогов (dir_mode), обратитесь к страницам руководства <ulink url="man:/mount_smbfs"
+>Параметр: <option
+>-d РЕЖИМ</option
+></para>
+              <para
+>Задаёт права доступа для каталогов. Значение указывается в восьмеричной системе и может содержать 3 или 4 цифры. Биты SUID, SGID и sticky не разрешены. Подробнее о режиме каталогов можно узнать на страницах руководства <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -5268,6 +4965,10 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 ></menuchoice>
             </term>
             <listitem>
+              <para
+>Параметр: <option
+>-E cs1:cs2</option
+></para>
               <para
 >Позволяет использовать указанную локальную кодировку и кодировку сервера.</para>
               <para
@@ -5389,7 +5090,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->ISO/IEC 8859-8:1999.  Эту схему кодировки неофициально называют Latin/Hebrew. ISO/IEC 8859-8 содержит все буквы иврита, кроме знаков гласных.</para>
+>ISO/IEC 8859-8:1999. Эту схему кодировки неофициально называют Latin/Hebrew. ISO/IEC 8859-8 содержит все буквы иврита, кроме знаков гласных.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -5401,7 +5102,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->ISO/IEC 8859-9:1999.  Эту схему кодировки неофициально называют Latin-5 или турецкой кодировкой. Она была разработана для турецкого языка, поскольку она более эффективна, чем кодировка ISO/IEC 8859-3.</para>
+>ISO/IEC 8859-9:1999. Эту схему кодировки неофициально называют Latin-5 или турецкой кодировкой. Она была разработана для турецкого языка, поскольку она более эффективна, чем кодировка ISO/IEC 8859-3.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -5884,7 +5585,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
                         </term>
                         <listitem>
                           <para
->Кодовая страница 1251 — это кодовая страница &Microsoft; &Windows; , предназначенная для языков, использующих кириллицу, таких как русский, болгарский, сербская кириллица и другие языки.</para>
+>Кодовая страница 1251 — это кодовая страница &Microsoft; &Windows;, предназначенная для языков, использующих кириллицу, таких как русский, болгарский, сербская кириллица и другие языки.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -6228,7 +5929,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
               <para
 >Эта функция сообщает отправляющей стороне, чтобы она включала все встречающиеся каталоги. В отличие от параметра <option
 >--recursive</option
->, содержимое папки не будет скопировано, если не будет указано имя папки «.» или оно не заканчивается косой чертой (например,«.», «dir/.», «dir/» и так далее). Без этого параметра или без параметра  <option
+>, содержимое папки не будет скопировано, если не будет указано имя папки «.» или оно не заканчивается косой чертой (например,«.», «dir/.», «dir/» и так далее). Без этого параметра или без параметра <option
 >--recursive</option
 > <ulink url="man:/rsync"
 ><citerefentry
@@ -8540,9 +8241,9 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Отключает выбранный общий ресурс. По умолчанию это действие невидимо; оно появится вместо действия <guimenuitem
+>Отключает выбранные общие ресурсы. Системные подключения или ресурсы, подключённые другими пользователями, отключить невозможно. Это действие по умолчанию скрыто и станет видимым вместо действия <guimenuitem
 >Подключить</guimenuitem
->, когда будет подключён общий ресурс.</para>
+>, только если выбран хотя бы один подключённый ресурс.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8622,9 +8323,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
         </term>
         <listitem>
           <para
->Отключает один или несколько выбранных ресурсов. Возможность отключения определённого количества и типов ресурсов по умолчанию ограничена лишь теми, которыми владеет пользователь. Однако это поведение возможно изменить в соответствующих <link linkend="configuration_page_mounting_basic_settings_behavior"
->параметрах</link
-> диалога настройки. Если ресурс не выбран, это действие будет неактивно.</para>
+>Отключить выбранные общие ресурсы. Однако это действие ограничено ресурсами, подключёнными вами. Системные подключения или ресурсы других пользователей отключить невозможно. Если в списке ресурсов ничего не выбрано, эта кнопка будет неактивна.</para>
           <para
 >&smb4k; также предоставляет возможность принудительно отключать общие ресурсы (только для &Linux;) Это может быть полезным в том случае, когда ресурс нельзя подключить обычным способом. Чтобы включить эту возможность, внесите изменения в соответствующую <link linkend="configuration_page_mounting_basic_settings_behavior"
 >настройку</link
