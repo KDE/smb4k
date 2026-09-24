@@ -473,7 +473,11 @@ bool Smb4KMountHelper::checkFileDescriptor(const QDBusUnixFileDescriptor &dbusFd
     }
 
     int flags = fcntl(dbusFd.fileDescriptor(), F_GETFL);
+#ifndef Q_OS_NETBSD
     if ((flags & (O_PATH | O_DIRECTORY)) != 0) {
+#else
+    if ((flags & O_DIRECTORY) != 0) {
+#endif
         return false;
     }
 
