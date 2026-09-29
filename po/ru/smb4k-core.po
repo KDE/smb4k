@@ -2934,7 +2934,6 @@ msgstr "Общий ресурс <b>%1</b> отключён от <b>%2</b>."
 msgid "The share %1 has been unmounted from %2."
 msgstr "Общий ресурс <b>%1</b> отключён от <b>%2</b>."
 
-# BUGME: "all shares [of what set of shares?]" - those that the user has requested to mount? --aspotashev
 #: smb4knotification.cpp:127 smb4knotification.cpp:135
 #, kde-format
 msgid "%1 share has been mounted."
@@ -2944,7 +2943,6 @@ msgstr[1] "Подключены %1 общих ресурса."
 msgstr[2] "Подключены %1 общих ресурсов."
 msgstr[3] "Подключён один общий ресурс."
 
-# BUGME: "all shares [of what set of shares?]" - those that the user has requested to unmount? --aspotashev
 #: smb4knotification.cpp:148 smb4knotification.cpp:156
 #, kde-format
 msgid "%1 share has been unmounted."
