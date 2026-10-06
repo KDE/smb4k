@@ -2091,7 +2091,7 @@
 ></menuchoice
 >. Al <application
 >plasmoide</application
->, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà el diàleg de <guilabel
+>, feu clic a l'acció següent de l'adreça d'interès corresponent, es troba al costat del nom de l'element. Apareixerà el diàleg d'<guilabel
 >Adreces d'interès de les comparticions</guilabel
 >, llistant totes les comparticions que es poden marcar de nou.</para>
       <screenshot>
@@ -2604,7 +2604,7 @@
 ></listitem>
         <listitem
 ><para
->Es carregen les credencials predeterminades d'inici de sessió (si s'han definit), les adreces d'interès i la configuració personalitzada des del perfil nou.</para
+>Es carreguen les credencials predeterminades d'inici de sessió (si s'han definit), les adreces d'interès i la configuració personalitzada des del perfil nou.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -2861,7 +2861,7 @@ server min protocol = NT1
 
       <note
 ><para
->No és aconsellables activar el protocol SMB 1.0/&CIFS; en un servidor, perquè està considerat insegur (&pex;, vegeu <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858"
+>No és aconsellable activar el protocol SMB 1.0/&CIFS; en un servidor, perquè és considerat insegur (&pex;, vegeu <ulink url="https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858"
 >aquí</ulink
 >) i, per tant, s'ha inhabilitat en les versions més noves del &Samba; i el &Windows; (&pex;, vegeu <ulink url="https://learn.microsoft.com/en-us/archive/blogs/josebda/the-deprecation-of-smb1-you-should-be-planning-to-get-rid-of-this-old-smb-dialect"
 >aquí</ulink
@@ -4219,7 +4219,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
             <para
 >La majoria de les versions de &Samba; admeten les ampliacions &CIFS; d'Unix o POSIX. Per a aquests servidors, algunes opcions no són necessàries, perquè els valors correctes es negocien durant el procés de muntatge. Per als altres servidors, és possible que vulgueu desmarcar aquestes opcions, de manera que es puguin passar al servidor els valors predefinits. Cal tenir en compte que si l'ordinador està ubicat en un veïnatge de xarxa dominat per &Windows; amb només alguns servidors de &Samba;, podeu desmarcar aquesta opció amb seguretat i definir una configuració personalitzada per als servidors de &Samba;.</para>
             <para
->En el cas que desmarqueu aquesta opció, considereu canviar les comprovacions de a <link linkend="configuration_page_mounting_advanced_mount_settings"
+>En el cas que desmarqueu aquesta opció, considereu canviar les comprovacions dels permisos a <link linkend="configuration_page_mounting_advanced_mount_settings"
 >Configuració avançada de muntatge</link
 >.</para>
             <para
@@ -6955,7 +6955,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
               <para
 >Una manera millor de conservar els fitxers parcials que l'opció <option
 >--partial</option
-> és especificar una carpeta DIR que s'utilitzarà per a mantenir les dades parcials (en lloc d'escriure-les al fitxer de destinació). En la propera transferència, el <ulink url="man:/rsync"
+> és especificar una carpeta DIR que s'utilitzarà per a mantenir les dades parcials (en lloc d'escriure-les al fitxer de destinació). En la transferència següent, el <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
