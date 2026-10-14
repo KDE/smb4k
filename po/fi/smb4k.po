@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-05 00:45+0000\n"
-"PO-Revision-Date: 2026-01-10 21:06+0200\n"
+"PO-Revision-Date: 2026-08-25 10:19+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -82,23 +82,22 @@ msgstr "Irrottamisprosessia ei voitu käynnistää"
 #: smb4k/main.cpp:47
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
-msgstr ""
+msgstr "Parametri on virheellinen. Käytä joko ”on” tai ”off”."
 
 #: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
-msgstr ""
+msgstr "Profiilit on poistettu käytöstä."
 
 #: smb4k/main.cpp:65
 #, kde-format
 msgid "The profile name is invalid."
-msgstr ""
+msgstr "Profiilin nimi on virheellinen."
 
 #: smb4k/main.cpp:83
-#, fuzzy, kde-format
-#| msgid "Set Active"
+#, kde-format
 msgid " (active)"
-msgstr "Aseta aktiiviseksi"
+msgstr " (aktiivinen)"
 
 #: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -111,10 +110,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Kehittynyt verkkoympäristöselain ja Samba-jakojen liittämistyökalu."
 
 #: smb4k/main.cpp:145
-#, fuzzy, kde-format
-#| msgid "© 2003-2025 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© 2003–2025 Alexander Reinholdt"
+msgstr "© 2003–2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:150
 #, kde-format
@@ -140,27 +138,28 @@ msgstr "Lahjoittaja"
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
+"Ota käyttöön tai poista käytöstä profiileja. <Parametri> voi olla ”on” tai "
+"”off”."
 
 #: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
-msgstr ""
+msgstr "Aseta <profiili> aktiiviseksi profiiliksi."
 
 #: smb4k/main.cpp:168
-#, fuzzy, kde-format
-#| msgid "Print a file."
+#, kde-format
 msgid "List all profiles."
-msgstr "Tulosta tiedosto."
+msgstr "Luettele kaikki profiilit."
 
 #: smb4k/main.cpp:171
 #, kde-format
 msgid "Remount all shares that were previously used."
-msgstr ""
+msgstr "Liitä uudelleen kaikki aiemmin käytössä olleet jaot."
 
 #: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr ""
+msgstr "Liitä <verkko-osoitteen> osoittama jako."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -652,7 +651,7 @@ msgstr "Jakonäkymä"
 #: smb4k/smb4kconfigpageuserinterface.cpp:162
 #, kde-format
 msgid "Program Launch"
-msgstr ""
+msgstr "Ohjelman käynnistys"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format
@@ -863,10 +862,9 @@ msgid "Bookmark this share"
 msgstr "Tee tästä jaosta kirjanmerkki"
 
 #: smb4k/smb4kmountdialog.cpp:155
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark"
-msgstr "Kirjanmerkit"
+msgstr "Kirjanmerkki"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

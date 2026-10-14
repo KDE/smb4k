@@ -1,9 +1,9 @@
 # translation of smb4k.po to Italian
-# SPDX-FileCopyrightText: 2018-2026 Paolo Zamponi <feus73@gmail.com>
 # Isidoro Russo <risidoro@despammed.com>, 2004.
 # Innocenzo Ventre <innocenzo.ventre@gmail.com>, 2012.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2012.
 # Vincenzo Reale <smart2128vr@gmail.com>, 2014, 2022.
+# SPDX-FileCopyrightText: 2018-2026 Paolo Zamponi <feus73@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"

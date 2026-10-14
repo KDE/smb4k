@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-05 00:45+0000\n"
-"PO-Revision-Date: 2026-02-25 19:18+0200\n"
+"PO-Revision-Date: 2026-08-25 10:17+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -85,7 +85,7 @@ msgstr ""
 #: smb4k.kcfg:41
 #, kde-format
 msgid "Start the application docked to the system tray"
-msgstr ""
+msgstr "Käynnistä sovellus ilmoitusalueelle"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:42
@@ -107,7 +107,7 @@ msgstr ""
 #: smb4k.kcfg:46
 #, kde-format
 msgid "Start the application automatically at session start"
-msgstr ""
+msgstr "Käynnistä sovellus automaattisesti istunnon käynnistyessä"
 
 #. i18n: ectx: whatsthis, entry (AutostartApplication), group (UserInterface)
 #: smb4k.kcfg:47
@@ -116,6 +116,8 @@ msgid ""
 "Start the application automatically at session start. For this, it is added "
 "to the autostart list by creating a desktop file in the autostart folder."
 msgstr ""
+"Käynnistä sovellus automaattisesti istunnon käynnistyessä. "
+"Automaattikäynnistyskansioon luodaan tätä varten .desktop-tiedosto."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:51
@@ -2879,10 +2881,9 @@ msgid "Open"
 msgstr "Avaa"
 
 #: smb4knotification.cpp:87
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, kde-format
 msgid "The share %1 has been mounted to %2."
-msgstr "Jako <b>%1</b> on liitetty kansioon <b>%2</b>."
+msgstr "Jako %1 on liitetty kansioon %2."
 
 #: smb4knotification.cpp:106
 #, kde-format
@@ -2890,10 +2891,9 @@ msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
 msgstr "Jako <b>%1</b> on irrotettu kansiosta <b>%2</b>."
 
 #: smb4knotification.cpp:114
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, kde-format
 msgid "The share %1 has been unmounted from %2."
-msgstr "Jako <b>%1</b> on irrotettu kansiosta <b>%2</b>."
+msgstr "Jako %1 on irrotettu kansiosta %2."
 
 #: smb4knotification.cpp:127 smb4knotification.cpp:135
 #, kde-format
@@ -2928,16 +2928,13 @@ msgstr ""
 "Postscript-muotoon ja yritä uudelleen."
 
 #: smb4knotification.cpp:198
-#, fuzzy, kde-format
-#| msgid ""
-#| "The mimetype <b>%1</b> is not supported for printing. Please convert the "
-#| "file to PDF or Postscript and try again."
+#, kde-format
 msgid ""
 "The mimetype %1 is not supported for printing. Please convert the file to "
 "PDF or Postscript and try again."
 msgstr ""
-"MIME-tyypin <b>%1</b> tulostamista ei tueta. Muunna tiedosto PDF- tai "
-"Postscript-muotoon ja yritä uudelleen."
+"MIME-tyypin %1 tulostamista ei tueta. Muunna tiedosto PDF- tai Postscript-"
+"muotoon ja yritä uudelleen."
 
 #: smb4knotification.cpp:218
 #, kde-format
@@ -2945,10 +2942,9 @@ msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
 msgstr "Jaolle <b>%1</b> on jo kirjanmerkki: ohitetaan."
 
 #: smb4knotification.cpp:222
-#, fuzzy, kde-format
-#| msgid "The bookmark for share <b>%1</b> already exists and will be skipped."
+#, kde-format
 msgid "The bookmark for share %1 already exists and will be skipped."
-msgstr "Jaolle <b>%1</b> on jo kirjanmerkki: ohitetaan."
+msgstr "Jaolle %1 on jo kirjanmerkki: sivuutetaan."
 
 #: smb4knotification.cpp:241
 #, kde-format
@@ -2960,16 +2956,13 @@ msgstr ""
 "muutetaan automaattisesti."
 
 #: smb4knotification.cpp:247
-#, fuzzy, kde-format
-#| msgid ""
-#| "The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
-#| "being used and will automatically be renamed."
+#, kde-format
 msgid ""
 "The label %1 of the bookmark for the share %2 is already being used and will "
 "automatically be renamed."
 msgstr ""
-"Nimiö <b>%1</b> jaon <b>%2</b> kirjanmerkille on jo käytössä: nimeä "
-"muutetaan automaattisesti."
+"Nimiö %1 jaon %2 kirjanmerkille on jo käytössä: nimeä muutetaan "
+"automaattisesti."
 
 #: smb4knotification.cpp:270
 #, kde-format
@@ -2982,16 +2975,14 @@ msgid "Mounting the share <b>%1</b> failed."
 msgstr "Jaon <b>%1</b> liittäminen epäonnistui."
 
 #: smb4knotification.cpp:288
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed: %2"
-msgstr "Jaon <b>%1</b> liittäminen epäonnistui."
+msgstr "Jaon %1 liittäminen epäonnistui: %2"
 
 #: smb4knotification.cpp:290
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Mounting the share %1 failed."
-msgstr "Jaon <b>%1</b> liittäminen epäonnistui."
+msgstr "Jaon %1 liittäminen epäonnistui."
 
 # *** TARKISTA: Tässä ja kahdessa seuraavassa on vain oletus, että %2 olisi kansio (voisi kai olla vaikka konenimi)
 #: smb4knotification.cpp:309
@@ -3006,16 +2997,14 @@ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
 msgstr "Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui."
 
 #: smb4knotification.cpp:327
-#, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui."
+msgstr "Jaon %1 irrottaminen kansiosta %2 epäonnistui: %3"
 
 #: smb4knotification.cpp:329
-#, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#, kde-format
 msgid "Unmounting the share %1 from %2 failed."
-msgstr "Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui."
+msgstr "Jaon %1 irrottaminen kansiosta %2 epäonnistui."
 
 #: smb4knotification.cpp:342
 #, kde-format
@@ -3028,16 +3017,14 @@ msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
 msgstr "Kansioiden <b>%1</b> ja <b>%2</b> tahdistus epäonnistui."
 
 #: smb4knotification.cpp:360
-#, fuzzy, kde-format
-#| msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
+#, kde-format
 msgid "Synchronizing %1 with %2 failed: %3"
-msgstr "Kansioiden <b>%1</b> ja <b>%2</b> tahdistus epäonnistui."
+msgstr "Kansioiden %1 ja %2 tahdistaminen epäonnistui: %3"
 
 #: smb4knotification.cpp:362
-#, fuzzy, kde-format
-#| msgid "Synchronizing <b>%1</b> with <b>%2</b> failed."
+#, kde-format
 msgid "Synchronizing %1 with %2 failed."
-msgstr "Kansioiden <b>%1</b> ja <b>%2</b> tahdistus epäonnistui."
+msgstr "Kansioiden %1 ja %2 tahdistaminen epäonnistui."
 
 #: smb4knotification.cpp:378
 #, kde-format
@@ -3046,11 +3033,9 @@ msgid ""
 msgstr "Komentoa <b>%1</b> ei löydy. Tarkista asennus."
 
 #: smb4knotification.cpp:382
-#, fuzzy, kde-format
-#| msgid ""
-#| "The command <b>%1</b> could not be found. Please check your installation."
+#, kde-format
 msgid "The command %1 could not be found. Please check your installation."
-msgstr "Komentoa <b>%1</b> ei löydy. Tarkista asennus."
+msgstr "Komentoa %1 ei löytynyt. Tarkista asennus."
 
 #: smb4knotification.cpp:401 smb4knotification.cpp:405
 #, kde-format
@@ -3063,10 +3048,9 @@ msgid "The file <b>%1</b> could not be found."
 msgstr "Tiedostoa <b>%1</b> ei löytynyt."
 
 #: smb4knotification.cpp:422
-#, fuzzy, kde-format
-#| msgid "The file <b>%1</b> could not be found."
+#, kde-format
 msgid "The file %1 could not be found."
-msgstr "Tiedostoa <b>%1</b> ei löytynyt."
+msgstr "Tiedostoa %1 ei löytynyt."
 
 #: smb4knotification.cpp:432
 #, kde-format
@@ -3079,16 +3063,14 @@ msgid "Opening the file <b>%1</b> failed."
 msgstr "Tiedoston <b>%1</b> avaaminen epäonnistui."
 
 #: smb4knotification.cpp:450
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed: %2"
-msgstr "Tiedoston <b>%1</b> avaaminen epäonnistui."
+msgstr "Tiedoston %1 avaaminen epäonnistui: %2"
 
 #: smb4knotification.cpp:452
-#, fuzzy, kde-format
-#| msgid "Opening the file <b>%1</b> failed."
+#, kde-format
 msgid "Opening the file %1 failed."
-msgstr "Tiedoston <b>%1</b> avaaminen epäonnistui."
+msgstr "Tiedoston %1 avaaminen epäonnistui."
 
 #: smb4knotification.cpp:465 smb4knotification.cpp:468
 #, kde-format
@@ -3101,16 +3083,14 @@ msgid "Reading from file <b>%1</b> failed."
 msgstr "Luku tiedostosta <b>%1</b> epäonnistui."
 
 #: smb4knotification.cpp:487 smb4knotification.cpp:490
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed: %2"
-msgstr "Luku tiedostosta <b>%1</b> epäonnistui."
+msgstr "Luku tiedostosta %1 epäonnistui: %2"
 
 #: smb4knotification.cpp:492
-#, fuzzy, kde-format
-#| msgid "Reading from file <b>%1</b> failed."
+#, kde-format
 msgid "Reading from file %1 failed."
-msgstr "Luku tiedostosta <b>%1</b> epäonnistui."
+msgstr "Luku tiedostosta %1 epäonnistui."
 
 #: smb4knotification.cpp:509
 #, kde-format
@@ -3118,10 +3098,9 @@ msgid "The following directory could not be created: <tt>%1</tt>"
 msgstr "Seuraavaa kansiota ei voitu luoda: <tt>%1</tt>"
 
 #: smb4knotification.cpp:513
-#, fuzzy, kde-format
-#| msgid "The following directory could not be created: <tt>%1</tt>"
+#, kde-format
 msgid "The following directory could not be created: %1"
-msgstr "Seuraavaa kansiota ei voitu luoda: <tt>%1</tt>"
+msgstr "Seuraavaa kansiota ei voitu luoda: %1"
 
 #: smb4knotification.cpp:524
 #, kde-format
@@ -3154,34 +3133,29 @@ msgid "The process reported an unknown error."
 msgstr "Prosessi ilmoitti tuntemattoman virheen."
 
 #: smb4knotification.cpp:564
-#, fuzzy, kde-format
-#| msgid "The process failed to start (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process failed to start (error code: %1)."
-msgstr "Prosessin käynnistys epäonnistui (virhekoodi: <tt>%1</tt>)."
+msgstr "Prosessin käynnistäminen epäonnistui (virhekoodi: %1)."
 
 #: smb4knotification.cpp:568
-#, fuzzy, kde-format
-#| msgid "The process crashed (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process crashed (error code: %1)."
-msgstr "Prosessi kaatui (virhekoodi: <tt>%1</tt>)."
+msgstr "Prosessi kaatui (virhekoodi: %1)."
 
 #: smb4knotification.cpp:572
-#, fuzzy, kde-format
-#| msgid "The process timed out (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "The process timed out (error code: %1)."
-msgstr "Prosessin aikakatkaisu (virhekoodi: <tt>%1</tt>)."
+msgstr "Prosessin aikakatkaisu (virhekoodi: %1)."
 
 #: smb4knotification.cpp:576
-#, fuzzy, kde-format
-#| msgid "Could not write to the process (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "Could not write to the process (error code: %1)."
-msgstr "Prosessiin ei voitu kirjoittaa (virhekoodi: <tt>%1</tt>)."
+msgstr "Prosessiin ei voitu kirjoittaa (virhekoodi: %1)."
 
 #: smb4knotification.cpp:580
-#, fuzzy, kde-format
-#| msgid "Could not read from the process (error code: <tt>%1</tt>)."
+#, kde-format
 msgid "Could not read from the process (error code: %1)."
-msgstr "Prosessista ei voitu lukea (virhekoodi: <tt>%1</tt>)."
+msgstr "Prosessista ei voitu lukea (virhekoodi: %1)."
 
 #: smb4knotification.cpp:641 smb4knotification.cpp:699
 #, kde-format
@@ -3203,14 +3177,9 @@ msgstr ""
 "tt>"
 
 #: smb4knotification.cpp:737
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <tt>"
-#| "%1</tt>"
+#, kde-format
 msgid "The network communication failed with the following error message: %1"
-msgstr ""
-"Verkkoviestintä epäonnistui ja palautti seuraavan virheilmoituksen: <tt>%1</"
-"tt>"
+msgstr "Verkkoviestintä epäonnistui ja palautti seuraavan virheilmoituksen: %1"
 
 #: smb4knotification.cpp:750
 #, kde-format
@@ -3218,10 +3187,9 @@ msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
 msgstr "Zeroconf-palvelussa tapahtui virhe: <tt>%1</tt>"
 
 #: smb4knotification.cpp:754
-#, fuzzy, kde-format
-#| msgid "An error with the Zeroconf service occurred: <tt>%1</tt>"
+#, kde-format
 msgid "An error with the Zeroconf service occurred: %1"
-msgstr "Zeroconf-palvelussa tapahtui virhe: <tt>%1</tt>"
+msgstr "Zeroconf-palvelussa tapahtui virhe: %1"
 
 #: smb4knotification.cpp:767
 #, kde-format
@@ -3233,16 +3201,11 @@ msgstr ""
 "tt>"
 
 #: smb4knotification.cpp:771
-#, fuzzy, kde-format
-#| msgid ""
-#| "An error occurred while reading the login credentials from the secure "
-#| "storage: <tt>%1</tt>"
+#, kde-format
 msgid ""
 "An error occurred while reading the login credentials from the secure "
 "storage: %1"
-msgstr ""
-"Luettaessa todennustietoja salatusta talletustilasta sattui virhe: <tt>%1</"
-"tt>"
+msgstr "Luettaessa todennustietoja salatusta talletustilasta sattui virhe: %1"
 
 #: smb4kshare.cpp:193
 #, kde-format
