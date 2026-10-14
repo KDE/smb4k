@@ -560,25 +560,33 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
 
 void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
 {
-    //
-    // Collect the hosts found while scanning. Always prefer
-    // insertion of hosts with a real workgroup/domain over
-    // the ones with the DNS-SD domain (e.g. LOCAL).
-    //
+    // Collect the hosts that were found
     QList<HostPtr> discoveredHosts = job->hosts();
 
     for (const HostPtr &newHost : std::as_const(discoveredHosts)) {
+        QMutableListIterator<HostPtr> it(d->tempHostList);
         bool foundHost = false;
 
-        QMutableListIterator<HostPtr> it(d->tempHostList);
-
         while (it.hasNext()) {
-            HostPtr host = static_cast<HostPtr>(it.next());
+            HostPtr storedHost = static_cast<HostPtr>(it.next());
 
-            if (newHost->url().matches(host->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
-                if (newHost->workgroupName() == host->workgroupName()) {
+            QUrl urlStoredHost = storedHost->url();
+            QUrl urlNewHost = newHost->url();
+
+            if (storedHost->dnsDiscovered()) {
+                urlStoredHost.setHost(storedHost->hostName().section(QStringLiteral("."), 0, -2));
+            }
+
+            if (newHost->dnsDiscovered()) {
+                urlNewHost.setHost(newHost->hostName().section(QStringLiteral("."), 0, -2));
+            }
+
+            // Always prefer hosts discovered by Samba & WSD over the ones
+            // discovered by DNS-SD.
+            if (urlNewHost.matches(urlStoredHost, QUrl::RemoveUserInfo | QUrl::RemovePort)) {
+                if (storedHost->dnsDiscovered() == newHost->dnsDiscovered()) {
                     foundHost = true;
-                } else if (host->dnsDiscovered()) {
+                } else if (storedHost->dnsDiscovered() && !newHost->dnsDiscovered()) {
                     it.remove();
                 }
 
@@ -591,62 +599,69 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
         }
     }
 
-    //
-    // When scanning finished, process the hosts
-    //
+    // Process the hosts after scanning finished
     if (!isRunning()) {
-        // Get the workgroup pointer. Although several scans might have been
-        // running, the workgroup should have been always the same.
+        // Get the list of workgroups/domains from which hosts were
+        // discovered.
+        QList<WorkgroupPtr> workgroups;
+        QStringList workgroupNames;
+
+        // Remove obsolete members and add or update hosts.
         WorkgroupPtr workgroup = job->networkItem().staticCast<Smb4KWorkgroup>();
 
-        // Remove obsolete workgroup/domain members
-        QList<HostPtr> members = workgroupMembers(workgroup);
-        QListIterator<HostPtr> it(members);
+        if (workgroup) {
+            // Remove obsolete workgroup/domain members
+            QList<HostPtr> members = workgroupMembers(workgroup);
+            QListIterator<HostPtr> it(members);
 
-        while (it.hasNext()) {
-            HostPtr host = it.next();
+            while (it.hasNext()) {
+                HostPtr host = it.next();
+                bool foundHost = false;
 
-            bool foundHost = false;
+                for (const HostPtr &h : std::as_const(d->tempHostList)) {
+                    if (h->url().matches(host->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
+                        foundHost = true;
+                        break;
+                    }
+                }
 
-            for (const HostPtr &h : std::as_const(d->tempHostList)) {
-                if (h->workgroupName() == host->workgroupName() && h->hostName() == host->hostName()) {
-                    foundHost = true;
-                    break;
+                if (!foundHost) {
+                    QList<SharePtr> obsoleteShares = sharedResources(host);
+
+                    while (!obsoleteShares.isEmpty()) {
+                        removeShare(obsoleteShares.takeFirst());
+                    }
+
+                    removeHost(host);
                 }
             }
 
-            if (!foundHost) {
-                QList<SharePtr> obsoleteShares = sharedResources(host);
-
-                while (!obsoleteShares.isEmpty()) {
-                    removeShare(obsoleteShares.takeFirst());
+            // Add new hosts and update existing ones
+            for (const HostPtr &host : std::as_const(d->tempHostList)) {
+                if (host->workgroupName() != workgroup->workgroupName()) {
+                    continue;
                 }
 
-                removeHost(host);
-            }
-        }
+                if (host->hostName() == workgroup->masterBrowserName()) {
+                    host->setIsMasterBrowser(true);
+                } else {
+                    host->setIsMasterBrowser(false);
+                }
 
-        // Add new hosts and update existing ones
-        for (const HostPtr &host : std::as_const(d->tempHostList)) {
-            if (host->hostName() == workgroup->masterBrowserName()) {
-                host->setIsMasterBrowser(true);
-            } else {
-                host->setIsMasterBrowser(false);
+                if (!findHost(host->hostName(), host->workgroupName())) {
+                    addHost(host);
+                } else {
+                    updateHost(host);
+                }
             }
 
-            if (!findHost(host->hostName(), host->workgroupName())) {
-                addHost(host);
-            } else {
-                updateHost(host);
-            }
+            Q_EMIT hosts(workgroup);
         }
 
         // Clear the temporary host list
         while (!d->tempHostList.isEmpty()) {
             d->tempHostList.takeFirst().clear();
         }
-
-        Q_EMIT hosts(workgroup);
     }
 }
 
