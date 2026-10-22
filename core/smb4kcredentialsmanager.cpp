@@ -12,11 +12,7 @@
 #include "smb4ksettings.h"
 
 // Qt includes
-#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
 #include <QApplicationStatic>
-#else
-#include <qapplicationstatic.h>
-#endif
 #include <QDebug>
 #include <QEventLoop>
 
