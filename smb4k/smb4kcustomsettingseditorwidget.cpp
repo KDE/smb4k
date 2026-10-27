@@ -77,14 +77,14 @@ void Smb4KCustomSettingsEditorWidget::setupView(bool showBrowseTab)
     // m_ipAddress->setInputMask(QStringLiteral("000.000.000.000"));
     m_ipAddressLabel->setBuddy(m_ipAddress);
 
-    connect(m_ipAddress, &KLineEdit::editingFinished, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
+    connect(m_ipAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotIpAddressChanged);
 
     m_workgroupLabel = new QLabel(i18n("Workgroup:"), tab1);
     m_workgroup = new KLineEdit(tab1);
     m_workgroup->setClearButtonEnabled(true);
     m_workgroupLabel->setBuddy(m_workgroup);
 
-    connect(m_workgroup, &KLineEdit::editingFinished, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
+    connect(m_workgroup, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotWorkgroupNameChanged);
 
     m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
     m_alwaysRemountShare->setEnabled(false);

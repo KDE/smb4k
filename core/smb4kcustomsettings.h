@@ -480,6 +480,14 @@ public:
     void update(Smb4KCustomSettings *customSettings);
 
     /**
+     * Check if any of the settings that are supposed to be editable (custom settings,
+     * IP address and workgroup name) contain valid data or were changed.
+     *
+     * @returns TRUE if custom settings are defined or the other values changed.
+     */
+    bool hasSettings(bool withoutRemountOnce = false) const;
+
+    /**
      * Copy assignment operator
      */
     Smb4KCustomSettings &operator=(const Smb4KCustomSettings &other);

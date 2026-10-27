@@ -169,7 +169,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
         }
         }
 
-        m_restoreButton->setEnabled(m_customSettings->hasCustomSettings(true));
+        m_restoreButton->setEnabled(m_customSettings->hasSettings(true));
     }
 
     return true;

@@ -29,11 +29,13 @@
 class Smb4KCustomSettingsPrivate
 {
 public:
-    QString workgroup;
     QUrl url;
-    QHostAddress ip;
     NetworkItem type;
     QString profile;
+    bool initWorkgroup;
+    bool initIpAddress;
+    QPair<QString, bool> workgroupName;
+    QPair<QHostAddress, bool> ipAddress;
     QPair<int, bool> remount;
     QPair<bool, bool> useIds;
     QPair<bool, bool> useFileMode;
@@ -60,6 +62,8 @@ Smb4KCustomSettings::Smb4KCustomSettings(Smb4KBasicNetworkItem *networkItem)
     : d(new Smb4KCustomSettingsPrivate)
 {
     d->type = networkItem->type();
+    d->initWorkgroup = false;
+    d->initIpAddress = false;
 
     setUrl(networkItem->url());
     setProfile(Smb4KSettings::activeProfile());
@@ -122,6 +126,8 @@ Smb4KCustomSettings::Smb4KCustomSettings()
     : d(new Smb4KCustomSettingsPrivate)
 {
     d->type = UnknownNetworkItem;
+    d->initWorkgroup = false;
+    d->initIpAddress = false;
 
     setUrl(QUrl());
     setProfile(Smb4KSettings::activeProfile());
@@ -192,12 +198,18 @@ Smb4KGlobal::NetworkItem Smb4KCustomSettings::type() const
 
 void Smb4KCustomSettings::setWorkgroupName(const QString &workgroup) const
 {
-    d->workgroup = workgroup;
+    if (!d->initWorkgroup) {
+        d->workgroupName = { workgroup, false };
+        d->initWorkgroup = true;
+    } else {
+        QString old = d->workgroupName.first;
+        d->workgroupName = { workgroup, (workgroup != old) };
+    }
 }
 
 QString Smb4KCustomSettings::workgroupName() const
 {
-    return d->workgroup;
+    return d->workgroupName.first;
 }
 
 void Smb4KCustomSettings::setUrl(const QUrl &url) const
@@ -226,17 +238,35 @@ QString Smb4KCustomSettings::shareName() const
 
 void Smb4KCustomSettings::setIpAddress(const QString &ip) const
 {
-    d->ip.setAddress(ip);
+    QHostAddress ipAddress(ip);
+
+    if (!d->initIpAddress) {
+        if (!ipAddress.isNull() && ipAddress.protocol() != QHostAddress::UnknownNetworkLayerProtocol) {
+            d->ipAddress = { ipAddress, false };
+        } else {
+            d->ipAddress = { QHostAddress(), false };
+        }
+
+        d->initIpAddress = true;
+    } else {
+        QHostAddress old = d->ipAddress.first;
+
+        if (!ipAddress.isNull() && ipAddress.protocol() != QHostAddress::UnknownNetworkLayerProtocol) {
+            d->ipAddress = { ipAddress, (ipAddress != old) };
+        } else {
+            d->ipAddress = { QHostAddress(), false };
+        }
+    }
 }
 
 QString Smb4KCustomSettings::ipAddress() const
 {
-    return d->ip.toString();
+    return d->ipAddress.first.toString();
 }
 
 bool Smb4KCustomSettings::hasIpAddress() const
 {
-    return !d->ip.isNull();
+    return !d->ipAddress.first.isNull();
 }
 
 void Smb4KCustomSettings::setProfile(const QString &profile) const
@@ -653,11 +683,10 @@ bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
 void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
 {
     // NOTE: Do not update the URL and the type
-
-    d->workgroup = customSettings->workgroupName();
-    d->ip.setAddress(customSettings->ipAddress());
     d->profile = customSettings->profile();
 
+    setWorkgroupName(customSettings->workgroupName());
+    setIpAddress(customSettings->ipAddress());
     setRemount(customSettings->remount());
     setUseIds(customSettings->useIds());
     setUseFileMode(customSettings->useFileMode());
@@ -678,6 +707,11 @@ void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
     setMacAddress(customSettings->macAddress());
     setWakeOnLanSendBeforeNetworkScan(customSettings->wakeOnLanSendBeforeNetworkScan());
     setWakeOnLanSendBeforeMount(customSettings->wakeOnLanSendBeforeMount());
+}
+
+bool Smb4KCustomSettings::hasSettings(bool withoutRemountOnce) const
+{
+    return hasCustomSettings(withoutRemountOnce) || d->ipAddress.second || d->workgroupName.second;
 }
 
 Smb4KCustomSettings &Smb4KCustomSettings::operator=(const Smb4KCustomSettings &other)
