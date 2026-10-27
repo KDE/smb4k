@@ -83,8 +83,8 @@ Q_SIGNALS:
     void edited(bool changed);
 
 protected Q_SLOTS:
-    void slotIpAddressChanged();
-    void slotWorkgroupNameChanged();
+    void slotIpAddressChanged(const QString &text);
+    void slotWorkgroupNameChanged(const QString &text);
     void slotAlwaysRemoutShareToggled(bool checked);
 #ifdef Q_OS_LINUX
     void slotUseWriteAccessToggled(bool checked);
