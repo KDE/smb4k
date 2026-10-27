@@ -5,6 +5,8 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
 
 - Make Smb4K compile under NetBSD: Adjust code in the mount helper, because
   NetBSD does not support the O_PATH flag.
+- Backport changes from master: Fix the ability to edit and save the IP
+  address and the workgroup/domain for custom settings.
 
 Smb4K 4.0.7 (2026-09-04):
 
