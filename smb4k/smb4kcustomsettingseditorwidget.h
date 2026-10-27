@@ -67,6 +67,18 @@ public:
      */
     bool hasDefaultCustomSettings() const;
 
+    /**
+     * Load the completion items for the line edits, etc., in this
+     * widget.
+     */
+    void loadCompletionItems();
+
+    /**
+     * Save the completion items from the line edits, etc., in this
+     * widget.
+     */
+    void saveCompletionItems();
+
 Q_SIGNALS:
     void edited(bool changed);
 
@@ -102,6 +114,7 @@ protected Q_SLOTS:
 private:
     void setupView();
     void checkValues();
+    bool m_settingCustomSettings;
     bool m_hasDefaultCustomSettings;
     Smb4KCustomSettings m_customSettings;
     QLabel *m_ipAddressLabel;

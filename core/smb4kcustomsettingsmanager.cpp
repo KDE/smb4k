@@ -88,7 +88,7 @@ void Smb4KCustomSettingsManager::addRemount(const SharePtr &share, bool always)
         CustomSettingsPtr settings = findCustomSettings(share, true);
 
         if (!settings) {
-            settings = CustomSettingsPtr(new Smb4KCustomSettings(share.data()));
+            settings = CustomSettingsPtr::create(share.data());
             // add() takes care of the profile, we do not need to set it here.
             addedSettings = add(settings);
         }
@@ -119,7 +119,7 @@ void Smb4KCustomSettingsManager::removeRemount(const SharePtr &share, bool force
                 settings->setRemount(Smb4KCustomSettings::UndefinedRemount);
             }
 
-            if (!settings->hasCustomSettings()) {
+            if (!settings->hasSettings()) {
                 remove(settings);
             }
         }
@@ -142,7 +142,7 @@ void Smb4KCustomSettingsManager::clearRemounts(bool force)
             }
         }
 
-        if (!settings->hasCustomSettings()) {
+        if (!settings->hasSettings()) {
             remove(settings);
         }
     }
@@ -173,7 +173,7 @@ CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const NetworkIt
         CustomSettingsPtr hostSettings = findCustomSettings(networkItem->url().adjusted(QUrl::RemovePath | QUrl::StripTrailingSlash));
 
         if (hostSettings) {
-            settings = CustomSettingsPtr(new Smb4KCustomSettings(networkItem.data()));
+            settings = CustomSettingsPtr::create(networkItem.data());
             settings->update(hostSettings.data());
         }
     }
@@ -189,8 +189,7 @@ CustomSettingsPtr Smb4KCustomSettingsManager::findCustomSettings(const QUrl &url
         QList<CustomSettingsPtr> settingsList = customSettings(false);
 
         for (const CustomSettingsPtr &cs : std::as_const(settingsList)) {
-            if (cs->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)
-                == url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
+            if (cs->url().matches(url, QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
                 settings = cs;
                 break;
             }
@@ -209,7 +208,7 @@ QList<CustomSettingsPtr> Smb4KCustomSettingsManager::customSettings(bool without
             continue;
         }
 
-        if (settings->hasCustomSettings(withoutRemountOnce)) {
+        if (settings->hasSettings(withoutRemountOnce)) {
             settingsList << settings;
         }
     }
@@ -273,7 +272,7 @@ bool Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
 {
     bool addedSettings = false;
 
-    if (settings->hasCustomSettings()) {
+    if (settings->hasSettings()) {
         CustomSettingsPtr knownSettings = findCustomSettings(settings->url());
 
         if (knownSettings) {
@@ -342,7 +341,7 @@ void Smb4KCustomSettingsManager::read()
                     break;
                 } else {
                     if (xmlReader.name() == QStringLiteral("options")) {
-                        CustomSettingsPtr settings = CustomSettingsPtr(new Smb4KCustomSettings());
+                        CustomSettingsPtr settings = CustomSettingsPtr::create();
                         settings->setProfile(xmlReader.attributes().value(QStringLiteral("profile")).toString());
 
                         if (QString::compare(xmlReader.attributes().value(QStringLiteral("type")).toString(), QStringLiteral("host"), Qt::CaseInsensitive)
@@ -544,7 +543,7 @@ void Smb4KCustomSettingsManager::write()
         xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("3.0"));
 
         for (const CustomSettingsPtr &settings : std::as_const(d->customSettings)) {
-            if (settings->hasCustomSettings()) {
+            if (settings->hasSettings()) {
                 xmlWriter.writeStartElement(QStringLiteral("options"));
                 xmlWriter.writeAttribute(QStringLiteral("type"), settings->type() == Host ? QStringLiteral("host") : QStringLiteral("share"));
                 xmlWriter.writeAttribute(QStringLiteral("profile"), settings->profile());
@@ -553,20 +552,22 @@ void Smb4KCustomSettingsManager::write()
                 xmlWriter.writeTextElement(QStringLiteral("url"), settings->url().toDisplayString());
                 xmlWriter.writeTextElement(QStringLiteral("ip"), settings->ipAddress());
 
-                xmlWriter.writeStartElement(QStringLiteral("custom"));
+                if (settings->hasCustomSettings()) {
+                    xmlWriter.writeStartElement(QStringLiteral("custom"));
 
-                QMap<QString, QString> map = settings->customSettings();
-                QMapIterator<QString, QString> i(map);
+                    QMap<QString, QString> map = settings->customSettings();
+                    QMapIterator<QString, QString> i(map);
 
-                while (i.hasNext()) {
-                    i.next();
+                    while (i.hasNext()) {
+                        i.next();
 
-                    if (!i.value().isEmpty()) {
-                        xmlWriter.writeTextElement(i.key(), i.value());
+                        if (!i.value().isEmpty()) {
+                            xmlWriter.writeTextElement(i.key(), i.value());
+                        }
                     }
-                }
 
-                xmlWriter.writeEndElement();
+                    xmlWriter.writeEndElement();
+                }
                 xmlWriter.writeEndElement();
             }
         }
