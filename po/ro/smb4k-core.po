@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-23 00:48+0000\n"
+"POT-Creation-Date: 2026-10-28 01:00+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@ase.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1600,13 +1600,13 @@ msgstr ""
 msgid "This is the currently active profile."
 msgstr ""
 
-#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:262 smb4kshare.cpp:160
+#: smb4kbookmark.cpp:180 smb4kcustomsettings.cpp:292 smb4kshare.cpp:160
 #: smb4kshare.cpp:163
 #, kde-format
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:337
+#: smb4kbookmarkhandler.cpp:303 smb4kcustomsettingsmanager.cpp:336
 #: smb4khomesshareshandler.cpp:208
 #, kde-format
 msgid "The format of %1 is not supported."
