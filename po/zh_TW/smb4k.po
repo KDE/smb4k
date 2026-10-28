@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-05 02:44+0000\n"
+"POT-Creation-Date: 2026-10-28 03:15+0000\n"
 "PO-Revision-Date: 2025-02-06 20:16+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -291,16 +291,16 @@ msgid "Password:"
 msgstr "密碼："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:307 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:309 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "工作群組：："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:299 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:301 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -360,8 +360,8 @@ msgstr " 分鐘"
 #: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:434
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:326
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:101
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Basic Settings"
 msgstr "基本設定"
@@ -377,21 +377,21 @@ msgid "CIFS Unix Extensions Support"
 msgstr "CIFS Unix 擴充功能支援"
 
 #: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:452
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:124
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:335
 #, kde-format
 msgid "User ID:"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:458
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:339
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:130
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:341
 #, kde-format
 msgid "Group ID:"
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:172
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "通用掛載設定"
@@ -402,7 +402,7 @@ msgid "Advanced Options"
 msgstr "進階選項"
 
 #: smb4k/smb4kconfigpagemounting.cpp:367
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:192
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:193
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "進階掛載設定"
@@ -413,14 +413,14 @@ msgid "Character Sets"
 msgstr "字元集"
 
 #: smb4k/smb4kconfigpagemounting.cpp:555
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:376
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
 #, kde-format
 msgid "Mount Settings"
 msgstr "掛載設定"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:435
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:252
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
 #, kde-format
 msgid "Browse Settings"
 msgstr "瀏覽設定"
@@ -627,44 +627,44 @@ msgstr "定義主機 <b>%1</b> 及其所提供之共享裝置的自訂設定。"
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "定義共享裝置 <b>%1</b> 的自訂設定。"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:89
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:316
 #, kde-format
 msgid "Always remount this share"
 msgstr "總是重新掛載此共享裝置"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:118
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "這個伺服器支援 CIFS Unix 擴充功能"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:262
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:446
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:263
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 位址："
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:453
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:270
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
 #, fuzzy, kde-format
 #| msgid "IP address:"
 msgid "Find MAC address"
 msgstr "IP 位址："
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:462
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:280
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "掃描網路芳鄰前傳送魔法封包"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:280
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:282
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "掛載共享裝置前傳送魔法封包"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:291
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:475
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-05 02:44+0000\n"
+"POT-Creation-Date: 2026-10-28 03:15+0000\n"
 "PO-Revision-Date: 2025-12-12 22:17+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -289,16 +289,16 @@ msgid "Password:"
 msgstr "Пароль:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:81
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:307 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:309 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
 msgstr "Робоча група:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:73
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:299 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:74
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:301 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -359,8 +359,8 @@ msgstr " хв."
 #: smb4k/smb4kconfigpagemounting.cpp:152 smb4k/smb4kconfigpagemounting.cpp:434
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:100
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:326
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:101
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
 #, kde-format
 msgid "Basic Settings"
 msgstr "Основні параметри"
@@ -376,21 +376,21 @@ msgid "CIFS Unix Extensions Support"
 msgstr "Підтримка розширень UNIX CIFS"
 
 #: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:452
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:123
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:333
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:124
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:335
 #, kde-format
 msgid "User ID:"
 msgstr "Ід. користувача:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:458
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:129
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:339
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:130
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:341
 #, kde-format
 msgid "Group ID:"
 msgstr "Код групи:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:272
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:171
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:172
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Загальні параметри монтування"
@@ -401,7 +401,7 @@ msgid "Advanced Options"
 msgstr "Додаткові параметри"
 
 #: smb4k/smb4kconfigpagemounting.cpp:367
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:192
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:193
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Додаткові параметри монтування"
@@ -412,14 +412,14 @@ msgid "Character Sets"
 msgstr "Набори символів"
 
 #: smb4k/smb4kconfigpagemounting.cpp:555
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:376
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
 #, kde-format
 msgid "Mount Settings"
 msgstr "Параметри монтування"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:435
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:252
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
 #, kde-format
 msgid "Browse Settings"
 msgstr "Параметри навігації"
@@ -628,43 +628,43 @@ msgstr ""
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Визначте нетипові параметри спільного ресурсу <b>%1</b>."
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:88
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:314
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:89
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:316
 #, kde-format
 msgid "Always remount this share"
 msgstr "Завжди повторно монтувати цей спільний ресурс"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:117
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:118
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:262
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:446
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:263
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-адреса:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:453
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:270
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
 #, kde-format
 msgid "Find MAC address"
 msgstr "Визначити MAC-адресу"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:278
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:462
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:280
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Надіслати контрольний пакет до сканування мережевого оточення"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:280
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:282
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:291
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:475
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:293
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Параметри Wake-On-LAN"
