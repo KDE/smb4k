@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-28 03:15+0000\n"
-"PO-Revision-Date: 2024-06-21 22:10+0200\n"
-"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"PO-Revision-Date: 2025-05-16 11:22+0200\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -381,14 +381,16 @@ msgstr "Compatibilidade con extensións CIFS de Unix"
 #: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:452
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:335
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User ID:"
 msgid "User ID:"
 msgstr "Identificador do usuario:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:341
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Group ID:"
 msgid "Group ID:"
 msgstr "Identificador do grupo:"
 
@@ -650,10 +652,9 @@ msgstr "Enderezo MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:270
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:455
-#, fuzzy, kde-format
-#| msgid "MAC address:"
+#, kde-format
 msgid "Find MAC address"
-msgstr "Enderezo MAC:"
+msgstr "Atopar o enderezo MAC"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:280
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:464
