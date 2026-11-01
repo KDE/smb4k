@@ -431,14 +431,16 @@ msgstr "Compatibilidade con extensións CIFS de Unix"
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:460
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User ID:"
 msgid "User ID:"
 msgstr "Identificador do usuario:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:466
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:331
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Group ID:"
 msgid "Group ID:"
 msgstr "Identificador do grupo:"
 
