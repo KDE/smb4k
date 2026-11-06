@@ -1,7 +1,7 @@
 /*
     This is the global namespace for Smb4K.
 
-    SPDX-FileCopyrightText: 2005-2025 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -424,6 +424,13 @@ SMB4KCORE_EXPORT void wait(int time);
  * @param ipAddress     The IP addess of the server
  */
 SMB4KCORE_EXPORT const QString findMacAddress(const QString &ipAddress);
+
+/**
+ * Construct the Wake-On-LAN magic sequence from the host's MAC address.
+ *
+ * @param macAddress    The MAC address of the host
+ */
+SMB4KCORE_EXPORT const QByteArray wakeOnLanMagicSequence(const QString &macAddress);
 };
 
 #endif
