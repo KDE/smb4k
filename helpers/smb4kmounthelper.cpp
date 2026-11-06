@@ -36,7 +36,7 @@ static const QStringList MOUNT_ARG_WHITELIST{QStringList{
     QStringLiteral("dir_mode"),  QStringLiteral("forceuid"),    QStringLiteral("forcegid"), QStringLiteral("iocharset"), QStringLiteral("rw"),
     QStringLiteral("ro"),        QStringLiteral("perm"),        QStringLiteral("noperm"),   QStringLiteral("setuids"),   QStringLiteral("nosetuids"),
     QStringLiteral("serverino"), QStringLiteral("noserverino"), QStringLiteral("cache"),    QStringLiteral("mapchars"),  QStringLiteral("nomapchars"),
-    QStringLiteral("nobrl"),     QStringLiteral("sec")
+    QStringLiteral("nobrl"),     QStringLiteral("sec"),         QStringLiteral("cruid")
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
     QStringLiteral("-E"),
     QStringLiteral("-I"),
@@ -73,6 +73,10 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
         mountPoint = *mp;
     } else {
         return errorReply(i18n("Could not create mount point for share %1.", shareUrl.toDisplayString()));
+    }
+
+    if (!isMountPointAllowed(mountPoint)) {
+        return errorReply(i18n("The mount point %1 is illegal.", mountPoint));
     }
 
     const QString mount = findMountExecutable();
@@ -187,7 +191,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     QString mountPoint = args[QStringLiteral("mh_mountpoint")].toString();
 
     if (!isMountPointAllowed(mountPoint)) {
-        return errorReply(i18n("The mountpoint %1 is illegal.", args[QStringLiteral("mh_mountpoint")].toString()));
+        return errorReply(i18n("The mount point %1 is illegal.", args[QStringLiteral("mh_mountpoint")].toString()));
     }
 
     const QString umount = findUmountExecutable();
@@ -205,7 +209,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     QStringList command;
     command << umount;
     command << unmountOptions;
-    command << QDir(mountPoint).canonicalPath();
+    command << mountPoint;
 
     KProcess proc(this);
     proc.setOutputChannelMode(KProcess::SeparateChannels);
@@ -247,7 +251,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
         proc.startDetached();
     }
 
-    removeMountPoint(QDir(mountPoint).canonicalPath());
+    removeMountPoint(mountPoint);
 
     return reply;
 }
@@ -369,7 +373,11 @@ bool Smb4KMountHelper::checkUnmountArguments(QStringList *argList) const
 
 QString Smb4KMountHelper::mountPrefix() const
 {
-    return (QDir::cleanPath(QStringLiteral("/var/run/smb4k")));
+    if (QDir(QStringLiteral("/run")).exists()) {
+        return QDir::cleanPath(QStringLiteral("/run/smb4k"));
+    }
+
+    return QDir::cleanPath(QStringLiteral("/var/run/smb4k"));
 }
 
 ActionReply Smb4KMountHelper::errorReply(const QString &message) const
@@ -406,7 +414,8 @@ std::optional<QString> Smb4KMountHelper::createMountPoint(const QUrl &url) const
 
     // Do not allow empty paths, paths containing any '..' or that have more
     // than one level (= contains slash characters).
-    if (pathComponent.isEmpty() || pathComponent.contains(QStringLiteral("..")) || pathComponent.contains(QDir::separator())) {
+    if (pathComponent.isEmpty() || pathComponent.contains(QStringLiteral("..")) || pathComponent.contains(QDir::separator())
+        || pathComponent == QStringLiteral(".")) {
         return std::nullopt;
     }
 
@@ -416,7 +425,7 @@ std::optional<QString> Smb4KMountHelper::createMountPoint(const QUrl &url) const
     pathComponents << pathComponent;
 
     for (const QString &component : std::as_const(pathComponents)) {
-        dir.setPath(dir.canonicalPath() + QDir::separator() + component);
+        dir.setPath(dir.path() + QDir::separator() + component);
 
         if (!dir.exists()) {
             if (!dir.mkdir(dir.path(),
@@ -427,7 +436,7 @@ std::optional<QString> Smb4KMountHelper::createMountPoint(const QUrl &url) const
         }
     }
 
-    return dir.canonicalPath();
+    return dir.path();
 }
 
 void Smb4KMountHelper::removeMountPoint(const QString &mountPoint) const
@@ -440,10 +449,19 @@ void Smb4KMountHelper::removeMountPoint(const QString &mountPoint) const
 
 bool Smb4KMountHelper::isMountPointAllowed(const QString &mountPoint) const
 {
-    QString canonicalMountPoint = QDir(mountPoint).canonicalPath();
-    QString canonicalUserDirectory = QDir(mountPrefix()).canonicalPath() + QDir::separator() + KUser(HelperSupport::callerUid()).loginName();
+    struct stat s;
 
-    if (!canonicalMountPoint.startsWith(canonicalUserDirectory)) {
+    if (lstat(mountPoint.toUtf8().data(), &s) != 0) {
+        return false;
+    }
+
+    if (S_ISLNK(s.st_mode)) {
+        return false;
+    }
+
+    const QString userDirectory = mountPrefix() + QDir::separator() + KUser(HelperSupport::callerUid()).loginName();
+
+    if (!mountPoint.startsWith(userDirectory)) {
         return false;
     }
 
@@ -467,7 +485,12 @@ bool Smb4KMountHelper::checkFileDescriptor(const QDBusUnixFileDescriptor &dbusFd
         return false;
     }
 
-    int flags = fcntl(dbusFd.fileDescriptor(), F_GETFL);
+    const int flags = fcntl(dbusFd.fileDescriptor(), F_GETFL);
+
+    if (flags == -1) {
+        return false;
+    }
+
 #ifndef Q_OS_NETBSD
     if ((flags & (O_PATH | O_DIRECTORY)) != 0) {
 #else
