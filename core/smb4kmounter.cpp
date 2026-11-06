@@ -77,7 +77,11 @@ public:
 
 Q_APPLICATION_STATIC(Smb4KMounterStatic, p);
 
-static const QString userMountPrefix = QStringLiteral("/var/run/smb4k/") + KUser(KUser::UseRealUserID).loginName();
+static const QString userMountPrefix = (
+    QDir(QStringLiteral("/run")).exists() ?
+    QStringLiteral("/run/smb4k/") + KUser(KUser::UseRealUserID).loginName() :
+    QStringLiteral("/var/run/smb4k/") + KUser(KUser::UseRealUserID).loginName()
+);
 
 Smb4KMounter::Smb4KMounter(QObject *parent)
     : KCompositeJob(parent)
