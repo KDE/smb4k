@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-28 03:15+0000\n"
-"PO-Revision-Date: 2026-01-05 20:43+0200\n"
+"PO-Revision-Date: 2026-08-25 10:17+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -99,9 +99,6 @@ msgstr ""
 "Aloita sovellus telakoituna ilmoitusalueelle, ts. vain ilmoitusaluekuvake "
 "näytetään ja pääikkuna jää piiloon. Pääikkunan saa näkyviin napsauttamalla "
 "ilmoitusaluesovelmaa tai valitsemalla sen ponnahdusvalikosta ”Palauta”."
-"Aloita sovellus telakoituna ilmoitusalueelle, ts. vain ilmoitusaluekuvake "
-"näytetään ja pääikkuna jää piiloon. Pääikkunan saa näkyviin napsauttamalla "
-"ilmoitusaluesovelmaa tai valitsemalla sen ponnahdusvalikosta ”Palauta”."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:46
@@ -133,8 +130,7 @@ msgid ""
 "network neighborhood browser."
 msgstr ""
 "Palvelimen IP-osoite näytetään verkkoympäristöselaimen erillisessä "
-"sarakkeessa.Palvelimen IP-osoite näytetään verkkoympäristöselaimen "
-"erillisessä sarakkeessa."
+"sarakkeessa."
 
 #. i18n: ectx: label, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:56
@@ -150,8 +146,7 @@ msgid ""
 "column in the network neighborhood browser."
 msgstr ""
 "Palvelinta tai jakoa kuvaava kommentti näytetään verkkoympäristöselaimen "
-"erillisessä sarakkeessa.Palvelinta tai jakoa kuvaava kommentti näytetään "
-"verkkoympäristöselaimen erillisessä sarakkeessa."
+"erillisessä sarakkeessa."
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:61
@@ -624,8 +619,7 @@ msgstr "Arkistotila"
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr ""
 "Käytä arkistointitilaa (-a, --archive). Tämä on lyhenne valitsimille -"
-"rlptgoD.Käytä arkistointitilaa (-a, --archive). Tämä on lyhenne valitsimille "
-"-rlptgoD."
+"rlptgoD."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
 #: smb4k.kcfg:258
@@ -717,12 +711,7 @@ msgstr ""
 "jätetään sikseen jos ne ovat olemassa, ja puuttuvat implikoidut kansiot "
 "luodaan oletusmäärittein. Tämä sallii implikoitujen sijaintien väliset "
 "suuretkin erot, esim. siirron toisella puolella kansio voi olla symlinkki, "
-"toisella puolella oikea kansio.Älä lähetä implikoituja kansioita --relative-"
-"valitsimen yhteydessä (--no-implied-dirs). Tämä tarkoittaa, että "
-"kohdejärjestelmän vastaavat sijainnit jätetään sikseen jos ne ovat olemassa, "
-"ja puuttuvat implikoidut kansiot luodaan oletusmäärittein. Tämä sallii "
-"implikoitujen sijaintien väliset suuretkin erot, esim. siirron toisella "
-"puolella kansio voi olla symlinkki, toisella puolella oikea kansio."
+"toisella puolella oikea kansio."
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
 #: smb4k.kcfg:283
@@ -1176,9 +1165,7 @@ msgid ""
 msgstr ""
 "Poista kohteen ylimääräiset tiedostot (--delete). Tämä asettaa rsyncin "
 "poistamaan lähteestä puuttuvat kohteen tiedostot mutta vain synkronoitavista "
-"kansioista.Poista kohteen ylimääräiset tiedostot (--delete). Tämä asettaa "
-"rsyncin poistamaan lähteestä puuttuvat kohteen tiedostot mutta vain "
-"synkronoitavista kansioista."
+"kansioista."
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
 #: smb4k.kcfg:416
@@ -1196,9 +1183,7 @@ msgid ""
 msgstr ""
 "Poista vastaanottavan puolen tiedostot ennen siirron alkua (--delete-"
 "before). Tämä on oletustapa, jos --delete tai --delete-excluded annetaan "
-"ilman yhtä --delete-KUN-valitsinta.Poista vastaanottavan puolen tiedostot "
-"ennen siirron alkua (--delete-before). Tämä on oletustapa, jos --delete tai "
-"--delete-excluded annetaan ilman yhtä --delete-KUN-valitsinta."
+"ilman yhtä --delete-KUN-valitsinta."
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
 #: smb4k.kcfg:421
@@ -1615,9 +1600,7 @@ msgid ""
 msgstr ""
 "Kopioi tiedostot kokonaisina (-W, --whole-file). Tällä asetuksella "
 "inkrementaalista rsync-algoritmia ei käytetä, ja koko tiedosto lähetetään "
-"sellaisenaan.Kopioi tiedostot kokonaisina (-W, --whole-file). Tällä "
-"asetuksella inkrementaalista rsync-algoritmia ei käytetä, ja koko tiedosto "
-"lähetetään sellaisenaan."
+"sellaisenaan."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
 #: smb4k.kcfg:569
@@ -1635,10 +1618,7 @@ msgid ""
 msgstr ""
 "Älä ylitä tiedostojärjestelmän rajoja (-x, --one-file-system). Tällä "
 "asetuksella rsync välttää ylittämästä tiedostojärjestelmän rajoja käydessään "
-"läpi kansiorakennetta. Lisätietoa asetuksesta löytyy man-sivulta.Älä ylitä "
-"tiedostojärjestelmän rajoja (-x, --one-file-system). Tällä asetuksella rsync "
-"välttää ylittämästä tiedostojärjestelmän rajoja käydessään läpi "
-"kansiorakennetta. Lisätietoa asetuksesta löytyy man-sivulta."
+"läpi kansiorakennetta. Lisätietoa asetuksesta löytyy man-sivulta."
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
 #: smb4k.kcfg:574
@@ -1660,11 +1640,7 @@ msgstr ""
 "asetuksella rsync ei luo tiedostoja (tai kansioita), joita kohteessa ei "
 "vielä ole. Jos tämän kanssa käytetään valitsinta --ignore-existing, "
 "tiedostoja ei päivitetä (mistä voi olla hyötyä, jos haluat vain poistaa "
-"ylimääräiset tiedostot).Älä luo uusia tiedostoja vastaanottavalle puolelle "
-"(--existing). Tällä asetuksella rsync ei luo tiedostoja (tai kansioita), "
-"joita kohteessa ei vielä ole. Jos tämän kanssa käytetään valitsinta --ignore-"
-"existing, tiedostoja ei päivitetä (mistä voi olla hyötyä, jos haluat vain "
-"poistaa ylimääräiset tiedostot)."
+"ylimääräiset tiedostot)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
 #: smb4k.kcfg:579
@@ -1719,10 +1695,6 @@ msgid ""
 msgstr ""
 "Tee varmuuskopiot (-b, --backup). Tällä asetuksella olemassa olevat "
 "kohdetiedostot nimetään uudelleen tiedostoja siirrettäessä tai "
-"poistettaessa. Voit valita, mihin varmuuskopiot sijoitetaan ja "
-"(valinnaisesti) minkä päätteen ne saavat valitsimin --backup-dir=KANSIO ja --"
-"suffix=PÄÄTE.Tee varmuuskopiot (-b, --backup). Tällä asetuksella olemassa "
-"olevat kohdetiedostot nimetään uudelleen tiedostoja siirrettäessä tai "
 "poistettaessa. Voit valita, mihin varmuuskopiot sijoitetaan ja "
 "(valinnaisesti) minkä päätteen ne saavat valitsimin --backup-dir=KANSIO ja --"
 "suffix=PÄÄTE."
@@ -1826,9 +1798,7 @@ msgid ""
 "rsync's manual page."
 msgstr ""
 "Ohita tiedostot tarkistussumman eikä muutosajan perusteella (-c, --"
-"checksum). Lisätietoa piirteen toiminnasta löytyy rsyncin man-sivulta.Ohita "
-"tiedostot tarkistussumman eikä muutosajan perusteella (-c, --checksum). "
-"Lisätietoa piirteen toiminnasta löytyy rsyncin man-sivulta."
+"checksum). Lisätietoa piirteen toiminnasta löytyy rsyncin man-sivulta."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
 #: smb4k.kcfg:641
@@ -1842,7 +1812,6 @@ msgstr "Aseta kaistanleveysrajoitus:"
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
 msgstr ""
-"Aseta tiedon enimmäissirtonopeus kilotavuina sekunnissa (--bwlimit=NOPEUS)."
 "Aseta tiedon enimmäissirtonopeus kilotavuina sekunnissa (--bwlimit=NOPEUS)."
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
@@ -1867,10 +1836,7 @@ msgid ""
 msgstr ""
 "Pane Smb4K käyttämään profiileja, jolloin voit määrittää eri kirjanmerkit ja "
 "asetukset profiileittain. Tästä on hyötyä erityisesti, jos käytät "
-"kannettavaa eri verkkoympäristöissä, esim. kotona ja töissä.Pane Smb4K "
-"käyttämään profiileja, jolloin voit määrittää eri kirjanmerkit ja asetukset "
-"profiileittain. Tästä on hyötyä erityisesti, jos käytät kannettavaa eri "
-"verkkoympäristöissä, esim. kotona ja töissä."
+"kannettavaa eri verkkoympäristöissä, esim. kotona ja töissä."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:663
@@ -2003,9 +1969,6 @@ msgid ""
 "will try to automatically determine the charset by looking up the \"unix "
 "charset\" option in the smb.conf."
 msgstr ""
-"Tämä on asiakaspuolen (ts. sinun puolesi) merkistömuunnoksiin käyttämä "
-"koodisivu. Jos säilytät oletusasetuksen, Smb4K yrittää automaattisesti "
-"määrittää merkistön tutkimalla smb.conf-tiedoston ”unix charset” -asetusta."
 "Tämä on asiakaspuolen (ts. sinun puolesi) merkistömuunnoksiin käyttämä "
 "koodisivu. Jos säilytät oletusasetuksen, Smb4K yrittää automaattisesti "
 "määrittää merkistön tutkimalla smb.conf-tiedoston ”unix charset” -asetusta."
@@ -2631,11 +2594,7 @@ msgstr ""
 "käsitellä tiedostoa tai kansiota. Voit haluta ottaa ominaisuuden pois "
 "käytöstä, jos palvelin ei tue CIFSin UNIX-laajennuksia eikä sinulla ole "
 "oikeutta tiedostojen tai kansioiden käsittelyyn. Asetus ei vaikuta "
-"tavalliseen ACL-tarkistukseen.Asiakaspuoli (ts. sinun puolesi) tarkistaa, "
-"onko sinulla oikea UID/GID käsitellä tiedostoa tai kansiota. Voit haluta "
-"ottaa ominaisuuden pois käytöstä, jos palvelin ei tue CIFSin UNIX-"
-"laajennuksia eikä sinulla ole oikeutta tiedostojen tai kansioiden "
-"käsittelyyn. Asetus ei vaikuta tavalliseen ACL-tarkistukseen."
+"tavalliseen ACL-tarkistukseen."
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:153
@@ -2658,12 +2617,7 @@ msgstr ""
 "puolesi) yrittää asettaa nykyisen prosessin voimassa olevan UIDin ja GIDin "
 "vasta luoduille tiedostoille, kansioille ja laitteille. Ellei ominaisuus ole "
 "käytössä, palvelin asettaa UIDin ja GIDin jaon oletusarvoihin. Kannattaa "
-"lukea mount.cifs-man-sivu, ennen kuin muutat tätä asetusta.Jos palvelin "
-"tukee CIFSin UNIX-laajennuksia, asiakaspuoli (ts. sinun puolesi) yrittää "
-"asettaa nykyisen prosessin voimassa olevan UIDin ja GIDin vasta luoduille "
-"tiedostoille, kansioille ja laitteille. Ellei ominaisuus ole käytössä, "
-"palvelin asettaa UIDin ja GIDin jaon oletusarvoihin. Kannattaa lukea mount."
-"cifs-man-sivu, ennen kuin muutat tätä asetusta."
+"lukea mount.cifs-man-sivu, ennen kuin muutat tätä asetusta."
 
 #. i18n: ectx: label, entry (ServerInodeNumbers), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:158
@@ -2681,9 +2635,7 @@ msgid ""
 msgstr ""
 "Käytä palvelimen palauttamia inode-lukuja (ainutkertaisia "
 "tiedostotunnistimia) sen sijaan, että yritetään automaattisesti luoda "
-"väliaikaiset inodet asiakaspuolelle.Käytä palvelimen palauttamia inode-"
-"lukuja (ainutkertaisia tiedostotunnistimia) sen sijaan, että yritetään "
-"automaattisesti luoda väliaikaiset inodet asiakaspuolelle."
+"väliaikaiset inodet asiakaspuolelle."
 
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:163
@@ -2797,9 +2749,7 @@ msgid ""
 "module 1.40 or later is required."
 msgstr ""
 "mount.cifs-tiedoston turvallisuustila. Tilan käyttämiseksi vaaditaan CIFS-"
-"ydinmoduulin versiota 1.40 tai myöhempää.mount.cifs-tiedoston "
-"turvallisuustila. Tilan käyttämiseksi vaaditaan CIFS-ydinmoduulin versiota "
-"1.40 tai myöhempää."
+"ydinmoduulin versiota 1.40 tai myöhempää."
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:201

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-28 03:15+0000\n"
-"PO-Revision-Date: 2026-01-10 21:06+0200\n"
+"PO-Revision-Date: 2026-08-25 10:19+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -1125,8 +1125,7 @@ msgid ""
 "any files here.</qt>"
 msgstr ""
 "<qt>Jakoon <b>%1</b> ei ole aktiivista yhteyttä! Et voi pudottaa tiedostoja "
-"tänne.</qt><qt>Jakoon <b>%1</b> ei ole aktiivista yhteyttä! Et voi pudottaa "
-"tiedostoja tänne.</qt>"
+"tänne.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
