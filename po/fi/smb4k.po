@@ -1177,8 +1177,7 @@ msgid ""
 "any files here.</qt>"
 msgstr ""
 "<qt>Jakoon <b>%1</b> ei ole aktiivista yhteyttä! Et voi pudottaa tiedostoja "
-"tänne.</qt><qt>Jakoon <b>%1</b> ei ole aktiivista yhteyttä! Et voi pudottaa "
-"tiedostoja tänne.</qt>"
+"tänne.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
