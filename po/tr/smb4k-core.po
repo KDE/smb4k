@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2026-01-07 20:04+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1915,11 +1915,6 @@ msgstr "Zeroconf desteği, KDE’nin bu sürümünde kullanılabilir değil."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf ile bilinmeyen bir hata oluştu."
 
-#: smb4kmounter.cpp:422
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "%1 bağlama noktasına izin verilmiyor."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -3057,6 +3052,9 @@ msgstr "Kaynak"
 #, kde-format
 msgid "Destination"
 msgstr "Hedef"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "%1 bağlama noktasına izin verilmiyor."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB protokol sürümü:"

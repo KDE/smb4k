@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2025-12-11 11:10+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1970,11 +1970,6 @@ msgstr "La implementació de Zeroconf no està disponible en esta versió de KDE
 msgid "An unknown error with Zeroconf occurred."
 msgstr "S'ha produït un error desconegut amb Zeroconf."
 
-#: smb4kmounter.cpp:422
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "El punt de muntatge %1 és il·legal."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -3122,3 +3117,6 @@ msgstr "Origen"
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "El punt de muntatge %1 és il·legal."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1942,12 +1942,6 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:422
-#, fuzzy, kde-format
-#| msgid "The mountpoint is invalid."
-msgid "The mountpoint %1 is illegal."
-msgstr "De Inhangsteed is leeg."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, fuzzy, kde-format
@@ -3130,6 +3124,11 @@ msgstr "Born"
 #, kde-format
 msgid "Destination"
 msgstr "Teel"
+
+#, fuzzy
+#~| msgid "The mountpoint is invalid."
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "De Inhangsteed is leeg."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB-Protokollverschoon:"

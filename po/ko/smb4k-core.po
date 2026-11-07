@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2026-04-26 20:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean\n"
@@ -1855,11 +1855,6 @@ msgstr "이 KDE 버전에서는 Zeroconf 지원을 사용할 수 없습니다."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "알 수 없는 Zeroconf 오류가 발생했습니다."
 
-#: smb4kmounter.cpp:422
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "마운트 지점 %1이(가) 잘못되었습니다."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2960,6 +2955,9 @@ msgstr "원본"
 #, kde-format
 msgid "Destination"
 msgstr "대상"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "마운트 지점 %1이(가) 잘못되었습니다."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB 프로토콜 버전:"

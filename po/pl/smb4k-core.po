@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2026-05-16 12:55+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -1924,11 +1924,6 @@ msgstr "Obsługa Zeroconf jest niedostępna w tej wersji KDE."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Nastąpił nieznany błąd w Zeroconf."
 
-#: smb4kmounter.cpp:422
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "Punkt podpięcia %1 jest nielegalny."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -3062,6 +3057,9 @@ msgstr "Źródło"
 #, kde-format
 msgid "Destination"
 msgstr "Cel"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Punkt podpięcia %1 jest nielegalny."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Wersja protokołu SMB:"

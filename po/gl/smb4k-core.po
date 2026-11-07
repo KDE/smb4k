@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2025-06-22 15:55+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1948,12 +1948,6 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Produciuse un erro descoñecido con Zeroconf."
 
-#: smb4kmounter.cpp:422
-#, fuzzy, kde-format
-#| msgid "Show the mount point instead of the share name"
-msgid "The mountpoint %1 is illegal."
-msgstr "Mostrar o punto de montaxe no canto do nome da compartición"
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, fuzzy, kde-format
@@ -3096,6 +3090,11 @@ msgstr "Orixe"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#, fuzzy
+#~| msgid "Show the mount point instead of the share name"
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Mostrar o punto de montaxe no canto do nome da compartición"
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Versión do protocolo SMB:"

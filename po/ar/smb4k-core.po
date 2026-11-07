@@ -1,12 +1,12 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# SPDX-FileCopyrightText: 2021, 2022, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2021-2022, 2025-2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2026-08-10 18:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -1867,11 +1867,6 @@ msgstr "دعم Zeroconf غير متوفر في هذا الإصدار من كيد
 msgid "An unknown error with Zeroconf occurred."
 msgstr "حدث خطأ غير معروف في Zeroconf."
 
-#: smb4kmounter.cpp:422
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "نقط الوصل %1 غير قانونية."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -2990,6 +2985,9 @@ msgstr "المصدر"
 #, kde-format
 msgid "Destination"
 msgstr "المقصد"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "نقط الوصل %1 غير قانونية."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "إصدار ميفاق SMB:"

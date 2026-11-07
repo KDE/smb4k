@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2024-09-19 16:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -28,57 +28,57 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sstavra@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:67
+#: helpers/smb4kmounthelper.cpp:66
 #, fuzzy, kde-format
 #| msgid "The wallet is not in use."
 msgid "The computer is not online."
 msgstr "Το πορτοφόλι δεν χρησιμοποιείται."
 
-#: helpers/smb4kmounthelper.cpp:76
+#: helpers/smb4kmounthelper.cpp:75
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:82
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
-msgid "The mount command could not be found."
-msgstr "Αδυναμία έναρξης της διαδικασίας προσάρτησης."
-
-#: helpers/smb4kmounthelper.cpp:88
-#, kde-format
-msgid "Forbidden mount options were passed."
-msgstr ""
-
-#: helpers/smb4kmounthelper.cpp:138
-#, kde-format
-msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
-
-#: helpers/smb4kmounthelper.cpp:182
-#, kde-format
-msgid "The mount process could not be started."
-msgstr "Αδυναμία έναρξης της διαδικασίας προσάρτησης."
-
-#: helpers/smb4kmounthelper.cpp:195
+#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
 #, fuzzy, kde-format
 #| msgid "The mountpoint %1 is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "Το σημείο προσάρτησης %1 δεν είναι έγκυρο."
 
-#: helpers/smb4kmounthelper.cpp:201
+#: helpers/smb4kmounthelper.cpp:85
+#, fuzzy, kde-format
+#| msgid "The mount process could not be started."
+msgid "The mount command could not be found."
+msgstr "Αδυναμία έναρξης της διαδικασίας προσάρτησης."
+
+#: helpers/smb4kmounthelper.cpp:91
+#, kde-format
+msgid "Forbidden mount options were passed."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:141
+#, kde-format
+msgid "There is something wrong with the provided Kerberos ticket."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:181
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "Αδυναμία έναρξης της διαδικασίας προσάρτησης."
+
+#: helpers/smb4kmounthelper.cpp:200
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Αδυναμία έναρξης της διαδικασίας αποπροσάρτησης."
 
-#: helpers/smb4kmounthelper.cpp:207
+#: helpers/smb4kmounthelper.cpp:206
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "Η διαδικασία αποπροσάρτησης κατέρρευσε."
 
-#: helpers/smb4kmounthelper.cpp:249
+#: helpers/smb4kmounthelper.cpp:248
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Αδυναμία έναρξης της διαδικασίας αποπροσάρτησης."
@@ -98,7 +98,7 @@ msgstr ""
 #: smb4k/main.cpp:44
 #, fuzzy, kde-format
 #| msgid "© 2003-2021 Alexander Reinholdt"
-msgid "© 2003-2024 Alexander Reinholdt"
+msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "© 2003-2021 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1926,12 +1926,6 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Der skete en godkendelses fejl."
 
-#: smb4kmounter.cpp:422
-#, fuzzy, kde-format
-#| msgid "The mountpoint is invalid."
-msgid "The mountpoint %1 is illegal."
-msgstr "Monteringspunktet er ugyldigt."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, fuzzy, kde-format
@@ -3127,6 +3121,11 @@ msgstr "Kilde"
 #, kde-format
 msgid "Destination"
 msgstr "Destination"
+
+#, fuzzy
+#~| msgid "The mountpoint is invalid."
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Monteringspunktet er ugyldigt."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB-protokolversion:"

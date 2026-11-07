@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2018-11-25 12:20+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -1639,11 +1639,6 @@ msgstr ""
 #: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
-
-#: smb4kmounter.cpp:422
-#, kde-format
-msgid "The mountpoint %1 is illegal."
 msgstr ""
 
 #. i18n: ectx: label, entry (UseIds), group (Mounting)

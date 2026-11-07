@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -1666,11 +1666,6 @@ msgstr ""
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
-#: smb4kmounter.cpp:422
-#, fuzzy, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "Sýna tengipunkt í stað nafns á sameign"
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, fuzzy, kde-format
@@ -2716,6 +2711,10 @@ msgstr "Upphaf:"
 #| msgid "Destination:"
 msgid "Destination"
 msgstr "Áfangastaður:"
+
+#, fuzzy
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Sýna tengipunkt í stað nafns á sameign"
 
 #, fuzzy
 #~| msgid "Protocol hint:"

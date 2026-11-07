@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 03:15+0000\n"
+"POT-Creation-Date: 2026-11-07 03:00+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1908,11 +1908,6 @@ msgstr "Podpora Zeroconf nie je v tejto verzii KDE dostupná."
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Vyskytla sa neznáma chyba so Zeroconf."
 
-#: smb4kmounter.cpp:422
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "Bod pripojenia %1 je neplatný."
-
 #. i18n: ectx: label, entry (UseIds), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_linux.kcfg:18
 #, kde-format
@@ -3040,6 +3035,9 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cieľ"
+
+#~ msgid "The mountpoint %1 is illegal."
+#~ msgstr "Bod pripojenia %1 je neplatný."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Verzia protokolu SMB:"
