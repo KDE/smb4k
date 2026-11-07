@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-05 00:45+0000\n"
+"POT-Creation-Date: 2026-11-07 00:57+0000\n"
 "PO-Revision-Date: 2026-07-16 10:52+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -41,42 +41,43 @@ msgstr "L'ordinador no està en línia."
 msgid "Could not create mount point for share %1."
 msgstr "No s'ha pogut crear el punt de muntatge de la compartició %1."
 
-#: helpers/smb4kmounthelper.cpp:81
+#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is illegal."
+msgid "The mount point %1 is illegal."
+msgstr "El punt de muntatge %1 és il·legal."
+
+#: helpers/smb4kmounthelper.cpp:85
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "No s'ha pogut trobar l'ordre «mount»."
 
-#: helpers/smb4kmounthelper.cpp:87
+#: helpers/smb4kmounthelper.cpp:91
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "S'han passat opcions prohibides de muntatge."
 
-#: helpers/smb4kmounthelper.cpp:137
+#: helpers/smb4kmounthelper.cpp:141
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Hi ha alguna cosa incorrecta amb el tiquet del Kerberos."
 
-#: helpers/smb4kmounthelper.cpp:177
+#: helpers/smb4kmounthelper.cpp:181
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "No s'ha pogut iniciar el procés de muntatge."
 
-#: helpers/smb4kmounthelper.cpp:190
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "El punt de muntatge %1 és il·legal."
-
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:200
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "No s'ha pogut trobar l'ordre «umount»."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:206
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "S'han passat opcions prohibides de desmuntatge."
 
-#: helpers/smb4kmounthelper.cpp:244
+#: helpers/smb4kmounthelper.cpp:248
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "No s'ha pogut iniciar el procés de desmuntatge."

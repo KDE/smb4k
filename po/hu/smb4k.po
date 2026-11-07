@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-05 00:45+0000\n"
+"POT-Creation-Date: 2026-11-07 00:57+0000\n"
 "PO-Revision-Date: 2024-05-10 14:21+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -45,46 +45,46 @@ msgstr "Ez a gép már szerepel a listában."
 msgid "Could not create mount point for share %1."
 msgstr "%1 könyvtár létrehozása sikertelen!"
 
-#: helpers/smb4kmounthelper.cpp:81
+#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is invalid."
+msgid "The mount point %1 is illegal."
+msgstr "A(z) %1 csatolási pont érvénytelen."
+
+#: helpers/smb4kmounthelper.cpp:85
 #, fuzzy, kde-format
 #| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "A csatolási folyamat nem indítható el."
 
-#: helpers/smb4kmounthelper.cpp:87
+#: helpers/smb4kmounthelper.cpp:91
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:137
+#: helpers/smb4kmounthelper.cpp:141
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr ""
 
-#: helpers/smb4kmounthelper.cpp:177
+#: helpers/smb4kmounthelper.cpp:181
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "A csatolási folyamat nem indítható el."
 
-#: helpers/smb4kmounthelper.cpp:190
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
-msgid "The mountpoint %1 is illegal."
-msgstr "A(z) %1 csatolási pont érvénytelen."
-
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:200
 #, fuzzy, kde-format
 #| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "A lecsatolási folyamat nem indítható el."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:206
 #, fuzzy, kde-format
 #| msgid "The unmount process crashed."
 msgid "Forbidden unmount options were passed."
 msgstr "A lecsatolási folyamat összeomlott."
 
-#: helpers/smb4kmounthelper.cpp:244
+#: helpers/smb4kmounthelper.cpp:248
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "A lecsatolási folyamat nem indítható el."

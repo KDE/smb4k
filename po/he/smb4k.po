@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-05 00:45+0000\n"
+"POT-Creation-Date: 2026-11-07 00:57+0000\n"
 "PO-Revision-Date: 2026-07-17 12:17+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -38,42 +38,43 @@ msgstr "המחשב אינו מחובר."
 msgid "Could not create mount point for share %1."
 msgstr "לא ניתן ליצור נקודת עגינה לשיתוף %1."
 
-#: helpers/smb4kmounthelper.cpp:81
+#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is illegal."
+msgid "The mount point %1 is illegal."
+msgstr "נקודת העיגון %1 אינה חוקית."
+
+#: helpers/smb4kmounthelper.cpp:85
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "לא ניתן למצוא את פקודת העיגון (mount)."
 
-#: helpers/smb4kmounthelper.cpp:87
+#: helpers/smb4kmounthelper.cpp:91
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "הועברו אפשרויות עיגון אסורות."
 
-#: helpers/smb4kmounthelper.cpp:137
+#: helpers/smb4kmounthelper.cpp:141
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "משהו השתבש עם כרטיס ה־Kerberos שסופק."
 
-#: helpers/smb4kmounthelper.cpp:177
+#: helpers/smb4kmounthelper.cpp:181
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך העיגון."
 
-#: helpers/smb4kmounthelper.cpp:190
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "נקודת העיגון %1 אינה חוקית."
-
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:200
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "לא ניתן להפעיל את פקודת ניתוק העיגון (umount)."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:206
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "הועברו אפשרויות ניתוק עיגון אסורות."
 
-#: helpers/smb4kmounthelper.cpp:244
+#: helpers/smb4kmounthelper.cpp:248
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "לא ניתן להפעיל את תהליך ניתוק העיגון."

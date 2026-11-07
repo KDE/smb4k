@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-05 00:45+0000\n"
+"POT-Creation-Date: 2026-11-07 00:57+0000\n"
 "PO-Revision-Date: 2026-08-28 13:07+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -41,42 +41,43 @@ msgstr "Kompiuteris nėra prisijungęs prie interneto."
 msgid "Could not create mount point for share %1."
 msgstr "Nepavyko sukurti prijungimo taško, skirto viešiniui %1."
 
-#: helpers/smb4kmounthelper.cpp:81
+#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is illegal."
+msgid "The mount point %1 is illegal."
+msgstr "Prijungimo taškas %1 yra neleistinas."
+
+#: helpers/smb4kmounthelper.cpp:85
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "Nepavyko rasti prijungimo (mount) komandos."
 
-#: helpers/smb4kmounthelper.cpp:87
+#: helpers/smb4kmounthelper.cpp:91
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "Buvo perduotos draudžiamos prijungimo parinktys."
 
-#: helpers/smb4kmounthelper.cpp:137
+#: helpers/smb4kmounthelper.cpp:141
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Kažkas ne taip su pateiktu Kerberos bilietu."
 
-#: helpers/smb4kmounthelper.cpp:177
+#: helpers/smb4kmounthelper.cpp:181
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Nepavyko paleisti prijungimo proceso."
 
-#: helpers/smb4kmounthelper.cpp:190
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "Prijungimo taškas %1 yra neleistinas."
-
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:200
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "Nepavyko rasti atjungimo (umount) komandos."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:206
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Buvo perduotos draudžiamos atjungimo parinktys."
 
-#: helpers/smb4kmounthelper.cpp:244
+#: helpers/smb4kmounthelper.cpp:248
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Nepavyko paleisti atjungimo proceso."

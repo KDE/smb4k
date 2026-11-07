@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-05 00:45+0000\n"
+"POT-Creation-Date: 2026-11-07 00:57+0000\n"
 "PO-Revision-Date: 2026-02-28 22:55+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -40,42 +40,43 @@ msgstr "Ordenagailua ez dago lerroan."
 msgid "Could not create mount point for share %1."
 msgstr "Ezin izan du %1 partekatzerako muntaia-puntua sortu."
 
-#: helpers/smb4kmounthelper.cpp:81
+#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#, fuzzy, kde-format
+#| msgid "The mountpoint %1 is illegal."
+msgid "The mount point %1 is illegal."
+msgstr "%1 muntaia-puntua ilegala da."
+
+#: helpers/smb4kmounthelper.cpp:85
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "Muntatzeko mount komandoa ezin izan da aurkitu."
 
-#: helpers/smb4kmounthelper.cpp:87
+#: helpers/smb4kmounthelper.cpp:91
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "Muntatzeko debekatutako aukerak pasatu dira."
 
-#: helpers/smb4kmounthelper.cpp:137
+#: helpers/smb4kmounthelper.cpp:141
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Emandako Kerberos tiketarekin zerbait gaizki dago."
 
-#: helpers/smb4kmounthelper.cpp:177
+#: helpers/smb4kmounthelper.cpp:181
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Muntatzeko prozesua ezin izan da abiarazi."
 
-#: helpers/smb4kmounthelper.cpp:190
-#, kde-format
-msgid "The mountpoint %1 is illegal."
-msgstr "%1 muntaia-puntua ilegala da."
-
-#: helpers/smb4kmounthelper.cpp:196
+#: helpers/smb4kmounthelper.cpp:200
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "Desmuntatzeko umount komandoa ezin izan da aurkitu."
 
-#: helpers/smb4kmounthelper.cpp:202
+#: helpers/smb4kmounthelper.cpp:206
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Desmuntatzeko debekatutako aukerak pasatu dira."
 
-#: helpers/smb4kmounthelper.cpp:244
+#: helpers/smb4kmounthelper.cpp:248
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Desmuntatzeko prozesua ezin izan da abiarazi."
