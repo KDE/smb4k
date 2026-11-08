@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 00:57+0000\n"
-"PO-Revision-Date: 2026-08-30 23:34+0200\n"
+"PO-Revision-Date: 2026-11-07 11:10+0100\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -40,8 +40,7 @@ msgid "Could not create mount point for share %1."
 msgstr "Nepodařilo se vytvořit připojovací bod pro sdílenou složku %1."
 
 #: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is illegal."
+#, kde-format
 msgid "The mount point %1 is illegal."
 msgstr "Připojovací bod %1 je neplatný."
 

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 00:57+0000\n"
-"PO-Revision-Date: 2026-07-16 19:56+0300\n"
+"PO-Revision-Date: 2026-11-07 19:21+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -44,8 +44,7 @@ msgid "Could not create mount point for share %1."
 msgstr "%1 paylaşımı için bağlama noktası oluşturulamadı."
 
 #: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is illegal."
+#, kde-format
 msgid "The mount point %1 is illegal."
 msgstr "“%1” bağlama noktasına izin verilmiyor."
 

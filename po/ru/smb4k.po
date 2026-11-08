@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 00:57+0000\n"
-"PO-Revision-Date: 2026-09-22 21:47+0200\n"
-"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-11-07 07:45+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -51,8 +51,7 @@ msgid "Could not create mount point for share %1."
 msgstr "Не удалось создать точку подключения для ресурса %1."
 
 #: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is illegal."
+#, kde-format
 msgid "The mount point %1 is illegal."
 msgstr "«%1» — недопустимая точка подключения."
 
@@ -1258,7 +1257,7 @@ msgstr "Хост"
 #: smb4k/smb4ktooltip.cpp:161 smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "Comment:"
-msgstr "КоментарийЖ"
+msgstr "Комментарий:"
 
 # BUGME: what is %1? It's either "Disk" (Общая папка) or "Printer" (Принтер) --aspotashev
 #: smb4k/smb4ktooltip.cpp:174

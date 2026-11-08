@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 00:57+0000\n"
-"PO-Revision-Date: 2026-07-16 19:31+0300\n"
+"PO-Revision-Date: 2026-11-07 12:55+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -42,8 +42,7 @@ msgid "Could not create mount point for share %1."
 msgstr "Не вдалося створити точку монтування для спільного ресурсу %1."
 
 #: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is illegal."
+#, kde-format
 msgid "The mount point %1 is illegal."
 msgstr "Точка монтування %1 є неприпустимою."
 

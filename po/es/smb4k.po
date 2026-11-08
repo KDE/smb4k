@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 00:57+0000\n"
-"PO-Revision-Date: 2026-08-08 17:23+0100\n"
+"PO-Revision-Date: 2026-11-07 22:58+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -51,8 +51,7 @@ msgid "Could not create mount point for share %1."
 msgstr "No se pudo crear el punto de montaje para el recurso compartido %1."
 
 #: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is illegal."
+#, kde-format
 msgid "The mount point %1 is illegal."
 msgstr "El punto de montaje %1 es ilegal."
 
