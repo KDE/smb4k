@@ -109,10 +109,9 @@ msgstr ""
 "partages Samba"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2024 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© 2003 - 2024 Alexander Reinholdt"
+msgstr "© 2003 - 2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format

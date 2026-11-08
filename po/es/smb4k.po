@@ -1,22 +1,22 @@
 # Spanish translations for smb4k.po package.
-# Copyright (C) 2004-2025 This file is copyright:
+# Copyright (C) 2004-2026 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
 # SPDX-FileCopyrightText: 2004 Quique <quique@sindominio.net>
-# SPDX-FileCopyrightText: 2005, 2006, 2007, 2008 Martín Carr <tincarr@gmail.com>
+# SPDX-FileCopyrightText: 2005-2008 Martín Carr <tincarr@gmail.com>
 # SPDX-FileCopyrightText: 2010 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
-# SPDX-FileCopyrightText: 2010, 2011, 2012 Xavier Corredor Llano <xavier.corredor.llano@gmail.com>
-# SPDX-FileCopyrightText: 2011, 2014, 2015 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2010-2012 Xavier Corredor Llano <xavier.corredor.llano@gmail.com>
+# SPDX-FileCopyrightText: 2011, 2014-2015 Eloy Cuadra <ecuadra@eloihr.net>
 # SPDX-FileCopyrightText: 2013 Miguel Navarrete Hernandez <recados.akka@gmail.com>
-# SPDX-FileCopyrightText: 2013, 2014 Raul Gonzalez <raulgf83@gmail.com>
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024, 2025 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
+# SPDX-FileCopyrightText: 2013-2014 Raul Gonzalez <raulgf83@gmail.com>
+# SPDX-FileCopyrightText: 2015-2019 Javier Vinal <fjvinal@gmail.com>
+# SPDX-FileCopyrightText: 2019-2026 Víctor Rodrigo Córdoba <vrcordoba@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 03:00+0000\n"
-"PO-Revision-Date: 2025-12-13 20:30+0100\n"
+"PO-Revision-Date: 2026-11-07 22:55+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -103,10 +103,9 @@ msgstr ""
 "recursos compartidos de Samba"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2024 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© 2003-2024 Alexander Reinholdt"
+msgstr "© 2003-2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format

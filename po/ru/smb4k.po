@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 03:00+0000\n"
-"PO-Revision-Date: 2026-01-29 19:57+0300\n"
+"PO-Revision-Date: 2026-11-07 07:45+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -103,10 +103,9 @@ msgstr ""
 "использованием протокола Samba"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2024 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© Alexander Reinholdt, 2003–2024"
+msgstr "© Alexander Reinholdt, 2003–2026"
 
 #: smb4k/main.cpp:53
 #, kde-format
@@ -1206,7 +1205,7 @@ msgstr "Хост"
 #: smb4k/smb4ktooltip.cpp:161 smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "Comment:"
-msgstr "КоментарийЖ"
+msgstr "Комментарий:"
 
 # BUGME: what is %1? It's either "Disk" (Общая папка) or "Printer" (Принтер) --aspotashev
 #: smb4k/smb4ktooltip.cpp:174
