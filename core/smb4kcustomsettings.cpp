@@ -199,11 +199,11 @@ Smb4KGlobal::NetworkItem Smb4KCustomSettings::type() const
 void Smb4KCustomSettings::setWorkgroupName(const QString &workgroup) const
 {
     if (!d->initWorkgroup) {
-        d->workgroupName = { workgroup, false };
+        d->workgroupName = {workgroup, false};
         d->initWorkgroup = true;
     } else {
         QString old = d->workgroupName.first;
-        d->workgroupName = { workgroup, (workgroup != old) };
+        d->workgroupName = {workgroup, (workgroup != old)};
     }
 }
 
@@ -242,9 +242,9 @@ void Smb4KCustomSettings::setIpAddress(const QString &ip) const
 
     if (!d->initIpAddress) {
         if (!ipAddress.isNull() && ipAddress.protocol() != QHostAddress::UnknownNetworkLayerProtocol) {
-            d->ipAddress = { ipAddress, false };
+            d->ipAddress = {ipAddress, false};
         } else {
-            d->ipAddress = { QHostAddress(), false };
+            d->ipAddress = {QHostAddress(), false};
         }
 
         d->initIpAddress = true;
@@ -252,9 +252,9 @@ void Smb4KCustomSettings::setIpAddress(const QString &ip) const
         QHostAddress old = d->ipAddress.first;
 
         if (!ipAddress.isNull() && ipAddress.protocol() != QHostAddress::UnknownNetworkLayerProtocol) {
-            d->ipAddress = { ipAddress, (ipAddress != old) };
+            d->ipAddress = {ipAddress, (ipAddress != old)};
         } else {
-            d->ipAddress = { QHostAddress(), false };
+            d->ipAddress = {QHostAddress(), false};
         }
     }
 }

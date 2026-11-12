@@ -9,8 +9,8 @@
 #include "smb4knotification.h"
 
 // Qt includes
-#include <QApplicationStatic>
 #include <QApplication>
+#include <QApplicationStatic>
 #include <QTextStream>
 
 // KDE includes
