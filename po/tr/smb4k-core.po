@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-28 01:00+0000\n"
-"PO-Revision-Date: 2026-07-16 19:57+0300\n"
+"PO-Revision-Date: 2026-11-10 21:39+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -625,7 +625,7 @@ msgstr "Arşiv kipi"
 #: smb4k.kcfg:248
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
-msgstr "Arşiv kipi kullan (-a, --archive). Bu -rlptgoD’ın kısa biçemidir."
+msgstr "Arşiv kipi kullan (-a, --archive). Bu -rlptgoD’ın kısa stilidir."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
 #: smb4k.kcfg:252
