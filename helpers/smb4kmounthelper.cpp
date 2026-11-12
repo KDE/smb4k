@@ -449,13 +449,13 @@ void Smb4KMountHelper::removeMountPoint(const QString &mountPoint) const
 
 bool Smb4KMountHelper::isMountPointAllowed(const QString &mountPoint) const
 {
-    struct stat s;
+    // NOTE: It seems that neither lstat() + S_ISLNK() nor std::filesystem::is_symlink()
+    // check the whole path for symlinks, but only the last component. Thus, both falsely
+    // report 'false' when a component in the middle is a symlink. For that reason, we
+    // use QDir here and check if the absolute path is the same as the canonical path.
+    QDir mountPointDir(mountPoint);
 
-    if (lstat(mountPoint.toUtf8().data(), &s) != 0) {
-        return false;
-    }
-
-    if (S_ISLNK(s.st_mode)) {
+    if (mountPointDir.absolutePath() != mountPointDir.canonicalPath()) {
         return false;
     }
 
