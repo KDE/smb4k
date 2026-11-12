@@ -10,12 +10,12 @@
 #include "smb4kcredentialsmanager.h"
 #include "smb4kcustomsettings.h"
 #include "smb4kcustomsettingsmanager.h"
-#include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4knotification.h"
 #include "smb4kprofilemanager.h"
 #include "smb4ksettings.h"
 #include "smb4kshare.h"
+#include "smb4ksysteminterface.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -77,11 +77,8 @@ public:
 
 Q_APPLICATION_STATIC(Smb4KMounterStatic, p);
 
-static const QString userMountPrefix = (
-    QDir(QStringLiteral("/run")).exists() ?
-    QStringLiteral("/run/smb4k/") + KUser(KUser::UseRealUserID).loginName() :
-    QStringLiteral("/var/run/smb4k/") + KUser(KUser::UseRealUserID).loginName()
-);
+static const QString userMountPrefix = (QDir(QStringLiteral("/run")).exists() ? QStringLiteral("/run/smb4k/") + KUser(KUser::UseRealUserID).loginName()
+                                                                              : QStringLiteral("/var/run/smb4k/") + KUser(KUser::UseRealUserID).loginName());
 
 Smb4KMounter::Smb4KMounter(QObject *parent)
     : KCompositeJob(parent)
@@ -101,9 +98,9 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     connect(Smb4KCredentialsManager::self(), &Smb4KCredentialsManager::credentialsUpdated, this, &Smb4KMounter::slotCredentialsUpdated);
     connect(Smb4KMountSettings::self(), &Smb4KMountSettings::configChanged, this, &Smb4KMounter::slotConfigChanged);
 
-    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::onlineStateChanged, this, &Smb4KMounter::slotOnlineStateChanged);
-    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareAdded, this, &Smb4KMounter::slotShareMounted);
-    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::networkShareRemoved, this, &Smb4KMounter::slotShareUnmounted);
+    connect(Smb4KSystemInterface::self(), &Smb4KSystemInterface::onlineStateChanged, this, &Smb4KMounter::slotOnlineStateChanged);
+    connect(Smb4KSystemInterface::self(), &Smb4KSystemInterface::networkShareAdded, this, &Smb4KMounter::slotShareMounted);
+    connect(Smb4KSystemInterface::self(), &Smb4KSystemInterface::networkShareRemoved, this, &Smb4KMounter::slotShareUnmounted);
 
     connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, &Smb4KMounter::slotAboutToQuit);
 }
@@ -325,7 +322,7 @@ void Smb4KMounter::mountShares(const QList<SharePtr> &shares)
 
     d->longActionRunning = false;
 
-    if (Smb4KHardwareInterface::self()->initialImportDone()) {
+    if (Smb4KSystemInterface::self()->initialImportDone()) {
         if (d->newlyMounted.size() > 1) {
             Smb4KNotification::sharesMounted(d->newlyMounted.size());
         } else {
@@ -361,7 +358,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     // or if the user chose to forcibly unmount inaccessible shares (Linux only).
     bool force = false;
 
-    if (!Smb4KHardwareInterface::self()->isOnline()) {
+    if (!Smb4KSystemInterface::self()->isOnline()) {
         force = true;
     }
 
@@ -405,13 +402,13 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
 {
     d->longActionRunning = true;
 
-    Smb4KHardwareInterface::self()->inhibit();
+    Smb4KSystemInterface::self()->inhibit();
 
     for (const SharePtr &share : shares) {
         unmountShare(share, silent);
     }
 
-    Smb4KHardwareInterface::self()->uninhibit();
+    Smb4KSystemInterface::self()->uninhibit();
 
     d->longActionRunning = false;
 
@@ -435,7 +432,7 @@ void Smb4KMounter::unmountAllShares(bool silent)
 
 void Smb4KMounter::start()
 {
-    if (Smb4KHardwareInterface::self()->isOnline()) {
+    if (Smb4KSystemInterface::self()->isOnline()) {
         QTimer::singleShot(50, this, SLOT(slotStartJobs()));
     }
 }
@@ -464,12 +461,12 @@ void Smb4KMounter::timerEvent(QTimerEvent *event)
     d->remountTimeout += timeoutIncrement;
     d->checkTimeout += timeoutIncrement;
 
-    if (isRunning() || !Smb4KHardwareInterface::self()->isOnline()) {
+    if (isRunning() || !Smb4KSystemInterface::self()->isOnline()) {
         return;
     }
 
     // Try to remount shares
-    if (d->remountAttempts < Smb4KMountSettings::remountAttempts() && Smb4KHardwareInterface::self()->initialImportDone()) {
+    if (d->remountAttempts < Smb4KMountSettings::remountAttempts() && Smb4KSystemInterface::self()->initialImportDone()) {
         if (d->remountAttempts == 0) {
             triggerRemounts(true);
         }
@@ -1015,7 +1012,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
     //
     map.insert(QStringLiteral("mh_url"), share->url());
 
-    if (!share->isInaccessible() && Smb4KHardwareInterface::self()->isOnline()) {
+    if (!share->isInaccessible() && Smb4KSystemInterface::self()->isOnline()) {
         map.insert(QStringLiteral("mh_mountpoint"), share->canonicalPath());
     } else {
         map.insert(QStringLiteral("mh_mountpoint"), share->path());
@@ -1058,7 +1055,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
     //
     map.insert(QStringLiteral("mh_url"), share->url());
 
-    if (!share->isInaccessible() && Smb4KHardwareInterface::self()->isOnline()) {
+    if (!share->isInaccessible() && Smb4KSystemInterface::self()->isOnline()) {
         map.insert(QStringLiteral("mh_mountpoint"), share->canonicalPath());
     } else {
         map.insert(QStringLiteral("mh_mountpoint"), share->path());
@@ -1262,7 +1259,7 @@ void Smb4KMounter::slotConfigChanged()
         }
 
         // Add all shares that need to be added
-        QStringList mountPoints = Smb4KHardwareInterface::self()->allMountPoints();
+        QStringList mountPoints = Smb4KSystemInterface::self()->allMountPoints();
 
         for (const QString &mountPoint : std::as_const(mountPoints)) {
             if (!findShareByPath(mountPoint)) {
@@ -1337,7 +1334,7 @@ void Smb4KMounter::slotShareMounted(const QString &mountPoint)
                 d->newlyMounted << share;
                 // Notification is handled in Smb4KMounter::mountShares()
             } else {
-                if (Smb4KHardwareInterface::self()->initialImportDone()) {
+                if (Smb4KSystemInterface::self()->initialImportDone()) {
                     Smb4KNotification::shareMounted(share);
                 }
 

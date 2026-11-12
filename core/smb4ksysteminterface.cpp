@@ -6,7 +6,7 @@
 */
 
 // application specific includes
-#include "smb4khardwareinterface.h"
+#include "smb4ksysteminterface.h"
 
 // system includes
 #include <unistd.h>
@@ -31,7 +31,7 @@
 #include <Solid/NetworkShare>
 #include <solid_version.h>
 
-class Smb4KHardwareInterfacePrivate
+class Smb4KSystemInterfacePrivate
 {
 public:
     QScopedPointer<QDBusInterface> dbusInterface;
@@ -43,17 +43,17 @@ public:
     int timerId;
 };
 
-class Smb4KHardwareInterfaceStatic
+class Smb4KSystemInterfaceStatic
 {
 public:
-    Smb4KHardwareInterface instance;
+    Smb4KSystemInterface instance;
 };
 
-Q_APPLICATION_STATIC(Smb4KHardwareInterfaceStatic, p);
+Q_APPLICATION_STATIC(Smb4KSystemInterfaceStatic, p);
 
-Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
+Smb4KSystemInterface::Smb4KSystemInterface(QObject *parent)
     : QObject(parent)
-    , d(new Smb4KHardwareInterfacePrivate)
+    , d(new Smb4KSystemInterfacePrivate)
 {
     d->systemOnline = false;
     d->systemSleep = false;
@@ -114,25 +114,25 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
         d->timerId = startTimer(1000);
     });
 
-    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceAdded, this, &Smb4KHardwareInterface::slotDeviceAdded);
-    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceRemoved, this, &Smb4KHardwareInterface::slotDeviceRemoved);
+    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceAdded, this, &Smb4KSystemInterface::slotDeviceAdded);
+    connect(Solid::DeviceNotifier::instance(), &Solid::DeviceNotifier::deviceRemoved, this, &Smb4KSystemInterface::slotDeviceRemoved);
 }
 
-Smb4KHardwareInterface::~Smb4KHardwareInterface()
+Smb4KSystemInterface::~Smb4KSystemInterface()
 {
 }
 
-Smb4KHardwareInterface *Smb4KHardwareInterface::self()
+Smb4KSystemInterface *Smb4KSystemInterface::self()
 {
     return &p->instance;
 }
 
-bool Smb4KHardwareInterface::isOnline() const
+bool Smb4KSystemInterface::isOnline() const
 {
     return d->systemOnline;
 }
 
-void Smb4KHardwareInterface::inhibit()
+void Smb4KSystemInterface::inhibit()
 {
     if (d->fileDescriptor.isValid()) {
         return;
@@ -153,7 +153,7 @@ void Smb4KHardwareInterface::inhibit()
     }
 }
 
-void Smb4KHardwareInterface::uninhibit()
+void Smb4KSystemInterface::uninhibit()
 {
     if (!d->fileDescriptor.isValid()) {
         return;
@@ -165,7 +165,7 @@ void Smb4KHardwareInterface::uninhibit()
     }
 }
 
-void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
+void Smb4KSystemInterface::checkOnlineState(bool emitSignal)
 {
     bool online = false;
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
@@ -186,12 +186,12 @@ void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
     }
 }
 
-bool Smb4KHardwareInterface::initialImportDone() const
+bool Smb4KSystemInterface::initialImportDone() const
 {
     return d->initialImportDone;
 }
 
-QStringList Smb4KHardwareInterface::allMountPoints() const
+QStringList Smb4KSystemInterface::allMountPoints() const
 {
     QStringList mountPoints;
 
@@ -202,13 +202,13 @@ QStringList Smb4KHardwareInterface::allMountPoints() const
     return mountPoints;
 }
 
-void Smb4KHardwareInterface::timerEvent(QTimerEvent *event)
+void Smb4KSystemInterface::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
     checkOnlineState();
 }
 
-void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
+void Smb4KSystemInterface::slotDeviceAdded(const QString &udi)
 {
     Solid::Device device(udi);
 
@@ -222,7 +222,7 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
     }
 }
 
-void Smb4KHardwareInterface::slotDeviceRemoved(const QString &udi)
+void Smb4KSystemInterface::slotDeviceRemoved(const QString &udi)
 {
     if (d->udis.contains(udi)) {
         QString mountpoint = udi.section(QStringLiteral(":"), -1, -1).trimmed();
@@ -231,7 +231,7 @@ void Smb4KHardwareInterface::slotDeviceRemoved(const QString &udi)
     }
 }
 
-void Smb4KHardwareInterface::slotSystemSleep(bool sleep)
+void Smb4KSystemInterface::slotSystemSleep(bool sleep)
 {
     inhibit();
     d->systemSleep = sleep;

@@ -23,7 +23,6 @@ target_sources(smb4kcore PRIVATE
   smb4kfile.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
-  smb4khardwareinterface.cpp
   smb4khomesshareshandler.cpp
   smb4khost.cpp
   smb4kmounter.cpp 
@@ -32,6 +31,7 @@ target_sources(smb4kcore PRIVATE
   smb4kshare.cpp
   smb4ksynchronizer.cpp
   smb4ksynchronizer_p.cpp
+  smb4ksysteminterface.cpp
   smb4kworkgroup.cpp)
 
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")

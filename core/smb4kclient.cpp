@@ -12,10 +12,10 @@
 #include "smb4kcredentialsmanager.h"
 #include "smb4kcustomsettings.h"
 #include "smb4kcustomsettingsmanager.h"
-#include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
+#include "smb4ksysteminterface.h"
 
 // Qt includes
 #include <QApplication>
@@ -48,15 +48,9 @@ Smb4KClient *Smb4KClient::self()
 
 void Smb4KClient::start()
 {
-    //
-    // Connect to the online state monitoring
-    //
-    connect(Smb4KHardwareInterface::self(), &Smb4KHardwareInterface::onlineStateChanged, this, &Smb4KClient::slotOnlineStateChanged, Qt::UniqueConnection);
+    connect(Smb4KSystemInterface::self(), &Smb4KSystemInterface::onlineStateChanged, this, &Smb4KClient::slotOnlineStateChanged, Qt::UniqueConnection);
 
-    //
-    // Start the scanning
-    //
-    if (Smb4KHardwareInterface::self()->isOnline()) {
+    if (Smb4KSystemInterface::self()->isOnline()) {
         QTimer::singleShot(50, this, SLOT(slotStartJobs()));
     }
 }

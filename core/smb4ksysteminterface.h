@@ -1,12 +1,12 @@
 /*
-    Provides an interface to the computer's hardware
+    Provides an interface to the operating system
 
     SPDX-FileCopyrightText: 2015-2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef SMB4KHARDWAREINTERFACE_H
-#define SMB4KHARDWAREINTERFACE_H
+#ifndef SMB4KSYSTEMINTERFACE_H
+#define SMB4KSYSTEMINTERFACE_H
 
 // application specific includes
 #include "smb4kcore_export.h"
@@ -17,36 +17,36 @@
 #include <QScopedPointer>
 #include <QSessionManager>
 
-class Smb4KHardwareInterfacePrivate;
+class Smb4KSystemInterfacePrivate;
 
 /**
- * This class provides an interface to the computer's hardware.
+ * This class provides an interface to the operating system.
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  * @since 2.0.0
  */
 
-class SMB4KCORE_EXPORT Smb4KHardwareInterface : public QObject
+class SMB4KCORE_EXPORT Smb4KSystemInterface : public QObject
 {
     Q_OBJECT
 
-    friend class Smb4KHardwareInterfacePrivate;
+    friend class Smb4KSystemInterfacePrivate;
 
 public:
     /**
      * The constructor
      */
-    explicit Smb4KHardwareInterface(QObject *parent = nullptr);
+    explicit Smb4KSystemInterface(QObject *parent = nullptr);
 
     /**
      * The destructor
      */
-    ~Smb4KHardwareInterface();
+    ~Smb4KSystemInterface();
 
     /**
      * The static pointer to this class.
      * @returns a static pointer to this class
      */
-    static Smb4KHardwareInterface *self();
+    static Smb4KSystemInterface *self();
 
     /**
      * This function returns TRUE if the system is online and FALSE otherwise.
@@ -142,7 +142,7 @@ private:
     /**
      * Pointer to private class
      */
-    QScopedPointer<Smb4KHardwareInterfacePrivate> d;
+    QScopedPointer<Smb4KSystemInterfacePrivate> d;
 };
 
 #endif

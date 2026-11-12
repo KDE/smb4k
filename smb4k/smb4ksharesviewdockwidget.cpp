@@ -7,11 +7,11 @@
 
 // application specific includes
 #include "smb4ksharesviewdockwidget.h"
-#include "core/smb4khardwareinterface.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
+#include "core/smb4ksysteminterface.h"
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
 #include "smb4ksharesview.h"
@@ -357,7 +357,7 @@ void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem *item, QDropEv
         return;
     }
 
-    if (!Smb4KHardwareInterface::self()->isOnline()) {
+    if (!Smb4KSystemInterface::self()->isOnline()) {
         // FIXME: Move this to the notifications.
         KMessageBox::error(
             m_sharesView,
