@@ -5,11 +5,11 @@
 # Giovanni Degani <tiefox@terra.com.br>, 2004.
 # Alexander Reinholdt <alexander.reinholdt@web.de>, 2004.
 # Lamarque Vieira Souza <lamarque@syst.com.br>, 2006.
-# SPDX-FileCopyrightText: 2010, 2025-2026 Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2010, 2025-2026 Marcus Vinícius de Andrade Gama <marcus.gama@kde.org>
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2010, 2013, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019.
 # Aracele Torres <araceletorres@gmail.com>, 2010, 2011.
-# Marcus Gama <marcus.gama@gmail.com>, 2011, 2012.
+# Marcus Gama <marcus.gama@kde.org>, 2011, 2012.
 # Thiago Masato Costa Sueto <herzenschein@gmail.com>, 2020.
 msgid ""
 msgstr ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-28 01:00+0000\n"
 "PO-Revision-Date: 2026-07-16 07:59-0300\n"
-"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"Last-Translator: Marcus Gama <marcus.gama@kde.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
