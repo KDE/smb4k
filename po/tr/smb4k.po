@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 03:00+0000\n"
-"PO-Revision-Date: 2026-05-07 00:31+0300\n"
+"PO-Revision-Date: 2026-11-16 19:32+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -894,7 +894,7 @@ msgstr "Kontrol+T"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:186
 #, kde-format
 msgid "Pre&view"
-msgstr "Ö&nizleme"
+msgstr "Ö&n İzle"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -993,7 +993,7 @@ msgstr "<b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin."
 #: smb4k/smb4kpreviewdialog.cpp:30
 #, kde-format
 msgid "Preview Dialog"
-msgstr "Önizleme İletişim Kutusu"
+msgstr "Ön İzleme İletişim Kutusu"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
