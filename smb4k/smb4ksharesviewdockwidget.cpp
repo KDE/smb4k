@@ -281,7 +281,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
 
     if (selectedItems.size() == 1) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
-        bool syncRunning = Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()));
+        bool syncRunning = Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->mountPoint()));
 
         m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled(!item->shareItem()->isForeign());
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
@@ -307,7 +307,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
 
             if (item) {
                 // Is the share synchronized at the moment?
-                if (Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()))) {
+                if (Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->mountPoint()))) {
                     syncsRunning += 1;
                 }
 
@@ -365,7 +365,7 @@ void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem *item, QDropEv
         return;
     }
 
-    QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
+    QUrl dest = QUrl::fromLocalFile(item->shareItem()->mountPoint());
 
     // FIXME: Either modify the drop menu that it only shows the allowed
     // drop actions or implement the following code.
@@ -435,7 +435,7 @@ void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr &share)
     for (int i = 0; i < m_sharesView->count(); ++i) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(m_sharesView->item(i));
 
-        if (item && (item->shareItem()->path() == share->path() || item->shareItem()->canonicalPath() == share->canonicalPath())) {
+        if (item && item->shareItem()->mountPoint() == share->mountPoint()) {
             if (item == m_sharesView->currentItem()) {
                 m_sharesView->setCurrentItem(nullptr);
             }
@@ -460,7 +460,7 @@ void Smb4KSharesViewDockWidget::slotShareUpdated(const SharePtr &share)
     for (int i = 0; i < m_sharesView->count(); ++i) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(m_sharesView->item(i));
 
-        if (item && (item->shareItem()->path() == share->path() || item->shareItem()->canonicalPath() == share->canonicalPath())) {
+        if (item && item->shareItem()->mountPoint() == share->mountPoint()) {
             item->update();
             break;
         }
@@ -540,7 +540,7 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool checked)
     for (QListWidgetItem *selectedItem : std::as_const(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
-        if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()))) {
+        if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->mountPoint()))) {
             QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog(this);
             if (synchronizationDialog->setShare(item->shareItem())) {
                 synchronizationDialog->show();

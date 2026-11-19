@@ -164,8 +164,8 @@ void Smb4KMounter::triggerRemounts(bool fillList)
             SharePtr share;
             QDir dir(generateMountPoint(option->url()));
 
-            if (!dir.canonicalPath().isEmpty()) {
-                share = findShareByPath(dir.canonicalPath());
+            if (!dir.absolutePath().isEmpty()) {
+                share = findShareByMountPoint(dir.absolutePath());
             }
 
             if (share) {
@@ -221,7 +221,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
     QUrl shareUrl = share->isHomesShare() ? share->homeUrl() : share->url();
     QDir dir(generateMountPoint(shareUrl));
 
-    if (!dir.canonicalPath().isEmpty() && findShareByPath(dir.canonicalPath())) {
+    if (!dir.absolutePath().isEmpty() && findShareByMountPoint(dir.absolutePath())) {
         return;
     }
 
@@ -1011,13 +1011,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
     // Insert data into the map
     //
     map.insert(QStringLiteral("mh_url"), share->url());
-
-    if (!share->isInaccessible() && Smb4KSystemInterface::self()->isOnline()) {
-        map.insert(QStringLiteral("mh_mountpoint"), share->canonicalPath());
-    } else {
-        map.insert(QStringLiteral("mh_mountpoint"), share->path());
-    }
-
+    map.insert(QStringLiteral("mh_mountpoint"), share->mountPoint());
     map.insert(QStringLiteral("mh_options"), options);
 
     return true;
@@ -1054,13 +1048,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
     // Insert data into the map
     //
     map.insert(QStringLiteral("mh_url"), share->url());
-
-    if (!share->isInaccessible() && Smb4KSystemInterface::self()->isOnline()) {
-        map.insert(QStringLiteral("mh_mountpoint"), share->canonicalPath());
-    } else {
-        map.insert(QStringLiteral("mh_mountpoint"), share->path());
-    }
-
+    map.insert(QStringLiteral("mh_mountpoint"), share->mountPoint());
     map.insert(QStringLiteral("mh_options"), options);
 
     return true;
@@ -1079,7 +1067,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &, bool, bool, QVariantM
 
 void Smb4KMounter::checkMountedShare(const SharePtr &share) const
 {
-    d->storageInfo.setPath(share->path());
+    d->storageInfo.setPath(share->mountPoint());
 
     if (d->storageInfo.isValid() && d->storageInfo.isReady()) {
         // Accessibility
@@ -1090,7 +1078,7 @@ void Smb4KMounter::checkMountedShare(const SharePtr &share) const
         share->setTotalDiskSpace(d->storageInfo.bytesTotal());
 
         // Get the owner and group, if possible.
-        QFileInfo fileInfo(share->path());
+        QFileInfo fileInfo(share->mountPoint());
         fileInfo.setCaching(false);
 
         if (fileInfo.exists()) {
@@ -1128,7 +1116,7 @@ SharePtr Smb4KMounter::createMountedShare(const QString &mountPoint) const
 
     SharePtr share = SharePtr::create();
     share->setUrl(QUrl(mp->mountedFrom()));
-    share->setPath(mp->mountPoint());
+    share->setMountPoint(mp->mountPoint());
     share->setMounted(true);
 
     QStringList mountOptions = mp->mountOptions();
@@ -1150,7 +1138,7 @@ SharePtr Smb4KMounter::createMountedShare(const QString &mountPoint) const
 
     QDir dir(userMountPrefix);
 
-    if (!dir.canonicalPath().isEmpty() && share->canonicalPath().startsWith(dir.canonicalPath())) {
+    if (!dir.absolutePath().isEmpty() && share->mountPoint().startsWith(dir.absolutePath())) {
         share->setForeign(false);
     } else {
         share->setForeign(true);
@@ -1262,7 +1250,7 @@ void Smb4KMounter::slotConfigChanged()
         QStringList mountPoints = Smb4KSystemInterface::self()->allMountPoints();
 
         for (const QString &mountPoint : std::as_const(mountPoints)) {
-            if (!findShareByPath(mountPoint)) {
+            if (!findShareByMountPoint(mountPoint)) {
                 SharePtr share = createMountedShare(mountPoint);
                 checkMountedShare(share);
 
@@ -1352,7 +1340,7 @@ void Smb4KMounter::slotShareUnmounted(const QString &mountPoint)
 {
     Q_ASSERT(!mountPoint.isEmpty());
 
-    SharePtr share = findShareByPath(mountPoint);
+    SharePtr share = findShareByMountPoint(mountPoint);
     share->setMounted(false);
 
     if (removeMountedShare(share, d->longActionRunning)) {

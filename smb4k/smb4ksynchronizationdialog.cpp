@@ -129,7 +129,7 @@ bool Smb4KSynchronizationDialog::setShare(const SharePtr &share)
 
     m_descriptionText->setText(i18n("Please provide the source and destination directory for the synchronization of <b>%1</b>.", share->displayString()));
 
-    m_sourceInput->setUrl(QUrl::fromLocalFile(share->path()));
+    m_sourceInput->setUrl(QUrl::fromLocalFile(share->mountPoint()));
     m_destinationInput->setUrl(
         QUrl::fromLocalFile(Smb4KSettings::rsyncPrefix().path() + QDir::separator() + share->hostName() + QDir::separator() + share->shareName())
             .adjusted(QUrl::NormalizePathSegments));

@@ -193,29 +193,18 @@ public:
     bool isPrinter() const;
 
     /**
-     * Sets the path aka mount point of the share as gathered by the mounter.
+     * Sets the mount point of the share.
      *
      * @param mountpoint      The mount point of the share.
      */
-    void setPath(const QString &mountpoint);
+    void setMountPoint(const QString &mountPoint);
 
     /**
-     * Returns the path to the mounted share (aka the mount point) as it was gathered
-     * by the mounter. It is a C-type string.
+     * Returns the mount point of the share.
      *
-     * @returns the path to the mounted share.
+     * @returns the mount point of the share.
      */
-    QString path() const;
-
-    /**
-     * Returns the canonical path to the mounted share. In contrast to the path()
-     * function it will return the absolute path without symlinks. However, should
-     * the share be inaccessible (i.e. the isInaccessible() returns TRUE), only
-     * the "normal" path is returned.
-     *
-     * @returns the canonical path to the mounted share.
-     */
-    QString canonicalPath() const;
+    QString mountPoint() const;
 
     /**
      * Set @p in to TRUE if the share cannot be accessed by the user. This may be

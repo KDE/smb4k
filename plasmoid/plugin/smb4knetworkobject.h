@@ -47,7 +47,7 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
     Q_PROPERTY(QUrl parentUrl READ parentUrl CONSTANT)
     Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
     Q_PROPERTY(bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed)
-    Q_PROPERTY(QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed)
+    Q_PROPERTY(QUrl mountPoint READ mountPoint WRITE setMountPoint NOTIFY changed)
     Q_PROPERTY(bool isMasterBrowser READ isMasterBrowser WRITE setMasterBrowser NOTIFY changed)
     Q_PROPERTY(bool isInaccessible READ isInaccessible WRITE setInaccessible NOTIFY changed)
 
@@ -239,20 +239,20 @@ public:
     void setPrinter(bool printer);
 
     /**
-     * This function returns the mountpoint of a mounted share or an empty
+     * This function returns the mount point of a mounted share or an empty
      * string if the network item is not a share or the share is not mounted.
      *
      * @returns the mount point of a share.
      */
-    QUrl mountpoint() const;
+    QUrl mountPoint() const;
 
     /**
-     * Set the mountpoint for this network item. This is only reasonable with a
+     * Set the mount point for this network item. This is only reasonable with a
      * share.
      *
      * @param mountpoint  The mountpoint
      */
-    void setMountpoint(const QUrl &url);
+    void setMountPoint(const QUrl &mountPoint);
 
     /**
      * Returns TRUE if the network item is a share that is mounted and became

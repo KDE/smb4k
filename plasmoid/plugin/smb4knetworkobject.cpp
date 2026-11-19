@@ -27,7 +27,7 @@ public:
     int parentType;
     QString comment;
     bool mounted;
-    QUrl mountpoint;
+    QUrl mountPoint;
     bool printer;
     bool isMaster;
     bool inaccessible;
@@ -83,7 +83,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObje
             d->inaccessible = share->isInaccessible();
             d->printer = share->isPrinter();
             d->isMaster = false;
-            d->mountpoint = QUrl::fromLocalFile(share->path());
+            d->mountPoint = QUrl::fromLocalFile(share->mountPoint());
             setType(Share);
         }
 
@@ -316,8 +316,8 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
                 d->mounted = share->isMounted();
                 d->inaccessible = share->isInaccessible();
                 d->printer = share->isPrinter();
-                d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
-                d->mountpoint.setScheme(QStringLiteral("file"));
+                d->mountPoint.setUrl(share->mountPoint(), QUrl::TolerantMode);
+                d->mountPoint.setScheme(QStringLiteral("file"));
             }
         }
     } else {
@@ -340,15 +340,15 @@ void Smb4KNetworkObject::setPrinter(bool printer)
     }
 }
 
-QUrl Smb4KNetworkObject::mountpoint() const
+QUrl Smb4KNetworkObject::mountPoint() const
 {
-    return d->mountpoint;
+    return d->mountPoint;
 }
 
-void Smb4KNetworkObject::setMountpoint(const QUrl &mountpoint)
+void Smb4KNetworkObject::setMountPoint(const QUrl &mountPoint)
 {
-    if (!d->mountpoint.matches(mountpoint, QUrl::None)) {
-        d->mountpoint = mountpoint;
+    if (!d->mountPoint.matches(mountPoint, QUrl::None)) {
+        d->mountPoint = mountPoint;
         Q_EMIT changed();
     }
 }

@@ -141,7 +141,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 
     QMap<QString, QVariant> data;
     data[QStringLiteral("text")] = share->displayString();
-    data[QStringLiteral("mountpoint")] = share->path();
+    data[QStringLiteral("mountpoint")] = share->mountPoint();
 
     shareMenu->setData(data);
     m_menus->addAction(shareMenu);
@@ -153,7 +153,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 
     QMap<QString, QVariant> unmountData;
     unmountData[QStringLiteral("type")] = QStringLiteral("unmount");
-    unmountData[QStringLiteral("mountpoint")] = share->path();
+    unmountData[QStringLiteral("mountpoint")] = share->mountPoint();
 
     unmount->setData(unmountData);
     unmount->setEnabled(!share->isForeign());
@@ -172,7 +172,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 
     QMap<QString, QVariant> bookmarkData;
     bookmarkData[QStringLiteral("type")] = QStringLiteral("bookmark");
-    bookmarkData[QStringLiteral("mountpoint")] = share->path();
+    bookmarkData[QStringLiteral("mountpoint")] = share->mountPoint();
 
     addBookmark->setData(bookmarkData);
     shareMenu->addAction(addBookmark);
@@ -185,7 +185,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 
     QMap<QString, QVariant> customOptionsData;
     customOptionsData[QStringLiteral("type")] = QStringLiteral("options");
-    customOptionsData[QStringLiteral("mountpoint")] = share->path();
+    customOptionsData[QStringLiteral("mountpoint")] = share->mountPoint();
 
     addCustomOptions->setData(customOptionsData);
     shareMenu->addAction(addCustomOptions);
@@ -198,7 +198,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 
     QMap<QString, QVariant> syncData;
     syncData[QStringLiteral("type")] = QStringLiteral("sync");
-    syncData[QStringLiteral("mountpoint")] = share->path();
+    syncData[QStringLiteral("mountpoint")] = share->mountPoint();
 
     synchronize->setData(syncData);
     synchronize->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("rsync")).isEmpty() && !share->isInaccessible());
@@ -217,7 +217,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 
     QMap<QString, QVariant> konsoleData;
     konsoleData[QStringLiteral("type")] = QStringLiteral("konsole");
-    konsoleData[QStringLiteral("mountpoint")] = share->path();
+    konsoleData[QStringLiteral("mountpoint")] = share->mountPoint();
 
     konsole->setData(konsoleData);
     konsole->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("konsole")).isEmpty() && !share->isInaccessible());
@@ -231,7 +231,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 
     QMap<QString, QVariant> fileManagerData;
     fileManagerData[QStringLiteral("type")] = QStringLiteral("filemanager");
-    fileManagerData[QStringLiteral("mountpoint")] = share->path();
+    fileManagerData[QStringLiteral("mountpoint")] = share->mountPoint();
 
     filemanager->setData(fileManagerData);
     filemanager->setEnabled(!share->isInaccessible());
@@ -269,7 +269,7 @@ void Smb4KSharesMenu::removeShareFromMenu(const SharePtr &share)
     // are delete with their parent.
     //
     for (int i = 0; i < m_menus->actions().size(); ++i) {
-        if (m_menus->actions().at(i)->data().toMap().value(QStringLiteral("mountpoint")).toString() == share->path()) {
+        if (m_menus->actions().at(i)->data().toMap().value(QStringLiteral("mountpoint")).toString() == share->mountPoint()) {
             QAction *menuAction = m_menus->actions().takeAt(i);
             removeAction(menuAction);
             delete menuAction;
@@ -335,7 +335,7 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
     // Check that we have a share related action
     //
     if (action->data().toMap().contains(QStringLiteral("type"))) {
-        share = findShareByPath(action->data().toMap().value(QStringLiteral("mountpoint")).toString());
+        share = findShareByMountPoint(action->data().toMap().value(QStringLiteral("mountpoint")).toString());
     }
 
     //

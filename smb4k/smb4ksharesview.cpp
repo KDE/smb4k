@@ -156,14 +156,14 @@ void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
         return;
     }
 
-    QStorageInfo storageInfo(item->shareItem()->canonicalPath());
+    QStorageInfo storageInfo(item->shareItem()->mountPoint());
 
     if (storageInfo.isReadOnly()) {
         e->ignore();
         return;
     }
 
-    QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+    QUrl url = QUrl::fromLocalFile(item->shareItem()->mountPoint());
 
     if (e->source() == this && e->mimeData()->urls().first() == url) {
         e->ignore();
@@ -187,14 +187,14 @@ void Smb4KSharesView::dropEvent(QDropEvent *e)
         return;
     }
 
-    QStorageInfo storageInfo(item->shareItem()->canonicalPath());
+    QStorageInfo storageInfo(item->shareItem()->mountPoint());
 
     if (storageInfo.isReadOnly()) {
         e->ignore();
         return;
     }
 
-    QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
+    QUrl url = QUrl::fromLocalFile(item->shareItem()->mountPoint());
 
     if (e->source() == this && e->mimeData()->urls().first() == url) {
         e->ignore();
@@ -218,7 +218,7 @@ QMimeData *Smb4KSharesView::mimeData(const QList<QListWidgetItem *> &list) const
 
     for (int i = 0; i < list.count(); ++i) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(list.at(i));
-        urls << QUrl::fromLocalFile(item->shareItem()->path());
+        urls << QUrl::fromLocalFile(item->shareItem()->mountPoint());
     }
 
     mimeData->setUrls(urls);

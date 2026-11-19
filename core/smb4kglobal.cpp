@@ -462,19 +462,21 @@ const QList<SharePtr> &Smb4KGlobal::mountedSharesList()
     return p->mountedSharesList;
 }
 
-SharePtr Smb4KGlobal::findShareByPath(const QString &path)
+SharePtr Smb4KGlobal::findShareByMountPoint(const QString &mountPoint)
 {
     SharePtr share;
 
+    if (mountPoint.isEmpty() || p->mountedSharesList.isEmpty()) {
+        return share;
+    }
+
+
     mutex.lock();
 
-    if (!path.isEmpty() && !p->mountedSharesList.isEmpty()) {
-        for (const SharePtr &s : std::as_const(p->mountedSharesList)) {
-            if (QString::compare(s->path(), path, Qt::CaseInsensitive) == 0
-                || (!s->isInaccessible() && QString::compare(s->canonicalPath(), path, Qt::CaseInsensitive) == 0)) {
-                share = s;
-                break;
-            }
+    for (const SharePtr &s : std::as_const(p->mountedSharesList)) {
+        if (s->mountPoint() == mountPoint) {
+            share = s;
+            break;
         }
     }
 
@@ -545,7 +547,7 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
             }
         }
 
-        if (!findShareByPath(share->path())) {
+        if (!findShareByMountPoint(share->mountPoint())) {
             //
             // Check if we have to add a workgroup name and/or IP address
             //
@@ -603,7 +605,7 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
             }
         }
 
-        SharePtr mountedShare = findShareByPath(share->path());
+        SharePtr mountedShare = findShareByMountPoint(share->mountPoint());
 
         if (mountedShare) {
             //
@@ -660,7 +662,7 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share, bool takeOnly)
             p->mountedSharesList.takeAt(index);
             removed = true;
         } else {
-            SharePtr s = findShareByPath(share->isInaccessible() ? share->path() : share->canonicalPath());
+            SharePtr s = findShareByMountPoint(share->mountPoint());
 
             if (s) {
                 index = p->mountedSharesList.indexOf(s);
@@ -702,7 +704,7 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
 
     switch (openWith) {
     case FileManager: {
-        QUrl url = QUrl::fromLocalFile(share->canonicalPath());
+        QUrl url = QUrl::fromLocalFile(share->mountPoint());
 
         KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url);
         job->setFollowRedirections(false);
@@ -716,7 +718,7 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
 
         if (!konsole.isEmpty()) {
             KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(konsole);
-            job->setWorkingDirectory(share->canonicalPath());
+            job->setWorkingDirectory(share->mountPoint());
             job->setAutoDelete(true);
             job->start();
         } else {

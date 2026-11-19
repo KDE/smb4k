@@ -296,8 +296,8 @@ void Smb4KDeclarative::mountBookmark(Smb4KBookmarkObject *object)
 void Smb4KDeclarative::unmount(Smb4KNetworkObject *object)
 {
     if (object && object->type()) {
-        if (object->mountpoint().isValid()) {
-            SharePtr share = Smb4KGlobal::findShareByPath(object->mountpoint().path());
+        if (object->mountPoint().isValid()) {
+            SharePtr share = Smb4KGlobal::findShareByMountPoint(object->mountPoint().path());
 
             if (share) {
                 Smb4KMounter::self()->unmountShare(share);

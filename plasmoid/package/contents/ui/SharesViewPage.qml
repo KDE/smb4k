@@ -118,7 +118,7 @@ PlasmaComponents.Page {
         
       onItemClicked: {
         sharesViewListView.currentIndex = DelegateModel.itemsIndex
-        Qt.openUrlExternally(object.mountpoint)
+        Qt.openUrlExternally(object.mountPoint)
       }
         
       onUnmountClicked: {

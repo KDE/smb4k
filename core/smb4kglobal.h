@@ -270,11 +270,11 @@ SMB4KCORE_EXPORT QList<SharePtr> sharedResources(HostPtr host);
 SMB4KCORE_EXPORT const QList<SharePtr> &mountedSharesList();
 
 /**
- * Find a mounted share by its path (i.e. mount point).
+ * Find a mounted share by its mount point.
  *
- * @returns the share that is mounted to @p path.
+ * @returns the share that is mounted to @p mountPoint.
  */
-SMB4KCORE_EXPORT SharePtr findShareByPath(const QString &path);
+SMB4KCORE_EXPORT SharePtr findShareByMountPoint(const QString &mountPoint);
 
 /**
  * Find all mounts of a particular share with URL @p url on the system.

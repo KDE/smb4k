@@ -28,11 +28,11 @@ class Smb4KNotificationPrivate : public QObject
 
 public:
     QString componentName;
-    QString path;
+    QString mountPoint;
     void open()
     {
-        if (!path.isEmpty()) {
-            KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(path), QStringLiteral("inode/directory"));
+        if (!mountPoint.isEmpty()) {
+            KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(mountPoint), QStringLiteral("inode/directory"));
             job->setFollowRedirections(false);
             job->setAutoDelete(true);
             job->start();
@@ -66,21 +66,21 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(i18n("The share <b>%1</b> has been mounted to <b>%2</b>.", share->displayString(), share->path()));
+        notification->setText(i18n("The share <b>%1</b> has been mounted.", share->displayString()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"),
                                                                 KIconLoader::NoGroup,
                                                                 0,
                                                                 KIconLoader::DefaultState,
                                                                 QStringList(QStringLiteral("emblem-mounted"))));
 
-        p->path = share->path();
+        p->mountPoint = share->mountPoint();
 
         auto *openAction = notification->addAction(i18nc("Open the contents of the share with the file manager", "Open"));
         QObject::connect(openAction, &KNotificationAction::activated, p, &Smb4KNotificationPrivate::open);
 
         notification->sendEvent();
     } else {
-        QTextStream(stdout) << i18n("The share %1 has been mounted to %2.", share->displayString(), share->path()) << Qt::endl;
+        QTextStream(stdout) << i18n("The share %1 has been mounted.", share->displayString()) << Qt::endl;
     }
 }
 
@@ -99,7 +99,7 @@ void Smb4KNotification::shareUnmounted(const SharePtr &share)
             notification->setComponentName(p->componentName);
         }
 
-        notification->setText(i18n("The share <b>%1</b> has been unmounted from <b>%2</b>.", share->displayString(), share->path()));
+        notification->setText(i18n("The share <b>%1</b> has been unmounted.", share->displayString()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"),
                                                                 KIconLoader::NoGroup,
                                                                 0,
@@ -107,7 +107,7 @@ void Smb4KNotification::shareUnmounted(const SharePtr &share)
                                                                 QStringList(QStringLiteral("emblem-unmounted"))));
         notification->sendEvent();
     } else {
-        QTextStream(stdout) << i18n("The share %1 has been unmounted from %2.", share->displayString(), share->path()) << Qt::endl;
+        QTextStream(stdout) << i18n("The share %1 has been unmounted.", share->displayString()) << Qt::endl;
     }
 }
 
@@ -302,9 +302,9 @@ void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString &e
         QString text;
 
         if (!errorMessage.isEmpty()) {
-            text = i18n("Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>", share->displayString(), share->path(), errorMessage);
+            text = i18n("Unmounting the share <b>%1</b> failed: <tt>%2</tt>", share->displayString(), errorMessage);
         } else {
-            text = i18n("Unmounting the share <b>%1</b> from <b>%2</b> failed.", share->displayString(), share->path());
+            text = i18n("Unmounting the share <b>%1</b> failed.", share->displayString());
         }
 
         KNotification *notification = new KNotification(QStringLiteral("unmountingFailed"), KNotification::CloseOnTimeout);
@@ -320,9 +320,9 @@ void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString &e
         QString text;
 
         if (!errorMessage.isEmpty()) {
-            text = i18n("Unmounting the share %1 from %2 failed: %3", share->displayString(), share->path(), errorMessage);
+            text = i18n("Unmounting the share %1 failed: %2", share->displayString(), errorMessage);
         } else {
-            text = i18n("Unmounting the share %1 from %2 failed.", share->displayString(), share->path());
+            text = i18n("Unmounting the share %1 failed.", share->displayString());
         }
 
         QTextStream(stderr) << text << Qt::endl;

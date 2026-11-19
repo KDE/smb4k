@@ -26,7 +26,7 @@ class Smb4KSharePrivate
 public:
     QString workgroup;
     QHostAddress ip;
-    QString path;
+    QString mountPoint;
     bool inaccessible;
     bool foreign;
     KUser user;
@@ -241,19 +241,14 @@ bool Smb4KShare::isPrinter() const
     return (d->shareType == PrinterShare);
 }
 
-void Smb4KShare::setPath(const QString &mountpoint)
+void Smb4KShare::setMountPoint(const QString &mountPoint)
 {
-    d->path = mountpoint;
+    d->mountPoint = mountPoint;
 }
 
-QString Smb4KShare::path() const
+QString Smb4KShare::mountPoint() const
 {
-    return d->path;
-}
-
-QString Smb4KShare::canonicalPath() const
-{
-    return (d->inaccessible ? d->path : QDir(d->path).canonicalPath());
+    return d->mountPoint;
 }
 
 void Smb4KShare::setInaccessible(bool in)
@@ -280,8 +275,8 @@ bool Smb4KShare::isForeign() const
 
 QString Smb4KShare::fileSystemString() const
 {
-    if (!path().isEmpty() && d->filesystem.isEmpty()) {
-        QStorageInfo storageInfo(path());
+    if (!d->mountPoint.isEmpty() && d->filesystem.isEmpty()) {
+        QStorageInfo storageInfo(d->mountPoint);
 
         if (storageInfo.isValid() && storageInfo.isReady()) {
             d->filesystem = QString::fromUtf8(storageInfo.fileSystemType()).toUpper();
@@ -390,7 +385,7 @@ void Smb4KShare::setMountData(Smb4KShare *share)
                          Qt::CaseInsensitive)
             == 0
         && (share->workgroupName().isEmpty() || QString::compare(workgroupName(), share->workgroupName(), Qt::CaseInsensitive) == 0)) {
-        d->path = share->path();
+        d->mountPoint = share->mountPoint();
         d->inaccessible = share->isInaccessible();
         d->foreign = share->isForeign();
         d->user = share->user();
@@ -405,7 +400,7 @@ void Smb4KShare::setMountData(Smb4KShare *share)
 
 void Smb4KShare::resetMountData()
 {
-    d->path.clear();
+    d->mountPoint.clear();
     d->inaccessible = false;
     d->foreign = false;
     d->user = KUser(KUser::UseRealUserID);

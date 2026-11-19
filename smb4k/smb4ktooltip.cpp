@@ -223,7 +223,7 @@ void Smb4KToolTip::setupMountedShareContents()
     QLabel *locationString = new QLabel(share->displayString(), m_contentsWidget);
     m_formLayout->addRow(i18n("Location:"), locationString);
 
-    QLabel *mountpointString = new QLabel(share->path(), m_contentsWidget);
+    QLabel *mountpointString = new QLabel(share->mountPoint(), m_contentsWidget);
     m_formLayout->addRow(i18n("Mountpoint:"), mountpointString);
 
     QLabel *loginString = new QLabel(!share->userName().isEmpty() ? share->userName() : i18n("unknown"), m_contentsWidget);
