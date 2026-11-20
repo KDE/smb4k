@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2024-04-29 13:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2652,7 +2652,7 @@ msgstr "NTLMSSP protokoll és csomagaláírás"
 #: smb4knotification.cpp:69
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "<p>A(z) <b>%1</b> megosztás csatolva ide: <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:78
@@ -2665,19 +2665,19 @@ msgstr "Megnyitás"
 #: smb4knotification.cpp:83
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "<p>A(z) <b>%1</b> megosztás csatolva ide: <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:102
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "<p>A(z) <b>%1</b> megosztás leválasztva innen: <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:110
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "<p>A(z) <b>%1</b> megosztás leválasztva innen: <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -2798,37 +2798,28 @@ msgstr "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást.</p>"
 
 #: smb4knotification.cpp:305
 #, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr ""
-"<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
-"helyről:</p><p><tt>%3</tt></p>"
+"<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást:</p><p><tt>%2</tt></p>"
 
 #: smb4knotification.cpp:307
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr ""
-"<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
-"helyről.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást.</p>"
 
 #: smb4knotification.cpp:323
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr ""
-"<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
-"helyről.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást.</p>"
 
 #: smb4knotification.cpp:325
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed."
-msgstr ""
-"<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
-"helyről.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed."
+msgstr "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást.</p>"
 
 #: smb4knotification.cpp:338
 #, fuzzy, kde-format
@@ -3107,6 +3098,36 @@ msgstr "Forrás"
 #, kde-format
 msgid "Destination"
 msgstr "Cél"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~| "tt></p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
+#~ "helyről:</p><p><tt>%3</tt></p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr ""
+#~ "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
+#~ "helyről.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr ""
+#~ "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
+#~ "helyről.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr ""
+#~ "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
+#~ "helyről.</p>"
 
 #, fuzzy
 #~| msgid "Protocol hint:"

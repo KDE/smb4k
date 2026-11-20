@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
-"PO-Revision-Date: 2026-11-18 18:54+0300\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
+"PO-Revision-Date: 2026-11-19 19:20+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2721,7 +2721,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:173
 #, kde-format
 msgid "Cache mode:"
-msgstr "Önbellek kipi:"
+msgstr "Ön bellek kipi:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
@@ -2740,23 +2740,23 @@ msgid ""
 "access the same set of files on the server at the same time. Because of "
 "this, the strict cache mode is recommended."
 msgstr ""
-"Okuma ve yazma isteklerinin nasıl işleneceğini tanımlayın. Hiç önbellek "
+"Okuma ve yazma isteklerinin nasıl işleneceğini tanımlayın. Hiç ön bellek "
 "dosya verisi seçmediğiniz durumda, istemci normal okuma ve yazmalar için "
-"asla önbellek kullanmaz. Her zaman okuma ve yazma isteklerini karşılamak "
+"asla ön bellek kullanmaz. Her zaman okuma ve yazma isteklerini karşılamak "
 "için doğrudan sunucuya erişir. Eğer sıkı bir şekilde CIFS/SMB2 protokolünü "
-"uygulamayı seçerseniz önbellek, yalnızca istemci bir oplock tutarsa "
-"güvenlidir. Eğer tutmazsa o zaman önbelleği atlar ve okuma, yazma "
-"isteklerini karşılamak için doğrudan sunucuya erişir. Serbest önbelleğe "
-"almayı seçme bazen önbellek tutarlılık harcamalarında daha iyi başarım "
+"uygulamayı seçerseniz ön bellek, yalnızca istemci bir oplock tutarsa "
+"güvenlidir. Eğer tutmazsa o zaman ön belleği atlar ve okuma, yazma "
+"isteklerini karşılamak için doğrudan sunucuya erişir. Serbest ön belleğe "
+"almayı seçme bazen ön bellek tutarlılık harcamalarında daha iyi başarım "
 "sağlar. Bu seçenek, aynı anda sunucu üzerindeki aynı dosya kümesine birden "
 "fazla istemci erişirse veri bozulmasına neden olabilir. Bu yüzden değişmez "
-"önbellek kipi önerilir."
+"ön bellek kipi önerilir."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:181
 #, kde-format
 msgid "Do not cache file data at all"
-msgstr "Dosya verilerini hiçbir şekilde önbellekte tutma"
+msgstr "Dosya verilerini hiçbir şekilde ön bellekte tutma"
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:184
@@ -2768,7 +2768,7 @@ msgstr "CIFS/SMB2 protokülünü kesinlikle izle"
 #: smb4kmountsettings_linux.kcfg:187
 #, kde-format
 msgid "Allow loose caching semantics"
-msgstr "Serbest önbelleğe almaya izin ver"
+msgstr "Anlamsal olarak gevşek biçimde ön belleğe almaya izin ver"
 
 #. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:193
@@ -2842,8 +2842,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "NTLMSSP protokolü ve paket imzalama"
 
 #: smb4knotification.cpp:69
-#, kde-format
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "<b>%1</b> paylaşımı <b>%2</b> olarak bağlandı."
 
 #: smb4knotification.cpp:78
@@ -2853,18 +2854,21 @@ msgid "Open"
 msgstr "Aç"
 
 #: smb4knotification.cpp:83
-#, kde-format
-msgid "The share %1 has been mounted to %2."
+#, fuzzy, kde-format
+#| msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "%1 paylaşımı %2 konumuna bağlandı."
 
 #: smb4knotification.cpp:102
-#, kde-format
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "<b>%1</b> paylaşımının <b>%2</b> konumundan bağlantısı kesilmiş."
 
 #: smb4knotification.cpp:110
-#, kde-format
-msgid "The share %1 has been unmounted from %2."
+#, fuzzy, kde-format
+#| msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "%1 paylaşımının bağlantısı <b>%2</b> konumundan kesildi."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -2959,30 +2963,28 @@ msgid "Mounting the share %1 failed."
 msgstr "%1 paylaşımını bağlama işlemi başarısız oldu."
 
 #: smb4knotification.cpp:305
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<b>%2</b> ortamından <b>%1</b> paylaşımının bağlantısını kesme işlemi "
-"başarısız oldu: <tt>%3</tt>"
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgstr "<b>%1</b> paylaşımını bağlama işlemi başarısız oldu: <tt>%2</tt>"
 
 #: smb4knotification.cpp:307
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr ""
-"<b>%2</b> ortamından <b>%1</b> paylaşımının bağlantısını kesme işlemi "
-"başarısız oldu."
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed."
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "<b>%1</b> paylaşımını bağlama işlemi başarısız oldu."
 
 #: smb4knotification.cpp:323
-#, kde-format
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr ""
-"%2 konumundan %1 paylaşımının bağlantısını kesme işlemi başarısız oldu: %3"
+#, fuzzy, kde-format
+#| msgid "Mounting the share %1 failed: %2"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "%1 paylaşımını bağlama işlemi başarısız oldu: %2"
 
 #: smb4knotification.cpp:325
-#, kde-format
-msgid "Unmounting the share %1 from %2 failed."
-msgstr ""
-"%2 konumundan %1 paylaşımının bağlantısını kesme işlemi başarısız oldu."
+#, fuzzy, kde-format
+#| msgid "Mounting the share %1 failed."
+msgid "Unmounting the share %1 failed."
+msgstr "%1 paylaşımını bağlama işlemi başarısız oldu."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3215,6 +3217,24 @@ msgstr "Kaynak"
 #, kde-format
 msgid "Destination"
 msgstr "Hedef"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "<b>%2</b> ortamından <b>%1</b> paylaşımının bağlantısını kesme işlemi "
+#~ "başarısız oldu: <tt>%3</tt>"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr ""
+#~ "<b>%2</b> ortamından <b>%1</b> paylaşımının bağlantısını kesme işlemi "
+#~ "başarısız oldu."
+
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr ""
+#~ "%2 konumundan %1 paylaşımının bağlantısını kesme işlemi başarısız oldu: %3"
+
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr ""
+#~ "%2 konumundan %1 paylaşımının bağlantısını kesme işlemi başarısız oldu."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB protokol sürümü:"

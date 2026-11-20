@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2026-08-31 21:48+0200\n"
 "Last-Translator: Libor Filipek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -2846,8 +2846,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "Protokol NTLMSSP a podepisování paketů"
 
 #: smb4knotification.cpp:69
-#, kde-format
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "Sdílení <b>%1</b> bylo připojeno do <b>%2</b>."
 
 #: smb4knotification.cpp:78
@@ -2857,18 +2858,21 @@ msgid "Open"
 msgstr "Otevřít"
 
 #: smb4knotification.cpp:83
-#, kde-format
-msgid "The share %1 has been mounted to %2."
+#, fuzzy, kde-format
+#| msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "Sdílení %1 bylo připojeno do %2."
 
 #: smb4knotification.cpp:102
-#, kde-format
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "Sdílení <b>%1</b> bylo odpojeno z <b>%2</b>."
 
 #: smb4knotification.cpp:110
-#, kde-format
-msgid "The share %1 has been unmounted from %2."
+#, fuzzy, kde-format
+#| msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "Sdílení %1 bylo odpojeno z %2."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -2962,24 +2966,28 @@ msgid "Mounting the share %1 failed."
 msgstr "Připojení sdílení %1 se nezdařilo."
 
 #: smb4knotification.cpp:305
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr "Odpojení sdílení <b>%1</b> z <b>%2</b> se nezdařilo: <tt>%3</tt>"
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgstr "Připojení sdílení <b>%1</b> se nezdařilo: <tt>%2</tt>"
 
 #: smb4knotification.cpp:307
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "Odpojení sdílení <b>%1</b> z <b>%2</b> se nezdařilo."
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed."
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "Připojení sdílení <b>%1</b> se nezdařilo."
 
 #: smb4knotification.cpp:323
-#, kde-format
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "Odpojení sdílení %1 z %2 se nezdařilo: %3"
+#, fuzzy, kde-format
+#| msgid "Mounting the share %1 failed: %2"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "Připojení sdílení %1 se nezdařilo: %2"
 
 #: smb4knotification.cpp:325
-#, kde-format
-msgid "Unmounting the share %1 from %2 failed."
-msgstr "Odpojení sdílení %1 z %2 se nezdařilo."
+#, fuzzy, kde-format
+#| msgid "Mounting the share %1 failed."
+msgid "Unmounting the share %1 failed."
+msgstr "Připojení sdílení %1 se nezdařilo."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3211,6 +3219,18 @@ msgstr "Zdroj"
 #, kde-format
 msgid "Destination"
 msgstr "Cíl"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr "Odpojení sdílení <b>%1</b> z <b>%2</b> se nezdařilo: <tt>%3</tt>"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr "Odpojení sdílení <b>%1</b> z <b>%2</b> se nezdařilo."
+
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr "Odpojení sdílení %1 z %2 se nezdařilo: %3"
+
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr "Odpojení sdílení %1 z %2 se nezdařilo."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Verze protokolu SMB:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -2855,7 +2855,7 @@ msgstr "NTLMSSP protokol i potpis paketa"
 #: smb4knotification.cpp:69
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "<p>Dijeljenje <b>%1</b> je montirano <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:78
@@ -2868,19 +2868,19 @@ msgstr "Otvori"
 #: smb4knotification.cpp:83
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "<p>Dijeljenje <b>%1</b> je montirano <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:102
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "<p>Dijeljenje <b>%1</b> je demontirano s <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:110
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "<p>Dijeljenje <b>%1</b> je demontirano s <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -3000,31 +3000,27 @@ msgstr "<p>Montiranje dijeljenja <b>%1</b> nije uspjelo.</p>"
 
 #: smb4knotification.cpp:305
 #, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo:</p><p><tt>"
-"%3</tt></p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgstr "<p>Montiranje dijeljenja <b>%1</b> nije uspjelo:</p><p><tt>%2</tt></p>"
 
 #: smb4knotification.cpp:307
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "<p>Montiranje dijeljenja <b>%1</b> nije uspjelo.</p>"
 
 #: smb4knotification.cpp:323
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "<p>Montiranje dijeljenja <b>%1</b> nije uspjelo.</p>"
 
 #: smb4knotification.cpp:325
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed."
-msgstr "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed."
+msgstr "<p>Montiranje dijeljenja <b>%1</b> nije uspjelo.</p>"
 
 #: smb4knotification.cpp:338
 #, fuzzy, kde-format
@@ -3295,6 +3291,30 @@ msgstr "Izvor"
 #, kde-format
 msgid "Destination"
 msgstr "Odredište"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~| "tt></p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo:</p><p><tt>"
+#~ "%3</tt></p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr "<p>Demontiranje dijeljenja <b>%1</b> iz <b>%2</b> nije uspjelo.</p>"
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB verzija protokola:"

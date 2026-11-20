@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2876,7 +2876,7 @@ msgstr "NTLMSSP-Protokoll un -Paketünnerschrieven"
 #: smb4knotification.cpp:69
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "<p>De Freegaav <b>%1</b> wöör op <b>%2</b> inhangt.</p>"
 
 #: smb4knotification.cpp:78
@@ -2889,19 +2889,19 @@ msgstr "Opmaken"
 #: smb4knotification.cpp:83
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "<p>De Freegaav <b>%1</b> wöör op <b>%2</b> inhangt.</p>"
 
 #: smb4knotification.cpp:102
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "<p>De Freegaav <b>%1</b> wöör vun <b>%2</b> afhangt.</p>"
 
 #: smb4knotification.cpp:110
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "<p>De Freegaav <b>%1</b> wöör vun <b>%2</b> afhangt.</p>"
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -3022,31 +3022,28 @@ msgstr "<p>Inhangen vun de Freegaav <b>%1</b> is fehlslaan.</p>"
 
 #: smb4knotification.cpp:305
 #, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr ""
-"<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan:</p><p><tt>"
-"%3</tt></p>"
+"<p>Inhangen vun de Freegaav <b>%1</b> is fehlslaan:</p><p><tt>%2</tt></p>"
 
 #: smb4knotification.cpp:307
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "<p>Inhangen vun de Freegaav <b>%1</b> is fehlslaan.</p>"
 
 #: smb4knotification.cpp:323
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "<p>Inhangen vun de Freegaav <b>%1</b> is fehlslaan.</p>"
 
 #: smb4knotification.cpp:325
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed."
-msgstr "<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed."
+msgstr "<p>Inhangen vun de Freegaav <b>%1</b> is fehlslaan.</p>"
 
 #: smb4knotification.cpp:338
 #, fuzzy, kde-format
@@ -3303,6 +3300,33 @@ msgstr "Born"
 #, kde-format
 msgid "Destination"
 msgstr "Teel"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~| "tt></p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan:</"
+#~ "p><p><tt>%3</tt></p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr ""
+#~ "<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr ""
+#~ "<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr ""
+#~ "<p>Afhangen vun de Freegaav <b>%1</b> vun <b>%2</b> is fehlslaan.</p>"
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB-Protokollverschoon:"

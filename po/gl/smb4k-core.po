@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2025-06-22 15:55+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -2878,8 +2878,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "Protocolo NTLMSSP e sinatura nos paquetes"
 
 #: smb4knotification.cpp:69
-#, kde-format
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "A compartición <b>%1</b> montouse en <b>%2</b>."
 
 #: smb4knotification.cpp:78
@@ -2891,18 +2892,19 @@ msgstr "Abrir"
 #: smb4knotification.cpp:83
 #, fuzzy, kde-format
 #| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "A compartición <b>%1</b> montouse en <b>%2</b>."
 
 #: smb4knotification.cpp:102
-#, kde-format
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "A compartición <b>%1</b> desmontouse de <b>%2</b>."
 
 #: smb4knotification.cpp:110
 #, fuzzy, kde-format
 #| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "A compartición <b>%1</b> desmontouse de <b>%2</b>."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -3004,27 +3006,28 @@ msgid "Mounting the share %1 failed."
 msgstr "A montaxe da compartición <b>%1</b> fallou."
 
 #: smb4knotification.cpp:305
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou: <tt>%3</tt>"
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgstr "A montaxe da compartición <b>%1</b> fallou: <tt>%2</tt>"
 
 #: smb4knotification.cpp:307
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou."
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed."
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "A montaxe da compartición <b>%1</b> fallou."
 
 #: smb4knotification.cpp:323
 #, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou."
+#| msgid "Mounting the share <b>%1</b> failed."
+msgid "Unmounting the share %1 failed: %2"
+msgstr "A montaxe da compartición <b>%1</b> fallou."
 
 #: smb4knotification.cpp:325
 #, fuzzy, kde-format
-#| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgid "Unmounting the share %1 from %2 failed."
-msgstr "A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou."
+#| msgid "Mounting the share <b>%1</b> failed."
+msgid "Unmounting the share %1 failed."
+msgstr "A montaxe da compartición <b>%1</b> fallou."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3281,6 +3284,23 @@ msgstr "Orixe"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou: <tt>%3</tt>"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr "A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou."
+
+#, fuzzy
+#~| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr "A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou."
+
+#, fuzzy
+#~| msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr "A desmontaxe da compartición <b>%1</b> de <b>%2</b> fallou."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Versión do protocolo SMB:"
