@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2022-11-10 12:52+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -2463,9 +2463,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "Protocol NTLMSSP e signation de paquettes"
 
 #: smb4knotification.cpp:69
-#, kde-format
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr ""
+#, fuzzy, kde-format
+msgid "The share <b>%1</b> has been mounted."
+msgstr "Ne successat trovar li nómine %1 in %2."
 
 #: smb4knotification.cpp:78
 #, fuzzy, kde-format
@@ -2476,18 +2476,18 @@ msgstr "Aperter"
 
 #: smb4knotification.cpp:83
 #, fuzzy, kde-format
-msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "Ne successat trovar li nómine %1 in %2."
 
 #: smb4knotification.cpp:102
-#, kde-format
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr ""
+#, fuzzy, kde-format
+msgid "The share <b>%1</b> has been unmounted."
+msgstr "Ne successat trovar li nómine %1 in %2."
 
 #: smb4knotification.cpp:110
-#, kde-format
-msgid "The share %1 has been unmounted from %2."
-msgstr ""
+#, fuzzy, kde-format
+msgid "The share %1 has been unmounted."
+msgstr "Ne successat trovar li nómine %1 in %2."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
 #, kde-format
@@ -2584,28 +2584,28 @@ msgstr ""
 #| msgid ""
 #| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
 #| "tt></p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr ""
 "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>%3</"
 "tt></p>"
 
 #: smb4knotification.cpp:307
 #, fuzzy, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+msgid "Unmounting the share <b>%1</b> failed."
 msgstr ""
 "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>%3</"
 "tt></p>"
 
 #: smb4knotification.cpp:323
 #, fuzzy, kde-format
-msgid "Unmounting the share %1 from %2 failed: %3"
+msgid "Unmounting the share %1 failed: %2"
 msgstr ""
 "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>%3</"
 "tt></p>"
 
 #: smb4knotification.cpp:325
 #, fuzzy, kde-format
-msgid "Unmounting the share %1 from %2 failed."
+msgid "Unmounting the share %1 failed."
 msgstr ""
 "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>%3</"
 "tt></p>"
@@ -2838,6 +2838,33 @@ msgstr "Orígine"
 #, kde-format
 msgid "Destination"
 msgstr "Destination"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~| "tt></p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>"
+#~ "%3</tt></p>"
+
+#, fuzzy
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr ""
+#~ "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>"
+#~ "%3</tt></p>"
+
+#, fuzzy
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr ""
+#~ "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>"
+#~ "%3</tt></p>"
+
+#, fuzzy
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr ""
+#~ "<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>"
+#~ "%3</tt></p>"
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Version de protocol SMB:"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2026-08-25 10:17+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2820,8 +2820,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "NTLMSSP-yhteyskäytäntö ja pakettien allekirjoitus"
 
 #: smb4knotification.cpp:69
-#, kde-format
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "Jako <b>%1</b> on liitetty kansioon <b>%2</b>."
 
 #: smb4knotification.cpp:78
@@ -2831,18 +2832,21 @@ msgid "Open"
 msgstr "Avaa"
 
 #: smb4knotification.cpp:83
-#, kde-format
-msgid "The share %1 has been mounted to %2."
+#, fuzzy, kde-format
+#| msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "Jako %1 on liitetty kansioon %2."
 
 #: smb4knotification.cpp:102
-#, kde-format
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, fuzzy, kde-format
+#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "Jako <b>%1</b> on irrotettu kansiosta <b>%2</b>."
 
 #: smb4knotification.cpp:110
-#, kde-format
-msgid "The share %1 has been unmounted from %2."
+#, fuzzy, kde-format
+#| msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "Jako %1 on irrotettu kansiosta %2."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -2934,27 +2938,29 @@ msgstr "Jaon %1 liittäminen epäonnistui: %2"
 msgid "Mounting the share %1 failed."
 msgstr "Jaon %1 liittäminen epäonnistui."
 
-# *** TARKISTA: Tässä ja kahdessa seuraavassa on vain oletus, että %2 olisi kansio (voisi kai olla vaikka konenimi)
 #: smb4knotification.cpp:305
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui: <tt>%3</tt>"
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgstr "Jaon <b>%1</b> liittäminen epäonnistui: <tt>%2</tt>"
 
 #: smb4knotification.cpp:307
-#, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui."
+#, fuzzy, kde-format
+#| msgid "Mounting the share <b>%1</b> failed."
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "Jaon <b>%1</b> liittäminen epäonnistui."
 
 #: smb4knotification.cpp:323
-#, kde-format
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "Jaon %1 irrottaminen kansiosta %2 epäonnistui: %3"
+#, fuzzy, kde-format
+#| msgid "Mounting the share %1 failed: %2"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "Jaon %1 liittäminen epäonnistui: %2"
 
 #: smb4knotification.cpp:325
-#, kde-format
-msgid "Unmounting the share %1 from %2 failed."
-msgstr "Jaon %1 irrottaminen kansiosta %2 epäonnistui."
+#, fuzzy, kde-format
+#| msgid "Mounting the share %1 failed."
+msgid "Unmounting the share %1 failed."
+msgstr "Jaon %1 liittäminen epäonnistui."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3186,6 +3192,20 @@ msgstr "Lähde"
 #, kde-format
 msgid "Destination"
 msgstr "Kohde"
+
+# *** TARKISTA: Tässä ja kahdessa seuraavassa on vain oletus, että %2 olisi kansio (voisi kai olla vaikka konenimi)
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui: <tt>%3</tt>"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr "Jaon <b>%1</b> irrottaminen kansiosta <b>%2</b> epäonnistui."
+
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr "Jaon %1 irrottaminen kansiosta %2 epäonnistui: %3"
+
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr "Jaon %1 irrottaminen kansiosta %2 epäonnistui."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB-yhteyskäytännön versio:"

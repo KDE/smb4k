@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2023-03-06 15:55+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2894,7 +2894,7 @@ msgstr "Protocolo e assinatura de pacotes do NTLMSSP"
 #: smb4knotification.cpp:69
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "<p>A partilha <b>%1</b> foi montada como <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:78
@@ -2906,19 +2906,19 @@ msgstr "Abrir"
 #: smb4knotification.cpp:83
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "<p>A partilha <b>%1</b> foi montada como <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:102
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "<p>A partilha <b>%1</b> foi desmontada de <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:110
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "<p>A partilha <b>%1</b> foi desmontada de <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -3037,34 +3037,28 @@ msgstr "<p>A montagem da partilha <b>%1</b> foi mal-sucedida.</p>"
 
 #: smb4knotification.cpp:305
 #, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr ""
-"<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida:</"
-"p><p><tt>%3</tt></p>"
+"<p>A montagem da partilha <b>%1</b> foi mal-sucedida:</p><p><tt>%2</tt></p>"
 
 #: smb4knotification.cpp:307
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr ""
-"<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "<p>A montagem da partilha <b>%1</b> foi mal-sucedida.</p>"
 
 #: smb4knotification.cpp:323
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr ""
-"<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "<p>A montagem da partilha <b>%1</b> foi mal-sucedida.</p>"
 
 #: smb4knotification.cpp:325
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed."
-msgstr ""
-"<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed."
+msgstr "<p>A montagem da partilha <b>%1</b> foi mal-sucedida.</p>"
 
 #: smb4knotification.cpp:338
 #, fuzzy, kde-format
@@ -3359,6 +3353,33 @@ msgstr "Origem"
 #, kde-format
 msgid "Destination"
 msgstr "Destino"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~| "tt></p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida:</"
+#~ "p><p><tt>%3</tt></p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr ""
+#~ "<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr ""
+#~ "<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr ""
+#~ "<p>A desmontagem da partilha <b>%1</b> de <b>%2</b> foi mal-sucedida.</p>"
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Versão do protocolo SMB:"

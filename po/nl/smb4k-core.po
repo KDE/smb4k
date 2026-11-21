@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
-"PO-Revision-Date: 2026-07-16 19:00+0200\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
+"PO-Revision-Date: 2026-11-20 18:37+0100\n"
+"Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
-msgstr "Thuis"
+msgstr "Home"
 
 #, kde-format
 msgctxt "default profile name for use at work"
@@ -2881,8 +2881,8 @@ msgstr "NTLMSSP-protocol en ondertekenen van pakketten"
 
 #: smb4knotification.cpp:69
 #, kde-format
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "De gedeelde map <b>%1</b> is aangekoppeld op <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
+msgstr "De gedeelde map <b>%1</b> is aangekoppeld."
 
 #: smb4knotification.cpp:78
 #, kde-format
@@ -2892,18 +2892,18 @@ msgstr "Openen"
 
 #: smb4knotification.cpp:83
 #, kde-format
-msgid "The share %1 has been mounted to %2."
-msgstr "De gedeelde map %1 is aangekoppeld op %2."
+msgid "The share %1 has been mounted."
+msgstr "De gedeelde map %1 is aangekoppeld."
 
 #: smb4knotification.cpp:102
 #, kde-format
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr "De gedeelde map <b>%1</b> is afgekoppeld van <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
+msgstr "De gedeelde map <b>%1</b> is afgekoppeld."
 
 #: smb4knotification.cpp:110
 #, kde-format
-msgid "The share %1 has been unmounted from %2."
-msgstr "De gedeelde map %1 is afgekoppeld van %2."
+msgid "The share %1 has been unmounted."
+msgstr "De gedeelde map %1 is afgekoppeld."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
 #, kde-format
@@ -3000,25 +3000,23 @@ msgstr "Aankoppelen van de gedeelde map %1 is mislukt."
 
 #: smb4knotification.cpp:305
 #, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt: <tt>%3</"
-"tt>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgstr "De gedeelde map <b>%1</b> afkoppelen is mislukt: <tt>%2</tt>"
 
 #: smb4knotification.cpp:307
 #, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt."
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "De gedeelde map <b>%1</b> afkoppelen is mislukt."
 
 #: smb4knotification.cpp:323
 #, kde-format
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "Afkoppelen van de gedeelde map %1 van %2 is mislukt: %3"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "De gedeelde map %1 afkoppelen is mislukt: %2"
 
 #: smb4knotification.cpp:325
 #, kde-format
-msgid "Unmounting the share %1 from %2 failed."
-msgstr "Afkoppelen van de gedeelde map %1 van %2 is mislukt."
+msgid "Unmounting the share %1 failed."
+msgstr "De gedeelde map %1 afkoppelen is mislukt."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3252,6 +3250,20 @@ msgstr "Bron"
 #, kde-format
 msgid "Destination"
 msgstr "Bestemming"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt: <tt>"
+#~ "%3</tt>"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr "Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt."
+
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr "Afkoppelen van de gedeelde map %1 van %2 is mislukt: %3"
+
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr "Afkoppelen van de gedeelde map %1 van %2 is mislukt."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "SMB protocolversie:"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
-"PO-Revision-Date: 2026-07-16 19:32+0300\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
+"PO-Revision-Date: 2026-11-20 08:14+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2926,8 +2926,8 @@ msgstr "Протокол NTLMSSP з підписуванням пакетів"
 
 #: smb4knotification.cpp:69
 #, kde-format
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
-msgstr "Спільний ресурс <b>%1</b> змонтовано у <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
+msgstr "Спільний ресурс <b>%1</b> змонтовано."
 
 #: smb4knotification.cpp:78
 #, kde-format
@@ -2937,18 +2937,18 @@ msgstr "Відкрити"
 
 #: smb4knotification.cpp:83
 #, kde-format
-msgid "The share %1 has been mounted to %2."
-msgstr "Спільний ресурс %1 змонтовано у %2."
+msgid "The share %1 has been mounted."
+msgstr "Спільний ресурс %1 змонтовано."
 
 #: smb4knotification.cpp:102
 #, kde-format
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
-msgstr "Спільний ресурс <b>%1</b> демонтовано з <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
+msgstr "Спільний ресурс <b>%1</b> демонтовано."
 
 #: smb4knotification.cpp:110
 #, kde-format
-msgid "The share %1 has been unmounted from %2."
-msgstr "Спільний ресурс %1 демонтовано з %2."
+msgid "The share %1 has been unmounted."
+msgstr "Спільний ресурс %1 демонтовано."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
 #, kde-format
@@ -3048,31 +3048,24 @@ msgstr "Спроба монтування спільного ресурсу %1 �
 
 #: smb4knotification.cpp:305
 #, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
 msgstr ""
-"Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</b> "
-"зазнала невдачі: <tt>%3</tt>"
+"Спроба демонтування спільного ресурсу <b>%1</b> зазнала невдачі: <tt>%2</tt>"
 
 #: smb4knotification.cpp:307
 #, kde-format
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr ""
-"Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</b> "
-"зазнала невдачі."
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "Спроба демонтування спільного ресурсу <b>%1</b> зазнала невдачі."
 
 #: smb4knotification.cpp:323
 #, kde-format
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr ""
-"Спроба демонтування спільного ресурсу %1 з точки монтування %2 зазнала "
-"невдачі: %3"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "Спроба демонтування спільного ресурсу %1 зазнала невдачі: %2"
 
 #: smb4knotification.cpp:325
 #, kde-format
-msgid "Unmounting the share %1 from %2 failed."
-msgstr ""
-"Спроба демонтування спільного ресурсу %1 з точки монтування %2 зазнала "
-"невдачі."
+msgid "Unmounting the share %1 failed."
+msgstr "Спроба демонтування спільного ресурсу %1 зазнала невдачі."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3315,6 +3308,26 @@ msgstr "Джерело"
 #, kde-format
 msgid "Destination"
 msgstr "Призначення"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</"
+#~ "b> зазнала невдачі: <tt>%3</tt>"
+
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr ""
+#~ "Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</"
+#~ "b> зазнала невдачі."
+
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr ""
+#~ "Спроба демонтування спільного ресурсу %1 з точки монтування %2 зазнала "
+#~ "невдачі: %3"
+
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr ""
+#~ "Спроба демонтування спільного ресурсу %1 з точки монтування %2 зазнала "
+#~ "невдачі."
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "Версія протоколу SMB:"

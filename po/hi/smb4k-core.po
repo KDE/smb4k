@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-28 01:00+0000\n"
+"POT-Creation-Date: 2026-11-20 01:11+0000\n"
 "PO-Revision-Date: 2024-12-15 19:29+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -2794,7 +2794,7 @@ msgstr "NTLMSSP प्रोटोकॉल और पैकेट हस्त�
 #: smb4knotification.cpp:69
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+msgid "The share <b>%1</b> has been mounted."
 msgstr "<p>शेयर <b>%1 को</b> <b>%2</b> पर माउंट किया गया है।</p>"
 
 #: smb4knotification.cpp:78
@@ -2806,19 +2806,19 @@ msgstr "खुला"
 #: smb4knotification.cpp:83
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
-msgid "The share %1 has been mounted to %2."
+msgid "The share %1 has been mounted."
 msgstr "<p>शेयर <b>%1 को</b> <b>%2</b> पर माउंट किया गया है।</p>"
 
 #: smb4knotification.cpp:102
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+msgid "The share <b>%1</b> has been unmounted."
 msgstr "<p>शेयर <b>%1 को</b> <b>%2</b> से अनमाउंट कर दिया गया है।</p>"
 
 #: smb4knotification.cpp:110
 #, fuzzy, kde-format
 #| msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
-msgid "The share %1 has been unmounted from %2."
+msgid "The share %1 has been unmounted."
 msgstr "<p>शेयर <b>%1 को</b> <b>%2</b> से अनमाउंट कर दिया गया है।</p>"
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
@@ -2938,30 +2938,27 @@ msgstr "<p>शेयर <b>%1</b> को माउंट करना असफ�
 
 #: smb4knotification.cpp:305
 #, fuzzy, kde-format
-#| msgid ""
-#| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
-#| "tt></p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-msgstr ""
-"<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना विफल हुआ:</p><p> <tt>%3</tt></p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
+msgstr "<p>शेयर <b>%1</b> को माउंट करना विफल:</p><p> <tt>%2</tt></p>"
 
 #: smb4knotification.cpp:307
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-msgstr "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना असफल रहा.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share <b>%1</b> failed."
+msgstr "<p>शेयर <b>%1</b> को माउंट करना असफल रहा.</p>"
 
 #: smb4knotification.cpp:323
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed: %3"
-msgstr "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना असफल रहा.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed: %2"
+msgstr "<p>शेयर <b>%1</b> को माउंट करना असफल रहा.</p>"
 
 #: smb4knotification.cpp:325
 #, fuzzy, kde-format
-#| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
-msgid "Unmounting the share %1 from %2 failed."
-msgstr "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना असफल रहा.</p>"
+#| msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgid "Unmounting the share %1 failed."
+msgstr "<p>शेयर <b>%1</b> को माउंट करना असफल रहा.</p>"
 
 #: smb4knotification.cpp:338
 #, fuzzy, kde-format
@@ -3245,6 +3242,30 @@ msgstr "स्रोत"
 #, kde-format
 msgid "Destination"
 msgstr "गंतव्य"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~| "tt></p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
+#~ msgstr ""
+#~ "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना विफल हुआ:</p><p> <tt>%3</tt></"
+#~ "p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
+#~ msgstr "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना असफल रहा.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed: %3"
+#~ msgstr "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना असफल रहा.</p>"
+
+#, fuzzy
+#~| msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgid "Unmounting the share %1 from %2 failed."
+#~ msgstr "<p><b>%2</b> से शेयर <b>%1</b> को अनमाउंट करना असफल रहा.</p>"
 
 #~ msgid "SMB protocol version:"
 #~ msgstr "एसएमबी प्रोटोकॉल संस्करण:"
