@@ -392,7 +392,7 @@ void Smb4KSyncJob::slotStartSynchronization()
     Q_EMIT aboutToStart(m_destinationUrl.path());
 
     // Send description to the GUI
-    Q_EMIT description(this, i18n("Synchronizing"), qMakePair(i18n("Source"), source), qMakePair(i18n("Destination"), destination));
+    Q_EMIT description(this, i18nc("Synchronization is running", "Synchronizing"), qMakePair(i18n("Source"), source), qMakePair(i18n("Destination"), destination));
 
     // Dummy to show 0 %
     emitPercent(0, 100);
