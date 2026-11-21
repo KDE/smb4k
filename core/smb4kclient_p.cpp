@@ -238,53 +238,25 @@ int Smb4KClientJob::printCopies() const
 }
 
 void Smb4KClientJob::get_auth_data_fn(const char *server,
-                                      const char * /*share*/,
+                                      const char *share,
                                       char *workgroup,
-                                      int /*maxLenWorkgroup*/,
+                                      int maxLenWorkgroup,
                                       char *username,
                                       int maxLenUsername,
                                       char *password,
                                       int maxLenPassword)
 {
-    //
-    // Authentication
-    //
+    Q_UNUSED(server);
+    Q_UNUSED(share);
+    Q_UNUSED(workgroup);
+    Q_UNUSED(maxLenWorkgroup);
+
     switch ((*pNetworkItem)->type()) {
     case Network: {
-        //
-        // No authentication needed
-        //
         break;
     }
     case Workgroup: {
-        //
-        // Only request authentication data, if the master browsers require
-        // authentication data.
-        //
-        if (Smb4KSettings::masterBrowsersRequireAuth()) {
-            if (QString::fromUtf8(server, -1).toUpper() != QString::fromUtf8(workgroup, -1).toUpper()) {
-                //
-                // This is the master browser. Create a host object for it.
-                //
-                HostPtr masterBrowser = HostPtr::create();
-                masterBrowser->setWorkgroupName(QString::fromUtf8(workgroup, -1));
-                masterBrowser->setHostName(QString::fromUtf8(server, -1));
-
-                //
-                // Get the authentication data
-                //
-                Smb4KCredentialsManager::self()->readLoginCredentials(masterBrowser);
-
-                //
-                // Copy the authentication data
-                //
-                if (masterBrowser->hasUserInfo()) {
-                    qstrncpy(username, masterBrowser->userName().toUtf8().data(), maxLenUsername);
-                    qstrncpy(password, masterBrowser->password().toUtf8().data(), maxLenPassword);
-                }
-            }
-        }
-
+        // Samba's client library isn't used for domain lookup anymore
         break;
     }
     case Host: {

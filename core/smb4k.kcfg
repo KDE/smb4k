@@ -168,11 +168,6 @@
             <whatsthis>In case your computer is on a large network neighborhood, discovering all workgroups, hosts and shares might take a long time, since in the default configuration all local master browsers are queried. Enabling this setting limits the number of used local master browsers to three. This can reduced the time consumption on large network neighborhoods considerably.</whatsthis>
             <default>false</default>
         </entry>
-        <entry name="MasterBrowsersRequireAuth" type="Bool">
-            <label>Master browsers require authentication</label>
-            <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed.</whatsthis>
-            <default>false</default>
-        </entry>
         <entry name="UseKerberos" type="Bool">
             <label>Use Kerberos for authentication</label>
             <whatsthis>Use Kerberos for authentication. This is only useful in an Active Directory environment.</whatsthis>

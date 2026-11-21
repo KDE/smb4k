@@ -158,20 +158,15 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     sambaBoxLayout->addWidget(largeNetworkNeighborhood, 2, 0, 1, 2);
 
-    QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), sambaBox);
-    masterBrowsersRequireAuth->setObjectName(QStringLiteral("kcfg_MasterBrowsersRequireAuth"));
-
-    sambaBoxLayout->addWidget(masterBrowsersRequireAuth, 3, 0, 1, 2);
-
     QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), sambaBox);
     useKerberos->setObjectName(QStringLiteral("kcfg_UseKerberos"));
 
-    sambaBoxLayout->addWidget(useKerberos, 4, 0, 1, 2);
+    sambaBoxLayout->addWidget(useKerberos, 3, 0, 1, 2);
 
     QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), sambaBox);
     useCCache->setObjectName(QStringLiteral("kcfg_UseWinbindCCache"));
 
-    sambaBoxLayout->addWidget(useCCache, 5, 0, 1, 2);
+    sambaBoxLayout->addWidget(useCCache, 4, 0, 1, 2);
 
     advancedTabLayout->addWidget(sambaBox);
 
