@@ -14,6 +14,7 @@
 #include <QDir>
 #include <QNetworkInterface>
 #include <QProcessEnvironment>
+#include <QThread>
 #include <QUrl>
 
 // KDE includes
@@ -170,7 +171,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
             }
 #endif
             timeout += 10;
-            wait(10);
+            QThread::msleep(10);
         }
 
         if (proc.exitStatus() == KProcess::NormalExit) {
@@ -237,7 +238,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
                 }
 
                 timeout += 10;
-                wait(10);
+                QThread::msleep(10);
             }
 
             if (proc.exitStatus() == KProcess::NormalExit) {
