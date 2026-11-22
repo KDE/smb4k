@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-07 00:57+0000\n"
+"POT-Creation-Date: 2026-11-22 01:04+0000\n"
 "PO-Revision-Date: 2026-08-28 13:07+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -31,53 +31,53 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "liudas@akmc.lt, <>"
 
-#: helpers/smb4kmounthelper.cpp:66
+#: helpers/smb4kmounthelper.cpp:67
 #, kde-format
 msgid "The computer is not online."
 msgstr "Kompiuteris nėra prisijungęs prie interneto."
 
-#: helpers/smb4kmounthelper.cpp:75
+#: helpers/smb4kmounthelper.cpp:76
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "Nepavyko sukurti prijungimo taško, skirto viešiniui %1."
 
-#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#: helpers/smb4kmounthelper.cpp:80 helpers/smb4kmounthelper.cpp:195
 #, fuzzy, kde-format
 #| msgid "The mountpoint %1 is illegal."
 msgid "The mount point %1 is illegal."
 msgstr "Prijungimo taškas %1 yra neleistinas."
 
-#: helpers/smb4kmounthelper.cpp:85
+#: helpers/smb4kmounthelper.cpp:86
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "Nepavyko rasti prijungimo (mount) komandos."
 
-#: helpers/smb4kmounthelper.cpp:91
+#: helpers/smb4kmounthelper.cpp:92
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "Buvo perduotos draudžiamos prijungimo parinktys."
 
-#: helpers/smb4kmounthelper.cpp:141
+#: helpers/smb4kmounthelper.cpp:142
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Kažkas ne taip su pateiktu Kerberos bilietu."
 
-#: helpers/smb4kmounthelper.cpp:181
+#: helpers/smb4kmounthelper.cpp:182
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "Nepavyko paleisti prijungimo proceso."
 
-#: helpers/smb4kmounthelper.cpp:200
+#: helpers/smb4kmounthelper.cpp:201
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "Nepavyko rasti atjungimo (umount) komandos."
 
-#: helpers/smb4kmounthelper.cpp:206
+#: helpers/smb4kmounthelper.cpp:207
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Buvo perduotos draudžiamos atjungimo parinktys."
 
-#: helpers/smb4kmounthelper.cpp:248
+#: helpers/smb4kmounthelper.cpp:249
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "Nepavyko paleisti atjungimo proceso."
@@ -475,24 +475,24 @@ msgstr "Naršymo nuostatos"
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:178
+#: smb4k/smb4kconfigpagenetwork.cpp:173
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Wake-On-LAN"
 msgstr "Bendrosios nuostatos"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:198
+#: smb4k/smb4kconfigpagenetwork.cpp:193
 #, kde-format
 msgid " s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:207
+#: smb4k/smb4kconfigpagenetwork.cpp:202
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
-#: smb4k/smb4kconfigpagenetwork.cpp:217
+#: smb4k/smb4kconfigpagenetwork.cpp:212
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Išplėstinės nuostatos"

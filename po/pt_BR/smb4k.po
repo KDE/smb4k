@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-07 00:57+0000\n"
+"POT-Creation-Date: 2026-11-22 01:04+0000\n"
 "PO-Revision-Date: 2026-11-07 05:55-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@kde.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -36,52 +36,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alvarenga@kde.org"
 
-#: helpers/smb4kmounthelper.cpp:66
+#: helpers/smb4kmounthelper.cpp:67
 #, kde-format
 msgid "The computer is not online."
 msgstr "O computador não está conectado."
 
-#: helpers/smb4kmounthelper.cpp:75
+#: helpers/smb4kmounthelper.cpp:76
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "Não foi possível criar o ponto de montagem para o compartilhamento %1."
 
-#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#: helpers/smb4kmounthelper.cpp:80 helpers/smb4kmounthelper.cpp:195
 #, kde-format
 msgid "The mount point %1 is illegal."
 msgstr "O ponto de montagem %1 é ilegal."
 
-#: helpers/smb4kmounthelper.cpp:85
+#: helpers/smb4kmounthelper.cpp:86
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "O comando de montagem não pôde ser encontrado."
 
-#: helpers/smb4kmounthelper.cpp:91
+#: helpers/smb4kmounthelper.cpp:92
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "Foram passadas opções de montagem proibidas."
 
-#: helpers/smb4kmounthelper.cpp:141
+#: helpers/smb4kmounthelper.cpp:142
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "Há algo errado com o ticket Kerberos fornecido."
 
-#: helpers/smb4kmounthelper.cpp:181
+#: helpers/smb4kmounthelper.cpp:182
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "O processo de montagem não pôde ser iniciado."
 
-#: helpers/smb4kmounthelper.cpp:200
+#: helpers/smb4kmounthelper.cpp:201
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "O comando de desmontagem não pôde ser encontrado."
 
-#: helpers/smb4kmounthelper.cpp:206
+#: helpers/smb4kmounthelper.cpp:207
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "Foram passadas opções de desmontagem proibidas."
 
-#: helpers/smb4kmounthelper.cpp:248
+#: helpers/smb4kmounthelper.cpp:249
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "O processo de desmontagem não pôde ser iniciado."
@@ -481,17 +481,17 @@ msgstr "Configurações de navegação"
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:178
+#: smb4k/smb4kconfigpagenetwork.cpp:173
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Ativação por LAN (Wake-On-LAN)"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:198
+#: smb4k/smb4kconfigpagenetwork.cpp:193
 #, kde-format
 msgid " s"
 msgstr " s"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:207
+#: smb4k/smb4kconfigpagenetwork.cpp:202
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
@@ -499,7 +499,7 @@ msgstr ""
 "Define as máquinas que devem ser ativadas através do editor de configurações "
 "personalizada."
 
-#: smb4k/smb4kconfigpagenetwork.cpp:217
+#: smb4k/smb4kconfigpagenetwork.cpp:212
 #, kde-format
 msgid "Advanced Settings"
 msgstr "Configurações avançadas"
