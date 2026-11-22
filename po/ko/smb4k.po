@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 03:00+0000\n"
-"PO-Revision-Date: 2026-02-03 22:52+0100\n"
+"PO-Revision-Date: 2026-11-21 21:52+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
-"Language-Team: Korean\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -88,10 +88,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "고급 네트워크 환경 탐색 및 Samba 공유 마운트 유틸리티"
 
 #: smb4k/main.cpp:44
-#, fuzzy, kde-format
-#| msgid "© 2003-2024 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© 2003-2024 Alexander Reinholdt"
+msgstr "© 2003-2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:53
 #, kde-format
