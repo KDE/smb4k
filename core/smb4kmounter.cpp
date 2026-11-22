@@ -219,7 +219,8 @@ void Smb4KMounter::mountShare(const SharePtr &share)
 
     // Wake-On-LAN: Wake the host up before mounting any shares
     if (Smb4KSettings::enableWakeOnLAN()) {
-        CustomSettingsPtr customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(share->url().resolved(QUrl(QStringLiteral(".."))));
+        QUrl serverUrl = share->url().adjusted(QUrl::RemoveUserInfo|QUrl::RemovePath|QUrl::RemovePort|QUrl::StripTrailingSlash);
+        CustomSettingsPtr customSettings = Smb4KCustomSettingsManager::self()->findCustomSettings(serverUrl);
 
         if (customSettings && customSettings->wakeOnLanSendBeforeMount()) {
             Q_EMIT aboutToStart(WakeUp);
