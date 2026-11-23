@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-22 01:04+0000\n"
-"PO-Revision-Date: 2026-11-20 07:36+0200\n"
+"PO-Revision-Date: 2026-11-22 07:38+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -3256,8 +3256,7 @@ msgid "IPC"
 msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:395
-#, fuzzy, kde-format
-#| msgid "Synchronizing"
+#, kde-format
 msgctxt "Synchronization is running"
 msgid "Synchronizing"
 msgstr "Синхронизация"

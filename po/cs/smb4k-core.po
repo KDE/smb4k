@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-22 01:04+0000\n"
-"PO-Revision-Date: 2026-11-21 00:48+0100\n"
+"PO-Revision-Date: 2026-11-22 12:20+0100\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -3182,8 +3182,7 @@ msgid "IPC"
 msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:395
-#, fuzzy, kde-format
-#| msgid "Synchronizing"
+#, kde-format
 msgctxt "Synchronization is running"
 msgid "Synchronizing"
 msgstr "Synchronizace"
