@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-22 01:04+0000\n"
-"PO-Revision-Date: 2026-11-16 19:32+0300\n"
+"PO-Revision-Date: 2026-11-23 17:59+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -321,7 +321,7 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:31
 #, kde-format
 msgid "Default Login"
-msgstr "Öntanımlı Oturum Açma Verisi"
+msgstr "Varsayılan Oturum Açma Verisi"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4khomesuserdialog.cpp:63

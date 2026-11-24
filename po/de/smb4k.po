@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2003-2008, 2010-2011, 2013, 2017, 2019, 2024 Alexander Reinholdt <alexander.reinholdt@t-online.de>
+# SPDX-FileCopyrightText: 2003-2008, 2010-2011, 2013, 2017, 2019, 2024, 2026 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 # SPDX-FileCopyrightText: 2009-2012, 2016, 2018, 2020, 2022-2023 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2010 Panagiotis Papadopoulos <pano_90@gmx.net>
 # SPDX-FileCopyrightText: 2010-2021 Burkhard Lück <lueck@hube-lueck.de>
@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-22 01:04+0000\n"
-"PO-Revision-Date: 2025-12-14 15:05+0100\n"
-"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
+"PO-Revision-Date: 2026-11-22 11:22+0100\n"
+"Last-Translator: Alexander Reinholdt <alexander.reinholdt@kdemail.net>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,38 +30,34 @@ msgid "Your emails"
 msgstr "kde-i18n-de@kde.org"
 
 #: helpers/smb4kmounthelper.cpp:67
-#, fuzzy, kde-format
-#| msgid "The wallet is not in use."
+#, kde-format
 msgid "The computer is not online."
-msgstr "Der Passwortspeicher wird nicht benutzt."
+msgstr "Der Rechner ist nicht online."
 
 #: helpers/smb4kmounthelper.cpp:76
-#, fuzzy, kde-format
-#| msgid "Could not find umount binary."
+#, kde-format
 msgid "Could not create mount point for share %1."
-msgstr "Die „umount“-Programmdatei kann nicht gefunden werden."
+msgstr "Der Einhängepunkt für die Freigabe %1 kann nicht erstellt werden."
 
 #: helpers/smb4kmounthelper.cpp:80 helpers/smb4kmounthelper.cpp:195
-#, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
+#, kde-format
 msgid "The mount point %1 is illegal."
-msgstr "Der Einhängepunkt %1 ist ungültig."
+msgstr "Der Einhängepunkt %1 ist unzulässig."
 
 #: helpers/smb4kmounthelper.cpp:86
-#, fuzzy, kde-format
-#| msgid "The mount process could not be started."
+#, kde-format
 msgid "The mount command could not be found."
-msgstr "Der Einhängevorgang kann nicht gestartet werden."
+msgstr "Der „mount“-Befehl kann nicht gefunden werden."
 
 #: helpers/smb4kmounthelper.cpp:92
 #, kde-format
 msgid "Forbidden mount options were passed."
-msgstr ""
+msgstr "Verbotene Einhängeoptionen wurden übergeben."
 
 #: helpers/smb4kmounthelper.cpp:142
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
-msgstr ""
+msgstr "Mit dem bereitgestellten Kerberos-Ticket stimmt etwas nicht."
 
 #: helpers/smb4kmounthelper.cpp:182
 #, kde-format
@@ -69,16 +65,14 @@ msgid "The mount process could not be started."
 msgstr "Der Einhängevorgang kann nicht gestartet werden."
 
 #: helpers/smb4kmounthelper.cpp:201
-#, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
+#, kde-format
 msgid "The umount command could not be found."
-msgstr "Der Aushängevorgang kann nicht gestartet werden."
+msgstr "Der „umount“-Befehl kann nicht gefunden werden."
 
 #: helpers/smb4kmounthelper.cpp:207
-#, fuzzy, kde-format
-#| msgid "The unmount process crashed."
+#, kde-format
 msgid "Forbidden unmount options were passed."
-msgstr "Der Aushängevorgang ist abgestürzt."
+msgstr "Verbotene Aushängeoptionen wurden übergeben."
 
 #: helpers/smb4kmounthelper.cpp:249
 #, kde-format
@@ -89,23 +83,23 @@ msgstr "Der Aushängevorgang kann nicht gestartet werden."
 #, kde-format
 msgid "The argument is invalid. Please use either 'on' or 'off'."
 msgstr ""
+"Das Argument ist ungültig. Bitte verwenden Sie entweder „on“ (an) oder "
+"„off“ (aus)."
 
 #: smb4k/main.cpp:58 smb4k/main.cpp:76
 #, kde-format
 msgid "Profiles are disabled."
-msgstr ""
+msgstr "Profile sind deaktiviert."
 
 #: smb4k/main.cpp:65
-#, fuzzy, kde-format
-#| msgid "The file is invalid."
+#, kde-format
 msgid "The profile name is invalid."
-msgstr "Die Datei ist ungültig."
+msgstr "Der Profilname ist ungültig."
 
 #: smb4k/main.cpp:83
-#, fuzzy, kde-format
-#| msgid "Set Active"
+#, kde-format
 msgid " (active)"
-msgstr "Aktiv setzen"
+msgstr " (aktiv)"
 
 #: smb4k/main.cpp:141 smb4k/smb4ksystemtray.cpp:49
 #, kde-format
@@ -120,10 +114,9 @@ msgstr ""
 "Einhängen von Samba-Freigaben"
 
 #: smb4k/main.cpp:145
-#, fuzzy, kde-format
-#| msgid "© 2003-2025 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2026 Alexander Reinholdt"
-msgstr "© 2003–2025 Alexander Reinholdt"
+msgstr "© 2003–2026 Alexander Reinholdt"
 
 #: smb4k/main.cpp:150
 #, kde-format
@@ -149,30 +142,28 @@ msgstr "Spender"
 #, kde-format
 msgid "Enable or disable the usage of profiles. <arg> can be 'on' or 'off'."
 msgstr ""
+"Die Profilnutzung aktivieren oder deaktivieren. <arg> kann „on“ (an) oder "
+"„off“ (aus) sein."
 
 #: smb4k/main.cpp:165
 #, kde-format
 msgid "Set the active profile to <profile>."
-msgstr ""
+msgstr "Das aktive Profil auf <profil> festlegen."
 
 #: smb4k/main.cpp:168
-#, fuzzy, kde-format
-#| msgid "Print a file."
+#, kde-format
 msgid "List all profiles."
-msgstr "Eine Datei drucken."
+msgstr "Alle Profile auflisten."
 
 #: smb4k/main.cpp:171
-#, fuzzy, kde-format
-#| msgid "Unmount all shares when the power button is pressed"
+#, kde-format
 msgid "Remount all shares that were previously used."
-msgstr ""
-"Die Einbindungen aller Freigaben lösen, wenn der Ausschalt-Knopf gedrückt "
-"wird"
+msgstr "Alle zuvor verwendeten Freigaben erneut einhängen."
 
 #: smb4k/main.cpp:174
 #, kde-format
 msgid "Mount the share pointed to by <url>."
-msgstr ""
+msgstr "Die unter der Adresse <url> verfügbare Freigabe einhängen."
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -283,7 +274,7 @@ msgstr "Einhängen"
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
-msgstr "Abgleich"
+msgstr "Synchronisierung"
 
 #: smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
@@ -438,16 +429,14 @@ msgstr "Unterstützung für CIFS-Erweiterungen unter Unix"
 #: smb4k/smb4kconfigpagemounting.cpp:225 smb4k/smb4kconfigpagemounting.cpp:460
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, fuzzy, kde-format
-#| msgid "User ID:"
+#, kde-format
 msgid "User ID:"
 msgstr "Benutzerkennung:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:231 smb4k/smb4kconfigpagemounting.cpp:466
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:331
-#, fuzzy, kde-format
-#| msgid "Group ID:"
+#, kde-format
 msgid "Group ID:"
 msgstr "Gruppenkennung:"
 
@@ -547,7 +536,7 @@ msgstr "Umbenennen"
 #: smb4k/smb4kconfigpagesynchronization.cpp:32
 #, kde-format
 msgid "Synchronization Directory"
-msgstr "Abgleichordner"
+msgstr "Synchronisierungsordner"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:82
 #, kde-format
@@ -670,7 +659,7 @@ msgstr "Freigabenansicht"
 #: smb4k/smb4kconfigpageuserinterface.cpp:162
 #, kde-format
 msgid "Program Launch"
-msgstr ""
+msgstr "Programmstart"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
 #, kde-format
@@ -796,7 +785,7 @@ msgstr "Es wird nach Arbeitsgruppen und Domänen gesucht …"
 #: smb4k/smb4kmainwindow.cpp:492
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "Es wird nach nach Rechnern in der Domäne %1 gesucht …"
+msgstr "Es wird nach Rechnern in der Domäne %1 gesucht …"
 
 #: smb4k/smb4kmainwindow.cpp:497
 #, kde-format
@@ -806,7 +795,7 @@ msgstr "Es wird nach Freigaben auf dem Rechner %1 gesucht …"
 #: smb4k/smb4kmainwindow.cpp:505 smb4k/smb4kmainwindow.cpp:514
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "Es wird nach nach Rechnern und Ordnern in der %1 gesucht …"
+msgstr "Es wird nach Dateien und Ordnern in %1 gesucht …"
 
 #: smb4k/smb4kmainwindow.cpp:531
 #, kde-format
@@ -885,8 +874,7 @@ msgid "Bookmark this share"
 msgstr "Lesezeichen für diese Freigabe hinzufügen"
 
 #: smb4k/smb4kmountdialog.cpp:155
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark"
 msgstr "Lesezeichen"
 
@@ -1136,7 +1124,7 @@ msgstr "Lesezeichen hinzufügen"
 #: smb4k/smb4ksharesmenu.cpp:197 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
-msgstr "Abgleichen"
+msgstr "Synchronisieren"
 
 #: smb4k/smb4ksharesmenu.cpp:216
 #, kde-format
@@ -1171,7 +1159,7 @@ msgstr "Strg+N"
 #: smb4k/smb4ksharesviewdockwidget.cpp:220
 #, kde-format
 msgid "S&ynchronize"
-msgstr "A&bgleichen"
+msgstr "S&ynchronisieren"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:225
 #, kde-format
@@ -1228,8 +1216,8 @@ msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
 msgstr ""
-"Bitte geben Sie das Quell- und das Zielverzeichnis für den Abgleich von <b>"
-"%1</b> an."
+"Bitte geben Sie das Quell- und das Zielverzeichnis für die Synchronisierung "
+"von <b>%1</b> an."
 
 #: smb4k/smb4ktooltip.cpp:128
 #, kde-format
