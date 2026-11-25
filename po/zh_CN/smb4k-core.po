@@ -3010,7 +3010,7 @@ msgstr "IPC"
 #, kde-format
 msgctxt "Synchronization is running"
 msgid "Synchronizing"
-msgstr ""
+msgstr "正在同步"
 
 #: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format

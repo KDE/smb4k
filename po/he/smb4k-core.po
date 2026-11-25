@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-22 01:04+0000\n"
-"PO-Revision-Date: 2026-11-20 10:31+0200\n"
+"PO-Revision-Date: 2026-11-24 08:49+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <kde-l10n-he@kde.org>\n"
 "Language: he\n"
@@ -3081,8 +3081,7 @@ msgid "IPC"
 msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:395
-#, fuzzy, kde-format
-#| msgid "Synchronizing"
+#, kde-format
 msgctxt "Synchronization is running"
 msgid "Synchronizing"
 msgstr "מסתנכרן"
