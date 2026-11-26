@@ -473,7 +473,8 @@ public:
 
     /**
      * Update this custom settings object. You cannot change the workgroup,
-     * URL and type with this function.
+     * URL and type with this function. You can propagate settings from a host
+     * to its shares, but not vice versa.
      *
      * @param customSettings    The options that are used to update this object
      */

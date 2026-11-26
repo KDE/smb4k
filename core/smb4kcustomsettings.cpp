@@ -682,12 +682,25 @@ bool Smb4KCustomSettings::hasCustomSettings(bool withoutRemountOnce) const
 
 void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
 {
+    if (!customSettings || d->url.host() != customSettings->url().host()) {
+        return;
+    }
+
+    if (d->type == Host && customSettings->type() == Share) {
+        // We are not propagating settings upwards.
+        return;
+    }
+
     // NOTE: Do not update the URL and the type
     d->profile = customSettings->profile();
 
     setWorkgroupName(customSettings->workgroupName());
     setIpAddress(customSettings->ipAddress());
-    setRemount(customSettings->remount());
+
+    if (d->type == Share && customSettings->type() == Share) {
+        setRemount(customSettings->remount());
+    }
+
     setUseIds(customSettings->useIds());
     setUseFileMode(customSettings->useFileMode());
     setFileMode(customSettings->fileMode());
@@ -704,9 +717,12 @@ void Smb4KCustomSettings::update(Smb4KCustomSettings *customSettings)
     setMinimalClientProtocolVersion(customSettings->minimalClientProtocolVersion());
     setMaximalClientProtocolVersion(customSettings->maximalClientProtocolVersion());
     setUseKerberos(customSettings->useKerberos());
-    setMacAddress(customSettings->macAddress());
-    setWakeOnLanSendBeforeNetworkScan(customSettings->wakeOnLanSendBeforeNetworkScan());
-    setWakeOnLanSendBeforeMount(customSettings->wakeOnLanSendBeforeMount());
+
+    if (d->type == Host && customSettings->type() == Host) {
+        setMacAddress(customSettings->macAddress());
+        setWakeOnLanSendBeforeNetworkScan(customSettings->wakeOnLanSendBeforeNetworkScan());
+        setWakeOnLanSendBeforeMount(customSettings->wakeOnLanSendBeforeMount());
+    }
 }
 
 bool Smb4KCustomSettings::hasSettings(bool withoutRemountOnce) const
