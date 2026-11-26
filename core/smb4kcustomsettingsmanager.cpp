@@ -280,7 +280,7 @@ bool Smb4KCustomSettingsManager::add(const CustomSettingsPtr &settings)
             d->customSettings << settings;
         }
 
-        // Propagate the settings to the host's shares if the type is 'Host'
+        // Propagate most of the settings to the host's shares if the type is 'Host'
         if (settings->type() == Host) {
             QList<CustomSettingsPtr> customSettingsList = customSettings(true);
 
