@@ -281,6 +281,7 @@ void Smb4KCustomSettingsEditorWidget::setupView(bool showBrowseTab)
     tab5Layout->addStretch(100);
 
     m_wakeOnLanTabIndex = addTab(tab5, i18n("Wake-On-LAN Settings"));
+    widget(m_wakeOnLanTabIndex)->setEnabled(false);
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 void Smb4KCustomSettingsEditorWidget::setupView(bool showBrowseTab)
@@ -455,6 +456,7 @@ void Smb4KCustomSettingsEditorWidget::setupView(bool showBrowseTab)
     tab4Layout->addStretch(100);
 
     m_wakeOnLanTabIndex = addTab(tab4, i18n("Wake-On-LAN Settings"));
+    widget(m_wakeOnLanTabIndex)->setEnabled(false);
 }
 #else
 void Smb4KCustomSettingsEditorWidget::setupView(bool showBrowseTab)
@@ -504,7 +506,7 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomSetting
 
     m_useKerberos->setChecked(m_customSettings.useKerberos());
 
-    widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
+    widget(m_wakeOnLanTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN() && m_customSettings.type() == Host);
 
     if (m_customSettings.type() == Host) {
         m_macAddressSearchButton->setEnabled(m_customSettings.hasIpAddress());
@@ -553,13 +555,15 @@ Smb4KCustomSettings Smb4KCustomSettingsEditorWidget::getCustomSettings() const
 
     m_customSettings.setUseKerberos(m_useKerberos->isChecked());
 
-    if (m_macAddress->hasAcceptableInput()) {
-        m_customSettings.setMacAddress(m_macAddress->text());
-    } else {
-        m_customSettings.setMacAddress(QString());
+    if (m_customSettings.type() == Host) {
+        if (m_macAddress->hasAcceptableInput()) {
+            m_customSettings.setMacAddress(m_macAddress->text());
+        } else {
+            m_customSettings.setMacAddress(QString());
+        }
+        m_customSettings.setWakeOnLanSendBeforeNetworkScan(m_sendPacketBeforeScan->isChecked());
+        m_customSettings.setWakeOnLanSendBeforeMount(m_sendPacketBeforeMount->isChecked());
     }
-    m_customSettings.setWakeOnLanSendBeforeNetworkScan(m_sendPacketBeforeScan->isChecked());
-    m_customSettings.setWakeOnLanSendBeforeMount(m_sendPacketBeforeMount->isChecked());
 
     return m_customSettings;
 }
