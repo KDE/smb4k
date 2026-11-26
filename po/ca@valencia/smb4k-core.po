@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-22 01:04+0000\n"
-"PO-Revision-Date: 2026-07-16 10:55+0200\n"
+"PO-Revision-Date: 2026-11-22 09:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -2890,10 +2890,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "Protocol NTLMSSP i signatura dels paquets"
 
 #: smb4knotification.cpp:69
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, kde-format
 msgid "The share <b>%1</b> has been mounted."
-msgstr "La compartició <b>%1</b> s'ha muntat a <b>%2</b>."
+msgstr "La compartició <b>%1</b> s'ha muntat."
 
 #: smb4knotification.cpp:78
 #, kde-format
@@ -2902,22 +2901,19 @@ msgid "Open"
 msgstr "Obri"
 
 #: smb4knotification.cpp:83
-#, fuzzy, kde-format
-#| msgid "The share %1 has been mounted to %2."
+#, kde-format
 msgid "The share %1 has been mounted."
-msgstr "La compartició %1 s'ha muntat a %2."
+msgstr "La compartició %1 s'ha muntat."
 
 #: smb4knotification.cpp:102
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, kde-format
 msgid "The share <b>%1</b> has been unmounted."
-msgstr "La compartició <b>%1</b> s'ha desmuntat des de <b>%2</b>."
+msgstr "La compartició <b>%1</b> s'ha desmuntat."
 
 #: smb4knotification.cpp:110
-#, fuzzy, kde-format
-#| msgid "The share %1 has been unmounted from %2."
+#, kde-format
 msgid "The share %1 has been unmounted."
-msgstr "La compartició %1 s'ha desmuntat des de %2."
+msgstr "La compartició %1 s'ha desmuntat."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
 #, kde-format
@@ -3011,28 +3007,24 @@ msgid "Mounting the share %1 failed."
 msgstr "No s'ha pogut muntar la compartició %1."
 
 #: smb4knotification.cpp:305
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "No s'ha pogut muntar la compartició <b>%1</b>:<tt>%2</tt>"
+msgstr "No s'ha pogut desmuntar la compartició <b>%1</b>:<tt>%2</tt>"
 
 #: smb4knotification.cpp:307
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Unmounting the share <b>%1</b> failed."
-msgstr "No s'ha pogut muntar la compartició <b>%1</b>."
+msgstr "No s'ha pogut desmuntar la compartició <b>%1</b>."
 
 #: smb4knotification.cpp:323
-#, fuzzy, kde-format
-#| msgid "Mounting the share %1 failed: %2"
+#, kde-format
 msgid "Unmounting the share %1 failed: %2"
-msgstr "No s'ha pogut muntar la compartició %1: %2"
+msgstr "No s'ha pogut desmuntar la compartició %1: %2"
 
 #: smb4knotification.cpp:325
-#, fuzzy, kde-format
-#| msgid "Mounting the share %1 failed."
+#, kde-format
 msgid "Unmounting the share %1 failed."
-msgstr "No s'ha pogut muntar la compartició %1."
+msgstr "No s'ha pogut desmuntar la compartició %1."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3255,11 +3247,10 @@ msgid "IPC"
 msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:395
-#, fuzzy, kde-format
-#| msgid "Synchronizing"
+#, kde-format
 msgctxt "Synchronization is running"
 msgid "Synchronizing"
-msgstr "Sincronitzeu"
+msgstr "S'està sincronitzant"
 
 #: smb4ksynchronizer_p.cpp:395 smb4ksynchronizer_p.cpp:476
 #, kde-format
@@ -3275,28 +3266,3 @@ msgstr "Destinació"
 #, kde-format
 msgid "Synchronizing"
 msgstr "Sincronitzeu"
-
-#~ msgid "Master browsers require authentication"
-#~ msgstr "Els exploradors mestres requerixen autenticació"
-
-#~ msgid ""
-#~ "The master browsers in your network neighborhood require a login to "
-#~ "return the browse list. This setting is rarely needed."
-#~ msgstr ""
-#~ "Els exploradors mestres del veïnatge de xarxa requerixen un inici de "
-#~ "sessió per a retornar la llista d'exploració. Esta opció rarament es "
-#~ "necessita."
-
-#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed: <tt>%3</tt>"
-#~ msgstr ""
-#~ "No s'ha pogut desmuntar la compartició <b>%1</b> des de <b>%2</b>:<tt>%3</"
-#~ "tt>"
-
-#~ msgid "Unmounting the share <b>%1</b> from <b>%2</b> failed."
-#~ msgstr "No s'ha pogut desmuntar la compartició <b>%1</b> des de <b>%2</b>."
-
-#~ msgid "Unmounting the share %1 from %2 failed: %3"
-#~ msgstr "No s'ha pogut desmuntar la compartició %1 des de %2: %3"
-
-#~ msgid "Unmounting the share %1 from %2 failed."
-#~ msgstr "No s'ha pogut desmuntar la compartició %1 des de %2."

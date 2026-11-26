@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-22 01:04+0000\n"
-"PO-Revision-Date: 2026-07-16 06:13+0200\n"
+"PO-Revision-Date: 2026-11-25 13:52+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #, kde-format
 msgctxt "default profile name for use at home"
@@ -2834,10 +2834,9 @@ msgid "NTLMSSP protocol and packet signing"
 msgstr "NTLMSSP პროტოკოლი და პაკეტების ხელმოწერა"
 
 #: smb4knotification.cpp:69
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been mounted to <b>%2</b>."
+#, kde-format
 msgid "The share <b>%1</b> has been mounted."
-msgstr "ზიარი <b>%1</b> მიმაგრებულია საქაღალდეში <b>%2</b>."
+msgstr "ზიარი <b>%1</b> მიმაგრებულია."
 
 #: smb4knotification.cpp:78
 #, kde-format
@@ -2846,22 +2845,19 @@ msgid "Open"
 msgstr "გახსნა"
 
 #: smb4knotification.cpp:83
-#, fuzzy, kde-format
-#| msgid "The share %1 has been mounted to %2."
+#, kde-format
 msgid "The share %1 has been mounted."
-msgstr "ზიარი %1 მიმაგრებულია საქაღალდეში %2."
+msgstr "ზიარი %1 მიმაგრებულია."
 
 #: smb4knotification.cpp:102
-#, fuzzy, kde-format
-#| msgid "The share <b>%1</b> has been unmounted from <b>%2</b>."
+#, kde-format
 msgid "The share <b>%1</b> has been unmounted."
-msgstr "ზიარი <b>%1</b> მოიხსნა საქაღალდიდან <b>%2</b>."
+msgstr "ზიარი <b>%1</b> მოიხსნა."
 
 #: smb4knotification.cpp:110
-#, fuzzy, kde-format
-#| msgid "The share %1 has been unmounted from %2."
+#, kde-format
 msgid "The share %1 has been unmounted."
-msgstr "ზიარი %1 მოიხსნა საქაღალდიდან %2."
+msgstr "ზიარი %1 მოიხსნა."
 
 #: smb4knotification.cpp:123 smb4knotification.cpp:131
 #, kde-format
@@ -2953,28 +2949,24 @@ msgid "Mounting the share %1 failed."
 msgstr "ზიარის %1 მიმაგრება ჩავარდა."
 
 #: smb4knotification.cpp:305
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed: <tt>%2</tt>"
+#, kde-format
 msgid "Unmounting the share <b>%1</b> failed: <tt>%2</tt>"
-msgstr "ზიარის <b>%1</b> მიმაგრება ჩავარდა:</p><p><tt>%2</tt>"
+msgstr "ზიარის <b>%1</b> მოხსნა ჩავარდა: <tt>%2</tt>"
 
 #: smb4knotification.cpp:307
-#, fuzzy, kde-format
-#| msgid "Mounting the share <b>%1</b> failed."
+#, kde-format
 msgid "Unmounting the share <b>%1</b> failed."
-msgstr "ზიარის <b>%1</b> მიმაგრება ჩავარდა."
+msgstr "ზიარის <b>%1</b> მოხსნა ჩავარდა."
 
 #: smb4knotification.cpp:323
-#, fuzzy, kde-format
-#| msgid "Mounting the share %1 failed: %2"
+#, kde-format
 msgid "Unmounting the share %1 failed: %2"
-msgstr "ზიარის %1 მიმაგრება ჩავარდა: %2"
+msgstr "ზიარის %1 მოხსნა ჩავარდა: %2"
 
 #: smb4knotification.cpp:325
-#, fuzzy, kde-format
-#| msgid "Mounting the share %1 failed."
+#, kde-format
 msgid "Unmounting the share %1 failed."
-msgstr "ზიარის %1 მიმაგრება ჩავარდა."
+msgstr "ზიარის %1 მოხსნა ჩავარდა."
 
 #: smb4knotification.cpp:338
 #, kde-format
@@ -3193,8 +3185,7 @@ msgid "IPC"
 msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:395
-#, fuzzy, kde-format
-#| msgid "Synchronizing"
+#, kde-format
 msgctxt "Synchronization is running"
 msgid "Synchronizing"
 msgstr "სინქრონიზაცია"
