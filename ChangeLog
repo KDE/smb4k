@@ -5,6 +5,11 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/4.0
 
 - Fixed URL generation for the server that is supposed to be woken up in
   Smb4KMounter::mountShare().
+- Fixed propagation of settings from hosts to their shares where accidentally
+  the remount settings were wiped. Also, disallow upward propagation of
+  settings.
+- The "Wake-On-LAN" tab in the custom settings editor widgets is only enabled
+  with hosts.
 - Improved check for symlinks in Smb4KMounterHelper::isMountPointAllowed().
 
 Smb4K 4.0.8 (2026-11-06):
