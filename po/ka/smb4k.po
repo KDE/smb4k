@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-07 00:57+0000\n"
+"POT-Creation-Date: 2026-11-22 01:04+0000\n"
 "PO-Revision-Date: 2026-11-07 05:09+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -28,52 +28,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
 
-#: helpers/smb4kmounthelper.cpp:66
+#: helpers/smb4kmounthelper.cpp:67
 #, kde-format
 msgid "The computer is not online."
 msgstr "კომპიუტერს ინტერნეტი არ აქვს."
 
-#: helpers/smb4kmounthelper.cpp:75
+#: helpers/smb4kmounthelper.cpp:76
 #, kde-format
 msgid "Could not create mount point for share %1."
 msgstr "გაზიარებულისთვის %1 მიმაგრების წერტილის შექმნა შეუძლებელია."
 
-#: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
+#: helpers/smb4kmounthelper.cpp:80 helpers/smb4kmounthelper.cpp:195
 #, kde-format
 msgid "The mount point %1 is illegal."
 msgstr "მიმაგრების წერტილი %1 დაუშვებელია."
 
-#: helpers/smb4kmounthelper.cpp:85
+#: helpers/smb4kmounthelper.cpp:86
 #, kde-format
 msgid "The mount command could not be found."
 msgstr "ბრძანება mount აღმოჩენილი არაა."
 
-#: helpers/smb4kmounthelper.cpp:91
+#: helpers/smb4kmounthelper.cpp:92
 #, kde-format
 msgid "Forbidden mount options were passed."
 msgstr "გადაცემულია აკრძალული მიმაგრების პარამეტრები."
 
-#: helpers/smb4kmounthelper.cpp:141
+#: helpers/smb4kmounthelper.cpp:142
 #, kde-format
 msgid "There is something wrong with the provided Kerberos ticket."
 msgstr "მიწოდებულ Kerberos-ის ბილეთს რაღაც სჭირს."
 
-#: helpers/smb4kmounthelper.cpp:181
+#: helpers/smb4kmounthelper.cpp:182
 #, kde-format
 msgid "The mount process could not be started."
 msgstr "მიმაგრების პროცესის გაშვების შეცდომა."
 
-#: helpers/smb4kmounthelper.cpp:200
+#: helpers/smb4kmounthelper.cpp:201
 #, kde-format
 msgid "The umount command could not be found."
 msgstr "ბრძანება umount აღმოჩენილი არაა."
 
-#: helpers/smb4kmounthelper.cpp:206
+#: helpers/smb4kmounthelper.cpp:207
 #, kde-format
 msgid "Forbidden unmount options were passed."
 msgstr "გადაცემულია აკრძალული მოხსნის პარამეტრები."
 
-#: helpers/smb4kmounthelper.cpp:248
+#: helpers/smb4kmounthelper.cpp:249
 #, kde-format
 msgid "The unmount process could not be started."
 msgstr "მოხსნის პროცესის გაშვების შეცდომა."
@@ -474,17 +474,17 @@ msgstr "პარამეტრების დათვალიერებ�
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:178
+#: smb4k/smb4kconfigpagenetwork.cpp:173
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "ქსელით-გაღვიძება"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:198
+#: smb4k/smb4kconfigpagenetwork.cpp:193
 #, kde-format
 msgid " s"
 msgstr " წმ"
 
-#: smb4k/smb4kconfigpagenetwork.cpp:207
+#: smb4k/smb4kconfigpagenetwork.cpp:202
 #, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
@@ -492,7 +492,7 @@ msgstr ""
 "აღწერეთ ჰოსტები, რომლებმაც მომხმარებლის პარამეტრების რედაქტორის გავლით უნდა "
 "გაიღვიძონ."
 
-#: smb4k/smb4kconfigpagenetwork.cpp:217
+#: smb4k/smb4kconfigpagenetwork.cpp:212
 #, kde-format
 msgid "Advanced Settings"
 msgstr "დამატებითი პარამეტრები"
