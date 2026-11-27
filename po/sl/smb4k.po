@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-07 03:00+0000\n"
+"POT-Creation-Date: 2026-11-27 03:07+0000\n"
 "PO-Revision-Date: 2026-11-07 20:01+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -286,7 +286,7 @@ msgstr "Geslo:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:309 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:310 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -294,7 +294,7 @@ msgstr "Delovna skupina:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:301 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:302 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -357,7 +357,7 @@ msgstr " min"
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:101
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:329
 #, kde-format
 msgid "Basic Settings"
 msgstr "Osnovne nastavitve"
@@ -374,14 +374,14 @@ msgstr "Podpora razširitev CIFS Unix"
 
 #: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:452
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:335
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:336
 #, kde-format
 msgid "User ID:"
 msgstr "Določilnik uporabnika:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:341
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:342
 #, kde-format
 msgid "Group ID:"
 msgstr "Določilnik skupine:"
@@ -409,14 +409,14 @@ msgid "Character Sets"
 msgstr "Nabor znakov"
 
 #: smb4k/smb4kconfigpagemounting.cpp:555
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:379
 #, kde-format
 msgid "Mount Settings"
 msgstr "Nastavitve priklopa"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:252
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:438
 #, kde-format
 msgid "Browse Settings"
 msgstr "Brskajte po možnostih"
@@ -626,7 +626,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "Določite nastavitve po meri za skupni vir <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:89
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:316
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:317
 #, kde-format
 msgid "Always remount this share"
 msgstr "Vedno ponovno priklopi ta skupni vir"
@@ -637,31 +637,31 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Ta strežnik podpira razširitve CIFS Unix"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC naslov:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:270
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, kde-format
 msgid "Find MAC address"
 msgstr "Najdi MAC naslov"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:280
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:465
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Pošlji čarobni paket pred pregledovanjem sosedstva omrežja"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:282
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Pošlji čarobni paket pred priklopom skupnega diska"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:293
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Nastavitve Wake-On-LAN"

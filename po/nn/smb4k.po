@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-07 03:00+0000\n"
+"POT-Creation-Date: 2026-11-27 03:07+0000\n"
 "PO-Revision-Date: 2021-12-15 11:16+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail."
 "com>\n"
@@ -288,7 +288,7 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:82
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:309 smb4k/smb4kmountdialog.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:310 smb4k/smb4kmountdialog.cpp:82
 #: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Workgroup:"
@@ -296,7 +296,7 @@ msgstr "Arbeidsgruppe:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:74
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:301 smb4k/smb4kmountdialog.cpp:75
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:302 smb4k/smb4kmountdialog.cpp:75
 #: smb4k/smb4ktooltip.cpp:164 smb4k/smb4ktooltip.cpp:193
 #, kde-format
 msgid "IP Address:"
@@ -357,7 +357,7 @@ msgstr " minutt"
 #: smb4k/smb4kconfigpagenetwork.cpp:126
 #: smb4k/smb4kconfigpagesynchronization.cpp:118
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:101
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:328
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:329
 #, kde-format
 msgid "Basic Settings"
 msgstr "Grunnleggjande innstillingar"
@@ -374,14 +374,14 @@ msgstr "Støtte for Unix-utvidingar for CIFS"
 
 #: smb4k/smb4kconfigpagemounting.cpp:221 smb4k/smb4kconfigpagemounting.cpp:452
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:124
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:335
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:336
 #, kde-format
 msgid "User ID:"
 msgstr "Brukar-ID:"
 
 #: smb4k/smb4kconfigpagemounting.cpp:227 smb4k/smb4kconfigpagemounting.cpp:458
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:130
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:341
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:342
 #, kde-format
 msgid "Group ID:"
 msgstr "Gruppe-ID:"
@@ -409,14 +409,14 @@ msgid "Character Sets"
 msgstr "Teiknkodingar"
 
 #: smb4k/smb4kconfigpagemounting.cpp:555
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:378
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:379
 #, kde-format
 msgid "Mount Settings"
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:252
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:437
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:438
 #, kde-format
 msgid "Browse Settings"
 msgstr ""
@@ -622,7 +622,7 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:89
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:316
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:317
 #, kde-format
 msgid "Always remount this share"
 msgstr "Monter alltid denne ressursen på nytt"
@@ -633,32 +633,32 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Tenaren støttar Unix-utvidingar for CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:448
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:449
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-adresse:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:270
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:455
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, fuzzy, kde-format
 #| msgid "MAC Address:"
 msgid "Find MAC address"
 msgstr "MAC-adresse:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:280
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:464
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:465
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:282
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:466
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:467
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:293
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:477
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:478
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr ""
