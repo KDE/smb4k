@@ -43,13 +43,11 @@ msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:80 helpers/smb4kmounthelper.cpp:195
 #, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
 msgid "The mount point %1 is illegal."
 msgstr "Monteringspunktet %1 er ugyldig."
 
 #: helpers/smb4kmounthelper.cpp:86
 #, fuzzy, kde-format
-#| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "Monteringsprosessen kunne ikkje startast."
 
@@ -70,7 +68,6 @@ msgstr "Monteringsprosessen kunne ikkje startast."
 
 #: helpers/smb4kmounthelper.cpp:201
 #, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Avmonteringsprosessen kunne ikkje startast."
 
@@ -117,7 +114,6 @@ msgstr ""
 
 #: smb4k/main.cpp:145
 #, fuzzy, kde-format
-#| msgid "Alexander Reinholdt"
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
@@ -858,7 +854,6 @@ msgstr ""
 
 #: smb4k/smb4kmountdialog.cpp:155
 #, fuzzy, kde-format
-#| msgid "Bookmarks"
 msgid "Bookmark"
 msgstr "Bokmerke"
 
