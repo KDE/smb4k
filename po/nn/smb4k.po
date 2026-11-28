@@ -43,13 +43,11 @@ msgstr ""
 
 #: helpers/smb4kmounthelper.cpp:79 helpers/smb4kmounthelper.cpp:194
 #, fuzzy, kde-format
-#| msgid "The mountpoint %1 is invalid."
 msgid "The mountpoint %1 is illegal."
 msgstr "Monteringspunktet %1 er ugyldig."
 
 #: helpers/smb4kmounthelper.cpp:85
 #, fuzzy, kde-format
-#| msgid "The mount process could not be started."
 msgid "The mount command could not be found."
 msgstr "Monteringsprosessen kunne ikkje startast."
 
@@ -70,7 +68,6 @@ msgstr "Monteringsprosessen kunne ikkje startast."
 
 #: helpers/smb4kmounthelper.cpp:200
 #, fuzzy, kde-format
-#| msgid "The unmount process could not be started."
 msgid "The umount command could not be found."
 msgstr "Avmonteringsprosessen kunne ikkje startast."
 
@@ -97,7 +94,6 @@ msgstr ""
 
 #: smb4k/main.cpp:44
 #, fuzzy, kde-format
-#| msgid "Alexander Reinholdt"
 msgid "© 2003-2026 Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
@@ -641,7 +637,6 @@ msgstr "MAC-adresse:"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:270
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:456
 #, fuzzy, kde-format
-#| msgid "MAC Address:"
 msgid "Find MAC address"
 msgstr "MAC-adresse:"
 
